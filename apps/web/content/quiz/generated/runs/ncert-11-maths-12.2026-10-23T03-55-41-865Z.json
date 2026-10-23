@@ -1,0 +1,873 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T03:55:41.865Z",
+  "finishedAt": "2026-10-23T04:06:22.905Z",
+  "seconds": 641,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh112.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Limits and Derivatives",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n23. (a) Find the derivative of tan 1 x with respect to log x ; (where x   1,  ).\nOR\nQ.23. (b) Differentiate the following function with respect to x : (𝑐𝑜𝑠 𝑥) ; (where𝑥 ∈ (0, )). 𝑥 𝜋 2",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n7. The derivative of cos −1 (2𝑥 − 1) 2 with respect to cos −1 (𝑥) is 1\n(A) 2 (B) ±1 (C) 2 (D) −3",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n20. Assertion: The general solution of a differential equation represents a family 1\nof curves.\nReason: The derivative of an arbitrary constant is zero.",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2024-25]\n15. Shown below is a curve.\nL is the tangent to any point 1 ( x y, ) on the curve.\nL is the line that connects the point 2 ( x y, ) to the origin.\nThe slope of L is one third of the slope of L . 1 2\nThen the differential equation, using the given conditions is:\n(A) 𝑑𝑦 𝑑𝑥 = 3𝑥 𝑦 (B) 𝑑𝑦 𝑑𝑥 = 𝑦 𝑥\n−1\n(C) 𝑑𝑦 𝑑𝑥 = 3𝑦 𝑥 (D) 𝑑𝑦 𝑑𝑥 = 3𝑦 𝑥"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 253338,
+      "in": 46,
+      "out": 45,
+      "rejects": 1,
+      "promptTokens": 60716,
+      "completionTokens": 12658
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 378303,
+      "in": 45,
+      "out": 39,
+      "rejects": 6,
+      "promptTokens": 26079,
+      "completionTokens": 9484
+    },
+    "solver": {
+      "calls": 253,
+      "ms": 131052,
+      "in": 39,
+      "out": 35,
+      "rejects": 4,
+      "promptTokens": 46306,
+      "completionTokens": 2461
+    },
+    "form": {
+      "calls": 16,
+      "ms": 63798,
+      "in": 35,
+      "out": 13,
+      "rejects": 22,
+      "promptTokens": 4500,
+      "completionTokens": 1523
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 5072,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 357000,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24152,
+      "completionTokens": 10717
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 4,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the chapter say is the main focus of Calculus?",
+      "ms": {
+        "draft": 4026,
+        "critique": 6833,
+        "solver": 824,
+        "form": 4806
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the definition of the limit of a function f(x) as x approaches a?",
+      "ms": {
+        "draft": 4026,
+        "critique": 6944
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the instantaneous velocity at t = 2 is the slope of the tangent to the curve s = 4.9t². What is the derivative of s with respect to t at t = 2?",
+      "ms": {
+        "draft": 4026,
+        "critique": 7061,
+        "solver": 1883,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the average velocity between t = 2 and t = t seconds is given by (s(t) - 19.6)/(t - 2), what is the average velocity when t = 2.01 seconds?",
+      "ms": {
+        "draft": 4026,
+        "critique": 10030
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the left and right hand limits of a function at a point are equal, what does the passage say about the limit of the function at that point?",
+      "ms": {
+        "draft": 6822,
+        "critique": 8240,
+        "solver": 14161,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the limit of a function at a point if the left and right hand limits are different?",
+      "ms": {
+        "draft": 6822,
+        "critique": 8155,
+        "solver": 15766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what is the reason given for concluding that the limit of f(x) = x + 10 at x = 5 is 15?",
+      "ms": {
+        "draft": 6822,
+        "critique": 8054,
+        "solver": 17214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the conclusion about the limit of f(x) = x + x at x = 1 according to the passage?",
+      "ms": {
+        "draft": 6822,
+        "critique": 7647,
+        "solver": 2617,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what does the limit of a function at a point represent?",
+      "ms": {
+        "draft": 6822,
+        "critique": 7525,
+        "solver": 13378,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the limit of the function f(x) as x approaches 0, given that f(x) is defined as x - 2 for x < 0 and x + 2 for x > 0?",
+      "ms": {
+        "draft": 11035,
+        "critique": 7417,
+        "solver": 1724,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what happens to the limit of f(x) = 1/x as x approaches 0 from the right?",
+      "ms": {
+        "draft": 6822,
+        "critique": 8893,
+        "solver": 14825,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the limit of the function f(x) as x approaches a is equal to f(a), what can be said about the function f(x) at x = a?",
+      "ms": {
+        "draft": 11035,
+        "critique": 7744,
+        "solver": 1225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the limit of a function f(x) as x approaches a is equal to f(a), what can be said about the function f(x) at x = a?",
+      "ms": {
+        "draft": 11035,
+        "critique": 8881,
+        "solver": 1779,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of the limit of the function f(x) as x approaches 0, given that f(x) is defined as x - 2 for x < 0 and x + 2 for x > 0?",
+      "ms": {
+        "draft": 11035,
+        "critique": 7086,
+        "solver": 2485,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of the limit of the function f(x) as x approaches 0, given that f(x) is defined as x - 2 for x < 0 and x + 2 for x > 0?",
+      "ms": {
+        "draft": 11035,
+        "critique": 8430,
+        "solver": 927,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of lim (sin x)/x as x approaches 0?",
+      "ms": {
+        "draft": 3675,
+        "critique": 7345,
+        "solver": 2344,
+        "form": 3023
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of lim (x^n - a^n)/(x - a) as x approaches a?",
+      "ms": {
+        "draft": 3675,
+        "critique": 7799,
+        "solver": 1748,
+        "form": 4546
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the derivative of a function at a point quantify?",
+      "ms": {
+        "draft": 61719,
+        "critique": 5833,
+        "solver": 1302
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of lim (1 - cos x)/x as x approaches 0?",
+      "ms": {
+        "draft": 3675,
+        "critique": 8424,
+        "solver": 1441,
+        "form": 4651
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the derivative of a polynomial function according to Theorem 7?",
+      "ms": {
+        "draft": 7425,
+        "critique": 5479,
+        "solver": 2147,
+        "form": 3537
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the definition of the derivative of a function f at a point x?",
+      "ms": {
+        "draft": 7334,
+        "critique": 5499,
+        "solver": 878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the derivative of the function f(x) = (ax + b)(cx + d) with respect to x?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6403,
+        "solver": 1840
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the derivative of a function f(x) is given by f'(x) = (x + 1), what is the function f(x)?",
+      "ms": {
+        "draft": 3987,
+        "critique": 10779
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the slope of the tangent to a curve at a point (x, y) is one-third of the slope of the line connecting the point (x, y) to the origin, what is the differential equation of the curve?",
+      "ms": {
+        "draft": 4437,
+        "critique": 10403,
+        "solver": 1804
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If f(x) = (x + 1)/x, what is f'(1)?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6405
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of the derivative of a function f(x) at a point x?",
+      "ms": {
+        "draft": 4435,
+        "critique": 9722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the derivative of cos x with respect to x?",
+      "ms": {
+        "draft": 4437,
+        "critique": 5548,
+        "solver": 12949,
+        "form": 3095
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the derivative of a function f(x) is the same at all points, what can be concluded about the function?",
+      "ms": {
+        "draft": 4435,
+        "critique": 8691,
+        "solver": 1244
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the limit lim_{x→a} (x^n - a^n)/(x - a)?",
+      "ms": {
+        "draft": 5330,
+        "critique": 6512,
+        "solver": 2104,
+        "form": 4213
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of lim_{x→0} (sin 4x)/(sin 2x)?",
+      "ms": {
+        "draft": 5330,
+        "critique": 6526,
+        "solver": 1434,
+        "form": 4273
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the expected value of a function at a point based on values near that point from the left side?",
+      "ms": {
+        "draft": 4686,
+        "critique": 6321
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the limit of a polynomial function at a point?",
+      "ms": {
+        "draft": 5863,
+        "critique": 6470,
+        "solver": 6379,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the slope of the tangent to a curve at a point (x, y) is three times the slope of the line joining that point to the origin, what is the differential equation representing this condition?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7038,
+        "solver": 17183,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of the limit lim x→a (x^n - a^n)/(x - a)?",
+      "ms": {
+        "draft": 3987,
+        "critique": 5639,
+        "solver": 1568,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the slope of the tangent to a curve at any point (x, y) is three times the slope of the line joining the point to the origin, what is the differential equation of the curve?",
+      "ms": {
+        "draft": 5330,
+        "critique": 7026,
+        "solver": 1827,
+        "form": 4973
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of applying the first principle of derivatives?",
+      "ms": {
+        "draft": 4435,
+        "critique": 6268,
+        "solver": 1758,
+        "form": 2699,
+        "translation": 42897
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the derivative of sin x with respect to x?",
+      "ms": {
+        "draft": 4437,
+        "critique": 5735,
+        "solver": 10112,
+        "form": 3303,
+        "translation": 25823
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the limit of the function f(x) as x approaches a, if the left-hand limit and right-hand limit both exist and are equal?",
+      "ms": {
+        "draft": 3987,
+        "critique": 9383,
+        "solver": 1469,
+        "form": 0,
+        "translation": 42166
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a body is dropped from a tall cliff and covers a distance of 4.9t² metres in t seconds, what is the average velocity between t = 1 and t = 2 seconds?",
+      "ms": {
+        "draft": 4026,
+        "critique": 7412,
+        "solver": 2193,
+        "form": 4840,
+        "translation": 38217
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the derivative of a function at a point is 0, what does this indicate about the function at that point?",
+      "ms": {
+        "draft": 4435,
+        "critique": 6116,
+        "solver": 1408,
+        "form": 3608,
+        "translation": 40164
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If f(x) = 6x^5 - x^3 + x, what is f'(x)?",
+      "ms": {
+        "draft": 4437,
+        "critique": 8500,
+        "solver": 1625,
+        "form": 4966,
+        "translation": 30002
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the derivative of f(x) = (px + q) with respect to x?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6163,
+        "solver": 1282,
+        "form": 0,
+        "translation": 28389
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "From the given passage, what does the slope of the tangent to the curve s = 4.9t² at t = 2 represent?",
+      "ms": {
+        "draft": 4026,
+        "critique": 6864,
+        "solver": 1739,
+        "form": 4375,
+        "translation": 42528
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the derivative of a function f(x) at x = a is 3, what can be said about the function at x = a?",
+      "ms": {
+        "draft": 4435,
+        "critique": 6436,
+        "solver": 1466,
+        "form": 1,
+        "translation": 33197
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If f(x) = 1 + x + x^2 + ... + x^50, what is f'(1)?",
+      "ms": {
+        "draft": 4437,
+        "critique": 5772,
+        "solver": 1390,
+        "form": 6418,
+        "translation": 30568
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the value of lim (tan x)/x as x approaches 0?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the chapter say is the main focus of Calculus?",
+      "reason": "the key is far longer than every distractor (77 vs 37 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the definition of the limit of a function f(x) as x approaches a?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that the instantaneous velocity at t = 2 is the slope of the tangent to the curve s = 4.9t². What is the derivative of s with respect to t at t = 2?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the average velocity between t = 2 and t = t seconds is given by (s(t) - 19.6)/(t - 2), what is the average velocity when t = 2.01 seconds?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the left and right hand limits of a function at a point are equal, what does the passage say about the limit of the function at that point?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the limit of a function at a point if the left and right hand limits are different?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The limit exists and is equal to the left hand limit\" / \"The limit exists and is equal to the right hand limit\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, what is the reason given for concluding that the limit of f(x) = x + 10 at x = 5 is 15?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the conclusion about the limit of f(x) = x + x at x = 1 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses the definition of limit and value of the function a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what does the limit of a function at a point represent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"The value of the function at that point\" / \"2: The value of the function at that point\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the value of the limit of the function f(x) as x approaches 0, given that f(x) is defined as x - 2 for x < 0 and x + 2 for x > 0?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what happens to the limit of f(x) = 1/x as x approaches 0 from the right?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the limit of the function f(x) as x approaches a is equal to f(a), what can be said about the function f(x) at x = a?",
+      "reason": "options 1 and 2 say the same thing (\"The function is not continuous at x = a.\" / \"The function is continuous at x = a.\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the limit of a function f(x) as x approaches a is equal to f(a), what can be said about the function f(x) at x = a?",
+      "reason": "options 1 and 2 say the same thing (\"The function is not continuous at x = a.\" / \"The function is continuous at x = a.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of the limit of the function f(x) as x approaches 0, given that f(x) is defined as x - 2 for x < 0 and x + 2 for x > 0?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the value of the limit of the function f(x) as x approaches 0, given that f(x) is defined as x - 2 for x < 0 and x + 2 for x > 0?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the value of lim (sin x)/x as x approaches 0?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"1\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the value of lim (x^n - a^n)/(x - a) as x approaches a?",
+      "reason": "checkExpr \"n*a\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does the derivative of a function at a point quantify?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of lim (1 - cos x)/x as x approaches 0?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"0\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the derivative of a polynomial function according to Theorem 7?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The pupil misunderstands the general form of the derivative …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the definition of the derivative of a function f at a point x?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"lim h→0 [f(x + h) - f(x)]\" / \"lim h→0 [f(x + h) - f(x)] / h\"); options 2 and 3 say the same thing (\"lim h→0 [f(x + h) - f(x)] / h\" / \"lim h→0 [f(x + h) + f(x)] / h\"); distractor 3's reason is not a one-line misconception (\"correct option, not a distractor (skipped in this case as it…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the derivative of the function f(x) = (ax + b)(cx + d) with respect to x?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the derivative of a function f(x) is given by f'(x) = (x + 1), what is the function f(x)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the slope of the tangent to a curve at a point (x, y) is one-third of the slope of the line connecting the point (x, y) to the origin, what is the differential equation of the curve?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If f(x) = (x + 1)/x, what is f'(1)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of the derivative of a function f(x) at a point x?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the derivative of cos x with respect to x?",
+      "reason": "options 1 and 3 are the same (\"-sin x\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the derivative of a function f(x) is the same at all points, what can be concluded about the function?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of the limit lim_{x→a} (x^n - a^n)/(x - a)?",
+      "reason": "checkExpr \"n*a^(n-1)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the value of lim_{x→0} (sin 4x)/(sin 2x)?",
+      "reason": "options are written to different precisions (0 and 1 decimals); checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the expected value of a function at a point based on values near that point from the left side?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of the limit of a polynomial function at a point?",
+      "reason": "option 2 repeats the stem's wording (\"It is the value of the function at that point\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the slope of the tangent to a curve at a point (x, y) is three times the slope of the line joining that point to the origin, what is the differential equation representing this condition?",
+      "reason": "near-duplicate of served question cmvhco79x085tgpfh14l2yun6 (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the value of the limit lim x→a (x^n - a^n)/(x - a)?",
+      "reason": "near-duplicate of served question cmvhco79t085bgpfhc0fsuvsa (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the slope of the tangent to a curve at any point (x, y) is three times the slope of the line joining the point to the origin, what is the differential equation of the curve?",
+      "reason": "near-duplicate of served question cmvhco79x085tgpfh14l2yun6 (cosine 0.976 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

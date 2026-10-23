@@ -1,0 +1,616 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T03:47:50.917Z",
+  "finishedAt": "2026-10-23T03:55:40.774Z",
+  "seconds": 470,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh111.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Introduction to Three Dimensional Geometry",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n18. (b) The line through the points (0, 5, -2) and (3, -1, 2) is\nଷି଴ ௫ = ଵିହ ௬ି ହି = ଶାଶ ௭ାଶ\n𝑥 𝑦 − 5 𝑧 + 2\n𝑜𝑟, = =\n3 −6 4\nAny point on the line is (3𝑘, −6𝑘 + 5,4𝑘 − 2), where k is an\narbitrary scalar.\n3𝑘 = 6 ⟹ 𝑘 = 2\nThe z-coordinate of the point P will be 4 × 2 − 2 = 6",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n11. ( c) √3",
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n28. (a) An ant is moving along the vector 𝑙 = 𝑖̂ − 2𝑗̂ + 3𝑘̂. Few sugar crystals are kept along the vector ⃗⃗⃗ 1\n⃗⃗⃗⃗ 𝑙 = 3𝑖̂ − 2𝑗̂ + 𝑘̂ which is inclined at an angle  with the vector 𝑙 . Then find the angle  . Also find 2 ⃗⃗⃗ 1\nthe scalar projection of 𝑙 𝑜𝑛 𝑙 . ⃗⃗⃗ 1 ⃗⃗⃗⃗ 2\nOR\nQ.28. (b) Find the vector and the cartesian equation of the line that passes through (−1, 2, 7) and is\nperpendicular to the lines 𝑟⃗ = 2ı̂ + ȷ̂ − 3k̂ + λ(ı̂ + 2ȷ̂ + 5k̂) and 𝑟⃗ = 3ı̂ + 3ȷ̂ − 7k̂ + μ(3ı̂ − 2ȷ̂ + 5k̂)."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 136075,
+      "in": 31,
+      "out": 31,
+      "rejects": 0,
+      "promptTokens": 27916,
+      "completionTokens": 7205
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 247853,
+      "in": 31,
+      "out": 25,
+      "rejects": 6,
+      "promptTokens": 17722,
+      "completionTokens": 6584
+    },
+    "solver": {
+      "calls": 175,
+      "ms": 103833,
+      "in": 25,
+      "out": 22,
+      "rejects": 3,
+      "promptTokens": 33308,
+      "completionTokens": 1891
+    },
+    "form": {
+      "calls": 11,
+      "ms": 36785,
+      "in": 22,
+      "out": 14,
+      "rejects": 8,
+      "promptTokens": 2629,
+      "completionTokens": 809
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 5091,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 387595,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22696,
+      "completionTokens": 10310
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "A point P lies in the octant XOYZ. What can be said about the signs of its coordinates?",
+      "ms": {
+        "draft": 12404,
+        "critique": 4988,
+        "solver": 1264,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The coordinates of a point P are (x, y, z). If the point is located at a distance of 5 units from the origin along the z-axis, what are the coordinates of P?",
+      "ms": {
+        "draft": 12404,
+        "critique": 5728,
+        "solver": 2796,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A point P lies in the octant X′OYZ. What can be said about the signs of its coordinates?",
+      "ms": {
+        "draft": 12404,
+        "critique": 7726,
+        "solver": 2526,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A point in space has coordinates (2, -3, 5). What is the perpendicular distance of this point from the XY-plane?",
+      "ms": {
+        "draft": 12404,
+        "critique": 5015,
+        "solver": 12738
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the plane determined by the x-axis and y-axis?",
+      "ms": {
+        "draft": 3802,
+        "critique": 6201,
+        "solver": 1857,
+        "form": 3115
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the distance between the points (2, 4, 5) and (– 4, 1, 2)?",
+      "ms": {
+        "draft": 3802,
+        "critique": 9336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a point lies on the x-axis, what are the values of its y-coordinate and z-coordinate?",
+      "ms": {
+        "draft": 3802,
+        "critique": 7286,
+        "solver": 17360,
+        "form": 2586
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the points A(3, 4, 5) and B(-1, 3, -7) are given, and PA + PB = k, what is the set of points P?",
+      "ms": {
+        "draft": 4656,
+        "critique": 7901
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance between two points P(x1, y1, z1) and Q(x2, y2, z2)?",
+      "ms": {
+        "draft": 4656,
+        "critique": 6677,
+        "solver": 10343
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The coordinates of a point P are (2, -3, 4). What is the distance of P from the origin?",
+      "ms": {
+        "draft": 4551,
+        "critique": 6594,
+        "solver": 1995,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance between the points P(1, 2, 3) and Q(4, 5, 6)?",
+      "ms": {
+        "draft": 4551,
+        "critique": 6319,
+        "solver": 17413
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What are the coordinates of a point lying on the x-axis?",
+      "ms": {
+        "draft": 6599,
+        "critique": 8075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the three planes determined by the pair of axes in three-dimensional geometry?",
+      "ms": {
+        "draft": 4551,
+        "critique": 8345,
+        "solver": 1400,
+        "form": 4206
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An ant moves along the vector (i - 2j + 3k). If sugar crystals are placed along the vector (3i - 2j + k), what is the angle between the ant's path and the sugar crystals?",
+      "ms": {
+        "draft": 6599,
+        "critique": 5712
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance between the points (2, 3, 5) and (4, 3, 1)?",
+      "ms": {
+        "draft": 6599,
+        "critique": 6599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The coordinates of points A and B are (1, 2, 3) and (4, 5, 6) respectively. If point P lies on the line segment AB such that AP:PB = 2:1, what are the coordinates of P?",
+      "ms": {
+        "draft": 4551,
+        "critique": 8017,
+        "solver": 14983,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the centroid of triangle PQR is at the origin, and the vertices are P(2a, 2, 6), Q(–4, 3b, –10), and R(8, 14, 2c), find the values of a, b, and c.",
+      "ms": {
+        "draft": 6599,
+        "critique": 11646
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of the coordinates of a point in the XY-plane?",
+      "ms": {
+        "draft": 3802,
+        "critique": 6175,
+        "solver": 1766,
+        "form": 2547
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many octants are formed by the coordinate planes?",
+      "ms": {
+        "draft": 3802,
+        "critique": 8139,
+        "solver": 1849,
+        "form": 3036
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the three mutually perpendicular lines in a three-dimensional coordinate system?",
+      "ms": {
+        "draft": 4551,
+        "critique": 5182,
+        "solver": 1649,
+        "form": 5811
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a point lies on the x-axis, what is its form in three-dimensional geometry?",
+      "ms": {
+        "draft": 4551,
+        "critique": 5931,
+        "solver": 18680,
+        "form": 4176
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the three mutually perpendicular lines in a rectangular Cartesian coordinate system in three dimensions?",
+      "ms": {
+        "draft": 4656,
+        "critique": 7641,
+        "solver": 1545,
+        "form": 3106,
+        "translation": 47748
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the plane formed by the x and y axes?",
+      "ms": {
+        "draft": 12404,
+        "critique": 5190,
+        "solver": 1330,
+        "form": 0,
+        "translation": 30805
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a point lies in the XZ-plane, what can be said about its y-coordinate?",
+      "ms": {
+        "draft": 3802,
+        "critique": 6939,
+        "solver": 2552,
+        "form": 3246,
+        "translation": 43189
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the form of the coordinates of a point in three-dimensional geometry?",
+      "ms": {
+        "draft": 4656,
+        "critique": 6763,
+        "solver": 1495,
+        "form": 2976,
+        "translation": 35573
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A point lies on the y-axis. What are the coordinates of this point?",
+      "ms": {
+        "draft": 12404,
+        "critique": 6864,
+        "solver": 1535,
+        "form": 0,
+        "translation": 35544
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a point lies on the x-axis, what is its form?",
+      "ms": {
+        "draft": 4656,
+        "critique": 7430,
+        "solver": 1551,
+        "form": 4510,
+        "translation": 38339
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A point in space has coordinates (x, y, z). What does the z-coordinate represent?",
+      "ms": {
+        "draft": 4020,
+        "critique": 7689,
+        "solver": 9261,
+        "form": 0,
+        "translation": 21997
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a point has coordinates (x, 0, 0), where does it lie?",
+      "ms": {
+        "draft": 4020,
+        "critique": 6951,
+        "solver": 2107,
+        "form": 0,
+        "translation": 36539
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In which octant does the point (2, -3, 4) lie?",
+      "ms": {
+        "draft": 4020,
+        "critique": 5217,
+        "solver": 1134,
+        "form": 0,
+        "translation": 47197
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a point P is such that PA + PB = k, where A(3, 4, 5) and B(-1, 3, -7), what is the geometric shape of the locus of P?",
+      "ms": {
+        "draft": 4656,
+        "critique": 4875,
+        "solver": 1120,
+        "form": 0,
+        "translation": 46264
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A point P lies in the octant XOYZ. What can be said about the signs of its coordinates?",
+      "reason": "options 1 and 2 say the same thing (\"Two positive, one negative\" / \"One positive, two negative\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The coordinates of a point P are (x, y, z). If the point is located at a distance of 5 units from the origin along the z-axis, what are the coordinates of P?",
+      "reason": "options 0 and 1 say the same thing (\"(0, 0, 5)\" / \"(5, 0, 0)\"); options 0 and 2 say the same thing (\"(0, 0, 5)\" / \"(0, 5, 0)\"); options 1 and 2 say the same thing (\"(5, 0, 0)\" / \"(0, 5, 0)\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A point P lies in the octant X′OYZ. What can be said about the signs of its coordinates?",
+      "reason": "options 0 and 1 say the same thing (\"x negative, y positive, z positive\" / \"x positive, y negative, z negative\"); options 0 and 2 say the same thing (\"x negative, y positive, z positive\" / \"x negative, y negative, z positive\"); options 0 and 3 say the same thing (\"x negative, y positive, z positive\" / \"x positive, y positive, z negative\"); options 1 and 2 say the same thing (\"x positive, y negative, z negative\" / \"x negative, y negative, z positive\"); options 1 and 3 say the same thing (\"x positive, y negative, z negative\" / \"x positive, y positive, z negative\"); options 2 and 3 say the same thing (\"x negative, y negative, z positive\" / \"x positive, y positive, z negative\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A point in space has coordinates (2, -3, 5). What is the perpendicular distance of this point from the XY-plane?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the plane determined by the x-axis and y-axis?",
+      "reason": "option 3 is a catch-all (\"None of these\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the distance between the points (2, 4, 5) and (– 4, 1, 2)?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a point lies on the x-axis, what are the values of its y-coordinate and z-coordinate?",
+      "reason": "options 1 and 3 say the same thing (\"1: y = 0, z = 1\" / \"y = 1, z = 0\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the points A(3, 4, 5) and B(-1, 3, -7) are given, and PA + PB = k, what is the set of points P?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the distance between two points P(x1, y1, z1) and Q(x2, y2, z2)?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The coordinates of a point P are (2, -3, 4). What is the distance of P from the origin?",
+      "reason": "checkExpr \"sqrt( 2^2 + (-3)^2 + 4^2 )\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the distance between the points P(1, 2, 3) and Q(4, 5, 6)?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What are the coordinates of a point lying on the x-axis?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the three planes determined by the pair of axes in three-dimensional geometry?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"refers to planes of symmetry, which are not mentioned in the…\"); distractor 3's reason is not a one-line misconception (\"refers to orthogonal planes, which is not the term used in t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An ant moves along the vector (i - 2j + 3k). If sugar crystals are placed along the vector (3i - 2j + k), what is the angle between the ant's path and the sugar crystals?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the distance between the points (2, 3, 5) and (4, 3, 1)?",
+      "reason": "the critic finds option 3 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The coordinates of points A and B are (1, 2, 3) and (4, 5, 6) respectively. If point P lies on the line segment AB such that AP:PB = 2:1, what are the coordinates of P?",
+      "reason": "options 1 and 3 are the same (\"(2, 3, 4)\"); checkExpr \"( (2*4 + 1*1)/3 , (2*5 + 1*2)/3 , (2*6 + 1*3)/3 )\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the centroid of triangle PQR is at the origin, and the vertices are P(2a, 2, 6), Q(–4, 3b, –10), and R(8, 14, 2c), find the values of a, b, and c.",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the general form of the coordinates of a point in the XY-plane?",
+      "reason": "near-duplicate of served question cmvhcbj8x082tgpfhzgwqf0dw (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many octants are formed by the coordinate planes?",
+      "reason": "near-duplicate of served question cmvhcbj93082zgpfhdz5d91bl (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used for the three mutually perpendicular lines in a three-dimensional coordinate system?",
+      "reason": "near-duplicate of served question cmvhcbj950835gpfh8zwnvgj8 (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a point lies on the x-axis, what is its form in three-dimensional geometry?",
+      "reason": "near-duplicate of batch item \"If a point lies on the x-axis, what is its form?…\" (cosine 0.934 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,685 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T16:42:24.204Z",
+  "finishedAt": "2026-10-21T16:52:29.430Z",
+  "seconds": 605,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo110.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 10 — Biotechnology and Its Applications",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2024-25]\n32. Attempt either option A or B. 5\nA. Explain how advent of biotechnology has helped in preventing\ninfestation by nematodes and thereby increasing crop yield.\nOR\nB. In the future, genetic therapies may be used to prevent, treat, or cure\ncertain inherited disorders in humans. Justify the statement with a\nsuitable example.",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n20. Anyone who can use/modify any living organism or their products using 2\ntechnology is considered to be a biotechnologist. (1)\nThus, cheese maker can be a biotechnologist as he uses microbes like\nbacteria, fungi to make cheese for commercial purpose (1)\nOR\nSelection of recombinants due to inactivation of antibiotics is a cumbersome\nprocedure because it requires simultaneous plating on two plates having\ndifferent antibiotics. (1)\nIn insertional inactivation method, insertion of recombinant DNA within the\ncoding sequence of the enzyme beta galactosidase results into inactivation of\nthis enzyme and the colonies do not produce any colour. The presence of a\nchromogenic substrate gives blue col",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n20. Attempt either option A or B. 2\nA. A cheese maker claims to be a biotechnologist. How will you\nsupport the same?\nOR\nB. Why does the 'insertional inactivation' method to detect\nrecombinant DNA is preferred to 'antibiotic resistance' procedure?",
+      "[CBSE Class XII Biology, marking scheme, 2023-24]\nc) The Bt-toxin gene is cloned and inserted into the plant genome by recombinant\nDNA technology. These genetically modified (GM) plants express the Bt-toxin genes and\nbecome pest-resistant. [1]\nOR\na) (i) Functional enzyme lipase is given to the patient by injection. [0.5]\n(ii) This procedure is not completely curative. [0.5]\nb)\n The disease can be treated by using Gene therapy. [0.5]\n Gene therapy is a collection of methods that allows correction of a gene defect that has\nbeen diagnosed in a child/embryo. [0.5]\n Here genes are inserted into a person’s cells and tissues to treat a disease. Correction of\na genetic defect involves delivery of a normal gene into the individual or embryo\nto ta"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 147741,
+      "in": 37,
+      "out": 37,
+      "rejects": 0,
+      "promptTokens": 34308,
+      "completionTokens": 8453
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 261591,
+      "in": 37,
+      "out": 27,
+      "rejects": 10,
+      "promptTokens": 18921,
+      "completionTokens": 7035
+    },
+    "solver": {
+      "calls": 160,
+      "ms": 65703,
+      "in": 27,
+      "out": 23,
+      "rejects": 4,
+      "promptTokens": 24805,
+      "completionTokens": 1446
+    },
+    "form": {
+      "calls": 15,
+      "ms": 40309,
+      "in": 23,
+      "out": 16,
+      "rejects": 7,
+      "promptTokens": 3905,
+      "completionTokens": 1117
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 4981,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 808547,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 41431,
+      "completionTokens": 22136
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a genetically modified crop that is resistant to pests?",
+      "ms": {
+        "draft": 5994,
+        "critique": 6348
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the most likely reason for the failure of the pomato plant?",
+      "ms": {
+        "draft": 5994,
+        "critique": 6806
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a farmer tried to grow a virus-infected plant using tissue culture?",
+      "ms": {
+        "draft": 5994,
+        "critique": 7100,
+        "solver": 1472
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a farmer wants to reduce the use of chemical pesticides in their field, which of the following would be the best biotechnology application to use?",
+      "ms": {
+        "draft": 5994,
+        "critique": 6322
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Bt toxin not harmful to the Bacillus thuringiensis bacterium itself?",
+      "ms": {
+        "draft": 5994,
+        "critique": 6701
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the process of RNA interference help in protecting the plant from nematode infestation?",
+      "ms": {
+        "draft": 12404,
+        "critique": 6068,
+        "solver": 1587,
+        "form": 3131
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of introducing nematode-specific genes into a host plant using Agrobacterium vectors?",
+      "ms": {
+        "draft": 12404,
+        "critique": 6645,
+        "solver": 1227,
+        "form": 4231
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why RNA interference is an effective method of protecting plants from nematode infestation?",
+      "ms": {
+        "draft": 12404,
+        "critique": 7574,
+        "solver": 1390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to explain how genetically engineered insulin differs from insulin isolated from animal sources. Based on the passage, which of the following is the most accurate explanation?",
+      "ms": {
+        "draft": 12404,
+        "critique": 7398,
+        "solver": 1365,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a biotechnology class, a student is asked to explain how the technique of RNA interference can be used to protect crops from pests. Which of the following statements is most accurate based on the passage?",
+      "ms": {
+        "draft": 12404,
+        "critique": 5427,
+        "solver": 11595,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following scenarios best illustrates the concept of gene therapy as described in the context of treating genetic disorders?",
+      "ms": {
+        "draft": 12404,
+        "critique": 6537,
+        "solver": 10953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the 'insertional inactivation' method preferred over the 'antibiotic resistance' procedure for detecting recombinant DNA?",
+      "ms": {
+        "draft": 3347,
+        "critique": 7159,
+        "solver": 1402
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reason that Bt toxin does not kill the bacteria that produce it?",
+      "ms": {
+        "draft": 2961,
+        "critique": 7142
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a genetically modified organism (GMO)?",
+      "ms": {
+        "draft": 3967,
+        "critique": 6181
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main concern related to biopiracy?",
+      "ms": {
+        "draft": 3967,
+        "critique": 6464
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using Bt toxin in crops?",
+      "ms": {
+        "draft": 3967,
+        "critique": 6937
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A company claims to have developed a new variety of Basmati rice by crossing it with a semi-dwarf variety. According to the passage, what is the main issue with this claim?",
+      "ms": {
+        "draft": 3967,
+        "critique": 7309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of transgenic animals in scientific research?",
+      "ms": {
+        "draft": 3967,
+        "critique": 6762
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key use of transgenic animals in the study of disease?",
+      "ms": {
+        "draft": 3487,
+        "critique": 6848,
+        "solver": 1174
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the insertional inactivation method preferred over the antibiotic resistance procedure in detecting recombinant DNA?",
+      "ms": {
+        "draft": 3487,
+        "critique": 6842,
+        "solver": 1874
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of using genetically modified crops according to the passage?",
+      "ms": {
+        "draft": 4538,
+        "critique": 5615,
+        "solver": 1566,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is biopiracy?",
+      "ms": {
+        "draft": 2961,
+        "critique": 6454,
+        "solver": 1071,
+        "form": 2403,
+        "translation": 47649
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of introducing nematode-specific genes into the host plant?",
+      "ms": {
+        "draft": 3720,
+        "critique": 6461,
+        "solver": 12813,
+        "form": 1104,
+        "translation": 39475
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a technique used for early diagnosis of diseases using DNA analysis?",
+      "ms": {
+        "draft": 3347,
+        "critique": 5822,
+        "solver": 1767,
+        "form": 3233,
+        "translation": 49664
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are GM crops considered beneficial?",
+      "ms": {
+        "draft": 2961,
+        "critique": 6821,
+        "solver": 1309,
+        "form": 2602,
+        "translation": 52560
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using transgenic animals in the study of human diseases?",
+      "ms": {
+        "draft": 3347,
+        "critique": 5942,
+        "solver": 1108,
+        "form": 3394,
+        "translation": 49837
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main advantage of using tissue culture for plant propagation?",
+      "ms": {
+        "draft": 5994,
+        "critique": 6651,
+        "solver": 1383,
+        "form": 3208,
+        "translation": 44654
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a transgenic animal that has been modified to produce a useful biological product?",
+      "ms": {
+        "draft": 3347,
+        "critique": 6219,
+        "solver": 1409,
+        "form": 1967,
+        "translation": 54767
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How can PCR help in the early diagnosis of a disease?",
+      "ms": {
+        "draft": 3487,
+        "critique": 7083,
+        "solver": 1699,
+        "form": 0,
+        "translation": 50736
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following techniques allows the detection of very low amounts of DNA in the body, even before symptoms of a disease are visible?",
+      "ms": {
+        "draft": 3347,
+        "critique": 6267,
+        "solver": 1130,
+        "form": 3686,
+        "translation": 45361
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an ethical concern related to the use of genetically modified organisms?",
+      "ms": {
+        "draft": 3487,
+        "critique": 6068,
+        "solver": 1009,
+        "form": 0,
+        "translation": 44724
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is the insertional inactivation method preferred over the antibiotic resistance procedure in detecting recombinant DNA?",
+      "ms": {
+        "draft": 3720,
+        "critique": 4986,
+        "solver": 1645,
+        "form": 3797,
+        "translation": 49331
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A cheese maker claims to be a biotechnologist. Which of the following best supports this claim?",
+      "ms": {
+        "draft": 3347,
+        "critique": 5771,
+        "solver": 1796,
+        "form": 2147,
+        "translation": 47034
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A scientist claims that a transgenic cow, Rosie, is an example of a biological product. Which of the following best supports this claim?",
+      "ms": {
+        "draft": 3487,
+        "critique": 7318,
+        "solver": 1283,
+        "form": 0,
+        "translation": 64056
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How has biotechnology helped in the production of insulin?",
+      "ms": {
+        "draft": 2961,
+        "critique": 5792,
+        "solver": 978,
+        "form": 1407,
+        "translation": 52142
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the insertion of recombinant DNA into the beta-galactosidase gene considered an effective method for identifying recombinant DNA?",
+      "ms": {
+        "draft": 3967,
+        "critique": 7460,
+        "solver": 12691,
+        "form": 3659,
+        "translation": 59968
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How does the process of RNA interference (RNAi) help in protecting the plant from nematode infestation?",
+      "ms": {
+        "draft": 3720,
+        "critique": 7405,
+        "solver": 1726,
+        "form": 3080,
+        "translation": 52642
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a genetically modified crop that is resistant to pests?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the most likely reason for the failure of the pomato plant?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if a farmer tried to grow a virus-infected plant using tissue culture?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a farmer wants to reduce the use of chemical pesticides in their field, which of the following would be the best biotechnology application to use?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the Bt toxin not harmful to the Bacillus thuringiensis bacterium itself?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How does the process of RNA interference help in protecting the plant from nematode infestation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor selection as…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of introducing nematode-specific genes into a host plant using Agrobacterium vectors?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor selection as…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why RNA interference is an effective method of protecting plants from nematode infestation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor selection as…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is asked to explain how genetically engineered insulin differs from insulin isolated from animal sources. Based on the passage, which of the following is the most accurate explanation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor selection as…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a biotechnology class, a student is asked to explain how the technique of RNA interference can be used to protect crops from pests. Which of the following statements is most accurate based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following scenarios best illustrates the concept of gene therapy as described in the context of treating genetic disorders?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the 'insertional inactivation' method preferred over the 'antibiotic resistance' procedure for detecting recombinant DNA?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the reason that Bt toxin does not kill the bacteria that produce it?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a genetically modified organism (GMO)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the main concern related to biopiracy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of using Bt toxin in crops?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A company claims to have developed a new variety of Basmati rice by crossing it with a semi-dwarf variety. According to the passage, what is the main issue with this claim?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the function of transgenic animals in scientific research?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a key use of transgenic animals in the study of disease?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the insertional inactivation method preferred over the antibiotic resistance procedure in detecting recombinant DNA?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of using genetically modified crops according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the role of traditional breeding in the passag…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

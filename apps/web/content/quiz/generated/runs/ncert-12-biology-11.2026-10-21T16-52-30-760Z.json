@@ -1,0 +1,709 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T16:52:30.760Z",
+  "finishedAt": "2026-10-21T17:00:50.709Z",
+  "seconds": 500,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo111.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 11 — Organisms and Populations",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n10. D. Rapid divergence of traits among populations inhabiting a given 1\ngeographical area.",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n9. Swathi was growing a bacterial colony in a culture flask under ideal laboratory 1\nconditions where the resources are replenished. Which of the following equations will\nrepresent the growth in this case?\n(Where population size is N, birth rate is b, death rate is d, unit time period is t, and\ncarrying capacity is K).\n(a) dN/dt = KN\n(b) dN/dt = r N\n(c) dN/dt = r N(K-N/K)\n(d) dN/dt = r N(K+N/K)",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\nextinct, all those parasites exclusively dependent on it, will also\nbecome extinct\nOR\nB.\n(i)\n(2)\n(ii) A stable community should not show too much variation in productivity\nfrom year to year; it must be either resistant or resilient to occasional\ndisturbances (natural or man-made), and it must also be resistant to\ninvasions by alien species. (3)\n***********"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 150553,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 39812,
+      "completionTokens": 8734
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 243870,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 18333,
+      "completionTokens": 6951
+    },
+    "solver": {
+      "calls": 185,
+      "ms": 80851,
+      "in": 31,
+      "out": 26,
+      "rejects": 5,
+      "promptTokens": 29565,
+      "completionTokens": 1761
+    },
+    "form": {
+      "calls": 16,
+      "ms": 61467,
+      "in": 26,
+      "out": 17,
+      "rejects": 9,
+      "promptTokens": 9559,
+      "completionTokens": 1859
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5026,
+      "in": 17,
+      "out": 15,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 63,
+      "ms": 587987,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 37936,
+      "completionTokens": 19520
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 2,
+    "4": 3,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a population of 40 fruitflies has 4 deaths in a week, what is the death rate per fruitfly per week?",
+      "ms": {
+        "draft": 2845,
+        "critique": 6112,
+        "solver": 1543
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the term 'population density' as used in the passage?",
+      "ms": {
+        "draft": 3032,
+        "critique": 5849,
+        "solver": 1169,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following scenarios would best be described by the equation dN/dt = rN?",
+      "ms": {
+        "draft": 3032,
+        "critique": 5692,
+        "solver": 1431,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a forest, a new species of plant is introduced. Over time, it starts to outcompete the native species and becomes dominant. What can be inferred about the introduction of this new species?",
+      "ms": {
+        "draft": 3032,
+        "critique": 6257,
+        "solver": 1405,
+        "form": 3146
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a population's growth when resources are limited?",
+      "ms": {
+        "draft": 4982,
+        "critique": 6617
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mutualistic relationship?",
+      "ms": {
+        "draft": 4982,
+        "critique": 5738
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population follows a logistic growth pattern, what happens when it reaches the carrying capacity of its environment?",
+      "ms": {
+        "draft": 4982,
+        "critique": 5100
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a factor that affects population density?",
+      "ms": {
+        "draft": 3032,
+        "critique": 6966,
+        "solver": 12388
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how does the concept of 'Darwinian fitness' influence the reproductive strategies of organisms?",
+      "ms": {
+        "draft": 4982,
+        "critique": 5668,
+        "solver": 1658,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a predator species is removed from a community, leading to the extinction of multiple prey species. This scenario best describes which ecological principle?",
+      "ms": {
+        "draft": 2992,
+        "critique": 7461,
+        "solver": 1790
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a predator-prey relationship given in the passage?",
+      "ms": {
+        "draft": 2992,
+        "critique": 5002,
+        "solver": 1162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses how species evolve defenses against predation. Which of the following is an example of a chemical defense mechanism in plants?",
+      "ms": {
+        "draft": 2992,
+        "critique": 5866,
+        "solver": 1875,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism?",
+      "ms": {
+        "draft": 7651,
+        "critique": 5495,
+        "solver": 887,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6849,
+        "solver": 1751,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an orchid plant growing on the branch of a mango tree, what type of interaction is observed between the orchid and the mango tree?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6514,
+        "solver": 1556,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the evolution of complex life cycles in parasites?",
+      "ms": {
+        "draft": 4091,
+        "critique": 5760,
+        "solver": 1601
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which interaction is described as a process where the fitness of one species is significantly lower in the presence of another species?",
+      "ms": {
+        "draft": 3287,
+        "critique": 6072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a field experiment, when all the starfish were removed from an enclosed intertidal area, more than 10 species of invertebrates became extinct within a year. What is the reason for this?",
+      "ms": {
+        "draft": 3287,
+        "critique": 6150
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A population of organisms in a habitat with limited resources shows a growth pattern that initially has a lag phase, followed by phases of acceleration and deceleration, and finally reaches an asymptote. This growth pattern is known as:",
+      "ms": {
+        "draft": 11342,
+        "critique": 5622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the relationship between a fig tree and a wasp considered a tight one-to-one relationship?",
+      "ms": {
+        "draft": 4091,
+        "critique": 6074,
+        "solver": 1045,
+        "form": 4195
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bacterial colony is growing in a culture flask under ideal laboratory conditions where resources are replenished. Which of the following equations best represents the growth of the population in this case?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6015,
+        "solver": 1281,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism?",
+      "ms": {
+        "draft": 4091,
+        "critique": 5878,
+        "solver": 1665,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a population?",
+      "ms": {
+        "draft": 2845,
+        "critique": 6358,
+        "solver": 2262,
+        "form": 2415,
+        "translation": 40049
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "ms": {
+        "draft": 3772,
+        "critique": 6103,
+        "solver": 1000,
+        "form": 0,
+        "translation": 27189
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of studying populations in ecology?",
+      "ms": {
+        "draft": 2845,
+        "critique": 5903,
+        "solver": 1104,
+        "form": 3341,
+        "translation": 41788
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of mutualism?",
+      "ms": {
+        "draft": 3575,
+        "critique": 5406,
+        "solver": 12342,
+        "form": 1,
+        "translation": 28717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ecological principle behind the biological control method of managing pest insects?",
+      "ms": {
+        "draft": 3575,
+        "critique": 7087,
+        "solver": 1635,
+        "form": 0,
+        "translation": 33600
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population grows exponentially and doubles in size in 3 years, what is the intrinsic rate of increase (r) of the population?",
+      "ms": {
+        "draft": 3575,
+        "critique": 5875,
+        "solver": 1432,
+        "form": 0,
+        "translation": 28604
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population is growing exponentially, what is the most likely reason for this pattern of growth?",
+      "ms": {
+        "draft": 3032,
+        "critique": 4896,
+        "solver": 2005,
+        "form": 2889,
+        "translation": 39565
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the shape of an age pyramid in a human population indicate?",
+      "ms": {
+        "draft": 2845,
+        "critique": 6460,
+        "solver": 1655,
+        "form": 3584,
+        "translation": 43514
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key feature of brood parasitism in birds?",
+      "ms": {
+        "draft": 4091,
+        "critique": 7028,
+        "solver": 1716,
+        "form": 2595,
+        "translation": 41912
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the given passage, the interaction where one species benefits while the other is harmed is referred to as which of the following?",
+      "ms": {
+        "draft": 2992,
+        "critique": 6377,
+        "solver": 1718,
+        "form": 2366,
+        "translation": 33292
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an ideal laboratory condition where resources are replenished, which equation represents the population growth of bacteria?",
+      "ms": {
+        "draft": 2845,
+        "critique": 6073,
+        "solver": 1291,
+        "form": 3595,
+        "translation": 34813
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A researcher is studying a population of fish in a lake. She observes that the number of fish caught per trap remains fairly constant over time. What can she infer about the population from this observation?",
+      "ms": {
+        "draft": 3032,
+        "critique": 6443,
+        "solver": 1647,
+        "form": 3044,
+        "translation": 47629
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where a new species is introduced into an ecosystem without natural predators, what is the likely outcome for the ecosystem?",
+      "ms": {
+        "draft": 4982,
+        "critique": 6778,
+        "solver": 12727,
+        "form": 3931,
+        "translation": 53803
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why population attributes like birth rate and death rate are important in ecology?",
+      "ms": {
+        "draft": 2845,
+        "critique": 6086,
+        "solver": 1480,
+        "form": 2012,
+        "translation": 41598
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the logistic growth model is considered more realistic than the exponential growth model?",
+      "ms": {
+        "draft": 4982,
+        "critique": 5414,
+        "solver": 15810,
+        "form": 3257,
+        "translation": 47820
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "The passage states that plants have evolved various defenses against herbivores. Which of the following is an example of a morphological defense?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a population of 40 fruitflies has 4 deaths in a week, what is the death rate per fruitfly per week?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the term 'population density' as used in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following scenarios would best be described by the equation dN/dt = rN?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a forest, a new species of plant is introduced. Over time, it starts to outcompete the native species and becomes dominant. What can be inferred about the introduction of this new species?",
+      "reason": "options 0 and 1 say the same thing (\"It has a high intrinsic rate of natural increase\" / \"It has a low intrinsic rate of natural increase\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe a population's growth when resources are limited?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a mutualistic relationship?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a population follows a logistic growth pattern, what happens when it reaches the carrying capacity of its environment?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a factor that affects population density?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how does the concept of 'Darwinian fitness' influence the reproductive strategies of organisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In an experiment, a predator species is removed from a community, leading to the extinction of multiple prey species. This scenario best describes which ecological principle?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of a predator-prey relationship given in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses how species evolve defenses against predation. Which of the following is an example of a chemical defense mechanism in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.petal: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "According to the passage, which of the following is an example of interference competition?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Refers to a characteristic of all organisms, not specific to…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an orchid plant growing on the branch of a mango tree, what type of interaction is observed between the orchid and the mango tree?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the main reason for the evolution of complex life cycles in parasites?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which interaction is described as a process where the fitness of one species is significantly lower in the presence of another species?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a field experiment, when all the starfish were removed from an enclosed intertidal area, more than 10 species of invertebrates became extinct within a year. What is the reason for this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A population of organisms in a habitat with limited resources shows a growth pattern that initially has a lag phase, followed by phases of acceleration and deceleration, and finally reaches an asymptote. This growth pattern is known as:",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the relationship between a fig tree and a wasp considered a tight one-to-one relationship?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.fig: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A bacterial colony is growing in a culture flask under ideal laboratory conditions where resources are replenished. Which of the following equations best represents the growth of the population in this case?",
+      "reason": "near-duplicate of batch item \"In an ideal laboratory condition where resources a…\" (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism?",
+      "reason": "near-duplicate of batch item \"Which of the following is an example of mutualism?…\" (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

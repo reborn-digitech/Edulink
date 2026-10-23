@@ -1,0 +1,741 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T08:20:10.306Z",
+  "finishedAt": "2026-10-20T08:28:42.150Z",
+  "seconds": 512,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh205.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Two Variables, One Line",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n3. Tarun correctly solved a pair of linear equations in two variables and found their 1\nonly point of intersection as (5, – 1). One of the lines was x – y = 6.\nWhich of the following could have been the other line?\nI: 3x – 3y = 18\nII: 2x – 3y = 13\nIII: 2x – 3y = 16\n(A) I only (B) II only (C) I and II (D) II and III",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n21. Find whether the following pair of linear equations is consistent or inconsistent:\n3x + 2y = 8\n6x – 4y = 9",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n9. (c) x= 𝑎𝑦\n𝑎+𝑏"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 184976,
+      "in": 39,
+      "out": 39,
+      "rejects": 0,
+      "promptTokens": 52877,
+      "completionTokens": 10633
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 292315,
+      "in": 39,
+      "out": 29,
+      "rejects": 10,
+      "promptTokens": 23598,
+      "completionTokens": 8369
+    },
+    "solver": {
+      "calls": 207,
+      "ms": 109475,
+      "in": 29,
+      "out": 20,
+      "rejects": 9,
+      "promptTokens": 41675,
+      "completionTokens": 2184
+    },
+    "form": {
+      "calls": 2,
+      "ms": 11864,
+      "in": 20,
+      "out": 11,
+      "rejects": 9,
+      "promptTokens": 2411,
+      "completionTokens": 308
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3321,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 373515,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25304,
+      "completionTokens": 11171
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "The equation 3x + 2y = 12 is represented geometrically on a coordinate plane. Which of the following points lies on the line corresponding to this equation?",
+      "ms": {
+        "draft": 3920,
+        "critique": 6871,
+        "solver": 15186
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A linear equation in two variables is given as 3x + 2y = 12. Which of the following is NOT a solution to this equation?",
+      "ms": {
+        "draft": 3920,
+        "critique": 6475,
+        "solver": 17242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following represents the standard form of the linear equation 3y = 5?",
+      "ms": {
+        "draft": 3920,
+        "critique": 7499,
+        "solver": 17258,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a solution of the equation 2x + y = 7?",
+      "ms": {
+        "draft": 4717,
+        "critique": 7724,
+        "solver": 1589
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the point (–3, 4) is a solution of the equations 3ax + 4y = –2 and 2x + by = 14, what is the value of a?",
+      "ms": {
+        "draft": 4717,
+        "critique": 6742,
+        "solver": 2315
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The graph of the equation 3x – 7y = 21 is shown. Does the point C (2, 3) lie on the line?",
+      "ms": {
+        "draft": 4717,
+        "critique": 5670,
+        "solver": 1113,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line passes through the points (2, 0) and (4, 3), what is its slope?",
+      "ms": {
+        "draft": 3662,
+        "critique": 7000,
+        "solver": 1154
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A line passes through the points (–4, 5) and (–1, 2). What is the slope of the line?",
+      "ms": {
+        "draft": 3662,
+        "critique": 7837,
+        "solver": 1615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a pair of linear equations in two variables?",
+      "ms": {
+        "draft": 4316,
+        "critique": 4703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A line has a slope of 2 and passes through the point (–1, 0). What is the equation of the line?",
+      "ms": {
+        "draft": 3662,
+        "critique": 5852,
+        "solver": 1454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method called when we eliminate one variable to solve a system of linear equations?",
+      "ms": {
+        "draft": 5087,
+        "critique": 7583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the cost of one paratha and 2 bowls of dahi is ₹90 and the cost of 2 parathas and 7 bowls of dahi is ₹260, what is the cost of one paratha?",
+      "ms": {
+        "draft": 4316,
+        "critique": 6933,
+        "solver": 14684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations in two variables to have a unique solution?",
+      "ms": {
+        "draft": 5087,
+        "critique": 5465
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the cost of one adult ticket is ₹x and one child ticket is ₹y, which of the following represents the situation where 2 adult tickets and 3 child tickets cost ₹600?",
+      "ms": {
+        "draft": 4316,
+        "critique": 8117,
+        "solver": 15968,
+        "form": 1879
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "ms": {
+        "draft": 4415,
+        "critique": 4344,
+        "solver": 656,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The graph of the equations 3x + 2y = 6 and 6x + 4y = 12 represents which of the following?",
+      "ms": {
+        "draft": 17296,
+        "critique": 7054
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the point (2, 3) lies on the line 2x + 3y = k, what is the value of k?",
+      "ms": {
+        "draft": 17296,
+        "critique": 7254
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "ms": {
+        "draft": 17296,
+        "critique": 6567,
+        "solver": 1524,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The pair of equations 2x + 3y = 6 and 4x + 6y = 12 has how many solutions?",
+      "ms": {
+        "draft": 17296,
+        "critique": 6664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The lines representing the equations 2x + y = 6 and 2x - y = 2 intersect at a point. What are the coordinates of the point of intersection?",
+      "ms": {
+        "draft": 4184,
+        "critique": 5168,
+        "solver": 1735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The pair of equations x + y = 5 and x - y = 1 has how many solutions?",
+      "ms": {
+        "draft": 17296,
+        "critique": 7196,
+        "solver": 9674
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The equations 9x + 7y = 107 and 7x + 9y = 101 have a special property. What is the solution to this system of equations?",
+      "ms": {
+        "draft": 4184,
+        "critique": 5752,
+        "solver": 1277
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the nature of the solution when two lines represented by a pair of linear equations in two variables intersect at a single point?",
+      "ms": {
+        "draft": 4402,
+        "critique": 5764
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the pair of linear equations 3x + 2y = 8 and 6x – 4y = 9 is graphically represented, which of the following statements is true?",
+      "ms": {
+        "draft": 4402,
+        "critique": 7198
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method used to solve the problem where the sum of a two-digit number and its reverse is 66?",
+      "ms": {
+        "draft": 3943,
+        "critique": 6876
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the lines represented by the equations 2x + 3y = 9 and 4x + 6y = 18 are plotted on a graph, what will be the relationship between the lines?",
+      "ms": {
+        "draft": 4402,
+        "critique": 5430,
+        "solver": 10547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the digits of a two-digit number differ by 2 and their sum is 66, how many such numbers are there?",
+      "ms": {
+        "draft": 3943,
+        "critique": 5154
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a pair of linear equations in two variables?",
+      "ms": {
+        "draft": 6621,
+        "critique": 4804,
+        "solver": 717,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a linear equation in two variables?",
+      "ms": {
+        "draft": 4184,
+        "critique": 6590,
+        "solver": 1881,
+        "form": 0,
+        "translation": 24720
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a solution of the equation 7x – 3y = 21?",
+      "ms": {
+        "draft": 4717,
+        "critique": 6352,
+        "solver": 1991,
+        "form": 0,
+        "translation": 36361
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the slope of a line that goes upward from left to right?",
+      "ms": {
+        "draft": 3662,
+        "critique": 4934,
+        "solver": 11023,
+        "form": 0,
+        "translation": 31486
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents a line with zero slope?",
+      "ms": {
+        "draft": 3662,
+        "critique": 6196,
+        "solver": 10262,
+        "form": 0,
+        "translation": 28604
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pair of linear equations in two variables has a unique solution, what can be said about the lines representing them?",
+      "ms": {
+        "draft": 4184,
+        "critique": 6393,
+        "solver": 1289,
+        "form": 0,
+        "translation": 17339
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The price of a mango is ₹60 per kg and the price of a banana is ₹50 per kg. A person buys x kg of mangoes and y kg of bananas and pays ₹280. Which of the following equations correctly represents this situation?",
+      "ms": {
+        "draft": 3920,
+        "critique": 6032,
+        "solver": 1633,
+        "form": 0,
+        "translation": 44263
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A pair of linear equations in two variables has infinitely many solutions. Which of the following statements must be true?",
+      "ms": {
+        "draft": 3920,
+        "critique": 5706,
+        "solver": 1309,
+        "form": 0,
+        "translation": 48475
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following equations could represent a line that passes through the origin?",
+      "ms": {
+        "draft": 4717,
+        "critique": 6581,
+        "solver": 1453,
+        "form": 0,
+        "translation": 34057
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A line has a slope of –5 and passes through the point (0, 3). Which of the following is the equation of the line?",
+      "ms": {
+        "draft": 3662,
+        "critique": 6237,
+        "solver": 1992,
+        "form": 0,
+        "translation": 31847
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following equations is equivalent to the equation 3x + 2y = 12?",
+      "ms": {
+        "draft": 3920,
+        "critique": 5163,
+        "solver": 1674,
+        "form": 0,
+        "translation": 29930
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the equations 5x – 6y = 2 and 10x – 12y = 4 are given, which of the following statements is true?",
+      "ms": {
+        "draft": 4717,
+        "critique": 6479,
+        "solver": 1848,
+        "form": 0,
+        "translation": 41767
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The equation 3x + 2y = 12 is represented geometrically on a coordinate plane. Which of the following points lies on the line corresponding to this equation?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A linear equation in two variables is given as 3x + 2y = 12. Which of the following is NOT a solution to this equation?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following represents the standard form of the linear equation 3y = 5?",
+      "reason": "options 0 and 1 say the same thing (\"3y + 0x – 5 = 0\" / \"0x + 3y – 5 = 0\"); options 0 and 2 say the same thing (\"3y + 0x – 5 = 0\" / \"3y – 5 = 0\"); options 1 and 2 say the same thing (\"0x + 3y – 5 = 0\" / \"3y – 5 = 0\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a solution of the equation 2x + y = 7?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the point (–3, 4) is a solution of the equations 3ax + 4y = –2 and 2x + by = 14, what is the value of a?",
+      "reason": "the solver picked option 1 3 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The graph of the equation 3x – 7y = 21 is shown. Does the point C (2, 3) lie on the line?",
+      "reason": "figure: figure spec refused: spec.curves.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a line passes through the points (2, 0) and (4, 3), what is its slope?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A line passes through the points (–4, 5) and (–1, 2). What is the slope of the line?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the general form of a pair of linear equations in two variables?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A line has a slope of 2 and passes through the point (–1, 0). What is the equation of the line?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*(-1)+2\" = 0, but the key says 2"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the method called when we eliminate one variable to solve a system of linear equations?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the cost of one paratha and 2 bowls of dahi is ₹90 and the cost of 2 parathas and 7 bowls of dahi is ₹260, what is the cost of one paratha?",
+      "reason": "checkExpr \"40\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations in two variables to have a unique solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the cost of one adult ticket is ₹x and one child ticket is ₹y, which of the following represents the situation where 2 adult tickets and 3 child tickets cost ₹600?",
+      "reason": "options 2 and 3 are the same (\"3x + 2y = 600\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "reason": "options 0 and 3 say the same thing (\"x + y = 5\" / \"x + y = 5 + x\"); options 1 and 2 say the same thing (\"x^2 + y = 5\" / \"x + y^2 = 5\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The graph of the equations 3x + 2y = 6 and 6x + 4y = 12 represents which of the following?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the point (2, 3) lies on the line 2x + 3y = k, what is the value of k?",
+      "reason": "the critic finds option 1 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a linear equation in two variables?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer.…\"); distractor 3's reason is not a one-line misconception (\"Contains a squared term, making it non-linear, not a linear …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The pair of equations 2x + 3y = 6 and 4x + 6y = 12 has how many solutions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The lines representing the equations 2x + y = 6 and 2x - y = 2 intersect at a point. What are the coordinates of the point of intersection?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The pair of equations x + y = 5 and x - y = 1 has how many solutions?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The equations 9x + 7y = 107 and 7x + 9y = 101 have a special property. What is the solution to this system of equations?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the nature of the solution when two lines represented by a pair of linear equations in two variables intersect at a single point?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the pair of linear equations 3x + 2y = 8 and 6x – 4y = 9 is graphically represented, which of the following statements is true?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the method used to solve the problem where the sum of a two-digit number and its reverse is 66?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the lines represented by the equations 2x + 3y = 9 and 4x + 6y = 18 are plotted on a graph, what will be the relationship between the lines?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the digits of a two-digit number differ by 2 and their sum is 66, how many such numbers are there?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the general form of a pair of linear equations in two variables?",
+      "reason": "options 0 and 1 say the same thing (\"a x + b y + c = 0 and d x + e y + f = 0\" / \"a x + b y = 0 and c x + d y = 0\"); options 0 and 2 say the same thing (\"a x + b y + c = 0 and d x + e y + f = 0\" / \"a x + b = 0 and c y + d = 0\"); options 1 and 2 say the same thing (\"a x + b y = 0 and c x + d y = 0\" / \"a x + b = 0 and c y + d = 0\"); options 1 and 3 say the same thing (\"a x + b y = 0 and c x + d y = 0\" / \"a x + b y + c = 0 and a x + b y + c = 0\"); options 2 and 3 say the same thing (\"a x + b = 0 and c y + d = 0\" / \"a x + b y + c = 0 and a x + b y + c = 0\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

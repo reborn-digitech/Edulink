@@ -1,0 +1,238 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:32:57.573Z",
+  "finishedAt": "2026-10-20T20:34:25.379Z",
+  "seconds": 88,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap125.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 25 — Spicy Riddles",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 26161,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 6694,
+      "completionTokens": 1466
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 45386,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 3827,
+      "completionTokens": 1541
+    },
+    "solver": {
+      "calls": 44,
+      "ms": 21666,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7703,
+      "completionTokens": 457
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14112,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 1462,
+      "completionTokens": 400
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2650,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 48428,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4114,
+      "completionTokens": 2026
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the spice that is mixed in oil by granny to heal wounds?",
+      "ms": {
+        "draft": 2676,
+        "critique": 5111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the spice that is used to make food hot and spicy?",
+      "ms": {
+        "draft": 2676,
+        "critique": 4857,
+        "solver": 10140,
+        "form": 2934
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described as 'looking like zeera though green am I' and is used to make the stomach healthy?",
+      "ms": {
+        "draft": 3864,
+        "critique": 5396,
+        "solver": 1678,
+        "form": 2920
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which spice is described as 'powdered fine to make food hot and spicy' and 'makes you gasp – shheee… shheee…'?",
+      "ms": {
+        "draft": 3864,
+        "critique": 5059,
+        "solver": 1373,
+        "form": 3790
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described as 'small and round like a pearl, black when it is whole' and has a sharp and spicy taste?",
+      "ms": {
+        "draft": 3864,
+        "critique": 5397,
+        "solver": 2436,
+        "form": 2667
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the spice that is small and round like a pearl and black when it is whole?",
+      "ms": {
+        "draft": 2676,
+        "critique": 4856,
+        "solver": 761,
+        "form": 3298,
+        "translation": 21507
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the spice that is added to hot oil and ghee and spreads its fragrance when roasted?",
+      "ms": {
+        "draft": 2676,
+        "critique": 6983,
+        "solver": 8550,
+        "form": 929,
+        "translation": 22768
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the spice that is mixed in oil by granny to heal wounds?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the spice that is used to make food hot and spicy?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which spice is described as 'looking like a nail but a bud am I' and has a chocolate brown colour and a strong smell?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which spice is described as 'looking like zeera though green am I' and is used to make the stomach healthy?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (the description match…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which spice is described as 'powdered fine to make food hot and spicy' and 'makes you gasp – shheee… shheee…'?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (the description match…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which spice is described as 'small and round like a pearl, black when it is whole' and has a sharp and spicy taste?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (the description match…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

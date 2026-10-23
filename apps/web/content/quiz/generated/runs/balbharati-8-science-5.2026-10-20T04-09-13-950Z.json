@@ -1,0 +1,741 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T04:09:13.950Z",
+  "finishedAt": "2026-10-20T04:17:16.976Z",
+  "seconds": 483,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Inside the Atom",
+    "edition": "First Edition 2018",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2013 — question paper]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[INJSO 2013 — solutions or answer key]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n7. An element ‘M' has 50% of the electrons filled in the 3 rd shell as in the 2nd shell. The 1\natomic number of ‘M’ is:\na) 10\nb) 12\nc) 14\nd) 18"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 155292,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 32782,
+      "completionTokens": 9786
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 314930,
+      "in": 39,
+      "out": 33,
+      "rejects": 6,
+      "promptTokens": 26105,
+      "completionTokens": 9607
+    },
+    "solver": {
+      "calls": 259,
+      "ms": 113200,
+      "in": 33,
+      "out": 25,
+      "rejects": 8,
+      "promptTokens": 43413,
+      "completionTokens": 2724
+    },
+    "form": {
+      "calls": 7,
+      "ms": 25417,
+      "in": 25,
+      "out": 14,
+      "rejects": 11,
+      "promptTokens": 3460,
+      "completionTokens": 692
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 34,
+      "ms": 4900,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 474268,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 32575,
+      "completionTokens": 15700
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 4,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of the nucleus according to the passage?",
+      "ms": {
+        "draft": 3304,
+        "critique": 5726,
+        "solver": 516,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason given in the passage for the instability of Rutherford’s atomic model?",
+      "ms": {
+        "draft": 3304,
+        "critique": 6010,
+        "solver": 1536,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If an atom has 12 protons and 12 neutrons, what is the mass number of the atom?",
+      "ms": {
+        "draft": 3304,
+        "critique": 5681,
+        "solver": 1117
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following models describes the atom as having a positive charge distributed throughout and electrons embedded in it?",
+      "ms": {
+        "draft": 2448,
+        "critique": 6243,
+        "solver": 9744,
+        "form": 2969
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that the mass number of an atom is the sum of protons and neutrons. If an atom has a mass number of 35 and an atomic number of 17, how many neutrons does it have?",
+      "ms": {
+        "draft": 3304,
+        "critique": 5180,
+        "solver": 2023,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is stated that the mass of an electron is negligible compared to that of a proton. If an atom has 10 protons and 10 neutrons, what is the approximate mass of the atom?",
+      "ms": {
+        "draft": 3304,
+        "critique": 5783,
+        "solver": 10180
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has an electronic configuration of 2, 8, 7, what is the number of valence electrons in its atom?",
+      "ms": {
+        "draft": 4369,
+        "critique": 6160,
+        "solver": 10864,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An atom has a total of 17 electrons. What is the electronic configuration of this atom?",
+      "ms": {
+        "draft": 4369,
+        "critique": 5555,
+        "solver": 15010
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An element has 6 electrons in its outermost shell. What is its valency?",
+      "ms": {
+        "draft": 4407,
+        "critique": 5552,
+        "solver": 1506
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a nuclear reactor, the nucleus of Uranium-235 undergoes fission to form Krypton-92 and Barium-141. How many neutrons are released during this reaction?",
+      "ms": {
+        "draft": 4407,
+        "critique": 7220
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An element has an atomic number of 17. What is its valency?",
+      "ms": {
+        "draft": 4407,
+        "critique": 7593
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the relationship between the number of valence electrons and the valency of an element?",
+      "ms": {
+        "draft": 4407,
+        "critique": 6506,
+        "solver": 12234,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An element has an atomic number of 16. If its nucleus contains 16 protons and 16 neutrons, what is its mass number?",
+      "ms": {
+        "draft": 3094,
+        "critique": 6270
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the electronic configuration of magnesium (atomic number 12), the valence shell has 2 electrons. What is the total number of electrons in the second shell?",
+      "ms": {
+        "draft": 3094,
+        "critique": 7123,
+        "solver": 9534,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An atom is electrically neutral. What can be inferred about the number of protons and electrons in this atom?",
+      "ms": {
+        "draft": 3094,
+        "critique": 5032,
+        "solver": 6552,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has 12 protons and 12 neutrons, what is its mass number?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6363
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between Thomson's and Rutherford's atomic models?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6751
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the valency of magnesium if its electronic configuration is 2, 8, 2?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6222,
+        "solver": 9048
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly defines the valency of an element?",
+      "ms": {
+        "draft": 4148,
+        "critique": 6799,
+        "solver": 12029,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an element has an atomic number of 16, what would be its valency?",
+      "ms": {
+        "draft": 4148,
+        "critique": 5614,
+        "solver": 1572
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of isotopes in the context of nuclear reactors?",
+      "ms": {
+        "draft": 4148,
+        "critique": 5852,
+        "solver": 1772
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has an atomic number of 12, how many electrons are present in the M shell of its atom?",
+      "ms": {
+        "draft": 5683,
+        "critique": 6949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the electronic configuration of an element, which of the following statements is true?",
+      "ms": {
+        "draft": 5683,
+        "critique": 5168,
+        "solver": 1708,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An atom has an electronic configuration of 2, 8, 7. What is the valency of this atom?",
+      "ms": {
+        "draft": 5683,
+        "critique": 6406,
+        "solver": 7925,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an atom, the number of electrons in the K shell is 2, in the L shell is 8, and in the M shell is 1. What is the valency of this atom?",
+      "ms": {
+        "draft": 5683,
+        "critique": 5766,
+        "solver": 6231
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the smallest unit of matter?",
+      "ms": {
+        "draft": 2448,
+        "critique": 5524,
+        "solver": 1100,
+        "form": 3341,
+        "translation": 27672
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the smallest particles of matter by the Indian philosopher Kanad?",
+      "ms": {
+        "draft": 2448,
+        "critique": 6043,
+        "solver": 1739,
+        "form": 3053,
+        "translation": 36477
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which Greek philosopher named the smallest particle of matter as 'Atom' ?",
+      "ms": {
+        "draft": 2448,
+        "critique": 5916,
+        "solver": 1280,
+        "form": 3123,
+        "translation": 31106
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to Dalton’s atomic theory, what is the nature of atoms?",
+      "ms": {
+        "draft": 2448,
+        "critique": 5350,
+        "solver": 1567,
+        "form": 3158,
+        "translation": 31257
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the maximum number of electrons that can be accommodated in the K shell?",
+      "ms": {
+        "draft": 4369,
+        "critique": 4874,
+        "solver": 1098,
+        "form": 0,
+        "translation": 30906
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the maximum number of electrons that can be accommodated in the L shell of an atom?",
+      "ms": {
+        "draft": 5683,
+        "critique": 6969,
+        "solver": 9202,
+        "form": 0,
+        "translation": 21642
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has 6 valence electrons, what will be its valency?",
+      "ms": {
+        "draft": 4148,
+        "critique": 5573,
+        "solver": 1197,
+        "form": 0,
+        "translation": 29293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a subatomic particle with no electric charge?",
+      "ms": {
+        "draft": 3094,
+        "critique": 6219,
+        "solver": 8709,
+        "form": 0,
+        "translation": 24731
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The given table shows the electronic configuration of some elements. Which element has a valency of 3?",
+      "ms": {
+        "draft": 4407,
+        "critique": 6864,
+        "solver": 1296,
+        "form": 0,
+        "translation": 41175
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, what is the role of a moderator in a nuclear reactor?",
+      "ms": {
+        "draft": 4148,
+        "critique": 5789,
+        "solver": 1464,
+        "form": 3807,
+        "translation": 47616
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An element has an electronic configuration of 2, 8, 18, 1. What is the valency of this element?",
+      "ms": {
+        "draft": 4369,
+        "critique": 7459,
+        "solver": 1539,
+        "form": 0,
+        "translation": 37009
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If an element has 50% of the electrons in the 3rd shell as in the 2nd shell, and its atomic number is 12, what is the electronic configuration?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6766,
+        "solver": 16999,
+        "form": 0,
+        "translation": 35984
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "An atom has 3 shells. The first shell has 2 electrons, the second has 8, and the third has 7. Which of the following elements could this be?",
+      "ms": {
+        "draft": 4369,
+        "critique": 5162,
+        "solver": 1573,
+        "form": 0,
+        "translation": 50173
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the valency of an element is 2, and its atomic number is 12, which element is it?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5658,
+        "solver": 11980,
+        "form": 0,
+        "translation": 26333
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Who discovered the electron?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of the nucleus according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main reason given in the passage for the instability of Rutherford’s atomic model?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If an atom has 12 protons and 12 neutrons, what is the mass number of the atom?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following models describes the atom as having a positive charge distributed throughout and electrons embedded in it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that the mass number of an atom is the sum of protons and neutrons. If an atom has a mass number of 35 and an atomic number of 17, how many neutrons does it have?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the passage, it is stated that the mass of an electron is negligible compared to that of a proton. If an atom has 10 protons and 10 neutrons, what is the approximate mass of the atom?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an element has an electronic configuration of 2, 8, 7, what is the number of valence electrons in its atom?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "An atom has a total of 17 electrons. What is the electronic configuration of this atom?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "An element has 6 electrons in its outermost shell. What is its valency?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a nuclear reactor, the nucleus of Uranium-235 undergoes fission to form Krypton-92 and Barium-141. How many neutrons are released during this reaction?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "An element has an atomic number of 17. What is its valency?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the relationship between the number of valence electrons and the valency of an element?",
+      "reason": "options 1 and 2 say the same thing (\"Valency is equal to the number of valence electrons when the number is four or more.\" / \"Valency is equal to 8 minus the number of valence electrons when the number is four or more.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An element has an atomic number of 16. If its nucleus contains 16 protons and 16 neutrons, what is its mass number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the electronic configuration of magnesium (atomic number 12), the valence shell has 2 electrons. What is the total number of electrons in the second shell?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An atom is electrically neutral. What can be inferred about the number of protons and electrons in this atom?",
+      "reason": "options 0 and 1 say the same thing (\"Protons are more than electrons\" / \"Electrons are more than protons\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an element has 12 protons and 12 neutrons, what is its mass number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main difference between Thomson's and Rutherford's atomic models?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the valency of magnesium if its electronic configuration is 2, 8, 2?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements correctly defines the valency of an element?",
+      "reason": "options 0 and 3 say the same thing (\"The number of electrons in the outermost shell of an atom\" / \"The number of electrons in the innermost shell of an atom\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an element has an atomic number of 16, what would be its valency?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the significance of isotopes in the context of nuclear reactors?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an element has an atomic number of 12, how many electrons are present in the M shell of its atom?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the electronic configuration of an element, which of the following statements is true?",
+      "reason": "options 0 and 1 say the same thing (\"The valency of an element is determined by the number of electrons in the K shell.\" / \"The valency of an element is determined by the number of electrons in the outermost shell.\"); options 2 and 3 say the same thing (\"The valency of an element is determined by the number of neutrons in the nucleus.\" / \"The valency of an element is determined by the number of protons in the nucleus.\"); distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses the role of protons and neutrons in determining val…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An atom has an electronic configuration of 2, 8, 7. What is the valency of this atom?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"Confuses the number of valence electrons with valency, which…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In an atom, the number of electrons in the K shell is 2, in the L shell is 8, and in the M shell is 1. What is the valency of this atom?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

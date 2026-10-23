@@ -1,0 +1,699 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:55:19.680Z",
+  "finishedAt": "2026-10-23T00:01:52.833Z",
+  "seconds": 393,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm101.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — We the Travellers—I",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A-E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D and E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 137182,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 24169,
+      "completionTokens": 7507
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 321386,
+      "in": 35,
+      "out": 25,
+      "rejects": 10,
+      "promptTokens": 21475,
+      "completionTokens": 8880
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 118317,
+      "in": 25,
+      "out": 11,
+      "rejects": 14,
+      "promptTokens": 39293,
+      "completionTokens": 2468
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6694,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 502,
+      "completionTokens": 167
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3176,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 111506,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7971,
+      "completionTokens": 3402
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What number do we get when we add a thousand to 9,000?",
+      "ms": {
+        "draft": 4460,
+        "critique": 5589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cyclist can cover 15 km in one hour. How much distance will she cover in 4 hours?",
+      "ms": {
+        "draft": 4460,
+        "critique": 6425
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A school has 461 girls and 439 boys. How many vehicles are needed for all of them to go on a trip if each bicycle can carry 2 people?",
+      "ms": {
+        "draft": 4460,
+        "critique": 6700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student said 9,990 is greater than 49,014 because 9 is greater than 4. Is the student correct?",
+      "ms": {
+        "draft": 4460,
+        "critique": 7812
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is the nearest hundred to 2,346?",
+      "ms": {
+        "draft": 4460,
+        "critique": 7504,
+        "solver": 10440
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two numbers have the same nearest ten and nearest hundred. What could be one such pair of numbers?",
+      "ms": {
+        "draft": 4460,
+        "critique": 7842
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of these is an example of a 5-digit number?",
+      "ms": {
+        "draft": 3792,
+        "critique": 6354,
+        "solver": 15386
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the caretaker arranged the horses in a square stable, and the king counted 10 horses on each side, how many horses are there in total?",
+      "ms": {
+        "draft": 3792,
+        "critique": 7711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the difference between the numbers 73 and 37?",
+      "ms": {
+        "draft": 3792,
+        "critique": 7656,
+        "solver": 11239
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Ravi’s car has been driven 56,987 km and Sheetal’s car has been driven 67,543 km, which car has been driven more?",
+      "ms": {
+        "draft": 3792,
+        "critique": 6067,
+        "solver": 1392,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The caretaker said there were 20 horses in the stable because there were 5 horses on each of 4 sides. If the stable is square, how many horses are there actually?",
+      "ms": {
+        "draft": 3445,
+        "critique": 5471,
+        "solver": 2250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the difference between two 2-digit numbers formed by two different digits is 27, which pair of digits could be used?",
+      "ms": {
+        "draft": 3792,
+        "critique": 8819
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The caretaker arranged 18 horses so that there were 5 horses on each side. How many horses are on each side if the same number of horses is used but placed differently?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6827,
+        "solver": 2034
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the caretaker had to arrange 22 horses in a square stable so that there were 6 horses on each side, how many horses would be at the corners?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6573,
+        "solver": 2750
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the caretaker arranged 18 horses with 5 on each side, how many horses are not at the corners?",
+      "ms": {
+        "draft": 3445,
+        "critique": 8289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The thief stole one horse, leaving 18 horses. The caretaker arranged the horses so that there were 5 on each side of the square stable. How many horses are at the corners?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7925,
+        "solver": 15110,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The king counted 5 horses along each side. How many horses are there in total if there are 5 horses on each of 4 sides and 2 horses are at the corners?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6414,
+        "solver": 7917
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The king counted 5 horses along each side of the stable. If there are 4 sides, how many horses should there be in total, if no horse is at a corner?",
+      "ms": {
+        "draft": 11851,
+        "critique": 6164
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The caretaker said there were 5 horses on each of the 4 sides of the stable. Why is this reasoning incorrect?",
+      "ms": {
+        "draft": 11851,
+        "critique": 4803,
+        "solver": 14506
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the caretaker arranges 18 horses in a square, with 5 horses on each side, how many horses are at the corners?",
+      "ms": {
+        "draft": 11851,
+        "critique": 7149,
+        "solver": 12608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The caretaker said there were 5 horses on each of the 4 sides of the stable. Why is this reasoning incorrect?",
+      "ms": {
+        "draft": 11851,
+        "critique": 6325,
+        "solver": 14198,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the river crossing puzzle, what is the minimum number of trips required to take the lion, sheep, and grass across the river safely?",
+      "ms": {
+        "draft": 4290,
+        "critique": 6568
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a book has 200 pages and each page has 50 words, how many words are there in total?",
+      "ms": {
+        "draft": 4290,
+        "critique": 11659,
+        "solver": 18841
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Ravi's car has been driven 56,987 km and Sheetal's car has been driven 67,543 km, which car has been driven more?",
+      "ms": {
+        "draft": 4290,
+        "critique": 8442,
+        "solver": 15646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is written in the same way as 1,380?",
+      "ms": {
+        "draft": 4258,
+        "critique": 7659,
+        "solver": 1450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a 5-digit number?",
+      "ms": {
+        "draft": 4290,
+        "critique": 6869,
+        "solver": 12236
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Vijay rounded a number to the nearest hundred and Suma rounded the same number to the nearest thousand, and both got the same result, which number could they have used?",
+      "ms": {
+        "draft": 4258,
+        "critique": 6703,
+        "solver": 989
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the rabbit is at 2,346 and needs to reach the nearest hundred, which number should it go to?",
+      "ms": {
+        "draft": 4258,
+        "critique": 6136,
+        "solver": 7425
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a book has 200 pages and each page has 50 words, how many words are there in the book?",
+      "ms": {
+        "draft": 3792,
+        "critique": 6423,
+        "solver": 2137,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "After the thief stole a horse, there were 18 horses left. The caretaker arranged them with 5 horses on each side. How many horses are at the corners of the stable?",
+      "ms": {
+        "draft": 11851,
+        "critique": 5526,
+        "solver": 1962,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "After the thief stole a horse, there were 18 horses left. The caretaker arranged them with 5 horses on each side. How many horses are at the corners of the stable?",
+      "ms": {
+        "draft": 11851,
+        "critique": 6417,
+        "solver": 1332,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number name for 10,000?",
+      "ms": {
+        "draft": 4258,
+        "critique": 7486,
+        "solver": 1703,
+        "form": 4145,
+        "translation": 28166
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a 4-digit number?",
+      "ms": {
+        "draft": 4290,
+        "critique": 7831,
+        "solver": 12044,
+        "form": 0,
+        "translation": 27765
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cyclist travels 15 km in 1 hour. How far will she travel in 4 hours?",
+      "ms": {
+        "draft": 4258,
+        "critique": 6131,
+        "solver": 1506,
+        "form": 3204,
+        "translation": 16220
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If you choose two different digits and form two 2-digit numbers, then subtract the smaller from the larger, what is the common result of this process?",
+      "ms": {
+        "draft": 4290,
+        "critique": 8367,
+        "solver": 1438,
+        "form": 0,
+        "translation": 35012
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What number do we get when we add a thousand to 9,000?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A cyclist can cover 15 km in one hour. How much distance will she cover in 4 hours?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A school has 461 girls and 439 boys. How many vehicles are needed for all of them to go on a trip if each bicycle can carry 2 people?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student said 9,990 is greater than 49,014 because 9 is greater than 4. Is the student correct?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following numbers is the nearest hundred to 2,346?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Two numbers have the same nearest ten and nearest hundred. What could be one such pair of numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of these is an example of a 5-digit number?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the caretaker arranged the horses in a square stable, and the king counted 10 horses on each side, how many horses are there in total?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the difference between the numbers 73 and 37?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If Ravi’s car has been driven 56,987 km and Sheetal’s car has been driven 67,543 km, which car has been driven more?",
+      "reason": "option 1 repeats the stem's wording (\"Sheetal’s car\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The caretaker said there were 20 horses in the stable because there were 5 horses on each of 4 sides. If the stable is square, how many horses are there actually?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the difference between two 2-digit numbers formed by two different digits is 27, which pair of digits could be used?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The caretaker arranged 18 horses so that there were 5 horses on each side. How many horses are on each side if the same number of horses is used but placed differently?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the caretaker had to arrange 22 horses in a square stable so that there were 6 horses on each side, how many horses would be at the corners?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the caretaker arranged 18 horses with 5 on each side, how many horses are not at the corners?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The thief stole one horse, leaving 18 horses. The caretaker arranged the horses so that there were 5 on each side of the square stable. How many horses are at the corners?",
+      "reason": "options 2 and 3 are the same (\"6\"); options 2 and 3 are the same number; checkExpr \"4\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The king counted 5 horses along each side. How many horses are there in total if there are 5 horses on each of 4 sides and 2 horses are at the corners?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The king counted 5 horses along each side of the stable. If there are 4 sides, how many horses should there be in total, if no horse is at a corner?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The caretaker said there were 5 horses on each of the 4 sides of the stable. Why is this reasoning incorrect?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the caretaker arranges 18 horses in a square, with 5 horses on each side, how many horses are at the corners?",
+      "reason": "options 2 and 3 are the same (\"6\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The caretaker said there were 5 horses on each of the 4 sides of the stable. Why is this reasoning incorrect?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the river crossing puzzle, what is the minimum number of trips required to take the lion, sheep, and grass across the river safely?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a book has 200 pages and each page has 50 words, how many words are there in total?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Ravi's car has been driven 56,987 km and Sheetal's car has been driven 67,543 km, which car has been driven more?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following numbers is written in the same way as 1,380?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a 5-digit number?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Vijay rounded a number to the nearest hundred and Suma rounded the same number to the nearest thousand, and both got the same result, which number could they have used?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the rabbit is at 2,346 and needs to reach the nearest hundred, which number should it go to?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a book has 200 pages and each page has 50 words, how many words are there in the book?",
+      "reason": "near-duplicate of served question cmvh5jqij06ybgpfh0n7gr02f (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "After the thief stole a horse, there were 18 horses left. The caretaker arranged them with 5 horses on each side. How many horses are at the corners of the stable?",
+      "reason": "near-duplicate of served question cmvh5jqir06yngpfhrku43z1l (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "After the thief stole a horse, there were 18 horses left. The caretaker arranged them with 5 horses on each side. How many horses are at the corners of the stable?",
+      "reason": "near-duplicate of served question cmvh5jqir06yngpfhrku43z1l (cosine 0.952 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

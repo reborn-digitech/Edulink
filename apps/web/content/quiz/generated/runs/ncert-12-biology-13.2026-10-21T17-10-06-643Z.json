@@ -1,0 +1,688 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T17:10:06.643Z",
+  "finishedAt": "2026-10-21T17:20:05.168Z",
+  "seconds": 599,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo113.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 13 — Biodiversity and Conservation",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2024-25]\n33. Attempt either option A or B. 5\nA.\n(i) Why is there a need to conserve biodiversity? (Any two reasons)\n(ii) Name and explain any two causes that are responsible for the loss\nof biodiversity.\nOR\nB.\n(i) Name the two types of desirable approaches to conserve\nbiodiversity? Explain with examples bringing out the difference\nbetween the two types.\n(ii) State the features of a stable biological community?\n**********",
+      "[CBSE Class XII Biology, marking scheme, 2026-27]\n33. Attempt either option A or B. 5\nA.\n(a)\nBiodiversity Explanation of the effect it will have\nThreat\nOverexploitation Unsustainable sourcing of wild medicinal plants by\nthe cosmetic brand threatens plant species/may lead\nto depletion and extinction of valuable species. (1)\nInvasion by alien Ornamental grass from another country spreading\nspecies aggressively into native grassland/outcompetes\nnative grasses, reduces local biodiversity. (1)\nCo-extinction Disappearance of nesting tree species causing sharp\ndecline in migratory bird population/ disrupts\necological balance, loss of niches. (1)\nHabitat loss and Forest fires lead to habitat loss and fragmentation by\nfragmentation destroying forest",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n33. Attempt either option A or B. 5\nA. A Green Valley X, home to rare medicinal plants and several migratory bird\nspecies, is facing multiple environmental challenges.\nI. A luxury brand of cosmetics with little regulation has been sourcing wild\nmedicinal plants from the valley.\nII. The company has introduced an ornamental grass species from another\ncountry, which has taken over large areas of native grassland.\nIII. There is also a reported drastic decline in the endemic trees.\nIV. Large scale forest fire in a part of the valley.\na) From the above hypothetical case, identify and explain the four major\nbiodiversity threats. (4)\nb) Suggest one in-situ conservation practice that could help prote",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n33. Student to attempt either option A or B. 5\nA.\n(i) There are three main reasons for conserving the biodiversity which\nhave been classified into the following categories: (Any two reasons)\n- Narrowly utilitarian arguments. Human beings derive direct\neconomic benefits from nature, like food, firewood, fibre,\nconstruction material, industrial products (resins, gums, dyes,\ntannins, etc.) and medicinally important products.\n- Broadly utilitarian arguments. Biodiversity plays a major role in\nmaintaining and sustaining supply of goods and services from\nvarious species as well as ecological systems. The different\necological services provided are:\n Amazon forest is estimated to contribute 20 per "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 129342,
+      "in": 37,
+      "out": 36,
+      "rejects": 2,
+      "promptTokens": 37794,
+      "completionTokens": 7774
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 274737,
+      "in": 36,
+      "out": 32,
+      "rejects": 4,
+      "promptTokens": 21210,
+      "completionTokens": 8065
+    },
+    "solver": {
+      "calls": 239,
+      "ms": 115333,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 43393,
+      "completionTokens": 2593
+    },
+    "form": {
+      "calls": 18,
+      "ms": 45766,
+      "in": 30,
+      "out": 17,
+      "rejects": 13,
+      "promptTokens": 4506,
+      "completionTokens": 1321
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5030,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 69,
+      "ms": 610617,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 41194,
+      "completionTokens": 21177
+    }
+  },
+  "kept": 17,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 3,
+    "4": 0,
+    "5": 4,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the high biodiversity in India?",
+      "ms": {
+        "draft": 2826,
+        "critique": 6845,
+        "solver": 1251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the 'rivet popper hypothesis', what does the loss of a key species in an ecosystem compare to?",
+      "ms": {
+        "draft": 3027,
+        "critique": 6609,
+        "solver": 1583,
+        "form": 2089
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a major cause of biodiversity loss according to the passage?",
+      "ms": {
+        "draft": 4584,
+        "critique": 8704,
+        "solver": 9352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a luxury brand of cosmetics is sourcing wild medicinal plants from a valley, what is the most likely threat to biodiversity in that area?",
+      "ms": {
+        "draft": 4584,
+        "critique": 5599,
+        "solver": 1200,
+        "form": 3595
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A luxury brand is sourcing wild medicinal plants from a valley, introducing an ornamental grass that is taking over native grasslands, and there is a decline in endemic trees due to forest fires. Which of the following is the most significant threat to biodiversity in this scenario?",
+      "ms": {
+        "draft": 4584,
+        "critique": 5010,
+        "solver": 1998,
+        "form": 3365
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary reason for conserving biodiversity according to the passage?",
+      "ms": {
+        "draft": 4584,
+        "critique": 5556,
+        "solver": 11576,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of in situ conservation?",
+      "ms": {
+        "draft": 5016,
+        "critique": 5507
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A new species is introduced into a lake, and it outcompetes the native species, leading to their decline. Which of the following best describes this scenario?",
+      "ms": {
+        "draft": 4584,
+        "critique": 4893,
+        "solver": 1434,
+        "form": 2522
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for conserving biodiversity according to the passage?",
+      "ms": {
+        "draft": 5016,
+        "critique": 6050,
+        "solver": 13726,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a cause of biodiversity loss as mentioned in the passage?",
+      "ms": {
+        "draft": 5016,
+        "critique": 4787,
+        "solver": 16283
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to protect biodiversity hotspots according to the passage?",
+      "ms": {
+        "draft": 5016,
+        "critique": 7513,
+        "solver": 11792,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of in-situ conservation?",
+      "ms": {
+        "draft": 2973,
+        "critique": 3876
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of in-situ conservation?",
+      "ms": {
+        "draft": 2297,
+        "critique": 5476,
+        "solver": 1163,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of in-situ conservation?",
+      "ms": {
+        "draft": 2297,
+        "critique": 7197,
+        "solver": 11890,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a biodiversity threat caused by human activities?",
+      "ms": {
+        "draft": 2993,
+        "critique": 7127,
+        "solver": 1175,
+        "form": 3639
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of an 'ethical argument' for conserving biodiversity?",
+      "ms": {
+        "draft": 2993,
+        "critique": 7244,
+        "solver": 1934,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason given in the passage for the faster rate of species extinction compared to past mass extinctions?",
+      "ms": {
+        "draft": 2993,
+        "critique": 5491,
+        "solver": 13896,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains why species diversity decreases as we move from the equator towards the poles?",
+      "ms": {
+        "draft": 4998,
+        "critique": 6703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of genetic diversity?",
+      "ms": {
+        "draft": 6974,
+        "critique": 5941
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the diversity of life at all levels of biological organisation?",
+      "ms": {
+        "draft": 2826,
+        "critique": 5902,
+        "solver": 2154,
+        "form": 2804,
+        "translation": 35050
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for the greater biodiversity in tropical regions compared to temperate regions?",
+      "ms": {
+        "draft": 3027,
+        "critique": 6597,
+        "solver": 1289,
+        "form": 2249,
+        "translation": 39414
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of over-exploitation of natural resources?",
+      "ms": {
+        "draft": 4584,
+        "critique": 6274,
+        "solver": 1647,
+        "form": 3729,
+        "translation": 37632
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for conserving biodiversity based on its direct economic benefits?",
+      "ms": {
+        "draft": 2993,
+        "critique": 5513,
+        "solver": 1973,
+        "form": 1503,
+        "translation": 41050
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of genetic diversity?",
+      "ms": {
+        "draft": 2826,
+        "critique": 5703,
+        "solver": 1452,
+        "form": 2692,
+        "translation": 40412
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one of the main reasons for conserving biodiversity?",
+      "ms": {
+        "draft": 2297,
+        "critique": 5703,
+        "solver": 11476,
+        "form": 0,
+        "translation": 23547
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the equation log S = log C + Z log A represent in the context of species diversity?",
+      "ms": {
+        "draft": 3027,
+        "critique": 6140,
+        "solver": 1066,
+        "form": 3389,
+        "translation": 34590
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region has a large number of different species of plants and animals, which type of diversity is it most likely to have?",
+      "ms": {
+        "draft": 2826,
+        "critique": 5501,
+        "solver": 1091,
+        "form": 0,
+        "translation": 33520
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a forest is cleared for agriculture, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 2297,
+        "critique": 5869,
+        "solver": 10888,
+        "form": 0,
+        "translation": 25043
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tropical forest has a species-area relationship with a steeper slope (Z value of 1.15), what does this indicate?",
+      "ms": {
+        "draft": 3027,
+        "critique": 5988,
+        "solver": 1649,
+        "form": 2368,
+        "translation": 34539
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A region has a large number of different species of insects, but very few other types of organisms. What can be inferred about the biodiversity of this region?",
+      "ms": {
+        "draft": 2826,
+        "critique": 5090,
+        "solver": 1485,
+        "form": 3576,
+        "translation": 43211
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where a luxury brand is overharvesting medicinal plants from a valley, what is the primary threat to biodiversity?",
+      "ms": {
+        "draft": 2297,
+        "critique": 7492,
+        "solver": 1259,
+        "form": 3276,
+        "translation": 48910
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the case of Green Valley, which of the following is a direct threat to biodiversity caused by a luxury cosmetics brand?",
+      "ms": {
+        "draft": 3027,
+        "critique": 5515,
+        "solver": 13914,
+        "form": 1812,
+        "translation": 33447
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A region is facing a decline in endemic tree species, and an ornamental grass from another country is spreading rapidly. What are the two biodiversity threats in this scenario?",
+      "ms": {
+        "draft": 2993,
+        "critique": 7011,
+        "solver": 12277,
+        "form": 1023,
+        "translation": 24454
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a species is found to have a high level of genetic variation across its range, what can be inferred about its biodiversity?",
+      "ms": {
+        "draft": 2826,
+        "critique": 4865,
+        "solver": 1509,
+        "form": 2418,
+        "translation": 40446
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why might ecologists estimate the total number of species in the world?",
+      "ms": {
+        "draft": 2297,
+        "critique": 5878,
+        "solver": 1246,
+        "form": 0,
+        "translation": 34207
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a tropical forest has a higher Z value when analyzing species-area relationships, what might this indicate about the forest?",
+      "ms": {
+        "draft": 3027,
+        "critique": 5239,
+        "solver": 1319,
+        "form": 3874,
+        "translation": 38010
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main purpose of a biosphere reserve?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the high biodiversity in India?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the 'rivet popper hypothesis', what does the loss of a key species in an ecosystem compare to?",
+      "reason": "options 0 and 1 say the same thing (\"The loss of a rivet in the seats of an airplane\" / \"The loss of a rivet in the windows of an airplane\"); options 0 and 3 say the same thing (\"The loss of a rivet in the seats of an airplane\" / \"The loss of a rivet in the engine of an airplane\"); options 1 and 3 say the same thing (\"The loss of a rivet in the windows of an airplane\" / \"The loss of a rivet in the engine of an airplane\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a major cause of biodiversity loss according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a luxury brand of cosmetics is sourcing wild medicinal plants from a valley, what is the most likely threat to biodiversity in that area?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"difficulty\":4,\"stem\":\"Based on the passage, which of the fol…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A luxury brand is sourcing wild medicinal plants from a valley, introducing an ornamental grass that is taking over native grasslands, and there is a decline in endemic trees due to forest fires. Which of the following is the most significant threat to biodiversity in this scenario?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"difficulty\":6,\"stem\":\"The passage suggests that biodiversity…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary reason for conserving biodiversity according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of in situ conservation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A new species is introduced into a lake, and it outcompetes the native species, leading to their decline. Which of the following best describes this scenario?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"difficulty\":5,\"stem\":\"The passage mentions that the 'Sixth E…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main reason for conserving biodiversity according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"To ensure that all species can be used for human benefit\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a cause of biodiversity loss as mentioned in the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important to protect biodiversity hotspots according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is an example of in-situ conservation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 3,\n      \"stem\": \"Which of the following is an example of in-situ conservation?"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of in-situ conservation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of in-situ conservation?",
+      "reason": "options 2 and 3 are the same (\"Freezing a species in a wildlife reserve\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a biodiversity threat caused by human activities?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Refers to a general environmental change not linked to the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of an 'ethical argument' for conserving biodiversity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason given in the passage for the faster rate of species extinction compared to past mass extinctions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains why species diversity decreases as we move from the equator towards the poles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is an example of genetic diversity?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

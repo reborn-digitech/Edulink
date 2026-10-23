@@ -1,0 +1,248 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:46:21.437Z",
+  "finishedAt": "2026-10-20T21:48:03.009Z",
+  "seconds": 102,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap102.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 2 — A Snake Charmer’s Story",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 20858,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8010,
+      "completionTokens": 1463
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 40886,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 3917,
+      "completionTokens": 1554
+    },
+    "solver": {
+      "calls": 28,
+      "ms": 12510,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 5400,
+      "completionTokens": 340
+    },
+    "form": {
+      "calls": 2,
+      "ms": 2585,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 516,
+      "completionTokens": 146
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 1578,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 13627,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2204,
+      "completionTokens": 1106
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a way in which Aryanath's family helped people?",
+      "ms": {
+        "draft": 2478,
+        "critique": 5170
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the special talent that Aryanath says he can do?",
+      "ms": {
+        "draft": 2478,
+        "critique": 6055
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, why do snakes eat rats in the fields?",
+      "ms": {
+        "draft": 2478,
+        "critique": 5352,
+        "solver": 927
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what did the snake-charmers use to help people who had been bitten by snakes?",
+      "ms": {
+        "draft": 13318,
+        "critique": 4259
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned in the passage as a type of snake found in India?",
+      "ms": {
+        "draft": 13318,
+        "critique": 5050
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the government's law stops snake-charmers from catching and keeping snakes, how might this affect their livelihood?",
+      "ms": {
+        "draft": 13318,
+        "critique": 4051,
+        "solver": 1035,
+        "form": 1953
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason the snake-charmers do not kill snakes?",
+      "ms": {
+        "draft": 13318,
+        "critique": 3573,
+        "solver": 659,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Aryanath's family wanted to earn money by selling snake parts, which of the following could they sell?",
+      "ms": {
+        "draft": 2478,
+        "critique": 5708,
+        "solver": 8351,
+        "form": 632,
+        "translation": 11646
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a way in which Aryanath's family helped people?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the special talent that Aryanath says he can do?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, why do snakes eat rats in the fields?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what did the snake-charmers use to help people who had been bitten by snakes?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned in the passage as a type of snake found in India?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the government's law stops snake-charmers from catching and keeping snakes, how might this affect their livelihood?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Thinks the passage says they will continue the same way…\"); distractor 2's reason is not a one-line misconception (\"Believes the passage says they will be stopped from playing …\"); distractor 3's reason is not a one-line misconception (\"Thinks the passage suggests they will work in hospitals…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason the snake-charmers do not kill snakes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Thinks the passage says they are afraid of snakes…\"); distractor 2's reason is not a one-line misconception (\"Believes the passage states they lack tools to kill snakes…\"); distractor 3's reason is not a one-line misconception (\"Thinks the passage says they are not allowed by the governme…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

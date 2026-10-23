@@ -1,0 +1,605 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T03:12:33.253Z",
+  "finishedAt": "2026-10-21T03:19:59.055Z",
+  "seconds": 446,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo107.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 7 — Structural Organisation in Animals",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2019 — question paper]\n56. (2 points) Given is a sketch of an organism that an archaeologist found.\nFigure 2: Internal Structures\nAntenna\nBq Brain\n=\nVif- | Leg\nHie Tarsal claw\nK | Ed Ventral Nerve\nHIRES. Cord\nStomach —¢ [EER\nintestine 3 JE i Patpheral\n§ 4 ¥ §— Seminal Vesicle\nA: ’ Sperm duct\n3 Rectum\nAnus\nThe interpretation of its morphological and anatomical features is provided in the table\nbelow.\nWorm- | Organ External Vertebral\nlike differentiation | body column\nbody segmentation\n[Nematoda | ves | | [| | | |\n[Annelida | Ves | Ves | Yes [Vewa | | | |\n[Arthropoda | | Yes | [Vewa | Ves | Open | |\n[Reel | | Ve | [Dosa | ve | Ged | ve |\nThis organism is likely to be a link between:\n(Fill in the blanks with the corr",
+      "[INBO 2013 — question paper]\n56. (3.5 points) A cladogram of various animal groups is shown below. The boxes\nin the cladogram indicate the development of specific structures in the course\nof evolution. Fill these boxes with numbers indicating the correct structures.\nChoose from the options given.\nBirds\nRats and\nRabbits\nFrogs and\nSalamander\nRays and Herrings &\nSkates Tuna\nSSkates\nLampre y\nAncestral Vertebrate\n1. Paired appendages\n2. Bony endoskeleton\n3. Jaws\n4. Three-chambered heart\n5. Clawed digits\n6. Cartilaginous endoskeleton\n7. Four-chambered heart\n8. Operculum\n********* END OF SECTION B ***********",
+      "[NSEB 2015 — question paper]\n48. The support staff in a Zoology lab mixed up the description charts of the following\norganisms:\nX: Rotifer Y: Sea anemone Z: Spider\nDescription charts:\nI: Coelomate with segmented body.\nII: Pseudocoelomate with alimentary canal and head having ciliated crown.\nIII: Diploblastic with gastrovascular cavity.\nDescription charts that match X, Y and Z respectively are:\na) I, II and III\nb) II, III and I\nc) III, I and II\nd) I, III and II",
+      "[INBO 2020 — question paper]\n18. (1 point) The internal structures of a marine life form, Pseudoceros bifurcus are shown in the\nfigure. Mark the correct interpretation.\nPseudoceros bifurcus\nThe animal is most likely is:\na. a cnidarian as it shows tissue level organization with bilateral symmetry.\nb. a free-living platyhelminth as it shows bilateral symmetry and has an acoelomate body plan.\nc. a free-living platyhelminth as it shows non-segmented body plan and absence of circulatory\nsystem.\nd. a parasitic platyhelminth as it shows suckers, hermaphrodity and absence of sense organs."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 142273,
+      "in": 33,
+      "out": 30,
+      "rejects": 3,
+      "promptTokens": 26200,
+      "completionTokens": 8636
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 205223,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 16127,
+      "completionTokens": 5943
+    },
+    "solver": {
+      "calls": 182,
+      "ms": 79051,
+      "in": 29,
+      "out": 25,
+      "rejects": 4,
+      "promptTokens": 30566,
+      "completionTokens": 1804
+    },
+    "form": {
+      "calls": 22,
+      "ms": 91458,
+      "in": 25,
+      "out": 14,
+      "rejects": 11,
+      "promptTokens": 13084,
+      "completionTokens": 2629
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 6372,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 479801,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 31524,
+      "completionTokens": 15840
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the skin of a frog?",
+      "ms": {
+        "draft": 5732,
+        "critique": 6836,
+        "solver": 13722
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the internal organs of a frog, which organ is responsible for storing bile?",
+      "ms": {
+        "draft": 5732,
+        "critique": 6482,
+        "solver": 10446,
+        "form": 1988
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where a student is given a diagram of an animal's internal structures, which feature would indicate that it is a frog?",
+      "ms": {
+        "draft": 5732,
+        "critique": 5779,
+        "solver": 1170,
+        "form": 4564
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student is studying the evolutionary trend in the organisation of animals and observes that an organism has a non-segmented body, lacks a circulatory system, and has a gastrovascular cavity, which group of organisms is it most likely to belong to?",
+      "ms": {
+        "draft": 5732,
+        "critique": 5818,
+        "solver": 1314,
+        "form": 3943
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A biology student was given a diagram of the internal structures of a frog and asked to identify the organ responsible for the production of hormones. Based on the passage, which of the following should the student select?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6256,
+        "solver": 952,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the function of the vasa efferentia in the male reproductive system of a frog?",
+      "ms": {
+        "draft": 3496,
+        "critique": 5195,
+        "solver": 1331,
+        "form": 3613
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the frog's nervous system as consisting of the central nervous system, peripheral nervous system, and autonomic nervous system. Which of the following best explains the significance of this organisation?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6460,
+        "solver": 1414,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the excretory system of a frog?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6444,
+        "solver": 15202,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the mucous glands in the skin of the Indian bullfrog?",
+      "ms": {
+        "draft": 3094,
+        "critique": 4709,
+        "solver": 1376
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information given in the passage, which of the following is a function of the cloaca in the Indian bullfrog?",
+      "ms": {
+        "draft": 3094,
+        "critique": 4960,
+        "solver": 1978,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a frog is found to have a four-chambered heart, which of the following can be inferred about its circulatory system?",
+      "ms": {
+        "draft": 3094,
+        "critique": 7843
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is studying the reproductive system of a frog. Which structure in the male reproductive system is responsible for transporting sperm from the testes to the cloaca?",
+      "ms": {
+        "draft": 6035,
+        "critique": 6331,
+        "solver": 1337
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a biology class, a teacher asks students to match the following structures with their functions: (1) Kidney, (2) Ureter, (3) Cloaca, (4) Urinary bladder. Which of the following is the correct match?",
+      "ms": {
+        "draft": 6035,
+        "critique": 7235,
+        "solver": 1779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The excretory system of a frog includes a pair of kidneys, ureters, cloaca, and urinary bladder. Which of the following is responsible for filtering waste from the blood?",
+      "ms": {
+        "draft": 6035,
+        "critique": 6045,
+        "solver": 1621,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the frog's internal organs, which of the following is a feature of the digestive system in frogs?",
+      "ms": {
+        "draft": 4336,
+        "critique": 5874,
+        "solver": 1330,
+        "form": 2184
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram of an organism and asked to identify its classification. The diagram shows a non-segmented body plan, absence of a circulatory system, and bilateral symmetry. Based on the passage and the diagram, which of the following is the most likely classification of the organism?",
+      "ms": {
+        "draft": 4336,
+        "critique": 3877,
+        "solver": 744,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a group of similar cells along with intercellular substances that perform a specific function?",
+      "ms": {
+        "draft": 5732,
+        "critique": 6415,
+        "solver": 15358,
+        "form": 2153,
+        "translation": 31181
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of multicellular animals?",
+      "ms": {
+        "draft": 4336,
+        "critique": 6169,
+        "solver": 1364,
+        "form": 2177,
+        "translation": 28944
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the study of the external appearance of the organs or parts of the body in animals?",
+      "ms": {
+        "draft": 4336,
+        "critique": 5302,
+        "solver": 833,
+        "form": 3027,
+        "translation": 25945
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which structure in a frog helps in capturing prey?",
+      "ms": {
+        "draft": 3470,
+        "critique": 6433,
+        "solver": 1296,
+        "form": 2722,
+        "translation": 27796
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the frog's body is responsible for the exchange of gases through diffusion while it is underwater?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6486,
+        "solver": 1346,
+        "form": 1967,
+        "translation": 35837
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the frog's body is responsible for the absorption of digested food?",
+      "ms": {
+        "draft": 3496,
+        "critique": 5171,
+        "solver": 1164,
+        "form": 3489,
+        "translation": 39901
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the mucous glands in a frog's skin?",
+      "ms": {
+        "draft": 3470,
+        "critique": 6392,
+        "solver": 13022,
+        "form": 3560,
+        "translation": 38703
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary reason for the division of labour in multicellular animals?",
+      "ms": {
+        "draft": 5732,
+        "critique": 5962,
+        "solver": 1230,
+        "form": 4323,
+        "translation": 38814
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which part of the frog's body is the cloaca located?",
+      "ms": {
+        "draft": 3470,
+        "critique": 5943,
+        "solver": 1476,
+        "form": 2268,
+        "translation": 30502
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the Indian bullfrog, where do the ova develop and get fertilized?",
+      "ms": {
+        "draft": 3094,
+        "critique": 4519,
+        "solver": 983,
+        "form": 3720,
+        "translation": 32534
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which system is responsible for the control and coordination in a frog?",
+      "ms": {
+        "draft": 3470,
+        "critique": 5710,
+        "solver": 1700,
+        "form": 2564,
+        "translation": 36647
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the frog's ability to respire both in water and on land?",
+      "ms": {
+        "draft": 3470,
+        "critique": 6901,
+        "solver": 970,
+        "form": 2856,
+        "translation": 34247
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student is comparing the excretory systems of frogs and humans. Which of the following is a key difference between the two?",
+      "ms": {
+        "draft": 6035,
+        "critique": 6412,
+        "solver": 1059,
+        "form": 0,
+        "translation": 40182
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are the red blood cells of a frog nucleated?",
+      "ms": {
+        "draft": 3470,
+        "critique": 5222,
+        "solver": 651,
+        "form": 936,
+        "translation": 33203
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the skin of a frog?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the internal organs of a frog, which organ is responsible for storing bile?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a scenario where a student is given a diagram of an animal's internal structures, which feature would indicate that it is a frog?",
+      "reason": "figure: figure spec refused: spec.parts.2.text.bloodVessels: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student is studying the evolutionary trend in the organisation of animals and observes that an organism has a non-segmented body, lacks a circulatory system, and has a gastrovascular cavity, which group of organisms is it most likely to belong to?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cnidaria'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A biology student was given a diagram of the internal structures of a frog and asked to identify the organ responsible for the production of hormones. Based on the passage, which of the following should the student select?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the function of the vasa efferentia in the male reproductive system of a frog?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the frog's nervous system as consisting of the central nervous system, peripheral nervous system, and autonomic nervous system. Which of the following best explains the significance of this organisation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the excretory system of a frog?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is true about the alimentary canal of the Indian bullfrog?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following best describes the circulatory system of the Indian bullfrog?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The nervous system of a frog consists of a central nervous system, a peripheral nervous system, and an autonomic nervous system. Which part of the brain is responsible for coordinating sensory input and motor output?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a function of the mucous glands in the skin of the Indian bullfrog?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information given in the passage, which of the following is a function of the cloaca in the Indian bullfrog?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (60 vs 35 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a frog is found to have a four-chambered heart, which of the following can be inferred about its circulatory system?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student is studying the reproductive system of a frog. Which structure in the male reproductive system is responsible for transporting sperm from the testes to the cloaca?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a biology class, a teacher asks students to match the following structures with their functions: (1) Kidney, (2) Ureter, (3) Cloaca, (4) Urinary bladder. Which of the following is the correct match?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The excretory system of a frog includes a pair of kidneys, ureters, cloaca, and urinary bladder. Which of the following is responsible for filtering waste from the blood?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"kidney\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the frog's internal organs, which of the following is a feature of the digestive system in frogs?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's description of the digestive sys…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a diagram of an organism and asked to identify its classification. The diagram shows a non-segmented body plan, absence of a circulatory system, and bilateral symmetry. Based on the passage and the diagram, which of the following is the most likely classification of the organism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

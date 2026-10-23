@@ -1,0 +1,907 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T10:41:42.970Z",
+  "finishedAt": "2026-10-20T10:54:18.686Z",
+  "seconds": 756,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc108.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Journey Inside the Atom",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 28,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2013 — question paper]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[INJSO 2013 — solutions or answer key]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[INJSO 2020 — solutions or answer key]\n30. (16 marks) The year 2019 was proclaimed by UNESCO as the International Year of the\nPeriodic Table (IYPT 2019), marking the 150 th anniversary of the Mendeleev periodic table,\nwhich is an iconic representation and a vital tool to all who learn and work in science. In\nthis question, some elements have had their symbols replaced by greek letters α, β, γ, etc.,\nbut not in order. All such elements in this question have atomic number of 20 or less. In\naddition, two more elements in the periodic table have been assigned codes X and Q.\nUse the information about their properties, as given below, to assign each element to its\ncorrect greek / roman alphabet code.\n(a) Elements α, β and γ are unreact"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 300829,
+      "in": 46,
+      "out": 46,
+      "rejects": 1,
+      "promptTokens": 48330,
+      "completionTokens": 13102
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 472522,
+      "in": 46,
+      "out": 32,
+      "rejects": 14,
+      "promptTokens": 26747,
+      "completionTokens": 9937
+    },
+    "solver": {
+      "calls": 225,
+      "ms": 138815,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 40841,
+      "completionTokens": 2297
+    },
+    "form": {
+      "calls": 12,
+      "ms": 108331,
+      "in": 30,
+      "out": 6,
+      "rejects": 24,
+      "promptTokens": 10795,
+      "completionTokens": 2060
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5532,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 170644,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9312,
+      "completionTokens": 4760
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "According to the passage, what does the plum pudding model suggest about the arrangement of electrons in an atom?",
+      "ms": {
+        "draft": 6694,
+        "critique": 7511
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did J. J. Thomson conclude about cathode rays from his experiments?",
+      "ms": {
+        "draft": 6694,
+        "critique": 7785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the plum pudding model was later replaced by other models?",
+      "ms": {
+        "draft": 6694,
+        "critique": 10901
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an atom is compared to a watermelon, where the red pulp represents the positively charged matter and the seeds represent the electrons, what would be the approximate size ratio of the atom to the nucleus?",
+      "ms": {
+        "draft": 6694,
+        "critique": 11216,
+        "solver": 2417
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the significance of the plum pudding model in the history of atomic theory?",
+      "ms": {
+        "draft": 6694,
+        "critique": 6940,
+        "solver": 2315,
+        "form": 3306
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what did Rutherford conclude about the structure of an atom based on the gold foil experiment?",
+      "ms": {
+        "draft": 8090,
+        "critique": 8957,
+        "solver": 1894,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a key difference between the atomic models of Dalton and Thomson?",
+      "ms": {
+        "draft": 6694,
+        "critique": 8470,
+        "solver": 2379,
+        "form": 3586
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the approximate ratio of the size of an atom to the size of its nucleus?",
+      "ms": {
+        "draft": 8090,
+        "critique": 10218
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason Rutherford’s model of the atom was considered incomplete?",
+      "ms": {
+        "draft": 8090,
+        "critique": 8491,
+        "solver": 15359,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the gold foil in Rutherford's experiment was made thicker, what would be the most likely observation?",
+      "ms": {
+        "draft": 8090,
+        "critique": 9247,
+        "solver": 18458,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the gold foil in the experiment were replaced with a material that has a larger nucleus, how would this affect the number of alpha particles that are deflected?",
+      "ms": {
+        "draft": 8090,
+        "critique": 9069,
+        "solver": 1495,
+        "form": 5916
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason electrons do not lose energy while moving in their orbits?",
+      "ms": {
+        "draft": 7093,
+        "critique": 6682,
+        "solver": 17262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the energy levels in an atom?",
+      "ms": {
+        "draft": 7093,
+        "critique": 9426,
+        "solver": 2060,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an atom has 26 protons and 30 neutrons, what is the total number of particles in its nucleus?",
+      "ms": {
+        "draft": 7093,
+        "critique": 9089
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a rule for writing chemical symbols according to IUPAC?",
+      "ms": {
+        "draft": 8942,
+        "critique": 11217,
+        "solver": 1756,
+        "form": 3960
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention that neutrons help reduce repulsion between protons in the nucleus?",
+      "ms": {
+        "draft": 7093,
+        "critique": 8712,
+        "solver": 19282,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the correct order of energy levels from lowest to highest energy?",
+      "ms": {
+        "draft": 7093,
+        "critique": 9969,
+        "solver": 16787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a symbol derived from the Latin name of an element?",
+      "ms": {
+        "draft": 8942,
+        "critique": 8907,
+        "solver": 2028,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the maximum number of electrons that can be accommodated in the outermost shell of an atom?",
+      "ms": {
+        "draft": 5214,
+        "critique": 7742,
+        "solver": 1700,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the mass number of an atom with 20 protons and 21 neutrons?",
+      "ms": {
+        "draft": 8942,
+        "critique": 10073,
+        "solver": 2612,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the electronic configuration of an atom with 12 electrons?",
+      "ms": {
+        "draft": 5214,
+        "critique": 9697,
+        "solver": 1111,
+        "form": 3733
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about isotopes is correct?",
+      "ms": {
+        "draft": 8935,
+        "critique": 7994,
+        "solver": 1156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a feature of Rutherford’s atomic model?",
+      "ms": {
+        "draft": 6218,
+        "critique": 6094
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sample of bromine has two isotopes: Br-79 (49.7%) and Br-81 (50.3%). What is the average atomic mass of bromine?",
+      "ms": {
+        "draft": 6218,
+        "critique": 5586,
+        "solver": 2184,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are atoms with the same atomic number but different mass numbers called?",
+      "ms": {
+        "draft": 6570,
+        "critique": 9491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do isotopes of the same element have similar chemical properties?",
+      "ms": {
+        "draft": 6570,
+        "critique": 8084
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of isotopes?",
+      "ms": {
+        "draft": 6218,
+        "critique": 8498,
+        "solver": 1491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the term 'isobars' in the context of the passage?",
+      "ms": {
+        "draft": 6570,
+        "critique": 7353,
+        "solver": 1469,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a sample contains 90% of an isotope with a mass of 36 u and 10% of an isotope with a mass of 38 u, what is the average atomic mass of the element?",
+      "ms": {
+        "draft": 6570,
+        "critique": 9235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the average atomic mass of chlorine if 75% of its atoms have a mass of 35 u and 25% have a mass of 37 u?",
+      "ms": {
+        "draft": 6570,
+        "critique": 8881,
+        "solver": 15095,
+        "form": 7524
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do scientists use the unified atomic mass unit (u) to measure the mass of atoms instead of kilograms?",
+      "ms": {
+        "draft": 6570,
+        "critique": 9960,
+        "solver": 14219,
+        "form": 3438
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the L-shell?",
+      "ms": {
+        "draft": 3975,
+        "critique": 9925,
+        "solver": 14860,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the electronic configuration of an atom with 12 electrons?",
+      "ms": {
+        "draft": 3975,
+        "critique": 8967
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following elements has a valency of 1?",
+      "ms": {
+        "draft": 3975,
+        "critique": 8922
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student writes the electronic configuration of an atom as 2, 8, 7. What is the valency of this atom?",
+      "ms": {
+        "draft": 3975,
+        "critique": 7427
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the valency of an atom with an electronic configuration of 2, 6?",
+      "ms": {
+        "draft": 3975,
+        "critique": 10775
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a rule for writing chemical symbols according to the passage?",
+      "ms": {
+        "draft": 5248,
+        "critique": 7192,
+        "solver": 1121,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to Bohr's model of the atom, what determines the energy of an electron in a shell?",
+      "ms": {
+        "draft": 5792,
+        "critique": 8884
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An atom of an element has 17 protons and 18 neutrons. What is its mass number?",
+      "ms": {
+        "draft": 5248,
+        "critique": 7535,
+        "solver": 12544
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The symbol for an element is 'Fe'. Which of the following statements is correct about this element?",
+      "ms": {
+        "draft": 5248,
+        "critique": 8935,
+        "solver": 9665,
+        "form": 958
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An element has an atomic number of 17 and a mass number of 35. How many neutrons does it have?",
+      "ms": {
+        "draft": 6218,
+        "critique": 7875,
+        "solver": 1809,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the valency of an atom with an electronic configuration of 2, 8, 7?",
+      "ms": {
+        "draft": 6218,
+        "critique": 7821,
+        "solver": 2517,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following correctly describes the charge and mass distribution in Rutherford’s model of the atom?",
+      "ms": {
+        "draft": 8090,
+        "critique": 8664,
+        "solver": 3500,
+        "form": 0,
+        "translation": 61986
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An atom has 11 protons and 12 neutrons. What is its mass number?",
+      "ms": {
+        "draft": 6218,
+        "critique": 5278,
+        "solver": 1428,
+        "form": 0,
+        "translation": 35213
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an atom has 10 protons and 12 neutrons, what is the total mass contributed by the protons and neutrons?",
+      "ms": {
+        "draft": 7093,
+        "critique": 9639,
+        "solver": 15885,
+        "form": 0,
+        "translation": 40951
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an element has an atomic number of 20 and a mass number of 41, how many neutrons does it have?",
+      "ms": {
+        "draft": 5248,
+        "critique": 6387,
+        "solver": 1951,
+        "form": 0,
+        "translation": 24989
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "According to the passage, what does the plum pudding model suggest about the arrangement of electrons in an atom?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What did J. J. Thomson conclude about cathode rays from his experiments?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the plum pudding model was later replaced by other models?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an atom is compared to a watermelon, where the red pulp represents the positively charged matter and the seeds represent the electrons, what would be the approximate size ratio of the atom to the nucleus?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the significance of the plum pudding model in the history of atomic theory?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what did Rutherford conclude about the structure of an atom based on the gold foil experiment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the structure of the atom as per the passage'…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a key difference between the atomic models of Dalton and Thomson?",
+      "reason": "options 0 and 1 say the same thing (\"Dalton’s model suggested atoms are divisible, while Thomson’s model did not\" / \"Thomson’s model suggested atoms are divisible, while Dalton’s model did not\"); options 2 and 3 say the same thing (\"Dalton’s model had a nucleus, while Thomson’s model did not\" / \"Thomson’s model had a nucleus, while Dalton’s model did not\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the approximate ratio of the size of an atom to the size of its nucleus?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason Rutherford’s model of the atom was considered incomplete?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the gold foil in Rutherford's experiment was made thicker, what would be the most likely observation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the gold foil in the experiment were replaced with a material that has a larger nucleus, how would this affect the number of alpha particles that are deflected?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason electrons do not lose energy while moving in their orbits?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the energy levels in an atom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage which states that energy increases w…\"); distractor 2's reason is not a one-line misconception (\"contradicts the passage which says the L-shell has more ener…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If an atom has 26 protons and 30 neutrons, what is the total number of particles in its nucleus?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a rule for writing chemical symbols according to IUPAC?",
+      "reason": "options 0 and 2 say the same thing (\"The second letter of a symbol is always written as a capital letter.\" / \"The first letter of a symbol is always written as a capital letter.\"); options 0 and 3 say the same thing (\"The second letter of a symbol is always written as a capital letter.\" / \"The second letter of a symbol is always written as a number.\"); options 1 and 2 say the same thing (\"The first letter of a symbol is always written as a lowercase letter.\" / \"The first letter of a symbol is always written as a capital letter.\"); distractor 3's reason is not a one-line misconception (\"no reason (correct option) - not listed as a distractor reas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage mention that neutrons help reduce repulsion between protons in the nucleus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the correct order of energy levels from lowest to highest energy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"K, L, M, N\" / \"N, M, L, K\"); options 0 and 2 say the same thing (\"K, L, M, N\" / \"L, K, M, N\"); options 0 and 3 say the same thing (\"K, L, M, N\" / \"K, M, L, N\"); options 1 and 2 say the same thing (\"N, M, L, K\" / \"L, K, M, N\"); options 1 and 3 say the same thing (\"N, M, L, K\" / \"K, M, L, N\"); options 2 and 3 say the same thing (\"L, K, M, N\" / \"K, M, L, N\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a symbol derived from the Latin name of an element?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"no reason (correct option) - not listed as a distractor reas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the maximum number of electrons that can be accommodated in the outermost shell of an atom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the mass number of an atom with 20 protons and 21 neutrons?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the electronic configuration of an atom with 12 electrons?",
+      "reason": "options 0 and 3 say the same thing (\"2, 8, 2\" / \"2, 8, 8\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about isotopes is correct?",
+      "reason": "options 0 and 1 say the same thing (\"Isotopes have the same number of protons but different numbers of neutrons.\" / \"Isotopes have the same number of neutrons but different numbers of protons.\"); options 0 and 2 say the same thing (\"Isotopes have the same number of protons but different numbers of neutrons.\" / \"Isotopes have the same number of protons and neutrons but different numbers of electrons.\"); options 1 and 2 say the same thing (\"Isotopes have the same number of neutrons but different numbers of protons.\" / \"Isotopes have the same number of protons and neutrons but different numbers of electrons.\"); distractor 3's reason is not a one-line misconception (\"Believes isotopes differ in electrons, which does not affect…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"If all electrons in an atom are replaced with hypothetical particles that have the sam"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a feature of Rutherford’s atomic model?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A sample of bromine has two isotopes: Br-79 (49.7%) and Br-81 (50.3%). What is the average atomic mass of bromine?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"79*0.497+81*0.503\" = 80.006, but the key says 79.9"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are atoms with the same atomic number but different mass numbers called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why do isotopes of the same element have similar chemical properties?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of isotopes?",
+      "reason": "figure: figure spec refused: spec.segments.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the significance of the term 'isobars' in the context of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Atoms with the same number of protons but different numbers of neutrons.\" / \"Atoms with the same number of neutrons but different numbers of protons.\"); options 0 and 3 say the same thing (\"Atoms with the same number of protons but different numbers of neutrons.\" / \"Atoms with the same number of electrons but different numbers of protons.\"); options 1 and 3 say the same thing (\"Atoms with the same number of neutrons but different numbers of protons.\" / \"Atoms with the same number of electrons but different numbers of protons.\"); distractor 0's reason is not a one-line misconception (\"Describes isotopes, not isobars, which is a misunderstanding…\"); distractor 1's reason is not a one-line misconception (\"Describes isotones, which are not discussed in the passage i…\"); distractor 3's reason is not a one-line misconception (\"Correct answer, as per the passage's explanation of isobars …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a sample contains 90% of an isotope with a mass of 36 u and 10% of an isotope with a mass of 38 u, what is the average atomic mass of the element?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the average atomic mass of chlorine if 75% of its atoms have a mass of 35 u and 25% have a mass of 37 u?",
+      "reason": "options are written to different precisions (0 and 1 decimals); distractor 3's reason is not a one-line misconception (\"Chooses a higher value than the weighted average, which is n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do scientists use the unified atomic mass unit (u) to measure the mass of atoms instead of kilograms?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a statement that is not mentioned in the passage and…\"); distractor 3's reason is not a one-line misconception (\"Chooses a statement that is not supported by the passage and…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the L-shell?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the electronic configuration of an atom with 12 electrons?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following elements has a valency of 1?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student writes the electronic configuration of an atom as 2, 8, 7. What is the valency of this atom?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the valency of an atom with an electronic configuration of 2, 6?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a rule for writing chemical symbols according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"The second letter of a symbol is always a capital letter.\" / \"The first letter of a symbol is always a capital letter.\"); options 1 and 3 say the same thing (\"The first letter of a symbol is always a small letter.\" / \"The first letter of a symbol is always a capital letter.\"); distractor 2's reason is not a one-line misconception (\"Incorrectly states that symbols are only derived from Greek …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to Bohr's model of the atom, what determines the energy of an electron in a shell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "An atom of an element has 17 protons and 18 neutrons. What is its mass number?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The symbol for an element is 'Fe'. Which of the following statements is correct about this element?",
+      "reason": "options 0 and 1 say the same thing (\"The element is named from the Latin word for iron.\" / \"The element is named from the Greek word for iron.\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "An element has an atomic number of 17 and a mass number of 35. How many neutrons does it have?",
+      "reason": "near-duplicate of served question cmvfj035504m1god8p9f1s40k (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the valency of an atom with an electronic configuration of 2, 8, 7?",
+      "reason": "near-duplicate of served question cmvfj035a04mjgod8r46u8whd (cosine 0.953 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

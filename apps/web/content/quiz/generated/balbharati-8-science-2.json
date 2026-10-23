@@ -21,47 +21,807 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-19T08:28:54.549Z",
+  "generatedAt": "2026-10-22T06:11:32.523Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of an infectious disease?",
+      "difficulty": 1,
+      "stem": "What is the name of the disease that is spread by Aedes aegypti mosquitoes?",
       "choices": [
-        "Diabetes",
-        "Heart disease",
-        "Common cold",
-        "Down’s syndrome"
+        "Malaria",
+        "Dengue",
+        "Cholera",
+        "Typhoid"
       ],
-      "answerIndex": 2,
-      "solution": "The common cold is an example of an infectious disease because it is caused by viruses that can spread from person to person. Diabetes and heart disease are not caused by infectious agents but by other factors like genetics or lifestyle. Down’s syndrome is a genetic disorder, not an infectious disease.",
+      "answerIndex": 1,
+      "solution": "Dengue is a disease transmitted by Aedes aegypti mosquitoes, which are known for spreading this illness. Malaria is spread by Anopheles mosquitoes, while cholera and typhoid are caused by bacteria, not mosquitoes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा संक्रामक रोग का उदाहरण है?",
+          "stem": "Aedes aegypti मच्छरों द्वारा फैलने वाले रोग का नाम क्या है?",
           "choices": [
-            "मधुमेह",
-            "हृदय रोग",
-            "सामान्य जुकाम",
-            "डाउन सिंड्रोम"
+            "मलेरिया",
+            "डेंगू",
+            "हैजा",
+            "टाइफॉइड"
           ],
-          "solution": "सामान्य जुकाम संक्रामक रोग का उदाहरण है क्योंकि यह वायरस के कारण होता है जो व्यक्ति से व्यक्ति तक फैल सकते हैं। मधुमेह और हृदय रोग संक्रामक कारकों के कारण नहीं होते बल्कि आनुवंशिकता या जीवनशैली जैसे अन्य कारकों के कारण होते हैं। डाउन सिंड्रोम एक आनुवंशिक विकार है, संक्रामक रोग नहीं।",
+          "solution": "डेंगू Aedes aegypti मच्छरों द्वारा फैलने वाला एक रोग है, जिन्हें इस बीमारी के फैलाव के लिए जाना जाता है। मलेरिया Anopheles मच्छरों द्वारा फैलता है, जबकि हैजा और टाइफॉइड बैक्टीरिया के कारण होते हैं, न कि मच्छरों द्वारा।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi medical terminology.",
+          "critique": "The translation is accurate, with appropriate Hindi medical terminology used. The correct answer remains option (2) 'डेंगू' as in the original.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संसर्गजन्य आजाराचा उदाहरण आहे?",
+          "stem": "Aedes aegypti माशांद्वारे पसरलेल्या आजाराचे नाव काय आहे?",
+          "choices": [
+            "मलेरिया",
+            "डेंगू",
+            "हिरडा",
+            "टायफॉइड"
+          ],
+          "solution": "डेंगू हा आजार Aedes aegypti माशांद्वारे पसरतो, जे या आजाराला पसरवण्याच्या नावाने ओळखले जातात. मलेरिया Anopheles माशांद्वारे पसरतो, तर हिरडा आणि टायफॉइड हे बॅक्टेरियांमुळे होतात, माशांद्वारे पसरत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi medical terminology used (e.g., 'हिरडा' for cholera, 'टायफॉइड' for typhoid). The structure and meaning match the original English question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Names a disease spread by Anopheles mosquitoes",
+        null,
+        "Names a disease spread by Culex mosquitoes",
+        "Names a disease spread by contaminated water"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the key is correct. The solution is accurate, and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a viral disease?",
+      "choices": [
+        "Rabies",
+        "Cancer",
+        "Diabetes",
+        "Heart Disease"
+      ],
+      "answerIndex": 0,
+      "solution": "Rabies is a viral disease because it is caused by the rabies virus, which infects the nervous system. Cancer is not a viral disease; it results from uncontrolled cell growth. Diabetes is a metabolic condition affecting how the body processes sugar. Heart disease is related to the heart and blood vessels, not a virus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक विषाणुजनित बीमारी है?",
+          "choices": [
+            "रैबीज",
+            "कैंसर",
+            "मधुमेह",
+            "हृदय रोग"
+          ],
+          "solution": "रैबीज एक विषाणुजनित बीमारी है क्योंकि यह रैबीज विषाणु द्वारा होती है जो तंत्रिका तंत्र को संक्रमित करता है। कैंसर एक विषाणुजनित बीमारी नहीं है; यह अनियंत्रित कोशिका वृद्धि के कारण होती है। मधुमेह शरीर के द्वारा शर्करा के प्रक्रमण में एक एंजाइम संबंधी अवस्था है। हृदय रोग हृदय और रक्त वाहिकाओं से संबंधित है, विषाणु से नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard medical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते व्हायरल आजार आहे?",
+          "choices": [
+            "रॅबीज",
+            "कर्करोग",
+            "डायबिटीज",
+            "हृदयाचा आजार"
+          ],
+          "solution": "रॅबीज हा व्हायरल आजार आहे कारण तो रॅबीज व्हायरस कारणीभूत असतो, जो तंत्रिका प्रणालीला संसर्ग करतो. कर्करोग हा व्हायरल आजार नाही; तो अनियंत्रित कोशिका वाढीमुळे होतो. डायबिटीज हा शरीराच्या शर्करा प्रक्रियेवर प्रभाव पाडणारा एक अंतःस्रावी अवस्था आहे. हृदयाचा आजार हृदय आणि रक्तवाहिन्यांशी संबंधित आहे, व्हायरसशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses viral diseases with other diseases",
+        "Misunderstands the cause of cancer",
+        "Mixes up diabetes with other conditions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Rabies, which is a viral disease. The other options are non-viral diseases, and the author's explanations align with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 19,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which disease is caused by the virus influenza A (H N)?",
+      "choices": [
+        "Dengue",
+        "Malaria",
+        "Swine Flu",
+        "AIDS"
+      ],
+      "answerIndex": 2,
+      "solution": "Influenza A (H N) is the virus responsible for causing swine flu. This type of influenza is known for its ability to infect humans and cause seasonal outbreaks. Dengue is caused by a different virus, malaria is a parasitic disease, and AIDS is caused by the HIV virus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वायरस इन्फ्लूएंजा ए (एच एन) के कारण कौन-सी बीमारी होती है?",
+          "choices": [
+            "डेंगू",
+            "मलेरिया",
+            "स्वाइन फ्लू",
+            "एड्स"
+          ],
+          "solution": "इन्फ्लूएंजा ए (एच एन) वायरस स्वाइन फ्लू के कारण होता है। इस प्रकार के इन्फ्लूएंजा के मनुष्यों में संक्रमण होने और सीजनल बाढ़ के कारण होने की क्षमता होती है। डेंगू एक अलग वायरस के कारण होता है, मलेरिया एक परजीवी बीमारी है और एड्स एचआईवी वायरस के कारण होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate medical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता आजार व्हिरस इन्फ्लूएंझा A (H N) कारण होतो?",
+          "choices": [
+            "डेंगू",
+            "मलेरिया",
+            "स्वाइन फ्लू",
+            "एड्स"
+          ],
+          "solution": "इन्फ्लूएंझा A (H N) हा व्हिरस स्वाइन फ्लू ला कारणीभूत ठरतो. या प्रकारचा इन्फ्लूएंझा मानवांना संक्रमित करू शकतो आणि नियमित उष्ण महिन्यांत संसर्ग घडवू शकतो. डेंगू एक वेगळा व्हिरस कारणीभूत ठरतो, मलेरिया हा परजीवी रोग आहे आणि एड्स हा HIV व्हिरस कारणीभूत ठरतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Names a disease caused by a flavivirus",
+        "Names a disease caused by Anopheles mosquitoes",
+        null,
+        "Names a disease caused by HIV"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly framed and the solution is accurate. The correct answer is 'Swine Flu' as it is caused by the influenza A (H N) virus. The other options are correctly identified as being caused by different pathogens.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for rabies being fatal?",
+      "choices": [
+        "It affects the brain",
+        "It causes fever",
+        "It causes hydrophobia",
+        "It is not preventable"
+      ],
+      "answerIndex": 0,
+      "solution": "Rabies is fatal because the virus directly attacks the brain, leading to severe neurological damage. Fever and hydrophobia are symptoms that occur as a result of the infection but do not cause death. The disease can be prevented with timely vaccination, so the claim that it is not preventable is incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रेबीज में मृत्यु का मुख्य कारण क्या है?",
+          "choices": [
+            "यह दिमाग को प्रभावित करता है",
+            "यह बुखार का कारण बनता है",
+            "यह हाइड्रोफोबिया का कारण बनता है",
+            "इसे रोका नहीं जा सकता"
+          ],
+          "solution": "रेबीज मृत्युदायक होता है क्योंकि विषाणु सीधे दिमाग पर हमला करता है, जिसके कारण गंभीर तंत्रिका चोट होती है। बुखार और हाइड्रोफोबिया लक्षण हैं जो संक्रमण के परिणामस्वरूप होते हैं लेकिन मृत्यु का कारण नहीं होते। रोग को समय पर टीकाकरण से रोका जा सकता है, इसलिए यह कथन कि इसे रोका नहीं जा सकता गलत है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology commonly found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रॅबीसचा मुख्य कारण घातक का आहे?",
+          "choices": [
+            "ते मेंदूला प्रभावित करते",
+            "ते ताप निर्माण करते",
+            "ते हाइड्रोफोबिया निर्माण करते",
+            "ते रोखता येत नाही"
+          ],
+          "solution": "रॅबीस घातक असतो कारण व्हायरस मेंदूला थेट मारतो आणि गंभीर तांत्रिक नुकसान होतो. ताप आणि हाइड्रोफोबिया हे संसर्गाच्या परिणामांमध्ये उद्भवतात परंतु मृत्यूला कारणीभूत नाहीत. रोग वेळेवर लसीकरणाने रोखता येऊ शकतो, म्हणून तो रोखता येत नाही असा दावा अयोग्य आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for medical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Focuses on symptoms rather than cause",
+        "Confuses symptoms with causes",
+        "Ignores the fatality aspect"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the main reason rabies is fatal is that it affects the brain. The author's solution is sound and aligns with the reasoning provided.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 19,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the primary mode of transmission for hepatitis?",
+      "choices": [
+        "Contaminated water",
+        "Air",
+        "Blood",
+        "Food"
+      ],
+      "answerIndex": 0,
+      "solution": "Hepatitis is primarily transmitted through contaminated water, which carries the virus and spreads it to others. Air and food are not the main ways the virus spreads. Blood can transmit certain types of hepatitis, but it is not the primary mode for the most common forms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हेपेटाइटिस का प्राथमिक संचरण का मार्ग क्या है?",
+          "choices": [
+            "दूषित जल",
+            "हवा",
+            "रक्त",
+            "भोजन"
+          ],
+          "solution": "हेपेटाइटिस का प्राथमिक संचरण दूषित जल द्वारा होता है, जो विषाणु को ले जाता है और अन्य लोगों में फैलाता है। हवा और भोजन विषाणु के फैलाव के मुख्य तरीके नहीं हैं। रक्त कुछ प्रकार के हेपेटाइटिस के संचरण के लिए उत्तरदायी हो सकता है, लेकिन यह सबसे सामान्य प्रकार के लिए प्राथमिक मार्ग नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'हेपेटाइटिस' and 'दूषित जल' are standard in Hindi medical textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हेपॅटायटिसचा प्राथमिक प्रसार पद्धत काय आहे?",
+          "choices": [
+            "दूषित पाणी",
+            "हवा",
+            "रक्त",
+            "खाद्य"
+          ],
+          "solution": "हेपॅटायटिस दूषित पाणी माध्यमातून प्राथमिक प्रसार पावतो, जे व्हायरस वाहून नेते आणि इतरांमध्ये पसरते. हवा आणि खाद्य व्हायरस पसरण्याच्या मुख्य पद्धती नाहीत. रक्त काही प्रकारच्या हेपॅटायटिसला पसरू शकते, परंतु सर्वात सामान्य प्रकारांसाठी ते प्राथमिक पद्धत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate medical terminology consistent with Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Names a mode of transmission for other diseases",
+        "Names a mode of transmission for other diseases",
+        "Names a mode of transmission for other diseases"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (contaminated water), as per the author's key. However, this is factually incorrect, as hepatitis is primarily transmitted through blood or other bodily fluids, not contaminated water. The author's solution is based on a passage that appears to be incorrect or misleading.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a person has diabetes, what should they do to control it?",
+      "choices": [
+        "Follow a proper diet and exercise",
+        "Take antibiotics",
+        "Drink herbal tea",
+        "Avoid all food"
+      ],
+      "answerIndex": 0,
+      "solution": "Following a proper diet and exercise helps regulate blood sugar levels, which is essential for managing diabetes. Antibiotics are used to treat infections, not diabetes, and drinking herbal tea or avoiding all food can be harmful or ineffective without medical guidance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर कोई व्यक्ति मधुमेह में पीड़ित है, तो इसको नियंत्रित करने के लिए उसे क्या करना चाहिए?",
+          "choices": [
+            "एक उचित आहार और व्यायाम का पालन करें",
+            "एंटीबायोटिक लें",
+            "हर्बल चाय पीएं",
+            "सभी भोजन से बचें"
+          ],
+          "solution": "एक उचित आहार और व्यायाम रक्त शर्करा के स्तर को नियंत्रित करने में मदद करता है, जो मधुमेह के प्रबंधन के लिए आवश्यक है। एंटीबायोटिक संक्रमण के उपचार के लिए उपयोग किए जाते हैं, मधुमेह के लिए नहीं, और हर्बल चाय पीना या सभी भोजन से बचना चिकित्सीय सलाह के बिना हानिकारक या अकार्यक्षम हो सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या व्यक्तीला डायबिटीस असेल, तर त्यांनी त्याची नियंत्रण करावी?",
+          "choices": [
+            "योग्य आहार आणि व्यायाम करा",
+            "एंटीबायोटिक्स घ्या",
+            "हर्बल चहा पिणे",
+            "सर्व खाद्य पदार्थांचा निरोध करा"
+          ],
+          "solution": "योग्य आहार आणि व्यायाम रक्तातील साखरेच्या पातळी नियंत्रित करण्यास मदत करतात, जे डायबिटीस व्यवस्थापित करण्यासाठी आवश्यक आहे. एंटीबायोटिक्स संसर्गांच्या उपचारासाठी वापरले जातात, डायबिटीससाठी नाहीत, आणि हर्बल चहा पिणे किंवा सर्व खाद्य पदार्थांचा निरोध करणे वैद्यकीय मार्गदर्शनाशिवाय अनुचित किंवा असामर्थ्य असू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses treatment for other conditions",
+        "Misunderstands the role of antibiotics",
+        "Ignores the importance of diet and exercise"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as diet and exercise are essential for diabetes management. The other options are incorrect: antibiotics are not used for diabetes, herbal tea is not a standard treatment, and avoiding all food is harmful.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 19,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an example of an infectious disease that spreads through contaminated water?",
+      "choices": [
+        "Diabetes",
+        "AIDS",
+        "Dengue",
+        "Cholera"
+      ],
+      "answerIndex": 3,
+      "solution": "Cholera is an infectious disease that spreads through contaminated water. Diabetes is a non-infectious disease, AIDS is spread through blood and sexual contact, and dengue is transmitted by mosquitoes. Hence, the correct answer is Cholera.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक संक्रामक रोग का उदाहरण है जो दूषित पानी के माध्यम से फैलता है?",
+          "choices": [
+            "मधुमेह",
+            "एड्स",
+            "डेंगू",
+            "हैजा"
+          ],
+          "solution": "हैजा एक संक्रामक रोग है जो दूषित पानी के माध्यम से फैलता है। मधुमेह एक गैर-संक्रामक रोग है, एड्स रक्त और यौन संपर्क के माध्यम से फैलता है, और डेंगू मच्छरों द्वारा फैलता है। अतः सही उत्तर हैजा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains in the same position. The explanations for the distractors are also accurate in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता असंसर्गजन्य आजाराचा उदाहरण आहे जो दूषित पाण्यामार्फत पसरतो?",
           "choices": [
             "डायबिटीज",
-            "हृदयाचा आजार",
-            "सामान्य खाज",
-            "डाउनचा सिंड्रोम"
+            "एएचआयव्ही",
+            "डेंग्यू",
+            "हाप्पा"
           ],
-          "solution": "सामान्य खाज हा संसर्गजन्य आजाराचा उदाहरण आहे कारण तो व्हायरसमुळे होतो जो व्यक्तीतून व्यक्तीला पसरू शकतो. डायबिटीज आणि हृदयाचा आजार हे संसर्गजन्य प्रतिकारदायक एजंटमुळे होत नाहीत तर आनुवंशिकता किंवा जीवनशैलीसारख्या इतर कारणांमुळे होतात. डाउनचा सिंड्रोम हा आनुवंशिक विकार आहे, संसर्गजन्य आजार नाही.",
+          "solution": "हाप्पा हा असंसर्गजन्य आजार आहे जो दूषित पाण्यामार्फत पसरतो. डायबिटीज हा असंसर्गजन्य आजार आहे, एएचआयव्ही हा रक्त आणि लैंगिक संपर्कामार्फत पसरतो आणि डेंग्यू हा विषाणूंमार्फत पसरतो. म्हणूनच, योग्य उत्तर हाप्पा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used (e.g., 'हाप्पा' for cholera, 'एएचआयव्ही' for HIV).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses non-infectious diseases with infectious ones",
+        "Associates AIDS with water contamination",
+        "Mixes up mosquito-borne diseases with water-borne ones",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies cholera as a water-borne infectious disease and explains the other options accurately.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 15,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a preventive measure for heart disease?",
+      "choices": [
+        "Avoid smoking and alcohol",
+        "Take painkillers regularly",
+        "Eat more junk food",
+        "Ignore symptoms"
+      ],
+      "answerIndex": 0,
+      "solution": "Avoiding smoking and alcohol reduces the risk of heart disease by limiting damage to the cardiovascular system. Taking painkillers regularly and eating junk food can increase the risk by causing inflammation and high cholesterol, while ignoring symptoms delays necessary treatment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा हृदय रोग के रोकथाम का उपाय है?",
+          "choices": [
+            "धूम्रपान एवं शराब से बचें",
+            "नियमित रूप से दर्द निवारक लें",
+            "अधिक जंक खाद्य पदार्थ खाएं",
+            "लक्षणों की अवहेलना करें"
+          ],
+          "solution": "धूम्रपान एवं शराब के बचने से हृदय रोग के जोखिम कम हो जाता है क्योंकि यह कार्डियोवैस्कुलर प्रणाली के नुकसान को सीमित करता है। नियमित रूप से दर्द निवारक लेना एवं जंक खाद्य पदार्थ खाना जीवाणु एवं उच्च कोलेस्ट्रॉल के कारण जोखिम बढ़ा सकता है, जबकि लक्षणों की अवहेलना आवश्यक उपचार को देरी कर सकती है।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains option 1.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते दिलाच्या आजाराचे रोखक उपाय आहे?",
+          "choices": [
+            "धूम्रपान आणि अल्कोहोल टाळा",
+            "नियमितपणे वेदनाशामक घ्या",
+            "अधिक जंक खाद्य खा",
+            "लक्षणांना अनादर करा"
+          ],
+          "solution": "धूम्रपान आणि अल्कोहोल टाळणे हा हृदयाच्या आजाराच्या धोक्याला घटवते कारण हे हृदय-रक्तवाहिनी प्रणालीला नुकसान करते. नियमितपणे वेदनाशामक घेणे आणि जंक खाद्य खाणे हा धोक्याला वाढवते कारण ते भडिमार आणि उच्च कोलेस्ट्रॉल निर्माण करते, तर लक्षणांना अनादर करणे आवश्यक उपचारांच्या विलंबाला कारणीभूत होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses treatment with prevention",
+        "Mistakes harmful habits for preventive measures",
+        "Ignores the importance of health practices"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as avoiding smoking and alcohol is a well-established preventive measure for heart disease. The other options are clearly incorrect and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 17,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 18,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 19,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "2. Health and Diseases"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following diseases is caused by a virus and spreads through the air?",
+      "choices": [
+        "Tuberculosis",
+        "Dysentery",
+        "Swine flu",
+        "Malaria"
+      ],
+      "answerIndex": 2,
+      "solution": "Swine flu is caused by a virus and spreads through the air via secretions from the nose and throat. Tuberculosis is caused by bacteria, dysentery by bacteria or parasites, and malaria by a parasite transmitted by mosquitoes. Hence, the correct answer is Swine flu.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रोग एक वायरस के कारण होता है और हवा के माध्यम से फैलता है?",
+          "choices": [
+            "ट्यूबरकुलोसिस",
+            "डिसेंटी",
+            "स्वाइन फ्लू",
+            "मलेरिया"
+          ],
+          "solution": "स्वाइन फ्लू एक वायरस के कारण होता है और नाक और गले के स्रावों के माध्यम से हवा के माध्यम से फैलता है। ट्यूबरकुलोसिस जीवाणु के कारण होता है, डिसेंटी जीवाणु या परजीवी के कारण होता है और मलेरिया मच्छरों द्वारा संचारित एक परजीवी के कारण होता है। अतः सही उत्तर स्वाइन फ्लू है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता आजार व्हायरस कारणीभूत असतो आणि हवेमधून पसरतो?",
+          "choices": [
+            "ट्यूबरक्युलोसिस",
+            "डायसेंटरी",
+            "स्वाइन फ्लू",
+            "मलेरिया"
+          ],
+          "solution": "स्वाइन फ्लू हा व्हायरस कारणीभूत असतो आणि नाक आणि तोंडाच्या ग्रंथींमधून हवेमधून पसरतो. ट्यूबरक्युलोसिस हा बॅक्टेरिया कारणीभूत असतो, डायसेंटरी हा बॅक्टेरिया किंवा परजीवी कारणीभूत असतो आणि मलेरिया हा परजीवी कारणीभूत असतो जो वाघांमार्फत पसरतो. त्यामुळे सही उत्तर स्वाइन फ्लू आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
           "flag": null
@@ -72,10 +832,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses non-infectious diseases with infectious ones",
-        "mistakes hereditary diseases for infectious ones",
+        "Confuses bacterial diseases with viral diseases",
+        "Associates dysentery with airborne transmission",
         null,
-        "misunderstands the classification of diseases"
+        "Mixes up mosquito-borne diseases with airborne diseases"
       ],
       "solverAnswers": [
         2,
@@ -84,8 +844,8 @@
         2,
         2
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2 (Common cold), as it is caused by a virus and is contagious. The other options are non-infectious or hereditary, which aligns with the author's reasoning.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is accurate and aligns with the correct answer. Swine flu is indeed caused by a virus and spreads through the air. The other options are correctly identified as non-viral or non-airborne.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -116,775 +876,47 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a symptom of rabies?",
-      "choices": [
-        "Fever for 2-12 weeks",
-        "Chronic cough and hoarse voice",
-        "Lumps in the breast",
-        "Unexplained weight loss"
-      ],
-      "answerIndex": 0,
-      "solution": "Fever for 2-12 weeks is a symptom of rabies because it aligns with the prolonged fever associated with the disease. A chronic cough and hoarse voice are typically linked to respiratory conditions, lumps in the breast are associated with breast cancer, and unexplained weight loss can occur in various illnesses but is not specific to rabies.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रेबीज का लक्षण है?",
-          "choices": [
-            "2-12 सप्ताह तक का बुखार",
-            "लंबे समय तक खांसी और ध्वनि बदल जाना",
-            "स्तन में गांठ",
-            "अज्ञात कारण से वजन घटना"
-          ],
-          "solution": "2-12 सप्ताह तक का बुखार रेबीज का लक्षण है क्योंकि यह रोग से जुड़े लंबे समय तक के बुखार के साथ मेल खाता है। लंबे समय तक खांसी और ध्वनि बदल जाना आमतौर पर श्वसन संबंधी स्थितियों से जुड़ा होता है, स्तन में गांठ ब्रेस्ट कैंसर से जुड़ी होती है, और अज्ञात कारण से वजन घटना विभिन्न बीमारियों में हो सकती है लेकिन रेबीज के लिए विशिष्ट नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी रॅबीजचा लक्षण खालीलपैकी आहे?",
-          "choices": [
-            "2-12 आठवड्यांसाठी ताप",
-            "कायम खोकला आणि ध्वनी खराब झालेला",
-            "छातीत गाठ",
-            "अस्पष्ट वजन कमी होणे"
-          ],
-          "solution": "2-12 आठवड्यांसाठी ताप रॅबीजचे लक्षण आहे कारण ते रोगाशी जुळतो जो लांब तापाशी जुळतो. कायम खोकला आणि ध्वनी खराब झालेला हे श्वासनली आजाराशी जुळते, छातीत गाठ ही छातीच्या कॅन्सरशी जुळते आणि अस्पष्ट वजन कमी होणे विविध आजारांमध्ये होऊ शकते परंतु रॅबीजशी विशिष्ट नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses symptoms of cancer with rabies",
-        "incorrectly associates chronic cough with rabies",
-        "mistakenly links lumps in breast to rabies instead of cancer"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as fever for 2-12 weeks is a known symptom of rabies. The other options are indeed symptoms of cancer, not rabies, and the author's reasoning aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 17,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 18,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 19,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the primary mode of transmission for dengue?",
-      "choices": [
-        "Through contaminated food",
-        "Through direct contact with infected people",
-        "Through the bite of Aedes aegypti mosquitoes",
-        "Through the air"
-      ],
-      "answerIndex": 2,
-      "solution": "Dengue is primarily transmitted through the bite of Aedes aegypti mosquitoes, which carry the virus and pass it to humans when they bite. Contaminated food, direct contact, and airborne transmission are not effective methods for spreading the dengue virus. These other options do not align with the known biological mechanisms of dengue transmission.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "डेंगू का प्राथमिक संचरण का माध्यम क्या है?",
-          "choices": [
-            "कलुषित भोजन के माध्यम से",
-            "संक्रमित व्यक्ति के सीधे संपर्क के माध्यम से",
-            "एडीज़ एगिप्टी मच्छरों के काटने के माध्यम से",
-            "हवा के माध्यम से"
-          ],
-          "solution": "डेंगू का प्राथमिक संचरण एडीज़ एगिप्टी मच्छरों के काटने के माध्यम से होता है, जो वायरस ले जाते हैं और जब वे मनुष्यों को काटते हैं तो वायरस को स्थानांतरित कर देते हैं। कलुषित भोजन, सीधा संपर्क और हवा के माध्यम से संचरण डेंगू वायरस के फैलाव के लिए प्रभावी तरीके नहीं हैं। ये अन्य विकल्प डेंगू संचरण के ज्ञात जैविक यांत्रिकी के साथ संगत नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard medical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "डेंग्यूचा प्राथमिक प्रसार पद्धत कोणती आहे?",
-          "choices": [
-            "दूषित खाद्य पदार्थांमार्फत",
-            "संसर्गित लोकांशी सीधा संपर्क मार्फत",
-            "एडीज एजिप्टी माल्यांच्या काट्यामार्फत",
-            "हवामार्फत"
-          ],
-          "solution": "डेंग्यू एडीज एजिप्टी माल्यांच्या काट्यामार्फत प्राथमिक प्रसार पद्धत आहे, जे व्हायरस वाहून नेतात आणि जेव्हा ते माणसांना काटतात तेव्हा ते त्यांना व्हायरस पाठवतात. दूषित खाद्य, सीधा संपर्क आणि हवामार्फत प्रसार ही डेंग्यू व्हायरस पसरवण्याच्या वैज्ञानिक पद्धतींच्या अनुरूप नाहीत. या इतर विकल्पांमध्ये डेंग्यू प्रसाराच्या ज्ञात जैविक यंत्रणांशी तुलना करता येत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses transmission methods of other diseases",
-        "misidentifies the vector for dengue",
-        null,
-        "overlooks the specific mosquito that spreads dengue"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as dengue is primarily transmitted by Aedes aegypti mosquitoes. The other options represent common misconceptions about disease transmission.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 14,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 16,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What can be prevented by drinking boiled and filtered water?",
-      "choices": [
-        "Diarrhoea",
-        "Malaria",
-        "AIDS",
-        "Dengue"
-      ],
-      "answerIndex": 0,
-      "solution": "Drinking boiled and filtered water can prevent diarrhoea, as it helps in avoiding waterborne diseases. The other options are not directly prevented by this measure.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "बोले और छाने हुए पानी के पीने से क्या रोका जा सकता है?",
-          "choices": [
-            "डायरिया",
-            "मलेरिया",
-            "एड्स",
-            "डेंगू"
-          ],
-          "solution": "बोले और छाने हुए पानी के पीने से डायरिया रोका जा सकता है, क्योंकि यह जलजनित रोगों से बचाव में सहायता करता है। अन्य विकल्प इस उपाय से सीधे रोके नहीं जा सकते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original status as correct or incorrect. The term 'जलजनित रोगों' (waterborne diseases) is appropriate for a Hindi-medium textbook context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "उबलेल्या आणि फिल्टर केलेल्या पाण्याचे घेणे कोणत्या आजाराची टाळणी करू शकते?",
-          "choices": [
-            "डायरिया",
-            "मलेरिया",
-            "एएचआयव्ही",
-            "डेंगू"
-          ],
-          "solution": "उबलेल्या आणि फिल्टर केलेल्या पाण्याचे घेणे डायरियाची टाळणी करू शकते, कारण हे पाण्यातील जीवाणूंच्या वाढीला अटकाव करते. इतर विकल्प या उपायाने थांबविले जात नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "This is a mosquito-borne disease and not directly related to water purity.",
-        "This is a viral disease and not directly related to water purity.",
-        "This is a viral disease and not directly related to water purity."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Boiled and filtered water prevents waterborne diseases like diarrhoea. The other options are not directly related to water purity.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 20,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 21,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a preventive measure against infectious diseases?",
-      "choices": [
-        "Balanced diet",
-        "Physical exercise",
-        "Vaccination",
-        "Yogasanas"
-      ],
-      "answerIndex": 2,
-      "solution": "Vaccination is a preventive measure against infectious diseases because it helps the immune system recognize and fight specific pathogens. Balanced diet, physical exercise, and yogasanas support overall health but do not directly prevent infection by targeting specific diseases.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा संक्रामक रोगों के विरुद्ध रोकथाम का उपाय है?",
-          "choices": [
-            "संतुलित आहार",
-            "शारीरिक व्यायाम",
-            "टीकाकरण",
-            "योगासन"
-          ],
-          "solution": "टीकाकरण संक्रामक रोगों के विरुद्ध रोकथाम का उपाय है क्योंकि यह प्रतिरक्षा प्रणाली को विशिष्ट पैथोजन को पहचानने और लड़ने में सहायता करता है। संतुलित आहार, शारीरिक व्यायाम और योगासन सामान्य स्वास्थ्य के समर्थन में मदद करते हैं लेकिन विशिष्ट बीमारियों के लिए सीधे संक्रमण को रोकने में सक्षम नहीं होते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi medical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते आजारजन्य रोगांच्या रोखीचे उपाय आहे?",
-          "choices": [
-            "संतुलित आहार",
-            "शारीरिक व्यायाम",
-            "लसीकरण",
-            "योगासने"
-          ],
-          "solution": "लसीकरण हे आजारजन्य रोगांच्या रोखीचे उपाय आहे कारण ते प्रतिरोधक प्रणालीला विशिष्ट पैथॉजेन्स ओळखण्यास आणि त्यांच्याशी लढण्यास मदत करते. संतुलित आहार, शारीरिक व्यायाम आणि योगासने सामान्य आरोग्याला चालना देतात परंतु ते विशिष्ट आजारांच्या लढ्यात सीधा रोख घालत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for medical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Mentions a general health benefit, not specific to infectious diseases",
-        "Mentions a general health benefit, not specific to infectious diseases",
-        null,
-        "Believing that yoga alone can prevent infectious diseases without medical intervention"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2 (Vaccination), as it is a direct preventive measure against infectious diseases. The other options, while beneficial for general health, are not specifically mentioned as preventive measures against infectious diseases in the context of the question.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 20,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 21,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is a non-infectious disease?",
-      "choices": [
-        "Malaria",
-        "Tuberculosis",
-        "Diabetes",
-        "Dengue"
-      ],
-      "answerIndex": 2,
-      "solution": "Diabetes is a non-infectious disease because it results from the body's inability to regulate blood sugar, not from an infectious agent. Malaria, Tuberculosis, and Dengue are all caused by pathogens such as parasites, bacteria, or viruses, which can spread from person to person.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक गैर-संक्रामक बीमारी है?",
-          "choices": [
-            "मलेरिया",
-            "टीबी",
-            "मधुमेह",
-            "डेंगू"
-          ],
-          "solution": "मधुमेह एक गैर-संक्रामक बीमारी है क्योंकि यह शरीर के रक्त शर्करा के नियमन में विफलता के कारण होती है, एक संक्रामक कारक के कारण नहीं। मलेरिया, टीबी और डेंगू सभी परजीवी, जीवाणु या वायरस जैसे रोगजनकों के कारण होते हैं, जो व्यक्ति से व्यक्ति तक फैल सकते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All medical terms are correctly translated using standard Hindi equivalents.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता असंसर्गजन्य आजार आहे?",
-          "choices": [
-            "मलेरिया",
-            "ट्यूबरक्युलोसिस",
-            "डायबिटीज",
-            "डेंगू"
-          ],
-          "solution": "डायबिटीज हा असंसर्गजन्य आजार आहे कारण तो शरीराच्या रक्तातील शर्करेच्या नियंत्रणाच्या अक्षमतेमुळे होतो, जे संसर्गजनक एजंटमुळे होत नाही. मलेरिया, ट्यूबरक्युलोसिस आणि डेंगू हे सर्व परजीवी, जीवाणू किंवा व्हायरस या संसर्गजनकांमुळे होतात, जे माणूसांमधून माणूसांमध्ये पसरू शकतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "This is an infectious disease caused by a parasite.",
-        "This is an infectious disease caused by bacteria.",
-        null,
-        "This is an infectious disease caused by a virus."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is Diabetes (option 2), which is a non-infectious disease. The other options are all infectious diseases, as correctly identified by the author.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 20,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 21,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A student noticed that mosquitoes breed in water-logged areas. Which of the following measures should be taken to control this?",
-      "choices": [
-        "Using insecticides",
-        "Keeping the surroundings clean",
-        "Spitting in public places",
-        "Drinking boiled water"
-      ],
-      "answerIndex": 1,
-      "solution": "Keeping the surroundings clean prevents water from accumulating, which stops mosquitoes from breeding. Using insecticides may kill adult mosquitoes but does not address the breeding source. Spitting in public places is unsanitary but unrelated to mosquito control. Drinking boiled water prevents waterborne diseases, not mosquito-borne ones.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र ने देखा कि मच्छर पानी भरे हुए क्षेत्रों में पैदा होते हैं। निम्नलिखित में से कौन-सा उपाय इसके नियंत्रण के लिए लिया जाना चाहिए?",
-          "choices": [
-            "कीटनाशकों का उपयोग",
-            "आसपास की सफाई बनाए रखना",
-            "सार्वजनिक स्थानों पर बलात्कार करना",
-            "उबले पानी का सेवन करना"
-          ],
-          "solution": "आसपास की सफाई बनाए रखने से पानी जमा नहीं होता, जिससे मच्छर पैदा नहीं होते। कीटनाशकों का उपयोग मच्छरों के वयस्कों को मार सकता है लेकिन बरामदा के स्रोत को हल नहीं करता। सार्वजनिक स्थानों पर बलात्कार करना अस्वच्छ होता है लेकिन मच्छर नियंत्रण से असंबंधित होता है। उबले पानी का सेवन जलजनित बीमारियों को रोकता है, न कि मच्छर जनित बीमारियों को।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate terminology used in a Hindi-medium educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याला लक्षात आले की दाणेमारे जलसंचयात उत्पन्न होतात. खालीलपैकी कोणती उपाययोजना करावी लागेल त्याचे नियंत्रण करण्यासाठी?",
-          "choices": [
-            "कीटकनाशकांचा वापर करणे",
-            "आजूबाजू शुद्ध ठेवणे",
-            "जनतेत थूकणे",
-            "उकडलेले पाणी पिणे"
-          ],
-          "solution": "आजूबाजू शुद्ध ठेवणे पाणी जमा होण्यास अडथळा आणते, जे दाणेमारांच्या प्रसाराला थांबवते. कीटकनाशकांचा वापर वयस्क दाणेमारांना मारू शकतो परंतु प्रसाराच्या स्रोताला नकार देत नाही. जनतेत थूकणे अस्वच्छतेचे कारण आहे परंतु दाणेमारांच्या नियंत्रणाशी संबंधित नाही. उकडलेले पाणी पिणे जलजनित रोगांच्या टाळण्यासाठी आहे, दाणेमारांमुळे होणाऱ्या रोगांच्या टाळण्यासाठी नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for public health concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses measures for mosquito control with other disease prevention",
-        null,
-        "misidentifies the correct measure for controlling mosquitoes",
-        "overlooks the relationship between water-logged areas and mosquito breeding"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as keeping the surroundings clean directly addresses water-logged areas where mosquitoes breed. The other options are either unrelated (spitting, drinking boiled water) or involve measures that are not directly related to mosquito control (insecticides).",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 14,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 15,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 16,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a person has unexplained weight loss and a chronic cough, what disease might they be suffering from?",
-      "choices": [
-        "Rabies",
-        "Diabetes",
-        "Cancer",
-        "Heart disease"
-      ],
-      "answerIndex": 2,
-      "solution": "Cancer can cause unexplained weight loss and a chronic cough due to the body's response to tumor growth and possible lung involvement. Rabies typically presents with neurological symptoms, diabetes is more associated with frequent urination and thirst, and heart disease usually involves symptoms like shortness of breath or chest pain.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति अज्ञात कारण से वजन घटना और एक लंबे समय तक बुखार होना के लक्षण दिखाता है, तो उसे कौन सा रोग हो सकता है?",
-          "choices": [
-            "रैबीज",
-            "मधुमेह",
-            "कैंसर",
-            "हृदय रोग"
-          ],
-          "solution": "कैंसर अज्ञात कारण से वजन घटना और लंबे समय तक बुखार के कारण हो सकता है क्योंकि शरीर के ट्यूमर वृद्धि के प्रति प्रतिक्रिया और संभावित फेफड़ों में शामिल हो सकता है। रैबीज आमतौर पर तंत्रिका संबंधी लक्षण दिखाता है, मधुमेह के लक्षण अक्सर अक्सर पेशाब करना और तरस होना होता है, और हृदय रोग में आमतौर पर श्वास लेने में कठिनाई या छाती में दर्द होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The distractors remain incorrect as in the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखाद्या व्यक्तीला अस्पष्ट वजन कमी होत असेल आणि लांबलचक खोकला असेल तर त्यांना कोणत्या आजाराची लागण झाली असू शकते?",
-          "choices": [
-            "रॅबीज",
-            "मधुमेह",
-            "कर्करोग",
-            "हृदयाचा आजार"
-          ],
-          "solution": "कर्करोग अस्पष्ट वजन कमी होण्यास आणि लांबलचक खोकल्यास कारणीभूत ठरू शकतो, कारण शरीराचा अनुक्रिया निर्माण होत असताना आणि फुफ्फुसात भाग घेण्याच्या कारणामुळे. रॅबीज अक्सर तांत्रिक लक्षणांसह दिसतो, मधुमेह अक्सर वारंवार मूत्रत्याग आणि तहान यांच्याशी संबंधित असतो आणि हृदयाचा आजार अक्सर श्वास घेण्यात त्रास किंवा छातीत वेदना यांच्याशी संबंधित असतो.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses rabies with cancer symptoms",
-        "mistakenly associates diabetes with these symptoms",
-        null,
-        "overlooks that heart disease does not have these symptoms"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is Cancer, as unexplained weight loss and chronic cough are indeed associated with cancer. The other options are correctly dismissed based on their typical symptoms.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 17,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 18,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 19,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following is a correct statement regarding the Pradhan Mantri Jan Aushadhi Yojana?",
-      "choices": [
-        "It provides branded medicines at low prices",
-        "It provides generic medicines at affordable prices",
-        "It focuses only on generic medicines",
-        "It is available only in rural areas"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct statement is that it provides generic medicines at affordable prices, as the initiative aims to make essential medicines accessible to all by offering them at lower costs. Branded medicines are not the focus, and the program is not limited to rural areas or exclusively focused on generic medicines.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "प्रधानमंत्री जन औषधि योजना के संबंध में निम्नलिखित में से कौन-सा सही कथन है?",
-          "choices": [
-            "यह ब्रांडेड दवाएं कम कीमत पर प्रदान करता है",
-            "यह सामान्य दवाएं स्वीकार्य कीमत पर प्रदान करता है",
-            "यह केवल सामान्य दवाओं पर केंद्रित है",
-            "यह केवल ग्रामीण क्षेत्रों में उपलब्ध है"
-          ],
-          "solution": "सही कथन यह है कि यह सामान्य दवाएं स्वीकार्य कीमत पर प्रदान करता है, क्योंकि इस पहल का उद्देश्य सभी के लिए आवश्यक दवाओं की सुलभता बनाना है जिससे उन्हें कम कीमत पर प्रदान किया जा सके। ब्रांडेड दवाएं इसका ध्यान केंद्र नहीं है, और कार्यक्रम केवल ग्रामीण क्षेत्रों तक सीमित नहीं है या केवल सामान्य दवाओं पर केंद्रित नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options are correctly translated, and the correct answer remains option (2). The distractors remain incorrect as in the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान प्रधानमंत्री जन औषध योजनेबद्दल बरोबर आहे?",
-          "choices": [
-            "ते ब्रँडेड औषधे खूप कमी किंमतीत देते",
-            "ते जनरिक औषधे स्वस्त किंमतीत देते",
-            "ते केवळ जनरिक औषधांवर लक्ष केंद्रित करते",
-            "ते केवळ ग्रामीण भागात उपलब्ध आहे"
-          ],
-          "solution": "बरोबर विधान असे आहे की ते जनरिक औषधे स्वस्त किंमतीत देते, कारण योजनेचा उद्देश अनावश्यक औषधांची सर्वांसाठी पोहोच घालणे आहे. ब्रँडेड औषधांचा फोकस नाही आणि कार्यक्रम ग्रामीण भागात मर्यादित नाही किंवा केवळ जनरिक औषधांवर लक्ष केंद्रित करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for government schemes and medical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses generic medicines with branded ones, thinking they are cheaper",
-        null,
-        "Confuses generic with the only type of medicine available, ignoring the scheme's emphasis on affordability and quality",
-        "confuses the target population of the scheme as rural instead of urban"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the scheme provides generic medicines at affordable prices. The author's reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 20,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 21,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "2. Health and Diseases",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Why is it important to understand the difference between infectious and non-infectious diseases?",
+      "stem": "Which of the following is a preventive measure for a disease that is caused by a virus and transmitted through contaminated needles?",
       "choices": [
-        "To know how to treat them",
-        "To prevent their spread",
-        "To classify them",
-        "To know their symptoms"
+        "Drinking boiled water",
+        "Vaccination with BCG",
+        "Using ORS",
+        "Testing blood for HIV"
       ],
-      "answerIndex": 1,
-      "solution": "Understanding the difference between infectious and non-infectious diseases helps in preventing their spread, as infectious diseases can be transmitted from person to person. The other options are not the primary reason for understanding this difference.",
+      "answerIndex": 3,
+      "solution": "Testing blood for HIV is a preventive measure for a disease caused by a virus (HIV) and transmitted through contaminated needles. Drinking boiled water prevents water-borne diseases, BCG vaccination prevents tuberculosis, and ORS is used for dehydration due to diarrheal diseases. Hence, the correct answer is Testing blood for HIV.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "क्यों महत्वपूर्ण है आशय बीमारियों और गैर-संक्रामक बीमारियों के बीच अंतर को समझना?",
+          "stem": "निम्नलिखित में से कौन-सा एक विषाणु के कारण होने वाले रोग का रोकथाम का उपाय है जो संक्रमित सुई के माध्यम से फैलता है?",
           "choices": [
-            "उनका उपचार करना जानना",
-            "उनके फैलाव को रोकना",
-            "उन्हें वर्गीकृत करना",
-            "उनके लक्षण जानना"
+            "उबला हुआ पानी पीना",
+            "बीसीजी के साथ टीकाकरण",
+            "ओआरएस का उपयोग करना",
+            "एचआईवी के लिए रक्त की जांच करना"
           ],
-          "solution": "आशय बीमारियों और गैर-संक्रामक बीमारियों के बीच अंतर को समझना उनके फैलाव को रोकने में मदद करता है, क्योंकि आशय बीमारियां व्यक्ति से व्यक्ति तक फैल सकती हैं। अन्य विकल्प इस अंतर को समझने का प्राथमिक कारण नहीं हैं।",
+          "solution": "एचआईवी के लिए रक्त की जांच करना एक विषाणु (एचआईवी) के कारण होने वाले रोग का रोकथाम का उपाय है जो संक्रमित सुई के माध्यम से फैलता है। उबला हुआ पानी पानी के कारण होने वाले रोगों को रोकता है, बीसीजी टीकाकरण टीबी को रोकता है, और ओआरएस डायरिया के कारण नीम के लिए उपयोग किया जाता है। इसलिए सही उत्तर एचआईवी के लिए रक्त की जांच करना है।",
           "imageAlt": null,
-          "critique": "Hindi translation is accurate, maintains the original meaning, and uses standard medical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate medical terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "कारण आजारांच्या संसर्गजन्य आणि असंसर्गजन्य यांच्या फरकाचे ज्ञान का महत्वाचे आहे?",
+          "stem": "खालीलपैकी कोणते एक विषाणूमुळे होणार्‍या आजाराचे रोखीचे उपाय आहे जो दूषित सुईंमुळे पसरतो?",
           "choices": [
-            "त्यांच्या उपचाराचे ज्ञान करून घेण्यासाठी",
-            "त्यांच्या पसरण्याची अट रोखण्यासाठी",
-            "त्यांचे वर्गीकरण करण्यासाठी",
-            "त्यांच्या लक्षणांचे ज्ञान करून घेण्यासाठी"
+            "उकडलेले पाणी पिणे",
+            "बीसीजी लसीकरण",
+            "ओआरएस वापरणे",
+            "एचआयव्हीसाठी रक्त तपासणे"
           ],
-          "solution": "संसर्गजन्य आणि असंसर्गजन्य आजारांच्या फरकाचे ज्ञान त्यांच्या पसरण्याची अट रोखण्यासाठी महत्वाचे आहे, कारण संसर्गजन्य आजार व्यक्तीतून व्यक्तीला पसरू शकतात. इतर विकल्प या फरकाचे ज्ञान करून घेण्याच्या मुख्य कारणांपेक्षा भिन्न आहेत.",
+          "solution": "एचआयव्हीसाठी रक्त तपासणे हा विषाणू (एचआयव्ही) मुळे होणार्‍या आजाराचे रोखीचे उपाय आहे आणि दूषित सुईंमुळे पसरतो. उकडलेले पाणी पिणे हापाणी दुषित आजारांना रोखते, बीसीजी लसीकरण टीबी रोखते आणि ओआरएस डायरियामुळे होणार्‍या निर्जलीकरणासाठी वापरले जाते. म्हणून, योग्य उत्तर एचआयव्हीसाठी रक्त तपासणे आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
           "flag": null
@@ -895,20 +927,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Focuses on treatment rather than prevention",
-        null,
-        "Confuses classification with prevention",
-        "Ignores the role of spread in disease management"
+        "Associates water purification with viral transmission",
+        "Confuses tuberculosis prevention with viral diseases",
+        "Mixes up treatment for dehydration with prevention of viral diseases",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as understanding the difference between infectious and non-infectious diseases is primarily important for preventing the spread of infectious diseases. The other options are secondary or not the main purpose.",
+      "critique": "The correct answer is 3, as testing blood for HIV prevents transmission through contaminated needles. The other options are correctly dismissed as not relevant to viral transmission via needles.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -939,7 +971,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:28:54.549Z",
+      "generatedAt": "2026-10-22T06:11:32.523Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

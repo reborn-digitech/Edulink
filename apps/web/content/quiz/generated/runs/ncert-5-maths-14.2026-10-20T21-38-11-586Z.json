@@ -1,0 +1,524 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:38:11.586Z",
+  "finishedAt": "2026-10-20T21:41:04.516Z",
+  "seconds": 173,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm114.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Maps And Locations",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n5. (c) (2,-1)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 60731,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 14358,
+      "completionTokens": 4338
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 159438,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 13801,
+      "completionTokens": 5384
+    },
+    "solver": {
+      "calls": 159,
+      "ms": 70137,
+      "in": 21,
+      "out": 6,
+      "rejects": 15,
+      "promptTokens": 25101,
+      "completionTokens": 1677
+    },
+    "form": {
+      "calls": 4,
+      "ms": 7943,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 983,
+      "completionTokens": 241
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2722,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 50241,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4258,
+      "completionTokens": 2113
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person is facing the rising sun, which direction is their right hand pointing?",
+      "ms": {
+        "draft": 2888,
+        "critique": 5130,
+        "solver": 747
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a person is facing the rising sun, which direction is their left hand pointing?",
+      "ms": {
+        "draft": 2888,
+        "critique": 5155,
+        "solver": 1421
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When a person is facing the rising sun, which direction are they facing?",
+      "ms": {
+        "draft": 2888,
+        "critique": 5454,
+        "solver": 1921,
+        "form": 1448
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "On the zoo map, the ant can only crawl along the dotted lines. To get to the sugar, the ant has to crawl 3 cm in the ________ direction. Which direction should fill the blank?",
+      "ms": {
+        "draft": 2888,
+        "critique": 6187
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "On the zoo map, the panda is located at the intersection of the first row and the first column. If the ant needs to reach the apple, it has to crawl 2 cm east, 3 cm north, and 1 cm west. What is the total distance the ant crawls?",
+      "ms": {
+        "draft": 2888,
+        "critique": 5934,
+        "solver": 13497
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the bird-watching camp, the tent to the west of the road is blue. The tent closest to the lake is green. The tent north of the green tent is purple. The tent south of the lake is yellow. Which tent is purple?",
+      "ms": {
+        "draft": 2888,
+        "critique": 6229,
+        "solver": 14251,
+        "form": 2250
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the location of the tortoise?",
+      "ms": {
+        "draft": 3058,
+        "critique": 7417,
+        "solver": 9077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If an animal is at (3,8) and it moves 5 steps towards the west, what will be its new location?",
+      "ms": {
+        "draft": 3058,
+        "critique": 5423,
+        "solver": 10502
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the coordinate of the tortoise?",
+      "ms": {
+        "draft": 3058,
+        "critique": 5074,
+        "solver": 6366
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student starts at (2,2) and moves 5 steps west and 4 steps south, what will be their final coordinate?",
+      "ms": {
+        "draft": 3058,
+        "critique": 5404,
+        "solver": 8120
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the location of the tortoise as given in the passage?",
+      "ms": {
+        "draft": 2175,
+        "critique": 5249,
+        "solver": 1296
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the position of the animal at (1,4) as given in the passage?",
+      "ms": {
+        "draft": 2175,
+        "critique": 5444,
+        "solver": 1872
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an animal is placed at (3,8) on the map, which color dot should be placed on it?",
+      "ms": {
+        "draft": 2175,
+        "critique": 4983,
+        "solver": 1068,
+        "form": 2932
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the map has a grid where each coordinate represents a point, and an animal is placed at (11,3), which animal is it likely to be?",
+      "ms": {
+        "draft": 2175,
+        "critique": 4569
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given information, which animal is located at (2,6)?",
+      "ms": {
+        "draft": 2175,
+        "critique": 5095,
+        "solver": 999
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student places a red dot at (8,3), which animal is it most likely to represent?",
+      "ms": {
+        "draft": 2175,
+        "critique": 4817,
+        "solver": 1381
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is his left hand pointing?",
+      "ms": {
+        "draft": 2001,
+        "critique": 5124
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is his right hand pointing?",
+      "ms": {
+        "draft": 2001,
+        "critique": 4846,
+        "solver": 933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the bird-watching camp, which tent is to the west of the road?",
+      "ms": {
+        "draft": 2001,
+        "critique": 5626,
+        "solver": 1133
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the bird-watching camp, which tent is closest to the lake?",
+      "ms": {
+        "draft": 2001,
+        "critique": 4898,
+        "solver": 745
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the bird-watching camp, which tent is north of the green tent?",
+      "ms": {
+        "draft": 2001,
+        "critique": 4463,
+        "solver": 944
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student starts at (1,1) and moves 4 steps east and 3 steps north, what coordinate will they reach?",
+      "ms": {
+        "draft": 3058,
+        "critique": 5197,
+        "solver": 9275,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is he facing?",
+      "ms": {
+        "draft": 2001,
+        "critique": 4862,
+        "solver": 1397,
+        "form": 2158,
+        "translation": 23505
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you move 3 steps towards the east and then 2 steps towards the north, what coordinate will you reach?",
+      "ms": {
+        "draft": 3058,
+        "critique": 5079,
+        "solver": 9515,
+        "form": 0,
+        "translation": 24285
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person is facing the rising sun, which direction is their right hand pointing?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a person is facing the rising sun, which direction is their left hand pointing?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "When a person is facing the rising sun, which direction are they facing?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the sun rises in the south, which is incorrect for mo…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "On the zoo map, the ant can only crawl along the dotted lines. To get to the sugar, the ant has to crawl 3 cm in the ________ direction. Which direction should fill the blank?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "On the zoo map, the panda is located at the intersection of the first row and the first column. If the ant needs to reach the apple, it has to crawl 2 cm east, 3 cm north, and 1 cm west. What is the total distance the ant crawls?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the bird-watching camp, the tent to the west of the road is blue. The tent closest to the lake is green. The tent north of the green tent is purple. The tent south of the lake is yellow. Which tent is purple?",
+      "reason": "option 0 repeats the stem's wording (\"The tent to the west of the road\"); option 2 repeats the stem's wording (\"The tent north of the green tent\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is the location of the tortoise?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If an animal is at (3,8) and it moves 5 steps towards the west, what will be its new location?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is the coordinate of the tortoise?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student starts at (2,2) and moves 5 steps west and 4 steps south, what will be their final coordinate?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the location of the tortoise as given in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the position of the animal at (1,4) as given in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an animal is placed at (3,8) on the map, which color dot should be placed on it?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"does not read the passage carefully…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the map has a grid where each coordinate represents a point, and an animal is placed at (11,3), which animal is it likely to be?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the given information, which animal is located at (2,6)?",
+      "reason": "the solver picked option 2 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student places a red dot at (8,3), which animal is it most likely to represent?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is his left hand pointing?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is his right hand pointing?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the bird-watching camp, which tent is to the west of the road?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the bird-watching camp, which tent is closest to the lake?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the bird-watching camp, which tent is north of the green tent?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a student starts at (1,1) and moves 4 steps east and 3 steps north, what coordinate will they reach?",
+      "reason": "near-duplicate of batch item \"If you move 3 steps towards the east and then 2 st…\" (cosine 0.900 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

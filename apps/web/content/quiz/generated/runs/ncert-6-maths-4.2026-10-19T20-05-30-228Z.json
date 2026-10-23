@@ -1,0 +1,739 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T20:05:30.228Z",
+  "finishedAt": "2026-10-19T20:12:30.175Z",
+  "seconds": 420,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp104.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Data Handling and Presentation",
+    "edition": "Reprint 2026-27",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n10. B 𝑁 66\n= = 33, which lies in the interval 10-15\n2 2\n⇒ Median Class is 10-15\nLower limit of median class =10\n(B) 𝟏𝟎",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 140861,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 45754,
+      "completionTokens": 8317
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 251812,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 19320,
+      "completionTokens": 7338
+    },
+    "solver": {
+      "calls": 215,
+      "ms": 94776,
+      "in": 35,
+      "out": 22,
+      "rejects": 13,
+      "promptTokens": 34276,
+      "completionTokens": 1991
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4704,
+      "in": 22,
+      "out": 15,
+      "rejects": 7,
+      "promptTokens": 474,
+      "completionTokens": 122
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 5599,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 284948,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19789,
+      "completionTokens": 9223
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of collecting data as described in the passage?",
+      "ms": {
+        "draft": 3102,
+        "critique": 5927
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the shoe size data, how did arranging the data in ascending order help Sushri Sandhya?",
+      "ms": {
+        "draft": 3102,
+        "critique": 6542,
+        "solver": 2231
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 12 students chose jalebi, 15 chose gulab jamun, 10 chose gujiya, 8 chose barfi, and 5 chose rasgulla, how many students are there in the class?",
+      "ms": {
+        "draft": 3102,
+        "critique": 6988,
+        "solver": 1098
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are 5 students who wear shoe size 4, 3 students who wear size 5, and 2 who wear size 6, how many students wear shoe sizes larger than 4?",
+      "ms": {
+        "draft": 3102,
+        "critique": 5703,
+        "solver": 1606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a pictograph uses 1 symbol = 5 students, how many symbols are needed to represent 33 students?",
+      "ms": {
+        "draft": 2457,
+        "critique": 5967,
+        "solver": 1878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which class were the maximum number of students absent?",
+      "ms": {
+        "draft": 2861,
+        "critique": 7100,
+        "solver": 1742
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the bar graph uses a scale where 1 unit length represents 10 runs, and a bar has a length of 7 units, how many runs did the player score?",
+      "ms": {
+        "draft": 2861,
+        "critique": 6157,
+        "solver": 12022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the data provided, what is the total expenditure of Imran’s family?",
+      "ms": {
+        "draft": 6479,
+        "critique": 5770,
+        "solver": 1702,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct way to represent data in a bar graph?",
+      "ms": {
+        "draft": 6479,
+        "critique": 7957,
+        "solver": 1510
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the bar for Vidisha is 6 units and the bar for Jabalpur is 5 units, and the scale is 1 unit = 10 tickets, what is the total number of tickets sold for both cities?",
+      "ms": {
+        "draft": 6479,
+        "critique": 8140,
+        "solver": 1230,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of data handling as described in the passage?",
+      "ms": {
+        "draft": 27947,
+        "critique": 5714,
+        "solver": 1251,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the total number of tickets sold for all cities is 110, and the bar for Seoni is 4 units, what should be the scale for this bar graph?",
+      "ms": {
+        "draft": 6479,
+        "critique": 7340,
+        "solver": 1390
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A pictograph uses a symbol to represent 10 students. If the total number of students is 33, what is the minimum number of symbols needed to represent the data accurately?",
+      "ms": {
+        "draft": 4975,
+        "critique": 5271,
+        "solver": 4035,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of graph is useful for comparing the lengths of the longest rivers on each continent?",
+      "ms": {
+        "draft": 3118,
+        "critique": 6205,
+        "solver": 1707
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the scale used in the pictograph showing the number of dogs in different villages?",
+      "ms": {
+        "draft": 3118,
+        "critique": 6666,
+        "solver": 2508
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many symbols are used to represent the number of dogs in Village B in the pictograph?",
+      "ms": {
+        "draft": 3118,
+        "critique": 6119,
+        "solver": 1570
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Is Kamini correct in saying that the number of dogs in Village B and Village D together is more than the number of dogs in the other 4 villages?",
+      "ms": {
+        "draft": 3118,
+        "critique": 5795,
+        "solver": 1378
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a bar graph, the bar for Vidisha is 6 unit lengths and the bar for Jabalpur is 5 unit lengths. What is the scale of the graph if 24 tickets were sold for Vidisha?",
+      "ms": {
+        "draft": 3975,
+        "critique": 6944,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The table shows the number of students who chose different sweets. If 10 students chose gujiya, 8 chose rasgulla, and 12 chose gulab jamun, what is the total number of students who chose these three sweets?",
+      "ms": {
+        "draft": 4066,
+        "critique": 5186,
+        "solver": 1222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a pictograph, 1 symbol represents 100 kites. Rani purchased 300 kites. How many symbols represent the kites that Rani purchased?",
+      "ms": {
+        "draft": 3975,
+        "critique": 7419,
+        "solver": 11242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the pictograph, each symbol represents 5 students. If there are 3 symbols for Monday, 2 symbols for Tuesday, 4 symbols for Wednesday, 1 symbol for Thursday, and 3 symbols for Friday, how many students borrowed books in total during the week?",
+      "ms": {
+        "draft": 4066,
+        "critique": 8246
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the total number of students who chose jalebi and barfi if jalebi was chosen by 5 students and barfi by 7 students?",
+      "ms": {
+        "draft": 4066,
+        "critique": 6723,
+        "solver": 13415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of a pictograph?",
+      "ms": {
+        "draft": 2457,
+        "critique": 5192,
+        "solver": 1611,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did Shri Nilesh record the preferences of the students for sweets?",
+      "ms": {
+        "draft": 3102,
+        "critique": 6206,
+        "solver": 14106,
+        "form": 3407
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a pictograph uses one symbol to represent 10 students, how many students do 5 symbols represent?",
+      "ms": {
+        "draft": 2457,
+        "critique": 4504,
+        "solver": 1553,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pictograph uses one symbol to represent 5 students, how many symbols are needed to show 25 students?",
+      "ms": {
+        "draft": 2457,
+        "critique": 5211,
+        "solver": 1355,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a pictograph, the scale is 1 symbol = 10 students. If a category has 3 full symbols and one half symbol, how many students does this represent?",
+      "ms": {
+        "draft": 2457,
+        "critique": 6151,
+        "solver": 1335,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The frequency distribution table of wickets taken by Jaspreet Bumrah shows that in 8 matches, he took 3 wickets. What is the total number of wickets taken in these matches?",
+      "ms": {
+        "draft": 3975,
+        "critique": 6867,
+        "solver": 2222,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of graph is useful for comparing the heights of the tallest persons in each class in a school?",
+      "ms": {
+        "draft": 3118,
+        "critique": 6049,
+        "solver": 10936,
+        "form": 0,
+        "translation": 38708
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does each symbol in a pictograph represent?",
+      "ms": {
+        "draft": 2457,
+        "critique": 5694,
+        "solver": 1235,
+        "form": 0,
+        "translation": 25553
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the height of a bar in a bar graph represent?",
+      "ms": {
+        "draft": 2861,
+        "critique": 4620,
+        "solver": 1566,
+        "form": 0,
+        "translation": 42339
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 unit length on a bar graph represents 100 vehicles, what is the number of vehicles represented by a bar of length 5 units?",
+      "ms": {
+        "draft": 2861,
+        "critique": 6561,
+        "solver": 1469,
+        "form": 0,
+        "translation": 27646
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the bar graph showing the number of vehicles passing through a road crossing, which time interval had the least traffic?",
+      "ms": {
+        "draft": 2861,
+        "critique": 6409,
+        "solver": 1529,
+        "form": 1,
+        "translation": 32089
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a bar graph, the vertical axis represents the values of the data. If the scale used is 1 unit length = ₹200, and the bar for 'Education' is 4 units long, what is the expenditure on education?",
+      "ms": {
+        "draft": 5228,
+        "critique": 4672,
+        "solver": 683,
+        "form": 0,
+        "translation": 22175
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the total number of saplings planted on Wednesday and Thursday?",
+      "ms": {
+        "draft": 4626,
+        "critique": 6801,
+        "solver": 1305,
+        "form": 1974,
+        "translation": 23263
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the data collected from a news article shows that the letter 'e' appears 20 times, 'c' appears 15 times, 'i' appears 10 times, 'r' appears 12 times, and 'x' appears 5 times, which letter appears the most?",
+      "ms": {
+        "draft": 3102,
+        "critique": 6107,
+        "solver": 1672,
+        "form": 1,
+        "translation": 33528
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the bar graph showing the population of India in crores, if 1 unit length represents 10 crores, and a bar has a length of 8 units, what is the total population represented by that bar?",
+      "ms": {
+        "draft": 2861,
+        "critique": 7416,
+        "solver": 1133,
+        "form": 0,
+        "translation": 36216
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main advantage of using bar graphs according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of collecting data as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the shoe size data, how did arranging the data in ascending order help Sushri Sandhya?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 12 students chose jalebi, 15 chose gulab jamun, 10 chose gujiya, 8 chose barfi, and 5 chose rasgulla, how many students are there in the class?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If there are 5 students who wear shoe size 4, 3 students who wear size 5, and 2 who wear size 6, how many students wear shoe sizes larger than 4?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"3+2\" = 5, but the key says 7"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a pictograph uses 1 symbol = 5 students, how many symbols are needed to represent 33 students?",
+      "reason": "options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"33/5\" = 6.6, but the key says 7"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In which class were the maximum number of students absent?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the bar graph uses a scale where 1 unit length represents 10 runs, and a bar has a length of 7 units, how many runs did the player score?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the data provided, what is the total expenditure of Imran’s family?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is the value of the expenditure on house rent, not the …\"); ARITHMETIC MISMATCH — checkExpr \"3000+3400+800+400+600+1200\" = 9400, but the key says 6000"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the correct way to represent data in a bar graph?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the bar for Vidisha is 6 units and the bar for Jabalpur is 5 units, and the scale is 1 unit = 10 tickets, what is the total number of tickets sold for both cities?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is the sum of the units (6 + 5) and not the tickets, wh…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of data handling as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Focuses on a specific example from the passage…\"); distractor 1's reason is not a one-line misconception (\"Focuses on a specific example from the passage…\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (but included for format)…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the total number of tickets sold for all cities is 110, and the bar for Seoni is 4 units, what should be the scale for this bar graph?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A pictograph uses a symbol to represent 10 students. If the total number of students is 33, what is the minimum number of symbols needed to represent the data accurately?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"33/10\" = 3.3, but the key says 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the total number of saplings planted on Wednesday and Thursday?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which type of graph is useful for comparing the lengths of the longest rivers on each continent?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the scale used in the pictograph showing the number of dogs in different villages?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many symbols are used to represent the number of dogs in Village B in the pictograph?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Is Kamini correct in saying that the number of dogs in Village B and Village D together is more than the number of dogs in the other 4 villages?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a bar graph, the bar for Vidisha is 6 unit lengths and the bar for Jabalpur is 5 unit lengths. What is the scale of the graph if 24 tickets were sold for Vidisha?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"24/6\" = 4, but the key says 1"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The table shows the number of students who chose different sweets. If 10 students chose gujiya, 8 chose rasgulla, and 12 chose gulab jamun, what is the total number of students who chose these three sweets?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a pictograph, 1 symbol represents 100 kites. Rani purchased 300 kites. How many symbols represent the kites that Rani purchased?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the pictograph, each symbol represents 5 students. If there are 3 symbols for Monday, 2 symbols for Tuesday, 4 symbols for Wednesday, 1 symbol for Thursday, and 3 symbols for Friday, how many students borrowed books in total during the week?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the total number of students who chose jalebi and barfi if jalebi was chosen by 5 students and barfi by 7 students?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the purpose of a pictograph?",
+      "reason": "near-duplicate of served question cmvefhn0w005jgowcxd5m4v6w (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How did Shri Nilesh record the preferences of the students for sweets?",
+      "reason": "near-duplicate of served question cmv3lckvf005lgnjuy8vmdvm3 (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a pictograph uses one symbol to represent 10 students, how many students do 5 symbols represent?",
+      "reason": "near-duplicate of served question cmvefhn0z005vgowc42plyj8g (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a pictograph uses one symbol to represent 5 students, how many symbols are needed to show 25 students?",
+      "reason": "near-duplicate of served question cmvefhn0z005vgowc42plyj8g (cosine 0.977 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a pictograph, the scale is 1 symbol = 10 students. If a category has 3 full symbols and one half symbol, how many students does this represent?",
+      "reason": "near-duplicate of served question cmvefhn120067gowcm4u17bml (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The frequency distribution table of wickets taken by Jaspreet Bumrah shows that in 8 matches, he took 3 wickets. What is the total number of wickets taken in these matches?",
+      "reason": "near-duplicate of served question cmvefhn110061gowcplp0qwav (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

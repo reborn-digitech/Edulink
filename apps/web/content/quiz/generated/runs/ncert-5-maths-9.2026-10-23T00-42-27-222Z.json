@@ -1,0 +1,654 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T00:42:27.222Z",
+  "finishedAt": "2026-10-23T00:48:19.268Z",
+  "seconds": 352,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm109.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Coconut Farm",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n2. Coordinate of Kota (K) is ( 3 x 5 + 2 x 0 3 x 7 + 2 x 10 3 + 2 ,\n= ( 15+0 5 , 21+20 5 )= (3, 41 5 )",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 143457,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 27975,
+      "completionTokens": 7589
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 328857,
+      "in": 31,
+      "out": 24,
+      "rejects": 7,
+      "promptTokens": 19268,
+      "completionTokens": 7987
+    },
+    "solver": {
+      "calls": 209,
+      "ms": 140263,
+      "in": 24,
+      "out": 14,
+      "rejects": 10,
+      "promptTokens": 51658,
+      "completionTokens": 2557
+    },
+    "form": {
+      "calls": 10,
+      "ms": 33911,
+      "in": 14,
+      "out": 4,
+      "rejects": 10,
+      "promptTokens": 2653,
+      "completionTokens": 788
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3850,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 89134,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6369,
+      "completionTokens": 2718
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If 400 ÷ 8 = 50, what is 400 ÷ 50?",
+      "ms": {
+        "draft": 4152,
+        "critique": 5953,
+        "solver": 1667,
+        "form": 4014
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a division fact for the multiplication fact 5 × 7 = 35?",
+      "ms": {
+        "draft": 4152,
+        "critique": 5482,
+        "solver": 1404,
+        "form": 6774
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 35 ÷ 1?",
+      "ms": {
+        "draft": 4152,
+        "critique": 6123,
+        "solver": 13736,
+        "form": 2315
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 200 ÷ 20 = 10, what is 200 ÷ 10?",
+      "ms": {
+        "draft": 4152,
+        "critique": 7883,
+        "solver": 948,
+        "form": 3372
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 870 ÷ 10 = 87, what is 870 ÷ 87?",
+      "ms": {
+        "draft": 4152,
+        "critique": 7154,
+        "solver": 1668,
+        "form": 3017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Rani needs to serve one samosa to each of 250 guests. Samosas are available in packs of 6 or 8. Which pack should Rani buy?",
+      "ms": {
+        "draft": 4996,
+        "critique": 7764
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 3700 ÷ 37 = 100, what is 3700 ÷ 100?",
+      "ms": {
+        "draft": 4152,
+        "critique": 7045,
+        "solver": 1796,
+        "form": 3109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Sofia has ₹50 and ₹20 notes. She needs to pay ₹520 using these notes. How many ₹50 and ₹20 notes does she need?",
+      "ms": {
+        "draft": 4996,
+        "critique": 8060,
+        "solver": 1863
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Three friends decide to split the money spent on their picnic equally. They spend ₹157 on snacks, ₹124 on juice, and ₹136 on food. How much should each person pay?",
+      "ms": {
+        "draft": 4996,
+        "critique": 10231
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A school has 342 students going on a trip. Each bus can carry a maximum of 41 students. How many buses are needed?",
+      "ms": {
+        "draft": 4996,
+        "critique": 7703,
+        "solver": 12199,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Susie and Sunitha used 4376 coconuts to extract coconut oil. They can extract 1 liter of oil from 8 coconuts. What quantity of oil did they extract?",
+      "ms": {
+        "draft": 4996,
+        "critique": 8311,
+        "solver": 1829
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Ibrahim earns ₹8890 in a week by selling tender coconuts at ₹35 each. How many tender coconuts did he sell?",
+      "ms": {
+        "draft": 4996,
+        "critique": 8137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the quotient when 340 is divided by 34?",
+      "ms": {
+        "draft": 3282,
+        "critique": 8166,
+        "solver": 21295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a company needs to cover 576 km in 12 days, how much distance should they cover each day?",
+      "ms": {
+        "draft": 3282,
+        "critique": 9245,
+        "solver": 17826
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A carpenter has 264 long wooden panels. Each bookshelf needs 4 long panels. How many bookshelves can the carpenter make?",
+      "ms": {
+        "draft": 3282,
+        "critique": 11300,
+        "solver": 16526
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a fruit vendor sells 6 baskets of mangoes and each basket has 12 mangoes, how many mangoes does he sell in total?",
+      "ms": {
+        "draft": 3282,
+        "critique": 7877,
+        "solver": 20724
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the remainder when 506 is divided by 5?",
+      "ms": {
+        "draft": 3282,
+        "critique": 8987,
+        "solver": 15435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 86 ÷ 2 = 43, what is the value of 86 ÷ 4?",
+      "ms": {
+        "draft": 3282,
+        "critique": 7432,
+        "solver": 19065
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a restaurant serves 125 plates of idlis in a day and earns ₹6250, how many idlis are there in each plate?",
+      "ms": {
+        "draft": 5245,
+        "critique": 9293
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a fruit vendor sells 6 baskets of mangoes, each with 12 mangoes, how much did the vendor earn in total?",
+      "ms": {
+        "draft": 5245,
+        "critique": 7638,
+        "solver": 14815,
+        "form": 3845
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many buses does the school need to arrange for 342 students if each bus can carry a maximum of 41 students?",
+      "ms": {
+        "draft": 3896,
+        "critique": 7589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How much extra money did Ibrahim earn by selling the coconuts at ₹35 if he bought them for ₹20 each?",
+      "ms": {
+        "draft": 3896,
+        "critique": 8246
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many tender coconuts did Ibrahim sell if he earned ₹8890 at ₹35 each?",
+      "ms": {
+        "draft": 3896,
+        "critique": 6590
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the remainder when 767 is divided by 26?",
+      "ms": {
+        "draft": 3896,
+        "critique": 6582,
+        "solver": 1548
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a carpenter has 264 long wooden panels and each bookshelf needs 4, how many bookshelves can he make?",
+      "ms": {
+        "draft": 5245,
+        "critique": 7379,
+        "solver": 16988
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a division fact for 5 × 7 = 35?",
+      "ms": {
+        "draft": 4482,
+        "critique": 7992,
+        "solver": 1876,
+        "form": 2999
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a division fact for 400 × 8 = 3200?",
+      "ms": {
+        "draft": 4482,
+        "critique": 9070,
+        "solver": 12124
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Rahul buys 5 cricket bats for a total of ₹3500, how much does one bat cost?",
+      "ms": {
+        "draft": 5245,
+        "critique": 7880,
+        "solver": 2736,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the quotient when 500 is divided by 10?",
+      "ms": {
+        "draft": 4482,
+        "critique": 7011,
+        "solver": 1475,
+        "form": 4838,
+        "translation": 27523
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the quotient when 1400 is divided by 100?",
+      "ms": {
+        "draft": 4482,
+        "critique": 7382,
+        "solver": 926,
+        "form": 2626,
+        "translation": 26387
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of dividing 576 km by 12 days?",
+      "ms": {
+        "draft": 5245,
+        "critique": 8852,
+        "solver": 17761,
+        "form": 1,
+        "translation": 30765
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 400 ÷ 8 = 50, what is 400 ÷ 50?",
+      "reason": "checkExpr \"8\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a division fact for the multiplication fact 5 × 7 = 35?",
+      "reason": "options 0 and 1 are the same (\"35 ÷ 5 = 7\"); options 0 and 2 say the same thing (\"35 ÷ 5 = 7\" / \"5 ÷ 7 = 35\"); options 0 and 3 say the same thing (\"35 ÷ 5 = 7\" / \"7 × 5 = 35\"); options 1 and 2 say the same thing (\"35 × 5 = 7\" / \"5 ÷ 7 = 35\"); options 1 and 3 say the same thing (\"35 × 5 = 7\" / \"7 × 5 = 35\"); options 2 and 3 say the same thing (\"5 ÷ 7 = 35\" / \"7 × 5 = 35\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the result of 35 ÷ 1?",
+      "reason": "checkExpr \"35\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If 200 ÷ 20 = 10, what is 200 ÷ 10?",
+      "reason": "checkExpr \"20\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 870 ÷ 10 = 87, what is 870 ÷ 87?",
+      "reason": "options are written to different precisions (0 and 1 decimals); checkExpr \"10\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Rani needs to serve one samosa to each of 250 guests. Samosas are available in packs of 6 or 8. Which pack should Rani buy?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 3700 ÷ 37 = 100, what is 3700 ÷ 100?",
+      "reason": "checkExpr \"37\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Sofia has ₹50 and ₹20 notes. She needs to pay ₹520 using these notes. How many ₹50 and ₹20 notes does she need?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Three friends decide to split the money spent on their picnic equally. They spend ₹157 on snacks, ₹124 on juice, and ₹136 on food. How much should each person pay?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A school has 342 students going on a trip. Each bus can carry a maximum of 41 students. How many buses are needed?",
+      "reason": "options 0 and 3 are the same (\"8\"); options 0 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"342/41\" = 8.341463414634147, but the key says 9"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Susie and Sunitha used 4376 coconuts to extract coconut oil. They can extract 1 liter of oil from 8 coconuts. What quantity of oil did they extract?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Ibrahim earns ₹8890 in a week by selling tender coconuts at ₹35 each. How many tender coconuts did he sell?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the quotient when 340 is divided by 34?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a company needs to cover 576 km in 12 days, how much distance should they cover each day?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A carpenter has 264 long wooden panels. Each bookshelf needs 4 long panels. How many bookshelves can the carpenter make?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a fruit vendor sells 6 baskets of mangoes and each basket has 12 mangoes, how many mangoes does he sell in total?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the remainder when 506 is divided by 5?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"506%5\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 86 ÷ 2 = 43, what is the value of 86 ÷ 4?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If a carpenter has 306 short wooden panels and each bookshelf needs 8, how many bookshelves can he make?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "How many 3-digit numbers satisfy the condition that dividing the number by 5 gives 42 and multiplying the number by 2 gives 420?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a restaurant serves 125 plates of idlis in a day and earns ₹6250, how many idlis are there in each plate?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a fruit vendor sells 6 baskets of mangoes, each with 12 mangoes, how much did the vendor earn in total?",
+      "reason": "options are in more than one unit (mangoes, rupees); options 0 and 1 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many buses does the school need to arrange for 342 students if each bus can carry a maximum of 41 students?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How much extra money did Ibrahim earn by selling the coconuts at ₹35 if he bought them for ₹20 each?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many tender coconuts did Ibrahim sell if he earned ₹8890 at ₹35 each?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the remainder when 767 is divided by 26?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a carpenter has 264 long wooden panels and each bookshelf needs 4, how many bookshelves can he make?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a division fact for 5 × 7 = 35?",
+      "reason": "options 0 and 1 say the same thing (\"35 ÷ 5 = 7\" / \"35 ÷ 7 = 5\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a division fact for 400 × 8 = 3200?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If Rahul buys 5 cricket bats for a total of ₹3500, how much does one bat cost?",
+      "reason": "near-duplicate of served question cmvh73n5u07a9gpfhmpvx7xft (cosine 0.950 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

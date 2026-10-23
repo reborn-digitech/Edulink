@@ -1,0 +1,245 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:53:10.609Z",
+  "finishedAt": "2026-10-22T22:55:03.846Z",
+  "seconds": 113,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap101.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 1 — Going to School",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 22485,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7808,
+      "completionTokens": 1312
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 66417,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4606,
+      "completionTokens": 1883
+    },
+    "solver": {
+      "calls": 64,
+      "ms": 41363,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 13203,
+      "completionTokens": 781
+    },
+    "form": {
+      "calls": 6,
+      "ms": 16459,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 1392,
+      "completionTokens": 394
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2683,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 113682,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6667,
+      "completionTokens": 3363
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of a pulley as shown in the pictures?",
+      "ms": {
+        "draft": 3431,
+        "critique": 6267,
+        "solver": 1061,
+        "form": 5494
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following places do children use a vallam (small wooden boat) to reach school?",
+      "ms": {
+        "draft": 3431,
+        "critique": 5964,
+        "solver": 1726,
+        "form": 2538
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bridge is made of cement, bricks, and iron rods, how does it differ from a bamboo bridge?",
+      "ms": {
+        "draft": 3431,
+        "critique": 6840,
+        "solver": 16639
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How do children in Assam cross the river to reach school?",
+      "ms": {
+        "draft": 2190,
+        "critique": 6593,
+        "solver": 13131
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How do children in Assam cross the river to reach school?",
+      "ms": {
+        "draft": 3431,
+        "critique": 6465,
+        "solver": 16179,
+        "form": 1732
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In Ladakh, how do children cross the river to reach school?",
+      "ms": {
+        "draft": 2190,
+        "critique": 5992,
+        "solver": 1069,
+        "form": 4927,
+        "translation": 39560
+      },
+      "outcome": "kept",
+      "flag": "level 2 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 3,
+      "stem": "If there was no bridge, what difficulty would children face?",
+      "ms": {
+        "draft": 2190,
+        "critique": 6019,
+        "solver": 1621,
+        "form": 3926,
+        "translation": 34799
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a way that children in Kerala travel to school?",
+      "ms": {
+        "draft": 2190,
+        "critique": 4983,
+        "solver": 1041,
+        "form": 1298,
+        "translation": 34917
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a pulley as shown in the pictures?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage suggests that using a pulley makes lifting easie…\"); distractor 2's reason is not a one-line misconception (\"The passage does not say that a pulley makes the bucket heav…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention the weight of the bucket changi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which of the following places do children use a vallam (small wooden boat) to reach school?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage says that in Assam, children use a bamboo and ro…\"); distractor 1's reason is not a one-line misconception (\"The passage says that in Ladakh, children use a trolley to c…\"); distractor 3's reason is not a one-line misconception (\"The passage says that in Rajasthan, children use a camel-car…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bridge is made of cement, bricks, and iron rods, how does it differ from a bamboo bridge?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How do children in Assam cross the river to reach school?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How do children in Assam cross the river to reach school?",
+      "reason": "near-duplicate of served question cmvh2ns8z06esgpfh1cp327sf (cosine 0.913 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

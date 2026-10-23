@@ -1,0 +1,606 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T00:36:21.915Z",
+  "finishedAt": "2026-10-23T00:42:26.125Z",
+  "seconds": 364,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm108.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Weight and Capacity",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n6. (C) option\nTruck A carries water = 100 – ( 20×1500 1000 ) = 70 𝑙",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n2. (A) 𝟓: 𝟐\n Vessel A (Milk fraction): 4+5 =\n Vessel B (Milk fraction): 5+1 =\n Target Mixture (Milk fraction):\n5 5\n6 − 9 5 1\nRequired ratio = 5 4 = 18 ∶ 9\n9 − 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 153982,
+      "in": 32,
+      "out": 28,
+      "rejects": 4,
+      "promptTokens": 25672,
+      "completionTokens": 8234
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 237370,
+      "in": 28,
+      "out": 27,
+      "rejects": 1,
+      "promptTokens": 16875,
+      "completionTokens": 6232
+    },
+    "solver": {
+      "calls": 177,
+      "ms": 89460,
+      "in": 27,
+      "out": 19,
+      "rejects": 8,
+      "promptTokens": 33233,
+      "completionTokens": 1854
+    },
+    "form": {
+      "calls": 5,
+      "ms": 21065,
+      "in": 19,
+      "out": 15,
+      "rejects": 4,
+      "promptTokens": 1260,
+      "completionTokens": 437
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3828,
+      "in": 15,
+      "out": 7,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 224747,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15142,
+      "completionTokens": 6671
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "If a gold ornament weighs 10 g 500 mg, what is its weight in milligrams?",
+      "ms": {
+        "draft": 3665,
+        "critique": 8082,
+        "solver": 17195
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Compare the weights: 2 kg 250 g __________ 2 kg 500 g. Which symbol should fill the blank?",
+      "ms": {
+        "draft": 3665,
+        "critique": 5951,
+        "solver": 1286,
+        "form": 3710
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total weight of apples Aarav lifted if he lifted two baskets weighing 2 kg 100 g and 3 kg 950 g?",
+      "ms": {
+        "draft": 6641,
+        "critique": 5897
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How much fuel was in Sam’s bike before refuelling?",
+      "ms": {
+        "draft": 4222,
+        "critique": 8610,
+        "solver": 1755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Riya fills one 2 l bottle and four 500 ml bottles. Aarav fills three 750 ml bottles. Who filled more water?",
+      "ms": {
+        "draft": 4222,
+        "critique": 6687,
+        "solver": 13296,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the juice vendor has already served 10 glasses, how much juice is left if each glass has 250 ml?",
+      "ms": {
+        "draft": 4288,
+        "critique": 6379,
+        "solver": 1637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How much milk was there in the bottle initially if 120 ml is left after pouring equally into 8 glasses?",
+      "ms": {
+        "draft": 4288,
+        "critique": 7602,
+        "solver": 11967
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 250 ml of juice is sold at `25, how much will the vendor earn by selling 5 l of juice?",
+      "ms": {
+        "draft": 4288,
+        "critique": 7397,
+        "solver": 1320
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rice sack weighs 9 kg 750 g. After some rice is used, it weighs 3 kg 700 g. How much rice was used?",
+      "ms": {
+        "draft": 5528,
+        "critique": 7055,
+        "solver": 1777
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A delivery truck delivered 17 kg 900 g of supplies in the morning and 12 kg 700 g in the afternoon. How much total supplies did it deliver?",
+      "ms": {
+        "draft": 5528,
+        "critique": 8263,
+        "solver": 1636
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a sugar sachet weighs 5 g, how many milligrams is that?",
+      "ms": {
+        "draft": 4417,
+        "critique": 9982,
+        "solver": 1441
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A box of books weighs 14 kg 750 g. After removing some books, the weight of the box is 10 kg 500 g. What is the weight of the books removed?",
+      "ms": {
+        "draft": 5528,
+        "critique": 5587,
+        "solver": 17724,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the king donates 800 kg of wheat grains on his birthday, which is 10 times his weight, what is his weight?",
+      "ms": {
+        "draft": 4417,
+        "critique": 6042,
+        "solver": 5263
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Shrenu needs 3 kg 500 g of flour. If her kitchen scale measures only in grams, what should the scale show?",
+      "ms": {
+        "draft": 3665,
+        "critique": 7213,
+        "solver": 1935,
+        "form": 3875
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total weight of onions used by the restaurant owner in 3 days if he used 5 kg 200 g, 8 kg 900 g, and 12 kg 600 g?",
+      "ms": {
+        "draft": 6641,
+        "critique": 6871,
+        "solver": 17426,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A juice vendor has a 5 l container of orange juice. Each glass has a capacity of 250 ml. How many full glasses can he serve before the container is empty?",
+      "ms": {
+        "draft": 4222,
+        "critique": 7481,
+        "solver": 10976,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How much will 3 l of milk cost if 1 l costs `40?",
+      "ms": {
+        "draft": 4288,
+        "critique": 4579,
+        "solver": 1517,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total capacity of 8 glasses if each glass has a capacity of 360 ml?",
+      "ms": {
+        "draft": 4288,
+        "critique": 5640,
+        "solver": 1594,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total weight of onions used by the restaurant owner in 3 days if the weights are 5 kg 200 g, 8 kg 900 g, and 12 kg 600 g?",
+      "ms": {
+        "draft": 5528,
+        "critique": 6669,
+        "solver": 2184,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Aarav lifts two baskets of apples weighing 2 kg 100 g and 3 kg 950 g. What is the total weight of apples he lifted?",
+      "ms": {
+        "draft": 5528,
+        "critique": 7772,
+        "solver": 1443,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Shrenu needs 3 kg 500 g of flour. If her kitchen scale measures in grams, what should it show?",
+      "ms": {
+        "draft": 4417,
+        "critique": 5938,
+        "solver": 1766,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which unit is used to measure the weight of a sugar sachet?",
+      "ms": {
+        "draft": 3665,
+        "critique": 6888,
+        "solver": 1161,
+        "form": 3905,
+        "translation": 34470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many milligrams are there in 1 gram?",
+      "ms": {
+        "draft": 3665,
+        "critique": 7098,
+        "solver": 2016,
+        "form": 5727,
+        "translation": 32299
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write 3 kg 500 g in grams?",
+      "ms": {
+        "draft": 4417,
+        "critique": 8473,
+        "solver": 1676,
+        "form": 0,
+        "translation": 22640
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many full glasses can the juice vendor serve if he has 5 l of orange juice and each glass can hold 250 ml?",
+      "ms": {
+        "draft": 4288,
+        "critique": 8553,
+        "solver": 1601,
+        "form": 0,
+        "translation": 29712
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the king donates 800 kg of wheat grain, which is 10 times his weight, what is his current weight?",
+      "ms": {
+        "draft": 3665,
+        "critique": 6738,
+        "solver": 1629,
+        "form": 6555,
+        "translation": 42848
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A bottle of milk is poured equally into 8 glasses, leaving 120 ml of milk in the bottle. If each glass has a capacity of 360 ml, what is the total capacity of 8 glasses?",
+      "ms": {
+        "draft": 4222,
+        "critique": 7658,
+        "solver": 1512,
+        "form": 0,
+        "translation": 34132
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 1 l of milk costs ₹40, how much will 3 l milk cost?",
+      "ms": {
+        "draft": 4222,
+        "critique": 3633,
+        "solver": 527,
+        "form": 0,
+        "translation": 25141
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "If 4 kg 500 g of sand is used from a sack weighing 10 kg, how much sand is left in the sack?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "If a rice sack weighs 9 kg 750 g and after some rice is used, it weighs 3 kg 700 g, how much rice was used?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "If a delivery truck delivered 17 kg 900 g of supplies in the morning and 12 kg 700 g in the afternoon, what is the total supplies delivered?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "If a box of books weighs 14 kg 750 g and after removing some books, it weighs 10 kg 500 g, what is the weight of the books removed?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a gold ornament weighs 10 g 500 mg, what is its weight in milligrams?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Compare the weights: 2 kg 250 g __________ 2 kg 500 g. Which symbol should fill the blank?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options 0 and 1 are the same (\">\"); options 0 and 2 are the same (\">\"); options 1 and 2 are the same (\"<\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the total weight of apples Aarav lifted if he lifted two baskets weighing 2 kg 100 g and 3 kg 950 g?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How much fuel was in Sam’s bike before refuelling?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Riya fills one 2 l bottle and four 500 ml bottles. Aarav fills three 750 ml bottles. Who filled more water?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr is set but the key \"Riya\" states no number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the juice vendor has already served 10 glasses, how much juice is left if each glass has 250 ml?",
+      "reason": "options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"5000-2500\" = 2500, but the key says 2.5"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How much milk was there in the bottle initially if 120 ml is left after pouring equally into 8 glasses?",
+      "reason": "after redrafting distractor 1: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 250 ml of juice is sold at `25, how much will the vendor earn by selling 5 l of juice?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rice sack weighs 9 kg 750 g. After some rice is used, it weighs 3 kg 700 g. How much rice was used?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A delivery truck delivered 17 kg 900 g of supplies in the morning and 12 kg 700 g in the afternoon. How much total supplies did it deliver?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a sugar sachet weighs 5 g, how many milligrams is that?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A box of books weighs 14 kg 750 g. After removing some books, the weight of the box is 10 kg 500 g. What is the weight of the books removed?",
+      "reason": "options 0 and 1 are the same (\"4 kg 250 g\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the king donates 800 kg of wheat grains on his birthday, which is 10 times his weight, what is his weight?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Shrenu needs 3 kg 500 g of flour. If her kitchen scale measures only in grams, what should the scale show?",
+      "reason": "near-duplicate of served question cmvh6vkbk078agpfhk6wbmzrl (cosine 0.945 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the total weight of onions used by the restaurant owner in 3 days if he used 5 kg 200 g, 8 kg 900 g, and 12 kg 600 g?",
+      "reason": "near-duplicate of served question cmvh6vkbb077agpfho4hemtj0 (cosine 0.990 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A juice vendor has a 5 l container of orange juice. Each glass has a capacity of 250 ml. How many full glasses can he serve before the container is empty?",
+      "reason": "near-duplicate of served question cmvh6vkbn078mgpfhojzuuew6 (cosine 0.987 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How much will 3 l of milk cost if 1 l costs `40?",
+      "reason": "near-duplicate of batch item \"If 1 l of milk costs ₹40, how much will 3 l milk c…\" (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the total capacity of 8 glasses if each glass has a capacity of 360 ml?",
+      "reason": "near-duplicate of served question cmvh6vkbj0784gpfhd802sapw (cosine 0.975 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the total weight of onions used by the restaurant owner in 3 days if the weights are 5 kg 200 g, 8 kg 900 g, and 12 kg 600 g?",
+      "reason": "near-duplicate of served question cmvh6vkbb077agpfho4hemtj0 (cosine 0.988 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Aarav lifts two baskets of apples weighing 2 kg 100 g and 3 kg 950 g. What is the total weight of apples he lifted?",
+      "reason": "near-duplicate of served question cmvh6vkbd077ggpfh4us1rlrf (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Shrenu needs 3 kg 500 g of flour. If her kitchen scale measures in grams, what should it show?",
+      "reason": "near-duplicate of served question cmvh6vkbk078agpfhk6wbmzrl (cosine 0.934 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

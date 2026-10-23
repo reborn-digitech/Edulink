@@ -1,0 +1,512 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:31:23.414Z",
+  "finishedAt": "2026-10-22T21:35:18.416Z",
+  "seconds": 235,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm113.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Time G oes O n",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\nSample Question Paper (2023-24)\nClass – X\nBasic Mathematics (241)\nTime Allowed: 3 Hrs Maximum Marks: 80\nGeneral Instructions:",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\nSAMPLE QUESTION PAPER\nClass X Session 2023-24\nMATHEMATICS STANDARD (Code No.041)\nTIME: 3 hours MAX.MARKS: 80\nGeneral Instructions:",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\nClass- X Session- 2022-23\nSubject- Mathematics (Standard)\nSample Question Paper\nTime Allowed: 3 Hrs. Maximum Marks : 80\nGeneral Instructions:",
+      "[IOQM 2020 — question paper]\nCode : M01\nRoll Number: Time: 3 Hours\nINSTRUCTIONS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 100764,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15050,
+      "completionTokens": 5047
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 190495,
+      "in": 24,
+      "out": 13,
+      "rejects": 11,
+      "promptTokens": 11275,
+      "completionTokens": 4584
+    },
+    "solver": {
+      "calls": 85,
+      "ms": 47087,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 13337,
+      "completionTokens": 842
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6219,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 494,
+      "completionTokens": 153
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3958,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 111995,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6358,
+      "completionTokens": 2915
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the name of the first day of the week according to the passage?",
+      "ms": {
+        "draft": 4239,
+        "critique": 6164,
+        "solver": 1357
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If today is Thursday, what will be the date three days from now if today is July 5?",
+      "ms": {
+        "draft": 4239,
+        "critique": 7728
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which activity takes about 2-3 weeks to complete?",
+      "ms": {
+        "draft": 3688,
+        "critique": 8190
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these activities takes the same amount of time as a school period?",
+      "ms": {
+        "draft": 3688,
+        "critique": 6242
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child starts playing at 3:00 PM and stops at 3:30 PM, how many minutes have passed?",
+      "ms": {
+        "draft": 3688,
+        "critique": 6899
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of these is an example of an activity that takes days?",
+      "ms": {
+        "draft": 3688,
+        "critique": 6496
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a sand clock takes 5 minutes to empty, how many times can it be used in 20 minutes?",
+      "ms": {
+        "draft": 3688,
+        "critique": 6146
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a child starts a game at 4:10 PM and finishes at 4:55 PM, how many minutes did the game last?",
+      "ms": {
+        "draft": 3688,
+        "critique": 4761,
+        "solver": 683
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which activity takes about 30 minutes according to the passage?",
+      "ms": {
+        "draft": 4303,
+        "critique": 5431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student takes 15 minutes to eat dinner, how many minutes will they take to eat dinner 4 times?",
+      "ms": {
+        "draft": 4303,
+        "critique": 6412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the table in the passage, which activity takes the longest time?",
+      "ms": {
+        "draft": 4303,
+        "critique": 8009
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sand clock was made using two bottles, and it takes 10 minutes for the sand to move from one bottle to the other. How many times must it be turned to measure 40 minutes?",
+      "ms": {
+        "draft": 4303,
+        "critique": 7906
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student can do 5 minutes of work in 1 minute, how many minutes of work can they do in 1 hour?",
+      "ms": {
+        "draft": 4303,
+        "critique": 6969
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How long does it take to complete a chapter in class according to the passage?",
+      "ms": {
+        "draft": 4303,
+        "critique": 7306,
+        "solver": 13877
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the same every year?",
+      "ms": {
+        "draft": 4564,
+        "critique": 8519,
+        "solver": 1642
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school closes on July 7 for 15 days, on which date will it open?",
+      "ms": {
+        "draft": 4564,
+        "critique": 7845,
+        "solver": 2278
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the same every week?",
+      "ms": {
+        "draft": 4564,
+        "critique": 9194,
+        "solver": 10792,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Bincy was born on 2 May 2015, how old will she be on 2 May 2025?",
+      "ms": {
+        "draft": 4564,
+        "critique": 8859,
+        "solver": 18064
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Bincy was born on 2 May 2015, how old will she be on 2 May 2025?",
+      "ms": {
+        "draft": 4239,
+        "critique": 7846,
+        "solver": 1666,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Hetal is twice as old as her brother and 10 years older, what is Hetal's age?",
+      "ms": {
+        "draft": 4564,
+        "critique": 7037,
+        "solver": 1445,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Hetal started breakfast at 7:00 and finished at 7:15, how many minutes did she take?",
+      "ms": {
+        "draft": 4564,
+        "critique": 8632,
+        "solver": 2087,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many days are there in a week?",
+      "ms": {
+        "draft": 4239,
+        "critique": 6449,
+        "solver": 2345,
+        "form": 3516,
+        "translation": 39961
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the total number of days in the month of July?",
+      "ms": {
+        "draft": 4239,
+        "critique": 7350,
+        "solver": 2255,
+        "form": 2704,
+        "translation": 31103
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If Hetal is twice as old as her brother and also 10 years older than her brother, how old is her brother?",
+      "ms": {
+        "draft": 4239,
+        "critique": 6581,
+        "solver": 1436,
+        "form": 0,
+        "translation": 36182
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the name of the first day of the week according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If today is Thursday, what will be the date three days from now if today is July 5?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which activity takes about 2-3 weeks to complete?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of these activities takes the same amount of time as a school period?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a child starts playing at 3:00 PM and stops at 3:30 PM, how many minutes have passed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of these is an example of an activity that takes days?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a sand clock takes 5 minutes to empty, how many times can it be used in 20 minutes?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a child starts a game at 4:10 PM and finishes at 4:55 PM, how many minutes did the game last?",
+      "reason": "the solver picked option 0 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which activity takes about 30 minutes according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student takes 15 minutes to eat dinner, how many minutes will they take to eat dinner 4 times?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the table in the passage, which activity takes the longest time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A sand clock was made using two bottles, and it takes 10 minutes for the sand to move from one bottle to the other. How many times must it be turned to measure 40 minutes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a student can do 5 minutes of work in 1 minute, how many minutes of work can they do in 1 hour?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How long does it take to complete a chapter in class according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the same every year?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a school closes on July 7 for 15 days, on which date will it open?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the same every week?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Bincy was born on 2 May 2015, how old will she be on 2 May 2025?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If Bincy was born on 2 May 2015, how old will she be on 2 May 2025?",
+      "reason": "near-duplicate of served question cmvh019vp05v7gpfho1j2ecif (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If Hetal is twice as old as her brother and 10 years older, what is Hetal's age?",
+      "reason": "near-duplicate of batch item \"If Hetal is twice as old as her brother and also 1…\" (cosine 0.971 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If Hetal started breakfast at 7:00 and finished at 7:15, how many minutes did she take?",
+      "reason": "near-duplicate of served question cmvh019vu05vdgpfhh5c9g6mw (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

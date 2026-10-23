@@ -1,0 +1,245 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:18:12.857Z",
+  "finishedAt": "2026-10-23T01:19:26.961Z",
+  "seconds": 74,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap104.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 4 — Mangoes Round the Year",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 28468,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8288,
+      "completionTokens": 1574
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 44039,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 3267,
+      "completionTokens": 1419
+    },
+    "solver": {
+      "calls": 15,
+      "ms": 5527,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 1575,
+      "completionTokens": 120
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1088,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 238,
+      "completionTokens": 64
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2629,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 22084,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2264,
+      "completionTokens": 1396
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did Biji return the bread packet?",
+      "ms": {
+        "draft": 3634,
+        "critique": 7078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Aman tell Nitu not to eat?",
+      "ms": {
+        "draft": 3634,
+        "critique": 6128,
+        "solver": 1421
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which food item can be kept for a week?",
+      "ms": {
+        "draft": 3634,
+        "critique": 7935,
+        "solver": 925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Biji return from the market?",
+      "ms": {
+        "draft": 3484,
+        "critique": 5412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Biji return the bread?",
+      "ms": {
+        "draft": 3484,
+        "critique": 5412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Aman tell Nitu not to eat?",
+      "ms": {
+        "draft": 3484,
+        "critique": 5920
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one method to keep milk fresh for 1-2 days?",
+      "ms": {
+        "draft": 3484,
+        "critique": 2838
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why were sugar and jaggery mixed into the mango pulp?",
+      "ms": {
+        "draft": 3634,
+        "critique": 3757,
+        "solver": 747,
+        "form": 1088,
+        "translation": 17540
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Biji return the bread packet?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Aman tell Nitu not to eat?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which food item can be kept for a week?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Biji return from the market?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Biji return the bread?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Aman tell Nitu not to eat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is one method to keep milk fresh for 1-2 days?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:22:18.823Z",
+  "finishedAt": "2026-10-20T20:26:06.124Z",
+  "seconds": 227,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap120.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 20 — Eating Together",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 81203,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 14009,
+      "completionTokens": 3077
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 158345,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 7483,
+      "completionTokens": 3071
+    },
+    "solver": {
+      "calls": 97,
+      "ms": 69999,
+      "in": 15,
+      "out": 8,
+      "rejects": 7,
+      "promptTokens": 15409,
+      "completionTokens": 967
+    },
+    "form": {
+      "calls": 4,
+      "ms": 13345,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 871,
+      "completionTokens": 240
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3389,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 149346,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6415,
+      "completionTokens": 3197
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the festival celebrated in Assam as described in the passage?",
+      "ms": {
+        "draft": 4498,
+        "critique": 6878,
+        "solver": 1858,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the children collect money for in their colony?",
+      "ms": {
+        "draft": 4498,
+        "critique": 7889,
+        "solver": 4287
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what did the children decide to have in their school?",
+      "ms": {
+        "draft": 4498,
+        "critique": 7614,
+        "solver": 22561
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of the list displayed outside Didi Moni's room?",
+      "ms": {
+        "draft": 8001,
+        "critique": 8905,
+        "solver": 2649
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What change occurred in the school to improve the quality of the mid-day meal?",
+      "ms": {
+        "draft": 8001,
+        "critique": 9410,
+        "solver": 1242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What activity do the children do before starting to eat their meal?",
+      "ms": {
+        "draft": 8001,
+        "critique": 9668,
+        "solver": 15374,
+        "form": 3936
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the food served on the day described in the passage?",
+      "ms": {
+        "draft": 5223,
+        "critique": 8168,
+        "solver": 4018,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason the children in the passage are able to eat properly now?",
+      "ms": {
+        "draft": 5223,
+        "critique": 10406,
+        "solver": 2131
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the children decide to do in their school?",
+      "ms": {
+        "draft": 4579,
+        "critique": 9229,
+        "solver": 1562
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of rice is used in the Bihu festival in Assam?",
+      "ms": {
+        "draft": 4579,
+        "critique": 10783,
+        "solver": 1955
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the children in the passage decide to have a class party?",
+      "ms": {
+        "draft": 4579,
+        "critique": 10174,
+        "solver": 1987,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school in your area wants to have a party similar to the one in the passage, what should they do first?",
+      "ms": {
+        "draft": 4579,
+        "critique": 6067,
+        "solver": 1009,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the temporary shed built in the village during the Bihu festival?",
+      "ms": {
+        "draft": 4498,
+        "critique": 11943,
+        "solver": 2132,
+        "form": 4506,
+        "translation": 37984
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the children change their places in the circle every day?",
+      "ms": {
+        "draft": 5223,
+        "critique": 7376,
+        "solver": 23647,
+        "form": 3327,
+        "translation": 54087
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would be a good change to the school meal menu if you had the chance?",
+      "ms": {
+        "draft": 5223,
+        "critique": 7781,
+        "solver": 2611,
+        "form": 5066,
+        "translation": 51240
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the festival celebrated in Assam as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the children collect money for in their colony?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what did the children decide to have in their school?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the purpose of the list displayed outside Didi Moni's room?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What change occurred in the school to improve the quality of the mid-day meal?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What activity do the children do before starting to eat their meal?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Imagines an activity not described in the passage…\"); distractor 3's reason is not a one-line misconception (\"Assumes an unrelated activity based on the context of the cl…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the food served on the day described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Chooses a common Indian dish not mentioned in the passage.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main reason the children in the passage are able to eat properly now?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the children decide to do in their school?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What type of rice is used in the Bihu festival in Assam?",
+      "reason": "the solver picked option 2 3 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did the children in the passage decide to have a class party?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a school in your area wants to have a party similar to the one in the passage, what should they do first?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

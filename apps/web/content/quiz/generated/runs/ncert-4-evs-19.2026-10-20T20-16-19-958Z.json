@@ -1,0 +1,369 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:16:19.958Z",
+  "finishedAt": "2026-10-20T20:22:17.553Z",
+  "seconds": 358,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap119.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 19 — Abdul in the Garden",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 72011,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13424,
+      "completionTokens": 3129
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 203201,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 9615,
+      "completionTokens": 4082
+    },
+    "solver": {
+      "calls": 107,
+      "ms": 89330,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 20710,
+      "completionTokens": 1312
+    },
+    "form": {
+      "calls": 8,
+      "ms": 31524,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 1854,
+      "completionTokens": 523
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3407,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 235745,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10444,
+      "completionTokens": 4935
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Abdul find out about the roots of the grass after digging it out?",
+      "ms": {
+        "draft": 4339,
+        "critique": 8920,
+        "solver": 1692,
+        "form": 7052
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the neem tree not fall despite the strong wind?",
+      "ms": {
+        "draft": 4339,
+        "critique": 9677,
+        "solver": 21075,
+        "form": 6736
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of something that grows, according to the passage?",
+      "ms": {
+        "draft": 4486,
+        "critique": 10540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student has not cut their nails for a year, which of the following would they most likely notice?",
+      "ms": {
+        "draft": 4486,
+        "critique": 9848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a part of the body that keeps growing and needs regular cutting?",
+      "ms": {
+        "draft": 4486,
+        "critique": 8416,
+        "solver": 14153
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following is listed as something that grows?",
+      "ms": {
+        "draft": 4486,
+        "critique": 10466,
+        "solver": 12822
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person never cuts their nails, how would their fingers look after a year?",
+      "ms": {
+        "draft": 4517,
+        "critique": 8594
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a living thing that grows?",
+      "ms": {
+        "draft": 4517,
+        "critique": 11265
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a list of things that grow?",
+      "ms": {
+        "draft": 4517,
+        "critique": 8270,
+        "solver": 18022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Abdul find difficult to pull out from the vegetable bed?",
+      "ms": {
+        "draft": 23294,
+        "critique": 8281,
+        "solver": 2409
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did the neem tree not fall despite the strong wind?",
+      "ms": {
+        "draft": 23294,
+        "critique": 8988,
+        "solver": 2495,
+        "form": 4237
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Abdul find it difficult to pull out the small grass?",
+      "ms": {
+        "draft": 4339,
+        "critique": 9270,
+        "solver": 23047,
+        "form": 3979,
+        "translation": 46420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Abdul think that radish might be a root?",
+      "ms": {
+        "draft": 4339,
+        "critique": 10302,
+        "solver": 22748,
+        "form": 3160,
+        "translation": 47459
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the broken part of the pea plant dry up after three days?",
+      "ms": {
+        "draft": 23294,
+        "critique": 8970,
+        "solver": 1546,
+        "form": 4560,
+        "translation": 42630
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a change that occurs in a person over time?",
+      "ms": {
+        "draft": 4517,
+        "critique": 7856,
+        "solver": 15049,
+        "form": 3956,
+        "translation": 54865
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the plant helps it to absorb water from the soil?",
+      "ms": {
+        "draft": 23294,
+        "critique": 8527,
+        "solver": 2460,
+        "form": 1843,
+        "translation": 39284
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Abdul find out about the roots of the grass after digging it out?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage says the roots were longer, not shorter.…\"); distractor 2's reason is not a one-line misconception (\"The passage explicitly states the roots were longer and more…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention the thickness of the roots.','}…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did the neem tree not fall despite the strong wind?",
+      "reason": "options 2 and 3 are the same (\"Because it had deep and strong leaves\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of something that grows, according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student has not cut their nails for a year, which of the following would they most likely notice?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a part of the body that keeps growing and needs regular cutting?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, which of the following is listed as something that grows?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person never cuts their nails, how would their fingers look after a year?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a living thing that grows?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a list of things that grow?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Abdul find difficult to pull out from the vegetable bed?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why did the neem tree not fall despite the strong wind?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks the branches kept the tree from falling, but the pass…\"); distractor 2's reason is not a one-line misconception (\"Believes the leaves kept the tree from falling, but the pass…\"); distractor 3's reason is not a one-line misconception (\"Thinks the height of the tree prevented it from falling, but…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

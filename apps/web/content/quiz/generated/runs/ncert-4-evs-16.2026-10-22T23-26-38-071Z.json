@@ -1,0 +1,377 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:26:38.071Z",
+  "finishedAt": "2026-10-22T23:31:07.306Z",
+  "seconds": 269,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap116.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 16 — A Busy Month",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 51199,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14056,
+      "completionTokens": 2910
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 105855,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 6978,
+      "completionTokens": 2901
+    },
+    "solver": {
+      "calls": 58,
+      "ms": 26225,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 8479,
+      "completionTokens": 554
+    },
+    "form": {
+      "calls": 7,
+      "ms": 19131,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 1597,
+      "completionTokens": 486
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3205,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 128823,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6628,
+      "completionTokens": 3458
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which bird lays its eggs in a crow’s nest?",
+      "ms": {
+        "draft": 3769,
+        "critique": 5072,
+        "solver": 1372,
+        "form": 3764
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which bird makes its nest in a hole in a tree trunk?",
+      "ms": {
+        "draft": 3769,
+        "critique": 5458,
+        "solver": 1540,
+        "form": 4386
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which bird is described as having a 'crown on the head and coins on the tail' and is our national bird?",
+      "ms": {
+        "draft": 3769,
+        "critique": 5522,
+        "solver": 2376,
+        "form": 4080
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Gijubhai wrote the letter in 1936, how old would your grandfather be in 2024 if he was 10 years old when the letter was written?",
+      "ms": {
+        "draft": 3769,
+        "critique": 6680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a snake's sharp curved teeth?",
+      "ms": {
+        "draft": 16264,
+        "critique": 5961,
+        "solver": 1810
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has no back teeth, what kind of food would be difficult to eat?",
+      "ms": {
+        "draft": 16264,
+        "critique": 5819,
+        "solver": 1091
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about squirrel teeth?",
+      "ms": {
+        "draft": 16264,
+        "critique": 4649,
+        "solver": 775,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to a squirrel's front teeth?",
+      "ms": {
+        "draft": 3384,
+        "critique": 6933
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of a cow's side teeth?",
+      "ms": {
+        "draft": 3384,
+        "critique": 7290
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which bird is mentioned as not making its own nest?",
+      "ms": {
+        "draft": 16753,
+        "critique": 7841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which bird uses its sharp beak to stitch leaves together to make a nest?",
+      "ms": {
+        "draft": 16753,
+        "critique": 7826
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which bird is described as having a 'crown on the head and coins on the tail'?",
+      "ms": {
+        "draft": 16753,
+        "critique": 6553
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bird's nest is found in a tree trunk, which bird is most likely to have made it?",
+      "ms": {
+        "draft": 16753,
+        "critique": 6498,
+        "solver": 8770,
+        "form": 1122
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do cows use their large and flat teeth for?",
+      "ms": {
+        "draft": 16264,
+        "critique": 6103,
+        "solver": 1084,
+        "form": 3343,
+        "translation": 41665
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following animals uses its teeth to break and crush seeds?",
+      "ms": {
+        "draft": 3384,
+        "critique": 7533,
+        "solver": 1897,
+        "form": 2237,
+        "translation": 38506
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you had no front teeth, how would you eat a guava?",
+      "ms": {
+        "draft": 3384,
+        "critique": 7481,
+        "solver": 1525,
+        "form": 2857,
+        "translation": 43196
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which bird lays its eggs in a crow’s nest?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Confuses the barbet with the Koel as both are birds mentione…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which bird makes its nest in a hole in a tree trunk?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the crow with the barbet as both are mentioned in t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which bird is described as having a 'crown on the head and coins on the tail' and is our national bird?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the Koel with the peacock as both are birds mention…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Gijubhai wrote the letter in 1936, how old would your grandfather be in 2024 if he was 10 years old when the letter was written?",
+      "reason": "the critic finds option 2 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of a snake's sharp curved teeth?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person has no back teeth, what kind of food would be difficult to eat?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about squirrel teeth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happens to a squirrel's front teeth?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a function of a cow's side teeth?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which bird is mentioned as not making its own nest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which bird uses its sharp beak to stitch leaves together to make a nest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which bird is described as having a 'crown on the head and coins on the tail'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a bird's nest is found in a tree trunk, which bird is most likely to have made it?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

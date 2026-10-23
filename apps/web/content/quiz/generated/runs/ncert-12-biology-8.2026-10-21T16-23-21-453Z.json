@@ -1,0 +1,553 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T16:23:21.453Z",
+  "finishedAt": "2026-10-21T16:33:18.058Z",
+  "seconds": 597,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo108.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 8 — Microbes in Human Welfare",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n27. Pathogens are often considered harmful, yet they have been adapted as 3\npowerful tools in genetic engineering. Explain how pathogens have been\nmodified into useful vectors. Describe the role of a similarly modified plant\nvector and animal vector.",
+      "[CBSE Class XII Biology, sample question paper, 2024-25]\n32. Attempt either option A or B. 5\nA. Explain how advent of biotechnology has helped in preventing\ninfestation by nematodes and thereby increasing crop yield.\nOR\nB. In the future, genetic therapies may be used to prevent, treat, or cure\ncertain inherited disorders in humans. Justify the statement with a\nsuitable example.",
+      "[INBO 2015 — question paper]\n31. (2 points) For organisms P, Q, R and S, key features along with their habitats\nand number of genes they possess are given in the table.\nOrganism Key feature Habitat No. of genes\n1 2 3\nP Organotrophic Human genital tract 468\nQ Lithotrophic Hydrothermal vent 1544\nR Aerobic Volcanic region 2620\nS Aerobic heterotrophic Soil 19000\nIndicate whether each of the following statements is true or false by putting tick\nmarks (✔) in the appropriate boxes.\nA. Organism P cannot be a eubacterium owing to its habitat and small number of\ngenes.\nB. Organism S can be either a prokaryote or eukaryote.\nC. Organism R is most likely to be archaebacterium due to feature 2.\nD. Organism Q can only be eubacterium o",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n19. A. Innate immunity/ non-specific type of defense/immunity present at the time 2\nof birth is effected. It provides different types of barriers to the entry of the\nforeign agents into our body/destroys microbes/ prevents microbial growth.\n(1)\nB. Cellular barrier-monocytes is with least count and it can phagocytose and\ndestroy microbes. (1)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 109608,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 29319,
+      "completionTokens": 6414
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 221596,
+      "in": 30,
+      "out": 23,
+      "rejects": 7,
+      "promptTokens": 17129,
+      "completionTokens": 6591
+    },
+    "solver": {
+      "calls": 163,
+      "ms": 71611,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 25055,
+      "completionTokens": 1529
+    },
+    "form": {
+      "calls": 17,
+      "ms": 40473,
+      "in": 22,
+      "out": 19,
+      "rejects": 3,
+      "promptTokens": 4477,
+      "completionTokens": 1253
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4450,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 87,
+      "ms": 866186,
+      "in": 38,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 51455,
+      "completionTokens": 26321
+    }
+  },
+  "kept": 19,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 4,
+    "4": 3,
+    "5": 3,
+    "6": 4
+  },
+  "flagged": 10,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a microbe used in industrial production?",
+      "ms": {
+        "draft": 2539,
+        "critique": 4152,
+        "solver": 1095,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is supported by the passage regarding the role of microbes in human welfare?",
+      "ms": {
+        "draft": 2539,
+        "critique": 5416,
+        "solver": 1377,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a microbial product used in the production of cheese?",
+      "ms": {
+        "draft": 2539,
+        "critique": 4956,
+        "solver": 2059,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a bioactive molecule produced by a fungus?",
+      "ms": {
+        "draft": 4088,
+        "critique": 7389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an antibiotic produced by a microbe?",
+      "ms": {
+        "draft": 4088,
+        "critique": 7070
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a biocontrol agent that is used to manage plant diseases?",
+      "ms": {
+        "draft": 3138,
+        "critique": 6606,
+        "solver": 1579
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a biocontrol agent that specifically targets insects and does not harm other organisms?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5211
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about biofertilizers?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary role of mycorrhizal fungi in the soil?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5672
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, three water samples were tested for BOD levels. Sample A had a BOD of 20 mg/L, Sample B had a BOD of 8 mg/L, and Sample C had a BOD of 400 mg/L. Which sample is most likely to be untreated sewage water?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5066
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which bacteria are responsible for producing methane in biogas plants?",
+      "ms": {
+        "draft": 4735,
+        "critique": 5033
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a microbe used for the production of an organic acid?",
+      "ms": {
+        "draft": 27681,
+        "critique": 6425,
+        "solver": 1127,
+        "form": 3343,
+        "translation": 38799
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a gas produced by the microbial activity in biogas plants?",
+      "ms": {
+        "draft": 4418,
+        "critique": 7742,
+        "solver": 11098,
+        "form": 2887,
+        "translation": 50483
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas is predominantly present in biogas?",
+      "ms": {
+        "draft": 4735,
+        "critique": 5604,
+        "solver": 10137,
+        "form": 849,
+        "translation": 32148
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a microbial product used in food preparation?",
+      "ms": {
+        "draft": 2539,
+        "critique": 4535,
+        "solver": 1199,
+        "form": 0,
+        "translation": 38788
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the primary treatment stage in sewage treatment?",
+      "ms": {
+        "draft": 27681,
+        "critique": 6148,
+        "solver": 1836,
+        "form": 2310,
+        "translation": 46505
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a by-product of fermentation in bread-making?",
+      "ms": {
+        "draft": 2539,
+        "critique": 4534,
+        "solver": 2065,
+        "form": 0,
+        "translation": 25104
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A sewage treatment plant uses microbes to reduce the organic matter in waste water. Which of the following best describes the role of these microbes?",
+      "ms": {
+        "draft": 4088,
+        "critique": 7410,
+        "solver": 11491,
+        "form": 3218,
+        "translation": 56556
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary purpose of using biocontrol agents in agriculture?",
+      "ms": {
+        "draft": 4418,
+        "critique": 7657,
+        "solver": 10907,
+        "form": 1846,
+        "translation": 39137
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a biofertiliser that can fix atmospheric nitrogen while living freely in the soil?",
+      "ms": {
+        "draft": 3138,
+        "critique": 4557,
+        "solver": 1011,
+        "form": 3271,
+        "translation": 35204
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a sewage treatment plant, what is the purpose of the 'activated sludge' that is pumped back into the aeration tank?",
+      "ms": {
+        "draft": 4088,
+        "critique": 6421,
+        "solver": 11432,
+        "form": 2752,
+        "translation": 46973
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the role of microbes in sewage treatment?",
+      "ms": {
+        "draft": 4418,
+        "critique": 6618,
+        "solver": 10326,
+        "form": 2812,
+        "translation": 99350
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about biofertilisers?",
+      "ms": {
+        "draft": 3138,
+        "critique": 4452,
+        "solver": 1633,
+        "form": 3242,
+        "translation": 59839
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A new method of waste water treatment is being tested, where the waste water is first passed through a biogas digester. What is the most likely benefit of this approach?",
+      "ms": {
+        "draft": 4088,
+        "critique": 8485,
+        "solver": 10890,
+        "form": 3197,
+        "translation": 53899
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a biocontrol agent that is used to protect crops from insect pests?",
+      "ms": {
+        "draft": 4418,
+        "critique": 6535,
+        "solver": 985,
+        "form": 3745,
+        "translation": 41349
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a sewage treatment plant, which stage is responsible for breaking down organic matter and reducing the Biological Oxygen Demand (BOD)?",
+      "ms": {
+        "draft": 3138,
+        "critique": 4745,
+        "solver": 918,
+        "form": 2086,
+        "translation": 35532
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why microbes like Penicillium notatum are important in the production of antibiotics?",
+      "ms": {
+        "draft": 2539,
+        "critique": 5794,
+        "solver": 1322,
+        "form": 2794,
+        "translation": 58213
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student reads that microbes are used to produce enzymes like lipases and pectinases. Which of the following is the most important reason for using these enzymes in industrial processes?",
+      "ms": {
+        "draft": 4088,
+        "critique": 6269,
+        "solver": 11593,
+        "form": 2732,
+        "translation": 53976
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it not desirable to completely eradicate pests in an agricultural ecosystem?",
+      "ms": {
+        "draft": 4418,
+        "critique": 6901,
+        "solver": 1713,
+        "form": 3337,
+        "translation": 41482
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct reason for using biofertilisers in agriculture?",
+      "ms": {
+        "draft": 3138,
+        "critique": 5365,
+        "solver": 789,
+        "form": 1136,
+        "translation": 52402
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a microbe used in industrial production?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is supported by the passage regarding the role of microbes in human welfare?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a microbial product used in the production of cheese?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a bioactive molecule produced by a fungus?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an antibiotic produced by a microbe?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a biocontrol agent that is used to manage plant diseases?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a biocontrol agent that specifically targets insects and does not harm other organisms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a correct statement about biofertilizers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary role of mycorrhizal fungi in the soil?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, three water samples were tested for BOD levels. Sample A had a BOD of 20 mg/L, Sample B had a BOD of 8 mg/L, and Sample C had a BOD of 400 mg/L. Which sample is most likely to be untreated sewage water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which bacteria are responsible for producing methane in biogas plants?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

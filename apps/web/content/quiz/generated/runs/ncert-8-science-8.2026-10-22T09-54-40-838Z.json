@@ -1,0 +1,843 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T09:54:40.838Z",
+  "finishedAt": "2026-10-22T10:07:47.927Z",
+  "seconds": 787,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu108.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[NSEJS 2016 — question paper]\n28. Choose that element which is most different from the other three:\na) Carbon\nb) Nitrogen\nc) Silicon\nd) Phosphorous",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n28. An element ‘M’ with electronic configuration 2 8 3 combines separately with Cl , SO4 - -2 3\nanions. Write the chemical formulae of the compounds formed. Predict with the suitable\nreason the nature of the bond formed by element ‘M’ in general. How will the electrical\nconductivity of the compounds formed vary with respect to ‘M’?\nOR\nA reddish-brown metal ‘X’, when heated in air, gives a black compound ‘Y’, which when\nheated in presence of H₂ gas gives ‘X’ back. ‘X’ is refined by the process of electrolysis;\nthis refined form of ‘X’ is used in electrical wiring.\nIdentify ‘X’ and ‘Y’. Draw a well-labeled diagram to represent the process of refining ‘X’.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n37. to 39 are case-based/data -based questions.\n37 4\nA. Derive the names of A, Y, Z, M, P & R\nAttempt either subpart B or C.\nB. Improvise an activity to test Z.\nOR\nC. Name the process in which compounds X, Y & Z are formed from A.\nJustify your response.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA. Distinguish between ethanol and ethanoic acid experimentally.\nAttempt either subpart B or C.\nB. Give the IUPAC name of the first member of Alkene which is formed by\naddition of conc. sulphuric acid to it. Illustrate the change with the help\nof a chemical equation.\nOR\nC. “All combustion reactions are oxidation but all oxidation reactions are\nnot combustion.” Justify."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 201107,
+      "in": 44,
+      "out": 43,
+      "rejects": 1,
+      "promptTokens": 43551,
+      "completionTokens": 9150
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 502341,
+      "in": 43,
+      "out": 38,
+      "rejects": 5,
+      "promptTokens": 26412,
+      "completionTokens": 10332
+    },
+    "solver": {
+      "calls": 297,
+      "ms": 217516,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 48964,
+      "completionTokens": 3024
+    },
+    "form": {
+      "calls": 2,
+      "ms": 16116,
+      "in": 33,
+      "out": 11,
+      "rejects": 22,
+      "promptTokens": 2243,
+      "completionTokens": 304
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 64,
+      "ms": 13295,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 499677,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19463,
+      "completionTokens": 9521
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an alloy?",
+      "ms": {
+        "draft": 4918,
+        "critique": 6401,
+        "solver": 13925,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a uniform mixture?",
+      "ms": {
+        "draft": 4918,
+        "critique": 6934,
+        "solver": 14565,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a non-uniform mixture?",
+      "ms": {
+        "draft": 4918,
+        "critique": 6068,
+        "solver": 16616,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a mixture that is not a solution, but can be separated by physical means?",
+      "ms": {
+        "draft": 4918,
+        "critique": 8328,
+        "solver": 13364,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a mixture that contains more than one component, and each component retains its properties?",
+      "ms": {
+        "draft": 4918,
+        "critique": 9051,
+        "solver": 14422,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a pure substance according to the passage?",
+      "ms": {
+        "draft": 4548,
+        "critique": 9387
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a pure substance according to the passage?",
+      "ms": {
+        "draft": 4548,
+        "critique": 9413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the experiment described in the passage, what can be concluded about water?",
+      "ms": {
+        "draft": 4548,
+        "critique": 7620,
+        "solver": 1185,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is correct about the experiment performed in the passage?",
+      "ms": {
+        "draft": 4548,
+        "critique": 8750,
+        "solver": 1645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the best explanation for why water is classified as a compound?",
+      "ms": {
+        "draft": 4548,
+        "critique": 8394,
+        "solver": 2141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be a compound based on the information in the passage?",
+      "ms": {
+        "draft": 4548,
+        "critique": 8828,
+        "solver": 2661,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the magnet test, what can be concluded about Sample A and Sample B?",
+      "ms": {
+        "draft": 4968,
+        "critique": 8457,
+        "solver": 3744
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about the gas evolved when Sample A reacts with dilute hydrochloric acid?",
+      "ms": {
+        "draft": 4968,
+        "critique": 7396,
+        "solver": 1709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a compound?",
+      "ms": {
+        "draft": 4968,
+        "critique": 9790,
+        "solver": 15737,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "ms": {
+        "draft": 4968,
+        "critique": 7931,
+        "solver": 1741,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when sugar is heated in a boiling tube?",
+      "ms": {
+        "draft": 4968,
+        "critique": 8663,
+        "solver": 14748,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a compound?",
+      "ms": {
+        "draft": 17894,
+        "critique": 8271,
+        "solver": 2480,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about a compound?",
+      "ms": {
+        "draft": 17894,
+        "critique": 6448,
+        "solver": 3708,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when dilute hydrochloric acid is added to Sample A, which is a mixture of iron and sulfur?",
+      "ms": {
+        "draft": 17894,
+        "critique": 6636,
+        "solver": 16639,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a pure substance?",
+      "ms": {
+        "draft": 3438,
+        "critique": 7094,
+        "solver": 19816
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of the substances involved in a chemical reaction?",
+      "ms": {
+        "draft": 3438,
+        "critique": 10353,
+        "solver": 2846,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about Sample A is correct?",
+      "ms": {
+        "draft": 5039,
+        "critique": 10791,
+        "solver": 2705,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct categorisation of the substances used in the activity?",
+      "ms": {
+        "draft": 5039,
+        "critique": 8788,
+        "solver": 2291,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the significance of the property that Sample A is attracted to a magnet?",
+      "ms": {
+        "draft": 5039,
+        "critique": 9487,
+        "solver": 1688
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the passage’s statement about the importance of understanding elements, compounds, and mixtures relevant to material scientists?",
+      "ms": {
+        "draft": 5039,
+        "critique": 9333,
+        "solver": 2318,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a pure substance according to the passage?",
+      "ms": {
+        "draft": 24037,
+        "critique": 11091
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following can be separated by physical means?",
+      "ms": {
+        "draft": 4498,
+        "critique": 12205,
+        "solver": 22154
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of separating mixtures according to the passage?",
+      "ms": {
+        "draft": 24037,
+        "critique": 12535
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in the passage, what can be inferred about the composition of water?",
+      "ms": {
+        "draft": 24037,
+        "critique": 12354
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student heats a mixture of iron filings and sulfur in a china dish. After heating, a black mass is formed. What can be concluded about the black mass?",
+      "ms": {
+        "draft": 4498,
+        "critique": 12459,
+        "solver": 19165,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a non-uniform mixture?",
+      "ms": {
+        "draft": 8121,
+        "critique": 7973,
+        "solver": 13928,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the difference between a pure substance and a mixture?",
+      "ms": {
+        "draft": 24037,
+        "critique": 8045,
+        "solver": 17918,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a compound?",
+      "ms": {
+        "draft": 4498,
+        "critique": 10142,
+        "solver": 18593,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when sugar is heated in a boiling tube?",
+      "ms": {
+        "draft": 4498,
+        "critique": 9461,
+        "solver": 19580,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a mixture?",
+      "ms": {
+        "draft": 4387,
+        "critique": 7794,
+        "solver": 1360,
+        "form": 0,
+        "translation": 70545
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a compound?",
+      "ms": {
+        "draft": 3438,
+        "critique": 6211,
+        "solver": 1689,
+        "form": 0,
+        "translation": 48698
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a mixture?",
+      "ms": {
+        "draft": 3438,
+        "critique": 6998,
+        "solver": 16521,
+        "form": 1,
+        "translation": 38636
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when dilute hydrochloric acid is added to Sample A?",
+      "ms": {
+        "draft": 5039,
+        "critique": 8979,
+        "solver": 2457,
+        "form": 0,
+        "translation": 52750
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two elements combine chemically to form a new substance, what is the nature of the new substance?",
+      "ms": {
+        "draft": 3438,
+        "critique": 12120,
+        "solver": 2568,
+        "form": 0,
+        "translation": 55410
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about a pure substance?",
+      "ms": {
+        "draft": 3438,
+        "critique": 8982,
+        "solver": 1652,
+        "form": 5286,
+        "translation": 57779
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following mixtures would you expect to be homogeneous?",
+      "ms": {
+        "draft": 4918,
+        "critique": 7735,
+        "solver": 12053,
+        "form": 0,
+        "translation": 48617
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the magnet have no effect on Sample B, which is iron sulfide?",
+      "ms": {
+        "draft": 17894,
+        "critique": 10132,
+        "solver": 2132,
+        "form": 0,
+        "translation": 57654
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is sugar classified as a compound?",
+      "ms": {
+        "draft": 4968,
+        "critique": 8676,
+        "solver": 2227,
+        "form": 0,
+        "translation": 61126
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of an alloy?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a uniform mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a non-uniform mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a mixture that is not a solution, but can be separated by physical means?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a mixture that contains more than one component, and each component retains its properties?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a pure substance according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a pure substance according to the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the experiment described in the passage, what can be concluded about water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is correct about the experiment performed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the best explanation for why water is classified as a compound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is most likely to be a compound based on the information in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the magnet test, what can be concluded about Sample A and Sample B?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is true about the gas evolved when Sample A reacts with dilute hydrochloric acid?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a compound?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "reason": "options 0 and 1 say the same thing (\"A compound can be separated by physical means, but a mixture cannot\" / \"A mixture can be separated by physical means, but a compound cannot\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens when sugar is heated in a boiling tube?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'testTube'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a compound?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not this option, but the correct one is th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about a compound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens when dilute hydrochloric acid is added to Sample A, which is a mixture of iron and sulfur?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a compound?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a pure substance?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of the substances involved in a chemical reaction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements about Sample A is correct?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misconceives a mixture as a pure element, not a combination …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct categorisation of the substances used in the activity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the significance of the property that Sample A is attracted to a magnet?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the passage’s statement about the importance of understanding elements, compounds, and mixtures relevant to material scientists?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"Because they use these concepts to study the weather\" / \"Because they use these concepts to study the stars\"); distractor 3's reason is not a one-line misconception (\"Does not understand that the passage focuses on material sci…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a pure substance according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following can be separated by physical means?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the purpose of separating mixtures according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram in the passage, what can be inferred about the composition of water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student heats a mixture of iron filings and sulfur in a china dish. After heating, a black mass is formed. What can be concluded about the black mass?",
+      "reason": "options 0 and 2 are the same (\"It is a mixture of iron and sulfur\"); options 0 and 3 are the same (\"It is a mixture of iron and sulfur\"); options 2 and 3 are the same (\"It is a mixture of iron and sulfur\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a non-uniform mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the difference between a pure substance and a mixture?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"A pure substance is made by chemical combination, while a mixture is made by physical means\" / \"A pure substance is made by physical means, while a mixture is made by chemical combination\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a compound?",
+      "reason": "near-duplicate of batch item \"Which of the following is a compound?…\" (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when sugar is heated in a boiling tube?",
+      "reason": "near-duplicate of served question cmvf90s8g03mqgod8m63n8q73 (cosine 0.907 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

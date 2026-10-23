@@ -1,0 +1,854 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T20:36:49.899Z",
+  "finishedAt": "2026-10-21T20:46:35.640Z",
+  "seconds": 586,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Introductory Microeconomics",
+    "bookCode": "leec2",
+    "document": "ncert/12/economics/leec203.pdf",
+    "classLevel": 12,
+    "subject": "Economics",
+    "chapter": "Chapter 3 — Production and Costs",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, marking scheme, 2026-27]\n10. (C) 1, infinity 1\n11 A Value-Added Method:\nGross Domestic Product at Market Price = (ii) - (viii) ½\n= 1,900 – 330 ½\n= ₹ 1,570 crore ½\nExpenditure Method:\nGross Domestic Product at Market Price = (i) + (iii) + (iv) + (vii) ½\n= 500 + 400 + 600 + 70 ½\n= ₹ 1,570 crore ½\nOR\n11 B (I) Two factors of production and their respective remunerations earned are:\n• Land - Rent ½ + ½\n• Capital - Interest ½ + ½\n(II) The remuneration earned by the Land can be defined as:\nRent: Income earned by the owner of the land (natural resources). 1",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n1. This question paper contains two sections:",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n7. C. Both Statements 1 and 2 are true.",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n2. C. 169.92"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 199978,
+      "in": 46,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 42777,
+      "completionTokens": 12907
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 282692,
+      "in": 44,
+      "out": 32,
+      "rejects": 12,
+      "promptTokens": 23049,
+      "completionTokens": 8848
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 88536,
+      "in": 32,
+      "out": 28,
+      "rejects": 4,
+      "promptTokens": 37919,
+      "completionTokens": 2112
+    },
+    "form": {
+      "calls": 19,
+      "ms": 69986,
+      "in": 28,
+      "out": 9,
+      "rejects": 19,
+      "promptTokens": 10031,
+      "completionTokens": 1910
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 482,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 398138,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 25101,
+      "completionTokens": 13725
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 5,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a firm uses 2 units of labour and 2 units of capital, how much output can it produce according to Table 3.1?",
+      "ms": {
+        "draft": 3494,
+        "critique": 4477,
+        "solver": 1399
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the primary objective of a firm?",
+      "ms": {
+        "draft": 3494,
+        "critique": 5434,
+        "solver": 13306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does an isoquant represent in the context of production?",
+      "ms": {
+        "draft": 3494,
+        "critique": 7463,
+        "solver": 12061,
+        "form": 3162
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the technology of a firm improves, what happens to the production function?",
+      "ms": {
+        "draft": 3494,
+        "critique": 6495,
+        "solver": 13278,
+        "form": 1734
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a firm uses only two inputs, labour and capital, and both are necessary for production, what can be inferred about the production function?",
+      "ms": {
+        "draft": 3494,
+        "critique": 6334,
+        "solver": 9897,
+        "form": 2231
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which concept refers to a period in which all factors of production can be varied?",
+      "ms": {
+        "draft": 10918,
+        "critique": 5643,
+        "solver": 1622,
+        "form": 2315
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the output per unit of variable input?",
+      "ms": {
+        "draft": 10918,
+        "critique": 6049,
+        "solver": 1312,
+        "form": 1945
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Suppose a farmer uses 4 hectares of land and increases the number of workers from 1 to 3. According to the passage, what happens to the marginal product in this scenario?",
+      "ms": {
+        "draft": 10918,
+        "critique": 6049,
+        "solver": 1562,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a firm increases the number of workers but the additional output from each new worker decreases, what is this phenomenon called?",
+      "ms": {
+        "draft": 10918,
+        "critique": 5457,
+        "solver": 1531,
+        "form": 3292
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why does the marginal product of labor first increase and then decrease when more workers are employed on a fixed amount of land?",
+      "ms": {
+        "draft": 10918,
+        "critique": 6023,
+        "solver": 1168,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the relationship between the marginal product and the total product?",
+      "ms": {
+        "draft": 10918,
+        "critique": 5752,
+        "solver": 12657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the shape of the marginal product (MP) curve for a typical firm?",
+      "ms": {
+        "draft": 7213,
+        "critique": 5965,
+        "solver": 11269,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the Cobb-Douglas production function described in the passage, what happens to the output if both inputs are increased by a factor of t, and α + β = 1?",
+      "ms": {
+        "draft": 7213,
+        "critique": 5987,
+        "solver": 1361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the relationship between the average product (AP) and marginal product (MP) curves?",
+      "ms": {
+        "draft": 7213,
+        "critique": 5617,
+        "solver": 11354,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the cost incurred by a firm to employ variable inputs?",
+      "ms": {
+        "draft": 3879,
+        "critique": 5155
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the total fixed cost of a firm is Rs 20, what is the total cost at zero level of output?",
+      "ms": {
+        "draft": 3879,
+        "critique": 5304
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given that TVC increases with output, how does the total cost (TC) behave as output increases?",
+      "ms": {
+        "draft": 3879,
+        "critique": 6599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total cost at 4 units of output is Rs 49 and at 5 units is Rs 53, what is the marginal cost of the fifth unit?",
+      "ms": {
+        "draft": 3879,
+        "critique": 7318
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the shape of the short run marginal cost (SMC) curve?",
+      "ms": {
+        "draft": 3777,
+        "critique": 4111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the average fixed cost (AFC) a rectangular hyperbola?",
+      "ms": {
+        "draft": 3879,
+        "critique": 4351,
+        "solver": 4555
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the point where LRMC intersects LRAC?",
+      "ms": {
+        "draft": 5528,
+        "critique": 4256,
+        "solver": 708,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the shape of the long run marginal cost (LRMC) and long run average cost (LRAC) curves according to the passage?",
+      "ms": {
+        "draft": 5528,
+        "critique": 4419,
+        "solver": 1854,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a firm’s long run average cost is Rs 100 at 100 units of output, and the long run marginal cost at that output is Rs 80, what can be concluded about the firm’s long run average cost?",
+      "ms": {
+        "draft": 5528,
+        "critique": 6825,
+        "solver": 1534,
+        "form": 4624
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the shape of the long run average cost (LRAC) curve?",
+      "ms": {
+        "draft": 5528,
+        "critique": 5551,
+        "solver": 1294,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Short Run Marginal Cost (SMC) curve is 'U'-shaped, which of the following best describes its behavior as output increases?",
+      "ms": {
+        "draft": 3585,
+        "critique": 5785,
+        "solver": 1306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason behind the 'U' shape of the Short Run Average Cost (SAC) curve?",
+      "ms": {
+        "draft": 3585,
+        "critique": 4885,
+        "solver": 1425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the cost that a firm incurs to employ variable inputs?",
+      "ms": {
+        "draft": 2835,
+        "critique": 6841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to total variable cost as output increases?",
+      "ms": {
+        "draft": 2835,
+        "critique": 4504
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Table 3.3, what is the total cost when the output is 2 units?",
+      "ms": {
+        "draft": 2835,
+        "critique": 4756,
+        "solver": 1334
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total fixed cost is Rs 20 and the total variable cost for 3 units of output is Rs 25, what is the average variable cost?",
+      "ms": {
+        "draft": 2835,
+        "critique": 6915,
+        "solver": 1232,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the marginal product (MP) and the average product (AP) when the AP is increasing?",
+      "ms": {
+        "draft": 21685,
+        "critique": 5095
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what happens to the marginal product of an input as more units of the input are added?",
+      "ms": {
+        "draft": 21685,
+        "critique": 6133
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the condition for a production function to exhibit constant returns to scale?",
+      "ms": {
+        "draft": 21685,
+        "critique": 5956
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the output per unit of variable input?",
+      "ms": {
+        "draft": 3099,
+        "critique": 6288
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the total product increases by 14 units when the number of workers increases from 1 to 2, what is the marginal product of the second worker?",
+      "ms": {
+        "draft": 3099,
+        "critique": 6139
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the relationship between inputs used and output produced by a firm?",
+      "ms": {
+        "draft": 3494,
+        "critique": 4091,
+        "solver": 904,
+        "form": 3822,
+        "translation": 32543
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the total cost per unit of output?",
+      "ms": {
+        "draft": 2835,
+        "critique": 4676,
+        "solver": 886,
+        "form": 2092,
+        "translation": 28169
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a firm’s LRAC curve is falling, what can be said about its LRMC curve?",
+      "ms": {
+        "draft": 5528,
+        "critique": 4256,
+        "solver": 1419,
+        "form": 3924,
+        "translation": 48384
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a firm increases all its inputs by a proportional amount and the output increases by the same proportion, what type of returns to scale is the firm experiencing?",
+      "ms": {
+        "draft": 7213,
+        "critique": 5706,
+        "solver": 1516,
+        "form": 3589,
+        "translation": 44949
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the short run in production?",
+      "ms": {
+        "draft": 7213,
+        "critique": 6308,
+        "solver": 1207,
+        "form": 2595,
+        "translation": 45619
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A firm experiences increasing returns to scale at low levels of output, followed by constant returns to scale, and eventually decreasing returns to scale. What would be the shape of its Long Run Average Cost (LRAC) curve?",
+      "ms": {
+        "draft": 3585,
+        "critique": 5056,
+        "solver": 1204,
+        "form": 3912,
+        "translation": 61011
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A firm produces 100 units of output using 10 units of capital and 10 units of labour. If the firm doubles both inputs, the output increases by 200 units. What type of returns to scale is the firm experiencing?",
+      "ms": {
+        "draft": 7213,
+        "critique": 5653,
+        "solver": 1304,
+        "form": 3285,
+        "translation": 43910
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the Short Run Marginal Cost (SMC) curve intersects the Average Variable Cost (AVC) curve at its minimum point, what can be inferred about the relationship between SMC and AVC at that point?",
+      "ms": {
+        "draft": 3585,
+        "critique": 4213,
+        "solver": 1799,
+        "form": 3805,
+        "translation": 42073
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a firm is operating at a level of output where its LRAC curve is rising, what must be true about its LRMC curve?",
+      "ms": {
+        "draft": 5528,
+        "critique": 5099,
+        "solver": 943,
+        "form": 3211,
+        "translation": 48234
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a firm uses 2 units of labour and 2 units of capital, how much output can it produce according to Table 3.1?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the primary objective of a firm?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"To maximize revenue\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does an isoquant represent in the context of production?",
+      "reason": "options 1 and 2 are the same (\"The maximum output possible with given inputs\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the technology of a firm improves, what happens to the production function?",
+      "reason": "the key is far longer than every distractor (58 vs 23 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a firm uses only two inputs, labour and capital, and both are necessary for production, what can be inferred about the production function?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"contradicts the passage's statement on output increase…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which concept refers to a period in which all factors of production can be varied?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Not defined in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used to describe the output per unit of variable input?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Not a term used in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Suppose a farmer uses 4 hectares of land and increases the number of workers from 1 to 3. According to the passage, what happens to the marginal product in this scenario?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a firm increases the number of workers but the additional output from each new worker decreases, what is this phenomenon called?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Not a term used in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why does the marginal product of labor first increase and then decrease when more workers are employed on a fixed amount of land?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (98 vs 37 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the relationship between the marginal product and the total product?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the shape of the marginal product (MP) curve for a typical firm?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the Cobb-Douglas production function described in the passage, what happens to the output if both inputs are increased by a factor of t, and α + β = 1?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the relationship between the average product (AP) and marginal product (MP) curves?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the cost incurred by a firm to employ variable inputs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the total fixed cost of a firm is Rs 20, what is the total cost at zero level of output?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Given that TVC increases with output, how does the total cost (TC) behave as output increases?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the total cost at 4 units of output is Rs 49 and at 5 units is Rs 53, what is the marginal cost of the fifth unit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the shape of the short run marginal cost (SMC) curve?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, why is the average fixed cost (AFC) a rectangular hyperbola?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the relationship between the Short Run Marginal Cost (SMC) curve and the Average Variable Cost (AVC) curve?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "According to the passage, what is the relationship between the area under the SMC curve and the Total Variable Cost (TVC)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the point where LRMC intersects LRAC?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the shape of the long run marginal cost (LRMC) and long run average cost (LRAC) curves according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage and assumes both curves are upward…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a firm’s long run average cost is Rs 100 at 100 units of output, and the long run marginal cost at that output is Rs 80, what can be concluded about the firm’s long run average cost?",
+      "reason": "checkExpr is set but the key \"It is decreasing\" states no number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say about the shape of the long run average cost (LRAC) curve?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the Short Run Marginal Cost (SMC) curve is 'U'-shaped, which of the following best describes its behavior as output increases?",
+      "reason": "options 0 and 2 say the same thing (\"SMC decreases continuously as output increases\" / \"SMC increases continuously as output increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason behind the 'U' shape of the Short Run Average Cost (SAC) curve?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the cost that a firm incurs to employ variable inputs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to total variable cost as output increases?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Table 3.3, what is the total cost when the output is 2 units?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the total fixed cost is Rs 20 and the total variable cost for 3 units of output is Rs 25, what is the average variable cost?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"25/3\" = 8.333333333333334, but the key says 8.33"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the marginal product (MP) and the average product (AP) when the AP is increasing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what happens to the marginal product of an input as more units of the input are added?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what is the condition for a production function to exhibit constant returns to scale?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the output per unit of variable input?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the total product increases by 14 units when the number of workers increases from 1 to 2, what is the marginal product of the second worker?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

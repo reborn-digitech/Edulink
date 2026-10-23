@@ -1,0 +1,484 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:50:51.043Z",
+  "finishedAt": "2026-10-23T02:57:53.531Z",
+  "seconds": 422,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh104.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Complex Numbers and Quadratic Equations",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n16. The roots of quadratic equation 3𝑥 − 4√3𝑥 + 4 = 0 are 2 1\n(A) not real (B) real and equal\n(C) rational and distinct (D) irrational and distinct",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n4. The nature of roots of the quadratic equation 9x – 6x – 2 = 0 is: 2 1\n(a) No real roots (b) 2 equal real roots\n(c) 2 distinct real roots (d) More than 2 real roots",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n24. Find the nature of roots of the quadratic equation 𝒙 + 4𝒙 − 3√2 = 0. 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. The roots of the quadratic equation 𝑥 +x-1 = 0 are 2 1\nA) Irrational and distinct\nC ) rational and distinct"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 122126,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 21076,
+      "completionTokens": 6372
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 238267,
+      "in": 21,
+      "out": 20,
+      "rejects": 1,
+      "promptTokens": 16984,
+      "completionTokens": 5931
+    },
+    "solver": {
+      "calls": 177,
+      "ms": 109820,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 40129,
+      "completionTokens": 1916
+    },
+    "form": {
+      "calls": 5,
+      "ms": 18365,
+      "in": 13,
+      "out": 5,
+      "rejects": 8,
+      "promptTokens": 1310,
+      "completionTokens": 395
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4180,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 125603,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8910,
+      "completionTokens": 4225
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the complex number z = 4 + i3, what is the value of the imaginary part of z?",
+      "ms": {
+        "draft": 3888,
+        "critique": 6383,
+        "solver": 1208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the complex number z = 2 + i5, and another complex number w = 3 + i4, what is the sum of the real parts of z and w?",
+      "ms": {
+        "draft": 3888,
+        "critique": 7968,
+        "solver": 2186
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the complex number z = a + ib is equal to the complex number w = c + id, which of the following must be true?",
+      "ms": {
+        "draft": 3888,
+        "critique": 6680,
+        "solver": 1529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a complex number z = 3 + 4i, what is its modulus?",
+      "ms": {
+        "draft": 15280,
+        "critique": 8352,
+        "solver": 12290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the multiplicative inverse of a complex number a + ib?",
+      "ms": {
+        "draft": 15280,
+        "critique": 11038,
+        "solver": 14724,
+        "form": 4129
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a complex number z = 2 - 5i, what is its conjugate?",
+      "ms": {
+        "draft": 15280,
+        "critique": 5980,
+        "solver": 6595
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a complex number z is 2 - 3i, what is its multiplicative inverse?",
+      "ms": {
+        "draft": 6350,
+        "critique": 8118,
+        "solver": 17221
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Argand plane, the point representing the complex number 3 + i is located in which quadrant?",
+      "ms": {
+        "draft": 6350,
+        "critique": 7962,
+        "solver": 18896
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the complex number z satisfies the equation z² = -1, what is the value of z?",
+      "ms": {
+        "draft": 6350,
+        "critique": 7541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the imaginary part of the complex number 2 + i5?",
+      "ms": {
+        "draft": 16239,
+        "critique": 10360,
+        "solver": 1447,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the roots of the equation x² + 5x + 6 = 0 are α and β, what is the value of α² + β²?",
+      "ms": {
+        "draft": 6350,
+        "critique": 8394,
+        "solver": 17620
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the multiplicative inverse of the complex number 2 + i3?",
+      "ms": {
+        "draft": 16239,
+        "critique": 6958,
+        "solver": 1852,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the complex numbers 2 + i3 and 4 + i5 are added, what is the result?",
+      "ms": {
+        "draft": 16239,
+        "critique": 7781,
+        "solver": 12047
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a complex number is equal to its conjugate, what is the nature of the number?",
+      "ms": {
+        "draft": 16239,
+        "critique": 6476,
+        "solver": 1450,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of the complex numbers (3 + i5) and (2 + i6)?",
+      "ms": {
+        "draft": 16239,
+        "critique": 9612,
+        "solver": 13414
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a complex number is equal to its conjugate, what can be said about its imaginary part?",
+      "ms": {
+        "draft": 16239,
+        "critique": 7500,
+        "solver": 8629,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "ms": {
+        "draft": 6350,
+        "critique": 7759,
+        "solver": 15107,
+        "form": 3608
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the non-negative real number sqrt(a^2 + b^2) for a complex number a + ib?",
+      "ms": {
+        "draft": 15280,
+        "critique": 6321,
+        "solver": 1841,
+        "form": 5150,
+        "translation": 32610
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the complex number a - ib, where the original complex number is a + ib?",
+      "ms": {
+        "draft": 15280,
+        "critique": 5856,
+        "solver": 17400,
+        "form": 3323,
+        "translation": 36029
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a complex number?",
+      "ms": {
+        "draft": 6350,
+        "critique": 7583,
+        "solver": 13813,
+        "form": 3570,
+        "translation": 21956
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the complex number z = a + ib has real part 2 and imaginary part 5, what is the value of Re(z) + Im(z)?",
+      "ms": {
+        "draft": 3888,
+        "critique": 6746,
+        "solver": 1964,
+        "form": 0,
+        "translation": 31073
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If z = 2 + i3, what is the value of the additive inverse of z?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If z = 3 + i5, what is the value of the multiplicative inverse of z?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the complex number z = 4 + i3, what is the value of the imaginary part of z?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the complex number z = 2 + i5, and another complex number w = 3 + i4, what is the sum of the real parts of z and w?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the complex number z = a + ib is equal to the complex number w = c + id, which of the following must be true?",
+      "reason": "options 0 and 1 say the same thing (\"a = c and b = d\" / \"a = d and b = c\"); options 0 and 2 say the same thing (\"a = c and b = d\" / \"a + c = b + d\"); options 0 and 3 say the same thing (\"a = c and b = d\" / \"a + d = b + c\"); options 1 and 2 say the same thing (\"a = d and b = c\" / \"a + c = b + d\"); options 1 and 3 say the same thing (\"a = d and b = c\" / \"a + d = b + c\"); options 2 and 3 say the same thing (\"a + c = b + d\" / \"a + d = b + c\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a complex number z = 3 + 4i, what is its modulus?",
+      "reason": "checkExpr \"sqrt(3^2 + 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the multiplicative inverse of a complex number a + ib?",
+      "reason": "options 0 and 1 say the same thing (\"(a - ib)/(a^2 + b^2)\" / \"(a + ib)/(a^2 - b^2)\"); options 0 and 2 say the same thing (\"(a - ib)/(a^2 + b^2)\" / \"(a - ib)/(a + b)\"); options 0 and 3 say the same thing (\"(a - ib)/(a^2 + b^2)\" / \"(a + ib)/(a - b)\"); options 1 and 2 say the same thing (\"(a + ib)/(a^2 - b^2)\" / \"(a - ib)/(a + b)\"); options 1 and 3 say the same thing (\"(a + ib)/(a^2 - b^2)\" / \"(a + ib)/(a - b)\"); options 2 and 3 say the same thing (\"(a - ib)/(a + b)\" / \"(a + ib)/(a - b)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a complex number z = 2 - 5i, what is its conjugate?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a complex number z is 2 - 3i, what is its multiplicative inverse?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the Argand plane, the point representing the complex number 3 + i is located in which quadrant?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the complex number z satisfies the equation z² = -1, what is the value of z?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the imaginary part of the complex number 2 + i5?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Thinks the entire imaginary term is the answer instead of th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the roots of the equation x² + 5x + 6 = 0 are α and β, what is the value of α² + β²?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the multiplicative inverse of the complex number 2 + i3?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Gives the conjugate instead of the multiplicative inverse. T…\"); distractor 2's reason is not a one-line misconception (\"Gives the original complex number instead of the inverse. Th…\"); distractor 3's reason is not a one-line misconception (\"Gives the conjugate with the wrong denominator. The multipli…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the complex numbers 2 + i3 and 4 + i5 are added, what is the result?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a complex number is equal to its conjugate, what is the nature of the number?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 2's reason is not a one-line misconception (\"Thinks the number is imaginary when it is actually real. Opt…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the product of the complex numbers (3 + i5) and (2 + i6)?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a complex number is equal to its conjugate, what can be said about its imaginary part?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Thinks the imaginary part is non-zero when it is actually ze…\"); distractor 3's reason is not a one-line misconception (\"Thinks the imaginary part is positive when it is actually ze…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "reason": "near-duplicate of batch item \"What is the term used for the non-negative real nu…\" (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

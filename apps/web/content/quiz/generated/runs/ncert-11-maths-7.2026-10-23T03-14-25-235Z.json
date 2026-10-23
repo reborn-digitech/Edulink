@@ -1,0 +1,497 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T03:14:25.235Z",
+  "finishedAt": "2026-10-23T03:20:46.755Z",
+  "seconds": 382,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh107.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Binomial Theorem",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n17. Suppose a random variable 𝑋 follows the binomial distribution with parameters 1\n𝑃(𝑋=𝑟)\n𝑛 and 𝑝 , where 0 < 𝑝 < 1 . If 𝑃(𝑋=𝑛−𝑟)\nequals\n1 1 1\n(A) 2 (B) 3 (C) 5\nis independent of 𝑛 and 𝑟 , then 𝑝\n(D) 7",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n20. Assertion (A) : The probability of getting 6 heads when a unbiased coin is tossed 10 times is\nଵ ଵ଴\n𝐶(10,6) ቀ ቁ ଶ\nReason (R) In a Binomial distribution the probability is given by\nP(X= r) = C (n, r)(𝑝) (𝑞) ௥ ௡ି௥",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2024-25]\n31(a). (i) We have ,  P i=1 8 ( X = i ) = 1\n, which has to be maximized.\n½\n½\n p + 2 p + 2 p + p + 2 p + p + 2 p + 7 p + p = 1 2 2 2 ½\n 10p + 9 p −1 = 0 2\n(10 p − 1)( p + 1) = 0\n p  − 1\n1 1\n p =\n(ii)\nMean, E ( X ) =  i P i=1 8 ( X = i ) ½\n= 1 p + 2 p + 3 2 p + 4 p + 5 2 p + 6 p + 7 2 p + 8 2 2 ( 7 p + p 2 ) ½\n= 33 p + 76 p 2\n33 76 203\n= + = ½\n10 100 50\nOR\n31(b). 1 99\nWe have, p = 0.01 =  q = ½\n100 100\nLet number of Bernoulli trials be n.\nNow, the binomial distribution formula is for any random variable ( X ) is given by\nx n− x\nn  1   99 \nP ( X = x ) = C x   100   100    \nSo, the probability of at least one success is\nP ( X  1 ) = 1− P ( X = 0 ) = 1− C n 0  1  ",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n7. B 210 = 21 + (𝑛 − 1)21 ⇒ 𝑛 = 10\n(B) 𝟏𝟎 𝒕𝒉"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 116711,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 21206,
+      "completionTokens": 6329
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 193905,
+      "in": 22,
+      "out": 21,
+      "rejects": 1,
+      "promptTokens": 14201,
+      "completionTokens": 4934
+    },
+    "solver": {
+      "calls": 147,
+      "ms": 83028,
+      "in": 21,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 34253,
+      "completionTokens": 1621
+    },
+    "form": {
+      "calls": 7,
+      "ms": 33115,
+      "in": 19,
+      "out": 7,
+      "rejects": 12,
+      "promptTokens": 2211,
+      "completionTokens": 793
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4576,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 257989,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14360,
+      "completionTokens": 6797
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Using the binomial theorem, what is the expansion of (2x + 3y)^2?",
+      "ms": {
+        "draft": 5119,
+        "critique": 5430,
+        "solver": 1725,
+        "form": 9331
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of terms in the expansion of (a + b)^n?",
+      "ms": {
+        "draft": 5119,
+        "critique": 5276,
+        "solver": 13492,
+        "form": 4310
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If (a + b)^3 is expanded, what is the coefficient of the term containing b^2?",
+      "ms": {
+        "draft": 5119,
+        "critique": 6060,
+        "solver": 13838,
+        "form": 4321
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the binomial theorem for a positive integer n?",
+      "ms": {
+        "draft": 5119,
+        "critique": 8694,
+        "solver": 1551,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the indices of a and b in each term of the expansion of (a + b)^n is always n, what can be said about the expansion?",
+      "ms": {
+        "draft": 5119,
+        "critique": 9131,
+        "solver": 1575,
+        "form": 6031
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of the expression (1 + x)^n when x = 1 according to the passage?",
+      "ms": {
+        "draft": 13822,
+        "critique": 9297,
+        "solver": 1721,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a valid method to evaluate (98)^5 according to the passage?",
+      "ms": {
+        "draft": 13822,
+        "critique": 8807,
+        "solver": 1534,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following expressions can be used to prove that 6^n - 5n always leaves a remainder of 1 when divided by 25 according to the passage?",
+      "ms": {
+        "draft": 13822,
+        "critique": 6953,
+        "solver": 1230,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5 according to the passage?",
+      "ms": {
+        "draft": 13822,
+        "critique": 10089,
+        "solver": 15613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5?",
+      "ms": {
+        "draft": 5370,
+        "critique": 5783,
+        "solver": 1597,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of (1.01)^1000?",
+      "ms": {
+        "draft": 5370,
+        "critique": 7189,
+        "solver": 1481
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the expansion of (x + 3/x)^4?",
+      "ms": {
+        "draft": 5370,
+        "critique": 5275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total number of terms in the expansion of (a + b)^n according to the passage?",
+      "ms": {
+        "draft": 4294,
+        "critique": 9131,
+        "solver": 1895,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the indices of a and b in each term of the expansion of (a + b)^n?",
+      "ms": {
+        "draft": 4294,
+        "critique": 7457,
+        "solver": 1590,
+        "form": 4017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the expansion of (2x + 3y)^5 according to the passage?",
+      "ms": {
+        "draft": 4294,
+        "critique": 7027,
+        "solver": 1212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If P(X = r) = P(X = n - r) for a binomial distribution with parameters n and p, then what is the value of p?",
+      "ms": {
+        "draft": 4294,
+        "critique": 4266,
+        "solver": 7360,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the binomial theorem provide an easier way to do?",
+      "ms": {
+        "draft": 4294,
+        "critique": 8839,
+        "solver": 1949,
+        "form": 0,
+        "translation": 60703
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is true about the coefficients in the binomial expansion?",
+      "ms": {
+        "draft": 4294,
+        "critique": 6450,
+        "solver": 2015,
+        "form": 2992,
+        "translation": 39846
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the remainder when 6^n - 5n is divided by 25?",
+      "ms": {
+        "draft": 5370,
+        "critique": 5811,
+        "solver": 2517,
+        "form": 0,
+        "translation": 31003
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A random variable X follows the binomial distribution with parameters n and p. If P(X = r) / P(X = n - r) is independent of n and r, what is the value of p?",
+      "ms": {
+        "draft": 5119,
+        "critique": 7046,
+        "solver": 17399,
+        "form": 4924,
+        "translation": 46172
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If p is the probability of success in a binomial distribution and P(X = r) = P(X = n - r), what is the value of p?",
+      "ms": {
+        "draft": 5370,
+        "critique": 7063,
+        "solver": 18255,
+        "form": 0,
+        "translation": 35146
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the probability of success is p, and the probability of getting exactly r successes in n trials is equal to the probability of getting exactly n - r successes, what can be said about p?",
+      "ms": {
+        "draft": 5370,
+        "critique": 6149,
+        "solver": 1861,
+        "form": 1,
+        "translation": 41099
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the result of the expression (1.01)^1000 according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the expansion of (x + 1/x)^3 according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Using the binomial theorem, what is the expansion of (2x + 3y)^2?",
+      "reason": "option 1 repeats the stem's wording (\"2x^2 + 3y^2\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total number of terms in the expansion of (a + b)^n?",
+      "reason": "options 1 and 3 are the same (\"n-1\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If (a + b)^3 is expanded, what is the coefficient of the term containing b^2?",
+      "reason": "options 0 and 3 are the same (\"3\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the binomial theorem for a positive integer n?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"(a + b)^n = C(a)^n + C(a)^{n-1}b + ... + C(b)^n\" / \"(a + b)^n = C(a)^n + C(a)^{n-1}b + ... + C(b)^0\"); options 0 and 3 say the same thing (\"(a + b)^n = C(a)^n + C(a)^{n-1}b + ... + C(b)^n\" / \"(a + b)^n = C(a)^n + C(a)^{n}b + ... + C(b)^n\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the sum of the indices of a and b in each term of the expansion of (a + b)^n is always n, what can be said about the expansion?",
+      "reason": "options 0 and 2 say the same thing (\"It is a polynomial of degree n\" / \"It is a polynomial of degree n+1\"); options 1 and 3 say the same thing (\"It is a binomial of degree n\" / \"It is a binomial of degree n+1\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of the expression (1 + x)^n when x = 1 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a valid method to evaluate (98)^5 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Use the binomial theorem by expressing 98 as 100 + 2\" / \"Use the binomial theorem by expressing 98 as 100 - 2\"); distractor 2's reason is not a one-line misconception (\"Chooses an arbitrary split that is not mentioned in the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following expressions can be used to prove that 6^n - 5n always leaves a remainder of 1 when divided by 25 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"(1 + 5)^n - 5n\" / \"(1 - 5)^n - 5n\"); options 0 and 2 say the same thing (\"(1 + 5)^n - 5n\" / \"(1 + 5n)^n - 5n\"); options 0 and 3 say the same thing (\"(1 + 5)^n - 5n\" / \"(1 + 5)^n + 5n\"); options 1 and 2 say the same thing (\"(1 - 5)^n - 5n\" / \"(1 + 5n)^n - 5n\"); options 1 and 3 say the same thing (\"(1 - 5)^n - 5n\" / \"(1 + 5)^n + 5n\"); option 2 repeats the stem's wording (\"(1 + 5n)^n - 5n\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5 according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5?",
+      "reason": "options 0 and 1 say the same thing (\"x^5 - 10x^4y + 40x^3y^2 - 80x^2y^3 + 80xy^4 - 32y^5\" / \"x^5 + 10x^4y + 40x^3y^2 + 80x^2y^3 + 80xy^4 + 32y^5\"); options 0 and 2 say the same thing (\"x^5 - 10x^4y + 40x^3y^2 - 80x^2y^3 + 80xy^4 - 32y^5\" / \"x^5 - 10x^4y + 40x^3y^2 - 80x^2y^3 + 80xy^4 + 32y^5\"); options 0 and 3 say the same thing (\"x^5 - 10x^4y + 40x^3y^2 - 80x^2y^3 + 80xy^4 - 32y^5\" / \"x^5 - 10x^4y - 40x^3y^2 - 80x^2y^3 - 80xy^4 - 32y^5\"); options 1 and 2 say the same thing (\"x^5 + 10x^4y + 40x^3y^2 + 80x^2y^3 + 80xy^4 + 32y^5\" / \"x^5 - 10x^4y + 40x^3y^2 - 80x^2y^3 + 80xy^4 + 32y^5\"); options 1 and 3 say the same thing (\"x^5 + 10x^4y + 40x^3y^2 + 80x^2y^3 + 80xy^4 + 32y^5\" / \"x^5 - 10x^4y - 40x^3y^2 - 80x^2y^3 - 80xy^4 - 32y^5\"); options 2 and 3 say the same thing (\"x^5 - 10x^4y + 40x^3y^2 - 80x^2y^3 + 80xy^4 + 32y^5\" / \"x^5 - 10x^4y - 40x^3y^2 - 80x^2y^3 - 80xy^4 - 32y^5\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of (1.01)^1000?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the expansion of (x + 3/x)^4?",
+      "reason": "the solution's working is not sound; option 1 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the total number of terms in the expansion of (a + b)^n according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the sum of the indices of a and b in each term of the expansion of (a + b)^n?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the expansion of (2x + 3y)^5 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^5\" / \"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^4\"); options 0 and 2 say the same thing (\"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^5\" / \"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^3 + 243y^5\"); options 0 and 3 say the same thing (\"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^5\" / \"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^3\"); options 1 and 2 say the same thing (\"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^4\" / \"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^3 + 243y^5\"); options 1 and 3 say the same thing (\"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^4\" / \"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^3\"); options 2 and 3 say the same thing (\"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^3 + 243y^5\" / \"32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^3\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If P(X = r) = P(X = n - r) for a binomial distribution with parameters n and p, then what is the value of p?",
+      "reason": "near-duplicate of batch item \"A random variable X follows the binomial distribut…\" (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

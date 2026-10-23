@@ -1,0 +1,636 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T11:19:34.782Z",
+  "finishedAt": "2026-10-21T11:32:09.797Z",
+  "seconds": 755,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh204.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Vector Algebra",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n12. (b)\n \nVector component of a along b ",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n15. (B) Both the vectors 𝑖̂ + 𝑗̂ and 𝑖̂ − 𝑗̂ are in XY-plane 1\nSo a vector perpendicular to both is 3𝑘̂",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n14. (B) Direction cosines of the vector 𝑖̂ + 𝑗̂ + √2 𝑘̂ are 1 1 , , 1 1\nLet angle = 𝛾. Then cos 𝛾 = √2\n2 2 √2\n⇒ 𝛾 = 𝜋 4",
+      "[CBSE Class XII Mathematics, marking scheme, 2024-25]\n24. (a)\n \ndy x\n  (cos x) (log cos x  xtan x) . e 1\ndx\nWe have b⃗⃗ + λc⃗ = (−1 + 3λ)î + (2 + λ )ĵ + k̂ 1 2\n(b⃗⃗ + λc⃗) . a⃗⃗ = 0 => 2(−1 + 3λ ) + 2 (2 + λ ) + 3 = 0 1\nλ = − 5 2\nOR 1\n24.(b) 𝐵𝐴⃗⃗⃗⃗⃗⃗ = 𝑂𝐴⃗⃗⃗⃗⃗⃗ − 𝑂𝐵⃗⃗⃗⃗⃗⃗ = (4𝑖̂ + 3𝑘̂) − 𝑘̂ = 4𝑖̂ + 2𝑘̂ 2\n4 2 2 1\n𝐵𝐴̂ = 𝑖̂ + 𝑘̂ = 𝑖̂ + 𝑘̂\n2√5 2√5 √5 √5\nSo, the angles made by the vector 𝐵𝐴⃗⃗⃗⃗⃗⃗ with the x, y\n𝑐𝑜𝑠 −1 ( ) , , 𝑐𝑜𝑠 √5 2 𝜋 2 −1 ( ). √5 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 163608,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 48374,
+      "completionTokens": 7218
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 318652,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 19303,
+      "completionTokens": 7590
+    },
+    "solver": {
+      "calls": 209,
+      "ms": 130257,
+      "in": 30,
+      "out": 28,
+      "rejects": 2,
+      "promptTokens": 38219,
+      "completionTokens": 2116
+    },
+    "form": {
+      "calls": 4,
+      "ms": 16903,
+      "in": 28,
+      "out": 20,
+      "rejects": 8,
+      "promptTokens": 982,
+      "completionTokens": 314
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3219,
+      "in": 20,
+      "out": 19,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 77,
+      "ms": 833591,
+      "in": 38,
+      "out": 38,
+      "rejects": 0,
+      "promptTokens": 43203,
+      "completionTokens": 19647
+    }
+  },
+  "kept": 19,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 3
+  },
+  "flagged": 11,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a scalar quantity?",
+      "ms": {
+        "draft": 4493,
+        "critique": 8140
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the magnitude of the vector 3i + 4j?",
+      "ms": {
+        "draft": 4493,
+        "critique": 9551,
+        "solver": 2014,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the unit vector in the direction of the vector 6i + 8j?",
+      "ms": {
+        "draft": 4493,
+        "critique": 9035,
+        "solver": 15379
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a condition for two vectors to be equal?",
+      "ms": {
+        "draft": 15203,
+        "critique": 8129,
+        "solver": 18449,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the unit vector in the direction of the vector a = 2i + 3j + k?",
+      "ms": {
+        "draft": 15203,
+        "critique": 11903
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two vectors are given as a = 2i + 3j + k and b = 2i + 3j + k, which of the following is true?",
+      "ms": {
+        "draft": 15203,
+        "critique": 9428,
+        "solver": 18470,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the scalar product of two perpendicular vectors?",
+      "ms": {
+        "draft": 27883,
+        "critique": 7924,
+        "solver": 2830,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the magnitude of the vector component of vector a = 2i + 3j + 4k along vector b = i + j + k?",
+      "ms": {
+        "draft": 27883,
+        "critique": 10364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of the vector product of two nonzero vectors according to the passage?",
+      "ms": {
+        "draft": 6539,
+        "critique": 9644,
+        "solver": 2302,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A unit vector perpendicular to the plane formed by vectors a and b is given by which of the following?",
+      "ms": {
+        "draft": 7016,
+        "critique": 5653,
+        "solver": 5225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find a unit vector perpendicular to two given vectors?",
+      "ms": {
+        "draft": 5928,
+        "critique": 6735,
+        "solver": 2308,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for two vectors to be parallel according to the passage?",
+      "ms": {
+        "draft": 6070,
+        "critique": 6445
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a unit vector makes angles with i, with j, and an acute angle θ with k, what is the value of θ?",
+      "ms": {
+        "draft": 5928,
+        "critique": 7263,
+        "solver": 2097
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the scalar product of two perpendicular vectors?",
+      "ms": {
+        "draft": 5287,
+        "critique": 4587,
+        "solver": 888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "ms": {
+        "draft": 4493,
+        "critique": 6789,
+        "solver": 1502,
+        "form": 3459
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Under what condition is the vector product of two vectors zero?",
+      "ms": {
+        "draft": 6539,
+        "critique": 6877,
+        "solver": 1551,
+        "form": 0,
+        "translation": 49100
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is defined as a quantity that has both magnitude and direction?",
+      "ms": {
+        "draft": 3434,
+        "critique": 8721,
+        "solver": 2081,
+        "form": 0,
+        "translation": 38070
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "ms": {
+        "draft": 3434,
+        "critique": 7672,
+        "solver": 1121,
+        "form": 0,
+        "translation": 29749
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the vector sum of the three sides of a triangle taken in order?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6601,
+        "solver": 2471,
+        "form": 4940,
+        "translation": 56312
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a vector has a magnitude of 0, what is it called?",
+      "ms": {
+        "draft": 3434,
+        "critique": 8933,
+        "solver": 2874,
+        "form": 0,
+        "translation": 42350
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a vector is multiplied by a scalar λ, what happens to its magnitude?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5866,
+        "solver": 2002,
+        "form": 5617,
+        "translation": 56309
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two vectors are collinear, what can be said about their direction?",
+      "ms": {
+        "draft": 4493,
+        "critique": 7454,
+        "solver": 14825,
+        "form": 0,
+        "translation": 39087
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a vector has direction ratios 1, 2, and 3, which of the following is its unit vector?",
+      "ms": {
+        "draft": 15203,
+        "critique": 10977,
+        "solver": 17591,
+        "form": 0,
+        "translation": 43575
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a 3D coordinate system, what is the term for the angles a vector makes with the positive directions of the x, y, and z-axes?",
+      "ms": {
+        "draft": 3434,
+        "critique": 8551,
+        "solver": 1312,
+        "form": 0,
+        "translation": 43047
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the term for vectors that are parallel to the same line?",
+      "ms": {
+        "draft": 3434,
+        "critique": 5895,
+        "solver": 1963,
+        "form": 0,
+        "translation": 41656
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the area of a triangle with vertices A(1, 1, 1), B(1, 2, 3), and C(2, 3, 1)?",
+      "ms": {
+        "draft": 5928,
+        "critique": 7856,
+        "solver": 1523,
+        "form": 0,
+        "translation": 27341
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Given two vectors, how can the unit vector in the direction of a vector be determined?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5831,
+        "solver": 1359,
+        "form": 5054,
+        "translation": 51858
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a vector is in the XY-plane, which of the following is a vector perpendicular to it?",
+      "ms": {
+        "draft": 3434,
+        "critique": 7278,
+        "solver": 2819,
+        "form": 0,
+        "translation": 42853
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a vector is given as 2i + 3j + 4k, what is the scalar product of this vector with itself?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6556,
+        "solver": 2163,
+        "form": 1,
+        "translation": 43178
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a vector is multiplied by a scalar -2, what happens to its direction?",
+      "ms": {
+        "draft": 4493,
+        "critique": 8239,
+        "solver": 12718,
+        "form": 0,
+        "translation": 39931
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a vector has direction cosines 1/√2, 1/√2, and 0, which of the following could be the direction ratios of the vector?",
+      "ms": {
+        "draft": 15203,
+        "critique": 9449,
+        "solver": 14543,
+        "form": 0,
+        "translation": 45020
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Given two vectors, what is the angle between them if their scalar product is zero?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6788,
+        "solver": 1581,
+        "form": 0,
+        "translation": 40651
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the vector a = i + 2j + 3k is multiplied by a scalar λ, which of the following is the resulting vector?",
+      "ms": {
+        "draft": 15203,
+        "critique": 8458,
+        "solver": 1574,
+        "form": 0,
+        "translation": 39386
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a vector is equally inclined to the coordinate axes, what are its direction cosines?",
+      "ms": {
+        "draft": 27883,
+        "critique": 8257,
+        "solver": 16004,
+        "form": 1,
+        "translation": 59818
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a scalar quantity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the magnitude of the vector 3i + 4j?",
+      "reason": "checkExpr \"sqrt(3^2 + 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the unit vector in the direction of the vector 6i + 8j?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a condition for two vectors to be equal?",
+      "reason": "options 0 and 1 say the same thing (\"They have the same magnitude and direction\" / \"They have the same direction and different magnitude\"); options 1 and 2 say the same thing (\"They have the same direction and different magnitude\" / \"They have different direction and same magnitude\"); options 2 and 3 say the same thing (\"They have different direction and same magnitude\" / \"They have different magnitude and direction\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the unit vector in the direction of the vector a = 2i + 3j + k?",
+      "reason": "the critic finds option 1 correct, the key is 2; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two vectors are given as a = 2i + 3j + k and b = 2i + 3j + k, which of the following is true?",
+      "reason": "options 2 and 3 say the same thing (\"2: a has a greater magnitude than b because the components are written in different order\" / \"3: b has a greater magnitude than a because the components are written in different order\"); option lengths are unalike (15 to 89 characters); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the scalar product of two perpendicular vectors?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the magnitude of the vector component of vector a = 2i + 3j + 4k along vector b = i + j + k?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of the vector product of two nonzero vectors according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the sine of the angle between them, and direction is perpendicular to both vectors.\" / \"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the cosine of the angle between them, and direction is perpendicular to both vectors.\"); options 0 and 2 say the same thing (\"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the sine of the angle between them, and direction is perpendicular to both vectors.\" / \"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the tangent of the angle between them, and direction is perpendicular to both vectors.\"); options 0 and 3 say the same thing (\"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the sine of the angle between them, and direction is perpendicular to both vectors.\" / \"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the cotangent of the angle between them, and direction is perpendicular to both vectors.\"); options 1 and 2 say the same thing (\"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the cosine of the angle between them, and direction is perpendicular to both vectors.\" / \"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the tangent of the angle between them, and direction is perpendicular to both vectors.\"); options 1 and 3 say the same thing (\"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the cosine of the angle between them, and direction is perpendicular to both vectors.\" / \"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the cotangent of the angle between them, and direction is perpendicular to both vectors.\"); options 2 and 3 say the same thing (\"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the tangent of the angle between them, and direction is perpendicular to both vectors.\" / \"The vector product of two nonzero vectors is defined as a vector whose magnitude is equal to the product of their magnitudes and the cotangent of the angle between them, and direction is perpendicular to both vectors.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A unit vector perpendicular to the plane formed by vectors a and b is given by which of the following?",
+      "reason": "options 0 and 2 are the same (\"a + b\"); options 0 and 3 are the same (\"a + b\"); options 2 and 3 are the same (\"a × b\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the scalar product of two vectors depend on?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to find a unit vector perpendicular to two given vectors?",
+      "reason": "options 0 and 1 are the same (\"(a × b)/|a × b|\"); options 0 and 3 are the same (\"(a × b)/|a × b|\"); options 1 and 3 are the same (\"(a + b)/|a + b|\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the condition for two vectors to be parallel according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a unit vector makes angles with i, with j, and an acute angle θ with k, what is the value of θ?",
+      "reason": "the solver picked option 1 2 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the scalar product of two perpendicular vectors?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "reason": "near-duplicate of batch item \"Which of the following is a vector quantity?…\" (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

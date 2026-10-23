@@ -1,0 +1,304 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:58:21.730Z",
+  "finishedAt": "2026-10-20T22:01:55.085Z",
+  "seconds": 213,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap107.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 7 — Experiments with Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 28398,
+      "in": 11,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 10793,
+      "completionTokens": 1956
+    },
+    "critique": {
+      "calls": 16,
+      "ms": 84082,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 6658,
+      "completionTokens": 2741
+    },
+    "solver": {
+      "calls": 91,
+      "ms": 46270,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 16325,
+      "completionTokens": 1059
+    },
+    "form": {
+      "calls": 6,
+      "ms": 10095,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 1481,
+      "completionTokens": 405
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 1730,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 93888,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6976,
+      "completionTokens": 3541
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What happened to the puri when it was put in hot oil?",
+      "ms": {
+        "draft": 3156,
+        "critique": 5626,
+        "solver": 2009
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you want to dry a handkerchief quickly, what could you do based on the information in the passage?",
+      "ms": {
+        "draft": 2072,
+        "critique": 6073,
+        "solver": 11358,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Chittibabu and Chinnababu keep their mango jelly in the sun?",
+      "ms": {
+        "draft": 2072,
+        "critique": 5908,
+        "solver": 10798,
+        "form": 2373
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Ayesha's mother find very little water left in the pan after forgetting about it?",
+      "ms": {
+        "draft": 2072,
+        "critique": 5310,
+        "solver": 14202,
+        "form": 2008
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if an iron ship was placed in water?",
+      "ms": {
+        "draft": 2496,
+        "critique": 4564,
+        "solver": 1264
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these things dissolves in water, according to the passage?",
+      "ms": {
+        "draft": 2072,
+        "critique": 5351,
+        "solver": 12859
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following objects sank in water according to the passage?",
+      "ms": {
+        "draft": 2496,
+        "critique": 5866,
+        "solver": 11406,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the soap case float on water even after the soap was placed in it?",
+      "ms": {
+        "draft": 2496,
+        "critique": 6144,
+        "solver": 1145,
+        "form": 2158
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the soap case float on water even when the soap was inside it?",
+      "ms": {
+        "draft": 3156,
+        "critique": 5374,
+        "solver": 1465,
+        "form": 2588,
+        "translation": 50316
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a puffed puri was placed in a bowl of water?",
+      "ms": {
+        "draft": 3156,
+        "critique": 5224,
+        "solver": 984,
+        "form": 2931,
+        "translation": 31843
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does a wooden boat float on water but a needle sinks?",
+      "ms": {
+        "draft": 3156,
+        "critique": 2874,
+        "solver": 444,
+        "form": 912,
+        "translation": 32609
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What happened to the water in the pan when Ayesha's mother fo"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What happened to the puri when it was put in hot oil?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you want to dry a handkerchief quickly, what could you do based on the information in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Chittibabu and Chinnababu keep their mango jelly in the sun?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The passage suggests the sun helps in drying, not softening…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Ayesha's mother find very little water left in the pan after forgetting about it?",
+      "reason": "options 1 and 3 say the same thing (\"The water was used to make tea\" / \"3: The water was used to make tea\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if an iron ship was placed in water?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of these things dissolves in water, according to the passage?",
+      "reason": "after redraft: the solver picked option 2 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following objects sank in water according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Why did the soap case float on water even after the soap was placed in it?",
+      "reason": "near-duplicate of batch item \"Why did the soap case float on water even when the…\" (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:14:44.544Z",
+  "finishedAt": "2026-10-22T23:17:43.160Z",
+  "seconds": 179,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap111.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 11 — The Valley of Flowers",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 48544,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13744,
+      "completionTokens": 2710
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 148901,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 8858,
+      "completionTokens": 3875
+    },
+    "solver": {
+      "calls": 91,
+      "ms": 55970,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 18184,
+      "completionTokens": 1143
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10715,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 937,
+      "completionTokens": 280
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3009,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 136351,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7321,
+      "completionTokens": 3716
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which district in Bihar is known for Madhubani paintings?",
+      "ms": {
+        "draft": 3062,
+        "critique": 5301
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the floral design shown in the passage?",
+      "ms": {
+        "draft": 3062,
+        "critique": 5737
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are the walls of houses in Madhubani painted with floral designs?",
+      "ms": {
+        "draft": 3062,
+        "critique": 6091
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for making Madhubani paintings?",
+      "ms": {
+        "draft": 3062,
+        "critique": 5815
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do people buy flowers according to the passage?",
+      "ms": {
+        "draft": 2898,
+        "critique": 9294
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a flower that is used in garlands?",
+      "ms": {
+        "draft": 2898,
+        "critique": 5844,
+        "solver": 14351
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you want to make a scrapbook using flowers, what should you do after pressing them for 15 days?",
+      "ms": {
+        "draft": 2898,
+        "critique": 6354
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one way in which flower-sellers sell their flowers?",
+      "ms": {
+        "draft": 2898,
+        "critique": 5675,
+        "solver": 16197
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do people buy flowers according to the passage?",
+      "ms": {
+        "draft": 2988,
+        "critique": 6769,
+        "solver": 2403,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of placing a heavy object on the newspaper after spreading the flowers?",
+      "ms": {
+        "draft": 2988,
+        "critique": 6443,
+        "solver": 15147
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of flowers are described as shining like tiny stars between the grass?",
+      "ms": {
+        "draft": 3189,
+        "critique": 7370,
+        "solver": 1245
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about flowers based on the passage?",
+      "ms": {
+        "draft": 3189,
+        "critique": 6974,
+        "solver": 10724,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which place in Uttarakhand is known for having flowers everywhere?",
+      "ms": {
+        "draft": 3189,
+        "critique": 6629,
+        "solver": 1970,
+        "form": 3556
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a form in which flower-sellers sell flowers?",
+      "ms": {
+        "draft": 2988,
+        "critique": 7922,
+        "solver": 15555,
+        "form": 2323,
+        "translation": 38915
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you see a design on a cloth that is made with paste of powdered rice and has pictures of flowers, which type of art is it likely to be?",
+      "ms": {
+        "draft": 3189,
+        "critique": 7498,
+        "solver": 12039,
+        "form": 2464,
+        "translation": 46919
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a flower-seller sells a bouquet of flowers, which of the following is most likely true?",
+      "ms": {
+        "draft": 2988,
+        "critique": 8942,
+        "solver": 1473,
+        "form": 3033,
+        "translation": 46936
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which district in Bihar is known for Madhubani paintings?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the floral design shown in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why are the walls of houses in Madhubani painted with floral designs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for making Madhubani paintings?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why do people buy flowers according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a flower that is used in garlands?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you want to make a scrapbook using flowers, what should you do after pressing them for 15 days?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is one way in which flower-sellers sell their flowers?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do people buy flowers according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the purpose of placing a heavy object on the newspaper after spreading the flowers?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which type of flowers are described as shining like tiny stars between the grass?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct statement about flowers based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which place in Uttarakhand is known for having flowers everywhere?",
+      "reason": "near-duplicate of served question cmvh3l2xd06magpfhdmyta2j6 (cosine 0.960 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

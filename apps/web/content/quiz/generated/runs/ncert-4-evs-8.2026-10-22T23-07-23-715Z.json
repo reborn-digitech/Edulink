@@ -1,0 +1,243 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:07:23.715Z",
+  "finishedAt": "2026-10-22T23:09:39.849Z",
+  "seconds": 136,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap108.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 8 — Reaching Grandmother’s House",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 30188,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7572,
+      "completionTokens": 1643
+    },
+    "critique": {
+      "calls": 13,
+      "ms": 89462,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 5448,
+      "completionTokens": 2312
+    },
+    "solver": {
+      "calls": 73,
+      "ms": 55576,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 17043,
+      "completionTokens": 966
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10008,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 946,
+      "completionTokens": 260
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 2988,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 126065,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6845,
+      "completionTokens": 3581
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If Omana left Ahmedabad at 11:30 and reached Kottayam at 03:05, how many hours did her train journey take?",
+      "ms": {
+        "draft": 3529,
+        "critique": 6402,
+        "solver": 2606
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What kind of transport did Omana use after getting down from the train?",
+      "ms": {
+        "draft": 3529,
+        "critique": 6053,
+        "solver": 18569
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the time-table, which station is the first one mentioned in the route of the train?",
+      "ms": {
+        "draft": 3529,
+        "critique": 9306,
+        "solver": 11727,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the time-table, how long did the train take to reach Kottayam from Kozhikode?",
+      "ms": {
+        "draft": 4018,
+        "critique": 7720
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What kind of transport did Omana use after getting down from the train?",
+      "ms": {
+        "draft": 4018,
+        "critique": 6987,
+        "solver": 14578,
+        "form": 2324
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a vehicle that requires a ticket?",
+      "ms": {
+        "draft": 3529,
+        "critique": 5544,
+        "solver": 18785,
+        "form": 2880,
+        "translation": 37632
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where people share seats?",
+      "ms": {
+        "draft": 4018,
+        "critique": 7350,
+        "solver": 16805,
+        "form": 1143,
+        "translation": 42797
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family of 10 people and their luggage took a bus and a ferry, which transport would they most likely need to buy tickets for?",
+      "ms": {
+        "draft": 4018,
+        "critique": 6720,
+        "solver": 1415,
+        "form": 5299,
+        "translation": 40818
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Omana left Ahmedabad at 11:30 and reached Kottayam at 03:05, how many hours did her train journey take?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What kind of transport did Omana use after getting down from the train?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the time-table, which station is the first one mentioned in the route of the train?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Student assumes the journey started from Ahmedabad because i…\"); distractor 2's reason is not a one-line misconception (\"Confuses the order of stations with the time format, thinkin…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the time-table, how long did the train take to reach Kottayam from Kozhikode?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What kind of transport did Omana use after getting down from the train?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Includes a transport not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Includes a transport not mentioned in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

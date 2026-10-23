@@ -1,0 +1,863 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T12:34:52.479Z",
+  "finishedAt": "2026-10-21T12:46:35.198Z",
+  "seconds": 703,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "leph2",
+    "document": "ncert/12/physics/leph203.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 3 — Dual Nature of Radiation",
+    "edition": "Reprint 2026-27",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, marking scheme, 2026-27]\n5. D. Origin of spectra 1\nAll three can be explained by Huygens’ construction of wave front but Origin of\nspectra cannot.",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n13. Assertion (A): For the radiation of a frequency greater than the threshold frequency,\nphotoelectric current is proportional to the intensity of the radiation.\nReason (R) : Greater the number of energy quanta available, greater is the\nnumber of electrons absorbing the energy quanta and greater\nis number of electrons coming out of the metal.",
+      "[CBSE Class XII Physics, sample question paper, 2024-25]\n7. Correct match of column I with column II is\nC-l (waves) C-ll (Production)\n(1) Infra-red P . Rapid vibration of electrons in aerials\n(2) Radio Q . Electrons in atoms emit light when they move from higher to\nlower energy level.\n(3) Light R . Klystron valve\n(4) Microwave S . Vibration of atoms and molecules\n(A) 1-P, 2-R, 3-S, 4-Q (B) 1-S, 2-P, 3-O, 4-R\n(C) 1-Q, 2-P, 3-S, 4-R (D) 1-S. 2-R, 3-P, 4-Q",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n27. Identify the part of the electromagnetic spectrum which:\na) produces heating effect,\nb) is absorbed by the ozone layer in the atmosphere,\nc) is used for studying crystal structure.\nWrite any one method of the production of each of the above radiations."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 216842,
+      "in": 45,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 51713,
+      "completionTokens": 10653
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 387360,
+      "in": 44,
+      "out": 35,
+      "rejects": 9,
+      "promptTokens": 24781,
+      "completionTokens": 8982
+    },
+    "solver": {
+      "calls": 229,
+      "ms": 129767,
+      "in": 35,
+      "out": 29,
+      "rejects": 6,
+      "promptTokens": 41800,
+      "completionTokens": 2285
+    },
+    "form": {
+      "calls": 10,
+      "ms": 43886,
+      "in": 29,
+      "out": 8,
+      "rejects": 21,
+      "promptTokens": 4518,
+      "completionTokens": 943
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 5467,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 461033,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 22849,
+      "completionTokens": 11939
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the specific charge (e/m) of cathode ray particles?",
+      "ms": {
+        "draft": 3724,
+        "critique": 5967
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an electron is emitted from a metal surface due to the application of a strong electric field, which type of electron emission is this an example of?",
+      "ms": {
+        "draft": 3724,
+        "critique": 6439
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the value of e/m of cathode ray particles is independent of the type of metal used as the cathode?",
+      "ms": {
+        "draft": 3724,
+        "critique": 9181,
+        "solver": 2617,
+        "form": 3111
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the photoelectric effect, what happens to the saturation current when the intensity of the incident light increases, assuming the frequency remains constant?",
+      "ms": {
+        "draft": 4338,
+        "critique": 6557
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary reason electrons can escape from a metal surface?",
+      "ms": {
+        "draft": 3724,
+        "critique": 7617
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a metal surface is illuminated with light of a frequency greater than the threshold frequency, what can be said about the photoelectric current?",
+      "ms": {
+        "draft": 3724,
+        "critique": 9112,
+        "solver": 12880,
+        "form": 3479
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that for a given photosensitive material, the stopping potential increases with the frequency of incident light. What can be inferred from this observation?",
+      "ms": {
+        "draft": 4338,
+        "critique": 7537,
+        "solver": 1780
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, the stopping potential for a particular frequency of light is found to be 2 V. What is the maximum kinetic energy of the photoelectrons emitted?",
+      "ms": {
+        "draft": 4338,
+        "critique": 7811
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, if the frequency of incident radiation is increased while keeping the intensity constant, what happens to the stopping potential and the saturation current?",
+      "ms": {
+        "draft": 4338,
+        "critique": 7888,
+        "solver": 1495,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph in Figure 11.5, what does the stopping potential indicate about the photoelectrons?",
+      "ms": {
+        "draft": 4338,
+        "critique": 7762,
+        "solver": 1444,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, what happens to the maximum kinetic energy of emitted photoelectrons when the frequency of incident radiation is increased, assuming the intensity remains constant?",
+      "ms": {
+        "draft": 5397,
+        "critique": 7516,
+        "solver": 1446,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason the wave theory of light cannot explain the photoelectric effect?",
+      "ms": {
+        "draft": 5397,
+        "critique": 8266,
+        "solver": 2385,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following statements is correct about the photoelectric effect?",
+      "ms": {
+        "draft": 5397,
+        "critique": 7264,
+        "solver": 2472,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Based on the passage, what is the main conclusion drawn about the wave theory of light in relation to the photoelectric effect?",
+      "ms": {
+        "draft": 5397,
+        "critique": 5988,
+        "solver": 990,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key implication of Einstein’s photoelectric equation?",
+      "ms": {
+        "draft": 5397,
+        "critique": 7280,
+        "solver": 1976,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the energy of a photon?",
+      "ms": {
+        "draft": 3884,
+        "critique": 7171,
+        "solver": 1153,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the smallest packet of energy in light according to the passage?",
+      "ms": {
+        "draft": 3884,
+        "critique": 8646,
+        "solver": 2031,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea discussed in the passage?",
+      "ms": {
+        "draft": 5786,
+        "critique": 9145
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the photoelectric current is proportional to the intensity of the incident light?",
+      "ms": {
+        "draft": 3884,
+        "critique": 7608,
+        "solver": 13119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the maximum kinetic energy of photoelectrons emitted when light of frequency 6 × 10^14 Hz is incident on caesium metal with a work function of 2.14 eV?",
+      "ms": {
+        "draft": 7823,
+        "critique": 6854,
+        "solver": 774
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a photon of energy 3.1 eV is incident on a metal surface with a work function of 2.14 eV, what is the maximum kinetic energy of the emitted electrons?",
+      "ms": {
+        "draft": 5413,
+        "critique": 5577,
+        "solver": 1590,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A photon of wavelength 632.8 nm is incident on a metal surface with a work function of 2.14 eV. What is the maximum speed of the emitted electrons, given that the mass of an electron is 9.1 × 10^-31 kg?",
+      "ms": {
+        "draft": 5413,
+        "critique": 6290,
+        "solver": 1806
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metal surface is illuminated by light of frequency 8.2 × 10^14 Hz. The threshold frequency of the metal is 3.3 × 10^14 Hz. If the stopping potential is 1.5 V, what is the work function of the metal?",
+      "ms": {
+        "draft": 5413,
+        "critique": 6322,
+        "solver": 2945
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The slope of the cut-off voltage versus frequency of incident light in a photoelectric experiment is 4.12 × 10^-15 Vs. What is the value of Planck's constant?",
+      "ms": {
+        "draft": 5413,
+        "critique": 9295,
+        "solver": 2640
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A light of frequency 6 × 10^14 Hz is incident on a metal surface. If the work function of the metal is 2.14 eV, what is the maximum kinetic energy of the emitted electrons?",
+      "ms": {
+        "draft": 5413,
+        "critique": 10188,
+        "solver": 15841,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the threshold frequency of a metal is 3.3 × 10^14 Hz, what is the work function of the metal?",
+      "ms": {
+        "draft": 5413,
+        "critique": 8886,
+        "solver": 18946
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the nature of electromagnetic radiation as explained in the chapter?",
+      "ms": {
+        "draft": 4101,
+        "critique": 8491,
+        "solver": 14621,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the stopping potential and the maximum kinetic energy of electrons emitted in the photoelectric effect?",
+      "ms": {
+        "draft": 4101,
+        "critique": 7324,
+        "solver": 2047,
+        "form": 3245
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the minimum energy required for an electron to be emitted from a metal surface?",
+      "ms": {
+        "draft": 3669,
+        "critique": 7075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following phenomena demonstrates the wave nature of light?",
+      "ms": {
+        "draft": 3669,
+        "critique": 6436,
+        "solver": 1593,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the wave-like behavior of particles such as electrons?",
+      "ms": {
+        "draft": 3669,
+        "critique": 7798
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main reason that photoelectric current is proportional to the intensity of the radiation?",
+      "ms": {
+        "draft": 5351,
+        "critique": 7927,
+        "solver": 2025,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what happens to the maximum kinetic energy of photoelectrons when the intensity of incident light increases, assuming the frequency is above the threshold frequency?",
+      "ms": {
+        "draft": 5264,
+        "critique": 10113
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what can be concluded about the energy of photons in a beam of light of a particular frequency?",
+      "ms": {
+        "draft": 5351,
+        "critique": 7817,
+        "solver": 15388,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the photoelectric effect?",
+      "ms": {
+        "draft": 3669,
+        "critique": 10468,
+        "solver": 17215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why the maximum kinetic energy of photoelectrons depends only on the frequency of incident radiation and not on its intensity?",
+      "ms": {
+        "draft": 12984,
+        "critique": 6972,
+        "solver": 802,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of Planck's constant?",
+      "ms": {
+        "draft": 4855,
+        "critique": 7359,
+        "solver": 1175,
+        "form": 4781,
+        "translation": 42768
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct unit for measuring work function?",
+      "ms": {
+        "draft": 3724,
+        "critique": 5734,
+        "solver": 16184,
+        "form": 0,
+        "translation": 64476
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the significance of the threshold frequency in the photoelectric effect?",
+      "ms": {
+        "draft": 4101,
+        "critique": 7319,
+        "solver": 1913,
+        "form": 3428,
+        "translation": 49852
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the frequency of incident light is above the threshold frequency, what happens to the photoelectric current if the intensity of the light is increased?",
+      "ms": {
+        "draft": 4101,
+        "critique": 7682,
+        "solver": 1947,
+        "form": 3567,
+        "translation": 52965
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What determines the maximum kinetic energy of the photoelectrons in the photoelectric effect?",
+      "ms": {
+        "draft": 4338,
+        "critique": 8471,
+        "solver": 2676,
+        "form": 0,
+        "translation": 74242
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that the photoelectric current increases with the intensity of incident light. Which of the following best explains this observation?",
+      "ms": {
+        "draft": 5397,
+        "critique": 7194,
+        "solver": 1943,
+        "form": 4298,
+        "translation": 62843
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, the stopping potential for a given metal is found to increase when the frequency of the incident light is increased. What does this indicate about the photoelectric effect?",
+      "ms": {
+        "draft": 4101,
+        "critique": 7921,
+        "solver": 1799,
+        "form": 4456,
+        "translation": 58025
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "According to the de Broglie hypothesis, what determines the wavelength of a matter wave associated with a moving particle?",
+      "ms": {
+        "draft": 4101,
+        "critique": 7096,
+        "solver": 1518,
+        "form": 3450,
+        "translation": 48827
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following best describes the photoelectric effect as described in the pas"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the specific charge (e/m) of cathode ray particles?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an electron is emitted from a metal surface due to the application of a strong electric field, which type of electron emission is this an example of?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the value of e/m of cathode ray particles is independent of the type of metal used as the cathode?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's statement about e/m…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In the photoelectric effect, what happens to the saturation current when the intensity of the incident light increases, assuming the frequency remains constant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary reason electrons can escape from a metal surface?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a metal surface is illuminated with light of a frequency greater than the threshold frequency, what can be said about the photoelectric current?",
+      "reason": "options 0 and 1 say the same thing (\"It is inversely proportional to the intensity of the light\" / \"It is directly proportional to the intensity of the light\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student observes that for a given photosensitive material, the stopping potential increases with the frequency of incident light. What can be inferred from this observation?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, the stopping potential for a particular frequency of light is found to be 2 V. What is the maximum kinetic energy of the photoelectrons emitted?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, if the frequency of incident radiation is increased while keeping the intensity constant, what happens to the stopping potential and the saturation current?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the graph in Figure 11.5, what does the stopping potential indicate about the photoelectrons?",
+      "reason": "figure: figure spec refused: spec.y.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, what happens to the maximum kinetic energy of emitted photoelectrons when the frequency of incident radiation is increased, assuming the intensity remains constant?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason the wave theory of light cannot explain the photoelectric effect?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"The wave theory predicts that photoelectrons are emitted only when the frequency is above a certain threshold\" / \"The wave theory predicts that photoelectrons are emitted only when the intensity is above a certain threshold\"); distractor 3's reason is not a one-line misconception (\"mistakenly assumes the wave theory includes a threshold inte…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following statements is correct about the photoelectric effect?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Based on the passage, what is the main conclusion drawn about the wave theory of light in relation to the photoelectric effect?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misrepresents the passage’s conclusion about the wave theory…\"); distractor 3's reason is not a one-line misconception (\"ignores the key points made in the passage about the wave th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key implication of Einstein’s photoelectric equation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misrepresents the passage’s view of the wave theory…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the energy of a photon?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name given to the smallest packet of energy in light according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main idea discussed in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the photoelectric current is proportional to the intensity of the incident light?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the maximum kinetic energy of photoelectrons emitted when light of frequency 6 × 10^14 Hz is incident on caesium metal with a work function of 2.14 eV?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main reason the wave theory of light fails to explain the photoelectric effect?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a photon of energy 3.1 eV is incident on a metal surface with a work function of 2.14 eV, what is the maximum kinetic energy of the emitted electrons?",
+      "reason": "options are written to different precisions (1 and 2 decimals); distractor 3's reason is not a one-line misconception (\"Chooses the work function directly without considering the p…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A photon of wavelength 632.8 nm is incident on a metal surface with a work function of 2.14 eV. What is the maximum speed of the emitted electrons, given that the mass of an electron is 9.1 × 10^-31 kg?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A metal surface is illuminated by light of frequency 8.2 × 10^14 Hz. The threshold frequency of the metal is 3.3 × 10^14 Hz. If the stopping potential is 1.5 V, what is the work function of the metal?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The slope of the cut-off voltage versus frequency of incident light in a photoelectric experiment is 4.12 × 10^-15 Vs. What is the value of Planck's constant?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A light of frequency 6 × 10^14 Hz is incident on a metal surface. If the work function of the metal is 2.14 eV, what is the maximum kinetic energy of the emitted electrons?",
+      "reason": "options are written to different precisions (1 and 2 decimals); distractor 3's reason is not a one-line misconception (\"Chooses the stopping potential directly without considering …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the threshold frequency of a metal is 3.3 × 10^14 Hz, what is the work function of the metal?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the nature of electromagnetic radiation as explained in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the relationship between the stopping potential and the maximum kinetic energy of electrons emitted in the photoelectric effect?",
+      "reason": "options 0 and 1 say the same thing (\"Stopping potential is directly proportional to the maximum kinetic energy\" / \"Stopping potential is inversely proportional to the maximum kinetic energy\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the minimum energy required for an electron to be emitted from a metal surface?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following phenomena demonstrates the wave nature of light?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name given to the wave-like behavior of particles such as electrons?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main reason that photoelectric current is proportional to the intensity of the radiation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what happens to the maximum kinetic energy of photoelectrons when the intensity of incident light increases, assuming the frequency is above the threshold frequency?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what can be concluded about the energy of photons in a beam of light of a particular frequency?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes intensity affects the energy of individual photons,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the photoelectric effect?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why the maximum kinetic energy of photoelectrons depends only on the frequency of incident radiation and not on its intensity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is because the energy of each photon is proportional to the intensity of light.\" / \"It is because the energy of each photon is proportional to the frequency of light.\"); options 2 and 3 say the same thing (\"It is because the number of photoelectrons emitted per second is proportional to the intensity of light.\" / \"It is because the number of photoelectrons emitted per second is proportional to the frequency of light.\"); distractor 2's reason is not a one-line misconception (\"correct reasoning not present…\"); distractor 3's reason is not a one-line misconception (\"confuses intensity with number of photoelectrons emitted per…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

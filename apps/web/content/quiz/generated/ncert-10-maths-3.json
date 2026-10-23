@@ -1,0 +1,1291 @@
+{
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 3 — Pair of Linear Equations in Two Variables",
+  "name": "Pair of Linear Equations in Two Variables",
+  "slug": "maths-10-pair-of-linear-equations-in-two-variable",
+  "summary": "This chapter explains how to solve pairs of linear equations in two variables using various methods.",
+  "position": 3,
+  "source": "generated against NCERT Mathematics, Class 10, chapter 3 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 3 — दो चर वाले रैखिक समीकरणों का युग्म।",
+      "summary": "इस अध्याय में दो चर वाले रैखिक समीकरणों के युग्म को हल करने के विभिन्न विधियों की व्याख्या की गई है।"
+    },
+    "mr": {
+      "name": "अध्याय 3 - दो चरांमध्ये रेषीय समीकरणांचे जोडे.",
+      "summary": "हा अध्याय दो चरांमध्ये रेषीय समीकरणांच्या जोड्यांचे उपाय करण्याच्या विविध पद्धतींचे विवरण देतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-22T17:07:12.344Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the condition for a pair of linear equations to have a unique solution?",
+      "choices": [
+        "The lines intersect at a point.",
+        "The lines have the same slope but different intercepts.",
+        "The lines have the same slope and same intercepts.",
+        "The lines are perpendicular."
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that the lines intersect at a point. This is because when two lines intersect, there is exactly one point that satisfies both equations, resulting in a unique solution. The other options are incorrect: parallel lines have no solution, coinciding lines have infinitely many solutions, and perpendicular lines are not a condition for a unique solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रैखिक समीकरण युग्म के एक अद्वितीय हल के लिए क्या शर्त है?",
+          "choices": [
+            "रेखाएँ एक बिंदु पर प्रतिच्छेद करती हैं।",
+            "रेखाएँ समान ढलान रखती हैं लेकिन अलग-अलग अंतःखंड रखती हैं।",
+            "रेखाएँ समान ढलान और समान अंतःखंड रखती हैं।",
+            "रेखाएँ लंबवत हैं।"
+          ],
+          "solution": "सही उत्तर यह है कि रेखाएँ एक बिंदु पर प्रतिच्छेद करती हैं। इसका कारण यह है कि जब दो रेखाएँ प्रतिच्छेद करती हैं, तो दोनों समीकरणों को संतुष्ट करने वाला एक बिंदु होता है, जिसके कारण एक अद्वितीय हल प्राप्त होता है। अन्य विकल्प गलत हैं: समांतर रेखाओं के कोई हल नहीं होते, संपाती रेखाओं के अनंत हल होते हैं और लंबवत रेखाएँ अद्वितीय हल के लिए एक शर्त नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका रेषीय समीकरणांच्या जोडीच्या अद्वितीय उकलीसाठी कोणती अट असते?",
+          "choices": [
+            "रेषा एका बिंदूत छेदतात.",
+            "रेषा समान ढाल असतात पण विविध अवरोध असतात.",
+            "रेषा समान ढाल आणि समान अवरोध असतात.",
+            "रेषा लंब असतात."
+          ],
+          "solution": "सही उत्तर रेषा एका बिंदूत छेदतात. हे कारण दोन रेषा छेदत असतील तर दोन्ही समीकरणांना जुळणारा एकच बिंदू असतो, ज्यामुळे अद्वितीय उकल मिळते. इतर विकल्प चुकीचे आहेत: समांतर रेषांना कोणतीही उकल नसते, एकरूप रेषांना अनंत उकल असतात, आणि लंब रेषांचा अद्वितीय उकलासाठी कोणतीही अट नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks parallel lines have same slope but different intercepts, not realizing this is the condition for no solution.",
+        "Student confuses coinciding lines with unique solution.",
+        "A student might confuse perpendicularity with the condition for a unique solution."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies the condition for a unique solution. The distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What type of solution does a pair of linear equations have if their lines are parallel?",
+      "choices": [
+        "No solution",
+        "Infinitely many solutions",
+        "Exactly one solution",
+        "Two solutions"
+      ],
+      "answerIndex": 0,
+      "solution": "If the lines represented by a pair of linear equations are parallel, they never intersect, which means there is no solution to the equations. This is known as an inconsistent pair of equations. The other options are incorrect because they describe situations where the lines intersect or coincide, which are not the case for parallel lines.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रैखिक समीकरण युग्म के समाधान के प्रकार क्या होते हैं यदि उनकी रेखाएं समांतर होती हैं?",
+          "choices": [
+            "कोई समाधान नहीं",
+            "अनंत समाधान",
+            "एक निश्चित समाधान",
+            "दो समाधान"
+          ],
+          "solution": "यदि रैखिक समीकरण युग्म द्वारा निरूपित रेखाएं समांतर होती हैं, तो वे कभी एक-दूसरे को काटती नहीं हैं, जिसका अर्थ है कि समीकरणों का कोई समाधान नहीं होता है। इसे असंगत समीकरण युग्म कहा जाता है। अन्य विकल्प गलत हैं क्योंकि वे तब सही होते हैं जब रेखाएं एक-दूसरे को काटती हैं या मिल जाती हैं, जो समांतर रेखाओं के लिए संभव नहीं है।",
+          "imageAlt": "एक ग्राफ जिसमें दो समांतर रेखाएं दिखाई दे रही हैं, जिन्हें रेखा 1 और रेखा 2 के रूप में चिह्नित किया गया है।",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and terminology of the original English question. All options and the solution are correctly translated and maintain the same logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकसारख्या रेषीय समीकरणांच्या जोडीचे कोणते प्रकारचे उत्तर असेल जर त्यांच्या रेषा समांतर असतील?",
+          "choices": [
+            "कोणतेही उत्तर नाही",
+            "अनंत उत्तरे",
+            "अचूक एक उत्तर",
+            "दोन उत्तरे"
+          ],
+          "solution": "जर रेषीय समीकरणांच्या जोडीच्या रेषा समांतर असतील, तर त्या कधीही छेदत नाहीत, जे समीकरणांचे कोणतेही उत्तर नसल्याचा अर्थ आहे. हे असे असंगत समीकरणांच्या जोडीला म्हणतात. इतर विकल्प चुकीचे आहेत कारण ते रेषा छेदतात किंवा एकमेकांवर असलेल्या स्थितींचे वर्णन करतात, जे समांतर रेषांच्या स्थितीसाठी नाहीत.",
+          "imageAlt": "एक आलेख ज्यामध्ये दोन समांतर रेषा दाखवल्या आहेत, ज्यांना रेषा 1 आणि रेषा 2 असे नाव दिले आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph showing two parallel lines, labeled Line 1 and Line 2.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                1,
+                0,
+                0
+              ],
+              "label": "line1"
+            },
+            {
+              "poly": [
+                1,
+                0,
+                1
+              ],
+              "label": "line2"
+            }
+          ]
+        },
+        "labels": {
+          "line1": {
+            "en": "Line 1",
+            "hi": "रेखा 1",
+            "mr": "रेषा 1"
+          },
+          "line2": {
+            "en": "Line 2",
+            "hi": "रेखा 2",
+            "mr": "रेषा 2"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses coincident lines with parallel lines",
+        "Believes parallel lines can have infinite solutions",
+        "Thinks parallel lines can have two solutions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'No solution' because parallel lines do not intersect. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the lines represented by a pair of linear equations intersect at exactly one point, what can be said about the solution of the equations?",
+      "choices": [
+        "No solution",
+        "Infinitely many solutions",
+        "Exactly one solution",
+        "Two solutions"
+      ],
+      "answerIndex": 2,
+      "solution": "If the lines represented by a pair of linear equations intersect at exactly one point, the equations have a unique solution. This is referred to as a consistent pair of equations. The other options are incorrect because they describe situations where there is no solution or infinitely many solutions, which occur in different cases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि रैखिक समीकरणों के एक युग्म द्वारा निरूपित रेखाएँ एक ही बिंदु पर प्रतिच्छेद करती हैं, तो समीकरणों के हल के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "कोई हल नहीं",
+            "अनंत हल",
+            "ठीक एक हल",
+            "दो हल"
+          ],
+          "solution": "यदि रैखिक समीकरणों के एक युग्म द्वारा निरूपित रेखाएँ एक ही बिंदु पर प्रतिच्छेद करती हैं, तो समीकरणों के एक अद्वितीय हल होता है। इसे संगत समीकरणों के युग्म कहा जाता है। अन्य विकल्प गलत हैं क्योंकि वे ऐसी स्थिति का वर्णन करते हैं जहाँ कोई हल नहीं होता या अनंत हल होते हैं, जो अलग-अलग मामलों में होते हैं।",
+          "imageAlt": "एक ग्राफ जिसमें दो रेखाएँ एक बिंदु पर प्रतिच्छेद करती हैं।",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर रेषीय समीकरणांच्या एका जोडीद्वारे दर्शविलेल्या रेषा ठिक एका बिंदूवर छेदत असतील, तर समीकरणांच्या उकलीबद्दल काय म्हणाल जाऊ शकते?",
+          "choices": [
+            "कोणतीही उकल नाही",
+            "अनंत उकली असतात",
+            "ठिक एक उकल असते",
+            "दोन उकली असतात"
+          ],
+          "solution": "जर रेषीय समीकरणांच्या एका जोडीद्वारे दर्शविलेल्या रेषा ठिक एका बिंदूवर छेदत असतील, तर समीकरणांची अद्वितीय उकल असते. हे संगत समीकरणांच्या एक प्रकार म्हणून ओळखले जाते. इतर विकल्प चुकीचे आहेत कारण ते अशा स्थितींचे वर्णन करतात जेथे कोणतीही उकल नसते किंवा अनंत उकली असतात, जे वेगवेगळ्या परिस्थितींमध्ये होतात.",
+          "imageAlt": "एका बिंदूवर छेदत असलेल्या दोन रेषांचा आलेख.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph showing two lines intersecting at one point.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                1,
+                0,
+                0
+              ],
+              "label": "line1"
+            },
+            {
+              "poly": [
+                0,
+                1,
+                0
+              ],
+              "label": "line2"
+            }
+          ]
+        },
+        "labels": {
+          "line1": {
+            "en": "line 1",
+            "hi": "रेखा 1",
+            "mr": "रेषा १"
+          },
+          "line2": {
+            "en": "line 2",
+            "hi": "रेखा 2",
+            "mr": "रेषा २"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks intersecting lines have no solution",
+        "Believes intersecting lines have infinite solutions",
+        null,
+        "Assumes intersecting lines have two solutions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is correct. The correct answer is 'Exactly one solution,' which aligns with the geometric interpretation of intersecting lines. The distractors reflect common misconceptions about the number of solutions to linear equations.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the lines represented by a pair of linear equations are coincident, what can be said about the solution of the equations?",
+      "choices": [
+        "No solution",
+        "Infinitely many solutions",
+        "Exactly one solution",
+        "Two solutions"
+      ],
+      "answerIndex": 1,
+      "solution": "If the lines represented by a pair of linear equations are coincident, they overlap completely, meaning there are infinitely many solutions to the equations. This is referred to as a dependent pair of equations. The other options are incorrect because they describe situations where there is no solution or a unique solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि रैखिक समीकरणों के एक युग्म द्वारा निरूपित रेखाएँ संपाती हैं, तो समीकरणों के हल के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "कोई हल नहीं",
+            "अनंत रूप से कई हल",
+            "एक निश्चित हल",
+            "दो हल"
+          ],
+          "solution": "यदि रैखिक समीकरणों के एक युग्म द्वारा निरूपित रेखाएँ संपाती हैं, तो वे पूरी तरह से एक दूसरे के ऊपर आ जाती हैं, जिसका अर्थ है कि समीकरणों के अनंत रूप से कई हल होते हैं। इसे एक आश्रित समीकरण युग्म कहा जाता है। अन्य विकल्प गलत हैं क्योंकि वे इस स्थिति का वर्णन करते हैं जहाँ कोई हल नहीं होता है या एक अद्वितीय हल होता है।",
+          "imageAlt": "एक ग्राफ जिसमें दो संपाती रेखाएँ दिखाई दे रही हैं।",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर रेषीय समीकरणांच्या एका जोडीद्वारे दर्शविलेल्या रेषा संपादित असतील, तर समीकरणांच्या उकलीबद्दल काय म्हणायला हवे?",
+          "choices": [
+            "उकल नाही",
+            "अनंत उकली",
+            "एक उकल",
+            "दोन उकली"
+          ],
+          "solution": "जर रेषीय समीकरणांच्या जोडीद्वारे दर्शविलेल्या रेषा संपादित असतील, तर त्या पूर्णपणे ओव्हरलॅप करतात, ज्यामुळे समीकरणांसाठी अनंत उकली असतात. हे अवलंबून जोडी समीकरण म्हणून ओळखले जाते. इतर विकल्प चुकीचे आहेत कारण ते उकल नसल्याच्या किंवा एकल उकलीच्या स्थितीचे वर्णन करतात.",
+          "imageAlt": "एक आलेख ज्यात दोन संपादित रेषा दर्शविल्या आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph showing two coincident lines.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                1,
+                0,
+                0
+              ],
+              "label": "line1"
+            },
+            {
+              "poly": [
+                1,
+                0,
+                0
+              ],
+              "label": "line2"
+            }
+          ]
+        },
+        "labels": {
+          "line1": {
+            "en": "line 1",
+            "hi": "रेखा 1",
+            "mr": "रेषा १"
+          },
+          "line2": {
+            "en": "line 2",
+            "hi": "रेखा 2",
+            "mr": "रेषा २"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks coincident lines have no solution",
+        null,
+        "Believes coincident lines have exactly one solution",
+        "Assumes coincident lines have two solutions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Infinitely many solutions' because coincident lines overlap completely. The other options represent incorrect scenarios for coincident lines.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the pair of equations 2x + 3y = 5 and 4x + 6y = 10 is solved algebraically, what will be the nature of the solution?",
+      "choices": [
+        "A unique solution exists.",
+        "No solution exists.",
+        "Infinitely many solutions exist.",
+        "The solution cannot be determined."
+      ],
+      "answerIndex": 2,
+      "solution": "The second equation is a multiple of the first equation, meaning they represent the same line. This results in infinitely many solutions. The other options either describe inconsistency or a unique solution, which is not the case here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि समीकरण युग्म 2x + 3y = 5 और 4x + 6y = 10 को बीजगणितीय रूप से हल किया जाए, तो हल की प्रकृति क्या होगी?",
+          "choices": [
+            "एक अद्वितीय हल मौजूद है।",
+            "कोई हल मौजूद नहीं है।",
+            "अनंत रूप से कई हल मौजूद हैं।",
+            "हल निर्धारित नहीं किया जा सकता।"
+          ],
+          "solution": "दूसरा समीकरण पहले समीकरण का गुणक है, जिसका अर्थ है कि वे एक ही रेखा का प्रतिनिधित्व करते हैं। इससे अनंत रूप से कई हल प्राप्त होते हैं। अन्य विकल्प असंगति या एक अद्वितीय हल का वर्णन करते हैं, जो यहां सही नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरणांच्या जोडी 2x + 3y = 5 आणि 4x + 6y = 10 चे बीजगणितीयरित्या उलटे केल्यास, उकलीची प्रकृती काय असेल?",
+          "choices": [
+            "एक अद्वितीय उकल असेल.",
+            "कोणतीही उकल असणार नाही.",
+            "अनंत उकल असतील.",
+            "उकल निश्चित करता येणार नाही."
+          ],
+          "solution": "दुसरे समीकरण पहिल्या समीकरणाचे गुणाकार आहे, जे एकाच रेषेचे प्रतिनिधित्व करते. हे अनंत उकलींच्या निर्मितीला कारणीभूत ठरते. इतर विकल्पांमध्ये असंगतीचे वर्णन किंवा अद्वितीय उकलचे वर्णन असते, जे येथे अयोग्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the equations represent parallel lines.",
+        "Believes the equations represent intersecting lines.",
+        null,
+        "Does not recognize that the equations are multiples of each other."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The second equation is indeed a multiple of the first, indicating the same line and infinitely many solutions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Given the pair of equations 6x – 3y + 10 = 0 and 2x – y + 9 = 0, what is the relationship between the lines they represent?",
+      "choices": [
+        "Intersecting at exactly one point",
+        "Parallel",
+        "Coincident",
+        "Intersecting at exactly two points"
+      ],
+      "answerIndex": 1,
+      "solution": "The given pair of equations is 6x – 3y + 10 = 0 and 2x – y + 9 = 0. By comparing the ratios of their coefficients, we find that the lines are parallel. This means they have no solution and are inconsistent. The other options are incorrect because intersecting lines would have a unique solution, coincident lines would have infinitely many solutions, and lines cannot intersect at two points.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरणों के युग्म 6x – 3y + 10 = 0 और 2x – y + 9 = 0 के लिए, वे रेखाएँ किस संबंध में हैं?",
+          "choices": [
+            "केवल एक बिंदु पर प्रतिच्छेद करती हैं",
+            "समांतर हैं",
+            "संपाती हैं",
+            "केवल दो बिंदुओं पर प्रतिच्छेद करती हैं"
+          ],
+          "solution": "दिए गए समीकरणों के युग्म 6x – 3y + 10 = 0 और 2x – y + 9 = 0 हैं। उनके गुणांकों के अनुपातों की तुलना करने पर हम पाते हैं कि रेखाएँ समांतर हैं। इसका अर्थ है कि उनके कोई हल नहीं हैं और असंगत हैं। अन्य विकल्प गलत हैं क्योंकि प्रतिच्छेद करने वाली रेखाएँ एक अद्वितीय हल होता है, संपाती रेखाएँ अनंत हल होते हैं, और रेखाएँ दो बिंदुओं पर प्रतिच्छेद नहीं कर सकतीं।",
+          "imageAlt": "एक ग्राफ जिसमें दो रेखाएँ, रेखा1 और रेखा2, और ग्रिड लाइनें हैं।",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "6x – 3y + 10 = 0 आणि 2x – y + 9 = 0 असे दोन समीकरण दिले आहेत, तर त्यांनी दर्शविलेल्या रेषांमध्ये काय संबंध आहे?",
+          "choices": [
+            "एका बिंदूत छेदतात",
+            "समांतर आहेत",
+            "अभिसरित आहेत",
+            "दोन बिंदूंमध्ये छेदतात"
+          ],
+          "solution": "दिलेले समीकरण 6x – 3y + 10 = 0 आणि 2x – y + 9 = 0 आहेत. त्यांच्या गुणोत्तरांची तुलना करून आपल्याला असे दिसते की रेषा समांतर आहेत. हे म्हणजे त्यांना कोणताही उकल नाही आणि ते असंगत आहेत. इतर विकल्प चुकीचे आहेत कारण छेदत असलेल्या रेषांना एक अद्वितीय उकल असते, अभिसरित रेषांना अनंत उकल असतात आणि रेषा दोन बिंदूंमध्ये छेदू शकत नाहीत.",
+          "imageAlt": "एक आलेख ज्यामध्ये दोन रेषा, रेषा1 आणि रेषा2 आहेत, आणि ग्रिड लाईन्स आहेत.",
+          "critique": "The Marathi translation accurately reflects the English content with appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph showing two lines, line1 and line2, with grid lines.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                6,
+                -3,
+                10
+              ],
+              "label": "line1"
+            },
+            {
+              "poly": [
+                2,
+                -1,
+                9
+              ],
+              "label": "line2"
+            }
+          ]
+        },
+        "labels": {
+          "line1": {
+            "en": "Line 1",
+            "hi": "रेखा 1",
+            "mr": "रेषा 1"
+          },
+          "line2": {
+            "en": "Line 2",
+            "hi": "रेखा 2",
+            "mr": "रेषा 2"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks the lines intersect at one point",
+        null,
+        "Believes the lines are coincident",
+        "Assumes the lines intersect at two points"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the lines are parallel by comparing the ratios of the coefficients. The reasoning is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a correct step in the elimination method for solving linear equations?",
+      "choices": [
+        "Multiply both equations by the same constant to eliminate one variable.",
+        "Add the two equations directly to eliminate one variable.",
+        "Subtract one equation from the other without adjusting coefficients.",
+        "Multiply one equation by a constant to make coefficients of one variable equal."
+      ],
+      "answerIndex": 3,
+      "solution": "The correct step is to multiply one equation by a constant to make the coefficients of one variable equal. This allows elimination of that variable when the equations are added or subtracted. The other options are incorrect because they either skip necessary steps or do not follow the method properly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा रैखिक समीकरणों के हल के लिए विलोपन विधि में सही चरण है?",
+          "choices": [
+            "दोनों समीकरणों को एक ही अचर द्वारा गुणा करें ताकि एक चर विलोपित हो जाए।",
+            "दोनों समीकरणों को सीधे जोड़ें ताकि एक चर विलोपित हो जाए।",
+            "गुणांकों के बिना एक समीकरण को दूसरे से घटाएं।",
+            "एक समीकरण को अचर द्वारा गुणा करें ताकि एक चर के गुणांक बराबर हो जाएं।"
+          ],
+          "solution": "सही चरण एक समीकरण को अचर द्वारा गुणा करना है ताकि एक चर के गुणांक बराबर हो जाएं। इससे जब समीकरणों को जोड़ा या घटाया जाता है तो उस चर को विलोपित किया जा सकता है। अन्य विकल्प गलत हैं क्योंकि वे आवश्यक चरणों को छोड़ देते हैं या विधि का सही ढंग से अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and maintains the same meaning, correct answer position, and technical terminology used in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता रेषीय समीकरणांचे उपाय शोधण्यासाठी निर्मूलन पद्धतीत एक योग्य टप्पा आहे?",
+          "choices": [
+            "एका चलाच्या गुणोत्तरांची समानता निर्माण करण्यासाठी एका समीकरणाला एका अचूक संख्येने गुणाकार करा.",
+            "एका चलाच्या गुणोत्तरांची समानता निर्माण करण्यासाठी दोन्ही समीकरणांना एका अचूक संख्येने गुणाकार करा.",
+            "एक समीकरणाचे दुसऱ्यापासून वजा करा आणि गुणोत्तरांच्या अनुक्रमाची विनंती करा.",
+            "एक समीकरणाला अचूक संख्येने गुणाकार करून एका चलाच्या गुणोत्तरांची समानता निर्माण करा."
+          ],
+          "solution": "योग्य टप्पा एका समीकरणाला अचूक संख्येने गुणाकार करून एका चलाच्या गुणोत्तरांची समानता निर्माण करणे आहे. यामुळे जेव्हा समीकरणांची जोडणी किंवा वजा केली जाते तेव्हा त्या चलाचे निर्मूलन होते. इतर विकल्प चुकीचे आहेत कारण ते आवश्यक टप्पे उपेक्षित करतात किंवा पद्धतीच्या योग्य पालनाची नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English content, with appropriate terminology used in a Marathi-medium educational context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is too vague and does not specify the need to adjust coefficients.",
+        "This assumes coefficients are already equal, which is not always the case.",
+        "This ignores the need to adjust coefficients for elimination, making it incorrect in most cases.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct step in the elimination method is to multiply one equation by a constant to make the coefficients of one variable equal, which matches the author's key. The other options are incorrect because they either skip necessary steps or assume conditions that are not always true.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the elimination method, what happens if after eliminating one variable, we get a false statement involving no variable?",
+      "choices": [
+        "The equations have infinitely many solutions.",
+        "The equations have no solution.",
+        "The equations have a unique solution.",
+        "The equations are dependent."
+      ],
+      "answerIndex": 1,
+      "solution": "If after eliminating one variable, we get a false statement, it means the equations have no solution. This indicates that the lines are parallel and do not intersect. The other options are incorrect because they describe different scenarios.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हटाव विधि में, यदि एक चर को हटाने के बाद हमें कोई चर वाला असत्य कथन प्राप्त होता है तो क्या होता है?",
+          "choices": [
+            "समीकरणों के अनंत हल होते हैं।",
+            "समीकरणों के कोई हल नहीं होते हैं।",
+            "समीकरणों का एक अद्वितीय हल होता है।",
+            "समीकरण स्वतंत्र होते हैं।"
+          ],
+          "solution": "जब एक चर को हटाने के बाद हमें कोई चर वाला असत्य कथन प्राप्त होता है, तो इसका अर्थ है कि समीकरणों के कोई हल नहीं होते हैं। इसका अर्थ है कि रेखाएँ समांतर हैं और प्रतिच्छेद नहीं करती हैं। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग परिस्थितियों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उत्क्रमण पद्धतीत, जर एक चल उत्क्रमित केल्यानंतर आम्हाला चल नसलेले खोटे विधान मिळते तर काय होते?",
+          "choices": [
+            "समीकरणांचे अनंत समाधान आहेत.",
+            "समीकरणांचे कोणतेही समाधान नाही.",
+            "समीकरणांचे अद्वितीय समाधान आहेत.",
+            "समीकरणांचे आद्य आहेत."
+          ],
+          "solution": "जर एक चल उत्क्रमित केल्यानंतर आम्हाला खोटे विधान मिळते, तर हे समीकरणांचे कोणतेही समाधान नसल्याचे सूचित करते. हे रेषा समांतर आहेत आणि भेटत नाहीत. इतर विकल्प खोटे आहेत कारण ते वेगवेगळ्या परिस्थितींचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the case when the equations are dependent and have infinitely many solutions.",
+        null,
+        "This is the case when there is a unique solution.",
+        "This is a general description of dependent equations."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A false statement after elimination implies no solution, as the lines are parallel and do not intersect. The other options correspond to different cases (infinitely many solutions, unique solution, dependent equations), which are correctly identified as incorrect.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A pair of linear equations has no solution. Which of the following must be true about the lines representing these equations?",
+      "choices": [
+        "They intersect at one point.",
+        "They are parallel.",
+        "They are coincident.",
+        "They intersect at two points."
+      ],
+      "answerIndex": 1,
+      "solution": "If a pair of linear equations has no solution, the lines representing them must be parallel. This is because parallel lines never intersect. The other options are incorrect because intersecting lines have one solution, coincident lines have infinitely many solutions, and two intersection points are not possible for straight lines.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रैखिक समीकरण युग्म के कोई हल नहीं है। निम्नलिखित में से कौन-सा इन समीकरणों के निरूपण करने वाली रेखाओं के बारे में आवश्यक रूप से सत्य होना चाहिए?",
+          "choices": [
+            "वे एक बिंदु पर प्रतिच्छेद करती हैं।",
+            "वे समांतर हैं।",
+            "वे संपाती हैं।",
+            "वे दो बिंदुओं पर प्रतिच्छेद करती हैं।"
+          ],
+          "solution": "यदि रैखिक समीकरण युग्म के कोई हल नहीं हैं, तो इनके निरूपण करने वाली रेखाएं आवश्यक रूप से समांतर होनी चाहिए। ऐसा इसलिए है क्योंकि समांतर रेखाएं कभी भी प्रतिच्छेद नहीं करती हैं। अन्य विकल्प गलत हैं क्योंकि प्रतिच्छेद करने वाली रेखाएं एक हल के लिए होती हैं, संपाती रेखाएं अनंत हल के लिए होती हैं, और सीधी रेखाओं के दो प्रतिच्छेद बिंदु संभव नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका रेषीय समीकरणांच्या जोडीला कोणताही उकल नाही. खालीलपैकी कोणते खात्रीने खरे असेल?",
+          "choices": [
+            "ते एका बिंदूत छेदतात.",
+            "ते समांतर आहेत.",
+            "ते एकरूप आहेत.",
+            "ते दोन बिंदूत छेदतात."
+          ],
+          "solution": "जर रेषीय समीकरणांच्या जोडीला कोणताही उकल नसेल, तर त्यांच्या रेषा समांतर असाव्यात. कारण समांतर रेषा कधीही छेदत नाहीत. इतर विकल्प चुकीचे आहेत कारण छेदणाऱ्या रेषा एक उकल असते, एकरूप रेषा अनंत उकल असतात आणि सीध्या रेषांसाठी दोन छेद बिंदू शक्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the case when there is exactly one solution.",
+        null,
+        "This is the case when there are infinitely many solutions.",
+        "This is not possible for straight lines."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed and the solution is correct. The key is 1, and the reasoning aligns with standard linear equation theory.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a pair of linear equations is consistent, what can be said about the lines they represent?",
+      "choices": [
+        "They are parallel",
+        "They are coincident",
+        "They intersect at one point",
+        "They have no solution"
+      ],
+      "answerIndex": 2,
+      "solution": "A consistent pair of linear equations means that the equations have at least one solution. This occurs when the lines intersect at one point or are coincident. The other options are incorrect because parallel lines are inconsistent and have no solution, and coincident lines are a special case of consistent equations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि रैखिक समीकरणों का एक युग्म संगत है, तो उनके द्वारा प्रतिनिधित्व की गई रेखाओं के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे समांतर हैं",
+            "वे संपाती हैं",
+            "वे एक बिंदु पर कटती हैं",
+            "उनके कोई हल नहीं हैं"
+          ],
+          "solution": "संगत रैखिक समीकरण युग्म का अर्थ है कि समीकरणों के कम से कम एक हल है। यह तब होता है जब रेखाएं एक बिंदु पर कटती हैं या संपाती होती हैं। अन्य विकल्प गलत हैं क्योंकि समांतर रेखाएं असंगत होती हैं और कोई हल नहीं होता है, और संपाती रेखाएं संगत समीकरणों के विशेष मामले होती हैं।",
+          "imageAlt": "एक ग्राफ जिसमें दो कटती हुई रेखाएं हैं, जिन्हें रेखा 1 और रेखा 2 कहा गया है।",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर रेषीय समीकरणांची जोडी संगत असेल, तर त्यांचे रेषा काय म्हणता येईल?",
+          "choices": [
+            "त्या समांतर असतात",
+            "त्या एकरूप असतात",
+            "त्या एका बिंदूत छेदतात",
+            "त्यांना कोणतेही उत्तर नाही"
+          ],
+          "solution": "संगत रेषीय समीकरणांची जोडी म्हणजे समीकरणांना कमीत कमी एक उत्तर असते. हे त्यावेळी होते जेव्हा रेषा एका बिंदूत छेदतात किंवा एकरूप असतात. इतर विकल्प अयोग्य आहेत कारण समांतर रेषा असंगत असतात आणि त्यांना कोणतेही उत्तर नसते, आणि एकरूप रेषा संगत समीकरणांच्या विशेष उदाहरणांच्या आहेत.",
+          "imageAlt": "एक आलेख ज्यात दोन छेदक रेषा दाखवल्या गेल्या आहेत, ज्यांना रेषा 1 आणि रेषा 2 असे नाव दिले गेले आहे.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph showing two intersecting lines, labeled line 1 and line 2.",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": -5,
+            "max": 5,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                1,
+                0,
+                0
+              ],
+              "label": "line1"
+            },
+            {
+              "poly": [
+                1,
+                0,
+                1
+              ],
+              "label": "line2"
+            }
+          ]
+        },
+        "labels": {
+          "line1": {
+            "en": "line 1",
+            "hi": "रेखा 1",
+            "mr": "रेषा 1"
+          },
+          "line2": {
+            "en": "line 2",
+            "hi": "रेखा 2",
+            "mr": "रेषा 2"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Thinks consistent equations are parallel",
+        "Believes consistent equations are coincident",
+        null,
+        "Assumes consistent equations have no solution"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that consistent equations have at least one solution, which occurs when lines intersect at one point or are coincident. Option 2 is correct, and the reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "The equations 4x – 2y – 4 = 0 and 2x – y – 2 = 0 are given. What is the nature of their solution?",
+      "choices": [
+        "No solution exists.",
+        "A unique solution exists.",
+        "Infinitely many solutions exist.",
+        "The solution cannot be determined."
+      ],
+      "answerIndex": 2,
+      "solution": "The second equation is exactly half of the first equation, so they represent the same line. This means there are infinitely many solutions. The other options either describe inconsistency or a unique solution, which is not the case here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "4x – 2y – 4 = 0 और 2x – y – 2 = 0 समीकरण दिए गए हैं। उनके हल की प्रकृति क्या है?",
+          "choices": [
+            "कोई हल नहीं है।",
+            "एक अद्वितीय हल है।",
+            "अनंत रूप से कई हल हैं।",
+            "हल निर्धारित नहीं किया जा सकता।"
+          ],
+          "solution": "दूसरा समीकरण पहले समीकरण का ठीक आधा है, इसलिए वे एक ही रेखा का प्रतिनिधित्व करते हैं। इसका अर्थ है कि अनंत रूप से कई हल हैं। अन्य विकल्प असंगति या एक अद्वितीय हल का वर्णन करते हैं, जो यहां सही नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "4x – 2y – 4 = 0 आणि 2x – y – 2 = 0 या समीकरणांचा दिला आहे. त्यांच्या उकलीची प्रकृती काय आहे?",
+          "choices": [
+            "उकल अस्तित्वात नाही.",
+            "एक अद्वितीय उकल अस्तित्वात आहे.",
+            "अनंत उकल अस्तित्वात आहेत.",
+            "उकल निश्चित करता येत नाही."
+          ],
+          "solution": "दुसरे समीकरण पहिल्या समीकरणाच्या अर्ध्या आहे, म्हणून ते एकाच रेषेला दर्शवतात. हे अनंत उकल अस्तित्वात आहेत. इतर विकल्प असंगती किंवा एक अद्वितीय उकल दर्शवतात, जे येथे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the equations are parallel.",
+        "Believes the equations intersect at a single point.",
+        null,
+        "Does not recognize that the equations are multiples of each other."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The two equations are multiples of each other, representing the same line, so there are infinitely many solutions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T17:07:12.344Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

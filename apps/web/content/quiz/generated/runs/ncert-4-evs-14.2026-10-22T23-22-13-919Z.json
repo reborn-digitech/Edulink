@@ -1,0 +1,240 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:22:13.919Z",
+  "finishedAt": "2026-10-22T23:24:12.984Z",
+  "seconds": 119,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap114.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 14 — Basva's Farm",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 24532,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6746,
+      "completionTokens": 1502
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 41188,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3494,
+      "completionTokens": 1346
+    },
+    "solver": {
+      "calls": 40,
+      "ms": 16586,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 4755,
+      "completionTokens": 320
+    },
+    "form": {
+      "calls": 6,
+      "ms": 13277,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 1503,
+      "completionTokens": 370
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3067,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 153170,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9216,
+      "completionTokens": 4735
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Why does Basva's father not let him sprinkle the seeds properly?",
+      "ms": {
+        "draft": 3069,
+        "critique": 5870,
+        "solver": 1863
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a step in growing onions according to the passage?",
+      "ms": {
+        "draft": 3069,
+        "critique": 3674,
+        "solver": 696
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the implement used by Basva's father to dig and loosen the soil?",
+      "ms": {
+        "draft": 3064,
+        "critique": 6357,
+        "solver": 1667,
+        "form": 2964
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the implement used by Basva's father to dig and loosen the soil?",
+      "ms": {
+        "draft": 3069,
+        "critique": 5264,
+        "solver": 1644,
+        "form": 2851
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do Basva and his family have to remove weeds from the field?",
+      "ms": {
+        "draft": 3064,
+        "critique": 5977,
+        "solver": 1091,
+        "form": 3370,
+        "translation": 43092
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for removing weeds from the field?",
+      "ms": {
+        "draft": 3069,
+        "critique": 4601,
+        "solver": 1473,
+        "form": 3710,
+        "translation": 20669
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there were no proper roads, how would Basva's father transport the onions to the market?",
+      "ms": {
+        "draft": 3064,
+        "critique": 6709,
+        "solver": 1590,
+        "form": 2756,
+        "translation": 39793
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason Basva helps his father in the field only after school hours and on holidays?",
+      "ms": {
+        "draft": 3064,
+        "critique": 2736,
+        "solver": 744,
+        "form": 986,
+        "translation": 45622
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Why does Basva's father not let him sprinkle the seeds properly?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a step in growing onions according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the implement used by Basva's father to dig and loosen the soil?",
+      "reason": "near-duplicate of served question cmvh409fi06p9gpfhg0f8z08j (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the implement used by Basva's father to dig and loosen the soil?",
+      "reason": "near-duplicate of served question cmvh409fi06p9gpfhg0f8z08j (cosine 0.910 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Exploration",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-19T15:36:33.212Z",
+  "generatedAt": "2026-10-22T13:41:34.643Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which structure in a plant cell helps maintain pressure inside the cell by storing water?",
+      "stem": "What is the function of ribosomes in a cell?",
       "choices": [
-        "Vacuole",
-        "Nucleus",
-        "Mitochondrion",
-        "Chloroplast"
+        "To store genetic information",
+        "To synthesise proteins",
+        "To produce energy",
+        "To break down waste materials"
       ],
-      "answerIndex": 0,
-      "solution": "The vacuole stores water and helps maintain pressure inside the cell. The nucleus controls the cell's activities, the mitochondrion is involved in energy production, and the chloroplast is involved in photosynthesis.",
+      "answerIndex": 1,
+      "solution": "Ribosomes are responsible for synthesising proteins, as they read genetic instructions and assemble amino acids into proteins. Storing genetic information is the role of DNA, producing energy is the function of mitochondria, and breaking down waste materials is carried out by lysosomes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक पौधे की कोशिका में कौन-सी संरचना जल को भंडारित करके कोशिका के अंदर के दबाव को बनाए रखती है?",
+          "stem": "कोशिका में राइबोसोम का कार्य क्या है?",
           "choices": [
-            "वैक्यूओल",
-            "न्यूक्लियस",
-            "माइटोकॉन्ड्रियन",
-            "क्लोरोप्लास्ट"
+            "आनुवंशिक सूचना को संग्रहीत करना",
+            "प्रोटीन का संश्लेषण करना",
+            "ऊर्जा का उत्पादन करना",
+            "अपशिष्ट सामग्री के विघटन करना"
           ],
-          "solution": "वैक्यूओल जल को भंडारित करता है और कोशिका के अंदर के दबाव को बनाए रखता है। न्यूक्लियस कोशिका के क्रियाकलापों को नियंत्रित करता है, माइटोकॉन्ड्रियन ऊर्जा उत्पादन में शामिल होता है और क्लोरोप्लास्ट प्रकाश संश्लेषण में शामिल होता है।",
+          "solution": "राइबोसोम प्रोटीन के संश्लेषण के लिए उत्तरदायी होते हैं, क्योंकि वे आनुवंशिक निर्देश पढ़ते हैं और एमिनो एसिड को प्रोटीन में जोड़ते हैं। आनुवंशिक सूचना को संग्रहीत करना डीएनए का कार्य है, ऊर्जा का उत्पादन माइटोकॉन्ड्रिया का कार्य है, और अपशिष्ट सामग्री के विघटन करना लाइसोसोम द्वारा किया जाता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "एका वनस्पतीच्या कोशिकेतील कोणती संरचना पाणी जमा करून कोशिकेमध्ये दाब ठेवण्यास मदत करते?",
+          "stem": "कोशिकेतील राइबोसोमचे कार्य काय आहे?",
           "choices": [
-            "वॅक्यूओल",
-            "न्यूक्लियस",
-            "माइटोकॉन्ड्रियन",
-            "क्लोरोप्लास्ट"
+            "जीनेटिक माहिती जमा करणे",
+            "प्रोटीन तयार करणे",
+            "ऊर्जा तयार करणे",
+            "अपशिष्ट सामग्री तोडणे"
           ],
-          "solution": "वॅक्यूओल पाणी जमा करतो आणि कोशिकेमध्ये दाब ठेवण्यास मदत करतो. न्यूक्लियस कोशिकेच्या क्रिया नियंत्रित करतो, माइटोकॉन्ड्रियन ऊर्जा उत्पादनात सहभागी आहे आणि क्लोरोप्लास्ट प्रकाशसंश्लेषणात सहभागी आहे.",
+          "solution": "राइबोसोम प्रोटीन तयार करण्याचे कार्य करतात, कारण ते जीनेटिक सूचना वाचतात आणि अमीनो ऍसिड एकत्र करतात. जीनेटिक माहिती जमा करणे हे DNA चे कार्य आहे, ऊर्जा तयार करणे हे माइटोकॉन्ड्रिया चे कार्य आहे आणि अपशिष्ट सामग्री तोडणे लाइसोसोम द्वारे केले जाते.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard biological terminology used in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
           "flag": null
         }
       },
@@ -72,20 +72,318 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses DNA with ribosomes",
         null,
-        "Confuses the function of the nucleus",
-        "Misunderstands the role of the mitochondrion",
-        "Confuses the function of the chloroplast"
+        "Misunderstands the role of ribosomes",
+        "Confuses mitochondria with ribosomes"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and tests a basic recall fact. The correct answer is clearly 0 (Vacuole), and the distractors are common misconceptions about the functions of the nucleus, mitochondrion, and chloroplast.",
+      "critique": "The correct answer is 1, as ribosomes are indeed responsible for protein synthesis. The other options correspond to the functions of DNA, mitochondria, and lysosomes, which are common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System",
+            "2.3.1 Why do eukaryotic cells need these organelles?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System",
+            "2.3.1 Why do eukaryotic cells need these organelles?",
+            "Endoplasmic Reticulum (ER) — Manufacturing factory"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System",
+            "2.3.1 Why do eukaryotic cells need these organelles?",
+            "Lysosomes — The clean-up system"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is the basic structural and functional unit of all living organisms?",
+      "choices": [
+        "Tissue",
+        "Organ",
+        "Cell",
+        "System"
+      ],
+      "answerIndex": 2,
+      "solution": "The cell is the basic structural and functional unit of all living organisms because all life forms are composed of one or more cells, and cells carry out all necessary life processes. Tissue is a group of similar cells, an organ is made of different tissues, and a system is a group of organs working together, none of which are the fundamental unit of life.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन सा सभी जीवित जीवों की मूल संरचनात्मक एवं कार्यात्मक इकाई है?",
+          "choices": [
+            "ऊतक",
+            "अंग",
+            "कोशिका",
+            "प्रणाली"
+          ],
+          "solution": "कोशिका सभी जीवित जीवों की मूल संरचनात्मक एवं कार्यात्मक इकाई है क्योंकि सभी जीव एक या अधिक कोशिकाओं से बने होते हैं, और कोशिकाएं सभी आवश्यक जीवन प्रक्रियाएं करती हैं। ऊतक समान कोशिकाओं का समूह होता है, अंग विभिन्न ऊतकों से बना होता है, और प्रणाली एक साथ काम करने वाले अंगों का समूह होता है, जिनमें से कोई भी जीवन की मूल इकाई नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original question and solution, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते सर्व जीवित जीवांचे आधारीक संरचनात्मक आणि कार्यकारी एकक आहे?",
+          "choices": [
+            "तंतू",
+            "अवयव",
+            "कोशिका",
+            "प्रणाली"
+          ],
+          "solution": "कोशिका सर्व जीवित जीवांचे आधारीक संरचनात्मक आणि कार्यकारी एकक आहे कारण सर्व जीव एक किंवा अधिक कोशिकांनी बनलेले असतात आणि कोशिका सर्व आवश्यक जीवन प्रक्रिया करतात. तंतू समान कोशिकांचा गट असतो, अवयव विविध तंतूंनी बनलेला असतो आणि प्रणाली अवयवांचा गट असतो जे एकत्रितपणे काम करतात, ज्यापैकी कोणाचेही जीवनाचे मूलभूत एकक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cell with tissue",
+        "Confuses cell with organ",
+        null,
+        "Confuses cell with system"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and aligns with standard biology knowledge. The correct answer is clearly 'Cell' as the basic unit, and the distractors represent common misconceptions about biological hierarchy.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 21,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 22,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which cell organelle is responsible for producing energy in the cell?",
+      "choices": [
+        "Nucleus",
+        "Mitochondria",
+        "Ribosome",
+        "Lysosome"
+      ],
+      "answerIndex": 1,
+      "solution": "Mitochondria are known as the powerhouse of the cell and are responsible for producing energy through cellular respiration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा कोशिका अंगक कोशिका में ऊर्जा उत्पादित करने के लिए उत्तरदायी है?",
+          "choices": [
+            "न्यूक्लियस",
+            "माइटोकॉन्ड्रिया",
+            "राइबोसोम",
+            "लाइसोसोम"
+          ],
+          "solution": "माइटोकॉन्ड्रिया को कोशिका का शक्ति स्रोत कहा जाता है और ये कोशिका श्वसन के माध्यम से ऊर्जा उत्पादित करने के लिए उत्तरदायी होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोशिकेतील ऊर्जा उत्पन्न करणारा कोशिकांग ओळखा?",
+          "choices": [
+            "न्यूक्लियस",
+            "माइटोकॉन्ड्रिया",
+            "राइबोसोम",
+            "लायसोसोम"
+          ],
+          "solution": "माइटोकॉन्ड्रिया हे कोशिकेचे ऊर्जा उत्पादक असून कोशिकाश्वसनाद्वारे ऊर्जा उत्पन्न करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses standard Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the nucleus with the energy source",
+        null,
+        "thinks ribosomes are involved in energy production",
+        "mistakes lysosomes for energy producers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is mitochondria, which are indeed the site of cellular respiration and energy production. The distractors are common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 23,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 24,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a feature shared by mitochondria and plastids?",
+      "choices": [
+        "They have a single membrane",
+        "They have their own DNA and ribosomes",
+        "They are found only in plant cells",
+        "They store water and minerals"
+      ],
+      "answerIndex": 1,
+      "solution": "Mitochondria and plastids both have their own DNA and ribosomes, which allows them to make some of their own proteins. This is a key feature that distinguishes them from other cell structures. The other options are incorrect because mitochondria have two membranes, plastids are found in plant cells, and vacuoles, not mitochondria or plastids, store water and minerals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी विशेषता माइटोकॉन्ड्रिया और प्लास्टिड द्वारा साझा की जाती है?",
+          "choices": [
+            "उनके पास एक झिल्ली होती है",
+            "उनके पास अपना डीएनए और राइबोसोम होता है",
+            "वे केवल पौधा कोशिकाओं में पाए जाते हैं",
+            "वे पानी और खनिज भंडारित करते हैं"
+          ],
+          "solution": "माइटोकॉन्ड्रिया और प्लास्टिड दोनों के पास अपना डीएनए और राइबोसोम होता है, जो उन्हें कुछ अपने प्रोटीन बनाने में सक्षम बनाता है। यह एक महत्वपूर्ण विशेषता है जो उन्हें अन्य कोशिका संरचनाओं से अलग करती है। अन्य विकल्प गलत हैं क्योंकि माइटोकॉन्ड्रिया की दो झिल्लियां होती हैं, प्लास्टिड पौधा कोशिकाओं में पाए जाते हैं, और वैक्यूओल्स, न कि माइटोकॉन्ड्रिया या प्लास्टिड, पानी और खनिज भंडारित करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks. The meaning, options, and solution align perfectly with the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक वैशिष्ट्य माइटोकॉन्डिया आणि प्लास्टिड्स दरम्यान सामायिक आहे?",
+          "choices": [
+            "त्यांना एक झिल्ली आहे",
+            "त्यांच्याकडे त्यांचे स्वतःचे डीएनए आणि राइबोसोम आहेत",
+            "ते केवळ वनस्पती कोशिकांमध्ये आढळतात",
+            "ते पाणी आणि खनिज भंडारित करतात"
+          ],
+          "solution": "माइटोकॉन्डिया आणि प्लास्टिड्स दोन्ही त्यांचे स्वतःचे डीएनए आणि राइबोसोम असतात, ज्यामुळे ते त्यांच्या स्वतःच्या प्रोटीन्सचा काही भाग तयार करू शकतात. हे त्यांना इतर कोशिका संरचनांपासून वेगळे करणारे मुख्य वैशिष्ट्य आहे. इतर विकल्प अयोग्य आहेत कारण माइटोकॉन्डियांमध्ये दोन झिल्ल्या असतात, प्लास्टिड्स वनस्पती कोशिकांमध्ये आढळतात, आणि जलसंचयन आणि खनिज भंडारण वैकुंठांचे काम आहे, माइटोकॉन्डिया आणि प्लास्टिड्स नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the structure of mitochondria with other organelles",
+        null,
+        "Believes plastids are only in plant cells and not in animal cells",
+        "Misunderstands the types of cells where these organelles are found and their functions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as both mitochondria and plastids have their own DNA and ribosomes. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc102.pdf",
@@ -125,49 +423,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "What is the main function of mitosis?",
+      "difficulty": 2,
+      "stem": "What is the function of the cell membrane?",
       "choices": [
-        "To produce gametes for sexual reproduction",
-        "To create genetic diversity among organisms",
-        "To produce two genetically identical daughter cells",
-        "To reduce the number of chromosomes in a cell"
+        "Provides structural rigidity",
+        "Controls movement of substances",
+        "Stores genetic material",
+        "Carries out photosynthesis"
       ],
-      "answerIndex": 2,
-      "solution": "Mitosis results in two cells that are genetically identical to the original cell, which is essential for growth and tissue repair. Gametes are produced through meiosis, not mitosis, and genetic diversity arises from meiosis due to processes like crossing over. Reducing chromosome number is also a feature of meiosis, not mitosis.",
+      "answerIndex": 1,
+      "solution": "The cell membrane controls the movement of substances in and out of the cell, maintaining the cell's internal environment. Providing structural rigidity is a function of the cell wall, not the membrane. Storing genetic material is the role of the nucleus, and carrying out photosynthesis is the function of chloroplasts in plant cells.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "माइटोसिस का मुख्य कार्य क्या है?",
+          "stem": "कोशिका झिल्ली का कार्य क्या है?",
           "choices": [
-            "यौन प्रजनन के लिए गैमीट्स बनाना",
-            "जीवों में आनुवंशिक विविधता बनाना",
-            "दो आनुवंशिक रूप से समान डॉटर सेल बनाना",
-            "कोशिका में गुणसूत्रों की संख्या कम करना"
+            "संरचनात्मक कठोरता प्रदान करता है",
+            "पदार्थों के गति को नियंत्रित करता है",
+            "आनुवंशिक सामग्री को संग्रहीत करता है",
+            "प्रकाश संश्लेषण करता है"
           ],
-          "solution": "माइटोसिस दो कोशिकाएं बनाती है जो मूल कोशिका के आनुवंशिक रूप से समान होती हैं, जो वृद्धि और ऊतक मरम्मत के लिए आवश्यक है। गैमीट्स मेयोसिस के माध्यम से बनाए जाते हैं, न कि माइटोसिस के माध्यम से, और आनुवंशिक विविधता मेयोसिस के कारण बनती है जैसे कि क्रॉसिंग ओवर की प्रक्रिया में। गुणसूत्रों की संख्या कम करना भी मेयोसिस की विशेषता है, न कि माइटोसिस की।",
+          "solution": "कोशिका झिल्ली कोशिका के अंदर और बाहर पदार्थों के गति को नियंत्रित करती है, कोशिका के आंतरिक वातावरण को बनाए रखती है। संरचनात्मक कठोरता प्रदान करना कोशिका भित्ति का कार्य है, झिल्ली का नहीं। आनुवंशिक सामग्री को संग्रहीत करना नाभिक की भूमिका है, और प्रकाश संश्लेषण करना पौधे कोशिकाओं में क्लोरोप्लास्ट का कार्य है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "माइटोसिसचे मुख्य कार्य काय आहे?",
+          "stem": "कोशिका झिल्लीचे कार्य काय आहे?",
           "choices": [
-            "लैंगिक प्रजोत्पादनासाठी गॅमेट तयार करणे",
-            "जीवांमध्ये आनुवंशिक विविधता तयार करणे",
-            "दोन आनुवंशिकरित्या समान दुहेरी कोशिका तयार करणे",
-            "कोशिकेमध्ये गुणसूत्रांची संख्या कमी करणे"
+            "संरचनात्मक कठोरता प्रदान करते",
+            "द्रव्यांच्या गतिविधीचा नियंत्रण करते",
+            "जीनेटिक द्रव्य जमा करते",
+            "प्रकाशसंश्लेषण करते"
           ],
-          "solution": "माइटोसिसमुळे मूळ कोशिकेसारख्या आनुवंशिकरित्या समान दोन कोशिका तयार होतात, जे वाढ आणि ऊती पुनर्जीवनासाठी आवश्यक आहे. गॅमेट मेयोसिसमुळे तयार होतात, माइटोसिसमुळे नाही, आणि आनुवंशिक विविधता मेयोसिसमुळे जेव्हा क्रॉसिंग ओव्हर जेव्हा घडते तेव्हा तयार होते. गुणसूत्रांची संख्या कमी करणे हे मेयोसिसचे वैशिष्ट्य आहे, माइटोसिसचे नाही.",
+          "solution": "कोशिका झिल्ली कोशिकेच्या आत आणि बाहेर द्रव्यांच्या गतिविधीचा नियंत्रण करते, कोशिकेच्या आंतरिक वातावरणाचे रक्षण करते. संरचनात्मक कठोरता प्रदान करणे हे कोशिका भिंतीचे कार्य आहे, झिल्लीचे नाही. जीनेटिक द्रव्य जमा करणे हे न्यूक्लियसचे कार्य आहे आणि प्रकाशसंश्लेषण करणे हे उद्भिद कोशिकांमधील क्लोरोप्लास्टचे कार्य आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Marathi science textbooks.",
           "flag": null
         }
       },
@@ -176,20 +474,123 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses mitosis with meiosis, which produces gametes.",
-        "Misunderstands the role of mitosis, which is not to create genetic diversity.",
+        "Confuses cell membrane with cell wall",
         null,
-        "Confuses mitosis with meiosis, thinking mitosis reduces chromosome number"
+        "Confuses cell membrane with nucleus",
+        "Confuses cell membrane with chloroplast"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as mitosis produces two genetically identical daughter cells. The author's solution and reasoning are accurate, and the misconceptions listed for the wrong options are valid.",
+      "critique": "The correct answer is 1, as the cell membrane controls the movement of substances in and out of the cell. The other options refer to different organelles: cell wall (0), nucleus (2), and chloroplasts (3). The author's reasoning aligns with standard biology knowledge.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 21,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 22,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "In which type of cell division are two genetically identical daughter cells produced?",
+      "choices": [
+        "Mitosis",
+        "Meiosis",
+        "Binary fission",
+        "Mitochondrial division"
+      ],
+      "answerIndex": 0,
+      "solution": "Mitosis is the type of cell division that produces two genetically identical daughter cells from one parent cell. Meiosis produces gametes with half the number of chromosomes, binary fission is a type of cell division in prokaryotes, and mitochondrial division is a separate process for replicating mitochondria.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस प्रकार के कोशिका विभाजन में दो आनुवंशिक रूप से समान पुत्री कोशिकाएं उत्पन्न होती हैं?",
+          "choices": [
+            "माइटोसिस",
+            "मीओसिस",
+            "द्विविखंडन",
+            "माइटोकॉन्ड्रियल विभाजन"
+          ],
+          "solution": "माइटोसिस वह कोशिका विभाजन का प्रकार है जो एक मातृ कोशिका से दो आनुवंशिक रूप से समान पुत्री कोशिकाएं उत्पन्न करता है। मीओसिस गैमीट्स उत्पन्न करता है जिनमें क्रोमोसोम की संख्या आधी होती है, द्विविखंडन प्रोकैरियोट्स में कोशिका विभाजन का एक प्रकार है, और माइटोकॉन्ड्रियल विभाजन माइटोकॉन्ड्रिया के प्रतिकृति के लिए अलग प्रक्रिया है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately translated, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या प्रकारच्या कोशिका विभाजनात दोन आनुवंशिकरित्या समान नवजात कोशिका तयार होतात?",
+          "choices": [
+            "माइटोसिस",
+            "मीओसिस",
+            "द्विभाजन",
+            "माइटोकॉन्ड्रियल विभाजन"
+          ],
+          "solution": "माइटोसिस हा कोशिका विभाजनाचा प्रकार आहे ज्यामुळे एका जनक कोशिकेपासून दोन आनुवंशिकरित्या समान नवजात कोशिका तयार होतात. मीओसिस अंडाणे तयार करते ज्यामध्ये क्रोमोझोमची संख्या अर्धी असते, द्विभाजन हा प्रोकॅरियोटमध्ये कोशिका विभाजनाचा प्रकार आहे, आणि माइटोकॉन्ड्रियल विभाजन हा माइटोकॉन्ड्रिया प्रतिकृत करण्यासाठी अलग प्रक्रिया आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses mitosis with meiosis",
+        "Confuses mitosis with binary fission",
+        "Confuses mitosis with mitochondrial division"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. Mitosis is the correct answer, and the distractors reflect common misconceptions about cell division processes.",
       "sources": [
         {
           "document": "ncert/9/science/iesc102.pdf",
@@ -237,342 +638,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main reason a plant wilts when it does not get enough water?",
-      "choices": [
-        "The vacuole loses water",
-        "The cell wall breaks",
-        "The chloroplasts stop working",
-        "The nucleus shrinks"
-      ],
-      "answerIndex": 0,
-      "solution": "When a plant does not get enough water, the vacuole loses water, causing the cells to become less firm and the plant to wilt. The other options are not directly related to the wilting process.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पौधा क्यों झुक जाता है जब इसे पर्याप्त पानी नहीं मिलता?",
-          "choices": [
-            "वैक्यूओल जल खो देता है",
-            "कोशिका भित्ति टूट जाती है",
-            "क्लोरोप्लास्ट कार्य बंद कर देते हैं",
-            "नाभिक सिकुड़ जाता है"
-          ],
-          "solution": "जब एक पौधे को पर्याप्त पानी नहीं मिलता है, तो वैक्यूओल जल खो देता है, जिसके कारण कोशिकाएं कम ठोस हो जाती हैं और पौधा झुक जाता है। अन्य विकल्प पौधे के झुकने प्रक्रिया से सीधे संबंधित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वनस्पतीला पुरेसे पाणी मिळत नसल्यास ती का वाळते?",
-          "choices": [
-            "वैक्यूओल जास्त पाणी गमावतो",
-            "कोशिका भित्ती तुटते",
-            "क्लोरोप्लास्ट थांबतात",
-            "न्यूक्लियस लहान होतो"
-          ],
-          "solution": "जेव्हा वनस्पतीला पुरेसे पाणी मिळत नाही तेव्हा वैक्यूओल पाणी गमावतो, ज्यामुळे कोशिका कमी घन बनतात आणि वनस्पती वाळते. इतर विकल्प वाळण्याच्या प्रक्रियेशी सीधा संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the role of the cell wall",
-        "Misunderstands the function of the chloroplast",
-        "Misconceives the role of the nucleus"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the vacuole's role in maintaining turgor pressure, which is essential for plant rigidity. The other options are unrelated to wilting.",
-      "sources": [
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 13,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.3 The Cell Interior — A Coordinated Working System",
-            "2.3.1 Why do eukaryotic cells need these organelles?",
-            "Plastids — Centre for food synthesis in the plant cells and beyond"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 14,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.3 The Cell Interior — A Coordinated Working System",
-            "2.3.1 Why do eukaryotic cells need these organelles?",
-            "Vacuoles — The organelles for storage and support"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 15,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.3 The Cell Interior — A Coordinated Working System",
-            "2.3.1 Why do eukaryotic cells need these organelles?",
-            "Activity 2.5: Let us enhance our skills"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a function of the Golgi complex?",
-      "choices": [
-        "To produce energy for the cell",
-        "To package and transport proteins",
-        "To store genetic material",
-        "To control cell division"
-      ],
-      "answerIndex": 1,
-      "solution": "The Golgi complex is responsible for modifying, sorting, and packaging proteins for transport to their final destinations within or outside the cell. Mitochondria generate energy, the nucleus contains genetic material, and the cell cycle regulates division, making those options incorrect.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा गॉल्गी यंत्र का कार्य है?",
-          "choices": [
-            "कोशिका के लिए ऊर्जा उत्पादित करना",
-            "प्रोटीन को पैक करना और परिवहन करना",
-            "आनुवंशिक सामग्री को संग्रहीत करना",
-            "कोशिका विभाजन को नियंत्रित करना"
-          ],
-          "solution": "गॉल्गी यंत्र कोशिका में प्रोटीन के संशोधन, वर्गीकरण और अंतिम गंतव्य पर परिवहन के लिए पैक करने के लिए उत्तरदायी होता है। माइटोकॉंडिया ऊर्जा उत्पन्न करते हैं, केंद्रक आनुवंशिक सामग्री को संग्रहीत करता है, और कोशिका चक्र विभाजन को नियंत्रित करता है, जिसके कारण उन विकल्प गलत हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard biological terminology as taught in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते गॉल्गी कॉम्प्लेक्सचे कार्य आहे?",
-          "choices": [
-            "कोशिकेसाठी ऊर्जा तयार करणे",
-            "प्रोटीन वाहून नेणे आणि पॅक करणे",
-            "जीनेटिक पदार्थ जमा करणे",
-            "कोशिका विभाजन नियंत्रित करणे"
-          ],
-          "solution": "गॉल्गी कॉम्प्लेक्स हे कोशिकेतील प्रोटीन विकसित करण्यासाठी, विभाजित करण्यासाठी आणि त्यांना त्यांच्या अंतिम स्थानांवर वाहून नेण्यासाठी जबाबदार आहे. मायटोकॉंड्रिया ऊर्जा तयार करतात, न्यूक्लियसमध्ये जीनेटिक पदार्थ असतात आणि कोशिका चक्र विभाजन नियंत्रित करते, ज्यामुळे या विकल्प चुकीचे ठरतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the Golgi complex with other organelles",
-        null,
-        "Confuses the function of the Golgi complex with other organelles",
-        "Confuses the function of the Golgi complex with other organelles"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the Golgi complex is responsible for packaging and transporting proteins. The other options correspond to the functions of mitochondria, nucleus, and cell cycle, respectively, which are common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 23,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.5 Cell Theory — The Unifying Principle of Biology",
-            "2.5.1 Do cells grow and reproduce forever?",
-            "Revise, Reflect, Refine"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 24,
-          "pageStart": 20,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.5 Cell Theory — The Unifying Principle of Biology",
-            "2.5.1 Do cells grow and reproduce forever?",
-            "The Journey Beyond"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Which of the following is an example of a unicellular organism?",
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
       "choices": [
-        "Yeast",
-        "Human",
-        "Tree",
-        "Fish"
-      ],
-      "answerIndex": 0,
-      "solution": "Yeast is a unicellular organism because it consists of a single cell that can carry out all life processes on its own. Humans, trees, and fish are multicellular, meaning they are made up of many specialized cells working together. Therefore, yeast is the only correct example of a unicellular organism among the options.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एककोशिक जीव का उदाहरण है?",
-          "choices": [
-            "खमीर",
-            "मनुष्य",
-            "पेड़",
-            "मछली"
-          ],
-          "solution": "खमीर एककोशिक जीव है क्योंकि यह एक एकल कोशिका से बना होता है जो अपने आप में सभी जीवन प्रक्रियाएं कर सकता है। मनुष्य, पेड़ और मछली बहुकोशिक होते हैं, जिनके अंदर कई विशेषज्ञ कोशिकाएं होती हैं जो एक साथ काम करती हैं। इसलिए, विकल्पों में खमीर ही एककोशिक जीव का एकमात्र सही उदाहरण है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard biological terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एककोशिकीय जीवाचे उदाहरण आहे?",
-          "choices": [
-            "खमीर",
-            "माणूस",
-            "वृक्ष",
-            "मासा"
-          ],
-          "solution": "खमीर एककोशिकीय जीव आहे कारण तो एका कोशिकेने बनलेला असतो जो स्वतःच्या जीवन प्रक्रिया चालवू शकतो. माणूस, वृक्ष आणि मासे बहुकोशिकीय आहेत, म्हणजेच ते अनेक विशिष्ट कोशिकांनी बनलेले असतात जे एकमेकांसह काम करतात. म्हणून, विकल्पांमध्ये खमीर हा एककोशिकीय जीवाचा एकमात्र योग्य उदाहरण आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes humans are single-celled organisms due to confusion between cells and organisms",
-        "Confuses unicellular with multicellular organisms.",
-        "Confuses unicellular with multicellular organisms."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the distractors. The solution correctly identifies yeast as a unicellular organism and explains why the others are incorrect.",
-      "sources": [
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.1 How to Study Cells?"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.1 How to Study Cells?"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the main function of the vacuole in plant cells?",
-      "choices": [
-        "To store food",
-        "To provide structure",
-        "To store water and maintain cell pressure",
-        "To carry out photosynthesis"
+        "It will swell",
+        "It will burst",
+        "It will shrink",
+        "It will remain the same"
       ],
       "answerIndex": 2,
-      "solution": "The main function of the vacuole in plant cells is to store water and maintain cell pressure, which keeps the cell firm. It does not store food, provide structure, or carry out photosynthesis. Therefore, the correct answer is that it stores water and maintains cell pressure.",
+      "solution": "In a hypertonic solution, the concentration of solutes outside the cell is higher than inside, so water moves out of the cell to balance the concentration. This loss of water causes the cell to shrink. Swelling or bursting would occur in a hypotonic solution, and remaining the same would happen in an isotonic solution.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "पौधे की कोशिका में रिक्तिका का मुख्य कार्य क्या है?",
+          "stem": "यदि एक पौधे की कोशिका को एक हाइपरटोनिक विलयन में रखा जाए तो कोशिका पर क्या प्रभाव पड़ेगा?",
           "choices": [
-            "भोजन भंडारित करना",
-            "संरचना प्रदान करना",
-            "जल भंडारित करना और कोशिका दबाव बनाए रखना",
-            "प्रकाश संश्लेषण करना"
+            "यह फूल जाएगा",
+            "यह फट जाएगा",
+            "यह सिकुड़ जाएगा",
+            "यह समान रहेगा"
           ],
-          "solution": "पौधे की कोशिका में रिक्तिका का मुख्य कार्य जल भंडारित करना और कोशिका दबाव बनाए रखना होता है, जो कोशिका को मजबूत बनाए रखता है। यह भोजन नहीं भंडारित करता, संरचना प्रदान नहीं करता और प्रकाश संश्लेषण नहीं करता। इसलिए, सही उत्तर यह है कि यह जल भंडारित करता है और कोशिका दबाव बनाए रखता है।",
+          "solution": "हाइपरटोनिक विलयन में, कोशिका के बाहर विलेय की सांद्रता कोशिका के भीतर की तुलना में अधिक होती है, अतः पानी कोशिका से बाहर निकल जाता है ताकि सांद्रता संतुलित हो जाए। इस पानी के निकल जाने के कारण कोशिका सिकुड़ जाती है। फूलना या फटना हाइपोटोनिक विलयन में होता है, और समान रहना आइसोटोनिक विलयन में होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium biology context.",
+          "critique": "Translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
           "flag": null
         },
         "mr": {
-          "stem": "वनस्पतीच्या कोशिकेमध्ये वैक्यूओलचे मुख्य कार्य काय आहे?",
+          "stem": "एका वनस्पतीच्या कोशिकेला हायपरटोनिक द्रावणात ठेवल्यास, कोशिकेला काय होईल?",
           "choices": [
-            "खाद्य जमा करणे",
-            "संरचना पुरवणे",
-            "पाणी जमा करणे आणि कोशिकेचा दाब ठेवणे",
-            "प्रकाशसंश्लेषण करणे"
+            "ती फुगेल",
+            "ती फुटेल",
+            "ती खाली येईल",
+            "ती तशीच राहील"
           ],
-          "solution": "वनस्पतीच्या कोशिकेमध्ये वैक्यूओलचे मुख्य कार्य पाणी जमा करणे आणि कोशिकेचा दाब ठेवणे आहे, जो कोशिका फुटकळ ठेवतो. ते खाद्य जमा करत नाही, संरचना पुरवत नाही, किंवा प्रकाशसंश्लेषण करत नाही. म्हणून, योग्य उत्तर ते पाणी जमा करणे आणि कोशिकेचा दाब ठेवणे आहे.",
+          "solution": "हायपरटोनिक द्रावणात, कोशिकेबाहेरील घोलकांची एकाग्रता कोशिकेअंतर्गत घोलकांच्या एकाग्रतेपेक्षा जास्त असते, म्हणून पाणी कोशिकेबाहेर जाते जेणेकरून एकाग्रता संतुलित होईल. हे पाणी गमावणे कोशिकेला खाली येण्यास कारणीभूत होते. फुगणे किंवा फुटणे हायपोटोनिक द्रावणात होते, आणि तशीच राहणे हे आइसोटोनिक द्रावणात होते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as used in Marathi science textbooks.",
           "flag": null
         }
       },
@@ -581,10 +689,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the role of leucoplasts with vacuole",
-        "Confuses the role of the cell wall with vacuole",
+        "Describes what happens in a hypotonic solution",
+        "Describes what happens in a hypotonic solution",
         null,
-        "Confuses chloroplast function with vacuole"
+        "Describes what happens in an isotonic solution"
       ],
       "solverAnswers": [
         2,
@@ -593,209 +701,261 @@
         2,
         2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the vacuole's primary role in storing water and maintaining turgor pressure. The reasoning for the distractors aligns with common student misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that in a hypertonic solution, water moves out of the cell, causing it to shrink. The reasoning aligns with the correct scientific understanding of osmosis.",
       "sources": [
         {
           "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 13,
-          "pageStart": 11,
-          "pageEnd": 12,
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 2: Cell: The Building Block of Life",
-            "2.3 The Cell Interior — A Coordinated Working System",
-            "2.3.1 Why do eukaryotic cells need these organelles?",
-            "Plastids — Centre for food synthesis in the plant cells and beyond"
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?"
           ]
         },
         {
           "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 14,
-          "pageStart": 12,
-          "pageEnd": 13,
+          "ordinal": 21,
+          "pageStart": 17,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 2: Cell: The Building Block of Life",
-            "2.3 The Cell Interior — A Coordinated Working System",
-            "2.3.1 Why do eukaryotic cells need these organelles?",
-            "Vacuoles — The organelles for storage and support"
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
           ]
         },
         {
           "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 15,
-          "pageStart": 13,
-          "pageEnd": 14,
+          "ordinal": 22,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 2: Cell: The Building Block of Life",
-            "2.3 The Cell Interior — A Coordinated Working System",
-            "2.3.1 Why do eukaryotic cells need these organelles?",
-            "Activity 2.5: Let us enhance our skills"
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why is the cell considered the structural and functional unit of life?",
+      "difficulty": 3,
+      "stem": "Which of the following is a characteristic of eukaryotic cells?",
       "choices": [
-        "Because it can live independently",
-        "Because it is the smallest unit that can perform all life processes",
-        "Because it is found in all organisms",
-        "Because it is the largest unit in an organism"
+        "They have a well-defined nucleus",
+        "They lack membrane-bound organelles",
+        "They are usually smaller in size",
+        "They have a primitive nucleus"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is because it is the smallest unit that can perform all life processes. This is because cells can carry out essential functions like growth, reproduction, and metabolism on their own. Other options are incorrect because not all cells can live independently, and the cell is not the largest unit in an organism. While cells are present in all organisms, their defining feature is their ability to perform life processes.",
+      "answerIndex": 0,
+      "solution": "Eukaryotic cells have a well-defined nucleus, which is a key characteristic that distinguishes them from prokaryotic cells. The other options describe prokaryotic cells, not eukaryotic ones.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कोशिका को जीवन की संरचनात्मक एवं क्रियात्मक इकाई क्यों माना जाता है?",
+          "stem": "निम्नलिखित में से कौन-सा यूकैरियोटिक कोशिका का लक्षण है?",
           "choices": [
-            "क्योंकि यह स्वतंत्र रूप से जीवित रह सकती है",
-            "क्योंकि यह सभी जीवन प्रक्रियाओं को कर सकने वाली सबसे छोटी इकाई है",
-            "क्योंकि यह सभी जीवों में पाई जाती है",
-            "क्योंकि यह एक जीव में सबसे बड़ी इकाई है"
+            "उनमें एक अच्छी तरह से परिभाषित केंद्रक होता है",
+            "उनमें कला-सीमाबद्ध ऑर्गेनेल्स नहीं होते",
+            "उनका आकार आमतौर पर छोटा होता है",
+            "उनमें एक प्राथमिक केंद्रक होता है"
           ],
-          "solution": "सही उत्तर यह है कि यह सभी जीवन प्रक्रियाओं को कर सकने वाली सबसे छोटी इकाई है। ऐसा इसलिए है क्योंकि कोशिकाएं अपने आप वृद्धि, प्रजनन और एंजाइम के रूप में महत्वपूर्ण कार्य कर सकती हैं। अन्य विकल्प गलत हैं क्योंकि सभी कोशिकाएं स्वतंत्र रूप से जीवित नहीं रह सकतीं, और कोशिका एक जीव में सबसे बड़ी इकाई नहीं है। यद्यपि कोशिकाएं सभी जीवों में पाई जाती हैं, लेकिन उनकी परिभाषा उनकी जीवन प्रक्रियाओं को करने की क्षमता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "solution": "यूकैरियोटिक कोशिकाओं में एक अच्छी तरह से परिभाषित केंद्रक होता है, जो उन्हें प्रोकैरियोटिक कोशिकाओं से अलग करने वाला मुख्य लक्षण है। अन्य विकल्प प्रोकैरियोटिक कोशिकाओं के बारे में हैं, न कि यूकैरियोटिक कोशिकाओं के बारे में।",
+          "imageAlt": "एक जंतु कोशिका का चित्र जिसमें कोशिका झिल्ली, साइटोप्लाज्म और केंद्रक लेबल किए गए हैं।",
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "कोशिका जीवनाच्या संरचनात्मक आणि कार्यक्षम एकक म्हणून का विचारली जाते?",
+          "stem": "खालीलपैकी कोणते यूकॅरियोटिक कोशिकांचे वैशिष्ट्य आहे?",
           "choices": [
-            "कारण ती स्वतंत्रपणे जगू शकते",
-            "कारण ती जीवन प्रक्रिया सर्वात लहान एकक आहे जी सर्व जीवन प्रक्रिया करू शकते",
-            "कारण ती सर्व जीवांमध्ये आढळू शकते",
-            "कारण ती एका जीवातील सर्वात मोठी एकक आहे"
+            "त्यांचे एक स्पष्ट न्यूक्लियस असते",
+            "त्यांच्याकडे आवरणाने बंद असलेले अंगरेखा नसतात",
+            "ते आकाराने लहान असतात",
+            "त्यांचे अपरिपक्व न्यूक्लियस असते"
           ],
-          "solution": "योग्य उत्तर हे आहे की ती जीवन प्रक्रिया सर्वात लहान एकक आहे जी सर्व जीवन प्रक्रिया करू शकते. हे कारण आहे की कोशिका स्वतंत्रपणे वृद्धी, प्रजोत्पादन आणि एकंदर जीवन प्रक्रिया करू शकते. इतर विकल्प अयोग्य आहेत कारण सर्व कोशिका स्वतंत्रपणे जगू शकत नाहीत, आणि कोशिका जीवातील सर्वात मोठी एकक नाही. जीवांमध्ये कोशिका असतात, परंतु त्यांची विशिष्ट वैशिष्ट्ये जीवन प्रक्रिया करण्याची क्षमता आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'जीवन प्रक्रिया' (life processes) and 'एकक' (unit) are appropriately used in a Marathi science context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the concept of unicellular organisms, thinking all cells can live independently.",
-        null,
-        "Confuses the definition of the structural and functional unit of life.",
-        "Confuses the concept of the cell with other biological units."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the cell is the smallest unit capable of performing all life processes. The other options reflect common misconceptions about the role of cells in organisms.",
-      "sources": [
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.1 How to Study Cells?"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Cell: The Building Block of Life",
-            "2.1 How to Study Cells?"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why do plant cells have a large central vacuole while animal cells do not?",
-      "choices": [
-        "Because plant cells need to store more food",
-        "Because plant cells require more water for turgor pressure",
-        "Because animal cells have more organelles",
-        "Because animal cells are smaller in size"
-      ],
-      "answerIndex": 1,
-      "solution": "Plant cells have a large central vacuole to maintain turgor pressure, which helps keep the plant upright. Animal cells do not need this because they have other structural supports. The other options do not explain the primary reason for the presence of a large vacuole in plant cells.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पौधे के कोशिकाओं में एक बड़ा केंद्रीय रसधानी होता है जबकि जंतु कोशिकाओं में नहीं क्यों?",
-          "choices": [
-            "क्योंकि पौधे की कोशिकाओं को अधिक भोजन भंडारित करने की आवश्यकता होती है",
-            "क्योंकि पौधे की कोशिकाओं को टर्गर दबाव के लिए अधिक पानी की आवश्यकता होती है",
-            "क्योंकि जंतु कोशिकाओं में अधिक अंगक होते हैं",
-            "क्योंकि जंतु कोशिकाएं छोटी आकार की होती हैं"
-          ],
-          "solution": "पौधे की कोशिकाओं में एक बड़ा केंद्रीय रसधानी टर्गर दबाव बनाए रखने के लिए होता है, जो पौधे को सीधा रखने में मदद करता है। जंतु कोशिकाओं को इसकी आवश्यकता नहीं होती क्योंकि उनके पास अन्य संरचनात्मक समर्थन होते हैं। अन्य विकल्प पौधे कोशिकाओं में बड़े रसधानी की उपस्थिति के मुख्य कारण को समझाने में असमर्थ हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "वनस्पतीच्या कोशिकांमध्ये मोठा एकक वैक्यूओल असतो तर जंतूच्या कोशिकांमध्ये नसतो कारण?",
-          "choices": [
-            "कारण वनस्पतीच्या कोशिकांना जास्त खाद्य जमा करण्याची आवश्यकता असते",
-            "कारण वनस्पतीच्या कोशिकांना टर्गर दाबासाठी जास्त पाणी आवश्यक असते",
-            "कारण जंतूच्या कोशिकांमध्ये जास्त ऑर्गेनेल्स असतात",
-            "कारण जंतूच्या कोशिकांचा आकार लहान असतो"
-          ],
-          "solution": "वनस्पतीच्या कोशिकांमध्ये मोठा एकक वैक्यूओल असतो जेणेकरून टर्गर दाब राखता येईल, जो वनस्पतीला उभे राहण्यास मदत करतो. जंतूच्या कोशिकांमध्ये असे आवश्यक नसते कारण त्यांच्याकडे इतर संरचनात्मक समर्थन असतात. इतर विकल्प वनस्पतीच्या कोशिकांमध्ये मोठ्या वैक्यूओलच्या उपस्थितीचे मुख्य कारण स्पष्ट करत नाहीत.",
-          "imageAlt": null,
+          "solution": "यूकॅरियोटिक कोशिकांमध्ये स्पष्ट न्यूक्लियस असतो, जे त्यांना प्रोकॅरियोटिक कोशिकांपासून वेगळे करणारे मुख्य वैशिष्ट्य आहे. इतर विकल्प प्रोकॅरियोटिक कोशिकांचे वर्णन करतात, न की यूकॅरियोटिक कोशिकांचे.",
+          "imageAlt": "मानव कोशिकेचा आकृतिमय चित्र ज्यामध्ये कोशिका झिल्ली, कोशिकाद्रव्य आणि न्यूक्लियस लेबल केलेले आहेत.",
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
         }
       },
       "imageKey": null,
+      "imageAlt": "Diagram of an animal cell with labeled cell membrane, cytoplasm, and nucleus.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "animalCell",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "membrane",
+                "nucleus",
+                "cytoplasm"
+              ],
+              "text": {
+                "nucleus": "nucleus"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                20,
+                30
+              ],
+              "to": [
+                50,
+                30
+              ],
+              "label": "nucleus",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "membrane": {
+            "en": "Cell membrane",
+            "hi": "कोशिका झिल्ली",
+            "mr": "कोशिका झिल्ली"
+          },
+          "cytoplasm": {
+            "en": "Cytoplasm",
+            "hi": "साइटोप्लाज्म",
+            "mr": "कोशिकाद्रव्य"
+          },
+          "nucleus": {
+            "en": "Nucleus",
+            "hi": "केंद्रक",
+            "mr": "न्यूक्लियस"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "confuses prokaryotic with eukaryotic cells",
+        "describes prokaryotic cells",
+        "describes prokaryotic cells in terms of size and structure"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as eukaryotic cells are defined by having a well-defined nucleus. The other options correctly describe prokaryotic cells, and the author's reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell",
+            "2.2.2 Cell wall — The outer covering of cells"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens to a plant when it does not get enough water?",
+      "choices": [
+        "The vacuole loses water and the plant becomes wilted",
+        "The vacuole gains water and the plant becomes firm",
+        "The vacuole stores more water and the plant becomes taller",
+        "The vacuole becomes larger and the plant becomes more rigid"
+      ],
+      "answerIndex": 0,
+      "solution": "When a plant does not get enough water, the vacuole loses water, which reduces the pressure inside the cell, making the plant wilt. The other options are incorrect because the vacuole does not gain water, store more water, or become larger in this situation. Instead, the loss of water causes the plant to lose its firmness.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पौधे पर क्या प्रभाव पड़ता है जब उसे पर्याप्त पानी नहीं मिलता?",
+          "choices": [
+            "वैक्यूओल जल खो देता है और पौधा झुक जाता है",
+            "वैक्यूओल जल अधिक ग्रहण कर लेता है और पौधा कठोर हो जाता है",
+            "वैक्यूओल अधिक जल संग्रहित कर लेता है और पौधा ऊँचा हो जाता है",
+            "वैक्यूओल बड़ा हो जाता है और पौधा अधिक कठोर हो जाता है"
+          ],
+          "solution": "जब एक पौधे को पर्याप्त पानी नहीं मिलता है तो वैक्यूओल जल खो देता है जिससे कोशिका के भीतर दबाव कम हो जाता है और पौधा झुक जाता है। अन्य विकल्प गलत हैं क्योंकि वैक्यूओल जल नहीं ग्रहण करता, अधिक जल संग्रहित नहीं करता, या बड़ा नहीं होता इस स्थिति में। बजाय इसके, जल के नुकसान के कारण पौधे की कठोरता खो जाती है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वनस्पतीला पुरेसे पाणी मिळत नसल्यास काय होते?",
+          "choices": [
+            "वैक्यूओल ला पाणी गेल्यामुळे वनस्पती झुरलेली दिसते",
+            "वैक्यूओल ला पाणी मिळते आणि वनस्पती घन दिसते",
+            "वैक्यूओल अधिक पाणी जमा करते आणि वनस्पती उंच दिसते",
+            "वैक्यूओल ला मोठे होते आणि वनस्पती अधिक घन दिसते"
+          ],
+          "solution": "जेव्हा वनस्पतीला पुरेसे पाणी मिळत नाही तेव्हा वैक्यूओल पाणी गमावते, ज्यामुळे सेलमधील दाब कमी होतो आणि वनस्पती झुरलेली दिसते. इतर विकल्प अयोग्य आहेत कारण वैक्यूओल पाणी ग्रहण करत नाही, अधिक पाणी जमा करत नाही किंवा मोठा होत नाही. बरोबर विकल्प असा आहे की पाणी गेल्यामुळे वनस्पती घनता गमावते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, natural, and uses standard Marathi scientific terminology. The structure and meaning match the English version perfectly.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
       "imageAlt": null,
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the role of the vacuole in food storage",
         null,
-        "Confuses the function of other organelles",
-        "Misconceives the relationship between cell size and vacuole size"
+        "Confuses the effect of water on the vacuole",
+        "Misunderstands the role of the vacuole in plant cells",
+        "Incorrectly assumes that the vacuole's size directly affects the plant's rigidity"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as plant cells require a large vacuole to maintain turgor pressure. The author's solution is accurate and the reasoning for the wrong options aligns with common misconceptions.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the scientific understanding of plant cell turgor pressure. The vacuole losing water leads to wilting, and the reasons for the distractors are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc102.pdf",
@@ -835,49 +995,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "What is the main reason that complex multicellular organisms cannot be reconstructed from a single cell?",
+      "difficulty": 4,
+      "stem": "A farmer used salt and sugar to preserve fruits. How does this method prevent spoilage?",
       "choices": [
-        "They have a complex structure that cannot be replicated",
-        "They require specialized cells organized into tissues and organs",
-        "They are made up of non-living cells",
-        "They have a nucleus that is too large"
+        "It increases the water content of the fruits",
+        "It creates a hypertonic environment",
+        "It reduces the temperature of the fruits",
+        "It kills all microorganisms instantly"
       ],
       "answerIndex": 1,
-      "solution": "The main reason complex multicellular organisms cannot be reconstructed from a single cell is that they require specialized cells organized into tissues and organs, which a single cell cannot provide. Other options are incorrect because cells in these organisms are living, and a nucleus's size does not prevent reconstruction. The complexity of their structure is due to cell specialization, not an inability to replicate.",
+      "solution": "Adding salt and sugar creates a hypertonic environment, causing water to move out of microbial cells, inhibiting their growth. It does not increase water content, reduce temperature, or kill all microorganisms instantly.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक जटिल बहुकोशिकीय जीव को एक कोशिका से पुनर्निर्मित क्यों नहीं किया जा सकता है?",
+          "stem": "एक किसान ने फलों के संरक्षण के लिए नमक और चीनी का उपयोग किया। यह विधि खराबी को कैसे रोकती है?",
           "choices": [
-            "उनकी जटिल संरचना को पुनर्निर्मित नहीं किया जा सकता है",
-            "उन्हें ऊतकों और अंगों में विशेषित कोशिकाओं की आवश्यकता होती है",
-            "उन्हें अजीवित कोशिकाओं से बना होता है",
-            "उनके एक कोशिका झिल्ली बहुत बड़ी होती है"
+            "यह फलों के जल की मात्रा बढ़ाता है",
+            "यह हाइपरटोनिक वातावरण बनाता है",
+            "यह फलों के तापमान को कम करता है",
+            "यह सभी सूक्ष्मजीवों को तत्काल मार देता है"
           ],
-          "solution": "एक जटिल बहुकोशिकीय जीव को एक कोशिका से पुनर्निर्मित नहीं किया जा सकता है क्योंकि उन्हें ऊतकों और अंगों में विशेषित कोशिकाओं की आवश्यकता होती है, जो एक कोशिका नहीं प्रदान कर सकती है। अन्य विकल्प गलत हैं क्योंकि इन जीवों में कोशिकाएं जीवित होती हैं, और कोशिका झिल्ली के आकार के कारण पुनर्निर्माण रोक नहीं जा सकता है। उनकी संरचना की जटिलता कोशिका विशेषीकरण के कारण होती है, न कि पुनर्निर्माण की अक्षमता के कारण।",
+          "solution": "नमक और चीनी मिलाने से हाइपरटोनिक वातावरण बनता है, जिसके कारण सूक्ष्मजीवों की कोशिकाओं से जल बाहर निकल जाता है, जिससे उनकी वृद्धि रुक जाती है। यह जल की मात्रा नहीं बढ़ाता, तापमान कम नहीं करता और सभी सूक्ष्मजीवों को तत्काल मार नहीं देता।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एकल सेलमधून जटिल बहुकोशिकीय सजीवांचे पुनर्निर्माण का करता येत नाही?",
+          "stem": "एका शेतकऱ्याने फळे रखडू नयेत म्हणून लवंग आणि चातुर्य वापरले. हा पद्धतीने खराबी रोखली जाते कशामुळे?",
           "choices": [
-            "त्यांचे जटिल रचना असते जी प्रतिकृती करता येत नाही",
-            "त्यांना ऊती आणि अवयवांमध्ये विशिष्ट कोशिका आवश्यक असतात",
-            "त्यांचे अस्तित्व अजीव कोशिकांमध्ये असते",
-            "त्यांचा न्यूक्लियस खूप मोठा असतो"
+            "ते फळांचा पाणी वाढवते",
+            "ते हायपरटॉनिक वातावरण तयार करते",
+            "ते फळांचा तापमान कमी करते",
+            "ते सर्व जीवाणूंना तात्काळ मारते"
           ],
-          "solution": "जटिल बहुकोशिकीय सजीवांचे पुनर्निर्माण एकल सेलमधून करता येत नाही कारण त्यांना ऊती आणि अवयवांमध्ये विशिष्ट कोशिका आवश्यक असतात, जे एकल सेलमधून पुरवता येत नाहीत. इतर विकल्प अयोग्य आहेत कारण या सजीवांमधील कोशिका जीवित असतात आणि न्यूक्लियसचा आकार पुनर्निर्माणाला अडथळा नसतो. त्यांच्या रचनेची जटिलता कोशिका विशिष्टतेमुळे असते, नाही की प्रतिकृती करता येणार नाही यामुळे.",
+          "solution": "लवंग आणि चातुर्य जोडल्याने हायपरटॉनिक वातावरण तयार होते, ज्यामुळे जीवाणूंच्या कोशिकांमधून पाणी बाहेर पडते आणि त्यांचा विकास अडवला जातो. ते पाणी वाढवत नाही, तापमान कमी करत नाही किंवा सर्व जीवाणूंना तात्काळ मारत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -886,10 +1046,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Pupils may think that complexity alone prevents reconstruction, not considering cellular differentiation and organization",
+        "misunderstands the effect of salt and sugar",
         null,
-        "Students may confuse cells with non-living structures, thinking that some cells are not alive",
-        "Students may think that the size of the nucleus affects the ability to reconstruct an organism"
+        "thinks it is a cooling method",
+        "overestimates the effectiveness of salt and sugar"
       ],
       "solverAnswers": [
         1,
@@ -898,8 +1058,8 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as complex multicellular organisms require specialized cells organized into tissues and organs, which cannot be achieved from a single cell. The other options reflect common misconceptions about complexity, cell composition, and nucleus size.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The explanation about hypertonic environment and osmosis is scientifically accurate.",
       "sources": [
         {
           "document": "ncert/9/science/iesc102.pdf",
@@ -927,7 +1087,659 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:36:33.212Z",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a skin cell starts dividing by meiosis instead of mitosis, what will happen to a cut on the skin?",
+      "choices": [
+        "The skin will heal normally",
+        "The skin will not heal at all",
+        "The skin will heal slower than usual",
+        "The skin will form tumours"
+      ],
+      "answerIndex": 1,
+      "solution": "If skin cells start dividing by meiosis instead of mitosis, the skin will not heal at all. Mitosis is the process that replaces lost or damaged skin cells, while meiosis is used for the production of gametes. If meiosis occurs in skin cells, it would not produce the necessary cells to repair the cut.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि त्वचा की कोशिका मियोसिस के बजाय माइटोसिस द्वारा विभाजित होती है, तो त्वचा पर एक घाव पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "त्वचा सामान्य रूप से ठीक हो जाएगी",
+            "त्वचा कभी ठीक नहीं होगी",
+            "त्वचा सामान्य तुलना में धीरे-धीरे ठीक होगी",
+            "त्वचा ट्यूमर बनाएगी"
+          ],
+          "solution": "यदि त्वचा की कोशिकाएं मियोसिस के बजाय माइटोसिस द्वारा विभाजित होती हैं, तो त्वचा कभी ठीक नहीं होगी। माइटोसिस वह प्रक्रिया है जो खोई गई या क्षतिग्रस्त त्वचा कोशिकाओं को बदलती है, जबकि मियोसिस गैमीट्स के उत्पादन के लिए उपयोग की जाती है। यदि त्वचा की कोशिकाओं में मियोसिस होती है, तो घाव के ठीक होने के लिए आवश्यक कोशिकाएं नहीं बनेंगी।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology for biological processes.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर त्वचेच्या कोशिका मिटोसीसऐवजी मीओसीसद्वारे विभाजित होऊ लागल्या, तर त्वचेवर झालेल्या घावाचे काय होईल?",
+          "choices": [
+            "त्वचा सामान्यपणे बरी होईल",
+            "त्वचा एकही बरी होणार नाही",
+            "त्वचा सामान्यपणे वेगाने बरी होईल",
+            "त्वचा ट्यूमर तयार करील"
+          ],
+          "solution": "जर त्वचेच्या कोशिका मिटोसीसऐवजी मीओसीसद्वारे विभाजित होऊ लागल्या, तर त्वचा एकही बरी होणार नाही. मिटोसीस हा नष्ट झालेल्या किंवा नुकसान झालेल्या त्वचेच्या कोशिका बदलण्यासाठी वापरला जातो, तर मीओसीस हा गॅमीट्स तयार करण्यासाठी वापरला जातो. जर त्वचेच्या कोशिकांमध्ये मीओसीस होत असेल, तर घाव बरा करण्यासाठी आवश्यक कोशिका तयार होणार नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses meiosis with mitosis",
+        null,
+        "Believes meiosis would lead to fewer cells being produced, slowing healing",
+        "Confuses meiosis with mitosis and assumes faster healing due to genetic variation and diversity in gametes, which is not relevant to skin repair in this context"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that meiosis is not used for tissue repair and that skin cells rely on mitosis for healing. The reasoning aligns with biological principles.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System",
+            "2.4.1 Cell division"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System",
+            "2.4.1 Cell division",
+            "Meiosis"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 18,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 19,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a cell is placed in a solution where the concentration of solutes is equal inside and outside the cell, what will happen to the cell?",
+      "choices": [
+        "It will swell",
+        "It will shrink",
+        "It will burst",
+        "It will remain the same"
+      ],
+      "answerIndex": 3,
+      "solution": "When the concentration of solutes is equal inside and outside the cell, there is no net movement of water across the cell membrane, so the cell maintains its size and shape. In this scenario, the cell remains the same because there is no osmotic pressure causing it to swell or shrink. Swelling or bursting occurs in a hypotonic solution, while shrinking happens in a hypertonic solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोशिका को एक विलयन में रखा जाता है जहां विलेय की सांद्रता कोशिका के भीतर और बाहर समान होती है, तो कोशिका पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह फूल जाएगी",
+            "यह सिकुड़ जाएगी",
+            "यह फट जाएगी",
+            "यह वही रहेगी"
+          ],
+          "solution": "जब विलेय की सांद्रता कोशिका के भीतर और बाहर समान होती है, तो कोशिका झिल्ली के पार पानी का कोई शुद्ध गति नहीं होती है, इसलिए कोशिका अपने आकार और आकृति को बरकरार रखती है। इस परिस्थिति में, कोशिका वही रहती है क्योंकि इसके फूलने या सिकुड़ने के कारण असमान अपोस्मोटिक दबाव नहीं होता है। फूलना या फटना हाइपोटोनिक विलयन में होता है, जबकि सिकुड़ना हाइपरटोनिक विलयन में होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोशिका एखाद्या द्रावणात ठेवली जाते ज्यामध्ये अंतर्गत आणि बाह्य बाजूला विरघळकांची एकसारखी एकाग्रता असते, तर कोशिकेचा काय फरक पडेल?",
+          "choices": [
+            "ती फुगेल",
+            "ती खुपसेल",
+            "ती फुटेल",
+            "ती एकसारखी राहील"
+          ],
+          "solution": "जेव्हा विरघळकांची एकाग्रता कोशिकेच्या आत आणि बाहेर एकसारखी असते, तेव्हा कोशिका कोशिकाकिनाच्या दुमडत जाणारा पाण्याचा नेट मार्ग नसतो, म्हणून कोशिका आकार आणि आकृती बरोबर ठेवते. या परिस्थितीत, कोशिका एकसारखी राहते कारण तिच्यावर फुगवण्यासाठी किंवा खुपसण्यासाठी ओस्मोटिक दाब नसतो. फुगवणे किंवा फुटणे हे हायपोटोनिक द्रावणात होते, तर खुपसणे हायपरटोनिक द्रावणात होते.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English content, with appropriate Marathi terminology for biological processes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes what happens in a hypotonic solution",
+        "Describes what happens in a hypertonic solution",
+        "Describes what happens in a hypotonic solution",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is correctly framed and the solution is accurate. The correct answer is 3, as the cell will remain the same in an isotonic solution. The distractors correctly represent common misconceptions about hypotonic and hypertonic solutions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 21,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 22,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a cell is placed in a solution where the solute concentration is lower than inside the cell, what will happen?",
+      "choices": [
+        "The cell will burst",
+        "The cell will shrink",
+        "The cell will swell",
+        "The cell will become rigid"
+      ],
+      "answerIndex": 0,
+      "solution": "If a cell is placed in a hypotonic solution (where solute concentration is lower outside the cell), water will move into the cell, causing it to swell and potentially burst. The other options describe what happens in hypertonic or isotonic solutions, which do not match the given condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कोशिका को एक घोल में रखा जाता है जहां विलेय की सांद्रता कोशिका के भीतर की तुलना में कम होती है, तो क्या होगा?",
+          "choices": [
+            "कोशिका फट जाएगी",
+            "कोशिका सिकुड़ जाएगी",
+            "कोशिका फूल जाएगी",
+            "कोशिका कठोर हो जाएगी"
+          ],
+          "solution": "यदि एक कोशिका को हाइपोटोनिक घोल (जहां विलेय की सांद्रता कोशिका के बाहर कम होती है) में रखा जाता है, तो पानी कोशिका में प्रवेश करेगा, जिससे यह फूल जाएगी और संभवतः फट जाएगी। अन्य विकल्प हाइपरटोनिक या आइसोटोनिक घोलों में होने वाली घटनाओं का वर्णन करते हैं, जो दी गई स्थिति के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for biological processes.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोशिका एखाद्या द्रावणात ठेवली जाते ज्यात विरघळकाची एकाग्रता कोशिकेच्या आतल्या बाजूच्या एकाग्रतेपेक्षा कमी असते, तर काय होईल?",
+          "choices": [
+            "कोशिका फुगेल",
+            "कोशिका खुंटेल",
+            "कोशिका फुगेल",
+            "कोशिका खुली राहील"
+          ],
+          "solution": "जर कोशिका हायपोटोनिक द्रावणात (ज्यात विरघळकाची एकाग्रता कोशिकेच्या बाहेर असते) ठेवली जाते, तर पाणी कोशिकेत जाईल आणि ती फुगेल आणि फुटू शकते. इतर विकल्प हायपरटोनिक किंवा इसोटोनिक द्रावणात घडतात, जे दिलेल्या परिस्थितीशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the scientific terminology used in Marathi textbooks. The solution correctly explains the concept and matches the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses hypotonic with hypertonic solution, thinking lower solute concentration outside causes water to leave the cell",
+        "students confuse hypotonic solutions with causing swelling instead of bursting",
+        "students confuse turgidity with rigidity, thinking that cells become rigid in hypotonic solutions instead of swelling"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a hypotonic solution causes water to enter the cell, leading to swelling and potential bursting. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell",
+            "2.2.1 Cell membrane — The universal feature of a cell"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell",
+            "2.2.1 Cell membrane — The universal feature of a cell"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell",
+            "2.2.1 Cell membrane — The universal feature of a cell"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why can a single plant cell develop into a complete plant if provided with suitable nutrients and conditions?",
+      "choices": [
+        "Because plant cells have a nucleus",
+        "Because plant cells are totipotent",
+        "Because plant cells can undergo meiosis",
+        "Because plant cells can perform photosynthesis"
+      ],
+      "answerIndex": 1,
+      "solution": "Plant cells are totipotent, which means they have the ability to develop into a complete plant if provided with suitable nutrients and conditions. This is due to their ability to differentiate into various cell types. While plant cells do have a nucleus, this is not the reason for their totipotency. Meiosis and photosynthesis are not directly related to the ability of a single cell to develop into a complete plant.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पौधे को उपयुक्त पोषक तत्वों और स्थितियों के साथ पूर्ण पौधा विकसित कर सकता है क्योंकि?",
+          "choices": [
+            "क्योंकि पौधे के कोशिकाओं में एक केंद्रक होता है",
+            "क्योंकि पौधे के कोशिकाओं में समग्र क्षमता होती है",
+            "क्योंकि पौधे के कोशिकाओं में मेयोसिस हो सकती है",
+            "क्योंकि पौधे के कोशिकाओं में प्रकाश संश्लेषण हो सकता है"
+          ],
+          "solution": "पौधे की कोशिकाएं समग्र क्षमता वाली होती हैं, जिसका अर्थ है कि उनके पास उपयुक्त पोषक तत्वों और स्थितियों के साथ एक पूर्ण पौधे में विकसित होने की क्षमता होती है। इसका कारण उनकी विभिन्न कोशिका प्रकारों में विभेदन की क्षमता है। यहां तक कि पौधे की कोशिकाओं में केंद्रक होता है, लेकिन यह उनकी समग्र क्षमता का कारण नहीं है। मेयोसिस और प्रकाश संश्लेषण एक अकेली कोशिका के एक पूर्ण पौधे में विकसित होने की क्षमता से सीधे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वनस्पतीच्या कोशिकेला उपयुक्त पोषक द्रव्ये आणि परिस्थिती दिल्यास ती पूर्ण वनस्पती बनू शकते का कारण?",
+          "choices": [
+            "कारण वनस्पती कोशिकांमध्ये न्यूक्लियस असतो",
+            "कारण वनस्पती कोशिका टोटिपोटेंट असतात",
+            "कारण वनस्पती कोशिका मीओसिस करू शकतात",
+            "कारण वनस्पती कोशिका प्रकाशसंश्लेषण करू शकतात"
+          ],
+          "solution": "वनस्पती कोशिका टोटिपोटेंट असतात, ज्याचा अर्थ त्यांना उपयुक्त पोषक द्रव्ये आणि परिस्थिती दिल्यास पूर्ण वनस्पती बनण्याची क्षमता असते. हे त्यांच्या विविध कोशिका प्रकारांत विभेदन करण्याच्या क्षमतेमुळे होते. वनस्पती कोशिकांमध्ये न्यूक्लियस असतो, परंतु हे त्यांच्या टोटिपोटेंट गुणाचे कारण नाही. मीओसिस आणि प्रकाशसंश्लेषण हे एका कोशिकेच्या पूर्ण वनस्पतीत विकासाशी सीधा संबंध नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses totipotency with the presence of a nucleus",
+        null,
+        "Confuses totipotency with meiosis",
+        "Confuses totipotency with photosynthesis"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as plant cells are indeed totipotent. The other options reflect common misconceptions: the presence of a nucleus is not unique to totipotent cells, meiosis is not involved in plant development, and photosynthesis is not the mechanism for cellular differentiation.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System",
+            "2.4.1 Cell division"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.3 The Cell Interior — A Coordinated Working System",
+            "2.4.1 Cell division",
+            "Meiosis"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 18,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 19,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following cell organelles is responsible for cellular respiration?",
+      "choices": [
+        "Mitochondria",
+        "Nucleus",
+        "Chloroplast",
+        "Lysosome"
+      ],
+      "answerIndex": 0,
+      "solution": "Mitochondria are responsible for cellular respiration because they contain the necessary enzymes and structures to generate energy in the form of ATP through a series of metabolic reactions. The nucleus stores genetic material, the chloroplast is involved in photosynthesis, and the lysosome carries out cellular digestion. Therefore, mitochondria are the correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कोशिका अंगक सेलुलर श्वसन के लिए उत्तरदायी है?",
+          "choices": [
+            "माइटोकॉन्ड्रिया",
+            "न्यूक्लियस",
+            "क्लोरोप्लास्ट",
+            "लाइसोसोम"
+          ],
+          "solution": "माइटोकॉन्ड्रिया सेलुलर श्वसन के लिए उत्तरदायी है क्योंकि वे एटीपी के रूप में ऊर्जा उत्पन्न करने के लिए आवश्यक एंजाइम और संरचनाएं रखते हैं। न्यूक्लियस आनुवंशिक सामग्री को संग्रहीत करता है, क्लोरोप्लास्ट प्रकाश संश्लेषण में शामिल होता है और लाइसोसोम सेलुलर पाचन करता है। इसलिए, माइटोकॉन्ड्रिया सही उत्तर है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता कोशिका अंगाचा श्वसनासाठी जबाबदार आहे?",
+          "choices": [
+            "माइटोकॉन्ड्रिया",
+            "न्यूक्लियस",
+            "क्लोरोप्लास्ट",
+            "लायसोसोम"
+          ],
+          "solution": "माइटोकॉन्ड्रिया श्वसनासाठी जबाबदार आहेत कारण त्यांच्यात ऊर्जा एटीपीच्या रूपात उत्पन्न करण्यासाठी आवश्यक एन्झाइम आणि संरचना असतात. न्यूक्लियस जीनेटिक सामग्री जमा करतो, क्लोरोप्लास्ट प्रकाशसंश्लेषणाशी संबंधित आहे आणि लायसोसोम सेल चाचणी करतो. म्हणून माइटोकॉन्ड्रिया हे योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses mitochondria with the nucleus",
+        "Confuses mitochondria with chloroplast",
+        "Confuses mitochondria with lysosome"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution is accurate and aligns with the key.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 20,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 21,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 22,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.5 Cell Theory — The Unifying Principle of Biology",
+            "2.5.1 Do cells grow and reproduce forever?",
+            "Revise, Reflect, Refine"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why do plant cells not burst when placed in a hypotonic solution, unlike animal cells?",
+      "choices": [
+        "Because they have a cell wall",
+        "Because they have a nucleus",
+        "Because they have a cell membrane",
+        "Because they have chloroplasts"
+      ],
+      "answerIndex": 0,
+      "solution": "Plant cells do not burst in a hypotonic solution because they have a cell wall that provides additional structural support. Animal cells, which lack a cell wall, can burst due to osmotic pressure. The other options refer to structures that do not prevent bursting in hypotonic solutions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधे के कोशिकाएं हाइपोटोनिक विलयन में रखे जाने पर क्यों फट जाती हैं, जबकि जंतु कोशिकाएं फट जाती हैं?",
+          "choices": [
+            "क्योंकि उनमें कोशिका भित्ति होती है",
+            "क्योंकि उनमें केंद्रक होता है",
+            "क्योंकि उनमें कोशिका झिल्ली होती है",
+            "क्योंकि उनमें क्लोरोप्लास्ट होते हैं"
+          ],
+          "solution": "पौधे की कोशिकाएं हाइपोटोनिक विलयन में फट नहीं जाती क्योंकि उनमें कोशिका भित्ति होती है जो अतिरिक्त संरचनात्मक समर्थन प्रदान करती है। जंतु कोशिकाएं जिनमें कोशिका भित्ति नहीं होती, ऑस्मोटिक दबाव के कारण फट सकती हैं। अन्य विकल्प ऐसे संरचनाओं को संदर्भित करते हैं जो हाइपोटोनिक विलयन में फटने को रोकती नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उभयचर कोशिकांपेक्षा वनस्पती कोशिका हायपोटॉनिक द्रावणात फुटत नाहीत का?",
+          "choices": [
+            "कारण त्यांना कोशिका भिंत आहे",
+            "कारण त्यांना न्यूक्लियस आहे",
+            "कारण त्यांना कोशिका झिल्ली आहे",
+            "कारण त्यांना क्लोरोप्लास्ट आहेत"
+          ],
+          "solution": "वनस्पती कोशिका हायपोटॉनिक द्रावणात फुटत नाहीत कारण त्यांना कोशिका भिंत असते जी अतिरिक्त संरचनात्मक समर्थन प्रदान करते. उभयचर कोशिकांमध्ये कोशिका भिंत असत नाही, त्यामुळे ओस्मोटिक दाबामुळे त्या फुटू शकतात. इतर विकल्पांमध्ये असे संरचना आहेत जी हायपोटॉनिक द्रावणात फुटण्याला रोखत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Students often confuse the role of the nucleus with structural support in plant cells",
+        "Refers to a structure not involved in preventing bursting",
+        "Refers to a structure not involved in preventing bursting"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors. The explanation is accurate and aligns with the scientific understanding of plant and animal cell structure.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell",
+            "2.2.1 Cell membrane — The universal feature of a cell"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell",
+            "2.2.1 Cell membrane — The universal feature of a cell"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc102.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Cell: The Building Block of Life",
+            "2.2 Structure of a Cell",
+            "2.2.1 Cell membrane — The universal feature of a cell"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:41:34.643Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

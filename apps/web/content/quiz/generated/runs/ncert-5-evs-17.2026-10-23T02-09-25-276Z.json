@@ -1,0 +1,468 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:09:25.276Z",
+  "finishedAt": "2026-10-23T02:14:05.796Z",
+  "seconds": 281,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap117.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 17 — Across the Wall",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 98142,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 20870,
+      "completionTokens": 5307
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 154686,
+      "in": 20,
+      "out": 16,
+      "rejects": 4,
+      "promptTokens": 10362,
+      "completionTokens": 3877
+    },
+    "solver": {
+      "calls": 103,
+      "ms": 59300,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 18425,
+      "completionTokens": 1046
+    },
+    "form": {
+      "calls": 5,
+      "ms": 11409,
+      "in": 12,
+      "out": 2,
+      "rejects": 10,
+      "promptTokens": 1359,
+      "completionTokens": 359
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3038,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 87270,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5179,
+      "completionTokens": 2843
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of equal opportunities in sports?",
+      "ms": {
+        "draft": 6269,
+        "critique": 5716,
+        "solver": 1251,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does Afsana's story show about the challenges faced by girls in playing sports?",
+      "ms": {
+        "draft": 6269,
+        "critique": 6094,
+        "solver": 3318,
+        "form": 3678
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 6269,
+        "critique": 8946,
+        "solver": 1879,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the most important thing in a team?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6247
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred about the role of coaches in helping girls play sports?",
+      "ms": {
+        "draft": 6269,
+        "critique": 5889,
+        "solver": 14605,
+        "form": 2825
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a team member makes a mistake during a game, what should the team do according to the passage?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7232
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the team from Sholapur not cooperate with the other team?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7198,
+        "solver": 19317
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of team spirit?",
+      "ms": {
+        "draft": 4062,
+        "critique": 8666,
+        "solver": 14910,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the question 'Should games for boys and girls be different?' in the passage?",
+      "ms": {
+        "draft": 3986,
+        "critique": 5139,
+        "solver": 1380,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the phrase 'gender wall' in the passage most likely refer to?",
+      "ms": {
+        "draft": 3986,
+        "critique": 5383,
+        "solver": 1959,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were the leader of a team, what should you do first according to the passage?",
+      "ms": {
+        "draft": 3986,
+        "critique": 5383,
+        "solver": 2724
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Afsana's team learn from their experience in Sholapur?",
+      "ms": {
+        "draft": 4601,
+        "critique": 8502
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did Afsana's team feel bad when they played in Sholapur?",
+      "ms": {
+        "draft": 4601,
+        "critique": 8076
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 'gender bias' according to the passage?",
+      "ms": {
+        "draft": 3986,
+        "critique": 8324,
+        "solver": 1949,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main message of the passage about team spirit?",
+      "ms": {
+        "draft": 4601,
+        "critique": 7407,
+        "solver": 1335,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did the coach suggest to Zarin to form a basketball team?",
+      "ms": {
+        "draft": 3695,
+        "critique": 6707,
+        "solver": 1855
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the basketball association that Afsana is part of?",
+      "ms": {
+        "draft": 3695,
+        "critique": 7899,
+        "solver": 1954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Afsana's mother initially refuse to let her play basketball?",
+      "ms": {
+        "draft": 3695,
+        "critique": 4279,
+        "solver": 573,
+        "form": 1014
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the phrase 'gender wall' most likely mean in the given passage?",
+      "ms": {
+        "draft": 17199,
+        "critique": 9428,
+        "solver": 2361,
+        "form": 2691,
+        "translation": 40022
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to prepare a team for a task, what would be the most important thing to do?",
+      "ms": {
+        "draft": 17199,
+        "critique": 5957,
+        "solver": 624,
+        "form": 1201,
+        "translation": 43400
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main idea of the question 'Should games for boys and girls be different?'",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is 'gender bias' according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of equal opportunities in sports?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is incorrect because the passage emphasizes the importa…\"); distractor 1's reason is not a one-line misconception (\"This is incorrect because the passage highlights the importa…\"); distractor 3's reason is not a one-line misconception (\"This correctly identifies the importance of equal opportunit…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does Afsana's story show about the challenges faced by girls in playing sports?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This is an overgeneralization not supported by the passage.…\"); distractor 3's reason is not a one-line misconception (\"This is not mentioned in the passage and is incorrect based …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is incorrect because the passage shows that girls are a…\"); distractor 2's reason is not a one-line misconception (\"This correctly identifies the main idea, but the other optio…\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the passage shows that girls are i…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the most important thing in a team?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What can be inferred about the role of coaches in helping girls play sports?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This is an incorrect assumption not supported by the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a team member makes a mistake during a game, what should the team do according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did the team from Sholapur not cooperate with the other team?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of team spirit?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"Team spirit is only for people who are good at sports\" / \"Team spirit is only for people who are good at games\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the question 'Should games for boys and girls be different?' in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the phrase 'gender wall' in the passage most likely refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"misunderstands the context of the passage entirely…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you were the leader of a team, what should you do first according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Afsana's team learn from their experience in Sholapur?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why did Afsana's team feel bad when they played in Sholapur?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is 'gender bias' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (80 vs 40 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main message of the passage about team spirit?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage, which highlights team spirit beyond…\"); distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"not supported by the passage, which promotes equality…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What did the coach suggest to Zarin to form a basketball team?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the basketball association that Afsana is part of?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did Afsana's mother initially refuse to let her play basketball?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mentions a factor not discussed in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

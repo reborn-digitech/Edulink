@@ -1,0 +1,453 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:32:27.878Z",
+  "finishedAt": "2026-10-20T22:36:03.395Z",
+  "seconds": 216,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap117.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 17 — Across the Wall",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 53765,
+      "in": 20,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 18364,
+      "completionTokens": 3751
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 112927,
+      "in": 19,
+      "out": 17,
+      "rejects": 2,
+      "promptTokens": 9365,
+      "completionTokens": 3821
+    },
+    "solver": {
+      "calls": 115,
+      "ms": 47129,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 20463,
+      "completionTokens": 1191
+    },
+    "form": {
+      "calls": 6,
+      "ms": 10481,
+      "in": 12,
+      "out": 2,
+      "rejects": 10,
+      "promptTokens": 1395,
+      "completionTokens": 368
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2069,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 42328,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4494,
+      "completionTokens": 2255
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the basketball association that Afsana is part of?",
+      "ms": {
+        "draft": 2034,
+        "critique": 4149,
+        "solver": 1384
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did Afreen's father teach her and her sisters?",
+      "ms": {
+        "draft": 2034,
+        "critique": 7494,
+        "solver": 1200
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Afsana's mother initially tell her about playing basketball?",
+      "ms": {
+        "draft": 2034,
+        "critique": 4012,
+        "solver": 13563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Zarin wish to do after watching boys play basketball?",
+      "ms": {
+        "draft": 2034,
+        "critique": 4329,
+        "solver": 12580,
+        "form": 2546
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 2596,
+        "critique": 5444,
+        "solver": 1169,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Afsana's team learn from their experience in Sholapur?",
+      "ms": {
+        "draft": 2596,
+        "critique": 4601,
+        "solver": 1362,
+        "form": 2042
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a team member makes a mistake during a game, what should the team do according to the passage?",
+      "ms": {
+        "draft": 2596,
+        "critique": 4773,
+        "solver": 1621,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of a coach in a team?",
+      "ms": {
+        "draft": 2596,
+        "critique": 4741,
+        "solver": 1156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the phrase 'gender wall' most likely refer to in the passage?",
+      "ms": {
+        "draft": 2947,
+        "critique": 5721,
+        "solver": 993,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about 'gender bias'?",
+      "ms": {
+        "draft": 2947,
+        "critique": 5906,
+        "solver": 1208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to lead a team, what would be the best way to prepare your team according to the passage?",
+      "ms": {
+        "draft": 2947,
+        "critique": 5172,
+        "solver": 1421,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if girls were not allowed to play games or study?",
+      "ms": {
+        "draft": 3082,
+        "critique": 3982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of a team?",
+      "ms": {
+        "draft": 3082,
+        "critique": 6806
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the basketball association that Afsana is part of?",
+      "ms": {
+        "draft": 2782,
+        "critique": 4672,
+        "solver": 914
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Afreen's father do to help her and her sisters play basketball?",
+      "ms": {
+        "draft": 2782,
+        "critique": 4788,
+        "solver": 1213
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Afsana's mother initially refuse to let her play basketball?",
+      "ms": {
+        "draft": 2782,
+        "critique": 5209,
+        "solver": 1244,
+        "form": 2050
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did the team manage to improve their basketball skills over time?",
+      "ms": {
+        "draft": 2782,
+        "critique": 4518,
+        "solver": 761,
+        "form": 832
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the girls from the Nagpada team learn from their experience in Sholapur?",
+      "ms": {
+        "draft": 3082,
+        "critique": 3839,
+        "solver": 9218,
+        "form": 2079,
+        "translation": 20082
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the team from Sholapur not cooperate well during the match?",
+      "ms": {
+        "draft": 3082,
+        "critique": 4323,
+        "solver": 11138,
+        "form": 2562,
+        "translation": 19364
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the basketball association that Afsana is part of?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What did Afreen's father teach her and her sisters?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What did Afsana's mother initially tell her about playing basketball?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did Zarin wish to do after watching boys play basketball?",
+      "reason": "options 0 and 2 are the same (\"She wished to be a coach\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the passage's message about gender roles…\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's focus on teamwork…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's message about access to games f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did Afsana's team learn from their experience in Sholapur?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the message about teamwork in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a team member makes a mistake during a game, what should the team do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Fails to grasp the message of support in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of a coach in a team?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (73 vs 45 characters); distractor 0's reason is not a one-line misconception (\"Misunderstands the coach's role in the passage…\"); distractor 3's reason is not a one-line misconception (\"Ignores the passage's message about equal opportunities…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the phrase 'gender wall' most likely refer to in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"misunderstands the context of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about 'gender bias'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"assumes a specific example not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you were to lead a team, what would be the best way to prepare your team according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"ignores the idea of equality presented in the passage…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What does the phrase 'gender wall' in the passage most likely"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would happen if girls were not allowed to play games or study?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of a team?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the basketball association that Afsana is part of?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What did Afreen's father do to help her and her sisters play basketball?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Afsana's mother initially refuse to let her play basketball?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"misunderstands the reason given in the passage…\"); distractor 2's reason is not a one-line misconception (\"makes up a reason not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"refers to a detail not present in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How did the team manage to improve their basketball skills over time?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"chooses an action not mentioned in the passage…\"); distractor 1's reason is not a one-line misconception (\"refers to a detail not mentioned in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

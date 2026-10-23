@@ -1,0 +1,494 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:01:59.484Z",
+  "finishedAt": "2026-10-22T22:08:32.942Z",
+  "seconds": 393,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm105.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Sharing and Measuring",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2024-25]\n½\n½\nOR\n27 (B). Let the line 4𝑥 + 𝑦 = 4 intersects AB at 𝑃(𝑥 , 𝑦 ) such that AP: PB=𝑘:1 1 1\n𝑥 = 1 3𝑘−2 and 𝑦 = 1 5𝑘−1 1\n𝑘+1 𝑘+1\n(𝑥 , 𝑦 ) lies on 4𝑥 + 𝑦 = 4 1 1\n3𝑘−2 5𝑘−1 ½\nTherefore, 4( 𝑘+1 )+( 𝑘+1 )=4\n⇒ 𝑘=1 1\nRequired ratio is 1:1 ½\n28. LHS= ( 1 − 𝑠𝑖𝑛𝐴)( 1 − 𝑐𝑜𝑠𝐴)\n𝑠𝑖𝑛𝐴 𝑐𝑜𝑠𝐴\n= 1−𝑠𝑖𝑛 𝐴 𝑠𝑖𝑛𝐴 2 × 1−𝑐𝑜𝑠 𝐴 𝑐𝑜𝑠𝐴 2\n= 𝑐𝑜𝑠 𝐴 𝑠𝑖𝑛𝐴 2 × 𝑠𝑖𝑛 𝐴 𝑐𝑜𝑠𝐴 2\n=𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴\nRHS = 𝑠𝑖𝑛 𝐴+𝑐𝑜𝑠 𝐴 𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴 2 2\n=𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴 = LHS\n29.\n½\n½\nClass x frequency(f) 𝑥 − 25 𝑓𝑢\n0-10 5 6\n10-20 15 10\n20-30 25 15\n30-40 35 9\n40-50 45 10\n∑ 𝑓 =50\n𝑀𝑒𝑎𝑛 = 25 + 10 × ( ) 50 7\n= 26.4\n30 (A).\n(i) 𝛥 𝑂𝐴𝑃 ⩭ 𝛥𝑂𝐵𝑃\n∠𝐴𝑃𝑂 = ∠𝐵𝑃𝑂\nOr OP",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n17. Answer – C 1\nAs, r 1 : r 2 = 3 : 4. So, the ratio of their areas = r 1 2 : r 2 2 = 9 :16",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n14. (c) 16 : 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 132928,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18162,
+      "completionTokens": 6159
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 259712,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 15693,
+      "completionTokens": 5858
+    },
+    "solver": {
+      "calls": 153,
+      "ms": 96142,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 26744,
+      "completionTokens": 1593
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9536,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 783,
+      "completionTokens": 235
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 4057,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 353597,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 18909,
+      "completionTokens": 8601
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In a garden, Rose is planted in 3/5 of the garden, and Marigold is planted in 1/5 of the garden. What fraction of the garden is left unplanted?",
+      "ms": {
+        "draft": 4557,
+        "critique": 9454
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of each part when an object is divided into four equal parts?",
+      "ms": {
+        "draft": 4557,
+        "critique": 7553,
+        "solver": 16346,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Sumedha says that 5 pieces of 1/5 make a whole dhokla. Which of the following supports her statement?",
+      "ms": {
+        "draft": 4557,
+        "critique": 8401,
+        "solver": 1750,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fraction of the dosa with spicy onion topping?",
+      "ms": {
+        "draft": 4437,
+        "critique": 7940
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a box has 16 barfis and you take 4 barfis, what fraction of the barfis have you taken?",
+      "ms": {
+        "draft": 4437,
+        "critique": 11294
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a ribbon is divided into three equal parts, what is the fraction of one part?",
+      "ms": {
+        "draft": 4437,
+        "critique": 8482,
+        "solver": 15062,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If Meena has 8 diyas and 2 are coloured red, what fraction of the diyas are red?",
+      "ms": {
+        "draft": 4437,
+        "critique": 8001,
+        "solver": 20612
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of toppings listed for dosas?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5391,
+        "solver": 1498
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a fraction mentioned in the passage?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6291,
+        "solver": 2886
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the passage, what is the fraction of red diyas if 2 out of 4 diyas are coloured red?",
+      "ms": {
+        "draft": 3216,
+        "critique": 8829,
+        "solver": 16200
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do you think Samina chose two quarters of the paper?",
+      "ms": {
+        "draft": 9945,
+        "critique": 8655,
+        "solver": 2850
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dhokla is divided into four equal parts and each person gets one part, how many people can share the dhokla?",
+      "ms": {
+        "draft": 9945,
+        "critique": 9546
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each part called when an object is divided into four equal parts?",
+      "ms": {
+        "draft": 9945,
+        "critique": 9170,
+        "solver": 17374
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Sumedha's share of the dhokla is 1/8 and Idha and Vinayak give their shares to her, what fraction of the dhokla will Sumedha have?",
+      "ms": {
+        "draft": 9945,
+        "critique": 9718
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a paper is folded into three equal parts and one part is shaded, then folded again into halves, what fraction of the paper is shaded?",
+      "ms": {
+        "draft": 4437,
+        "critique": 10256,
+        "solver": 11899,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each part called when an object is divided into two equal parts?",
+      "ms": {
+        "draft": 9945,
+        "critique": 9947,
+        "solver": 12935,
+        "form": 3440,
+        "translation": 43159
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a topping that Karan offers on his dosas?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6273,
+        "solver": 1678,
+        "form": 3902,
+        "translation": 42492
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents one-half of a dhokla?",
+      "ms": {
+        "draft": 4557,
+        "critique": 5553,
+        "solver": 1570,
+        "form": 0,
+        "translation": 49150
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dhokla is shared equally among 8 people, what fraction of the dhokla does each person get?",
+      "ms": {
+        "draft": 4557,
+        "critique": 6167,
+        "solver": 2325,
+        "form": 0,
+        "translation": 35649
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a box has 16 barfis and each part is 1/4 of the total, how many barfis are in each part?",
+      "ms": {
+        "draft": 3216,
+        "critique": 8115,
+        "solver": 13743,
+        "form": 0,
+        "translation": 28539
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a dhokla is shared equally among 6 people, what fraction of the dhokla does each person get?",
+      "ms": {
+        "draft": 9945,
+        "critique": 8727,
+        "solver": 1053,
+        "form": 2770,
+        "translation": 34792
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a ribbon is cut into 3 equal parts, and one part is shaded, what is the fraction of the shaded part?",
+      "ms": {
+        "draft": 3216,
+        "critique": 10188,
+        "solver": 1690,
+        "form": 0,
+        "translation": 30360
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If Sumedha shares a dhokla equally among 6 people, and then 2 more people join, what happens to the size of each person's share?",
+      "ms": {
+        "draft": 4557,
+        "critique": 9063,
+        "solver": 2467,
+        "form": 0,
+        "translation": 47636
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a square is divided into 8 equal parts and 3 parts are shaded, what fraction of the square is shaded?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6083,
+        "solver": 7513,
+        "form": 0,
+        "translation": 38058
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a garden, Rose is planted in 3/5 of the garden, and Marigold is planted in 1/5 of the garden. What fraction of the garden is left unplanted?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of each part when an object is divided into four equal parts?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Sumedha says that 5 pieces of 1/5 make a whole dhokla. Which of the following supports her statement?",
+      "reason": "options 0 and 1 say the same thing (\"1/5 + 1/5 + 1/5 + 1/5 + 1/5 = 1\" / \"1/5 + 1/5 + 1/5 = 1\"); options 0 and 2 say the same thing (\"1/5 + 1/5 + 1/5 + 1/5 + 1/5 = 1\" / \"1/5 + 1/5 = 1\"); options 0 and 3 say the same thing (\"1/5 + 1/5 + 1/5 + 1/5 + 1/5 = 1\" / \"1/5 + 1/5 + 1/5 + 1/5 = 1\"); options 1 and 2 say the same thing (\"1/5 + 1/5 + 1/5 = 1\" / \"1/5 + 1/5 = 1\"); options 1 and 3 say the same thing (\"1/5 + 1/5 + 1/5 = 1\" / \"1/5 + 1/5 + 1/5 + 1/5 = 1\"); options 2 and 3 say the same thing (\"1/5 + 1/5 = 1\" / \"1/5 + 1/5 + 1/5 + 1/5 = 1\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the fraction of the dosa with spicy onion topping?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a box has 16 barfis and you take 4 barfis, what fraction of the barfis have you taken?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a ribbon is divided into three equal parts, what is the fraction of one part?",
+      "reason": "options 0 and 2 are the same (\"1/2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If Meena has 8 diyas and 2 are coloured red, what fraction of the diyas are red?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of toppings listed for dosas?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a fraction mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the passage, what is the fraction of red diyas if 2 out of 4 diyas are coloured red?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why do you think Samina chose two quarters of the paper?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a dhokla is divided into four equal parts and each person gets one part, how many people can share the dhokla?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is each part called when an object is divided into four equal parts?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If Sumedha's share of the dhokla is 1/8 and Idha and Vinayak give their shares to her, what fraction of the dhokla will Sumedha have?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a paper is folded into three equal parts and one part is shaded, then folded again into halves, what fraction of the paper is shaded?",
+      "reason": "near-duplicate of served question cmvh12afx063dgpfhmxm5bb0r (cosine 0.926 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

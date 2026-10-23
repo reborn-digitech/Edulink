@@ -1,0 +1,511 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T07:09:45.690Z",
+  "finishedAt": "2026-10-21T07:13:49.733Z",
+  "seconds": 244,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy210.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 10 — Water in the Atmosphere",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n14. C. Implementing rainwater harvesting, recycling and reusing 1\nwastewater.",
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n15. (b) Watershed development",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 75836,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17124,
+      "completionTokens": 4954
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 153697,
+      "in": 24,
+      "out": 13,
+      "rejects": 11,
+      "promptTokens": 11865,
+      "completionTokens": 4613
+    },
+    "solver": {
+      "calls": 85,
+      "ms": 33873,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 12763,
+      "completionTokens": 812
+    },
+    "form": {
+      "calls": 5,
+      "ms": 15843,
+      "in": 11,
+      "out": 4,
+      "rejects": 7,
+      "promptTokens": 2965,
+      "completionTokens": 414
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 912,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 133361,
+      "in": 8,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 9990,
+      "completionTokens": 5092
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere as compared to its full capacity at a given temperature?",
+      "ms": {
+        "draft": 2570,
+        "critique": 5615
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of condensation that occurs when moist air comes into contact with a colder object?",
+      "ms": {
+        "draft": 2570,
+        "critique": 5924
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does condensation occur more frequently in areas where warm and cold air masses meet?",
+      "ms": {
+        "draft": 2570,
+        "critique": 4936
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which form of condensation is described as a cloud that forms near the ground with its base at or very near to the ground?",
+      "ms": {
+        "draft": 2570,
+        "critique": 6304,
+        "solver": 9835
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following processes is responsible for adding moisture to the atmosphere from the surface of the earth?",
+      "ms": {
+        "draft": 2570,
+        "critique": 7259
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the release of moisture from clouds in the form of water or ice?",
+      "ms": {
+        "draft": 3245,
+        "critique": 5616
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following types of rainfall occurs when moist air is forced to rise over a mountain?",
+      "ms": {
+        "draft": 3245,
+        "critique": 5429
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a factor that affects the process of condensation in the atmosphere?",
+      "ms": {
+        "draft": 2570,
+        "critique": 5980,
+        "solver": 12687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of cloud is described as 'shapeless masses of thick vapour'?",
+      "ms": {
+        "draft": 3245,
+        "critique": 5712
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a form of precipitation that consists of small pellets of ice?",
+      "ms": {
+        "draft": 3245,
+        "critique": 6302
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the amount of water vapour decreases rapidly with altitude?",
+      "ms": {
+        "draft": 3245,
+        "critique": 5828
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the most important constituent of the atmosphere for human beings?",
+      "ms": {
+        "draft": 3245,
+        "critique": 3831,
+        "solver": 662
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which cloud type is shown in Figure 10.1, which appears as a shapeless mass of thick vapour and is associated with continuous rain?",
+      "ms": {
+        "draft": 10400,
+        "critique": 5573
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which form of precipitation is composed of hexagonal ice crystals?",
+      "ms": {
+        "draft": 10400,
+        "critique": 8102
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which cloud type is shown in Figure 10.2, which is characterized by extensive vertical development and is associated with thunderstorms?",
+      "ms": {
+        "draft": 10400,
+        "critique": 5396,
+        "solver": 1052,
+        "form": 3377
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process is described as the transformation of water vapour into liquid form?",
+      "ms": {
+        "draft": 3943,
+        "critique": 5541,
+        "solver": 1500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the temperature of the air decreases to its dew point, what will happen to the water vapour in the air?",
+      "ms": {
+        "draft": 3943,
+        "critique": 5087,
+        "solver": 1488,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which scenario is condensation most likely to occur?",
+      "ms": {
+        "draft": 3943,
+        "critique": 5517,
+        "solver": 1479,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of condensation in nature?",
+      "ms": {
+        "draft": 3943,
+        "critique": 5323,
+        "solver": 1503,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do mists form more frequently on mountains than on flatlands?",
+      "ms": {
+        "draft": 3943,
+        "critique": 5081,
+        "solver": 1856,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere?",
+      "ms": {
+        "draft": 3943,
+        "critique": 4049,
+        "solver": 1072,
+        "form": 0,
+        "translation": 19479
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of releasing moisture from clouds called?",
+      "ms": {
+        "draft": 10400,
+        "critique": 5788,
+        "solver": 1562,
+        "form": 2242,
+        "translation": 41323
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to air when it rises and expands in the atmosphere?",
+      "ms": {
+        "draft": 10400,
+        "critique": 7683,
+        "solver": 10438,
+        "form": 2203,
+        "translation": 30411
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a region experiences heavy rainfall in the summer and is located in the interior of a continent, what type of rainfall is it most likely to be?",
+      "ms": {
+        "draft": 10400,
+        "critique": 6320,
+        "solver": 1009,
+        "form": 2598,
+        "translation": 38673
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere as compared to its full capacity at a given temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of condensation that occurs when moist air comes into contact with a colder object?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does condensation occur more frequently in areas where warm and cold air masses meet?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which form of condensation is described as a cloud that forms near the ground with its base at or very near to the ground?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following processes is responsible for adding moisture to the atmosphere from the surface of the earth?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term for the release of moisture from clouds in the form of water or ice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following types of rainfall occurs when moist air is forced to rise over a mountain?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a factor that affects the process of condensation in the atmosphere?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which type of cloud is described as 'shapeless masses of thick vapour'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a form of precipitation that consists of small pellets of ice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following best explains why the amount of water vapour decreases rapidly with altitude?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the most important constituent of the atmosphere for human beings?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which cloud type is shown in Figure 10.1, which appears as a shapeless mass of thick vapour and is associated with continuous rain?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which form of precipitation is composed of hexagonal ice crystals?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which cloud type is shown in Figure 10.2, which is characterized by extensive vertical development and is associated with thunderstorms?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cloud'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which process is described as the transformation of water vapour into liquid form?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option but is the correct …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the temperature of the air decreases to its dew point, what will happen to the water vapour in the air?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The correct answer is not the longest option but is the corr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which scenario is condensation most likely to occur?",
+      "reason": "options 0 and 1 say the same thing (\"When the temperature of the air increases and the volume remains constant\" / \"When the volume of the air increases and the temperature remains constant\"); options 0 and 2 say the same thing (\"When the temperature of the air increases and the volume remains constant\" / \"When the temperature of the air decreases and the volume remains constant\"); options 1 and 2 say the same thing (\"When the volume of the air increases and the temperature remains constant\" / \"When the temperature of the air decreases and the volume remains constant\"); distractor 3's reason is not a one-line misconception (\"The correct answer is not the longest option but is the corr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of condensation in nature?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The correct answer is not the longest option but is the corr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do mists form more frequently on mountains than on flatlands?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The correct answer is not the longest option but is the corr…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

@@ -1,0 +1,704 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T06:26:42.292Z",
+  "finishedAt": "2026-10-23T06:39:22.104Z",
+  "seconds": 760,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech105.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 5 — Thermodynamics",
+    "edition": "Reprint 2026-27",
+    "chunks": 39,
+    "groups": 13
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEC 2020 — question paper]\n14. The qualitative plots given represent the yield of the product,\n[XY], at equilibrium in the reaction X(g) + Y(g) ֖ XY(g),\nas a function of temperature, at total pressures P1 and P2.\nThe reaction is\n(a) endothermic and P1 < P2 (b) endothermic and P2 < P1\n(c) exothermic and P1 > P2 (d) exothermic and P2 > P1",
+      "[NSEC 2016 — question paper]\n38. For the conversion CCl (l)  CCl (g) at 1 bar and 350 K, the correct set of thermodynamic parameters 4 4\nis (Boiling point of CCl 4 is 77 C)\na) G = 0, S = +ve b) G = 0, S =  ve\nc) G = ve, S = 0 d) G = ve, S = + ve",
+      "[INChO 2009 — solutions or answer key]\n6. 1. i) Curve Temperature\nCurve a\nCurve b\nCurve c\nii) True\n6.2 Curve Gas\nCurve a H 2\nCurve b CH 4\nCurve c NH\nCurve d Ar\n6.3 iii) H 2 < CH 4 < NH 3\n6.4 2 atm\n6.5 134.7 J\n6.6 6.7%\nB.\n6.7 Solid/vapor\n6.8 T= 217 K and P = 5.2 atm\n100K\n300K\n700 K\n6.9\n G m\n T\n6.10 a) All the three phases are in equilibrium\nb) Molar Gibbs energy for the three phases is the same\n6.11 a) increase\n6.12 Single\n6.13\nX P 1\n B  A\nG m A  B \n↑ P 2\n P 3\nY\n0  →\n6.14 a) K decreases as the temperature rises\nPoint P 1 is any point between\nZ X and Y\nPoint P 3 is any point between\nY and Z\nPoint P 2 is point Y\nAcid-Base chemistry",
+      "[NSEC 2016 — question paper]\n9. Which reaction is spontaneous at all temperatures at standard pressure and concentration?\na) exothermic reaction with a decrease in entropy.\nb) exothermic reaction with an increase in entropy\nc) endothermic reaction with a decrease in entropy\nd) endothermic reaction with an increase in entropy"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 194721,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 41114,
+      "completionTokens": 7832
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 390007,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 19419,
+      "completionTokens": 7763
+    },
+    "solver": {
+      "calls": 199,
+      "ms": 124382,
+      "in": 31,
+      "out": 26,
+      "rejects": 5,
+      "promptTokens": 31858,
+      "completionTokens": 1867
+    },
+    "form": {
+      "calls": 11,
+      "ms": 43352,
+      "in": 26,
+      "out": 18,
+      "rejects": 8,
+      "promptTokens": 2842,
+      "completionTokens": 863
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 5174,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 817796,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 36035,
+      "completionTokens": 17592
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 1,
+    "2": 4,
+    "3": 3,
+    "4": 4,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of system in thermodynamics?",
+      "ms": {
+        "draft": 4010,
+        "critique": 6346,
+        "solver": 1485,
+        "form": 6366
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes a closed system?",
+      "ms": {
+        "draft": 4010,
+        "critique": 9877,
+        "solver": 2411,
+        "form": 4807
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the internal energy of a system?",
+      "ms": {
+        "draft": 5077,
+        "critique": 8252,
+        "solver": 1609,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first law of thermodynamics commonly stated as?",
+      "ms": {
+        "draft": 4786,
+        "critique": 11049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the change in internal energy of a system when no heat is absorbed by the system and work is done on the system?",
+      "ms": {
+        "draft": 4786,
+        "critique": 10149
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a system absorbs 10 J of heat and does 5 J of work, what is the change in internal energy of the system?",
+      "ms": {
+        "draft": 4786,
+        "critique": 8650
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a thermodynamic system, if the internal energy increases by 100 J and the system absorbs 50 J of heat, what is the work done on the system?",
+      "ms": {
+        "draft": 5077,
+        "critique": 11226,
+        "solver": 18490
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the type of wall a system has if no heat is absorbed by the system but work is done on it?",
+      "ms": {
+        "draft": 4786,
+        "critique": 9752
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A gas expands isothermally into a vacuum. What is the work done by the gas?",
+      "ms": {
+        "draft": 4786,
+        "critique": 9931
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a state function?",
+      "ms": {
+        "draft": 5635,
+        "critique": 9732,
+        "solver": 1524,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "For a reaction involving gaseous reactants and products, what is the relationship between ∆H and ∆U?",
+      "ms": {
+        "draft": 5635,
+        "critique": 10003,
+        "solver": 2388,
+        "form": 4535
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "For a process at constant temperature and pressure, what is the condition for the process to be spontaneous?",
+      "ms": {
+        "draft": 5635,
+        "critique": 10202,
+        "solver": 2112,
+        "form": 6980
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a reaction at constant pressure, what is the relationship between heat absorbed (q) and enthalpy change (∆H)?",
+      "ms": {
+        "draft": 5635,
+        "critique": 12771,
+        "solver": 16765,
+        "form": 2788
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard enthalpy of formation of NH3(g)?",
+      "ms": {
+        "draft": 4083,
+        "critique": 10662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the enthalpy change for the reaction 2A(g) + B(g) → 2D(g)?",
+      "ms": {
+        "draft": 4083,
+        "critique": 6769,
+        "solver": 15267
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the entropy change in the surroundings when 1.00 mol of H2O(l) is formed under standard conditions?",
+      "ms": {
+        "draft": 4083,
+        "critique": 13349,
+        "solver": 15377
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "For the reaction A + B → C + D + q, which is found to have a positive entropy change, what can be concluded about the reaction?",
+      "ms": {
+        "draft": 4611,
+        "critique": 7464,
+        "solver": 2779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following scenarios is the entropy of the system most likely to increase?",
+      "ms": {
+        "draft": 10459,
+        "critique": 7022,
+        "solver": 1203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a process, 701 J of heat is absorbed by a system and 394 J of work is done by the system. What is the change in internal energy for the process?",
+      "ms": {
+        "draft": 4611,
+        "critique": 8758,
+        "solver": 18196
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a state function?",
+      "ms": {
+        "draft": 5077,
+        "critique": 8711,
+        "solver": 1692,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "For a reaction, if the enthalpy change (∆H) is positive and the entropy change (∆S) is also positive, under what condition will the reaction be spontaneous?",
+      "ms": {
+        "draft": 6712,
+        "critique": 10318,
+        "solver": 3012,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a calorimeter in thermodynamics?",
+      "ms": {
+        "draft": 76748,
+        "critique": 5778,
+        "solver": 5629,
+        "form": 0,
+        "translation": 58648
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main focus of the study of thermodynamics?",
+      "ms": {
+        "draft": 4010,
+        "critique": 6824,
+        "solver": 2319,
+        "form": 4302,
+        "translation": 59216
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct sign convention for work done by the system in thermodynamics?",
+      "ms": {
+        "draft": 5077,
+        "critique": 8513,
+        "solver": 1991,
+        "form": 0,
+        "translation": 48154
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a thermodynamic state function?",
+      "ms": {
+        "draft": 4611,
+        "critique": 9749,
+        "solver": 1575,
+        "form": 0,
+        "translation": 57125
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following reactions is spontaneous at all temperatures?",
+      "ms": {
+        "draft": 4083,
+        "critique": 10386,
+        "solver": 1585,
+        "form": 0,
+        "translation": 47933
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an isolated system?",
+      "ms": {
+        "draft": 4010,
+        "critique": 7276,
+        "solver": 2618,
+        "form": 3245,
+        "translation": 55157
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a system undergoes a process where no heat is exchanged with the surroundings, what type of process is it?",
+      "ms": {
+        "draft": 5077,
+        "critique": 8225,
+        "solver": 2832,
+        "form": 0,
+        "translation": 51403
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "For a process occurring under adiabatic conditions, which of the following is true?",
+      "ms": {
+        "draft": 4611,
+        "critique": 8776,
+        "solver": 2730,
+        "form": 0,
+        "translation": 44893
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the term 'surroundings' refer to in thermodynamics?",
+      "ms": {
+        "draft": 4010,
+        "critique": 9939,
+        "solver": 1594,
+        "form": 4716,
+        "translation": 54522
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about the Gibbs free energy change (∆G) of a reaction is correct?",
+      "ms": {
+        "draft": 6712,
+        "critique": 10874,
+        "solver": 2041,
+        "form": 0,
+        "translation": 33963
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the enthalpies of all elements in their standard states?",
+      "ms": {
+        "draft": 4611,
+        "critique": 8948,
+        "solver": 1688,
+        "form": 0,
+        "translation": 42535
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "For the reaction N2(g) + 3H2(g) → 2NH3(g), what is the sign of ∆S?",
+      "ms": {
+        "draft": 4083,
+        "critique": 8816,
+        "solver": 2787,
+        "form": 0,
+        "translation": 35408
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A reaction has a positive ∆H and a positive ∆S. At what temperature range will the reaction be spontaneous?",
+      "ms": {
+        "draft": 5635,
+        "critique": 12636,
+        "solver": 2384,
+        "form": 3961,
+        "translation": 53960
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the definition of internal energy (U) in thermodynamics?",
+      "ms": {
+        "draft": 4010,
+        "critique": 9415,
+        "solver": 3328,
+        "form": 3127,
+        "translation": 55523
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about thermodynamic processes is correct?",
+      "ms": {
+        "draft": 5077,
+        "critique": 6783,
+        "solver": 2711,
+        "form": 4523,
+        "translation": 62685
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "For an adiabatic process, what is the relationship between the change in internal energy and the work done?",
+      "ms": {
+        "draft": 4786,
+        "critique": 10620,
+        "solver": 16878,
+        "form": 0,
+        "translation": 51578
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of an extensive property?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of system in thermodynamics?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes a closed system?",
+      "reason": "options 1 and 3 say the same thing (\"It allows exchange of energy but not matter with the surroundings\" / \"It allows exchange of matter but not energy with the surroundings\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the internal energy of a system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the first law of thermodynamics commonly stated as?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the change in internal energy of a system when no heat is absorbed by the system and work is done on the system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a system absorbs 10 J of heat and does 5 J of work, what is the change in internal energy of the system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a thermodynamic system, if the internal energy increases by 100 J and the system absorbs 50 J of heat, what is the work done on the system?",
+      "reason": "after redraft: the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the type of wall a system has if no heat is absorbed by the system but work is done on it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A gas expands isothermally into a vacuum. What is the work done by the gas?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a state function?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the only state function among the options …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "For a reaction involving gaseous reactants and products, what is the relationship between ∆H and ∆U?",
+      "reason": "options 1 and 2 say the same thing (\"∆H = ∆U + ∆n RT\" / \"∆H = ∆U - ∆n RT\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "For a process at constant temperature and pressure, what is the condition for the process to be spontaneous?",
+      "reason": "options 0 and 1 are the same (\"∆G < 0\"); options 0 and 2 are the same (\"∆G < 0\"); options 1 and 2 are the same (\"∆G > 0\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a reaction at constant pressure, what is the relationship between heat absorbed (q) and enthalpy change (∆H)?",
+      "reason": "options 1 and 3 say the same thing (\"q = ∆U + ∆n RT\" / \"q = ∆U - ∆n RT\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the value of ∆G for the reaction at 0°C?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the standard enthalpy of formation of NH3(g)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the enthalpy change for the reaction 2A(g) + B(g) → 2D(g)?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the entropy change in the surroundings when 1.00 mol of H2O(l) is formed under standard conditions?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "For the reaction A + B → C + D + q, which is found to have a positive entropy change, what can be concluded about the reaction?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In which of the following scenarios is the entropy of the system most likely to increase?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes freezing increases disorder in the syste…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a process, 701 J of heat is absorbed by a system and 394 J of work is done by the system. What is the change in internal energy for the process?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a state function?",
+      "reason": "near-duplicate of served question cmvhh7qox08sygpfhyn2o19mn (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "For a reaction, if the enthalpy change (∆H) is positive and the entropy change (∆S) is also positive, under what condition will the reaction be spontaneous?",
+      "reason": "near-duplicate of batch item \"A reaction has a positive ∆H and a positive ∆S. At…\" (cosine 0.912 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

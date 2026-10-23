@@ -1,0 +1,824 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T02:11:28.160Z",
+  "finishedAt": "2026-10-20T02:20:58.464Z",
+  "seconds": 570,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp102.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Power Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n8. (B) ଷଵ\nଷ଺\nProbability of getting sum 8 is ଷ଺ ହ\nProbability of not getting sum 8 is ଷଵ ଷ଺",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 226020,
+      "in": 50,
+      "out": 40,
+      "rejects": 10,
+      "promptTokens": 59374,
+      "completionTokens": 12782
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 332395,
+      "in": 40,
+      "out": 33,
+      "rejects": 7,
+      "promptTokens": 25218,
+      "completionTokens": 9422
+    },
+    "solver": {
+      "calls": 248,
+      "ms": 129994,
+      "in": 33,
+      "out": 23,
+      "rejects": 10,
+      "promptTokens": 54553,
+      "completionTokens": 2800
+    },
+    "form": {
+      "calls": 4,
+      "ms": 15735,
+      "in": 23,
+      "out": 12,
+      "rejects": 11,
+      "promptTokens": 2819,
+      "completionTokens": 407
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4199,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 334505,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24694,
+      "completionTokens": 10622
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 4,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following expressions represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is v?",
+      "ms": {
+        "draft": 4662,
+        "critique": 5499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the thickness of a sheet of paper doubles after each fold, what is the thickness after 10 folds, given that the initial thickness is 0.001 cm?",
+      "ms": {
+        "draft": 4662,
+        "critique": 5555,
+        "solver": 1272,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sheet of paper is folded 10 times, and the thickness increases by 1024 times. If the thickness after 10 folds is 10.24 cm, what was the initial thickness of the sheet of paper?",
+      "ms": {
+        "draft": 4662,
+        "critique": 4875,
+        "solver": 1750
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the table in the passage, what is the thickness of the paper after 30 folds, if the initial thickness is 0.001 cm?",
+      "ms": {
+        "draft": 4662,
+        "critique": 6128,
+        "solver": 2313
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 4 × 4 × 4?",
+      "ms": {
+        "draft": 4517,
+        "critique": 6338,
+        "solver": 1857,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of lotuses in a pond triples every day, and 1 lotus is placed on day 1, how many lotuses will there be on day 3?",
+      "ms": {
+        "draft": 4517,
+        "critique": 6328,
+        "solver": 1194
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of lotuses in a pond doubles every day and the pond is fully covered on the 30th day, how many times more lotuses are there on the 30th day compared to the 25th day?",
+      "ms": {
+        "draft": 4517,
+        "critique": 6381,
+        "solver": 13114,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2 × 5 is simplified and written in exponential form, what is the result?",
+      "ms": {
+        "draft": 4517,
+        "critique": 7980,
+        "solver": 13272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the expanded form of 561.903 using powers of 10?",
+      "ms": {
+        "draft": 13360,
+        "critique": 8808,
+        "solver": 13492,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is the smallest when expressed in scientific notation?",
+      "ms": {
+        "draft": 13360,
+        "critique": 6476,
+        "solver": 1376,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the worth of donated jaggery is 45 × 70 = ₹3150, and the worth of donated wheat is 50 × 50 = ₹2500, what is the total worth of the donation in scientific notation?",
+      "ms": {
+        "draft": 13360,
+        "critique": 7560,
+        "solver": 17090
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the global human population is 8.2 × 10^9 (8.2 billion) and the global chicken population is 3.3 × 10^10 (33 billion), how many times more chickens are there than humans?",
+      "ms": {
+        "draft": 5290,
+        "critique": 8123
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a very large quantity mentioned in the passage?",
+      "ms": {
+        "draft": 3624,
+        "critique": 6014,
+        "solver": 1312,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a person walks 400 km to reach a place and arrives early in the morning, how long ago would they have started their journey if they walked at an average speed of 5 km/h?",
+      "ms": {
+        "draft": 5290,
+        "critique": 10123,
+        "solver": 16648
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is equal to 2^10?",
+      "ms": {
+        "draft": 5839,
+        "critique": 7529,
+        "solver": 1382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is both a perfect square and a perfect cube, which of the following could be its general form?",
+      "ms": {
+        "draft": 4273,
+        "critique": 5771,
+        "solver": 7626,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following expressions correctly represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by 'v'?",
+      "ms": {
+        "draft": 3884,
+        "critique": 5646,
+        "solver": 1361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers are the same: 2 × 3, 6 × 3, and 18 × 6?",
+      "ms": {
+        "draft": 3339,
+        "critique": 7989
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If 12 raised to the power 2 is 144, what is 1.2 raised to the power 2?",
+      "ms": {
+        "draft": 3339,
+        "critique": 6377,
+        "solver": 1225,
+        "form": 5001
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the numerical value of 3 × 4?",
+      "ms": {
+        "draft": 3884,
+        "critique": 6725
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the numerical value of (– 2) ?",
+      "ms": {
+        "draft": 3884,
+        "critique": 8010
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 100 crore in the international system?",
+      "ms": {
+        "draft": 3871,
+        "critique": 7555,
+        "solver": 1054
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a power of 10?",
+      "ms": {
+        "draft": 3871,
+        "critique": 7701,
+        "solver": 19238
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the estimated number of stars in the observable universe?",
+      "ms": {
+        "draft": 3301,
+        "critique": 7279,
+        "solver": 1160
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest number that is a power of 2 and also a power of 4?",
+      "ms": {
+        "draft": 3871,
+        "critique": 6375,
+        "solver": 13386,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If each tree had about 10 leaves, what is the total number of leaves on all the trees in the world?",
+      "ms": {
+        "draft": 3301,
+        "critique": 7515
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many seconds are in 10 seconds?",
+      "ms": {
+        "draft": 3301,
+        "critique": 6603
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person walks 400 km to reach a destination, and they walk at a constant speed of 5 km per hour, how long would their journey take?",
+      "ms": {
+        "draft": 6196,
+        "critique": 3673,
+        "solver": 5959
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the number of times the base is multiplied by itself in an exponential expression?",
+      "ms": {
+        "draft": 4662,
+        "critique": 4694,
+        "solver": 1964,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the number that is multiplied by itself multiple times in an exponential expression?",
+      "ms": {
+        "draft": 4662,
+        "critique": 4664,
+        "solver": 1058,
+        "form": 0,
+        "translation": 42474
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to express the number 100,000,000?",
+      "ms": {
+        "draft": 10345,
+        "critique": 6295,
+        "solver": 11965,
+        "form": 0,
+        "translation": 23061
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the number of lotuses in a pond doubles every day and the pond is fully covered on the 30th day, how many lotuses were there on the 29th day?",
+      "ms": {
+        "draft": 4517,
+        "critique": 5110,
+        "solver": 1155,
+        "form": 3857,
+        "translation": 46322
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the exponent in the scientific notation of 59,76,00,00,00,00,00,00,00,00,00,000 kg, the mass of the Earth?",
+      "ms": {
+        "draft": 13360,
+        "critique": 7202,
+        "solver": 1134,
+        "form": 0,
+        "translation": 35127
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the scientific notation of 80,00,000?",
+      "ms": {
+        "draft": 13360,
+        "critique": 8500,
+        "solver": 1289,
+        "form": 0,
+        "translation": 24054
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a 5-digit password lock has 10 options for each digit, how many total passwords are possible?",
+      "ms": {
+        "draft": 4517,
+        "critique": 6517,
+        "solver": 1341,
+        "form": 0,
+        "translation": 29214
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If you have lived for a million seconds, how old would you be?",
+      "ms": {
+        "draft": 3301,
+        "critique": 5771,
+        "solver": 1186,
+        "form": 1940,
+        "translation": 13884
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a number is both a square and a cube, what is the smallest such number?",
+      "ms": {
+        "draft": 3871,
+        "critique": 7964,
+        "solver": 14332,
+        "form": 0,
+        "translation": 19933
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If Roxie has 7 dresses, 2 hats, and 3 pairs of shoes, how many different ways can she dress up?",
+      "ms": {
+        "draft": 3884,
+        "critique": 7517,
+        "solver": 1084,
+        "form": 0,
+        "translation": 35265
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the population of Mumbai is 2 × 10⁷ and the population of Kohima is 1.42 × 10⁵, which city has a larger population?",
+      "ms": {
+        "draft": 13360,
+        "critique": 7472,
+        "solver": 1583,
+        "form": 1,
+        "translation": 34349
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers is both a 4th power and a 6th power?",
+      "ms": {
+        "draft": 3884,
+        "critique": 6755,
+        "solver": 12831,
+        "form": 0,
+        "translation": 27099
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "If a person walks non-stop and the distance around the Earth is 40,000 km, how many times can they circumnavigate the Earth in their lifetime if they walk 40 km per day for 50 years?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "If a ladder to the moon has 1,92,20,00,000 steps and each step is 20 cm, how many kilometers is the distance from the Earth to the moon?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If the global ant population is 2 × 10^16 (20 quadrillion) and the global human population is 8.2 × 10^9 (8.2 billion), how many times more ants are there than humans?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the estimated number of stars in the observable universe according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many seconds does it take for light to reach the Earth from the Sun according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the scientific notation of 308,100,000?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following expressions represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is v?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the thickness of a sheet of paper doubles after each fold, what is the thickness after 10 folds, given that the initial thickness is 0.001 cm?",
+      "reason": "options are written to different precisions (2 and 3 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A sheet of paper is folded 10 times, and the thickness increases by 1024 times. If the thickness after 10 folds is 10.24 cm, what was the initial thickness of the sheet of paper?",
+      "reason": "the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the table in the passage, what is the thickness of the paper after 30 folds, if the initial thickness is 0.001 cm?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 4 × 4 × 4?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no reason needed for distractors in this cas…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the number of lotuses in a pond triples every day, and 1 lotus is placed on day 1, how many lotuses will there be on day 3?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the number of lotuses in a pond doubles every day and the pond is fully covered on the 30th day, how many times more lotuses are there on the 30th day compared to the 25th day?",
+      "reason": "options 1 and 2 are the same (\"32\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 2 × 5 is simplified and written in exponential form, what is the result?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the expanded form of 561.903 using powers of 10?",
+      "reason": "options 0 and 2 say the same thing (\"(5 × 10²) + (6 × 10¹) + (1 × 10⁰) + (9 × 10⁻¹) + (0 × 10⁻²) + (3 × 10⁻³)\" / \"(5 × 10²) + (6 × 10¹) + (1 × 10⁰) + (9 × 10⁻²) + (0 × 10⁻³) + (3 × 10⁻⁴)\"); options 0 and 3 say the same thing (\"(5 × 10²) + (6 × 10¹) + (1 × 10⁰) + (9 × 10⁻¹) + (0 × 10⁻²) + (3 × 10⁻³)\" / \"(5 × 10²) + (6 × 10¹) + (1 × 10⁰) + (9 × 10⁻¹) + (0 × 10⁻³) + (3 × 10⁻⁴)\"); options 1 and 2 say the same thing (\"(5 × 10³) + (6 × 10²) + (1 × 10¹) + (9 × 10⁻²) + (0 × 10⁻³) + (3 × 10⁻⁴)\" / \"(5 × 10²) + (6 × 10¹) + (1 × 10⁰) + (9 × 10⁻²) + (0 × 10⁻³) + (3 × 10⁻⁴)\"); options 2 and 3 say the same thing (\"(5 × 10²) + (6 × 10¹) + (1 × 10⁰) + (9 × 10⁻²) + (0 × 10⁻³) + (3 × 10⁻⁴)\" / \"(5 × 10²) + (6 × 10¹) + (1 × 10⁰) + (9 × 10⁻¹) + (0 × 10⁻³) + (3 × 10⁻⁴)\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following numbers is the smallest when expressed in scientific notation?",
+      "reason": "figure: figure spec refused: spec: at most 40 ticks"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the worth of donated jaggery is 45 × 70 = ₹3150, and the worth of donated wheat is 50 × 50 = ₹2500, what is the total worth of the donation in scientific notation?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the global human population is 8.2 × 10^9 (8.2 billion) and the global chicken population is 3.3 × 10^10 (33 billion), how many times more chickens are there than humans?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a very large quantity mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"The pupil might confuse the number of ants with a very large…\"); distractor 3's reason is not a one-line misconception (\"The pupil might think the number of days in a year is very l…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a person walks 400 km to reach a place and arrives early in the morning, how long ago would they have started their journey if they walked at an average speed of 5 km/h?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is equal to 2^10?",
+      "reason": "options 0 and 1 are the same (\"2^5 + 2^5\"); options 0 and 2 say the same thing (\"2^5 + 2^5\" / \"2^5 + 2^5 + 2^5 + 2^5\"); options 0 and 3 say the same thing (\"2^5 + 2^5\" / \"2 × 2^5\"); options 1 and 2 say the same thing (\"2^5 × 2^5\" / \"2^5 + 2^5 + 2^5 + 2^5\"); options 1 and 3 say the same thing (\"2^5 × 2^5\" / \"2 × 2^5\"); options 2 and 3 say the same thing (\"2^5 + 2^5 + 2^5 + 2^5\" / \"2 × 2^5\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number is both a perfect square and a perfect cube, which of the following could be its general form?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer is n^6, this is a common misconception when d…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which number is greater: 3 or 4?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many digits should the unique ID code for 8.5 billion packets of milk consist of if digits 0–9 are used?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the general form of numbers that are both square and cube numbers?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many possible alphanumeric passcodes of length 5 are there if there are 26 letters and 10 digits?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following expressions correctly represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by 'v'?",
+      "reason": "options 1 and 2 are the same (\"2 × 10 × v\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following numbers are the same: 2 × 3, 6 × 3, and 18 × 6?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "If 12 raised to the power 2 is 144, what is 1.2 raised to the power 2?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the numerical value of 3 × 4?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the numerical value of (– 2) ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the value of 100 crore in the international system?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a power of 10?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the estimated number of stars in the observable universe?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the smallest number that is a power of 2 and also a power of 4?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If each tree had about 10 leaves, what is the total number of leaves on all the trees in the world?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many seconds are in 10 seconds?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a person walks 400 km to reach a destination, and they walk at a constant speed of 5 km per hour, how long would their journey take?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe the number of times the base is multiplied by itself in an exponential expression?",
+      "reason": "near-duplicate of batch item \"What is the term used to describe the number that …\" (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

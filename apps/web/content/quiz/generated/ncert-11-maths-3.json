@@ -1,0 +1,366 @@
+{
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 3 — Trigonometric Functions",
+  "name": "Trigonometric Functions",
+  "slug": "maths-11-trigonometric-functions",
+  "summary": "This chapter introduces trigonometric functions, their properties, and their applications in solving problems involving angles and triangles.",
+  "position": 3,
+  "source": "generated against NCERT Mathematics, Class 11, chapter 3 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 3 - त्रिकोणमितीय फलन",
+      "summary": "इस अध्याय में त्रिकोणमितीय फलन, उनके गुण और कोण और त्रिभुजों के समस्याओं के हल में उनके अनुप्रयोग शामिल हैं।"
+    },
+    "mr": {
+      "name": "अध्याय 3 - त्रिकोणमितीय फलन",
+      "summary": "हा अध्याय त्रिकोणमितीय फलन, त्यांचे गुणधर्म आणि कोन आणि त्रिकोणांच्या समस्यांच्या उपायांमध्ये त्यांचे अनुप्रयोग शामिल आहेत."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-23T02:41:02.078Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 2,
+      "stem": "If sin x = 3/5 and cos y = -12/13, and both x and y lie in the second quadrant, what is sin(x + y)?",
+      "choices": [
+        "-56/65",
+        "56/65",
+        "-36/65",
+        "36/65"
+      ],
+      "answerIndex": 0,
+      "solution": "Using the identity sin(x + y) = sin x cos y + cos x sin y, we find cos x = -4/5 and sin y = 5/13. Substituting, we get sin(x + y) = (3/5)(-12/13) + (-4/5)(5/13) = -36/65 - 20/65 = -56/65. The other options result from incorrect signs or miscalculations.",
+      "checkExpr": "(-36-20)/65",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि sin x = 3/5 और cos y = -12/13 है, और x और y दोनों द्वितीय चतुर्थांश में हैं, तो sin(x + y) क्या है?",
+          "choices": [
+            "-56/65",
+            "56/65",
+            "-36/65",
+            "36/65"
+          ],
+          "solution": "सूत्र sin(x + y) = sin x cos y + cos x sin y का प्रयोग करके, हम पाते हैं कि cos x = -4/5 और sin y = 5/13 है। प्रतिस्थापन करने पर, हमें sin(x + y) = (3/5)(-12/13) + (-4/5)(5/13) = -36/65 - 20/65 = -56/65 मिलता है। अन्य विकल्प गलत चिह्नों या गणना त्रुटियों के कारण हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same mathematical meaning, and uses appropriate terminology consistent with Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर sin x = 3/5 आणि cos y = -12/13 आहे, आणि x आणि y दोन्ही दुसर्‍या चतुर्थांशात आहेत, तर sin(x + y) किती आहे?",
+          "choices": [
+            "-56/65",
+            "56/65",
+            "-36/65",
+            "36/65"
+          ],
+          "solution": "सूत्र sin(x + y) = sin x cos y + cos x sin y वापरून, आम्ही cos x = -4/5 आणि sin y = 5/13 शोधतो. प्रतिस्थापित करून, आम्ही sin(x + y) = (3/5)(-12/13) + (-4/5)(5/13) = -36/65 - 20/65 = -56/65 मिळतो. इतर विकल्प चुकीच्या चिन्हांमुळे किंवा गणनाच्या चूकीमुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for trigonometric functions and quadrants.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly uses positive signs for cos x and sin y",
+        "incorrectly adds the absolute values of the fractions",
+        "incorrectly uses the absolute values of the numerators"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and follows the standard identity for sin(x + y). The correct answer is -56/65, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 12,
+          "pageStart": 25,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 13,
+          "pageStart": 28,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 14,
+          "pageStart": 31,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 15,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:41:02.078Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If an arc of length 2π cm is subtended by an angle of 2π radians at the center of a circle, what is the radius of the circle?",
+      "choices": [
+        "1 cm",
+        "2 cm",
+        "3 cm",
+        "4 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The formula for arc length is l = rθ, where l is the arc length, r is the radius, and θ is the angle in radians. Substituting l = 2π cm and θ = 2π radians, we get r = l/θ = (2π)/(2π) = 1 cm. The correct answer is 1 cm. The other options are incorrect because they do not match the calculated value of r.",
+      "checkExpr": "(2*3.14)/(2*3.14)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 2π सेमी लंबाई का चाप वृत्त के केंद्र पर 2π रेडियन के कोण द्वारा बनाया जाता है, तो वृत्त की त्रिज्या क्या है?",
+          "choices": [
+            "1 सेमी",
+            "2 सेमी",
+            "3 सेमी",
+            "4 सेमी"
+          ],
+          "solution": "चाप की लंबाई का सूत्र l = rθ है, जहां l चाप की लंबाई है, r त्रिज्या है, और θ रेडियन में कोण है। l = 2π सेमी और θ = 2π रेडियन रखने पर, हम पाते हैं r = l/θ = (2π)/(2π) = 1 सेमी। सही उत्तर 1 सेमी है। अन्य विकल्प गलत हैं क्योंकि वे गणना के बराबर r के मान के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 2π सेमी लांबीचा चाप केंद्रावर 2π रेडियन कोन तयार करत असेल, तर वर्तुळाच्या त्रिज्येचे माप काय असेल?",
+          "choices": [
+            "1 सेमी",
+            "2 सेमी",
+            "3 सेमी",
+            "4 सेमी"
+          ],
+          "solution": "चापाच्या लांबीचे सूत्र l = rθ आहे, जेथे l चापाची लांबी, r त्रिज्या आहे आणि θ रेडियनमध्ये कोन आहे. l = 2π सेमी आणि θ = 2π रेडियन ठेवल्यास, आपल्याला r = l/θ = (2π)/(2π) = 1 सेमी मिळते. योग्य उत्तर 1 सेमी आहे. इतर विकल्प चुकीचे आहेत कारण ते r च्या गणितीय मूल्याशी मेळ नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Miscalculates the division",
+        "Uses θ instead of l in the formula",
+        "Confuses the formula with the circumference"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the arc length formula l = rθ and solves for r. The correct answer is 1 cm, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:41:02.078Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is an identity for cos(π + x)?",
+      "choices": [
+        "cos x",
+        "-cos x",
+        "sin x",
+        "-sin x"
+      ],
+      "answerIndex": 1,
+      "solution": "The identity cos(π + x) = -cos x is derived from the unit circle. The other options do not match the identity. 'cos x' is incorrect because the cosine function is negative in the third quadrant. 'sin x' and '-sin x' are not related to this identity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा cos(π + x) के लिए एक सर्वसमिका है?",
+          "choices": [
+            "cos x",
+            "-cos x",
+            "sin x",
+            "-sin x"
+          ],
+          "solution": "इकाई वृत्त से cos(π + x) = -cos x सर्वसमिका व्युत्पन्न की जाती है। अन्य विकल्प सर्वसमिका के अनुरूप नहीं हैं। 'cos x' गलत है क्योंकि तृतीय चतुर्थांश में कोसाइन फलन ऋणात्मक होता है। 'sin x' और '-sin x' इस सर्वसमिका से संबंधित नहीं हैं।",
+          "imageAlt": "एक समतल दर्पण जिसमें आपतित किरण, परावर्तित किरण और अभिलंब हैं",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते cos(π + x) चे ओळख आहे?",
+          "choices": [
+            "cos x",
+            "-cos x",
+            "sin x",
+            "-sin x"
+          ],
+          "solution": "युनिट वर्तुळावरून cos(π + x) = -cos x हा ओळख मिळतो. इतर विकल्प ओळखाशी संगत नाहीत. 'cos x' अयोग्य आहे कारण कोसाइन फंक्शन तृतीय चतुर्थांशात नकारात्मक असते. 'sin x' आणि '-sin x' हे या ओळखाशी संबंधित नाहीत.",
+          "imageAlt": "एक समतल दर्पण ज्यावर आपातन किरण, प्रतिबिंबित किरण आणि सामान्य आहे",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A plane mirror with incident ray, reflected ray, and normal",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "incidentRay": {
+            "en": "Incident Ray",
+            "hi": "आपतित किरण",
+            "mr": "आपातन किरण"
+          },
+          "reflectedRay": {
+            "en": "Reflected Ray",
+            "hi": "परावर्तित किरण",
+            "mr": "प्रतिबिंबित किरण"
+          },
+          "normal": {
+            "en": "Normal",
+            "hi": "अभिलंब",
+            "mr": "सामान्य"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "confuses the identity with the cosine of x itself",
+        null,
+        "confuses the identity with the sine function",
+        "confuses the identity with the sine function"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is -cos x, as cos(π + x) = -cos x is a standard trigonometric identity derived from the unit circle. The author's reasoning is sound and the misconceptions described for the distractors are plausible.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 12,
+          "pageStart": 25,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 13,
+          "pageStart": 28,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 14,
+          "pageStart": 31,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 15,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:41:02.078Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

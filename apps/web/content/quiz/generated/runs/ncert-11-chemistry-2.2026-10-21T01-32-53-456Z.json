@@ -1,0 +1,753 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T01:32:53.456Z",
+  "finishedAt": "2026-10-21T01:41:00.518Z",
+  "seconds": 487,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech102.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 2 — strUctUre of atom",
+    "edition": "Reprint 2026-27",
+    "chunks": 65,
+    "groups": 21
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n12. (b) atomic radii\nfor visually challenged learners\n12. (d) Zinc",
+      "[INChO 2017 — solutions or answer key]\n3. In writing structures of molecules, valency of various atoms not being satisfied.\nProblem 1\nBarbiturates in our lives\n1.1\nA B\n1.2\nD\n1.3\n1.4\nG\n17 Marks\n(1 mark)\nE\n(2.5 marks)\nOr any equivalent\nresonance structure\n(2 marks)\nF\n(1.5 marks)\n1.5 a) < 4.01 b) > 4.01 X\n1.6\nH I\n1.7\nL\n1.8 a)\nM N\nb)\nK\nc) = 4.01 (0.5 mark)\nJ (2 marks)\n(2 marks)\nO\n(2.5 marks)\n(2 marks)\n1.9\nP\nQ\n(1 mark)\nProblem No. 2 25 Marks\nChemistry of Iron\n[The total marks for this question are 25 marks instead of 26 marks – This is due to deletion\nof subpart 2.9.]",
+      "[INChO 2015 — question paper]\n10. 811 12.011 14.007 15.999 18.998 20.180\n13 14 15 16 17 18\n10 11 IB IIB 12 Aluminum Al Silicon Si Phosphorus P Sulfur S Chlorine Cl Ar Argon\n1B 2B 26.982 28.086 30.974 32.066 35.453 39.948\n28 29 30 31 32 33 34 35 36\nNickel Ni Cu Copper Zn Zinc Ga Gallium Germanium Ge As Arsenic Selenium Se Bromine Br Krypton Kr\n58.693 63.546 65.39 69.732 72.61 74.922 78.09 79.904 84.80\n46 47 48 49 50 51 52 53 54\nPalladium Pd Ag Silver Cadmium Cd Indium In Sn Tin Antimony Sb Tellurium Te Iodine I Xe Xenon\n106.42 107.868 112.411 114.818 118.71 121.760 127.6 126.904 131.29\n78 79 80 81 82 83 84 85 86\nPlatinum Pt Au Gold Hg Mercury Thallium Tl Pb Lead Bismuth Bi Polonium Po Astatine At Rn Radon\n195.08 196.967 2",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n6. (a) (i) (r) , (ii) (q), (iii) (p)\nZinc has no unpaired electrons in 3d or 4s orbitals, so enthalpy of atomization is low\nMn = 3d 4s shows +2,+3,+4,+5,+6 and+7 oxidation state , maximum number in 3d series 5 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 146304,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 42030,
+      "completionTokens": 9581
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 251139,
+      "in": 38,
+      "out": 35,
+      "rejects": 3,
+      "promptTokens": 21574,
+      "completionTokens": 8435
+    },
+    "solver": {
+      "calls": 243,
+      "ms": 109664,
+      "in": 35,
+      "out": 29,
+      "rejects": 6,
+      "promptTokens": 45000,
+      "completionTokens": 2541
+    },
+    "form": {
+      "calls": 13,
+      "ms": 52959,
+      "in": 29,
+      "out": 12,
+      "rejects": 17,
+      "promptTokens": 7095,
+      "completionTokens": 1529
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3084,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 422688,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 29214,
+      "completionTokens": 14914
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 4,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the primary reason for the diversity of chemical behavior among elements?",
+      "ms": {
+        "draft": 2540,
+        "critique": 4873,
+        "solver": 1407
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements about the mass of subatomic particles is correct?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5283,
+        "solver": 926,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The charge to mass ratio of an electron is 1.758820 × 10^11 C/kg. If the charge on an electron is -1.6 × 10^-19 C, what is the mass of an electron?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5852,
+        "solver": 1750,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the charge on an electron?",
+      "ms": {
+        "draft": 3216,
+        "critique": 4889,
+        "solver": 1024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes how J.J. Thomson measured the charge to mass ratio of an electron. Which of the following would be the most appropriate method for a student to verify this experiment?",
+      "ms": {
+        "draft": 3216,
+        "critique": 4976,
+        "solver": 1798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the charge on a proton?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5941,
+        "solver": 1277,
+        "form": 5104
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the Thomson model of the atom?",
+      "ms": {
+        "draft": 5964,
+        "critique": 4854,
+        "solver": 1354,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of isotopes according to the passage?",
+      "ms": {
+        "draft": 5964,
+        "critique": 5696,
+        "solver": 1106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following is true about the charge of the nucleus?",
+      "ms": {
+        "draft": 5964,
+        "critique": 6957,
+        "solver": 1387,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the radius of an atom is about 10^{-10} meters, and the radius of the nucleus is about 10^{-15} meters, what is the ratio of the radius of the nucleus to the radius of the atom?",
+      "ms": {
+        "draft": 5964,
+        "critique": 7203,
+        "solver": 1356,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main conclusion from Rutherford's alpha particle scattering experiment?",
+      "ms": {
+        "draft": 5964,
+        "critique": 6167,
+        "solver": 1287,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between diffraction and interference of waves?",
+      "ms": {
+        "draft": 3893,
+        "critique": 5947,
+        "solver": 11496
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A radio station broadcasts at a frequency of 1,368 kHz. What is the wavelength of the emitted electromagnetic radiation?",
+      "ms": {
+        "draft": 18518,
+        "critique": 7050,
+        "solver": 14113,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the frequency of a light wave with a wavelength of 5800 Å?",
+      "ms": {
+        "draft": 18518,
+        "critique": 7353,
+        "solver": 14397,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following orbitals will experience the largest effective nuclear charge: 2s or 3s?",
+      "ms": {
+        "draft": 3944,
+        "critique": 4142,
+        "solver": 925,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The effective nuclear charge experienced by an electron in a 3p orbital is greater than that in a 3s orbital. Why is this the case?",
+      "ms": {
+        "draft": 3944,
+        "critique": 4343,
+        "solver": 1590,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the velocity of the electron in an electron microscope is 1.6 × 10^6 m/s, what is the de Broglie wavelength associated with the electron? (Planck's constant = 6.626 × 10^-34 J·s, mass of electron = 9.1 × 10^-31 kg)",
+      "ms": {
+        "draft": 3944,
+        "critique": 4666,
+        "solver": 2056,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Among the following pairs of orbitals, which one has the highest energy: 3d or 4s?",
+      "ms": {
+        "draft": 3944,
+        "critique": 6456
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the diameter of a carbon atom is 0.15 nm, how many carbon atoms can be placed side by side in a straight line across a 20 cm long scale?",
+      "ms": {
+        "draft": 3028,
+        "critique": 7327,
+        "solver": 1242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following elements has a mass number of 81 and contains 31.7% more neutrons than protons?",
+      "ms": {
+        "draft": 3028,
+        "critique": 4313,
+        "solver": 11883
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the energy associated with the fifth orbit of a hydrogen atom if the energy in the second orbit is -5.45 × 10^-19 J?",
+      "ms": {
+        "draft": 3028,
+        "critique": 6583,
+        "solver": 1594
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the wavelength of the radiation emitted by a nitrogen laser that produces 5.6 × 10^12 photons with a power of 4.5 × 10^-3 J?",
+      "ms": {
+        "draft": 3028,
+        "critique": 4543,
+        "solver": 1882,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which principle states that no two electrons in an atom can have the same set of four quantum numbers?",
+      "ms": {
+        "draft": 2660,
+        "critique": 6261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the maximum number of electrons that can be present in a 3d orbital?",
+      "ms": {
+        "draft": 2660,
+        "critique": 5749
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a particle carries a charge of 2.5 × 10^-18 C. How many electrons are present in this particle?",
+      "ms": {
+        "draft": 3028,
+        "critique": 5144,
+        "solver": 16212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an atom has 29 electrons and 35 neutrons, how many protons does it have?",
+      "ms": {
+        "draft": 2660,
+        "critique": 5521,
+        "solver": 9023
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the word 'atom' mean in Greek?",
+      "ms": {
+        "draft": 2540,
+        "critique": 5429,
+        "solver": 1839,
+        "form": 2832,
+        "translation": 28966
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who proposed the atomic theory of matter on a firm scientific basis?",
+      "ms": {
+        "draft": 2540,
+        "critique": 5284,
+        "solver": 890,
+        "form": 4204,
+        "translation": 35427
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main limitation of Dalton's atomic theory?",
+      "ms": {
+        "draft": 2540,
+        "critique": 5402,
+        "solver": 9967,
+        "form": 3167,
+        "translation": 44576
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the atomic number of an atom?",
+      "ms": {
+        "draft": 3606,
+        "critique": 6325,
+        "solver": 1850,
+        "form": 2638,
+        "translation": 31983
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of cathode rays?",
+      "ms": {
+        "draft": 2540,
+        "critique": 4796,
+        "solver": 1123,
+        "form": 2846,
+        "translation": 38128
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the maximum number of electrons that can be accommodated in an f subshell?",
+      "ms": {
+        "draft": 3944,
+        "critique": 4718,
+        "solver": 10172,
+        "form": 0,
+        "translation": 22695
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cathode ray tube is coated with a fluorescent material and cathode rays strike it, what happens?",
+      "ms": {
+        "draft": 2540,
+        "critique": 4910,
+        "solver": 1476,
+        "form": 2897,
+        "translation": 43810
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the SI unit of frequency of electromagnetic radiation?",
+      "ms": {
+        "draft": 18518,
+        "critique": 5302,
+        "solver": 1064,
+        "form": 2431,
+        "translation": 25810
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best explains the concept of a black body?",
+      "ms": {
+        "draft": 3893,
+        "critique": 4587,
+        "solver": 750,
+        "form": 2160,
+        "translation": 44327
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observes that the deflection of electrons in a cathode ray tube increases when the voltage across the electrodes is increased. What can be concluded about the relationship between voltage and electron deflection?",
+      "ms": {
+        "draft": 3216,
+        "critique": 4178,
+        "solver": 10992,
+        "form": 2175,
+        "translation": 49875
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What does the statement 'energy can take any one of the values from the following set, but cannot take on any values between them' imply about the energy of radiation?",
+      "ms": {
+        "draft": 3893,
+        "critique": 3982,
+        "solver": 1184,
+        "form": 1634,
+        "translation": 40326
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the wavelength of light emitted when an electron in a hydrogen atom transitions from the n = 4 energy level to the n = 2 energy level?",
+      "ms": {
+        "draft": 2660,
+        "critique": 4194,
+        "solver": 3665,
+        "form": 0,
+        "translation": 13418
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What determines the chemical properties of an element?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the mass number of an atom?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the charge of an ion if the number of protons is 16 and the number of electrons is 18?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the primary reason for the diversity of chemical behavior among elements?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following statements about the mass of subatomic particles is correct?",
+      "reason": "options 0 and 1 say the same thing (\"Protons are lighter than neutrons\" / \"Neutrons are lighter than protons\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The charge to mass ratio of an electron is 1.758820 × 10^11 C/kg. If the charge on an electron is -1.6 × 10^-19 C, what is the mass of an electron?",
+      "reason": "options are written to different precisions (1 and 2 decimals); options 0 and 1 are the same number; ARITHMETIC MISMATCH — checkExpr \"(1.6*10^-19)/(1.758820*10^11)\" = 9.09700822142118e-31, but the key says 9.1"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the charge on an electron?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes how J.J. Thomson measured the charge to mass ratio of an electron. Which of the following would be the most appropriate method for a student to verify this experiment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the charge on a proton?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the Thomson model of the atom?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of isotopes according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"Atoms with the same mass number but different atomic numbers\" / \"Atoms with the same atomic number but different mass numbers\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following is true about the charge of the nucleus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the radius of an atom is about 10^{-10} meters, and the radius of the nucleus is about 10^{-15} meters, what is the ratio of the radius of the nucleus to the radius of the atom?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"10^(-15-(-10))\" = 0.00001, but the key says 10"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the main conclusion from Rutherford's alpha particle scattering experiment?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'alphaParticle'"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main difference between diffraction and interference of waves?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A radio station broadcasts at a frequency of 1,368 kHz. What is the wavelength of the emitted electromagnetic radiation?",
+      "reason": "options are in more than one unit (m, km, cm, mm); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"3.0*10^8/1368000\" = 219.2982456140351, but the key says 219"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the frequency of a light wave with a wavelength of 5800 Å?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"3.0*10^8/(5800*10^-10)\" = 517241379310344.75, but the key says 5.17"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following orbitals will experience the largest effective nuclear charge: 2s or 3s?",
+      "reason": "option lengths are unalike (2 to 49 characters); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The effective nuclear charge experienced by an electron in a 3p orbital is greater than that in a 3s orbital. Why is this the case?",
+      "reason": "options 1 and 3 say the same thing (\"The 3p orbital is more shielded by inner electrons.\" / \"The 3p orbital is less shielded by inner electrons.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the velocity of the electron in an electron microscope is 1.6 × 10^6 m/s, what is the de Broglie wavelength associated with the electron? (Planck's constant = 6.626 × 10^-34 J·s, mass of electron = 9.1 × 10^-31 kg)",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; checkExpr \"(6.626e-34)/(9.1e-31*1.6e6)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Among the following pairs of orbitals, which one has the highest energy: 3d or 4s?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the diameter of a carbon atom is 0.15 nm, how many carbon atoms can be placed side by side in a straight line across a 20 cm long scale?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following elements has a mass number of 81 and contains 31.7% more neutrons than protons?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the energy associated with the fifth orbit of a hydrogen atom if the energy in the second orbit is -5.45 × 10^-19 J?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the wavelength of the radiation emitted by a nitrogen laser that produces 5.6 × 10^12 photons with a power of 4.5 × 10^-3 J?",
+      "reason": "options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"6.626*10^-34*3*10^8/(4.5*10^-3/5.6*10^12)\" = 2.4737066666666665e-34, but the key says 337.1"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which principle states that no two electrons in an atom can have the same set of four quantum numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the maximum number of electrons that can be present in a 3d orbital?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, a particle carries a charge of 2.5 × 10^-18 C. How many electrons are present in this particle?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2.5*10^-18/1.6*10^-19\" = 1.5625e-37, but the key says 15"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an atom has 29 electrons and 35 neutrons, how many protons does it have?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

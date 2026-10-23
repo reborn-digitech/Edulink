@@ -1,0 +1,245 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:59:15.205Z",
+  "finishedAt": "2026-10-22T23:01:14.413Z",
+  "seconds": 119,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap104.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 4 — The Story of Amrita",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 22158,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7114,
+      "completionTokens": 1341
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 58086,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4642,
+      "completionTokens": 1877
+    },
+    "solver": {
+      "calls": 62,
+      "ms": 33564,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 11720,
+      "completionTokens": 708
+    },
+    "form": {
+      "calls": 6,
+      "ms": 17810,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 1433,
+      "completionTokens": 402
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 2764,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 133567,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7186,
+      "completionTokens": 3821
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the village where Amrita lived?",
+      "ms": {
+        "draft": 2995,
+        "critique": 6408,
+        "solver": 1923,
+        "form": 3821
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did Amrita do when she saw the men cutting the trees?",
+      "ms": {
+        "draft": 2544,
+        "critique": 4887,
+        "solver": 1030
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the people of Khejadli take care of the plants, trees, and animals?",
+      "ms": {
+        "draft": 2544,
+        "critique": 5338,
+        "solver": 12113
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the village where Amrita lived?",
+      "ms": {
+        "draft": 2544,
+        "critique": 4755,
+        "solver": 1666,
+        "form": 4295
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if there were no trees and no animals?",
+      "ms": {
+        "draft": 2544,
+        "critique": 4724,
+        "solver": 1092,
+        "form": 5299
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the people of Khejadli village believe about plants and animals?",
+      "ms": {
+        "draft": 2995,
+        "critique": 6088,
+        "solver": 1261,
+        "form": 4060,
+        "translation": 46522
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Amrita do every morning?",
+      "ms": {
+        "draft": 2995,
+        "critique": 7382,
+        "solver": 12023,
+        "form": 2476,
+        "translation": 39752
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Amrita and the villagers protect the trees?",
+      "ms": {
+        "draft": 2995,
+        "critique": 4781,
+        "solver": 8849,
+        "form": 941,
+        "translation": 42962
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the village where Amrita lived?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not pay attention to the specific name of the village m…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What did Amrita do when she saw the men cutting the trees?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did the people of Khejadli take care of the plants, trees, and animals?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What was the name of the village where Amrita lived?",
+      "reason": "near-duplicate of served question cmvh2wk0706grgpfh27vnqk2w (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What would happen if there were no trees and no animals?",
+      "reason": "near-duplicate of served question cmvh2wk0i06h9gpfhezgeaz1z (cosine 0.935 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

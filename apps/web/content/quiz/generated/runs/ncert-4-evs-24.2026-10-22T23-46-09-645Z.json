@@ -1,0 +1,255 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:46:09.645Z",
+  "finishedAt": "2026-10-22T23:48:03.239Z",
+  "seconds": 114,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap124.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 24 — Home and Abroad",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 40716,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7626,
+      "completionTokens": 2330
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 83801,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6663,
+      "completionTokens": 2433
+    },
+    "solver": {
+      "calls": 79,
+      "ms": 49312,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 14828,
+      "completionTokens": 848
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4029,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 469,
+      "completionTokens": 137
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3231,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 20002,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2393,
+      "completionTokens": 1317
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Shanta say about the time taken for their journey from Abu Dhabi to India?",
+      "ms": {
+        "draft": 4338,
+        "critique": 5316,
+        "solver": 1179
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the capital city of the United Arab Emirates mentioned in the passage?",
+      "ms": {
+        "draft": 4338,
+        "critique": 5470,
+        "solver": 12276,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason why many trees cannot grow in desert areas according to the passage?",
+      "ms": {
+        "draft": 4338,
+        "critique": 9367,
+        "solver": 8483,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the capital city of the United Arab Emirates mentioned in the passage?",
+      "ms": {
+        "draft": 5842,
+        "critique": 5745,
+        "solver": 13649,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do many trees not grow in desert areas according to the passage?",
+      "ms": {
+        "draft": 5842,
+        "critique": 6363,
+        "solver": 14041,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the availability of water in desert areas?",
+      "ms": {
+        "draft": 5842,
+        "critique": 5274,
+        "solver": 630
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do people in Abu Dhabi wear loose cotton clothes and keep themselves fully covered?",
+      "ms": {
+        "draft": 4338,
+        "critique": 5721,
+        "solver": 13202,
+        "form": 2164
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person travels from Abu Dhabi to Kerala, what is the most likely mode of transport they would use?",
+      "ms": {
+        "draft": 5842,
+        "critique": 6114,
+        "solver": 15946,
+        "form": 1866,
+        "translation": 16607
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Shanta say about the time taken for their journey from Abu Dhabi to India?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the capital city of the United Arab Emirates mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason why many trees cannot grow in desert areas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 are the same (\"There is no sunlight\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the capital city of the United Arab Emirates mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do many trees not grow in desert areas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the availability of water in desert areas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why do people in Abu Dhabi wear loose cotton clothes and keep themselves fully covered?",
+      "reason": "near-duplicate of served question cmvh5443906vwgpfhw5ztgv3t (cosine 0.965 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

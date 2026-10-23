@@ -1,0 +1,738 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T08:43:01.548Z",
+  "finishedAt": "2026-10-22T08:54:15.405Z",
+  "seconds": 674,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu102.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 2 — The Invisible Living World: Beyond Our Naked Eye",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n2. C. R 1\nFor visually impaired students\nB. The leaf kept in darkness will show the presence of starch",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 195429,
+      "in": 42,
+      "out": 37,
+      "rejects": 5,
+      "promptTokens": 40979,
+      "completionTokens": 10046
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 356366,
+      "in": 37,
+      "out": 32,
+      "rejects": 5,
+      "promptTokens": 23818,
+      "completionTokens": 8923
+    },
+    "solver": {
+      "calls": 258,
+      "ms": 148217,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 45485,
+      "completionTokens": 2646
+    },
+    "form": {
+      "calls": 22,
+      "ms": 72709,
+      "in": 30,
+      "out": 16,
+      "rejects": 14,
+      "promptTokens": 7153,
+      "completionTokens": 1565
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 60,
+      "ms": 9953,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 59,
+      "ms": 659500,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 34786,
+      "completionTokens": 17643
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 4,
+    "6": 4
+  },
+  "flagged": 10,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is used to stain the onion peel for better visibility under a microscope?",
+      "ms": {
+        "draft": 4474,
+        "critique": 7185,
+        "solver": 16438,
+        "form": 4909
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the structure of an onion peel under the microscope look like?",
+      "ms": {
+        "draft": 4474,
+        "critique": 6773,
+        "solver": 11879,
+        "form": 2327
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a basic part of all cells?",
+      "ms": {
+        "draft": 4507,
+        "critique": 7095,
+        "solver": 1524
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following can be found in both animal and plant cells?",
+      "ms": {
+        "draft": 4507,
+        "critique": 8741,
+        "solver": 17540,
+        "form": 4430
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 4507,
+        "critique": 7793,
+        "solver": 1521,
+        "form": 2617
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason microorganisms are not seen with the naked eye?",
+      "ms": {
+        "draft": 3363,
+        "critique": 6236,
+        "solver": 11175,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information provided, what is the purpose of using a microscope when observing microorganisms?",
+      "ms": {
+        "draft": 3363,
+        "critique": 6876,
+        "solver": 1749,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, students observed microorganisms in pond water and soil suspension. They found organisms that were spherical, had a green pigment, and moved using special structures. Which of these is most likely to be the microorganism they observed?",
+      "ms": {
+        "draft": 3363,
+        "critique": 7514
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes a single cell with a green pigment and movement using special structures, which microorganism is it most likely to be?",
+      "ms": {
+        "draft": 3363,
+        "critique": 8633,
+        "solver": 12562,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observed a single cell in a drop of water that had a yellow, large structure and appeared to be nourishing the cell. Which of the following is most likely the cell the student observed?",
+      "ms": {
+        "draft": 3363,
+        "critique": 7925
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what would happen if microorganisms did not exist on Earth?",
+      "ms": {
+        "draft": 3366,
+        "critique": 5805,
+        "solver": 2380,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a microorganism that helps in making bread fluffy?",
+      "ms": {
+        "draft": 3366,
+        "critique": 6687,
+        "solver": 15127,
+        "form": 2338
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a microorganism used in the process of making bread and cakes?",
+      "ms": {
+        "draft": 14709,
+        "critique": 6196,
+        "solver": 5334,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student placed two slices of bread, one near the sink and the other in the refrigerator. After three days, the slice near the sink showed signs of mold. What is the most likely reason for this?",
+      "ms": {
+        "draft": 4322,
+        "critique": 8716
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an experiment, sugar solution is placed in a test tube with yeast. After a few hours, the balloon attached to the test tube gets inflated. Which of the following explains this phenomenon?",
+      "ms": {
+        "draft": 4322,
+        "critique": 7017,
+        "solver": 14648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a unicellular microorganism?",
+      "ms": {
+        "draft": 7014,
+        "critique": 7316
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A farmer added nitrogen-rich fertilizer to his wheat field, while a neighboring farmer grew beans without adding fertilizer. Why might the bean farmer not need to add nitrogen fertilizer?",
+      "ms": {
+        "draft": 4322,
+        "critique": 9053,
+        "solver": 14365,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of Rhizobium bacteria found in root nodules of legumes?",
+      "ms": {
+        "draft": 7014,
+        "critique": 7659,
+        "solver": 1811,
+        "form": 2981
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Fig. 2.13, what is the main structural difference between bacterial cells and other types of cells?",
+      "ms": {
+        "draft": 7014,
+        "critique": 8797,
+        "solver": 15860
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the word 'micro' in the term 'microorganisms'?",
+      "ms": {
+        "draft": 4202,
+        "critique": 6499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct characteristic of microorganisms according to the passage?",
+      "ms": {
+        "draft": 4202,
+        "critique": 4531,
+        "solver": 604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a benefit of growing legumes in rotation with other crops?",
+      "ms": {
+        "draft": 4714,
+        "critique": 6495,
+        "solver": 1169,
+        "form": 2082
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist first used the term 'cell' to describe the basic unit of life?",
+      "ms": {
+        "draft": 4474,
+        "critique": 7891,
+        "solver": 3006,
+        "form": 4422,
+        "translation": 52121
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when microorganisms break down complex substances into simpler, nutrient-rich substances?",
+      "ms": {
+        "draft": 3366,
+        "critique": 6216,
+        "solver": 1781,
+        "form": 5017,
+        "translation": 43327
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using a magnifying glass when observing small organisms?",
+      "ms": {
+        "draft": 4474,
+        "critique": 7018,
+        "solver": 15799,
+        "form": 5064,
+        "translation": 47799
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way microorganisms help the environment?",
+      "ms": {
+        "draft": 3927,
+        "critique": 7139,
+        "solver": 1763,
+        "form": 2965,
+        "translation": 38379
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an experiment, a student added yeast to a sugar solution and observed the balloon inflate. What is the most likely gas produced by the yeast?",
+      "ms": {
+        "draft": 4322,
+        "critique": 7359,
+        "solver": 12895,
+        "form": 0,
+        "translation": 40580
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the dough in bowl A to become fluffy and rise?",
+      "ms": {
+        "draft": 3927,
+        "critique": 7415,
+        "solver": 2068,
+        "form": 3456,
+        "translation": 44027
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 2.5, which part of the cell is responsible for storing substances and maintaining the shape of the cell?",
+      "ms": {
+        "draft": 4507,
+        "critique": 7338,
+        "solver": 1301,
+        "form": 5506,
+        "translation": 55963
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What would happen if a student observed a plant cell under a microscope without using a stain?",
+      "ms": {
+        "draft": 4474,
+        "critique": 6583,
+        "solver": 11379,
+        "form": 3467,
+        "translation": 46776
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, two bowls of dough were kept in different conditions. One was kept in a warm place and the other in a cool place. Which bowl would show more rising of the dough?",
+      "ms": {
+        "draft": 3366,
+        "critique": 7022,
+        "solver": 1578,
+        "form": 2510,
+        "translation": 119899
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observed that the dough in bowl A rose, while the dough in bowl B did not. What could be the reason?",
+      "ms": {
+        "draft": 3927,
+        "critique": 6969,
+        "solver": 1516,
+        "form": 3783,
+        "translation": 36622
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student observed cells under a microscope and noticed that some had a large, empty space inside, which of the following is most likely true?",
+      "ms": {
+        "draft": 4507,
+        "critique": 7145,
+        "solver": 2331,
+        "form": 3677,
+        "translation": 57944
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to use a coverslip when preparing a slide of an onion peel?",
+      "ms": {
+        "draft": 4474,
+        "critique": 6418,
+        "solver": 11217,
+        "form": 2730,
+        "translation": 42862
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student observed that the dough in one bowl rose while the other did not. Which of the following best explains this difference?",
+      "ms": {
+        "draft": 3366,
+        "critique": 6682,
+        "solver": 1617,
+        "form": 4569,
+        "translation": 47255
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If microorganisms did not exist, what would most likely happen to the waste in the environment?",
+      "ms": {
+        "draft": 3927,
+        "critique": 7034,
+        "solver": 1868,
+        "form": 1722,
+        "translation": 34088
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do different cells in the human body have different shapes and structures?",
+      "ms": {
+        "draft": 4507,
+        "critique": 8049,
+        "solver": 11736,
+        "form": 3947,
+        "translation": 46416
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of microorganisms?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is used to stain the onion peel for better visibility under a microscope?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the structure of an onion peel under the microscope look like?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"names a shape not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a basic part of all cells?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following can be found in both animal and plant cells?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct choice is not the longest option, but the one that m…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason microorganisms are not seen with the naked eye?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information provided, what is the purpose of using a microscope when observing microorganisms?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (not a distractor)…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, students observed microorganisms in pond water and soil suspension. They found organisms that were spherical, had a green pigment, and moved using special structures. Which of these is most likely to be the microorganism they observed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student observes a single cell with a green pigment and movement using special structures, which microorganism is it most likely to be?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student observed a single cell in a drop of water that had a yellow, large structure and appeared to be nourishing the cell. Which of the following is most likely the cell the student observed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what would happen if microorganisms did not exist on Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a microorganism that helps in making bread fluffy?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a microorganism used in the process of making bread and cakes?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In an experiment, two pits were dug. One pit had fruit and vegetable peels mixed with dried leaves, and the other had the same waste without mixing. After three weeks, the pit with mixed waste decomposed more. Why?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following microorganisms is used in the process of curd formation?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main source of oxygen produced by microalgae?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the basic unit of life according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student placed two slices of bread, one near the sink and the other in the refrigerator. After three days, the slice near the sink showed signs of mold. What is the most likely reason for this?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In an experiment, sugar solution is placed in a test tube with yeast. After a few hours, the balloon attached to the test tube gets inflated. Which of the following explains this phenomenon?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a unicellular microorganism?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A farmer added nitrogen-rich fertilizer to his wheat field, while a neighboring farmer grew beans without adding fertilizer. Why might the bean farmer not need to add nitrogen fertilizer?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of Rhizobium bacteria found in root nodules of legumes?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks Rhizobium affects soil pH directly, which is not ment…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on Fig. 2.13, what is the main structural difference between bacterial cells and other types of cells?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the meaning of the word 'micro' in the term 'microorganisms'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct characteristic of microorganisms according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a benefit of growing legumes in rotation with other crops?",
+      "reason": "near-duplicate of served question cmvg9oqqn02yigpfh53ya7ml8 (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 5,
+      "stem": "In an experiment, two bowls of dough were kept in different conditions. One was kept in a warm place and the other in a cool place. Which bowl would show more rising of the dough?",
+      "reason": "mr: the model's answer was not JSON (finish: length): {\n  \"stem\": \"एका प्रयोगात, दोन बर्फाच्या बर्फाच्या बर्फाच्या बर्फाच्या बर्फाच्या बर्फाच्या बर्फाच्या बर्फाच्या बर्फाच्या"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

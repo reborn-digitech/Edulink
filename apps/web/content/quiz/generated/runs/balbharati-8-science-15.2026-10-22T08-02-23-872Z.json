@@ -1,0 +1,499 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T08:02:23.872Z",
+  "finishedAt": "2026-10-22T08:09:27.083Z",
+  "seconds": 423,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 15 — Sound",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — question paper]\n20. (6 marks) Smartphones can be used to perform simple experiments related to sound. There are various\napps which record the intensity of an audio signal. An app (WaveEditor TM here) displays the audio signal\nin the form of a wave, whose amplitude is proportional to the loudness of the audio signal.\nTwo students Fatima (F) and Bharat (B) conduct a simple experiment using smartphones. In an open\nfield, both place their smartphones at a distance d from each other as shown in the figure. They stand\nnext to their smartphones, and clap one after another. The audio signals from the claps are digitally\nrecorded by WaveEditor TM and the output produced on their smartphone screens are shown next to ",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air.",
+      "[INJSO 2022 — question paper]\n6. On a windy day, standing on your balcony, you hear the whistle of a stationary train at a distance. Which\namong the velocity and frequency of the sound is/are affected by the wind?\nA. only velocity B. only frequency\nB. both velocity and frequency D. neither velocity nor frequency",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 104763,
+      "in": 25,
+      "out": 21,
+      "rejects": 5,
+      "promptTokens": 19774,
+      "completionTokens": 5314
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 172449,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 11051,
+      "completionTokens": 4344
+    },
+    "solver": {
+      "calls": 129,
+      "ms": 80652,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 25284,
+      "completionTokens": 1480
+    },
+    "form": {
+      "calls": 7,
+      "ms": 19662,
+      "in": 17,
+      "out": 10,
+      "rejects": 7,
+      "promptTokens": 1607,
+      "completionTokens": 514
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 57,
+      "ms": 9515,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 242056,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12485,
+      "completionTokens": 6461
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What happens to the air molecules when the prongs of a tuning fork move away from each other?",
+      "ms": {
+        "draft": 4477,
+        "critique": 6220
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of a medium in sound propagation?",
+      "ms": {
+        "draft": 4477,
+        "critique": 9589,
+        "solver": 1604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tuning fork vibrates 256 times per second, what is its frequency?",
+      "ms": {
+        "draft": 4477,
+        "critique": 6436,
+        "solver": 16122,
+        "form": 2497
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A tuning fork with a frequency of 512 Hz is used to generate sound. How many compressions are formed in the air per second?",
+      "ms": {
+        "draft": 4477,
+        "critique": 7267,
+        "solver": 19778,
+        "form": 3387
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would happen to the frequency of a tuning fork if its prongs were made thicker?",
+      "ms": {
+        "draft": 4477,
+        "critique": 7976,
+        "solver": 17268,
+        "form": 2835
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the frequency of a sound wave if 1000 compressions and rarefactions are produced per second?",
+      "ms": {
+        "draft": 3248,
+        "critique": 7490,
+        "solver": 2321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a Jaltarang experiment, a student strikes a glass cup with a pencil. What factor determines the frequency of the sound produced by the cup?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6919,
+        "solver": 2880
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student records the sound of a tuning fork using an app that displays the amplitude of the sound wave. If the tuning fork is struck harder, how will the amplitude of the wave change?",
+      "ms": {
+        "draft": 5970,
+        "critique": 9811
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A tuning fork produces sound waves in air. If the frequency of the tuning fork is 512 Hz, how many cycles of compression and rarefaction are produced in one second?",
+      "ms": {
+        "draft": 5970,
+        "critique": 9166
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "When a tuning fork is struck, it vibrates and produces sound. What happens to the air around the prongs during the vibration?",
+      "ms": {
+        "draft": 5970,
+        "critique": 6994,
+        "solver": 14409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason sound cannot travel through a vacuum?",
+      "ms": {
+        "draft": 5970,
+        "critique": 5546,
+        "solver": 7092,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 3381,
+        "critique": 9298,
+        "solver": 1580,
+        "form": 3363
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "ms": {
+        "draft": 3381,
+        "critique": 5772,
+        "solver": 1244,
+        "form": 2599
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 3248,
+        "critique": 6769,
+        "solver": 1174,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is required for the generation of sound?",
+      "ms": {
+        "draft": 3248,
+        "critique": 6916,
+        "solver": 1906,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "ms": {
+        "draft": 3248,
+        "critique": 7104,
+        "solver": 2736,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit used to measure the frequency of a sound wave?",
+      "ms": {
+        "draft": 4477,
+        "critique": 5143,
+        "solver": 1925,
+        "form": 4687,
+        "translation": 37789
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the medium required for the generation of sound?",
+      "ms": {
+        "draft": 3381,
+        "critique": 5837,
+        "solver": 1014,
+        "form": 1146,
+        "translation": 45980
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes that the sound produced by a flute changes when the holes on the flute are opened or closed. What is the reason for this change in sound?",
+      "ms": {
+        "draft": 4374,
+        "critique": 5211,
+        "solver": 1714,
+        "form": 1,
+        "translation": 58808
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a sound experiment, a student uses a smartphone app to measure the frequency of sound waves produced by a tuning fork. If the student moves closer to the tuning fork, what happens to the frequency of the sound measured?",
+      "ms": {
+        "draft": 4374,
+        "critique": 7049,
+        "solver": 1521,
+        "form": 0,
+        "translation": 50455
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a sound experiment, a student uses a loudspeaker to produce sound waves. The student notices that the loudness of the sound decreases as the distance from the loudspeaker increases. What is the main reason for this change in loudness?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6666,
+        "solver": 2133,
+        "form": 0,
+        "translation": 45026
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What determines the frequency of the sound produced when a gl"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the frequency of a sound wave if 1000 compressions and rarefactions are produced per second?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What determines the difference between different sound notes?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What type of energy is converted into sound energy in a loudspeaker?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the air molecules when the prongs of a tuning fork move away from each other?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of a medium in sound propagation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"confuses the role of medium with the passage's experiment…\"); distractor 2's reason is not a one-line misconception (\"contradicts the passage's experiment…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a tuning fork vibrates 256 times per second, what is its frequency?",
+      "reason": "options are written to different precisions (0 and 1 decimals); checkExpr \"256\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A tuning fork with a frequency of 512 Hz is used to generate sound. How many compressions are formed in the air per second?",
+      "reason": "checkExpr \"512\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What would happen to the frequency of a tuning fork if its prongs were made thicker?",
+      "reason": "option lengths are unalike (17 to 90 characters)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What determines the different sound notes?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the frequency of a sound wave if 1000 compressions and rarefactions are produced per second?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options mix numbers and words (3 of 4 are numbers); checkExpr \"1000\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a Jaltarang experiment, a student strikes a glass cup with a pencil. What factor determines the frequency of the sound produced by the cup?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student records the sound of a tuning fork using an app that displays the amplitude of the sound wave. If the tuning fork is struck harder, how will the amplitude of the wave change?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A tuning fork produces sound waves in air. If the frequency of the tuning fork is 512 Hz, how many cycles of compression and rarefaction are produced in one second?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "When a tuning fork is struck, it vibrates and produces sound. What happens to the air around the prongs during the vibration?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main reason sound cannot travel through a vacuum?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "reason": "near-duplicate of served question cmvf42bln032pgod8dx393ak6 (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is required for the generation of sound?",
+      "reason": "near-duplicate of served question cmvf42blk032jgod87gh3woz9 (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "reason": "near-duplicate of served question cmvf42bln032pgod8dx393ak6 (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:17:25.171Z",
+  "finishedAt": "2026-10-20T19:20:48.395Z",
+  "seconds": 203,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm114.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Data Handling",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n16. Which of the following gives the middle most observation of the data? 1\nA) Median B) Mean C) Range D) Mode",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n35.\nMarks obtained Number of Cumulative\n20 – 30\n30 – 40\n40 – 50\n50 – 60\n60 – 70\n70 – 80\n80 - 90\np + q + 78 = 90\np + q = 12\n೙ మ ି௖\nMedian = (𝑙) + ௙ . h\nସହି (௣ାସ଴)\n50 = 50 + . 10\nଶ଴\nସହି (௣ାସ଴)\n. 10 = 0\nଶ଴\n45 − (𝑝 + 40) = 0\nP = 5\n5 + q = 12\nq = 7\n௙ଵି ௙଴\nMode = 𝑙 + ଶ௙ଵି ௙଴ି ௙ଶ . h\nstudents frequency\np p\n15 p + 15\n25 p + 40 1\n20 p + 60\nq p + q + 60\n8 p + q + 68 ½\n10 p + q + 78 ½\n½\n½\n½\n½\nଶହି ଵହ\n= 40 + . 10\nଶ(ଶହ)ି ଵହି ଶ଴\nଵ଴଴\n= 40 + ଵହ = 40 + 6.67 = 46.67",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 45658,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9674,
+      "completionTokens": 2200
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 104635,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 6106,
+      "completionTokens": 2582
+    },
+    "solver": {
+      "calls": 76,
+      "ms": 44346,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 12518,
+      "completionTokens": 776
+    },
+    "form": {
+      "calls": 7,
+      "ms": 22822,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 1664,
+      "completionTokens": 438
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3465,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 241480,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13012,
+      "completionTokens": 6604
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which subject is liked the least by the children according to the data recorded?",
+      "ms": {
+        "draft": 4439,
+        "critique": 7729,
+        "solver": 2205
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 more children like Physical Education, how many children will like it the most?",
+      "ms": {
+        "draft": 4439,
+        "critique": 8231
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5 more children like The World Around Us, what will be the new most liked subject?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6630,
+        "solver": 1203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage show about data handling?",
+      "ms": {
+        "draft": 3171,
+        "critique": 8465,
+        "solver": 16513,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 children like Mathematics, 10 like Languages, 8 like The World Around Us, 7 like Physical Education, and 5 like Arts, which subject is the most liked?",
+      "ms": {
+        "draft": 3171,
+        "critique": 6609,
+        "solver": 1012,
+        "form": 2943
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 12 children like Mathematics, 9 like Languages, 6 like The World Around Us, 5 like Physical Education, and 4 like Arts, which subject is the least liked?",
+      "ms": {
+        "draft": 3171,
+        "critique": 6105,
+        "solver": 8332
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which subject is liked the most by the children according to the data recorded?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6040,
+        "solver": 1491,
+        "form": 3800,
+        "translation": 43164
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a way to display information?",
+      "ms": {
+        "draft": 3171,
+        "critique": 7558,
+        "solver": 16565,
+        "form": 3729,
+        "translation": 25961
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a question is asked to find the most liked subject, what should be the correct way to frame it?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6517,
+        "solver": 2297,
+        "form": 5241,
+        "translation": 59553
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of data handling?",
+      "ms": {
+        "draft": 3171,
+        "critique": 7521,
+        "solver": 1517,
+        "form": 4625,
+        "translation": 31049
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How did Rohan and Anjali record the children's answers?",
+      "ms": {
+        "draft": 3171,
+        "critique": 7955,
+        "solver": 1466,
+        "form": 4189,
+        "translation": 34431
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the data, which subject is neither the most nor the least liked?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6393,
+        "solver": 1319,
+        "form": 2616,
+        "translation": 42335
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which subject is liked the least by the children according to the data recorded?",
+      "reason": "the solver picked option 2 2 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 10 more children like Physical Education, how many children will like it the most?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 5 more children like The World Around Us, what will be the new most liked subject?",
+      "reason": "option 2 repeats the stem's wording (\"The World Around Us\"); checkExpr is set but the key \"The World Around Us\" states no number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage show about data handling?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"It is only for adults\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 15 children like Mathematics, 10 like Languages, 8 like The World Around Us, 7 like Physical Education, and 5 like Arts, which subject is the most liked?",
+      "reason": "option 2 repeats the stem's wording (\"The World Around Us\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 12 children like Mathematics, 9 like Languages, 6 like The World Around Us, 5 like Physical Education, and 4 like Arts, which subject is the least liked?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

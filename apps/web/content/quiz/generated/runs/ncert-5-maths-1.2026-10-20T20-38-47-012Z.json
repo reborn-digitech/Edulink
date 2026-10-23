@@ -1,0 +1,662 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:38:47.012Z",
+  "finishedAt": "2026-10-20T20:45:05.525Z",
+  "seconds": 379,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm101.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — We the Travellers—I",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A-E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D and E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 123847,
+      "in": 34,
+      "out": 32,
+      "rejects": 2,
+      "promptTokens": 24159,
+      "completionTokens": 8065
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 257516,
+      "in": 32,
+      "out": 21,
+      "rejects": 11,
+      "promptTokens": 19229,
+      "completionTokens": 7608
+    },
+    "solver": {
+      "calls": 175,
+      "ms": 86675,
+      "in": 21,
+      "out": 9,
+      "rejects": 12,
+      "promptTokens": 33553,
+      "completionTokens": 1960
+    },
+    "form": {
+      "calls": 2,
+      "ms": 8493,
+      "in": 9,
+      "out": 3,
+      "rejects": 6,
+      "promptTokens": 2342,
+      "completionTokens": 315
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 1957,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 87853,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6767,
+      "completionTokens": 3135
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a cyclist covers 15 km in one hour, how much distance will she cover in 4 hours at the same speed?",
+      "ms": {
+        "draft": 11064,
+        "critique": 5299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chapter in the book?",
+      "ms": {
+        "draft": 11064,
+        "critique": 5903
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the first form of transport invented by humans, according to the passage?",
+      "ms": {
+        "draft": 11064,
+        "critique": 6324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a school has 461 girls and 439 boys, and each bicycle can carry 2 people, how many bicycles are needed for all the students to go on a trip?",
+      "ms": {
+        "draft": 11064,
+        "critique": 6565
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student said 9,990 is greater than 49,014 because 9 is greater than 4. Is the student correct?",
+      "ms": {
+        "draft": 11064,
+        "critique": 7773
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers could both Vijay and Suma have rounded to the same result if Vijay rounded to the nearest hundred and Suma rounded to the nearest thousand?",
+      "ms": {
+        "draft": 11064,
+        "critique": 7248
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many different digits are used to create the two 2-digit numbers in Mira's puzzle?",
+      "ms": {
+        "draft": 3273,
+        "critique": 5814,
+        "solver": 1491
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the smallest number of trips the boatman needs to make to cross the river safely with the lion, sheep, and grass?",
+      "ms": {
+        "draft": 3273,
+        "critique": 6020,
+        "solver": 2113
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the difference between the distances covered by the car and the aeroplane in an hour, as mentioned in the passage?",
+      "ms": {
+        "draft": 3273,
+        "critique": 4960,
+        "solver": 1790
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the largest number of digits mentioned in the passage for the distance covered by a means of transport in an hour?",
+      "ms": {
+        "draft": 3273,
+        "critique": 6199,
+        "solver": 13037
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Ravi's car has been driven 56,987 km and Sheetal's car has been driven 67,543 km, which car has been driven more?",
+      "ms": {
+        "draft": 3273,
+        "critique": 6094,
+        "solver": 1440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the king counted 5 horses on each side of a square stable, how many total horses would he count?",
+      "ms": {
+        "draft": 3575,
+        "critique": 8246,
+        "solver": 1216
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "After the thief stole one horse, the caretaker arranged 18 horses in the stable with 5 on each side. How is this possible?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6804,
+        "solver": 1256,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 700 Tens?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6205,
+        "solver": 11298,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many more horses can the thief steal before the king notices something is wrong?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6426
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the caretaker wants to arrange 14 horses in the stable with 5 on each side, how can he do it?",
+      "ms": {
+        "draft": 3575,
+        "critique": 4725,
+        "solver": 518,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The caretaker arranged 18 horses in the stable so that there were 5 horses on each side. How many horses were on the sides, not counting the corners?",
+      "ms": {
+        "draft": 2994,
+        "critique": 5131
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The caretaker arranged 20 horses in a square stable so that there were 5 horses on each side. How many horses were at the corners?",
+      "ms": {
+        "draft": 2994,
+        "critique": 6309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The caretaker arranged 18 horses in the stable so that there were 5 on each side. How many horses could be placed at the corners if the same arrangement is used for 22 horses?",
+      "ms": {
+        "draft": 2994,
+        "critique": 7384,
+        "solver": 1284
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The king counted 5 horses along each side of the stable. The caretaker said there were 20 horses in total. But the correct count was 16. How many horses were counted twice?",
+      "ms": {
+        "draft": 2994,
+        "critique": 6673,
+        "solver": 14364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A book has 200 pages and each page has 50 words. How many words are there in the book?",
+      "ms": {
+        "draft": 5104,
+        "critique": 6355
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Ravi’s car has been driven 56,987 km and Sheetal’s car has been driven 67,543 km. Whose car has been driven more?",
+      "ms": {
+        "draft": 5104,
+        "critique": 6168
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A book has 200 pages and each page has 50 words. If the book has 10,000 words in total, how many words would be in a book with 100 pages?",
+      "ms": {
+        "draft": 5104,
+        "critique": 6062,
+        "solver": 1405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A boatman has to take a lion, a sheep, and a bundle of grass across the river. He can only take one of them at a time. If the sheep and grass are left together, the sheep will eat the grass. If the sheep and lion are left together, the lion will eat the sheep. What is the minimum number of trips required to get all three across safely?",
+      "ms": {
+        "draft": 5104,
+        "critique": 5979,
+        "solver": 14945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number obtained when we add a thousand to 9,000?",
+      "ms": {
+        "draft": 13269,
+        "critique": 7504,
+        "solver": 15396
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a number with the same nearest ten and nearest hundred?",
+      "ms": {
+        "draft": 13269,
+        "critique": 7670,
+        "solver": 11848
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is rounded to the nearest hundred and to the nearest thousand, and both give the same result, which of the following could be the number?",
+      "ms": {
+        "draft": 13269,
+        "critique": 7060,
+        "solver": 1127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cyclist travels at a speed of 15 km per hour. How much distance will she cover in 4 hours?",
+      "ms": {
+        "draft": 13269,
+        "critique": 5551,
+        "solver": 10235
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the nearest thousand to the number 2,346?",
+      "ms": {
+        "draft": 13269,
+        "critique": 6288,
+        "solver": 9478,
+        "form": 1804
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of words in a book that has 200 pages and 50 words per page?",
+      "ms": {
+        "draft": 3273,
+        "critique": 5998,
+        "solver": 1134,
+        "form": 0,
+        "translation": 28955
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The king saw 5 horses on each side of the stable. How many horses would be there if there were 6 horses on each side?",
+      "ms": {
+        "draft": 2994,
+        "critique": 6070,
+        "solver": 14362,
+        "form": 0,
+        "translation": 21815
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The thief stole a horse, leaving 18 horses in the stable. The caretaker arranged them so that there were 5 horses on each side of the square. How many horses were at the corners?",
+      "ms": {
+        "draft": 2994,
+        "critique": 4810,
+        "solver": 10045,
+        "form": 0,
+        "translation": 33245
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cyclist covers 15 km in one hour, how much distance will she cover in 4 hours at the same speed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the chapter in the book?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the first form of transport invented by humans, according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a school has 461 girls and 439 boys, and each bicycle can carry 2 people, how many bicycles are needed for all the students to go on a trip?",
+      "reason": "the critic finds option 0 correct, the key is 1; option 0 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A student said 9,990 is greater than 49,014 because 9 is greater than 4. Is the student correct?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following numbers could both Vijay and Suma have rounded to the same result if Vijay rounded to the nearest hundred and Suma rounded to the nearest thousand?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How many different digits are used to create the two 2-digit numbers in Mira's puzzle?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the smallest number of trips the boatman needs to make to cross the river safely with the lion, sheep, and grass?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the difference between the distances covered by the car and the aeroplane in an hour, as mentioned in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the largest number of digits mentioned in the passage for the distance covered by a means of transport in an hour?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If Ravi's car has been driven 56,987 km and Sheetal's car has been driven 67,543 km, which car has been driven more?",
+      "reason": "option 1 repeats the stem's wording (\"Sheetal's car\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the king counted 5 horses on each side of a square stable, how many total horses would he count?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "After the thief stole one horse, the caretaker arranged 18 horses in the stable with 5 on each side. How is this possible?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the need for 5 horses per side on the square shape o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of 700 Tens?",
+      "reason": "options 1 and 3 are the same (\"7000\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many more horses can the thief steal before the king notices something is wrong?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the caretaker wants to arrange 14 horses in the stable with 5 on each side, how can he do it?",
+      "reason": "options 0 and 1 say the same thing (\"Place 3 horses on each side and 2 at the corners\" / \"Place 2 horses on each side and 3 at the corners\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Arrange the prices of electric bikes in ascending order: ₹90,000, ₹89,999, ₹94,983, ₹49,900, ₹93,743, ₹39,999.",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many ₹100 notes are there in ₹7,934?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The caretaker arranged 18 horses in the stable so that there were 5 horses on each side. How many horses were on the sides, not counting the corners?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The caretaker arranged 20 horses in a square stable so that there were 5 horses on each side. How many horses were at the corners?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The caretaker arranged 18 horses in the stable so that there were 5 on each side. How many horses could be placed at the corners if the same arrangement is used for 22 horses?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The king counted 5 horses along each side of the stable. The caretaker said there were 20 horses in total. But the correct count was 16. How many horses were counted twice?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A book has 200 pages and each page has 50 words. How many words are there in the book?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Ravi’s car has been driven 56,987 km and Sheetal’s car has been driven 67,543 km. Whose car has been driven more?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A book has 200 pages and each page has 50 words. If the book has 10,000 words in total, how many words would be in a book with 100 pages?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A boatman has to take a lion, a sheep, and a bundle of grass across the river. He can only take one of them at a time. If the sheep and grass are left together, the sheep will eat the grass. If the sheep and lion are left together, the lion will eat the sheep. What is the minimum number of trips required to get all three across safely?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'boat'"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the number obtained when we add a thousand to 9,000?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a number with the same nearest ten and nearest hundred?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number is rounded to the nearest hundred and to the nearest thousand, and both give the same result, which of the following could be the number?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cyclist travels at a speed of 15 km per hour. How much distance will she cover in 4 hours?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the nearest thousand to the number 2,346?",
+      "reason": "checkExpr \"2000\" is a bare literal"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

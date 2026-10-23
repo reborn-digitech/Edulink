@@ -1,0 +1,637 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T20:40:07.755Z",
+  "finishedAt": "2026-10-19T20:52:08.134Z",
+  "seconds": 720,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp108.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Playing with Constructions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n33. Correct given, figure and construction\nCorrect Proof\nsince LM is parallel to QR\nLet PM= 𝑥\n௉௅ ௉ெ\n௉ொ = ௉ோ\nହ.଻ ௫\nଵହ.ଶ = ௫ାହ.ହ\n𝑥 =PM=3.3cm\n½\n½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 126814,
+      "in": 33,
+      "out": 32,
+      "rejects": 3,
+      "promptTokens": 27095,
+      "completionTokens": 7687
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 256899,
+      "in": 32,
+      "out": 26,
+      "rejects": 6,
+      "promptTokens": 19480,
+      "completionTokens": 7570
+    },
+    "solver": {
+      "calls": 204,
+      "ms": 98572,
+      "in": 26,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 38992,
+      "completionTokens": 2245
+    },
+    "form": {
+      "calls": 13,
+      "ms": 56429,
+      "in": 23,
+      "out": 15,
+      "rejects": 8,
+      "promptTokens": 6781,
+      "completionTokens": 1628
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 5811,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 518590,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 31953,
+      "completionTokens": 15847
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 4,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the construction of a square, which method ensures that all sides are equal?",
+      "ms": {
+        "draft": 2911,
+        "critique": 6164
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the point from which all points on a circle are equidistant?",
+      "ms": {
+        "draft": 2911,
+        "critique": 5691,
+        "solver": 1560,
+        "form": 2643
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a square is drawn on a dot paper with its corners on the dots, which of the following is not a valid way to name it?",
+      "ms": {
+        "draft": 2911,
+        "critique": 7430
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to construct a rectangle with one side measuring 5 cm and a diagonal of 7 cm, which method would be most efficient?",
+      "ms": {
+        "draft": 3558,
+        "critique": 5181,
+        "solver": 1609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a circle is drawn with a compass, and a point is taken on the circle, what is the distance from the centre of the circle to this point?",
+      "ms": {
+        "draft": 2911,
+        "critique": 5364,
+        "solver": 10166,
+        "form": 3934
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the key property of a rectangle that helps in its construction?",
+      "ms": {
+        "draft": 3558,
+        "critique": 8667
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a name for the square according to the passage?",
+      "ms": {
+        "draft": 3901,
+        "critique": 7707,
+        "solver": 12113
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the figure formed when all points are at the same distance from a central point?",
+      "ms": {
+        "draft": 3901,
+        "critique": 7844,
+        "solver": 11074,
+        "form": 2145
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle is to be constructed with one side of 4 cm and the diagonal of 8 cm. What should be the length of the other side?",
+      "ms": {
+        "draft": 3901,
+        "critique": 7376,
+        "solver": 1379,
+        "form": 5446
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangle is drawn on a dot grid. If the corners of the rectangle are on the dots, and the sides are not aligned with the grid lines, can we still determine if it is a rectangle without measuring?",
+      "ms": {
+        "draft": 3901,
+        "critique": 5040,
+        "solver": 1502
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that a rectangle can be divided into 3 identical squares. What is the ratio of the length to the breadth of such a rectangle?",
+      "ms": {
+        "draft": 3901,
+        "critique": 8691
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the diagonal of a rectangle is 10 cm and the length of one side is 6 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 3901,
+        "critique": 5697,
+        "solver": 8365
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first step in constructing a rectangle with a side of 5 cm and a diagonal of 7 cm?",
+      "ms": {
+        "draft": 4244,
+        "critique": 6880
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How can we locate point B in the rectangle construction?",
+      "ms": {
+        "draft": 4244,
+        "critique": 8048
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the distance between the centre of a circle and any point on the circle?",
+      "ms": {
+        "draft": 6885,
+        "critique": 6294,
+        "solver": 10134,
+        "form": 3257
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A person is trying to draw a wavy wave with a central line of 10 cm. They want both waves to be identical. What is the minimum radius of the compass required to achieve this?",
+      "ms": {
+        "draft": 6885,
+        "critique": 5073,
+        "solver": 1565,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square is rotated, what remains the same?",
+      "ms": {
+        "draft": 6885,
+        "critique": 6296,
+        "solver": 9529,
+        "form": 3069
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle is drawn with sides of length 4 cm and 6 cm, what should be the measure of each angle in the rectangle?",
+      "ms": {
+        "draft": 10637,
+        "critique": 4449,
+        "solver": 1719,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wave is drawn on a central line of 8 cm length. What is the radius of the compass needed to draw a half-circle wave?",
+      "ms": {
+        "draft": 6885,
+        "critique": 5543,
+        "solver": 1392,
+        "form": 2898
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method to find point D in a rectangle construction?",
+      "ms": {
+        "draft": 4244,
+        "critique": 6966,
+        "solver": 15563,
+        "form": 3086,
+        "translation": 43430
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of drawing a circle with radius 5 cm from point B in the house construction?",
+      "ms": {
+        "draft": 4244,
+        "critique": 6325,
+        "solver": 14468,
+        "form": 3264,
+        "translation": 29017
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a name for a square?",
+      "ms": {
+        "draft": 10637,
+        "critique": 4292,
+        "solver": 1132,
+        "form": 0,
+        "translation": 27560
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of drawing a rough diagram before starting a geometric construction?",
+      "ms": {
+        "draft": 3558,
+        "critique": 6261,
+        "solver": 1562,
+        "form": 0,
+        "translation": 44443
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square is rotated, what remains the same about it?",
+      "ms": {
+        "draft": 2911,
+        "critique": 5671,
+        "solver": 936,
+        "form": 3307,
+        "translation": 37808
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of a square, what is the purpose of drawing a perpendicular line at a corner?",
+      "ms": {
+        "draft": 2911,
+        "critique": 6374,
+        "solver": 10089,
+        "form": 3339,
+        "translation": 37397
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a dot grid, how can you determine if a figure is a square without using any measuring instruments?",
+      "ms": {
+        "draft": 10637,
+        "critique": 4896,
+        "solver": 14983,
+        "form": 0,
+        "translation": 39157
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, what is the relationship between the length of the diagonal and the lengths of the sides?",
+      "ms": {
+        "draft": 10637,
+        "critique": 7264,
+        "solver": 1322,
+        "form": 0,
+        "translation": 74726
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of a house with all sides of 5 cm, how can the point A, which is 5 cm from both B and C, be located?",
+      "ms": {
+        "draft": 3558,
+        "critique": 5142,
+        "solver": 1474,
+        "form": 0,
+        "translation": 55107
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A rectangle is constructed with a length of 7 cm and a width of 2 cm. Can this rectangle be divided into three identical squares?",
+      "ms": {
+        "draft": 10637,
+        "critique": 7857,
+        "solver": 1294,
+        "form": 0,
+        "translation": 33985
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student is constructing a rectangle and has already drawn a base of 5 cm and a perpendicular line at one end, what is the next step to find the opposite corner of the rectangle?",
+      "ms": {
+        "draft": 3558,
+        "critique": 4819,
+        "solver": 1157,
+        "form": 0,
+        "translation": 55193
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a rectangle, the diagonal divides one of the angles into two equal parts. What can be said about the sides of the rectangle?",
+      "ms": {
+        "draft": 10637,
+        "critique": 7672,
+        "solver": 11533,
+        "form": 0,
+        "translation": 35386
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "When constructing a rectangle with a diagonal of 7 cm, why is it more efficient to draw arcs instead of full circles?",
+      "ms": {
+        "draft": 3558,
+        "critique": 4811,
+        "solver": 1703,
+        "form": 0,
+        "translation": 46344
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is a property of a rectangle?\",\n      "
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the construction of a square, which method ensures that all sides are equal?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the name of the point from which all points on a circle are equidistant?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (but included for structure…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a square is drawn on a dot paper with its corners on the dots, which of the following is not a valid way to name it?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to construct a rectangle with one side measuring 5 cm and a diagonal of 7 cm, which method would be most efficient?",
+      "reason": "the key is far longer than every distractor (113 vs 61 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a circle is drawn with a compass, and a point is taken on the circle, what is the distance from the centre of the circle to this point?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the key property of a rectangle that helps in its construction?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a name for the square according to the passage?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the figure formed when all points are at the same distance from a central point?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A rectangle is to be constructed with one side of 4 cm and the diagonal of 8 cm. What should be the length of the other side?",
+      "reason": "checkExpr \"sqrt(8^2 - 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A rectangle is drawn on a dot grid. If the corners of the rectangle are on the dots, and the sides are not aligned with the grid lines, can we still determine if it is a rectangle without measuring?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage mentions that a rectangle can be divided into 3 identical squares. What is the ratio of the length to the breadth of such a rectangle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the diagonal of a rectangle is 10 cm and the length of one side is 6 cm, what is the length of the other side?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How can we find point A in the house construction?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is a property of a rectangle?\",\n      "
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the first step in constructing a rectangle with a side of 5 cm and a diagonal of 7 cm?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How can we locate point B in the rectangle construction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for the distance between the centre of a circle and any point on the circle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A person is trying to draw a wavy wave with a central line of 10 cm. They want both waves to be identical. What is the minimum radius of the compass required to achieve this?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a square is rotated, what remains the same?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a rectangle is drawn with sides of length 4 cm and 6 cm, what should be the measure of each angle in the rectangle?",
+      "reason": "near-duplicate of served question cmvejr26j00a7god8rpmqkag2 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A wave is drawn on a central line of 8 cm length. What is the radius of the compass needed to draw a half-circle wave?",
+      "reason": "near-duplicate of served question cmveh0nk200m1go63i6ayntbs (cosine 0.912 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

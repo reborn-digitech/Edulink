@@ -1,0 +1,574 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T04:39:18.378Z",
+  "finishedAt": "2026-10-20T04:45:21.551Z",
+  "seconds": 363,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Cell and Cell Organelles",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[INJSO 2020 — question paper]\n14. Chromophores are commonly used as biological stains to view cell organelles better. When\nan epithelial cell (e.g. skin cell) is stained with a basic dye like methylene blue and observed\nunder a light microscope (total magnification of 100X), the visible cell organelle(s) will be\nA. Blue nucleus and blue mitochondria.\nB. Blue nucleus and blue endosomes.\nC. Blue nucleus and pink mitochondria.\nD. Blue nucleus.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[INJSO 2021 — question paper]\n3. Descriptions of four biological samples (I - IV) are given below.\nI: Can be viewed using a light microscope with a total magnification of 1000X; possesses cell wall\nand does not possess mitochondria.\nII: Can be seen using a light microscope with a total magnification of 100X; possesses cell wall and\nhas a nucleus.\nIII: Needs electron microscope for viewing; can be found attached to the membrane system in the\ncytoplasm.\nIV: Needs electron microscope for viewing; cannot replicate on its own, needs other specific cells\nfor replication.\nI, II, III, and IV respectively represent:\nA. virus; plant cell; ribosome; bacteria. B. plant cell; bacteria; vacuole; virus.\nC. bacteria; plant cell; ribosom"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 98227,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 25938,
+      "completionTokens": 5872
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 213335,
+      "in": 30,
+      "out": 22,
+      "rejects": 8,
+      "promptTokens": 15644,
+      "completionTokens": 6299
+    },
+    "solver": {
+      "calls": 154,
+      "ms": 67361,
+      "in": 22,
+      "out": 19,
+      "rejects": 3,
+      "promptTokens": 25929,
+      "completionTokens": 1642
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3103,
+      "in": 19,
+      "out": 16,
+      "rejects": 3,
+      "promptTokens": 236,
+      "completionTokens": 80
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 36,
+      "ms": 5371,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 444560,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 29985,
+      "completionTokens": 14391
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 3634,
+        "critique": 5834
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary function of the cell wall?",
+      "ms": {
+        "draft": 3634,
+        "critique": 6604,
+        "solver": 1431,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organelle is responsible for producing energy-rich compounds like ATP?",
+      "ms": {
+        "draft": 3205,
+        "critique": 7680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell is unable to digest waste materials, which organelle is most likely malfunctioning?",
+      "ms": {
+        "draft": 3205,
+        "critique": 5358,
+        "solver": 1555,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of lysosomes in a cell?",
+      "ms": {
+        "draft": 3205,
+        "critique": 8151,
+        "solver": 10106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a cell under a microscope and noticed that it had a double membrane with folds. What is the most likely organelle being observed?",
+      "ms": {
+        "draft": 3205,
+        "critique": 5867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if red blood cells had mitochondria?",
+      "ms": {
+        "draft": 2275,
+        "critique": 7148,
+        "solver": 10374
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organelle is described as the secretory organ of the cell and is responsible for modifying, sorting, and packing materials?",
+      "ms": {
+        "draft": 3696,
+        "critique": 4804
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about prokaryotic cells?",
+      "ms": {
+        "draft": 2275,
+        "critique": 7087
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a membrane-bound organelle?",
+      "ms": {
+        "draft": 2275,
+        "critique": 6329,
+        "solver": 11251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of lysosomes in a cell?",
+      "ms": {
+        "draft": 3696,
+        "critique": 4668
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has a high demand for energy, which organelle would be most numerous in that cell?",
+      "ms": {
+        "draft": 3696,
+        "critique": 4388
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which organelle is responsible for converting solar energy into chemical energy in plant cells?",
+      "ms": {
+        "draft": 3696,
+        "critique": 5274
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the Golgi Complex in the formation of the cell wall?",
+      "ms": {
+        "draft": 3696,
+        "critique": 4267,
+        "solver": 6060
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell lacks mitochondria, what would be the most immediate effect on the cell?",
+      "ms": {
+        "draft": 3205,
+        "critique": 6287,
+        "solver": 1672,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is known as the ATP producing factory of the cell?",
+      "ms": {
+        "draft": 2275,
+        "critique": 5997,
+        "solver": 1486,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which cell organelle is referred to as the 'ATP producing factory'?",
+      "ms": {
+        "draft": 3320,
+        "critique": 6400,
+        "solver": 832,
+        "form": 3103,
+        "translation": 36783
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to a plant cell when it is placed in a hypertonic solution?",
+      "ms": {
+        "draft": 3634,
+        "critique": 6177,
+        "solver": 1150,
+        "form": 0,
+        "translation": 34040
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the plasma membrane?",
+      "ms": {
+        "draft": 3320,
+        "critique": 7246,
+        "solver": 12264,
+        "form": 0,
+        "translation": 28781
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is responsible for maintaining the osmotic pressure of the cell?",
+      "ms": {
+        "draft": 2275,
+        "critique": 5997,
+        "solver": 834,
+        "form": 0,
+        "translation": 28478
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which organelle is responsible for the synthesis of proteins?",
+      "ms": {
+        "draft": 3634,
+        "critique": 6206,
+        "solver": 1797,
+        "form": 0,
+        "translation": 30422
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell lacked mitochondria, what would happen?",
+      "ms": {
+        "draft": 3320,
+        "critique": 6812,
+        "solver": 1209,
+        "form": 0,
+        "translation": 31982
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the Golgi complex in a cell?",
+      "ms": {
+        "draft": 3205,
+        "critique": 7388,
+        "solver": 10115,
+        "form": 0,
+        "translation": 39664
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of a eukaryotic cell?",
+      "ms": {
+        "draft": 3320,
+        "critique": 6707,
+        "solver": 1455,
+        "form": 0,
+        "translation": 29630
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is placed in a solution where the water concentration is the same inside and outside the cell, what will happen to the cell?",
+      "ms": {
+        "draft": 3634,
+        "critique": 6218,
+        "solver": 1265,
+        "form": 0,
+        "translation": 37572
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a function of the cell wall in plant cells?",
+      "ms": {
+        "draft": 5141,
+        "critique": 4242,
+        "solver": 1018,
+        "form": 0,
+        "translation": 27809
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a cell under a microscope and noted that it had a cell wall and chloroplasts. Which type of cell is most likely to be observed?",
+      "ms": {
+        "draft": 3320,
+        "critique": 5974,
+        "solver": 1201,
+        "form": 0,
+        "translation": 27653
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is responsible for the green color of leaves?",
+      "ms": {
+        "draft": 2275,
+        "critique": 7462,
+        "solver": 1732,
+        "form": 0,
+        "translation": 19534
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are plant cells more rigid compared to animal cells?",
+      "ms": {
+        "draft": 3634,
+        "critique": 6158,
+        "solver": 13528,
+        "form": 0,
+        "translation": 39631
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a cell lacked chlorophyll, what would be the consequence?",
+      "ms": {
+        "draft": 3320,
+        "critique": 4486,
+        "solver": 1348,
+        "form": 0,
+        "translation": 29492
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary function of the cell wall?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which organelle is responsible for producing energy-rich compounds like ATP?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a cell is unable to digest waste materials, which organelle is most likely malfunctioning?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor (only for wr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of lysosomes in a cell?",
+      "reason": "options 0 and 3 are the same (\"To produce ATP\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed a cell under a microscope and noticed that it had a double membrane with folds. What is the most likely organelle being observed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if red blood cells had mitochondria?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which organelle is described as the secretory organ of the cell and is responsible for modifying, sorting, and packing materials?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following statements is true about prokaryotic cells?",
+      "reason": "the critic finds option 2 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a membrane-bound organelle?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary function of lysosomes in a cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cell has a high demand for energy, which organelle would be most numerous in that cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which organelle is responsible for converting solar energy into chemical energy in plant cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the role of the Golgi Complex in the formation of the cell wall?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a cell lacks mitochondria, what would be the most immediate effect on the cell?",
+      "reason": "near-duplicate of served question cmvf2bsuu02uvgod8yaks6vxg (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is known as the ATP producing factory of the cell?",
+      "reason": "near-duplicate of batch item \"Which cell organelle is referred to as the 'ATP pr…\" (cosine 0.944 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,860 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T00:02:52.902Z",
+  "finishedAt": "2026-10-20T00:10:39.357Z",
+  "seconds": 466,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp108.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Working with Fractions",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the",
+      "[RMO 2015 — solutions or answer key]\n3. Find all fractions which can be written simultaneously in the forms and , for\n5k − 3 4l − 3\nsome integers k, l.\n7k − 5 6l − 1\nSolution: If a fraction is simultaneously in the forms and , we must have\n5k − 3 4l − 3\n7k − 5 6l − 1\n= .\n5k − 3 4l − 3\nThis simplifies to kl + 8k + l − 6 = 0. We can write this in the form\n(k + 1)(l + 8) = 14.\nNow 14 can be factored in 8 ways: 1 × 14, 2 × 7, 7 × 2, 14 × 1, (−1) × (−14), (−2) × (−7),\n(−7) × (−2) and (−14) × (−1). Thus we get 8 pairs:\n(k, l) = (13, −7), (6, −6), (1, −1), (0, 6), (−15, −9), (−8, −10), (−3, −15), (−2, −22).\nThese lead respectively to 8 fractions:\n43 31 55\n, , 1,\n31 27 39\n5 61 19 13\n, , , , .\n3 43 13 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 194411,
+      "in": 44,
+      "out": 44,
+      "rejects": 0,
+      "promptTokens": 46586,
+      "completionTokens": 11894
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 328709,
+      "in": 44,
+      "out": 38,
+      "rejects": 6,
+      "promptTokens": 26329,
+      "completionTokens": 9940
+    },
+    "solver": {
+      "calls": 272,
+      "ms": 131745,
+      "in": 38,
+      "out": 25,
+      "rejects": 13,
+      "promptTokens": 55066,
+      "completionTokens": 2983
+    },
+    "form": {
+      "calls": 11,
+      "ms": 96180,
+      "in": 25,
+      "out": 9,
+      "rejects": 16,
+      "promptTokens": 10510,
+      "completionTokens": 2917
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4250,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 206358,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13961,
+      "completionTokens": 6506
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "A worker can make 1/8 km of a canal in 1 day. How much can they make in 5 days?",
+      "ms": {
+        "draft": 6278,
+        "critique": 5798,
+        "solver": 1079,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of multiplying 3 by 1/5?",
+      "ms": {
+        "draft": 6278,
+        "critique": 6051,
+        "solver": 1509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A farmer distributes 1/2 acre of land to each of her 5 grandchildren. How much land does she give in total?",
+      "ms": {
+        "draft": 6278,
+        "critique": 6550,
+        "solver": 984,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a train covers 2/3 km in 1/2 hour, how far will it travel in 3 hours?",
+      "ms": {
+        "draft": 6278,
+        "critique": 7387,
+        "solver": 1635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A tortoise walks 1/4 km in 1 hour. How far will it walk in 3 hours?",
+      "ms": {
+        "draft": 6278,
+        "critique": 6473,
+        "solver": 13550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the tap is open for 1/3 hour, how much of the tank is filled?",
+      "ms": {
+        "draft": 4584,
+        "critique": 8093,
+        "solver": 1239
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of multiplying 2 by 1/4?",
+      "ms": {
+        "draft": 6278,
+        "critique": 6953,
+        "solver": 12116
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the area of a rectangle with sides 1/3 unit and 1/4 unit?",
+      "ms": {
+        "draft": 4584,
+        "critique": 5594,
+        "solver": 1198,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of dividing 1 by 3/4?",
+      "ms": {
+        "draft": 4136,
+        "critique": 6337,
+        "solver": 1470,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of dividing 3/4 by 2/5?",
+      "ms": {
+        "draft": 4136,
+        "critique": 6229,
+        "solver": 11103
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the product of 2/5 and 3/4?",
+      "ms": {
+        "draft": 4584,
+        "critique": 6512,
+        "solver": 1387,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cistern is filled by four fountains. The first can fill it in 1 day, the second in 1/2 day, the third in 1/4 day, and the fourth in 1/5 day. If they all flow together, how many days will they take to fill the cistern?",
+      "ms": {
+        "draft": 4136,
+        "critique": 6939,
+        "solver": 1663,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of dividing 3/2 by 1/4?",
+      "ms": {
+        "draft": 4136,
+        "critique": 5913,
+        "solver": 1219,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "ms": {
+        "draft": 6124,
+        "critique": 5942,
+        "solver": 1511
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinar?",
+      "ms": {
+        "draft": 6124,
+        "critique": 7041,
+        "solver": 15441
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "ms": {
+        "draft": 6124,
+        "critique": 5701,
+        "solver": 14950,
+        "form": 3924
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the number that, when multiplied by a fraction, gives the product as 1?",
+      "ms": {
+        "draft": 3426,
+        "critique": 6863
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When multiplying fractions, what should be done if the numerators and denominators have common factors?",
+      "ms": {
+        "draft": 3426,
+        "critique": 4812
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What fraction of the original ant group reached each food source, if they split equally at each point?",
+      "ms": {
+        "draft": 6124,
+        "critique": 6102,
+        "solver": 1248,
+        "form": 4184
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A fraction is given as 4/7. If the numerator is increased by 1, the fraction becomes 5/8. What is the original fraction?",
+      "ms": {
+        "draft": 4399,
+        "critique": 5162,
+        "solver": 5918
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 1/4 of the pages of a 400-page novel were read yesterday and 1/4 today, how many pages are left to read?",
+      "ms": {
+        "draft": 3492,
+        "critique": 7144,
+        "solver": 1748
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct rule for multiplying fractions?",
+      "ms": {
+        "draft": 3474,
+        "critique": 4957,
+        "solver": 1310,
+        "form": 2744
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a fraction is multiplied by its reciprocal, what is the product?",
+      "ms": {
+        "draft": 3474,
+        "critique": 5020,
+        "solver": 1265,
+        "form": 1533
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a day, the first fountain fills the cistern 1 time, the second 2 times, the third 4 times, and the fourth 5 times. How many times do they fill the cistern together in a day?",
+      "ms": {
+        "draft": 3474,
+        "critique": 5613,
+        "solver": 1717
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A water tank is filled from a tap. If the tap is open for 1 hour, 1/5 of the tank gets filled. How long should the tap be open to fill the entire tank?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 1/3 of a land is taken by the government, and then 1/2 of the remaining land is given to a daughter and 1/3 of the remaining land is given to a son, what fraction of the original land does the mother keep?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6489
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "ms": {
+        "draft": 3014,
+        "critique": 5187,
+        "solver": 1017
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1/2 of a tank is filled in 1 hour, how much of the tank is filled in 3 hours?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6202,
+        "solver": 11572
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinars?",
+      "ms": {
+        "draft": 3014,
+        "critique": 7309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 3 ÷ 1?",
+      "ms": {
+        "draft": 3014,
+        "critique": 5640,
+        "solver": 1289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 3 ÷ 2?",
+      "ms": {
+        "draft": 3014,
+        "critique": 6587,
+        "solver": 1505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of dividing 3 by 1/4?",
+      "ms": {
+        "draft": 5316,
+        "critique": 5218,
+        "solver": 11857,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many bags did Maria decorate if she used 1/4 meter of lace for each bag and had 8 meters of lace?",
+      "ms": {
+        "draft": 3014,
+        "critique": 5517,
+        "solver": 13119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cistern is filled by four fountains. The first fills it in 1 day, the second in 1/2 day, the third in 1/4 day, and the fourth in 1/5 day. How much of the cistern do they fill together in one day?",
+      "ms": {
+        "draft": 5316,
+        "critique": 6588
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a square has a shaded region that is 1/2 of 1/4 of the square, what fraction of the square is shaded?",
+      "ms": {
+        "draft": 5316,
+        "critique": 5731,
+        "solver": 1018,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the product of two fractions is less than both the numbers, which of the following must be true?",
+      "ms": {
+        "draft": 4584,
+        "critique": 6251,
+        "solver": 14342,
+        "form": 3701
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of dividing 8 by 2?",
+      "ms": {
+        "draft": 3492,
+        "critique": 4266,
+        "solver": 1285,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 1/2 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "ms": {
+        "draft": 3492,
+        "critique": 7807,
+        "solver": 13440,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a ribbon of length 1 meter is used to make 8 badges, what is the length of ribbon used for each badge?",
+      "ms": {
+        "draft": 3492,
+        "critique": 3988,
+        "solver": 15381,
+        "form": 0,
+        "translation": 30425
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A baker needs 1/2 kg of flour to make one loaf of bread. If he has 5 kg of flour, how many loaves of bread can he make?",
+      "ms": {
+        "draft": 3492,
+        "critique": 4305,
+        "solver": 2373,
+        "form": 0,
+        "translation": 31294
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the product of two fractions and the numbers being multiplied?",
+      "ms": {
+        "draft": 4584,
+        "critique": 6148,
+        "solver": 1228,
+        "form": 2694,
+        "translation": 50852
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the tap is open for 2/3 hour, what fraction of the tank is filled?",
+      "ms": {
+        "draft": 4584,
+        "critique": 5972,
+        "solver": 1634,
+        "form": 2280,
+        "translation": 32167
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a car runs 16 km using 1 litre of petrol, how far will it go using 2 1/2 litres of petrol?",
+      "ms": {
+        "draft": 3492,
+        "critique": 5917,
+        "solver": 1198,
+        "form": 0,
+        "translation": 20172
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the example from the Baudhāyana’s Śhulbasūtra, an area of 7 square units is to be covered with square bricks each of whose sides is 1/5 units. How many bricks are needed?",
+      "ms": {
+        "draft": 4136,
+        "critique": 6786,
+        "solver": 1178,
+        "form": 0,
+        "translation": 37205
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A worker can make 1/8 km of a canal in 1 day. How much can they make in 5 days?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of multiplying 3 by 1/5?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A farmer distributes 1/2 acre of land to each of her 5 grandchildren. How much land does she give in total?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a train covers 2/3 km in 1/2 hour, how far will it travel in 3 hours?",
+      "reason": "checkExpr \"4\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A tortoise walks 1/4 km in 1 hour. How far will it walk in 3 hours?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the tap is open for 1/3 hour, how much of the tank is filled?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of multiplying 2 by 1/4?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the area of a rectangle with sides 1/3 unit and 1/4 unit?",
+      "reason": "figure: figure spec refused: spec.segments.0.length.unit: Invalid enum value. Expected 'cm' | 'mm' | 'm' | 'km' | 'deg' | 'units', received 'unit'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of dividing 1 by 3/4?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the result of dividing 3/4 by 2/5?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the product of 2/5 and 3/4?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label Product"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A cistern is filled by four fountains. The first can fill it in 1 day, the second in 1/2 day, the third in 1/4 day, and the fourth in 1/5 day. If they all flow together, how many days will they take to fill the cistern?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of dividing 3/2 by 1/4?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinar?",
+      "reason": "after redraft: the solver picked option 2 2 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "reason": "options 1 and 3 are the same (\"1/6 kg\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for the number that, when multiplied by a fraction, gives the product as 1?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "When multiplying fractions, what should be done if the numerators and denominators have common factors?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What fraction of the original ant group reached each food source, if they split equally at each point?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ant'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A fraction is given as 4/7. If the numerator is increased by 1, the fraction becomes 5/8. What is the original fraction?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 1/4 of the pages of a 400-page novel were read yesterday and 1/4 today, how many pages are left to read?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct rule for multiplying fractions?",
+      "reason": "options 0 and 1 say the same thing (\"Multiply numerators and add denominators\" / \"Multiply denominators and add numerators\"); options 0 and 2 say the same thing (\"Multiply numerators and add denominators\" / \"Multiply numerators and multiply denominators\"); options 0 and 3 say the same thing (\"Multiply numerators and add denominators\" / \"Add numerators and add denominators\"); options 1 and 2 say the same thing (\"Multiply denominators and add numerators\" / \"Multiply numerators and multiply denominators\"); options 1 and 3 say the same thing (\"Multiply denominators and add numerators\" / \"Add numerators and add denominators\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option and follows the rul…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a fraction is multiplied by its reciprocal, what is the product?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a day, the first fountain fills the cistern 1 time, the second 2 times, the third 4 times, and the fourth 5 times. How many times do they fill the cistern together in a day?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A water tank is filled from a tap. If the tap is open for 1 hour, 1/5 of the tank gets filled. How long should the tap be open to fill the entire tank?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If 1/3 of a land is taken by the government, and then 1/2 of the remaining land is given to a daughter and 1/3 of the remaining land is given to a son, what fraction of the original land does the mother keep?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 1/2 of a tank is filled in 1 hour, how much of the tank is filled in 3 hours?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinars?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of 3 ÷ 1?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of 3 ÷ 2?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of dividing 3 by 1/4?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many bags did Maria decorate if she used 1/4 meter of lace for each bag and had 8 meters of lace?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A cistern is filled by four fountains. The first fills it in 1 day, the second in 1/2 day, the third in 1/4 day, and the fourth in 1/5 day. How much of the cistern do they fill together in one day?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a square has a shaded region that is 1/2 of 1/4 of the square, what fraction of the square is shaded?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point E, which is not defined"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the product of two fractions is less than both the numbers, which of the following must be true?",
+      "reason": "near-duplicate of batch item \"What is the relationship between the product of tw…\" (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the result of dividing 8 by 2?",
+      "reason": "near-duplicate of served question cmver9t8e019ggod8so6fdqcn (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If 1/2 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "reason": "near-duplicate of served question cmver9t8m01a4god889ory5hx (cosine 0.963 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

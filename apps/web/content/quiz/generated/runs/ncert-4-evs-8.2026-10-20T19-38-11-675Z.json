@@ -1,0 +1,242 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:38:11.675Z",
+  "finishedAt": "2026-10-20T19:39:55.133Z",
+  "seconds": 103,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap108.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 8 — Reaching Grandmother’s House",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 29007,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7572,
+      "completionTokens": 1558
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 51409,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 3388,
+      "completionTokens": 1423
+    },
+    "solver": {
+      "calls": 35,
+      "ms": 15729,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 4190,
+      "completionTokens": 280
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8810,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 812,
+      "completionTokens": 231
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2076,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 113417,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6311,
+      "completionTokens": 3048
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What kind of transport did Omana use after getting down from the train?",
+      "ms": {
+        "draft": 3757,
+        "critique": 7839
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which transport was used by people to cross the water according to the passage?",
+      "ms": {
+        "draft": 3757,
+        "critique": 7222,
+        "solver": 1631
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which vehicles did Omana’s family use to reach Valiyamma’s house?",
+      "ms": {
+        "draft": 3757,
+        "critique": 8282,
+        "solver": 1263
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which means of transport did Omana use after getting down from the train?",
+      "ms": {
+        "draft": 3495,
+        "critique": 7007,
+        "solver": 1912,
+        "form": 4722
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the railway timetable, how long did the train stop at Ahmedabad station?",
+      "ms": {
+        "draft": 3495,
+        "critique": 4155,
+        "solver": 620
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a means of transport that people use to cross water?",
+      "ms": {
+        "draft": 3495,
+        "critique": 7285,
+        "solver": 2581,
+        "form": 1760,
+        "translation": 36697
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Omana had to travel 100 km by train and 50 km by bus, how many total kilometers would she have traveled?",
+      "ms": {
+        "draft": 3757,
+        "critique": 3620,
+        "solver": 807,
+        "form": 0,
+        "translation": 33014
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Omana had to travel from Ahmedabad to Kottayam by train, which of the following would she need to do?",
+      "ms": {
+        "draft": 3495,
+        "critique": 6476,
+        "solver": 1399,
+        "form": 4312,
+        "translation": 38922
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What kind of transport did Omana use after getting down from the train?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which transport was used by people to cross the water according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which vehicles did Omana’s family use to reach Valiyamma’s house?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which means of transport did Omana use after getting down from the train?",
+      "reason": "options 0 and 3 say the same thing (\"Train, bus and boat\" / \"Bus, boat and train\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the railway timetable, how long did the train stop at Ahmedabad station?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:20:49.314Z",
+  "finishedAt": "2026-10-20T19:24:15.629Z",
+  "seconds": 206,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap101.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 1 — Going to School",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 25915,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7808,
+      "completionTokens": 1517
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 38452,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 3475,
+      "completionTokens": 1314
+    },
+    "solver": {
+      "calls": 30,
+      "ms": 12604,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 3410,
+      "completionTokens": 240
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7819,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 750,
+      "completionTokens": 231
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 1813,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 124761,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6974,
+      "completionTokens": 3578
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the open box attached to the iron rope in Ladakh?",
+      "ms": {
+        "draft": 17189,
+        "critique": 5030,
+        "solver": 1678
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you had to cross a river with a strong current, which of the following would be the safest way?",
+      "ms": {
+        "draft": 17189,
+        "critique": 5212,
+        "solver": 620
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which state do children use a vallam (small wooden boat) to reach school?",
+      "ms": {
+        "draft": 16796,
+        "critique": 5317
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there was no bridge, what difficulty would children face while going to school?",
+      "ms": {
+        "draft": 16796,
+        "critique": 5935
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason children in Ladakh use a trolley on a rope to cross the river?",
+      "ms": {
+        "draft": 16796,
+        "critique": 5031,
+        "solver": 1206
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do children in Assam use to cross the river?",
+      "ms": {
+        "draft": 17189,
+        "critique": 4758,
+        "solver": 1195,
+        "form": 4696,
+        "translation": 40340
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do children in Assam hold their books in one hand and the bamboo in the other?",
+      "ms": {
+        "draft": 17189,
+        "critique": 5186,
+        "solver": 2429,
+        "form": 3064,
+        "translation": 40951
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a way that children in Rajasthan reach school?",
+      "ms": {
+        "draft": 16796,
+        "critique": 3272,
+        "solver": 740,
+        "form": 1204,
+        "translation": 38932
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the open box attached to the iron rope in Ladakh?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you had to cross a river with a strong current, which of the following would be the safest way?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "In which state do children use a vallam (small wooden boat) to reach school?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If there was no bridge, what difficulty would children face while going to school?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason children in Ladakh use a trolley on a rope to cross the river?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

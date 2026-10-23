@@ -1,0 +1,387 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:27:00.182Z",
+  "finishedAt": "2026-10-23T02:30:04.271Z",
+  "seconds": 184,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap121.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 21 — Like Father, Like Daughter",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 58714,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14618,
+      "completionTokens": 3142
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 147905,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 9163,
+      "completionTokens": 3751
+    },
+    "solver": {
+      "calls": 110,
+      "ms": 66304,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 19992,
+      "completionTokens": 1178
+    },
+    "form": {
+      "calls": 5,
+      "ms": 9680,
+      "in": 9,
+      "out": 3,
+      "rejects": 6,
+      "promptTokens": 1193,
+      "completionTokens": 320
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3077,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 74383,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4749,
+      "completionTokens": 2655
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about traits passed down in families?",
+      "ms": {
+        "draft": 4608,
+        "critique": 5219,
+        "solver": 14029
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, how does Ashima's sneeze compare to someone in her family?",
+      "ms": {
+        "draft": 4608,
+        "critique": 5414,
+        "solver": 14724
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child has curly hair like their grandmother, which family member is most likely to have the same type of hair?",
+      "ms": {
+        "draft": 4608,
+        "critique": 6002,
+        "solver": 15102,
+        "form": 2765
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the relationship between Nilima and Samir?",
+      "ms": {
+        "draft": 4608,
+        "critique": 8084,
+        "solver": 2392
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about polio?",
+      "ms": {
+        "draft": 3306,
+        "critique": 7975,
+        "solver": 2216,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about traits and habits?",
+      "ms": {
+        "draft": 3306,
+        "critique": 6066,
+        "solver": 1699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about traits from family and environment?",
+      "ms": {
+        "draft": 3271,
+        "critique": 6537,
+        "solver": 1548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Gregor Mendel discover about pea plants?",
+      "ms": {
+        "draft": 3271,
+        "critique": 7482,
+        "solver": 2386
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Ashima's mother say about her sneeze?",
+      "ms": {
+        "draft": 3493,
+        "critique": 8036
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Gregor Mendel fail in his exams?",
+      "ms": {
+        "draft": 3271,
+        "critique": 8877,
+        "solver": 1351
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child has a trait that is similar to a distant relative, what might this indicate?",
+      "ms": {
+        "draft": 3493,
+        "critique": 8111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about traits in families?",
+      "ms": {
+        "draft": 3493,
+        "critique": 7326,
+        "solver": 11797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the example of Saroja and Suvasini show about traits?",
+      "ms": {
+        "draft": 3493,
+        "critique": 7200,
+        "solver": 9358,
+        "form": 1121
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a hearing problem, what might they use to help them hear better?",
+      "ms": {
+        "draft": 3271,
+        "critique": 7222,
+        "solver": 1738,
+        "form": 2783
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Gregor Mendel discover about pea plants?",
+      "ms": {
+        "draft": 3306,
+        "critique": 6934,
+        "solver": 15545,
+        "form": 1050,
+        "translation": 37081
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a hearing problem, what might help them hear better?",
+      "ms": {
+        "draft": 3306,
+        "critique": 7170,
+        "solver": 1873,
+        "form": 2599,
+        "translation": 31747
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest about traits passed down in families?",
+      "reason": "after redraft: the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, how does Ashima's sneeze compare to someone in her family?",
+      "reason": "after redraft: the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a child has curly hair like their grandmother, which family member is most likely to have the same type of hair?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"overlooks the relationship described in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the relationship between Nilima and Samir?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about polio?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about traits and habits?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about traits from family and environment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Gregor Mendel discover about pea plants?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Ashima's mother say about her sneeze?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why did Gregor Mendel fail in his exams?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a child has a trait that is similar to a distant relative, what might this indicate?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about traits in families?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Only physical traits are inherited\" / \"3: Only physical traits are inherited\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the example of Saroja and Suvasini show about traits?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person has a hearing problem, what might they use to help them hear better?",
+      "reason": "near-duplicate of batch item \"If a person has a hearing problem, what might help…\" (cosine 0.976 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,505 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:08:45.307Z",
+  "finishedAt": "2026-10-20T21:14:40.730Z",
+  "seconds": 355,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm107.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Shapes and Patterns",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n36. A tiling or tessellation of a flat surface is the covering of a plane using one or more geometric\nshapes, called tiles, with no overlaps and no gaps. Historically, tessellations were used in\nancient Rome and in Islamic art. You may find tessellation patterns on floors, walls, paintings\netc. Shown below is a tiled floor in the archaeological Museum of Seville, made using\nsquares, triangles and hexagons.\nA craftsman thought of making a floor pattern after being inspired by the above design. To\nensure accuracy in his work, he made the pattern on the Cartesian plane. He used regular\noctagons, squares and triangles for his floor tessellation pattern\nUse the above figure to answer the question",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n2. This Question Paper is divided into 5 Sections A, B, C, D and E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 86031,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17168,
+      "completionTokens": 5729
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 150494,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 12409,
+      "completionTokens": 5011
+    },
+    "solver": {
+      "calls": 132,
+      "ms": 62357,
+      "in": 19,
+      "out": 14,
+      "rejects": 5,
+      "promptTokens": 25913,
+      "completionTokens": 1465
+    },
+    "form": {
+      "calls": 11,
+      "ms": 77068,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 9899,
+      "completionTokens": 2538
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2545,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 219848,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15790,
+      "completionTokens": 7947
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 4,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a type of triangle discussed in the passage?",
+      "ms": {
+        "draft": 2789,
+        "critique": 4284
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 2789,
+        "critique": 4263,
+        "solver": 684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a craftsman uses regular pentagons in a tessellation, what will happen?",
+      "ms": {
+        "draft": 2789,
+        "critique": 6664,
+        "solver": 12814
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If you use equilateral triangles in a tessellation, how many triangles can fit around a point?",
+      "ms": {
+        "draft": 2789,
+        "critique": 4968
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the pattern described in the passage, what is the sequence of the first two rows?",
+      "ms": {
+        "draft": 2789,
+        "critique": 7351,
+        "solver": 15503
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Tanu arranged 7 shapes in a line. She used 2 squares, 2 triangles, 1 circle, 1 hexagon, and 1 rectangle. Which shape is placed at the 5th position?",
+      "ms": {
+        "draft": 13862,
+        "critique": 4457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, a quadrilateral is formed by joining the endpoints of two diameters of a circle. What is the shape of the quadrilateral?",
+      "ms": {
+        "draft": 13862,
+        "critique": 5466,
+        "solver": 964,
+        "form": 2010
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, a circle is divided into 24 points. Joining points 1 to 11, 11 to 2, 2 to 12, and so on creates a design. What shape is formed when the points are connected in this pattern?",
+      "ms": {
+        "draft": 13862,
+        "critique": 5176,
+        "solver": 897,
+        "form": 1648
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A craftsman used regular octagons, squares, and triangles to make a floor tessellation. If he uses 3 triangles to form a shape with 5 sides, what is the shape?",
+      "ms": {
+        "draft": 2654,
+        "critique": 4804,
+        "solver": 1182,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which shape has all angles equal?",
+      "ms": {
+        "draft": 2654,
+        "critique": 5752,
+        "solver": 1541,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the pattern of weaving described in the first row of the mat?",
+      "ms": {
+        "draft": 2604,
+        "critique": 5670,
+        "solver": 1862
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following shapes can tessellate without leaving any gaps or overlaps?",
+      "ms": {
+        "draft": 2604,
+        "critique": 6126
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of making paper mats as described in the passage?",
+      "ms": {
+        "draft": 2604,
+        "critique": 6128,
+        "solver": 12973
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a pattern consists of a square and a triangle coming together at a point, what is the most likely explanation?",
+      "ms": {
+        "draft": 2604,
+        "critique": 5121,
+        "solver": 701
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a regular hexagon is placed around a point, how many hexagons can fit together without any gaps or overlaps?",
+      "ms": {
+        "draft": 2604,
+        "critique": 4785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the shape that has two pairs of adjacent equal sides?",
+      "ms": {
+        "draft": 13862,
+        "critique": 5146,
+        "solver": 9737,
+        "form": 1806
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following shapes has two pairs of adjacent equal sides?",
+      "ms": {
+        "draft": 2654,
+        "critique": 4246,
+        "solver": 1385,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which quadrilateral has opposite sides equal and all angles equal to 90 degrees?",
+      "ms": {
+        "draft": 13862,
+        "critique": 4959,
+        "solver": 1076,
+        "form": 3594,
+        "translation": 38518
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a special type of parallelogram with all angles equal?",
+      "ms": {
+        "draft": 2654,
+        "critique": 4526,
+        "solver": 1864,
+        "form": 0,
+        "translation": 27769
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a regular octagon is used in a tessellation, what will happen?",
+      "ms": {
+        "draft": 2789,
+        "critique": 4690,
+        "solver": 14584,
+        "form": 2500,
+        "translation": 33987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a craftsman uses regular pentagons to tile a floor, what will happen?",
+      "ms": {
+        "draft": 2604,
+        "critique": 7053,
+        "solver": 1437,
+        "form": 2465,
+        "translation": 20143
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral has two pairs of equal adjacent sides, what shape is it?",
+      "ms": {
+        "draft": 13862,
+        "critique": 4825,
+        "solver": 1464,
+        "form": 2676,
+        "translation": 36714
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral has opposite sides equal, what is it called?",
+      "ms": {
+        "draft": 2654,
+        "critique": 4002,
+        "solver": 1001,
+        "form": 0,
+        "translation": 27969
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a shape has all sides equal and opposite angles equal, which of the following could it be?",
+      "ms": {
+        "draft": 2654,
+        "critique": 4611,
+        "solver": 2156,
+        "form": 0,
+        "translation": 30944
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a type of triangle discussed in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (57 vs 35 characters); distractor 3's reason is not a one-line misconception (\"correct answer is the most complete and accurate description…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a craftsman uses regular pentagons in a tessellation, what will happen?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If you use equilateral triangles in a tessellation, how many triangles can fit around a point?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the pattern described in the passage, what is the sequence of the first two rows?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Tanu arranged 7 shapes in a line. She used 2 squares, 2 triangles, 1 circle, 1 hexagon, and 1 rectangle. Which shape is placed at the 5th position?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, a quadrilateral is formed by joining the endpoints of two diameters of a circle. What is the shape of the quadrilateral?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, CD"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the given figure, a circle is divided into 24 points. Joining points 1 to 11, 11 to 2, 2 to 12, and so on creates a design. What shape is formed when the points are connected in this pattern?",
+      "reason": "figure: figure spec refused: spec.parts: Array must contain at most 6 element(s); repair call failed: the model's answer was not JSON (finish: length): {\n  \"figure\": {\n    \"kind\": \"geometry\",\n    \"spec\": {\n      \"frame\": {\n        \"xMin\": 0,\n        \"xMax\": 100,\n        \""
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A craftsman used regular octagons, squares, and triangles to make a floor tessellation. If he uses 3 triangles to form a shape with 5 sides, what is the shape?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, which shape has all angles equal?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CD, DA"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the pattern of weaving described in the first row of the mat?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following shapes can tessellate without leaving any gaps or overlaps?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main purpose of making paper mats as described in the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a pattern consists of a square and a triangle coming together at a point, what is the most likely explanation?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a regular hexagon is placed around a point, how many hexagons can fit together without any gaps or overlaps?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the shape that has two pairs of adjacent equal sides?",
+      "reason": "near-duplicate of batch item \"If a quadrilateral has two pairs of equal adjacent…\" (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following shapes has two pairs of adjacent equal sides?",
+      "reason": "near-duplicate of batch item \"If a quadrilateral has two pairs of equal adjacent…\" (cosine 0.945 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

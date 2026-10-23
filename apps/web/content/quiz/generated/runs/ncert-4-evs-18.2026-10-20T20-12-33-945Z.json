@@ -1,0 +1,354 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:12:33.945Z",
+  "finishedAt": "2026-10-20T20:16:18.639Z",
+  "seconds": 225,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap118.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 18 — Too Much Water, Too Little Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 64058,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 15289,
+      "completionTokens": 2527
+    },
+    "critique": {
+      "calls": 16,
+      "ms": 137477,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 6598,
+      "completionTokens": 2700
+    },
+    "solver": {
+      "calls": 68,
+      "ms": 42661,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 9656,
+      "completionTokens": 627
+    },
+    "form": {
+      "calls": 5,
+      "ms": 20628,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 1168,
+      "completionTokens": 330
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3240,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 216402,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10612,
+      "completionTokens": 5252
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 3911,
+        "critique": 8953,
+        "solver": 1908,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way to make water safe for drinking as mentioned in the passage?",
+      "ms": {
+        "draft": 4600,
+        "critique": 9025,
+        "solver": 2692,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one way to clean water according to the passage?",
+      "ms": {
+        "draft": 3911,
+        "critique": 10246,
+        "solver": 21034,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there is no tap, matka, or handpump, what should students do according to the passage?",
+      "ms": {
+        "draft": 4600,
+        "critique": 10017,
+        "solver": 1986,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the story of Holgundi, what was the main reason the village had no water?",
+      "ms": {
+        "draft": 4600,
+        "critique": 9437,
+        "solver": 2122
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way to keep the places around drinking water clean?",
+      "ms": {
+        "draft": 4600,
+        "critique": 8926,
+        "solver": 794
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Suguna's family offer a cold drink to the guest?",
+      "ms": {
+        "draft": 4890,
+        "critique": 9183
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Is there water in all the taps or handpumps?",
+      "ms": {
+        "draft": 3837,
+        "critique": 9089,
+        "solver": 2396
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should people do if their water is not clean and they have to drink it?",
+      "ms": {
+        "draft": 4890,
+        "critique": 9497
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why was the woman in Bazaar Gaon angry?",
+      "ms": {
+        "draft": 4890,
+        "critique": 4224
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where does the water in your school come from?",
+      "ms": {
+        "draft": 3837,
+        "critique": 6783,
+        "solver": 1718,
+        "form": 4885,
+        "translation": 48866
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In your school, from where do you take water to drink?",
+      "ms": {
+        "draft": 3837,
+        "critique": 9050,
+        "solver": 2311,
+        "form": 4180,
+        "translation": 30630
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If there is no tap, matka or handpump, then how do you get drinking water?",
+      "ms": {
+        "draft": 3837,
+        "critique": 6992,
+        "solver": 2809,
+        "form": 5145,
+        "translation": 31949
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Raziya ask Deepak’s mother to throw away the water that was filled the previous day?",
+      "ms": {
+        "draft": 3911,
+        "critique": 8966,
+        "solver": 1813,
+        "form": 6093,
+        "translation": 48276
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What could happen if people drank water that was mixed with gutter water?",
+      "ms": {
+        "draft": 3911,
+        "critique": 9266,
+        "solver": 2360,
+        "form": 4607,
+        "translation": 48865
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is one way to make water safe for drinking as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is one way to clean water according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If there is no tap, matka, or handpump, what should students do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the story of Holgundi, what was the main reason the village had no water?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is one way to keep the places around drinking water clean?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Suguna's family offer a cold drink to the guest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Is there water in all the taps or handpumps?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What should people do if their water is not clean and they have to drink it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why was the woman in Bazaar Gaon angry?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

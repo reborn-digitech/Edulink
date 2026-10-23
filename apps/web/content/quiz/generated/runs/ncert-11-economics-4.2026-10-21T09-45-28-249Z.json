@@ -1,0 +1,837 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T09:45:28.249Z",
+  "finishedAt": "2026-10-21T09:56:42.400Z",
+  "seconds": 674,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec104.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 4 — Human Capital Formation in India",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2023-24]\n29. “Ravya was initially working as an office clerk in a firm. In the pursuit to attainRavya was initially working as an office clerk in a firm. In the pursuit to attain, a higherRavya was initially working as an office clerk in a firm. In the pursuit to attain\nposition and income, she attended a few onposition and income, she attended a few on-the-job training sessions. Thesejob training sessions. These sessions\ncontributed positively to her skills and expertise.”\nExplain the impact of Ravya’s decision on human capital formation. 3",
+      "[CBSE Class XII Economics, sample question paper, 2026-27]\nJustify the statement, giving valid reasons in support of your answer.\n31 “Government of India has played an important role in generating employment 4\ndirectly /indirectly.”\nDo you agree with the given statement? Give valid reasons in support of your\nanswer.\n32 A Refer the following text carefully:\nKeha and Mandeep graduated recently. Keha in order to improve her physical\nfitness, reduce stress and increase overall well-being, enrolls in yoga classes, 4\nwhile Mandeep, invests in internet data, online job portals and counselling\nservices to explore suitable career opportunities.\nIdentify and explain the sources of human capital formation indicated in the\nabove text.\nOR\n32 B Avyaan’s education",
+      "[CBSE Class XII Economics, marking scheme, 2026-27]\n31. Government of India has played an important role in generating employment\ndirectly /indirectly in two ways:\n• Direct Employment: The government directly provides jobs by recruiting 2\npeople in administrative departments, public sector industries and\ngovernment run organisations.\n• Indirect Employment: When government enterprises increase 2\nproduction, related private sector businesses also expand, creating\nadditional job opportunities in the private sector.\n32 A Keha’s enrolment in yoga classes highlights her emphasis on ‘expenditure on\nhealth’. Maintaining good physical health improves efficiency, learning ability ½ + 1 ½\nand long-term work performance. It not only improves potential we",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n32. State whether the following statements are true/false, with valid arguments:\na) Human Capital and Human Development are one and the same thing 2\nb) India has a poor stock of technical manpower. 2\n33 a) Define agricultural marketing. 2\nb) Discuss briefly the importance of micro-credit programmes in rural development. 2\nc) Enlist any two problems faced by farmers in the initial years of organic farming. 2\nOR\na) “India has failed to implement the recommendations of Education Commission of\n1964 -66.” Give valid arguments in support of the given statement. 3\nb) ‘Casual wage work is the major source of employment in rural India ‘. Defend or\nrefute the given statement with valid reason. 3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 190190,
+      "in": 44,
+      "out": 43,
+      "rejects": 1,
+      "promptTokens": 46301,
+      "completionTokens": 9776
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 405225,
+      "in": 43,
+      "out": 33,
+      "rejects": 10,
+      "promptTokens": 24463,
+      "completionTokens": 9882
+    },
+    "solver": {
+      "calls": 257,
+      "ms": 136155,
+      "in": 33,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 44854,
+      "completionTokens": 2706
+    },
+    "form": {
+      "calls": 21,
+      "ms": 98605,
+      "in": 32,
+      "out": 9,
+      "rejects": 23,
+      "promptTokens": 13979,
+      "completionTokens": 2227
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 590,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 416314,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 22266,
+      "completionTokens": 12077
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT considered a source of human capital formation?",
+      "ms": {
+        "draft": 4009,
+        "critique": 5214
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is one of the main reasons why education is important for economic growth?",
+      "ms": {
+        "draft": 4009,
+        "critique": 5960,
+        "solver": 1237
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a firm invests in on-the-job training for its workers, what is the likely impact on human capital formation?",
+      "ms": {
+        "draft": 4009,
+        "critique": 6425,
+        "solver": 12485,
+        "form": 2604
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important for societies to have sufficient human capital?",
+      "ms": {
+        "draft": 4009,
+        "critique": 8612,
+        "solver": 13291,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a source of human capital formation according to the passage?",
+      "ms": {
+        "draft": 4132,
+        "critique": 6685
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer who receives training to improve farming techniques is likely to contribute to which aspect of human capital formation?",
+      "ms": {
+        "draft": 4009,
+        "critique": 7754,
+        "solver": 11932,
+        "form": 1865
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is mentioned in the passage as a benefit of education?",
+      "ms": {
+        "draft": 4009,
+        "critique": 8480,
+        "solver": 12788,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is a key difference between physical capital and human capital?",
+      "ms": {
+        "draft": 4132,
+        "critique": 8216
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is a benefit of human capital?",
+      "ms": {
+        "draft": 4132,
+        "critique": 6109,
+        "solver": 2071,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why is human capital formation more complex than physical capital formation?",
+      "ms": {
+        "draft": 4132,
+        "critique": 6317,
+        "solver": 1900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a source of human capital formation?",
+      "ms": {
+        "draft": 4132,
+        "critique": 7543
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of human capital formation?",
+      "ms": {
+        "draft": 4418,
+        "critique": 6014,
+        "solver": 12471,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following statements about human capital is true?",
+      "ms": {
+        "draft": 4418,
+        "critique": 7081,
+        "solver": 12962,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that education and health are integral to human development. Which of the following best explains this statement?",
+      "ms": {
+        "draft": 4418,
+        "critique": 6990,
+        "solver": 1340,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the role of the National Education Policy 2020 in human capital formation?",
+      "ms": {
+        "draft": 4418,
+        "critique": 7078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of human capital formation according to the passage?",
+      "ms": {
+        "draft": 4333,
+        "critique": 7367
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the impact of government intervention in the education and health sectors as described in the passage?",
+      "ms": {
+        "draft": 4333,
+        "critique": 7233
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a state in India has a low per capita public expenditure on education, what is the most likely impact on human capital formation?",
+      "ms": {
+        "draft": 4333,
+        "critique": 8818
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important for the government to provide free education and health services to the deserving and socially oppressed classes?",
+      "ms": {
+        "draft": 4333,
+        "critique": 7244
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer receives training on modern farming techniques, what is the most likely effect on their productivity?",
+      "ms": {
+        "draft": 5125,
+        "critique": 6678,
+        "solver": 1360,
+        "form": 4596
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary reason for regional differences in educational attainment in India?",
+      "ms": {
+        "draft": 5125,
+        "critique": 7603,
+        "solver": 16233,
+        "form": 4680
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Ravi, a school dropout, is working as a daily wage labourer. What does this suggest about human capital formation in India?",
+      "ms": {
+        "draft": 5125,
+        "critique": 6866,
+        "solver": 1628,
+        "form": 3653
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given figure, which of the following is a consequence of school dropouts?",
+      "ms": {
+        "draft": 3814,
+        "critique": 8127,
+        "solver": 1939,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is government investment in educational infrastructure considered inevitable?",
+      "ms": {
+        "draft": 5125,
+        "critique": 6066,
+        "solver": 17293,
+        "form": 2277
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that human capital formation enhances productivity and is an outcome of deliberate investment. Which of the following scenarios best reflects this idea?",
+      "ms": {
+        "draft": 3814,
+        "critique": 7938,
+        "solver": 2121,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a function of UGC?",
+      "ms": {
+        "draft": 3814,
+        "critique": 8353,
+        "solver": 1528,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage states that India has a rich stock of scientific and technical manpower but still needs improvement. Which of the following best explains this contradiction?",
+      "ms": {
+        "draft": 3814,
+        "critique": 7659,
+        "solver": 17241,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a state spends less on tertiary education, what should be the government's approach according to the passage?",
+      "ms": {
+        "draft": 15997,
+        "critique": 7770
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the relationship between education expenditure and human capital formation in India?",
+      "ms": {
+        "draft": 15997,
+        "critique": 7091,
+        "solver": 1358,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the importance of education in India?",
+      "ms": {
+        "draft": 15997,
+        "critique": 7961,
+        "solver": 12201,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 4315,
+        "critique": 7845,
+        "solver": 13017,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why human capital formation is considered a social process?",
+      "ms": {
+        "draft": 5493,
+        "critique": 7132,
+        "solver": 1618,
+        "form": 2870
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the growing demand for multidisciplinary learning?",
+      "ms": {
+        "draft": 4315,
+        "critique": 8488,
+        "solver": 17516,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between human capital and economic growth?",
+      "ms": {
+        "draft": 4315,
+        "critique": 7205,
+        "solver": 9566,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main objective of the Right of Children to Free and Compulsory Education Act?",
+      "ms": {
+        "draft": 60452,
+        "critique": 7061,
+        "solver": 855,
+        "form": 2691,
+        "translation": 49368
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is considered an important input for the development of a nation?",
+      "ms": {
+        "draft": 2880,
+        "critique": 6155,
+        "solver": 861,
+        "form": 1360,
+        "translation": 38335
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an indicator of educational achievement in a country?",
+      "ms": {
+        "draft": 5125,
+        "critique": 6937,
+        "solver": 1859,
+        "form": 3814,
+        "translation": 36758
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of human capital formation?",
+      "ms": {
+        "draft": 3814,
+        "critique": 8263,
+        "solver": 1218,
+        "form": 3275,
+        "translation": 41062
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key reason for the government to ensure that education and health services meet quality standards?",
+      "ms": {
+        "draft": 15997,
+        "critique": 7158,
+        "solver": 1859,
+        "form": 2775,
+        "translation": 36210
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a government increases its spending on education, what is the most likely outcome?",
+      "ms": {
+        "draft": 3814,
+        "critique": 7120,
+        "solver": 1823,
+        "form": 2718,
+        "translation": 41335
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure, what is the main purpose of providing education and training to farmers?",
+      "ms": {
+        "draft": 5125,
+        "critique": 7579,
+        "solver": 1751,
+        "form": 2461,
+        "translation": 49530
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Ravya, an office clerk, attended on-the-job training sessions to improve her skills. How does this relate to human capital formation?",
+      "ms": {
+        "draft": 4132,
+        "critique": 6111,
+        "solver": 1550,
+        "form": 4133,
+        "translation": 63424
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A farmer in rural India decides to attend a workshop on modern farming techniques. How does this action impact human capital formation?",
+      "ms": {
+        "draft": 4418,
+        "critique": 7534,
+        "solver": 14058,
+        "form": 2391,
+        "translation": 55671
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT considered a source of human capital formation?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is one of the main reasons why education is important for economic growth?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a firm invests in on-the-job training for its workers, what is the likely impact on human capital formation?",
+      "reason": "options 1 and 3 say the same thing (\"It decreases the skill level of the workers\" / \"3: It decreases the skill level of the workers\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important for societies to have sufficient human capital?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a source of human capital formation according to the passage?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A farmer who receives training to improve farming techniques is likely to contribute to which aspect of human capital formation?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is mentioned in the passage as a benefit of education?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes education reduces productivity due to misunderstand…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is a key difference between physical capital and human capital?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following is a benefit of human capital?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why is human capital formation more complex than physical capital formation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a source of human capital formation?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of human capital formation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following statements about human capital is true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that education and health are integral to human development. Which of the following best explains this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on human development…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the role of the National Education Policy 2020 in human capital formation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of human capital formation according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the impact of government intervention in the education and health sectors as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a state in India has a low per capita public expenditure on education, what is the most likely impact on human capital formation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, why is it important for the government to provide free education and health services to the deserving and socially oppressed classes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the passage, why is government intervention necessary in the education and health sectors?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a farmer receives training on modern farming techniques, what is the most likely effect on their productivity?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Contradicts the passage's message…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary reason for regional differences in educational attainment in India?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Ravi, a school dropout, is working as a daily wage labourer. What does this suggest about human capital formation in India?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'laborer'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given figure, which of the following is a consequence of school dropouts?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is government investment in educational infrastructure considered inevitable?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'students'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that human capital formation enhances productivity and is an outcome of deliberate investment. Which of the following scenarios best reflects this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a function of UGC?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage states that India has a rich stock of scientific and technical manpower but still needs improvement. Which of the following best explains this contradiction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a state spends less on tertiary education, what should be the government's approach according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the relationship between education expenditure and human capital formation in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Contradicts the passage which clearly states the importance …\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage by limiting the contribution of e…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the importance of education in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage by thinking education should be l…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why human capital formation is considered a social process?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Overlooks the social influence mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Ignores the role of societal factors in the passage\",\"Misund…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the growing demand for multidisciplinary learning?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"The need for unskilled workers in skilled jobs\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between human capital and economic growth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Suggests a direct cause-effect relationship not supported by…\"); distractor 1's reason is not a one-line misconception (\"Implies a one-way relationship that the passage does not sup…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

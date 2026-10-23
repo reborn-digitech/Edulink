@@ -1,0 +1,369 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:36:04.176Z",
+  "finishedAt": "2026-10-20T22:38:58.851Z",
+  "seconds": 175,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap118.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 18 — No Place for Us?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 45124,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15460,
+      "completionTokens": 3236
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 74989,
+      "in": 16,
+      "out": 8,
+      "rejects": 8,
+      "promptTokens": 7149,
+      "completionTokens": 2938
+    },
+    "solver": {
+      "calls": 48,
+      "ms": 18236,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 7451,
+      "completionTokens": 464
+    },
+    "form": {
+      "calls": 5,
+      "ms": 8322,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 1162,
+      "completionTokens": 300
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2178,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 113068,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8650,
+      "completionTokens": 4284
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did families like Jatrya's come to big cities?",
+      "ms": {
+        "draft": 3254,
+        "critique": 4128
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Jatrya's family do in Khedi village?",
+      "ms": {
+        "draft": 3254,
+        "critique": 4604
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would Jatrya most likely need to do in Mumbai that he didn't have to do in Khedi?",
+      "ms": {
+        "draft": 3254,
+        "critique": 5299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about Jatrya's feelings towards the new village?",
+      "ms": {
+        "draft": 3254,
+        "critique": 4417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason Jatrya's family moved to Mumbai?",
+      "ms": {
+        "draft": 3374,
+        "critique": 4759
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Jatrya's family face difficulties in Sinduri?",
+      "ms": {
+        "draft": 3374,
+        "critique": 4734
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dam is built in a village, what is the most likely effect on the people living there?",
+      "ms": {
+        "draft": 3374,
+        "critique": 3532
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of displacement on people?",
+      "ms": {
+        "draft": 3374,
+        "critique": 3325
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Jatrya and his family move to Mumbai?",
+      "ms": {
+        "draft": 2241,
+        "critique": 3702,
+        "solver": 888
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of displacement on people?",
+      "ms": {
+        "draft": 2241,
+        "critique": 5988,
+        "solver": 1195,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Jatrya's family move to Mumbai?",
+      "ms": {
+        "draft": 13020,
+        "critique": 4890,
+        "solver": 1484,
+        "form": 1643
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about Jatrya's feelings towards his village?",
+      "ms": {
+        "draft": 13020,
+        "critique": 5295,
+        "solver": 978,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What kind of work did Sidya do in the morning?",
+      "ms": {
+        "draft": 13020,
+        "critique": 5252,
+        "solver": 1049,
+        "form": 2788,
+        "translation": 30159
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the story of Jatrya show about the impact of building a dam?",
+      "ms": {
+        "draft": 2241,
+        "critique": 4241,
+        "solver": 1683,
+        "form": 2130,
+        "translation": 36234
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child in your school works to support their family, what might be a possible reason?",
+      "ms": {
+        "draft": 13020,
+        "critique": 5894,
+        "solver": 7238,
+        "form": 672,
+        "translation": 20899
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was one of the main difficulties Jatrya faced in Sinduri village?",
+      "ms": {
+        "draft": 2241,
+        "critique": 3937,
+        "solver": 1364,
+        "form": 2018,
+        "translation": 22214
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did families like Jatrya's come to big cities?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Jatrya's family do in Khedi village?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would Jatrya most likely need to do in Mumbai that he didn't have to do in Khedi?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about Jatrya's feelings towards the new village?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main reason Jatrya's family moved to Mumbai?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Jatrya's family face difficulties in Sinduri?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a dam is built in a village, what is the most likely effect on the people living there?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of displacement on people?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Jatrya and his family move to Mumbai?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of displacement on people?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Jatrya's family move to Mumbai?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"refers to a minor detail in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about Jatrya's feelings towards his village?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"refers to an emotion not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"misinterprets the overall tone of the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

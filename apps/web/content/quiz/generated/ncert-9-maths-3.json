@@ -1,69 +1,69 @@
 {
   "subject": "MATHS",
   "classLevel": 9,
-  "chapter": "Chapter 3 — Chapter 3",
-  "name": "Chapter 3",
-  "slug": "maths-9-chapter-3",
-  "summary": "This chapter explains how to add numbers, find the greatest common divisor, and understand basic data structures.",
+  "chapter": "Chapter 3 — The World of Algorithms",
+  "name": "The World of Algorithms",
+  "slug": "maths-9-the-world-of-algorithms",
+  "summary": "This chapter introduces algorithms, their use in solving mathematical problems, and basic data structures.",
   "position": 3,
   "source": "generated against NCERT Mathematics, Class 9, chapter 3 (2026 edition (the site's Last-Modified))",
   "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
   "translations": {
     "hi": {
-      "name": "अध्याय 3",
-      "summary": "इस अध्याय में संख्याओं को जोड़ना, सबसे बड़ा सामान्य भाजक ज्ञात करना और मूल डेटा संरचनाओं की समझ दी गई है।"
+      "name": "एल्गोरिदम की दुनिया।",
+      "summary": "इस अध्याय में एल्गोरिदम, गणितीय समस्याओं के समाधान में उनके उपयोग और मूल डेटा संरचनाओं का परिचय दिया गया है।"
     },
     "mr": {
-      "name": "अध्याय 3",
-      "summary": "हा अध्याय संख्या जोडणे, सर्वात मोठा सामान्य भाजक शोधणे आणि मूल डेटा संरचना याची समज दिली आहे."
+      "name": "अल्गोरिदमची जगात",
+      "summary": "हा अध्याय अल्गोरिदम, गणितीय समस्यांच्या उपायांमध्ये त्यांच्या वापराचे आणि आधुनिक डेटा संरचनांचे परिचय देतो."
     }
   },
   "board": "NCERT",
   "book": "Ganita Manjari PART-II",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-19T14:18:06.667Z",
+  "generatedAt": "2026-10-22T12:03:05.558Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the main purpose of using names for intermediate values in an algorithm?",
+      "difficulty": 1,
+      "stem": "What is an algorithm?",
       "choices": [
-        "To make the algorithm more complex.",
-        "To keep track of intermediate values for later reference.",
-        "To reduce the number of steps in the algorithm.",
-        "To increase the speed of execution."
+        "A process to count dots",
+        "A step-by-step procedure to solve a problem",
+        "A way to draw numbers",
+        "A method to multiply large numbers"
       ],
       "answerIndex": 1,
-      "solution": "The main purpose of using names for intermediate values in an algorithm is to keep track of them for later reference. Naming these values allows the algorithm to access and use them at different stages without confusion. The other options incorrectly suggest that naming affects complexity, step count, or execution speed, which are not directly related to the role of names in tracking values.",
+      "solution": "An algorithm is a step-by-step procedure to solve a problem. This definition reflects the structured approach used in solving computational or mathematical tasks. The other options describe specific actions or tools but do not capture the general, systematic nature of an algorithm.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एल्गोरिथ्म में मध्यवर्ती मानों के लिए नाम का उपयोग करने का मुख्य उद्देश्य क्या है?",
+          "stem": "एक एल्गोरिथ्म क्या है?",
           "choices": [
-            "एल्गोरिथ्म को अधिक जटिल बनाना।",
-            "बाद में संदर्भ के लिए मध्यवर्ती मानों की निगरानी रखना।",
-            "एल्गोरिथ्म में चरणों की संख्या कम करना।",
-            "क्रियान्वयन की गति बढ़ाना।"
+            "डॉट्स की गिनती की प्रक्रिया",
+            "एक समस्या हल करने के लिए चरण-दर-चरण प्रक्रिया",
+            "संख्याओं के चित्रण का तरीका",
+            "बड़ी संख्याओं के गुणन का तरीका"
           ],
-          "solution": "एल्गोरिथ्म में मध्यवर्ती मानों के लिए नाम का उपयोग करने का मुख्य उद्देश्य बाद में संदर्भ के लिए उनकी निगरानी रखना होता है। इन मानों के नाम देने से एल्गोरिथ्म को अलग-अलग चरणों में उनका उपयोग करने में सुविधा होती है। अन्य विकल्प गलत रूप से सुझाते हैं कि नाम जटिलता, चरणों की संख्या या क्रियान्वयन की गति पर प्रभाव डालते हैं, जो मानों के नाम देने के कार्य से सीधा संबंधित नहीं हैं।",
+          "solution": "एक एल्गोरिथ्म एक समस्या हल करने के लिए चरण-दर-चरण प्रक्रिया है। इस परिभाषा में गणितीय या गणनात्मक कार्यों में उपयोग किए जाने वाले संरचित दृष्टिकोण को दर्शाया गया है। अन्य विकल्प विशिष्ट क्रियाओं या उपकरणों का वर्णन करते हैं लेकिन एल्गोरिथ्म की सामान्य, प्रणालीगत प्रकृति को नहीं दर्शाते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एका अल्गोरिदममध्ये मध्यवर्ती मूल्यांसाठी नावे वापरण्याचा मुख्य उद्देश काय आहे?",
+          "stem": "एक अल्गोरिथम काय आहे?",
           "choices": [
-            "अल्गोरिदम अधिक जटिल करण्यासाठी.",
-            "मध्यवर्ती मूल्यांची नोंद नंतरच्या संदर्भासाठी ठेवण्यासाठी.",
-            "अल्गोरिदममध्ये टप्प्यांची संख्या कमी करण्यासाठी.",
-            "क्रियाकलापाच्या गतीत वाढ करण्यासाठी."
+            "डॉट्स गणना करण्याची प्रक्रिया",
+            "समस्या सोडवण्यासाठी एक चरण-काळजीपूर्वक प्रक्रिया",
+            "संख्या काढण्याचा एक मार्ग",
+            "मोठ्या संख्यांच्या गुणाकाराचा एक पद्धत"
           ],
-          "solution": "एका अल्गोरिदममध्ये मध्यवर्ती मूल्यांसाठी नावे वापरण्याचा मुख्य उद्देश मध्यवर्ती मूल्यांची नोंद नंतरच्या संदर्भासाठी ठेवणे आहे. या मूल्यांची नावे देणे अल्गोरिदमला विविध स्थितीत त्यांचा वापर करण्यासाठी सोयीस्कर करते. इतर विकल्प चुकीचे असतात जे नावांच्या वापराचा जटिलतेवर, टप्प्यांच्या संख्येवर किंवा क्रियाकलापाच्या गतीवर प्रभाव पडतो असे सूचित करतात, जे मूल्यांच्या नोंदीच्या कार्याशी सीधा संबंध नाही.",
+          "solution": "एक अल्गोरिथम समस्या सोडवण्यासाठी एक चरण-काळजीपूर्वक प्रक्रिया आहे. ही व्याख्या गणितीय किंवा गणक विधींमध्ये वापरलेल्या संरचित पद्धतीचे प्रतिबिंबित करते. इतर विकल्प संख्या किंवा उपकरणांच्या विशिष्ट क्रियांचे वर्णन करतात परंतु अल्गोरिथमच्या सामान्य आणि पद्धतशीर स्वरूपाचे वर्णन करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Marathi.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The term 'अल्गोरिथम' is used as is, which is standard in Marathi technical contexts.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "misunderstands the role of names in algorithms",
+        "Confuses algorithm with a general process",
         null,
-        "incorrectly assumes that naming increases complexity",
-        "refers to an effect of naming rather than its purpose"
+        "Misunderstands the definition of algorithm",
+        "Thinks algorithm is related to counting only"
       ],
       "solverAnswers": [
         1,
@@ -85,95 +85,83 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as the purpose of naming intermediate values is to track them for later use. The other options reflect common misconceptions about the role of naming in algorithms.",
+      "critique": "The correct answer is clearly 1, as it aligns with the standard definition of an algorithm. The other options are either too narrow or incorrect, and the author's reasoning for why they are wrong matches common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
-            "Chapter 3",
+            "Chapter 11: The World of Algorithms",
+            "11.1 Adding Numbers"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "11.1 Adding Numbers"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
             "11.2 Greatest Common Divisor"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T14:18:06.667Z",
+      "generatedAt": "2026-10-22T12:03:05.558Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If m = 18 and n = 24, what is the most-recent-common-divisor after scanning all numbers from 1 to min(m, n)?",
+      "stem": "What is the greatest common divisor (gcd) of 375 and 825?",
       "choices": [
-        "6",
-        "3",
-        "12",
-        "9"
+        "75",
+        "125",
+        "150",
+        "225"
       ],
       "answerIndex": 0,
-      "solution": "The most-recent-common-divisor is the greatest common divisor (gcd) of the two numbers. For 18 and 24, the gcd is 6. The other options are incorrect because 3 is a common divisor but not the greatest, 12 is not a divisor of 18, and 9 is not a divisor of 24.",
+      "solution": "The greatest common divisor (gcd) of 375 and 825 is 75 because it is the largest number that divides both 375 and 825 without leaving a remainder. 125 does not divide 825 evenly, 150 does not divide 375 evenly, and 225 does not divide either number evenly.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि m = 18 और n = 24 है, तो 1 से min(m, n) तक सभी संख्याओं के बाद सबसे हाल का सामान्य भाजक क्या है?",
+          "stem": "375 और 825 का महत्तम समापवर्तक (म.स.प.) क्या है?",
           "choices": [
-            "6",
-            "3",
-            "12",
-            "9"
+            "75",
+            "125",
+            "150",
+            "225"
           ],
-          "solution": "सबसे हाल का सामान्य भाजक दो संख्याओं का महत्तम सामान्य भाजक (म.स.प.) होता है। 18 और 24 के लिए, म.स.प. 6 है। अन्य विकल्प गलत हैं क्योंकि 3 एक सामान्य भाजक है लेकिन सबसे बड़ा नहीं है, 12, 18 का भाजक नहीं है, और 9, 24 का भाजक नहीं है।",
+          "solution": "375 और 825 का महत्तम समापवर्तक (म.स.प.) 75 है क्योंकि यह वह सबसे बड़ी संख्या है जो 375 और 825 को शेष बिना विभाजित करती है। 125, 825 को बराबर रूप से विभाजित नहीं करता, 150, 375 को बराबर रूप से विभाजित नहीं करता और 225 कोई भी संख्या बराबर रूप से विभाजित नहीं करता।",
           "imageAlt": null,
           "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर m = 18 आणि n = 24 असेल, तर 1 ते min(m, n) पर्यंत सर्व संख्या तपासल्यानंतर सर्वात आधीचा सामाईक भाजक किती असेल?",
+          "stem": "375 आणि 825 चा महासामायिक भाजक (gcd) किती आहे?",
           "choices": [
-            "6",
-            "3",
-            "12",
-            "9"
+            "75",
+            "125",
+            "150",
+            "225"
           ],
-          "solution": "सर्वात आधीचा सामाईक भाजक दोन संख्यांचा महत्तम सामाईक भाजक (gcd) असतो. 18 आणि 24 चा gcd 6 असतो. इतर विकल्प चुकीचे असतात कारण 3 हा सामाईक भाजक असतो परंतु महत्तम नाही, 12 हा 18 चा भाजक नाही आणि 9 हा 24 चा भाजक नाही.",
+          "solution": "375 आणि 825 चा महासामायिक भाजक (gcd) 75 आहे कारण ते दोन्ही संख्यांना शिल्लक न ठेवता भाग जाते. 125 825 ला समान भाग जात नाही, 150 375 ला समान भाग जात नाही आणि 225 कोणत्याही संख्येला समान भाग जात नाही.",
           "imageAlt": null,
-          "critique": "The translation accurately reflects the original English question, with appropriate Marathi terminology for mathematical concepts like 'gcd' (महत्तम सामाईक भाजक).",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -183,9 +171,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "The pupil might think 3 is the gcd, which is not the largest common divisor.",
-        "The pupil might select 12, which is not a divisor of 18.",
-        "The pupil might think 9 divides both numbers, which it does not."
+        "confuses 125 with a divisor of both numbers",
+        "assumes 150 is a divisor of both numbers",
+        "chooses a number not a divisor of either"
       ],
       "solverAnswers": [
         0,
@@ -195,301 +183,93 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question correctly identifies the greatest common divisor (GCD) of 18 and 24 as 6. The explanation and reasoning for the distractors are valid and reflect common misconceptions.",
+      "critique": "The solution correctly identifies the greatest common divisor by listing the common divisors of both numbers and selecting the largest. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
+            "Chapter 11: The World of Algorithms",
+            "11.2 Greatest Common Divisor"
           ]
         },
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
           "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
+            "Chapter 11: The World of Algorithms",
+            "11.2 Greatest Common Divisor",
+            "Think and Reflect"
           ]
         },
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 12,
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
           "headingPath": [
-            "Chapter 3",
+            "Chapter 11: The World of Algorithms",
+            "11.2 Greatest Common Divisor",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
             "11.3 Data Structures"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T14:18:06.667Z",
+      "generatedAt": "2026-10-22T12:03:05.558Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If the algorithm for finding the greatest common divisor is modified to check only up to the square root of the numbers, how would it affect the number of steps?",
+      "stem": "If the sum of two digits in a column is 12, what will be the value written below the column and what will be the carry?",
       "choices": [
-        "It would increase the number of steps.",
-        "It would reduce the number of steps.",
-        "It would not change the number of steps.",
-        "It would depend on the size of the numbers."
+        "12 and 1",
+        "2 and 1",
+        "12 and 0",
+        "2 and 0"
       ],
       "answerIndex": 1,
-      "solution": "Modifying the algorithm to check only up to the square root of the numbers would reduce the number of steps. This is because any factor larger than the square root would have a corresponding factor smaller than the square root, making further checks unnecessary. The other options do not align with the mathematical principle that limits the range of necessary checks.",
+      "solution": "If the sum of two digits in a column is 12, the value written below the column will be 2 and the carry will be 1. The algorithm specifies that only the units digit of the sum is written, and the carry is 1 if the sum is more than 10. The other options do not follow the rules of the algorithm.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि महत्तम समापवर्तक ज्ञात करने के एल्गोरिथ्म को केवल संख्याओं के वर्गमूल तक जांचने के लिए संशोधित किया जाए, तो चरणों की संख्या पर क्या प्रभाव पड़ेगा?",
+          "stem": "यदि एक स्तंभ में दो अंकों का योग 12 है, तो स्तंभ के नीचे लिखा गया मान क्या होगा और कैरी क्या होगी?",
           "choices": [
-            "चरणों की संख्या बढ़ जाएगी।",
-            "चरणों की संख्या घट जाएगी।",
-            "चरणों की संख्या अपरिवर्तित रहेगी।",
-            "यह संख्याओं के आकार पर निर्भर करेगा।"
+            "12 और 1",
+            "2 और 1",
+            "12 और 0",
+            "2 और 0"
           ],
-          "solution": "संख्याओं के वर्गमूल तक जांच करने के लिए एल्गोरिथ्म को संशोधित करने से चरणों की संख्या घट जाएगी। इसका कारण यह है कि वर्गमूल से बड़ा कोई भी गुणनखंड वर्गमूल से छोटे गुणनखंड के साथ जुड़ा होगा, जिसके कारण आगे की जांच आवश्यक नहीं होगी। अन्य विकल्प आवश्यक जांच की सीमा के गणितीय सिद्धांत के साथ मेल नहीं खाते।",
+          "solution": "यदि एक स्तंभ में दो अंकों का योग 12 है, तो स्तंभ के नीचे लिखा गया मान 2 होगा और कैरी 1 होगी। एल्गोरिथ्म निर्देश देता है कि योग के इकाई अंक को लिखा जाता है, और कैरी 1 होती है यदि योग 10 से अधिक हो। अन्य विकल्प एल्गोरिथ्म के नियमों का अनुसरण नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms like 'महत्तम समापवर्तक' (GCD) and 'वर्गमूल' (square root) are standard in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium math context.",
           "flag": null
         },
         "mr": {
-          "stem": "ग्रेटेस्ट कॉमन डिव्हायझर शोधण्याच्या अल्गोरिथमचे बदल केले जाते आणि फक्त संख्यांच्या वर्गमूळपर्यंत तपासले जाते, तर त्याचा चरणांच्या संख्येवर काय परिणाम होईल?",
+          "stem": "जर एका खालील वर्गातील दोन अंकांची बेरीज 12 असेल, तर खालील वर्गाखाली लिहिलेली किंमत काय असेल आणि किती कॅरी असेल?",
           "choices": [
-            "चरणांची संख्या वाढेल.",
-            "चरणांची संख्या कमी होईल.",
-            "चरणांची संख्या बदलणार नाही.",
-            "ती संख्यांच्या आकारावर अवलंबून राहील."
+            "12 आणि 1",
+            "2 आणि 1",
+            "12 आणि 0",
+            "2 आणि 0"
           ],
-          "solution": "संख्यांच्या वर्गमूळपर्यंत तपासण्यासाठी अल्गोरिथम बदलल्याने चरणांची संख्या कमी होईल. हे कारण असे आहे की कोणताही अविभाज्य घटक वर्गमूळापेक्षा मोठा असेल तर त्याचा एक तुलनेने लहान घटक वर्गमूळापेक्षा लहान असेल, ज्यामुळे आवश्यक तपासणी आवश्यक नसते. इतर विकल्प गणितीय सिद्धांताशी जुळत नाहीत जो आवश्यक तपासणीच्या परिसराला मर्यादित करतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "misunderstands the effect of the optimization",
-        null,
-        "assumes that the number of steps remains constant",
-        "correctly states the dependency but is not the best answer"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound, as checking up to the square root of the numbers is a standard optimization that reduces the number of steps in GCD algorithms. The correct answer is 1, and the author's reasoning aligns with this.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T14:18:06.667Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the key insight that makes the algorithm for finding the greatest common divisor more efficient when it checks up to the maximum of the two numbers?",
-      "choices": [
-        "It eliminates the need to check for prime factors.",
-        "It reduces the number of divisors to be checked.",
-        "It ensures that all possible divisors are included.",
-        "It guarantees that the algorithm will always find the correct answer."
-      ],
-      "answerIndex": 1,
-      "solution": "The key insight is that checking up to the maximum of the two numbers reduces the number of divisors to be checked. This optimization limits the range of values that need to be tested, making the process more efficient. The other options either misrepresent the purpose of the optimization or are not directly related to the efficiency gain.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "ग्रेटेस्ट कॉमन डिवीजर खोजने के एल्गोरिथ्म के लिए कुंजी अंतर्दृष्टि क्या है जो दोनों संख्याओं के अधिकतम तक जांच करने पर अधिक कुशल बनाती है?",
-          "choices": [
-            "इससे अभाज्य कारकों की जांच करने की आवश्यकता खत्म हो जाती है।",
-            "इससे जांचे जाने वाले भाजकों की संख्या कम हो जाती है।",
-            "इससे सभी संभावित भाजक शामिल हो जाते हैं।",
-            "इससे यह सुनिश्चित हो जाता है कि एल्गोरिथ्म हमेशा सही उत्तर खोजेगा।"
-          ],
-          "solution": "कुंजी अंतर्दृष्टि यह है कि दोनों संख्याओं के अधिकतम तक जांच करने से जांचे जाने वाले भाजकों की संख्या कम हो जाती है। यह अनुकूलन मानों की सीमा को सीमित करता है, जिससे प्रक्रिया अधिक कुशल बन जाती है। अन्य विकल्प या तो अनुकूलन के उद्देश्य को गलत तरीके से प्रस्तुत करते हैं या इस कुशलता लाभ से सीधे संबंधित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English content with appropriate technical terms and maintains the same logical structure and meaning.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन संख्यांच्या महत्तम सामाईक भाजक शोधण्यासाठी अल्गोरिथमची दक्षता कशी वाढते जेव्हा तो दोन संख्यांच्या महत्तमापेक्षा जास्त नसलेल्या संख्येपर्यंत तपासतो?",
-          "choices": [
-            "त्याने अभाज्य घटकांच्या तपासणीची आवश्यकता दूर केली.",
-            "त्याने तपासायच्या भाजकांची संख्या कमी केली.",
-            "त्याने सर्व संभाव्य भाजकांचा समावेश केला.",
-            "त्याने अल्गोरिथम नेहमी योग्य उत्तर शोधेल अशी खात्री दिली."
-          ],
-          "solution": "महत्तम सामाईक भाजक शोधण्यासाठी अल्गोरिथमची दक्षता वाढवण्याची मुख्य विचारसरणी अशी आहे की दोन संख्यांपैकी महत्तम नसलेल्या संख्येपर्यंत तपासणे तपासायच्या भाजकांची संख्या कमी करते. ही अद्यतन तपासण्याच्या मर्यादा कमी करते, ज्यामुळे प्रक्रिया जास्त दक्ष होते. इतर विकल्प अद्यतनाच्या उद्देशाचे अपूर्ण वर्णन करतात किंवा दक्षता वाढीशी सीधा संबंध नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (option 1) is in the same position as in the English version, and the distractors remain incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "misunderstands the role of prime factors in the algorithm",
-        null,
-        "is a general statement about the algorithm's correctness",
-        "does not address the efficiency improvement"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as checking up to the maximum of the two numbers reduces the number of divisors to check, which is the key efficiency improvement. The other options either misrepresent the role of prime factors, overstate the algorithm's correctness, or fail to address efficiency.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T14:18:06.667Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If we use Euclid’s algorithm to compute gcd(m, n), what is the key mathematical principle that guarantees that the common divisors of m and n are the same as those of n and m – n?",
-      "choices": [
-        "The principle of division",
-        "The principle of multiplication",
-        "The principle of subtraction",
-        "The principle of equivalence"
-      ],
-      "answerIndex": 3,
-      "solution": "The principle of equivalence is correct because it ensures that the common divisors of m and n remain unchanged when m is replaced by m – n. The other options do not describe the mathematical relationship that preserves common divisors during the algorithm's steps.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि हम यूक्लिड के एल्गोरिथ्म का उपयोग gcd(m, n) की गणना करने के लिए करते हैं, तो m और n के सामान्य भाजक जैसे ही n और m – n के सामान्य भाजक होते हैं, इसकी गारंटी देने वाला मुख्य गणितीय सिद्धांत क्या है?",
-          "choices": [
-            "भाजन का सिद्धांत",
-            "गुणन का सिद्धांत",
-            "घटाव का सिद्धांत",
-            "समता का सिद्धांत"
-          ],
-          "solution": "समता का सिद्धांत सही है क्योंकि यह यह सुनिश्चित करता है कि m के स्थान पर m – n रखने पर m और n के सामान्य भाजक अपरिवर्तित रहते हैं। अन्य विकल्प एल्गोरिथ्म के चरणों में सामान्य भाजकों को बरकरार रखने वाले गणितीय संबंध का वर्णन नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर आम्ही युक्लिड अल्गोरिथम वापरून gcd(m, n) गणना करतो, तर m आणि n च्या सामायिक भाजकांच्या तुलनेत n आणि m – n च्या सामायिक भाजकांच्या बरोबरीची खात्री करणारा मुख्य गणिती तत्त्व काय आहे?",
-          "choices": [
-            "भागाकाराचा नियम",
-            "गुणाकाराचा नियम",
-            "वजाबाकीचा नियम",
-            "समतेचा नियम"
-          ],
-          "solution": "समतेचा नियम बरोबर आहे कारण तो m आणि n च्या सामायिक भाजकांना अचूकपणे टिकवून ठेवतो जेव्हा m ला m – n ने बदलले जाते. इतर नियमांमध्ये अल्गोरिथमच्या चरणांमध्ये सामायिक भाजकांचे संरक्षण करणारे गणिती संबंध वर्णन केलेले नाहीत.",
+          "solution": "जर एका खालील वर्गातील दोन अंकांची बेरीज 12 असेल, तर खालील वर्गाखाली लिहिलेली किंमत 2 असेल आणि कॅरी 1 असेल. एल्गोरिथम सांगतो की बेरीजचा एकक अंक लिहिला जातो आणि जर बेरीज 10 पेक्षा जास्त असेल तर कॅरी 1 असते. इतर विकल्प एल्गोरिथमच्या नियमांचे अनुसरण करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -500,54 +280,261 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "The pupil might confuse the principle of division with the actual principle used.",
-        "The pupil might think multiplication is the key principle.",
-        "The pupil might think subtraction is the key principle, but it is not the underlying principle of equivalence.",
-        null
+        "Thinks both values are written",
+        null,
+        "Confuses the carry with the sum",
+        "Believes no carry is needed"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The key principle is the principle of equivalence, as the common divisors of m and n are the same as those of n and m - n. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that only the units digit (2) is written and a carry of 1 is generated when the sum exceeds 10. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
+            "Chapter 11: The World of Algorithms",
+            "11.1 Adding Numbers"
           ]
         },
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
+            "Chapter 11: The World of Algorithms",
+            "11.1 Adding Numbers"
           ]
         },
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 12,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
-            "Chapter 3",
-            "11.3 Data Structures"
+            "Chapter 11: The World of Algorithms",
+            "11.2 Greatest Common Divisor"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T14:18:06.667Z",
+      "generatedAt": "2026-10-22T12:03:05.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the GCD of two numbers is 1, which of the following is a correct statement about the two numbers?",
+      "choices": [
+        "They are both composite numbers",
+        "They share no common factors other than 1",
+        "They are both prime numbers",
+        "They are multiples of 1"
+      ],
+      "answerIndex": 1,
+      "solution": "If the greatest common divisor (GCD) of two numbers is 1, it means that the only positive integer that divides both numbers is 1. This directly implies that they share no common factors other than 1. The other options are incorrect because two numbers can have a GCD of 1 without both being prime or composite, and while all numbers are multiples of 1, this is not a unique or meaningful property in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो संख्याओं का महत्तम समापवर्तक 1 है, तो निम्नलिखित में से कौन-सा कथन दोनों संख्याओं के बारे में सही है?",
+          "choices": [
+            "वे दोनों भाज्य संख्याएँ हैं",
+            "वे 1 के अतिरिक्त कोई अन्य उभयनिष्ठ गुणनखंड साझा नहीं करते हैं",
+            "वे दोनों अभाज्य संख्याएँ हैं",
+            "वे 1 के गुणज हैं"
+          ],
+          "solution": "यदि दो संख्याओं का महत्तम समापवर्तक (GCD) 1 है, तो इसका अर्थ है कि दोनों संख्याओं को विभाजित करने वाला केवल धनात्मक पूर्णांक 1 है। इसका सीधा अर्थ है कि वे 1 के अतिरिक्त कोई अन्य उभयनिष्ठ गुणनखंड साझा नहीं करते हैं। अन्य विकल्प गलत हैं क्योंकि दो संख्याओं का GCD 1 हो सकता है बशर्ते दोनों अभाज्य या भाज्य न हों, और यद्यपि सभी संख्याएँ 1 के गुणज हैं, लेकिन इस संदर्भ में यह एक विशिष्ट या महत्वपूर्ण गुण नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन संख्यांचा महत्तम सामायिक अपवर्तक 1 असेल, तर खालीलपैकी कोणता विधान दोन संख्यांबद्दल बरोबर आहे?",
+          "choices": [
+            "त्या दोन्ही संख्या युग्मसंख्या आहेत",
+            "त्यांचा 1 शिवाय इतर कोणताही सामायिक अपवर्तक नाही",
+            "त्या दोन्ही संख्या अभाज्य संख्या आहेत",
+            "त्या 1 च्या बरोबरीच्या गुणक आहेत"
+          ],
+          "solution": "जर दोन संख्यांचा महत्तम सामायिक अपवर्तक (GCD) 1 असेल, तर त्याचा अर्थ असा आहे की दोन्ही संख्यांना विभाजित करणारा फक्त 1 हा धनात्मक पूर्णांक आहे. हे सीधा अर्थ असा आहे की त्यांचा 1 शिवाय इतर कोणताही सामायिक अपवर्तक नाही. इतर विकल्प अयोग्य आहेत कारण दोन संख्यांचा GCD 1 असू शकतो जर त्यांपैकी दोन्ही अभाज्य किंवा युग्मसंख्या नसतील, आणि जरी सर्व संख्या 1 च्या गुणक असतील तरी ते या संदर्भात अद्वितीय किंवा अर्थपूर्ण गुणधर्म नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes both numbers are composite, which is not necessarily true",
+        null,
+        "confuses the definition of prime numbers with co-prime numbers",
+        "chooses a trivial statement not specific to the GCD being 1"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as it accurately reflects the definition of co-prime numbers. The other options are incorrect due to misconceptions or unsupported assumptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 10,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "11.3 Data Structures"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "11.3 Data Structures"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "End-of-c",
+            "Chapter Summary"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:03:05.558Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the algorithm for adding two numbers, why can the carry value never be more than 1?",
+      "choices": [
+        "Because the maximum sum of two digits is 9",
+        "Because the maximum sum of two digits and a carry is 19",
+        "Because the algorithm only allows one carry",
+        "Because the carry is always zero"
+      ],
+      "answerIndex": 1,
+      "solution": "The carry value can never be more than 1 because the maximum sum of two digits and a carry is 19 (e.g., 9 + 9 + 1 = 19). The units digit of this sum is 9, and the carry is 1. The other options are incorrect because they do not consider the maximum possible sum in the algorithm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एल्गोरिथ्म में दो संख्याओं को जोड़ते समय क्यों ले जाने का मान कभी-भी 1 से अधिक नहीं हो सकता?",
+          "choices": [
+            "क्योंकि दो अंकों का अधिकतम योग 9 होता है",
+            "क्योंकि दो अंकों और एक के योग का अधिकतम योग 19 होता है",
+            "क्योंकि एल्गोरिथ्म केवल एक ले जाने की अनुमति देता है",
+            "क्योंकि ले जाना हमेशा शून्य होता है"
+          ],
+          "solution": "ले जाने का मान कभी-भी 1 से अधिक नहीं हो सकता क्योंकि दो अंकों और एक के योग का अधिकतम योग 19 होता है (उदाहरण के लिए, 9 + 9 + 1 = 19)। इस योग का इकाई अंक 9 होता है और ले जाना 1 होता है। अन्य विकल्प गलत हैं क्योंकि वे एल्गोरिथ्म में संभावित अधिकतम योग को ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संख्यांच्या जोडण्याच्या अल्गोरिथममध्ये वाढ (carry) मूल्य का 1 पेक्षा जास्त असू शकत नाही?",
+          "choices": [
+            "कारण दोन अंकांची जोड जास्तीत जास्त 9 असते",
+            "कारण दोन अंकांची जोड आणि वाढ जास्तीत जास्त 19 असते",
+            "कारण अल्गोरिथममध्ये फक्त एक वाढ अनुमत आहे",
+            "कारण वाढ फारच शून्य असते"
+          ],
+          "solution": "वाढ मूल्य जास्तीत जास्त 1 असू शकत नाही कारण दोन अंकांची जोड आणि वाढ जास्तीत जास्त 19 असते (उदा., 9 + 9 + 1 = 19). ह्या जोडीचा एकक अंक 9 असतो आणि वाढ 1 असते. इतर विकल्प चुकीचे आहेत कारण ते अल्गोरिथममध्ये जास्तीत जास्त संभाव्य जोड विचारात घेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the maximum sum is 9",
+        null,
+        "Misunderstands the role of carry",
+        "Believes carry is always zero"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the maximum sum involving two digits and a carry is 19, leading to a carry of 1. The other options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "11.1 Adding Numbers"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "11.1 Adding Numbers"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh203.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: The World of Algorithms",
+            "11.2 Greatest Common Divisor"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T12:03:05.558Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

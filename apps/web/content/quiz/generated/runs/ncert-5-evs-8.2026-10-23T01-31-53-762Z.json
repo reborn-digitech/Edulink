@@ -1,0 +1,373 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:31:53.762Z",
+  "finishedAt": "2026-10-23T01:35:46.816Z",
+  "seconds": 233,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap108.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 8 — A Treat for Mosquitoes",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 50880,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15552,
+      "completionTokens": 2832
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 147686,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 10069,
+      "completionTokens": 4179
+    },
+    "solver": {
+      "calls": 136,
+      "ms": 80485,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 25420,
+      "completionTokens": 1498
+    },
+    "form": {
+      "calls": 11,
+      "ms": 26554,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 2648,
+      "completionTokens": 710
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2827,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 252304,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13994,
+      "completionTokens": 7179
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did the scientist find in the stomach of a mosquito?",
+      "ms": {
+        "draft": 3244,
+        "critique": 7359,
+        "solver": 12395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the word 'malaria' mean?",
+      "ms": {
+        "draft": 3244,
+        "critique": 7387,
+        "solver": 12644,
+        "form": 3276
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a method to prevent the spread of malaria?",
+      "ms": {
+        "draft": 3330,
+        "critique": 7512,
+        "solver": 17326
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done to prevent mosquitoes from breeding?",
+      "ms": {
+        "draft": 3244,
+        "critique": 6693,
+        "solver": 10124
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the scientist observe in the blood of a malaria patient?",
+      "ms": {
+        "draft": 3000,
+        "critique": 5226,
+        "solver": 15549,
+        "form": 3294
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the passage say about the cause of malaria?",
+      "ms": {
+        "draft": 3147,
+        "critique": 5082,
+        "solver": 1905,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Aarti say about the blood test she had?",
+      "ms": {
+        "draft": 3147,
+        "critique": 5460,
+        "solver": 2721,
+        "form": 2361
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the passage say about anaemia?",
+      "ms": {
+        "draft": 3147,
+        "critique": 6733,
+        "solver": 782,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Rajat say about the blood test?",
+      "ms": {
+        "draft": 3147,
+        "critique": 5855,
+        "solver": 10590,
+        "form": 912
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the disease that was once called 'bad air'?",
+      "ms": {
+        "draft": 3000,
+        "critique": 4683,
+        "solver": 1225,
+        "form": 5747
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main way to find out if someone has malaria?",
+      "ms": {
+        "draft": 3330,
+        "critique": 7254,
+        "solver": 2193,
+        "form": 2552,
+        "translation": 41444
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How does a blood test help in finding out if a person has malaria?",
+      "ms": {
+        "draft": 3330,
+        "critique": 6941,
+        "solver": 1795,
+        "form": 2486,
+        "translation": 40618
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has anaemia, what is the most likely reason?",
+      "ms": {
+        "draft": 3330,
+        "critique": 6485,
+        "solver": 1346,
+        "form": 3778,
+        "translation": 36290
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to prevent mosquitoes from breeding near a school?",
+      "ms": {
+        "draft": 3000,
+        "critique": 5273,
+        "solver": 16555,
+        "form": 2266,
+        "translation": 41628
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did the scientist do to find out if mosquitoes spread malaria?",
+      "ms": {
+        "draft": 3244,
+        "critique": 6440,
+        "solver": 9199,
+        "form": 1094,
+        "translation": 46849
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Why did the scientist spend a lot of time chasing mosquitoes?",
+      "ms": {
+        "draft": 3000,
+        "critique": 6568,
+        "solver": 1559,
+        "form": 3194,
+        "translation": 41644
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the scientist find in the stomach of a mosquito?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the word 'malaria' mean?",
+      "reason": "options 1 and 2 are the same (\"Bad air\"); distractor 0's reason is not a one-line misconception (\"Chooses a positive meaning, which is not mentioned in the pa…\"); distractor 3's reason is not a one-line misconception (\"Chooses a positive meaning, which is not mentioned in the pa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a method to prevent the spread of malaria?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What should be done to prevent mosquitoes from breeding?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did the scientist observe in the blood of a malaria patient?",
+      "reason": "options 1 and 2 are the same (\"Tiny plants\"); options 1 and 3 are the same (\"Tiny plants\"); options 2 and 3 are the same (\"Tiny plants\"); distractor 3's reason is not a one-line misconception (\"Students may confuse malaria parasites with plants due to th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did the passage say about the cause of malaria?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did Aarti say about the blood test she had?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"misreads the passage about hospital stay and illness…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did the passage say about anaemia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Rajat say about the blood test?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"misreads the passage about medicine and the test location…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the disease that was once called 'bad air'?",
+      "reason": "near-duplicate of served question cmvh8e1vl07j2gpfh3o80mkiy (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:14:53.053Z",
+  "finishedAt": "2026-10-22T21:16:42.029Z",
+  "seconds": 109,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm108.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Fair Share",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n18. (a) 1/3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 32848,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8006,
+      "completionTokens": 1996
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 93063,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 6795,
+      "completionTokens": 3005
+    },
+    "solver": {
+      "calls": 80,
+      "ms": 43728,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 15751,
+      "completionTokens": 939
+    },
+    "form": {
+      "calls": 5,
+      "ms": 11969,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 1131,
+      "completionTokens": 363
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3399,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15503,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2141,
+      "completionTokens": 1083
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct way to express one half?",
+      "ms": {
+        "draft": 2347,
+        "critique": 5942,
+        "solver": 2010
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number line shows 13 and the double of 7, how far apart are they?",
+      "ms": {
+        "draft": 2347,
+        "critique": 7222,
+        "solver": 1714
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "ms": {
+        "draft": 3127,
+        "critique": 4993
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of sharing equally?",
+      "ms": {
+        "draft": 3127,
+        "critique": 4707,
+        "solver": 13118
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a paratha is divided into 4 equal parts, what is each part called?",
+      "ms": {
+        "draft": 3127,
+        "critique": 4115,
+        "solver": 11869,
+        "form": 2423
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Shabnam has half the number of marbles that Mukta has. If Mukta has 12 marbles, how many marbles does Shabnam have?",
+      "ms": {
+        "draft": 3127,
+        "critique": 6156
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Shabnam has eaten some chikki from 3 sides. What is the likely amount of chikki left?",
+      "ms": {
+        "draft": 3127,
+        "critique": 8062,
+        "solver": 11888
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 10 marbles are divided equally between two people, how many marbles does each person get?",
+      "ms": {
+        "draft": 3127,
+        "critique": 7270,
+        "solver": 6810
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "ms": {
+        "draft": 2347,
+        "critique": 4175,
+        "solver": 1367,
+        "form": 3600
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally among 4 people?",
+      "ms": {
+        "draft": 2347,
+        "critique": 4606,
+        "solver": 2174,
+        "form": 3296
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If Shabnam has eaten some chikki from 3 sides, what is the most likely amount of chikki left?",
+      "ms": {
+        "draft": 2347,
+        "critique": 6311,
+        "solver": 9627,
+        "form": 1430
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 marbles are double of 3 marbles, what is 3 marbles in relation to 6 marbles?",
+      "ms": {
+        "draft": 2347,
+        "critique": 5467,
+        "solver": 2208,
+        "form": 2866,
+        "translation": 12691
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a correct way to express one half?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a number line shows 13 and the double of 7, how far apart are they?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of sharing equally?",
+      "reason": "after redrafting distractors 2, 3: the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a paratha is divided into 4 equal parts, what is each part called?",
+      "reason": "options 0 and 3 are the same (\"One third\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Shabnam has half the number of marbles that Mukta has. If Mukta has 12 marbles, how many marbles does Shabnam have?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Shabnam has eaten some chikki from 3 sides. What is the likely amount of chikki left?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 10 marbles are divided equally between two people, how many marbles does each person get?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "reason": "near-duplicate of served question cmvgzcr6305qagpfh2jlaoeon (cosine 0.975 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally among 4 people?",
+      "reason": "near-duplicate of served question cmvgzcr6905qygpfho3j59iql (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If Shabnam has eaten some chikki from 3 sides, what is the most likely amount of chikki left?",
+      "reason": "near-duplicate of served question cmvgzcr6605qmgpfhc2juq8q2 (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

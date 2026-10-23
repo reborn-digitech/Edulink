@@ -1,0 +1,248 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:01:58.267Z",
+  "finishedAt": "2026-10-20T20:03:58.470Z",
+  "seconds": 120,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap115.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 15 — From Market to Home",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 37137,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7578,
+      "completionTokens": 1414
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 62963,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3204,
+      "completionTokens": 1320
+    },
+    "solver": {
+      "calls": 40,
+      "ms": 27034,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 4765,
+      "completionTokens": 320
+    },
+    "form": {
+      "calls": 4,
+      "ms": 11404,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 868,
+      "completionTokens": 244
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3088,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 68126,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 3952,
+      "completionTokens": 1933
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a vegetable-seller starts work at 3 a.m. and works for 19 hours, what time does he finish work?",
+      "ms": {
+        "draft": 5515,
+        "critique": 7935,
+        "solver": 3640
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What time does Vaishali's family start their work?",
+      "ms": {
+        "draft": 5515,
+        "critique": 7194,
+        "solver": 1850,
+        "form": 5956
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Babuji sell the previous day's vegetables first?",
+      "ms": {
+        "draft": 5515,
+        "critique": 7504,
+        "solver": 2476,
+        "form": 5657
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a task that Chhotu helps with?",
+      "ms": {
+        "draft": 5515,
+        "critique": 6067,
+        "solver": 1106
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Vaishali's family start their work at 3 o'clock in the morning?",
+      "ms": {
+        "draft": 3770,
+        "critique": 9724,
+        "solver": 1878
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Vaishali's father is late in reaching the bazaar, what might happen?",
+      "ms": {
+        "draft": 3770,
+        "critique": 10314,
+        "solver": 3615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of Vaishali's father?",
+      "ms": {
+        "draft": 3770,
+        "critique": 10095,
+        "solver": 2622,
+        "form": 2449,
+        "translation": 26415
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of sorting the vegetables?",
+      "ms": {
+        "draft": 3770,
+        "critique": 5863,
+        "solver": 890,
+        "form": 1162,
+        "translation": 35651
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a vegetable-seller starts work at 3 a.m. and works for 19 hours, what time does he finish work?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What time does Vaishali's family start their work?",
+      "reason": "options are in more than one unit (o'clock in the morning, o'clock at night)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why does Babuji sell the previous day's vegetables first?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"assumes a financial motive not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"chooses a reason unrelated to the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a task that Chhotu helps with?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why does Vaishali's family start their work at 3 o'clock in the morning?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Vaishali's father is late in reaching the bazaar, what might happen?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,47 +21,47 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-19T08:43:54.665Z",
+  "generatedAt": "2026-10-22T06:32:03.412Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the main purpose of an electric circuit?",
+      "stem": "What is the main function of an electric cell?",
       "choices": [
-        "To store electric energy",
-        "To create electric current",
-        "To transfer electric energy",
-        "To create magnetic field"
+        "To produce light",
+        "To maintain a constant potential difference",
+        "To store electrical energy",
+        "To convert heat into electricity"
       ],
-      "answerIndex": 2,
-      "solution": "The main purpose of an electric circuit is to transfer electric energy. A circuit allows electric current to flow through it, enabling devices like bulbs to function. The other options are incorrect because storing energy is not the main function of a circuit, creating current is done by a cell, and generating a magnetic field is a side effect, not the main purpose.",
+      "answerIndex": 1,
+      "solution": "The main function of an electric cell is to maintain a constant potential difference between its terminals, which drives the flow of electric current in a circuit. Producing light is a function of devices like bulbs, storing electrical energy is typically done by batteries, and converting heat into electricity is the role of thermoelectric devices.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक विद्युत परिपथ का मुख्य उद्देश्य क्या है?",
+          "stem": "एक विद्युत सेल का मुख्य कार्य क्या है?",
           "choices": [
-            "विद्युत ऊर्जा को संग्रहित करना",
-            "विद्युत धारा बनाना",
-            "विद्युत ऊर्जा का स्थानांतरण करना",
-            "चुंबकीय क्षेत्र बनाना"
+            "प्रकाश उत्पन्न करना",
+            "एक स्थिर विभवान्तर बनाए रखना",
+            "विद्युत ऊर्जा संग्रहित करना",
+            "ऊष्मा को विद्युत में बदलना"
           ],
-          "solution": "एक विद्युत परिपथ का मुख्य उद्देश्य विद्युत ऊर्जा का स्थानांतरण करना है। एक परिपथ विद्युत धारा के प्रवाह की अनुमति देता है, जिससे बल्ब जैसे उपकरण कार्य कर सकते हैं। अन्य विकल्प गलत हैं क्योंकि ऊर्जा का संग्रहण परिपथ का मुख्य कार्य नहीं है, धारा का निर्माण सेल द्वारा किया जाता है, और चुंबकीय क्षेत्र का निर्माण एक द्वितीयक प्रभाव है, न कि मुख्य उद्देश्य।",
+          "solution": "एक विद्युत सेल का मुख्य कार्य इसके टर्मिनलों के बीच एक स्थिर विभवान्तर बनाए रखना है, जो परिपथ में विद्युत धारा के प्रवाह को धकेलता है। प्रकाश उत्पन्न करना बल्ब जैसे उपकरणों का कार्य है, विद्युत ऊर्जा संग्रहित करना आमतौर पर बैटरी का कार्य है, और ऊष्मा को विद्युत में बदलना थर्मोइलेक्ट्रिक उपकरणों की भूमिका है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
+          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the logic of the solution matches the original.",
           "flag": null
         },
         "mr": {
-          "stem": "विद्युत परिपथाचा मुख्य उद्देश काय आहे?",
+          "stem": "विद्युत सेलचे मुख्य कार्य काय आहे?",
           "choices": [
-            "विद्युत ऊर्जा जमा करणे",
-            "विद्युत वाहिनी तयार करणे",
-            "विद्युत ऊर्जा हलविणे",
-            "चुंबकीय क्षेत्र तयार करणे"
+            "प्रकाश तयार करणे",
+            "स्थिर विद्युत विभव फरक राखणे",
+            "विद्युत ऊर्जा साठवणे",
+            "ऊष्मा विद्युत ऊर्जेमध्ये रूपांतरित करणे"
           ],
-          "solution": "विद्युत परिपथाचा मुख्य उद्देश विद्युत ऊर्जा हलविणे आहे. एका परिपथामुळे विद्युत वाहिनी त्यातून वाहते, ज्यामुळे बल्ब सारख्या उपकरणांना कार्य करता येते. इतर विकल्प चुकीचे आहेत कारण ऊर्जा जमा करणे हे परिपथाचे मुख्य कार्य नाही, विद्युत वाहिनी बॅटरीमुळे तयार होते आणि चुंबकीय क्षेत्र तयार करणे हे एक बाजूचे परिणाम आहे, मुख्य उद्देश नाही.",
+          "solution": "विद्युत सेलचे मुख्य कार्य त्याच्या टर्मिनलमध्ये स्थिर विद्युत विभव फरक राखणे आहे, जो विद्युत प्रवाहाच्या प्रवाहाला चालवतो. प्रकाश तयार करणे हे बल्ब अशा उपकरणांचे कार्य आहे, विद्युत ऊर्जा साठवणे हे बॅटरींचे कार्य असते आणि ऊष्मा विद्युत ऊर्जेमध्ये रूपांतरित करणे हे थर्मोइलेक्ट्रिक उपकरणांचे कार्य आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -72,105 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the function of a battery with that of a circuit",
-        "Misunderstands the role of a cell in the circuit",
+        "Confuses the function of a bulb with that of a cell",
         null,
-        "Students often confuse the function of an electric circuit with the magnetic effects of current."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that the main purpose of an electric circuit is to transfer electric energy. The reasoning for the other options aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 38,
-          "pageStart": 35,
-          "pageEnd": 35,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 39,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 40,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:43:54.665Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the function of the plug key in an electric circuit?",
-      "choices": [
-        "To store electric charge",
-        "To control the flow of current",
-        "To generate electric current",
-        "To measure electric current"
-      ],
-      "answerIndex": 1,
-      "solution": "The function of the plug key in an electric circuit is to control the flow of current. It allows the circuit to be opened or closed, stopping or starting the current. The other options are incorrect because the plug key does not store charge, does not generate current, and does not measure current.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक विद्युत परिपथ में प्लग की क्या कार्य है?",
-          "choices": [
-            "विद्युत आवेश को संग्रहीत करना",
-            "विद्युत धारा के प्रवाह को नियंत्रित करना",
-            "विद्युत धारा का उत्पादन करना",
-            "विद्युत धारा को मापना"
-          ],
-          "solution": "विद्युत परिपथ में प्लग की कार्य विद्युत धारा के प्रवाह को नियंत्रित करना है। यह परिपथ को खोलने या बंद करने की अनुमति देता है, धारा को रोकता या शुरू करता है। अन्य विकल्प गलत हैं क्योंकि प्लग की आवेश को संग्रहीत नहीं करता, धारा का उत्पादन नहीं करता और धारा को मापता नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "विद्युत परिपथात प्लग कीची कार्ये काय आहे?",
-          "choices": [
-            "विद्युत आवेश जमा करणे",
-            "विद्युत वाहक वाहिनीचा नियंत्रण करणे",
-            "विद्युत वाहक वाहिनी उत्पन्न करणे",
-            "विद्युत वाहक वाहिनी मोजणे"
-          ],
-          "solution": "विद्युत परिपथात प्लग कीचे कार्य विद्युत वाहक वाहिनीचा नियंत्रण करणे आहे. ते परिपथ खोलण्यासाठी किंवा बंद करण्यासाठी वापरले जाते, ज्यामुळे विद्युत वाहक वाहिनी थांबवली किंवा सुरू केली जाते. इतर विकल्प अयोग्य आहेत कारण प्लग की आवेश जमा करत नाही, विद्युत वाहक वाहिनी उत्पन्न करत नाही आणि विद्युत वाहक वाहिनी मोजत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terminology common in Marathi science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the plug key with that of a battery",
-        null,
-        "Thinks the plug key generates current",
-        "Assumes the plug key measures current"
+        "Students often confuse the function of a cell with that of a battery or capacitor, thinking it stores electricity rather than providing a potential difference.",
+        "Misunderstands the energy conversion in a cell as mechanical energy storage instead of electrical potential difference maintenance, which is the main function of a cell"
       ],
       "solverAnswers": [
         1,
@@ -180,197 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as the plug key is used to control the flow of current by opening or closing the circuit. The other options represent common misconceptions about the functions of other components.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 38,
-          "pageStart": 35,
-          "pageEnd": 35,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 39,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 40,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:43:54.665Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens to the magnetic needle in the experiment when the plug key is closed?",
-      "choices": [
-        "It remains in the same position",
-        "It moves and aligns with the magnetic field",
-        "It becomes a permanent magnet",
-        "It starts to glow"
-      ],
-      "answerIndex": 1,
-      "solution": "When the plug key is closed, the magnetic needle moves and aligns with the magnetic field created by the current in the wire. This is because the current in the wire creates a magnetic field, which interacts with the magnetic needle. The other options are incorrect because the needle does not stay the same, does not become a permanent magnet, and does not glow.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "प्लग की के बंद होने पर प्रयोग में चुंबकीय सुई क्या होती है?",
-          "choices": [
-            "यह वही स्थिति में रहती है",
-            "यह चुंबकीय क्षेत्र के साथ संरेखित हो जाती है",
-            "यह एक चाक चुंबक बन जाती है",
-            "यह चमकने लगती है"
-          ],
-          "solution": "जब प्लग की बंद कर दी जाती है, तो चुंबकीय सुई तार में धारा के कारण बने चुंबकीय क्षेत्र के साथ संरेखित हो जाती है। ऐसा इसलिए होता है क्योंकि तार में धारा चुंबकीय क्षेत्र बनाती है, जो चुंबकीय सुई के साथ अंतःक्रिया करता है। अन्य विकल्प गलत हैं क्योंकि सुई वही रहती है, यह एक चाक चुंबक नहीं बनती है और यह चमकती नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms match standard Hindi curriculum, and the logic of the question and solution is preserved.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "प्लग की बंद झाल्यास प्रयोगात चुंबकीय सुईला काय होते?",
-          "choices": [
-            "ती त्याच ठिकाणी राहते",
-            "ती चुंबकीय क्षेत्राशी जुळते आणि गती करते",
-            "ती अस्थायी चुंबक होते",
-            "ती तापू लागते"
-          ],
-          "solution": "जेव्हा प्लग की बंद केली जाते तेव्हा चुंबकीय सुई तारामधील विद्युत प्रवाहामुळे तयार झालेल्या चुंबकीय क्षेत्राशी जुळते आणि गती करते. हे कारण तारामधील विद्युत प्रवाहामुळे चुंबकीय क्षेत्र तयार होतो, जो चुंबकीय सुईशी अंतर्क्रिया करतो. इतर विकल्प चुकीचे आहेत कारण सुई त्याच ठिकाणी राहत नाही, अस्थायी चुंबक होत नाही आणि तापत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology used for technical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks that the needle is unaffected by the current",
-        null,
-        "Believes that the needle becomes a permanent magnet",
-        "Assumes that the needle glows when current flows"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that the magnetic needle aligns with the magnetic field created by the current, and the reasoning for the other options reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 38,
-          "pageStart": 35,
-          "pageEnd": 35,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 39,
-          "pageStart": 35,
-          "pageEnd": 36,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 40,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "4. Current Electricity and Magnetism"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:43:54.665Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the role of the electrolyte in a dry cell?",
-      "choices": [
-        "It provides structural support",
-        "It acts as a conductor for ions",
-        "It stores electrical energy",
-        "It prevents chemical reactions"
-      ],
-      "answerIndex": 1,
-      "solution": "The electrolyte in a dry cell allows the movement of ions, which is essential for the chemical reactions that produce electric current. It acts as a conductor for ions, not electrons. Structural support is provided by other parts of the cell, and the electrolyte actually facilitates chemical reactions, not prevent them.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक शुष्क सेल में विद्युत अपघट्य की भूमिका क्या होती है?",
-          "choices": [
-            "यह संरचनात्मक समर्थन प्रदान करता है",
-            "यह आयनों के लिए चालक के रूप में कार्य करता है",
-            "यह विद्युत ऊर्जा को संग्रहीत करता है",
-            "यह रासायनिक अभिक्रियाओं को रोकता है"
-          ],
-          "solution": "एक शुष्क सेल में विद्युत अपघट्य आयनों के गति की अनुमति देता है, जो विद्युत धारा उत्पन्न करने वाली रासायनिक अभिक्रियाओं के लिए आवश्यक है। यह आयनों के लिए चालक के रूप में कार्य करता है, न कि इलेक्ट्रॉनों के लिए। संरचनात्मक समर्थन अन्य हिस्सों द्वारा प्रदान किया जाता है, और विद्युत अपघट्य रासायनिक अभिक्रियाओं को रोकता है, न कि उन्हें बढ़ाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सुकलेल्या सेलमध्ये विद्युत विश्लेष्याची भूमिका काय आहे?",
-          "choices": [
-            "ते रचनात्मक समर्थन पुरवते",
-            "ते आयनांसाठी वाहक असते",
-            "ते विद्युत ऊर्जा जमा करते",
-            "ते रासायनिक अभिक्रिया रोखते"
-          ],
-          "solution": "सुकलेल्या सेलमध्ये विद्युत विश्लेष्य आयनांच्या गतीला परवानगी देते, जी विद्युत विद्युत प्रवाह उत्पन्न करणाऱ्या रासायनिक अभिक्रियांसाठी आवश्यक आहे. ते आयनांसाठी वाहक असते, नाहीतर इलेक्ट्रॉनांसाठी. रचनात्मक समर्थन इतर सेलच्या भागांद्वारे पुरवले जाते, आणि विद्युत विश्लेष्य रासायनिक अभिक्रिया रोखत नाही, तर त्यांना अनुमती देते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrochemistry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the electrolyte with structural support",
-        null,
-        "Misunderstands that electrolytes store energy",
-        "Incorrectly believes electrolytes prevent reactions"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the electrolyte in a dry cell allows ion movement, which is essential for the chemical reactions that generate current. The author's solution and reasoning are accurate and align with scientific understanding.",
+      "critique": "The correct answer is 1, as the main function of an electric cell is to maintain a constant potential difference. The author's reasoning for the other options aligns with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -401,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:43:54.665Z",
+      "generatedAt": "2026-10-22T06:32:03.412Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If the current in the electromagnet of the bell is increased, what effect will it have on the sound produced?",
+      "difficulty": 3,
+      "stem": "In an electric bell, when the contact screw loses contact with the iron strip, what happens to the electromagnet?",
       "choices": [
-        "The sound will become louder",
-        "The sound will become softer",
-        "The sound will not change",
-        "The sound will stop"
+        "It becomes a stronger magnet",
+        "It loses its magnetism",
+        "It starts attracting more iron pins",
+        "It starts generating more current"
       ],
-      "answerIndex": 0,
-      "solution": "If the current in the electromagnet of the bell is increased, the sound will become louder. This is because a stronger current produces a stronger magnetic field, which results in a more powerful attraction of the iron strip and a more forceful strike on the gong. The other options are incorrect because increasing the current does not make the sound softer, does not leave it unchanged, and does not stop the sound.",
+      "answerIndex": 1,
+      "solution": "When the contact screw loses contact with the iron strip, the electric current in the circuit stops. As a result, the electromagnet loses its magnetism. The other options are incorrect because the electromagnet does not become stronger, attract more iron, or generate more current when the circuit is broken.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि घंटे के विद्युत चुम्बक में धारा बढ़ाई जाए, तो उत्पन्न ध्वनि पर क्या प्रभाव पड़ेगा?",
+          "stem": "एक बिजली के घंटे में, जब संपर्क के बोल्ट लोहे के पट्टी से संपर्क खो देता है, तो विद्युत चुम्बक के साथ क्या होता है?",
           "choices": [
-            "ध्वनि अधिक तीव्र हो जाएगी",
-            "ध्वनि कम तीव्र हो जाएगी",
-            "ध्वनि अपरिवर्तित रहेगी",
-            "ध्वनि बंद हो जाएगी"
+            "यह एक मजबूत चुम्बक बन जाता है",
+            "यह अपना चुम्बकत्व खो देता है",
+            "यह अधिक लोहे के पिन को आकर्षित करना शुरू कर देता है",
+            "यह अधिक विद्युत धारा उत्पन्न करना शुरू कर देता है"
           ],
-          "solution": "यदि घंटे के विद्युत चुम्बक में धारा बढ़ाई जाए, तो ध्वनि अधिक तीव्र हो जाएगी। इसका कारण यह है कि अधिक धारा अधिक चुम्बकीय क्षेत्र उत्पन्न करती है, जिसके कारण लोहे की पट्टी के आकर्षण में वृद्धि होती है और गॉंग पर अधिक शक्तिशाली प्रहार होता है। अन्य विकल्प गलत हैं क्योंकि धारा बढ़ाने से ध्वनि कम तीव्र नहीं होती, अपरिवर्तित नहीं रहती और ध्वनि बंद नहीं हो जाती।",
+          "solution": "जब संपर्क के बोल्ट लोहे के पट्टी से संपर्क खो देता है, तो सर्किट में विद्युत धारा रुक जाती है। परिणामस्वरूप, विद्युत चुम्बक अपना चुम्बकत्व खो देता है। अन्य विकल्प गलत हैं क्योंकि विद्युत चुम्बक मजबूत नहीं होता है, अधिक लोहे के पिन आकर्षित नहीं करता है या अधिक विद्युत धारा उत्पन्न नहीं करता है जब सर्किट टूट जाता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options and the solution are correctly translated, with the correct answer remaining in the same position. The distractors remain incorrect as in the original.",
           "flag": null
         },
         "mr": {
-          "stem": "विद्युत चुंबकामधील विद्युतप्रवाह वाढवल्यास उत्पन्न होणाऱ्या आवाजावर काय परिणाम होईल?",
+          "stem": "विद्युत घंटा येथे, जेव्हा संपर्क घास लोह फलकाशी संपर्क गमावतो, तेव्हा विद्युत चुंबकाचा काय उपयोग होतो?",
           "choices": [
-            "आवाज अधिक जोरात होईल",
-            "आवाज अधिक नरम होईल",
-            "आवाज बदलणार नाही",
-            "आवाज थांबेल"
+            "तो जास्त शक्तिशाली चुंबक होतो",
+            "तो आपला चुंबकत्व गमावतो",
+            "तो जास्त लोह पिन आकर्षित करू लागतो",
+            "तो जास्त विद्युत प्रवाह तयार करू लागतो"
           ],
-          "solution": "जर घंटेच्या विद्युत चुंबकामधील विद्युतप्रवाह वाढवला जाईल तर आवाज अधिक जोरात होईल. हे असे कारण आहे कारण जास्त विद्युतप्रवाह जास्त चुंबकीय क्षेत्र तयार करतो, ज्यामुळे लोखंडी पट्टीच्या अधिक शक्तिशाली आकर्षणाची शक्ती असते आणि गॉंगवर जास्त शक्तिशाली धक्का लागतो. इतर विकल्प चुकीचे आहेत कारण विद्युतप्रवाह वाढवल्याने आवाज नरम होत नाही, बदलत नाही आणि थांबत नाही.",
+          "solution": "जेव्हा संपर्क घास लोह फलकाशी संपर्क गमावतो, तेव्हा परिपथातील विद्युत प्रवाह थांबतो. यामुळे विद्युत चुंबक आपला चुंबकत्व गमावतो. इतर विकल्प अयोग्य आहेत कारण परिपथ तोडल्यास विद्युत चुंबक जास्त शक्तिशाली होत नाही, जास्त लोह पिन आकर्षित करत नाही किंवा जास्त विद्युत प्रवाह तयार करत नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -452,20 +167,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "It confuses the effect of current with magnetism",
         null,
-        "Thinks increasing current weakens the magnetic field",
-        "Believes the sound remains the same",
-        "Assumes increasing current stops the sound"
+        "It assumes that losing contact increases magnetism",
+        "It misinterprets the role of current in magnetism"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and aligns with the correct reasoning. The author's key and explanations are accurate and reflect common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly explains that breaking the circuit stops the current, which causes the electromagnet to lose its magnetism. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -496,49 +211,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:43:54.665Z",
+      "generatedAt": "2026-10-22T06:32:03.412Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "A school has installed an automatic electromagnetic door-locking system at the main entrance. The locking mechanism uses a solenoid controlled by a switch. When the switch is turned on, the solenoid creates a magnetic field that pulls an iron bolt, unlocking the door. If the current in the solenoid is increased from 1 A to 2 A, what happens to the magnetic field?",
+      "difficulty": 3,
+      "stem": "What is the purpose of connecting multiple cells in a series in an electric circuit?",
       "choices": [
-        "It becomes weaker",
-        "It becomes stronger",
-        "It remains the same",
-        "It reverses direction"
+        "To increase the potential difference",
+        "To decrease the potential difference",
+        "To increase the resistance",
+        "To decrease the resistance"
       ],
-      "answerIndex": 1,
-      "solution": "The strength of the magnetic field created by a solenoid is directly proportional to the current flowing through it. Therefore, when the current is doubled, the magnetic field becomes stronger. The option 'It becomes stronger' is the correct answer.",
+      "answerIndex": 0,
+      "solution": "When cells are connected in series, the positive terminal of one cell is connected to the negative terminal of the next. This arrangement adds up the potential differences of individual cells, resulting in a higher total potential difference. Connecting cells in series does not affect the resistance in the same way as parallel connections. Pupils may confuse the effect of series and parallel connections on resistance and potential difference.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक स्कूल ने मुख्य प्रवेश के लिए एक स्वचालित विद्युत-चुंबकीय दरवाजा-ताला लगाने वाले प्रणाली की स्थापना की है। ताला यंत्र एक सोलनॉइड द्वारा नियंत्रित होता है जो एक स्विच द्वारा नियंत्रित होता है। जब स्विच चालू किया जाता है, तो सोलनॉइड एक चुंबकीय क्षेत्र बनाता है जो एक लोहे के बॉल्ट को खींचता है, जिससे दरवाजा खुल जाता है। यदि सोलनॉइड में धारा 1 एम्पियर से बढ़ाकर 2 एम्पियर कर दी जाती है, तो चुंबकीय क्षेत्र पर क्या प्रभाव पड़ता है?",
+          "stem": "विद्युत परिपथ में कई सेलों को श्रेणी में क्यों जोड़ा जाता है?",
           "choices": [
-            "यह कमजोर हो जाता है",
-            "यह मजबूत हो जाता है",
-            "यह वही रहता है",
-            "यह दिशा बदल जाता है"
+            "विभवांतर बढ़ाने के लिए",
+            "विभवांतर कम करने के लिए",
+            "प्रतिरोध बढ़ाने के लिए",
+            "प्रतिरोध कम करने के लिए"
           ],
-          "solution": "सोलनॉइड द्वारा उत्पन्न चुंबकीय क्षेत्र की तीव्रता इसमें प्रवाहित धारा के सीधे आनुपातिक होती है। इसलिए, जब धारा दोगुनी हो जाती है, तो चुंबकीय क्षेत्र मजबूत हो जाता है। विकल्प 'यह मजबूत हो जाता है' सही उत्तर है।",
+          "solution": "जब सेलों को श्रेणी में जोड़ा जाता है, तो एक सेल के धनात्मक टर्मिनल को अगले सेल के ऋणात्मक टर्मिनल से जोड़ा जाता है। इस व्यवस्था में व्यक्तिगत सेलों के विभवांतर जोड़ दिए जाते हैं, जिससे एक साथ अधिक कुल विभवांतर प्राप्त होता है। सेलों को श्रेणी में जोड़ने से प्रतिरोध पर बराबर प्रभाव नहीं पड़ता है जैसा कि समांतर जोड़ने पर पड़ता है। छात्र श्रेणी और समांतर जोड़ने के प्रभाव को गलती से एक दूसरे के साथ बराबर कर सकते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "शाळेने मुख्य प्रवेशद्वारावर एक स्वयंचालित विद्युतचुंबकीय दरवाजा-लॉकिंग प्रणाली जोडली आहे. लॉकिंग यंत्रणेमध्ये सोलेनॉइडचा वापर केला जातो जो स्विचद्वारे नियंत्रित केला जातो. जेव्हा स्विच चालू केला जातो तेव्हा सोलेनॉइड चुंबकीय क्षेत्र तयार करतो जो लोहाचा बॉल्ट खेचतो आणि दरवाजा खुला करतो. जेव्हा सोलेनॉइडमधील विद्युतप्रवाह 1 A ते 2 A पर्यंत वाढतो तेव्हा चुंबकीय क्षेत्रावर काय परिणाम होतो?",
+          "stem": "विद्युत परिपथात अनेक सेल श्रेणीमध्ये जोडल्याचा हेतू काय आहे?",
           "choices": [
-            "तो कमजोर होतो",
-            "तो जास्त शक्तिशाली होतो",
-            "तो बरोबर राहतो",
-            "तो दिशा बदलतो"
+            "विभवांतर वाढवणे",
+            "विभवांतर कमी करणे",
+            "प्रतिरोध वाढवणे",
+            "प्रतिरोध कमी करणे"
           ],
-          "solution": "सोलेनॉइड द्वारे तयार केलेल्या चुंबकीय क्षेत्राची तीव्रता त्यामधून प्रवाहित होणाऱ्या विद्युतप्रवाहाशी थेट प्रमाणात असते. म्हणूनच, जेव्हा विद्युतप्रवाह दुप्पट होतो तेव्हा चुंबकीय क्षेत्र जास्त शक्तिशाली होतो. 'तो जास्त शक्तिशाली होतो' हा विकल्प योग्य आहे.",
+          "solution": "जेव्हा सेल श्रेणीमध्ये जोडले जातात तेव्हा एका सेलचा धन टर्मिनल दुसऱ्या सेलच्या ऋण टर्मिनलशी जोडला जातो. ही व्यवस्था विशिष्ट सेलच्या विभवांतरांचे जोडून उच्च एकूण विभवांतर तयार करते. सेल श्रेणीमध्ये जोडल्याने समांतर जोडणीसारखे प्रतिरोधावर परिणाम होत नाही. विद्यार्थी सामान्यतः श्रेणी आणि समांतर जोडणीच्या प्रतिरोध आणि विभवांतरवरील परिणामांमध्ये गोंधळू शकतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
@@ -547,10 +262,200 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the relationship between current and magnetic field",
         null,
-        "Misunderstands the relationship between current and magnetic field",
-        "Incorrect concept of magnetic field"
+        "Pupils may think series connections reduce potential difference",
+        "Pupils may think series connections increase resistance",
+        "Pupils may think series connections reduce resistance"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that connecting cells in series increases the total potential difference. The reasoning for the distractors aligns with common misconceptions about series and parallel connections.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 38,
+          "pageStart": 35,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 39,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 40,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:32:03.412Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a car battery, why is it called a battery and not a cell?",
+      "choices": [
+        "Because it has a higher voltage",
+        "Because it is made of multiple cells connected in series",
+        "Because it can store more energy than a single cell",
+        "Because it is used in vehicles"
+      ],
+      "answerIndex": 1,
+      "solution": "A car battery is called a battery because it consists of multiple cells connected in series. This allows it to provide a higher voltage than a single cell. The other options are not the main reason for the term 'battery'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार बैटरी में, इसे बैटरी कहा जाता है और नहीं कहा जाता है सेल क्यों?",
+          "choices": [
+            "क्योंकि इसका वोल्टेज अधिक होता है",
+            "क्योंकि इसमें एक श्रृंखला में जुड़े कई सेल होते हैं",
+            "क्योंकि यह एकल सेल की तुलना में अधिक ऊर्जा संग्रहीत कर सकता है",
+            "क्योंकि यह वाहनों में उपयोग किया जाता है"
+          ],
+          "solution": "एक कार बैटरी को बैटरी कहा जाता है क्योंकि इसमें एक श्रृंखला में जुड़े कई सेल होते हैं। इससे यह एकल सेल की तुलना में अधिक वोल्टेज प्रदान कर सकता है। अन्य विकल्प शब्द 'बैटरी' के लिए मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गाडीच्या बॅटरीमध्ये, तिला बॅटरी म्हणून नाही तर सेल म्हणून का नाव दिले जाते?",
+          "choices": [
+            "कारण तिचा व्होल्टेज जास्त असतो",
+            "कारण ती एकाच श्रेणीत जोडलेल्या अनेक सेल्स बनलेली असते",
+            "कारण एका सेलपेक्षा जास्त ऊर्जा ती जमा करू शकते",
+            "कारण ती वाहनांमध्ये वापरली जाते"
+          ],
+          "solution": "गाडीच्या बॅटरीला बॅटरी म्हणतात कारण ती एकाच श्रेणीत जोडलेल्या अनेक सेल्स बनलेली असते. हे एका सेलपेक्षा जास्त व्होल्टेज पुरवते. इतर विकल्प बॅटरी या शब्दाच्या वापराचा मुख्य कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "It focuses on voltage instead of structure",
+        null,
+        "It confuses energy storage with battery definition",
+        "It refers to the usage instead of the structure"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as a battery is defined by being composed of multiple cells connected in series. The other options are common misconceptions about the definition of a battery.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 38,
+          "pageStart": 35,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 39,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 40,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T06:32:03.412Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the experiment to demonstrate the magnetic effect of electric current, what is the purpose of using a bar magnet near the magnetic needle?",
+      "choices": [
+        "To increase the current in the circuit",
+        "To show that a magnetic field is produced by the current",
+        "To reverse the direction of the current",
+        "To test the resistance of the wire"
+      ],
+      "answerIndex": 1,
+      "solution": "The purpose of using a bar magnet near the magnetic needle is to show that the magnetic field produced by the current in the wire affects the needle. The bar magnet is used to compare the effect of an external magnetic field with the field produced by the current. The other options are incorrect because they do not align with the purpose of the experiment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "विद्युत धारा के चुंबकीय प्रभाव के प्रदर्शन के प्रयोग में, चुंबकीय सुई के पास एक छड़ चुंबक के उपयोग का उद्देश्य क्या है?",
+          "choices": [
+            "परिपथ में धारा बढ़ाना",
+            "यह दर्शाना कि धारा द्वारा चुंबकीय क्षेत्र उत्पन्न होता है",
+            "धारा की दिशा उलट देना",
+            "तार के प्रतिरोध का परीक्षण करना"
+          ],
+          "solution": "छड़ चुंबक के उपयोग का उद्देश्य चुंबकीय सुई पर तार में धारा द्वारा उत्पन्न चुंबकीय क्षेत्र के प्रभाव को दर्शाना है। छड़ चुंबक का उपयोग बाह्य चुंबकीय क्षेत्र के प्रभाव की तुलना धारा द्वारा उत्पन्न क्षेत्र के साथ करने के लिए किया जाता है। अन्य विकल्प गलत हैं क्योंकि वे प्रयोग के उद्देश्य के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विद्युत प्रवाहाच्या चुंबकीय प्रभावाचे प्रदर्शन करणाऱ्या प्रयोगात, चुंबकीय सुई जवळ बार चुंबक वापरण्याचा उद्देश काय आहे?",
+          "choices": [
+            "सर्किटमध्ये प्रवाह वाढविणे",
+            "प्रवाहामुळे उत्पन्न झालेल्या चुंबकीय क्षेत्राचे दर्शविणे",
+            "प्रवाहाच्या दिशेचे उलट करणे",
+            "तारेच्या प्रतिरोधाचे परीक्षण करणे"
+          ],
+          "solution": "बार चुंबक चुंबकीय सुई जवळ वापरल्याचा उद्देश तारामध्ये प्रवाहामुळे उत्पन्न झालेल्या चुंबकीय क्षेत्रामुळे सुईवर होणाऱ्या प्रभावाचे दर्शविणे आहे. बार चुंबक बाह्य चुंबकीय क्षेत्राच्या प्रभावाशी तुलना करण्यासाठी वापरला जातो. इतर विकल्प चुकीचे आहेत कारण ते प्रयोगाच्या उद्देशाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and technical terminology. All options and the solution are correctly translated and maintain their original intent and correctness.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "It confuses the role of the bar magnet with the current source",
+        null,
+        "It misunderstands the function of the magnetic field",
+        "It misinterprets the experiment's goal"
       ],
       "solverAnswers": [
         1,
@@ -560,21 +465,38 @@
         1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the physical principle that the magnetic field strength of a solenoid is directly proportional to the current. The reasoning for the correct answer is sound, and the distractors reflect common misconceptions.",
+      "critique": "The correct answer is 1, as the bar magnet is used to demonstrate the effect of a magnetic field produced by current. The other options represent common misconceptions about the role of the bar magnet in the experiment.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 41,
-          "pageStart": 37,
+          "ordinal": 38,
+          "pageStart": 35,
+          "pageEnd": 35,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 39,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "4. Current Electricity and Magnetism"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 40,
+          "pageStart": 36,
           "pageEnd": 37,
           "headingPath": [
-            "4. Current Electricity and Magnetism",
-            "Exercises"
+            "4. Current Electricity and Magnetism"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T08:43:54.665Z",
+      "generatedAt": "2026-10-22T06:32:03.412Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

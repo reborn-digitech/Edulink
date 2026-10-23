@@ -1,0 +1,357 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:25:20.230Z",
+  "finishedAt": "2026-10-20T22:28:31.226Z",
+  "seconds": 191,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap115.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 15 — Blow Hot, Blow Cold",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 40595,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14586,
+      "completionTokens": 2878
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 84628,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 7677,
+      "completionTokens": 3008
+    },
+    "solver": {
+      "calls": 94,
+      "ms": 34585,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 13783,
+      "completionTokens": 857
+    },
+    "form": {
+      "calls": 9,
+      "ms": 22187,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 4071,
+      "completionTokens": 826
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2037,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 269941,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20983,
+      "completionTokens": 10354
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 4,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "In the story, why did the woodcutter blow on his hands?",
+      "ms": {
+        "draft": 2349,
+        "critique": 5290,
+        "solver": 1809,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity where you blow on a cloth, what happens to the cloth?",
+      "ms": {
+        "draft": 2349,
+        "critique": 6181,
+        "solver": 1181
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the woodcutter use to make a fire?",
+      "ms": {
+        "draft": 2349,
+        "critique": 5273,
+        "solver": 12763
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason the mirror becomes hazy when you blow on it?",
+      "ms": {
+        "draft": 2910,
+        "critique": 5177,
+        "solver": 9253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the paper snake moves in a clockwise direction, what does it indicate about the air flow?",
+      "ms": {
+        "draft": 2910,
+        "critique": 3910,
+        "solver": 441,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the chest when a person takes a deep breath?",
+      "ms": {
+        "draft": 2382,
+        "critique": 4588,
+        "solver": 1674,
+        "form": 2582
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the woodcutter do to warm his hands in the cold?",
+      "ms": {
+        "draft": 2509,
+        "critique": 4150,
+        "solver": 1056
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason for the mirror becoming hazy when you blow on it?",
+      "ms": {
+        "draft": 2382,
+        "critique": 4325,
+        "solver": 1351,
+        "form": 3844,
+        "translation": 40179
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the woodcutter blow on the hot potato?",
+      "ms": {
+        "draft": 2509,
+        "critique": 3837,
+        "solver": 1276,
+        "form": 2231,
+        "translation": 28861
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to your chest when you take a deep breath in?",
+      "ms": {
+        "draft": 2910,
+        "critique": 5802,
+        "solver": 1131,
+        "form": 0,
+        "translation": 24328
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if Mian Balishtiye blew on his hands on a very hot day?",
+      "ms": {
+        "draft": 2349,
+        "critique": 4988,
+        "solver": 993,
+        "form": 4273,
+        "translation": 27229
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the woodcutter had not blown on the hot potato, what might have happened?",
+      "ms": {
+        "draft": 2509,
+        "critique": 4877,
+        "solver": 794,
+        "form": 1875,
+        "translation": 29583
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you blow on a hot object, what effect does it have on the object?",
+      "ms": {
+        "draft": 2910,
+        "critique": 4390,
+        "solver": 1347,
+        "form": 0,
+        "translation": 28234
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the number of breaths in one minute after jumping 30 times?",
+      "ms": {
+        "draft": 2382,
+        "critique": 3870,
+        "solver": 1167,
+        "form": 3533,
+        "translation": 33595
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the story show about the air from our mouth?",
+      "ms": {
+        "draft": 2509,
+        "critique": 3713,
+        "solver": 643,
+        "form": 1233,
+        "translation": 26287
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which direction does the paper snake move when hot air rises?",
+      "ms": {
+        "draft": 2382,
+        "critique": 4920,
+        "solver": 1872,
+        "form": 2135,
+        "translation": 28375
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "In the story, why did the woodcutter blow on his hands?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"does not read the passage carefully…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the activity where you blow on a cloth, what happens to the cloth?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did the woodcutter use to make a fire?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main reason the mirror becomes hazy when you blow on it?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the paper snake moves in a clockwise direction, what does it indicate about the air flow?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'paperSnake'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the chest when a person takes a deep breath?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Ignores the actual movement described in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the woodcutter do to warm his hands in the cold?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

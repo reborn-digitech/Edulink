@@ -1,0 +1,639 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:09:22.071Z",
+  "finishedAt": "2026-10-20T19:17:24.260Z",
+  "seconds": 482,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm113.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — The Transport Museum",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\nSection E consists of 3 case study based questions of 4 marks each."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 129226,
+      "in": 33,
+      "out": 33,
+      "rejects": 0,
+      "promptTokens": 25498,
+      "completionTokens": 7185
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 278864,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 18322,
+      "completionTokens": 7307
+    },
+    "solver": {
+      "calls": 192,
+      "ms": 105287,
+      "in": 28,
+      "out": 20,
+      "rejects": 8,
+      "promptTokens": 36484,
+      "completionTokens": 2054
+    },
+    "form": {
+      "calls": 12,
+      "ms": 46157,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 3257,
+      "completionTokens": 1127
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3303,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 427017,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 26818,
+      "completionTokens": 10842
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the remainder when 324 children are divided into coaches that can seat 14 children each?",
+      "ms": {
+        "draft": 12399,
+        "critique": 6351
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 12 × 20 = 240, which of the following is also true?",
+      "ms": {
+        "draft": 12399,
+        "critique": 5104,
+        "solver": 1870,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 440 ÷ 22?",
+      "ms": {
+        "draft": 4617,
+        "critique": 6927
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 11 × 200?",
+      "ms": {
+        "draft": 4617,
+        "critique": 6636,
+        "solver": 1617,
+        "form": 5619
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a sack of rice weighs 100 kg, how many sacks are needed for 600 kg of rice?",
+      "ms": {
+        "draft": 4617,
+        "critique": 9244
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 64 people can be seated in one boat, how many boats are needed for 960 participants?",
+      "ms": {
+        "draft": 4617,
+        "critique": 7046,
+        "solver": 17841
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cost of the ticket in the passage?",
+      "ms": {
+        "draft": 2627,
+        "critique": 8724,
+        "solver": 1673
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 10 kg of rice is packed in one sack, how many sacks are needed for 6000 kg of rice?",
+      "ms": {
+        "draft": 4617,
+        "critique": 10043,
+        "solver": 15167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "ms": {
+        "draft": 2627,
+        "critique": 6465,
+        "solver": 1849
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If each aeroplane can carry 30 people, how many people can 5 aeroplanes carry?",
+      "ms": {
+        "draft": 2627,
+        "critique": 7013,
+        "solver": 12019
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the cost of the ticket is Rs 7 and Chinnu has only coins of Rs 5, how many coins will she need to pay, and will she get any change?",
+      "ms": {
+        "draft": 2627,
+        "critique": 7665,
+        "solver": 8233,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which child has all the notes of the same denomination?",
+      "ms": {
+        "draft": 3334,
+        "critique": 5068,
+        "solver": 1306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ticket cost is Rs 10, which child will not receive any change?",
+      "ms": {
+        "draft": 3334,
+        "critique": 5800,
+        "solver": 2714
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cost of the ticket that the five friends are trying to buy?",
+      "ms": {
+        "draft": 3334,
+        "critique": 5301,
+        "solver": 2107,
+        "form": 3145
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pattern in the multiplications, which of the following will also follow the same pattern?",
+      "ms": {
+        "draft": 3334,
+        "critique": 7900
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the cost of the ticket is Rs 10 and the cashier takes 10 seconds to count one coin, how long will it take to count Chinnu’s coins?",
+      "ms": {
+        "draft": 3334,
+        "critique": 5762,
+        "solver": 1951,
+        "form": 1903
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ticket cost is Rs 20 and Bujji has only Rs 10 notes, how many notes will he need to buy the ticket?",
+      "ms": {
+        "draft": 3334,
+        "critique": 8781,
+        "solver": 16507
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many people can be seated in 12 buses if each bus can seat 20 people?",
+      "ms": {
+        "draft": 4281,
+        "critique": 10091,
+        "solver": 1587,
+        "form": 2238
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many coaches will be needed for 324 children if each coach can seat 14 children?",
+      "ms": {
+        "draft": 4281,
+        "critique": 6328
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 10 × 10?",
+      "ms": {
+        "draft": 4281,
+        "critique": 7799,
+        "solver": 16404,
+        "form": 1831
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the cost of the ticket is Rs 7 and Chinnu has coins of Rs 2, how many coins will she need to pay?",
+      "ms": {
+        "draft": 2627,
+        "critique": 7489,
+        "solver": 10982,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 3 × 100?",
+      "ms": {
+        "draft": 5332,
+        "critique": 6201,
+        "solver": 1757,
+        "form": 4643,
+        "translation": 36960
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 10 × 10 in terms of tens?",
+      "ms": {
+        "draft": 12399,
+        "critique": 5154,
+        "solver": 1882,
+        "form": 0,
+        "translation": 42101
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents 16 × 10 in terms of tens?",
+      "ms": {
+        "draft": 12399,
+        "critique": 6220,
+        "solver": 1228,
+        "form": 0,
+        "translation": 47134
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 11 × 100 = 1100, what is 11 × 200?",
+      "ms": {
+        "draft": 5332,
+        "critique": 7760,
+        "solver": 2079,
+        "form": 4481,
+        "translation": 30617
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If each coach can seat 14 children and there are 15 coaches, how many children can be seated in total?",
+      "ms": {
+        "draft": 12399,
+        "critique": 4741,
+        "solver": 1005,
+        "form": 0,
+        "translation": 29822
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is 15 × 10?",
+      "ms": {
+        "draft": 4281,
+        "critique": 8231,
+        "solver": 1952,
+        "form": 3862,
+        "translation": 29356
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 × 100 = 1000, what is 20 × 100?",
+      "ms": {
+        "draft": 5332,
+        "critique": 8202,
+        "solver": 1891,
+        "form": 4536,
+        "translation": 34822
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 15 × 100 = 1500, what is 15 × 200?",
+      "ms": {
+        "draft": 5332,
+        "critique": 6070,
+        "solver": 2120,
+        "form": 6176,
+        "translation": 42166
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If the cost of the ticket is Rs 7, how many coins of Rs 1 will Chinnu need to pay?",
+      "ms": {
+        "draft": 2627,
+        "critique": 7011,
+        "solver": 1152,
+        "form": 0,
+        "translation": 28638
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 26 × 10 = 260, what is 26 × 20?",
+      "ms": {
+        "draft": 12399,
+        "critique": 5822,
+        "solver": 2511,
+        "form": 0,
+        "translation": 26809
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 152 people can travel in one flight, how many people can travel in 64 flights?",
+      "ms": {
+        "draft": 4617,
+        "critique": 7600,
+        "solver": 14341,
+        "form": 3821,
+        "translation": 39097
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 10 × 100 = 1000, what is 10 × 500?",
+      "ms": {
+        "draft": 5332,
+        "critique": 7431,
+        "solver": 1509,
+        "form": 5323,
+        "translation": 34624
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the remainder when 324 children are divided into coaches that can seat 14 children each?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 12 × 20 = 240, which of the following is also true?",
+      "reason": "options 0 and 2 say the same thing (\"12 × 2 Tens = 24 Tens\" / \"12 × 2 Tens = 24\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is 440 ÷ 22?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is 11 × 200?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"adds an extra zero after the multiplication result is found …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a sack of rice weighs 100 kg, how many sacks are needed for 600 kg of rice?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 64 people can be seated in one boat, how many boats are needed for 960 participants?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the cost of the ticket in the passage?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 10 kg of rice is packed in one sack, how many sacks are needed for 6000 kg of rice?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If each aeroplane can carry 30 people, how many people can 5 aeroplanes carry?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the cost of the ticket is Rs 7 and Chinnu has only coins of Rs 5, how many coins will she need to pay, and will she get any change?",
+      "reason": "options 0 and 2 say the same thing (\"1: 1 coin, yes change\" / \"1 coin, yes change\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which child has all the notes of the same denomination?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the ticket cost is Rs 10, which child will not receive any change?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the cost of the ticket that the five friends are trying to buy?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes the cost is the same as one of the numbers in the pa…\"); distractor 1's reason is not a one-line misconception (\"Assumes the cost is the same as one of the numbers in the pa…\"); distractor 2's reason is not a one-line misconception (\"Assumes the cost is the same as one of the numbers in the pa…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the pattern in the multiplications, which of the following will also follow the same pattern?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the cost of the ticket is Rs 10 and the cashier takes 10 seconds to count one coin, how long will it take to count Chinnu’s coins?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the ticket cost is Rs 20 and Bujji has only Rs 10 notes, how many notes will he need to buy the ticket?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How many people can be seated in 12 buses if each bus can seat 20 people?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses 12 × 20 with 10 × 120 (12 × 10) and adds incorrectl…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many coaches will be needed for 324 children if each coach can seat 14 children?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is 10 × 10?",
+      "reason": "options 1 and 3 are the same (\"10 Tens = 1000\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the cost of the ticket is Rs 7 and Chinnu has coins of Rs 2, how many coins will she need to pay?",
+      "reason": "near-duplicate of batch item \"If the cost of the ticket is Rs 7, how many coins …\" (cosine 0.951 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

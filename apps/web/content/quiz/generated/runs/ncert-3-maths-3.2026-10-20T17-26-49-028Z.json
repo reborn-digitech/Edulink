@@ -1,0 +1,313 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T17:26:49.028Z",
+  "finishedAt": "2026-10-20T17:29:23.322Z",
+  "seconds": 154,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm103.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Double Century",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n31. The sum of a two-digit number and the number obtained by reversing the order 3\nof its digits is 99. If ten’s digit is 3 more than the unit’s digit, then find the number.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 46730,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9170,
+      "completionTokens": 2733
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 106561,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 8116,
+      "completionTokens": 3153
+    },
+    "solver": {
+      "calls": 99,
+      "ms": 64188,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 23504,
+      "completionTokens": 1166
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6522,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 515,
+      "completionTokens": 167
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2294,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 104815,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8284,
+      "completionTokens": 3478
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following represents the number 100 using matchstick bundles?",
+      "ms": {
+        "draft": 4687,
+        "critique": 5024,
+        "solver": 17262
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On the snakes and ladders board, if you are on 13 and take the ladder, which number will you reach?",
+      "ms": {
+        "draft": 4687,
+        "critique": 5501,
+        "solver": 15845,
+        "form": 3788
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Using the clap, snap, and pat method, what number does 'One clap, one snap, and one pat' represent?",
+      "ms": {
+        "draft": 4687,
+        "critique": 5687,
+        "solver": 1340
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you have 100 seeds and you want to estimate how many handfuls you need to get close to 200 seeds, which of the following is the best estimate?",
+      "ms": {
+        "draft": 4687,
+        "critique": 6495,
+        "solver": 1728
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true according to the passage?",
+      "ms": {
+        "draft": 4687,
+        "critique": 5863,
+        "solver": 560,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you are on 96 and roll a 3 on the die, which number will you reach?",
+      "ms": {
+        "draft": 3102,
+        "critique": 5598
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which number is shown using 10 bundles and 4 loose sticks?",
+      "ms": {
+        "draft": 3102,
+        "critique": 7207,
+        "solver": 15242,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 100 and 35 makes 135, what number added to 65 will make 100?",
+      "ms": {
+        "draft": 3102,
+        "critique": 7049,
+        "solver": 15538
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number comes just after 99?",
+      "ms": {
+        "draft": 3102,
+        "critique": 5213,
+        "solver": 11532,
+        "form": 0,
+        "translation": 20763
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does 10 bundles of 10 sticks make?",
+      "ms": {
+        "draft": 3102,
+        "critique": 4540,
+        "solver": 1437,
+        "form": 0,
+        "translation": 28324
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Bholu jumps 65 and then 35 more, what number does he reach?",
+      "ms": {
+        "draft": 4687,
+        "critique": 6531,
+        "solver": 12668,
+        "form": 3420,
+        "translation": 31347
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If one clap represents 100, one snap represents 10, and one pat represents 1, what number does 'two claps, one snap, and three pats' represent?",
+      "ms": {
+        "draft": 3102,
+        "critique": 7356,
+        "solver": 1679,
+        "form": 0,
+        "translation": 21037
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following represents the number 100 using matchstick bundles?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "On the snakes and ladders board, if you are on 13 and take the ladder, which number will you reach?",
+      "reason": "options 0 and 3 are the same (\"20\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Using the clap, snap, and pat method, what number does 'One clap, one snap, and one pat' represent?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If you have 100 seeds and you want to estimate how many handfuls you need to get close to 200 seeds, which of the following is the best estimate?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements is true according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you are on 96 and roll a 3 on the die, which number will you reach?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which number is shown using 10 bundles and 4 loose sticks?",
+      "reason": "options 0 and 1 are the same (\"104\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 100 and 35 makes 135, what number added to 65 will make 100?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,378 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:22:45.665Z",
+  "finishedAt": "2026-10-20T22:25:19.394Z",
+  "seconds": 154,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap114.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 14 — When the Earth Shook!",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 42824,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13728,
+      "completionTokens": 3116
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 93976,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 7880,
+      "completionTokens": 3270
+    },
+    "solver": {
+      "calls": 102,
+      "ms": 39265,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 15899,
+      "completionTokens": 1032
+    },
+    "form": {
+      "calls": 7,
+      "ms": 12205,
+      "in": 13,
+      "out": 5,
+      "rejects": 8,
+      "promptTokens": 1533,
+      "completionTokens": 467
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 1954,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 142339,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11419,
+      "completionTokens": 5778
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If you were in an earthquake and could not go outside, what should you do according to the passage?",
+      "ms": {
+        "draft": 2855,
+        "critique": 3806,
+        "solver": 948,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the villagers do to rebuild their houses according to the passage?",
+      "ms": {
+        "draft": 2855,
+        "critique": 4173,
+        "solver": 1469,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal is mentioned in the passage as being helpful during a disaster?",
+      "ms": {
+        "draft": 2183,
+        "critique": 5706,
+        "solver": 1349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as something people might need during a disaster?",
+      "ms": {
+        "draft": 2183,
+        "critique": 3715,
+        "solver": 766
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is trapped under debris after an earthquake, which of the following would be most helpful?",
+      "ms": {
+        "draft": 2859,
+        "critique": 6176,
+        "solver": 1704
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of government offices during a disaster?",
+      "ms": {
+        "draft": 2859,
+        "critique": 6194,
+        "solver": 1182,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 2859,
+        "critique": 5222,
+        "solver": 10512,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of disaster mentioned in the passage?",
+      "ms": {
+        "draft": 2859,
+        "critique": 5980,
+        "solver": 13766
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the date of the earthquake mentioned in the passage?",
+      "ms": {
+        "draft": 2810,
+        "critique": 5879,
+        "solver": 1396,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where did Jasma live when the earthquake happened?",
+      "ms": {
+        "draft": 2810,
+        "critique": 5223,
+        "solver": 872,
+        "form": 2667
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were in an earthquake and could not leave your house, what should you do?",
+      "ms": {
+        "draft": 2810,
+        "critique": 5029,
+        "solver": 823,
+        "form": 2112
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the date of the earthquake in Gujarat according to Jasma?",
+      "ms": {
+        "draft": 2855,
+        "critique": 4500,
+        "solver": 1820,
+        "form": 1387,
+        "translation": 22032
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the villagers do after the earthquake to get food?",
+      "ms": {
+        "draft": 2810,
+        "critique": 5389,
+        "solver": 7436,
+        "form": 851,
+        "translation": 27474
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one reason people live together in a neighbourhood?",
+      "ms": {
+        "draft": 2183,
+        "critique": 4990,
+        "solver": 855,
+        "form": 1959,
+        "translation": 25647
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there is no rain, what can happen to crops?",
+      "ms": {
+        "draft": 2183,
+        "critique": 4319,
+        "solver": 630,
+        "form": 1656,
+        "translation": 30565
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did the engineers suggest to the villagers to make their houses safer during an earthquake?",
+      "ms": {
+        "draft": 2855,
+        "critique": 6127,
+        "solver": 1063,
+        "form": 2611,
+        "translation": 33518
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you were in an earthquake and could not go outside, what should you do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did the villagers do to rebuild their houses according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which animal is mentioned in the passage as being helpful during a disaster?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as something people might need during a disaster?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person is trapped under debris after an earthquake, which of the following would be most helpful?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of government offices during a disaster?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the focus of the passage, thinking it is abou…\"); distractor 3's reason is not a one-line misconception (\"Confuses the main idea with disaster preparation, which is o…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of disaster mentioned in the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the date of the earthquake mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"chooses a day that is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Where did Jasma live when the earthquake happened?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"chooses a city not related to the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you were in an earthquake and could not leave your house, what should you do?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"chooses an action not mentioned in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

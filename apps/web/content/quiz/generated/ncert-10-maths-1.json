@@ -1,542 +1,67 @@
 {
   "subject": "MATHS",
   "classLevel": 10,
-  "chapter": "Chapter 1 — EAL UMBERS",
-  "name": "EAL UMBERS",
-  "slug": "maths-10-eal-umbers",
-  "summary": "This chapter introduces the concept of real numbers and their properties.",
+  "chapter": "Chapter 1 — Real Numbers",
+  "name": "Real Numbers",
+  "slug": "maths-10-real-numbers",
+  "summary": "This chapter introduces real numbers and their properties, including Euclid's division algorithm and the fundamental theorem of arithmetic.",
   "position": 1,
   "source": "generated against NCERT Mathematics, Class 10, chapter 1 (Reprint 2026-27)",
   "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
   "translations": {
     "hi": {
-      "name": "अध्याय 1 - वास्तविक संख्याएँ",
-      "summary": "इस अध्याय में वास्तविक संख्याओं और उनके गुणों की अवधारणा पेश की गई है।"
+      "name": "अध्याय 1 - वास्तविक संख्याएं।",
+      "summary": "इस अध्याय में वास्तविक संख्याओं और उनके गुणों का परिचय दिया गया है, जिसमें यूक्लिड के विभाजन एल्गोरिथ्म और मूल अंकगणितीय प्रमेय शामिल हैं।"
     },
     "mr": {
-      "name": "अध्याय 1 - वास्तविक संख्या",
-      "summary": "हा अध्याय वास्तविक संख्या आणि त्यांच्या गुणधर्मांची अवधारणा सादर करतो."
+      "name": "अध्याय 1 - वास्तविक संख्या.",
+      "summary": "हा अध्याय वास्तविक संख्या आणि त्यांच्या गुणधर्मांच्या परिचयास सांगतो, ज्यामध्ये युक्लिडचा विभाजन अल्गोरिथम आणि मूल अंकगणितीय प्रमेय समाविष्ट आहेत."
     }
   },
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T18:45:49.162Z",
+  "generatedAt": "2026-10-22T16:49:01.310Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the name of the theorem that states every composite number can be expressed as a product of primes in a unique way?",
-      "choices": [
-        "Euclid’s Division Algorithm",
-        "The Fundamental Theorem of Arithmetic",
-        "The Prime Factorisation Theorem",
-        "The Divisibility Theorem"
-      ],
-      "answerIndex": 1,
-      "solution": "The theorem is called the Fundamental Theorem of Arithmetic. It states that every composite number can be expressed as a product of primes in a unique way. The other options are not the correct names of the theorem.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन सा प्रमेय बताता है कि प्रत्येक भाज्य संख्या को अभाज्य गुणनखंडों के गुणनफल के रूप में अद्वितीय रूप से व्यक्त किया जा सकता है?",
-          "choices": [
-            "यूक्लिड का विभाजन एल्गोरिथ्म",
-            "अंकगणित की मूल प्रमेय",
-            "अभाज्य गुणनखंडन प्रमेय",
-            "भाज्यता प्रमेय"
-          ],
-          "solution": "इस प्रमेय को अंकगणित की मूल प्रमेय कहा जाता है। यह बताता है कि प्रत्येक भाज्य संख्या को अभाज्य गुणनखंडों के गुणनफल के रूप में अद्वितीय रूप से व्यक्त किया जा सकता है। अन्य विकल्प प्रमेय के सही नाम नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'अंकगणित की मूल प्रमेय' (Fundamental Theorem of Arithmetic) are appropriately used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "संयुक्त संख्या प्रत्येक अभाज्य गुणाकाराच्या अद्वितीय पद्धतीने व्यक्त करता येते असे म्हणणारा नियमाचे नाव काय आहे?",
-          "choices": [
-            "युक्लिडचा भागाकार अल्गोरिथम",
-            "अंकगणिताचा मूलभूत नियम",
-            "अभाज्य अपघटन नियम",
-            "भाज्यता नियम"
-          ],
-          "solution": "हा नियम अंकगणिताचा मूलभूत नियम म्हणून ओळखला जातो. तो सांगतो की प्रत्येक संयुक्त संख्या अभाज्य गुणाकाराच्या अद्वितीय पद्धतीने व्यक्त करता येते. इतर विकल्प या नियमाचे योग्य नाव नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Refers to a different theorem related to divisibility",
-        null,
-        "Incorrectly names the theorem",
-        "Refers to a general concept, not the specific theorem"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is the Fundamental Theorem of Arithmetic, which is the standard name for the theorem that states every composite number can be expressed as a product of primes in a unique way. The other options are either incorrect names or refer to broader concepts.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T18:45:49.162Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the method of finding HCF and LCM of two numbers by breaking them into prime factors called?",
-      "choices": [
-        "Factorisation method",
-        "Prime factorisation method",
-        "Division method",
-        "Multiplication method"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct method for finding the HCF and LCM of two numbers by breaking them into prime factors is called the prime factorisation method. This involves expressing each number as a product of its prime factors and then using those to determine the highest common factor and least common multiple. The other options do not specifically refer to the process of breaking numbers into prime factors.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो संख्याओं के महत्तम समापवर्तक और लघुत्तम समापवर्तक ज्ञात करने की विधि जो उन्हें अभाज्य गुणनखंडों में तोड़कर की जाती है, क्या कहलाती है?",
-          "choices": [
-            "गुणनखंडन विधि",
-            "अभाज्य गुणनखंडन विधि",
-            "भाग विधि",
-            "गुणा विधि"
-          ],
-          "solution": "दो संख्याओं के महत्तम समापवर्तक और लघुत्तम समापवर्तक ज्ञात करने की सही विधि जो उन्हें अभाज्य गुणनखंडों में तोड़कर की जाती है, अभाज्य गुणनखंडन विधि कहलाती है। इसमें प्रत्येक संख्या को उसके अभाज्य गुणनखंडों के गुणनफल के रूप में व्यक्त किया जाता है और फिर उनका उपयोग महत्तम समापवर्तक और लघुत्तम समापवर्तक निर्धारित करने के लिए किया जाता है। अन्य विकल्प विशेष रूप से संख्याओं के अभाज्य गुणनखंडों में तोड़ने की प्रक्रिया को नहीं दर्शाते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. The correct answer remains option (2), and the distractors are still incorrect. Technical terms like 'अभाज्य गुणनखंडन विधि' are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन संख्यांच्या महत्तम सामान्य अपवर्तक आणि लघुत्तम सामान्य अपवर्त्य शोधण्याच्या पद्धतीचे नाव काय आहे जिथे त्या संख्यांना अविभाज्य अपवर्तकांमध्ये विभागले जाते?",
-          "choices": [
-            "अपवर्तक पद्धती",
-            "अविभाज्य अपवर्तक पद्धती",
-            "भागाकार पद्धती",
-            "गुणाकार पद्धती"
-          ],
-          "solution": "दोन संख्यांच्या महत्तम सामान्य अपवर्तक आणि लघुत्तम सामान्य अपवर्त्य शोधण्याची योग्य पद्धती जिथे त्या संख्यांना अविभाज्य अपवर्तकांमध्ये विभागले जाते तिला अविभाज्य अपवर्तक पद्धती म्हणतात. यामध्ये प्रत्येक संख्याला तिच्या अविभाज्य अपवर्तकांच्या गुणाकाराच्या रूपात व्यक्त केले जाते आणि नंतर त्यांच्या आधारे महत्तम सामान्य अपवर्तक आणि लघुत्तम सामान्य अपवर्त्य शोधले जाते. इतर विकल्प अविभाज्य अपवर्तकांमध्ये संख्यांच्या विभाजनाच्या प्रक्रियेला विशिष्टपणे संदर्भित करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses prime factorisation with general factorisation",
-        null,
-        "Confuses the prime factorisation method with the division method for HCF",
-        "Confuses prime factorization with basic multiplication techniques"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Prime factorisation method' as it specifically refers to breaking numbers into prime factors. The other options are either too general or refer to different methods.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T18:45:49.162Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "Which of the following best describes the Fundamental Theorem of Arithmetic?",
+      "stem": "Which of the following is a correct statement about the Fundamental Theorem of Arithmetic?",
       "choices": [
-        "Every number can be divided by another number",
-        "Every number can be written as a product of primes in a unique way",
-        "Every number is a prime number",
-        "Every number has only one factor"
+        "It states that every integer can be divided by another integer without remainder",
+        "It states that every composite number can be factorised as a product of primes in a unique way",
+        "It states that the product of two irrational numbers is always irrational",
+        "It states that the decimal expansion of a rational number is always terminating"
       ],
       "answerIndex": 1,
-      "solution": "The Fundamental Theorem of Arithmetic states that every number can be written as a product of prime numbers in exactly one way, disregarding the order of the factors. The other options are incorrect because not all numbers are prime, not every number has only one factor, and while numbers can be divided by others, this is not the main point of the theorem.",
+      "solution": "The correct statement is that every composite number can be factorised as a product of primes in a unique way, which is a fundamental property of integers. The other options are incorrect because dividing integers doesn't always result in no remainder, the product of two irrationals can sometimes be rational, and not all rational numbers have terminating decimals.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अंकगणित के मूलभूत प्रमेय का सबसे अच्छा वर्णन करता है?",
+          "stem": "निम्नलिखित में से कौन-सा अंकगणित की आधारभूत प्रमेय के बारे में सही कथन है?",
           "choices": [
-            "प्रत्येक संख्या किसी अन्य संख्या से विभाजित की जा सकती है",
-            "प्रत्येक संख्या को अभाज्य संख्याओं के गुणनफल के रूप में अद्वितीय रूप से लिखा जा सकता है",
-            "प्रत्येक संख्या एक अभाज्य संख्या होती है",
-            "प्रत्येक संख्या केवल एक गुणनखंड होता है"
+            "यह कहता है कि कोई भी पूर्णांक दूसरे पूर्णांक द्वारा शेष बिना विभाजित किया जा सकता है",
+            "यह कहता है कि प्रत्येक भाज्य संख्या को अभाज्य संख्याओं के गुणनफल के रूप में अद्वितीय रूप से गुणनखंडित किया जा सकता है",
+            "यह कहता है कि दो अपरिमेय संख्याओं का गुणनफल हमेशा अपरिमेय होता है",
+            "यह कहता है कि एक परिमेय संख्या का दशमलव प्रसार हमेशा सांत होता है"
           ],
-          "solution": "अंकगणित के मूलभूत प्रमेय कहता है कि प्रत्येक संख्या को अभाज्य संख्याओं के गुणनफल के रूप में बिल्कुल एक ही तरीके से लिखा जा सकता है, गुणनखंडों के क्रम के बिना। अन्य विकल्प गलत हैं क्योंकि सभी संख्याएं अभाज्य नहीं होती हैं, प्रत्येक संख्या केवल एक गुणनखंड नहीं होता है, और यह सच है कि संख्याओं को अन्य संख्याओं से विभाजित किया जा सकता है, लेकिन यह प्रमेय का मुख्य बिंदु नहीं है।",
+          "solution": "सही कथन यह है कि प्रत्येक भाज्य संख्या को अभाज्य संख्याओं के गुणनफल के रूप में अद्वितीय रूप से गुणनखंडित किया जा सकता है, जो पूर्णांकों का एक मूलभूत गुण है। अन्य विकल्प गलत हैं क्योंकि पूर्णांकों के विभाजन से हमेशा शेष नहीं रहता है, दो अपरिमेय संख्याओं का गुणनफल कभी-कभी परिमेय हो सकता है, और सभी परिमेय संख्याओं के दशमलव प्रसार सांत नहीं होते हैं।",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते अंकगणिताच्या मूलभूत सिद्धांताचे सर्वात चांगले वर्णन करते?",
+          "stem": "खालीलपैकी कोणता विधान अंकगणिताच्या मूलभूत सिद्धांताबद्दल बरोबर आहे?",
           "choices": [
-            "कोणताही संख्या दुसरा संख्या भाग जाऊ शकतो",
-            "कोणताही संख्या अभाज्य संख्यांच्या उत्पादनाच्या एक अद्वितीय पद्धतीने लिहिता येऊ शकतो",
-            "कोणताही संख्या अभाज्य संख्या आहे",
-            "कोणताही संख्या फक्त एक अपवर्तक असतो"
+            "ते सांगते की प्रत्येक पूर्णांक दुसऱ्या पूर्णांकाने भागला जाऊ शकतो आणि शिल्लक नसते",
+            "ते सांगते की प्रत्येक भाज्य संख्या अविभाज्य संख्यांच्या गुणाकाराच्या रूपात अद्वितीय पद्धतीने अपघटित करता येते",
+            "ते सांगते की दोन अपरिमेय संख्यांचा गुणाकार सदैव अपरिमेय असतो",
+            "ते सांगते की एका परिमेय संख्येचा दशांश विस्तार सदैव अंतिम असतो"
           ],
-          "solution": "अंकगणिताच्या मूलभूत सिद्धांत म्हणतो की कोणताही संख्या अभाज्य संख्यांच्या उत्पादनाच्या एक अद्वितीय पद्धतीने लिहिता येऊ शकतो, अपवर्तकांच्या क्रमाच्या निर्देशाशिवाय. इतर विकल्प अयोग्य आहेत कारण सर्व संख्या अभाज्य नाहीत, सर्व संख्यांचा फक्त एक अपवर्तक असतो असे नाही आणि जरी संख्यांना दुसरी संख्यांनी भाग जाऊ शकत असले तरी ते सिद्धांताचा मुख्य बिंदू नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Refers to division, not prime factorisation",
-        null,
-        "Incorrectly states that all numbers are prime",
-        "Incorrectly states that numbers have only one factor"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 1, which accurately reflects the Fundamental Theorem of Arithmetic. The other options contain clear misconceptions about number theory.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T18:45:49.162Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "The prime factorisation of a number is given as 2³ × 3² × 5. What is the number?",
-      "choices": [
-        "180",
-        "270",
-        "360",
-        "450"
-      ],
-      "answerIndex": 2,
-      "solution": "The number is 360. This is calculated as 2³ × 3² × 5 = 8 × 9 × 5 = 360. The other options are incorrect because they do not match the result of this calculation.",
-      "checkExpr": "8*9*5",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक संख्या का अभाज्य गुणनखंडन 2³ × 3² × 5 के रूप में दिया गया है। संख्या क्या है?",
-          "choices": [
-            "180",
-            "270",
-            "360",
-            "450"
-          ],
-          "solution": "संख्या 360 है। इसे 2³ × 3² × 5 = 8 × 9 × 5 = 360 के रूप में गणना की गई है। अन्य विकल्प गलत हैं क्योंकि इनका परिणाम इस गणना के साथ मेल नहीं खाता।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका संख्येचे अभाज्य गुणक लेखन 2³ × 3² × 5 आहे. त्या संख्येचे मूल्य काय आहे?",
-          "choices": [
-            "180",
-            "270",
-            "360",
-            "450"
-          ],
-          "solution": "त्या संख्येचे मूल्य 360 आहे. हे 2³ × 3² × 5 = 8 × 9 × 5 = 360 असे गणित केले जाते. इतर विकल्प चुकीचे आहेत कारण ते या गणिताच्या निकालाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Calculates 2³ × 3² × 5 incorrectly as 180",
-        "Calculates 2³ × 3² × 5 incorrectly as 270",
-        null,
-        "Calculates 2³ × 3² × 5 incorrectly as 450"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 360, as 2³ × 3² × 5 = 8 × 9 × 5 = 360. The author's solution is correct, and the reasons for the distractors are plausible misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T18:45:49.162Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the HCF of 6, 72, and 120 using the prime factorisation method?",
-      "choices": [
-        "6",
-        "12",
-        "18",
-        "24"
-      ],
-      "answerIndex": 0,
-      "solution": "To find the HCF using prime factorisation, identify the common prime factors with the smallest powers. The prime factors of 6, 72, and 120 are 2 and 3, each appearing at least once. Multiplying these gives 2 × 3 = 6. The other options either include extra factors or use higher powers that are not common to all numbers.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "6, 72 और 120 का ल.स.प. क्या है प्राकृतिक गुणनखंड विधि का उपयोग करके?",
-          "choices": [
-            "6",
-            "12",
-            "18",
-            "24"
-          ],
-          "solution": "प्राकृतिक गुणनखंड विधि के उपयोग से ल.स.प. ज्ञात करने के लिए, सामान्य प्राकृतिक गुणनखंडों के सबसे छोटे घात की पहचान करें। 6, 72 और 120 के प्राकृतिक गुणनखंड 2 और 3 हैं, जो कम से कम एक बार उपस्थित हैं। इनका गुणा करने पर 2 × 3 = 6 प्राप्त होता है। अन्य विकल्प या अतिरिक्त गुणनखंड शामिल करते हैं या उच्च घात का उपयोग करते हैं जो सभी संख्याओं के लिए सामान्य नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English question and solution with appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "6, 72 आणि 120 चा HCF अविभाज्य अपघटन पद्धतीने किती आहे?",
-          "choices": [
-            "6",
-            "12",
-            "18",
-            "24"
-          ],
-          "solution": "अविभाज्य अपघटन पद्धतीने HCF शोधण्यासाठी, सामान्य अविभाज्य घटकांच्या सर्वात लहान घातांची ओळख करा. 6, 72 आणि 120 चे अविभाज्य घटक 2 आणि 3 आहेत, जे कमीत कमी एकदा आढळतात. यांच्या गुणाकाराने 2 × 3 = 6 मिळतो. इतर विकल्पांमध्ये अतिरिक्त घटक असतात किंवा जे जास्त घात असतात जे सर्व संख्यांसाठी सामान्य नसतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the LCM with the HCF by taking the highest common factor of the highest numbers",
-        "This is a wrong calculation based on an incorrect identification of the prime factors.",
-        "This is a wrong calculation based on an incorrect identification of the prime factors."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The HCF is indeed 6, as the prime factorization shows 2 and 3 as the common factors with the smallest powers.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 1: EAL UMBERS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T18:45:49.162Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "According to the Fundamental Theorem of Arithmetic, why is the prime factorisation of a number considered unique?",
-      "choices": [
-        "Because the order of the factors does not matter",
-        "Because only one prime number can divide the number",
-        "Because the number can only have one distinct prime factor",
-        "Because the number is always a prime number"
-      ],
-      "answerIndex": 0,
-      "solution": "The Fundamental Theorem of Arithmetic states that the prime factorisation of a number is unique, except for the order in which the prime factors occur. The other options are incorrect because they misinterpret the concept of uniqueness in prime factorisation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आर्थमैटिक की मूल अवधारणा के अनुसार, क्यों प्राकृत संख्या के अभाज्य गुणनखंडन को अद्वितीय माना जाता है?",
-          "choices": [
-            "क्योंकि गुणनखंडों के क्रम का महत्व नहीं होता है",
-            "क्योंकि केवल एक ही अभाज्य संख्या संख्या को विभाजित कर सकती है",
-            "क्योंकि संख्या केवल एक अलग-अलग अभाज्य गुणनखंड ही रख सकती है",
-            "क्योंकि संख्या हमेशा एक अभाज्य संख्या होती है"
-          ],
-          "solution": "आर्थमैटिक की मूल अवधारणा बताती है कि किसी संख्या का अभाज्य गुणनखंडन अद्वितीय होता है, अभाज्य गुणनखंडों के क्रम के अलावा। अन्य विकल्प गलत हैं क्योंकि वे अभाज्य गुणनखंडन में अद्वितीयता की अवधारणा को गलत तरीके से समझते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आर्थथमॅटिकच्या मूलभूत सिद्धांतानुसार, एखाद्या संख्येच्या अभाज्य अपघटनाला अद्वितीय मानले जाते कारण?",
-          "choices": [
-            "कारण अपघटनातील घटकांचा क्रम महत्त्वाचा नाही",
-            "कारण केवळ एकच अभाज्य संख्या त्या संख्येला भाग जाऊ शकते",
-            "कारण त्या संख्येला केवळ एकच वेगळा अभाज्य घटक असू शकतो",
-            "कारण ती संख्या नेहमी अभाज्य संख्या असते"
-          ],
-          "solution": "आर्थमॅटिकचा मूलभूत सिद्धांत सांगतो की एखाद्या संख्येच्या अभाज्य अपघटनाची अद्वितीयता असते, अपघटनातील अभाज्य घटकांच्या क्रमाने बदलल्यास नक्कीच बदलत नाही. इतर विकल्प अभाज्य अपघटनाच्या अद्वितीयतेच्या अर्थाच्या चुकीच्या व्याख्येमुळे अयोग्य आहेत.",
+          "solution": "बरोबर विधान म्हणजे प्रत्येक भाज्य संख्या अविभाज्य संख्यांच्या गुणाकाराच्या रूपात अद्वितीय पद्धतीने अपघटित करता येते, हे पूर्णांकांचे मूलभूत गुणधर्म आहे. इतर विधाने चुकीची आहेत कारण पूर्णांकांचा भागाकार हमखास शिल्लक नसतो, अपरिमेय संख्यांचा गुणाकार वेळोवेळी परिमेय असू शकतो आणि सर्व परिमेय संख्यांचा दशांश विस्तार अंतिम असेल असे नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -547,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Refers to Euclid's division algorithm, not the Fundamental Theorem of Arithmetic",
         null,
-        "Believes that uniqueness means only one prime factor is allowed, not that the set of primes is unique up to order",
-        "Students often think that uniqueness means only one prime factor is allowed, not that the set of primes is unique up to order",
-        "Believes that only prime numbers have unique prime factorizations"
+        "Refers to a misconception about the theorem's content",
+        "Refers to a different mathematical concept about irrational numbers"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the Fundamental Theorem of Arithmetic states that prime factorizations are unique up to the order of the factors. The other options reflect common misconceptions about what 'unique' means in this context.",
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, which accurately reflects the Fundamental Theorem of Arithmetic. The other options are either incorrect or refer to different mathematical concepts.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh101.pdf",
@@ -568,7 +93,7 @@
           "pageStart": 1,
           "pageEnd": 1,
           "headingPath": [
-            "Chapter 1: EAL UMBERS"
+            "Chapter 1: Real Numbers"
           ]
         },
         {
@@ -577,7 +102,7 @@
           "pageStart": 2,
           "pageEnd": 3,
           "headingPath": [
-            "Chapter 1: EAL UMBERS"
+            "Chapter 1: Real Numbers"
           ]
         },
         {
@@ -586,54 +111,54 @@
           "pageStart": 3,
           "pageEnd": 4,
           "headingPath": [
-            "Chapter 1: EAL UMBERS"
+            "Chapter 1: Real Numbers"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T18:45:49.162Z",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why is the number 7 × 11 × 13 + 13 a composite number?",
+      "difficulty": 2,
+      "stem": "What is the HCF of 6 and 20?",
       "choices": [
-        "It is divisible by 2",
-        "It is divisible by 11",
-        "It is divisible by 13",
-        "3: It is divisible by 7"
+        "2",
+        "3",
+        "4",
+        "5"
       ],
-      "answerIndex": 2,
-      "solution": "The expression 7 × 11 × 13 + 13 can be factored as 13 × (7 × 11 + 1), which equals 13 × 78. Since 13 is a factor of the number, it is divisible by 13, making it a composite number. The number is not divisible by 2, 7, or 11 because the factors of the resulting product do not include these numbers.",
+      "answerIndex": 0,
+      "solution": "The HCF is the product of the smallest power of each common prime factor in the numbers. The prime factorization of 6 is 2 × 3, and of 20 is 2 × 2 × 5. The only common prime factor is 2. So, HCF is 2. The correct answer is 2. The option 3 is a prime factor of 6 but not of 20. The option 4 is not a factor of 6. The option 5 is a prime factor of 20 but not of 6.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "संख्या 7 × 11 × 13 + 13 एक भाज्य संख्या क्यों है?",
+          "stem": "6 और 20 का एचसीएफ क्या है?",
           "choices": [
-            "यह 2 से विभाज्य है",
-            "यह 11 से विभाज्य है",
-            "यह 13 से विभाज्य है",
-            "यह 7 से विभाज्य है"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
-          "solution": "अभिव्यक्ति 7 × 11 × 13 + 13 को 13 × (7 × 11 + 1) के रूप में गुणनखंडित किया जा सकता है, जो 13 × 78 के बराबर है। 13 संख्या का गुणनखंड होने के कारण यह 13 से विभाज्य है, जिसके कारण यह एक भाज्य संख्या है। संख्या 2, 7 या 11 से विभाज्य नहीं है क्योंकि परिणामी गुणनफल के गुणनखंड में इन संख्याओं का समावेश नहीं है।",
+          "solution": "एचसीएफ संख्याओं में सामान्य अभाज्य गुणनखंडों की सबसे छोटी घात के गुणनफल होता है। 6 का अभाज्य गुणनखंडन 2 × 3 है, और 20 का 2 × 2 × 5 है। केवल एक सामान्य अभाज्य गुणनखंड 2 है। इसलिए, एचसीएफ 2 है। सही उत्तर 2 है। विकल्प 3, 6 का अभाज्य गुणनखंड है लेकिन 20 का नहीं। विकल्प 4, 6 का गुणनखंड नहीं है। विकल्प 5, 20 का अभाज्य गुणनखंड है लेकिन 6 का नहीं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "संख्या 7 × 11 × 13 + 13 एक घटनात्मक संख्या का आहे?",
+          "stem": "6 आणि 20 चा एचसीएफ किती आहे?",
           "choices": [
-            "ती 2 ने भाज्य आहे",
-            "ती 11 ने भाज्य आहे",
-            "ती 13 ने भाज्य आहे",
-            "ती 7 ने भाज्य आहे"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
-          "solution": "समीकरण 7 × 11 × 13 + 13 ला 13 × (7 × 11 + 1) च्या रूपात घटक केले जाऊ शकते, जे 13 × 78 च्या बरोबर आहे. 13 हा संख्येचा घटक असल्याने, ती 13 ने भाज्य आहे, ज्यामुळे ती एक घटनात्मक संख्या बनते. उत्पादनाच्या घटकांमध्ये हे संख्या 2, 7 किंवा 11 नाहीत, म्हणून ती त्यांना भाज्य नाहीत.",
+          "solution": "एचसीएफ हा संख्यांमधील सर्वात लहान घातांच्या सामायिक अविभाज्य घटकांचा गुणाकार असतो. 6 चे अविभाज्य घटकीकरण 2 × 3 आहे, आणि 20 चे 2 × 2 × 5 आहे. सामायिक अविभाज्य घटक केवळ 2 आहे. म्हणून, एचसीएफ हा 2 आहे. योग्य उत्तर 2 आहे. विकल्प 3 हा 6 चा अविभाज्य घटक आहे परंतु 20 चा नाही. विकल्प 4 हा 6 चा घटक नाही. विकल्प 5 हा 20 चा अविभाज्य घटक आहे परंतु 6 चा नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for 'composite number' and 'divisible by'.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -642,20 +167,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Student assumes the number is even because it ends in 3, but doesn't check properly",
-        "A student might incorrectly assume that because 11 is a factor in the product, it must also divide the entire expression.",
         null,
-        "Student forgets to factor the expression properly and assumes 7 is a factor without considering the added 13"
+        "confuses a prime factor of one number with the HCF",
+        "confuses a prime factor of one number with the HCF",
+        "confuses a non-factor with the HCF"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly factors the expression and identifies 13 as a factor, making the number composite. The reasoning for the distractors reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is correct. The HCF of 6 and 20 is indeed 2, and the reasoning for the distractors is valid.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh101.pdf",
@@ -663,7 +188,7 @@
           "pageStart": 4,
           "pageEnd": 5,
           "headingPath": [
-            "Chapter 1: EAL UMBERS"
+            "Chapter 1: Real Numbers"
           ]
         },
         {
@@ -672,7 +197,7 @@
           "pageStart": 5,
           "pageEnd": 6,
           "headingPath": [
-            "Chapter 1: EAL UMBERS"
+            "Chapter 1: Real Numbers"
           ]
         },
         {
@@ -681,12 +206,566 @@
           "pageStart": 6,
           "pageEnd": 7,
           "headingPath": [
-            "Chapter 1: EAL UMBERS"
+            "Chapter 1: Real Numbers"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T18:45:49.162Z",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the LCM of 6 and 20?",
+      "choices": [
+        "60",
+        "30",
+        "12",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "The LCM is the product of the greatest power of each prime factor involved in the numbers. The prime factorization of 6 is 2 × 3, and of 20 is 2 × 2 × 5. The LCM is 2 × 2 × 3 × 5 = 60. The correct answer is 60. The option 30 is half of 60, but it is not the LCM. The option 12 is not a multiple of 20. The option 10 is not a multiple of 6.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "6 और 20 का ल.स.प. क्या है?",
+          "choices": [
+            "60",
+            "30",
+            "12",
+            "10"
+          ],
+          "solution": "ल.स.प. सभी अभाज्य गुणनखंडों के सबसे बड़े घात के गुणनफल होता है। 6 का अभाज्य गुणनखंडन 2 × 3 है और 20 का 2 × 2 × 5 है। ल.स.प. 2 × 2 × 3 × 5 = 60 है। सही उत्तर 60 है। विकल्प 30, 60 का आधा है, लेकिन यह ल.स.प. नहीं है। विकल्प 12, 20 का गुणज नहीं है। विकल्प 10, 6 का गुणज नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "6 आणि 20 चा ल.सा.अ. किती आहे?",
+          "choices": [
+            "60",
+            "30",
+            "12",
+            "10"
+          ],
+          "solution": "ल.सा.अ. हा प्रत्येक अविभाज्य अपवर्तकाच्या सर्वात मोठ्या घाताचा गुणाकार असतो. 6 चे अविभाज्य अपवर्तक विश्लेषण 2 × 3 असून 20 चे 2 × 2 × 5 असते. ल.सा.अ. हा 2 × 2 × 3 × 5 = 60 असतो. योग्य उत्तर 60 आहे. 30 हे 60 च्या अर्ध्या आहे, परंतु ल.सा.अ. नाही. 12 हा 20 चा गुणक नाही. 10 हा 6 चा गुणक नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the LCM with half of the correct value",
+        "confuses LCM with a number that is not a multiple of both numbers",
+        "confuses LCM with a number that is not a multiple of both numbers"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the LCM by taking the highest powers of all prime factors involved. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a number is factorised into primes as 2 × 3 × 5 × 7, what is the name of the process used to achieve this?",
+      "choices": [
+        "Euclid's Division Algorithm",
+        "Prime Factorisation",
+        "Decimal Expansion",
+        "HCF Calculation"
+      ],
+      "answerIndex": 1,
+      "solution": "The process of breaking down a number into its prime components, such as 2 × 3 × 5 × 7, is called prime factorisation. Euclid's Division Algorithm is used for finding the greatest common divisor, decimal expansion refers to expressing numbers in base 10, and HCF Calculation is for determining the highest common factor, none of which describe the process of breaking a number into prime factors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी संख्या को अभाज्य गुणनखंडों में अपघटित किया जाता है जैसे 2 × 3 × 5 × 7, इसे प्राप्त करने के लिए उपयोग किए गए प्रक्रिया का नाम क्या है?",
+          "choices": [
+            "यूक्लिड का विभाजन एल्गोरिथ्म",
+            "अभाज्य गुणनखंडन",
+            "दशमलव विस्तार",
+            "महत्तम समापवर्तक की गणना"
+          ],
+          "solution": "किसी संख्या को उसके अभाज्य घटकों में अपघटित करने की प्रक्रिया को अभाज्य गुणनखंडन कहा जाता है, जैसे 2 × 3 × 5 × 7। यूक्लिड का विभाजन एल्गोरिथ्म महत्तम समापवर्तक ज्ञात करने के लिए उपयोग किया जाता है, दशमलव विस्तार आधार 10 में संख्याओं को व्यक्त करने के लिए होता है, और महत्तम समापवर्तक की गणना उच्चतम समापवर्तक निर्धारित करने के लिए होती है, जिसमें से कोई भी प्रक्रिया संख्या के अभाज्य गुणनखंडों में अपघटन को नहीं दर्शाती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संख्येचे अविभाज्य घटकांमध्ये अपघटन केल्यास 2 × 3 × 5 × 7 होते, या प्रक्रियेचे नाव काय आहे?",
+          "choices": [
+            "युक्लिडचा विभाजन अल्गोरिथम",
+            "अविभाज्य अपघटन",
+            "दशांश विस्तार",
+            "एचसीएफ गणना"
+          ],
+          "solution": "एका संख्येचे अविभाज्य घटकांमध्ये अपघटन करण्याची प्रक्रिया अविभाज्य अपघटन म्हणतात, जसे 2 × 3 × 5 × 7 हे. युक्लिडचा विभाजन अल्गोरिथम महत्तम सामायिक भाजक शोधण्यासाठी वापरला जातो, दशांश विस्तार हा आधार 10 मध्ये संख्या व्यक्त करण्याचा विषय आहे आणि एचसीएफ गणना ही महत्तम सामायिक घटक शोधण्यासाठी वापरली जाते, ज्यापैकी कोणतीही प्रक्रिया एका संख्येचे अविभाज्य घटकांमध्ये अपघटन करण्याचे वर्णन करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to a method for finding the highest common factor",
+        null,
+        "Refers to a misconception about the process",
+        "Refers to a different mathematical concept"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 'Prime Factorisation'. The other options are correctly identified as incorrect, and the reasons provided align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a and b are two rational numbers, what can be said about their sum?",
+      "choices": [
+        "It is always irrational",
+        "It is always rational",
+        "It can be either rational or irrational",
+        "It is always undefined"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum of two rational numbers is always rational because the sum of two fractions is also a fraction. The other options are incorrect because they contradict the properties of rational numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि a और b दो परिमेय संख्याएँ हैं, तो उनके योग के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह हमेशा अपरिमेय होता है",
+            "यह हमेशा परिमेय होता है",
+            "यह परिमेय या अपरिमेय दोनों हो सकता है",
+            "यह हमेशा अपरिभाषित होता है"
+          ],
+          "solution": "दो परिमेय संख्याओं का योग हमेशा परिमेय होता है क्योंकि दो भिन्नों का योग भी एक भिन्न होता है। अन्य विकल्प गलत हैं क्योंकि वे परिमेय संख्याओं के गुणधर्मों के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "a आणि b दोन अपरिमेय संख्या असतील, तर त्यांच्या बेरजेबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "ती नेहमी अपरिमेय असते",
+            "ती नेहमी परिमेय असते",
+            "ती परिमेय असू शकते किंवा अपरिमेय असू शकते",
+            "ती नेहमी अनिश्चित असते"
+          ],
+          "solution": "दोन परिमेय संख्यांची बेरीज नेहमी परिमेय असते कारण दोन अपरिमेय संख्यांची बेरीज देखील अपरिमेय असते. इतर विकल्प चुकीचे आहेत कारण ते परिमेय संख्यांच्या गुणधर्मांचा खंड करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation contains multiple errors: the stem incorrectly says 'a and b are irrational' instead of 'rational', the key is wrong (should be 2, not 1), and the solution contradicts itself by saying 'sum of two rational numbers is always rational' but then says 'sum of two irrational numbers is also irrational'.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that the sum of any two numbers must be irrational if one is irrational",
+        null,
+        "Misconception that the sum of two rational numbers can sometimes be irrational",
+        "Student thinks that the sum of two numbers is undefined if they are not both integers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 1, and the reasoning is sound. The distractors are based on common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Real Numbers",
+            "A NOTE TO THE READER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The HCF of two numbers is 6, and their LCM is 36. What is the product of these two numbers?",
+      "choices": [
+        "216",
+        "18",
+        "36",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "The product of two numbers is equal to the product of their HCF and LCM. So, product = HCF × LCM = 6 × 36 = 216. The correct answer is 216. The option 18 is the HCF itself, not the product. The option 36 is the LCM itself, not the product. The option 6 is the HCF itself, not the product.",
+      "checkExpr": "6*36",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो संख्याओं का महत्तम समापवर्तक 6 है, और उनका लघुत्तम समापवर्तक 36 है। इन दोनों संख्याओं का गुणनफल क्या है?",
+          "choices": [
+            "216",
+            "18",
+            "36",
+            "6"
+          ],
+          "solution": "दो संख्याओं का गुणनफल उनके महत्तम समापवर्तक और लघुत्तम समापवर्तक के गुणनफल के बराबर होता है। अतः गुणनफल = महत्तम समापवर्तक × लघुत्तम समापवर्तक = 6 × 36 = 216। सही उत्तर 216 है। विकल्प 18 महत्तम समापवर्तक ही है, गुणनफल नहीं। विकल्प 36 लघुत्तम समापवर्तक ही है, गुणनफल नहीं। विकल्प 6 महत्तम समापवर्तक ही है, गुणनफल नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, uses standard mathematical terminology, and the correct answer remains option (1).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन संख्यांचा महत्तम सामाईक अपवर्तक 6 आहे, आणि त्यांचा लघुत्तम सामाईक अपवर्त्य 36 आहे. या दोन संख्यांचा गुणाकार किती आहे?",
+          "choices": [
+            "216",
+            "18",
+            "36",
+            "6"
+          ],
+          "solution": "दोन संख्यांचा गुणाकार त्यांच्या महत्तम सामाईक अपवर्तक आणि लघुत्तम सामाईक अपवर्त्यच्या गुणाकार बरोबर असतो. म्हणून, गुणाकार = महत्तम सामाईक अपवर्तक × लघुत्तम सामाईक अपवर्त्य = 6 × 36 = 216. योग्य उत्तर 216 आहे. उत्तर 18 हे महत्तम सामाईक अपवर्तक आहे, गुणाकार नाही. उत्तर 36 हे लघुत्तम सामाईक अपवर्त्य आहे, गुणाकार नाही. उत्तर 6 हे महत्तम सामाईक अपवर्तक आहे, गुणाकार नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses HCF with product",
+        "confuses LCM with product",
+        "confuses LCM with product"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the mathematical relationship between HCF, LCM, and the product of two numbers. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If 3 is irrational and 5 is rational, what can be said about the value of 5 - 3?",
+      "choices": [
+        "It is rational",
+        "It is irrational",
+        "It is zero",
+        "It is undefined"
+      ],
+      "answerIndex": 1,
+      "solution": "The difference between a rational number and an irrational number is always irrational. Since 5 is rational and 3 is irrational, subtracting them results in an irrational number. A rational number minus an irrational number cannot be rational or zero, and the operation is defined, so the result is not undefined.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 3 अपरिमेय है और 5 परिमेय है, तो 5 - 3 के मान के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह परिमेय है",
+            "यह अपरिमेय है",
+            "यह शून्य है",
+            "यह अपरिभाषित है"
+          ],
+          "solution": "एक परिमेय संख्या और अपरिमेय संख्या के अंतर हमेशा अपरिमेय होता है। क्योंकि 5 परिमेय है और 3 अपरिमेय है, इसलिए उनको घटाने पर एक अपरिमेय संख्या प्राप्त होती है। एक परिमेय संख्या में से एक अपरिमेय संख्या घटाने पर परिमेय या शून्य नहीं हो सकता, और क्रिया परिभाषित है, इसलिए परिणाम अपरिभाषित नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses standard mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 3 अपरिमेय आणि 5 परिमेय असेल, 5 - 3 ची किंमत काय म्हणता येईल?",
+          "choices": [
+            "ते परिमेय आहे",
+            "ते अपरिमेय आहे",
+            "ते शून्य आहे",
+            "ते अस्पष्ट आहे"
+          ],
+          "solution": "परिमेय संख्या आणि अपरिमेय संख्या च्या फरकाचे निश्चितपणे अपरिमेय असते. जर 5 परिमेय आणि 3 अपरिमेय असेल तर त्यांच्यातील फरक अपरिमेय असतो. परिमेय संख्या वजा अपरिमेय संख्या अपरिमेय असू शकत नाही किंवा शून्य नसते आणि क्रियाकलाप निश्चित असतो, म्हणून फलिताचे निश्चितपणे अस्पष्ट नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the properties of rational and irrational numbers",
+        null,
+        "Does not understand that the difference of a rational and an irrational number is always irrational",
+        "Thinks that irrational numbers cannot be subtracted from rational numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is logically sound. The key is correct, and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Real Numbers",
+            "A NOTE TO THE READER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following statements is correct about the product of two irrational numbers?",
+      "choices": [
+        "It is always irrational",
+        "It is always rational",
+        "It can be either rational or irrational",
+        "It is always an integer"
+      ],
+      "answerIndex": 2,
+      "solution": "The product of two irrational numbers can be either rational or irrational, depending on the specific numbers involved. For example, √2 × √2 = 2, which is rational, while √2 × √3 = √6, which is irrational. Therefore, the statement that it can be either rational or irrational is correct. The other options are incorrect because the product is not always irrational, always rational, or always an integer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन दो अपरिमेय संख्याओं के गुणनफल के बारे में सही है?",
+          "choices": [
+            "यह हमेशा अपरिमेय होता है",
+            "यह हमेशा परिमेय होता है",
+            "यह या तो परिमेय हो सकता है या अपरिमेय हो सकता है",
+            "यह हमेशा एक पूर्णांक होता है"
+          ],
+          "solution": "दो अपरिमेय संख्याओं का गुणनफल या तो परिमेय हो सकता है या अपरिमेय हो सकता है, जो संख्याओं के विशिष्ट मान पर निर्भर करता है। उदाहरण के लिए, √2 × √2 = 2, जो परिमेय है, जबकि √2 × √3 = √6, जो अपरिमेय है। इसलिए, यह कहना सही है कि यह या तो परिमेय हो सकता है या अपरिमेय हो सकता है। अन्य विकल्प गलत हैं क्योंकि गुणनफल हमेशा अपरिमेय नहीं होता, हमेशा परिमेय नहीं होता और हमेशा एक पूर्णांक नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology and logical structure preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान दोन अपरिमेय संख्यांच्या गुणाकारबद्दल बरोबर आहे?",
+          "choices": [
+            "तो नेहमी अपरिमेय असतो",
+            "तो नेहमी परिमेय असतो",
+            "तो नेहमी परिमेय किंवा अपरिमेय असू शकतो",
+            "तो नेहमी एक पूर्णांक असतो"
+          ],
+          "solution": "दोन अपरिमेय संख्यांचा गुणाकार परिमेय किंवा अपरिमेय असू शकतो, जे विशिष्ट संख्यांवर अवलंबून असतो. उदाहरणार्थ, √2 × √2 = 2, जो परिमेय आहे, तर √2 × √3 = √6, जो अपरिमेय आहे. म्हणूनच, तो परिमेय किंवा अपरिमेय असू शकतो असे विधान बरोबर आहे. इतर विधाने चुकीची आहेत कारण गुणाकार नेहमी अपरिमेय नाही, नेहमी परिमेय नाही, किंवा नेहमी पूर्णांक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to a misconception about irrational numbers",
+        "Refers to a false generalisation",
+        null,
+        "Refers to a misunderstanding of the nature of irrational numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the product of two irrational numbers can be either rational or irrational, and the reasoning aligns with mathematical facts. The distractors reflect common misconceptions about irrational numbers.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T16:49:01.310Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,500 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T20:58:44.791Z",
+  "finishedAt": "2026-10-22T21:03:03.081Z",
+  "seconds": 258,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm104.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Vacation with My Nani Maa",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n3. (B) option\nn = 34 ⇒ 𝑣 = 34 − 1 = 33",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n13. (𝑐) 𝜋:2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 73561,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 16580,
+      "completionTokens": 4575
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 179025,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 13344,
+      "completionTokens": 5502
+    },
+    "solver": {
+      "calls": 132,
+      "ms": 67350,
+      "in": 17,
+      "out": 6,
+      "rejects": 11,
+      "promptTokens": 28924,
+      "completionTokens": 1563
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14861,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 1556,
+      "completionTokens": 439
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3028,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 92266,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7765,
+      "completionTokens": 3302
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Chirag got 9 story books and Nandini got 7 puzzle books. How many total books did the children get for Nani Maa?",
+      "ms": {
+        "draft": 3793,
+        "critique": 6618,
+        "solver": 13941
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Nandini had 7 balushahi and Chirag had 5 balushahi. How many balushahi did they have in total?",
+      "ms": {
+        "draft": 3793,
+        "critique": 7398,
+        "solver": 14251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Nandini and Chirag have 22 stamps. Nani Maa’s brother gives them 30 more stamps. How many stamps do they have now?",
+      "ms": {
+        "draft": 3793,
+        "critique": 7713,
+        "solver": 17451
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "They have 52 stamps. Nandini and Chirag count and find that they have 37 stamps with faces of famous persons. How many stamps with pictures of monuments do they have?",
+      "ms": {
+        "draft": 3793,
+        "critique": 7575,
+        "solver": 1448
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Nandini opens 4. The numbers 2 and 6 are already opened. Which cards can she keep?",
+      "ms": {
+        "draft": 3793,
+        "critique": 7429,
+        "solver": 1616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Nandini is at 23. She gets 11 on the dice. She thinks of two ways of moving to 34. What is the correct way to move from 23 to 34?",
+      "ms": {
+        "draft": 3793,
+        "critique": 7485,
+        "solver": 1259,
+        "form": 4732
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of radishes plucked by Nani Maa?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6633,
+        "solver": 1252
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Nandini collected 85 apples and Chirag plucked 67 apples, what is the total number of apples collected?",
+      "ms": {
+        "draft": 11626,
+        "critique": 5426
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many total vegetables are there in the box if there are 65 tomatoes and the rest are carrots?",
+      "ms": {
+        "draft": 11626,
+        "critique": 5503,
+        "solver": 1509
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Gehu brings 56 plants for her terrace garden and 29 plants are left, how many plants dried up?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6134
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Babli didi sold 34 books on Monday and 45 books on Tuesday, how many more books did she sell on Tuesday than on Monday?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6803,
+        "solver": 8000
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Nani Maa had 100 vegetables in a box and 65 were tomatoes, how many were carrots?",
+      "ms": {
+        "draft": 2715,
+        "critique": 4412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Nandini sold 34 books on Monday and 45 books on Tuesday, how many more books did she sell on Tuesday than on Monday?",
+      "ms": {
+        "draft": 2715,
+        "critique": 5818,
+        "solver": 1303
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of addition?",
+      "ms": {
+        "draft": 2715,
+        "critique": 4834,
+        "solver": 12969,
+        "form": 2148
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Team Red made 56 runs before lunch and 65 runs after lunch, how many total runs did they make?",
+      "ms": {
+        "draft": 2715,
+        "critique": 7062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many balushahi does Nandini have in her box?",
+      "ms": {
+        "draft": 2157,
+        "critique": 5471,
+        "solver": 1591
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many books did Chirag get for Nani Maa?",
+      "ms": {
+        "draft": 2157,
+        "critique": 6612
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of books that Chirag and Nandini got for Nani Maa?",
+      "ms": {
+        "draft": 2157,
+        "critique": 6564
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many more stamps do Nandini and Chirag need to reach 75 stamps if they currently have 52?",
+      "ms": {
+        "draft": 2157,
+        "critique": 4801,
+        "solver": 6158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the sweet that Nandini brings for Nani Maa?",
+      "ms": {
+        "draft": 2157,
+        "critique": 5176,
+        "solver": 1416,
+        "form": 1658,
+        "translation": 13417
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many total radishes did Nani Maa pluck?",
+      "ms": {
+        "draft": 2715,
+        "critique": 4705,
+        "solver": 963,
+        "form": 3463,
+        "translation": 21536
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Nandini collected 85 apples and Chirag plucked 67 apples, who collected more apples and by how much?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6196,
+        "solver": 11405,
+        "form": 1280,
+        "translation": 27705
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If Nandini collected 85 apples and Chirag collected 67 apples, how many apples did they collect together?",
+      "ms": {
+        "draft": 2715,
+        "critique": 7021,
+        "solver": 1608,
+        "form": 2405,
+        "translation": 25367
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Chirag got 9 story books and Nandini got 7 puzzle books. How many total books did the children get for Nani Maa?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Nandini had 7 balushahi and Chirag had 5 balushahi. How many balushahi did they have in total?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Nandini and Chirag have 22 stamps. Nani Maa’s brother gives them 30 more stamps. How many stamps do they have now?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "They have 52 stamps. Nandini and Chirag count and find that they have 37 stamps with faces of famous persons. How many stamps with pictures of monuments do they have?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Nandini opens 4. The numbers 2 and 6 are already opened. Which cards can she keep?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Nandini is at 23. She gets 11 on the dice. She thinks of two ways of moving to 34. What is the correct way to move from 23 to 34?",
+      "reason": "options 0 and 1 say the same thing (\"Add 10 and then add 1\" / \"Add 1 and then add 10\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of radishes plucked by Nani Maa?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Nandini collected 85 apples and Chirag plucked 67 apples, what is the total number of apples collected?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many total vegetables are there in the box if there are 65 tomatoes and the rest are carrots?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If Gehu brings 56 plants for her terrace garden and 29 plants are left, how many plants dried up?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Babli didi sold 34 books on Monday and 45 books on Tuesday, how many more books did she sell on Tuesday than on Monday?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the counting tool used by Nandini and Chirag?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Nani Maa had 100 vegetables in a box and 65 were tomatoes, how many were carrots?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Nandini sold 34 books on Monday and 45 books on Tuesday, how many more books did she sell on Tuesday than on Monday?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of addition?",
+      "reason": "options 0 and 2 are the same (\"65 + 29\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If Team Red made 56 runs before lunch and 65 runs after lunch, how many total runs did they make?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How many balushahi does Nandini have in her box?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many books did Chirag get for Nani Maa?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the total number of books that Chirag and Nandini got for Nani Maa?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many more stamps do Nandini and Chirag need to reach 75 stamps if they currently have 52?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,703 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:31:41.592Z",
+  "finishedAt": "2026-10-23T02:40:55.738Z",
+  "seconds": 554,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh101.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Sets",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n11. A) Irrational and distinct",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 163380,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 42699,
+      "completionTokens": 8102
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 318903,
+      "in": 36,
+      "out": 33,
+      "rejects": 3,
+      "promptTokens": 21650,
+      "completionTokens": 8166
+    },
+    "solver": {
+      "calls": 235,
+      "ms": 141258,
+      "in": 33,
+      "out": 25,
+      "rejects": 8,
+      "promptTokens": 50563,
+      "completionTokens": 2527
+    },
+    "form": {
+      "calls": 7,
+      "ms": 25858,
+      "in": 25,
+      "out": 15,
+      "rejects": 10,
+      "promptTokens": 1853,
+      "completionTokens": 616
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 4142,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 460260,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 28122,
+      "completionTokens": 12774
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 3,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is not a well-defined collection?",
+      "ms": {
+        "draft": 3601,
+        "critique": 7256
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following sets can be represented in roster form?",
+      "ms": {
+        "draft": 3601,
+        "critique": 6848,
+        "solver": 18049
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following represents a finite set?",
+      "ms": {
+        "draft": 4837,
+        "critique": 9035,
+        "solver": 1830
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an infinite set?",
+      "ms": {
+        "draft": 3345,
+        "critique": 8302
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If set A = {1, 2, 3, 4} and set B = {3, 1, 4, 2}, which of the following is true?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6727,
+        "solver": 1707,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an empty set?",
+      "ms": {
+        "draft": 4837,
+        "critique": 7898,
+        "solver": 17985
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following sets is an example of a null set?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6037,
+        "solver": 18851
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following sets is finite?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6465,
+        "solver": 1829,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given the sets A = {1, 3, 5} and B = {1, 3, 5, 7}, which of the following is true?",
+      "ms": {
+        "draft": 4620,
+        "critique": 5943,
+        "solver": 1817,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If A = {1}, B = {{1}, 2}, and C = {{1}, 2, 3}, which of the following is true?",
+      "ms": {
+        "draft": 4620,
+        "critique": 7544,
+        "solver": 1900
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If A = {a, e, i, o, u}, B = {a, b, c, d}, and C = {a, e, i, o, u, b, c, d}, which of the following is true?",
+      "ms": {
+        "draft": 4620,
+        "critique": 5645,
+        "solver": 1552,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the complement of a set A with respect to the universal set U?",
+      "ms": {
+        "draft": 64254,
+        "critique": 6055,
+        "solver": 5009,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If A ∪ B = A ∩ B, what can be concluded about the sets A and B?",
+      "ms": {
+        "draft": 3845,
+        "critique": 5267,
+        "solver": 1260,
+        "form": 5527
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If A ⊂ B and B ∈ C, which of the following must be true?",
+      "ms": {
+        "draft": 3845,
+        "critique": 6234,
+        "solver": 1551,
+        "form": 4225
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If A ∪ B = A ∪ C and A ∩ B = A ∩ C, what can be concluded about B and C?",
+      "ms": {
+        "draft": 3845,
+        "critique": 5443,
+        "solver": 1338,
+        "form": 5118
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the complement of a set A with respect to the universal set U?",
+      "ms": {
+        "draft": 5402,
+        "critique": 6704,
+        "solver": 15261,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If U = {1, 2, 3, 4, 5, 6} and A = {2, 3}, what is A′?",
+      "ms": {
+        "draft": 5402,
+        "critique": 6940,
+        "solver": 14847,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If A is a subset of the universal set U, which of the following is always true?",
+      "ms": {
+        "draft": 5402,
+        "critique": 7002,
+        "solver": 16178
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If A = {2, 4, 6, 8, 10} and B = {4, 6}, which of the following represents A ∪ B?",
+      "ms": {
+        "draft": 9781,
+        "critique": 6619
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If A = {2, 3, 4} and B = {3, 4, 5}, which of the following represents (A ∪ B)′?",
+      "ms": {
+        "draft": 5402,
+        "critique": 8967,
+        "solver": 10105
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If A = {1, 3, 5, 7} and B = {3, 5, 7, 9}, and U = {1, 2, 3, 4, 5, 6, 7, 8, 9}, what is (A ∪ B)′?",
+      "ms": {
+        "draft": 5402,
+        "critique": 8225,
+        "solver": 10239
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct representation of a set in roster form?",
+      "ms": {
+        "draft": 4837,
+        "critique": 6284,
+        "solver": 1877,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following represents the set of solutions to the equation x^2 - 5x + 6 = 0?",
+      "ms": {
+        "draft": 3601,
+        "critique": 8866,
+        "solver": 15433,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If A = {x : x is a solution of x² - 5x + 6 = 0}, which of the following sets is equal to A?",
+      "ms": {
+        "draft": 3345,
+        "critique": 9768,
+        "solver": 12156,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a well-defined collection of objects?",
+      "ms": {
+        "draft": 3601,
+        "critique": 6880,
+        "solver": 2638,
+        "form": 0,
+        "translation": 35175
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the union of two sets A and B?",
+      "ms": {
+        "draft": 5993,
+        "critique": 6233,
+        "solver": 1390,
+        "form": 0,
+        "translation": 49298
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about sets?",
+      "ms": {
+        "draft": 3845,
+        "critique": 5652,
+        "solver": 2594,
+        "form": 3359,
+        "translation": 55407
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the symbol φ represent in the context of sets?",
+      "ms": {
+        "draft": 3845,
+        "critique": 5030,
+        "solver": 2353,
+        "form": 2394,
+        "translation": 29112
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the set-builder form of the set {1, 4, 9, 16, 25, ...}",
+      "ms": {
+        "draft": 4837,
+        "critique": 7896,
+        "solver": 1490,
+        "form": 0,
+        "translation": 34318
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If set A is a subset of set B and A ≠ B, then what is A called?",
+      "ms": {
+        "draft": 4620,
+        "critique": 6269,
+        "solver": 1370,
+        "form": 3513,
+        "translation": 38813
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the set-builder form of the set {1, 3, 5, 7, 9}?",
+      "ms": {
+        "draft": 3601,
+        "critique": 10688,
+        "solver": 1114,
+        "form": 0,
+        "translation": 33758
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the set A = { x : x ∈ R and x satisfy x² – 8x + 12 = 0 }?",
+      "ms": {
+        "draft": 3845,
+        "critique": 5476,
+        "solver": 1912,
+        "form": 5469,
+        "translation": 44328
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Match the set on the left with the correct set-builder form on the right: {P, R, I, N, C, A, L}",
+      "ms": {
+        "draft": 4837,
+        "critique": 7570,
+        "solver": 1519,
+        "form": 0,
+        "translation": 40102
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If A = {x : x is a natural number and 3 < x < 10}, what is the roster form of A?",
+      "ms": {
+        "draft": 3601,
+        "critique": 8784,
+        "solver": 1499,
+        "form": 0,
+        "translation": 35985
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following sets is an infinite set?",
+      "ms": {
+        "draft": 4837,
+        "critique": 8793,
+        "solver": 2049,
+        "form": 0,
+        "translation": 36211
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following sets is a subset of every set?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6748,
+        "solver": 2129,
+        "form": 0,
+        "translation": 24293
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a subset of the set of all real numbers R?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a well-defined collection?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following sets can be represented in roster form?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following represents a finite set?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an infinite set?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If set A = {1, 2, 3, 4} and set B = {3, 1, 4, 2}, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"A is a subset of B\" / \"B is a subset of A\"); options 2 and 3 say the same thing (\"A and B are equal sets\" / \"A and B are not equal sets\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, so this is a distr…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is an empty set?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following sets is an example of a null set?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following sets is finite?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, so this is a distr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Given the sets A = {1, 3, 5} and B = {1, 3, 5, 7}, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"A is a proper subset of B\" / \"B is a proper subset of A\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If A = {1}, B = {{1}, 2}, and C = {{1}, 2, 3}, which of the following is true?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If A = {a, e, i, o, u}, B = {a, b, c, d}, and C = {a, e, i, o, u, b, c, d}, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"A is a subset of B\" / \"B is a subset of C\"); options 1 and 2 say the same thing (\"B is a subset of C\" / \"C is a subset of A\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the complement of a set A with respect to the universal set U?",
+      "reason": "options 0 and 1 are the same (\"A ∪ U\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If A ∪ B = A ∩ B, what can be concluded about the sets A and B?",
+      "reason": "options 1 and 2 say the same thing (\"A is a proper subset of B.\" / \"B is a proper subset of A.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If A ⊂ B and B ∈ C, which of the following must be true?",
+      "reason": "option 3 is a catch-all (\"None of the above.\"); options 0 and 1 are the same (\"A ∈ C\"); options 0 and 2 are the same (\"A ∈ C\"); options 1 and 2 are the same (\"A ⊂ C\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If A ∪ B = A ∪ C and A ∩ B = A ∩ C, what can be concluded about B and C?",
+      "reason": "option 3 is a catch-all (\"None of the above.\"); options 0 and 1 are the same (\"B = C\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the complement of a set A with respect to the universal set U?",
+      "reason": "options 0 and 1 are the same (\"A ∪ A′\"); options 2 and 3 say the same thing (\"A′ = {x : x ∈ U and x ∉ A}\" / \"A′ = {x : x ∈ A and x ∉ U}\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If U = {1, 2, 3, 4, 5, 6} and A = {2, 3}, what is A′?",
+      "reason": "option 0 repeats the stem's wording (\"{1, 4, 5, 6}\"); option 1 repeats the stem's wording (\"{1, 2, 3, 4, 5, 6}\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If A is a subset of the universal set U, which of the following is always true?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If A = {2, 4, 6, 8, 10} and B = {4, 6}, which of the following represents A ∪ B?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If A = {2, 3, 4} and B = {3, 4, 5}, which of the following represents (A ∪ B)′?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If A = {1, 3, 5, 7} and B = {3, 5, 7, 9}, and U = {1, 2, 3, 4, 5, 6, 7, 8, 9}, what is (A ∪ B)′?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the correct representation of a set in roster form?",
+      "reason": "near-duplicate of served question cmvha8o3j07sngpfh1atvj7oy (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following represents the set of solutions to the equation x^2 - 5x + 6 = 0?",
+      "reason": "near-duplicate of served question cmvha8o3t07tbgpfhyyh7mdbx (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If A = {x : x is a solution of x² - 5x + 6 = 0}, which of the following sets is equal to A?",
+      "reason": "near-duplicate of served question cmvha8o3t07tbgpfhyyh7mdbx (cosine 0.942 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

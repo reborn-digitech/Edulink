@@ -1,0 +1,353 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:34:15.433Z",
+  "finishedAt": "2026-10-22T23:39:10.922Z",
+  "seconds": 295,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap118.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 18 — Too Much Water, Too Little Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 53594,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15314,
+      "completionTokens": 2852
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 157841,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 9876,
+      "completionTokens": 3885
+    },
+    "solver": {
+      "calls": 131,
+      "ms": 86998,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 26861,
+      "completionTokens": 1535
+    },
+    "form": {
+      "calls": 9,
+      "ms": 27593,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 2255,
+      "completionTokens": 643
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3250,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 389287,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 23434,
+      "completionTokens": 11695
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Raziya ask Deepak's mother to do with the water that was filled the previous day?",
+      "ms": {
+        "draft": 3233,
+        "critique": 5841,
+        "solver": 3519
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of these is a source of drinking water mentioned in the passage?",
+      "ms": {
+        "draft": 2430,
+        "critique": 6875,
+        "solver": 1914,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is one way the children helped solve the water problem in their village?",
+      "ms": {
+        "draft": 2430,
+        "critique": 9007,
+        "solver": 1448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if the water from the gutter got mixed with the drinking water pipes, as mentioned in the passage?",
+      "ms": {
+        "draft": 3398,
+        "critique": 6839,
+        "solver": 1343,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main problem described in the passage about Nallamada, Andhra Pradesh?",
+      "ms": {
+        "draft": 3398,
+        "critique": 8196,
+        "solver": 13284
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Suguna’s family offer the guest a cold drink?",
+      "ms": {
+        "draft": 3398,
+        "critique": 8167,
+        "solver": 10161
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason why people in Bazaar Gaon had no water to drink?",
+      "ms": {
+        "draft": 3233,
+        "critique": 5138,
+        "solver": 17848,
+        "form": 3621,
+        "translation": 38711
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to keep the drinking water places clean?",
+      "ms": {
+        "draft": 4337,
+        "critique": 7347,
+        "solver": 14602,
+        "form": 4925,
+        "translation": 51144
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of making a small dam on the slope near the tank in Holgundi?",
+      "ms": {
+        "draft": 4337,
+        "critique": 6895,
+        "solver": 2528,
+        "form": 2897,
+        "translation": 43718
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason the children in Holgundi left their village?",
+      "ms": {
+        "draft": 2430,
+        "critique": 6576,
+        "solver": 1144,
+        "form": 4807,
+        "translation": 39685
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if the water that was mixed with gutter water was not boiled?",
+      "ms": {
+        "draft": 3233,
+        "critique": 5307,
+        "solver": 19140,
+        "form": 2596,
+        "translation": 34165
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there is no tap, matka, or handpump in the school, which of the following is the most likely way students get drinking water?",
+      "ms": {
+        "draft": 4337,
+        "critique": 6942,
+        "solver": 3008,
+        "form": 3890,
+        "translation": 46572
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are 100 children in a school and 10 taps, how many children would be using each tap if the water is shared equally?",
+      "ms": {
+        "draft": 2430,
+        "critique": 7994,
+        "solver": 16710,
+        "form": 0,
+        "translation": 25095
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does Deepak's family have to stand in a queue for water while Raziya's house has water all day?",
+      "ms": {
+        "draft": 3233,
+        "critique": 7698,
+        "solver": 17556,
+        "form": 5738,
+        "translation": 51608
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If the water from the water park was not used for drinking, what could it have been used for?",
+      "ms": {
+        "draft": 3398,
+        "critique": 5284,
+        "solver": 538,
+        "form": 1186,
+        "translation": 18980
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason the village of Holgundi faced a water shortage?",
+      "ms": {
+        "draft": 4337,
+        "critique": 7100,
+        "solver": 1928,
+        "form": 3105,
+        "translation": 33747
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Raziya ask Deepak's mother to do with the water that was filled the previous day?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of these is a source of drinking water mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is one way the children helped solve the water problem in their village?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen if the water from the gutter got mixed with the drinking water pipes, as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main problem described in the passage about Nallamada, Andhra Pradesh?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Suguna’s family offer the guest a cold drink?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

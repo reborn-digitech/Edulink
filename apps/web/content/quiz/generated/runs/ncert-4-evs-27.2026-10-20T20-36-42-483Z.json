@@ -1,0 +1,232 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:36:42.483Z",
+  "finishedAt": "2026-10-20T20:38:45.315Z",
+  "seconds": 123,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap127.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 27 — Chuskit Goes to School",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 23130,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7100,
+      "completionTokens": 1459
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 46198,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 3977,
+      "completionTokens": 1674
+    },
+    "solver": {
+      "calls": 44,
+      "ms": 20307,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 7983,
+      "completionTokens": 464
+    },
+    "form": {
+      "calls": 5,
+      "ms": 10471,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 1111,
+      "completionTokens": 313
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2562,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 159340,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10924,
+      "completionTokens": 5289
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of Chuskit's father?",
+      "ms": {
+        "draft": 2919,
+        "critique": 4822
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would have been the best way for Chuskit to go to school if there were no ramps?",
+      "ms": {
+        "draft": 2919,
+        "critique": 5097
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did the children do to help Chuskit reach school?",
+      "ms": {
+        "draft": 2919,
+        "critique": 6495,
+        "solver": 7115
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason Chuskit could not go to school at first?",
+      "ms": {
+        "draft": 2864,
+        "critique": 4461,
+        "solver": 1655,
+        "form": 3106,
+        "translation": 35130
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How did Chuskit feel when she saw other children going to school?",
+      "ms": {
+        "draft": 2864,
+        "critique": 4731,
+        "solver": 2087,
+        "form": 2008,
+        "translation": 29815
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Chuskit feel sad when Abdul asked her why she did not go to school?",
+      "ms": {
+        "draft": 2919,
+        "critique": 4792,
+        "solver": 11176,
+        "form": 1516,
+        "translation": 27006
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did the children do to help Chuskit reach school?",
+      "ms": {
+        "draft": 2864,
+        "critique": 4436,
+        "solver": 864,
+        "form": 4507,
+        "translation": 39367
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Chuskit's grandfather have tears in his eyes?",
+      "ms": {
+        "draft": 2864,
+        "critique": 2681,
+        "solver": 583,
+        "form": 871,
+        "translation": 24412
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of Chuskit's father?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would have been the best way for Chuskit to go to school if there were no ramps?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What did the children do to help Chuskit reach school?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

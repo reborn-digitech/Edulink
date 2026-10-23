@@ -1,0 +1,656 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T07:16:34.860Z",
+  "finishedAt": "2026-10-23T07:28:26.186Z",
+  "seconds": 711,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo103.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 3 — Plant Kingdom",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2016 — question paper]\n58. (2 points) A classification of plant kingdom based on evolution of various characters is\nshown below.\norsetail ycad\nAlgae ornwort Liverwort Moss Club mossH C Angiosperm\nH\nU\nT\nS\nR\nQ\nP\nA few of these characters (I to IV) are listed below. For each of these characters, choose a\nsingle appropriate alphabet from the cladogram and fill in the blanks.\nI. Wood: ______\nII. Seed development: ______\nIII. Cuticle, protected embryo: ______\nIV. Independent sporophyte: ______\n********* END OF SECTION B *********",
+      "[INBO 2011 — question paper]\n66. (3 points) A tree of major taxa of vascular plants is shown below. Choose\nfrom the options given below and match them against I – IV and VI – VII.\nGnetales\nI II III IV V VI VII\n200 mya\nSporangium covered by carpel 300 mya\nSporangium covered by integument\n400 mya\nSporangium not covered by integument\nA. Pteridophytes\nB. Eudicotyledons\nC. Monocotyledons\nD. Magnolids\nE. Conifers\nF. Basal angiosperms\nI. ________\nII. ________\nIII. ________\nIV. ________\nVI. ________\nVII. ________\n********",
+      "[INBO 2014 — question paper]\n38. (1 point) In the following scheme, three domain classification key with one\nrepresentative example on each domain is shown. A, B and C respectively are:\nA B C\nCyanobacteria Halophiles\nCiliates\na. Plantae, Eubacteria, Animalia\nb. Plantae, Archaebacteria, Eukaryota\nc. Eubacteria, Archaebacteria, Eukaryota\nd. Plantae, Prokaryota, Eukaryota.\n********* END OF SECTION A *******\nINDIAN NATIONAL BIOLOGY OLYMPIAD – 2014",
+      "[INBO 2011 — question paper]\n30. (1 point) Which of the following best depicts the evolutionary sequence of\nplant characters?\n1. Transition to land habitat\n2. Evolution of seeds\n3. Evolution of fruits\n4. Evolution of vascular structures\na. 1 – 4 – 2 – 3\nb. 4 – 1 – 2 – 3\nc. 1 – 4 – 3 – 2\nd. 4 – 1 – 3 – 2\nETHOLOGY (3)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 195976,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 36875,
+      "completionTokens": 8401
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 366585,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 19792,
+      "completionTokens": 7472
+    },
+    "solver": {
+      "calls": 203,
+      "ms": 128791,
+      "in": 30,
+      "out": 24,
+      "rejects": 6,
+      "promptTokens": 35215,
+      "completionTokens": 2063
+    },
+    "form": {
+      "calls": 13,
+      "ms": 49811,
+      "in": 24,
+      "out": 16,
+      "rejects": 8,
+      "promptTokens": 5309,
+      "completionTokens": 1238
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 9718,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 687363,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 31289,
+      "completionTokens": 15660
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the classification of algae?",
+      "ms": {
+        "draft": 4764,
+        "critique": 6732,
+        "solver": 2716
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of algae?",
+      "ms": {
+        "draft": 4764,
+        "critique": 7160,
+        "solver": 3365,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common method of reproduction in green algae?",
+      "ms": {
+        "draft": 4764,
+        "critique": 9392,
+        "solver": 3011
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes algae as autotrophic and chlorophyll-bearing. How does this support the idea that they are not fungi?",
+      "ms": {
+        "draft": 4764,
+        "critique": 9191,
+        "solver": 19638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a distinguishing feature of brown algae compared to red and green algae?",
+      "ms": {
+        "draft": 4239,
+        "critique": 9729,
+        "solver": 2150
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram of a plant life cycle showing a sporophyte stage with a foot, seta, and capsule. Which plant group is this most likely representing?",
+      "ms": {
+        "draft": 8115,
+        "critique": 9927
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the life cycle of pteridophytes, where are the male and female sex organs located?",
+      "ms": {
+        "draft": 8115,
+        "critique": 10252
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that pteridophytes are the first terrestrial plants to possess vascular tissues. How does this relate to their ability to spread to new regions?",
+      "ms": {
+        "draft": 8115,
+        "critique": 10847,
+        "solver": 1650
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a list of plant characteristics and asked to place them in the correct evolutionary sequence. Which sequence is correct?",
+      "ms": {
+        "draft": 8115,
+        "critique": 8339,
+        "solver": 16436,
+        "form": 2755
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of heterospory in gymnosperms?",
+      "ms": {
+        "draft": 5501,
+        "critique": 7416,
+        "solver": 1207
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of gymnosperms?",
+      "ms": {
+        "draft": 20165,
+        "critique": 9101
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most significant evolutionary advantage of heterospory in gymnosperms?",
+      "ms": {
+        "draft": 20165,
+        "critique": 9482,
+        "solver": 2186
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the life cycle of gymnosperms?",
+      "ms": {
+        "draft": 20165,
+        "critique": 12007,
+        "solver": 14450,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a pteridophyte?",
+      "ms": {
+        "draft": 5258,
+        "critique": 10949,
+        "solver": 15950,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the evolutionary sequence of plant characters, which of the following is the correct order?",
+      "ms": {
+        "draft": 5258,
+        "critique": 9063
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key evolutionary advancement in pteridophytes?",
+      "ms": {
+        "draft": 5258,
+        "critique": 9689,
+        "solver": 2132,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a distinguishing feature of red algae?",
+      "ms": {
+        "draft": 4798,
+        "critique": 8121,
+        "solver": 1869,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct characteristic of green algae?",
+      "ms": {
+        "draft": 11712,
+        "critique": 5593,
+        "solver": 781,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of red algae?",
+      "ms": {
+        "draft": 4239,
+        "critique": 8401,
+        "solver": 16064,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of pteridophytes that distinguishes them from bryophytes?",
+      "ms": {
+        "draft": 8115,
+        "critique": 10029,
+        "solver": 23036,
+        "form": 4963
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a common feature of all algae?",
+      "ms": {
+        "draft": 4798,
+        "critique": 9098,
+        "solver": 1777,
+        "form": 3723
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of gymnosperms?",
+      "ms": {
+        "draft": 5501,
+        "critique": 7824,
+        "solver": 1512,
+        "form": 4388,
+        "translation": 48300
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main plant body of bryophytes called?",
+      "ms": {
+        "draft": 5501,
+        "critique": 8213,
+        "solver": 1655,
+        "form": 4139,
+        "translation": 47819
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic feature of liverworts?",
+      "ms": {
+        "draft": 5258,
+        "critique": 10334,
+        "solver": 14610,
+        "form": 2883,
+        "translation": 57560
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of angiosperms that distinguishes them from gymnosperms?",
+      "ms": {
+        "draft": 20165,
+        "critique": 9347,
+        "solver": 21837,
+        "form": 3936,
+        "translation": 51451
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common feature of all algae?",
+      "ms": {
+        "draft": 4239,
+        "critique": 9607,
+        "solver": 2844,
+        "form": 0,
+        "translation": 40327
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes a green, filamentous organism in a pond that can reproduce by fragmentation, which group is it most likely to belong to?",
+      "ms": {
+        "draft": 4764,
+        "critique": 6699,
+        "solver": 1446,
+        "form": 6554,
+        "translation": 59173
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following groups are archegonia found?",
+      "ms": {
+        "draft": 5501,
+        "critique": 7787,
+        "solver": 1127,
+        "form": 2369,
+        "translation": 55702
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is found growing in a moist, shaded area and has rhizoids, which group does it most likely belong to?",
+      "ms": {
+        "draft": 4239,
+        "critique": 8564,
+        "solver": 2394,
+        "form": 1,
+        "translation": 49797
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observes a green, motile organism that reproduces through flagellated zoospores. Which classification is most likely correct?",
+      "ms": {
+        "draft": 4764,
+        "critique": 9498,
+        "solver": 1805,
+        "form": 6044,
+        "translation": 57051
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is comparing gymnosperms and angiosperms. Which of the following correctly describes the main difference between the two?",
+      "ms": {
+        "draft": 20165,
+        "critique": 8263,
+        "solver": 2001,
+        "form": 2906,
+        "translation": 70815
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a plant that has a thallus-like body and produces gametes that require water for fertilization. Which group does this plant belong to?",
+      "ms": {
+        "draft": 4239,
+        "critique": 8397,
+        "solver": 1486,
+        "form": 0,
+        "translation": 51058
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A plant is found to have a complex body organisation, store food as floridean starch, and reproduce sexually by non-motile gametes. Which group does this plant belong to?",
+      "ms": {
+        "draft": 4239,
+        "critique": 9922,
+        "solver": 1548,
+        "form": 0,
+        "translation": 49937
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a plant has a red pigment and stores food as floridean starch, which of the following is most likely to be true about the plant?",
+      "ms": {
+        "draft": 4798,
+        "critique": 7801,
+        "solver": 1196,
+        "form": 3468,
+        "translation": 44334
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the classification of algae?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of algae?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"None of the above is correct, but this is the only option ma…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a common method of reproduction in green algae?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes algae as autotrophic and chlorophyll-bearing. How does this support the idea that they are not fungi?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a distinguishing feature of brown algae compared to red and green algae?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is given a diagram of a plant life cycle showing a sporophyte stage with a foot, seta, and capsule. Which plant group is this most likely representing?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the life cycle of pteridophytes, where are the male and female sex organs located?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage states that pteridophytes are the first terrestrial plants to possess vascular tissues. How does this relate to their ability to spread to new regions?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a list of plant characteristics and asked to place them in the correct evolutionary sequence. Which sequence is correct?",
+      "reason": "options 0 and 1 say the same thing (\"Vascular structures, transition to land, seeds, fruits\" / \"Transition to land, vascular structures, seeds, fruits\"); options 0 and 2 say the same thing (\"Vascular structures, transition to land, seeds, fruits\" / \"Transition to land, seeds, vascular structures, fruits\"); options 0 and 3 say the same thing (\"Vascular structures, transition to land, seeds, fruits\" / \"Vascular structures, transition to land, fruits, seeds\"); options 1 and 2 say the same thing (\"Transition to land, vascular structures, seeds, fruits\" / \"Transition to land, seeds, vascular structures, fruits\"); options 1 and 3 say the same thing (\"Transition to land, vascular structures, seeds, fruits\" / \"Vascular structures, transition to land, fruits, seeds\"); options 2 and 3 say the same thing (\"Transition to land, seeds, vascular structures, fruits\" / \"Vascular structures, transition to land, fruits, seeds\"); distractor 0's reason is not a one-line misconception (\"Thinks vascular structures evolved before the transition to …\"); distractor 3's reason is not a one-line misconception (\"Thinks fruits evolved before seeds, but the passage implies …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the significance of heterospory in gymnosperms?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of gymnosperms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most significant evolutionary advantage of heterospory in gymnosperms?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the life cycle of gymnosperms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a pteridophyte?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the evolutionary sequence of plant characters, which of the following is the correct order?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key evolutionary advancement in pteridophytes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a distinguishing feature of red algae?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct characteristic of green algae?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of red algae?",
+      "reason": "near-duplicate of served question cmvhigh8s091xgpfhnwq2ad5v (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a characteristic of pteridophytes that distinguishes them from bryophytes?",
+      "reason": "near-duplicate of served question cmvhigh8u0923gpfhlx15gw5c (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a common feature of all algae?",
+      "reason": "near-duplicate of batch item \"Which of the following is a common feature of all …\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

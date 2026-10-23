@@ -1,0 +1,940 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T12:16:10.230Z",
+  "finishedAt": "2026-10-21T12:34:51.344Z",
+  "seconds": 1121,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "leph2",
+    "document": "ncert/12/physics/leph202.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 2 — Wave Optics",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, marking scheme, 2026-27]\n6. C. Plane 1\nAs star will act as distance point source hence wavefront detected will be plane.",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n31. i. Draw a ray diagram for the formation of image of a point object by a thin double\nconvex lens having radii of curvature R 1 and R 2 . Hence derive lens maker’s formula.\nii A converging lens has a focal length of 10 cm in air. It is made of a material of\nrefractive index 1.6. If it is immersed in a liquid of refractive index 1.3, find its new\nfocal length.\nOR\ni. Define a wavefront. How is it different from a ray?\nii. Using Huygens’s construction of secondary wavelets draw a diagram showing the\npassage of a plane wavefront from a denser to a rarer medium. Using it verify Snell’s\nlaw.\niii. In a double slit experiment using light of wavelength 600nm and the angular width of\nthe fringe form",
+      "[CBSE Class XII Physics, sample question paper, 2026-27]\n5. Which one of the following phenomenon is not explained by Huygens’ construction of 1\nwave front?\nA. Diffraction C. Reflection\nB. Refraction D. Origin of spectra",
+      "[CBSE Class XII Physics, sample question paper, 2024-25]\n4. The diffraction effect can be observed in\n(A) sound waves only\n(C) ultrasonic waves only\n(D) 3 :4\n(B) light waves only\n(D) sound waves as well as light waves"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 355954,
+      "in": 48,
+      "out": 47,
+      "rejects": 2,
+      "promptTokens": 53812,
+      "completionTokens": 17226
+    },
+    "critique": {
+      "calls": 66,
+      "ms": 486685,
+      "in": 47,
+      "out": 42,
+      "rejects": 5,
+      "promptTokens": 32802,
+      "completionTokens": 11481
+    },
+    "solver": {
+      "calls": 335,
+      "ms": 215845,
+      "in": 42,
+      "out": 36,
+      "rejects": 6,
+      "promptTokens": 67414,
+      "completionTokens": 3628
+    },
+    "form": {
+      "calls": 30,
+      "ms": 163050,
+      "in": 36,
+      "out": 5,
+      "rejects": 31,
+      "promptTokens": 20749,
+      "completionTokens": 3811
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 5568,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 23,
+      "ms": 252143,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 13306,
+      "completionTokens": 6852
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main difference between a wavefront and a ray?",
+      "ms": {
+        "draft": 18024,
+        "critique": 8867,
+        "solver": 2797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of Huygens' principle?",
+      "ms": {
+        "draft": 18024,
+        "critique": 7184,
+        "solver": 2075,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a wavefront is spherical, what happens to it at a large distance from the source?",
+      "ms": {
+        "draft": 18024,
+        "critique": 7867,
+        "solver": 14055,
+        "form": 3660
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to Huygens' principle, what happens to the wavelets emanating from a wavefront?",
+      "ms": {
+        "draft": 18024,
+        "critique": 8090,
+        "solver": 14915,
+        "form": 3135
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason Huygens' principle does not account for a backwave?",
+      "ms": {
+        "draft": 16322,
+        "critique": 8818,
+        "solver": 15660,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the wave theory of light considered more accurate than the corpuscular model in explaining refraction?",
+      "ms": {
+        "draft": 18024,
+        "critique": 8984,
+        "solver": 14325,
+        "form": 5216
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a wavefront is observed as a plane wave, what can be inferred about the source of the wave?",
+      "ms": {
+        "draft": 18024,
+        "critique": 9809,
+        "solver": 19067,
+        "form": 4341
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Figure 10.4, if the refracted wavefront CE is drawn as a tangent from point C to a sphere of radius vt, what does this indicate about the wavefronts?",
+      "ms": {
+        "draft": 16322,
+        "critique": 7571,
+        "solver": 1645
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, how does Huygens' principle explain the refraction of a plane wave at an interface between two media?",
+      "ms": {
+        "draft": 16322,
+        "critique": 9670,
+        "solver": 1454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a double-slit experiment, light of wavelength 600 nm is used. If the angular width of the fringe is given, what can be inferred about the wavefronts involved?",
+      "ms": {
+        "draft": 16322,
+        "critique": 6684,
+        "solver": 1586,
+        "form": 5408
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the term 'wavefront' refer to?",
+      "ms": {
+        "draft": 16322,
+        "critique": 6801,
+        "solver": 2313,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plane wave is reflected by a surface, what is the relationship between the angle of incidence and the angle of reflection?",
+      "ms": {
+        "draft": 9075,
+        "critique": 7109,
+        "solver": 1961,
+        "form": 2183
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the refracted wavefront in Figure 10.4 bends towards the normal, what can be concluded about the speed of the wave in medium 2 compared to medium 1?",
+      "ms": {
+        "draft": 16322,
+        "critique": 7096,
+        "solver": 17753,
+        "form": 4808
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the case of refraction of a plane wave through a convex lens, what happens to the wavefront?",
+      "ms": {
+        "draft": 9075,
+        "critique": 8200,
+        "solver": 16299,
+        "form": 2467
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary cause of the law of reflection according to the passage?",
+      "ms": {
+        "draft": 9075,
+        "critique": 7628,
+        "solver": 1718,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a wavefront is incident on a surface and the reflected wavefront is parallel to the incident wavefront, what can be inferred about the surface?",
+      "ms": {
+        "draft": 9075,
+        "critique": 8441,
+        "solver": 12554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Young’s double slit experiment, a point P has a path difference of 2λ between the two waves. What will be the intensity at point P if the intensity of each wave is I?",
+      "ms": {
+        "draft": 8493,
+        "critique": 8531
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a double slit experiment, the distance between the two slits is d, the wavelength of the light is λ, and the distance from the slits to the screen is D. A point P on the screen has a path difference of λ/2. What will be the intensity at point P if the intensity of each wave is I?",
+      "ms": {
+        "draft": 8493,
+        "critique": 6505
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the dark and bright bands observed on the screen in a wave optics experiment called?",
+      "ms": {
+        "draft": 6962,
+        "critique": 7852
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In Young's double slit experiment, the path difference between the waves from two coherent sources is 2.5λ. What type of interference will occur at that point?",
+      "ms": {
+        "draft": 8493,
+        "critique": 9374,
+        "solver": 13164,
+        "form": 5475
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the main reason for interference of light?",
+      "ms": {
+        "draft": 6734,
+        "critique": 5905,
+        "solver": 1720,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In Young's double slit experiment, the path difference between the two waves is 3.5λ. What can be said about the interference at that point?",
+      "ms": {
+        "draft": 8493,
+        "critique": 6794,
+        "solver": 12988,
+        "form": 4579
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of wave is described by the equation y (x,t) = a sin (kx – wt)?",
+      "ms": {
+        "draft": 12546,
+        "critique": 7255,
+        "solver": 8177
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plane wave is incident on a reflecting surface. What is the shape of the wavefront after reflection?",
+      "ms": {
+        "draft": 16090,
+        "critique": 6718,
+        "solver": 3337,
+        "form": 4414
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the shape of the wavefront when light diverges from a point source?",
+      "ms": {
+        "draft": 16090,
+        "critique": 5947,
+        "solver": 14485,
+        "form": 3419
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In Young's double-slit experiment using monochromatic light of wavelength λ, the intensity of light at a point on the screen where the path difference is λ is K units. What is the intensity of light at a point where the path difference is λ/3?",
+      "ms": {
+        "draft": 16090,
+        "critique": 6213,
+        "solver": 2139
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A beam of light with two wavelengths, 650 nm and 520 nm, is used to obtain interference fringes in a Young's double-slit experiment. What is the least distance from the central maximum where the bright fringes due to both wavelengths coincide?",
+      "ms": {
+        "draft": 16090,
+        "critique": 7977,
+        "solver": 1622,
+        "form": 4605
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an unpolarised light of intensity I is passed through a polaroid, what is the intensity of the transmitted light?",
+      "ms": {
+        "draft": 6050,
+        "critique": 8127,
+        "solver": 2141,
+        "form": 4872
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an experiment, a light beam passes through two polaroids. The first polaroid is fixed, while the second is rotated. What is the maximum intensity of the transmitted light compared to the initial intensity?",
+      "ms": {
+        "draft": 6050,
+        "critique": 7409,
+        "solver": 1621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the intensity of light when it passes through two polaroids with their pass-axes at 90° to each other?",
+      "ms": {
+        "draft": 6050,
+        "critique": 7960,
+        "solver": 1325,
+        "form": 5088
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a double-slit experiment, the fringe pattern on the screen is a result of the superposition of which two effects?",
+      "ms": {
+        "draft": 18755,
+        "critique": 8656,
+        "solver": 2226,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the relationship between interference and diffraction as explained by Richard Feynman?",
+      "ms": {
+        "draft": 18755,
+        "critique": 7735,
+        "solver": 1541,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a phenomenon that can be explained by Huygens' construction of wavefronts?",
+      "ms": {
+        "draft": 18755,
+        "critique": 7334,
+        "solver": 19269
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the frequency of reflected and refracted light when monochromatic light is incident on a surface?",
+      "ms": {
+        "draft": 6281,
+        "critique": 5987,
+        "solver": 2224,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a double-slit experiment, the angular width of the fringe is determined by which of the following factors?",
+      "ms": {
+        "draft": 18755,
+        "critique": 8567,
+        "solver": 19415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage explain about the intensity of light in the photon picture?",
+      "ms": {
+        "draft": 6281,
+        "critique": 7267,
+        "solver": 1495,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what is the reason for the tilt in the wavefront when a plane wave passes through a thin prism?",
+      "ms": {
+        "draft": 6281,
+        "critique": 7007,
+        "solver": 2210,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the shape of the wavefront when a spherical wave is observed from a large distance?",
+      "ms": {
+        "draft": 12692,
+        "critique": 6746
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the dark and bright bands observed on the screen in a double-slit experiment?",
+      "ms": {
+        "draft": 18755,
+        "critique": 8350,
+        "solver": 13221,
+        "form": 2377
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure and the passage, what happens to the wavefront when light enters a denser medium?",
+      "ms": {
+        "draft": 12692,
+        "critique": 9541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a convex lens is immersed in a liquid with a refractive index of 1.3, what can be said about the focal length compared to when it is in air?",
+      "ms": {
+        "draft": 6281,
+        "critique": 7953,
+        "solver": 16705,
+        "form": 2514
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which principle allows us to determine the shape of a wavefront at a later time based on its shape at an earlier time?",
+      "ms": {
+        "draft": 10211,
+        "critique": 7199,
+        "solver": 1105,
+        "form": 2614
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe a wave where the displacement of the string is at right angles to the direction of propagation?",
+      "ms": {
+        "draft": 6050,
+        "critique": 8179,
+        "solver": 14788,
+        "form": 2577,
+        "translation": 47436
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe light waves where the electric field is always perpendicular to the direction of propagation?",
+      "ms": {
+        "draft": 6050,
+        "critique": 7370,
+        "solver": 1600,
+        "form": 3842,
+        "translation": 39875
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the shape of the wavefront when light emerges from a convex lens with a point source placed at its focus?",
+      "ms": {
+        "draft": 16090,
+        "critique": 6319,
+        "solver": 14756,
+        "form": 4807,
+        "translation": 50978
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the shape of the wavefront of light from a distant star intercepted by the Earth?",
+      "ms": {
+        "draft": 16090,
+        "critique": 8242,
+        "solver": 12352,
+        "form": 3021,
+        "translation": 45365
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "When a plane wavefront passes through a thin prism, how does the wavefront change and why?",
+      "ms": {
+        "draft": 9075,
+        "critique": 7565,
+        "solver": 2077,
+        "form": 3381,
+        "translation": 63849
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In Young’s double slit experiment, what is the condition for destructive interference at a point on the screen?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between a wavefront and a ray?",
+      "reason": "options 0 and 1 say the same thing (\"A wavefront is a surface of constant phase, while a ray is a line showing the direction of energy propagation.\" / \"A wavefront is a line showing the direction of energy propagation, while a ray is a surface of constant phase.\"); options 0 and 2 say the same thing (\"A wavefront is a surface of constant phase, while a ray is a line showing the direction of energy propagation.\" / \"A wavefront is a surface of constant amplitude, while a ray is a line showing the direction of energy propagation.\"); options 0 and 3 say the same thing (\"A wavefront is a surface of constant phase, while a ray is a line showing the direction of energy propagation.\" / \"A wavefront is a line showing the direction of energy propagation, while a ray is a surface of constant amplitude.\"); options 1 and 2 say the same thing (\"A wavefront is a line showing the direction of energy propagation, while a ray is a surface of constant phase.\" / \"A wavefront is a surface of constant amplitude, while a ray is a line showing the direction of energy propagation.\"); options 1 and 3 say the same thing (\"A wavefront is a line showing the direction of energy propagation, while a ray is a surface of constant phase.\" / \"A wavefront is a line showing the direction of energy propagation, while a ray is a surface of constant amplitude.\"); options 2 and 3 say the same thing (\"A wavefront is a surface of constant amplitude, while a ray is a line showing the direction of energy propagation.\" / \"A wavefront is a line showing the direction of energy propagation, while a ray is a surface of constant amplitude.\"); distractor 3's reason is not a one-line misconception (\"Confuses phase with amplitude in the definition of wavefront…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of Huygens' principle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (87 vs 52 characters); distractor 0's reason is not a one-line misconception (\"Incorrectly assumes Huygens' principle explains light in a v…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes Huygens' principle predicts speed of lig…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes Huygens' principle defines a ray, which …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a wavefront is spherical, what happens to it at a large distance from the source?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the wavefront remains circular, which is…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the wavefront remains spherical, which c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to Huygens' principle, what happens to the wavelets emanating from a wavefront?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly assumes wavelets move in a straight line without…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes wavelets do not move, which is not suppo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason Huygens' principle does not account for a backwave?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the wave theory of light considered more accurate than the corpuscular model in explaining refraction?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the wave theory explains light in a vacu…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the wave theory explains interference pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a wavefront is observed as a plane wave, what can be inferred about the source of the wave?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Figure 10.4, if the refracted wavefront CE is drawn as a tangent from point C to a sphere of radius vt, what does this indicate about the wavefronts?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, how does Huygens' principle explain the refraction of a plane wave at an interface between two media?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage as referring to the corpuscular mo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a double-slit experiment, light of wavelength 600 nm is used. If the angular width of the fringe is given, what can be inferred about the wavefronts involved?",
+      "reason": "figure: figure spec refused: spec.parts: planeMirror has no label \"slits\" (it has mirror, incidentRay, reflectedRay, normal)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the term 'wavefront' refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plane wave is reflected by a surface, what is the relationship between the angle of incidence and the angle of reflection?",
+      "reason": "options 0 and 1 say the same thing (\"The angle of incidence is greater than the angle of reflection\" / \"The angle of reflection is greater than the angle of incidence\"); distractor 1's reason is not a one-line misconception (\"Assumes reflection follows a different rule than the one sta…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the refracted wavefront in Figure 10.4 bends towards the normal, what can be concluded about the speed of the wave in medium 2 compared to medium 1?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'interface'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the case of refraction of a plane wave through a convex lens, what happens to the wavefront?",
+      "reason": "options 0 and 1 say the same thing (\"The wavefront becomes parallel\" / \"1: The wavefront becomes parallel\"); the key is far longer than every distractor (62 vs 33 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary cause of the law of reflection according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a wavefront is incident on a surface and the reflected wavefront is parallel to the incident wavefront, what can be inferred about the surface?",
+      "reason": "figure: figure spec refused: spec.parts: planeMirror has no label \"incidentWavefront\" (it has mirror, incidentRay, reflectedRay, normal)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In Young’s double slit experiment, a point P has a path difference of 2λ between the two waves. What will be the intensity at point P if the intensity of each wave is I?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a double slit experiment, the distance between the two slits is d, the wavelength of the light is λ, and the distance from the slits to the screen is D. A point P on the screen has a path difference of λ/2. What will be the intensity at point P if the intensity of each wave is I?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are the dark and bright bands observed on the screen in a wave optics experiment called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In Young's double slit experiment, the path difference between the waves from two coherent sources is 2.5λ. What type of interference will occur at that point?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Does not understand the distinction between interference typ…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the main reason for interference of light?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (this is the correct o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In Young's double slit experiment, the path difference between the two waves is 3.5λ. What can be said about the interference at that point?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Does not understand that the passage only discusses construc…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What type of wave is described by the equation y (x,t) = a sin (kx – wt)?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the condition for constructive interference between t"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A plane wave is incident on a reflecting surface. What is the shape of the wavefront after reflection?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"No misconception, correct answer is plane, but this is the c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the shape of the wavefront when light diverges from a point source?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In Young's double-slit experiment using monochromatic light of wavelength λ, the intensity of light at a point on the screen where the path difference is λ is K units. What is the intensity of light at a point where the path difference is λ/3?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A beam of light with two wavelengths, 650 nm and 520 nm, is used to obtain interference fringes in a Young's double-slit experiment. What is the least distance from the central maximum where the bright fringes due to both wavelengths coincide?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(650*520)/(650-520)\" = 2600, but the key says 2.6"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If an unpolarised light of intensity I is passed through a polaroid, what is the intensity of the transmitted light?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"I/2\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In an experiment, a light beam passes through two polaroids. The first polaroid is fixed, while the second is rotated. What is the maximum intensity of the transmitted light compared to the initial intensity?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the intensity of light when it passes through two polaroids with their pass-axes at 90° to each other?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.mirror: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a double-slit experiment, the fringe pattern on the screen is a result of the superposition of which two effects?",
+      "reason": "options 1 and 2 say the same thing (\"Double-slit diffraction and single-slit interference\" / \"Single-slit interference and double-slit diffraction\"); options 1 and 3 say the same thing (\"Double-slit diffraction and single-slit interference\" / \"Double-slit interference and double-slit diffraction\"); options 2 and 3 say the same thing (\"Single-slit interference and double-slit diffraction\" / \"Double-slit interference and double-slit diffraction\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best describes the relationship between interference and diffraction as explained by Richard Feynman?",
+      "reason": "options 2 and 3 say the same thing (\"Interference is a type of diffraction\" / \"Diffraction is a type of interference\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a phenomenon that can be explained by Huygens' construction of wavefronts?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say about the frequency of reflected and refracted light when monochromatic light is incident on a surface?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a double-slit experiment, the angular width of the fringe is determined by which of the following factors?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage explain about the intensity of light in the photon picture?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (63 vs 37 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, what is the reason for the tilt in the wavefront when a plane wave passes through a thin prism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"The lower portion of the wavefront is delayed more than the upper portion\" / \"The upper portion of the wavefront is delayed more than the lower portion\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the shape of the wavefront when a spherical wave is observed from a large distance?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name given to the dark and bright bands observed on the screen in a double-slit experiment?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'doubleSlit'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the figure and the passage, what happens to the wavefront when light enters a denser medium?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a convex lens is immersed in a liquid with a refractive index of 1.3, what can be said about the focal length compared to when it is in air?",
+      "reason": "checkExpr is set but the key \"It increases\" states no number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which principle allows us to determine the shape of a wavefront at a later time based on its shape at an earlier time?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,516 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T00:59:05.752Z",
+  "finishedAt": "2026-10-23T01:02:24.394Z",
+  "seconds": 199,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm114.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Maps And Locations",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n5. (c) (2,-1)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 77140,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 14358,
+      "completionTokens": 4435
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 175725,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 11356,
+      "completionTokens": 4724
+    },
+    "solver": {
+      "calls": 96,
+      "ms": 47118,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 13899,
+      "completionTokens": 933
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3094,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 219,
+      "completionTokens": 71
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4042,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 107055,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6175,
+      "completionTokens": 2826
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, in which direction is his right hand pointing?",
+      "ms": {
+        "draft": 2515,
+        "critique": 6348,
+        "solver": 1835
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tent is to the west of the road and another tent is north of the green tent, what is the position of the green tent?",
+      "ms": {
+        "draft": 2515,
+        "critique": 7926
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "To locate the tortoise on the map, which direction should you move after reaching the fourth column?",
+      "ms": {
+        "draft": 2952,
+        "critique": 8477
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the position of the animal located at the intersection of the 3rd row and 6th column on the map?",
+      "ms": {
+        "draft": 2952,
+        "critique": 7243
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main way humans figure out directions according to the passage?",
+      "ms": {
+        "draft": 2515,
+        "critique": 7973,
+        "solver": 14899,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which animal is located at (11,3) on the map?",
+      "ms": {
+        "draft": 2952,
+        "critique": 5405,
+        "solver": 1194
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the map is drawn on a grid where each square is 1 unit, what is the total number of units between (2,6) and (3,10)?",
+      "ms": {
+        "draft": 2952,
+        "critique": 8067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What animal is located at (1,4) on the map?",
+      "ms": {
+        "draft": 4175,
+        "critique": 5919
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which animal is located at the same column as the tortoise?",
+      "ms": {
+        "draft": 4175,
+        "critique": 7611,
+        "solver": 1564
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the location of the tortoise on the map?",
+      "ms": {
+        "draft": 4175,
+        "critique": 5241,
+        "solver": 12249
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you start at (2,6), move 3 steps east and then 2 steps north, where do you end up?",
+      "ms": {
+        "draft": 4175,
+        "critique": 6190,
+        "solver": 13663
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the map is a grid that goes from (1,1) to (11,11), and the red dot is placed at (8,3), what is the position of the red dot relative to the blue dot at (7,3)?",
+      "ms": {
+        "draft": 4175,
+        "critique": 7164,
+        "solver": 1704,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the map is a grid that goes from (1,1) to (11,11), and the red dot is at (8,3), what is the position of the red dot relative to the green dot at (2,9)?",
+      "ms": {
+        "draft": 4175,
+        "critique": 6164,
+        "solver": 1385,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If Manu is facing the rising sun, which direction is his left hand pointing?",
+      "ms": {
+        "draft": 3215,
+        "critique": 7009
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a bird flies from east to west, in which direction is it moving?",
+      "ms": {
+        "draft": 3215,
+        "critique": 7006
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tent is to the west of the road and another tent is north of the green tent, in which direction is the purple tent located?",
+      "ms": {
+        "draft": 3215,
+        "critique": 5956,
+        "solver": 2020
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On the metro map, the Yellow Line and the Blue Line are two different routes. If the children take the Yellow Line and change to the Magenta Line at Hauz Khas, which line should they take next to reach the Supreme Court?",
+      "ms": {
+        "draft": 3215,
+        "critique": 6910
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "On the zoo map, each vertical line and horizontal line is marked with a number. To reach the Panda, we start from zero, move one step east, and one step north. If the ant starts from a different point and moves 2 steps east and 3 steps north, what is the total number of steps it has taken?",
+      "ms": {
+        "draft": 3215,
+        "critique": 4801
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, in which direction is his left hand pointing?",
+      "ms": {
+        "draft": 2515,
+        "critique": 6637,
+        "solver": 2390,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is he facing?",
+      "ms": {
+        "draft": 2515,
+        "critique": 6092,
+        "solver": 1313,
+        "form": 4267
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If you move 3 steps east and 2 steps north from (2,2), what is your new position?",
+      "ms": {
+        "draft": 2952,
+        "critique": 6271,
+        "solver": 1817,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the bus starts from the parking area and goes north, then takes a right turn, which direction is it driving in after the turn?",
+      "ms": {
+        "draft": 2515,
+        "critique": 6731,
+        "solver": 2102,
+        "form": 0,
+        "translation": 34407
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the ant has to crawl 2 cm towards the east to reach the laddoos, and then 3 cm towards the north to reach the apple, what is the total distance it has to crawl?",
+      "ms": {
+        "draft": 3215,
+        "critique": 5397,
+        "solver": 1178,
+        "form": 0,
+        "translation": 36414
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the map is scaled so that each unit represents 2 km, what is the distance between (1,1) and (1,4)?",
+      "ms": {
+        "draft": 2952,
+        "critique": 7231,
+        "solver": 949,
+        "form": 0,
+        "translation": 33104
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, in which direction is his right hand pointing?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a tent is to the west of the road and another tent is north of the green tent, what is the position of the green tent?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "To locate the tortoise on the map, which direction should you move after reaching the fourth column?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the position of the animal located at the intersection of the 3rd row and 6th column on the map?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main way humans figure out directions according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which animal is located at (11,3) on the map?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the map is drawn on a grid where each square is 1 unit, what is the total number of units between (2,6) and (3,10)?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What animal is located at (1,4) on the map?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which animal is located at the same column as the tortoise?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the location of the tortoise on the map?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you start at (2,6), move 3 steps east and then 2 steps north, where do you end up?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the map is a grid that goes from (1,1) to (11,11), and the red dot is placed at (8,3), what is the position of the red dot relative to the blue dot at (7,3)?",
+      "reason": "checkExpr is set but the key \"One step east\" states no number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the map is a grid that goes from (1,1) to (11,11), and the red dot is at (8,3), what is the position of the red dot relative to the green dot at (2,9)?",
+      "reason": "checkExpr \"8-2,9-3\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If Manu is facing the rising sun, which direction is his left hand pointing?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If a bird flies from east to west, in which direction is it moving?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a tent is to the west of the road and another tent is north of the green tent, in which direction is the purple tent located?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "On the metro map, the Yellow Line and the Blue Line are two different routes. If the children take the Yellow Line and change to the Magenta Line at Hauz Khas, which line should they take next to reach the Supreme Court?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "On the zoo map, each vertical line and horizontal line is marked with a number. To reach the Panda, we start from zero, move one step east, and one step north. If the ant starts from a different point and moves 2 steps east and 3 steps north, what is the total number of steps it has taken?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, in which direction is his left hand pointing?",
+      "reason": "near-duplicate of served question cmvh7jq9207dhgpfh5zdtozhm (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is he facing?",
+      "reason": "near-duplicate of served question cmvh7jq9207dhgpfh5zdtozhm (cosine 0.992 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If you move 3 steps east and 2 steps north from (2,2), what is your new position?",
+      "reason": "near-duplicate of served question cmvh7jq9607dngpfhwjgpabqk (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

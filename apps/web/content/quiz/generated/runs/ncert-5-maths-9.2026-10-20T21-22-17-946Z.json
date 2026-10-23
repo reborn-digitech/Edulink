@@ -1,0 +1,710 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:22:17.946Z",
+  "finishedAt": "2026-10-20T21:28:34.086Z",
+  "seconds": 376,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm109.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Coconut Farm",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n2. Coordinate of Kota (K) is ( 3 x 5 + 2 x 0 3 x 7 + 2 x 10 3 + 2 ,\n= ( 15+0 5 , 21+20 5 )= (3, 41 5 )",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 106603,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 28068,
+      "completionTokens": 7242
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 339966,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 26512,
+      "completionTokens": 10770
+    },
+    "solver": {
+      "calls": 338,
+      "ms": 180884,
+      "in": 34,
+      "out": 22,
+      "rejects": 12,
+      "promptTokens": 85061,
+      "completionTokens": 4305
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8903,
+      "in": 22,
+      "out": 9,
+      "rejects": 13,
+      "promptTokens": 777,
+      "completionTokens": 219
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2680,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 227375,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 17986,
+      "completionTokens": 7625
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 3,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a division fact for the multiplication fact 5 × 7 = 35?",
+      "ms": {
+        "draft": 3082,
+        "critique": 7035,
+        "solver": 1316
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the relationship between the dividend, divisor, and quotient?",
+      "ms": {
+        "draft": 3082,
+        "critique": 5154,
+        "solver": 1460,
+        "form": 3232
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 10 × 10 = 100, which of the following division facts is correct?",
+      "ms": {
+        "draft": 3082,
+        "critique": 4724,
+        "solver": 1443,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 30 × 30 = 900, which of the following is a division fact?",
+      "ms": {
+        "draft": 3082,
+        "critique": 7956,
+        "solver": 10780,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pattern observed in the passage, what is 440 ÷ 22?",
+      "ms": {
+        "draft": 3082,
+        "critique": 7969,
+        "solver": 15023,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is 1248 ÷ 6, using the mental strategy shown in the passage?",
+      "ms": {
+        "draft": 3082,
+        "critique": 6766,
+        "solver": 9963,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Ibrahim earned ₹8890 in a week by selling tender coconuts at ₹35 each. How many coconuts did he sell?",
+      "ms": {
+        "draft": 3210,
+        "critique": 7423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bus can carry 41 students and there are 342 students going on a trip, how many buses are needed?",
+      "ms": {
+        "draft": 3210,
+        "critique": 5505,
+        "solver": 9943,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the problem where Susie and Sunitha extracted 547 litres of coconut oil, how much money would they earn if they sold it at ₹175 per litre?",
+      "ms": {
+        "draft": 3210,
+        "critique": 6533,
+        "solver": 13770,
+        "form": 2979
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A theatre company can accommodate 45 people during one show. If 475 people bought tickets, how many shows are needed to seat all of them?",
+      "ms": {
+        "draft": 3210,
+        "critique": 4991,
+        "solver": 10002,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these problems involves division with a remainder?",
+      "ms": {
+        "draft": 3210,
+        "critique": 5706,
+        "solver": 10637
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a division statement from the passage?",
+      "ms": {
+        "draft": 3144,
+        "critique": 4201,
+        "solver": 13354
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total distance that should be covered by the company in 12 days, according to the passage?",
+      "ms": {
+        "draft": 3144,
+        "critique": 6114,
+        "solver": 14427,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the company rests for one day and covers the same distance in 4 days, how much distance do they need to cover each day?",
+      "ms": {
+        "draft": 3144,
+        "critique": 6508,
+        "solver": 1112
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the company covers 576 km in 12 days, how much distance do they need to cover each day?",
+      "ms": {
+        "draft": 3144,
+        "critique": 5884,
+        "solver": 14576
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A fruit vendor sells 6 baskets of mangoes, each with 12 mangoes. How much did the vendor earn if each mango costs ₹15?",
+      "ms": {
+        "draft": 3144,
+        "critique": 4949,
+        "solver": 7175
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 340 ÷ 34?",
+      "ms": {
+        "draft": 2943,
+        "critique": 4451,
+        "solver": 15622
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 192 ÷ 4?",
+      "ms": {
+        "draft": 2943,
+        "critique": 4293,
+        "solver": 16817
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a company covers 576 km in 12 days, how much distance do they cover each day?",
+      "ms": {
+        "draft": 2943,
+        "critique": 3880,
+        "solver": 18112
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Ibrahim earns ₹8890 by selling tender coconuts at ₹35 each. How many coconuts did he sell?",
+      "ms": {
+        "draft": 2668,
+        "critique": 5773
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Rani needs to serve 250 samosas, and they come in packs of 6 or 8. Which pack should she buy to minimize the number of packs?",
+      "ms": {
+        "draft": 2668,
+        "critique": 7623,
+        "solver": 9847,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many buses are needed to carry 342 students if each bus can carry 41 students?",
+      "ms": {
+        "draft": 2668,
+        "critique": 5689,
+        "solver": 1324,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 1094 liters of coconut oil is sold at ₹175 per liter, what is the total earnings?",
+      "ms": {
+        "draft": 2668,
+        "critique": 5197,
+        "solver": 14420
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Sofia has ₹520 and uses only ₹50 and ₹20 notes. How many combinations of notes can she use?",
+      "ms": {
+        "draft": 2668,
+        "critique": 5833,
+        "solver": 13652
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the dividend (N), divisor (D), quotient (Q), and remainder (R)?",
+      "ms": {
+        "draft": 2720,
+        "critique": 6913,
+        "solver": 9706,
+        "form": 3483
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 35 ÷ 1?",
+      "ms": {
+        "draft": 2720,
+        "critique": 5921,
+        "solver": 9299,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a division fact that follows from 400 × 8 = 3200?",
+      "ms": {
+        "draft": 2720,
+        "critique": 8453,
+        "solver": 10501
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these is a strategy for division taught in the chapter?",
+      "ms": {
+        "draft": 3210,
+        "critique": 6606,
+        "solver": 12110,
+        "form": 0,
+        "translation": 35271
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 × 7 = 35, what is 35 ÷ 5?",
+      "ms": {
+        "draft": 2720,
+        "critique": 6002,
+        "solver": 10335,
+        "form": 0,
+        "translation": 18284
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of 144 ÷ 4, using the strategy of repeated halving?",
+      "ms": {
+        "draft": 2720,
+        "critique": 5622,
+        "solver": 1664,
+        "form": 0,
+        "translation": 20794
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Susie and Sunitha extracted 547 liters of coconut oil from 4376 coconuts. How many coconuts are needed to extract 1094 liters of oil?",
+      "ms": {
+        "draft": 2668,
+        "critique": 6709,
+        "solver": 1756,
+        "form": 0,
+        "translation": 28149
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a carpenter has 264 long wooden panels and each bookshelf requires 4 long wooden panels, how many bookshelves can the carpenter make?",
+      "ms": {
+        "draft": 2943,
+        "critique": 5438,
+        "solver": 15073,
+        "form": 0,
+        "translation": 30600
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 535 ÷ 25 = 21 with a remainder, what is the remainder?",
+      "ms": {
+        "draft": 2720,
+        "critique": 5112,
+        "solver": 5735,
+        "form": 0,
+        "translation": 13540
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a fruit vendor sells 6 baskets of mangoes and each basket contains 12 mangoes, how much did the vendor earn in total?",
+      "ms": {
+        "draft": 2943,
+        "critique": 5046,
+        "solver": 1188,
+        "form": 0,
+        "translation": 28806
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Rahul buys 5 cricket bats for his team. The total bill is ₹3500. How much does one bat cost?",
+      "ms": {
+        "draft": 3144,
+        "critique": 3924,
+        "solver": 828,
+        "form": 0,
+        "translation": 22435
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a restaurant serves 125 plates of idlis in a day and the total earnings are ₹6250, how many idlis are there in each plate?",
+      "ms": {
+        "draft": 2943,
+        "critique": 4547,
+        "solver": 2146,
+        "form": 0,
+        "translation": 26073
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a division fact for the multiplication fact 5 × 7 = 35?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents the relationship between the dividend, divisor, and quotient?",
+      "reason": "options 0 and 1 are the same (\"Dividend = Divisor + Quotient\"); options 0 and 3 are the same (\"Dividend = Divisor + Quotient\"); options 1 and 3 are the same (\"Dividend = Divisor × Quotient\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 10 × 10 = 100, which of the following division facts is correct?",
+      "reason": "options 0 and 2 say the same thing (\"100 ÷ 10 = 10\" / \"100 ÷ 10 = 100\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 30 × 30 = 900, which of the following is a division fact?",
+      "reason": "options 1 and 3 say the same thing (\"900 ÷ 10 = 30\" / \"900 ÷ 30 = 10\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the pattern observed in the passage, what is 440 ÷ 22?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"20\"); options 0 and 3 are the same (\"20\"); options 1 and 3 are the same (\"20\"); options 0 and 1 are the same number; options 0 and 3 are the same number; options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is 1248 ÷ 6, using the mental strategy shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Ibrahim earned ₹8890 in a week by selling tender coconuts at ₹35 each. How many coconuts did he sell?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a bus can carry 41 students and there are 342 students going on a trip, how many buses are needed?",
+      "reason": "checkExpr \"342//41+1\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the problem where Susie and Sunitha extracted 547 litres of coconut oil, how much money would they earn if they sold it at ₹175 per litre?",
+      "reason": "options 0 and 1 are the same (\"₹95,725\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A theatre company can accommodate 45 people during one show. If 475 people bought tickets, how many shows are needed to seat all of them?",
+      "reason": "checkExpr \"475//45+1\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of these problems involves division with a remainder?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a division statement from the passage?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total distance that should be covered by the company in 12 days, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the company rests for one day and covers the same distance in 4 days, how much distance do they need to cover each day?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the company covers 576 km in 12 days, how much distance do they need to cover each day?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A fruit vendor sells 6 baskets of mangoes, each with 12 mangoes. How much did the vendor earn if each mango costs ₹15?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the result of 340 ÷ 34?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of 192 ÷ 4?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a company covers 576 km in 12 days, how much distance do they cover each day?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Ibrahim earns ₹8890 by selling tender coconuts at ₹35 each. How many coconuts did he sell?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Rani needs to serve 250 samosas, and they come in packs of 6 or 8. Which pack should she buy to minimize the number of packs?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many buses are needed to carry 342 students if each bus can carry 41 students?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"342/41\" = 8.341463414634147, but the key says 9"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 1094 liters of coconut oil is sold at ₹175 per liter, what is the total earnings?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Sofia has ₹520 and uses only ₹50 and ₹20 notes. How many combinations of notes can she use?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relationship between the dividend (N), divisor (D), quotient (Q), and remainder (R)?",
+      "reason": "options 0 and 1 say the same thing (\"N = D + Q + R\" / \"N = D × Q - R\"); options 0 and 2 are the same (\"N = D + Q + R\"); options 0 and 3 are the same (\"N = D + Q + R\"); options 1 and 2 say the same thing (\"N = D × Q - R\" / \"N = D × Q + R\"); options 1 and 3 say the same thing (\"N = D × Q - R\" / \"N = D + Q × R\"); options 2 and 3 are the same (\"N = D × Q + R\"); option 0 repeats the stem's wording (\"N = D + Q + R\"); option 2 repeats the stem's wording (\"N = D × Q + R\"); option 3 repeats the stem's wording (\"N = D + Q × R\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the result of 35 ÷ 1?",
+      "reason": "options 2 and 3 are the same (\"35\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a division fact that follows from 400 × 8 = 3200?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

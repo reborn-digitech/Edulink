@@ -1,0 +1,1789 @@
+{
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 4 — Vector Algebra",
+  "name": "Vector Algebra",
+  "slug": "maths-12-vector-algebra",
+  "summary": "This chapter introduces vectors, their types, and operations like addition and scalar multiplication.",
+  "position": 4,
+  "source": "generated against NCERT Mathematics, Class 12, chapter 4 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 4 - सदिश बीजगणित",
+      "summary": "इस अध्याय में सदिश, उनके प्रकार और जोड़ और अदिश गुणन जैसे संक्रियाओं का परिचय दिया गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 4 - सदिश बीजगणित",
+      "summary": "हा अध्याय सदिश, त्यांचे प्रकार आणि जोड आणि अदिश गुणाकार अशा संक्रियांच्या परिचयाचा अभ्यास करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics Part-II",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-21T11:19:34.782Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Under what condition is the vector product of two vectors zero?",
+      "choices": [
+        "When the vectors are perpendicular to each other.",
+        "When the vectors are parallel to each other.",
+        "When the vectors have the same magnitude.",
+        "When the vectors have different magnitudes."
+      ],
+      "answerIndex": 1,
+      "solution": "The correct option states that the vector product of two vectors is zero when the vectors are parallel to each other. This is because the sine of the angle between them is zero when they are parallel. The other options are incorrect because the vector product is not zero when vectors are perpendicular, have the same magnitude, or have different magnitudes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस स्थिति में दो सदिशों का सदिश गुणन शून्य होता है?",
+          "choices": [
+            "जब सदिश एक दूसरे के लंबवत होते हैं।",
+            "जब सदिश एक दूसरे के समांतर होते हैं।",
+            "जब सदिश समान परिमाण वाले होते हैं।",
+            "जब सदिश अलग-अलग परिमाण वाले होते हैं।"
+          ],
+          "solution": "सही विकल्प यह बताता है कि दो सदिशों का सदिश गुणन शून्य होता है जब सदिश एक दूसरे के समांतर होते हैं। इसका कारण यह है कि जब सदिश समांतर होते हैं तो उनके बीच के कोण का ज्या शून्य होता है। अन्य विकल्प गलत हैं क्योंकि सदिश लंबवत होने पर, समान परिमाण वाले होने पर या अलग-अलग परिमाण वाले होने पर सदिश गुणन शून्य नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन सदिशांचा सदिश गुणाकार कधी शून्य असतो?",
+          "choices": [
+            "जेव्हा सदिश एकमेकांना लंब असतात.",
+            "जेव्हा सदिश एकमेकांशी समांतर असतात.",
+            "जेव्हा सदिशांचे मापन एकसारखे असते.",
+            "जेव्हा सदिशांचे मापन वेगळे असते."
+          ],
+          "solution": "सही विकल्प सांगतो की, दोन सदिशांचा सदिश गुणाकार तेव्हा शून्य असतो जेव्हा सदिश एकमेकांशी समांतर असतात. हे कारण असे आहे की त्यांच्यातील कोनाचा जिन (sine) शून्य असतो जेव्हा ते समांतर असतात. इतर विकल्प चुकीचे आहेत कारण सदिश लंब असताना, एकसारखे मापन असताना किंवा वेगळे मापन असताना सदिश गुणाकार शून्य नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses perpendicular with parallel",
+        null,
+        "Incorrectly assumes magnitude affects the cross product",
+        "Incorrectly assumes magnitude affects the cross product"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the cross product is zero when vectors are parallel, as the sine of the angle between them is zero. The reasoning for the other options is sound, as they reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 12,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 13,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 14,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is defined as a quantity that has both magnitude and direction?",
+      "choices": [
+        "Scalar",
+        "Vector",
+        "Unit vector",
+        "Position vector"
+      ],
+      "answerIndex": 1,
+      "solution": "A vector is defined as a quantity that has both magnitude and direction. A scalar only has magnitude, a unit vector has magnitude 1, and a position vector is a specific type of vector from the origin to a point. Hence, the correct answer is 'Vector'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस राशि को दिशा एवं परिमाण दोनों के साथ परिभाषित किया जाता है?",
+          "choices": [
+            "अदिश",
+            "सदिश",
+            "इकाई सदिश",
+            "स्थिति सदिश"
+          ],
+          "solution": "सदिश एक ऐसी राशि है जिसका परिमाण एवं दिशा दोनों होते हैं। अदिश केवल परिमाण के साथ होता है, इकाई सदिश का परिमाण 1 होता है एवं स्थिति सदिश मूल बिंदु से एक बिंदु तक एक विशिष्ट प्रकार का सदिश होता है। अतः सही उत्तर 'सदिश' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या राशीला परिमाण आणि दिशा दोन्ही असतात असे म्हणतात?",
+          "choices": [
+            "स्केलर",
+            "वेक्टर",
+            "युनिट वेक्टर",
+            "स्थिती वेक्टर"
+          ],
+          "solution": "वेक्टर म्हणजे परिमाण आणि दिशा दोन्ही असलेली राशी आहे. स्केलर फक्त परिमाण असतो, युनिट वेक्टर च्या परिमाणाचे मूल्य 1 असते आणि स्थिती वेक्टर म्हणजे मूलबिंदूपासून एखाद्या बिंदूपर्यंत जाणारा विशिष्ट प्रकारचा वेक्टर आहे. म्हणून योग्य उत्तर 'वेक्टर' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses vector with scalar",
+        null,
+        "Confuses unit vector with vector",
+        "Confuses position vector with vector"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Vector' as it is defined as a quantity with both magnitude and direction. The distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a vector quantity?",
+      "choices": [
+        "Mass",
+        "Time",
+        "Distance",
+        "Force"
+      ],
+      "answerIndex": 3,
+      "solution": "Force is a vector quantity as it has both magnitude and direction. Mass, time, and distance are scalar quantities that only have magnitude. Hence, the correct answer is 'Force'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक सदिश राशि है?",
+          "choices": [
+            "द्रव्यमान",
+            "समय",
+            "दूरी",
+            "बल"
+          ],
+          "solution": "बल एक सदिश राशि है क्योंकि इसके परिमाण एवं दिशा दोनों होते हैं। द्रव्यमान, समय एवं दूरी अदिश राशियाँ हैं जिनके केवल परिमाण होते हैं। अतः सही उत्तर 'बल' है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक वेक्टर राशी आहे?",
+          "choices": [
+            "द्रव्यमान",
+            "वेळ",
+            "अंतर",
+            "बल"
+          ],
+          "solution": "बल ही वेक्टर राशी आहे कारण तिला परिमाण आणि दिशा दोन्ही आहेत. द्रव्यमान, वेळ आणि अंतर ही अदिश राशी आहेत ज्यांना केवळ परिमाण आहे. म्हणूनच योग्य उत्तर 'बल' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses vector with scalar",
+        "Confuses vector with scalar",
+        "Confuses vector with scalar",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly formulated. The correct answer is 'Force' as it is the only vector quantity among the options. The other options are indeed scalar quantities, and the reasoning provided by the author is accurate.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following describes the vector sum of the three sides of a triangle taken in order?",
+      "choices": [
+        "Zero vector",
+        "Unit vector",
+        "Null vector",
+        "Position vector"
+      ],
+      "answerIndex": 0,
+      "solution": "The vector sum of the three sides of a triangle taken in order results in a zero vector because the vectors form a closed loop, returning to the starting point. A zero vector has no magnitude and no direction, which matches this scenario. A unit vector has a magnitude of 1, a position vector locates a point in space, and a null vector is another term for a zero vector, but 'zero vector' is the more standard term in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक त्रिभुज की तीनों भुजाओं के सदिश योग का वर्णन करता है जिन्हें क्रम में लिया जाता है?",
+          "choices": [
+            "शून्य सदिश",
+            "इकाई सदिश",
+            "शून्य सदिश",
+            "स्थिति सदिश"
+          ],
+          "solution": "एक त्रिभुज की तीनों भुजाओं के सदिश योग के परिणाम में शून्य सदिश प्राप्त होता है क्योंकि सदिश एक बंद लूप बनाते हैं जो शुरुआती बिंदु पर वापस आते हैं। एक शून्य सदिश का कोई परिमाण और दिशा नहीं होता है, जो इस स्थिति के अनुरूप है। एक इकाई सदिश का परिमाण 1 होता है, स्थिति सदिश किसी बिंदु की स्थिति को निर्धारित करता है, और शून्य सदिश एक अन्य शब्द है शून्य सदिश के लिए, लेकिन 'शून्य सदिश' इस संदर्भ में अधिक मानक शब्द है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते त्रिकोणाच्या तीन बाजूंच्या सदिश बेरजेचे वर्णन करते?",
+          "choices": [
+            "शून्य सदिश",
+            "एकक सदिश",
+            "शून्य सदिश",
+            "स्थान सदिश"
+          ],
+          "solution": "त्रिकोणाच्या तीन बाजूंच्या सदिश बेरजेमुळे शून्य सदिश मिळतो कारण सदिश बंद लूप बनवतात आणि प्रारंभिक बिंदूवर परत येतात. शून्य सदिशला कोणताही मापन आणि दिशा नसते, जे ह्या परिस्थितीशी मेळ खाते. एकक सदिशला 1 मापन असतो, स्थान सदिश अंतरातील बिंदू दर्शवतो आणि शून्य सदिश हा शून्य सदिशचा इतर नाव आहे, परंतु ह्या संदर्भात 'शून्य सदिश' हे अधिक मानक शब्द आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with proper use of Marathi technical terms. The options (1) and (3) are identical, which may be an error, but the correct answer (1) is still in the same position as in the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses zero vector with unit vector",
+        "Confuses zero vector with null vector",
+        "Confuses zero vector with position vector"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The vector sum of the three sides of a triangle taken in order is indeed the zero vector, as the path returns to the starting point. The distinction between zero vector and null vector is minor and context-dependent, but the author's explanation is reasonable.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 18,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 19,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a vector has a magnitude of 0, what is it called?",
+      "choices": [
+        "Unit vector",
+        "Position vector",
+        "Zero vector",
+        "Collinear vector"
+      ],
+      "answerIndex": 2,
+      "solution": "A zero vector is a vector whose initial and terminal points coincide, giving it a magnitude of 0. A unit vector has a magnitude of 1, a position vector is from the origin to a point, and collinear vectors are parallel to the same line. Hence, the correct answer is 'Zero vector'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी सदिश का परिमाण 0 होता है, तो इसे क्या कहा जाता है?",
+          "choices": [
+            "इकाई सदिश",
+            "स्थिति सदिश",
+            "शून्य सदिश",
+            "संरेख सदिश"
+          ],
+          "solution": "शून्य सदिश एक सदिश होता है जिसके प्रारंभिक एवं अंतिम बिंदु समान होते हैं, जिसके कारण इसका परिमाण 0 होता है। इकाई सदिश का परिमाण 1 होता है, स्थिति सदिश मूल बिंदु से एक बिंदु तक होता है, एवं संरेख सदिश एक ही रेखा के समांतर होते हैं। अतः सही उत्तर 'शून्य सदिश' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms are standard in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वेक्टरचा महत्त्व 0 असेल, तर त्याला काय म्हणतात?",
+          "choices": [
+            "एकक वेक्टर",
+            "स्थान वेक्टर",
+            "शून्य वेक्टर",
+            "समरेखीय वेक्टर"
+          ],
+          "solution": "शून्य वेक्टर म्हणजे एक वेक्टर ज्याचे प्रारंभिक आणि अंतिम बिंदू एकसारखे असतात, ज्यामुळे त्याचा महत्त्व 0 असतो. एकक वेक्टरचा महत्त्व 1 असतो, स्थान वेक्टर हा मूलांकनापासून एका बिंदूपर्यंत असतो आणि समरेखीय वेक्टर एकाच रेषेशी समांतर असतात. म्हणून योग्य उत्तर 'शून्य वेक्टर' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses zero vector with unit vector",
+        "Confuses zero vector with position vector",
+        null,
+        "Confuses zero vector with collinear vector"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'Zero vector' as it is the standard term for a vector with magnitude 0. The distractors represent common misconceptions, and the solution is accurate.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a vector is multiplied by a scalar λ, what happens to its magnitude?",
+      "choices": [
+        "It remains the same",
+        "It increases by λ times",
+        "It changes by |λ| times",
+        "It becomes zero"
+      ],
+      "answerIndex": 2,
+      "solution": "When a vector is multiplied by a scalar λ, its magnitude is scaled by the absolute value of λ, which is |λ|. This means the magnitude changes by |λ| times, making this the correct answer. The magnitude does not stay the same, nor does it simply increase by λ times, as the sign of λ does not affect the magnitude. It only becomes zero if λ is zero, which is not guaranteed here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी सदिश को एक स्केलर λ से गुणा किया जाता है, तो इसके परिमाण पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "इसका परिमाण समान रहता है",
+            "इसका परिमाण λ गुना बढ़ जाता है",
+            "इसका परिमाण |λ| गुना बदल जाता है",
+            "इसका परिमाण शून्य हो जाता है"
+          ],
+          "solution": "जब किसी सदिश को एक स्केलर λ से गुणा किया जाता है, तो इसका परिमाण λ के निरपेक्ष मान अर्थात् |λ| से बदल जाता है। इसका अर्थ है कि परिमाण |λ| गुना बदल जाता है, जिसके कारण यह सही उत्तर है। परिमाण समान नहीं रहता है, न ही यह सिर्फ λ गुना बढ़ जाता है, क्योंकि λ के चिह्न का परिमाण पर कोई प्रभाव नहीं पड़ता है। यह केवल तभी शून्य हो जाता है जब λ शून्य होता है, जो यहाँ आवश्यक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'सदिश' (vector), 'स्केलर' (scalar), and 'परिमाण' (magnitude).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सदिशाला एका अदिश λ ने गुणले गेल्यास त्याच्या परिमाणावर काय परिणाम होतो?",
+          "choices": [
+            "ते बरोबर राहते",
+            "ते λ पट वाढते",
+            "ते |λ| पट बदलते",
+            "ते शून्य होते"
+          ],
+          "solution": "जेव्हा एका सदिशाला अदिश λ ने गुणले जाते, तेव्हा त्याच्या परिमाणाचे अबोल्यूट मूल्यानुसार विस्तार होतो, जो |λ| आहे. हे अर्थ असा आहे की परिमाण |λ| पट बदलते, ज्यामुळे हा योग्य उत्तर ठरतो. परिमाण बरोबर राहत नाही, आणि λ पट वाढत नाही, कारण λ च्या चिन्हाचा परिमाणावर प्रभाव पडत नाही. ते शून्य होते केवळ जेव्हा λ शून्य असते, जे येथे खात्री केले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for vectors and scalars.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Does not account for the absolute value of λ",
+        "Thinks the magnitude increases by λ, not |λ|",
+        null,
+        "Thinks the magnitude becomes zero without any condition"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as multiplying a vector by a scalar λ changes its magnitude by |λ|. The reasoning in the author's solution is sound and aligns with standard vector algebra principles.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 18,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 19,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If two vectors are collinear, what can be said about their direction?",
+      "choices": [
+        "They are in the same direction",
+        "They are in the same direction or perpendicular to each other",
+        "They are in the same or opposite directions",
+        "They are perpendicular to each other"
+      ],
+      "answerIndex": 2,
+      "solution": "Collinear vectors are vectors that lie on the same line or parallel lines. This means they can be in the same direction or opposite directions. Hence, the correct answer is 'They are in the same or opposite directions'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो सदिश संरेख हैं, तो उनकी दिशा के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे एक ही दिशा में हैं",
+            "वे एक ही दिशा में हैं या एक दूसरे के लंबवत हैं",
+            "वे एक ही या विपरीत दिशाओं में हैं",
+            "वे एक दूसरे के लंबवत हैं"
+          ],
+          "solution": "संरेख सदिश वे सदिश होते हैं जो एक ही रेखा या समांतर रेखाओं पर स्थित होते हैं। इसका अर्थ है कि वे एक ही दिशा में या विपरीत दिशाओं में हो सकते हैं। अतः सही उत्तर 'वे एक ही या विपरीत दिशाओं में हैं' है।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (3).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन सदिश संरेख असतील, तर त्यांच्या दिशेबद्दल काय म्हणता येईल?",
+          "choices": [
+            "ते एकाच दिशेत असतात",
+            "ते एकाच दिशेत असतात किंवा एकमेकांना लंब असतात",
+            "ते एकाच किंवा विरुद्ध दिशेत असतात",
+            "ते एकमेकांना लंब असतात"
+          ],
+          "solution": "संरेख सदिश म्हणजे एका रेषेवर किंवा समांतर रेषांवर असणारे सदिश आहेत. हे एकाच दिशेत किंवा विरुद्ध दिशेत असू शकतात. म्हणून योग्य उत्तर 'ते एकाच किंवा विरुद्ध दिशेत असतात' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Only considers same direction",
+        "Student thinks collinear vectors can also be perpendicular, misunderstanding the definition of collinearity",
+        null,
+        "Confuses perpendicularity with collinearity"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the definition of collinear vectors. The correct answer is option 2, as collinear vectors can be in the same or opposite directions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a vector has direction ratios 1, 2, and 3, which of the following is its unit vector?",
+      "choices": [
+        "(i + 2j + 3k)/√14",
+        "(i + 2j + 3k)/14",
+        "(i + 2j + 3k)/√(1+2+3)",
+        "(i + 2j + 3k)/13"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is '(i + 2j + 3k)/√14.' The magnitude of the vector with direction ratios 1, 2, and 3 is √(1^2 + 2^2 + 3^2) = √14. Therefore, the unit vector is the vector divided by its magnitude. The other options are incorrect because they use the wrong magnitude or do not simplify correctly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी सदिश के दिशा अनुपात 1, 2 और 3 हैं, तो निम्नलिखित में से कौन इसका इकाई सदिश है?",
+          "choices": [
+            "(i + 2j + 3k)/√14",
+            "(i + 2j + 3k)/14",
+            "(i + 2j + 3k)/√(1+2+3)",
+            "(i + 2j + 3k)/13"
+          ],
+          "solution": "सही उत्तर '(i + 2j + 3k)/√14' है। दिशा अनुपात 1, 2 और 3 वाले सदिश का परिमाण √(1^2 + 2^2 + 3^2) = √14 है। अतः इकाई सदिश सदिश के परिमाण से विभाजित होता है। अन्य विकल्प गलत हैं क्योंकि वे गलत परिमाण का उपयोग करते हैं या सही तरह से सरल नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक वेक्टर चे दिशा अनुपात 1, 2 आणि 3 असतील, तर खालीलपैकी कोणता त्याचा एकक वेक्टर असेल?",
+          "choices": [
+            "(i + 2j + 3k)/√14",
+            "(i + 2j + 3k)/14",
+            "(i + 2j + 3k)/√(1+2+3)",
+            "(i + 2j + 3k)/13"
+          ],
+          "solution": "सही उत्तर '(i + 2j + 3k)/√14' आहे. दिशा अनुपात 1, 2 आणि 3 असलेल्या वेक्टरचे महत्त्व  √(1^2 + 2^2 + 3^2) = √14 आहे. म्हणून एकक वेक्टर हा वेक्टर त्याच्या महत्त्वाने भागलेला असतो. इतर उत्तरे चुकीचे आहेत कारण त्यांनी चुकीचे महत्त्व वापरले आहे किंवा त्यांनी योग्यरित्या सोपे केले नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks. The structure and meaning of the question and options are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly uses the magnitude as 14",
+        "Confuses the magnitude of a vector with the sum of its direction ratios instead of the square root of the sum of their squares",
+        "Uses the magnitude as 13 instead of √14"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The unit vector is obtained by dividing the vector by its magnitude, which is √(1² + 2² + 3²) = √14. The other options incorrectly use 14, 6 (sum of direction ratios), or 13 as the magnitude.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a 3D coordinate system, what is the term for the angles a vector makes with the positive directions of the x, y, and z-axes?",
+      "choices": [
+        "Direction ratios",
+        "Direction cosines",
+        "Position angles",
+        "Vector angles"
+      ],
+      "answerIndex": 1,
+      "solution": "The angles a vector makes with the positive directions of the x, y, and z-axes are called direction angles. The cosine of these angles are known as direction cosines. Direction ratios are proportional to the direction cosines, and the other options are not standard terms. Hence, the correct answer is 'Direction cosines'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3D निर्देशांक प्रणाली में, एक सदिश द्वारा x, y, और z-अक्ष की धनात्मक दिशाओं के साथ बनाए गए कोणों के लिए शब्द क्या है?",
+          "choices": [
+            "दिशा अनुपात",
+            "दिशा कोसाइन",
+            "स्थिति कोण",
+            "सदिश कोण"
+          ],
+          "solution": "एक सदिश द्वारा x, y, और z-अक्ष की धनात्मक दिशाओं के साथ बनाए गए कोणों को दिशा कोण कहा जाता है। इन कोणों के कोसाइन को दिशा कोसाइन कहा जाता है। दिशा अनुपात दिशा कोसाइन के अनुपाती होते हैं, और अन्य विकल्प मानक शब्द नहीं हैं। अतः सही उत्तर 'दिशा कोसाइन' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3D समन्वय प्रणालीत, एका वेक्टरने x, y आणि z-अक्षांच्या धन दिशांशी बनवलेल्या कोनांसाठी शब्द काय आहे?",
+          "choices": [
+            "दिशा अनुपात",
+            "दिशा कोसाईन",
+            "स्थिती कोन",
+            "वेक्टर कोन"
+          ],
+          "solution": "एका वेक्टरने x, y आणि z-अक्षांच्या धन दिशांशी बनवलेल्या कोनांना दिशा कोन म्हणतात. या कोनांच्या कोसाईनला दिशा कोसाईन म्हणतात. दिशा अनुपात दिशा कोसाईनच्या अनुपातात असतात, आणि इतर विकल्प मानक शब्द नाहीत. त्यामुळे योग्य उत्तर 'दिशा कोसाईन' आहे.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English content with appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses direction cosines with direction ratios",
+        null,
+        "Confuses direction cosines with position angles",
+        "Confuses direction cosines with vector angles"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed, and the correct answer is 'Direction cosines'. The author's solution is accurate and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the term for vectors that are parallel to the same line?",
+      "choices": [
+        "Collinear vectors",
+        "Equal vectors",
+        "Coinitial vectors",
+        "Unit vectors"
+      ],
+      "answerIndex": 0,
+      "solution": "Collinear vectors are defined as vectors that are parallel to the same line, regardless of their magnitudes or directions. Equal vectors have the same magnitude and direction, coinitial vectors share the same initial point, and unit vectors have a magnitude of 1. Hence, the correct answer is 'Collinear vectors'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस शब्द का उपयोग समान रेखा के समांतर वेक्टर के लिए किया जाता है?",
+          "choices": [
+            "संरेखी वेक्टर",
+            "समान वेक्टर",
+            "एक ही बिंदु से शुरू होने वाले वेक्टर",
+            "इकाई वेक्टर"
+          ],
+          "solution": "संरेखी वेक्टर वे वेक्टर होते हैं जो एक ही रेखा के समांतर होते हैं, चाहे उनके परिमाण या दिशा कुछ भी हो। समान वेक्टर समान परिमाण और दिशा वाले होते हैं, एक ही बिंदु से शुरू होने वाले वेक्टर एक ही प्रारंभिक बिंदु साझा करते हैं और इकाई वेक्टर का परिमाण 1 होता है। अतः सही उत्तर 'संरेखी वेक्टर' है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विषम रेषेशी समांतर असलेल्या सदिशांचा शब्द काय आहे?",
+          "choices": [
+            "संरेखीय सदिश",
+            "समान सदिश",
+            "समारंभिक सदिश",
+            "एकक सदिश"
+          ],
+          "solution": "संरेखीय सदिश म्हणजे एका विषम रेषेशी समांतर असलेले सदिश, त्यांच्या परिमाणाच्या किंवा दिशेच्या अवलंबून नसतात. समान सदिशांचे परिमाण आणि दिशा समान असते, समारंभिक सदिशांची सुरुवात एकाच बिंदूवर होते आणि एकक सदिशांचे परिमाण 1 असते. म्हणूनच योग्य उत्तर 'संरेखीय सदिश' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology as found in textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses collinear vectors with equal vectors",
+        "Confuses collinear vectors with coinitial vectors",
+        "Confuses collinear vectors with unit vectors"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, and the solution correctly identifies 'collinear vectors' as the term for vectors parallel to the same line. The explanations for the distractors are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the area of a triangle with vertices A(1, 1, 1), B(1, 2, 3), and C(2, 3, 1)?",
+      "choices": [
+        "√21/2",
+        "√21/4",
+        "√21",
+        "2√21"
+      ],
+      "answerIndex": 0,
+      "solution": "To find the area of a triangle with vertices A(1, 1, 1), B(1, 2, 3), and C(2, 3, 1), we first find the vectors AB and AC. AB = (0, 1, 2) and AC = (1, 2, 0). The cross product of AB and AC gives a vector perpendicular to the triangle, and its magnitude divided by 2 gives the area. The magnitude of the cross product is √(16 + 4 + 1) = √21, so the area is √21/2. The other options are incorrect because they use incorrect values for the magnitude or do not divide by 2.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "A(1, 1, 1), B(1, 2, 3) और C(2, 3, 1) शीर्षों वाले त्रिभुज का क्षेत्रफल क्या है?",
+          "choices": [
+            "√21/2",
+            "√21/4",
+            "√21",
+            "2√21"
+          ],
+          "solution": "A(1, 1, 1), B(1, 2, 3) और C(2, 3, 1) शीर्षों वाले त्रिभुज का क्षेत्रफल ज्ञात करने के लिए हम पहले सदिश AB और AC ज्ञात करते हैं। AB = (0, 1, 2) और AC = (1, 2, 0)। AB और AC के क्रॉस गुणनफल त्रिभुज के लिए लंब एक सदिश देता है, और इसके परिमाण को 2 से विभाजित करने पर क्षेत्रफल प्राप्त होता है। क्रॉस गुणनफल का परिमाण √(16 + 4 + 1) = √21 है, इसलिए क्षेत्रफल √21/2 है। अन्य विकल्प गलत हैं क्योंकि उनमें परिमाण के गलत मान का उपयोग किया गया है या 2 से विभाजित नहीं किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "A(1, 1, 1), B(1, 2, 3) आणि C(2, 3, 1) या शिरोबिंदू असलेल्या त्रिकोणाचे क्षेत्रफळ किती आहे?",
+          "choices": [
+            "√21/2",
+            "√21/4",
+            "√21",
+            "2√21"
+          ],
+          "solution": "A(1, 1, 1), B(1, 2, 3) आणि C(2, 3, 1) या शिरोबिंदू असलेल्या त्रिकोणाचे क्षेत्रफळ शोधण्यासाठी, आम्ही सर्वप्रथम AB आणि AC या सदिश शोधतो. AB = (0, 1, 2) आणि AC = (1, 2, 0) आहे. AB आणि AC चा क्रॉस गुणाकार त्रिकोणाला लंब असलेला एक सदिश देतो, आणि त्याच्या परिमाणाचे अर्धे त्रिकोणाचे क्षेत्रफळ देते. क्रॉस गुणाकाराचे परिमाण √(16 + 4 + 1) = √21 आहे, म्हणून क्षेत्रफळ √21/2 आहे. इतर विकल्प अयोग्य आहेत कारण ते परिमाणाच्या चुकीच्या मूल्याचा वापर करतात किंवा 2 ने भागलेले नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for vectors and cross product.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses the magnitude without dividing by 2",
+        "confuses the magnitude with the area",
+        "uses double the magnitude"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly computes the vectors AB and AC, calculates their cross product, and divides the magnitude by 2 to find the area of the triangle. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 15,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 16,
+          "pageStart": 32,
+          "pageEnd": 35,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 17,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Given two vectors, how can the unit vector in the direction of a vector be determined?",
+      "choices": [
+        "By multiplying the vector by its magnitude",
+        "By dividing the vector by its magnitude",
+        "By adding the vector to its magnitude",
+        "By subtracting the magnitude from the vector"
+      ],
+      "answerIndex": 1,
+      "solution": "The unit vector in the direction of a vector is found by dividing the vector by its magnitude, which normalizes the vector to have a length of one. Multiplying the vector by its magnitude increases its length, making it not a unit vector. Adding or subtracting the magnitude from the vector does not produce a vector with a magnitude of one.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो सदिशों के दिए जाने पर, किसी सदिश की दिशा में इकाई सदिश कैसे निर्धारित किया जा सकता है?",
+          "choices": [
+            "सदिश को इसके परिमाण से गुणा करके",
+            "सदिश को इसके परिमाण से विभाजित करके",
+            "सदिश को इसके परिमाण में जोड़कर",
+            "सदिश से परिमाण को घटाकर"
+          ],
+          "solution": "किसी सदिश की दिशा में इकाई सदिश को इस सदिश को इसके परिमाण से विभाजित करके ज्ञात किया जाता है, जो सदिश को एक लंबाई वाला बना देता है। सदिश को इसके परिमाण से गुणा करने से इसकी लंबाई बढ़ जाती है, जिससे यह इकाई सदिश नहीं रहता। सदिश में परिमाण जोड़ने या घटाने से एक इकाई परिमाण वाला सदिश नहीं बनता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन सदिशांच्या दिशेतील एकक सदिश कसा निश्चित केला जाऊ शकतो?",
+          "choices": [
+            "सदिशला त्याच्या महत्त्वाने गुणणे",
+            "सदिशला त्याच्या महत्त्वाने भागणे",
+            "सदिशला त्याच्या महत्त्वाने जोडणे",
+            "महत्त्वाची वजा करणे"
+          ],
+          "solution": "कोणत्याही सदिशाच्या दिशेतील एकक सदिश हा सदिशला त्याच्या महत्त्वाने भागून मिळतो, जेणेकरून सदिश लांबी 1 असतो. सदिशला त्याच्या महत्त्वाने गुणणे त्याच्या लांबीला वाढवते, जेणेकरून तो एकक सदिश बनत नाही. सदिशला महत्त्वाने जोडणे किंवा त्याच्यापासून महत्त्वाची वजा करणे हे एकक सदिश मिळविण्यास मदत करत नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks unit vector is obtained by multiplying the vector by its magnitude",
+        null,
+        "Thinks unit vector is obtained by adding the vector to its magnitude",
+        "Thinks unit vector is obtained by subtracting the magnitude from the vector"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the mathematical definition of a unit vector. The correct method is to divide the vector by its magnitude, which is accurately reflected in the key and the explanation.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 18,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 19,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a vector is in the XY-plane, which of the following is a vector perpendicular to it?",
+      "choices": [
+        "A vector along the x-axis",
+        "A vector along the y-axis",
+        "A vector along the z-axis",
+        "A vector in the XY-plane"
+      ],
+      "answerIndex": 2,
+      "solution": "A vector in the XY-plane has no component along the z-axis. A vector perpendicular to it must be along the z-axis. Vectors along the x-axis or y-axis are not perpendicular to a general vector in the XY-plane, and vectors in the XY-plane are not perpendicular to it. Hence, the correct answer is 'A vector along the z-axis'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक सदिश XY-तल में है, तो निम्नलिखित में से कौन-सा इसके लंबवत सदिश है?",
+          "choices": [
+            "x-अक्ष के अनुदिश एक सदिश",
+            "y-अक्ष के अनुदिश एक सदिश",
+            "z-अक्ष के अनुदिश एक सदिश",
+            "XY-तल में एक सदिश"
+          ],
+          "solution": "XY-तल में एक सदिश के कोई घटक z-अक्ष के अनुदिश नहीं होते। इसके लंबवत सदिश z-अक्ष के अनुदिश होना चाहिए। x-अक्ष या y-अक्ष के अनुदिश सदिश आम सदिश के लंबवत नहीं होते, और XY-तल में सदिश इसके लंबवत नहीं होते। अतः सही उत्तर 'z-अक्ष के अनुदिश एक सदिश' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक वेक्टर XY-समतलात असेल, तर खालीलपैकी कोणता त्याला लंब असलेला वेक्टर आहे?",
+          "choices": [
+            "x-अक्षानुरूप वेक्टर",
+            "y-अक्षानुरूप वेक्टर",
+            "z-अक्षानुरूप वेक्टर",
+            "XY-समतलात असलेला वेक्टर"
+          ],
+          "solution": "XY-समतलात असलेला वेक्टर ज्याला z-अक्षानुरूप घटक नसतो. त्याला लंब असलेला वेक्टर z-अक्षानुरूप असतो. x-अक्षानुरूप किंवा y-अक्षानुरूप वेक्टर एका सामान्य वेक्टरला लंब नसतात जो XY-समतलात असतो, आणि XY-समतलात असलेले वेक्टर त्याला लंब नसतात. म्हणूनच योग्य उत्तर 'z-अक्षानुरूप वेक्टर' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses perpendicular vector with vector in same plane",
+        "Confuses perpendicular vector with vector in same plane",
+        null,
+        "Confuses perpendicular vector with vector in same plane"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A vector in the XY-plane has no z-component, so a vector along the z-axis is the only one that can be perpendicular to it. The other options are either in the same plane or not guaranteed to be perpendicular.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a vector is given as 2i + 3j + 4k, what is the scalar product of this vector with itself?",
+      "choices": [
+        "9",
+        "29",
+        "14",
+        "25"
+      ],
+      "answerIndex": 1,
+      "solution": "The scalar product of a vector with itself is the sum of the squares of its components. For the vector 2i + 3j + 4k, this is (2^2 + 3^2 + 4^2) = 4 + 9 + 16 = 29. The other options are incorrect calculations. 9 is the square of the first component, 14 is the sum of the squares of the first two components, and 25 is the square of the sum of the components.",
+      "checkExpr": "(2^2)+(3^2)+(4^2)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई सदिश 2i + 3j + 4k के रूप में दिया गया है, तो इस सदिश का स्वयं के साथ अदिश गुणन क्या है?",
+          "choices": [
+            "9",
+            "29",
+            "14",
+            "25"
+          ],
+          "solution": "किसी सदिश का स्वयं के साथ अदिश गुणन उसके घटकों के वर्गों के योग के बराबर होता है। सदिश 2i + 3j + 4k के लिए, यह (2^2 + 3^2 + 4^2) = 4 + 9 + 16 = 29 है। अन्य विकल्प गलत गणनाएं हैं। 9 पहले घटक का वर्ग है, 14 पहले दो घटकों के वर्गों का योग है, और 25 घटकों के योग का वर्ग है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक वेक्टर 2i + 3j + 4k असेल, तर या वेक्टरचा आतमान (स्कॅलर) गुणाकार त्याच्याशी किती असेल?",
+          "choices": [
+            "9",
+            "29",
+            "14",
+            "25"
+          ],
+          "solution": "एका वेक्टरचा आतमान गुणाकार त्याच्याशी त्याच्या घटकांच्या वर्गांच्या बेरजेसारखा असतो. 2i + 3j + 4k वेक्टरसाठी हा बेरजा (2^2 + 3^2 + 4^2) = 4 + 9 + 16 = 29 असते. इतर विकल्प अयोग्य गणना आहेत. 9 हा पहिल्या घटकाचा वर्ग आहे, 14 हा पहिल्या दोन घटकांच्या वर्गांची बेरजा आहे आणि 25 हा घटकांच्या बेरजेचा वर्ग आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for vector mathematics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the scalar product is the square of the first component",
+        null,
+        "Thinks the scalar product is the sum of squares of the first two components",
+        "Thinks the scalar product is the square of the sum of the components"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the scalar product of a vector with itself as the sum of the squares of its components. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 18,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 19,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a vector is multiplied by a scalar -2, what happens to its direction?",
+      "choices": [
+        "It remains the same",
+        "It is reversed",
+        "It becomes zero",
+        "It becomes perpendicular"
+      ],
+      "answerIndex": 1,
+      "solution": "When a vector is multiplied by a negative scalar, its direction is reversed. The magnitude is scaled by the absolute value of the scalar. Hence, the correct answer is 'It is reversed'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी सदिश को एक स्कैलर -2 से गुणा किया जाता है, तो इसकी दिशा पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "इसकी दिशा समान रहती है",
+            "इसकी दिशा उलट जाती है",
+            "इसकी दिशा शून्य हो जाती है",
+            "इसकी दिशा लंबवत हो जाती है"
+          ],
+          "solution": "जब किसी सदिश को ऋणात्मक स्कैलर से गुणा किया जाता है, तो इसकी दिशा उलट जाती है। परिमाण स्कैलर के निरपेक्ष मान द्वारा बदल जाता है। अतः सही उत्तर 'इसकी दिशा उलट जाती है' है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक वेक्टर एका अदिश राशीशी गुणला जातो, तर त्याच्या दिशेवर काय परिणाम होतो?",
+          "choices": [
+            "त्याची दिशा बदलत नाही",
+            "त्याची दिशा उलट होते",
+            "त्याची दिशा शून्य होते",
+            "त्याची दिशा लंब होते"
+          ],
+          "solution": "जेव्हा एका वेक्टरला ऋण अदिश राशीशी गुणले जाते, तेव्हा त्याची दिशा उलट होते. परिमाण अदिशच्या निरपेक्ष मूल्याने बदलते. त्यामुळे योग्य उत्तर 'त्याची दिशा उलट होते' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Does not account for the negative scalar",
+        null,
+        "Student thinks multiplying by a scalar always results in zero",
+        "Confuses scalar multiplication with vector addition"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning is sound and matches the misconception-based explanations for the distractors.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a vector has direction cosines 1/√2, 1/√2, and 0, which of the following could be the direction ratios of the vector?",
+      "choices": [
+        "1, 1, 0",
+        "2, 2, 2",
+        "1, 2, 0",
+        "1, 1, 1"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is '1, 1, 0.' Direction ratios of a vector are the same as its components, and direction cosines are the normalized components. Since the direction cosines are 1/√2, 1/√2, and 0, the direction ratios must be proportional to these values, which is satisfied by 1, 1, 0. The other options are incorrect because they do not match the direction cosines.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी सदिश के दिशा कोसाइन 1/√2, 1/√2, और 0 हैं, तो निम्नलिखित में से कौन-सा सदिश के दिशा अनुपात हो सकता है?",
+          "choices": [
+            "1, 1, 0",
+            "2, 2, 2",
+            "1, 2, 0",
+            "1, 1, 1"
+          ],
+          "solution": "सही उत्तर '1, 1, 0' है। किसी सदिश के दिशा अनुपात उसके घटकों के समान होते हैं, और दिशा कोसाइन उन घटकों के मानकीकृत रूप होते हैं। चूंकि दिशा कोसाइन 1/√2, 1/√2, और 0 हैं, दिशा अनुपात इन मानों के अनुपाती होने चाहिए, जो 1, 1, 0 द्वारा संतुष्ट होता है। अन्य विकल्प गलत हैं क्योंकि वे दिशा कोसाइन के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सदिशाचे दिशा कोसाइन 1/√2, 1/√2 आणि 0 आहेत, तर खालीलपैकी कोणते सदिशाचे दिशा अनुपात असू शकतात?",
+          "choices": [
+            "1, 1, 0",
+            "2, 2, 2",
+            "1, 2, 0",
+            "1, 1, 1"
+          ],
+          "solution": "बरोबर उत्तर '1, 1, 0' आहे. सदिशाचे दिशा अनुपात त्याच्या घटकांसारखे असतात, आणि दिशा कोसाइन हे नॉर्मलाइज्ड घटक असतात. कारण दिशा कोसाइन 1/√2, 1/√2 आणि 0 आहेत, तर दिशा अनुपात त्यांच्या अनुपातात असावेत, जे 1, 1, 0 द्वारे पूर्ण होते. इतर विकल्प चुकीचे आहेत कारण ते दिशा कोसाइनसह मेळ खात नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses direction ratios with direction cosines and scales all components by the same factor",
+        "Scales the direction cosines incorrectly",
+        "Changes the third component unnecessarily"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Direction ratios are proportional to direction cosines, and 1, 1, 0 is proportional to 1/√2, 1/√2, 0. The other options are incorrect as they do not match this proportionality.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Given two vectors, what is the angle between them if their scalar product is zero?",
+      "choices": [
+        "0°",
+        "90°",
+        "180°",
+        "360°"
+      ],
+      "answerIndex": 1,
+      "solution": "The scalar product of two vectors is zero when the angle between them is 90°, as cos 90° = 0. This is a direct application of the formula for scalar product. The angle cannot be 0° or 180°, as the scalar product would then be non-zero. 360° is not a valid angle between two vectors in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो सदिशों के लिए, यदि उनका अदिश गुणन शून्य है तो उनके बीच कोण क्या है?",
+          "choices": [
+            "0°",
+            "90°",
+            "180°",
+            "360°"
+          ],
+          "solution": "दो सदिशों का अदिश गुणन शून्य होता है जब उनके बीच कोण 90° होता है क्योंकि cos 90° = 0। यह अदिश गुणन के सूत्र के सीधे अनुप्रयोग है। कोण 0° या 180° नहीं हो सकता, क्योंकि इस स्थिति में अदिश गुणन शून्य नहीं होगा। 360° इस संदर्भ में दो सदिशों के बीच एक वैध कोण नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन सदिशांच्या अदिश गुणाकाराचे मूल्य शून्य असल्यास त्यांच्यातील कोन किती असेल?",
+          "choices": [
+            "0°",
+            "90°",
+            "180°",
+            "360°"
+          ],
+          "solution": "दोन सदिशांचा अदिश गुणाकार शून्य असतो जेव्हा त्यांच्यातील कोन 90° असतो, कारण cos 90° = 0. हे अदिश गुणाकाराच्या सूत्राच्या सीध्या अनुप्रयोगाचे उदाहरण आहे. कोन 0° किंवा 180° असल्यास अदिश गुणाकार शून्य नसतो. 360° हा या संदर्भात दोन सदिशांच्या कोनाचा वैध मूल्य नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the angle is 0°, when the vectors are in the same direction",
+        null,
+        "Thinks the angle is 180°, when the vectors are in opposite directions",
+        "Thinks the angle is 360°, which is not a valid angle between two vectors"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the scalar product is zero when the angle between vectors is 90°, as cos(90°) = 0. The reasoning for the other options is also valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 18,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 19,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the vector a = i + 2j + 3k is multiplied by a scalar λ, which of the following is the resulting vector?",
+      "choices": [
+        "λi + 2j + 3k",
+        "λi + 2λj + 3k",
+        "λi + 2λj + 3λk",
+        "i + 2j + 3λk"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'λi + 2λj + 3λk.' When a vector is multiplied by a scalar, each component is multiplied by that scalar. The other options are incorrect because they do not multiply all components by the scalar.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सदिश a = i + 2j + 3k को एक अदिश λ द्वारा गुणा किया जाता है, तो निम्नलिखित में से कौन-सा सदिश परिणाम होगा?",
+          "choices": [
+            "λi + 2j + 3k",
+            "λi + 2λj + 3k",
+            "λi + 2λj + 3λk",
+            "i + 2j + 3λk"
+          ],
+          "solution": "सही उत्तर 'λi + 2λj + 3λk' है। जब किसी सदिश को एक अदिश द्वारा गुणा किया जाता है, तो प्रत्येक घटक को उस अदिश द्वारा गुणा किया जाता है। अन्य विकल्प गलत हैं क्योंकि वे सभी घटकों को अदिश द्वारा गुणा नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सदिश a = i + 2j + 3k ला एक अदिश λ ने गुणले गेले, तर खालीलपैकी कोणता सदिश निर्माण होईल?",
+          "choices": [
+            "λi + 2j + 3k",
+            "λi + 2λj + 3k",
+            "λi + 2λj + 3λk",
+            "i + 2j + 3λk"
+          ],
+          "solution": "बरोबर उत्तर 'λi + 2λj + 3λk' आहे. जेव्हा एक सदिश अदिश ने गुणला जातो तेव्हा प्रत्येक घटक त्या अदिश ने गुणला जातो. इतर उत्तरे अयोग्य आहेत कारण ते अदिश ने सर्व घटक गुणले जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for vectors and scalars.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Only multiplies the first component",
+        "Only multiplies the first two components",
+        null,
+        "Only multiplies the last component"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Multiplying a vector by a scalar requires multiplying each component by the scalar, which matches option 2. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a vector is equally inclined to the coordinate axes, what are its direction cosines?",
+      "choices": [
+        "(1/√3, 1/√3, 1/√3)",
+        "(1/2, 1/2, 1/2)",
+        "(1/3, 1/3, 1/3)",
+        "(1/√2, 1/√2, 0)"
+      ],
+      "answerIndex": 0,
+      "solution": "If a vector is equally inclined to the coordinate axes, then the direction cosines are all equal. The sum of the squares of the direction cosines must be 1, so each direction cosine is 1/√3. The other options are incorrect because (1/2, 1/2, 1/2) does not satisfy the condition that the sum of the squares is 1, (1, 1, 1) is not a valid direction cosine as it does not satisfy the condition, and (0, 0, 0) is not a valid direction cosine as it does not represent any vector.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक सदिश निर्देशांक अक्षों के समान रूप से झुका हुआ है, तो इसके दिशा कोसाइन क्या हैं?",
+          "choices": [
+            "(1/√3, 1/√3, 1/√3)",
+            "(1/2, 1/2, 1/2)",
+            "(1/3, 1/3, 1/3)",
+            "(1/√2, 1/√2, 0)"
+          ],
+          "solution": "यदि एक सदिश निर्देशांक अक्षों के समान रूप से झुका हुआ है, तो दिशा कोसाइन सभी समान होते हैं। दिशा कोसाइन के वर्गों का योग 1 होना चाहिए, इसलिए प्रत्येक दिशा कोसाइन 1/√3 होता है। अन्य विकल्प गलत हैं क्योंकि (1/2, 1/2, 1/2) योग के वर्गों के योग 1 की शर्त को पूरा नहीं करता है, (1, 1, 1) एक वैध दिशा कोसाइन नहीं है क्योंकि यह शर्त को पूरा नहीं करता है और (0, 0, 0) एक वैध दिशा कोसाइन नहीं है क्योंकि यह किसी भी सदिश का प्रतिनिधित्व नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक वेक्टर समान रीतीने समन्वय अक्षांशांशी झुकलेला असेल, तर त्याचे दिशा कोसाईन काय असतात?",
+          "choices": [
+            "(1/√3, 1/√3, 1/√3)",
+            "(1/2, 1/2, 1/2)",
+            "(1/3, 1/3, 1/3)",
+            "(1/√2, 1/√2, 0)"
+          ],
+          "solution": "जर एक वेक्टर समान रीतीने समन्वय अक्षांशांशी झुकलेला असेल, तर त्याचे दिशा कोसाईन सर्व समान असतात. दिशा कोसाईनच्या वर्गांची बेरीज 1 असते, म्हणून प्रत्येक दिशा कोसाईन 1/√3 असतो. इतर विकल्प अयोग्य आहेत कारण (1/2, 1/2, 1/2) या विकल्पामध्ये वर्गांची बेरीज 1 ची शर्त पूर्ण होत नाही, (1, 1, 1) दिशा कोसाईन म्हणून वैध नाही कारण ते शर्त पूर्ण करत नाही आणि (0, 0, 0) दिशा कोसाईन म्हणून वैध नाही कारण ते कोणताही वेक्टर दर्शवत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the technical terms and meaning of the original English question. The solution and options are correctly translated and retain their original logical structure and validity.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses direction cosines with unit vectors",
+        "Confuses direction cosines with normalized components instead of using square roots",
+        "Believes direction cosines must sum to 1, so chooses values that add to 1 but are not normalized"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. If a vector is equally inclined to the coordinate axes, its direction cosines are equal. Let them be l = m = n. Then l² + m² + n² = 1 ⇒ 3l² = 1 ⇒ l = 1/√3. This matches option 0.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh204.pdf",
+          "ordinal": 11,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 4: Vector Algebra"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:19:34.782Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

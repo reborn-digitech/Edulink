@@ -1,0 +1,916 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T20:56:19.559Z",
+  "finishedAt": "2026-10-21T21:06:39.419Z",
+  "seconds": 620,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Introductory Microeconomics",
+    "bookCode": "leec2",
+    "document": "ncert/12/economics/leec205.pdf",
+    "classLevel": 12,
+    "subject": "Economics",
+    "chapter": "Chapter 5 — Market Equilibrium",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, marking scheme, 2022-23]\nMARKING SCHEME - SAMPLE QUESTION PAPER (2022-23)\nECONOMICS (030) CLASS 12\nQ.NO. SECTION A – MACRO ECONOMICS MARKS\n1 c) Both statements 1 and 2 are true\n2 d) Outflow of US Dollars from India will rise.\n3 a) Commercial Banks\n4 c) Both statements 1 and 2 are true\n5 d) Both statements 1 and 2 are false\nOR\nc) Output, Disposition\n6 a) C=30+0.75 Y\nOR\nd) Equal to zero\n7 a) 1,2 and 3 are correct\n8 a) Improvement in balance of trade\nOR\nb) surplus,5\n9 d) Assertion (A) is false but Reason (R) is true.\n10 b) Both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A) 1\n11 Value of Output (in ₹) Intermediate Consumption (in ₹) Value Addition (in ₹)\nA 2,000 (to",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n26. D. Regulation of markets 1",
+      "[CBSE Class XII Economics, marking scheme, 2026-27]\n15. Given,\nConsumption function, 𝐶 = 150 + 0.8 𝑌\nAutonomous Investment (𝐼 o ) = 250\nFull employment level of income (𝑌 𝑓 ) =1,600\n(I) At equilibrium level of income, Y = C + I 1\nY = 150 + 0.8Y + 250 ½\n0.2Y = 400\nY = 2,000 ½\n(II) The economy is facing the problem of excess demand as equilibrium level 1\nof income (2,000) is greater than the given full employment level of income\n(1,600).\nThe situation of Excess Demand will lead to an increase in General Price Level 1\nin the economy with no change in the level of output and employment.",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n12. Explain, how exchange rate is determined under a free market exchange rate system. 3\nOR\nDistinguish between autonomous and accommodating transactions in Balance of Payments 3\nAccounts."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 220859,
+      "in": 51,
+      "out": 46,
+      "rejects": 6,
+      "promptTokens": 54790,
+      "completionTokens": 14023
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 285221,
+      "in": 46,
+      "out": 36,
+      "rejects": 10,
+      "promptTokens": 23872,
+      "completionTokens": 9049
+    },
+    "solver": {
+      "calls": 220,
+      "ms": 81076,
+      "in": 36,
+      "out": 30,
+      "rejects": 6,
+      "promptTokens": 35352,
+      "completionTokens": 2049
+    },
+    "form": {
+      "calls": 3,
+      "ms": 16535,
+      "in": 30,
+      "out": 10,
+      "rejects": 20,
+      "promptTokens": 2600,
+      "completionTokens": 474
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 689,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 338213,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21674,
+      "completionTokens": 11122
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the definition of equilibrium price?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4084,
+        "solver": 852,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of the 'Invisible Hand' in a perfectly competitive market?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4105,
+        "solver": 1633
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a perfectly competitive market, what is the definition of equilibrium?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4452,
+        "solver": 2114,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the market price is above the equilibrium price, what will happen according to the passage?",
+      "ms": {
+        "draft": 3517,
+        "critique": 5513,
+        "solver": 967,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the market price is below the equilibrium price, what will happen according to the passage?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4880,
+        "solver": 1682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Refer to the figure in the passage. If the market price is at P1, what will happen to the market?",
+      "ms": {
+        "draft": 3517,
+        "critique": 5032,
+        "solver": 1495,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the equilibrium price of wheat in the given example?",
+      "ms": {
+        "draft": 2815,
+        "critique": 6837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the price of wheat is set at Rs 25, what will be the effect on the market?",
+      "ms": {
+        "draft": 2815,
+        "critique": 5978
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the relationship between the wage rate and the demand for labour in a perfectly competitive market?",
+      "ms": {
+        "draft": 2815,
+        "critique": 5767
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the full employment level of income is 1,600 and the equilibrium level of income is 2,000, what will be the effect on the economy?",
+      "ms": {
+        "draft": 2815,
+        "critique": 5861
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a perfectly competitive market, why does the demand curve for labour slope downward?",
+      "ms": {
+        "draft": 2815,
+        "critique": 6688
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the demand curve for a normal good shifts rightward due to an increase in consumer income, what happens to the equilibrium price and quantity?",
+      "ms": {
+        "draft": 4968,
+        "critique": 5881,
+        "solver": 1682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Suppose the demand for a normal good increases due to an increase in consumer income, but the supply curve remains unchanged. What is the likely outcome for the equilibrium price and quantity?",
+      "ms": {
+        "draft": 4968,
+        "critique": 6538,
+        "solver": 1003,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the wage rate increases and the opportunity cost of leisure increases, what is the likely effect on the supply of labour?",
+      "ms": {
+        "draft": 4968,
+        "critique": 5588,
+        "solver": 1322,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the equilibrium price and quantity when the demand curve shifts to the right?",
+      "ms": {
+        "draft": 5282,
+        "critique": 6218
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the market demand for a product increases and the supply decreases simultaneously, what can be concluded about the equilibrium price and quantity?",
+      "ms": {
+        "draft": 5282,
+        "critique": 7089,
+        "solver": 1239,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a market, the demand for a good increases and the supply decreases simultaneously. What is the effect on the equilibrium price?",
+      "ms": {
+        "draft": 4968,
+        "critique": 6258,
+        "solver": 12884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Figure 5.3(a), what happens to the market price and quantity when the supply curve shifts leftward?",
+      "ms": {
+        "draft": 5282,
+        "critique": 6612,
+        "solver": 9290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the market demand curve shifts right and the supply curve shifts left, which of the following is the most likely outcome?",
+      "ms": {
+        "draft": 5282,
+        "critique": 5859,
+        "solver": 1239,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If both the demand and supply curves shift rightward, what happens to the equilibrium price and quantity?",
+      "ms": {
+        "draft": 3638,
+        "critique": 6439,
+        "solver": 1163
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the equilibrium price when there is a shift in demand with free entry and exit of firms?",
+      "ms": {
+        "draft": 6738,
+        "critique": 5363
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens when the government sets a price floor above the equilibrium price?",
+      "ms": {
+        "draft": 6890,
+        "critique": 5126,
+        "solver": 3857,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used when the quantity demanded equals the quantity supplied in a market?",
+      "ms": {
+        "draft": 6876,
+        "critique": 4155,
+        "solver": 933,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the government imposes a price ceiling below the equilibrium price, what will be the effect on the market?",
+      "ms": {
+        "draft": 6876,
+        "critique": 4433,
+        "solver": 1356,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a perfectly competitive market, what determines the wage rate?",
+      "ms": {
+        "draft": 6876,
+        "critique": 6659,
+        "solver": 1329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the supply curve of a commodity shifts to the right, what will be the effect on equilibrium price and quantity?",
+      "ms": {
+        "draft": 6876,
+        "critique": 6795,
+        "solver": 1352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the equilibrium price and quantity when the price of a substitute good increases?",
+      "ms": {
+        "draft": 6876,
+        "critique": 5504,
+        "solver": 12780
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the effect of a price ceiling on the market for apartments if the equilibrium rent is too high for common people?",
+      "ms": {
+        "draft": 6876,
+        "critique": 5860,
+        "solver": 1006,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If both the demand and supply curves shift rightwards, what will happen to the equilibrium price and quantity?",
+      "ms": {
+        "draft": 5284,
+        "critique": 6391,
+        "solver": 1778
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the market price is above the minimum average cost of the firms, what will happen in the long run?",
+      "ms": {
+        "draft": 5284,
+        "critique": 7395,
+        "solver": 1466
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the supply curve shifts rightward and the demand curve shifts leftward, what will happen to the equilibrium price and quantity?",
+      "ms": {
+        "draft": 5284,
+        "critique": 6939,
+        "solver": 8537
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the equilibrium price is equal to the minimum average cost of firms, what can be said about the number of firms in the market?",
+      "ms": {
+        "draft": 5284,
+        "critique": 5242
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the implication of free entry and exit of firms in a perfectly competitive market?",
+      "ms": {
+        "draft": 5284,
+        "critique": 4629
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the equilibrium price and quantity when the demand curve shifts to the right and the supply curve remains unchanged?",
+      "ms": {
+        "draft": 3162,
+        "critique": 4439,
+        "solver": 1648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the demand for a good increases and the supply of the good decreases at the same time, what is the most likely effect on the equilibrium price and quantity?",
+      "ms": {
+        "draft": 3162,
+        "critique": 4946,
+        "solver": 1700,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a market for wheat, the equilibrium price is determined by the intersection of the demand and supply curves. Given the equations for demand (q = 200 - p) and supply (q = 120 + p), what is the equilibrium price per kg of wheat?",
+      "ms": {
+        "draft": 52642,
+        "critique": 5533
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the impact of free entry and exit of firms on the equilibrium price in a perfectly competitive market?",
+      "ms": {
+        "draft": 2612,
+        "critique": 6076,
+        "solver": 1234,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for market equilibrium when there is free entry and exit of firms?",
+      "ms": {
+        "draft": 3638,
+        "critique": 5367,
+        "solver": 1548,
+        "form": 2845,
+        "translation": 70539
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the point where the labour supply curve and the labour demand curve intersect?",
+      "ms": {
+        "draft": 3076,
+        "critique": 4513,
+        "solver": 978,
+        "form": 0,
+        "translation": 29911
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the equilibrium wage rate when the demand for labour increases?",
+      "ms": {
+        "draft": 3076,
+        "critique": 5745,
+        "solver": 4060,
+        "form": 0,
+        "translation": 21492
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when the market price is below the equilibrium price?",
+      "ms": {
+        "draft": 2612,
+        "critique": 5817,
+        "solver": 1226,
+        "form": 0,
+        "translation": 31936
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of equilibrium in a market?",
+      "ms": {
+        "draft": 2612,
+        "critique": 5355,
+        "solver": 1459,
+        "form": 0,
+        "translation": 30363
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A market is in equilibrium when:",
+      "ms": {
+        "draft": 2612,
+        "critique": 5336,
+        "solver": 1688,
+        "form": 0,
+        "translation": 32829
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the effect of a price floor set above the equilibrium price?",
+      "ms": {
+        "draft": 2612,
+        "critique": 5857,
+        "solver": 1140,
+        "form": 0,
+        "translation": 34468
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the equilibrium price in a market is above the minimum average cost of firms, what will happen if free entry and exit of firms is allowed?",
+      "ms": {
+        "draft": 2612,
+        "critique": 6535,
+        "solver": 10401,
+        "form": 0,
+        "translation": 34996
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a market with free entry and exit, what happens to the number of firms in the market if the market price is above the minimum average cost?",
+      "ms": {
+        "draft": 3638,
+        "critique": 5831,
+        "solver": 1307,
+        "form": 3169,
+        "translation": 48329
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the equilibrium quantity of wheat in the given example?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the primary factor that determines the equilibrium wage rate in the labor market?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the definition of equilibrium price?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor\",\"Misunderst…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about the role of the 'Invisible Hand' in a perfectly competitive market?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In a perfectly competitive market, what is the definition of equilibrium?",
+      "reason": "options 0 and 1 say the same thing (\"A situation where the quantity supplied is greater than the quantity demanded\" / \"A situation where the quantity demanded is greater than the quantity supplied\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor\",\"Confuses z…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the market price is above the equilibrium price, what will happen according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor\",\"Assumes no…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the market price is below the equilibrium price, what will happen according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor\",\"Incorrectl…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Refer to the figure in the passage. If the market price is at P1, what will happen to the market?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor\",\"Incorrectl…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the equilibrium price of wheat in the given example?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the price of wheat is set at Rs 25, what will be the effect on the market?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the relationship between the wage rate and the demand for labour in a perfectly competitive market?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the full employment level of income is 1,600 and the equilibrium level of income is 2,000, what will be the effect on the economy?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a perfectly competitive market, why does the demand curve for labour slope downward?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the demand curve for a normal good shifts rightward due to an increase in consumer income, what happens to the equilibrium price and quantity?",
+      "reason": "options 1 and 2 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Suppose the demand for a normal good increases due to an increase in consumer income, but the supply curve remains unchanged. What is the likely outcome for the equilibrium price and quantity?",
+      "reason": "options 1 and 2 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the wage rate increases and the opportunity cost of leisure increases, what is the likely effect on the supply of labour?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'texts'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happens to the equilibrium price and quantity when the demand curve shifts to the right?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the market demand for a product increases and the supply decreases simultaneously, what can be concluded about the equilibrium price and quantity?",
+      "reason": "options 0 and 1 say the same thing (\"Equilibrium price will definitely increase, and quantity is uncertain\" / \"Equilibrium price will definitely decrease, and quantity is uncertain\"); options 0 and 2 say the same thing (\"Equilibrium price will definitely increase, and quantity is uncertain\" / \"Equilibrium price is uncertain, and quantity will definitely increase\"); options 0 and 3 say the same thing (\"Equilibrium price will definitely increase, and quantity is uncertain\" / \"Equilibrium price is uncertain, and quantity will definitely decrease\"); options 1 and 2 say the same thing (\"Equilibrium price will definitely decrease, and quantity is uncertain\" / \"Equilibrium price is uncertain, and quantity will definitely increase\"); options 1 and 3 say the same thing (\"Equilibrium price will definitely decrease, and quantity is uncertain\" / \"Equilibrium price is uncertain, and quantity will definitely decrease\"); options 2 and 3 say the same thing (\"Equilibrium price is uncertain, and quantity will definitely increase\" / \"Equilibrium price is uncertain, and quantity will definitely decrease\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a market, the demand for a good increases and the supply decreases simultaneously. What is the effect on the equilibrium price?",
+      "reason": "options 0 and 3 are the same (\"Price increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Figure 5.3(a), what happens to the market price and quantity when the supply curve shifts leftward?",
+      "reason": "options 0 and 1 say the same thing (\"Price increases and quantity increases\" / \"Price increases and quantity decreases\"); options 0 and 2 say the same thing (\"Price increases and quantity increases\" / \"Price decreases and quantity increases\"); options 1 and 2 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity increases\"); options 1 and 3 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity decreases\"); options 2 and 3 say the same thing (\"Price decreases and quantity increases\" / \"Price decreases and quantity decreases\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the market demand curve shifts right and the supply curve shifts left, which of the following is the most likely outcome?",
+      "reason": "options 0 and 1 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity increases\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If both the demand and supply curves shift rightward, what happens to the equilibrium price and quantity?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happens to the equilibrium price when there is a shift in demand with free entry and exit of firms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What happens when the government sets a price floor above the equilibrium price?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 3,\n      \"stem\": \"If the market demand for a product increases and firms can fr"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the supply curve shifts leftward and the demand curve shifts rightward, what will happen to the equilibrium quantity and price?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What happens to the equilibrium price and quantity when the supply curve shifts to the left and the demand curve remains unchanged?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If the demand for a good decreases and the supply of the good increases at the same time, what is the most likely effect on the equilibrium price and quantity?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used when the quantity demanded equals the quantity supplied in a market?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is market equilibrium, others are incorrect t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the government imposes a price ceiling below the equilibrium price, what will be the effect on the market?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is a shortage, others are incorrect outcomes…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a perfectly competitive market, what determines the wage rate?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the interaction of demand and supply of la…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the supply curve of a commodity shifts to the right, what will be the effect on equilibrium price and quantity?",
+      "reason": "options 0 and 1 say the same thing (\"Price increases, quantity decreases\" / \"Price decreases, quantity increases\"); distractor 2's reason is not a one-line misconception (\"Correct answer is price decreases and quantity increases, ot…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What happens to the equilibrium price and quantity when the price of a substitute good increases?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the effect of a price ceiling on the market for apartments if the equilibrium rent is too high for common people?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is a shortage, others are incorrect outcomes…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If both the demand and supply curves shift rightwards, what will happen to the equilibrium price and quantity?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the market price is above the minimum average cost of the firms, what will happen in the long run?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the supply curve shifts rightward and the demand curve shifts leftward, what will happen to the equilibrium price and quantity?",
+      "reason": "after redrafting distractor 3: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the equilibrium price is equal to the minimum average cost of firms, what can be said about the number of firms in the market?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the implication of free entry and exit of firms in a perfectly competitive market?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the equilibrium price and quantity when the demand curve shifts to the right and the supply curve remains unchanged?",
+      "reason": "options 0 and 1 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the demand for a good increases and the supply of the good decreases at the same time, what is the most likely effect on the equilibrium price and quantity?",
+      "reason": "options 0 and 1 say the same thing (\"Price increases and quantity increases\" / \"Price increases and quantity decreases\"); options 0 and 2 say the same thing (\"Price increases and quantity increases\" / \"Price decreases and quantity increases\"); options 1 and 2 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity increases\"); options 1 and 3 say the same thing (\"Price increases and quantity decreases\" / \"Price decreases and quantity decreases\"); options 2 and 3 say the same thing (\"Price decreases and quantity increases\" / \"Price decreases and quantity decreases\"); option 0 repeats the stem's wording (\"Price increases and quantity increases\"); option 1 repeats the stem's wording (\"Price increases and quantity decreases\"); option 2 repeats the stem's wording (\"Price decreases and quantity increases\"); option 3 repeats the stem's wording (\"Price decreases and quantity decreases\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a market for wheat, the equilibrium price is determined by the intersection of the demand and supply curves. Given the equations for demand (q = 200 - p) and supply (q = 120 + p), what is the equilibrium price per kg of wheat?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the impact of free entry and exit of firms on the equilibrium price in a perfectly competitive market?",
+      "reason": "near-duplicate of batch item \"What is the condition for market equilibrium when …\" (cosine 0.910 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

@@ -1,0 +1,726 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T07:06:33.620Z",
+  "finishedAt": "2026-10-20T07:13:57.135Z",
+  "seconds": 444,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu110.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Light: Mirrors and Lenses",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2024-25]\n39.\nThe above image is that of a reflecting telescope. Reflecting telescopes\nrevolutionised our ways of looking into the sky. They employ mirrors to gather\nand focus light, rather than relying solely on lenses as in their refracting\ncounterparts. These telescopes utilise precisely shaped and polished mirrors\nto capture incoming light and reflect it to a focal point, where it forms an image\nfor observation.\nA. What kind of image of the star is seen by the observer at the eyepiece?\nB. What kind of mirror is used in this reflecting telescope?\nAttempt either subpart C or D.\nC. Explain with reason what kind of optical device (type of lens or mirror)\nthat is used at the eyepiece.\nOR\nD. What is the",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n39. A. Real Image (the final image is formed due to the lens at the eye-piece) 4\n(1)\nB. Concave Mirror (1)\nStudent to attempt either subpart C or D.\nC. A converging lens is used at the eyepiece to collect the rays from the\nplane mirror and help the viewer to see a real erect image of the star.\n(2)\nOR\nD. The plane mirror laterally inverts the image formed by the curved mirror\nand its position helps to direct the rays towards the eye-piece.\n(2)\n- - - - - - - - - - - -\nFor visually impaired students\nA. Convex lens. (1)\nB. Converging property. The lens can converge parallel rays to one point.\n(1)\nStudent to attempt either subpart C or D\nC. To correct hypermetropia, lenses of telescopes, microsco",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n30. Arnav was making notes and he wrote down the following statements from his 1\nunderstanding of reflection from curved surfaces.\nI. Concave mirrors can produce both real and virtual images depending on\nthe position of the object.\nII. Convex mirrors always produce real, inverted images regardless of the\nobject’s position.\nIII. In both concave and convex mirrors, the image location can be\n1 1 1\ndetermined using the mirror formula 𝑓 = 𝑣 + 𝑢 where f is the focal length,\nv is the image distance, and u is the object distance.\nChoose from the following the correct option that lists the correct statements\nabout reflection from curved surfaces.\nA. I and II\nB. I, II and III\nC. II and III\nD. I and",
+      "[INJSO 2017 — question paper]\n12. A point source of light B is placed at a distance d, in front of the centre\nof a mirror of horizontal length L fixed on a wall. A man walks in front of\nthe mirror and parallel to it at a distance 2d from it as shown in the\nfigure. The greatest distance over which he can see the image of the\nlight source in the mirror is\na) L/2 b) L c) 2L d) 3L"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 171423,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 43113,
+      "completionTokens": 10026
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 242311,
+      "in": 36,
+      "out": 31,
+      "rejects": 5,
+      "promptTokens": 20291,
+      "completionTokens": 7266
+    },
+    "solver": {
+      "calls": 200,
+      "ms": 81271,
+      "in": 31,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 32814,
+      "completionTokens": 1914
+    },
+    "form": {
+      "calls": 22,
+      "ms": 121443,
+      "in": 30,
+      "out": 12,
+      "rejects": 18,
+      "promptTokens": 22110,
+      "completionTokens": 3394
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 48,
+      "ms": 7109,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 288460,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19263,
+      "completionTokens": 9584
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In which of the following scenarios would the reflected beam of light disappear?",
+      "ms": {
+        "draft": 6183,
+        "critique": 8638,
+        "solver": 1556
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a convex mirror used to provide a wide field of view?",
+      "ms": {
+        "draft": 6183,
+        "critique": 6567,
+        "solver": 1109,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is observing the reflection of a beam of light on a plane mirror. If the angle of incidence is 30°, what would be the angle of reflection?",
+      "ms": {
+        "draft": 6183,
+        "critique": 5929,
+        "solver": 14643,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A concave mirror is used in a reflecting telescope. What is the purpose of using a concave mirror in this context?",
+      "ms": {
+        "draft": 6183,
+        "critique": 5955,
+        "solver": 1666,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a convex mirror?",
+      "ms": {
+        "draft": 6183,
+        "critique": 4925,
+        "solver": 1310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of the use of a concave mirror as a reflector?",
+      "ms": {
+        "draft": 6183,
+        "critique": 4880,
+        "solver": 9808,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to multiple parallel beams of light when they fall on a convex mirror?",
+      "ms": {
+        "draft": 5482,
+        "critique": 5920,
+        "solver": 1352,
+        "form": 2775
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of using a concave mirror to focus sunlight on a piece of paper?",
+      "ms": {
+        "draft": 5482,
+        "critique": 6876,
+        "solver": 1165,
+        "form": 2326
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of lens is thicker at the edges than in the middle?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6047
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student places an object in front of a concave mirror, what type of image can they expect to see?",
+      "ms": {
+        "draft": 5482,
+        "critique": 6592,
+        "solver": 1304,
+        "form": 3477
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a convex mirror is used in a car's side mirror, what type of image does it produce?",
+      "ms": {
+        "draft": 5482,
+        "critique": 5590,
+        "solver": 1218,
+        "form": 2541
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of mirror forms an image that is always erect and diminished in size?",
+      "ms": {
+        "draft": 3693,
+        "critique": 6269
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A woman walks towards a large concave mirror. What will she see as she approaches?",
+      "ms": {
+        "draft": 3937,
+        "critique": 5019,
+        "solver": 1546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 10.25, three mirrors form images of a graph sheet. Based on the images, which mirror is likely to be a convex mirror?",
+      "ms": {
+        "draft": 3937,
+        "critique": 4347,
+        "solver": 1303,
+        "form": 4348
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a museum, a woman walks towards a large concave mirror. What is the correct sequence of changes in her image?",
+      "ms": {
+        "draft": 3937,
+        "critique": 7018,
+        "solver": 1501,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What kind of lens is thicker at the edges than in the middle?",
+      "ms": {
+        "draft": 5089,
+        "critique": 6520
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the image formed by a convex mirror?",
+      "ms": {
+        "draft": 3937,
+        "critique": 6236,
+        "solver": 1559,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a parallel beam of light when it passes through a convex lens?",
+      "ms": {
+        "draft": 5089,
+        "critique": 6275,
+        "solver": 1230,
+        "form": 3515
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which situation does an object appear erect and diminished when viewed through a lens?",
+      "ms": {
+        "draft": 5089,
+        "critique": 6308,
+        "solver": 1078,
+        "form": 3594
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a use of lenses in daily life?",
+      "ms": {
+        "draft": 5089,
+        "critique": 6985
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of mirror causes parallel light beams to converge after reflection?",
+      "ms": {
+        "draft": 3855,
+        "critique": 5645
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is correct about the image formed by a convex lens?",
+      "ms": {
+        "draft": 5089,
+        "critique": 6753,
+        "solver": 1267,
+        "form": 2345
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of mirror is used as a reflector in torches and headlights of vehicles?",
+      "ms": {
+        "draft": 3882,
+        "critique": 4823,
+        "solver": 9211,
+        "form": 2395
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of mirrors are shaped like a part of a hollow glass sphere?",
+      "ms": {
+        "draft": 10638,
+        "critique": 6209,
+        "solver": 7404,
+        "form": 821
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student looks into a curved mirror and sees an image that is erect and smaller than the object. Which type of mirror is this?",
+      "ms": {
+        "draft": 3104,
+        "critique": 4377,
+        "solver": 1572,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes a mirror and notices that the image of an object is always erect and smaller. What type of mirror is this?",
+      "ms": {
+        "draft": 3104,
+        "critique": 4426,
+        "solver": 1683,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the image of an object when viewed through a concave lens?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6517,
+        "solver": 11359,
+        "form": 2361
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true when light is incident along the normal on a mirror?",
+      "ms": {
+        "draft": 3937,
+        "critique": 5620,
+        "solver": 10308,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When light is incident along the normal on a mirror, what is the angle of incidence?",
+      "ms": {
+        "draft": 3693,
+        "critique": 5087,
+        "solver": 445,
+        "form": 0,
+        "translation": 23294
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student places a small object in front of a mirror and sees an image that is the same size as the object and erect. What type of mirror is this?",
+      "ms": {
+        "draft": 3104,
+        "critique": 5441,
+        "solver": 897,
+        "form": 0,
+        "translation": 32790
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes a curved mirror and notices that the image of an object is inverted. What can be inferred about the type of mirror?",
+      "ms": {
+        "draft": 3104,
+        "critique": 4348,
+        "solver": 981,
+        "form": 0,
+        "translation": 42991
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student places an object close to a mirror and observes that the image is erect and larger than the object. When the object is moved away, the image becomes inverted. Which mirror is being used?",
+      "ms": {
+        "draft": 3104,
+        "critique": 4892,
+        "solver": 2101,
+        "form": 0,
+        "translation": 45436
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What kind of image is formed on the paper when a convex lens is used to focus sunlight?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6353,
+        "solver": 1363,
+        "form": 2583,
+        "translation": 35393
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that a mirror always produces an erect and diminished image, regardless of the object's distance. Which type of mirror is this?",
+      "ms": {
+        "draft": 3104,
+        "critique": 5710,
+        "solver": 1002,
+        "form": 0,
+        "translation": 37685
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the purpose of using a convex lens in a reflecting telescope?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6311,
+        "solver": 9637,
+        "form": 2585,
+        "translation": 38652
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct application of the mirror formula for a concave mirror?",
+      "ms": {
+        "draft": 3937,
+        "critique": 6714,
+        "solver": 1228,
+        "form": 0,
+        "translation": 28159
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the function of a magnifying glass?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which of the following scenarios would the reflected beam of light disappear?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a convex mirror used to provide a wide field of view?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'vehicle'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is observing the reflection of a beam of light on a plane mirror. If the angle of incidence is 30°, what would be the angle of reflection?",
+      "reason": "checkExpr \"30\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A concave mirror is used in a reflecting telescope. What is the purpose of using a concave mirror in this context?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'lightSource'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a convex mirror?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'object'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of the use of a concave mirror as a reflector?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'lightSource'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to multiple parallel beams of light when they fall on a convex mirror?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.lens: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the purpose of using a concave mirror to focus sunlight on a piece of paper?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sun'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What type of lens is thicker at the edges than in the middle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student places an object in front of a concave mirror, what type of image can they expect to see?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'object'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a convex mirror is used in a car's side mirror, what type of image does it produce?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.lens: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of mirror forms an image that is always erect and diminished in size?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A woman walks towards a large concave mirror. What will she see as she approaches?",
+      "reason": "the key is far longer than every distractor (86 vs 43 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Fig. 10.25, three mirrors form images of a graph sheet. Based on the images, which mirror is likely to be a convex mirror?",
+      "reason": "options 0 and 1 say the same thing (\"The mirror that produces an erect and diminished image\" / \"The mirror that produces an inverted and diminished image\"); options 0 and 2 say the same thing (\"The mirror that produces an erect and diminished image\" / \"The mirror that produces an erect and magnified image\"); options 1 and 3 say the same thing (\"The mirror that produces an inverted and diminished image\" / \"The mirror that produces an inverted and magnified image\"); options 2 and 3 say the same thing (\"The mirror that produces an erect and magnified image\" / \"The mirror that produces an inverted and magnified image\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a museum, a woman walks towards a large concave mirror. What is the correct sequence of changes in her image?",
+      "reason": "options 0 and 3 say the same thing (\"Erect image decreases in size, then becomes inverted and magnified\" / \"Inverted image decreases in size, then becomes erect and magnified\"); options 1 and 2 say the same thing (\"Inverted image increases in size, then becomes erect and diminished\" / \"Erect image increases in size, then becomes inverted and diminished\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What kind of lens is thicker at the edges than in the middle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the image formed by a convex mirror?",
+      "reason": "figure: figure spec refused: spec.parts: concaveMirror has no label \"object\" (it has mirror, principalAxis, focus, centre, pole)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to a parallel beam of light when it passes through a convex lens?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand that the passage describes the effect of…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which situation does an object appear erect and diminished when viewed through a lens?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks that convex lenses always produce erect and enlarged …\"); distractor 1's reason is not a one-line misconception (\"Thinks that convex lenses always produce inverted images, bu…\"); distractor 3's reason is not a one-line misconception (\"Confuses the effect of a concave lens with that of a convex …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a use of lenses in daily life?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of mirror causes parallel light beams to converge after reflection?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is correct about the image formed by a convex lens?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Does not understand the variation in the image formed by a c…\"); distractor 2's reason is not a one-line misconception (\"Thinks that the image is always inverted, which is not suppo…\"); distractor 3's reason is not a one-line misconception (\"Thinks that the image is always diminished, which is not sup…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of mirror is used as a reflector in torches and headlights of vehicles?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What type of mirrors are shaped like a part of a hollow glass sphere?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A student looks into a curved mirror and sees an image that is erect and smaller than the object. Which type of mirror is this?",
+      "reason": "near-duplicate of served question cmvf9wx0o03qigod8rukwbyv0 (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A student observes a mirror and notices that the image of an object is always erect and smaller. What type of mirror is this?",
+      "reason": "near-duplicate of served question cmvf9wx0o03qigod8rukwbyv0 (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What happens to the image of an object when viewed through a concave lens?",
+      "reason": "near-duplicate of served question cmvf9wx0k03q6god8wz1io8tc (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is true when light is incident along the normal on a mirror?",
+      "reason": "near-duplicate of batch item \"When light is incident along the normal on a mirro…\" (cosine 0.951 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

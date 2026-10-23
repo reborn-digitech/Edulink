@@ -1,0 +1,261 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:47:32.984Z",
+  "finishedAt": "2026-10-20T22:48:29.349Z",
+  "seconds": 56,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap122.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 22 — 22. On the Move Again",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 21355,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8082,
+      "completionTokens": 1498
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 49038,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4450,
+      "completionTokens": 1710
+    },
+    "solver": {
+      "calls": 55,
+      "ms": 24051,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 9807,
+      "completionTokens": 577
+    },
+    "form": {
+      "calls": 7,
+      "ms": 13810,
+      "in": 7,
+      "out": 0,
+      "rejects": 7,
+      "promptTokens": 1693,
+      "completionTokens": 508
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3578,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 155,
+      "completionTokens": 310
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "In Dhanu’s village, who is the eldest in the family?",
+      "ms": {
+        "draft": 2554,
+        "critique": 4406,
+        "solver": 1301
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there was no rain, what would happen to farming in Dhanu’s village?",
+      "ms": {
+        "draft": 2554,
+        "critique": 6541,
+        "solver": 1433,
+        "form": 2147
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the person who lends money to the villagers?",
+      "ms": {
+        "draft": 2554,
+        "critique": 4921,
+        "solver": 11584,
+        "form": 1705
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the villagers borrow money from the mukadam?",
+      "ms": {
+        "draft": 2554,
+        "critique": 3977,
+        "solver": 13017,
+        "form": 1278
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do families like Dhanu's work on the lands of big farmers till Dussehra?",
+      "ms": {
+        "draft": 2785,
+        "critique": 5036,
+        "solver": 1024,
+        "form": 3133
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen in the village school when Dhanu and other children leave for six months?",
+      "ms": {
+        "draft": 2785,
+        "critique": 5388,
+        "solver": 855,
+        "form": 3201
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does Mami wish that Dhanu should go to school for the whole year and study?",
+      "ms": {
+        "draft": 2785,
+        "critique": 5388,
+        "solver": 1499,
+        "form": 2690
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What do families in Dhanu's village do during the six months when there is no rain?",
+      "ms": {
+        "draft": 2785,
+        "critique": 2176,
+        "solver": 729,
+        "form": 1061
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In Dhanu’s village, who is the eldest in the family?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If there was no rain, what would happen to farming in Dhanu’s village?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Thinks irrigation is the only way, but the passage does not …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the person who lends money to the villagers?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Confuses the role of the mukadam with a family member who is…\"); distractor 3's reason is not a one-line misconception (\"Confuses Kaki with the lender and assumes she lends money to…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do the villagers borrow money from the mukadam?",
+      "reason": "the key is far longer than every distractor (53 vs 26 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do families like Dhanu's work on the lands of big farmers till Dussehra?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's mention of working for big farm…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen in the village school when Dhanu and other children leave for six months?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's mention of old and ill people s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why does Mami wish that Dhanu should go to school for the whole year and study?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's mention of helping his grandmoth…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What do families in Dhanu's village do during the six months when there is no rain?",
+      "reason": "the key is far longer than every distractor (60 vs 37 characters); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's mention of no rain as a reason t…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

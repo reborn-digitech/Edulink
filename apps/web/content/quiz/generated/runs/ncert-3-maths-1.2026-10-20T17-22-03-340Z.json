@@ -1,0 +1,318 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T17:22:03.340Z",
+  "finishedAt": "2026-10-20T17:24:43.356Z",
+  "seconds": 160,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm101.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — What’s in a Name?",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n3. (B) option\nn = 34 ⇒ 𝑣 = 34 − 1 = 33",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n12. 3\nC)\n√3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 32510,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8172,
+      "completionTokens": 2011
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 77702,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 5554,
+      "completionTokens": 2360
+    },
+    "solver": {
+      "calls": 76,
+      "ms": 33120,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 12067,
+      "completionTokens": 753
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7353,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 669,
+      "completionTokens": 216
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2271,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 73225,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 5250,
+      "completionTokens": 2285
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How did Deba and Deep know that they had not lost any cows?",
+      "ms": {
+        "draft": 10762,
+        "critique": 6271,
+        "solver": 906
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many letters are there in the number name of 56?",
+      "ms": {
+        "draft": 10762,
+        "critique": 6272,
+        "solver": 1585
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number's name has 8 letters, which of the following could it be?",
+      "ms": {
+        "draft": 10762,
+        "critique": 5467,
+        "solver": 1095
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 10762,
+        "critique": 5236,
+        "solver": 1556
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the story illustrate about counting?",
+      "ms": {
+        "draft": 3218,
+        "critique": 5846,
+        "solver": 1261,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "ms": {
+        "draft": 3218,
+        "critique": 6150,
+        "solver": 1273,
+        "form": 5109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number name has 8 letters, which of the following could it be?",
+      "ms": {
+        "draft": 3218,
+        "critique": 6257,
+        "solver": 1272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Hemant had 36 cows and 23 sheep, how many animals did he have in total?",
+      "ms": {
+        "draft": 3218,
+        "critique": 6150,
+        "solver": 14681
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which number between 1 and 99 has the longest name?",
+      "ms": {
+        "draft": 3218,
+        "critique": 3810,
+        "solver": 5961,
+        "form": 1312
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there were 10 marks on the wall and 8 cows returned, how many cows were missing?",
+      "ms": {
+        "draft": 10762,
+        "critique": 7153,
+        "solver": 977,
+        "form": 0,
+        "translation": 22287
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many cows had reached home if two marks were left on the wall?",
+      "ms": {
+        "draft": 3218,
+        "critique": 8250,
+        "solver": 1705,
+        "form": 1753,
+        "translation": 25549
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which number between 1 and 99 has the longest name?",
+      "ms": {
+        "draft": 10762,
+        "critique": 5115,
+        "solver": 1655,
+        "form": 0,
+        "translation": 21890
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How did Deba and Deep know that they had not lost any cows?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many letters are there in the number name of 56?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number's name has 8 letters, which of the following could it be?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the story illustrate about counting?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Imagines a tool like a calculator was used, which is not men…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Imagines a mechanical counting device was used, which is not…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number name has 8 letters, which of the following could it be?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Hemant had 36 cows and 23 sheep, how many animals did he have in total?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which number between 1 and 99 has the longest name?",
+      "reason": "near-duplicate of batch item \"Which number between 1 and 99 has the longest name…\" (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

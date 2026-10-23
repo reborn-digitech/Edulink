@@ -1,0 +1,769 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T11:32:10.963Z",
+  "finishedAt": "2026-10-21T11:40:27.616Z",
+  "seconds": 497,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh205.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Three Dimensional Geometry",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\nAs, AX  B  X  A B  1   1  1 \n  y 1200 \n  \n 1 \n   z \n 1 \n  x\n300 150 150  \n1    1  1 \n  440 100  60      \n1200 y 1200\n 288  0  48      \n 1 \n   z \n1 1 1 1 1 1\n150 75 \n100 30   1\n24  2\n 75 150 75   4\n110 100 30    1 1\n  \n 72 0 24  2 2\n  \n1\n  2\n600    1 1\n400   \n   3 2\n240    1\n \n5\nThus,  ,  ,  Hence, x  2, y  3,z  5 . 1\nx 2 y 3 z 5\n35 Let P 1,6,3 be the given point, and let   'L' be the foot of the perpendicular from ' P ' to the\ngiven line AB (as shown in the figure below). The coordinates of a general point on the\ngiven line are given by\nx  0 y 1 z  2\n    ;  is a sc",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n18. (b) The line through the points (0, 5, -2) and (3, -1, 2) is\nଷି଴ ௫ = ଵିହ ௬ି ହି = ଶାଶ ௭ାଶ\n𝑥 𝑦 − 5 𝑧 + 2\n𝑜𝑟, = =\n3 −6 4\nAny point on the line is (3𝑘, −6𝑘 + 5,4𝑘 − 2), where k is an\narbitrary scalar.\n3𝑘 = 6 ⟹ 𝑘 = 2\nThe z-coordinate of the point P will be 4 × 2 − 2 = 6",
+      "[CBSE Class XII Mathematics, marking scheme, 2024-25]\n (𝜇 − 7𝜆 + 4). 7 + (−2𝜇 + 6𝜆 + 6). (−6) + (𝜇 − 𝜆 + 8). 1 = 0\n&(𝜇 − 7𝜆 + 4). 1 + (−2𝜇 + 6𝜆 + 6). (−2) + (𝜇 − 𝜆 + 8). 1 = 0\n 𝟐𝟎𝝁 − 𝟖𝟔𝝀 = 𝟎 => 𝟏𝟎𝝁 − 𝟒𝟑𝝀 = 𝟎&6𝜇 − 20𝜆 = 0 ⇒ 3𝜇 − 10𝜆 = 0 1\nOn solving the above equations, we get     0 1\nSo, the position vector of the points P and Q are −𝑖̂ − 𝑗̂ − 𝑘̂and 3𝑖̂ + 5𝑗̂ + 7𝑘̂respectively. 2\n𝑃𝑄⃗⃗⃗⃗⃗⃗ = 4𝑖̂ + 6𝑗̂ + 8𝑘̂ and 2\n|𝑃𝑄⃗⃗⃗⃗⃗⃗| = √4 + 6 + 8 = √116 = 2√29 𝑢𝑛𝑖𝑡𝑠. 2 2 2 1\nOR\n35.(b)\nLet P  1, 2 , 1  be the given point and Lbe the foot of the perpendicular from P to the given line AB\n(𝑎𝑠 𝑠ℎ𝑜𝑤𝑛 𝑖𝑛 𝑡ℎ𝑒 𝑓𝑖𝑔𝑢𝑟𝑒 𝑎𝑏𝑜𝑣𝑒).\nx  3 y  1 z 1\nLet’s put    . Then, x    3, y 2 1,z "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 240877,
+      "in": 40,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 43141,
+      "completionTokens": 10903
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 364418,
+      "in": 38,
+      "out": 31,
+      "rejects": 7,
+      "promptTokens": 22456,
+      "completionTokens": 8133
+    },
+    "solver": {
+      "calls": 192,
+      "ms": 96404,
+      "in": 31,
+      "out": 20,
+      "rejects": 11,
+      "promptTokens": 36503,
+      "completionTokens": 1751
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 20,
+      "out": 5,
+      "rejects": 15,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3309,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 239341,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12454,
+      "completionTokens": 6173
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Given two points P(-2, 4, -5) and Q(1, 2, 3), what are the direction cosines of the line joining them?",
+      "ms": {
+        "draft": 5993,
+        "critique": 11107
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What are the direction cosines of a line that makes angles of 90°, 60°, and 30° with the positive directions of the x, y, and z-axes, respectively?",
+      "ms": {
+        "draft": 5993,
+        "critique": 8821,
+        "solver": 17588
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A line in space is defined by the vector equation r = a + λb. What does the vector b represent?",
+      "ms": {
+        "draft": 6347,
+        "critique": 7749
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What are the direction cosines of the x-axis?",
+      "ms": {
+        "draft": 5993,
+        "critique": 9296,
+        "solver": 1699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the angle between two lines in space if their direction ratios are 3, 4, 5 and 6, 8, 10?",
+      "ms": {
+        "draft": 6347,
+        "critique": 8774,
+        "solver": 15738
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A line passes through the point (3, 2, 1) and is parallel to the vector (2, 4, 6). What is the vector equation of the line?",
+      "ms": {
+        "draft": 6347,
+        "critique": 10036,
+        "solver": 15161,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two lines in space have direction ratios 1, 2, 3 and 2, 4, 6. What is the angle between them?",
+      "ms": {
+        "draft": 6347,
+        "critique": 10744,
+        "solver": 13868
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for two lines in space to be perpendicular?",
+      "ms": {
+        "draft": 6347,
+        "critique": 8005
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the shortest distance between two skew lines?",
+      "ms": {
+        "draft": 6364,
+        "critique": 8342,
+        "solver": 1793
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a scenario where two lines are parallel, what is the condition for their shortest distance?",
+      "ms": {
+        "draft": 6364,
+        "critique": 7623,
+        "solver": 2627,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the lines are given by r = a + λb and r = a + μb, and the shortest distance between them is calculated using the formula |(a2 - a1) ⋅ (b1 × b2)| / |b1 × b2|, what condition must hold true?",
+      "ms": {
+        "draft": 6364,
+        "critique": 8544,
+        "solver": 1780
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the direction cosine of a line that makes equal angles with the coordinate axes?",
+      "ms": {
+        "draft": 6347,
+        "critique": 10597,
+        "solver": 18070
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find the acute angle θ between two lines with direction ratios a1, b1, c1 and a2, b2, c2?",
+      "ms": {
+        "draft": 6598,
+        "critique": 8233,
+        "solver": 1786,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the vector equation of a line that passes through a given point with position vector a and is parallel to a given vector b?",
+      "ms": {
+        "draft": 6598,
+        "critique": 8930,
+        "solver": 1815,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A line passes through the point (1, 2, 3) and is parallel to the vector (4, 5, 6). What is the vector equation of this line?",
+      "ms": {
+        "draft": 6598,
+        "critique": 7101,
+        "solver": 1381,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The shortest distance between two skew lines can be calculated using the formula involving the cross product of their direction vectors. If two lines are given as r = a + λb and r = a + μb, what is the shortest distance between them?",
+      "ms": {
+        "draft": 6598,
+        "critique": 5966,
+        "solver": 818
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate the cosine of the acute angle between two lines with direction ratios a1, b1, c1 and a2, b2, c2?",
+      "ms": {
+        "draft": 5571,
+        "critique": 5867,
+        "solver": 1570,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the vector equation of a line passing through a point with position vector a and parallel to a vector b?",
+      "ms": {
+        "draft": 5571,
+        "critique": 6336,
+        "solver": 2428,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Find the shortest distance between two skew lines given by the equations r = a + λb and r = a + μb.",
+      "ms": {
+        "draft": 5571,
+        "critique": 9958,
+        "solver": 1657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the direction cosines of a line are l, m, n, what is the angle θ between this line and another line with direction cosines l', m', n'?",
+      "ms": {
+        "draft": 5571,
+        "critique": 8417,
+        "solver": 1820
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a line passes through the points with position vectors a and b, what is the vector equation of the line?",
+      "ms": {
+        "draft": 5571,
+        "critique": 8053,
+        "solver": 1649,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the shortest distance between two parallel lines?",
+      "ms": {
+        "draft": 5571,
+        "critique": 9771,
+        "solver": 1645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the formula for the distance between two skew lines in vector form?",
+      "ms": {
+        "draft": 4196,
+        "critique": 11408
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the condition for two lines to be parallel?",
+      "ms": {
+        "draft": 4196,
+        "critique": 8550
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two lines are given by r = a + λb and r = a + μb, and b × b = 0, what can be said about the lines?",
+      "ms": {
+        "draft": 4196,
+        "critique": 6633
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the condition for two lines to be skew?",
+      "ms": {
+        "draft": 4196,
+        "critique": 9080,
+        "solver": 12093,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the lines r = a + λb and r = a + μb are skew, what is the formula for the shortest distance between them?",
+      "ms": {
+        "draft": 4196,
+        "critique": 8201,
+        "solver": 1778
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the direction vectors of two lines are b and b, and b × b ≠ 0, what can be said about the lines?",
+      "ms": {
+        "draft": 4196,
+        "critique": 7418
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for two lines to be perpendicular based on their direction ratios?",
+      "ms": {
+        "draft": 8122,
+        "critique": 7321,
+        "solver": 2103,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the angle between two lines in terms of their direction ratios?",
+      "ms": {
+        "draft": 8122,
+        "critique": 8433,
+        "solver": 2063,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line has direction ratios of -18, 12, -4, what are its direction cosines?",
+      "ms": {
+        "draft": 8122,
+        "critique": 7377,
+        "solver": 2086
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the direction cosine of the x-axis?",
+      "ms": {
+        "draft": 5585,
+        "critique": 6437,
+        "solver": 1203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the direction cosines of a line that makes angles of 90°, 135°, and 45° with the x, y, and z-axes respectively?",
+      "ms": {
+        "draft": 5585,
+        "critique": 8354,
+        "solver": 1369,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line has direction ratios 2, -1, -2, what are its direction cosines?",
+      "ms": {
+        "draft": 5993,
+        "critique": 8377,
+        "solver": 1324,
+        "form": 0,
+        "translation": 44593
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the cross product of the direction vectors in finding the shortest distance between two skew lines?",
+      "ms": {
+        "draft": 6364,
+        "critique": 9587,
+        "solver": 1745,
+        "form": 1,
+        "translation": 46589
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a line makes angles α, β, γ with the x, y, and z-axes respectively, and the direction cosines are l, m, n, which of the following equations must always be true?",
+      "ms": {
+        "draft": 5993,
+        "critique": 9325,
+        "solver": 2279,
+        "form": 0,
+        "translation": 51526
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a line has direction ratios 1, 2, 3 and another line has direction ratios 2, 4, 6, what can be said about these two lines?",
+      "ms": {
+        "draft": 5993,
+        "critique": 7667,
+        "solver": 1395,
+        "form": 0,
+        "translation": 51897
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the shortest distance between two skew lines?",
+      "ms": {
+        "draft": 8122,
+        "critique": 7264,
+        "solver": 2029,
+        "form": 0,
+        "translation": 39283
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the formula for the shortest distance between two skew lines in vector form?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How is the shortest distance between two parallel lines calculated?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Given two points P(-2, 4, -5) and Q(1, 2, 3), what are the direction cosines of the line joining them?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What are the direction cosines of a line that makes angles of 90°, 60°, and 30° with the positive directions of the x, y, and z-axes, respectively?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A line in space is defined by the vector equation r = a + λb. What does the vector b represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What are the direction cosines of the x-axis?",
+      "reason": "options 0 and 1 say the same thing (\"1, 0, 0\" / \"0, 1, 0\"); options 0 and 2 say the same thing (\"1, 0, 0\" / \"0, 0, 1\"); options 1 and 2 say the same thing (\"0, 1, 0\" / \"0, 0, 1\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the angle between two lines in space if their direction ratios are 3, 4, 5 and 6, 8, 10?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A line passes through the point (3, 2, 1) and is parallel to the vector (2, 4, 6). What is the vector equation of the line?",
+      "reason": "options 0 and 1 say the same thing (\"r = (3, 2, 1) + λ(2, 4, 6)\" / \"r = (3, 2, 1) + λ(2, 4, 6) + (1, 1, 1)\"); options 0 and 2 say the same thing (\"r = (3, 2, 1) + λ(2, 4, 6)\" / \"r = (2, 4, 6) + λ(3, 2, 1)\"); options 1 and 2 say the same thing (\"r = (3, 2, 1) + λ(2, 4, 6) + (1, 1, 1)\" / \"r = (2, 4, 6) + λ(3, 2, 1)\"); distractor 3's reason is not a one-line misconception (\"Reverses the roles of the point and the direction vector in …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Two lines in space have direction ratios 1, 2, 3 and 2, 4, 6. What is the angle between them?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the condition for two lines in space to be perpendicular?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the shortest distance between two skew lines?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a scenario where two lines are parallel, what is the condition for their shortest distance?",
+      "reason": "options 0 and 2 say the same thing (\"The direction vectors of the lines are scalar multiples of each other\" / \"The direction vectors of the lines are not scalar multiples of each other\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the lines are given by r = a + λb and r = a + μb, and the shortest distance between them is calculated using the formula |(a2 - a1) ⋅ (b1 × b2)| / |b1 × b2|, what condition must hold true?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the direction cosine of a line that makes equal angles with the coordinate axes?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to find the acute angle θ between two lines with direction ratios a1, b1, c1 and a2, b2, c2?",
+      "reason": "options 1 and 3 are the same (\"cosθ = (a1a2 + b1b2 + c1c2) / (√(a1² + b1² + c1²)√(a2² + b2² + c2²))\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the vector equation of a line that passes through a given point with position vector a and is parallel to a given vector b?",
+      "reason": "options 0 and 1 are the same (\"r = a + λb\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A line passes through the point (1, 2, 3) and is parallel to the vector (4, 5, 6). What is the vector equation of this line?",
+      "reason": "options 0 and 1 say the same thing (\"r = (1, 2, 3) + λ(4, 5, 6)\" / \"r = (4, 5, 6) + λ(1, 2, 3)\"); options 0 and 2 are the same (\"r = (1, 2, 3) + λ(4, 5, 6)\"); options 0 and 3 say the same thing (\"r = (1, 2, 3) + λ(4, 5, 6)\" / \"r = (1, 2, 3) − λ(4, 5, 6)\"); options 1 and 2 say the same thing (\"r = (4, 5, 6) + λ(1, 2, 3)\" / \"r = (1, 2, 3) × λ(4, 5, 6)\"); options 1 and 3 say the same thing (\"r = (4, 5, 6) + λ(1, 2, 3)\" / \"r = (1, 2, 3) − λ(4, 5, 6)\"); options 2 and 3 say the same thing (\"r = (1, 2, 3) × λ(4, 5, 6)\" / \"r = (1, 2, 3) − λ(4, 5, 6)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The shortest distance between two skew lines can be calculated using the formula involving the cross product of their direction vectors. If two lines are given as r = a + λb and r = a + μb, what is the shortest distance between them?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate the cosine of the acute angle between two lines with direction ratios a1, b1, c1 and a2, b2, c2?",
+      "reason": "options 0 and 3 say the same thing (\"cosθ = (a1 + b1 + c1)(a2 + b2 + c2)\" / \"cosθ = (a1 + a2)(b1 + b2)(c1 + c2)\"); the key is far longer than every distractor (83 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the vector equation of a line passing through a point with position vector a and parallel to a vector b?",
+      "reason": "options 0 and 2 are the same (\"r = a + λb\"); options 0 and 3 are the same (\"r = a + λb\"); options 2 and 3 are the same (\"r = a ⋅ λb\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Find the shortest distance between two skew lines given by the equations r = a + λb and r = a + μb.",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the direction cosines of a line are l, m, n, what is the angle θ between this line and another line with direction cosines l', m', n'?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a line passes through the points with position vectors a and b, what is the vector equation of the line?",
+      "reason": "options 0 and 1 say the same thing (\"r = a + λ(b − a)\" / \"r = b + λ(a − b)\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the shortest distance between two parallel lines?",
+      "reason": "options 0 and 1 are the same (\"b × (a − a) / |b|\"); options 0 and 2 say the same thing (\"b × (a − a) / |b|\" / \"b × (a − a) / |b × b|\"); options 0 and 3 say the same thing (\"b × (a − a) / |b|\" / \"b ⋅ (a − a) / |b × b|\"); options 1 and 2 say the same thing (\"b ⋅ (a − a) / |b|\" / \"b × (a − a) / |b × b|\"); options 1 and 3 say the same thing (\"b ⋅ (a − a) / |b|\" / \"b ⋅ (a − a) / |b × b|\"); options 2 and 3 are the same (\"b × (a − a) / |b × b|\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the formula for the distance between two skew lines in vector form?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the condition for two lines to be parallel?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If two lines are given by r = a + λb and r = a + μb, and b × b = 0, what can be said about the lines?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the condition for two lines to be skew?",
+      "reason": "options 0 and 1 say the same thing (\"They are parallel and do not intersect\" / \"They are not parallel and do not intersect\"); options 0 and 3 say the same thing (\"They are parallel and do not intersect\" / \"They are not parallel and intersect\"); options 1 and 3 say the same thing (\"They are not parallel and do not intersect\" / \"They are not parallel and intersect\"); options 2 and 3 say the same thing (\"They are parallel and intersect\" / \"They are not parallel and intersect\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the lines r = a + λb and r = a + μb are skew, what is the formula for the shortest distance between them?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the direction vectors of two lines are b and b, and b × b ≠ 0, what can be said about the lines?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the condition for two lines to be perpendicular based on their direction ratios?",
+      "reason": "options 0 and 1 say the same thing (\"The sum of the products of their direction ratios is zero\" / \"The sum of their direction ratios is zero\"); distractor 3's reason is not a one-line misconception (\"Confuses the condition for perpendicularity with a product o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the angle between two lines in terms of their direction ratios?",
+      "reason": "options 0 and 3 are the same (\"cosθ = |a1a2 + b1b2 + c1c2| / (√(a1² + b1² + c1²)√(a1² + b1² + c1²))\"); options 1 and 2 are the same (\"cosθ = |a1a2 + b1b2 + c1c2| / (√(a1² + b1² + c1²)√(a2² + b2² + c2²))\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a line has direction ratios of -18, 12, -4, what are its direction cosines?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the direction cosine of the x-axis?",
+      "reason": "options 0 and 1 say the same thing (\"1, 0, 0\" / \"0, 1, 0\"); options 0 and 2 say the same thing (\"1, 0, 0\" / \"0, 0, 1\"); options 1 and 2 say the same thing (\"0, 1, 0\" / \"0, 0, 1\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are the direction cosines of a line that makes angles of 90°, 135°, and 45° with the x, y, and z-axes respectively?",
+      "reason": "options 1 and 2 say the same thing (\"0, -1/√2, 1/√2\" / \"1/√2, -1/√2, 0\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

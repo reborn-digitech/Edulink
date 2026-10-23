@@ -1,0 +1,326 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:48:14.633Z",
+  "finishedAt": "2026-10-22T21:51:00.544Z",
+  "seconds": 166,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm102.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Hide and Seek",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n4. (d) 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n4. (d) No Solution"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 64613,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8258,
+      "completionTokens": 3133
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 107898,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 6258,
+      "completionTokens": 2630
+    },
+    "solver": {
+      "calls": 78,
+      "ms": 56380,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 14569,
+      "completionTokens": 860
+    },
+    "form": {
+      "calls": 7,
+      "ms": 46957,
+      "in": 5,
+      "out": 1,
+      "rejects": 4,
+      "promptTokens": 5548,
+      "completionTokens": 1051
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3754,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 22807,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2429,
+      "completionTokens": 1310
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the grid game, if Mini moves 2 steps left and 1 step up from the starting point, where does she reach?",
+      "ms": {
+        "draft": 7124,
+        "critique": 8363
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the water delivery man turns left from the entrance, which route will he take to reach the MDM kitchen?",
+      "ms": {
+        "draft": 7124,
+        "critique": 9024,
+        "solver": 16854
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a view of an object as described in the chapter?",
+      "ms": {
+        "draft": 7124,
+        "critique": 7982,
+        "solver": 19161
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the grid game, if Mini is 3 steps away from the object she is looking for, which of the following could be the number of steps she has taken from the starting point?",
+      "ms": {
+        "draft": 7124,
+        "critique": 11090,
+        "solver": 2085,
+        "form": 3753
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an object that can be drawn from different views as described in the chapter?",
+      "ms": {
+        "draft": 7124,
+        "critique": 8202,
+        "solver": 18380
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the chapter, which of the following is used to describe the position of objects?",
+      "ms": {
+        "draft": 7124,
+        "critique": 6699,
+        "solver": 1393,
+        "form": 4657
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Rani faces towards the hut in Scene 1, will she be able to see who is hiding near the hut?",
+      "ms": {
+        "draft": 3645,
+        "critique": 5177,
+        "solver": 1348
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which game are the children playing in Scene 4?",
+      "ms": {
+        "draft": 3645,
+        "critique": 5530,
+        "solver": 2048
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Who is looking from the top according to the passage?",
+      "ms": {
+        "draft": 3645,
+        "critique": 5940,
+        "solver": 2602
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Jagat’s cat sees him sitting on the third desk in the first row, which desk is Jagat sitting on?",
+      "ms": {
+        "draft": 3645,
+        "critique": 6963,
+        "solver": 2134,
+        "form": 2870
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which view of the brick is shown in the drawing labeled 'The front view'?",
+      "ms": {
+        "draft": 3645,
+        "critique": 7741,
+        "solver": 1435,
+        "form": 4450
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are the drawings of the same brick by Mini, Bholu, and Rani different?",
+      "ms": {
+        "draft": 3645,
+        "critique": 6346,
+        "solver": 2833,
+        "form": 2478,
+        "translation": 18989
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the grid game, if Mini moves 2 steps left and 1 step up from the starting point, where does she reach?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the water delivery man turns left from the entrance, which route will he take to reach the MDM kitchen?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a view of an object as described in the chapter?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the grid game, if Mini is 3 steps away from the object she is looking for, which of the following could be the number of steps she has taken from the starting point?",
+      "reason": "figure: figure spec refused: spec.frame.unit: Invalid enum value. Expected 'cm' | 'units', received 'steps'"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an object that can be drawn from different views as described in the chapter?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the chapter, which of the following is used to describe the position of objects?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'grid'"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Rani faces towards the hut in Scene 1, will she be able to see who is hiding near the hut?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which game are the children playing in Scene 4?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Who is looking from the top according to the passage?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If Jagat’s cat sees him sitting on the third desk in the first row, which desk is Jagat sitting on?",
+      "reason": "options 0 and 1 say the same thing (\"First desk in the first row\" / \"Third desk in the first row\"); options 0 and 3 say the same thing (\"First desk in the first row\" / \"First desk in the second row\"); option 0 repeats the stem's wording (\"First desk in the first row\"); option 1 repeats the stem's wording (\"Third desk in the first row\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which view of the brick is shown in the drawing labeled 'The front view'?",
+      "reason": "option 2 repeats the stem's wording (\"The front view\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

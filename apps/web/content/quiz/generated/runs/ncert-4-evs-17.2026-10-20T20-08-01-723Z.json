@@ -1,0 +1,370 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:08:01.723Z",
+  "finishedAt": "2026-10-20T20:12:32.664Z",
+  "seconds": 271,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap117.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 17 — Nandita in Mumbai",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 79431,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13310,
+      "completionTokens": 3161
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 162376,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 7759,
+      "completionTokens": 3297
+    },
+    "solver": {
+      "calls": 76,
+      "ms": 58305,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 13247,
+      "completionTokens": 793
+    },
+    "form": {
+      "calls": 8,
+      "ms": 30505,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 1885,
+      "completionTokens": 468
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3198,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 250196,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10868,
+      "completionTokens": 5287
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "ms": {
+        "draft": 5417,
+        "critique": 9281,
+        "solver": 2775
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Nandita used to feel like vomiting when at first she had to use the toilet where Mama lived. Why?",
+      "ms": {
+        "draft": 5417,
+        "critique": 8995,
+        "solver": 1871,
+        "form": 5472
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Nandita have to bring her mother from the village to Mumbai?",
+      "ms": {
+        "draft": 5417,
+        "critique": 9942,
+        "solver": 3395,
+        "form": 3713
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why does Nandita's Mama have to change his house?",
+      "ms": {
+        "draft": 4669,
+        "critique": 8843
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one problem that Nandita's family might face if they move to a new place?",
+      "ms": {
+        "draft": 4669,
+        "critique": 8714
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "ms": {
+        "draft": 5417,
+        "critique": 9718,
+        "solver": 2154,
+        "form": 3370
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Nandita's Mama moves to a new place, what might be a challenge for her?",
+      "ms": {
+        "draft": 4669,
+        "critique": 6483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What might be a reason for people being forced to move from their homes?",
+      "ms": {
+        "draft": 4669,
+        "critique": 6241
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason given in the passage for people having to move?",
+      "ms": {
+        "draft": 4525,
+        "critique": 10363,
+        "solver": 2408,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "ms": {
+        "draft": 5247,
+        "critique": 9041,
+        "solver": 16855
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "ms": {
+        "draft": 5247,
+        "critique": 10201,
+        "solver": 14911
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Nandita have to bring her mother from the village to Mumbai?",
+      "ms": {
+        "draft": 5247,
+        "critique": 10312,
+        "solver": 2383,
+        "form": 3807,
+        "translation": 39287
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Nandita used to feel like vomiting when at first she had to use the toilet where Mama lived. Why?",
+      "ms": {
+        "draft": 5247,
+        "critique": 10562,
+        "solver": 1870,
+        "form": 6486,
+        "translation": 36962
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Nandita's Mama have to change his house?",
+      "ms": {
+        "draft": 4525,
+        "critique": 8553,
+        "solver": 17156,
+        "form": 4152,
+        "translation": 55948
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How might moving to a new place affect Nandita's family?",
+      "ms": {
+        "draft": 4525,
+        "critique": 7329,
+        "solver": 1977,
+        "form": 4955,
+        "translation": 58347
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a hotel is built in Chowpatti, who would most likely benefit?",
+      "ms": {
+        "draft": 4525,
+        "critique": 7842,
+        "solver": 2724,
+        "form": 5183,
+        "translation": 54605
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Nandita used to feel like vomiting when at first she had to use the toilet where Mama lived. Why?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's description of the toilet…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why did Nandita have to bring her mother from the village to Mumbai?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Focuses on a minor detail from the passage like seeing the c…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why does Nandita's Mama have to change his house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is one problem that Nandita's family might face if they move to a new place?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage about water availability…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Nandita's Mama moves to a new place, what might be a challenge for her?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What might be a reason for people being forced to move from their homes?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason given in the passage for people having to move?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "reason": "after redrafting distractors 0, 1, 2: more than one defensible answer, or none; the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,794 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T13:41:34.643Z",
+  "finishedAt": "2026-10-22T13:58:02.178Z",
+  "seconds": 988,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc102.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Cell: The Building Block of Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEJS 2016 — question paper]\n23. Which of the following does NOT contain living cells?\na) Bone tissue\nb) Xylem sieve tubes\nc) Phloem\nd) Epidermis",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 250696,
+      "in": 43,
+      "out": 43,
+      "rejects": 0,
+      "promptTokens": 42402,
+      "completionTokens": 10330
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 489440,
+      "in": 43,
+      "out": 33,
+      "rejects": 10,
+      "promptTokens": 23624,
+      "completionTokens": 9230
+    },
+    "solver": {
+      "calls": 237,
+      "ms": 178818,
+      "in": 33,
+      "out": 30,
+      "rejects": 3,
+      "promptTokens": 43545,
+      "completionTokens": 2565
+    },
+    "form": {
+      "calls": 14,
+      "ms": 115198,
+      "in": 30,
+      "out": 18,
+      "rejects": 12,
+      "promptTokens": 12665,
+      "completionTokens": 2089
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 6444,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 834239,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 36859,
+      "completionTokens": 18430
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If an onion cell has an estimated size of 200 micrometres and a light microscope with a total magnification of 100X is used, how large will the cell appear?",
+      "ms": {
+        "draft": 5348,
+        "critique": 6549,
+        "solver": 1781
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a reason why cells are considered the structural and functional unit of life?",
+      "ms": {
+        "draft": 5348,
+        "critique": 8016,
+        "solver": 24468
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the light microscope (Fig. 2.2), which part is responsible for making small adjustments to the focus?",
+      "ms": {
+        "draft": 5348,
+        "critique": 6894,
+        "solver": 2572,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the information provided, what can be inferred about the role of calcium carbonate deposits found around hot springs in Puga Valley?",
+      "ms": {
+        "draft": 5348,
+        "critique": 7621,
+        "solver": 2070
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the limit of resolution of the human eye as mentioned in the passage?",
+      "ms": {
+        "draft": 5348,
+        "critique": 7053,
+        "solver": 1777,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 5348,
+        "critique": 15245,
+        "solver": 21154,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a potato piece placed in a 20 per cent salt solution?",
+      "ms": {
+        "draft": 4709,
+        "critique": 10221
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the cell membrane, what does the term 'fluid-mosaic model' refer to?",
+      "ms": {
+        "draft": 4709,
+        "critique": 9722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the cell membrane?",
+      "ms": {
+        "draft": 4709,
+        "critique": 13116
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the cell wall in plant cells?",
+      "ms": {
+        "draft": 4709,
+        "critique": 8539
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do plant cells not shrink when placed in a concentrated sugar solution?",
+      "ms": {
+        "draft": 9652,
+        "critique": 8713,
+        "solver": 16694,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why plant cells have a cell wall while animal cells do not?",
+      "ms": {
+        "draft": 9652,
+        "critique": 8945,
+        "solver": 24428,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant cell lost its cell wall, what would be the most likely consequence?",
+      "ms": {
+        "draft": 9652,
+        "critique": 9892,
+        "solver": 17562,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the cell is described as the 'house of coded instructions' in the passage?",
+      "ms": {
+        "draft": 5635,
+        "critique": 7464
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about the endoplasmic reticulum is true according to the passage?",
+      "ms": {
+        "draft": 5635,
+        "critique": 11209,
+        "solver": 2385,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of cell lacks a well-defined nucleus?",
+      "ms": {
+        "draft": 9652,
+        "critique": 10180,
+        "solver": 22567,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why can't mature red blood cells repair or divide themselves according to the passage?",
+      "ms": {
+        "draft": 5635,
+        "critique": 9345,
+        "solver": 2178,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a scientist discovers a new type of cell that can divide without any control and does not follow contact inhibition, what is the most likely consequence of this discovery?",
+      "ms": {
+        "draft": 79655,
+        "critique": 11036
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organelle is responsible for cellular respiration in plant and animal cells?",
+      "ms": {
+        "draft": 5638,
+        "critique": 8987,
+        "solver": 16812,
+        "form": 1721
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct example of a cell organelle that helps in the synthesis of the cell membrane?",
+      "ms": {
+        "draft": 4577,
+        "critique": 8467
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If gametes are formed by mitotic divisions instead of meiosis, what would be the effect on the offspring?",
+      "ms": {
+        "draft": 4577,
+        "critique": 10400
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 4577,
+        "critique": 8323,
+        "solver": 1610,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process allows living organisms to grow, repair damaged tissues, and reproduce?",
+      "ms": {
+        "draft": 6114,
+        "critique": 9664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of different stages of cell division in onion root tip cells, which phase is shown where the nucleus divides?",
+      "ms": {
+        "draft": 6114,
+        "critique": 9060
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the cell is responsible for controlling all the activities of the cell?",
+      "ms": {
+        "draft": 17341,
+        "critique": 8603,
+        "solver": 1754,
+        "form": 4480
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of the vacuole in a plant cell?",
+      "ms": {
+        "draft": 5638,
+        "critique": 11193,
+        "solver": 1453,
+        "form": 3389
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it not possible to reconstruct a whole organism from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 4577,
+        "critique": 7304,
+        "solver": 2462,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of ribosomes in a cell?",
+      "ms": {
+        "draft": 5635,
+        "critique": 10297,
+        "solver": 2324,
+        "form": 3429,
+        "translation": 46831
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the basic structural and functional unit of all living organisms?",
+      "ms": {
+        "draft": 17341,
+        "critique": 8947,
+        "solver": 1628,
+        "form": 6413,
+        "translation": 47903
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which cell organelle is responsible for producing energy in the cell?",
+      "ms": {
+        "draft": 4577,
+        "critique": 7371,
+        "solver": 2750,
+        "form": 0,
+        "translation": 29163
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature shared by mitochondria and plastids?",
+      "ms": {
+        "draft": 5660,
+        "critique": 9569,
+        "solver": 12935,
+        "form": 0,
+        "translation": 53673
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the cell membrane?",
+      "ms": {
+        "draft": 17341,
+        "critique": 8953,
+        "solver": 2470,
+        "form": 3944,
+        "translation": 48639
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which type of cell division are two genetically identical daughter cells produced?",
+      "ms": {
+        "draft": 6114,
+        "critique": 8676,
+        "solver": 2605,
+        "form": 0,
+        "translation": 48519
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
+      "ms": {
+        "draft": 17341,
+        "critique": 7044,
+        "solver": 2508,
+        "form": 5054,
+        "translation": 48000
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of eukaryotic cells?",
+      "ms": {
+        "draft": 9652,
+        "critique": 11312,
+        "solver": 2029,
+        "form": 0,
+        "translation": 62873
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to a plant when it does not get enough water?",
+      "ms": {
+        "draft": 5660,
+        "critique": 6877,
+        "solver": 1451,
+        "form": 0,
+        "translation": 55781
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A farmer used salt and sugar to preserve fruits. How does this method prevent spoilage?",
+      "ms": {
+        "draft": 4577,
+        "critique": 7859,
+        "solver": 2095,
+        "form": 0,
+        "translation": 50527
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a skin cell starts dividing by meiosis instead of mitosis, what will happen to a cut on the skin?",
+      "ms": {
+        "draft": 6114,
+        "critique": 8934,
+        "solver": 15410,
+        "form": 0,
+        "translation": 55441
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is placed in a solution where the concentration of solutes is equal inside and outside the cell, what will happen to the cell?",
+      "ms": {
+        "draft": 17341,
+        "critique": 9754,
+        "solver": 2596,
+        "form": 4444,
+        "translation": 120069
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is placed in a solution where the solute concentration is lower than inside the cell, what will happen?",
+      "ms": {
+        "draft": 4709,
+        "critique": 11293,
+        "solver": 22375,
+        "form": 0,
+        "translation": 52050
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why can a single plant cell develop into a complete plant if provided with suitable nutrients and conditions?",
+      "ms": {
+        "draft": 6114,
+        "critique": 10042,
+        "solver": 3091,
+        "form": 0,
+        "translation": 63396
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following cell organelles is responsible for cellular respiration?",
+      "ms": {
+        "draft": 17341,
+        "critique": 8757,
+        "solver": 2323,
+        "form": 4464,
+        "translation": 47930
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do plant cells not burst when placed in a hypotonic solution, unlike animal cells?",
+      "ms": {
+        "draft": 4709,
+        "critique": 11330,
+        "solver": 16363,
+        "form": 0,
+        "translation": 58271
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an onion cell has an estimated size of 200 micrometres and a light microscope with a total magnification of 100X is used, how large will the cell appear?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a reason why cells are considered the structural and functional unit of life?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the light microscope (Fig. 2.2), which part is responsible for making small adjustments to the focus?",
+      "reason": "figure: figure spec refused: spec.parts.2.size: Number must be greater than or equal to 10"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the information provided, what can be inferred about the role of calcium carbonate deposits found around hot springs in Puga Valley?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the limit of resolution of the human eye as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to a potato piece placed in a 20 per cent salt solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram of the cell membrane, what does the term 'fluid-mosaic model' refer to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of the cell membrane?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of the cell wall in plant cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why do plant cells not shrink when placed in a concentrated sugar solution?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why plant cells have a cell wall while animal cells do not?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant cell lost its cell wall, what would be the most likely consequence?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the cell is described as the 'house of coded instructions' in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements about the endoplasmic reticulum is true according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which type of cell lacks a well-defined nucleus?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why can't mature red blood cells repair or divide themselves according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a scientist discovers a new type of cell that can divide without any control and does not follow contact inhibition, what is the most likely consequence of this discovery?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which organelle is responsible for cellular respiration in plant and animal cells?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a correct example of a cell organelle that helps in the synthesis of the cell membrane?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If gametes are formed by mitotic divisions instead of meiosis, what would be the effect on the offspring?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "reason": "the key is far longer than every distractor (54 vs 27 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which process allows living organisms to grow, repair damaged tissues, and reproduce?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram of different stages of cell division in onion root tip cells, which phase is shown where the nucleus divides?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which part of the cell is responsible for controlling all the activities of the cell?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cell membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main function of the vacuole in a plant cell?",
+      "reason": "near-duplicate of served question cmvffjpqq04avgod8zb9eos26 (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is it not possible to reconstruct a whole organism from a fragment in complex multicellular organisms?",
+      "reason": "near-duplicate of served question cmvghacd503yagpfhi1ylpjsm (cosine 0.936 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:05:47.197Z",
+  "finishedAt": "2026-10-22T23:07:22.636Z",
+  "seconds": 95,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap107.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 7 — From the Window",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 26403,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7628,
+      "completionTokens": 1473
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 41224,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 3441,
+      "completionTokens": 1318
+    },
+    "solver": {
+      "calls": 35,
+      "ms": 15707,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 4030,
+      "completionTokens": 280
+    },
+    "form": {
+      "calls": 4,
+      "ms": 11401,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 978,
+      "completionTokens": 259
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 2932,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 108346,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6124,
+      "completionTokens": 2879
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Omana see below the bridge when her train crossed it?",
+      "ms": {
+        "draft": 3578,
+        "critique": 6017
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Omana feel giddy when she looked down from the bridge?",
+      "ms": {
+        "draft": 3578,
+        "critique": 5454,
+        "solver": 2094,
+        "form": 2267
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would have happened if there were no tunnels and bridges on the route from Goa to Kerala?",
+      "ms": {
+        "draft": 3578,
+        "critique": 5199,
+        "solver": 1438,
+        "form": 4220
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the train to have many bridges and tunnels?",
+      "ms": {
+        "draft": 3578,
+        "critique": 6085,
+        "solver": 601
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Omana’s family buy at Udipi station?",
+      "ms": {
+        "draft": 3023,
+        "critique": 4193,
+        "solver": 641
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Omana see from the window of the train that made her feel giddy?",
+      "ms": {
+        "draft": 3023,
+        "critique": 5245,
+        "solver": 2391,
+        "form": 0,
+        "translation": 36517
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where did Omana see people wearing white or cream-coloured dhotis and sarees?",
+      "ms": {
+        "draft": 3023,
+        "critique": 5229,
+        "solver": 1356,
+        "form": 3783,
+        "translation": 37369
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which language is spoken in the state where Omana’s Valiyamma lives?",
+      "ms": {
+        "draft": 3023,
+        "critique": 4814,
+        "solver": 1454,
+        "form": 3788,
+        "translation": 30899
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did Omana see below the bridge when her train crossed it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Omana feel giddy when she looked down from the bridge?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Thinks the noise caused her to feel giddy, but the passage d…\"); distractor 3's reason is not a one-line misconception (\"Mistakenly thinks the smoke caused her to feel giddy, but th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would have happened if there were no tunnels and bridges on the route from Goa to Kerala?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Mistakenly thinks the train would have stopped at every rive…\"); distractor 2's reason is not a one-line misconception (\"Believes the train would have gone through the mountains dir…\"); distractor 3's reason is not a one-line misconception (\"Thinks the train would have been stuck in the forest, which …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason for the train to have many bridges and tunnels?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Omana’s family buy at Udipi station?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

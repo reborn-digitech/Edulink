@@ -1,0 +1,467 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:33:37.448Z",
+  "finishedAt": "2026-10-22T22:37:09.241Z",
+  "seconds": 212,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm110.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Elephants, Tigers, and Leopards",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 95479,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 16152,
+      "completionTokens": 5324
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 156665,
+      "in": 20,
+      "out": 16,
+      "rejects": 4,
+      "promptTokens": 11133,
+      "completionTokens": 4250
+    },
+    "solver": {
+      "calls": 99,
+      "ms": 50142,
+      "in": 16,
+      "out": 6,
+      "rejects": 10,
+      "promptTokens": 14941,
+      "completionTokens": 893
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7134,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 638,
+      "completionTokens": 146
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3935,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 68907,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5191,
+      "completionTokens": 2623
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a player reaches the total of 6 and it is your turn, what should you choose to ensure you win the game?",
+      "ms": {
+        "draft": 3986,
+        "critique": 4934,
+        "solver": 1742
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a player reaches the total of 8 and it is your turn, what should you choose to ensure you win the game?",
+      "ms": {
+        "draft": 3986,
+        "critique": 5121,
+        "solver": 2539
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many elephants are there in Karnataka and Kerala combined?",
+      "ms": {
+        "draft": 3986,
+        "critique": 8426
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many leopards are there in Gujarat, Karnataka, and Madhya Pradesh combined?",
+      "ms": {
+        "draft": 3986,
+        "critique": 6869,
+        "solver": 1322
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the amount that Raju deposited?",
+      "ms": {
+        "draft": 2786,
+        "critique": 6912,
+        "solver": 1788
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the amount that Rani deposited?",
+      "ms": {
+        "draft": 2786,
+        "critique": 6860,
+        "solver": 2349
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the amount that Roja deposited?",
+      "ms": {
+        "draft": 2786,
+        "critique": 5094,
+        "solver": 1220,
+        "form": 3475
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write ₹ 2045 in words?",
+      "ms": {
+        "draft": 2786,
+        "critique": 5613,
+        "solver": 801
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write ₹ 3578 in words?",
+      "ms": {
+        "draft": 2786,
+        "critique": 4858,
+        "solver": 1103
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Raju wants to deposit ₹2045 in the bank. He uses only ₹500 and ₹100 notes. What is the total number of notes he can use?",
+      "ms": {
+        "draft": 7624,
+        "critique": 7784
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Rani wants to deposit ₹3578 in the bank. She uses only ₹500 and ₹100 notes. What is the total number of notes she can use?",
+      "ms": {
+        "draft": 7624,
+        "critique": 12949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Rani wants to deposit ₹3578 in the bank. She uses notes of ₹500, ₹100, ₹50, and ₹10. What is the maximum number of ₹100 notes she can use?",
+      "ms": {
+        "draft": 7624,
+        "critique": 9183,
+        "solver": 15149
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Raju wants to deposit ₹2045 in the bank. He uses notes of ₹500, ₹100, ₹50, and ₹10. What is the maximum number of ₹500 notes he can use?",
+      "ms": {
+        "draft": 7624,
+        "critique": 10251,
+        "solver": 15124,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Roja wants to deposit ₹1240 in the bank. She uses only ₹500 and ₹100 notes. What is the total number of notes she can use?",
+      "ms": {
+        "draft": 7624,
+        "critique": 7225
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the game where players take turns adding 1 or 2 to reach a target number?",
+      "ms": {
+        "draft": 2379,
+        "critique": 8218,
+        "solver": 2432,
+        "form": 3136
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the table that shows addition patterns?",
+      "ms": {
+        "draft": 2379,
+        "critique": 6284,
+        "solver": 1880,
+        "form": 2487
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is used as a target in the Nim Game?",
+      "ms": {
+        "draft": 2379,
+        "critique": 7144,
+        "solver": 10609
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of animal mentioned in the passage?",
+      "ms": {
+        "draft": 2379,
+        "critique": 4320,
+        "solver": 1192
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a player reaches the total of 7 and it is your turn, what should you choose to ensure you win the game?",
+      "ms": {
+        "draft": 3986,
+        "critique": 4727,
+        "solver": 1183,
+        "form": 1,
+        "translation": 34340
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Madhya Pradesh has 341 more tigers than Maharashtra. If Maharashtra has 444 tigers, how many tigers does Madhya Pradesh have?",
+      "ms": {
+        "draft": 3986,
+        "critique": 6364,
+        "solver": 1942,
+        "form": 1,
+        "translation": 30196
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a player reaches the total of 6 and it is your turn, what should you choose to ensure you win the game?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a player reaches the total of 8 and it is your turn, what should you choose to ensure you win the game?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many elephants are there in Karnataka and Kerala combined?",
+      "reason": "the critic finds option 1 correct, the key is 0"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many leopards are there in Gujarat, Karnataka, and Madhya Pradesh combined?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the amount that Raju deposited?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the amount that Rani deposited?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the amount that Roja deposited?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes a random amount not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write ₹ 2045 in words?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write ₹ 3578 in words?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Roja wants to deposit ₹1240 in the bank. She uses notes of ₹500, ₹100, ₹50, and ₹10. What is the maximum number of ₹50 notes she can use?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the smallest number that can be obtained by adding a 2-digit number with its reverse?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Raju wants to deposit ₹2045 in the bank. He uses only ₹500 and ₹100 notes. What is the total number of notes he can use?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Rani wants to deposit ₹3578 in the bank. She uses only ₹500 and ₹100 notes. What is the total number of notes she can use?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Rani wants to deposit ₹3578 in the bank. She uses notes of ₹500, ₹100, ₹50, and ₹10. What is the maximum number of ₹100 notes she can use?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Raju wants to deposit ₹2045 in the bank. He uses notes of ₹500, ₹100, ₹50, and ₹10. What is the maximum number of ₹500 notes he can use?",
+      "reason": "checkExpr \"2045//500\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Roja wants to deposit ₹1240 in the bank. She uses only ₹500 and ₹100 notes. What is the total number of notes she can use?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the game where players take turns adding 1 or 2 to reach a target number?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"does not read the passage carefully…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the table that shows addition patterns?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"does not pay attention to the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following numbers is used as a target in the Nim Game?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of animal mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

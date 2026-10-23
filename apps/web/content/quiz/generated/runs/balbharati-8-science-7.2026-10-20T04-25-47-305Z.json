@@ -1,0 +1,421 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T04:25:47.305Z",
+  "finishedAt": "2026-10-20T04:29:21.205Z",
+  "seconds": 214,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Metals and Nonmetals",
+    "edition": "First Edition 2018",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n6. C. X is a non-metal and Y is a metal.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. The electronic configuration of three elements X, Y and Z are X- 2, 8, 7; Y- 2,\n8, 2; and Z - 2, 8 1\nA. Y and Z are metals\nB. Y and X are non-metals\nC. X is a non -metal and Y is a metal\nD. Y is a non-metal and Z is a metal",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n2. Match column I with column II and select the correct option using the given\ncodes. 1\nColumn I Column II\na. A metal that forms amphoteric oxides (i) Ga\nb. A metal which melts when kept on our palm (ii) Au\nc. A metal that reacts with nitric acid (iii) Al\nd. A metal which cannot displace hydrogen from (iv) Mn\nacids\nA. a – (ii), b – (i), c – (iii), d – (iv)\nB. a – (iii), b – (i), c – (iv), d – (ii)\nC. a – (iv), b – (ii), c – (iii), d – (i)\nD. a – (iii), b – (ii), c – (i), d – (iv)\nThe solution in the given figure is likely to be\nA. HNO 3\nB. C 2 H 5 OH\nC. H 2 SO 4\nD. CO 2 in water\n- - - - - - - - - - - - - -\nFor Visual Impaired Students\nWhich among the following is considered as the strongest ",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n4. On adding dilute sulphuric acid to a test tube containing a metal ‘X’, a colourless gas is 1\nproduced when a burning match stick is brought near it. Which of the following correctly\nrepresents metal ‘X’?\na) Sodium\nb) Sulphur\nc) Copper\nd) Silver"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 56555,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 17798,
+      "completionTokens": 3342
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 101071,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 7946,
+      "completionTokens": 3483
+    },
+    "solver": {
+      "calls": 85,
+      "ms": 38034,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 11815,
+      "completionTokens": 844
+    },
+    "form": {
+      "calls": 7,
+      "ms": 15628,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 1578,
+      "completionTokens": 483
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 5046,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 206805,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14217,
+      "completionTokens": 6917
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 2413,
+        "critique": 4669
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-metal that is a good conductor of electricity?",
+      "ms": {
+        "draft": 2413,
+        "critique": 5566
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a property of nonmetals?",
+      "ms": {
+        "draft": 2413,
+        "critique": 5898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals is a liquid at room temperature?",
+      "ms": {
+        "draft": 2413,
+        "critique": 4873
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A metal that reacts with dilute acid to produce hydrogen gas is likely to be",
+      "ms": {
+        "draft": 2413,
+        "critique": 5353,
+        "solver": 14953
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which metal is an exception to being a good conductor of heat and electricity?",
+      "ms": {
+        "draft": 2865,
+        "critique": 4304,
+        "solver": 1154,
+        "form": 4171
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 2865,
+        "critique": 6752,
+        "solver": 8086,
+        "form": 2306
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 2475,
+        "critique": 6410,
+        "solver": 1311,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 2149,
+        "critique": 4130,
+        "solver": 992,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a metal reacts with an acid?",
+      "ms": {
+        "draft": 2149,
+        "critique": 4733,
+        "solver": 1911,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a use of noble metals?",
+      "ms": {
+        "draft": 2475,
+        "critique": 5313,
+        "solver": 1300,
+        "form": 1995,
+        "translation": 40240
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of nonmetals?",
+      "ms": {
+        "draft": 2475,
+        "critique": 4809,
+        "solver": 1039,
+        "form": 0,
+        "translation": 20928
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a metal reacts with dilute acids?",
+      "ms": {
+        "draft": 2475,
+        "critique": 5386,
+        "solver": 742,
+        "form": 961,
+        "translation": 39627
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals is used to make stainless steel?",
+      "ms": {
+        "draft": 2149,
+        "critique": 4322,
+        "solver": 1552,
+        "form": 0,
+        "translation": 26408
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the property of a metal that allows it to be drawn into wires?",
+      "ms": {
+        "draft": 2865,
+        "critique": 5097,
+        "solver": 1689,
+        "form": 3613,
+        "translation": 53361
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a metal that forms amphoteric oxides?",
+      "ms": {
+        "draft": 2413,
+        "critique": 5354,
+        "solver": 11773,
+        "form": 3396,
+        "translation": 33873
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following nonmetals is a good conductor of electricity?",
+      "ms": {
+        "draft": 2865,
+        "critique": 3686,
+        "solver": 637,
+        "form": 1605,
+        "translation": 21165
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main reason for using alloys?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of corrosion?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a non-metal that is a good conductor of electricity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a property of nonmetals?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following metals is a liquid at room temperature?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A metal that reacts with dilute acid to produce hydrogen gas is likely to be",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a nonmetal?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a noble metal?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a use of noble metals?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following metals is a liquid at room temperature?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which metal is an exception to being a good conductor of heat and electricity?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misunderstands the exception mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Students may confuse metals with nonmetals, thinking that me…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "near-duplicate of served question cmvf1ieae02q4god80i6yu4ul (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "near-duplicate of served question cmvf1ieae02q4god80i6yu4ul (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when a metal reacts with an acid?",
+      "reason": "near-duplicate of batch item \"What happens when a metal reacts with dilute acids…\" (cosine 0.905 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

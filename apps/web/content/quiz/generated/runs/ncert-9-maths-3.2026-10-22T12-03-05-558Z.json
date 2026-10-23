@@ -1,0 +1,684 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T12:03:05.558Z",
+  "finishedAt": "2026-10-22T12:21:41.909Z",
+  "seconds": 1116,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh203.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — The World of Algorithms",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n9. C) 30",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n9. (C) option",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[IOQM 2020 — question paper]\n3. If 2 2 = 0.9999 then determine the value of N.\nk=1 (k + k)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 248599,
+      "in": 33,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 26050,
+      "completionTokens": 7816
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 429641,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 19358,
+      "completionTokens": 7361
+    },
+    "solver": {
+      "calls": 199,
+      "ms": 208706,
+      "in": 26,
+      "out": 20,
+      "rejects": 6,
+      "promptTokens": 46249,
+      "completionTokens": 2453
+    },
+    "form": {
+      "calls": 10,
+      "ms": 55433,
+      "in": 20,
+      "out": 5,
+      "rejects": 15,
+      "promptTokens": 2826,
+      "completionTokens": 937
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 4609,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 271578,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11924,
+      "completionTokens": 5836
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If you have to add 999 and 1 using the algorithm described in the passage, what will be the result?",
+      "ms": {
+        "draft": 22085,
+        "critique": 9026,
+        "solver": 2264,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is it important to align the numbers from right to left when using the addition algorithm?",
+      "ms": {
+        "draft": 22085,
+        "critique": 14589,
+        "solver": 2953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using an algorithm for addition?",
+      "ms": {
+        "draft": 22085,
+        "critique": 10412,
+        "solver": 24748
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct algorithm to find the greatest common divisor (gcd) of two numbers?",
+      "ms": {
+        "draft": 9672,
+        "critique": 11648,
+        "solver": 3021,
+        "form": 5534
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how does the algorithm for finding the greatest common divisor (gcd) improve?",
+      "ms": {
+        "draft": 9672,
+        "critique": 11023,
+        "solver": 2658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the least common multiple (lcm) of 54000 and 81000 according to the passage?",
+      "ms": {
+        "draft": 9672,
+        "critique": 11817,
+        "solver": 6412
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind the algorithm that directly computes the greatest common divisor (gcd)?",
+      "ms": {
+        "draft": 6912,
+        "critique": 15365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important to maintain lists of divisors in increasing order?",
+      "ms": {
+        "draft": 9672,
+        "critique": 12752,
+        "solver": 33925,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the example provided in the passage, what is the greatest common divisor of 6 and 12?",
+      "ms": {
+        "draft": 6912,
+        "critique": 9744,
+        "solver": 3211,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the divisors of a number m are [1, 2, 3, 6, 9, 18], which of the following could be the value of m?",
+      "ms": {
+        "draft": 9672,
+        "critique": 11890,
+        "solver": 33320,
+        "form": 8043
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If we apply the algorithm described in the passage to find the greatest common divisor of 14 and 21, what is the value of the most recent common divisor after checking all numbers from 1 to 7?",
+      "ms": {
+        "draft": 6912,
+        "critique": 12391,
+        "solver": 3892,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is described in the passage for finding the GCD of two numbers using repeated division by remainder?",
+      "ms": {
+        "draft": 12545,
+        "critique": 16533
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why does Euclid’s algorithm reduce the problem of finding the gcd of m and n to finding the gcd of n and m - n?",
+      "ms": {
+        "draft": 6912,
+        "critique": 10284,
+        "solver": 29485,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the efficiency of the algorithm that checks all numbers from 1 to min(m, n) to find the gcd?",
+      "ms": {
+        "draft": 6912,
+        "critique": 12974,
+        "solver": 28004,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the stopping condition in the algorithm described for finding the GCD?",
+      "ms": {
+        "draft": 12545,
+        "critique": 10201,
+        "solver": 2678,
+        "form": 7254
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is Āryabhaṭa’s division algorithm more efficient than the original Euclid’s algorithm?",
+      "ms": {
+        "draft": 12545,
+        "critique": 11720,
+        "solver": 2266,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Using the algorithm described, what is the GCD of 825 and 375?",
+      "ms": {
+        "draft": 12545,
+        "critique": 12072,
+        "solver": 15229
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the GCD of two numbers is 1, what can we say about the two numbers?",
+      "ms": {
+        "draft": 21574,
+        "critique": 10917,
+        "solver": 3846,
+        "form": 7141
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the key difference between Euclid's algorithm and Āryabhaṭa's improved algorithm for finding the GCD?",
+      "ms": {
+        "draft": 21574,
+        "critique": 7044,
+        "solver": 20129,
+        "form": 4393
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using Āryabhaṭa’s algorithm, what is the GCD of 825 and 375?",
+      "ms": {
+        "draft": 21574,
+        "critique": 7411,
+        "solver": 23589,
+        "form": 9285
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If d divides both m and n, which of the following must also be true?",
+      "ms": {
+        "draft": 21574,
+        "critique": 10925,
+        "solver": 2322
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is an algorithm according to the passage?",
+      "ms": {
+        "draft": 4922,
+        "critique": 8693
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of Āryabhaṭa’s algorithm?",
+      "ms": {
+        "draft": 21574,
+        "critique": 9471,
+        "solver": 1985,
+        "form": 2850
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main advantage of the addition algorithm described in the passage?",
+      "ms": {
+        "draft": 4922,
+        "critique": 8295
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you add 999 and 999 using the algorithm described, what will be the carry after adding the leftmost digits?",
+      "ms": {
+        "draft": 4922,
+        "critique": 7828
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, why is it important to align numbers from right to left when adding?",
+      "ms": {
+        "draft": 4922,
+        "critique": 8309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why can the carry value not be more than 1 in the addition algorithm?",
+      "ms": {
+        "draft": 4922,
+        "critique": 7836
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student adds 473 + 695 without aligning the digits, what will be the result?",
+      "ms": {
+        "draft": 4922,
+        "critique": 8575,
+        "solver": 11245
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is an algorithm?",
+      "ms": {
+        "draft": 22085,
+        "critique": 9311,
+        "solver": 2891,
+        "form": 7013,
+        "translation": 59079
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the greatest common divisor (gcd) of 375 and 825?",
+      "ms": {
+        "draft": 9672,
+        "critique": 12583,
+        "solver": 1900,
+        "form": 6764,
+        "translation": 36983
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sum of two digits in a column is 12, what will be the value written below the column and what will be the carry?",
+      "ms": {
+        "draft": 22085,
+        "critique": 11774,
+        "solver": 3182,
+        "form": 1,
+        "translation": 53534
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the GCD of two numbers is 1, which of the following is a correct statement about the two numbers?",
+      "ms": {
+        "draft": 21574,
+        "critique": 8617,
+        "solver": 1861,
+        "form": 4486,
+        "translation": 48288
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the algorithm for adding two numbers, why can the carry value never be more than 1?",
+      "ms": {
+        "draft": 22085,
+        "critique": 11192,
+        "solver": 3007,
+        "form": 0,
+        "translation": 67634
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you have to add 999 and 1 using the algorithm described in the passage, what will be the result?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why is it important to align the numbers from right to left when using the addition algorithm?",
+      "reason": "the key is far longer than every distractor (64 vs 29 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using an algorithm for addition?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the correct algorithm to find the greatest common divisor (gcd) of two numbers?",
+      "reason": "options 0 and 1 say the same thing (\"Compute the divisors of both numbers, find the common divisors, and take the largest one.\" / \"Compute the divisors of both numbers, find the common divisors, and take the smallest one.\"); options 2 and 3 say the same thing (\"Compute the divisors of both numbers, find the common divisors, and take the average.\" / \"Compute the divisors of both numbers, find the common divisors, and take the sum.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, how does the algorithm for finding the greatest common divisor (gcd) improve?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the least common multiple (lcm) of 54000 and 81000 according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind the algorithm that directly computes the greatest common divisor (gcd)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important to maintain lists of divisors in increasing order?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the example provided in the passage, what is the greatest common divisor of 6 and 12?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the divisors of a number m are [1, 2, 3, 6, 9, 18], which of the following could be the value of m?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If we apply the algorithm described in the passage to find the greatest common divisor of 14 and 21, what is the value of the most recent common divisor after checking all numbers from 1 to 7?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method is described in the passage for finding the GCD of two numbers using repeated division by remainder?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why does Euclid’s algorithm reduce the problem of finding the gcd of m and n to finding the gcd of n and m - n?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the efficiency of the algorithm that checks all numbers from 1 to min(m, n) to find the gcd?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the stopping condition in the algorithm described for finding the GCD?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses the stopping condition with when the numbers are bo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is Āryabhaṭa’s division algorithm more efficient than the original Euclid’s algorithm?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses the efficiency with a different aspect of the algor…\"); distractor 3's reason is not a one-line misconception (\"Confuses the efficiency with the use of prime factorisation,…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Using the algorithm described, what is the GCD of 825 and 375?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"What is the main purpose of the 'most-recent-common-divisor' variable in the algorithm"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the basic step that the algorithm assumes?\",\n      \"o"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the GCD of two numbers is 1, what can we say about the two numbers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"implies a relationship not stated in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the key difference between Euclid's algorithm and Āryabhaṭa's improved algorithm for finding the GCD?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"belief that Euclid's method is faster despite the text expla…\"); distractor 2's reason is not a one-line misconception (\"introduces a false comparison not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"adds unsupported conditions about number types not mentioned…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Using Āryabhaṭa’s algorithm, what is the GCD of 825 and 375?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"75\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If d divides both m and n, which of the following must also be true?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is an algorithm according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of Āryabhaṭa’s algorithm?",
+      "reason": "options 0 and 1 say the same thing (\"To find the largest number that divides both m and n\" / \"To find the smallest number that divides both m and n\"); distractor 3's reason is not a one-line misconception (\"introduces a concept not discussed in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main advantage of the addition algorithm described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you add 999 and 999 using the algorithm described, what will be the carry after adding the leftmost digits?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, why is it important to align numbers from right to left when adding?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why can the carry value not be more than 1 in the addition algorithm?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student adds 473 + 695 without aligning the digits, what will be the result?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,836 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T11:51:58.983Z",
+  "finishedAt": "2026-10-20T12:03:31.846Z",
+  "seconds": 693,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc113.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Earth as a System: Energy, Matter, and Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n9. Assertion (A): In an ecosystem, 1% of energy is available for transfer from one 1\ntrophic level to the next.\nReason (R): An average of 10% of the food eaten by organisms is available for\nflow in the form of chemical energy.",
+      "[INJSO 2015 — question paper]\n25. Study the following ray diagram in which: ‘A’ represents atmosphere, ‘B’ represents\ngreen plants, ‘C’ represents decomposers and ‘D’ represents animals.\nB C\nA D\nThe above ray diagram represents\na) Energy flow through the given ecosystem.\nb) Interconnections among different food chains in the given ecosystem.\nc) Movement of carbon among A, B, C and D.\nd) Movement of nitrogen among A, B, C and D",
+      "[INJSO 2019 — question paper]\n33. (9 MARKS) Consider a self-sustaining ecosystem consisting of three components X, Y\nand Z set up in a laboratory for several weeks. During a 26-day observation period, it was\ndisturbed by human intervention on a particular day. The population size of the three\ncomponents during this period is tabulated below.\nDay Population size\nComponent X Component Y Component Z\n1 10\n4 11\n7 15\n10 14\n13 14\n17 0\n20 0\n23 0\n26 0\n40 200\n42 220\n54 210\n53 190\n43 220\n120 100\n130 30\n30 30\n15 150\n(A) Assign the correct component alphabet to each of the following:\ni. Primary producer _____\nii. Herbivore _____\niii. Carnivore _____\n(1.5 MARKS)\n(1.5 MARKS)\n(1.5 MARKS)\n(B) The average biomass of a producer is 0.0060 g",
+      "[INJSO 2020 — question paper]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 249681,
+      "in": 48,
+      "out": 43,
+      "rejects": 5,
+      "promptTokens": 58436,
+      "completionTokens": 10962
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 450736,
+      "in": 43,
+      "out": 32,
+      "rejects": 11,
+      "promptTokens": 24579,
+      "completionTokens": 9162
+    },
+    "solver": {
+      "calls": 231,
+      "ms": 156816,
+      "in": 32,
+      "out": 23,
+      "rejects": 9,
+      "promptTokens": 47483,
+      "completionTokens": 2466
+    },
+    "form": {
+      "calls": 10,
+      "ms": 63930,
+      "in": 23,
+      "out": 12,
+      "rejects": 11,
+      "promptTokens": 7940,
+      "completionTokens": 1345
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5735,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 598607,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 27800,
+      "completionTokens": 14241
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If there is less snowfall during winters, what effect might it have on the lake and the grass available for sheep?",
+      "ms": {
+        "draft": 3515,
+        "critique": 8179
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of the hydrosphere?",
+      "ms": {
+        "draft": 3515,
+        "critique": 8989
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth's atmosphere becomes more transparent to infrared radiation, what might be the long-term effect on the planet?",
+      "ms": {
+        "draft": 3515,
+        "critique": 8774
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the uneven heating of the Earth's surface by solar radiation?",
+      "ms": {
+        "draft": 3515,
+        "critique": 10598
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is responsible for warming the Earth's surface and atmosphere?",
+      "ms": {
+        "draft": 5694,
+        "critique": 8733
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solar panel receives 1 kWm of insolation, how much energy will it receive in 2 hours on a 1 m² area?",
+      "ms": {
+        "draft": 5694,
+        "critique": 7644,
+        "solver": 2240,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given information, which of the following is most likely to be a surface with low albedo?",
+      "ms": {
+        "draft": 5694,
+        "critique": 8516
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'albedo' refer to?",
+      "ms": {
+        "draft": 5694,
+        "critique": 8470,
+        "solver": 13915,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a desert area, which of the following is most likely to be the main source of heat for the surrounding environment?",
+      "ms": {
+        "draft": 5694,
+        "critique": 6881,
+        "solver": 2066,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth's axis were not tilted, how would this affect the distribution of solar radiation and the resulting climate?",
+      "ms": {
+        "draft": 5694,
+        "critique": 8657,
+        "solver": 14798
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a result of uneven heating of the Earth's surface?",
+      "ms": {
+        "draft": 6553,
+        "critique": 9635,
+        "solver": 1726
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary reason for the formation of ocean gyres?",
+      "ms": {
+        "draft": 6553,
+        "critique": 9499,
+        "solver": 21170,
+        "form": 4951
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why warm equatorial waters move towards the poles?",
+      "ms": {
+        "draft": 6553,
+        "critique": 10324,
+        "solver": 15559,
+        "form": 4150
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which cycle is shown in Fig. 13.12?",
+      "ms": {
+        "draft": 6288,
+        "critique": 11175
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the increase in atmospheric carbon dioxide levels since 1960, as shown in Fig. 13.14?",
+      "ms": {
+        "draft": 6288,
+        "critique": 11077
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, if the population of decomposers suddenly decreases, what will happen to the carbon cycle?",
+      "ms": {
+        "draft": 6288,
+        "critique": 8631,
+        "solver": 3050
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How does the movement of ocean currents help in regulating the Earth's climate?",
+      "ms": {
+        "draft": 6553,
+        "critique": 8132,
+        "solver": 18505,
+        "form": 3130
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "ms": {
+        "draft": 7387,
+        "critique": 8368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of the Earth’s surface shown in Fig. 13.1?",
+      "ms": {
+        "draft": 6451,
+        "critique": 3750
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of osmosis as described in the passage?",
+      "ms": {
+        "draft": 4122,
+        "critique": 8486,
+        "solver": 2496
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of speed mentioned in the passage?",
+      "ms": {
+        "draft": 4122,
+        "critique": 8839,
+        "solver": 4138
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about energy?",
+      "ms": {
+        "draft": 4122,
+        "critique": 8724,
+        "solver": 1609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following scenarios best represents a situation where a force is applied in the direction opposite to the motion?",
+      "ms": {
+        "draft": 4122,
+        "critique": 7935,
+        "solver": 25411
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "ms": {
+        "draft": 5257,
+        "critique": 9273
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a ball is thrown upwards with a velocity of 10 m/s, what will be its velocity after 2 seconds? (Assume g = 10 m/s²)",
+      "ms": {
+        "draft": 4122,
+        "critique": 11303,
+        "solver": 21193
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Earth were a flat disc instead of a sphere, how would the patterns of solar radiation and temperature be different?",
+      "ms": {
+        "draft": 5257,
+        "critique": 8809,
+        "solver": 1879
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, how would a rise in atmospheric temperature affect the cryosphere, hydrosphere, and biosphere?",
+      "ms": {
+        "draft": 5257,
+        "critique": 9182,
+        "solver": 1952,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Consider two hypothetical Earth-sized planets, one entirely covered by oceans and the other entirely by land. How would the wind patterns on these planets compare with Earth's wind systems?",
+      "ms": {
+        "draft": 5257,
+        "critique": 8606,
+        "solver": 2237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If there is a rise in atmospheric temperature on Earth, how would this affect the carbon cycle and the biosphere?",
+      "ms": {
+        "draft": 5257,
+        "critique": 8565,
+        "solver": 2586,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What happens to the dissolved carbon in the ocean when global temperatures increase?",
+      "ms": {
+        "draft": 4189,
+        "critique": 10115,
+        "solver": 2091
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the movement of air in the equatorial low pressure belt?",
+      "ms": {
+        "draft": 22844,
+        "critique": 9240,
+        "solver": 2197,
+        "form": 1482
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a process that restores oxygen in the atmosphere?",
+      "ms": {
+        "draft": 5330,
+        "critique": 7719,
+        "solver": 12721,
+        "form": 0,
+        "translation": 42409
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the water cycle involves water returning to the surface as rain, hail, or snow?",
+      "ms": {
+        "draft": 4189,
+        "critique": 10330,
+        "solver": 1599,
+        "form": 0,
+        "translation": 37480
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of atmospheric oxygen?",
+      "ms": {
+        "draft": 3552,
+        "critique": 6995,
+        "solver": 1507,
+        "form": 1,
+        "translation": 45057
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is primarily responsible for the warming of the Earth?",
+      "ms": {
+        "draft": 5257,
+        "critique": 7717,
+        "solver": 2122,
+        "form": 0,
+        "translation": 75120
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if photosynthesis stopped on Earth?",
+      "ms": {
+        "draft": 3552,
+        "critique": 9039,
+        "solver": 2086,
+        "form": 0,
+        "translation": 40128
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do cities tend to be warmer than surrounding rural areas?",
+      "ms": {
+        "draft": 3656,
+        "critique": 7558,
+        "solver": 1826,
+        "form": 3172,
+        "translation": 48459
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary source of energy for most organisms on Earth?",
+      "ms": {
+        "draft": 3515,
+        "critique": 7836,
+        "solver": 13958,
+        "form": 0,
+        "translation": 33273
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given information, what is the main reason for the increase in ocean acidity?",
+      "ms": {
+        "draft": 3552,
+        "critique": 9191,
+        "solver": 1338,
+        "form": 0,
+        "translation": 40533
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best describes the role of the ozone layer in the Earth's atmosphere?",
+      "ms": {
+        "draft": 3515,
+        "critique": 9583,
+        "solver": 18650,
+        "form": 0,
+        "translation": 46822
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a region experiences a valley breeze during the day, which of the following is most likely to be true about the area?",
+      "ms": {
+        "draft": 6553,
+        "critique": 8750,
+        "solver": 2040,
+        "form": 3501,
+        "translation": 67095
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is analyzing the energy transfer in an ecosystem and finds that the population of producers drops significantly after a disturbance. What could be the most likely reason for this drop?",
+      "ms": {
+        "draft": 4122,
+        "critique": 11880,
+        "solver": 2160,
+        "form": 3811,
+        "translation": 73414
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, if the number of decomposers decreases significantly, what would be the most likely impact?",
+      "ms": {
+        "draft": 3552,
+        "critique": 8106,
+        "solver": 2346,
+        "form": 0,
+        "translation": 41983
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main reason for the urban heat island effect?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a reason for the cooler temperature in rural areas?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How does the atmosphere help in regulating Earth's temperature?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What role does the ozone layer play in protecting life on Earth?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What happens to the temperature in the stratosphere?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If there is less snowfall during winters, what effect might it have on the lake and the grass available for sheep?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a feature of the hydrosphere?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the Earth's atmosphere becomes more transparent to infrared radiation, what might be the long-term effect on the planet?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main reason for the uneven heating of the Earth's surface by solar radiation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is responsible for warming the Earth's surface and atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a solar panel receives 1 kWm of insolation, how much energy will it receive in 2 hours on a 1 m² area?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"1000*1*7200\" = 7200000, but the key says 7.2"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the given information, which of the following is most likely to be a surface with low albedo?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the term 'albedo' refer to?",
+      "reason": "options 0 and 2 are the same (\"The amount of energy absorbed by a surface\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a desert area, which of the following is most likely to be the main source of heat for the surrounding environment?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sand'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the Earth's axis were not tilted, how would this affect the distribution of solar radiation and the resulting climate?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a result of uneven heating of the Earth's surface?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the primary reason for the formation of ocean gyres?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why warm equatorial waters move towards the poles?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This is the opposite of what is stated in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which cycle is shown in Fig. 13.12?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for the increase in atmospheric carbon dioxide levels since 1960, as shown in Fig. 13.14?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In an ecosystem, if the population of decomposers suddenly decreases, what will happen to the carbon cycle?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "How does the movement of ocean currents help in regulating the Earth's climate?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels warm_water, cold_water"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a feature of the Earth’s surface shown in Fig. 13.1?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of osmosis as described in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the unit of speed mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about energy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Energy can be created but not destroyed\" / \"Energy can be destroyed but not created\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following scenarios best represents a situation where a force is applied in the direction opposite to the motion?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a ball is thrown upwards with a velocity of 10 m/s, what will be its velocity after 2 seconds? (Assume g = 10 m/s²)",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the Earth were a flat disc instead of a sphere, how would the patterns of solar radiation and temperature be different?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given passage, how would a rise in atmospheric temperature affect the cryosphere, hydrosphere, and biosphere?",
+      "reason": "options 0 and 1 say the same thing (\"It would increase ice formation in the cryosphere, reduce water availability in the hydrosphere, and increase biodiversity in the biosphere.\" / \"It would decrease ice formation in the cryosphere, increase water availability in the hydrosphere, and reduce biodiversity in the biosphere.\"); options 0 and 2 say the same thing (\"It would increase ice formation in the cryosphere, reduce water availability in the hydrosphere, and increase biodiversity in the biosphere.\" / \"It would decrease ice formation in the cryosphere, reduce water availability in the hydrosphere, and reduce biodiversity in the biosphere.\"); options 0 and 3 say the same thing (\"It would increase ice formation in the cryosphere, reduce water availability in the hydrosphere, and increase biodiversity in the biosphere.\" / \"It would increase ice formation in the cryosphere, increase water availability in the hydrosphere, and increase biodiversity in the biosphere.\"); options 1 and 2 say the same thing (\"It would decrease ice formation in the cryosphere, increase water availability in the hydrosphere, and reduce biodiversity in the biosphere.\" / \"It would decrease ice formation in the cryosphere, reduce water availability in the hydrosphere, and reduce biodiversity in the biosphere.\"); options 1 and 3 say the same thing (\"It would decrease ice formation in the cryosphere, increase water availability in the hydrosphere, and reduce biodiversity in the biosphere.\" / \"It would increase ice formation in the cryosphere, increase water availability in the hydrosphere, and increase biodiversity in the biosphere.\"); options 2 and 3 say the same thing (\"It would decrease ice formation in the cryosphere, reduce water availability in the hydrosphere, and reduce biodiversity in the biosphere.\" / \"It would increase ice formation in the cryosphere, increase water availability in the hydrosphere, and increase biodiversity in the biosphere.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Consider two hypothetical Earth-sized planets, one entirely covered by oceans and the other entirely by land. How would the wind patterns on these planets compare with Earth's wind systems?",
+      "reason": "options 0 and 1 say the same thing (\"The ocean-covered planet would have stronger and more consistent wind patterns than the land-covered planet.\" / \"The land-covered planet would have stronger and more consistent wind patterns than the ocean-covered planet.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If there is a rise in atmospheric temperature on Earth, how would this affect the carbon cycle and the biosphere?",
+      "reason": "options 2 and 3 say the same thing (\"It would increase the rate of carbon absorption by plants but decrease the biosphere's biodiversity.\" / \"It would decrease the rate of carbon absorption by plants but increase the biosphere's biodiversity.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What happens to the dissolved carbon in the ocean when global temperatures increase?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best describes the movement of air in the equatorial low pressure belt?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes air moves towards the poles at the equat…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

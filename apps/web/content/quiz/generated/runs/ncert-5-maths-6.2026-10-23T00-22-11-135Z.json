@@ -1,0 +1,641 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T00:22:11.135Z",
+  "finishedAt": "2026-10-23T00:28:59.048Z",
+  "seconds": 408,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm106.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — The Dairy Farm",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n5. (d) 0,8",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\nSection D consists of 4 questions of 5 marks each",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n4. Hence, modal agriculture holdings of the village is 6.17 hectare (approx.)\nOR\n27 (B).\nClass interval f i\n0-20 7\n20-40 p\n40-60 10\n60-80 9\n80-100 13\nTotal 39 + p\nx i\n(Mid- d i = 𝒙 𝒊 −𝟑𝟎 𝒉 f i d i\nvalue)\n10 − 1 − 7\n30 0 0\n50 1 10\n70 2 18\n90 3 39\nAssumed mean(A) = 30, Width of the interval (h) = 20\nMean = 30 + 60 × 20 = 54 ⟹ 50 = 39 + p ⟹ p = 11 1\n39+p\n28.\nTangents drawn to a circle from an external point are equal.\nSo, AP = AS, PB = BQ, 1½\nCR = CQ, DR = DS\nOn adding the above equations,\n(AP + PB) + (CR + RD) = (AS + BQ) + (CQ + DS)\n⟹ AB + CD = AD + BC\nAB + CD\n⟹ AD + BC = 1 ½\nQuestion given for Visually Impaired candidates\nParallelogram ABCD circumscribes a circle as shown in figure.\nTan"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 142126,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 31297,
+      "completionTokens": 7328
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 316897,
+      "in": 32,
+      "out": 29,
+      "rejects": 3,
+      "promptTokens": 20896,
+      "completionTokens": 8164
+    },
+    "solver": {
+      "calls": 243,
+      "ms": 167494,
+      "in": 29,
+      "out": 17,
+      "rejects": 12,
+      "promptTokens": 65602,
+      "completionTokens": 3135
+    },
+    "form": {
+      "calls": 3,
+      "ms": 11279,
+      "in": 17,
+      "out": 9,
+      "rejects": 8,
+      "promptTokens": 842,
+      "completionTokens": 261
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3563,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 245766,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 16337,
+      "completionTokens": 6709
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How much kitchen waste does a family of 4 produce in a year?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7530
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A school has 35 rows in the auditorium, with 42 seats in each row. How many people can sit in the auditorium?",
+      "ms": {
+        "draft": 3810,
+        "critique": 6161,
+        "solver": 18773
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 18 × 5 = 90, which of the following is a correct way to find the product of 18 × 5 using a different strategy?",
+      "ms": {
+        "draft": 3810,
+        "critique": 9378,
+        "solver": 17932
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the minimum number of cows the dairy cooperative gets its milk from?",
+      "ms": {
+        "draft": 4123,
+        "critique": 8259,
+        "solver": 2564
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "By creating their own compost, how much money has the family saved in a year?",
+      "ms": {
+        "draft": 4123,
+        "critique": 10448,
+        "solver": 21596
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "ms": {
+        "draft": 4123,
+        "critique": 8941,
+        "solver": 19083
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How much does the dairy cooperative earn by selling ghee in a month?",
+      "ms": {
+        "draft": 4123,
+        "critique": 6787,
+        "solver": 21686
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct multiplication fact from the passage?",
+      "ms": {
+        "draft": 4757,
+        "critique": 9281,
+        "solver": 1210,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, which of the following has the same product as 100 × 42?",
+      "ms": {
+        "draft": 4757,
+        "critique": 9413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How much money should Anjali give to the shopkeeper for 15 bulbs and 12 tube lights?",
+      "ms": {
+        "draft": 4123,
+        "critique": 9527,
+        "solver": 21402,
+        "form": 3278
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "ms": {
+        "draft": 4757,
+        "critique": 7623,
+        "solver": 16732,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a minister receives 1 gold coin and it is multiplied by 5 every day for 7 days, how many coins would they have on the 7th day?",
+      "ms": {
+        "draft": 4757,
+        "critique": 7202,
+        "solver": 6190,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 18 × 9 = 162, what is 18 × 8?",
+      "ms": {
+        "draft": 4886,
+        "critique": 5640,
+        "solver": 1290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "ms": {
+        "draft": 4886,
+        "critique": 5803,
+        "solver": 1905,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 203 × 54 = 11, 062, what is 203 × 55?",
+      "ms": {
+        "draft": 4886,
+        "critique": 8649,
+        "solver": 1836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 17 × 23 = 391, what is 16 × 23?",
+      "ms": {
+        "draft": 4886,
+        "critique": 10151,
+        "solver": 1787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following has the same value as 12 × 125?",
+      "ms": {
+        "draft": 4886,
+        "critique": 6315,
+        "solver": 15709,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How much money does the family save in a year by making compost?",
+      "ms": {
+        "draft": 4681,
+        "critique": 6984,
+        "solver": 2048
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following has the same value as 16 × 25?",
+      "ms": {
+        "draft": 4886,
+        "critique": 7579,
+        "solver": 15276
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "ms": {
+        "draft": 4681,
+        "critique": 6924,
+        "solver": 1893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following products is closest to 100 when using the digits 2, 5, and 3?",
+      "ms": {
+        "draft": 4507,
+        "critique": 7518
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the dairy cooperative sells 125 kg of ghee at ₹574 per kg, how much money do they earn in a month?",
+      "ms": {
+        "draft": 4681,
+        "critique": 6672,
+        "solver": 17676
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which number satisfies the following clues: it is a two-digit number, greater than 8, not a multiple of 4, a multiple of 9, odd, not a multiple of 11, less than 50, and has an even ones digit?",
+      "ms": {
+        "draft": 4507,
+        "critique": 8259,
+        "solver": 9727
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How much kitchen waste does a family of 4 produce in a year?",
+      "ms": {
+        "draft": 4681,
+        "critique": 5942,
+        "solver": 2704,
+        "form": 4225
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of multiplying any number by 10?",
+      "ms": {
+        "draft": 3810,
+        "critique": 4807,
+        "solver": 1081,
+        "form": 0,
+        "translation": 44070
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a multiple of 9 but not a multiple of 4?",
+      "ms": {
+        "draft": 3810,
+        "critique": 4977,
+        "solver": 12393,
+        "form": 0,
+        "translation": 25220
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct pattern observed in multiplication by 10s and 100s?",
+      "ms": {
+        "draft": 4507,
+        "critique": 5904,
+        "solver": 2880,
+        "form": 0,
+        "translation": 37938
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct representation of the multiplication fact 8 × 100?",
+      "ms": {
+        "draft": 4507,
+        "critique": 7540,
+        "solver": 1477,
+        "form": 0,
+        "translation": 28016
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 20 × 8 = 160, what is 20 × 80?",
+      "ms": {
+        "draft": 3810,
+        "critique": 6093,
+        "solver": 2195,
+        "form": 0,
+        "translation": 24625
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 10 × 45 = 450, what is 100 × 45?",
+      "ms": {
+        "draft": 3810,
+        "critique": 7570,
+        "solver": 1649,
+        "form": 0,
+        "translation": 23956
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the minimum number of cows the dairy cooperative gets its milk from?",
+      "ms": {
+        "draft": 4681,
+        "critique": 6313,
+        "solver": 1420,
+        "form": 3776,
+        "translation": 34094
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 16 × 44 = 704, what is 16 × 22?",
+      "ms": {
+        "draft": 4757,
+        "critique": 5903,
+        "solver": 881,
+        "form": 0,
+        "translation": 24526
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How much kitchen waste does a family of 4 produce in a year?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A school has 35 rows in the auditorium, with 42 seats in each row. How many people can sit in the auditorium?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 18 × 5 = 90, which of the following is a correct way to find the product of 18 × 5 using a different strategy?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the minimum number of cows the dairy cooperative gets its milk from?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "By creating their own compost, how much money has the family saved in a year?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How much does the dairy cooperative earn by selling ghee in a month?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct multiplication fact from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; ARITHMETIC MISMATCH — checkExpr \"159*324\" = 51516, but the key says 159"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the passage, which of the following has the same product as 100 × 42?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How much money should Anjali give to the shopkeeper for 15 bulbs and 12 tube lights?",
+      "reason": "options 0 and 2 are the same (\"₹753\"); options 1 and 3 are the same (\"₹807\"); ARITHMETIC MISMATCH — checkExpr \"15*25+12*34\" = 783, but the key says 753"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "reason": "options 0 and 3 are the same (\"391 + 17\"); options 1 and 2 are the same (\"391 + 24\"); ARITHMETIC MISMATCH — checkExpr \"391+17\" = 408, but the key says 391"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a minister receives 1 gold coin and it is multiplied by 5 every day for 7 days, how many coins would they have on the 7th day?",
+      "reason": "options 0 and 2 are the same (\"5^7\"); ARITHMETIC MISMATCH — checkExpr \"5^7\" = 78125, but the key says 5"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 18 × 9 = 162, what is 18 × 8?",
+      "reason": "options 0 and 2 are the same (\"162 + 9\"); options 0 and 3 are the same (\"162 + 9\"); options 2 and 3 are the same (\"162 × 9\"); ARITHMETIC MISMATCH — checkExpr \"162-9\" = 153, but the key says 162"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "reason": "options 0 and 2 are the same (\"391 + 17\"); options 1 and 3 are the same (\"391 + 23\"); ARITHMETIC MISMATCH — checkExpr \"391+17\" = 408, but the key says 391"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 203 × 54 = 11, 062, what is 203 × 55?",
+      "reason": "options 0 and 2 are the same (\"11,062 + 203\"); options 1 and 3 are the same (\"11,062 + 54\"); ARITHMETIC MISMATCH — checkExpr \"11062+203\" = 11265, but the key says 11062"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 17 × 23 = 391, what is 16 × 23?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following has the same value as 12 × 125?",
+      "reason": "options 2 and 3 are the same (\"12 × 200 - 12 × 25\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How much money does the family save in a year by making compost?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following has the same value as 16 × 25?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "reason": "the solver picked option 2 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following products is closest to 100 when using the digits 2, 5, and 3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the dairy cooperative sells 125 kg of ghee at ₹574 per kg, how much money do they earn in a month?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which number satisfies the following clues: it is a two-digit number, greater than 8, not a multiple of 4, a multiple of 9, odd, not a multiple of 11, less than 50, and has an even ones digit?",
+      "reason": "after redraft: the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How much kitchen waste does a family of 4 produce in a year?",
+      "reason": "near-duplicate of served question cmvh6e59x074igpfhpvh3ooz9 (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

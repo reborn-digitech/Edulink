@@ -1,0 +1,642 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T03:05:38.054Z",
+  "finishedAt": "2026-10-21T03:12:32.371Z",
+  "seconds": 414,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo106.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 6 — Anatomy of Flowering Plants",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2021 — question paper]\n7. (1 point) „Mostly male‟ hypothesis of Michael and Frohlich states that bisexual flower\norganization derives more from the male structures of ancestral gymnosperms than from\nfemale structures. From which of the following facts is this hypothesis derived?\na. Male cones of certain pteridophytes and gymnosperms resemble primitive flowers like lotus.\nb. Genes for flower development in angiosperms and microsporophyll development in\ngymnosperms are closely related.\nc. Position of flowers resembles that of male cones.\nd. All the above.",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n1. A researcher observes that in a particular flowering plant, the pistil matures 1\nseveral days before the stamens in all flowers of the plant. What is the most\nsignificant consequence of this timing difference?\nA. It guarantees self-pollination\nB. It promotes autogamy\nC. It ensures cross-pollination\nD. It leads to geitonogamy",
+      "[INBO 2011 — question paper]\n48. (2 points) Floral diagrams are used to graphically represent a flower. Given\nbelow is a floral diagram of a flower:\nWhich of the following properties does it convey?\n1. Presence of three sepals\n2. Having a tricarpellary syncarpous ovary\n3. Presence of three fertile stamens\n4. Presence of a bract\na. Only 1, 3 and 4\nb. Only 1, 2 and 4\nc. Only 2 and 3\nd. Only 2\nChoose from the options and put a tick mark (√) in the appropriate box.\na. b. c. d.",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n23. (a) Corn: Wind. Numerous flowers are packed in an inflorescence; the 3\ntassels seen in the corn cob are the stigma and style which wave in the\nwind to trap pollen grains.\n(b) Water hyacinth: Insects or wind. In water hyacinth the flowers emerge\nabove the level of water and are pollinated by insects or wind as in\nmost of the land plants.\n(c) Vallisneria: Water, In Vallisneria - the female flower reaches the surface\nof water by the long stalk and the male flowers or pollen grains are\nreleased onto the surface of water. They are carried passively by water\ncurrents; some of them eventually reach the female flowers and the\nstigma.\n(½ x 6 =3 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 154539,
+      "in": 33,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 25435,
+      "completionTokens": 9528
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 193927,
+      "in": 32,
+      "out": 27,
+      "rejects": 5,
+      "promptTokens": 16022,
+      "completionTokens": 6042
+    },
+    "solver": {
+      "calls": 153,
+      "ms": 56886,
+      "in": 27,
+      "out": 24,
+      "rejects": 3,
+      "promptTokens": 22336,
+      "completionTokens": 1308
+    },
+    "form": {
+      "calls": 26,
+      "ms": 84189,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 14288,
+      "completionTokens": 2558
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 6257,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 369254,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24657,
+      "completionTokens": 12484
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the outermost covering of the plant body?",
+      "ms": {
+        "draft": 5116,
+        "critique": 4921
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant's stomata are closed, which of the following processes will be affected?",
+      "ms": {
+        "draft": 5116,
+        "critique": 5206,
+        "solver": 1313,
+        "form": 1744
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a vascular bundle that is open?",
+      "ms": {
+        "draft": 5116,
+        "critique": 5885,
+        "solver": 1644,
+        "form": 3037
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant's stem has vascular bundles that are conjoint and scattered, and the phloem parenchyma is absent, what type of stem is it most likely to be?",
+      "ms": {
+        "draft": 5248,
+        "critique": 5099
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description in the passage, which of the following is a distinguishing feature of a dicot stem compared to a monocot stem?",
+      "ms": {
+        "draft": 5248,
+        "critique": 5101,
+        "solver": 1856,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observed that in a plant, the flowers have a tricarpellary syncarpous ovary. Which of the following would be the most accurate representation of the floral diagram of this plant?",
+      "ms": {
+        "draft": 5248,
+        "critique": 7046
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of the transverse section of a monocot stem?",
+      "ms": {
+        "draft": 5248,
+        "critique": 5897,
+        "solver": 9197,
+        "form": 2432
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plant's stem shows vascular bundles arranged in a ring, and the phloem parenchyma is present, which of the following is the most accurate classification of the stem?",
+      "ms": {
+        "draft": 5248,
+        "critique": 5758,
+        "solver": 5909,
+        "form": 1277
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main difference between a monocot root and a dicot root?",
+      "ms": {
+        "draft": 5367,
+        "critique": 4834,
+        "solver": 1406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of a monocot stem as described in the chapter?",
+      "ms": {
+        "draft": 5367,
+        "critique": 5006,
+        "solver": 2133,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A student observed a transverse section of a plant stem and noticed that the vascular bundles are scattered and surrounded by sclerenchymatous bundle sheaths. What can he conclude?",
+      "ms": {
+        "draft": 5367,
+        "critique": 4522,
+        "solver": 1195,
+        "form": 3265
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to determine whether a plant is a monocot or a dicot based on its stem. He observes that the vascular bundles are scattered and the phloem parenchyma is absent. What should he conclude?",
+      "ms": {
+        "draft": 5367,
+        "critique": 5881,
+        "solver": 1340,
+        "form": 2987
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a transverse section of a plant material shows the presence of a well-developed pith and vascular bundles arranged in a ring, what can be inferred about the plant?",
+      "ms": {
+        "draft": 5367,
+        "critique": 5519,
+        "solver": 1663,
+        "form": 3393
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of the pericycle in a dicot root?",
+      "ms": {
+        "draft": 3591,
+        "critique": 5367
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes a plant with a stem that has scattered vascular bundles and lacks phloem parenchyma. What can be concluded about the plant?",
+      "ms": {
+        "draft": 5367,
+        "critique": 5325,
+        "solver": 1387,
+        "form": 3133
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic feature of the endodermis in a dicot root?",
+      "ms": {
+        "draft": 3591,
+        "critique": 6884,
+        "solver": 1320,
+        "form": 2897
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is a key difference between the vascular bundles in dicot and monocot stems?",
+      "ms": {
+        "draft": 3591,
+        "critique": 6435,
+        "solver": 1632
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a monocot leaf, why are the stomata present on both surfaces of the epidermis?",
+      "ms": {
+        "draft": 3591,
+        "critique": 5719
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant's stomata are composed of guard cells that are bean-shaped, what is the most likely function of these guard cells?",
+      "ms": {
+        "draft": 5426,
+        "critique": 5806,
+        "solver": 1320,
+        "form": 2474
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the plant is made up of elongated, compactly arranged cells that form a continuous layer?",
+      "ms": {
+        "draft": 5426,
+        "critique": 5500,
+        "solver": 1200,
+        "form": 4227
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plant has vascular bundles with phloem located only on the outer side of xylem, what can be inferred about the plant?",
+      "ms": {
+        "draft": 5426,
+        "critique": 6683,
+        "solver": 783
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a dicotyledonous plant, what characteristic of vascular bundles allows them to form secondary tissues?",
+      "ms": {
+        "draft": 5426,
+        "critique": 5972,
+        "solver": 1619,
+        "form": 1707
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the epidermal cells in the root?",
+      "ms": {
+        "draft": 5116,
+        "critique": 4379,
+        "solver": 1364,
+        "form": 3288,
+        "translation": 38242
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of the endodermis in plant roots?",
+      "ms": {
+        "draft": 3417,
+        "critique": 6529,
+        "solver": 1228,
+        "form": 4066,
+        "translation": 45313
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the stem provides mechanical strength to the young stem?",
+      "ms": {
+        "draft": 3417,
+        "critique": 5766,
+        "solver": 1709,
+        "form": 2915,
+        "translation": 31745
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a monocot stem, where are the vascular bundles located?",
+      "ms": {
+        "draft": 3417,
+        "critique": 5611,
+        "solver": 1216,
+        "form": 3365,
+        "translation": 42481
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the vascular bundles in a leaf?",
+      "ms": {
+        "draft": 3417,
+        "critique": 5840,
+        "solver": 1634,
+        "form": 2291,
+        "translation": 35507
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a flower has a tricarpellary syncarpous ovary, which of the following is most likely true?",
+      "ms": {
+        "draft": 5116,
+        "critique": 5602,
+        "solver": 1292,
+        "form": 2735,
+        "translation": 35506
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A plant has a leaf with stomata on both surfaces and undifferentiated mesophyll. What type of leaf is it most likely to be?",
+      "ms": {
+        "draft": 3417,
+        "critique": 6131,
+        "solver": 1196,
+        "form": 3404,
+        "translation": 36315
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are the guard cells in grasses described as dumb-bell shaped?",
+      "ms": {
+        "draft": 5116,
+        "critique": 5429,
+        "solver": 1712,
+        "form": 1950,
+        "translation": 34715
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do monocot roots not undergo secondary growth?",
+      "ms": {
+        "draft": 3417,
+        "critique": 5950,
+        "solver": 1045,
+        "form": 3976,
+        "translation": 38674
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the pith in a monocot root more developed than in a dicot root?",
+      "ms": {
+        "draft": 3591,
+        "critique": 5519,
+        "solver": 11418,
+        "form": 3533,
+        "translation": 27522
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the structure of stomata?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the outermost covering of the plant body?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant's stomata are closed, which of the following processes will be affected?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a vascular bundle that is open?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a plant's stem has vascular bundles that are conjoint and scattered, and the phloem parenchyma is absent, what type of stem is it most likely to be?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the description in the passage, which of the following is a distinguishing feature of a dicot stem compared to a monocot stem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A researcher observed that in a plant, the flowers have a tricarpellary syncarpous ovary. Which of the following would be the most accurate representation of the floral diagram of this plant?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of the transverse section of a monocot stem?",
+      "reason": "the key is far longer than every distractor (81 vs 39 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a plant's stem shows vascular bundles arranged in a ring, and the phloem parenchyma is present, which of the following is the most accurate classification of the stem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main difference between a monocot root and a dicot root?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a feature of a monocot stem as described in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is the only one that matches the description …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "A student observed a transverse section of a plant stem and noticed that the vascular bundles are scattered and surrounded by sclerenchymatous bundle sheaths. What can he conclude?",
+      "reason": "figure: figure spec refused: spec.parts.0.labels.1: String must contain at most 24 character(s)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student wants to determine whether a plant is a monocot or a dicot based on its stem. He observes that the vascular bundles are scattered and the phloem parenchyma is absent. What should he conclude?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"vascularBundles\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a transverse section of a plant material shows the presence of a well-developed pith and vascular bundles arranged in a ring, what can be inferred about the plant?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.vascularBundles: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main function of the pericycle in a dicot root?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A researcher observes a plant with a stem that has scattered vascular bundles and lacks phloem parenchyma. What can be concluded about the plant?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"vascularBundles\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic feature of the endodermis in a dicot root?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for this option (it is the …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is a key difference between the vascular bundles in dicot and monocot stems?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a monocot leaf, why are the stomata present on both surfaces of the epidermis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant's stomata are composed of guard cells that are bean-shaped, what is the most likely function of these guard cells?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the plant is made up of elongated, compactly arranged cells that form a continuous layer?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a plant has vascular bundles with phloem located only on the outer side of xylem, what can be inferred about the plant?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a dicotyledonous plant, what characteristic of vascular bundles allows them to form secondary tissues?",
+      "reason": "figure is set without imageAlt"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

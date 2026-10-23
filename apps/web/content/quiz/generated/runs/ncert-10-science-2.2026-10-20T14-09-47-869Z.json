@@ -1,0 +1,716 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T14:09:47.869Z",
+  "finishedAt": "2026-10-20T14:24:55.568Z",
+  "seconds": 908,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc102.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Acids, Bases and Salts",
+    "edition": "Reprint 2026-27",
+    "chunks": 21,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2016 — question paper]\n21. Anand wanted to prepare a salt solution of pH 1.0. For that he used solutions of a\nstrong monovalent base and acid. He tried different combinations to obtain the\nrequired solution. Can you help him to decide which one is the most correct\ncombination of statements given below?\nI. 100ml of (M/10) acid and 100ml of (M/10) alkali.\nII. 55ml of (M/10) acid and 45ml of (M/10) alkali.\nIII. 10ml of (M/10) acid and 90ml of (M/10) alkali.\nIV. 75ml of (M/5) acid and 25ml of (M/5) alkali\na) I and III b) II and IV\nc) Only II d) Only IV",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n6. Anita added a drop each of diluted acetic acid and diluted hydrochloric acid on pH paper 1\nand compared the colors. Which of the following is the correct conclusion?\n(a) pH of acetic acid is more than that of hydrochloric acid.\n(b) pH of acetic acid is less than that of hydrochloric acid.\n(c) Acetic acid dissociates completely in aqueous solution.\n(d) Acetic acid is a strong acid",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n21. Which of the following substances when dissolved in equal volume of water,\nwill have the highest pH value? 1\nA. Sulphuric acid\nB. Acetic acid\nC. Magnesium hydroxide\nD. Sodium hydroxide",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n3. Mild non-corrosive basic salt is 1\na) Ca (OH) 2\nb) NaCl\nc) NaOH\nd) NaHCO 3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 197104,
+      "in": 42,
+      "out": 36,
+      "rejects": 7,
+      "promptTokens": 47935,
+      "completionTokens": 7998
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 454098,
+      "in": 36,
+      "out": 33,
+      "rejects": 3,
+      "promptTokens": 22880,
+      "completionTokens": 8993
+    },
+    "solver": {
+      "calls": 269,
+      "ms": 197203,
+      "in": 33,
+      "out": 27,
+      "rejects": 6,
+      "promptTokens": 49693,
+      "completionTokens": 3014
+    },
+    "form": {
+      "calls": 9,
+      "ms": 30930,
+      "in": 27,
+      "out": 21,
+      "rejects": 6,
+      "promptTokens": 2167,
+      "completionTokens": 676
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3549,
+      "in": 21,
+      "out": 17,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 73,
+      "ms": 970133,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 40714,
+      "completionTokens": 19823
+    }
+  },
+  "kept": 17,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 2,
+    "4": 3,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct example of a reaction between an acid and a metal?",
+      "ms": {
+        "draft": 4200,
+        "critique": 7659,
+        "solver": 15739,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the reaction between sodium carbonate and hydrochloric acid?",
+      "ms": {
+        "draft": 4200,
+        "critique": 6614,
+        "solver": 17543,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a natural indicator?",
+      "ms": {
+        "draft": 4200,
+        "critique": 7055,
+        "solver": 15012,
+        "form": 5400
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a solution has a pH of 1.0, which of the following combinations of acid and base would be most appropriate to prepare it?",
+      "ms": {
+        "draft": 4200,
+        "critique": 9248,
+        "solver": 25736
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for cleaning the mouth after eating food?",
+      "ms": {
+        "draft": 3975,
+        "critique": 8923,
+        "solver": 2559
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the pH of a solution formed by the reaction of a strong acid and a strong base?",
+      "ms": {
+        "draft": 4762,
+        "critique": 8803
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following solutions will have the highest pH value when dissolved in equal volumes of water?",
+      "ms": {
+        "draft": 3975,
+        "critique": 10572,
+        "solver": 18470
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following salts is formed by a strong acid and a weak base?",
+      "ms": {
+        "draft": 4762,
+        "critique": 8796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is sodium hydrogencarbonate considered a mild basic salt?",
+      "ms": {
+        "draft": 4762,
+        "critique": 12402,
+        "solver": 18419,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following acids is found in nettle leaves?",
+      "ms": {
+        "draft": 4762,
+        "critique": 11823,
+        "solver": 15664,
+        "form": 3305
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a strong acid?",
+      "ms": {
+        "draft": 5068,
+        "critique": 9636
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following salts is used in soda-acid fire extinguishers?",
+      "ms": {
+        "draft": 4172,
+        "critique": 8997,
+        "solver": 12813,
+        "form": 2697
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution of NaOH is neutralised by HCl. If 10 mL of NaOH requires 8 mL of HCl, how much HCl is needed to neutralise 20 mL of the same NaOH solution?",
+      "ms": {
+        "draft": 4311,
+        "critique": 8606,
+        "solver": 21414
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is correct about the reaction between an acid and a base?",
+      "ms": {
+        "draft": 10514,
+        "critique": 9771,
+        "solver": 13313
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student wants to prepare a solution with pH 1.0 using a strong monovalent acid and a strong monovalent base. Which of the following combinations would produce the correct pH?",
+      "ms": {
+        "draft": 11760,
+        "critique": 7148,
+        "solver": 15851
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 mL of NaOH is neutralised by 8 mL of HCl, how much HCl is required to neutralise 15 mL of NaOH?",
+      "ms": {
+        "draft": 4311,
+        "critique": 7989,
+        "solver": 1841,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a weak acid?",
+      "ms": {
+        "draft": 4311,
+        "critique": 12525,
+        "solver": 2242,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following salts is a mild non-corrosive basic salt?",
+      "ms": {
+        "draft": 4921,
+        "critique": 10170,
+        "solver": 2606,
+        "form": 2723
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following substances, when dissolved in water, will have the highest pH value?",
+      "ms": {
+        "draft": 5494,
+        "critique": 7698,
+        "solver": 2798,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a basic salt?",
+      "ms": {
+        "draft": 3319,
+        "critique": 11681,
+        "solver": 1309,
+        "form": 0,
+        "translation": 66698
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a weak edible acid present in baking powder?",
+      "ms": {
+        "draft": 3319,
+        "critique": 10323,
+        "solver": 16276,
+        "form": 0,
+        "translation": 44266
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How much HCl solution is needed to neutralise 20 mL of NaOH solution if 8 mL of HCl neutralises 10 mL of NaOH?",
+      "ms": {
+        "draft": 5068,
+        "critique": 5792,
+        "solver": 982,
+        "form": 0,
+        "translation": 51674
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a strong acid?",
+      "ms": {
+        "draft": 3975,
+        "critique": 7605,
+        "solver": 1890,
+        "form": 0,
+        "translation": 55922
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a mild non-corrosive basic salt?",
+      "ms": {
+        "draft": 4762,
+        "critique": 10139,
+        "solver": 15175,
+        "form": 3179,
+        "translation": 51787
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of medicine is used to treat indigestion?",
+      "ms": {
+        "draft": 4311,
+        "critique": 8585,
+        "solver": 1607,
+        "form": 0,
+        "translation": 48949
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a base?",
+      "ms": {
+        "draft": 3975,
+        "critique": 7747,
+        "solver": 2028,
+        "form": 0,
+        "translation": 77158
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct use of an indicator?",
+      "ms": {
+        "draft": 4200,
+        "critique": 9386,
+        "solver": 18799,
+        "form": 2987,
+        "translation": 51290
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a strong acid is diluted with water?",
+      "ms": {
+        "draft": 3975,
+        "critique": 7603,
+        "solver": 2323,
+        "form": 0,
+        "translation": 54072
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following salts is formed when a strong acid reacts with a strong base?",
+      "ms": {
+        "draft": 4921,
+        "critique": 10675,
+        "solver": 2407,
+        "form": 5367,
+        "translation": 68617
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a weak acid?",
+      "ms": {
+        "draft": 3975,
+        "critique": 8296,
+        "solver": 2300,
+        "form": 0,
+        "translation": 40156
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements correctly describes the process of diluting an acid or a base in water?",
+      "ms": {
+        "draft": 5494,
+        "critique": 8354,
+        "solver": 1779,
+        "form": 0,
+        "translation": 77364
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a farmer finds that the soil is too acidic, which of the following would he most likely use to treat it?",
+      "ms": {
+        "draft": 4762,
+        "critique": 8392,
+        "solver": 22139,
+        "form": 0,
+        "translation": 52644
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A farmer treats the soil with quick lime, slaked lime, or chalk. What is the most likely reason for this treatment?",
+      "ms": {
+        "draft": 4921,
+        "critique": 10218,
+        "solver": 1854,
+        "form": 3068,
+        "translation": 65477
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following salts has a pH greater than 7 when dissolved in water?",
+      "ms": {
+        "draft": 4172,
+        "critique": 9515,
+        "solver": 2263,
+        "form": 4083,
+        "translation": 54338
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following substances, when dissolved in water, will have the highest pH value?",
+      "ms": {
+        "draft": 4200,
+        "critique": 10281,
+        "solver": 16144,
+        "form": 0,
+        "translation": 48799
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does dry HCl gas not change the colour of dry litmus paper?",
+      "ms": {
+        "draft": 5494,
+        "critique": 8637,
+        "solver": 2048,
+        "form": 0,
+        "translation": 55170
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is a neutralisation reaction?\",\"options\":[\"Reaction of a metal "
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the main purpose of using Plaster of Paris in medical treatment?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is a basic salt?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct example of a reaction between an acid and a metal?",
+      "reason": "options 0 and 2 say the same thing (\"Acid + Salt → Metal + Hydrogen gas\" / \"Acid + Metal → Salt + Hydrogen gas\"); options 1 and 3 say the same thing (\"Base + Metal → Salt + Hydrogen gas\" / \"Base + Salt → Metal + Hydrogen gas\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the reaction between sodium carbonate and hydrochloric acid?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a natural indicator?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a solution has a pH of 1.0, which of the following combinations of acid and base would be most appropriate to prepare it?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the main reason for cleaning the mouth after eating food?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the pH of a solution formed by the reaction of a strong acid and a strong base?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following solutions will have the highest pH value when dissolved in equal volumes of water?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following salts is formed by a strong acid and a weak base?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is sodium hydrogencarbonate considered a mild basic salt?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following acids is found in nettle leaves?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a strong acid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following salts is used in soda-acid fire extinguishers?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If 5 mL of NaOH is neutralised by 4 mL of HCl, how much HCl is needed to neutralise 15 mL of NaOH?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a strong base?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the chemical formula for washing soda?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the common name of the compound Ca(ClO)2?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A solution of NaOH is neutralised by HCl. If 10 mL of NaOH requires 8 mL of HCl, how much HCl is needed to neutralise 20 mL of the same NaOH solution?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements is correct about the reaction between an acid and a base?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student wants to prepare a solution with pH 1.0 using a strong monovalent acid and a strong monovalent base. Which of the following combinations would produce the correct pH?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 10 mL of NaOH is neutralised by 8 mL of HCl, how much HCl is required to neutralise 15 mL of NaOH?",
+      "reason": "near-duplicate of batch item \"How much HCl solution is needed to neutralise 20 m…\" (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a weak acid?",
+      "reason": "near-duplicate of batch item \"Which of the following is a weak acid?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following salts is a mild non-corrosive basic salt?",
+      "reason": "near-duplicate of batch item \"Which of the following is a mild non-corrosive bas…\" (cosine 0.967 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following substances, when dissolved in water, will have the highest pH value?",
+      "reason": "near-duplicate of batch item \"Which of the following substances, when dissolved …\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T07:46:00.778Z",
+  "finishedAt": "2026-10-20T07:51:26.077Z",
+  "seconds": 325,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh201.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Propositions and their Converses",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 90041,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13388,
+      "completionTokens": 5580
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 114904,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 10431,
+      "completionTokens": 3663
+    },
+    "solver": {
+      "calls": 95,
+      "ms": 43805,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 19140,
+      "completionTokens": 1012
+    },
+    "form": {
+      "calls": 2,
+      "ms": 32361,
+      "in": 14,
+      "out": 2,
+      "rejects": 12,
+      "promptTokens": 2227,
+      "completionTokens": 901
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2988,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 17514,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2242,
+      "completionTokens": 1264
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In a triangle, if two sides are equal, then the angles opposite them are equal. What is this statement called?",
+      "ms": {
+        "draft": 3286,
+        "critique": 4935
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, a counterexample is used to show that a proposition is false. What is a counterexample?",
+      "ms": {
+        "draft": 3286,
+        "critique": 4807,
+        "solver": 1450,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is stated that 'If a number is a multiple of 6, then it is a multiple of 3'. What is the converse of this statement?",
+      "ms": {
+        "draft": 3286,
+        "critique": 5067,
+        "solver": 1138,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage discusses the relationship between a proposition and its converse. Which of the following is true about their truth values?",
+      "ms": {
+        "draft": 3286,
+        "critique": 4877,
+        "solver": 1413,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the converse of the statement 'If two angles of a triangle are equal, then the sides opposite the equal angles are equal'?",
+      "ms": {
+        "draft": 3286,
+        "critique": 6554,
+        "solver": 6224,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'?",
+      "ms": {
+        "draft": 7295,
+        "critique": 6066,
+        "solver": 2026,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, DE is parallel to BC. If AE = 8 cm and EC = 12 cm, what is the ratio of the areas of triangles ADE and ABC?",
+      "ms": {
+        "draft": 7295,
+        "critique": 7044
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, AB is parallel to CD, and EF is a transversal. If ∠ADE = 48°, what is the measure of ∠ABC?",
+      "ms": {
+        "draft": 7295,
+        "critique": 7153,
+        "solver": 10694
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If a quadrilateral is a square, then all its angles are equal'?",
+      "ms": {
+        "draft": 7295,
+        "critique": 5790,
+        "solver": 1758,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, a proposition is defined as a statement that is either true or false. Which of the following is an example of a proposition?",
+      "ms": {
+        "draft": 12803,
+        "critique": 6695,
+        "solver": 1715,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is a counterexample?",
+      "ms": {
+        "draft": 12803,
+        "critique": 5764,
+        "solver": 1697,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions that a proposition and its converse may both be true. Which of the following pairs of statements is an example of this?",
+      "ms": {
+        "draft": 12803,
+        "critique": 5489,
+        "solver": 1683,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that the converse of the Baudhāyana–Pythagoras theorem is also true. Which of the following statements supports this conclusion?",
+      "ms": {
+        "draft": 12803,
+        "critique": 7228,
+        "solver": 1752,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given diagram, DE is parallel to BC. If AE = 8 cm, EC = 12 cm, and AB = 6 cm, what is the length of AD?",
+      "ms": {
+        "draft": 7295,
+        "critique": 7033,
+        "solver": 1375,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what does it mean for a proposition to be true?",
+      "ms": {
+        "draft": 12803,
+        "critique": 5970,
+        "solver": 1203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage discusses the relationship between a proposition and its converse. Which of the following statements is an example of a proposition and its converse?",
+      "ms": {
+        "draft": 12803,
+        "critique": 6659,
+        "solver": 10674
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the converse of a proposition is true, what can be said about the original proposition?",
+      "ms": {
+        "draft": 7295,
+        "critique": 6048,
+        "solver": 1282,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the converse of a proposition is true, what can be said about the original proposition?",
+      "ms": {
+        "draft": 3286,
+        "critique": 4417,
+        "solver": 1204,
+        "form": 2603,
+        "translation": 13923
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"If a quadrilateral is a square, then all its angles are equal. Which of the following "
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a triangle, if two sides are equal, then the angles opposite them are equal. What is this statement called?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, a counterexample is used to show that a proposition is false. What is a counterexample?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, it is stated that 'If a number is a multiple of 6, then it is a multiple of 3'. What is the converse of this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If a number is not a multiple of 3, then it is not a multiple of 6\" / \"If a number is a multiple of 3, then it is a multiple of 6\"); options 0 and 2 say the same thing (\"If a number is not a multiple of 3, then it is not a multiple of 6\" / \"If a number is not a multiple of 6, then it is not a multiple of 3\"); options 0 and 3 say the same thing (\"If a number is not a multiple of 3, then it is not a multiple of 6\" / \"If a number is a multiple of 6, then it is not a multiple of 3\"); options 1 and 2 say the same thing (\"If a number is a multiple of 3, then it is a multiple of 6\" / \"If a number is not a multiple of 6, then it is not a multiple of 3\"); options 1 and 3 say the same thing (\"If a number is a multiple of 3, then it is a multiple of 6\" / \"If a number is a multiple of 6, then it is not a multiple of 3\"); options 2 and 3 say the same thing (\"If a number is not a multiple of 6, then it is not a multiple of 3\" / \"If a number is a multiple of 6, then it is not a multiple of 3\"); option 1 repeats the stem's wording (\"If a number is a multiple of 3, then it is a multiple of 6\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage discusses the relationship between a proposition and its converse. Which of the following is true about their truth values?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the converse of the statement 'If two angles of a triangle are equal, then the sides opposite the equal angles are equal'?",
+      "reason": "options 0 and 1 say the same thing (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal\" / \"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal\"); options 0 and 2 say the same thing (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal\" / \"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal\"); options 0 and 3 say the same thing (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal\" / \"If the sides opposite the equal angles are not equal, then two angles of a triangle are equal\"); options 1 and 2 say the same thing (\"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal\" / \"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal\"); options 1 and 3 say the same thing (\"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal\" / \"If the sides opposite the equal angles are not equal, then two angles of a triangle are equal\"); options 2 and 3 say the same thing (\"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal\" / \"If the sides opposite the equal angles are not equal, then two angles of a triangle are equal\"); option 0 repeats the stem's wording (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal\"); option 1 repeats the stem's wording (\"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal\"); option 2 repeats the stem's wording (\"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal\"); option 3 repeats the stem's wording (\"If the sides opposite the equal angles are not equal, then two angles of a triangle are equal\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'?",
+      "reason": "options 0 and 1 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the lines are parallel.\" / \"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\"); options 0 and 2 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the lines are parallel.\" / \"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); options 0 and 3 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the lines are parallel.\" / \"If the corresponding angles formed by a transversal are not equal, then the lines are parallel.\"); options 1 and 2 say the same thing (\"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\" / \"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); options 1 and 3 say the same thing (\"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\" / \"If the corresponding angles formed by a transversal are not equal, then the lines are parallel.\"); options 2 and 3 say the same thing (\"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\" / \"If the corresponding angles formed by a transversal are not equal, then the lines are parallel.\"); option 0 repeats the stem's wording (\"If the corresponding angles formed by a transversal are equal, then the lines are parallel.\"); option 2 repeats the stem's wording (\"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); option 3 repeats the stem's wording (\"If the corresponding angles formed by a transversal are not equal, then the lines are parallel.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the given figure, DE is parallel to BC. If AE = 8 cm and EC = 12 cm, what is the ratio of the areas of triangles ADE and ABC?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, AB is parallel to CD, and EF is a transversal. If ∠ADE = 48°, what is the measure of ∠ABC?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If a quadrilateral is a square, then all its angles are equal'?",
+      "reason": "options 0 and 1 say the same thing (\"If all its angles are equal, then the quadrilateral is a square.\" / \"If a quadrilateral is not a square, then not all its angles are equal.\"); options 0 and 2 say the same thing (\"If all its angles are equal, then the quadrilateral is a square.\" / \"If a quadrilateral is a square, then not all its angles are equal.\"); options 0 and 3 say the same thing (\"If all its angles are equal, then the quadrilateral is a square.\" / \"If not all its angles are equal, then the quadrilateral is a square.\"); options 1 and 2 say the same thing (\"If a quadrilateral is not a square, then not all its angles are equal.\" / \"If a quadrilateral is a square, then not all its angles are equal.\"); options 1 and 3 say the same thing (\"If a quadrilateral is not a square, then not all its angles are equal.\" / \"If not all its angles are equal, then the quadrilateral is a square.\"); options 2 and 3 say the same thing (\"If a quadrilateral is a square, then not all its angles are equal.\" / \"If not all its angles are equal, then the quadrilateral is a square.\"); option 0 repeats the stem's wording (\"If all its angles are equal, then the quadrilateral is a square.\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, a proposition is defined as a statement that is either true or false. Which of the following is an example of a proposition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"If a number is a multiple of 6, then it is a multiple of 3.\" / \"If a number is a multiple of 3, then it is a multiple of 6.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is a counterexample?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage mentions that a proposition and its converse may both be true. Which of the following pairs of statements is an example of this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that the converse of the Baudhāyana–Pythagoras theorem is also true. Which of the following statements supports this conclusion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If a triangle is right-angled, then the sum of the squares of the two shorter sides is equal to the square of the longest side.\" / \"If the sum of the squares of two sides of a triangle is equal to the square of the third side, then the triangle is right-angled.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the given diagram, DE is parallel to BC. If AE = 8 cm, EC = 12 cm, and AB = 6 cm, what is the length of AD?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what does it mean for a proposition to be true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage discusses the relationship between a proposition and its converse. Which of the following statements is an example of a proposition and its converse?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the converse of a proposition is true, what can be said about the original proposition?",
+      "reason": "near-duplicate of batch item \"If the converse of a proposition is true, what can…\" (cosine 0.973 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

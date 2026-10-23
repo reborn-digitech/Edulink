@@ -1,0 +1,524 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:21:43.084Z",
+  "finishedAt": "2026-10-22T21:26:52.114Z",
+  "seconds": 309,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm111.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Filling and L ifting",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n18. (d) 2 2 2  1  2  1  2  1 2  1  2\nWe know, l  m  n  1           1  3    1  c   3 .\n c   c   c   c "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 106358,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15670,
+      "completionTokens": 5392
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 244847,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 14695,
+      "completionTokens": 5587
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 90701,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 28943,
+      "completionTokens": 1670
+    },
+    "form": {
+      "calls": 6,
+      "ms": 37807,
+      "in": 20,
+      "out": 5,
+      "rejects": 15,
+      "promptTokens": 3396,
+      "completionTokens": 787
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3969,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 179331,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9842,
+      "completionTokens": 4597
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which activity helps children understand the capacity of different vessels?",
+      "ms": {
+        "draft": 3090,
+        "critique": 7860,
+        "solver": 2229,
+        "form": 1806
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug holds exactly 1 litre of water, which of the following is true?",
+      "ms": {
+        "draft": 3090,
+        "critique": 7016,
+        "solver": 1346,
+        "form": 3910
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which word is used to compare the amount of milk in different glasses?",
+      "ms": {
+        "draft": 3090,
+        "critique": 7050,
+        "solver": 1968,
+        "form": 3507
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a glass holds a quarter litre, how many glasses can be filled with 1 litre of water?",
+      "ms": {
+        "draft": 3090,
+        "critique": 7732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a bucket holds more than 1 litre, and a mug holds less than half a litre, which statement is true?",
+      "ms": {
+        "draft": 3090,
+        "critique": 6757,
+        "solver": 2029,
+        "form": 2551
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a jug can hold 2 litres of water, and a glass can hold half a litre, how many glasses can be filled with the water from the jug?",
+      "ms": {
+        "draft": 3090,
+        "critique": 8619,
+        "solver": 1587,
+        "form": 3695
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is used as a measuring tool to compare weights in the activity described in the passage?",
+      "ms": {
+        "draft": 2948,
+        "critique": 7064,
+        "solver": 1986,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bag is heavier than another bag, what could be the reason according to the passage?",
+      "ms": {
+        "draft": 2948,
+        "critique": 7852,
+        "solver": 16708
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the Tricky Balls activity, if you have three balls and can only use the pan-balance once, what is the best way to find the heaviest ball?",
+      "ms": {
+        "draft": 2948,
+        "critique": 7414,
+        "solver": 2341,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 4 marbles balance a pencil box, and 2 marbles balance a spoon, which of the following is true?",
+      "ms": {
+        "draft": 2948,
+        "critique": 7286,
+        "solver": 15659,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of using a 1 kg salt packet?",
+      "ms": {
+        "draft": 2948,
+        "critique": 4093,
+        "solver": 939,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A teacher uses a 1 kg salt packet as a measuring tool. She finds that a bag of rice weighs the same as 3 salt packets. What is the weight of the bag of rice?",
+      "ms": {
+        "draft": 3778,
+        "critique": 9379,
+        "solver": 2217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason why Chintu does not take the challenge?",
+      "ms": {
+        "draft": 7911,
+        "critique": 9923,
+        "solver": 1944
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between the size of a glass and the number of glasses one can drink?",
+      "ms": {
+        "draft": 7911,
+        "critique": 9544,
+        "solver": 15777,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug can fill 3 glasses, and each glass holds 250 ml, how many milliliters does the jug hold?",
+      "ms": {
+        "draft": 7911,
+        "critique": 10913,
+        "solver": 16384,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Montu has 3 balls: one is heavier than the other two, which are of equal weight. He can use a pan-balance only once. How can he identify the heavy ball?",
+      "ms": {
+        "draft": 3778,
+        "critique": 10800,
+        "solver": 16098,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A jug can fill 5 glasses. If each glass holds 200 ml, and the jug holds 1 litre, how many glasses can be filled with 3 jugs?",
+      "ms": {
+        "draft": 7911,
+        "critique": 8522
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the capacity of vessels?",
+      "ms": {
+        "draft": 7911,
+        "critique": 8663,
+        "solver": 11150,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 4 quarter-litre glasses equal 1 litre, how many quarter-litre glasses are needed to fill 3 litres?",
+      "ms": {
+        "draft": 7911,
+        "critique": 8447,
+        "solver": 8510,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a unit used to measure weight?",
+      "ms": {
+        "draft": 3778,
+        "critique": 5431,
+        "solver": 1263,
+        "form": 0,
+        "translation": 28518
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an object that weighs about 1 kg?",
+      "ms": {
+        "draft": 3778,
+        "critique": 9052,
+        "solver": 1706,
+        "form": 0,
+        "translation": 33788
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 4 marbles balance with a pencil box, how many marbles would balance with 2 pencil boxes?",
+      "ms": {
+        "draft": 3778,
+        "critique": 6986,
+        "solver": 12176,
+        "form": 0,
+        "translation": 35000
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using a pan-balance, you find that 1 bag is heavier than another. Which of the following is the most likely reason?",
+      "ms": {
+        "draft": 3778,
+        "critique": 5765,
+        "solver": 2139,
+        "form": 0,
+        "translation": 46038
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a 1 kg salt packet balances 5 matchboxes, how many matchboxes would balance 3 kg of salt?",
+      "ms": {
+        "draft": 2948,
+        "critique": 7620,
+        "solver": 2192,
+        "form": 0,
+        "translation": 31423
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which activity helps children understand the capacity of different vessels?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Not related to the activity described in the passage…\"); distractor 1's reason is not a one-line misconception (\"Not mentioned as part of the activity in the passage…\"); distractor 3's reason is not a one-line misconception (\"Does not understand the purpose of the activity described in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a jug holds exactly 1 litre of water, which of the following is true?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the comparison in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which word is used to compare the amount of milk in different glasses?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the context of the passage…\"); distractor 3's reason is not a one-line misconception (\"Does not recognize the comparison word used in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a glass holds a quarter litre, how many glasses can be filled with 1 litre of water?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a bucket holds more than 1 litre, and a mug holds less than half a litre, which statement is true?",
+      "reason": "options 0 and 1 say the same thing (\"The bucket holds more than the mug\" / \"The mug holds more than the bucket\"); option 0 repeats the stem's wording (\"The bucket holds more than the mug\"); option 1 repeats the stem's wording (\"The mug holds more than the bucket\"); distractor 2's reason is not a one-line misconception (\"Does not understand the comparison in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a jug can hold 2 litres of water, and a glass can hold half a litre, how many glasses can be filled with the water from the jug?",
+      "reason": "checkExpr \"4\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is used as a measuring tool to compare weights in the activity described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bag is heavier than another bag, what could be the reason according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the Tricky Balls activity, if you have three balls and can only use the pan-balance once, what is the best way to find the heaviest ball?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); the key is far longer than every distractor (71 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If 4 marbles balance a pencil box, and 2 marbles balance a spoon, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"A pencil box is heavier than a spoon\" / \"A spoon is heavier than a pencil box\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of using a 1 kg salt packet?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A teacher uses a 1 kg salt packet as a measuring tool. She finds that a bag of rice weighs the same as 3 salt packets. What is the weight of the bag of rice?",
+      "reason": "checkExpr \"3\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a reason why Chintu does not take the challenge?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between the size of a glass and the number of glasses one can drink?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"2: The size of the glass is the only factor that matters\" / \"The size of the glass is the only factor that matters\"); options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"misunderstands the concept of capacity and volume, assuming …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a jug can fill 3 glasses, and each glass holds 250 ml, how many milliliters does the jug hold?",
+      "reason": "options 1 and 3 are the same (\"750 ml\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Montu has 3 balls: one is heavier than the other two, which are of equal weight. He can use a pan-balance only once. How can he identify the heavy ball?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ball'"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A jug can fill 5 glasses. If each glass holds 200 ml, and the jug holds 1 litre, how many glasses can be filled with 3 jugs?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the capacity of vessels?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"overgeneralizes and assumes all vessels are the same, which …\"); distractor 3's reason is not a one-line misconception (\"assumes that shape alone determines capacity, which is not s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 4 quarter-litre glasses equal 1 litre, how many quarter-litre glasses are needed to fill 3 litres?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"incorrect multiplication, assumes 16 glasses for 3 litres in…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

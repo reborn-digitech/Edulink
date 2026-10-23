@@ -1,0 +1,606 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T17:07:12.344Z",
+  "finishedAt": "2026-10-22T17:18:57.069Z",
+  "seconds": 705,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh103.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Pair of Linear Equations in Two Variables",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n9(10𝑥 + 𝑦) = 2(10𝑦 + 𝑥) -------------(2) ½\nSolving (1) and (2), we get\n𝑥 = 1 , 𝑦 = 8 1\nRequired Number = 18 ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n21. Adding the two equations and dividing by 10, we get : x+y = 10 ½\nSubtracting the two equations and dividing by -2, we get : x-y =1 ½\nSolving these two new equations, we get, x = 11/2 ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n21. Find whether the following pair of linear equations is consistent or inconsistent:\n3x + 2y = 8\n6x – 4y = 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 198811,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 33915,
+      "completionTokens": 7770
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 336040,
+      "in": 31,
+      "out": 21,
+      "rejects": 10,
+      "promptTokens": 16665,
+      "completionTokens": 6334
+    },
+    "solver": {
+      "calls": 146,
+      "ms": 108167,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 27146,
+      "completionTokens": 1517
+    },
+    "form": {
+      "calls": 5,
+      "ms": 63070,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 9669,
+      "completionTokens": 982
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 5407,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 675253,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25807,
+      "completionTokens": 13515
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 3,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 5,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "The cost of 5 pencils and 7 pens together is ` 50, and the cost of 7 pencils and 5 pens together is ` 46. What is the cost of one pencil?",
+      "ms": {
+        "draft": 8686,
+        "critique": 8352,
+        "solver": 2616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The equations x – y + 1 = 0 and 3x + 2y – 12 = 0 are given. What is the point of intersection of these lines?",
+      "ms": {
+        "draft": 5072,
+        "critique": 10292,
+        "solver": 2084
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following conditions indicates that a pair of linear equations in two variables is inconsistent?",
+      "ms": {
+        "draft": 5072,
+        "critique": 11419,
+        "solver": 21383,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The pair of equations 2x + 3y = 8 and 4x + 6y = k is given. For the pair to be inconsistent, what must the value of k be?",
+      "ms": {
+        "draft": 5072,
+        "critique": 13953
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The equations 3x + 2y = 8 and 6x – 4y = 9 are given. What is the nature of their solution?",
+      "ms": {
+        "draft": 5072,
+        "critique": 11174
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The sum of the digits of a two-digit number is 9. Nine times the number is twice the number obtained by reversing the digits. What is the number?",
+      "ms": {
+        "draft": 4887,
+        "critique": 8996,
+        "solver": 16228
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to have infinitely many solutions?",
+      "ms": {
+        "draft": 4548,
+        "critique": 10302
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to have no solution?",
+      "ms": {
+        "draft": 4548,
+        "critique": 8856,
+        "solver": 13431
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following situations represents a pair of linear equations that have infinitely many solutions?",
+      "ms": {
+        "draft": 7353,
+        "critique": 8894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the graphical representation of a pair of linear equations that have no solution?",
+      "ms": {
+        "draft": 7353,
+        "critique": 9379
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Saritha paid Rs. 27 for a book kept for seven days, and Susy paid Rs. 21 for a book kept for five days. If the library has a fixed charge for the first three days and an additional charge per day thereafter, what is the fixed charge?",
+      "ms": {
+        "draft": 7353,
+        "critique": 12452
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two numbers are in the ratio 3:5. If 5 is subtracted from both, the new ratio becomes 1:2. What are the original numbers?",
+      "ms": {
+        "draft": 7353,
+        "critique": 10752
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If two linear equations represent lines that are parallel, which of the following must be true about the coefficients of x and y?",
+      "ms": {
+        "draft": 7353,
+        "critique": 13273
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pair of linear equations is given as 3x + 2y = 8 and 6x – 4y = 9. What is the nature of the lines represented by these equations?",
+      "ms": {
+        "draft": 5373,
+        "critique": 10375,
+        "solver": 1872
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A pair of linear equations has infinitely many solutions. Which of the following must be true?",
+      "ms": {
+        "draft": 7353,
+        "critique": 11055,
+        "solver": 17290,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to have infinitely many solutions?",
+      "ms": {
+        "draft": 7523,
+        "critique": 8655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations in two variables to have infinitely many solutions?",
+      "ms": {
+        "draft": 82506,
+        "critique": 9634
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of a two-digit number and the number obtained by reversing the digits is 66, and the digits differ by 2, how many such numbers exist?",
+      "ms": {
+        "draft": 5373,
+        "critique": 9819,
+        "solver": 12755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pair of linear equations has infinitely many solutions. Which of the following must be true about the lines representing these equations?",
+      "ms": {
+        "draft": 4887,
+        "critique": 9152,
+        "solver": 1623,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct step in the elimination method for solving a pair of linear equations?",
+      "ms": {
+        "draft": 5373,
+        "critique": 10425,
+        "solver": 2304,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to have a unique solution?",
+      "ms": {
+        "draft": 4548,
+        "critique": 8192,
+        "solver": 12468,
+        "form": 0,
+        "translation": 46606
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of solution does a pair of linear equations have if their lines are parallel?",
+      "ms": {
+        "draft": 8686,
+        "critique": 7189,
+        "solver": 2553,
+        "form": 0,
+        "translation": 71176
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the lines represented by a pair of linear equations intersect at exactly one point, what can be said about the solution of the equations?",
+      "ms": {
+        "draft": 8686,
+        "critique": 7906,
+        "solver": 4786,
+        "form": 0,
+        "translation": 67922
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the lines represented by a pair of linear equations are coincident, what can be said about the solution of the equations?",
+      "ms": {
+        "draft": 8686,
+        "critique": 7297,
+        "solver": 2128,
+        "form": 0,
+        "translation": 60477
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the pair of equations 2x + 3y = 5 and 4x + 6y = 10 is solved algebraically, what will be the nature of the solution?",
+      "ms": {
+        "draft": 5072,
+        "critique": 11567,
+        "solver": 3243,
+        "form": 0,
+        "translation": 49161
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given the pair of equations 6x – 3y + 10 = 0 and 2x – y + 9 = 0, what is the relationship between the lines they represent?",
+      "ms": {
+        "draft": 8686,
+        "critique": 6433,
+        "solver": 2112,
+        "form": 0,
+        "translation": 73129
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct step in the elimination method for solving linear equations?",
+      "ms": {
+        "draft": 4887,
+        "critique": 8678,
+        "solver": 2504,
+        "form": 0,
+        "translation": 76714
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the elimination method, what happens if after eliminating one variable, we get a false statement involving no variable?",
+      "ms": {
+        "draft": 4887,
+        "critique": 11227,
+        "solver": 2743,
+        "form": 0,
+        "translation": 52536
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A pair of linear equations has no solution. Which of the following must be true about the lines representing these equations?",
+      "ms": {
+        "draft": 4887,
+        "critique": 7881,
+        "solver": 2138,
+        "form": 0,
+        "translation": 57505
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a pair of linear equations is consistent, what can be said about the lines they represent?",
+      "ms": {
+        "draft": 8686,
+        "critique": 8864,
+        "solver": 2736,
+        "form": 0,
+        "translation": 64407
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The equations 4x – 2y – 4 = 0 and 2x – y – 2 = 0 are given. What is the nature of their solution?",
+      "ms": {
+        "draft": 5072,
+        "critique": 7558,
+        "solver": 2557,
+        "form": 0,
+        "translation": 48715
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The cost of 5 pencils and 7 pens together is ` 50, and the cost of 7 pencils and 5 pens together is ` 46. What is the cost of one pencil?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The equations x – y + 1 = 0 and 3x + 2y – 12 = 0 are given. What is the point of intersection of these lines?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following conditions indicates that a pair of linear equations in two variables is inconsistent?",
+      "reason": "options 0 and 1 say the same thing (\"The ratios of the coefficients of x and y are not equal, but the ratios of the constants are equal.\" / \"1: The ratios of the coefficients of x and y are equal, but the ratios of the constants are equal.\"); options 0 and 3 say the same thing (\"The ratios of the coefficients of x and y are not equal, but the ratios of the constants are equal.\" / \"The ratios of the coefficients of x and y are equal, but the ratios of the constants are not.\"); options 1 and 3 say the same thing (\"1: The ratios of the coefficients of x and y are equal, but the ratios of the constants are equal.\" / \"The ratios of the coefficients of x and y are equal, but the ratios of the constants are not.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The pair of equations 2x + 3y = 8 and 4x + 6y = k is given. For the pair to be inconsistent, what must the value of k be?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The equations 3x + 2y = 8 and 6x – 4y = 9 are given. What is the nature of their solution?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The sum of the digits of a two-digit number is 9. Nine times the number is twice the number obtained by reversing the digits. What is the number?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to have infinitely many solutions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to have no solution?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "The coach of a cricket team buys 7 bats and 6 balls for ₹3800 and later buys 3 bats and 5 balls for ₹1750. What is the cost of one bat?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following situations represents a pair of linear equations that have infinitely many solutions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following describes the graphical representation of a pair of linear equations that have no solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Saritha paid Rs. 27 for a book kept for seven days, and Susy paid Rs. 21 for a book kept for five days. If the library has a fixed charge for the first three days and an additional charge per day thereafter, what is the fixed charge?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Two numbers are in the ratio 3:5. If 5 is subtracted from both, the new ratio becomes 1:2. What are the original numbers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If two linear equations represent lines that are parallel, which of the following must be true about the coefficients of x and y?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A pair of linear equations is given as 3x + 2y = 8 and 6x – 4y = 9. What is the nature of the lines represented by these equations?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A pair of linear equations has infinitely many solutions. Which of the following must be true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to have infinitely many solutions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations in two variables to have infinitely many solutions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the sum of a two-digit number and the number obtained by reversing the digits is 66, and the digits differ by 2, how many such numbers exist?",
+      "reason": "after redraft: the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A pair of linear equations has infinitely many solutions. Which of the following must be true about the lines representing these equations?",
+      "reason": "near-duplicate of batch item \"If the lines represented by a pair of linear equat…\" (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a correct step in the elimination method for solving a pair of linear equations?",
+      "reason": "near-duplicate of batch item \"Which of the following is a correct step in the el…\" (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

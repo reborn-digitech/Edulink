@@ -1,0 +1,611 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:53:18.087Z",
+  "finishedAt": "2026-10-20T20:58:44.385Z",
+  "seconds": 326,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm104.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — We the Travellers—II",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A-E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n2. This question Paper is divided into 5 Sections A, B, C, D and E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n2. This Question Paper is divided into 5 Sections A, B, C, D and E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 115654,
+      "in": 33,
+      "out": 29,
+      "rejects": 4,
+      "promptTokens": 26194,
+      "completionTokens": 7433
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 216503,
+      "in": 29,
+      "out": 18,
+      "rejects": 11,
+      "promptTokens": 16708,
+      "completionTokens": 6649
+    },
+    "solver": {
+      "calls": 140,
+      "ms": 71258,
+      "in": 18,
+      "out": 7,
+      "rejects": 11,
+      "promptTokens": 31207,
+      "completionTokens": 1639
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2137,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 150456,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11727,
+      "completionTokens": 5262
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the difference between two successive sums of 5 consecutive numbers?",
+      "ms": {
+        "draft": 3937,
+        "critique": 4453
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total quantity of fuel in a lorry if it has 28 litres and 75 litres are added?",
+      "ms": {
+        "draft": 3937,
+        "critique": 6466,
+        "solver": 1110
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the total amount spent by Mahesh and his family on fuel and other expenses, if they spent ₹21,880 on fuel and ₹38,900 on other expenses?",
+      "ms": {
+        "draft": 3937,
+        "critique": 4273,
+        "solver": 1682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total distance of the sea route from Mumbai to Chennai?",
+      "ms": {
+        "draft": 11123,
+        "critique": 6324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the total distance of the North–South Corridor in 2019, if one of the places on it was 1,855 km from Srinagar and 1,862 km from Kanniyakumari?",
+      "ms": {
+        "draft": 3937,
+        "critique": 6409,
+        "solver": 12272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the remaining distance the ship has to travel to reach Chennai after reaching Cochin?",
+      "ms": {
+        "draft": 11123,
+        "critique": 8249
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the difference between the longest land route and the longest highway in Africa?",
+      "ms": {
+        "draft": 11123,
+        "critique": 6700,
+        "solver": 1519
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of 49 and 89?",
+      "ms": {
+        "draft": 3937,
+        "critique": 6626,
+        "solver": 14737
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total money Mary has left after her trip to Delhi?",
+      "ms": {
+        "draft": 11123,
+        "critique": 5683,
+        "solver": 980
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total weight loaded on the truck?",
+      "ms": {
+        "draft": 11123,
+        "critique": 5267,
+        "solver": 1515
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of certificates printed in Chittoor, A.P. and Raigad, Maharashtra?",
+      "ms": {
+        "draft": 3442,
+        "critique": 6361
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the difference in height between the highest and lowest peaks Priyanka Mohite climbed?",
+      "ms": {
+        "draft": 3442,
+        "critique": 8323
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total amount the school council needs to spend on the Maths Lab, library books, and sports equipment?",
+      "ms": {
+        "draft": 11123,
+        "critique": 7449,
+        "solver": 15107,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 54,000 nuts and bolts are produced in a day and an order is placed for 85,300, how many more nuts and bolts are needed to complete the order?",
+      "ms": {
+        "draft": 3442,
+        "critique": 7582
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Priyanka was 20 years old when she summited Mount Everest in 2013, in which year was she born?",
+      "ms": {
+        "draft": 3442,
+        "critique": 6643,
+        "solver": 14097
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Virat Kohli has scored 27,599 runs. He has 6,758 runs less than Sachin Tendulkar. How many runs has Sachin Tendulkar scored?",
+      "ms": {
+        "draft": 3442,
+        "critique": 2925,
+        "solver": 668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which is the highest peak Priyanka Mohite climbed according to the table?",
+      "ms": {
+        "draft": 3239,
+        "critique": 6449
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the difference in height between the highest and lowest peaks Priyanka Mohite climbed, as per the table?",
+      "ms": {
+        "draft": 3239,
+        "critique": 6749
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which year was Priyanka Mohite born if she was 20 years old when she summited Mount Everest in 2013?",
+      "ms": {
+        "draft": 3239,
+        "critique": 7383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "For what number of presses will the torch be ON?",
+      "ms": {
+        "draft": 3239,
+        "critique": 6326
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the number of certificates printed in a district is 5,922 and the number of students who attended is 9,221, are the certificates sufficient?",
+      "ms": {
+        "draft": 3239,
+        "critique": 6524
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 2,009 certificates are printed and 7,388 students attend, how many certificates are in excess?",
+      "ms": {
+        "draft": 3239,
+        "critique": 7196,
+        "solver": 1540
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Mary starts her train journey from Kolkata with ₹12,540. She spends ₹3,275 on food, ₹2,645 on a train ticket, and ₹1,275 on souvenirs. How much money is she left with?",
+      "ms": {
+        "draft": 3682,
+        "critique": 6800,
+        "solver": 1494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What number should be added to 32 to get 100?",
+      "ms": {
+        "draft": 3682,
+        "critique": 5868,
+        "solver": 9714
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a minibus has 18 litres of fuel and after refuelling it has 65 litres, how much fuel was filled?",
+      "ms": {
+        "draft": 3937,
+        "critique": 4219,
+        "solver": 10250,
+        "form": 0,
+        "translation": 30418
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A lorry has 28 litres of fuel in its tank. An additional 75 litres is filled. What is the total quantity of fuel in the lorry?",
+      "ms": {
+        "draft": 3396,
+        "critique": 5247,
+        "solver": 1486,
+        "form": 0,
+        "translation": 24921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A ship travels from Mumbai to Chennai via Cochin. The total distance is 2,700 km, and it travels 1,083 km to Cochin. How much more distance does it need to travel to reach Chennai?",
+      "ms": {
+        "draft": 3682,
+        "critique": 6909,
+        "solver": 950,
+        "form": 0,
+        "translation": 33254
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The longest land route is 15,150 km, and the longest highway in Africa is 10,228 km. By how much is the land route longer than the highway?",
+      "ms": {
+        "draft": 3682,
+        "critique": 6437,
+        "solver": 1495,
+        "form": 0,
+        "translation": 32865
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A truck can carry 8,250 kg of goods. It loads 3,675 kg of cement and 2,850 kg of steel. How much more weight can the truck carry before reaching its maximum capacity?",
+      "ms": {
+        "draft": 3682,
+        "critique": 7557,
+        "solver": 10669,
+        "form": 0,
+        "translation": 25703
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the difference between two successive sums of 5 consecutive numbers?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total quantity of fuel in a lorry if it has 28 litres and 75 litres are added?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the total amount spent by Mahesh and his family on fuel and other expenses, if they spent ₹21,880 on fuel and ₹38,900 on other expenses?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"no misconception, this is the correct answer, so it is not l…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the total distance of the sea route from Mumbai to Chennai?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the total distance of the North–South Corridor in 2019, if one of the places on it was 1,855 km from Srinagar and 1,862 km from Kanniyakumari?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the remaining distance the ship has to travel to reach Chennai after reaching Cochin?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the difference between the longest land route and the longest highway in Africa?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the sum of 49 and 89?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total money Mary has left after her trip to Delhi?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total weight loaded on the truck?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the total number of certificates printed in Chittoor, A.P. and Raigad, Maharashtra?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the difference in height between the highest and lowest peaks Priyanka Mohite climbed?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the total amount the school council needs to spend on the Maths Lab, library books, and sports equipment?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"39785+9545+19548\" = 68878, but the key says 69338"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 54,000 nuts and bolts are produced in a day and an order is placed for 85,300, how many more nuts and bolts are needed to complete the order?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Priyanka was 20 years old when she summited Mount Everest in 2013, in which year was she born?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Virat Kohli has scored 27,599 runs. He has 6,758 runs less than Sachin Tendulkar. How many runs has Sachin Tendulkar scored?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the sum of 49 and 89?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A minibus has 18 l of fuel left. After refuelling, the fuel meter indicates 65 l. How much fuel has been filled in the fuel tank of the minibus?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the difference between 82 and 37?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the sum of 3 consecutive numbers starting from 4?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which is the highest peak Priyanka Mohite climbed according to the table?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the difference in height between the highest and lowest peaks Priyanka Mohite climbed, as per the table?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "In which year was Priyanka Mohite born if she was 20 years old when she summited Mount Everest in 2013?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "For what number of presses will the torch be ON?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the number of certificates printed in a district is 5,922 and the number of students who attended is 9,221, are the certificates sufficient?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If 2,009 certificates are printed and 7,388 students attend, how many certificates are in excess?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Mary starts her train journey from Kolkata with ₹12,540. She spends ₹3,275 on food, ₹2,645 on a train ticket, and ₹1,275 on souvenirs. How much money is she left with?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What number should be added to 32 to get 100?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

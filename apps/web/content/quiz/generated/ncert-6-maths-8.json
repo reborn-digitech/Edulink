@@ -21,155 +21,54 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T00:48:59.360Z",
+  "generatedAt": "2026-10-21T22:21:31.418Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the measure of each angle in a rectangle?",
-      "choices": [
-        "30°",
-        "45°",
-        "60°",
-        "90°"
-      ],
-      "answerIndex": 3,
-      "solution": "Each angle in a rectangle measures 90 degrees. A rectangle is defined as a quadrilateral with four right angles. The other options are not the correct measure for the angles in a rectangle.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत में प्रत्येक कोण का माप क्या है?",
-          "choices": [
-            "30°",
-            "45°",
-            "60°",
-            "90°"
-          ],
-          "solution": "एक आयत में प्रत्येक कोण 90 डिग्री का माप होता है। एक आयत की परिभाषा चार समकोण वाला चतुर्भुज है। अन्य विकल्प आयत के कोणों के सही माप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका चौकोनाच्या प्रत्येक कोनाचे माप किती असते?",
-          "choices": [
-            "30°",
-            "45°",
-            "60°",
-            "90°"
-          ],
-          "solution": "एका चौकोनाच्या प्रत्येक कोनाचे माप 90 अंश असते. चौकोन म्हणजे चार लंब कोन असलेला चतुर्भुज आहे. इतर विकल्प चौकोनाच्या कोनांच्या योग्य मापाचे नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Common misconception about angles in a rectangle",
-        "Common misconception about angles in a rectangle",
-        "Common misconception about angles in a rectangle",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of basic geometric properties. The correct answer is 90°, and the author's reasoning is accurate. The distractors are plausible misconceptions for students who may confuse rectangles with other shapes like rhombuses or equilateral triangles.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "What is the name given to the point P in the figure where all points are 4 cm away from it?",
+      "stem": "Which of the following is a correct way to draw a circle with a radius of 4 cm?",
       "choices": [
-        "Radius",
-        "Diameter",
-        "Centre",
-        "Circumference"
+        "Keep the compass tip at a point and move it in a straight line",
+        "Fix the compass tip and rotate the pencil around it",
+        "Use a ruler to draw the curve directly",
+        "Place the compass tip at different points and draw segments"
       ],
-      "answerIndex": 2,
-      "solution": "The point P is the center of the circle because it is equidistant from all points on the circle. The radius is the distance from the center to the edge, the diameter is a line passing through the center, and the circumference is the distance around the circle. Therefore, the correct answer is 'Centre'.",
+      "answerIndex": 1,
+      "solution": "Fixing the compass tip and rotating the pencil around it creates a circle because the distance from the tip to the pencil remains constant, which defines a circle. Moving in a straight line would create a line, not a circle. Drawing segments or moving the tip would not maintain a consistent radius, resulting in an irregular shape.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "चित्र में बिंदु P का नाम क्या है जहां सभी बिंदु 4 सेमी दूर हैं?",
+          "stem": "निम्नलिखित में से कौन-सा 4 सेमी त्रिज्या वाले वृत्त को खींचने का सही तरीका है?",
           "choices": [
-            "त्रिज्या",
-            "व्यास",
-            "केंद्र",
-            "परिधि"
+            "कम्पास के नुकीले सिरे को एक बिंदु पर रखें और उसे सीधी रेखा में घुमाएं",
+            "कम्पास के नुकीले सिरे को ठीक करें और पेंसिल को इसके चारों ओर घुमाएं",
+            "सीधे वक्र को खींचने के लिए एक रूलर का उपयोग करें",
+            "कम्पास के नुकीले सिरे को अलग-अलग बिंदुओं पर रखें और खंड खींचें"
           ],
-          "solution": "बिंदु P वृत्त का केंद्र है क्योंकि यह वृत्त के सभी बिंदुओं से समान दूरी पर है। त्रिज्या केंद्र से किनारे तक की दूरी है, व्यास केंद्र से गुजरने वाली रेखा है, और परिधि वृत्त के चारों ओर की दूरी है। इसलिए सही उत्तर 'केंद्र' है।",
-          "imageAlt": "एक वृत्त जिसमें P केंद्र पर है, जो दर्शाता है कि वृत्त पर सभी बिंदु P से 4 सेमी दूर हैं।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for geometry.",
+          "solution": "कम्पास के नुकीले सिरे को ठीक करके पेंसिल को इसके चारों ओर घुमाने से वृत्त बनता है क्योंकि नुकीले सिरे से पेंसिल तक की दूरी नियत रहती है, जो वृत्त की परिभाषा है। एक सीधी रेखा में घुमाने से रेखा बनती है, वृत्त नहीं। खंड खींचने या नुकीले सिरे को घुमाने से एक समान त्रिज्या बनाए रखना संभव नहीं होता, जिससे अनियमित आकृति बनती है।",
+          "imageAlt": "4 सेमी त्रिज्या वाला एक वृत्त",
+          "critique": "Translation accurately reflects the original meaning with appropriate technical terms in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "चित्रात बिंदू P चे नाव काय आहे, जेथे सर्व बिंदू 4 सेंमी अंतरावर आहेत?",
+          "stem": "खालीलपैकी कोणता एक 4 सेमी त्रिज्येचा वर्तुळ काढण्याचा योग्य प्रकार आहे?",
           "choices": [
-            "त्रिज्या",
-            "व्यास",
-            "केंद्र",
-            "परिघ"
+            "कॉम्पासचा टिप एका बिंदूवर ठेवून तो सरळ रेषेत चालवावा",
+            "कॉम्पासचा टिप ठेवून पेन्सिल त्याच्या भोवती फिरवावी",
+            "सीधा वक्र काढण्यासाठी रुळ वापरावा",
+            "कॉम्पासचा टिप विविध बिंदूंवर ठेवून खंड काढावे"
           ],
-          "solution": "बिंदू P वर्तुळाचे केंद्र आहे कारण ते वर्तुळावरील सर्व बिंदूंपासून समान अंतरावर आहे. त्रिज्या ही केंद्रापासून किनार्यापर्यंतचे अंतर आहे, व्यास हा केंद्रमार्गे जाणारा रेषाखंड आहे आणि परिघ हा वर्तुळाच्या आजूबाजूचे अंतर आहे. म्हणूनच योग्य उत्तर 'केंद्र' आहे.",
-          "imageAlt": "एक वर्तुळ ज्यात P हे केंद्र आहे, जे दर्शवते की वर्तुळावरील सर्व बिंदू P पासून 4 सेंमी अंतरावर आहेत.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi geometry terminology.",
+          "solution": "कॉम्पासचा टिप ठेवून पेन्सिल त्याच्या भोवती फिरवल्यामुळे वर्तुळ तयार होतो कारण टिप आणि पेन्सिलमधील अंतर स्थिर राहते, जे वर्तुळाचे नियम आहे. सरळ रेषेत चालवल्यामुळे रेषा तयार होते, वर्तुळ नाही. खंड काढणे किंवा टिप चालवल्यामुळे स्थिर त्रिज्या राखता येत नाही, ज्यामुळे अनियमित आकृती तयार होते.",
+          "imageAlt": "4 सेमी त्रिज्येचा वर्तुळ",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometry.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A circle with point P at the center, showing that all points on the circle are 4 cm away from P.",
+      "imageAlt": "A circle with center P and radius 4 cm",
       "figure": {
         "kind": "geometry",
         "spec": {
@@ -184,7 +83,7 @@
             {
               "id": "P",
               "x": 5,
-              "y": 3,
+              "y": 5,
               "label": "P"
             }
           ],
@@ -192,33 +91,32 @@
             {
               "center": "P",
               "radius": 4,
-              "dashed": false,
-              "shade": false
+              "dashed": false
             }
           ]
         },
         "labels": {
           "P": {
-            "en": "P"
+            "en": "Point P"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
-        "Confuses the centre with the radius, which is the distance from the centre to the edge.",
-        "Confuses the centre with the diameter, which is twice the radius.",
+        "Thinks the compass moves in a straight line",
         null,
-        "Confuses the center of a circle with its circumference"
+        "Mistakes the process of drawing a circle",
+        "Believes a ruler can directly draw a circle"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Centre', and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 1, as fixing the compass tip and rotating the pencil around it is the standard method to draw a circle. The other options describe incorrect methods that would not produce a circle.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
@@ -272,1035 +170,219 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
+      "generatedAt": "2026-10-21T22:21:31.418Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the measure of ∠R and ∠S in a square PQRS?",
+      "stem": "Which of the following is a property of a rectangle?",
       "choices": [
-        "45 degrees",
-        "60 degrees",
-        "90 degrees",
-        "120 degrees"
-      ],
-      "answerIndex": 2,
-      "solution": "A square is a geometric shape with four equal sides and four right angles. Each angle in a square measures exactly 90 degrees. Therefore, ∠R and ∠S each measure 90 degrees. Other options like 45, 60, or 120 degrees do not match the properties of a square.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "वर्ग PQRS में ∠R और ∠S का माप क्या है?",
-          "choices": [
-            "45 डिग्री",
-            "60 डिग्री",
-            "90 डिग्री",
-            "120 डिग्री"
-          ],
-          "solution": "एक वर्ग एक ऐसी आकृति होती है जिसमें चार समान भुजाएं और चार समकोण होते हैं। एक वर्ग में प्रत्येक कोण ठीक 90 डिग्री का होता है। इसलिए, ∠R और ∠S प्रत्येक 90 डिग्री का माप होता है। 45, 60 या 120 डिग्री जैसे अन्य विकल्प वर्ग के गुणों के अनुरूप नहीं होते हैं।",
-          "imageAlt": "एक वर्ग PQRS जिसमें सभी कोण 90 डिग्री के चिह्नित किए गए हैं।",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "∠R आणि ∠S चे माप किती असते एका चौरस PQRS मध्ये?",
-          "choices": [
-            "45 अंश",
-            "60 अंश",
-            "90 अंश",
-            "120 अंश"
-          ],
-          "solution": "चौरस हा एक भूमितीय आकृती आहे ज्यामध्ये चार समान बाजू आणि चार समकोन असतात. चौरसाच्या प्रत्येक कोनाचे माप तपशीलवार 90 अंश असते. म्हणून ∠R आणि ∠S चे माप प्रत्येकी 90 अंश असते. 45, 60 किंवा 120 अंश असे इतर विकल्प चौरसाच्या गुणधर्मांशी जुमानत नाहीत.",
-          "imageAlt": "चौरस PQRS ज्यामध्ये सर्व कोन 90 अंश असलेले दर्शवलेले आहेत.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometric concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A square PQRS with all angles marked as 90 degrees.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "polygons": [
-            {
-              "vertices": [
-                "P",
-                "Q",
-                "R",
-                "S"
-              ],
-              "shade": false,
-              "dashed": false
-            }
-          ],
-          "points": [
-            {
-              "id": "P",
-              "x": 2,
-              "y": 5,
-              "label": "P"
-            },
-            {
-              "id": "Q",
-              "x": 6,
-              "y": 5,
-              "label": "Q"
-            },
-            {
-              "id": "R",
-              "x": 6,
-              "y": 2,
-              "label": "R"
-            },
-            {
-              "id": "S",
-              "x": 2,
-              "y": 2,
-              "label": "S"
-            }
-          ]
-        },
-        "labels": {
-          "P": {
-            "en": "P"
-          },
-          "Q": {
-            "en": "Q"
-          },
-          "R": {
-            "en": "R"
-          },
-          "S": {
-            "en": "S"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses the angles of a square with those of a different shape, such as a rhombus.",
-        "Confuses the angles of a square with those of an equilateral triangle.",
-        null,
-        "Confuses angles in a square with those in a regular hexagon"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the solution correctly identifies that all angles in a square are 90 degrees. The distractors are plausible misconceptions for students who confuse squares with other polygons.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.1 Artwork"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.1 Artwork"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.2 Squares and Rectangles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 3,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.2 Squares and Rectangles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 4,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.3 Constructing Squares and Rectangles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A rectangle is constructed with sides of 4 cm and 6 cm. What is the length of each angle in the rectangle?",
-      "choices": [
-        "45°",
-        "60°",
-        "90°",
-        "180°"
-      ],
-      "answerIndex": 2,
-      "solution": "In a rectangle, all angles are right angles. This means each angle measures 90°. A rectangle is defined as a quadrilateral with four right angles. Therefore, the correct answer is 90°.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत की भुजाएं 4 सेमी और 6 सेमी हैं। आयत के प्रत्येक कोण की लंबाई कितनी है?",
-          "choices": [
-            "45°",
-            "60°",
-            "90°",
-            "180°"
-          ],
-          "solution": "एक आयत में सभी कोण समकोण होते हैं। इसका अर्थ है कि प्रत्येक कोण 90° के बराबर होता है। एक आयत की परिभाषा चार समकोण वाला चतुर्भुज होता है। इसलिए सही उत्तर 90° है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक चौकोन 4 सेमी आणि 6 सेमी बाजूंनी तयार केला गेला आहे. चौकोनाच्या प्रत्येक कोनाची लांबी किती असेल?",
-          "choices": [
-            "45°",
-            "60°",
-            "90°",
-            "180°"
-          ],
-          "solution": "चौकोनात सर्व कोन लंबकोन असतात. हे म्हणजे प्रत्येक कोन 90° चा असतो. चौकोन म्हणजे चार लंबकोन असलेला चौकोन असतो. म्हणूनच योग्य उत्तर 90° आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometric concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks angles are acute",
-        "Thinks angles are not right",
-        null,
-        "Thinks angles are straight"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-posed, and the solution correctly identifies that all angles in a rectangle are right angles (90°). The distractors reflect common misconceptions about angle measures in geometric shapes.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "A rectangle is drawn on a dot grid. Without using any measuring instruments, how can you determine if the sides are equal and if the angles are right angles?",
-      "choices": [
-        "By checking the position of the corners on the grid",
-        "By counting the number of dots between the corners",
-        "By counting the number of grid lines between the corners",
-        "By counting the number of dots along the sides"
-      ],
-      "answerIndex": 0,
-      "solution": "Without using measuring instruments, the position of the corners on the grid can be used to determine if the sides are equal and if the angles are right angles. This is because the grid provides a reference for equal spacing and right angles. The other options require tools like a ruler, protractor, or a known square.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत डॉट ग्रिड पर खींची गई है। कोई मापन यंत्र का उपयोग किए बिना, आप पक्षों के बराबर होने और कोणों के समकोण होने का निर्धारण कैसे कर सकते हैं?",
-          "choices": [
-            "कोनों की ग्रिड पर स्थिति की जांच करके",
-            "कोनों के बीच डॉट्स की संख्या की गणना करके",
-            "कोनों के बीच ग्रिड लाइनों की संख्या की गणना करके",
-            "पक्षों के साथ डॉट्स की संख्या की गणना करके"
-          ],
-          "solution": "कोई मापन यंत्र का उपयोग किए बिना, ग्रिड पर कोनों की स्थिति का उपयोग पक्षों के बराबर होने और कोणों के समकोण होने का निर्धारण करने के लिए किया जा सकता है। इसका कारण यह है कि ग्रिड समान अंतराल और समकोण के लिए एक संदर्भ प्रदान करता है। अन्य विकल्पों के लिए एक छात्रावली, प्रोट्रेक्टर या एक ज्ञात वर्ग की आवश्यकता होती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक आयत डॉट ग्रिडवर आखला गेला आहे. मोजण्याच्या कोणत्याही उपकरणांचा वापर न करता, तुम्ही बाजू बरोबर आहेत की नाही आणि कोन लंबकोन आहेत की नाही ते कसे ठरवू शकाल?",
-          "choices": [
-            "कोनांच्या जागेचे तपासणे",
-            "कोनांमधील डॉटची संख्या गणणे",
-            "कोनांमधील ग्रिड लाईनची संख्या गणणे",
-            "बाजूवर असलेल्या डॉटची संख्या गणणे"
-          ],
-          "solution": "मोजण्याच्या कोणत्याही उपकरणांचा वापर न करता, ग्रिडवरील कोनांच्या जागेचा वापर करून बाजू बरोबर आहेत की नाही आणि कोन लंबकोन आहेत की नाही ते ठरवता येऊ शकते. हे कारण ग्रिड बरोबर अंतर आणि लंबकोनांच्या संदर्भासाठी एक आधार प्रदान करते. इतर विकल्पांसाठी रूलर, प्रोटॅक्टर किंवा ज्ञात चौरस यासारख्या उपकरणांचा आवश्यकता असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Students may think that equal spacing between dots implies equal side lengths",
-        "A student might think that equal spacing between grid lines implies equal side lengths",
-        "Students often think that counting dots directly gives length, not realizing that dots are points, not units of measurement."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the position of the corners on the grid can indicate equal sides and right angles through geometric reasoning. The other options are flawed because they rely on counting dots or grid lines, which do not directly measure length or angle.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a rectangle, the diagonals are equal in length and they bisect each other. What does this imply about the diagonals?",
-      "choices": [
-        "They are perpendicular to each other",
-        "They intersect at a 60° angle",
-        "They divide the rectangle into four equal parts",
-        "They form a right angle with the sides"
-      ],
-      "answerIndex": 2,
-      "solution": "If the diagonals of a rectangle bisect each other and are equal, they divide the rectangle into four equal parts. This is because the diagonals intersect at the midpoint, creating four congruent triangles. The other options are incorrect because the diagonals of a rectangle are not perpendicular, do not form a 60° angle, and do not form a right angle with the sides.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत में, विकर्ण बराबर लंबाई के होते हैं और वे एक दूसरे को विभाजित करते हैं। इसका क्या अर्थ है विकर्णों के बारे में?",
-          "choices": [
-            "वे एक दूसरे के लंबवत होते हैं",
-            "वे 60° के कोण पर काटते हैं",
-            "वे आयत को चार बराबर भागों में बाटते हैं",
-            "वे भुजाओं के साथ एक समकोण बनाते हैं"
-          ],
-          "solution": "यदि आयत के विकर्ण एक दूसरे को विभाजित करते हैं और बराबर होते हैं, तो वे आयत को चार बराबर भागों में बाटते हैं। इसका कारण यह है कि विकर्ण मध्य बिंदु पर काटते हैं, जिससे चार सर्वांगसम त्रिभुज बनते हैं। अन्य विकल्प गलत हैं क्योंकि आयत के विकर्ण लंबवत नहीं होते हैं, 60° के कोण पर नहीं काटते हैं और भुजाओं के साथ समकोण नहीं बनाते हैं।",
-          "imageAlt": "एक आयत जिसमें विकर्ण AC और BD बिंदु O पर काटते हैं, जो दोनों विकर्णों के मध्य बिंदु है। विकर्ण आयत को चार बराबर भागों में बाटते हैं।",
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आयतात, विकर्ण समान लांबीचे असतात आणि ते एकमेकांना दुभागतात. हे विकर्णांबद्दल काय सूचित करते?",
-          "choices": [
-            "ते एकमेकांना लंब असतात",
-            "ते 60° कोन बनवतात",
-            "ते आयताला चार समान भागांमध्ये विभागतात",
-            "ते बाजूंशी लंब कोन बनवतात"
-          ],
-          "solution": "जर आयताचे विकर्ण एकमेकांना दुभागत असतील आणि समान असतील, तर ते आयताला चार समान भागांमध्ये विभागतात. हे कारण विकर्ण मध्यबिंदूवर एकमेकांना छेदतात आणि चार सर्वसम त्रिकोण तयार करतात. इतर पर्याय अयोग्य आहेत कारण आयताचे विकर्ण लंब नसतात, 60° कोन नसतात आणि बाजूंशी लंब कोन नसतात.",
-          "imageAlt": "एक आयत ज्यात विकर्ण AC आणि BD बिंदू O वर छेदतात, जो दोन्ही विकर्णांचा मध्यबिंदू आहे. विकर्ण आयताला चार समान भागांमध्ये विभागतात.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A rectangle with diagonals AC and BD intersecting at point O, which is the midpoint of both diagonals. The diagonals divide the rectangle into four equal parts.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 1,
-              "y": 1,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 5,
-              "y": 1,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 5,
-              "y": 4,
-              "label": "C"
-            },
-            {
-              "id": "D",
-              "x": 1,
-              "y": 4,
-              "label": "D"
-            },
-            {
-              "id": "O",
-              "x": 3,
-              "y": 2.5,
-              "label": "O"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "label": "AB"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "label": "BC"
-            },
-            {
-              "from": "C",
-              "to": "D",
-              "label": "CD"
-            },
-            {
-              "from": "D",
-              "to": "A",
-              "label": "DA"
-            },
-            {
-              "from": "A",
-              "to": "C",
-              "label": "AC"
-            },
-            {
-              "from": "B",
-              "to": "D",
-              "label": "BD"
-            }
-          ],
-          "texts": [
-            {
-              "x": 5,
-              "y": 6,
-              "label": "O"
-            }
-          ]
-        },
-        "labels": {
-          "AB": {
-            "en": "AB",
-            "hi": "AB",
-            "mr": "AB"
-          },
-          "BC": {
-            "en": "BC",
-            "hi": "BC",
-            "mr": "BC"
-          },
-          "CD": {
-            "en": "CD",
-            "hi": "CD",
-            "mr": "CD"
-          },
-          "DA": {
-            "en": "DA",
-            "hi": "DA",
-            "mr": "DA"
-          },
-          "AC": {
-            "en": "AC",
-            "hi": "AC",
-            "mr": "AC"
-          },
-          "BD": {
-            "en": "BD",
-            "hi": "BD",
-            "mr": "BD"
-          },
-          "O": {
-            "en": "Intersection Point"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses rectangle with other quadrilaterals",
-        "Confuses properties of diagonals",
-        null,
-        "Confuses properties of diagonals"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the diagonals of a rectangle bisect each other and are equal, dividing the rectangle into four congruent triangles. The other options are incorrect because the diagonals of a rectangle are not perpendicular, do not form a 60° angle, and do not form a right angle with the sides.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 34,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a rectangle, which of the following is always true?",
-      "choices": [
-        "All sides are equal",
-        "Only one pair of opposite sides are equal",
+        "All sides are equal in length",
         "All angles are 90 degrees",
-        "3: Diagonals intersect at 90 degrees"
+        "All angles are equal but not 90 degrees",
+        "All sides are of different lengths"
       ],
-      "answerIndex": 2,
-      "solution": "In a rectangle, all angles are 90 degrees. This is a defining property of rectangles. The first option is incorrect because only opposite sides are equal, not all sides. The second option is incorrect because both pairs of opposite sides are equal. The fourth option is incorrect because diagonals in a rectangle are equal in length.",
+      "answerIndex": 1,
+      "solution": "A rectangle is defined as a quadrilateral with all angles equal to 90 degrees. The correct option states this property. The other options are incorrect because a rectangle does not have all sides equal (that is a square), and it cannot have all angles equal but not 90 degrees (that would not be a rectangle).",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक आयत में, निम्नलिखित में से कौन सा हमेशा सत्य होता है?",
+          "stem": "निम्नलिखित में से कौन-सा एक आयत का गुण है?",
           "choices": [
-            "सभी भुजाएँ समान होती हैं",
-            "केवल एक जोड़ा विपरीत भुजाएँ समान होती हैं",
-            "सभी कोण 90 डिग्री होते हैं",
-            "विकर्ण 90 डिग्री पर प्रतिच्छेद करते हैं"
+            "सभी भुजाएँ समान लंबाई की होती हैं",
+            "सभी कोण 90 डिग्री के होते हैं",
+            "सभी कोण समान होते हैं लेकिन 90 डिग्री नहीं होते",
+            "सभी भुजाएँ अलग-अलग लंबाई की होती हैं"
           ],
-          "solution": "एक आयत में सभी कोण 90 डिग्री होते हैं। यह आयत की परिभाषात्मक गुणवत्ता है। पहला विकल्प गलत है क्योंकि केवल विपरीत भुजाएँ समान होती हैं, सभी भुजाएँ नहीं। दूसरा विकल्प गलत है क्योंकि दोनों जोड़े विपरीत भुजाएँ समान होती हैं। चौथा विकल्प गलत है क्योंकि आयत में विकर्ण समान लंबाई के होते हैं।",
-          "imageAlt": "एक आयत जिसके शीर्ष A, B, C, D हैं।",
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
+          "solution": "एक आयत की परिभाषा एक चतुर्भुज है जिसके सभी कोण 90 डिग्री के होते हैं। सही विकल्प इस गुण को बताता है। अन्य विकल्प गलत हैं क्योंकि आयत में सभी भुजाएँ समान नहीं होतीं (वह एक वर्ग होता है), और यह संभव नहीं है कि सभी कोण समान हों लेकिन 90 डिग्री न हों (इसे आयत नहीं कहा जाता है)।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi mathematics education.",
           "flag": null
         },
         "mr": {
-          "stem": "आयतामध्ये, खालीलपैकी कोणते नेहमी खरे असते?",
+          "stem": "खालीलपैकी कोणते चौकोनाचे गुणधर्म आहे?",
           "choices": [
-            "सर्व बाजू बरोबर असतात",
-            "केवळ एक जोडी विरुद्ध बाजू बरोबर असतात",
+            "सर्व बाजू लांबीत समान असतात",
             "सर्व कोन 90 अंश असतात",
-            "विकर्ण 90 अंशावर एकमेकांना छेदतात"
+            "सर्व कोन समान असतात पण 90 अंश नसतात",
+            "सर्व बाजू वेगवेगळ्या लांबीच्या असतात"
           ],
-          "solution": "आयतामध्ये सर्व कोन 90 अंश असतात. हे आयताचे वैशिष्ट्य आहे. पहिला विकल्प चूक आहे कारण केवळ विरुद्ध बाजू बरोबर असतात, सर्व बाजू बरोबर नसतात. दुसरा विकल्प चूक आहे कारण दोन जोड्या विरुद्ध बाजू बरोबर असतात. चौथा विकल्प चूक आहे कारण आयतामध्ये विकर्णांची लांबी समान असते.",
-          "imageAlt": "एक आयत ज्याचे शिरोबिंदू A, B, C, D आहेत.",
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geometric concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A rectangle with vertices A, B, C, D.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 1,
-              "y": 1,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 3,
-              "y": 1,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 3,
-              "y": 3,
-              "label": "C"
-            },
-            {
-              "id": "D",
-              "x": 1,
-              "y": 3,
-              "label": "D"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "label": "AB"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "label": "BC"
-            },
-            {
-              "from": "C",
-              "to": "D",
-              "label": "CD"
-            },
-            {
-              "from": "D",
-              "to": "A",
-              "label": "DA"
-            }
-          ],
-          "polygons": [
-            {
-              "vertices": [
-                "A",
-                "B",
-                "C",
-                "D"
-              ],
-              "shade": true
-            }
-          ]
-        },
-        "labels": {
-          "AB": {
-            "en": "AB",
-            "hi": "AB",
-            "mr": "AB"
-          },
-          "BC": {
-            "en": "BC",
-            "hi": "BC",
-            "mr": "BC"
-          },
-          "CD": {
-            "en": "CD",
-            "hi": "CD",
-            "mr": "CD"
-          },
-          "DA": {
-            "en": "DA",
-            "hi": "DA",
-            "mr": "DA"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses rectangles with squares",
-        "Misunderstands the definition of a rectangle",
-        null,
-        "Confuses rectangle properties with those of a rhombus or square"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The key is 2, as all angles in a rectangle are 90 degrees. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 9,
-          "pageStart": 19,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.5 Exploring Diagonals of Rectangles and Squares"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 10,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.5 Exploring Diagonals of Rectangles and Squares"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 27,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "When constructing a rectangle with a diagonal of 7 cm and one side of 5 cm, which of the following steps should be done first?",
-      "choices": [
-        "Draw a line segment of 5 cm",
-        "Draw a perpendicular to the base at the midpoint",
-        "Draw a circle of radius 7 cm",
-        "Draw a diagonal of 7 cm"
-      ],
-      "answerIndex": 0,
-      "solution": "The first step should be to draw a line segment of 5 cm, which will serve as the base of the rectangle. The second option is a later step, not the first. The third and fourth options are not the first steps in the construction process.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत का निर्माण करते समय जिसके विकर्ण 7 सेमी और एक भुजा 5 सेमी है, निम्नलिखित में से कौन सा चरण पहले किया जाना चाहिए?",
-          "choices": [
-            "5 सेमी का एक रेखा खंड खींचिए",
-            "आधार के मध्य बिंदु पर लंब खींचिए",
-            "7 सेमी त्रिज्या का एक वृत्त खींचिए",
-            "7 सेमी का विकर्ण खींचिए"
-          ],
-          "solution": "पहला चरण 5 सेमी का एक रेखा खंड खींचना होना चाहिए, जो आयत के आधार के रूप में काम करेगा। दूसरा विकल्प एक बाद का चरण है, न कि पहला। तीसरा और चौथा विकल्प निर्माण प्रक्रिया में पहले चरण नहीं हैं।",
-          "imageAlt": "एक 5 सेमी के रेखा खंड DC, जिसे आयत के 5 सेमी भुजा के रूप में चिह्नित किया गया है।",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate geometric terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "चौरसाची रचना करताना 7 सेमी चा विकर्ण आणि एका बाजू 5 सेमी असेल, तर खालीलपैकी कोणता टप्पा सर्वात प्रथम करावा लागेल?",
-          "choices": [
-            "5 सेमी लांबीचा रेषाखंड काढा",
-            "मध्यबिंदूवर आधारावर लंब काढा",
-            "7 सेमी त्रिज्येचा वर्तुळ काढा",
-            "7 सेमी विकर्ण काढा"
-          ],
-          "solution": "सर्वात प्रथम 5 सेमी लांबीचा रेषाखंड काढावा लागेल, जो चौरसाचा आधार असेल. दुसरा विकल्प नंतरचा टप्पा असतो, प्रथम नाही. तिसरा आणि चौथा विकल्प रचना प्रक्रियेचे प्रथम टप्पे नाहीत.",
-          "imageAlt": "5 सेमी लांबीचा रेषाखंड DC, जो चौरसाच्या 5 सेमी बाजूचा दर्शक आहे.",
+          "solution": "चौकोन म्हणजे सर्व कोन 90 अंश असलेला चौबाजू आहे. योग्य विकल्प हा गुणधर्म दर्शवतो. इतर विकल्प अयोग्य आहेत कारण चौकोन सर्व बाजू समान नसतात (ते चौरस असते), आणि त्याचे सर्व कोन समान असतात पण 90 अंश नसतात (ते चौकोन नसते).",
+          "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A line segment DC of 5 cm, labeled as the 5 cm side of the rectangle.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "D",
-              "x": 1,
-              "y": 1,
-              "label": "D"
-            },
-            {
-              "id": "C",
-              "x": 6,
-              "y": 1,
-              "label": "C"
-            }
-          ],
-          "segments": [
-            {
-              "from": "D",
-              "to": "C",
-              "label": "DC",
-              "length": {
-                "value": 5,
-                "unit": "cm"
-              }
-            }
-          ]
-        },
-        "labels": {
-          "DC": {
-            "en": "5 cm side",
-            "hi": "5 सेमी भुजा",
-            "mr": "5 सेमी बाजू"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
+        "Confuses rectangle with square",
         null,
-        "Student assumes the diagonal must be bisected or that symmetry requires a midpoint construction",
-        "Confuses the steps of construction",
-        "Misunderstands the role of the diagonal"
+        "Does not understand the definition of a rectangle",
+        "Misunderstands the angle requirements for a rectangle"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct first step is to draw the line segment of 5 cm, as it is one of the sides of the rectangle. The other options either involve later steps or misunderstand the construction process.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a rectangle is defined by having all angles equal to 90 degrees. The other options represent common misconceptions about rectangles.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 9,
-          "pageStart": 19,
-          "pageEnd": 23,
+          "ordinal": 13,
+          "pageStart": 30,
+          "pageEnd": 32,
           "headingPath": [
             "Chapter 8: Playing with Constructions",
-            "8.5 Exploring Diagonals of Rectangles and Squares"
+            "8.6 points equidistant from Two Given points",
+            "S u m m a r y"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 10,
-          "pageStart": 23,
-          "pageEnd": 24,
+          "ordinal": 14,
+          "pageStart": 32,
+          "pageEnd": 34,
           "headingPath": [
             "Chapter 8: Playing with Constructions",
-            "8.5 Exploring Diagonals of Rectangles and Squares"
+            "8.6 points equidistant from Two Given points",
+            "S u m m a r y"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 25,
-          "pageEnd": 27,
+          "ordinal": 15,
+          "pageStart": 34,
+          "pageEnd": 38,
           "headingPath": [
             "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 27,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.6 points equidistant from Two Given points"
+            "8.6 points equidistant from Two Given points",
+            "S u m m a r y"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
+      "generatedAt": "2026-10-21T22:21:31.418Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a line segment of 7 cm is drawn from point A and another line segment of 5 cm is drawn from point B, such that they intersect at point C, what is the minimum possible distance between A and B?",
+      "stem": "In a rectangle PQRS, diagonals PR and QS are drawn. If the length of PR is 10 cm, what is the length of QS?",
       "choices": [
-        "2 cm",
+        "10 cm",
         "5 cm",
-        "7 cm",
+        "8 cm",
         "12 cm"
       ],
       "answerIndex": 0,
-      "solution": "The minimum possible distance between A and B is 2 cm. This occurs when point C lies on the straight line between A and B, and the segments AC and CB are in the same line. The first option is correct because 7 cm - 5 cm = 2 cm. The second and third options are not the minimum. The fourth option is the sum of the segments, which gives the maximum distance, not the minimum.",
-      "checkExpr": "7-5",
+      "solution": "In a rectangle, the diagonals are equal in length. So, if the length of PR is 10 cm, the length of QS must also be 10 cm. The other options are incorrect as they do not match the property of rectangles.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि बिंदु A से 7 सेमी का एक रेखा खंड खींचा जाता है और बिंदु B से 5 सेमी का एक रेखा खंड खींचा जाता है, जो कि बिंदु C पर प्रतिच्छेद करते हैं, तो A और B के बीच न्यूनतम संभावित दूरी क्या है?",
+          "stem": "आयत PQRS में, विकर्ण PR और QS खींचे गए हैं। यदि PR की लंबाई 10 सेमी है, तो QS की लंबाई क्या है?",
           "choices": [
-            "2 सेमी",
+            "10 सेमी",
             "5 सेमी",
-            "7 सेमी",
+            "8 सेमी",
             "12 सेमी"
           ],
-          "solution": "A और B के बीच न्यूनतम संभावित दूरी 2 सेमी है। यह तब होता है जब बिंदु C A और B के बीच सीधी रेखा पर होता है, और खंड AC और CB एक ही रेखा में होते हैं। पहला विकल्प सही है क्योंकि 7 सेमी - 5 सेमी = 2 सेमी। दूसरा और तीसरा विकल्प न्यूनतम नहीं हैं। चौथा विकल्प खंडों के योग के बराबर है, जो अधिकतम दूरी देता है, न्यूनतम नहीं।",
-          "imageAlt": "एक संख्या रेखा जिस पर बिंदु A, 0 पर है, बिंदु C, 5 पर है और बिंदु B, 7 पर है।",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "solution": "एक आयत में, विकर्ण बराबर लंबाई के होते हैं। इसलिए, यदि PR की लंबाई 10 सेमी है, तो QS की लंबाई भी 10 सेमी होनी चाहिए। अन्य विकल्प गलत हैं क्योंकि वे आयत के गुण के अनुरूप नहीं हैं।",
+          "imageAlt": "एक आयत PQRS जिसमें विकर्ण PR और QS खींचे गए हैं। PR 10 सेमी है, और QS की लंबाई ज्ञात करनी है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "7 सेंमी लांबीचा रेखाखंड A बिंदूपासून आणि 5 सेंमी लांबीचा रेखाखंड B बिंदूपासून असेल, ज्यामुळे ते C बिंदूवर छेदतात, तर A आणि B च्या अंतराची न्यूनतम शक्य किंमत काय असेल?",
+          "stem": "आयत PQRS मध्ये, विकर्ण PR आणि QS काढले आहेत. जर PR ची लांबी 10 सेमी असेल, तर QS ची लांबी किती असेल?",
           "choices": [
-            "2 सेंमी",
-            "5 सेंमी",
-            "7 सेंमी",
-            "12 सेंमी"
+            "10 सेमी",
+            "5 सेमी",
+            "8 सेमी",
+            "12 सेमी"
           ],
-          "solution": "A आणि B च्या अंतराची न्यूनतम शक्य किंमत 2 सेंमी असते. हे तेव्हा होते जेव्हा C बिंदू A आणि B च्या सरळ रेषेवर असतो आणि AC आणि CB रेखाखंड समान रेषेत असतात. पहिला विकल्प बरोबर असतो कारण 7 सेंमी - 5 सेंमी = 2 सेंमी. दुसरा आणि तिसरा विकल्प न्यूनतम नाहीत. चौथा विकल्प रेखाखंडांच्या बेरजेने मिळतो, जो अधिकतम अंतर दर्शवतो, न्यूनतम नाही.",
-          "imageAlt": "0 वर A, 5 वर C आणि 7 वर B असलेला संख्या रेषा.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "solution": "आयतामध्ये विकर्ण समान लांबीचे असतात. म्हणून, जर PR ची लांबी 10 सेमी असेल, तर QS ची लांबी देखील 10 सेमी असेल. इतर विकल्प चुकीचे आहेत कारण ते आयताच्या गुणधर्माशी जुमानत नाहीत.",
+          "imageAlt": "आयत PQRS ज्यामध्ये विकर्ण PR आणि QS आहेत. PR 10 सेमी आहे आणि QS ची लांबी शोधायची आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A number line showing points A at 0, C at 5, and B at 7.",
+      "imageAlt": "A rectangle PQRS with diagonals PR and QS. PR is 10 cm, and the length of QS is to be found.",
       "figure": {
-        "kind": "numberline",
+        "kind": "geometry",
         "spec": {
-          "min": 0,
-          "max": 10,
-          "step": 1,
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "cm"
+          },
           "points": [
             {
-              "value": 0,
-              "label": "A"
+              "id": "P",
+              "x": 1,
+              "y": 1
             },
             {
-              "value": 5,
-              "label": "C"
+              "id": "Q",
+              "x": 8,
+              "y": 1
             },
             {
-              "value": 7,
-              "label": "B"
+              "id": "R",
+              "x": 8,
+              "y": 5
+            },
+            {
+              "id": "S",
+              "x": 1,
+              "y": 5
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "R",
+              "label": "PR"
+            },
+            {
+              "from": "Q",
+              "to": "S",
+              "label": "QS"
             }
           ]
         },
-        "labels": {}
+        "labels": {
+          "PR": {
+            "en": "PR = 10 cm",
+            "hi": "PR = 10 सेमी",
+            "mr": "PR = 10 सेमी"
+          },
+          "QS": {
+            "en": "QS = ?",
+            "hi": "QS = ?",
+            "mr": "QS = ?"
+          }
+        }
       },
       "needsFigure": true,
       "distractorReason": [
         null,
-        "Assuming the distance between A and B is the same as the length of one of the segments",
-        "Confuses the distance between A and C with the distance between A and B",
-        "Confuses the distance between B and C with the distance between A and B"
+        "Believes diagonals of a rectangle are half the length of each other",
+        "Assumes the diagonal is half the length, which is incorrect",
+        "Chooses a random value that does not match the property of rectangles"
       ],
       "solverAnswers": [
         0,
@@ -1310,7 +392,216 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The minimum distance between A and B is 2 cm when C lies between A and B, and AC = 7 cm, CB = 5 cm. The reasoning aligns with the correct geometric interpretation.",
+      "critique": "The solution correctly applies the property that diagonals of a rectangle are equal. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.4 An Exploration in Rectangles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.4 An Exploration in Rectangles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 7,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.4 An Exploration in Rectangles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 8,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.5 Exploring Diagonals of Rectangles and Squares"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:21:31.418Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A rectangle is drawn such that the distance between two points X and Y is the same as the distance between two other points A and B. What can be said about the shape of the quadrilateral ABYX?",
+      "choices": [
+        "It is a parallelogram",
+        "It is a square",
+        "It is a triangle",
+        "It is a circle"
+      ],
+      "answerIndex": 0,
+      "solution": "If the distance between X and Y is the same as the distance between A and B, and the shape is a quadrilateral, it is likely to be a parallelogram. This is because the opposite sides of a parallelogram are equal in length. The other options are incorrect because a square has all sides equal, a triangle has three sides, and a circle is not a quadrilateral.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत इस प्रकार बनाया गया है कि बिंदुओं X और Y के बीच की दूरी अन्य बिंदुओं A और B के बीच की दूरी के समान है। चतुर्भुज ABYX के आकार के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह एक समांतर चतुर्भुज है",
+            "यह एक वर्ग है",
+            "यह एक त्रिभुज है",
+            "यह एक वृत्त है"
+          ],
+          "solution": "यदि X और Y के बीच की दूरी A और B के बीच की दूरी के समान है और आकृति एक चतुर्भुज है, तो यह एक समांतर चतुर्भुज होने की संभावना है। इसका कारण यह है कि समांतर चतुर्भुज की विपरीत भुजाएं लंबाई में समान होती हैं। अन्य विकल्प गलत हैं क्योंकि एक वर्ग में सभी भुजाएं समान होती हैं, एक त्रिभुज में तीन भुजाएं होती हैं और एक वृत्त एक चतुर्भुज नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक चौकोन असा आखला गेला आहे की बिंदू X आणि Y मधील अंतर इतर बिंदू A आणि B मधील अंतराच्या समान आहे. चौकोन ABYX च्या आकृतीबद्दल काय म्हणता येईल?",
+          "choices": [
+            "तो समांतर चौकोन आहे",
+            "तो चौरस आहे",
+            "तो त्रिकोण आहे",
+            "तो वर्तुळ आहे"
+          ],
+          "solution": "जर X आणि Y मधील अंतर A आणि B मधील अंतराच्या समान असेल आणि आकृती चौकोन असेल, तर तो समांतर चौकोन असावा. कारण समांतर चौकोनाच्या विरुद्ध बाजू लांबीत समान असतात. इतर विकल्प चूक आहेत कारण चौरस सर्व बाजू बरोबर असतात, त्रिकोणाला तीन बाजू असतात आणि वर्तुळ चौकोन नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the properties of a parallelogram with those of a square",
+        "Fails to recognize the shape as a quadrilateral",
+        "Does not understand the difference between a parallelogram and other shapes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The key is 0, and the reasoning aligns with the properties of a parallelogram. The other options are clearly incorrect based on the definition of a quadrilateral and the properties of the shapes mentioned.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 13,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.6 points equidistant from Two Given points",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 14,
+          "pageStart": 32,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.6 points equidistant from Two Given points",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp108.pdf",
+          "ordinal": 15,
+          "pageStart": 34,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 8: Playing with Constructions",
+            "8.6 points equidistant from Two Given points",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:21:31.418Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the construction of the house, the point A is found by intersecting two arcs. What is the key mathematical reason for this method?",
+      "choices": [
+        "It ensures the point is equidistant from B and C",
+        "It creates a triangle with the given side lengths",
+        "It uses the properties of a square",
+        "It simplifies the construction of the house"
+      ],
+      "answerIndex": 0,
+      "solution": "The method uses the property that the intersection of two circles with equal radii from B and C gives a point equidistant from both, which is essential for the construction. The other options do not capture the mathematical reason behind the method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "घर के निर्माण में, बिंदु A दो चापों के प्रतिच्छेदन द्वारा ज्ञात किया जाता है। इस विधि के लिए मुख्य गणितीय कारण क्या है?",
+          "choices": [
+            "यह बिंदु को B और C से समान दूरी पर रखता है",
+            "यह दिए गए भुजा लंबाइयों के साथ एक त्रिभुज बनाता है",
+            "यह एक वर्ग के गुणों का उपयोग करता है",
+            "यह घर के निर्माण को सरल बनाता है"
+          ],
+          "solution": "इस विधि में बी और सी से समान त्रिज्या वाले दो वृत्तों के प्रतिच्छेदन के गुण का उपयोग किया जाता है जो दोनों से समान दूरी पर एक बिंदु देता है, जो निर्माण के लिए आवश्यक है। अन्य विकल्प इस विधि के पीछे गणितीय कारण को नहीं दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "घराच्या बांधकामात, बिंदू A दोन चापांच्या छेदनबिंदूमध्ये शोधला जातो. ह्या पद्धतीचा मुख्य गणितीय कारण काय आहे?",
+          "choices": [
+            "ते बिंदू बी आणि सी पासून समदूर असल्याची खात्री करते",
+            "ते दिलेल्या बाजूंच्या लांबींसह त्रिकोण तयार करते",
+            "ते चौरसाच्या गुणधर्मांचा वापर करते",
+            "ते घराच्या बांधकामाची सोपीकरण करते"
+          ],
+          "solution": "ही पद्धत गुणधर्म वापरते की बी आणि सी पासून समान त्रिज्या असलेल्या दोन वर्तुळांचा छेदनबिंदू दोन्ही बिंदूंपासून समदूर असतो, जे बांधकामासाठी आवश्यक आहे. इतर विकल्प ह्या पद्धतीच्या गणितीय कारणाचे वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the purpose with triangle construction",
+        "Assumes the figure is a square",
+        "Thinks the method is for simplification only"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the intersection of two arcs with equal radii from B and C ensures the point is equidistant from both. The other options represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp108.pdf",
@@ -1354,190 +645,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a rectangle is named ABCD, which of the following cannot be a valid name for the same rectangle?",
-      "choices": [
-        "BDAC",
-        "ABDC",
-        "CDAB",
-        "DABC"
-      ],
-      "answerIndex": 1,
-      "solution": "ABDC cannot be a valid name for the rectangle because the order of the letters does not follow a continuous path around the rectangle's corners. In a rectangle, the vertices must be listed in sequence as you move around the shape, either clockwise or counterclockwise. BDAC, CDAB, and DABC all follow such a sequence, but ABDC skips a corner and disrupts the correct order.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक आयत का नाम ABCD है, तो निम्नलिखित में से कौन-सा आयत के लिए एक वैध नाम नहीं हो सकता?",
-          "choices": [
-            "BDAC",
-            "ABDC",
-            "CDAB",
-            "DABC"
-          ],
-          "solution": "ABDC आयत के लिए एक वैध नाम नहीं हो सकता क्योंकि अक्षरों का क्रम आयत के कोनों के चारों ओर एक लगातार पथ का अनुसरण नहीं करता है। एक आयत में, शीर्षों को आकृति के चारों ओर घड़ी की दिशा या विपरीत दिशा में क्रम में सूचीबद्ध किया जाना चाहिए। BDAC, CDAB और DABC ऐसे क्रम का अनुसरण करते हैं, लेकिन ABDC एक कोना छोड़ देता है और सही क्रम को बाधित कर देता है।",
-          "imageAlt": "एक आयत जिसके कोने A, B, C, D लेबल किए गए हैं।",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate geometric terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक चौकोन ABCD म्हणून नाव दिले गेले असेल, तर खालीलपैकी कोणते नाव त्याच्यासाठी वैध असू शकत नाही?",
-          "choices": [
-            "BDAC",
-            "ABDC",
-            "CDAB",
-            "DABC"
-          ],
-          "solution": "ABDC चौकोनासाठी वैध नाव असू शकत नाही कारण अक्षरांचा क्रम चौकोनाच्या कोनांमार्गे चालत नाही. चौकोनात, शिरोबिंदू वर जाताना एका वर्तुळात वर्गमापाच्या दिशेने किंवा विरुद्ध दिशेने नमूद करावे लागतात. BDAC, CDAB आणि DABC या नावांमध्ये असा क्रम आहे, परंतु ABDC एका कोनाचा उलटा विचार करतो आणि योग्य क्रम बिघडवतो.",
-          "imageAlt": "एक चौकोन ज्याचे कोन A, B, C, D असे नाव दिले गेले आहे.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometry terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A rectangle with corners labeled A, B, C, D.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 2,
-              "y": 2
-            },
-            {
-              "id": "B",
-              "x": 6,
-              "y": 2
-            },
-            {
-              "id": "C",
-              "x": 6,
-              "y": 5
-            },
-            {
-              "id": "D",
-              "x": 2,
-              "y": 5
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B"
-            },
-            {
-              "from": "B",
-              "to": "C"
-            },
-            {
-              "from": "C",
-              "to": "D"
-            },
-            {
-              "from": "D",
-              "to": "A"
-            }
-          ]
-        },
-        "labels": {
-          "A": {
-            "en": "A"
-          },
-          "B": {
-            "en": "B"
-          },
-          "C": {
-            "en": "C"
-          },
-          "D": {
-            "en": "D"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses the order of vertices, thinking that opposite vertices can be adjacent in the name",
-        null,
-        "Confuses the order of vertices, thinking that any permutation of the letters is valid as long as all four are used",
-        "Confuses the order of vertices, thinking that any permutation is valid as long as all four letters are used"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 (ABDC), as it does not follow a valid clockwise or counter-clockwise path around the rectangle. The author's reasoning is correct, and the misconceptions described for the other options are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.1 Artwork"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.1 Artwork"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.2 Squares and Rectangles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 3,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.2 Squares and Rectangles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp108.pdf",
-          "ordinal": 4,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: Playing with Constructions",
-            "8.3 Constructing Squares and Rectangles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:48:59.360Z",
+      "generatedAt": "2026-10-21T22:21:31.418Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

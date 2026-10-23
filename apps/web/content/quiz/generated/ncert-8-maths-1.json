@@ -21,1464 +21,156 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T06:29:09.844Z",
+  "generatedAt": "2026-10-22T03:53:55.509Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the square root of 441?",
+      "stem": "What is the cube of 2?",
       "choices": [
-        "21 m",
-        "22 m",
-        "20 m",
-        "23 m"
-      ],
-      "answerIndex": 0,
-      "solution": "The square root of 441 is 21 because 21 multiplied by 21 equals 441. The other options are incorrect because their squares do not equal 441. 22 squared is 484, 20 squared is 400, and 23 squared is 529.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "441 का वर्गमूल क्या है?",
-          "choices": [
-            "21 मीटर",
-            "22 मीटर",
-            "20 मीटर",
-            "23 मीटर"
-          ],
-          "solution": "441 का वर्गमूल 21 है क्योंकि 21 को 21 से गुणा करने पर 441 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि उनके वर्ग 441 के बराबर नहीं होते। 22 का वर्ग 484 है, 20 का वर्ग 400 है और 23 का वर्ग 529 है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "441 चे वर्गमूळ किती आहे?",
-          "choices": [
-            "21 मी",
-            "22 मी",
-            "20 मी",
-            "23 मी"
-          ],
-          "solution": "441 चे वर्गमूळ 21 आहे कारण 21 चा 21 ने गुणाकार 441 येतो. इतर विकल्प चुकीचे आहेत कारण त्यांचा वर्ग 441 नाही. 22 चा वर्ग 484 आहे, 20 चा वर्ग 400 आहे आणि 23 चा वर्ग 529 आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the square root of 441 with the square root of 484",
-        "Confuses the square of 20 with the square root of 400",
-        "Confuses the square root of 441 with the square root of 529"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 21, as 21² = 441. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following numbers is a perfect cube?",
-      "choices": [
-        "27",
-        "28",
-        "29",
-        "30"
-      ],
-      "answerIndex": 0,
-      "solution": "The number 27 is a perfect cube because 3 × 3 × 3 = 27. The other options are not perfect cubes as they do not result from cubing an integer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या एक पूर्ण घन है?",
-          "choices": [
-            "27",
-            "28",
-            "29",
-            "30"
-          ],
-          "solution": "संख्या 27 एक पूर्ण घन है क्योंकि 3 × 3 × 3 = 27। अन्य विकल्प पूर्ण घन नहीं हैं क्योंकि वे पूर्णांक के घन से प्राप्त नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणती संख्या एक पूर्ण घन आहे?",
-          "choices": [
-            "27",
-            "28",
-            "29",
-            "30"
-          ],
-          "solution": "संख्या 27 एक पूर्ण घन आहे कारण 3 × 3 × 3 = 27. इतर विकल्प पूर्ण घन नाहीत कारण त्यांना एखाद्या पूर्णांकाच्या घनापासून मिळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses perfect cube with numbers that are multiples of 3 or have digits summing to a multiple of 3",
-        "Confuses perfect cubes with numbers that are one less than a perfect square",
-        "Confuses perfect cube with numbers ending in 0"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. 27 is a perfect cube (3³), and the other options are not. The reasons for the distractors are plausible misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the square of 12?",
-      "choices": [
-        "144",
-        "145",
-        "146",
-        "147"
-      ],
-      "answerIndex": 0,
-      "solution": "The square of 12 is 144 because 12 × 12 = 144. The other options are not correct as they do not result from squaring 12.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "12 का वर्ग क्या है?",
-          "choices": [
-            "144",
-            "145",
-            "146",
-            "147"
-          ],
-          "solution": "12 का वर्ग 144 है क्योंकि 12 × 12 = 144। अन्य विकल्प गलत हैं क्योंकि वे 12 के वर्ग से प्राप्त नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "12 चा वर्ग किती आहे?",
-          "choices": [
-            "144",
-            "145",
-            "146",
-            "147"
-          ],
-          "solution": "12 चा वर्ग 144 आहे कारण 12 × 12 = 144. इतर विकल्प चूक आहेत कारण ते 12 च्या वर्गापासून मिळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses squaring with adding 12 + 132 or thinking 12^2 = 12 + 132",
-        "Miscalculates 12 x 12 as 12 x 12 = 12 + 12 + 12 + ... (12 times) = 144, but adds an extra 2 due to a counting error",
-        "Confuses the square of 12 with the square of 13 minus 1"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the correct answer is clearly 144. The author's reasoning for the distractors reflects common misconceptions, such as miscalculating the multiplication or confusing the square of 12 with other values.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following statements is true about the prime factorisation of a cube number?",
-      "choices": [
-        "Each prime factor appears once",
-        "Each prime factor appears twice",
-        "Each prime factor appears three times",
-        "Each prime factor appears six times"
-      ],
-      "answerIndex": 2,
-      "solution": "A cube number is formed by multiplying a number by itself three times. Therefore, in its prime factorisation, each prime factor must appear three times. The other options are incorrect because they do not reflect the mathematical property of cubing a number, which triples the exponents in its prime factorisation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन घन संख्या के अभाज्य गुणनखंडन के बारे में सत्य है?",
-          "choices": [
-            "प्रत्येक अभाज्य गुणनखंड एक बार आता है",
-            "प्रत्येक अभाज्य गुणनखंड दो बार आता है",
-            "प्रत्येक अभाज्य गुणनखंड तीन बार आता है",
-            "प्रत्येक अभाज्य गुणनखंड छह बार आता है"
-          ],
-          "solution": "एक घन संख्या एक संख्या को तीन बार गुणा करके बनाई जाती है। अतः इसके अभाज्य गुणनखंडन में प्रत्येक अभाज्य गुणनखंड तीन बार आना चाहिए। अन्य विकल्प गलत हैं क्योंकि वे संख्या के घन बनाने के गणितीय गुणधर्म को दर्शाने में असमर्थ हैं, जो इसके अभाज्य गुणनखंडन में घातों को तीन गुना कर देता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान घन संख्येच्या अविभाज्य अपघटनाबद्दल खरा आहे?",
-          "choices": [
-            "प्रत्येक अविभाज्य अंक एकदा आलेला असतो",
-            "प्रत्येक अविभाज्य अंक दोनदा आलेला असतो",
-            "प्रत्येक अविभाज्य अंक तीनदा आलेला असतो",
-            "प्रत्येक अविभाज्य अंक छहदा आलेला असतो"
-          ],
-          "solution": "एक घन संख्या एका संख्येला तिसरच्या वेळी गुणून बनवली जाते. म्हणून तिच्या अविभाज्य अपघटनात प्रत्येक अविभाज्य अंक तीनदा आलेला असतो. इतर विकल्प चुकीचे आहेत कारण ते संख्येच्या घन करण्याच्या गणितीय गुणधर्माचे अनुसरण करत नाहीत, जो तिच्या अविभाज्य अपघटनातील घातांना तिप्पट करतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the number of times a prime factor appears in a square with that in a cube",
-        "Thinks the number of times a prime factor appears in a cube is twice that in a square",
-        null,
-        "Confuses the exponent in the cube with the total number of factors in the prime factorization"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as the prime factorization of a cube number requires each prime factor to appear three times. The author's reasoning for the distractors aligns with common misconceptions about exponents and factorizations.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.3 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 13,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a correct statement about perfect cubes?",
-      "choices": [
-        "They can end with any digit",
-        "They can only end with 0, 1, 4, 5, 6 or 9",
-        "They can only end with 8",
-        "They can only end with 2, 3, 7, or 8"
-      ],
-      "answerIndex": 0,
-      "solution": "Perfect cubes can end with any digit because when you cube numbers from 0 to 9, their results end in all possible digits. For example, 2³ = 8 and 3³ = 27, showing that cubes can end in 8 or 7. The other options incorrectly limit the possible ending digits, as cubes can end in 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा आदर्श घन के बारे में सही कथन है?",
-          "choices": [
-            "वे किसी भी अंक पर समाप्त हो सकते हैं",
-            "वे केवल 0, 1, 4, 5, 6 या 9 पर समाप्त हो सकते हैं",
-            "वे केवल 8 पर समाप्त हो सकते हैं",
-            "वे केवल 2, 3, 7, या 8 पर समाप्त हो सकते हैं"
-          ],
-          "solution": "आदर्श घन किसी भी अंक पर समाप्त हो सकते हैं क्योंकि 0 से 9 तक की संख्याओं के घन के परिणाम सभी संभावित अंकों पर समाप्त होते हैं। उदाहरण के लिए, 2³ = 8 और 3³ = 27, जो दर्शाता है कि घन 8 या 7 पर समाप्त हो सकते हैं। अन्य विकल्प गलत हैं क्योंकि घन 0, 1, 2, 3, 4, 5, 6, 7, 8, या 9 पर समाप्त हो सकते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक पूर्ण घन बद्दल योग्य विधान आहे?",
-          "choices": [
-            "ते कोणत्याही अंकाने संपू शकतात",
-            "ते केवळ 0, 1, 4, 5, 6 किंवा 9 ने संपू शकतात",
-            "ते केवळ 8 ने संपू शकतात",
-            "ते केवळ 2, 3, 7 किंवा 8 ने संपू शकतात"
-          ],
-          "solution": "पूर्ण घन कोणत्याही अंकाने संपू शकतात कारण 0 ते 9 या संख्यांचे घन घेतल्यास त्यांचे फलित अंक सर्व शक्य अंकांनी संपतात. उदाहरणार्थ, 2³ = 8 आणि 3³ = 27, जे दर्शवते की घन 8 किंवा 7 ने संपू शकतात. इतर विकल्प चुकीचे आहेत, कारण घन 0, 1, 2, 3, 4, 5, 6, 7, 8 किंवा 9 ने संपू शकतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Mistakenly assumes that perfect cubes follow the same rules as perfect squares",
-        "Incorrectly assumes that perfect cubes can only end with certain digits",
-        "Confuses the properties of perfect cubes with those of perfect squares"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as perfect cubes can indeed end with any digit. The other options incorrectly limit the possible ending digits, likely due to confusion with perfect squares.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.3 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 13,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following numbers is the smallest square number divisible by 4, 9, and 10?",
-      "choices": [
-        "900",
-        "360",
-        "600",
-        "180"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 900 because it is the smallest number that is both a perfect square and divisible by 4, 9, and 10. 360 is not a perfect square, 600 is not divisible by 9, and 180 is not a perfect square or divisible by 4.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या 4, 9 और 10 से विभाज्य सबसे छोटी वर्ग संख्या है?",
-          "choices": [
-            "900",
-            "360",
-            "600",
-            "180"
-          ],
-          "solution": "सही उत्तर 900 है क्योंकि यह 4, 9 और 10 से विभाज्य और एक पूर्ण वर्ग संख्या होने वाली सबसे छोटी संख्या है। 360 एक पूर्ण वर्ग नहीं है, 600 9 से विभाज्य नहीं है, और 180 पूर्ण वर्ग नहीं है या 4 से विभाज्य नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता संख्या 4, 9 आणि 10 ने भाग जाणारा सर्वात लहान वर्ग संख्या आहे?",
-          "choices": [
-            "900",
-            "360",
-            "600",
-            "180"
-          ],
-          "solution": "बरोबर उत्तर 900 आहे कारण ते 4, 9 आणि 10 ने भाग जाणारा सर्वात लहान वर्ग संख्या आहे. 360 वर्ग संख्या नाही, 600 9 ने भाग जात नाही आणि 180 वर्ग संख्या नाही किंवा 4 ने भाग जात नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student forgets to include the necessary prime factors for divisibility by 10, only considering 4 and 9.",
-        "Chooses a number that is not divisible by all three numbers",
-        "Chooses a number that is not divisible by all three numbers"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 900, which is the smallest square number divisible by 4, 9, and 10. The other options are either not square numbers or not divisible by all three.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is the square root of 256?",
-      "choices": [
-        "16",
-        "14",
-        "12",
-        "10"
-      ],
-      "answerIndex": 0,
-      "solution": "The square root of 256 is 16 because 16 × 16 = 256. The other options are not correct as they do not result in 256 when squared.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन 256 का वर्गमूल है?",
-          "choices": [
-            "16",
-            "14",
-            "12",
-            "10"
-          ],
-          "solution": "256 का वर्गमूल 16 है क्योंकि 16 × 16 = 256। अन्य विकल्प गलत हैं क्योंकि जब उन्हें वर्ग किया जाता है तो वे 256 नहीं देते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी 256 चे वर्गमूळ कोणते आहे?",
-          "choices": [
-            "16",
-            "14",
-            "12",
-            "10"
-          ],
-          "solution": "256 चे वर्गमूळ 16 आहे कारण 16 × 16 = 256. इतर विकल्प चुकीचे आहेत कारण त्यांच्या वर्गाने 256 मिळत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses square root of 196 with square root of 256",
-        "Confuses square root with half the number",
-        "Confuses square root with half the number"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 16, as 16 × 16 = 256. The other options are incorrect, and the reasons provided for the distractors are plausible misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the cube root of 216?",
-      "choices": [
+        "4",
         "6",
         "8",
-        "12",
-        "18"
-      ],
-      "answerIndex": 0,
-      "solution": "The cube root of 216 is 6 because 6 × 6 × 6 = 216. The other options are incorrect because 8³ is 512, 12³ is 1728, and 18³ is 5832.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "216 का घनमूल क्या है?",
-          "choices": [
-            "6",
-            "8",
-            "12",
-            "18"
-          ],
-          "solution": "216 का घनमूल 6 है क्योंकि 6 × 6 × 6 = 216। अन्य विकल्प गलत हैं क्योंकि 8³ 512 है, 12³ 1728 है और 18³ 5832 है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "216 चे घन मूळ किती आहे?",
-          "choices": [
-            "6",
-            "8",
-            "12",
-            "18"
-          ],
-          "solution": "216 चे घन मूळ 6 आहे कारण 6 × 6 × 6 = 216. इतर विकल्प चुकीचे आहेत कारण 8³ हा 512 आहे, 12³ हा 1728 आहे आणि 18³ हा 5832 आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and natural for a Marathi-medium math context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes cube root is square root, so takes square root of 64 instead of cube root of 216",
-        "Confuses the cube root with the square root or a multiple of the original number",
-        "Confuses the cube root with the square root or multiplies 6 by 3 instead of recognizing 6³ = 216"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 6, as 6³ = 216. The other options are incorrect, and the author's explanations for the misconceptions are plausible for students who confuse square and cube roots or make arithmetic errors.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.3 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 13,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a number contains 3 zeros at the end, how many zeros will its square have at the end?",
-      "choices": [
-        "3",
-        "6",
-        "9",
         "12"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 6. A number ending in 3 zeros is a multiple of 1000, and squaring it results in a number that is a multiple of 1000², which is 1,000,000. This has 6 zeros. A number ending in 3 zeros has 10³, and squaring it gives 10⁶, which has 6 zeros. Numbers with 3 zeros at the end will have their square contain twice as many zeros, not 3, 9, or 12.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी संख्या के अंत में 3 शून्य हैं, तो इसके वर्ग के अंत में कितने शून्य होंगे?",
-          "choices": [
-            "3",
-            "6",
-            "9",
-            "12"
-          ],
-          "solution": "सही उत्तर 6 है। 3 शून्यों वाली संख्या 1000 के गुणज होती है, और इसके वर्ग के अंत में 1000², जो 1,000,000 है, के गुणज होती है। इसमें 6 शून्य होते हैं। 3 शून्यों वाली संख्या 10³ होती है, और इसके वर्ग के अंत में 10⁶ होता है, जिसमें 6 शून्य होते हैं। 3 शून्यों वाली संख्या के वर्ग में शून्यों की संख्या दोगुनी होती है, न कि 3, 9 या 12।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका संख्येच्या अंती 3 शून्ये असतील, तर तिच्या वर्गाच्या अंती किती शून्ये असतील?",
-          "choices": [
-            "3",
-            "6",
-            "9",
-            "12"
-          ],
-          "solution": "बरोबर उत्तर 6 आहे. 3 शून्यांनी संपणारी संख्या 1000 ची बहुकल्पी असते आणि तिच्या वर्गाने 1000², जे 1,000,000 असते, याचे बहुकल्पी असते. ह्यामध्ये 6 शून्ये असतात. 3 शून्यांनी संपणारी संख्या 10³ असते आणि तिच्या वर्गाने 10⁶ मिळतो, ज्यामध्ये 6 शून्ये असतात. 3 शून्यांनी संपणारी संख्या तिच्या वर्गामध्ये दुप्पट शून्ये असतात, नाहीतर 3, 9 किंवा 12.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Mistakenly believes the number of zeros remains the same",
-        null,
-        "Student incorrectly multiplies the number of zeros by 3 instead of squaring it",
-        "Mistakenly believes the number of zeros is tripled"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. A number ending in 3 zeros is divisible by 10³, so its square is divisible by (10³)² = 10⁶, which means it ends in 6 zeros. The reasoning matches the key and the misconceptions are plausible.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If the prime factorisation of a number is 2³ × 3³, what is the number?",
-      "choices": [
-        "6",
-        "12",
-        "216",
-        "72"
-      ],
       "answerIndex": 2,
-      "solution": "The number is 216 because 2³ × 3³ = (2 × 3)³ = 6³ = 216. The other options are incorrect because 6³ is not 6, 12³ is 1728, and 72³ is not 216.",
+      "solution": "The cube of 2 is 2 × 2 × 2, which equals 8. The other options are incorrect because 4 is the square of 2, 6 is not a cube of 2, and 12 is not a multiple of 2's cube.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी संख्या का अभाज्य गुणनखंडन 2³ × 3³ है, तो संख्या क्या है?",
+          "stem": "2 का घन क्या है?",
           "choices": [
+            "4",
             "6",
-            "12",
-            "216",
-            "72"
+            "8",
+            "12"
           ],
-          "solution": "संख्या 216 है क्योंकि 2³ × 3³ = (2 × 3)³ = 6³ = 216। अन्य विकल्प गलत हैं क्योंकि 6³ 6 नहीं है, 12³ 1728 है, और 72³ 216 नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका संख्येचे अविभाज्य अपघटन 2³ × 3³ असेल, तर ती संख्या कोणती आहे?",
-          "choices": [
-            "6",
-            "12",
-            "216",
-            "72"
-          ],
-          "solution": "संख्या 216 आहे कारण 2³ × 3³ = (2 × 3)³ = 6³ = 216. इतर विकल्प चूक आहेत कारण 6³ 6 नाही, 12³ 1728 आहे आणि 72³ 216 नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for prime factorization and exponents.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Fails to cube the result",
-        "Confuses multiplication with exponents",
-        null,
-        "Fails to cube the result"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The prime factorization 2³ × 3³ equals (2×3)³ = 6³ = 216, which matches the correct answer. The reasoning for the distractors is reasonable and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.3 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 13,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the square root of 64?",
-      "choices": [
-        "±4",
-        "±8",
-        "±16",
-        "±32"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is ±8. The square root of 64 includes both 8 and -8 because when either number is squared, the result is 64. The other options do not satisfy this condition since 4², 16², and 32² are not equal to 64.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "64 का वर्गमूल क्या है?",
-          "choices": [
-            "±4",
-            "±8",
-            "±16",
-            "±32"
-          ],
-          "solution": "सही उत्तर ±8 है। 64 का वर्गमूल में 8 और -8 शामिल है क्योंकि जब कोई संख्या वर्ग में होती है तो परिणाम 64 होता है। अन्य विकल्प इस स्थिति को संतुष्ट नहीं करते क्योंकि 4², 16² और 32² 64 के बराबर नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "64 चे वर्गमूळ किती आहे?",
-          "choices": [
-            "±4",
-            "±8",
-            "±16",
-            "±32"
-          ],
-          "solution": "सही उत्तर ±8 आहे. 64 चे वर्गमूळ 8 आणि -8 दोन्ही असतात कारण जर या संख्यांपैकी कोणतीही संख्या वर्ग केली तर निकाल 64 येतो. इतर विकल्प 64 च्या बरोबरीने नाहीत कारण 4², 16² आणि 32² 64 बरोबर नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the square root of 16 with 64",
-        null,
-        "Confuses square root with half the original number",
-        "Confuses the square root of 1024 with 64"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is ±8, as both 8² and (−8)² equal 64. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A number is a perfect cube. Its prime factorisation has 3 factors of 2 and 3 factors of 3. What is the number?",
-      "choices": [
-        "216",
-        "108",
-        "64",
-        "72"
-      ],
-      "answerIndex": 0,
-      "solution": "The number is 216 because it has 3 factors of 2 (2³) and 3 factors of 3 (3³), making it (2 × 3)³ = 6³ = 216. The other options are incorrect because 108 has 2² × 3³, 64 has 2⁶, and 72 has 2³ × 3².",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक संख्या एक पूर्ण घन है। इसके अभाज्य गुणनखंडन में 2 के 3 गुणनखंड और 3 के 3 गुणनखंड हैं। संख्या क्या है?",
-          "choices": [
-            "216",
-            "108",
-            "64",
-            "72"
-          ],
-          "solution": "संख्या 216 है क्योंकि इसमें 2 के 3 गुणनखंड (2³) और 3 के 3 गुणनखंड (3³) हैं, जिससे यह (2 × 3)³ = 6³ = 216 बन जाता है। अन्य विकल्प गलत हैं क्योंकि 108 में 2² × 3³ है, 64 में 2⁶ है और 72 में 2³ × 3² है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक संख्या एक पूर्ण घन आहे. तिच्या अभाज्य अपविच्छेदनात 2 चे 3 घटक आणि 3 चे 3 घटक आहेत. संख्या कोणती आहे?",
-          "choices": [
-            "216",
-            "108",
-            "64",
-            "72"
-          ],
-          "solution": "संख्या 216 आहे कारण तिला 2³ आणि 3³ चे 3 घटक असतात, जे (2 × 3)³ = 6³ = 216 बनवतात. इतर पर्याय चुकीचे आहेत कारण 108 मध्ये 2² × 3³ असतो, 64 मध्ये 2⁶ असतो आणि 72 मध्ये 2³ × 3² असतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for prime factorization and perfect cube.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Fails to consider the exponent rule",
-        "Fails to consider the exponent rule",
-        "Fails to consider the exponent rule"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The number must be a perfect cube with exactly 3 factors of 2 and 3 factors of 3, which only 216 satisfies.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.2 Cubic Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.3 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 13,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "SUMMARY",
-            "Square Pairs!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If 35 = 1225, what is 36?",
-      "choices": [
-        "1225",
-        "1296",
-        "1369",
-        "1444"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 1296. The pattern shows that each number is the square of the given number, so 35 squared is 1225 and 36 squared is 1296. The other options do not match the square of 36. 1225 is the square of 35, 1369 is 37 squared, and 1444 is 38 squared.",
-      "checkExpr": "1225+71",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 35 = 1225, तो 36 क्या है?",
-          "choices": [
-            "1225",
-            "1296",
-            "1369",
-            "1444"
-          ],
-          "solution": "सही उत्तर 1296 है। पैटर्न दर्शाता है कि प्रत्येक संख्या दी गई संख्या के वर्ग है, इसलिए 35 का वर्ग 1225 है और 36 का वर्ग 1296 है। अन्य विकल्प 36 के वर्ग के अनुरूप नहीं हैं। 1225 35 का वर्ग है, 1369 37 का वर्ग है और 1444 38 का वर्ग है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "35 = 1225 असल्यास 36 किती?",
-          "choices": [
-            "1225",
-            "1296",
-            "1369",
-            "1444"
-          ],
-          "solution": "योग्य उत्तर 1296 आहे. पॅटर्न दर्शवितो की प्रत्येक संख्या दिलेल्या संख्येच्या वर्गाच्या बरोबर असते, म्हणून 35 चा वर्ग 1225 आहे आणि 36 चा वर्ग 1296 आहे. इतर विकल्प 36 च्या वर्गाशी जुळत नाहीत. 1225 हा 35 चा वर्ग आहे, 1369 हा 37 चा वर्ग आहे आणि 1444 हा 38 चा वर्ग आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Mistakenly assumes that 36 is the same as 35",
-        null,
-        "Confuses squaring with adding 36 to 1225 instead of adding the 36th odd number",
-        "Confuses 36 with 37, which is 1369, and assumes the same value as 35, which is incorrect"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. 36² = 1296, and the method of adding the 36th odd number (71) to 1225 (35²) is valid. The reasoning for the distractors is plausible and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a locker number is a perfect square, which of the following is true about its factors?",
-      "choices": [
-        "It has an odd number of factors",
-        "It has an even number of factors",
-        "It has exactly three factors",
-        "It has exactly two factors"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is it has an odd number of factors because perfect squares have an odd number of factors. This is because one factor is repeated (the square root), making the total number of factors odd. The other options are incorrect: perfect squares do not have an even number of factors, they do not always have exactly four factors, and they do not have exactly two factors.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक लॉकर संख्या एक पूर्ण वर्ग है, तो इसके गुणनखंडों के बारे में निम्नलिखित में से कौन-सा सत्य है?",
-          "choices": [
-            "इसके गुणनखंडों की संख्या विषम होती है",
-            "इसके गुणनखंडों की संख्या सम होती है",
-            "इसके ठीक तीन गुणनखंड होते हैं",
-            "इसके ठीक दो गुणनखंड होते हैं"
-          ],
-          "solution": "सही उत्तर यह है कि इसके गुणनखंडों की संख्या विषम होती है क्योंकि पूर्ण वर्गों के गुणनखंडों की संख्या विषम होती है। इसका कारण यह है कि एक गुणनखंड दोहराया जाता है (वर्गमूल), जिससे गुणनखंडों की कुल संख्या विषम हो जाती है। अन्य विकल्प गलत हैं: पूर्ण वर्गों के गुणनखंडों की संख्या सम नहीं होती है, वे हमेशा ठीक चार गुणनखंड नहीं रखते हैं, और वे ठीक दो गुणनखंड नहीं रखते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर लॉकर क्रमांक एक पूर्ण वर्ग असेल, तर खालीलपैकी काय सत्य आहे?",
-          "choices": [
-            "त्याचे अविभाजक विषम संख्येत असतात",
-            "त्याचे अविभाजक सम संख्येत असतात",
-            "त्याला तीन अविभाजक असतात",
-            "त्याला फक्त दोन अविभाजक असतात"
-          ],
-          "solution": "बरोबर उत्तर त्याचे अविभाजक विषम संख्येत असतात कारण पूर्ण वर्गाला विषम संख्येत अविभाजक असतात. हे कारण एक अविभाजक दुसऱ्याच्या दुप्पट असतो (वर्गमूळ), ज्यमुळे अविभाजकांची एकूण संख्या विषम होते. इतर विकल्प चूक आहेत: पूर्ण वर्गाला सम संख्येत अविभाजक असत नाहीत, त्याला फक्त चार अविभाजक असत नाहीत आणि त्याला फक्त दोन अविभाजक असत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student thinks all numbers have an even number of factors, not recognizing that squares have a repeated factor",
-        "students think perfect squares have an odd number of factors because of repeated factors, but miscount them as three",
-        "Believes all square numbers are prime"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies that perfect squares have an odd number of factors due to the repeated square root. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp101.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 1: A Square and a Cube",
-            "1.1 Square Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a number is a perfect cube and ends with the digit 8, what can be said about the number?",
-      "choices": [
-        "It is odd",
-        "It is even",
-        "It is a square number",
-        "It is a prime number"
-      ],
-      "answerIndex": 1,
-      "solution": "The number is even because only even numbers have a cube ending in 8. For example, 2³ = 8, 12³ = 1728. The other options are incorrect because an odd number cannot have a cube ending in 8, not all even numbers are square numbers, and no prime number can be a cube except 2, which does not end in 8.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या एक पूर्ण घन है और अंक 8 से समाप्त होती है, तो उस संख्या के बारे में क्या कहा जा सकता है?",
-          "choices": [
-            "यह विषम है",
-            "यह सम है",
-            "यह एक वर्ग संख्या है",
-            "यह एक अभाज्य संख्या है"
-          ],
-          "solution": "संख्या सम है क्योंकि केवल सम संख्याओं के घन में 8 अंक होता है। उदाहरण के लिए, 2³ = 8, 12³ = 1728। अन्य विकल्प गलत हैं क्योंकि विषम संख्या के घन में 8 अंक नहीं हो सकता, सभी सम संख्याएं वर्ग संख्याएं नहीं होतीं और केवल 2 के अलावा कोई अभाज्य संख्या घन नहीं हो सकती, जो 8 से समाप्त नहीं होती।",
+          "solution": "2 का घन 2 × 2 × 2 है, जो 8 के बराबर है। अन्य विकल्प गलत हैं क्योंकि 4, 2 का वर्ग है, 6, 2 का घन नहीं है और 12, 2 के घन का गुणज नहीं है।",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एका संख्या एक पूर्ण घन असेल आणि ती अंक 8 ने संपेल, तर त्या संख्येबद्दल काय म्हणता येईल?",
+          "stem": "2 चा घन किती आहे?",
           "choices": [
-            "ती विषम आहे",
-            "ती सम आहे",
-            "ती वर्ग संख्या आहे",
-            "ती अभाज्य संख्या आहे"
+            "4",
+            "6",
+            "8",
+            "12"
           ],
-          "solution": "संख्या सम आहे कारण केवळ सम संख्यांचा घन 8 ने संपतो. उदाहरणार्थ, 2³ = 8, 12³ = 1728. इतर विकल्प चुकीचे आहेत कारण विषम संख्यांचा घन 8 ने संपू शकत नाही, सर्व सम संख्या वर्ग संख्या नसतात आणि 2 वगळता कोणतीही अभाज्य संख्या घन असू शकत नाही, जी 8 ने संपत नाही.",
+          "solution": "2 चा घन 2 × 2 × 2 असून, तो 8 च्या बरोबर आहे. इतर विकल्प चूक आहेत कारण 4 हा 2 चा वर्ग आहे, 6 हा 2 चा घन नाही आणि 12 हा 2 च्या घनाचा गुणक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses square with cube",
+        "incorrect multiplication",
+        null,
+        "Confuses the cube of 2 with the product of 2 and 6"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 8, which is the cube of 2. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.2 Cubic Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.3 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "SUMMARY",
+            "Square Pairs!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:53:55.509Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following numbers has a square root of 12?",
+      "choices": [
+        "121",
+        "144",
+        "169",
+        "196"
+      ],
+      "answerIndex": 1,
+      "solution": "The number 144 has a square root of 12 because 12 × 12 = 144. The other options do not match this condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन-सी संख्या का वर्गमूल 12 है?",
+          "choices": [
+            "121",
+            "144",
+            "169",
+            "196"
+          ],
+          "solution": "संख्या 144 का वर्गमूल 12 है क्योंकि 12 × 12 = 144। अन्य विकल्प इस स्थिति के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या संख्येचे वर्गमूळ 12 आहे?",
+          "choices": [
+            "121",
+            "144",
+            "169",
+            "196"
+          ],
+          "solution": "144 चे वर्गमूळ 12 आहे कारण 12 × 12 = 144. इतर विकल्प ह्या अटीशी जुळत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
           "flag": null
@@ -1489,10 +181,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses properties of odd and even numbers",
+        "confuses square root with other numbers",
         null,
-        "Confuses square and cube numbers",
-        "Confuses prime and composite numbers"
+        "confuses square root with other numbers",
+        "confuses square root with other numbers"
       ],
       "solverAnswers": [
         1,
@@ -1501,8 +193,116 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that only even numbers can have cubes ending in 8, and the reasoning for the other options aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 144, as 12 × 12 = 144. The other options are not squares of 12, and the author's reasoning for the distractors is valid as they represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.1 Square Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.1 Square Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.2 Cubic Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.2 Cubic Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:53:55.509Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the cube root of 10648?",
+      "choices": [
+        "22",
+        "24",
+        "26",
+        "28"
+      ],
+      "answerIndex": 0,
+      "solution": "The cube root of 10648 is 22 because 22 multiplied by itself three times (22 × 22 × 22) equals 10648. The other options, 24, 26, and 28, when cubed, do not result in 10648.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "10648 का घनमूल क्या है?",
+          "choices": [
+            "22",
+            "24",
+            "26",
+            "28"
+          ],
+          "solution": "10648 का घनमूल 22 है क्योंकि 22 को खुद से तीन बार गुणा करने पर (22 × 22 × 22) 10648 प्राप्त होता है। अन्य विकल्प, 24, 26 और 28, जब घन करे तो 10648 प्राप्त नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "10648 चा घन मूळ किती आहे?",
+          "choices": [
+            "22",
+            "24",
+            "26",
+            "28"
+          ],
+          "solution": "10648 चा घन मूळ 22 आहे कारण 22 चे तीन वेळा गुणाकार (22 × 22 × 22) 10648 च्या बरोबर येतो. उरलेल्या विकल्पांमध्ये 24, 26 आणि 28 चा घन मूळ 10648 च्या बरोबर येत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses cube root with square root of a nearby number",
+        "Confuses the cube root with a square root or miscalculates the cube of 26",
+        "Student confuses cube root with square root and incorrectly calculates 28^2 instead of 28^3"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 22, as 22³ = 10648. The author's solution is sound, and the reasoning for the distractors reflects common misconceptions about cube roots versus square roots.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
@@ -1547,49 +347,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
+      "generatedAt": "2026-10-22T03:53:55.509Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "What is the cube root of 1331?",
+      "difficulty": 4,
+      "stem": "If the area of a square is 441 m², what is the length of its side?",
       "choices": [
-        "11",
-        "12",
-        "10",
-        "13"
+        "21 m",
+        "22 m",
+        "23 m",
+        "24 m"
       ],
       "answerIndex": 0,
-      "solution": "The cube root of 1331 is 11 because 11 multiplied by itself three times (11 × 11 × 11) equals 1331. The other options are incorrect because 12³ is 1728, 10³ is 1000, and 13³ is 2197, none of which equal 1331.",
+      "solution": "The length of the side of the square is 21 m because 21 × 21 = 441. The other options do not match this calculation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1331 का घनमूल क्या है?",
+          "stem": "यदि एक वर्ग का क्षेत्रफल 441 मीटर² है, तो इसकी भुजा की लंबाई क्या है?",
           "choices": [
-            "11",
-            "12",
-            "10",
-            "13"
+            "21 मीटर",
+            "22 मीटर",
+            "23 मीटर",
+            "24 मीटर"
           ],
-          "solution": "1331 का घनमूल 11 है क्योंकि 11 को खुद के साथ तीन बार गुणा करने पर (11 × 11 × 11) 1331 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि 12³ 1728 है, 10³ 1000 है और 13³ 2197 है, जो कोई भी 1331 के बराबर नहीं है।",
+          "solution": "वर्ग की भुजा की लंबाई 21 मीटर है क्योंकि 21 × 21 = 441। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "1331 चा घन मूळ किती आहे?",
+          "stem": "जर एका चौरसाचे क्षेत्रफळ 441 मी² असेल, तर त्याच्या बाजूची लांबी किती असेल?",
           "choices": [
-            "11",
-            "12",
-            "10",
-            "13"
+            "21 मी",
+            "22 मी",
+            "23 मी",
+            "24 मी"
           ],
-          "solution": "1331 चा घन मूळ 11 आहे कारण 11 ला तीनदा गुणल्यास (11 × 11 × 11) 1331 मिळतो. इतर विकल्प अयोग्य आहेत कारण 12³ 1728 आहे, 10³ 1000 आहे आणि 13³ 2197 आहे, जे कोणतेही 1331 च्या बरोबर नाही.",
+          "solution": "चौरसाच्या बाजूची लांबी 21 मी असेल कारण 21 × 21 = 441. इतर विकल्प या गणनेशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for 'cube root' and 'multiplied by itself three times'.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -1599,9 +399,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses cube root with square root or assumes 12^3 is 1331",
-        "Confuses square root with cube root",
-        "Confuses cube root with square root or misremembers the value of 11³"
+        "adds 21 and 21 instead of multiplying",
+        "adds 21 and 22 instead of multiplying",
+        "adds 21 and 23 instead of multiplying"
       ],
       "solverAnswers": [
         0,
@@ -1610,8 +410,225 @@
         0,
         0
       ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 21 m, as 21 × 21 = 441. The author's reasoning for the distractors is plausible and reflects common misconceptions where students might add instead of multiply.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.1 Square Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.1 Square Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.2 Cubic Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.2 Cubic Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:53:55.509Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A number is multiplied by 1323 to make it a perfect cube. What is the smallest number that needs to be multiplied?",
+      "choices": [
+        "2",
+        "3",
+        "5",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "To make a number a perfect cube, all prime factors must have exponents that are multiples of 3. The prime factorization of 1323 is 3^3 × 7^2. To make all exponents multiples of 3, we need one more 7, making the correct answer 7. Multiplying by 2, 3, or 5 would not result in all exponents being multiples of 3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या को 1323 से गुणा किया जाता है ताकि यह एक पूर्ण घन बन जाए। सबसे छोटी संख्या क्या है जिसे गुणा करने की आवश्यकता है?",
+          "choices": [
+            "2",
+            "3",
+            "5",
+            "7"
+          ],
+          "solution": "एक संख्या को पूर्ण घन बनाने के लिए, सभी अभाज्य गुणनखंडों के घातांक 3 के गुणज होने चाहिए। 1323 का अभाज्य गुणनखंडन 3^3 × 7^2 है। सभी घातांकों को 3 के गुणज बनाने के लिए, हमें एक और 7 की आवश्यकता है, जिसके कारण सही उत्तर 7 है। 2, 3 या 5 से गुणा करने से सभी घातांक 3 के गुणज नहीं होंगे।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms, and logical structure of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक संख्या 1323 ने गुणली जाऊन एक पूर्ण घन बनवली जाते. गुणाकार करावा लागणारी सर्वात लहान संख्या कोणती आहे?",
+          "choices": [
+            "2",
+            "3",
+            "5",
+            "7"
+          ],
+          "solution": "एक संख्या पूर्ण घन बनविण्यासाठी, सर्व अविभाज्य घटकांच्या घातांनी 3 च्या गुणकांचे असावे. 1323 चे अविभाज्य घटकीकरण 3^3 × 7^2 आहे. सर्व घातांना 3 च्या गुणकांचे बनविण्यासाठी, आम्हाला एक अतिरिक्त 7 आवश्यक असतो, ज्यामुळे योग्य उत्तर 7 असते. 2, 3 किंवा 5 ने गुणल्यास सर्व घातांना 3 च्या गुणकांचे बनविण्यासाठी अयोग्य राहते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for prime factorization and perfect cubes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect prime factor grouping",
+        "Incorrect prime factor grouping",
+        "Incorrect prime factor grouping",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        1,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 7. The prime factorization of 1323 is 3^3 × 7^2. To make it a perfect cube, we need one more 7, so 7 is the smallest number to multiply.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.2 Cubic Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.3 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "SUMMARY",
+            "Square Pairs!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:53:55.509Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Can a cube end with exactly two zeroes (00)? Explain.",
+      "choices": [
+        "Yes",
+        "No",
+        "Sometimes",
+        "Cannot be determined"
+      ],
+      "answerIndex": 1,
+      "solution": "No, a cube cannot end with exactly two zeroes. This is because a number ending with two zeroes must be divisible by 100, and for a cube to be divisible by 100, it must have factors of 2 and 5 in powers that are multiples of 3. However, 100 = 2² × 5², and the powers of 2 and 5 must be multiples of 3 for the number to be a cube. Thus, a cube cannot end with exactly two zeroes. The other options are incorrect based on this reasoning.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्या एक घन ठीक दो शून्य (00) के साथ समाप्त हो सकता है? स्पष्टीकरण करें।",
+          "choices": [
+            "हाँ",
+            "नहीं",
+            "कभी-कभी",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "नहीं, एक घन ठीक दो शून्य (00) के साथ समाप्त नहीं हो सकता। ऐसा इसलिए है क्योंकि दो शून्यों के साथ समाप्त होने वाली संख्या 100 से विभाज्य होनी चाहिए, और एक घन के लिए 100 से विभाज्य होने के लिए, इसके 2 और 5 के गुणनखंडों की घातें 3 के गुणज होनी चाहिए। हालांकि, 100 = 2² × 5², और 2 और 5 की घातें 3 के गुणज होनी चाहिए ताकि संख्या घन हो। इसलिए, एक घन ठीक दो शून्यों के साथ समाप्त नहीं हो सकता। अन्य विकल्प इस तर्क पर गलत हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक घन फक्त दोन शून्यांनी (00) अखेर होऊ शकतो का? स्पष्टीकरण करा.",
+          "choices": [
+            "होय",
+            "नाही",
+            "कधीकधी",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "नाही, घन फक्त दोन शून्यांनी अखेर होऊ शकत नाही. हे कारण एका संख्या दोन शून्यांनी अखेर होत असल्यास ती 100 ने भाग जाऊ शकते, आणि घन 100 ने भाग जाण्यासाठी तिला 2 आणि 5 च्या घातांच्या गुणकांची आवश्यकता असते. मात्र, 100 = 2² × 5², आणि घन असल्यास 2 आणि 5 च्या घातांची गुणकांची आवश्यकता असते. त्यामुळे, घन फक्त दोन शून्यांनी अखेर होऊ शकत नाही. इतर विकल्प हे तर्कावर आधारित असलेले चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes a cube can end with two zeroes",
+        null,
+        "incorrectly assumes a cube can end with two zeroes",
+        "incorrectly assumes a cube can end with two zeroes"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 11, as 11³ = 1331. The author's solution is correct, and the reasons for the distractors align with common misconceptions.",
+      "critique": "The solution correctly identifies that a cube cannot end with exactly two zeroes because 100 = 2² × 5², and for a number to be a perfect cube, all prime exponents in its factorization must be multiples of 3. This reasoning is sound and leads to the correct answer.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp101.pdf",
@@ -1626,7 +643,105 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T06:29:09.844Z",
+      "generatedAt": "2026-10-22T03:53:55.509Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Using the pattern that the sum of the first n odd numbers is n², what is the sum of the first 50 odd numbers?",
+      "choices": [
+        "2500",
+        "2550",
+        "2600",
+        "2650"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the first n odd numbers is n². For n = 50, the sum is 50² = 2500. The other options are incorrect calculations or do not follow the pattern.",
+      "checkExpr": "50*50",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रथम n विषम संख्याओं के योग के पैटर्न का उपयोग करके, प्रथम 50 विषम संख्याओं का योग क्या है?",
+          "choices": [
+            "2500",
+            "2550",
+            "2600",
+            "2650"
+          ],
+          "solution": "प्रथम n विषम संख्याओं का योग n² होता है। n = 50 के लिए, योग 50² = 2500 है। अन्य विकल्प गलत गणना हैं या पैटर्न का अनुसरण नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पहिल्या n विषम संख्यांच्या बेरजेच्या पॅटर्न वापरून, पहिल्या 50 विषम संख्यांची बेरीज काय आहे?",
+          "choices": [
+            "2500",
+            "2550",
+            "2600",
+            "2650"
+          ],
+          "solution": "पहिल्या n विषम संख्यांची बेरीज n² आहे. n = 50 साठी, बेरीज 50² = 2500 आहे. इतर विकल्प चुकीच्या गणना किंवा पॅटर्नच्या अनुसरणाची नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinking the sum is n(n+1) instead of n²",
+        "Confuses the formula for the sum of the first n odd numbers with the sum of the first n even numbers",
+        "Confuses the formula for the sum of the first n odd numbers with the sum of the first n even numbers"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The pattern is correctly applied as the sum of the first n odd numbers is n², so 50² = 2500.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.1 Square Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.1 Square Numbers"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp101.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: A Square and a Cube",
+            "1.1 Square Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T03:53:55.509Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

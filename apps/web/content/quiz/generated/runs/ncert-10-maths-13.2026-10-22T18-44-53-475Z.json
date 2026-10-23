@@ -1,0 +1,746 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T18:44:53.475Z",
+  "finishedAt": "2026-10-22T18:53:41.770Z",
+  "seconds": 528,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh113.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Statistics",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n3. Which of the following is a statistic\n(a) 𝜇 (b) 𝑥̅ (c) 𝜎 ଶ (d) None",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n29. Find the mean using the step deviation method. 3\nClass 0-10 10-20 20-30 30-40 40-50\nFrequency 6 10 15 9 10",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 178347,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 44980,
+      "completionTokens": 10020
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 314309,
+      "in": 38,
+      "out": 32,
+      "rejects": 6,
+      "promptTokens": 22581,
+      "completionTokens": 8516
+    },
+    "solver": {
+      "calls": 242,
+      "ms": 128138,
+      "in": 32,
+      "out": 20,
+      "rejects": 12,
+      "promptTokens": 51493,
+      "completionTokens": 2626
+    },
+    "form": {
+      "calls": 4,
+      "ms": 9619,
+      "in": 20,
+      "out": 12,
+      "rejects": 8,
+      "promptTokens": 955,
+      "completionTokens": 273
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4577,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 399613,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24996,
+      "completionTokens": 11659
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the term used for the average of observations in statistics?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the process of grouping data into intervals for statistical analysis?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4945
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the direct method of calculating the mean of grouped data, what is used as the representative of each class interval?",
+      "ms": {
+        "draft": 3517,
+        "critique": 6115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student calculates the mean of a data set using the step-deviation method. If the assumed mean is 47.5, the class size is 15, and the sum of f u is 29 with a total frequency of 30, what is the mean?",
+      "ms": {
+        "draft": 6588,
+        "critique": 5789,
+        "solver": 1637
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a grouped frequency distribution table, the mean was calculated using the step-deviation method. The assumed mean was 50, the class size was 10, and the sum of f u was -36 with a total frequency of 35. What is the mean of the data?",
+      "ms": {
+        "draft": 6588,
+        "critique": 6088,
+        "solver": 1751,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The mean of a data set is calculated using the step-deviation method. The assumed mean is 200, the class size is 20, and the sum of f u is -106 with a total frequency of 45. What is the mean of the data?",
+      "ms": {
+        "draft": 6588,
+        "critique": 7091,
+        "solver": 1614
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The following data shows the daily expenditure on food of 25 households in a locality. Which method is most suitable to calculate the mean?",
+      "ms": {
+        "draft": 11988,
+        "critique": 5782,
+        "solver": 1722,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The following table shows the daily expenditure on food of 25 households in a locality. If the mean is 200, what is the value of the missing frequency?",
+      "ms": {
+        "draft": 11988,
+        "critique": 6515,
+        "solver": 1156
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The following data shows the number of runs scored by some top batsmen in one-day international cricket matches. If the mode is 4000, what is the value of x?",
+      "ms": {
+        "draft": 11988,
+        "critique": 7838,
+        "solver": 1692
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a measure of central tendency that gives the value of the middle-most observation in the data?",
+      "ms": {
+        "draft": 4294,
+        "critique": 7710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the median is 66.4, the lower limit of the median class is 60, the cumulative frequency of the class preceding the median class is 22, the frequency of the median class is 7, and the class size is 10, what is the value of n/2?",
+      "ms": {
+        "draft": 4294,
+        "critique": 5401,
+        "solver": 1869
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the median of grouped data?",
+      "ms": {
+        "draft": 6149,
+        "critique": 6653,
+        "solver": 1055,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the median class is 60 - 70 and the total number of observations is 53, what is the value of n/2 used to find the median?",
+      "ms": {
+        "draft": 4294,
+        "critique": 5599,
+        "solver": 11546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a cumulative frequency table?",
+      "ms": {
+        "draft": 4294,
+        "critique": 6832,
+        "solver": 7503
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The median of a grouped data set is calculated using a specific formula. Which of the following represents the formula for the median?",
+      "ms": {
+        "draft": 4214,
+        "critique": 8347,
+        "solver": 20648
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The given passage discusses the calculation of the median for a grouped data set. Which of the following steps is NOT required to compute the median?",
+      "ms": {
+        "draft": 4214,
+        "critique": 9379,
+        "solver": 15612
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions an empirical relationship between the three measures of central tendency: 3 Median = Mode + 2 Mean. If the mean is 10 and the mode is 15, what is the median?",
+      "ms": {
+        "draft": 4214,
+        "critique": 6104,
+        "solver": 15229,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the term for a class whose cumulative frequency is greater than and nearest to n/2 in a grouped data distribution?",
+      "ms": {
+        "draft": 4253,
+        "critique": 8529,
+        "solver": 9974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage explains that the median of a data set is the value that divides it into two equal parts. If a data set has 100 observations, what is the position of the median?",
+      "ms": {
+        "draft": 4214,
+        "critique": 8038,
+        "solver": 16408
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the cumulative frequency of the class preceding the median class is 22, the frequency of the median class is 7, and the class size is 10, what is the median if n is 53?",
+      "ms": {
+        "draft": 4253,
+        "critique": 7028,
+        "solver": 1406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a measure of central tendency?",
+      "ms": {
+        "draft": 3467,
+        "critique": 6757
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a grouped data distribution, if the median class is 60 - 70, the cumulative frequency of the class before the median class is 22, the frequency of the median class is 7, and the class size is 10, what is the median if n is 53?",
+      "ms": {
+        "draft": 4253,
+        "critique": 7404,
+        "solver": 1054
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a frequency distribution, the mode is calculated using the formula: Mode = l + (f1 - f0) / (2f1 - f0 - f2) * h. What does 'l' represent?",
+      "ms": {
+        "draft": 3467,
+        "critique": 6737
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to calculate the mean when the class size is large and the values of x and f are large?",
+      "ms": {
+        "draft": 4679,
+        "critique": 6789,
+        "solver": 11938,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to find the mean of grouped data when the class intervals are small?",
+      "ms": {
+        "draft": 3467,
+        "critique": 7245,
+        "solver": 15475
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the formula for the mean of grouped data?",
+      "ms": {
+        "draft": 3642,
+        "critique": 5592,
+        "solver": 6636,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Using the step-deviation method, the mean was calculated for a data set where the assumed mean is 100, the class size is 20, and the sum of f u is 4 with a total frequency of 20. What is the mean of the data?",
+      "ms": {
+        "draft": 6588,
+        "critique": 5737,
+        "solver": 1712,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula used in the step-deviation method to find the mean?",
+      "ms": {
+        "draft": 4679,
+        "critique": 8305,
+        "solver": 1392,
+        "form": 0,
+        "translation": 34218
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using class marks in grouped data?",
+      "ms": {
+        "draft": 3642,
+        "critique": 5803,
+        "solver": 1015,
+        "form": 0,
+        "translation": 30131
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the sum of the frequencies of all the classes preceding the median class?",
+      "ms": {
+        "draft": 4214,
+        "critique": 4968,
+        "solver": 19836,
+        "form": 3043,
+        "translation": 40996
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a measure of central tendency?",
+      "ms": {
+        "draft": 11988,
+        "critique": 5265,
+        "solver": 943,
+        "form": 0,
+        "translation": 25411
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the formula for the mean of grouped data, what does the symbol Σ represent?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4700,
+        "solver": 1155,
+        "form": 2282,
+        "translation": 32773
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following measures of central tendency is best suited for situations where extreme values are present?",
+      "ms": {
+        "draft": 4214,
+        "critique": 5456,
+        "solver": 2383,
+        "form": 0,
+        "translation": 27075
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A grouped frequency distribution table is used to find the mean of a data set. The assumed mean is 50, the class size is 10, the sum of f u is -3 with a total frequency of 15. What is the mean of the data?",
+      "ms": {
+        "draft": 6588,
+        "critique": 6520,
+        "solver": 1520,
+        "form": 0,
+        "translation": 47426
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "The following frequency distribution gives the concentration of SO2 in the air (in ppm) for 30 localities. What is the modal class?",
+      "ms": {
+        "draft": 11988,
+        "critique": 7295,
+        "solver": 12403,
+        "form": 0,
+        "translation": 27518
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the step deviation method, what is the purpose of choosing an assumed mean?",
+      "ms": {
+        "draft": 3517,
+        "critique": 5960,
+        "solver": 1632,
+        "form": 1919,
+        "translation": 38181
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the mean calculated using the direct method considered more accurate than the mean calculated using the assumed mean method?",
+      "ms": {
+        "draft": 3517,
+        "critique": 5429,
+        "solver": 1329,
+        "form": 2375,
+        "translation": 45554
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a data set, the mean was calculated using the step-deviation method. The assumed mean is 30, the class size is 10, and the sum of f u is -5 with a total frequency of 50. What is the mean of the data?",
+      "ms": {
+        "draft": 6588,
+        "critique": 5289,
+        "solver": 1431,
+        "form": 0,
+        "translation": 46772
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The following table gives the literacy rate (in percentage) of 35 cities. What is the mean literacy rate?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the average of observations in statistics?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the process of grouping data into intervals for statistical analysis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the direct method of calculating the mean of grouped data, what is used as the representative of each class interval?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student calculates the mean of a data set using the step-deviation method. If the assumed mean is 47.5, the class size is 15, and the sum of f u is 29 with a total frequency of 30, what is the mean?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a grouped frequency distribution table, the mean was calculated using the step-deviation method. The assumed mean was 50, the class size was 10, and the sum of f u was -36 with a total frequency of 35. What is the mean of the data?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"50+10*(-36/35)\" = 39.714285714285715, but the key says 39.71"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The mean of a data set is calculated using the step-deviation method. The assumed mean is 200, the class size is 20, and the sum of f u is -106 with a total frequency of 45. What is the mean of the data?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The following data shows the daily expenditure on food of 25 households in a locality. Which method is most suitable to calculate the mean?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The following table shows the daily expenditure on food of 25 households in a locality. If the mean is 200, what is the value of the missing frequency?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The following data shows the number of runs scored by some top batsmen in one-day international cricket matches. If the mode is 4000, what is the value of x?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a measure of central tendency that gives the value of the middle-most observation in the data?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the median is 66.4, the lower limit of the median class is 60, the cumulative frequency of the class preceding the median class is 22, the frequency of the median class is 7, and the class size is 10, what is the value of n/2?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the median of grouped data?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractors. The other …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the median class is 60 - 70 and the total number of observations is 53, what is the value of n/2 used to find the median?",
+      "reason": "options 1 and 2 are the same (\"26.5\"); options are written to different precisions (0 and 1 decimals); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of a cumulative frequency table?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the formula used to calculate the median of grouped data?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the purpose of a cumulative frequency table in finding the median of grouped data?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The median of a grouped data set is calculated using a specific formula. Which of the following represents the formula for the median?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The given passage discusses the calculation of the median for a grouped data set. Which of the following steps is NOT required to compute the median?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions an empirical relationship between the three measures of central tendency: 3 Median = Mode + 2 Mean. If the mean is 10 and the mode is 15, what is the median?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options are written to different precisions (0 and 1 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"35/3\" = 11.666666666666666, but the key says 11.67"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the term for a class whose cumulative frequency is greater than and nearest to n/2 in a grouped data distribution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The passage explains that the median of a data set is the value that divides it into two equal parts. If a data set has 100 observations, what is the position of the median?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the cumulative frequency of the class preceding the median class is 22, the frequency of the median class is 7, and the class size is 10, what is the median if n is 53?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a measure of central tendency?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a grouped data distribution, if the median class is 60 - 70, the cumulative frequency of the class before the median class is 22, the frequency of the median class is 7, and the class size is 10, what is the median if n is 53?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a frequency distribution, the mode is calculated using the formula: Mode = l + (f1 - f0) / (2f1 - f0 - f2) * h. What does 'l' represent?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which method is used to calculate the mean when the class size is large and the values of x and f are large?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which method is used to find the mean of grouped data when the class intervals are small?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the formula for the mean of grouped data?",
+      "reason": "options 1 and 3 say the same thing (\"x = (Σf)/Σx\" / \"x = (Σf x)/Σx\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Using the step-deviation method, the mean was calculated for a data set where the assumed mean is 100, the class size is 20, and the sum of f u is 4 with a total frequency of 20. What is the mean of the data?",
+      "reason": "near-duplicate of served question cmsl072mp065xy2labhv4yq8f (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

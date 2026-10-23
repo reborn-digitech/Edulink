@@ -1,0 +1,373 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:31:08.385Z",
+  "finishedAt": "2026-10-22T23:34:14.321Z",
+  "seconds": 186,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap117.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 17 — Nandita in Mumbai",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 55626,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 13285,
+      "completionTokens": 3023
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 128831,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 7877,
+      "completionTokens": 3276
+    },
+    "solver": {
+      "calls": 72,
+      "ms": 41040,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 12720,
+      "completionTokens": 808
+    },
+    "form": {
+      "calls": 6,
+      "ms": 12204,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 1408,
+      "completionTokens": 365
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3239,
+      "in": 3,
+      "out": 0,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4131,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 197,
+      "completionTokens": 252
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Nandita used to feel like vomiting when at first she had to use the toilet where Mama lived. Why?",
+      "ms": {
+        "draft": 17650,
+        "critique": 6643
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Nandita have to bring her mother from the village to Mumbai?",
+      "ms": {
+        "draft": 17650,
+        "critique": 8053
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "ms": {
+        "draft": 17650,
+        "critique": 7665,
+        "solver": 1282
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "ms": {
+        "draft": 17650,
+        "critique": 8639
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What might happen if Nandita's Mama moves to a new place far away?",
+      "ms": {
+        "draft": 4317,
+        "critique": 7298
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason Nandita is worried about her Mama moving?",
+      "ms": {
+        "draft": 4317,
+        "critique": 6191
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why does Nandita's Mama have to move out of his house?",
+      "ms": {
+        "draft": 3445,
+        "critique": 5805
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What would be the biggest challenge for Nandita's Mama if he moves to a new place?",
+      "ms": {
+        "draft": 3445,
+        "critique": 8942,
+        "solver": 1905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a hotel is built in Chowpatti, who will benefit the most?",
+      "ms": {
+        "draft": 3445,
+        "critique": 5481,
+        "solver": 13128,
+        "form": 3014
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What problem would Nandita's family face if they move to a new place?",
+      "ms": {
+        "draft": 3445,
+        "critique": 5481,
+        "solver": 16926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "ms": {
+        "draft": 3655,
+        "critique": 6857,
+        "solver": 1377,
+        "form": 3038
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "ms": {
+        "draft": 3655,
+        "critique": 7802,
+        "solver": 911,
+        "form": 1569
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Nandita's Mama have to move out of his house?",
+      "ms": {
+        "draft": 4317,
+        "critique": 8804,
+        "solver": 6652,
+        "form": 1010
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Nandita have to bring her mother from the village to Mumbai?",
+      "ms": {
+        "draft": 3655,
+        "critique": 7597,
+        "solver": 1871,
+        "form": 3379
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Nandita used to feel like vomiting when at first she had to use the toilet where Mama lived. Why?",
+      "ms": {
+        "draft": 3655,
+        "critique": 8271,
+        "solver": 11289,
+        "form": 915
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Nandita used to feel like vomiting when at first she had to use the toilet where Mama lived. Why?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why did Nandita have to bring her mother from the village to Mumbai?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What might happen if Nandita's Mama moves to a new place far away?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason Nandita is worried about her Mama moving?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why does Nandita's Mama have to move out of his house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What would be the biggest challenge for Nandita's Mama if he moves to a new place?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a hotel is built in Chowpatti, who will benefit the most?",
+      "reason": "options 1 and 3 are the same (\"The people who live in the area\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What problem would Nandita's family face if they move to a new place?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In what ways did Nandita find her Mama’s house to be different from her house in the village?",
+      "reason": "option 2 is a catch-all (\"Both of the above\"); option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What differences did Nandita find between getting water from the public tap and in the village?",
+      "reason": "option 2 is a catch-all (\"Both of the above\"); option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why does Nandita's Mama have to move out of his house?",
+      "reason": "near-duplicate of served question cmvh4dvxj06rugpfhu3skg0dj (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Why did Nandita have to bring her mother from the village to Mumbai?",
+      "reason": "near-duplicate of served question cmvh4dvxf06rigpfhsra1odxc (cosine 0.980 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Nandita used to feel like vomiting when at first she had to use the toilet where Mama lived. Why?",
+      "reason": "near-duplicate of served question cmvh4dvxh06rogpfhs98m5a40 (cosine 0.984 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

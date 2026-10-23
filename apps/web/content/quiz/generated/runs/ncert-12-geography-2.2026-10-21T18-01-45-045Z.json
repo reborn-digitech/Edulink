@@ -1,0 +1,626 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T18:01:45.045Z",
+  "finishedAt": "2026-10-21T18:08:55.964Z",
+  "seconds": 431,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy102.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 2 — The World Population Distribution, Density and Growth",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\n20. What is meant by the density of population? Explain with 3\nexamples the physical and economic factors which affect\npopulation distribution.\nOR\nWith the help of a neat and labeled diagram, explain the three\nstages of the Demographic Transition Theory.",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n19. I. The term population distribution refers to the way people are 1\nspaced over the earth’s surface.\nII. Physical Factor ½+½\nClimate/ Terrain/ Availability of water (Any one)\nEconomic factor:\nDevelopment of irrigation/Availability of mineral and energy resources/\nDevelopment of transport network (Any one)\nIII. Densely populated ½+½\nNorth Indian Plains/deltas / Coastal Plains (Any one) =1\nSparsely Populated\nSouthern and central Indian States/Himalayas/some of the\nnorth eastern states. (Any one)",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n20. 1. The density of population is a measure of human and land 3\nrelationship. It is expressed as the number of persons per unit\narea. It helps in getting a better understanding of spatial\ndistribution of population in relation to land.\n2. The physical factors like climate, terrain and availability of\nwater affects population distribution. For example the north\nIndia plains, deltas and coastal plains have a higher proportion\nof population than other regions of the country.\n3. Economic factors like industrialisation, urbanisation and\ndevelopment of transport networks cause high concentration\nof population in urban regions of Delhi, Mumbai, Kolkata,\nBangalore, Pune etc.\nOR\nThe three stages of",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n16. Identify the African country that has very high population. 1\nA. Mexico\nB. Brazil\nC. Pakistan\nD. Nigeria\n16.1 The following question is for Visually Impaired Candidates only in lieu of Q.16.\nWhat does the term population distribution refer to?\nA. The total number of people living in specific area.\nB. The arrangement or spread of people across a given area.\nC. The rate at which population increases over time.\nD. The number of births per 1,000 people in the population."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 100294,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 24295,
+      "completionTokens": 6674
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 219871,
+      "in": 32,
+      "out": 25,
+      "rejects": 7,
+      "promptTokens": 16484,
+      "completionTokens": 6602
+    },
+    "solver": {
+      "calls": 160,
+      "ms": 62747,
+      "in": 25,
+      "out": 21,
+      "rejects": 4,
+      "promptTokens": 25116,
+      "completionTokens": 1562
+    },
+    "form": {
+      "calls": 9,
+      "ms": 21923,
+      "in": 21,
+      "out": 13,
+      "rejects": 8,
+      "promptTokens": 2131,
+      "completionTokens": 671
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 281,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 365866,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25557,
+      "completionTokens": 12788
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 4,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a region has an area of 150 sq km and a population of 300,000, what is the population density?",
+      "ms": {
+        "draft": 11229,
+        "critique": 5580,
+        "solver": 9395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following regions is likely to have a high population density?",
+      "ms": {
+        "draft": 11229,
+        "critique": 4906,
+        "solver": 1535,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following countries is likely to have the highest population density based on the passage?",
+      "ms": {
+        "draft": 11229,
+        "critique": 5807,
+        "solver": 1526,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which factor is most important for determining population distribution?",
+      "ms": {
+        "draft": 11229,
+        "critique": 5356,
+        "solver": 1595,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best describes population distribution?",
+      "ms": {
+        "draft": 10868,
+        "critique": 6727,
+        "solver": 916,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main factor affecting the population growth in the second stage of the Demographic Transition Theory?",
+      "ms": {
+        "draft": 10868,
+        "critique": 6190,
+        "solver": 1517,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A country is experiencing a negative population growth. Which of the following could be the most likely reason?",
+      "ms": {
+        "draft": 10868,
+        "critique": 4950,
+        "solver": 1477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a push factor for migration?",
+      "ms": {
+        "draft": 2912,
+        "critique": 6164,
+        "solver": 1445,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is an example of a preventive check in Malthus' theory?",
+      "ms": {
+        "draft": 2912,
+        "critique": 6579,
+        "solver": 1157,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not an area of sparse population?",
+      "ms": {
+        "draft": 2642,
+        "critique": 7067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a push factor for migration?",
+      "ms": {
+        "draft": 2642,
+        "critique": 5673,
+        "solver": 9692
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'population distribution' refer to?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6203
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a fact according to the passage?",
+      "ms": {
+        "draft": 2642,
+        "critique": 6622,
+        "solver": 13628
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best explains the concept of 'demographic transition theory'?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a component of population change?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6292
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the population in the first stage of demographic transition is slow?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a 'pull factor' that influences migration?",
+      "ms": {
+        "draft": 2947,
+        "critique": 5979
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following regions is most likely to have a low population density?",
+      "ms": {
+        "draft": 3932,
+        "critique": 9128
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a reason for the uneven distribution of population?",
+      "ms": {
+        "draft": 3932,
+        "critique": 6444,
+        "solver": 10527
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the crude birth rate is 40 and the crude death rate is 20, what is the natural growth rate of the population?",
+      "ms": {
+        "draft": 10868,
+        "critique": 5192,
+        "solver": 1003,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a physical factor that affects population distribution?",
+      "ms": {
+        "draft": 2912,
+        "critique": 4729,
+        "solver": 1682,
+        "form": 2169
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe how people are spaced over the earth's surface?",
+      "ms": {
+        "draft": 11229,
+        "critique": 6635,
+        "solver": 9175,
+        "form": 2569,
+        "translation": 33117
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the term 'population distribution' refer to?",
+      "ms": {
+        "draft": 3932,
+        "critique": 6809,
+        "solver": 10138,
+        "form": 1974,
+        "translation": 26801
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the term 'population density' refer to?",
+      "ms": {
+        "draft": 2912,
+        "critique": 4493,
+        "solver": 675,
+        "form": 2661,
+        "translation": 41661
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which continent has the highest population growth?",
+      "ms": {
+        "draft": 2642,
+        "critique": 5177,
+        "solver": 1106,
+        "form": 2712,
+        "translation": 21971
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a physical factor affecting population distribution?",
+      "ms": {
+        "draft": 11229,
+        "critique": 5733,
+        "solver": 1919,
+        "form": 3438,
+        "translation": 35593
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the population of a region increases from 100,000 to 120,000 in a year, what is the growth rate of the population?",
+      "ms": {
+        "draft": 10868,
+        "critique": 5835,
+        "solver": 1001,
+        "form": 0,
+        "translation": 36615
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following regions is likely to have a high population density?",
+      "ms": {
+        "draft": 2912,
+        "critique": 4963,
+        "solver": 925,
+        "form": 3475,
+        "translation": 41786
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A region has a crude birth rate of 30 and a crude death rate of 10. What is the natural growth rate of the population?",
+      "ms": {
+        "draft": 10868,
+        "critique": 5825,
+        "solver": 1583,
+        "form": 0,
+        "translation": 28148
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which African country has the highest population?",
+      "ms": {
+        "draft": 2642,
+        "critique": 5607,
+        "solver": 1323,
+        "form": 2638,
+        "translation": 32419
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the reason for high population density in the North Indian plains?",
+      "ms": {
+        "draft": 2912,
+        "critique": 5087,
+        "solver": 1146,
+        "form": 1697,
+        "translation": 34125
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following factors is most likely to increase population density?",
+      "ms": {
+        "draft": 2642,
+        "critique": 6715,
+        "solver": 1160,
+        "form": 0,
+        "translation": 29535
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a region has an area of 150 sq km and a population of 300,000, what is the population density?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following regions is likely to have a high population density?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following countries is likely to have the highest population density based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which factor is most important for determining population distribution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following best describes population distribution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main factor affecting the population growth in the second stage of the Demographic Transition Theory?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"High fertility and high mortality\" / \"High fertility and declining mortality\"); options 2 and 3 say the same thing (\"Declining fertility and declining mortality\" / \"High fertility and declining mortality\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A country is experiencing a negative population growth. Which of the following could be the most likely reason?",
+      "reason": "options 2 and 3 say the same thing (\"A higher number of immigrants than emigrants\" / \"A higher number of emigrants than immigrants\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a push factor for migration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is an example of a preventive check in Malthus' theory?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not an area of sparse population?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is not a push factor for migration?",
+      "reason": "after redrafting distractor 2: option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'population distribution' refer to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a fact according to the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following statements best explains the concept of 'demographic transition theory'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a component of population change?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the population in the first stage of demographic transition is slow?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a 'pull factor' that influences migration?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following regions is most likely to have a low population density?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a reason for the uneven distribution of population?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the crude birth rate is 40 and the crude death rate is 20, what is the natural growth rate of the population?",
+      "reason": "near-duplicate of batch item \"A region has a crude birth rate of 30 and a crude …\" (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a physical factor that affects population distribution?",
+      "reason": "near-duplicate of batch item \"Which of the following is an example of a physical…\" (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

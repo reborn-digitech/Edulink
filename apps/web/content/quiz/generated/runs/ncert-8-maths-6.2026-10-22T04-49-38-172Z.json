@@ -1,0 +1,900 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T04:49:38.172Z",
+  "finishedAt": "2026-10-22T05:01:29.184Z",
+  "seconds": 711,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp106.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — We Distribute, Yet Things Multiply",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n8. (b) 5 : 1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 272958,
+      "in": 47,
+      "out": 46,
+      "rejects": 1,
+      "promptTokens": 47805,
+      "completionTokens": 12774
+    },
+    "critique": {
+      "calls": 63,
+      "ms": 531619,
+      "in": 46,
+      "out": 35,
+      "rejects": 11,
+      "promptTokens": 29951,
+      "completionTokens": 11523
+    },
+    "solver": {
+      "calls": 298,
+      "ms": 215554,
+      "in": 35,
+      "out": 15,
+      "rejects": 20,
+      "promptTokens": 76738,
+      "completionTokens": 3607
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8248,
+      "in": 15,
+      "out": 4,
+      "rejects": 11,
+      "promptTokens": 889,
+      "completionTokens": 222
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 6659,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 115400,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6941,
+      "completionTokens": 3056
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the distributive property of multiplication over addition state?",
+      "ms": {
+        "draft": 8199,
+        "critique": 7206,
+        "solver": 1945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number a is increased by 1 and another number b is decreased by 1, how does the product change according to the passage?",
+      "ms": {
+        "draft": 8199,
+        "critique": 8477,
+        "solver": 2009
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the product of two numbers a and b is increased by 1 in both numbers, what is the total increase in the product?",
+      "ms": {
+        "draft": 8199,
+        "critique": 9908,
+        "solver": 17657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the general identity for the product of two binomials (a + m) (b + n) as stated in the passage?",
+      "ms": {
+        "draft": 8199,
+        "critique": 10836,
+        "solver": 1325
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number a is increased by 2 and another number b is increased by 3, what is the total increase in the product according to the identity derived in the passage?",
+      "ms": {
+        "draft": 8199,
+        "critique": 10269,
+        "solver": 21931,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number a is decreased by 3 and another number b is decreased by 4, what is the total change in the product according to the identity derived in the passage?",
+      "ms": {
+        "draft": 8199,
+        "critique": 9462,
+        "solver": 22652
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the expanded form of (a + b)(a + b)?",
+      "ms": {
+        "draft": 15083,
+        "critique": 8324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of like terms?",
+      "ms": {
+        "draft": 15083,
+        "critique": 7555,
+        "solver": 15262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of the distributive property?",
+      "ms": {
+        "draft": 15083,
+        "critique": 6092,
+        "solver": 20760,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is multiplied by 11, which of the following is a correct method to calculate it?",
+      "ms": {
+        "draft": 15083,
+        "critique": 10875,
+        "solver": 20787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions represents the distributive property of multiplication over addition?",
+      "ms": {
+        "draft": 15083,
+        "critique": 10757,
+        "solver": 16083
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions is equivalent to (a + b)²?",
+      "ms": {
+        "draft": 6436,
+        "critique": 9307
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the name given to terms that have the same letter-numbers?",
+      "ms": {
+        "draft": 15083,
+        "critique": 7066,
+        "solver": 18337,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Using the identity (a + b)² = a² + 2ab + b², what is the value of (10 + 5)²?",
+      "ms": {
+        "draft": 6436,
+        "critique": 8081
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a = 10 and b = 5, which of the following is equal to (a + b)²?",
+      "ms": {
+        "draft": 6436,
+        "critique": 10131
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If (a + b)² = a² + 2ab + b² and (a - b)² = a² - 2ab + b², what is the value of (6x + 5)²?",
+      "ms": {
+        "draft": 6436,
+        "critique": 8847,
+        "solver": 14239,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct simplification of 2(x – 1) + 3(x + 4)?",
+      "ms": {
+        "draft": 4995,
+        "critique": 11127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the pattern of square tiles, what is the number of tiles in Step 10?",
+      "ms": {
+        "draft": 4995,
+        "critique": 7082,
+        "solver": 2812
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x = 8 and y = 3, what is the area of the shaded region in the figure described in the passage?",
+      "ms": {
+        "draft": 4995,
+        "critique": 7796,
+        "solver": 1993
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct expression for the area of the dashed region in the figure, using the method described in the passage?",
+      "ms": {
+        "draft": 4995,
+        "critique": 6973,
+        "solver": 1259,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct expression for the number of circles in Step k of the pattern described in the passage?",
+      "ms": {
+        "draft": 4995,
+        "critique": 8173,
+        "solver": 13639
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the product of two numbers decreases when one is decreased by 2 and the other is increased by 3, which of the following expressions could represent the new product?",
+      "ms": {
+        "draft": 6413,
+        "critique": 6397,
+        "solver": 6763,
+        "form": 1095
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the area to be tiled in the park described in the passage?",
+      "ms": {
+        "draft": 6863,
+        "critique": 8067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the expression for the number of basic units in Step y for figure (b) as shown in the passage?",
+      "ms": {
+        "draft": 6863,
+        "critique": 8066,
+        "solver": 1561
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the expression for the number of basic units in Step y for figure (a) as shown in the passage?",
+      "ms": {
+        "draft": 6863,
+        "critique": 10017
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number leaves a remainder of 3 when divided by 7 and another number leaves a remainder of 5 when divided by 7, what is the remainder when their product is divided by 7?",
+      "ms": {
+        "draft": 6863,
+        "critique": 8445,
+        "solver": 1752
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of the expression (400 – 3) (400 + 3) as shown in the passage?",
+      "ms": {
+        "draft": 6863,
+        "critique": 9243,
+        "solver": 2683
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the distributive property?",
+      "ms": {
+        "draft": 15032,
+        "critique": 10444,
+        "solver": 1496,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the area of a square plot is g square feet, what is the length of one side of the square?",
+      "ms": {
+        "draft": 15032,
+        "critique": 7635,
+        "solver": 2549,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If (n – 1), n, and (n + 1) are three consecutive numbers, what is the value of n² – (n – 1) (n + 1)?",
+      "ms": {
+        "draft": 6863,
+        "critique": 7349,
+        "solver": 17687,
+        "form": 4082
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If (a + 2)(b – 4) = ab, what is the relationship between a and b?",
+      "ms": {
+        "draft": 15032,
+        "critique": 10248,
+        "solver": 1505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the expanded form of (a + ab – 3b)(4 + b)?",
+      "ms": {
+        "draft": 15032,
+        "critique": 9657,
+        "solver": 2199
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the multiplication grid, if the middle number is pq, what is the expression for the number to the right of pq?",
+      "ms": {
+        "draft": 15032,
+        "critique": 10408,
+        "solver": 18142
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many square tiles are there in Step 10 of the pattern described?",
+      "ms": {
+        "draft": 5709,
+        "critique": 7776,
+        "solver": 1681
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions correctly represents the number of circles in Step k of the pattern?",
+      "ms": {
+        "draft": 5709,
+        "critique": 10761,
+        "solver": 1924
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If x = 8 and y = 3, what is the area of the shaded region using Vaishnavi’s method?",
+      "ms": {
+        "draft": 5709,
+        "critique": 8325
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct simplified form of 2(x – 1) + 3(x + 4)?",
+      "ms": {
+        "draft": 5709,
+        "critique": 11077,
+        "solver": 24505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expanded form of (a + b) using Identity 1A?",
+      "ms": {
+        "draft": 4292,
+        "critique": 7480,
+        "solver": 1712
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions is equivalent to (5m + 6n)?",
+      "ms": {
+        "draft": 5709,
+        "critique": 13668,
+        "solver": 19545
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expanded form of (a – b) using Identity 1B?",
+      "ms": {
+        "draft": 4292,
+        "critique": 7897
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for terms that have the same letter-numbers?",
+      "ms": {
+        "draft": 4830,
+        "critique": 6735
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the expression (a + b)(a + b), what is the result after combining like terms?",
+      "ms": {
+        "draft": 4830,
+        "critique": 5994
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Using the identity (a + b)(a - b) = a² - b², what is the value of 98 × 102?",
+      "ms": {
+        "draft": 6436,
+        "critique": 8444,
+        "solver": 16999,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the general form of the distributive property for two expressions each with two terms?",
+      "ms": {
+        "draft": 6413,
+        "critique": 6287,
+        "solver": 1244,
+        "form": 3072,
+        "translation": 41098
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following expressions is equivalent to (x + 2)(x + 5)?",
+      "ms": {
+        "draft": 5709,
+        "critique": 10310,
+        "solver": 23805,
+        "form": 0,
+        "translation": 29993
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 26 × 74 is compared to 25 × 75, which product is larger?",
+      "ms": {
+        "draft": 15032,
+        "critique": 7210,
+        "solver": 1359,
+        "form": 0,
+        "translation": 38685
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the correct expansion of (a - b)²?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the distributive property of multiplication over addition state?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a number a is increased by 1 and another number b is decreased by 1, how does the product change according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the product of two numbers a and b is increased by 1 in both numbers, what is the total increase in the product?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the general identity for the product of two binomials (a + m) (b + n) as stated in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number a is increased by 2 and another number b is increased by 3, what is the total increase in the product according to the identity derived in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 are the same (\"2a + 3b + 3\"); checkExpr \"2*3 + 2*b + 3*a\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number a is decreased by 3 and another number b is decreased by 4, what is the total change in the product according to the identity derived in the passage?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is the expanded form of (a + b)(a + b)?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of like terms?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of the distributive property?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number is multiplied by 11, which of the following is a correct method to calculate it?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following expressions represents the distributive property of multiplication over addition?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following expressions is equivalent to (a + b)²?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the name given to terms that have the same letter-numbers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Using the identity (a + b)² = a² + 2ab + b², what is the value of (10 + 5)²?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a = 10 and b = 5, which of the following is equal to (a + b)²?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If (a + b)² = a² + 2ab + b² and (a - b)² = a² - 2ab + b², what is the value of (6x + 5)²?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"misses the middle term 60x and includes a negative sign wher…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the correct simplification of 2(x – 1) + 3(x + 4)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the pattern of square tiles, what is the number of tiles in Step 10?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If x = 8 and y = 3, what is the area of the shaded region in the figure described in the passage?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is the correct expression for the area of the dashed region in the figure, using the method described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"p(r – s)\" / \"p(s – r)\"); options 1 and 3 say the same thing (\"p(r – s)\" / \"p(r + s – p)\"); options 2 and 3 say the same thing (\"p(s – r)\" / \"p(r + s – p)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the correct expression for the number of circles in Step k of the pattern described in the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the product of two numbers decreases when one is decreased by 2 and the other is increased by 3, which of the following expressions could represent the new product?",
+      "reason": "options 0 and 1 say the same thing (\"ab + 3a – 2b – 6\" / \"ab + 3a + 2b - 6\"); options 0 and 2 say the same thing (\"ab + 3a – 2b – 6\" / \"ab – 3a – 2b + 6\"); options 0 and 3 say the same thing (\"ab + 3a – 2b – 6\" / \"ab – 3a + 2b – 6\"); options 1 and 2 say the same thing (\"ab + 3a + 2b - 6\" / \"ab – 3a – 2b + 6\"); options 1 and 3 say the same thing (\"ab + 3a + 2b - 6\" / \"ab – 3a + 2b – 6\"); options 2 and 3 say the same thing (\"ab – 3a – 2b + 6\" / \"ab – 3a + 2b – 6\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the area to be tiled in the park described in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the expression for the number of basic units in Step y for figure (b) as shown in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the expression for the number of basic units in Step y for figure (a) as shown in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number leaves a remainder of 3 when divided by 7 and another number leaves a remainder of 5 when divided by 7, what is the remainder when their product is divided by 7?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the value of the expression (400 – 3) (400 + 3) as shown in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of the distributive property?",
+      "reason": "options 1 and 3 say the same thing (\"(a + b) × (c + d) = a + b + c + d\" / \"(a + b) × (c + d) = a × c + b × d\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the area of a square plot is g square feet, what is the length of one side of the square?",
+      "reason": "options 0 and 1 are the same (\"g feet\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If (n – 1), n, and (n + 1) are three consecutive numbers, what is the value of n² – (n – 1) (n + 1)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If (a + 2)(b – 4) = ab, what is the relationship between a and b?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the expanded form of (a + ab – 3b)(4 + b)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the multiplication grid, if the middle number is pq, what is the expression for the number to the right of pq?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many square tiles are there in Step 10 of the pattern described?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following expressions correctly represents the number of circles in Step k of the pattern?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If x = 8 and y = 3, what is the area of the shaded region using Vaishnavi’s method?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is the correct simplified form of 2(x – 1) + 3(x + 4)?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the expanded form of (a + b) using Identity 1A?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following expressions is equivalent to (5m + 6n)?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the expanded form of (a – b) using Identity 1B?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for terms that have the same letter-numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the expression (a + b)(a + b), what is the result after combining like terms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Using the identity (a + b)(a - b) = a² - b², what is the value of 98 × 102?",
+      "reason": "near-duplicate of served question cmvexmur7027hgod84n1grwrj (cosine 0.944 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

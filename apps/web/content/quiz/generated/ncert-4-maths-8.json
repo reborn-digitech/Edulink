@@ -1,0 +1,905 @@
+{
+  "subject": "MATHS",
+  "classLevel": 4,
+  "chapter": "Chapter 8 — Weigh It, Pour It",
+  "name": "Weigh It, Pour It",
+  "slug": "maths-4-weigh-it-pour-it",
+  "summary": "This chapter teaches how to compare weights and measure the capacity of containers using simple methods.",
+  "position": 8,
+  "source": "generated against NCERT Mathematics, Class 4, chapter 8 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 8 - भार करो, भरो।",
+      "summary": "इस अध्याय में भार की तुलना करना और बर्तन की क्षमता मापना सीखा गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 8 - भार करा, भरा",
+      "summary": "हा अध्याय भार आणि वस्तूंच्या क्षमतेचे मोजणे शिकवतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Math-Mela",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-22T22:19:21.754Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which container can hold exactly 500 ml of liquid?",
+      "choices": [
+        "Bottle of 50 ml",
+        "Bottle of 100 ml",
+        "Bottle of 200 ml",
+        "Bottle of 500 ml"
+      ],
+      "answerIndex": 3,
+      "solution": "The question asks which container can hold exactly 500 ml of liquid. The correct option is the bottle of 500 ml because its capacity matches the required volume. The other options have smaller capacities and cannot hold 500 ml.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा बर्तन ठीक 500 मिलीलीटर तरल पदार्थ धारण कर सकता है?",
+          "choices": [
+            "50 मिलीलीटर की बोतल",
+            "100 मिलीलीटर की बोतल",
+            "200 मिलीलीटर की बोतल",
+            "500 मिलीलीटर की बोतल"
+          ],
+          "solution": "प्रश्न में पूछा गया है कि कौन सा बर्तन ठीक 500 मिलीलीटर तरल पदार्थ धारण कर सकता है। सही विकल्प 500 मिलीलीटर की बोतल है क्योंकि इसकी क्षमता आवश्यक आयतन के बराबर है। अन्य विकल्पों में छोटी क्षमता होती है और वे 500 मिलीलीटर धारण नहीं कर सकते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या बरोबरीने 500 मिली द्रव धारण करू शकतो?",
+          "choices": [
+            "50 मिली चा बॉटल",
+            "100 मिली चा बॉटल",
+            "200 मिली चा बॉटल",
+            "500 मिली चा बॉटल"
+          ],
+          "solution": "प्रश्नामध्ये कोणत्या बरोबरीने 500 मिली द्रव धारण करू शकतो असे विचारले आहे. बरोबरीने 500 मिली चा बॉटल योग्य विकल्प आहे कारण त्याची क्षमता आवश्यक आयत विस्ताराशी जुळते. इतर विकल्पांमध्ये लहान क्षमता असून 500 मिली धारण करू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the capacity with a smaller size",
+        "confuses the capacity with a smaller size",
+        "confuses the capacity with a smaller size",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the correct answer is clearly 3. The reasoning provided by the author is accurate and matches the expected understanding for a recall-level question.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 4,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many 250 g daal packets will balance one 500 g daal packet?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "To balance a 500 g daal packet, you need to add up 250 g packets until they total 500 g. Since 250 g + 250 g = 500 g, two packets are needed. One packet would only be 250 g, which is not enough. Three or four packets would exceed 500 g, making them incorrect.",
+      "checkExpr": "500/250",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "500 ग्राम दाल के पैकेट को संतुलित करने के लिए कितने 250 ग्राम दाल के पैकेट चाहिए?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "500 ग्राम दाल के पैकेट को संतुलित करने के लिए आपको 250 ग्राम के पैकेट जोड़ने होंगे जब तक कि वे कुल 500 ग्राम न हो जाएं। चूंकि 250 ग्राम + 250 ग्राम = 500 ग्राम, इसलिए दो पैकेट आवश्यक हैं। एक पैकेट केवल 250 ग्राम होगा, जो पर्याप्त नहीं होगा। तीन या चार पैकेट 500 ग्राम से अधिक हो जाएंगे, जिससे वे गलत हो जाएंगे।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 2), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "500 ग्रॅम दाल पॅकेट लांबी करण्यासाठी 250 ग्रॅम दाल पॅकेट किती असतील?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "500 ग्रॅम दाल पॅकेट लांबी करण्यासाठी, आपल्याला 250 ग्रॅम पॅकेट जोडावे लागतील ज्याचे एकूण 500 ग्रॅम होईल. 250 ग्रॅम + 250 ग्रॅम = 500 ग्रॅम, म्हणून दोन पॅकेट आवश्यक आहेत. एक पॅकेट मात्र 250 ग्रॅम असेल, जे पुरेसे नाही. तीन किंवा चार पॅकेट 500 ग्रॅम पेक्षा जास्त असतील, जे चुकीचे असतील.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "counts only one packet instead of two",
+        null,
+        "adds the weights instead of dividing",
+        "multiplies the weights instead of dividing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as 500 g divided by 250 g per packet equals 2. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a container is estimated to hold 500 ml of water and it is actually measured to hold 480 ml, what is the difference in capacity?",
+      "choices": [
+        "10 ml",
+        "20 ml",
+        "30 ml",
+        "40 ml"
+      ],
+      "answerIndex": 1,
+      "solution": "The difference between 500 ml and 480 ml is 20 ml. The other options are incorrect calculations or guesses.",
+      "checkExpr": "500-480",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बर्तन को 500 मिलीलीटर पानी धारण करने का अनुमान लगाया जाता है और वास्तव में इसके द्वारा 480 मिलीलीटर पानी मापा जाता है, तो क्षमता में अंतर क्या है?",
+          "choices": [
+            "10 मिलीलीटर",
+            "20 मिलीलीटर",
+            "30 मिलीलीटर",
+            "40 मिलीलीटर"
+          ],
+          "solution": "500 मिलीलीटर और 480 मिलीलीटर के बीच अंतर 20 मिलीलीटर है। अन्य विकल्प गलत गणना या अनुमान हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका भांड्याला 500 मिली पाणी धारण करू शकतो असे अंदाज आहे आणि त्याचे खरे मोजमाप 480 मिली आहे, तर क्षमतेत किती फरक आहे?",
+          "choices": [
+            "10 मिली",
+            "20 मिली",
+            "30 मिली",
+            "40 मिली"
+          ],
+          "solution": "500 मिली आणि 480 मिली च्या फरकाचे 20 मिली आहे. इतर विकल्प चुकीचे गणना किंवा अंदाज आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'मिली' for milliliters. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student subtracts 500 - 480 but incorrectly states the difference as 10 instead of 20.",
+        null,
+        "adds instead of subtracts",
+        "estimates incorrectly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 20 ml, as 500 - 480 = 20. The author's reasoning for the distractors is plausible and reflects common student errors.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 4,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a container can hold 250 ml and you fill it 4 times, how much total water is used?",
+      "choices": [
+        "250 ml",
+        "500 ml",
+        "1000 ml",
+        "1250 ml"
+      ],
+      "answerIndex": 2,
+      "solution": "Filling a 250 ml container 4 times means 250 * 4 = 1000 ml. The other options do not match this calculation.",
+      "checkExpr": "250*4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बर्तन 250 मिली धारण कर सकता है और आप इसे 4 बार भरते हैं, तो कुल कितना पानी उपयोग किया जाता है?",
+          "choices": [
+            "250 मिली",
+            "500 मिली",
+            "1000 मिली",
+            "1250 मिली"
+          ],
+          "solution": "250 मिली के बर्तन को 4 बार भरना मतलब 250 * 4 = 1000 मिली है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बरोबरीच्या भांड्यामध्ये 250 मिली वाहत आहे आणि तुम्ही ते 4 वेळा भरता, तर एकूण किती पाणी वापरले जाते?",
+          "choices": [
+            "250 मिली",
+            "500 मिली",
+            "1000 मिली",
+            "1250 मिली"
+          ],
+          "solution": "250 मिली चे भांडे 4 वेळा भरणे म्हणजे 250 * 4 = 1000 मिली. इतर विकल्प या गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "student multiplies 250 by 1 instead of 4, thinking only one container is used",
+        "student multiplies 250 ml by 2 instead of 4",
+        null,
+        "multiplies incorrectly"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1000 ml, as 250 ml multiplied by 4 equals 1000 ml. The author's solution and reasoning for the distractors are accurate and reflect common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 4,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If 10 packets of 100 grams of sugar are required to make 1 kg, how many packets of 50 grams would be needed to make 1 kg?",
+      "choices": [
+        "10",
+        "20",
+        "25",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "Since 10 packets of 100 grams make 1 kg, each packet is 100 grams. To make 1 kg with 50-gram packets, you need double the number, so 20 packets. The option '10' would be chosen by someone who assumes the packet size is the same, '25' by someone who adds an extra, and '50' by someone who is way off.",
+      "checkExpr": "1000/50",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 1 किग्रा बनाने के लिए 100 ग्राम के 10 पैकेट की आवश्यकता होती है, तो 1 किग्रा बनाने के लिए 50 ग्राम के कितने पैकेट की आवश्यकता होगी?",
+          "choices": [
+            "10",
+            "20",
+            "25",
+            "50"
+          ],
+          "solution": "क्योंकि 100 ग्राम के 10 पैकेट 1 किग्रा बनाते हैं, प्रत्येक पैकेट 100 ग्राम होता है। 50 ग्राम के पैकेट से 1 किग्रा बनाने के लिए आधे भार के पैकेट की आवश्यकता होती है, इसलिए 20 पैकेट की आवश्यकता होगी। '10' वाला विकल्प कोई ऐसा व्यक्ति चुनेगा जो मान लेता है कि पैकेट का आकार समान है, '25' वाला विकल्प कोई ऐसा व्यक्ति चुनेगा जो एक अतिरिक्त जोड़ देता है, और '50' वाला विकल्प कोई ऐसा व्यक्ति चुनेगा जो बिल्कुल गलत होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "10 ग्रॅमच्या 10 पॅकेट्स लागतात तर 1 किलोग्रॅम बनवण्यासाठी, 50 ग्रॅमच्या किती पॅकेट्स लागतील?",
+          "choices": [
+            "10",
+            "20",
+            "25",
+            "50"
+          ],
+          "solution": "10 ग्रॅमच्या 10 पॅकेट्स 1 किलोग्रॅम बनवतात, म्हणून प्रत्येक पॅकेट 100 ग्रॅम आहे. 50 ग्रॅमच्या पॅकेट्सने 1 किलोग्रॅम बनवण्यासाठी दुप्पट संख्या लागेल, म्हणून 20 पॅकेट्स लागतील. '10' ने कोणी पॅकेटचा आकार समान असल्याचे असुरक्षितपणे मानतो, '25' ने कोणी एक अतिरिक्त जोडतो आणि '50' ने कोणी अतिशय चुकीचे अंदाज लावतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution explanation is correctly translated and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes the packet size is the same",
+        null,
+        "adds an extra packet without reason",
+        "is way off the correct value"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the reasoning. The correct answer is 20 packets of 50 grams, as 1 kg is 1000 grams, and 1000 ÷ 50 = 20. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A pump can fill a tank with water in 2 hours. Because of leakage, it took 3 hours to fill the tank. How much time will it take for the leakage to drain all the water in the full tank?",
+      "choices": [
+        "3 hours",
+        "5 hours",
+        "6 hours",
+        "7 hours"
+      ],
+      "answerIndex": 2,
+      "solution": "The question is similar to a ratio problem. If the pump fills in 2 hours and with leakage takes 3 hours, the leakage rate is such that it would take 6 hours to drain the tank. Other options are incorrect because they do not match the calculation.",
+      "checkExpr": "1/(1/2 - 1/3)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पंप जल से भरे टैंक को 2 घंटे में भर सकता है। लीकेज के कारण, टैंक को भरने में 3 घंटे लग गए। लीकेज के कारण भरे टैंक के सारे पानी को खाली करने में कितना समय लगेगा?",
+          "choices": [
+            "3 घंटे",
+            "5 घंटे",
+            "6 घंटे",
+            "7 घंटे"
+          ],
+          "solution": "प्रश्न अनुपात समस्या के समान है। यदि पंप 2 घंटे में भरता है और लीकेज के साथ 3 घंटे में भरता है, तो लीकेज की दर ऐसी होगी कि टैंक के सारे पानी को खाली करने में 6 घंटे लगेंगे। अन्य विकल्प गलत हैं क्योंकि वे गणना के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक पंप 2 तासांत पाण्याने टॅंक भरू शकतो. लीक कारणामुळे, टॅंक भरण्यास 3 तास लागले. पूर्ण टॅंक खाली जाण्यास लीक किती वेळ लागेल?",
+          "choices": [
+            "3 तास",
+            "5 तास",
+            "6 तास",
+            "7 तास"
+          ],
+          "solution": "हे प्रश्न अनुपाताशी संबंधित आहे. जर पंप 2 तासांत भरत असेल आणि लीकसह 3 तासांत भरत असेल, तर लीकच्या दराने टॅंक खाली जाण्यास 6 तास लागतील. इतर विकल्प चुकीचे आहेत कारण ते गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "adds the times instead of subtracting",
+        "Confuses the total time with the leakage time, assuming the leakage only reduces the filling rate by 1 hour.",
+        null,
+        "assumes the leakage is the same as the pump time"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 6 hours. The pump fills the tank in 2 hours, so its rate is 1/2 tank per hour. With the leak, it takes 3 hours, so the combined rate is 1/3 tank per hour. The leak's rate is 1/2 - 1/3 = 1/6 tank per hour, meaning it would take 6 hours to drain the tank. The author's reasoning and the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Rita bought 250 g of sugar and 100 g of salt. What is the total weight of the items she bought?",
+      "choices": [
+        "300 g",
+        "350 g",
+        "400 g",
+        "450 g"
+      ],
+      "answerIndex": 1,
+      "solution": "Rita bought 250 g of sugar and 100 g of salt, so the total is 250 + 100 = 350 grams. The option '300 g' would be chosen by someone who subtracts instead of adds, '400 g' by someone who adds incorrectly, and '450 g' by someone who miscalculates the sum.",
+      "checkExpr": "250+100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रीता ने 250 ग्राम चीनी और 100 ग्राम नमक खरीदा। खरीदे गए वस्तुओं का कुल वजन क्या है?",
+          "choices": [
+            "300 ग्राम",
+            "350 ग्राम",
+            "400 ग्राम",
+            "450 ग्राम"
+          ],
+          "solution": "रीता ने 250 ग्राम चीनी और 100 ग्राम नमक खरीदा, इसलिए कुल वजन 250 + 100 = 350 ग्राम है। '300 ग्राम' वाला विकल्प कमजोर व्यक्ति जो जोड़ के बजाय घटा लेता है, '400 ग्राम' वाला विकल्प गलत तरीके से जोड़ लेने वाले द्वारा चुना जाएगा और '450 ग्राम' वाला विकल्प गलत रूप से योग करने वाले द्वारा चुना जाएगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution correctly explains why other options are wrong.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रीताने 250 ग्रॅम चावल आणि 100 ग्रॅम लवंग खरेदी केले. तिने खरेदी केलेल्या वस्तूंचे एकूण वजन किती आहे?",
+          "choices": [
+            "300 ग्रॅम",
+            "350 ग्रॅम",
+            "400 ग्रॅम",
+            "450 ग्रॅम"
+          ],
+          "solution": "रीताने 250 ग्रॅम चावल आणि 100 ग्रॅम लवंग खरेदी केले, म्हणून एकूण 250 + 100 = 350 ग्रॅम आहे. '300 ग्रॅम' ही विकल्प कमीत कमी करून घेणारा निवडेल, '400 ग्रॅम' अशा व्यक्ती जी बरोबर जोडत नाहीत, आणि '450 ग्रॅम' अशा व्यक्ती जी बरोबर बेरीज करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution explanation is correctly translated and matches the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "subtracts instead of adds",
+        null,
+        "adds incorrectly",
+        "miscalculates the sum"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 350 g, as 250 + 100 = 350. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A 1 litre water bottle can be filled using 500 ml bottles. How many 500 ml bottles are needed to fill a 1 litre bottle?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Since 1 litre is equivalent to 1000 ml, and each bottle holds 500 ml, two bottles are needed to reach 1000 ml. Choosing 1 would be incorrect because 500 ml is half a litre, not a full litre. Choosing 3 or 4 would be incorrect because they exceed the required amount.",
+      "checkExpr": "1000/500",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 लीटर के पानी के बोतल को 500 मिलीलीटर के बोतलों के साथ भरा जा सकता है। 1 लीटर के बोतल को भरने के लिए कितने 500 मिलीलीटर के बोतल की आवश्यकता होती है?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "क्योंकि 1 लीटर के बराबर 1000 मिलीलीटर होता है, और प्रत्येक बोतल 500 मिलीलीटर धारण करता है, तो 1000 मिलीलीटर पहुंचने के लिए दो बोतल की आवश्यकता होती है। 1 का चयन गलत होगा क्योंकि 500 मिलीलीटर एक लीटर के आधा होता है, न कि पूरा लीटर। 3 या 4 का चयन गलत होगा क्योंकि वे आवश्यक मात्रा से अधिक होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for measurements.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 लीटरच्या पाण्याच्या बाटलीला 500 मिली बाटल्या वापरून भरता येते. 1 लीटरच्या बाटलीला भरण्यासाठी 500 मिली बाटल्या किती लागतील?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "solution": "कारण 1 लीटर हे 1000 मिली च्या बरोबर आहे, आणि प्रत्येक बाटली 500 मिली घेते, तर 1000 मिली पर्यंत पोहोचण्यासाठी दोन बाटल्या आवश्यक आहेत. 1 निवडणे चुकीचे असेल कारण 500 मिली हे अर्धा लीटर आहे, नक्की लीटर नाही. 3 किंवा 4 निवडणे चुकीचे असेल कारण ते आवश्यक रक्कमेपेक्षा जास्त असतील.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for units of measurement.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks 500 ml equals 1 litre",
+        null,
+        "adds an extra bottle without reason",
+        "is way off the correct value"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward, and the correct answer is 2. The author's reasoning for the distractors aligns with common misconceptions, and the solution is logically sound.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 100 g soap bar will weigh the same as 10 erasers. How many erasers will weigh the same as 250 g sugar?",
+      "choices": [
+        "20",
+        "25",
+        "30",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "If 10 erasers weigh 100 g, then 1 eraser weighs 10 g. Therefore, 250 g of sugar would weigh the same as 25 erasers. Other options are incorrect because they do not match this calculation.",
+      "checkExpr": "250/10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "100 ग्राम साबुन का टुकड़ा 10 रबड़ के बराबर भार रखता है। 250 ग्राम चीनी के बराबर कितनी रबड़ भार रखेंगी?",
+          "choices": [
+            "20",
+            "25",
+            "30",
+            "50"
+          ],
+          "solution": "यदि 10 रबड़ 100 ग्राम के बराबर हैं, तो 1 रबड़ 10 ग्राम के बराबर होगी। अतः 250 ग्राम चीनी के बराबर 25 रबड़ भार रखेंगी। अन्य विकल्प गलत हैं क्योंकि ये इस गणना के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terms like 'रबड़' for 'eraser' and 'चीनी' for 'sugar', which are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "100 ग्रॅम साबणाचा एक बार 10 अस्पॅशर इतका वजन करतो. 250 ग्रॅम चिकू इतका वजन करणारे किती अस्पॅशर असतील?",
+          "choices": [
+            "20",
+            "25",
+            "30",
+            "50"
+          ],
+          "solution": "जर 10 अस्पॅशर 100 ग्रॅम वजन करत असतील, तर 1 अस्पॅशर 10 ग्रॅम वजन करतो. म्हणून 250 ग्रॅम चिकू इतका वजन करणारे 25 अस्पॅशर असतील. इतर विकल्प चूक आहेत कारण ते या गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terms for technical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "multiplies incorrectly",
+        null,
+        "adds instead of divides",
+        "assumes 10 erasers equal 250 g"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is logically sound and matches the correct answer. The reasoning is clear and directly leads to the correct choice.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Fun at Vegetable Market!"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm108.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Weigh It, Pour It",
+            "Measuring Capacity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T22:19:21.754Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

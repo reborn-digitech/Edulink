@@ -1,0 +1,449 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 7 — Waves",
+  "name": "Waves",
+  "slug": "physics-11-waves",
+  "summary": "This chapter explains different types of waves, their equations, and properties like superposition and interference.",
+  "position": 7,
+  "source": "generated against NCERT Physics, Class 11, chapter 7 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "तरंग",
+      "summary": "इस अध्याय में विभिन्न प्रकार के तरंगों, उनके समीकरण और अध्यारोपण और व्यतिकरण जैसे गुणों की व्याख्या की गई है।"
+    },
+    "mr": {
+      "name": "तरंग",
+      "summary": "ही अध्यायात विविध प्रकारच्या तरंगांचे समीकरण आणि अध्यारोपण आणि व्यतिकरण यासारख्या गुणांचे विवरण दिले आहे."
+    }
+  },
+  "board": "NCERT",
+  "book": "Physics Part-II",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-23T05:23:36.953Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 2,
+      "stem": "What does the phase of a wave determine?",
+      "choices": [
+        "The maximum displacement of the wave",
+        "The time period of the wave",
+        "The displacement of the wave at any position and instant",
+        "The distance between two consecutive crests"
+      ],
+      "answerIndex": 2,
+      "solution": "The phase of a wave determines the displacement of the wave at any position and instant because it represents the state of the wave at a specific point in space and time. The maximum displacement is determined by the amplitude, the time period is related to the frequency, and the distance between two consecutive crests is the wavelength.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तरंग की फेज क्या निर्धारित करती है?",
+          "choices": [
+            "तरंग का अधिकतम विस्थापन",
+            "तरंग का समय अवधि",
+            "किसी भी स्थिति और क्षण पर तरंग का विस्थापन",
+            "दो क्रमागत शिखरों के बीच की दूरी"
+          ],
+          "solution": "तरंग की फेज किसी भी स्थिति और क्षण पर तरंग के विस्थापन को निर्धारित करती है क्योंकि यह अंतरिक्ष और समय के एक विशिष्ट बिंदु पर तरंग की स्थिति का प्रतिनिधित्व करती है। अधिकतम विस्थापन आयाम द्वारा निर्धारित किया जाता है, समय अवधि आवृत्ति से संबंधित होती है, और दो क्रमागत शिखरों के बीच की दूरी तरंग दैर्ध्य होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तरंगाचा फेस काय निश्चित करतो?",
+          "choices": [
+            "तरंगाचा अधिकतम विस्थापन",
+            "तरंगाचा वेळेचा कालावधी",
+            "कोणत्याही स्थान आणि क्षणी तरंगाचा विस्थापन",
+            "दोन क्रमागत शिखरांमधील अंतर"
+          ],
+          "solution": "तरंगाचा फेस कोणत्याही स्थान आणि क्षणी तरंगाचा विस्थापन निश्चित करतो कारण तो विशिष्ट जागा आणि वेळेवर तरंगाच्या अवस्थेचे प्रतिनिधित्व करतो. अधिकतम विस्थापन आयामाने निश्चित केले जाते, वेळेचा कालावधी आवृत्तीशी संबंधित असतो आणि दोन क्रमागत शिखरांमधील अंतर तरंगलांबी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses phase with amplitude",
+        "Confuses phase with period",
+        null,
+        "Confuses phase with wavelength"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the phase determines the displacement at any position and instant. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Waves",
+            "y x t( , ) = asin(kx − ω + φt)"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Waves",
+            "y x t( , ) = asin(kx − ω + φt)"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Waves",
+            "y x t( , ) = asin(kx − ω + φt)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T05:23:36.953Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "How does the crest of a wave progress with time?",
+      "choices": [
+        "It remains stationary",
+        "It moves in the negative direction of x-axis",
+        "It moves in the positive direction of x-axis",
+        "It oscillates randomly"
+      ],
+      "answerIndex": 2,
+      "solution": "The crest of a wave progresses in the positive direction of the x-axis with time because the wave's motion is defined by the phase of the wave equation, which requires the crest to move forward as time increases. The other options are incorrect because a stationary crest would imply no wave motion, a negative direction would contradict the wave's propagation, and random oscillation would not follow the regular pattern of a wave.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तरंग के शिखर का समय के साथ क्या होता है?",
+          "choices": [
+            "यह स्थिर रहता है",
+            "यह x-अक्ष की ऋणात्मक दिशा में गति करता है",
+            "यह x-अक्ष की धनात्मक दिशा में गति करता है",
+            "यह यादृच्छिक रूप से दोलन करता है"
+          ],
+          "solution": "तरंग के शिखर का समय के साथ x-अक्ष की धनात्मक दिशा में गति होती है क्योंकि तरंग के समीकरण के चरण के कारण शिखर समय के साथ आगे बढ़ता है। अन्य विकल्प गलत हैं क्योंकि एक स्थिर शिखर का अर्थ होगा कि कोई तरंग गति नहीं है, ऋणात्मक दिशा तरंग के प्रसार के विरोध में होगी, और यादृच्छिक दोलन तरंग के नियमित पैटर्न का अनुसरण नहीं करेगा।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for wave motion.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तरंगाचा शिखर काळानुसार कसा प्रगती करतो?",
+          "choices": [
+            "तो स्थिर रहातो",
+            "तो x-अक्षाच्या ऋण दिशेने जातो",
+            "तो x-अक्षाच्या धन दिशेने जातो",
+            "तो अयोग्य रूपाने दोलन करतो"
+          ],
+          "solution": "तरंगाचा शिखर काळानुसार x-अक्षाच्या धन दिशेने प्रगती करतो कारण तरंगाच्या समीकरणाच्या फेसमुळे तरंगाचा गती निश्चित होतो, ज्यामुळे काळ वाढत जातो तेव्हा शिखर आगेकूच करतो. इतर विकल्प अयोग्य आहेत कारण स्थिर शिखर अर्थात तरंगाची गती नसल्याचा अर्थ असतो, ऋण दिशेने जाणे तरंगाच्या प्रसाराशी विरोधात असतो आणि अयोग्य दोलनामुळे तरंगाच्या नियमित पॅटर्नचा अंतर्भाव होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the direction of wave travel",
+        "Confuses the direction of wave travel",
+        null,
+        "Misunderstands wave motion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly interprets the wave equation and the passage, and the reasoning aligns with the correct answer. The distractors reflect common misconceptions about wave motion.",
+      "sources": [
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Waves",
+            "y x t( , ) = asin(kx − ω + φt)"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Waves",
+            "y x t( , ) = asin(kx − ω + φt)"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 7: Waves",
+            "y x t( , ) = asin(kx − ω + φt)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T05:23:36.953Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a wave is propagating through a medium, what does the wavefront represent?",
+      "choices": [
+        "The direction of the wave",
+        "The energy carried by the wave",
+        "The locus of points with the same phase",
+        "The frequency of the wave"
+      ],
+      "answerIndex": 2,
+      "solution": "A wavefront represents the locus of points that are in the same phase of their oscillation. This is because wavefronts show where the wave is at the same point in its cycle across space. The other options do not accurately describe what a wavefront represents.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तरंग माध्यम में प्रसारित हो रही है, तो तरंगावर्त क्या प्रस्तुत करता है?",
+          "choices": [
+            "तरंग की दिशा",
+            "तरंग द्वारा ले जाए गए ऊर्जा",
+            "समान फेज वाले बिंदुओं का स्थान",
+            "तरंग की आवृत्ति"
+          ],
+          "solution": "एक तरंगावर्त उन बिंदुओं के स्थान को प्रस्तुत करता है जो अपने दोलन के समान चरण में होते हैं। इसका कारण यह है कि तरंगावर्त स्थान के साथ तरंग के चक्र के एक ही बिंदु को दर्शाता है। अन्य विकल्प तरंगावर्त के असत्य वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक लहर माध्यमातून पसरत असेल, तर लहरीच्या वर्तुळाचा अर्थ काय असतो?",
+          "choices": [
+            "लहरीचा दिशा",
+            "लहरीने वाहिलेली ऊर्जा",
+            "एकसारख्या घटनेच्या बिंदूंचा विस्तार",
+            "लहरीची वारंवारता"
+          ],
+          "solution": "एका लहरीच्या वर्तुळाचा अर्थ एकसारख्या घटनेच्या बिंदूंचा विस्तार असतो. हे कारण लहरीच्या वर्तुळामुळे जागेत लहरीच्या चक्रात एकसारख्या बिंदूंचा दर्शन होतो. इतर विकल्प लहरीच्या वर्तुळाचा योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses wavefront with the direction of wave propagation",
+        "Incorrectly identifies the energy carried by the wave",
+        null,
+        "Misunderstands the relationship between wavefront and frequency"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as wavefronts are defined as the locus of points with the same phase. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 7: Waves"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Waves"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Waves"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T05:23:36.953Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following can be concluded about the propagation of waves in a medium?",
+      "choices": [
+        "Only transverse waves can propagate in all media.",
+        "Only longitudinal waves can propagate in all media.",
+        "Both transverse and longitudinal waves can propagate in solids.",
+        "Only surface waves can propagate in liquids."
+      ],
+      "answerIndex": 2,
+      "solution": "Solids have the necessary rigidity to support both transverse and longitudinal waves, as transverse waves involve particle motion perpendicular to the wave direction, and longitudinal waves involve particle motion parallel to the wave direction. Fluids lack the shear strength required for transverse waves, so they only support longitudinal waves. The other options are incorrect because not all media support only one type of wave, and surface waves are not the only type that can exist in liquids.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक माध्यम में तरंगों के प्रसार के बारे में निम्नलिखित में से क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "सभी माध्यमों में केवल अनुप्रस्थ तरंगें ही प्रसारित हो सकती हैं।",
+            "सभी माध्यमों में केवल अनुदैर्ध्य तरंगें ही प्रसारित हो सकती हैं।",
+            "ठोस में अनुप्रस्थ और अनुदैर्ध्य दोनों प्रकार की तरंगें प्रसारित हो सकती हैं।",
+            "तरल में केवल सतही तरंगें ही प्रसारित हो सकती हैं।"
+          ],
+          "solution": "ठोस में अनुप्रस्थ तरंगों के लिए आवश्यक कठोरता होती है, जबकि अनुदैर्ध्य तरंगों के लिए आवश्यकता नहीं होती। अनुप्रस्थ तरंगों में कणों का गति तरंग की दिशा के लंबवत होता है, जबकि अनुदैर्ध्य तरंगों में कणों का गति तरंग की दिशा के समांतर होता है। द्रव अनुप्रस्थ तरंगों के लिए आवश्यक अपरूपण शक्ति नहीं रखते हैं, इसलिए वे केवल अनुदैर्ध्य तरंगों को ही समर्थन करते हैं। अन्य विकल्प गलत हैं क्योंकि सभी माध्यम एक ही प्रकार की तरंग को समर्थन नहीं करते हैं, और तरल में केवल सतही तरंगें ही अस्तित्व में हो सकती हैं यह सही नहीं है।",
+          "imageAlt": "एक छड़ चुंबक का चित्र जिसमें उत्तरी ध्रुव और दक्षिणी ध्रुव तथा चुंबकीय क्षेत्र रेखाएं दिखाई गई हैं।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी काय निष्कर्ष काढता येईल तरंगांच्या माध्यमात विस्ताराबद्दल?",
+          "choices": [
+            "सर्व माध्यमांमध्ये अनुप्रस्थ तरंग फक्त विस्तारू शकतात.",
+            "सर्व माध्यमांमध्ये अक्षीय तरंग फक्त विस्तारू शकतात.",
+            "ठोस पदार्थांमध्ये अनुप्रस्थ आणि अक्षीय दोन्ही तरंग विस्तारू शकतात.",
+            "तरल पदार्थांमध्ये फक्त पृष्ठभागाचे तरंग विस्तारू शकतात."
+          ],
+          "solution": "ठोस पदार्थांमध्ये अनुप्रस्थ आणि अक्षीय दोन्ही तरंग विस्तारू शकतात, कारण अनुप्रस्थ तरंगांमध्ये कणांचा गती तरंग दिशेच्या लंब असतो आणि अक्षीय तरंगांमध्ये कणांचा गती तरंग दिशेच्या समांतर असतो. द्रव पदार्थांमध्ये अनुप्रस्थ तरंगांसाठी आवश्यक असलेली ताण क्षमता नसते, म्हणून ते फक्त अक्षीय तरंग विस्तारू शकतात. इतर विकल्प अयोग्य आहेत कारण सर्व माध्यम फक्त एक प्रकारचे तरंग विस्तारू शकत नाहीत आणि तरल पदार्थांमध्ये पृष्ठभागाचे तरंग फक्त एकमेव प्रकार नाहीत.",
+          "imageAlt": "एक बार मॅग्नेटचा आकृती ज्यामध्ये उत्तर ध्रुव आणि दक्षिण ध्रुव आणि चुंबकीय क्षेत्र रेषा दर्शवलेल्या आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for wave types (अनुप्रस्थ = transverse, अक्षीय = longitudinal, पृष्ठभागाचे = surface).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram of a bar magnet showing the north and south poles and magnetic field lines.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "barMagnet",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "north",
+                "south",
+                "fieldLine"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "north": {
+            "en": "North Pole",
+            "hi": "उत्तरी ध्रुव",
+            "mr": "उत्तर ध्रुव"
+          },
+          "south": {
+            "en": "South Pole",
+            "hi": "दक्षिणी ध्रुव",
+            "mr": "दक्षिण ध्रुव"
+          },
+          "fieldLine": {
+            "en": "Magnetic Field Line",
+            "hi": "चुंबकीय क्षेत्र रेखा",
+            "mr": "चुंबकीय क्षेत्र रेषा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Misunderstands that only transverse waves can propagate in all media, which is incorrect as fluids cannot support transverse waves.",
+        "Incorrectly assumes that only longitudinal waves can propagate in all media, but transverse waves can propagate in solids.",
+        null,
+        "Confuses the behavior of surface waves in liquids, which are not described as the only type that can propagate in this context."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is about wave propagation in media, and the correct answer is that both transverse and longitudinal waves can propagate in solids. The author's solution and reasoning are accurate, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Waves"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Waves"
+          ]
+        },
+        {
+          "document": "ncert/11/physics/keph207.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: Waves"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T05:23:36.953Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

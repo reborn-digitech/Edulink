@@ -21,948 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T04:19:12.849Z",
+  "generatedAt": "2026-10-22T01:48:12.373Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the value of 1 cowrie shell in terms of gold dinar?",
+      "stem": "What is the distance covered by Aaron in 5 hours if he walks 3 km in 1 hour?",
       "choices": [
-        "1/1440",
-        "1/120",
-        "1/30",
-        "1/12"
-      ],
-      "answerIndex": 0,
-      "solution": "Starting from the given relationships, 1 gold dinar equals 12 silver drammas, 1 silver dramma equals 4 copper panas, 1 copper pana equals 6 mashakas, and 1 pana equals 30 cowrie shells. Multiplying these together gives 1 gold dinar = 12 × 4 × 6 × 30 = 1440 cowrie shells. Therefore, 1 cowrie shell equals 1/1440 of a gold dinar. The other options do not match this calculated conversion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "1 सोने के दिनार में 1 कोरी शेल का मूल्य क्या है?",
-          "choices": [
-            "1/1440",
-            "1/120",
-            "1/30",
-            "1/12"
-          ],
-          "solution": "दिए गए संबंधों से शुरू करते हुए, 1 सोने के दिनार में 12 चांदी के ड्रम्मा होते हैं, 1 चांदी के ड्रम्मा में 4 तांबे के पाना होते हैं, 1 तांबे के पाना में 6 माशक होते हैं, और 1 पाना में 30 कोरी शेल होते हैं। इनको गुणा करने पर 1 सोने के दिनार = 12 × 4 × 6 × 30 = 1440 कोरी शेल के बराबर प्राप्त होता है। इसलिए, 1 कोरी शेल का मूल्य 1/1440 सोने के दिनार के बराबर होता है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for the context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1 रुपया दिनार च्या शिल्लक विरुद्ध कोणत्या मूल्याचे एक कोवरी शेल आहे?",
-          "choices": [
-            "1/1440",
-            "1/120",
-            "1/30",
-            "1/12"
-          ],
-          "solution": "दिलेल्या संबंधांपासून, 1 सोनेरी दिनार 12 रौप्य ड्रम्मा बरोबर आहे, 1 रौप्य ड्रम्मा 4 तांबे पाना बरोबर आहे, 1 तांबे पाना 6 माशक बरोबर आहे, आणि 1 पाना 30 कोवरी शेल बरोबर आहे. यांच्या गुणाकाराने 1 सोनेरी दिनार = 12 × 4 × 6 × 30 = 1440 कोवरी शेल मिळते. त्यामुळे 1 कोवरी शेल 1/1440 सोनेरी दिनार च्या बरोबर आहे. इतर पर्याय या गणितानुसार नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for currency units.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the conversion rate between drammas and panas",
-        "Confuses the conversion rate between panas and mashakas",
-        "Confuses the conversion rate between panas and cowrie shells"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and logically follows from the given conversion rates. The author's reasoning for the distractors aligns with common misconceptions about unit conversions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the result of dividing 8 by 2?",
-      "choices": [
-        "4",
-        "6",
-        "16",
-        "10"
-      ],
-      "answerIndex": 0,
-      "solution": "Dividing 8 by 2 gives 4. The other options are incorrect because they do not match the result of this simple division.",
-      "checkExpr": "8/2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2 द्वारा 8 के भाग देने पर परिणाम क्या होता है?",
-          "choices": [
-            "4",
-            "6",
-            "16",
-            "10"
-          ],
-          "solution": "8 को 2 से भाग देने पर 4 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि इनमें इस सरल भाग देने के परिणाम के बराबर नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "8 चे 2 ने भागाकार केल्यास काय परिणाम होतो?",
-          "choices": [
-            "4",
-            "6",
-            "16",
-            "10"
-          ],
-          "solution": "8 चे 2 ने भागाकार केल्यास 4 मिळतो. इतर विकल्प चुकीचे आहेत कारण ते या सोप्या भागाकाराच्या परिणामाशी जुंपत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses division with subtraction, thinking 8 - 2 = 6",
-        "Believes division increases the number instead of decreasing it",
-        "Confuses division with multiplication, thinking 8 ÷ 2 = 8 + 2"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is a simple division problem, and the correct answer is 4. The author's reasoning for the distractors aligns with common misconceptions, making the question appropriate for a recall-level question.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 17,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 18,
-          "pageStart": 39,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the result of dividing 1 by 2?",
-      "choices": [
-        "1/2",
-        "2/1",
-        "1/4",
-        "2/3"
-      ],
-      "answerIndex": 0,
-      "solution": "The question asks for the result of dividing 1 by 2. Dividing 1 by 2 means finding what number multiplied by 2 gives 1. This is 1/2. The other options are incorrect because 2/1 is the reciprocal of 1/2, 1/4 is half of 1/2, and 2/3 is unrelated to the operation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2 द्वारा 1 के भाग देने पर परिणाम क्या होता है?",
-          "choices": [
-            "1/2",
-            "2/1",
-            "1/4",
-            "2/3"
-          ],
-          "solution": "प्रश्न में 1 के 2 से भाग देने के परिणाम के बारे में पूछा गया है। 1 के 2 से भाग देना यह पता करना होता है कि कौन-सी संख्या को 2 से गुणा करने पर 1 प्राप्त होता है। यह 1/2 है। अन्य विकल्प गलत हैं क्योंकि 2/1, 1/2 का व्युत्क्रम है, 1/4, 1/2 का आधा है और 2/3, संक्रिया से असंबंधित है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1 चे 2 ने भागल्यास काय परिणाम होतो?",
-          "choices": [
-            "1/2",
-            "2/1",
-            "1/4",
-            "2/3"
-          ],
-          "solution": "प्रश्नात 1 चे 2 ने भागल्याचा परिणाम विचारला आहे. 1 चे 2 ने भागणे म्हणजे कोणता संख्या 2 ने गुणली असता 1 मिळेल ते शोधणे. हा अंश 1/2 आहे. इतर विकल्प चुकीचे आहेत कारण 2/1 हा 1/2 चा व्युत्क्रम आहे, 1/4 हा 1/2 चा अर्धा आहे आणि 2/3 हा क्रियेशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for fractions and operations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses the numerator and denominator",
-        "misunderstands the division operation",
-        "incorrectly halves the denominator instead of the numerator"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 1/2, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 7,
-          "pageStart": 14,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.2 Division of Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 8,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.2 Division of Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 9,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What happens when a fraction is multiplied by its reciprocal?",
-      "choices": [
-        "The product is 0",
-        "The product is 1",
-        "The product is the same as the original fraction",
-        "The product is the denominator of the fraction"
-      ],
-      "answerIndex": 1,
-      "solution": "When a fraction is multiplied by its reciprocal, the product is always 1. The correct answer is that the product is 1. The other options do not accurately describe this mathematical property.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक भिन्न के गुणा करने पर इसके व्युत्क्रम के साथ क्या होता है?",
-          "choices": [
-            "गुणनफल 0 होता है",
-            "गुणनफल 1 होता है",
-            "गुणनफल मूल भिन्न के समान होता है",
-            "गुणनफल भिन्न के हर के बराबर होता है"
-          ],
-          "solution": "जब एक भिन्न के गुणा करने पर इसके व्युत्क्रम के साथ गुणनफल हमेशा 1 होता है। सही उत्तर यह है कि गुणनफल 1 होता है। अन्य विकल्प इस गणितीय गुण का सही वर्णन नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate mathematical terminology used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक अपूर्णांक त्याच्या व्यस्ताने गुणला जात असताना काय होते?",
-          "choices": [
-            "उत्पादन 0 असते",
-            "उत्पादन 1 असते",
-            "उत्पादन मूळ अपूर्णांकासारखे असते",
-            "उत्पादन अपूर्णांकाच्या छेदासारखे असते"
-          ],
-          "solution": "एक अपूर्णांक त्याच्या व्यस्ताने गुणला जात असताना उत्पादन नेहमी 1 असते. उत्पादन 1 असते हे योग्य उत्तर आहे. इतर विकल्प या गणितीय गुणधर्माचे योग्य वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes that the product of a fraction and its reciprocal is 0",
-        null,
-        "Confuses the result of multiplying a fraction by its reciprocal with the original fraction",
-        "Confuses the result of multiplying a fraction by its reciprocal with the denominator"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Multiplying a fraction by its reciprocal always results in 1, which matches the key. The distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 14,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 15,
-          "pageStart": 30,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 16,
-          "pageStart": 34,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "How is the division of fractions converted into a multiplication problem?",
-      "choices": [
-        "By multiplying the dividend and divisor",
-        "By multiplying the dividend with the reciprocal of the divisor",
-        "By subtracting the divisor from the dividend",
-        "By dividing the dividend by the reciprocal of the divisor"
-      ],
-      "answerIndex": 1,
-      "solution": "The division of fractions is converted into a multiplication problem by multiplying the dividend with the reciprocal of the divisor. This method works because multiplying by the reciprocal effectively undoes the division. Multiplying the dividend and divisor does not achieve this, subtracting the divisor is not a valid operation for division, and dividing by the reciprocal would reverse the intended process.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "भिन्नों के भाग को गुणन के समस्या में कैसे बदला जाता है?",
-          "choices": [
-            "भाज्य और भाजक को गुणा करके",
-            "भाज्य को भाजक के व्युत्क्रम के साथ गुणा करके",
-            "भाज्य से भाजक को घटाकर",
-            "भाज्य को भाजक के व्युत्क्रम से भाग देकर"
-          ],
-          "solution": "भिन्नों के भाग को गुणन के समस्या में बदला जाता है भाज्य को भाजक के व्युत्क्रम के साथ गुणा करके। यह विधि कार्य करती है क्योंकि व्युत्क्रम से गुणा वास्तव में भाग को उलट देता है। भाज्य और भाजक को गुणा करना इसकी प्राप्ति नहीं करता है, भाज्य से भाजक को घटाना भाग के लिए वैध संक्रिया नहीं है, और भाजक के व्युत्क्रम से भाग देना इच्छित प्रक्रिया के विपरीत होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "अपूर्णांकांच्या भागाकाराला गुणाकाराच्या समस्येमध्ये कसे बदलले जाते?",
-          "choices": [
-            "भाजक आणि भाज्याचा गुणाकार करून",
-            "भाज्याला भाजकाच्या व्यस्ताच्या गुणाकार करून",
-            "भाज्यापासून भाजक वजा करून",
-            "भाज्याला भाजकाच्या व्यस्ताने भागून"
-          ],
-          "solution": "अपूर्णांकांच्या भागाकाराला गुणाकाराच्या समस्येमध्ये बदलले जाते जेव्हा भाज्याला भाजकाच्या व्यस्ताच्या गुणाकार करून. हा पद्धती काम करते कारण व्यस्ताने गुणणे भागाकाराला रद्द करते. भाजक आणि भाज्याचा गुणाकार करणे हे या उद्देशासाठी काम करत नाही, भाज्यापासून भाजक वजा करणे ही भागाकारासाठी वैध क्रिया नाही आणि भाजकाच्या व्यस्ताने भागून घेणे ही इच्छित प्रक्रियेच्या उलट असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "misunderstands the division process",
-        null,
-        "confuses the method with multiplication",
-        "incorrectly applies subtraction instead of multiplication"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 1, as dividing fractions involves multiplying the dividend by the reciprocal of the divisor. The other options represent common misconceptions or incorrect operations.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 7,
-          "pageStart": 14,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.2 Division of Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 8,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.2 Division of Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 9,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If 1/4 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
-      "choices": [
-        "1/8 kg",
-        "1/4 kg",
-        "1/2 kg",
-        "3/4 kg"
-      ],
-      "answerIndex": 0,
-      "solution": "If 1/4 kg makes 12 rotis, then 1/4 ÷ 12 = 1/48 kg per roti. For 6 rotis, 6 × 1/48 = 1/8 kg. The other options do not correctly apply the division and multiplication steps.",
-      "checkExpr": "((1/4)/12)*6",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 12 रोटियां बनाने में 1/4 किग्रा आटा उपयोग किया जाता है, तो 6 रोटियां बनाने में कितना आटा उपयोग किया जाता है?",
-          "choices": [
-            "1/8 किग्रा",
-            "1/4 किग्रा",
-            "1/2 किग्रा",
-            "3/4 किग्रा"
-          ],
-          "solution": "यदि 1/4 किग्रा 12 रोटियों के लिए है, तो 1/4 ÷ 12 = 1/48 किग्रा प्रति रोटी है। 6 रोटियों के लिए, 6 × 1/48 = 1/8 किग्रा। अन्य विकल्प सही विभाजन और गुणन के चरणों का सही उपयोग नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Hindi terms for weights and fractions.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1/4 किलोग्राम गोडे वापरून 12 रोटी तयार केल्या जातात, तर 6 रोटी तयार करण्यास किती गोडे वापरले जाते?",
-          "choices": [
-            "1/8 किलोग्राम",
-            "1/4 किलोग्राम",
-            "1/2 किलोग्राम",
-            "3/4 किलोग्राम"
-          ],
-          "solution": "जर 1/4 किलोग्राम 12 रोटी बनवत असेल, तर 1/4 ÷ 12 = 1/48 किलोग्राम प्रति रोटी. 6 रोटीसाठी, 6 × 1/48 = 1/8 किलोग्राम. इतर विकल्प चुकीच्या भागाकार आणि गुणाकाराच्या पायाभूत चरणांचा वापर करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terms like 'गोडे' for 'flour' and 'रोटी' for 'roti'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Multiplies 1/4 by 12 instead of dividing",
-        "Fails to halve the quantity for 6 rotis",
-        "Incorrectly uses 1/4 for 6 rotis instead of calculating"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly divides 1/4 kg by 12 to find the amount per roti, then multiplies by 6 to get the amount for 6 rotis. The correct answer is 1/8 kg.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If 2/3 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
-      "choices": [
-        "1/3 kg",
-        "2/6 kg",
-        "1/2 kg",
-        "3/4 kg"
-      ],
-      "answerIndex": 0,
-      "solution": "If 2/3 kg is used for 12 rotis, then for 6 rotis, half of that amount is used, which is 1/3 kg. The option '1/2 kg' is incorrect because it does not match the halving of the given amount.",
-      "checkExpr": "(2/3)/2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 2/3 किग्रा आटा 12 रोटियों के बनाने में लगता है, तो 6 रोटियों के बनाने में कितना आटा लगता है?",
-          "choices": [
-            "1/3 किग्रा",
-            "2/6 किग्रा",
-            "1/2 किग्रा",
-            "3/4 किग्रा"
-          ],
-          "solution": "यदि 2/3 किग्रा 12 रोटियों के लिए उपयोग किया जाता है, तो 6 रोटियों के लिए इस मात्रा के आधा उपयोग किया जाता है, जो 1/3 किग्रा है। विकल्प '1/2 किग्रा' गलत है क्योंकि यह दी गई मात्रा के आधा के बराबर नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for fractions and units.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2/3 किलोग्राम आटा 12 रोटी बनवण्यासाठी वापरला जातो, तर 6 रोटी बनवण्यासाठी किती आटा वापरला जातो?",
-          "choices": [
-            "1/3 किलोग्राम",
-            "2/6 किलोग्राम",
-            "1/2 किलोग्राम",
-            "3/4 किलोग्राम"
-          ],
-          "solution": "जर 2/3 किलोग्राम 12 रोटी बनवण्यासाठी वापरला जात असेल, तर 6 रोटी बनवण्यासाठी त्याच्या अर्ध्या प्रमाणाचा वापर केला जाईल, जो 1/3 किलोग्राम आहे. '1/2 किलोग्राम' ही विकल्प चुकीचा आहे कारण तो दिलेल्या प्रमाणाच्या अर्ध्याशी मेळ बसत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for fractions and units.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the fraction of the total with the actual amount by halving the numerator but not simplifying",
-        "Student divides the number of rotis by the amount of flour, thinking it's a direct division rather than a proportional relationship.",
-        "Confuses the fraction of the total with the fraction of the portion"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1/3 kg, as halving 2/3 kg gives 1/3 kg. The author's solution is correct and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 17,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 18,
-          "pageStart": 39,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions",
-            "Learning Material Sheets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the result of dividing 2/3 by 3/4?",
-      "choices": [
-        "8/9",
-        "6/12",
-        "9/8",
-        "6/9"
-      ],
-      "answerIndex": 0,
-      "solution": "To divide 2/3 by 3/4, we multiply 2/3 by the reciprocal of 3/4, which is 4/3. This gives (2/3) × (4/3) = 8/9. The other options are incorrect because 6/12 simplifies to 1/2, 9/8 is the reciprocal of the answer, and 6/9 simplifies to 2/3.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2/3 का 3/4 से भाग करने पर परिणाम क्या होता है?",
-          "choices": [
-            "8/9",
-            "6/12",
-            "9/8",
-            "6/9"
-          ],
-          "solution": "2/3 का 3/4 से भाग देने के लिए हम 2/3 को 3/4 के व्युत्क्रम 4/3 से गुणा करते हैं। इससे (2/3) × (4/3) = 8/9 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि 6/12 सरलीकृत होकर 1/2 बन जाता है, 9/8 उत्तर के व्युत्क्रम है और 6/9 सरलीकृत होकर 2/3 बन जाता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2/3 चे 3/4 ने भागाकार केल्यास काय परिणाम होतो?",
-          "choices": [
-            "8/9",
-            "6/12",
-            "9/8",
-            "6/9"
-          ],
-          "solution": "2/3 चे 3/4 ने भागाकार करण्यासाठी, आपण 2/3 ला 3/4 च्या व्यस्ताने गुणावे, जो 4/3 आहे. हे (2/3) × (4/3) = 8/9 देते. इतर विकल्प चुकीचे आहेत कारण 6/12 हे 1/2 च्या समान आहे, 9/8 हा उत्तराचा व्यस्त आहे आणि 6/9 हे 2/3 च्या समान आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinking that dividing fractions is done by multiplying numerators and denominators directly without using the reciprocal",
-        "confuses the reciprocal",
-        "Confuses the reciprocal with the original fraction, multiplying numerator by numerator and denominator by denominator without inverting the divisor"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 7,
-          "pageStart": 14,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.2 Division of Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 8,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.2 Division of Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 9,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If 1 gold dinar = 12 silver drammas and 1 silver dramma = 4 copper panas, what is 1 gold dinar in terms of copper panas?",
-      "choices": [
-        "48",
-        "16",
-        "12",
-        "4"
-      ],
-      "answerIndex": 0,
-      "solution": "1 gold dinar = 12 silver drammas, and 1 silver dramma = 4 copper panas. So, 1 gold dinar = 12 * 4 = 48 copper panas. A pupil who adds instead of multiplies might choose 16. A pupil who ignores the conversion might choose 12. A pupil who miscounts might choose 4.",
-      "checkExpr": "12*4",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 1 सोने का दिनार = 12 चांदी के ड्रम्मा है और 1 चांदी का ड्रम्मा = 4 तांबे के पाना है, तो 1 सोने का दिनार तांबे के पाना में कितना है?",
-          "choices": [
-            "48",
-            "16",
-            "12",
-            "4"
-          ],
-          "solution": "1 सोने का दिनार = 12 चांदी के ड्रम्मा है, और 1 चांदी का ड्रम्मा = 4 तांबे के पाना है। इसलिए, 1 सोने का दिनार = 12 * 4 = 48 तांबे के पाना है। एक छात्र जो गुणा के बजाय जोड़ करता है, वह 16 चुन सकता है। एक छात्र जो रूपांतरण को नजरअंदाज करता है, वह 12 चुन सकता है। एक छात्र जो गिनती गलत करता है, वह 4 चुन सकता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the solution matches the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1 सोनेरी दिनार = 12 रूपये द्रम्मा आणि 1 रूपये द्रम्मा = 4 कांसे पाणे, तर 1 सोनेरी दिनार कांसे पाण्यात किती?",
-          "choices": [
-            "48",
-            "16",
-            "12",
-            "4"
-          ],
-          "solution": "1 सोनेरी दिनार = 12 रूपये द्रम्मा, आणि 1 रूपये द्रम्मा = 4 कांसे पाणे. म्हणून, 1 सोनेरी दिनार = 12 * 4 = 48 कांसे पाणे. एक विद्यार्थी बेरीज करून बरोबर न घेता 16 निवडू शकतो. एक विद्यार्थी रूपांतरण न लक्षात घेता 12 निवडू शकतो. एक विद्यार्थी गणना चुकून 4 निवडू शकतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for currency units.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "adds instead of multiplies",
-        "ignores the conversion",
-        "miscounts"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and the reasoning aligns with the key. The distractors are based on common misconceptions like addition instead of multiplication, ignoring the conversion, and miscounting.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 11,
-          "pageStart": 22,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 12,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp108.pdf",
-          "ordinal": 13,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 8: Working with Fractions",
-            "8.3 Some Problems Involving Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a fraction is divided by 2/3, the result is 9/10. What is the original fraction?",
-      "choices": [
-        "9/5",
-        "18/10",
-        "3/5",
-        "6/5"
+        "10 km",
+        "12 km",
+        "15 km",
+        "18 km"
       ],
       "answerIndex": 2,
-      "solution": "If a fraction divided by 2/3 gives 9/10, then the original fraction is 9/10 × 2/3 = 18/30 = 3/5. The other options are incorrect because 9/15 and 6/10 simplify to 3/5, and 18/30 is the unsimplified form of the answer.",
-      "checkExpr": null,
+      "solution": "If Aaron walks 3 km in 1 hour, then in 5 hours he would walk 5 times that distance, which is 5 × 3 = 15 km. The other options do not match this calculation. 10 km is too low, 12 km is not a multiple of 3, and 18 km is too high.",
+      "checkExpr": "5*3",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक भिन्न को 2/3 से विभाजित किया जाता है, तो परिणाम 9/10 होता है। मूल भिन्न क्या है?",
+          "stem": "एरॉन द्वारा 5 घंटे में कितनी दूरी तय की गई, यदि वह 1 घंटे में 3 किमी चलता है?",
           "choices": [
-            "9/5",
-            "18/10",
-            "3/5",
-            "6/5"
+            "10 किमी",
+            "12 किमी",
+            "15 किमी",
+            "18 किमी"
           ],
-          "solution": "यदि भिन्न को 2/3 से विभाजित करने पर 9/10 प्राप्त होता है, तो मूल भिन्न 9/10 × 2/3 = 18/30 = 3/5 होता है। अन्य विकल्प गलत हैं क्योंकि 9/15 और 6/10 के सरलीकृत रूप 3/5 हैं, और 18/30 उत्तर का असरलीकृत रूप है।",
+          "solution": "यदि एरॉन 1 घंटे में 3 किमी चलता है, तो 5 घंटे में वह 5 गुनी दूरी तय करेगा, जो 5 × 3 = 15 किमी है। अन्य विकल्प इस हिसाब से मेल नहीं खाते। 10 किमी बहुत कम है, 12 किमी 3 का गुणज नहीं है, और 18 किमी बहुत अधिक है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "एका अपूर्णांकाला 2/3 ने भागल्यास निकाल 9/10 होतो. मूळ अपूर्णांक कोणता आहे?",
+          "stem": "अॅरॉनने 1 तासात 3 किमी चालल्यास 5 तासात तो किती अंतर कापतो?",
           "choices": [
-            "9/5",
-            "18/10",
-            "3/5",
-            "6/5"
+            "10 किमी",
+            "12 किमी",
+            "15 किमी",
+            "18 किमी"
           ],
-          "solution": "जर अपूर्णांक 2/3 ने भागला गेला तर 9/10 मिळतो, तर मूळ अपूर्णांक 9/10 × 2/3 = 18/30 = 3/5 असेल. इतर विकल्प चुकीचे आहेत कारण 9/15 आणि 6/10 ला 3/5 मध्ये सोपे केले जाऊ शकते आणि 18/30 हा उत्तराचा असोपूर्ण रूप आहे.",
+          "solution": "अॅरॉनने 1 तासात 3 किमी चालल्यास 5 तासात तो 5 पट अंतर कापेल, जो 5 × 3 = 15 किमी असेल. इतर विकल्प या गणनेशी जुळत नाहीत. 10 किमी खूप कमी आहे, 12 किमी 3 चा गुणक नाही आणि 18 किमी खूप जास्त आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -971,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Student multiplies instead of dividing, thinking 9/10 × 2/3 = 9/5",
-        "Student multiplies numerator by 2 instead of dividing by 2/3",
+        "Adds 5 and 3 instead of multiplying",
+        "Multiplies 5 by 2 instead of 3",
         null,
-        "Confuses the reciprocal operation by inverting the wrong fraction"
+        "Adds 5 and 3 twice instead of multiplying once (correct answer is 15 km, so this is a valid distractor)."
       ],
       "solverAnswers": [
         2,
@@ -983,8 +84,196 @@
         2,
         2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The original fraction is found by multiplying 9/10 by the reciprocal of 2/3, which is 3/2, resulting in 27/30 = 9/10 × 3/2 = 27/30 = 3/5. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic multiplication. The correct answer is 15 km, and the author's reasoning for the distractors is plausible and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the result of dividing 8 by 1/2?",
+      "choices": [
+        "4",
+        "8",
+        "16",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "When dividing by a fraction, we multiply by its reciprocal. So 8 ÷ 1/2 is the same as 8 × 2, which equals 16. The option '4' is incorrect because it divides instead of multiplies. The option '8' is incorrect because it ignores the division by a fraction. The option '2' is incorrect because it subtracts instead of divides.",
+      "checkExpr": "8*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1/2 द्वारा 8 के भाग देने पर परिणाम क्या होता है?",
+          "choices": [
+            "4",
+            "8",
+            "16",
+            "2"
+          ],
+          "solution": "एक भिन्न द्वारा भाग देने पर हम उसके व्युत्क्रम से गुणा करते हैं। अतः 8 ÷ 1/2 समान है 8 × 2 के, जो 16 के बराबर है। विकल्प '4' गलत है क्योंकि यह गुणा के बजाय भाग देता है। विकल्प '8' गलत है क्योंकि यह भिन्न द्वारा भाग देने को नजरअंदाज कर देता है। विकल्प '2' गलत है क्योंकि यह भाग देने के बजाय घटा देता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1/2 ने 8 भागल्यास निकाल काय असेल?",
+          "choices": [
+            "4",
+            "8",
+            "16",
+            "2"
+          ],
+          "solution": "एका अपूर्णांक ने भागल्यास त्याच्या व्युत्क्रमाने गुणाकार करतात. म्हणून 8 ÷ 1/2 हे 8 × 2 च्या बरोबरीत असते, जे 16 च्या बरोबरीत असते. '4' अपूर्णांक भागाकार बरोबर गुणाकार करण्याच्या जागी भागाकार केल्यामुळे चूक आहे. '8' हा अपूर्णांक भागाकार विचारात घेण्याच्या जागी नकारतो. '2' हा अपूर्णांक भागाकार बरोबर बेरीज करण्याच्या जागी बेरीज करून चूक आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "divides instead of multiplies",
+        "ignores the division by a fraction",
+        null,
+        "subtracts instead of divides"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 16 (option 2). The solution correctly explains that dividing by a fraction involves multiplying by its reciprocal. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 17,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 18,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the result of dividing 1 by a fraction?",
+      "choices": [
+        "The same fraction",
+        "The reciprocal of the fraction",
+        "The product of the fraction and 1",
+        "The sum of the fraction and 1"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is the reciprocal of the fraction. This is because dividing by a fraction is equivalent to multiplying by its reciprocal. A pupil might think the result is the same fraction, but that would be incorrect. Another might confuse it with the product of the fraction and 1, which is also the same fraction. The sum of the fraction and 1 is not relevant here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भिन्न से 1 के भाग करने पर परिणाम क्या होता है?",
+          "choices": [
+            "वही भिन्न",
+            "भिन्न का व्युत्क्रम",
+            "भिन्न और 1 का गुणनफल",
+            "भिन्न और 1 का योग"
+          ],
+          "solution": "सही उत्तर भिन्न का व्युत्क्रम है। एक भिन्न से भाग देना उसके व्युत्क्रम से गुणा करने के बराबर होता है। एक छात्र यह सोच सकता है कि परिणाम वही भिन्न होती है, लेकिन यह गलत है। दूसरा छात्र इसे 1 और भिन्न के गुणनफल के रूप में भ्रमित कर सकता है, जो भी वही भिन्न है। 1 और भिन्न का योग यहां संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 एक किरणाने भागल्यास निकाल काय असतो?",
+          "choices": [
+            "त्या किरणाचा त्याच किरण",
+            "किरणाचा व्युत्क्रम",
+            "किरण आणि 1 चा गुणाकार",
+            "किरण आणि 1 चा बेरीज"
+          ],
+          "solution": "बरोबर उत्तर किरणाचा व्युत्क्रम असतो. कारण एक किरणाने भागणे हे त्याच्या व्युत्क्रमाने गुणण्यासारखे असते. एखादा विद्यार्थी असे समजू शकतो की निकाल त्याच किरण असतो, परंतु हे चूक असते. एखाद्याला त्या किरण आणि 1 चा गुणाकार असे वाटू शकते, जो देखील त्याच किरण असतो. किरण आणि 1 चा बेरीज येथे संबंधित नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses division with the same fraction",
+        null,
+        "does not understand the concept of reciprocal",
+        "Confuses division with addition, thinking dividing 1 by a fraction is the same as adding the fraction to 1"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Dividing by a fraction is equivalent to multiplying by its reciprocal, so the correct answer is the reciprocal of the fraction.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp108.pdf",
@@ -1028,7 +317,843 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T04:19:12.849Z",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "How is the distance covered by the tortoise in 3 hours calculated?",
+      "choices": [
+        "By adding 3 km three times",
+        "By multiplying the distance per hour by 3",
+        "By dividing 3 by the distance per hour",
+        "By subtracting 3 km three times"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct method is to multiply the distance the tortoise travels in one hour by 3, as this gives the total distance covered over three hours. Adding 3 km three times would only work if the tortoise traveled exactly 3 km each hour, which is not necessarily the case. Dividing 3 by the distance per hour or subtracting 3 km three times does not logically represent how total distance is calculated over time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तीन घंटे में चमगादड़ द्वारा तय की गई दूरी की गणना कैसे की जाती है?",
+          "choices": [
+            "तीन किमी को तीन बार जोड़कर",
+            "प्रति घंटा दूरी को तीन से गुणा करके",
+            "प्रति घंटा दूरी से तीन को विभाजित करके",
+            "तीन किमी को तीन बार घटाकर"
+          ],
+          "solution": "सही विधि एक घंटे में चमगादड़ द्वारा तय की गई दूरी को तीन से गुणा करना है, क्योंकि यह तीन घंटे में कुल दूरी देता है। तीन किमी को तीन बार जोड़ना केवल तभी काम करेगा जब चमगादड़ प्रति घंटा ठीक 3 किमी चले, जो आवश्यक नहीं है। प्रति घंटा दूरी से तीन को विभाजित करना या तीन किमी को तीन बार घटाना समय के साथ कुल दूरी की गणना के रूप में तार्किक रूप से नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their logical relationship to the solution.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तुरकी द्वारा 3 तासात कापलेले अंतर कसे गणले जाते?",
+          "choices": [
+            "3 किमी तीन वेळा जोडून",
+            "एका तासातील अंतर 3 ने गुणून",
+            "एका तासातील अंतराने 3 भागून",
+            "3 किमी तीन वेळा वजा करून"
+          ],
+          "solution": "सहा तासात तुरकी द्वारा कापलेले अंतर गणले जाते जेणेकरून एका तासातील अंतर 3 ने गुणले जाते. 3 किमी तीन वेळा जोडल्यास तुरकी द्वारा एका तासात तीन किमी जाण्याची अट असते, जी आवश्यकता नसते. 3 ला एका तासातील अंतराने भागल्यास किंवा 3 किमी तीन वेळा वजा केल्यास तासांच्या आधारावर एकूण अंतर गणना करण्याचा तर्क असत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the same meaning, structure, and technical terms as the English original. The correct answer remains in the same position, and all distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands multiplication as repeated addition",
+        null,
+        "Confuses multiplication with division, thinking time must be divided by rate instead of multiplied",
+        "Misunderstands multiplication as repeated subtraction"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as distance is calculated by multiplying speed (distance per hour) by time. The other options represent common misconceptions about multiplication and operations with fractions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If 1/4 of a ribbon is used for one badge, how many badges can be made from 8 meters of ribbon?",
+      "choices": [
+        "2",
+        "4",
+        "8",
+        "32"
+      ],
+      "answerIndex": 3,
+      "solution": "If 1/4 of the ribbon is used for one badge, then each meter of ribbon can make 4 badges. So, 8 meters of ribbon can make 8 × 4 = 32 badges. The option '2' is incorrect because it divides instead of multiplies. The option '4' is incorrect because it ignores the 8 meters. The option '8' is incorrect because it assumes 1 badge per meter.",
+      "checkExpr": "8*4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बैज के लिए रिबन के 1/4 भाग का उपयोग किया जाता है, तो 8 मीटर रिबन से कितने बैज बनाए जा सकते हैं?",
+          "choices": [
+            "2",
+            "4",
+            "8",
+            "32"
+          ],
+          "solution": "यदि एक बैज के लिए रिबन के 1/4 भाग का उपयोग किया जाता है, तो प्रति मीटर रिबन से 4 बैज बन सकते हैं। अतः 8 मीटर रिबन से 8 × 4 = 32 बैज बन सकते हैं। विकल्प '2' गलत है क्योंकि यह गुणा के बजाय भाग करता है। विकल्प '4' गलत है क्योंकि यह 8 मीटर को अनदेखा करता है। विकल्प '8' गलत है क्योंकि यह एक मीटर पर एक बैज मान लेता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and distractors are correctly translated and retain their original logic.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1/4 रिबन एक बॅजसाठी वापरले जाते, तर 8 मीटर रिबनापासून किती बॅज तयार करता येतील?",
+          "choices": [
+            "2",
+            "4",
+            "8",
+            "32"
+          ],
+          "solution": "जर 1/4 रिबन एक बॅजसाठी वापरले जाते, तर प्रत्येक मीटर रिबनापासून 4 बॅज तयार करता येतात. म्हणून, 8 मीटर रिबनापासून 8 × 4 = 32 बॅज तयार करता येतील. पर्याय '2' अयोग्य आहे कारण गुणाकाराऐवजी भागाकार केला गेला आहे. पर्याय '4' अयोग्य आहे कारण 8 मीटर नजरेपासून दूर ठेवला गेला आहे. पर्याय '8' अयोग्य आहे कारण प्रति मीटर एक बॅज असल्याचा अंदाज घेतला गेला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "divides instead of multiplies",
+        "ignores the 8 meters",
+        "assumes 1 badge per meter",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The reasoning matches the misconception of dividing instead of multiplying, ignoring the 8 meters, and assuming 1 badge per meter.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 17,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 18,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the area of a rectangle with sides 1/4 and 1/2?",
+      "choices": [
+        "1/8",
+        "1/4",
+        "1/2",
+        "3/4"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of a rectangle is found by multiplying its length and breadth. So, 1/4 × 1/2 = (1×1)/(4×2) = 1/8. The other options incorrectly add the numerators or denominators, or misinterpret the multiplication of fractions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत का क्षेत्रफल क्या है जिसकी भुजाएं 1/4 और 1/2 हैं?",
+          "choices": [
+            "1/8",
+            "1/4",
+            "1/2",
+            "3/4"
+          ],
+          "solution": "एक आयत का क्षेत्रफल इसकी लंबाई और चौड़ाई को गुणा करके पाया जाता है। इसलिए, 1/4 × 1/2 = (1×1)/(4×2) = 1/8। अन्य विकल्प गलती से अंशों या हरों को जोड़ते हैं या भिन्नों के गुणन को गलती से समझते हैं।",
+          "imageAlt": "1/2 और 1/4 भुजाओं वाला एक आयत, जिसका क्षेत्रफल छायांकित किया गया है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौरसाचे क्षेत्रफळ किती असेल ज्याच्या बाजू 1/4 आणि 1/2 आहेत?",
+          "choices": [
+            "1/8",
+            "1/4",
+            "1/2",
+            "3/4"
+          ],
+          "solution": "एका चौरसाचे क्षेत्रफळ त्याच्या लांबी आणि रुंदी गुणाकार करून मिळते. म्हणून, 1/4 × 1/2 = (1×1)/(4×2) = 1/8. इतर विकल्प चुकीचे अंश किंवा हर जोडतात, किंवा भिन्नांचा गुणाकार चुकीचा समजतात.",
+          "imageAlt": "1/2 आणि 1/4 बाजू असलेला चौरस, त्याचे क्षेत्रफळ दर्शविणारा छायाचित्र.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A rectangle with sides labeled 1/2 and 1/4, shaded to show its area.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 2,
+            "yMin": 0,
+            "yMax": 2,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 0,
+              "y": 0,
+              "label": "A",
+              "place": "c"
+            },
+            {
+              "id": "B",
+              "x": 0.5,
+              "y": 0,
+              "label": "B",
+              "place": "c"
+            },
+            {
+              "id": "C",
+              "x": 0.5,
+              "y": 0.25,
+              "label": "C",
+              "place": "c"
+            },
+            {
+              "id": "D",
+              "x": 0,
+              "y": 0.25,
+              "label": "D",
+              "place": "c"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "label": "lengthAB",
+              "length": {
+                "value": 0.5,
+                "unit": "units"
+              }
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "label": "lengthBC",
+              "length": {
+                "value": 0.25,
+                "unit": "units"
+              }
+            },
+            {
+              "from": "C",
+              "to": "D",
+              "label": "lengthCD",
+              "length": {
+                "value": 0.5,
+                "unit": "units"
+              }
+            },
+            {
+              "from": "D",
+              "to": "A",
+              "label": "lengthDA",
+              "length": {
+                "value": 0.25,
+                "unit": "units"
+              }
+            }
+          ],
+          "polygons": [
+            {
+              "vertices": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "shade": true
+            }
+          ],
+          "texts": [
+            {
+              "x": 0.25,
+              "y": 0.125,
+              "label": "Area"
+            }
+          ]
+        },
+        "labels": {
+          "A": {
+            "en": "A"
+          },
+          "B": {
+            "en": "B"
+          },
+          "C": {
+            "en": "C"
+          },
+          "D": {
+            "en": "D"
+          },
+          "lengthAB": {
+            "en": "1/2",
+            "hi": "1/2",
+            "mr": "1/2"
+          },
+          "lengthBC": {
+            "en": "1/4",
+            "hi": "1/4",
+            "mr": "1/4"
+          },
+          "lengthCD": {
+            "en": "1/2",
+            "hi": "1/2",
+            "mr": "1/2"
+          },
+          "lengthDA": {
+            "en": "1/4",
+            "hi": "1/4",
+            "mr": "1/4"
+          },
+          "Area": {
+            "en": "Area",
+            "hi": "क्षेत्रफल",
+            "mr": "क्षेत्रफळ"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses multiplication with addition, adding denominators",
+        "Adds numerators and denominators separately",
+        "Multiplies numerators but not denominators, or misinterprets the result of multiplication as addition of fractions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution is mathematically sound. The correct answer is 1/8, and the author's explanations for the distractors align with common misconceptions about fraction multiplication.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a divisor is a fraction, what happens to the quotient compared to the dividend?",
+      "choices": [
+        "It is always smaller than the dividend",
+        "It is always equal to the dividend",
+        "It is always larger than the dividend",
+        "It depends on the value of the divisor"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is that it depends on the value of the divisor. When the divisor is a fraction less than 1, the quotient becomes larger than the dividend because dividing by a fraction is equivalent to multiplying by its reciprocal. If the divisor is a fraction greater than 1, the quotient becomes smaller than the dividend. The other options are incorrect because the quotient is not always smaller, equal, or larger than the dividend.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि भाजक एक भिन्न है, तो भागफल भाज्य की तुलना में क्या होता है?",
+          "choices": [
+            "यह हमेशा भाज्य से छोटा होता है",
+            "यह हमेशा भाज्य के बराबर होता है",
+            "यह हमेशा भाज्य से बड़ा होता है",
+            "इसका निर्भर करता है भाजक के मान पर"
+          ],
+          "solution": "सही उत्तर यह है कि यह भाजक के मान पर निर्भर करता है। जब भाजक 1 से कम भिन्न होता है, तो भागफल भाज्य से बड़ा हो जाता है क्योंकि भिन्न से भाग देना इसके व्युत्क्रम से गुणा करने के बराबर होता है। यदि भाजक 1 से बड़ा भिन्न होता है, तो भागफल भाज्य से छोटा हो जाता है। अन्य विकल्प गलत हैं क्योंकि भागफल हमेशा भाज्य से छोटा, बराबर या बड़ा नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर भाजक एक अपूर्णांक असेल, तर भागाकार भाज्यापेक्षा काय होतो?",
+          "choices": [
+            "तो भाज्यापेक्षा नेहमी लहान असतो",
+            "तो भाज्यापेक्षा नेहमी समान असतो",
+            "तो भाज्यापेक्षा नेहमी मोठा असतो",
+            "त्यावर भाजकाच्या किंमतीवर अवलंबून असतो"
+          ],
+          "solution": "बरोबर उत्तर हे असे आहे की त्यावर भाजकाच्या किंमतीवर अवलंबून असतो. जेव्हा भाजक 1 पेक्षा लहान अपूर्णांक असतो, तेव्हा भागाकार भाज्यापेक्षा मोठा होतो कारण अपूर्णांक द्वारे भागणे हे त्याच्या व्यस्ताने गुणण्यासारखे असते. जेव्हा भाजक 1 पेक्षा मोठा अपूर्णांक असतो, तेव्हा भागाकार भाज्यापेक्षा लहान होतो. इतर उत्तरे चुकीची आहेत कारण भागाकार नेहमी लहान, समान किंवा मोठा असत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks division by a fraction always results in a smaller quotient",
+        "believes division by a fraction always gives the same result",
+        "does not recognize that the size of the divisor affects the quotient",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as the quotient's relationship to the dividend depends on the value of the divisor. The solution is sound and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.2 Division of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 8,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.2 Division of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 9,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If 1 gold dinar = 12 silver drammas, 1 silver dramma = 4 copper panas, 1 copper pana = 6 mashakas, and 1 pana = 30 cowrie shells, what is the value of 1 cowrie shell in terms of gold dinars?",
+      "choices": [
+        "1/3600",
+        "1/600",
+        "1/120",
+        "1/30"
+      ],
+      "answerIndex": 0,
+      "solution": "To find the value of 1 cowrie shell in terms of gold dinars, we need to convert cowrie shells to panas, panas to drammas, and drammas to dinars. 1 gold dinar = 12 drammas, 1 dramma = 4 panas, 1 pana = 30 cowrie shells. So, 1 cowrie shell = 1/30 pana = 1/(30*4) drammas = 1/(30*4*12) dinars = 1/3600. The correct option is 1/3600. The other options do not correctly follow the sequence of conversions from cowrie shells to dinars.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 1 सोने का दिनार = 12 चांदी के ड्रम्मा है, 1 चांदी का ड्रम्मा = 4 तांबे के पाना है, 1 तांबे का पाना = 6 माशक है, और 1 पाना = 30 कॉवरी शेल्स है, तो 1 कॉवरी शेल का मूल्य सोने के दिनार में क्या है?",
+          "choices": [
+            "1/3600",
+            "1/600",
+            "1/120",
+            "1/30"
+          ],
+          "solution": "1 कॉवरी शेल के मूल्य को सोने के दिनार में ज्ञात करने के लिए, हमें कॉवरी शेल्स को पाना में, पाना को ड्रम्मा में और ड्रम्मा को दिनार में बदलना होगा। 1 सोने का दिनार = 12 ड्रम्मा, 1 ड्रम्मा = 4 पाना, 1 पाना = 30 कॉवरी शेल्स। इसलिए, 1 कॉवरी शेल = 1/30 पाना = 1/(30*4) ड्रम्मा = 1/(30*4*12) दिनार = 1/3600। सही विकल्प 1/3600 है। अन्य विकल्प कॉवरी शेल्स से दिनार तक के रूपांतरण के क्रम को सही तरीके से नहीं अपनाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate local terminology (e.g., 'माशक' for 'mashakas', 'कॉवरी शेल्स' for 'cowrie shells'). The structure and logic of the question and solution are preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 सोने दिनार = 12 रजत द्रम्मा, 1 रजत द्रम्मा = 4 तांबे पाणे, 1 तांबे पाणा = 6 माशक, आणि 1 पाणा = 30 कॉवरी शेल्स, तर 1 कॉवरी शेलचे मूल्य सोने दिनारमध्ये किती आहे?",
+          "choices": [
+            "1/3600",
+            "1/600",
+            "1/120",
+            "1/30"
+          ],
+          "solution": "1 कॉवरी शेलचे मूल्य सोने दिनारमध्ये शोधण्यासाठी, आम्हाला कॉवरी शेल्स ते पाणे, पाणे ते द्रम्मा आणि द्रम्मा ते दिनार या क्रमाने रूपांतरित करावे लागेल. 1 सोने दिनार = 12 द्रम्मा, 1 द्रम्मा = 4 पाणे, 1 पाणा = 30 कॉवरी शेल्स. म्हणून, 1 कॉवरी शेल = 1/30 पाणा = 1/(30*4) द्रम्मा = 1/(30*4*12) दिनार = 1/3600. योग्य पर्याय 1/3600 आहे. इतर पर्यायांमध्ये कॉवरी शेल्स ते दिनार या क्रमाने रूपांतरित करण्याचा योग्य पायांचा अभाव आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for currency units.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Fails to multiply all the conversion factors correctly, stopping at the pana to dramma conversion",
+        "Incorrectly stops at the dramma to dinar conversion, ignoring the pana to dramma step",
+        "Only converts cowrie shells to panas, not to dinars"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly converts from cowrie shells to panas, then to drammas, then to dinars, and arrives at 1/3600. The distractors represent common errors in the conversion process.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 11,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 12,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 13,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a car runs 16 km using 1 litre of petrol, how far will it go using 2 3/4 litres of petrol?",
+      "choices": [
+        "40 km",
+        "44 km",
+        "52 km",
+        "64 km"
+      ],
+      "answerIndex": 1,
+      "solution": "If 1 litre of petrol allows the car to run 16 km, then 2 3/4 litres will allow it to run 16 × 2.75 = 44 km. The option '40 km' is incorrect because it uses 2.5 instead of 2.75. The option '52 km' is incorrect because it adds instead of multiplies. The option '64 km' is incorrect because it assumes 4 litres instead of 2 3/4.",
+      "checkExpr": "16*2.75",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कार 1 लीटर पेट्रोल के उपयोग से 16 किमी चलती है, तो 2 3/4 लीटर पेट्रोल के उपयोग से यह कितनी दूर जाएगी?",
+          "choices": [
+            "40 किमी",
+            "44 किमी",
+            "52 किमी",
+            "64 किमी"
+          ],
+          "solution": "यदि 1 लीटर पेट्रोल के उपयोग से कार 16 किमी चलती है, तो 2 3/4 लीटर पेट्रोल के उपयोग से यह 16 × 2.75 = 44 किमी चलेगी। विकल्प '40 किमी' गलत है क्योंकि इसमें 2.5 के स्थान पर 2.75 का उपयोग किया गया है। विकल्प '52 किमी' गलत है क्योंकि इसमें गुणा के स्थान पर जोड़ किया गया है। विकल्प '64 किमी' गलत है क्योंकि इसमें 2 3/4 के स्थान पर 4 लीटर का उपयोग किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक गाडी 1 लिटर पेट्रोल वापरून 16 किमी जाते, तर 2 3/4 लिटर पेट्रोल वापरून किती जाईल?",
+          "choices": [
+            "40 किमी",
+            "44 किमी",
+            "52 किमी",
+            "64 किमी"
+          ],
+          "solution": "जर 1 लिटर पेट्रोल गाडीला 16 किमी जाण्यास परवानगी देते, तर 2 3/4 लिटर गाडीला 16 × 2.75 = 44 किमी जाण्यास परवानगी देईल. '40 किमी' अपत्ती असेल कारण 2.75 ऐवजी 2.5 वापरला गेला आहे. '52 किमी' अपत्ती असेल कारण गुणाकार ऐवजी बेरीज वापरली गेली आहे. '64 किमी' अपत्ती असेल कारण 2 3/4 ऐवजी 4 लिटर वापरले गेले आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for fractions and units.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses 2.5 instead of 2.75",
+        null,
+        "adds instead of multiplies",
+        "assumes 4 litres instead of 2 3/4"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The calculation 16 × 2.75 = 44 km is accurate. The explanations for the incorrect options are valid and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 17,
+          "pageStart": 37,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 18,
+          "pageStart": 39,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.3 Some Problems Involving Fractions",
+            "Learning Material Sheets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A rectangle has sides of length 2/3 and 5/7. What is the area of the rectangle?",
+      "choices": [
+        "10/21",
+        "7/10",
+        "10/15",
+        "3/7"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of a rectangle is the product of its length and breadth. Multiplying 2/3 by 5/7 gives (2×5)/(3×7) = 10/21. The other options result from incorrect calculations, such as adding denominators or numerators instead of multiplying them.",
+      "checkExpr": "(2*5)/(3*7)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत की भुजाएं 2/3 और 5/7 लंबाई की हैं। आयत का क्षेत्रफल क्या है?",
+          "choices": [
+            "10/21",
+            "7/10",
+            "10/15",
+            "3/7"
+          ],
+          "solution": "एक आयत का क्षेत्रफल इसकी लंबाई और चौड़ाई के गुणनफल होता है। 2/3 को 5/7 से गुणा करने पर (2×5)/(3×7) = 10/21 प्राप्त होता है। अन्य विकल्प गलत गणनाओं से प्राप्त होते हैं, जैसे कि हरों या अंशों को जोड़ देना बजाय उनके गुणा करने के।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक चौकोनाच्या बाजूंची लांबी 2/3 आणि 5/7 आहे. चौकोनाचे क्षेत्रफळ किती आहे?",
+          "choices": [
+            "10/21",
+            "7/10",
+            "10/15",
+            "3/7"
+          ],
+          "solution": "चौकोनाचे क्षेत्रफळ त्याच्या लांबी आणि रुंदीच्या गुणाकाराने मिळते. 2/3 चा 5/7 ने गुणाकार केल्यास (2×5)/(3×7) = 10/21 मिळते. इतर विकल्प अयोग्य गणनांमुळे येतात, जसे की छेदांच्या बरोबर अंशांची बेरीज करणे बरोबर गुणाकार करणे बरोबर.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses addition with multiplication",
+        "incorrectly adds numerators and denominators",
+        "incorrectly multiplies numerators and adds denominators"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 10/21, and the author's solution is accurate. The distractors reflect common misconceptions such as adding instead of multiplying, or incorrectly combining numerators and denominators.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp108.pdf",
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Working with Fractions",
+            "8.1 Multiplication of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:48:12.373Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

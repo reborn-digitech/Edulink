@@ -1,0 +1,572 @@
+{
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 7 — Binomial Theorem",
+  "name": "Binomial Theorem",
+  "slug": "maths-11-binomial-theorem",
+  "summary": "The chapter explains the binomial theorem for positive integral indices and its applications.",
+  "position": 7,
+  "source": "generated against NCERT Mathematics, Class 11, chapter 7 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 7 — द्विपद प्रमेय",
+      "summary": "अध्याय धनात्मक पूर्णांक सूचकां के लिए द्विपद प्रमेय और इसके अनुप्रयोगों की व्याख्या करता है।"
+    },
+    "mr": {
+      "name": "अध्याय 7 - द्विपद सिद्धांत",
+      "summary": "अध्याय धनात्मक पूर्णांक अंकगणितात द्विपद सिद्धांत आणि त्याच्या अनुप्रयोगांची व्याख्या करते."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-23T03:14:25.235Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 2,
+      "stem": "What does the binomial theorem provide an easier way to do?",
+      "choices": [
+        "Evaluate the numerical values of numbers like (98) and (999) when raised to higher powers",
+        "Find the square roots of numbers like (98) and (999) when raised to higher powers",
+        "Calculate the cube roots of numbers like (98) and (999) when raised to higher powers",
+        "Determine the factors of numbers like (98) and (999) when raised to higher powers"
+      ],
+      "answerIndex": 0,
+      "solution": "The binomial theorem provides an easier way to expand expressions like (a + b)^n, which is useful for calculating the numerical values of numbers raised to higher powers. This is because repeated multiplication becomes difficult for higher powers, and the theorem offers a systematic approach to expansion. The other options are incorrect because the theorem does not deal with square roots, cube roots, or factors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बाइनोमियल प्रमेय अधिक उच्च घातों में बढ़े हुए संख्याओं जैसे (98) और (999) के करने के लिए एक आसान तरीका क्यों प्रदान करता है?",
+          "choices": [
+            "संख्याओं जैसे (98) और (999) के अंकीय मानों की गणना करें जब उन्हें उच्च घातों में बढ़ाया जाता है",
+            "संख्याओं जैसे (98) और (999) के वर्गमूल की खोज करें जब उन्हें उच्च घातों में बढ़ाया जाता है",
+            "संख्याओं जैसे (98) और (999) के घनमूल की गणना करें जब उन्हें उच्च घातों में बढ़ाया जाता है",
+            "संख्याओं जैसे (98) और (999) के गुणनखंडों की निर्धारित करें जब उन्हें उच्च घातों में बढ़ाया जाता है"
+          ],
+          "solution": "बाइनोमियल प्रमेय व्यंजकों जैसे (a + b)^n के विस्तार के लिए एक आसान तरीका प्रदान करता है, जो उच्च घातों में बढ़े हुए संख्याओं के अंकीय मानों की गणना करने में उपयोगी होता है। इसके कारण उच्च घातों के लिए दोहरा गुणा करना कठिन हो जाता है, और प्रमेय विस्तार के लिए एक प्रणालीगत दृष्टिकोण प्रदान करता है। अन्य विकल्प गलत हैं क्योंकि प्रमेय वर्गमूल, घनमूल या गुणनखंडों से नहीं संबंधित है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बायनॉमियल प्रमेय उच्च घातांवर वाढलेल्या संख्यांच्या मूल्यांचे गणन करण्यास अधिक सोपे करते?",
+          "choices": [
+            "98 आणि 999 च्या उच्च घातांवर वाढलेल्या संख्यांच्या संख्यात्मक मूल्यांचे गणन करणे",
+            "98 आणि 999 च्या उच्च घातांवर वाढलेल्या संख्यांच्या वर्गमूळांचे शोधणे",
+            "98 आणि 999 च्या उच्च घातांवर वाढलेल्या संख्यांच्या घनमूळांचे शोधणे",
+            "98 आणि 999 च्या उच्च घातांवर वाढलेल्या संख्यांच्या घटकांचे शोधणे"
+          ],
+          "solution": "बायनॉमियल प्रमेय अशा व्यंजकांच्या विस्तारासाठी एक सोपा मार्ग प्रदान करते जसे की (a + b)^n, जे उच्च घातांवर वाढलेल्या संख्यांच्या संख्यात्मक मूल्यांच्या गणनेसाठी उपयुक्त आहे. हे कारण उच्च घातांवर वाढलेल्या संख्यांचे पुनरावृत्ती गुणाकार करणे कठीण होते आणि प्रमेय विस्तारासाठी एक संस्थात्मक पद्धत प्रदान करते. इतर विकल्प चुकीचे आहेत कारण प्रमेय वर्गमूळांच्या, घनमूळांच्या किंवा घटकांच्या गणनेशी संबंधित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the purpose of the binomial theorem with square root calculations",
+        "Confuses the purpose of the binomial theorem with cube root calculations",
+        "Confuses the purpose of the binomial theorem with factorization methods"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, and the correct answer is clearly 0. The distractors reflect common misconceptions about the binomial theorem, which is appropriate for a level 2 difficulty question.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:14:25.235Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is true about the coefficients in the binomial expansion?",
+      "choices": [
+        "They are always 1",
+        "They are the same for all terms",
+        "They are determined using combinations",
+        "They are always zero"
+      ],
+      "answerIndex": 2,
+      "solution": "The coefficients in the binomial expansion are determined using combinations, which is a mathematical principle that calculates the number of ways to choose items from a set. The other options are incorrect because coefficients vary depending on the term and the power, and they are not always 1, the same for all terms, or zero.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बाइनोमियल विस्तार में गुणांकों के बारे में निम्नलिखित में से कौन-सा सही है?",
+          "choices": [
+            "वे हमेशा 1 होते हैं",
+            "वे सभी पदों के लिए एक समान होते हैं",
+            "वे संयोजन के उपयोग से निर्धारित किए जाते हैं",
+            "वे हमेशा शून्य होते हैं"
+          ],
+          "solution": "बाइनोमियल विस्तार में गुणांक संयोजन के उपयोग से निर्धारित किए जाते हैं, जो एक गणितीय सिद्धांत है जो एक सेट से वस्तुओं के चयन के तरीकों की गणना करता है। अन्य विकल्प गलत हैं क्योंकि गुणांक पद और घात पर निर्भर करते हैं और वे हमेशा 1, सभी पदों के लिए एक समान या शून्य नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बाइनॉमियल विस्तारातील सहगुणकांबद्दल खरे आहे?",
+          "choices": [
+            "ते नेहमी 1 असतात",
+            "ते सर्व पदांसाठी समान असतात",
+            "ते संयोजनांच्या वापराने निश्चित केले जातात",
+            "ते नेहमी शून्य असतात"
+          ],
+          "solution": "बाइनॉमियल विस्तारातील सहगुणक संयोजनांच्या वापराने निश्चित केले जातात, हे गणितीय तत्व आहे जे सेटमधून वस्तू निवडण्याच्या पद्धतींची संख्या गणित करते. इतर विकल्प अयोग्य आहेत कारण सहगुणक पद आणि घातावर अवलंबून असतात आणि ते नेहमी 1, सर्व पदांसाठी समान किंवा शून्य असत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes all coefficients are 1",
+        "Incorrectly assumes all coefficients are the same",
+        null,
+        "Incorrectly assumes all coefficients are zero"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as binomial coefficients are indeed determined using combinations. The other options represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:14:25.235Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the remainder when 6^n - 5n is divided by 25?",
+      "choices": [
+        "1",
+        "5",
+        "10",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "Using the binomial theorem, we expand (1 + 5)^n and find that 6^n - 5n = 25k + 1, which means the remainder is 1. The second option incorrectly assumes the remainder is 5. The third and fourth options are not supported by the expansion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "6^n - 5n के 25 से भाग देने पर शेष क्या होता है?",
+          "choices": [
+            "1",
+            "5",
+            "10",
+            "15"
+          ],
+          "solution": "बिनोमियल प्रमेय का उपयोग करके हम (1 + 5)^n का विस्तार करते हैं और पाते हैं कि 6^n - 5n = 25k + 1, जिसका अर्थ है शेष 1 है। दूसरा विकल्प गलत तरीके से शेष 5 मान लेता है। तीसरा और चौथा विकल्प विस्तार द्वारा समर्थित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "6^n - 5n चा 25 ने भाग दिल्यास उर्वर असतो?",
+          "choices": [
+            "1",
+            "5",
+            "10",
+            "15"
+          ],
+          "solution": "बायनोमियल प्रमेयाचा वापर करून (1 + 5)^n चा विस्तार करून आम्ही शोधू शकतो की 6^n - 5n = 25k + 1, जे उर्वर 1 असल्याचे दर्शवते. दुसरा विकल्प चूकीने उर्वर 5 असल्याचे मानतो. तिसरा आणि चौथा विकल्प विस्ताराने समर्थित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the remainder with a different value",
+        "fails to recognize the structure of the expansion",
+        "does not consider the full expansion"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly uses the binomial theorem to show that 6^n - 5n = 25k + 1, hence the remainder is 1. The reasoning for the distractors is valid, as they reflect common misconceptions about the expansion.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:14:25.235Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A random variable X follows the binomial distribution with parameters n and p. If P(X = r) / P(X = n - r) is independent of n and r, what is the value of p?",
+      "choices": [
+        "1/2",
+        "1/3",
+        "1/5",
+        "1/7"
+      ],
+      "answerIndex": 0,
+      "solution": "The probability P(X = r) is given by the binomial formula C(n, r) * p^r * (1 - p)^{n - r}. The ratio P(X = r) / P(X = n - r) simplifies to (p / (1 - p))^{2r - n}. For this ratio to be independent of n and r, the exponent must be zero, which occurs when p = 1/2. The other options do not result in the exponent being zero, so they do not satisfy the condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक यादृच्छिक चर X द्वारा द्विपद वितरण के साथ पैरामीटर n और p का अनुसरण किया जाता है। यदि P(X = r) / P(X = n - r) n और r से स्वतंत्र है, तो p का मान क्या है?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/5",
+            "1/7"
+          ],
+          "solution": "संभाव्यता P(X = r) द्विपद सूत्र C(n, r) * p^r * (1 - p)^{n - r} द्वारा दी जाती है। अनुपात P(X = r) / P(X = n - r) (p / (1 - p))^{2r - n} में सरल हो जाता है। इस अनुपात के n और r से स्वतंत्र होने के लिए, घात शून्य होनी चाहिए, जो p = 1/2 के लिए होता है। अन्य विकल्प घात को शून्य नहीं बनाते हैं, इसलिए वे शर्त को पूरा नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक यादृच्छिक चल X निर्दिष्ट परमाणू n आणि p असलेल्या द्विपद वितरणाचा अनुसरण करतो. जर P(X = r) / P(X = n - r) n आणि r पासून स्वतंत्र असेल, तर p ची किंमत काय असेल?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/5",
+            "1/7"
+          ],
+          "solution": "P(X = r) ची शक्यता द्विपद सूत्रानुसार C(n, r) * p^r * (1 - p)^{n - r} असते. P(X = r) / P(X = n - r) चा गुणोत्तर (p / (1 - p))^{2r - n} असतो. हा गुणोत्तर n आणि r पासून स्वतंत्र असावा म्हणून घात शून्य असावा, जे p = 1/2 असताना होते. इतर विकल्पांमुळे घात शून्य होत नाही, म्हणून ते अट पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (1) 1/2, and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might incorrectly assume that the ratio is symmetric for any p, leading them to choose a simple fraction like 1/3.",
+        "Student incorrectly assumes p must be a simple fraction with small denominator and chooses 1/5 without considering the mathematical condition.",
+        "A student might incorrectly assume that the probability is determined by a uniform distribution over possible values of r and n."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly derives that the ratio simplifies to (p/(1-p))^{2r-n}, and for this to be independent of n and r, the exponent must be zero, leading to p = 1/2. The reasoning is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:14:25.235Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If p is the probability of success in a binomial distribution and P(X = r) = P(X = n - r), what is the value of p?",
+      "choices": [
+        "1/2",
+        "1/3",
+        "1/5",
+        "1/7"
+      ],
+      "answerIndex": 0,
+      "solution": "For a binomial distribution, P(X = r) = P(X = n - r) if and only if p = 1/2. This is because the distribution is symmetric around n/2 when p = 1/2. The other options do not satisfy the symmetry condition of the binomial distribution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि p एक बरनौली बंटन में सफलता की प्रायिकता है और P(X = r) = P(X = n - r), तो p का मान क्या है?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/5",
+            "1/7"
+          ],
+          "solution": "एक बरनौली बंटन के लिए, P(X = r) = P(X = n - r) तभी होता है जब p = 1/2। यह इसलिए है क्योंकि जब p = 1/2 होता है तो बंटन n/2 के आसपास सममित होता है। अन्य विकल्प बरनौली बंटन की सममिति की शर्त को पूरा नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'बरनौली बंटन' (binomial distribution) as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर p बायनॉमियल वितरणात यश मिळविण्याची संभाव्यता असेल आणि P(X = r) = P(X = n - r), तर p ची किंमत काय असेल?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/5",
+            "1/7"
+          ],
+          "solution": "बायनॉमियल वितरणासाठी, P(X = r) = P(X = n - r) तेव्हा फक्त तेव्हाच होते जेव्हा p = 1/2. हे असे आहे कारण जेव्हा p = 1/2 असते तेव्हा वितरण n/2 च्या आसपास सममित असते. इतर विकल्प बायनॉमियल वितरणाच्या सममितीच्या अटीला पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for binomial distribution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that the probability is always a simple fraction like 1/3 due to lack of understanding of symmetry in binomial distributions",
+        "Confuses the symmetry condition with a specific fractional value based on binomial coefficients",
+        "A student might incorrectly assume that the symmetry of the binomial distribution implies a specific fractional value like 1/7 without understanding the underlying condition P(X = r) = P(X = n - r) implies p = 1/2."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the mathematical reasoning that a binomial distribution is symmetric when p = 1/2.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:14:25.235Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the probability of success is p, and the probability of getting exactly r successes in n trials is equal to the probability of getting exactly n - r successes, what can be said about p?",
+      "choices": [
+        "p = 1/2",
+        "p = 1/3",
+        "p = 1/4",
+        "p = 1/5"
+      ],
+      "answerIndex": 0,
+      "solution": "For the binomial distribution, P(X = r) = P(X = n - r) only when p = 1/2, which makes the distribution symmetric. This is a deeper insight into the symmetry of the binomial distribution that goes beyond the direct computation. The other options do not satisfy the condition for symmetry.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सफलता की प्रायिकता p है, और n प्रयोगों में ठीक r सफलताएं प्राप्त करने की प्रायिकता n - r सफलताएं प्राप्त करने के बराबर है, तो p के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "p = 1/2",
+            "p = 1/3",
+            "p = 1/4",
+            "p = 1/5"
+          ],
+          "solution": "बीनोमियल वितरण के लिए, P(X = r) = P(X = n - r) केवल तभी होता है जब p = 1/2 होता है, जो बीनोमियल वितरण की सममिति के बारे में एक गहरा अंतर्दृष्टि है जो सीधी गणना से आगे बढ़ती है। अन्य विकल्प सममिति के लिए शर्त को संतुष्ट नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms from Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सफलतेची शक्यता p असेल, आणि n प्रयोगांमध्ये थोड्या r सफलता मिळण्याची शक्यता n - r सफलता मिळण्याच्या शक्यतेसारखी असेल, तर p बद्दल काय म्हणायला शकता?",
+          "choices": [
+            "p = 1/2",
+            "p = 1/3",
+            "p = 1/4",
+            "p = 1/5"
+          ],
+          "solution": "बायनॉमियल वितरणासाठी, P(X = r) = P(X = n - r) फक्त तेव्हा असते जेव्हा p = 1/2, जे बायनॉमियल वितरणाच्या सममितीबद्दलच्या अधिक गहन अंतर्दृष्टीला जाते जे थेट गणनेपेक्षा अधिक आहे. इतर विकल्प सममितीच्या अटीला पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "fails to recognize the symmetry condition",
+        "does not understand the implications of the distribution's symmetry",
+        "confuses the value of p with other fractions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the binomial distribution is symmetric only when p = 1/2, which makes the probability of r successes equal to the probability of n - r successes. The reasoning is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh107.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Binomial Theorem"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T03:14:25.235Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

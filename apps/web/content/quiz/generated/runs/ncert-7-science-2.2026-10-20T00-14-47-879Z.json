@@ -1,0 +1,679 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T00:14:47.879Z",
+  "finishedAt": "2026-10-20T00:22:31.365Z",
+  "seconds": 463,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu102.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Exploring Substances: Acidic, Basic, and Neutral",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n6. Anita added a drop each of diluted acetic acid and diluted hydrochloric acid on pH paper 1\nand compared the colors. Which of the following is the correct conclusion?\n(a) pH of acetic acid is more than that of hydrochloric acid.\n(b) pH of acetic acid is less than that of hydrochloric acid.\n(c) Acetic acid dissociates completely in aqueous solution.\n(d) Acetic acid is a strong acid",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n4. An aqueous solution ‘A’ turns the phenolphthalein solution pink. On addition of\nan aqueous solution ‘B’ to ‘A’, the pink colour disappears. Which of the following 1\nstatement is true for the solutions ‘A’ and ‘B’.\nA. A is strongly basic and B is a weak base.\nB. A is strongly acidic and B is a weak acid.\nC. A has a pH greater than 7 and B has a pH less than 7.\nD. A has a pH less than 7 and B has a pH greater than 7.",
+      "[INJSO 2016 — question paper]\n21. Anand wanted to prepare a salt solution of pH 1.0. For that he used solutions of a\nstrong monovalent base and acid. He tried different combinations to obtain the\nrequired solution. Can you help him to decide which one is the most correct\ncombination of statements given below?\nI. 100ml of (M/10) acid and 100ml of (M/10) alkali.\nII. 55ml of (M/10) acid and 45ml of (M/10) alkali.\nIII. 10ml of (M/10) acid and 90ml of (M/10) alkali.\nIV. 75ml of (M/5) acid and 25ml of (M/5) alkali\na) I and III b) II and IV\nc) Only II d) Only IV",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n21. Which of the following substances when dissolved in equal volume of water,\nwill have the highest pH value? 1\nA. Sulphuric acid\nB. Acetic acid\nC. Magnesium hydroxide\nD. Sodium hydroxide"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 126170,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 36047,
+      "completionTokens": 7376
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 251248,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 18763,
+      "completionTokens": 7230
+    },
+    "solver": {
+      "calls": 212,
+      "ms": 100295,
+      "in": 31,
+      "out": 24,
+      "rejects": 7,
+      "promptTokens": 37913,
+      "completionTokens": 2192
+    },
+    "form": {
+      "calls": 13,
+      "ms": 38456,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 3444,
+      "completionTokens": 1033
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3190,
+      "in": 15,
+      "out": 11,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 399696,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24367,
+      "completionTokens": 11942
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is true about substances that turn blue litmus paper red?",
+      "ms": {
+        "draft": 3216,
+        "critique": 4546
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following groups contains only acidic substances?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6269,
+        "solver": 1558,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an acid-base indicator mentioned in the passage?",
+      "ms": {
+        "draft": 4346,
+        "critique": 7219,
+        "solver": 1456,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the activity described in the passage?",
+      "ms": {
+        "draft": 4346,
+        "critique": 6273,
+        "solver": 1491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the correct reason why litmus is called an acid-base indicator?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5304,
+        "solver": 15011,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct conclusion about the use of natural indicators?",
+      "ms": {
+        "draft": 4346,
+        "critique": 6877,
+        "solver": 1690,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6811,
+        "solver": 1322
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student adds a drop of lemon juice and a drop of soap solution to separate test tubes containing red rose extract, what would be the expected colour changes?",
+      "ms": {
+        "draft": 4346,
+        "critique": 5666,
+        "solver": 1375,
+        "form": 5155
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student added a few drops of a base to a solution containing an acid. The solution turned blue when blue litmus was added. What can be concluded about the solution?",
+      "ms": {
+        "draft": 2947,
+        "critique": 7271,
+        "solver": 14893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an acid-base indicator?",
+      "ms": {
+        "draft": 2791,
+        "critique": 6189,
+        "solver": 1628,
+        "form": 3530
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution turns the red litmus paper blue. If a few drops of vinegar are added to the solution, what will happen?",
+      "ms": {
+        "draft": 2791,
+        "critique": 4835,
+        "solver": 8888
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the observations, which of the following is the correct sequence for the nature of solutions A, B, and C?",
+      "ms": {
+        "draft": 4253,
+        "critique": 5783
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A solution turns the red litmus paper to blue. Excess addition of which of the following solution would reverse the change?",
+      "ms": {
+        "draft": 4253,
+        "critique": 4532,
+        "solver": 1553,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Label the nature of solutions present in each of the containers based on the given figures.",
+      "ms": {
+        "draft": 4253,
+        "critique": 5541,
+        "solver": 1393
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "ms": {
+        "draft": 3949,
+        "critique": 6344
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which indicator should Manya use to test the solutions and why?",
+      "ms": {
+        "draft": 4253,
+        "critique": 6810,
+        "solver": 1510
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student tested the pH of two solutions, A and B. Solution A turned blue litmus paper red, while solution B did not change the colour of blue litmus paper. Which of the following is true?",
+      "ms": {
+        "draft": 3949,
+        "critique": 8652,
+        "solver": 11422,
+        "form": 4155
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is used as an acid-base indicator in the experiments described in the passage?",
+      "ms": {
+        "draft": 3459,
+        "critique": 6080,
+        "solver": 12595
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is true about the ability of turmeric paper to act as an acid-base indicator?",
+      "ms": {
+        "draft": 3459,
+        "critique": 6603,
+        "solver": 1583
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance turns red litmus paper blue, what can be said about its nature?",
+      "ms": {
+        "draft": 3216,
+        "critique": 4991,
+        "solver": 1581,
+        "form": 2600
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6706,
+        "solver": 1288,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following substances, when dissolved in water, would have the highest pH value?",
+      "ms": {
+        "draft": 3949,
+        "critique": 6570,
+        "solver": 1511,
+        "form": 4283
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "ms": {
+        "draft": 3949,
+        "critique": 8049,
+        "solver": 11333,
+        "form": 2564
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural acid-base indicator?",
+      "ms": {
+        "draft": 28408,
+        "critique": 7147,
+        "solver": 1912,
+        "form": 0,
+        "translation": 24380
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a basic substance?",
+      "ms": {
+        "draft": 3216,
+        "critique": 4154,
+        "solver": 1315,
+        "form": 2726,
+        "translation": 35038
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when an acid is mixed with a base?",
+      "ms": {
+        "draft": 2791,
+        "critique": 6483,
+        "solver": 1456,
+        "form": 3199,
+        "translation": 39691
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses the red rose extract to test a solution and observes no colour change, what can be concluded about the solution?",
+      "ms": {
+        "draft": 4346,
+        "critique": 5731,
+        "solver": 1251,
+        "form": 2471,
+        "translation": 48289
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given information, what is the nature of a solution that turns red litmus blue?",
+      "ms": {
+        "draft": 2791,
+        "critique": 5895,
+        "solver": 875,
+        "form": 2980,
+        "translation": 28436
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct example of a neutralisation reaction?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6064,
+        "solver": 16443,
+        "form": 0,
+        "translation": 35073
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student tested a solution and found that it did not change the colour of either blue or red litmus paper. What can be concluded about the solution?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5300,
+        "solver": 1474,
+        "form": 4340,
+        "translation": 51858
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student tested several solutions with red litmus paper and observed that it turned blue. What can be inferred about the solutions?",
+      "ms": {
+        "draft": 28408,
+        "critique": 3468,
+        "solver": 707,
+        "form": 0,
+        "translation": 23100
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a substance turns red rose extract green, what can be inferred about the nature of the substance?",
+      "ms": {
+        "draft": 3459,
+        "critique": 6033,
+        "solver": 1639,
+        "form": 1843,
+        "translation": 31736
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student tested an unknown solution using red litmus, blue litmus, and turmeric. The red litmus remained red, the blue litmus turned red, and the turmeric remained yellow. What is the nature of the solution?",
+      "ms": {
+        "draft": 2791,
+        "critique": 4932,
+        "solver": 1398,
+        "form": 2031,
+        "translation": 38771
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A solution was found to turn red litmus blue. Another solution was found to turn blue litmus red. What is the most likely identity of the two solutions?",
+      "ms": {
+        "draft": 2947,
+        "critique": 6919,
+        "solver": 13882,
+        "form": 0,
+        "translation": 37584
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is true about the red rose extract when tested with acidic and basic substances?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about substances that turn blue litmus paper red?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following groups contains only acidic substances?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an acid-base indicator mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"Both (a) and (b)\"); distractor 0's reason is not a one-line misconception (\"Confuses the passage content with general knowledge…\"); distractor 1's reason is not a one-line misconception (\"Confuses the passage content with general knowledge…\"); distractor 2's reason is not a one-line misconception (\"Does not recognize that blue litmus paper is not a natural i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the activity described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the activity with a specific goal not mentioned in …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the correct reason why litmus is called an acid-base indicator?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct conclusion about the use of natural indicators?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student adds a drop of lemon juice and a drop of soap solution to separate test tubes containing red rose extract, what would be the expected colour changes?",
+      "reason": "options 2 and 3 say the same thing (\"Red in the lemon juice test tube and green in the soap solution test tube\" / \"Green in the lemon juice test tube and red in the soap solution test tube\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student added a few drops of a base to a solution containing an acid. The solution turned blue when blue litmus was added. What can be concluded about the solution?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an acid-base indicator?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A solution turns the red litmus paper blue. If a few drops of vinegar are added to the solution, what will happen?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Based on the tests, identify the acidic or basic nature of the liquid and justify your answer.",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the observations, which of the following is the correct sequence for the nature of solutions A, B, and C?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "A solution turns the red litmus paper to blue. Excess addition of which of the following solution would reverse the change?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is vinegar, not baking soda or lime water, wh…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Label the nature of solutions present in each of the containers based on the given figures.",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which indicator should Manya use to test the solutions and why?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student tested the pH of two solutions, A and B. Solution A turned blue litmus paper red, while solution B did not change the colour of blue litmus paper. Which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"A is basic, B is acidic\" / \"A is acidic, B is basic\"); options 2 and 3 say the same thing (\"A is acidic, B is neutral\" / \"3: A is neutral, B is acidic\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is used as an acid-base indicator in the experiments described in the passage?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is true about the ability of turmeric paper to act as an acid-base indicator?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a substance turns red litmus paper blue, what can be said about its nature?",
+      "reason": "near-duplicate of served question cmvers97f01brgod81y0ccqmm (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "reason": "near-duplicate of served question cmvers97b01bfgod8brnosle6 (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following substances, when dissolved in water, would have the highest pH value?",
+      "reason": "near-duplicate of served question cmvers97m01clgod8h9f6wcf2 (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "reason": "near-duplicate of served question cmvers97a01b9god8vr36emfw (cosine 0.930 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

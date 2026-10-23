@@ -1,0 +1,843 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T00:10:22.528Z",
+  "finishedAt": "2026-10-22T00:19:27.886Z",
+  "seconds": 545,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu110.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Living Creatures: Exploring theirCharacteristics",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n18.\n18. 1. W: Tadpole (shows presence of external gills)\nX: Prawn (shows presence of internal gills)\nY: Rabbit (shows lungs which is present in mammals)\nZ: Cockroach (shows presence of spiracles and tracheae)\n18.2. (a) Y and Z (b) W and X.\nY and Z are terrestrial animals. Diffusion is faster in less dense medium such as air as compared\nto water.\n18.3.\nColumn I Column II\n1 A\n2 L",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n16. Which of the following features relates to biodegradable substances? 1\na) Broken down by biological processes\nb) Remain inert\nc) Persist in environment for long time\nd) May harm the ecosystem"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 220739,
+      "in": 45,
+      "out": 42,
+      "rejects": 3,
+      "promptTokens": 42711,
+      "completionTokens": 12104
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 325504,
+      "in": 42,
+      "out": 33,
+      "rejects": 9,
+      "promptTokens": 21528,
+      "completionTokens": 8567
+    },
+    "solver": {
+      "calls": 213,
+      "ms": 96263,
+      "in": 33,
+      "out": 27,
+      "rejects": 6,
+      "promptTokens": 35424,
+      "completionTokens": 2055
+    },
+    "form": {
+      "calls": 16,
+      "ms": 71931,
+      "in": 27,
+      "out": 7,
+      "rejects": 20,
+      "promptTokens": 11438,
+      "completionTokens": 1837
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 5849,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 270443,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14093,
+      "completionTokens": 7053
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the characteristics of living beings?",
+      "ms": {
+        "draft": 2755,
+        "critique": 5348,
+        "solver": 2170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following would best help in identifying if an object is living or non-living?",
+      "ms": {
+        "draft": 2755,
+        "critique": 6581,
+        "solver": 1398
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a movement shown by a plant according to the passage?",
+      "ms": {
+        "draft": 2755,
+        "critique": 4876,
+        "solver": 11635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of living beings according to the passage?",
+      "ms": {
+        "draft": 2755,
+        "critique": 4587,
+        "solver": 15038
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of a movement in a plant that is not related to growth?",
+      "ms": {
+        "draft": 2755,
+        "critique": 6460,
+        "solver": 1483,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a similarity between a plant and a human according to the passage?",
+      "ms": {
+        "draft": 2755,
+        "critique": 6227,
+        "solver": 1428,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of living beings as described in the passage?",
+      "ms": {
+        "draft": 3462,
+        "critique": 6548,
+        "solver": 1657,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, which of the following conditions is NOT required for the germination of bean seeds?",
+      "ms": {
+        "draft": 3462,
+        "critique": 7529,
+        "solver": 1217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is the correct reason for the leaves of the chhui-mui plant folding when touched?",
+      "ms": {
+        "draft": 3462,
+        "critique": 7254,
+        "solver": 1723,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a seed is placed in a pot with moist soil but no air, what would happen to it based on the passage?",
+      "ms": {
+        "draft": 3462,
+        "critique": 7226,
+        "solver": 1732,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the passage emphasizes that a seed is considered a living being?",
+      "ms": {
+        "draft": 3462,
+        "critique": 8028,
+        "solver": 1056,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main conclusion from Activity 10.3 regarding the direction of plant growth?",
+      "ms": {
+        "draft": 3695,
+        "critique": 7596,
+        "solver": 1458,
+        "form": 3458
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is placed in a beaker where sunlight only comes from one direction, what will happen to the shoot and root?",
+      "ms": {
+        "draft": 3695,
+        "critique": 8606,
+        "solver": 1594,
+        "form": 2556
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a stimulus according to the passage?",
+      "ms": {
+        "draft": 3462,
+        "critique": 7289,
+        "solver": 14714,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the purpose of covering some seeds with soil?",
+      "ms": {
+        "draft": 3695,
+        "critique": 6059,
+        "solver": 1723
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between light and the direction of plant growth?",
+      "ms": {
+        "draft": 3695,
+        "critique": 5661,
+        "solver": 1960
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducts an experiment where they place a plant in a box with a small hole that allows light from only one direction. What can they expect to observe about the plant's growth?",
+      "ms": {
+        "draft": 3695,
+        "critique": 6543,
+        "solver": 1259,
+        "form": 4549
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which stage of the frog's life cycle is described as looking like a little frog but still living in water?",
+      "ms": {
+        "draft": 8208,
+        "critique": 5504,
+        "solver": 4585,
+        "form": 1501
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes a tadpole in a pond. What would be the most likely reason for the presence of a tail in the tadpole?",
+      "ms": {
+        "draft": 7079,
+        "critique": 7071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a stage in the life cycle of a frog where the organism starts to spend time on land?",
+      "ms": {
+        "draft": 7079,
+        "critique": 7096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a frog in a pond. The frog is fully grown and can jump. Which stage of the life cycle is this frog in?",
+      "ms": {
+        "draft": 7079,
+        "critique": 7947
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is comparing the life cycles of a frog and a mosquito. Which of the following is a similarity between their life cycles?",
+      "ms": {
+        "draft": 7079,
+        "critique": 6354,
+        "solver": 1424,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is comparing the life cycles of a frog and a plant. Which of the following is a key difference between their life cycles?",
+      "ms": {
+        "draft": 7079,
+        "critique": 9906,
+        "solver": 15896
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the life cycle of a frog, what is the function of the tail in the tadpole stage?",
+      "ms": {
+        "draft": 7079,
+        "critique": 7690,
+        "solver": 1529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes larvae and pupae in a container of stagnant water and wants to disrupt the mosquito life cycle, what should they do?",
+      "ms": {
+        "draft": 8522,
+        "critique": 6615
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the life cycle of a mosquito, which of the following is the correct sequence of stages?",
+      "ms": {
+        "draft": 8522,
+        "critique": 7393
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes a cluster of jelly-like substance on the surface of a pond and suspects it to be frog eggs. Which of the following features would best confirm this?",
+      "ms": {
+        "draft": 8522,
+        "critique": 6017
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common feature of both mosquito larvae and pupae?",
+      "ms": {
+        "draft": 8522,
+        "critique": 8979,
+        "solver": 11660,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason mosquito larvae and pupae come to the surface of the water?",
+      "ms": {
+        "draft": 8522,
+        "critique": 9299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a group of small organisms in stagnant water and wants to know if they are mosquito larvae or pupae. Which of the following observations would best help determine this?",
+      "ms": {
+        "draft": 8522,
+        "critique": 6105,
+        "solver": 16490,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a characteristic of living beings according to the passage?",
+      "ms": {
+        "draft": 6947,
+        "critique": 6984
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the activity described, which of the following is true about the growth of a plant?",
+      "ms": {
+        "draft": 3501,
+        "critique": 6809,
+        "solver": 1722,
+        "form": 2796
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the experiment described in the passage, which pot is most likely to show seed germination?",
+      "ms": {
+        "draft": 6947,
+        "critique": 6557,
+        "solver": 1765
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do the leaves of the chhui-mui plant fold when touched, according to the passage?",
+      "ms": {
+        "draft": 6947,
+        "critique": 6513
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of living beings according to the passage?",
+      "ms": {
+        "draft": 57055,
+        "critique": 5197,
+        "solver": 547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a plant grows downwards in response to gravity?",
+      "ms": {
+        "draft": 3501,
+        "critique": 8060,
+        "solver": 1381,
+        "form": 2461
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a plant grows upward in response to sunlight?",
+      "ms": {
+        "draft": 3501,
+        "critique": 7193,
+        "solver": 1460,
+        "form": 3099,
+        "translation": 39245
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which direction does the shoot grow when sunlight is provided from only one direction?",
+      "ms": {
+        "draft": 3501,
+        "critique": 7241,
+        "solver": 1530,
+        "form": 3302,
+        "translation": 36281
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a common feature between the life cycles of a mosquito and a frog?",
+      "ms": {
+        "draft": 3518,
+        "critique": 6307,
+        "solver": 1748,
+        "form": 2860,
+        "translation": 49406
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason mosquito larvae and pupae come to the surface of the water?",
+      "ms": {
+        "draft": 3518,
+        "critique": 6532,
+        "solver": 1443,
+        "form": 2633,
+        "translation": 39101
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes larvae and pupae in a container of stagnant water. They notice that the larvae move towards the surface regularly. What can be concluded about the larvae?",
+      "ms": {
+        "draft": 3518,
+        "critique": 6361,
+        "solver": 1445,
+        "form": 2948,
+        "translation": 55606
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a student observes a stage in a water body that has a tail and no legs, which stage of the frog's life cycle is it most likely to be?",
+      "ms": {
+        "draft": 3518,
+        "critique": 6212,
+        "solver": 1907,
+        "form": 2129,
+        "translation": 47216
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following correctly describes the growth of a plant's root and shoot when it is kept upright in sunlight?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following actions can prevent the growth of mosquito larvae in stagnant water?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the characteristics of living beings?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following would best help in identifying if an object is living or non-living?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a movement shown by a plant according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of living beings according to the passage?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of a movement in a plant that is not related to growth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a similarity between a plant and a human according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of living beings as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, which of the following conditions is NOT required for the germination of bean seeds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is the correct reason for the leaves of the chhui-mui plant folding when touched?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a seed is placed in a pot with moist soil but no air, what would happen to it based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the passage emphasizes that a seed is considered a living being?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main conclusion from Activity 10.3 regarding the direction of plant growth?",
+      "reason": "options 0 and 1 say the same thing (\"Roots grow upwards and shoots grow downwards\" / \"Roots grow downwards and shoots grow upwards\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant is placed in a beaker where sunlight only comes from one direction, what will happen to the shoot and root?",
+      "reason": "options 0 and 1 say the same thing (\"The shoot grows in the direction of light and the root grows downwards\" / \"The shoot grows downwards and the root grows in the direction of light\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a stimulus according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the purpose of covering some seeds with soil?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between light and the direction of plant growth?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student conducts an experiment where they place a plant in a box with a small hole that allows light from only one direction. What can they expect to observe about the plant's growth?",
+      "reason": "options 1 and 2 say the same thing (\"The shoot will grow towards the light while the root grows downwards\" / \"The root will grow towards the light while the shoot grows downwards\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which stage of the frog's life cycle is described as looking like a little frog but still living in water?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What happens to the root when the plant is kept inverted?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student observes a tadpole in a pond. What would be the most likely reason for the presence of a tail in the tadpole?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a stage in the life cycle of a frog where the organism starts to spend time on land?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observes a frog in a pond. The frog is fully grown and can jump. Which stage of the life cycle is this frog in?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student is comparing the life cycles of a frog and a mosquito. Which of the following is a similarity between their life cycles?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student is comparing the life cycles of a frog and a plant. Which of the following is a key difference between their life cycles?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the life cycle of a frog, what is the function of the tail in the tadpole stage?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student observes larvae and pupae in a container of stagnant water and wants to disrupt the mosquito life cycle, what should they do?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the life cycle of a mosquito, which of the following is the correct sequence of stages?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student observes a cluster of jelly-like substance on the surface of a pond and suspects it to be frog eggs. Which of the following features would best confirm this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a common feature of both mosquito larvae and pupae?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'larva'"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason mosquito larvae and pupae come to the surface of the water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed a group of small organisms in stagnant water and wants to know if they are mosquito larvae or pupae. Which of the following observations would best help determine this?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'larva'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT a characteristic of living beings according to the passage?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the activity described, which of the following is true about the growth of a plant?",
+      "reason": "options 2 and 3 say the same thing (\"Roots grow downwards and shoots grow upwards\" / \"Shoots grow downwards and roots grow upwards\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the experiment described in the passage, which pot is most likely to show seed germination?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do the leaves of the chhui-mui plant fold when touched, according to the passage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of living beings according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of a plant grows downwards in response to gravity?",
+      "reason": "near-duplicate of served question cmvenq1fu00sygod8pbosb3j6 (cosine 0.971 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

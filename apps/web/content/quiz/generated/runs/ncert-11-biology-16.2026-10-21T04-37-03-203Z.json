@@ -1,0 +1,661 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T04:37:03.203Z",
+  "finishedAt": "2026-10-21T04:45:56.636Z",
+  "seconds": 533,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo116.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 16 — Roducts and Their",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — solutions or answer key]\n56. (2 points)\na. b. c. d.\n√\na. b. c. d. e.\n√\n58. (0.5 x 6 = 3 points)\nGenotype Constitutively Synthesis Synthesis\nformed\nlacI lacO lacZ + + +\nlacI lacO lacZ - + + √\nlacI lacO lacZ + C + √\n- + + +\nlacI lacO lacZ / lacI\nlacI lacO lacZ S + +\nlacI lacO lacZ / lacI S + + +\nETHOLOGY (2)\n59. (2 points)\na. b. c. d.\n√\nECOLOGY (7)\n60. (2 points)\na. b. c. d.\n√\nrepressed Induced\n√\n√\n√\n√\nINBO - 2011\n61. (1 x 2 = 2 points)\na. b. c. d. e.\n√ √\n62. (1 x 3 = 3 points)\nCommunity Dominance Productivity\nindex (high / low)\n(high / low)\nMonoculture high high\ncrop\nRain forest low low\nClimax low low\ncommunity\nBIOSYSTEMATICS (10)\n63. (0.5 x 4 = 2 points)\nI: ___________X\nII: __________Y\nIII: _________Z\nIV: _________Z",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n11. A. Lysozyme, ribonuclease, protease, chilled ethanol 1",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n4. C. Frederick Griffith"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 132492,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 29972,
+      "completionTokens": 8201
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 249544,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 19359,
+      "completionTokens": 7359
+    },
+    "solver": {
+      "calls": 194,
+      "ms": 78256,
+      "in": 30,
+      "out": 27,
+      "rejects": 3,
+      "promptTokens": 30250,
+      "completionTokens": 1814
+    },
+    "form": {
+      "calls": 22,
+      "ms": 74362,
+      "in": 27,
+      "out": 18,
+      "rejects": 9,
+      "promptTokens": 11088,
+      "completionTokens": 2051
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 7125,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 69,
+      "ms": 604186,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 40993,
+      "completionTokens": 20757
+    }
+  },
+  "kept": 17,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 9,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a major form of nitrogenous waste excreted by animals?",
+      "ms": {
+        "draft": 3098,
+        "critique": 7329,
+        "solver": 13947
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the glomerular filtration rate (GFR) decreases, what happens to the kidneys' ability to regulate the GFR?",
+      "ms": {
+        "draft": 12805,
+        "critique": 7303
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the Henle’s loop in the nephron?",
+      "ms": {
+        "draft": 12805,
+        "critique": 6318,
+        "solver": 11327,
+        "form": 3299
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the nephron is responsible for reabsorbing nearly all essential nutrients and 70-80% of electrolytes and water?",
+      "ms": {
+        "draft": 12805,
+        "critique": 6607,
+        "solver": 12557,
+        "form": 3109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The counter current mechanism in the nephron helps in maintaining a high osmolarity in the medullary interstitium. Which of the following best explains how this mechanism works?",
+      "ms": {
+        "draft": 12805,
+        "critique": 7853,
+        "solver": 1668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the counter current mechanism, what is the primary reason for the concentration of urine in the collecting duct?",
+      "ms": {
+        "draft": 12805,
+        "critique": 7715,
+        "solver": 10236,
+        "form": 2974
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is diagnosed with a condition where the glomerular filtration rate is significantly lower than normal. Which of the following would be the most likely immediate response of the kidneys?",
+      "ms": {
+        "draft": 12805,
+        "critique": 6865,
+        "solver": 10219,
+        "form": 3592
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a result of increased blood pressure on the glomerular filtration rate (GFR)?",
+      "ms": {
+        "draft": 3340,
+        "critique": 6569
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a malfunctioning kidney, what is the most likely consequence?",
+      "ms": {
+        "draft": 3340,
+        "critique": 4789
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is hemodialysis a suitable treatment for uremic patients?",
+      "ms": {
+        "draft": 3340,
+        "critique": 4654
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following organs helps in the elimination of carbon dioxide?",
+      "ms": {
+        "draft": 3340,
+        "critique": 5228
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the juxta glomerular apparatus (JGA) in kidney function?",
+      "ms": {
+        "draft": 2661,
+        "critique": 6246,
+        "solver": 1649,
+        "form": 2743
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person experiences a sudden drop in blood pressure, which of the following hormonal responses is most likely to occur?",
+      "ms": {
+        "draft": 2819,
+        "critique": 5391,
+        "solver": 615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a direct effect of antidiuretic hormone (ADH) on the kidneys?",
+      "ms": {
+        "draft": 2819,
+        "critique": 6601,
+        "solver": 11226,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of the proximal convoluted tubule in the nephron?",
+      "ms": {
+        "draft": 6142,
+        "critique": 5756,
+        "solver": 1211,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the nephron is responsible for reabsorbing the majority of water and electrolytes?",
+      "ms": {
+        "draft": 6142,
+        "critique": 5163,
+        "solver": 2881,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How does the counter-current mechanism help in the concentration of urine?",
+      "ms": {
+        "draft": 6142,
+        "critique": 7747,
+        "solver": 1386,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the functional unit of the kidney?",
+      "ms": {
+        "draft": 2661,
+        "critique": 4907,
+        "solver": 1671,
+        "form": 2198
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the functional unit of the kidney?",
+      "ms": {
+        "draft": 4119,
+        "critique": 4661,
+        "solver": 1075,
+        "form": 2986,
+        "translation": 32763
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main site of reabsorption and selective secretion in the nephron?",
+      "ms": {
+        "draft": 4119,
+        "critique": 5267,
+        "solver": 1407,
+        "form": 3282,
+        "translation": 42108
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the nephridia in annelids?",
+      "ms": {
+        "draft": 3098,
+        "critique": 6095,
+        "solver": 1302,
+        "form": 3786,
+        "translation": 31784
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a major nitrogenous waste excreted by animals?",
+      "ms": {
+        "draft": 2661,
+        "critique": 5714,
+        "solver": 1334,
+        "form": 2972,
+        "translation": 34787
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the Renin-Angiotensin mechanism?",
+      "ms": {
+        "draft": 2819,
+        "critique": 6604,
+        "solver": 1567,
+        "form": 0,
+        "translation": 28238
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following animals is most likely to excrete ammonia as a primary waste product?",
+      "ms": {
+        "draft": 3098,
+        "critique": 5638,
+        "solver": 1146,
+        "form": 4994,
+        "translation": 40970
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which part of the nephron does the majority of reabsorption occur?",
+      "ms": {
+        "draft": 2661,
+        "critique": 5543,
+        "solver": 1006,
+        "form": 4462,
+        "translation": 39658
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of antidiuretic hormone (ADH) in the kidneys?",
+      "ms": {
+        "draft": 3340,
+        "critique": 5979,
+        "solver": 8701,
+        "form": 0,
+        "translation": 29447
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the nephrons in the human excretory system?",
+      "ms": {
+        "draft": 3098,
+        "critique": 6148,
+        "solver": 1540,
+        "form": 4374,
+        "translation": 33790
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the nephron helps in maintaining the osmolar gradient within the kidney interstitium?",
+      "ms": {
+        "draft": 4119,
+        "critique": 6928,
+        "solver": 1076,
+        "form": 1770,
+        "translation": 30598
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the Atrial Natriuretic Factor (ANF) in the regulation of blood pressure?",
+      "ms": {
+        "draft": 2819,
+        "critique": 5870,
+        "solver": 1305,
+        "form": 1,
+        "translation": 33607
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the most toxic form of nitrogenous waste?",
+      "ms": {
+        "draft": 3098,
+        "critique": 6224,
+        "solver": 1766,
+        "form": 2833,
+        "translation": 40100
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person is dehydrated, which hormone would be released to help in water reabsorption in the distal parts of the tubules?",
+      "ms": {
+        "draft": 4119,
+        "critique": 5452,
+        "solver": 599,
+        "form": 1134,
+        "translation": 38789
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is diagnosed with a condition where their urine is very dilute and they pass large volumes of urine. Which hormone is most likely to be deficient?",
+      "ms": {
+        "draft": 2661,
+        "critique": 4688,
+        "solver": 1229,
+        "form": 3490,
+        "translation": 36419
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following processes is responsible for the initial step in urine formation?",
+      "ms": {
+        "draft": 3098,
+        "critique": 5697,
+        "solver": 1054,
+        "form": 4288,
+        "translation": 39587
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of an excretory organ that is also involved in maintaining acid-base balance?",
+      "ms": {
+        "draft": 2661,
+        "critique": 5010,
+        "solver": 1139,
+        "form": 3450,
+        "translation": 37351
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a patient with chronic kidney failure, which of the following methods is considered the most effective long-term treatment?",
+      "ms": {
+        "draft": 2819,
+        "critique": 6981,
+        "solver": 860,
+        "form": 0,
+        "translation": 31161
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a major form of nitrogenous waste excreted by animals?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the glomerular filtration rate (GFR) decreases, what happens to the kidneys' ability to regulate the GFR?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of the Henle’s loop in the nephron?",
+      "reason": "the key is far longer than every distractor (66 vs 28 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which part of the nephron is responsible for reabsorbing nearly all essential nutrients and 70-80% of electrolytes and water?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The counter current mechanism in the nephron helps in maintaining a high osmolarity in the medullary interstitium. Which of the following best explains how this mechanism works?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the counter current mechanism, what is the primary reason for the concentration of urine in the collecting duct?",
+      "reason": "the key is far longer than every distractor (66 vs 29 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person is diagnosed with a condition where the glomerular filtration rate is significantly lower than normal. Which of the following would be the most likely immediate response of the kidneys?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a result of increased blood pressure on the glomerular filtration rate (GFR)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person has a malfunctioning kidney, what is the most likely consequence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is hemodialysis a suitable treatment for uremic patients?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following organs helps in the elimination of carbon dioxide?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a nitrogenous waste that is eliminated through the skin?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the juxta glomerular apparatus (JGA) in kidney function?",
+      "reason": "the key is far longer than every distractor (45 vs 18 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person experiences a sudden drop in blood pressure, which of the following hormonal responses is most likely to occur?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a direct effect of antidiuretic hormone (ADH) on the kidneys?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary function of the proximal convoluted tubule in the nephron?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.PCT: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which part of the nephron is responsible for reabsorbing the majority of water and electrolytes?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'nephron'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How does the counter-current mechanism help in the concentration of urine?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.principalAxis: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the functional unit of the kidney?",
+      "reason": "near-duplicate of batch item \"Which of the following is the functional unit of t…\" (cosine 0.979 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

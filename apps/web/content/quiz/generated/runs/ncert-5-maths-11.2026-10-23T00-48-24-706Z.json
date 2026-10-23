@@ -1,0 +1,515 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T00:48:24.706Z",
+  "finishedAt": "2026-10-23T00:53:38.527Z",
+  "seconds": 314,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm111.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Grandmother’s Quilt",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n15. (B) ଽ 1\nସ\nProbability of getting vowels in the word Mathematics is ଵଵ ସ ,\nSo, ଶ௫ାଵ ଵଵ ଶ = ସ\nଽ\n⇒ 𝑥 = ସ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A-E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 80191,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 14702,
+      "completionTokens": 4350
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 223224,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 13949,
+      "completionTokens": 5815
+    },
+    "solver": {
+      "calls": 145,
+      "ms": 85069,
+      "in": 19,
+      "out": 14,
+      "rejects": 5,
+      "promptTokens": 25438,
+      "completionTokens": 1526
+    },
+    "form": {
+      "calls": 5,
+      "ms": 14029,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 1217,
+      "completionTokens": 379
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3955,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 153975,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10527,
+      "completionTokens": 4768
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following shapes can be used to measure the area of a region without leaving gaps or overlaps?",
+      "ms": {
+        "draft": 3108,
+        "critique": 8120,
+        "solver": 1435
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to calculate the area of a rectangle?",
+      "ms": {
+        "draft": 3108,
+        "critique": 5723,
+        "solver": 15434,
+        "form": 2465
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the length of the border of a shape?",
+      "ms": {
+        "draft": 3108,
+        "critique": 5058,
+        "solver": 15115,
+        "form": 3705
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the area of a rectangle?",
+      "ms": {
+        "draft": 3130,
+        "critique": 5896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct way to find the area of a complex shape?",
+      "ms": {
+        "draft": 3108,
+        "critique": 7095,
+        "solver": 1559
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the perimeter of a rectangle?",
+      "ms": {
+        "draft": 3130,
+        "critique": 5968,
+        "solver": 1876,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the length of a rectangle is 8 cm and the breadth is 3 cm, what is its perimeter?",
+      "ms": {
+        "draft": 3130,
+        "critique": 8893
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the length of a rectangle is 10 cm and the breadth is 5 cm, what is its area?",
+      "ms": {
+        "draft": 3130,
+        "critique": 7297,
+        "solver": 16687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangular field has a length of 42 m and a breadth of 34 m. What is its area?",
+      "ms": {
+        "draft": 3130,
+        "critique": 9785,
+        "solver": 12884
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the area of a rectangle?",
+      "ms": {
+        "draft": 12482,
+        "critique": 6245
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the perimeter of a rectangular garden if its area is 64 m² and its length is 16 m?",
+      "ms": {
+        "draft": 12482,
+        "critique": 8375
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the area of a rectangular field if its perimeter is 24 cm and its length is 8 cm?",
+      "ms": {
+        "draft": 12482,
+        "critique": 8488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the perimeter of a rectangle is 24 cm, what could be its possible length and breadth?",
+      "ms": {
+        "draft": 12482,
+        "critique": 7167,
+        "solver": 846,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the length of the border of a shape?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7904,
+        "solver": 1244,
+        "form": 5035
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7523,
+        "solver": 14541
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Trisha makes two rectangles. She says, “I increased the area of my rectangle, and the perimeter increased.” Is this always true?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7465,
+        "solver": 2379,
+        "form": 3488
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Preetha and Adrit’s grandmother uses red lace of 40 units and green lace of 50 units to cover the entire border of a quilt. If the quilt is rectangular, which of the following could be its length and breadth?",
+      "ms": {
+        "draft": 3681,
+        "critique": 9604,
+        "solver": 18496
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "ms": {
+        "draft": 3108,
+        "critique": 6020,
+        "solver": 3432,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the perimeter of a square with side 5 cm?",
+      "ms": {
+        "draft": 12482,
+        "critique": 5108,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the space inside a shape?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7291,
+        "solver": 7846,
+        "form": 1992,
+        "translation": 28378
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangular garden has an area of 64 m² and a length of 16 m. What is its breadth?",
+      "ms": {
+        "draft": 3130,
+        "critique": 7772,
+        "solver": 8547,
+        "form": 0,
+        "translation": 37590
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangular field has a length of 42 m and a breadth of 34 m. What is its area?",
+      "ms": {
+        "draft": 12482,
+        "critique": 5694,
+        "solver": 1759,
+        "form": 0,
+        "translation": 30007
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a square has a side length of 5 units, what is its perimeter?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7266,
+        "solver": 2583,
+        "form": 0,
+        "translation": 28171
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a square has a side length of 5 units, what is its area?",
+      "ms": {
+        "draft": 3108,
+        "critique": 6839,
+        "solver": 1859,
+        "form": 1,
+        "translation": 25353
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following shapes can be used to measure the area of a region without leaving gaps or overlaps?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct way to calculate the area of a rectangle?",
+      "reason": "options 0 and 1 are the same (\"Length + Breadth\"); options 2 and 3 are the same (\"Length + Breadth × 2\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the length of the border of a shape?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula to calculate the area of a rectangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is the correct way to find the area of a complex shape?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the perimeter of a rectangle?",
+      "reason": "options 0 and 1 are the same (\"Length + Breadth\"); options 0 and 3 are the same (\"Length + Breadth\"); options 1 and 3 are the same (\"Length × Breadth\"); distractor 1's reason is not a one-line misconception (\"correct formula…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the length of a rectangle is 8 cm and the breadth is 3 cm, what is its perimeter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If the length of a rectangle is 10 cm and the breadth is 5 cm, what is its area?",
+      "reason": "options 2 and 3 are the same (\"15 cm²\"); options are in more than one unit (cm, cm²); options 0 and 1 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A rectangular field has a length of 42 m and a breadth of 34 m. What is its area?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula to calculate the area of a rectangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the perimeter of a rectangular garden if its area is 64 m² and its length is 16 m?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the area of a rectangular field if its perimeter is 24 cm and its length is 8 cm?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the perimeter of a rectangle is 24 cm, what could be its possible length and breadth?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for the length of the border of a shape?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the third one,…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Trisha makes two rectangles. She says, “I increased the area of my rectangle, and the perimeter increased.” Is this always true?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but the second one…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Preetha and Adrit’s grandmother uses red lace of 40 units and green lace of 50 units to cover the entire border of a quilt. If the quilt is rectangular, which of the following could be its length and breadth?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "reason": "near-duplicate of served question cmvh79xll07b8gpfhrf01tmkx (cosine 0.980 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the perimeter of a square with side 5 cm?",
+      "reason": "near-duplicate of served question cmvh79xlm07begpfh6rgl8uqu (cosine 0.920 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,522 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T04:35:23.853Z",
+  "finishedAt": "2026-10-20T04:39:17.594Z",
+  "seconds": 234,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Disaster Management",
+    "edition": "First Edition 2018",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n1. C. Responses to fight-flight situation can either be the result of acute stress such as loss of\nbowel/bladder control and shivering while some could be to help overcome the situation such as pupil\ndilation to accept more light.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n5. C. Displacement reaction",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n33. Why is damage to the ozone layer a cause for concern? What are its causes and 3\nwhat steps are being taken to limit this damage?",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n8. A. Both A and R are true, and R is the correct explanation of A. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 74976,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16362,
+      "completionTokens": 4533
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 145728,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 11482,
+      "completionTokens": 4649
+    },
+    "solver": {
+      "calls": 127,
+      "ms": 58024,
+      "in": 21,
+      "out": 14,
+      "rejects": 7,
+      "promptTokens": 20126,
+      "completionTokens": 1212
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14158,
+      "in": 14,
+      "out": 5,
+      "rejects": 9,
+      "promptTokens": 1548,
+      "completionTokens": 432
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 36,
+      "ms": 5243,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 188280,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 11192,
+      "completionTokens": 5967
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct precaution to take during an earthquake?",
+      "ms": {
+        "draft": 3834,
+        "critique": 6657
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the sudden vibrations on the earth's surface that cause shaking?",
+      "ms": {
+        "draft": 3834,
+        "critique": 6906
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the Richter Scale?",
+      "ms": {
+        "draft": 3834,
+        "critique": 7460
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a cause of earthquakes according to the passage?",
+      "ms": {
+        "draft": 3834,
+        "critique": 6200,
+        "solver": 13786
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are earthquake-resistant buildings constructed according to the Indian Standard Institute's code?",
+      "ms": {
+        "draft": 3834,
+        "critique": 6067,
+        "solver": 1618,
+        "form": 2550
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a precaution to take during a disaster?",
+      "ms": {
+        "draft": 3099,
+        "critique": 6439,
+        "solver": 1397,
+        "form": 2329
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main cause of landslides according to the passage?",
+      "ms": {
+        "draft": 3099,
+        "critique": 6051,
+        "solver": 1654,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the purpose of a disaster management map?",
+      "ms": {
+        "draft": 3099,
+        "critique": 5892,
+        "solver": 1609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the role of the School Management Committee in disaster management?",
+      "ms": {
+        "draft": 3099,
+        "critique": 6262,
+        "solver": 1851,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the first step to take when there is a fire?",
+      "ms": {
+        "draft": 3099,
+        "critique": 5971,
+        "solver": 1145
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a crowd gathers at the site of an earthquake, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 3099,
+        "critique": 5734,
+        "solver": 9265,
+        "form": 955
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what should be included in a disaster management map of a school?",
+      "ms": {
+        "draft": 2724,
+        "critique": 4657,
+        "solver": 1620
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main cause of landslides according to the passage?",
+      "ms": {
+        "draft": 2724,
+        "critique": 4788,
+        "solver": 2369
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the purpose of conducting a mock drill in a school as described in the passage?",
+      "ms": {
+        "draft": 2724,
+        "critique": 5830,
+        "solver": 1097,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important to prepare a disaster management plan for a school?",
+      "ms": {
+        "draft": 2724,
+        "critique": 5423,
+        "solver": 1609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a precaution to take during an earthquake?",
+      "ms": {
+        "draft": 2724,
+        "critique": 4889,
+        "solver": 2014
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of an earthquake according to the passage?",
+      "ms": {
+        "draft": 2839,
+        "critique": 5638,
+        "solver": 1480,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a correct way to control a Class B fire?",
+      "ms": {
+        "draft": 2839,
+        "critique": 5094,
+        "solver": 2199
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is preparing for a disaster management exam and finds the following statements: (A) Earthquakes are caused mainly by the movement of tectonic plates. (B) Fire extinguishers are used to cut off the air supply to a fire. Which of the following is correct?",
+      "ms": {
+        "draft": 2839,
+        "critique": 8070,
+        "solver": 6711
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the instrument used to record earthquakes?",
+      "ms": {
+        "draft": 2839,
+        "critique": 4258,
+        "solver": 1156,
+        "form": 3554
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a safety measure to take during an earthquake?",
+      "ms": {
+        "draft": 2724,
+        "critique": 4396,
+        "solver": 1170,
+        "form": 0,
+        "translation": 40395
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct precaution to take during an earthquake?",
+      "ms": {
+        "draft": 2839,
+        "critique": 6118,
+        "solver": 1174,
+        "form": 1,
+        "translation": 63431
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for using non-conductive fire extinguishers for class E fires?",
+      "ms": {
+        "draft": 3834,
+        "critique": 7514,
+        "solver": 1210,
+        "form": 2125,
+        "translation": 49524
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the context of disaster management, which of the following is an example of a secondary effect of an earthquake?",
+      "ms": {
+        "draft": 2839,
+        "critique": 5215,
+        "solver": 1828,
+        "form": 3331,
+        "translation": 31437
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a correct precaution to take during an earthquake?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for the sudden vibrations on the earth's surface that cause shaking?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the Richter Scale?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is not a cause of earthquakes according to the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are earthquake-resistant buildings constructed according to the Indian Standard Institute's code?",
+      "reason": "the key is far longer than every distractor (61 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a precaution to take during a disaster?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the passage's advice to switch off with switching o…\"); distractor 3's reason is not a one-line misconception (\"Correct option, no misconception here, so no reason needed f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main cause of landslides according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the purpose of a disaster management map?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the role of the School Management Committee in disaster management?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the first step to take when there is a fire?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a crowd gathers at the site of an earthquake, which of the following is most likely to happen?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what should be included in a disaster management map of a school?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the main cause of landslides according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the purpose of conducting a mock drill in a school as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important to prepare a disaster management plan for a school?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a precaution to take during an earthquake?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main cause of an earthquake according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a correct way to control a Class B fire?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is preparing for a disaster management exam and finds the following statements: (A) Earthquakes are caused mainly by the movement of tectonic plates. (B) Fire extinguishers are used to cut off the air supply to a fire. Which of the following is correct?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the instrument used to record earthquakes?",
+      "reason": "near-duplicate of served question cmvf21zvw02skgod80s4xw5pw (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

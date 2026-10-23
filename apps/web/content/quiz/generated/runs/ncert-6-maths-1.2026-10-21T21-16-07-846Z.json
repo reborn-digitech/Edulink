@@ -1,0 +1,678 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T21:16:07.846Z",
+  "finishedAt": "2026-10-21T21:23:04.921Z",
+  "seconds": 417,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp101.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Patterns in Mathematics",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n36. Ms. Sheela visited a store near her house and found that the glass jars are arranged\none above the other in a specific pattern.\nOn the top layer there are 3 jars. In the next layer there are 6 jars. In the 3rd layer from\nthe top there are 9 jars and so on till the 8th layer.\nOn the basis of the above situation answer the following questions.\n(i) Write an A.P whose terms represent the number of jars in different layers starting\nfrom top . Also, find the common difference. 1\n(ii) Is it possible to arrange 34 jars in a layer if this pattern is continued? Justify your\nanswer. 1\n(iii) (A) If there are ‘n’ number of rows in a layer then find the expression for finding the 2\ntotal number of jar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 139993,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 27516,
+      "completionTokens": 8799
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 250495,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 21994,
+      "completionTokens": 7644
+    },
+    "solver": {
+      "calls": 194,
+      "ms": 75895,
+      "in": 28,
+      "out": 18,
+      "rejects": 10,
+      "promptTokens": 32960,
+      "completionTokens": 1841
+    },
+    "form": {
+      "calls": 10,
+      "ms": 30678,
+      "in": 18,
+      "out": 9,
+      "rejects": 9,
+      "promptTokens": 2803,
+      "completionTokens": 806
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 5874,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 269156,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 18416,
+      "completionTokens": 8567
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the pattern where the sum of the first n odd numbers equals n squared?",
+      "ms": {
+        "draft": 2824,
+        "critique": 5887,
+        "solver": 1037,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a number sequence that is studied in number theory?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6093,
+        "solver": 1462,
+        "form": 2938
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a sequence where each term is the sum of the previous term and 3, if the first term is 2, what is the fourth term?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6866
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a number sequence mentioned in the passage?",
+      "ms": {
+        "draft": 2824,
+        "critique": 4739,
+        "solver": 1719,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the pattern of jars in layers continues, is it possible to arrange 34 jars in a layer?",
+      "ms": {
+        "draft": 4055,
+        "critique": 5389,
+        "solver": 1520
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the total number of jars in the first 8 layers if the pattern of jars in layers continues?",
+      "ms": {
+        "draft": 4055,
+        "critique": 5431,
+        "solver": 1341
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the pattern of jars continues, what is the 10th term of the sequence representing the number of jars in each layer?",
+      "ms": {
+        "draft": 4055,
+        "critique": 5421,
+        "solver": 1279
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the pattern of jars continues, what is the total number of jars in all layers up to the 10th layer?",
+      "ms": {
+        "draft": 4055,
+        "critique": 5968,
+        "solver": 1598
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What sequence is formed by multiplying each triangular number by 6 and adding 1?",
+      "ms": {
+        "draft": 6942,
+        "critique": 7089,
+        "solver": 1638
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sequence is formed by adding 1 to each of the numbers in the sequence 1, 3, 7, 15, 31,...?",
+      "ms": {
+        "draft": 6942,
+        "critique": 7900,
+        "solver": 11554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the first 100 odd numbers?",
+      "ms": {
+        "draft": 6942,
+        "critique": 7036,
+        "solver": 9954,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the pattern of the number of jars in each layer of a store is 3, 6, 9, 12, …, and the pattern continues, what is the total number of jars in 8 layers?",
+      "ms": {
+        "draft": 6942,
+        "critique": 7347
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If you add up the first 50 triangular numbers, what sequence do you get?",
+      "ms": {
+        "draft": 6942,
+        "critique": 5320
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total number of line segments in the Koch Snowflake sequence after 4 iterations, given that the sequence is 3, 12, 48, ...?",
+      "ms": {
+        "draft": 4263,
+        "critique": 6840
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which sequence is formed by the number of corners in each shape of the sequence of Regular Polygons?",
+      "ms": {
+        "draft": 4263,
+        "critique": 6643,
+        "solver": 1123,
+        "form": 5083
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the first 100 odd numbers, based on the pattern shown in the passage?",
+      "ms": {
+        "draft": 4263,
+        "critique": 7117,
+        "solver": 1229
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a pattern of jars is arranged such that each layer has 3 more jars than the layer above, and the topmost layer has 3 jars, what is the total number of jars in 8 layers?",
+      "ms": {
+        "draft": 4263,
+        "critique": 5539,
+        "solver": 1630
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sequence of numbers is 1, 3, 6, 10, 15, ..., which is the triangular number sequence, and you add the first 10 triangular numbers, what is the total sum?",
+      "ms": {
+        "draft": 4263,
+        "critique": 5185,
+        "solver": 1254
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the number sequence formed by the total number of line segments in each shape of the Koch Snowflake sequence?",
+      "ms": {
+        "draft": 11033,
+        "critique": 5387,
+        "solver": 1676
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sequence is formed by the number of sides in the shape sequence of Regular Polygons?",
+      "ms": {
+        "draft": 11033,
+        "critique": 5204,
+        "solver": 11158,
+        "form": 2736
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason given for why the pattern of adding odd numbers results in square numbers?",
+      "ms": {
+        "draft": 3085,
+        "critique": 6463
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of triangles in each shape of the Stacked Triangles sequence is given by the sequence 1, 3, 6, 10, 15, ..., which sequence does this represent?",
+      "ms": {
+        "draft": 11033,
+        "critique": 7756,
+        "solver": 10317,
+        "form": 2617
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of number sequence discussed in the passage?",
+      "ms": {
+        "draft": 3085,
+        "critique": 6142,
+        "solver": 10111,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following sequences is shown in the pictorial representations in Table 2?",
+      "ms": {
+        "draft": 3085,
+        "critique": 5386
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the pattern of arranging jars continues, what is the total number of jars in 8 layers?",
+      "ms": {
+        "draft": 3085,
+        "critique": 3675,
+        "solver": 4105
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the pattern of triangular numbers continues, what is the next number after 15 in the sequence?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6245,
+        "solver": 2182,
+        "form": 2698
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the number of corners and the number of sides in the sequence of Regular Polygons?",
+      "ms": {
+        "draft": 11033,
+        "critique": 5297,
+        "solver": 1539,
+        "form": 2981
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which number sequence is represented by the number of sides in the sequence of Regular Polygons?",
+      "ms": {
+        "draft": 4055,
+        "critique": 6862,
+        "solver": 1211,
+        "form": 0,
+        "translation": 65017
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which sequence is formed by the number of sides in each shape of the sequence of Regular Polygons?",
+      "ms": {
+        "draft": 4263,
+        "critique": 6860,
+        "solver": 11068,
+        "form": 3266,
+        "translation": 36674
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the common difference in the sequence of jars arranged in layers, where the top layer has 3 jars, the next has 6, the third has 9, and so on?",
+      "ms": {
+        "draft": 4055,
+        "critique": 5175,
+        "solver": 1372,
+        "form": 0,
+        "translation": 35496
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of little squares in each shape of the sequence of Stacked Squares forms a sequence, what is the sequence?",
+      "ms": {
+        "draft": 11033,
+        "critique": 6862,
+        "solver": 10401,
+        "form": 4409,
+        "translation": 33092
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which sequence is formed by starting with 1 and adding the counting numbers up?",
+      "ms": {
+        "draft": 6942,
+        "critique": 6786,
+        "solver": 9037,
+        "form": 0,
+        "translation": 33917
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the first n odd numbers equals n squared, what is the sum of the first 100 odd numbers?",
+      "ms": {
+        "draft": 2824,
+        "critique": 4904,
+        "solver": 1225,
+        "form": 2922,
+        "translation": 30333
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the sequence of odd numbers is added up starting from 1, what sequence is formed?",
+      "ms": {
+        "draft": 11033,
+        "critique": 5721,
+        "solver": 1315,
+        "form": 3533,
+        "translation": 31050
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the pattern where the sum of the first n odd numbers equals n squared?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"It is a rule from the chapter on geometry\" / \"It is a rule from the chapter on algebra\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a number sequence that is studied in number theory?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a sequence where each term is the sum of the previous term and 3, if the first term is 2, what is the fourth term?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a number sequence mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the pattern of jars in layers continues, is it possible to arrange 34 jars in a layer?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the total number of jars in the first 8 layers if the pattern of jars in layers continues?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the pattern of jars continues, what is the 10th term of the sequence representing the number of jars in each layer?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the pattern of jars continues, what is the total number of jars in all layers up to the 10th layer?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What sequence is formed by multiplying each triangular number by 6 and adding 1?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which sequence is formed by adding 1 to each of the numbers in the sequence 1, 3, 7, 15, 31,...?",
+      "reason": "option 0 repeats the stem's wording (\"1, 3, 7, 15, 31\"); distractor 3's reason is not a one-line misconception (\"Thinks the sequence is counting numbers starting from 1, whi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the sum of the first 100 odd numbers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the sum of the first 100 odd numbers is 100000, which…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the pattern of the number of jars in each layer of a store is 3, 6, 9, 12, …, and the pattern continues, what is the total number of jars in 8 layers?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If you add up the first 50 triangular numbers, what sequence do you get?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the total number of line segments in the Koch Snowflake sequence after 4 iterations, given that the sequence is 3, 12, 48, ...?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which sequence is formed by the number of corners in each shape of the sequence of Regular Polygons?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the sum of the first 100 odd numbers, based on the pattern shown in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a pattern of jars is arranged such that each layer has 3 more jars than the layer above, and the topmost layer has 3 jars, what is the total number of jars in 8 layers?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the sequence of numbers is 1, 3, 6, 10, 15, ..., which is the triangular number sequence, and you add the first 10 triangular numbers, what is the total sum?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the number sequence formed by the total number of line segments in each shape of the Koch Snowflake sequence?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which sequence is formed by the number of sides in the shape sequence of Regular Polygons?",
+      "reason": "options 2 and 3 say the same thing (\"Counting numbers starting from 3\" / \"3: Counting numbers starting from 4\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the reason given for why the pattern of adding odd numbers results in square numbers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the number of triangles in each shape of the Stacked Triangles sequence is given by the sequence 1, 3, 6, 10, 15, ..., which sequence does this represent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of number sequence discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following sequences is shown in the pictorial representations in Table 2?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the pattern of arranging jars continues, what is the total number of jars in 8 layers?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the pattern of triangular numbers continues, what is the next number after 15 in the sequence?",
+      "reason": "near-duplicate of served question cmvfnv4pt0011gpfhf3arvttj (cosine 0.969 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the relationship between the number of corners and the number of sides in the sequence of Regular Polygons?",
+      "reason": "near-duplicate of served question cmveekdym000jgowcw94zywig (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

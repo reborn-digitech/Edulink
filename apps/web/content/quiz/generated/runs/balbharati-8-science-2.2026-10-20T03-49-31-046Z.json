@@ -1,0 +1,651 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T03:49:31.046Z",
+  "finishedAt": "2026-10-20T03:54:44.985Z",
+  "seconds": 314,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Health and Diseases",
+    "edition": "First Edition 2018",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n8. D. A is false but R is true.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n8. A. Both A and R are true, and R is the correct explanation of A. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 95120,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 24742,
+      "completionTokens": 5707
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 255779,
+      "in": 32,
+      "out": 26,
+      "rejects": 6,
+      "promptTokens": 16964,
+      "completionTokens": 7455
+    },
+    "solver": {
+      "calls": 192,
+      "ms": 98467,
+      "in": 26,
+      "out": 20,
+      "rejects": 6,
+      "promptTokens": 35130,
+      "completionTokens": 2124
+    },
+    "form": {
+      "calls": 10,
+      "ms": 25418,
+      "in": 20,
+      "out": 10,
+      "rejects": 10,
+      "promptTokens": 2173,
+      "completionTokens": 647
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 4726,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 27,
+      "ms": 232119,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14817,
+      "completionTokens": 7420
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is a preventive measure for cholera?",
+      "ms": {
+        "draft": 2970,
+        "critique": 6879,
+        "solver": 11553
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is a correct statement about AIDS?",
+      "ms": {
+        "draft": 2970,
+        "critique": 7002,
+        "solver": 1569,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a viral disease?",
+      "ms": {
+        "draft": 3103,
+        "critique": 5529
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct match between the disease and its pathogen?",
+      "ms": {
+        "draft": 2970,
+        "critique": 6371,
+        "solver": 13834
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a preventive measure for rabies?",
+      "ms": {
+        "draft": 3103,
+        "critique": 4930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main cause of diabetes?",
+      "ms": {
+        "draft": 3103,
+        "critique": 7435,
+        "solver": 1111,
+        "form": 2618
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main cause of rabies?",
+      "ms": {
+        "draft": 3103,
+        "critique": 4954,
+        "solver": 10432,
+        "form": 2290
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the first step in providing first aid to a person having a heart attack?",
+      "ms": {
+        "draft": 3103,
+        "critique": 6075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the Pradhan Mantri Jan Aushadhi Yojana?",
+      "ms": {
+        "draft": 2465,
+        "critique": 5715,
+        "solver": 1234,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a reason for the high cost of medicines in India?",
+      "ms": {
+        "draft": 2465,
+        "critique": 7073,
+        "solver": 1113,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a way to prevent the spread of infectious diseases?",
+      "ms": {
+        "draft": 2465,
+        "critique": 7006,
+        "solver": 9635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a way to prevent infectious diseases?",
+      "ms": {
+        "draft": 2982,
+        "critique": 4328,
+        "solver": 10943
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-infectious disease?",
+      "ms": {
+        "draft": 2982,
+        "critique": 4987,
+        "solver": 11152,
+        "form": 2652
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person avoids smoking and alcoholism, which of the following is most likely to be prevented?",
+      "ms": {
+        "draft": 2982,
+        "critique": 5967,
+        "solver": 10929,
+        "form": 2425
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the high cost of medicines in India, according to the passage?",
+      "ms": {
+        "draft": 2982,
+        "critique": 6933,
+        "solver": 1768
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person donates blood once a year, how many people can they save?",
+      "ms": {
+        "draft": 2982,
+        "critique": 5529,
+        "solver": 1422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a non-infectious disease?",
+      "ms": {
+        "draft": 3275,
+        "critique": 8004
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can happen if someone takes medicines without a doctor's prescription?",
+      "ms": {
+        "draft": 3275,
+        "critique": 7561
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is most likely to be a reason for a child living in a slum to fall sick?",
+      "ms": {
+        "draft": 2982,
+        "critique": 5783,
+        "solver": 12343
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main cause of heart disease according to the passage?",
+      "ms": {
+        "draft": 3275,
+        "critique": 7385
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a method to control diabetes?",
+      "ms": {
+        "draft": 3275,
+        "critique": 4989,
+        "solver": 13226,
+        "form": 2490
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a preventive measure for cholera?",
+      "ms": {
+        "draft": 3210,
+        "critique": 6772,
+        "solver": 1601,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following diseases is caused by a virus?",
+      "ms": {
+        "draft": 2970,
+        "critique": 5123,
+        "solver": 1205,
+        "form": 3679
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a preventive measure against infectious diseases?",
+      "ms": {
+        "draft": 2465,
+        "critique": 5518,
+        "solver": 1357,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a non-infectious disease?",
+      "ms": {
+        "draft": 2465,
+        "critique": 6215,
+        "solver": 1510,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "ms": {
+        "draft": 3210,
+        "critique": 6898,
+        "solver": 1539,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of disease based on its duration?",
+      "ms": {
+        "draft": 2970,
+        "critique": 6169,
+        "solver": 1274,
+        "form": 4819,
+        "translation": 43015
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of dengue?",
+      "ms": {
+        "draft": 2970,
+        "critique": 6168,
+        "solver": 1025,
+        "form": 3982,
+        "translation": 45743
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a symptom of rabies?",
+      "ms": {
+        "draft": 3103,
+        "critique": 6299,
+        "solver": 10986,
+        "form": 2582,
+        "translation": 33231
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person does not follow a balanced diet, which of the following is likely to occur?",
+      "ms": {
+        "draft": 2465,
+        "critique": 6676,
+        "solver": 1631,
+        "form": 0,
+        "translation": 32613
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student is suffering from dengue. Which of the following is the most important factor in preventing the spread of the disease?",
+      "ms": {
+        "draft": 3210,
+        "critique": 5199,
+        "solver": 1201,
+        "form": 0,
+        "translation": 39531
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to follow the prescribed treatment for diseases?",
+      "ms": {
+        "draft": 3275,
+        "critique": 7283,
+        "solver": 13673,
+        "form": 1377,
+        "translation": 34112
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a preventive measure for cholera?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 1 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is a correct statement about AIDS?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a viral disease?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct match between the disease and its pathogen?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a preventive measure for rabies?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main cause of diabetes?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main cause of rabies?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the first step in providing first aid to a person having a heart attack?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the Pradhan Mantri Jan Aushadhi Yojana?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a reason for the high cost of medicines in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a way to prevent the spread of infectious diseases?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a way to prevent infectious diseases?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a non-infectious disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person avoids smoking and alcoholism, which of the following is most likely to be prevented?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main reason for the high cost of medicines in India, according to the passage?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person donates blood once a year, how many people can they save?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a non-infectious disease?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What can happen if someone takes medicines without a doctor's prescription?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is most likely to be a reason for a child living in a slum to fall sick?",
+      "reason": "after redrafting distractors 0, 1, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the main cause of heart disease according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a method to control diabetes?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a preventive measure for cholera?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following diseases is caused by a virus?",
+      "reason": "near-duplicate of served question cmvf6icun03digod8ucqudstp (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a preventive measure against infectious diseases?",
+      "reason": "near-duplicate of served question cmvf02l8f02jegod8zr7xv13t (cosine 0.958 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a non-infectious disease?",
+      "reason": "near-duplicate of served question cmvf02l8h02jkgod8wfj9kn66 (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "reason": "near-duplicate of served question cmvf02l8602iqgod8t9znfxpx (cosine 0.915 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

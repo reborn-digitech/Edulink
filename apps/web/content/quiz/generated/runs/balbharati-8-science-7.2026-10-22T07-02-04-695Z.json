@@ -1,0 +1,509 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T07:02:04.695Z",
+  "finishedAt": "2026-10-22T07:07:35.922Z",
+  "seconds": 331,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Metals and Nonmetals",
+    "edition": "First Edition 2018",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n6. C. X is a non-metal and Y is a metal.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. The electronic configuration of three elements X, Y and Z are X- 2, 8, 7; Y- 2,\n8, 2; and Z - 2, 8 1\nA. Y and Z are metals\nB. Y and X are non-metals\nC. X is a non -metal and Y is a metal\nD. Y is a non-metal and Z is a metal",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n2. Match column I with column II and select the correct option using the given\ncodes. 1\nColumn I Column II\na. A metal that forms amphoteric oxides (i) Ga\nb. A metal which melts when kept on our palm (ii) Au\nc. A metal that reacts with nitric acid (iii) Al\nd. A metal which cannot displace hydrogen from (iv) Mn\nacids\nA. a – (ii), b – (i), c – (iii), d – (iv)\nB. a – (iii), b – (i), c – (iv), d – (ii)\nC. a – (iv), b – (ii), c – (iii), d – (i)\nD. a – (iii), b – (ii), c – (i), d – (iv)\nThe solution in the given figure is likely to be\nA. HNO 3\nB. C 2 H 5 OH\nC. H 2 SO 4\nD. CO 2 in water\n- - - - - - - - - - - - - -\nFor Visual Impaired Students\nWhich among the following is considered as the strongest ",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n4. On adding dilute sulphuric acid to a test tube containing a metal ‘X’, a colourless gas is 1\nproduced when a burning match stick is brought near it. Which of the following correctly\nrepresents metal ‘X’?\na) Sodium\nb) Sulphur\nc) Copper\nd) Silver"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 74417,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 17798,
+      "completionTokens": 3435
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 206030,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 11231,
+      "completionTokens": 4823
+    },
+    "solver": {
+      "calls": 144,
+      "ms": 87524,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 20856,
+      "completionTokens": 1357
+    },
+    "form": {
+      "calls": 9,
+      "ms": 28647,
+      "in": 20,
+      "out": 14,
+      "rejects": 6,
+      "promptTokens": 2133,
+      "completionTokens": 559
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 9486,
+      "in": 14,
+      "out": 5,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 183303,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9982,
+      "completionTokens": 4733
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about nonmetals?",
+      "ms": {
+        "draft": 3605,
+        "critique": 8587,
+        "solver": 2962,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 3605,
+        "critique": 8313,
+        "solver": 1921,
+        "form": 4185
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following elements is a metalloid?",
+      "ms": {
+        "draft": 3605,
+        "critique": 7748,
+        "solver": 1665,
+        "form": 3554
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals can be easily cut with a knife?",
+      "ms": {
+        "draft": 3605,
+        "critique": 7948,
+        "solver": 14150,
+        "form": 3117
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is true about the reactivity of metals with acids?",
+      "ms": {
+        "draft": 3605,
+        "critique": 7942,
+        "solver": 1720,
+        "form": 3571
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-metal?",
+      "ms": {
+        "draft": 3605,
+        "critique": 7193,
+        "solver": 1795,
+        "form": 4506
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the formation of a greenish deposit on copper?",
+      "ms": {
+        "draft": 2815,
+        "critique": 7811,
+        "solver": 1702
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a use of noble metals?",
+      "ms": {
+        "draft": 13802,
+        "critique": 5728,
+        "solver": 17210
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a noble metal that is used in making medals?",
+      "ms": {
+        "draft": 13802,
+        "critique": 6949,
+        "solver": 19509
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a noble metal?",
+      "ms": {
+        "draft": 2815,
+        "critique": 7152,
+        "solver": 1998,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 2815,
+        "critique": 7638,
+        "solver": 14703,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct use of noble metals?",
+      "ms": {
+        "draft": 2815,
+        "critique": 7138,
+        "solver": 879,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a nonmetal?",
+      "ms": {
+        "draft": 2815,
+        "critique": 6701,
+        "solver": 965,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a property of metals that allows them to be drawn into wires?",
+      "ms": {
+        "draft": 13802,
+        "critique": 7248,
+        "solver": 2222,
+        "form": 2781
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 3098,
+        "critique": 7913,
+        "solver": 1165,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a nonmetal?",
+      "ms": {
+        "draft": 3098,
+        "critique": 7478,
+        "solver": 2035,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following elements is a metalloid?",
+      "ms": {
+        "draft": 3098,
+        "critique": 6748,
+        "solver": 1478,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metal X reacts with dilute sulfuric acid to produce a colourless gas that burns with a 'pop' sound. What is metal X likely to be?",
+      "ms": {
+        "draft": 3098,
+        "critique": 7501,
+        "solver": 1281,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals is used to make alloys?",
+      "ms": {
+        "draft": 2815,
+        "critique": 7090,
+        "solver": 1883,
+        "form": 0,
+        "translation": 31217
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a metal that does not react with dilute acids?",
+      "ms": {
+        "draft": 13802,
+        "critique": 5755,
+        "solver": 2266,
+        "form": 6186,
+        "translation": 42149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student adds dilute sulphuric acid to a metal 'X' and observes a colourless gas that burns with a 'pop' sound. Which of the following could be metal 'X'?",
+      "ms": {
+        "draft": 13802,
+        "critique": 9739,
+        "solver": 15797,
+        "form": 2907,
+        "translation": 39138
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A metal is found to be unreactive with air and water even after long exposure. Which of the following could it be?",
+      "ms": {
+        "draft": 13802,
+        "critique": 8125,
+        "solver": 2282,
+        "form": 2235,
+        "translation": 41829
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following elements is a good conductor of electricity but is not a metal?",
+      "ms": {
+        "draft": 3098,
+        "critique": 6947,
+        "solver": 1147,
+        "form": 0,
+        "translation": 24655
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about nonmetals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for this option (it is the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following elements is a metalloid?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for this option (it is the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following metals can be easily cut with a knife?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is true about the reactivity of metals with acids?",
+      "reason": "options 0 and 2 say the same thing (\"All metals react with acids to release hydrogen gas\" / \"Most metals react with acids to release hydrogen gas\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for this option (it is the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a non-metal?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer, no reason needed for this option (it is the …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main reason for the formation of a greenish deposit on copper?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a use of noble metals?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 1 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a noble metal that is used in making medals?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following is an example of a noble metal?",
+      "reason": "near-duplicate of served question cmvf1ieal02qggod8qiog0z2x (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "near-duplicate of served question cmvf1ieae02q4god80i6yu4ul (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following is a correct use of noble metals?",
+      "reason": "near-duplicate of served question cmvg6oxau02ffgpfh0l0mumfv (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a nonmetal?",
+      "reason": "near-duplicate of served question cmvf1ieaj02qagod8sfq7a363 (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a property of metals that allows them to be drawn into wires?",
+      "reason": "near-duplicate of served question cmvg6oxb402g3gpfh8qeinr0x (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "near-duplicate of served question cmvg6oxb402g3gpfh8qeinr0x (cosine 0.903 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a nonmetal?",
+      "reason": "near-duplicate of served question cmvf1ieaj02qagod8sfq7a363 (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following elements is a metalloid?",
+      "reason": "near-duplicate of served question cmvf1ieat02ragod8i6l7o0x0 (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A metal X reacts with dilute sulfuric acid to produce a colourless gas that burns with a 'pop' sound. What is metal X likely to be?",
+      "reason": "near-duplicate of batch item \"A student adds dilute sulphuric acid to a metal 'X…\" (cosine 0.944 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T06:19:26.773Z",
+  "finishedAt": "2026-10-21T06:25:37.256Z",
+  "seconds": 370,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy303.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 3 — Latitude, Longitude and Time",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n1. c. London with Paris",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nSection E\n29 A- Northern part of Eurasia 1X5\nB- Vancouver\nC- Kolkata\nD- Jeddah\nE- Darwin\nF- Panama Canal\nG- St. Lawrence waterway\nFor Visually Impaired Candidates only\n29 A- Arabian peninsula /Mongolia/Central China\n29 B- Vancouver\n29 C- Kolkata\n29 D- Johannesburg\n29 E- Darwin\n29 F- Suez Canal\n29 G- St. Lawrence waterway\n30 Locate and label any five of the following geographical features on the 1x5\nPolitical Outline map of India with appropriate symbols:\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Bailadila iron-ore mines, Chattisgarh\nE. Jamnagar\nF. Uttar Pradesh\nG. Thiruvananthapuram\nFor visually impaired students\nAttempt any five.\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Chhatisga",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nGEOGRAPHY CODE - 029\nMARKING SCHEME\nCLASS: XII (2026- 27)\nTime allowed: 3 Hours Maximum marks: 70\nGeneral Instructions:"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 73502,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13870,
+      "completionTokens": 4860
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 129046,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 10894,
+      "completionTokens": 3994
+    },
+    "solver": {
+      "calls": 109,
+      "ms": 49559,
+      "in": 15,
+      "out": 14,
+      "rejects": 1,
+      "promptTokens": 21440,
+      "completionTokens": 1133
+    },
+    "form": {
+      "calls": 10,
+      "ms": 36122,
+      "in": 14,
+      "out": 6,
+      "rejects": 8,
+      "promptTokens": 6366,
+      "completionTokens": 1124
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 205,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 230765,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14874,
+      "completionTokens": 7379
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the shape of the Earth according to the passage?",
+      "ms": {
+        "draft": 12888,
+        "critique": 4855
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary purpose of the network of imaginary lines drawn on a globe?",
+      "ms": {
+        "draft": 12888,
+        "critique": 4808,
+        "solver": 1285,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a place is located at 45°N latitude, which direction would it be from the equator?",
+      "ms": {
+        "draft": 12888,
+        "critique": 4209,
+        "solver": 13074,
+        "form": 2390
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a place is located at 60°E longitude, which of the following is true about its position?",
+      "ms": {
+        "draft": 12888,
+        "critique": 8192,
+        "solver": 11197,
+        "form": 3465
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a place is located at 30°S latitude and 90°W longitude, what can be inferred about its position?",
+      "ms": {
+        "draft": 12888,
+        "critique": 7096,
+        "solver": 10400,
+        "form": 2952
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly describes the relationship between longitude and time?",
+      "ms": {
+        "draft": 4059,
+        "critique": 5758,
+        "solver": 1496,
+        "form": 2171
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between parallels of latitude and meridians of longitude?",
+      "ms": {
+        "draft": 12888,
+        "critique": 6167,
+        "solver": 1239,
+        "form": 3100
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the time at the Prime Meridian is 2 p.m., what would be the local time at a place located at 75°E longitude?",
+      "ms": {
+        "draft": 4059,
+        "critique": 6498,
+        "solver": 1560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the Prime Meridian?",
+      "ms": {
+        "draft": 4059,
+        "critique": 6366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what would be the local time at a place located at 120°W longitude?",
+      "ms": {
+        "draft": 4059,
+        "critique": 5798,
+        "solver": 9841,
+        "form": 2531
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the sun appears to move from east to west?",
+      "ms": {
+        "draft": 3040,
+        "critique": 4327,
+        "solver": 1075,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 10 a.m., what will be the time at a place located 45° east of the Prime Meridian?",
+      "ms": {
+        "draft": 3040,
+        "critique": 6073
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using standard time zones in a country?",
+      "ms": {
+        "draft": 3040,
+        "critique": 6498,
+        "solver": 894,
+        "form": 0,
+        "translation": 30637
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 10 a.m., what will be the time at a place located 30° west of the Prime Meridian?",
+      "ms": {
+        "draft": 3040,
+        "critique": 4660,
+        "solver": 613,
+        "form": 0,
+        "translation": 27830
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the difference in distance between two longitudes?",
+      "ms": {
+        "draft": 4059,
+        "critique": 5809,
+        "solver": 1511,
+        "form": 2791,
+        "translation": 44068
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what will be the time at a place located 15° west of the Prime Meridian?",
+      "ms": {
+        "draft": 3040,
+        "critique": 4524,
+        "solver": 12875,
+        "form": 0,
+        "translation": 33691
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the International Date Line not follow the 180° longitude exactly in some places?",
+      "ms": {
+        "draft": 4059,
+        "critique": 5242,
+        "solver": 1336,
+        "form": 4544,
+        "translation": 53744
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the International Date Line not a straight line but follows certain irregularities?",
+      "ms": {
+        "draft": 3040,
+        "critique": 7561,
+        "solver": 1466,
+        "form": 0,
+        "translation": 37392
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the shape of the Earth according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary purpose of the network of imaginary lines drawn on a globe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a place is located at 45°N latitude, which direction would it be from the equator?",
+      "reason": "figure: figure spec refused: spec.parts.1.text.earth: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a place is located at 60°E longitude, which of the following is true about its position?",
+      "reason": "options 0 and 1 say the same thing (\"It is located to the east of the Prime Meridian\" / \"It is located to the west of the Prime Meridian\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a place is located at 30°S latitude and 90°W longitude, what can be inferred about its position?",
+      "reason": "figure: figure spec refused: spec.parts: sunEarthMoon has no label \"equator\" (it has sun, earth, moon, orbit)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly describes the relationship between longitude and time?",
+      "reason": "options 0 and 2 say the same thing (\"Time decreases as we move east of the Prime Meridian\" / \"Time increases as we move east of the Prime Meridian\"); options 1 and 2 say the same thing (\"Time increases as we move west of the Prime Meridian\" / \"Time increases as we move east of the Prime Meridian\"); distractor 3's reason is not a one-line misconception (\"Correct choice, no misconception here, just the correct answ…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between parallels of latitude and meridians of longitude?",
+      "reason": "options 2 and 3 say the same thing (\"Parallels of latitude are circles, meridians are semi-circles\" / \"Parallels of latitude are semi-circles, meridians are circles\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the time at the Prime Meridian is 2 p.m., what would be the local time at a place located at 75°E longitude?",
+      "reason": "the solver picked option 2 3 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary purpose of the Prime Meridian?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what would be the local time at a place located at 120°W longitude?",
+      "reason": "options are in more than one unit (a.m., p.m.); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following best describes the shape of the Earth "
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why the sun appears to move from east to west?",
+      "reason": "options 0 and 1 say the same thing (\"The earth rotates from west to east\" / \"The earth rotates from east to west\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 10 a.m., what will be the time at a place located 45° east of the Prime Meridian?",
+      "reason": "the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

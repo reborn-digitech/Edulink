@@ -1,0 +1,666 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T02:22:28.590Z",
+  "finishedAt": "2026-10-21T02:27:22.525Z",
+  "seconds": 294,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo101.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 1 — NIT",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — question paper]\nSECTION A\nCELL BIOLOGY (7)",
+      "[INBO 2021 — question paper]\nSECTION A\nCELL BIOLOGY (5 points)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 114023,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 24159,
+      "completionTokens": 7182
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 206965,
+      "in": 34,
+      "out": 19,
+      "rejects": 15,
+      "promptTokens": 15706,
+      "completionTokens": 6392
+    },
+    "solver": {
+      "calls": 122,
+      "ms": 50857,
+      "in": 19,
+      "out": 15,
+      "rejects": 4,
+      "promptTokens": 19452,
+      "completionTokens": 1174
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8913,
+      "in": 15,
+      "out": 7,
+      "rejects": 8,
+      "promptTokens": 868,
+      "completionTokens": 275
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5654,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 206907,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15466,
+      "completionTokens": 7226
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the binomial nomenclature system?",
+      "ms": {
+        "draft": 3220,
+        "critique": 5481,
+        "solver": 1500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of biodiversity?",
+      "ms": {
+        "draft": 3220,
+        "critique": 7322,
+        "solver": 1637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a biological name indicates the specific species?",
+      "ms": {
+        "draft": 3109,
+        "critique": 5596
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a taxon at the species level?",
+      "ms": {
+        "draft": 3109,
+        "critique": 7004
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a part of the taxonomic hierarchy?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6572
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct order of taxonomic categories from highest to lowest?",
+      "ms": {
+        "draft": 3109,
+        "critique": 5104,
+        "solver": 11860,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species that have more characters in common?",
+      "ms": {
+        "draft": 3348,
+        "critique": 5084
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the biological name 'Panthera tigris', what does 'tigris' represent?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a taxonomic category that includes related genera with fewer similarities than those in a genus?",
+      "ms": {
+        "draft": 3348,
+        "critique": 5841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following taxonomic categories has the most members that share common characteristics?",
+      "ms": {
+        "draft": 3348,
+        "critique": 5329,
+        "solver": 1094
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a new organism is found and it has characteristics similar to both a lion and a tiger, which taxonomic category would it most likely share with these animals?",
+      "ms": {
+        "draft": 3348,
+        "critique": 6403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant belongs to the genus Solanum, which of the following is most likely to be a member of the same family?",
+      "ms": {
+        "draft": 3348,
+        "critique": 6261,
+        "solver": 10393,
+        "form": 3004
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist identifies a new species and wants to classify it. According to the passage, which of the following is the first step in the classification process?",
+      "ms": {
+        "draft": 3348,
+        "critique": 6880,
+        "solver": 9512
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species that have more characters in common?",
+      "ms": {
+        "draft": 3710,
+        "critique": 4276
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which taxonomic category is used to group families that exhibit a few similar characters?",
+      "ms": {
+        "draft": 3710,
+        "critique": 4304
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant belongs to the family Solanaceae, which taxonomic category would it also belong to?",
+      "ms": {
+        "draft": 3710,
+        "critique": 4451,
+        "solver": 1669
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct hierarchical order of taxonomic categories from lowest to highest?",
+      "ms": {
+        "draft": 3710,
+        "critique": 5734
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best explains why the classification becomes more complex as we move up the hierarchy?",
+      "ms": {
+        "draft": 3710,
+        "critique": 5459
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a scientist discovers a new organism and determines that it belongs to the genus Panthera, which of the following is most likely true?",
+      "ms": {
+        "draft": 3710,
+        "critique": 5011,
+        "solver": 1346,
+        "form": 4333
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a biological name is written with a capital letter?",
+      "ms": {
+        "draft": 3207,
+        "critique": 6255
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the categories in which organisms are grouped during classification?",
+      "ms": {
+        "draft": 3207,
+        "critique": 5399
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an organism is classified under the genus Panthera, which of the following could it be?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4881
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a part of the taxonomic hierarchy?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4899
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the purpose of scientific nomenclature as discussed in the passage?",
+      "ms": {
+        "draft": 3616,
+        "critique": 4575,
+        "solver": 1464,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the significance of the recognition that all living organisms are related?",
+      "ms": {
+        "draft": 3616,
+        "critique": 5298,
+        "solver": 2142
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage emphasize that scientific names must be unique and universally accepted?",
+      "ms": {
+        "draft": 3616,
+        "critique": 7241,
+        "solver": 967,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a biological name 'Canis lupus'. Which of the following is the correct classification?",
+      "ms": {
+        "draft": 3207,
+        "critique": 5787,
+        "solver": 10424,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of all living organisms?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6131,
+        "solver": 2066,
+        "form": 0,
+        "translation": 30749
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of scientific names for organisms?",
+      "ms": {
+        "draft": 3220,
+        "critique": 5736,
+        "solver": 1028,
+        "form": 0,
+        "translation": 30749
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'taxon' refer to in classification?",
+      "ms": {
+        "draft": 3109,
+        "critique": 4182,
+        "solver": 1103,
+        "form": 0,
+        "translation": 25989
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a higher taxonomic category than 'family'?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4920,
+        "solver": 1617,
+        "form": 0,
+        "translation": 19550
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an organism is described as having a nucleus, which of the following can be inferred about it?",
+      "ms": {
+        "draft": 3220,
+        "critique": 5905,
+        "solver": 1500,
+        "form": 0,
+        "translation": 46508
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the need to standardize the naming of living organisms?",
+      "ms": {
+        "draft": 3616,
+        "critique": 5523,
+        "solver": 1524,
+        "form": 1576,
+        "translation": 22305
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a new organism is found in a forest, which of the following would be the first step in identifying it?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6018,
+        "solver": 1111,
+        "form": 0,
+        "translation": 28162
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the binomial nomenclature system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of biodiversity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of a biological name indicates the specific species?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a taxon at the species level?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is not a part of the taxonomic hierarchy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the correct order of taxonomic categories from highest to lowest?",
+      "reason": "options 0 and 1 say the same thing (\"Kingdom, Class, Order, Phylum, Family, Genus, Species\" / \"Species, Genus, Family, Order, Class, Phylum, Kingdom\"); options 0 and 2 say the same thing (\"Kingdom, Class, Order, Phylum, Family, Genus, Species\" / \"Phylum, Kingdom, Class, Order, Family, Genus, Species\"); options 0 and 3 say the same thing (\"Kingdom, Class, Order, Phylum, Family, Genus, Species\" / \"Kingdom, Phylum, Class, Order, Family, Genus, Species\"); options 1 and 2 say the same thing (\"Species, Genus, Family, Order, Class, Phylum, Kingdom\" / \"Phylum, Kingdom, Class, Order, Family, Genus, Species\"); options 1 and 3 say the same thing (\"Species, Genus, Family, Order, Class, Phylum, Kingdom\" / \"Kingdom, Phylum, Class, Order, Family, Genus, Species\"); options 2 and 3 say the same thing (\"Phylum, Kingdom, Class, Order, Family, Genus, Species\" / \"Kingdom, Phylum, Class, Order, Family, Genus, Species\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species that have more characters in common?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the biological name 'Panthera tigris', what does 'tigris' represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a taxonomic category that includes related genera with fewer similarities than those in a genus?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following taxonomic categories has the most members that share common characteristics?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a new organism is found and it has characteristics similar to both a lion and a tiger, which taxonomic category would it most likely share with these animals?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant belongs to the genus Solanum, which of the following is most likely to be a member of the same family?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A scientist identifies a new species and wants to classify it. According to the passage, which of the following is the first step in the classification process?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species that have more characters in common?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which taxonomic category is used to group families that exhibit a few similar characters?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a plant belongs to the family Solanaceae, which taxonomic category would it also belong to?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct hierarchical order of taxonomic categories from lowest to highest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best explains why the classification becomes more complex as we move up the hierarchy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a scientist discovers a new organism and determines that it belongs to the genus Panthera, which of the following is most likely true?",
+      "reason": "options 2 and 3 say the same thing (\"It belongs to the same species as all other organisms in the genus Panthera.\" / \"It belongs to the same family as all other organisms in the genus Panthera.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of a biological name is written with a capital letter?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the categories in which organisms are grouped during classification?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an organism is classified under the genus Panthera, which of the following could it be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a part of the taxonomic hierarchy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the purpose of scientific nomenclature as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, what is the significance of the recognition that all living organisms are related?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage emphasize that scientific names must be unique and universally accepted?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a biological name 'Canis lupus'. Which of the following is the correct classification?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

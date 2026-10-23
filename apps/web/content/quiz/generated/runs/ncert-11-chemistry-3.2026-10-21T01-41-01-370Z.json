@@ -1,0 +1,824 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T01:41:01.370Z",
+  "finishedAt": "2026-10-21T01:49:35.428Z",
+  "seconds": 514,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech103.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 3 — Classifi Cation of El Ements and Periodicity in Properties",
+    "edition": "Reprint 2026-27",
+    "chunks": 36,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, sample question paper, 2023-24]\n12. The trend of which property is represented by the following graph?\n(a) ionization enthalpy (b) atomic radii\n(c) enthalpy of atomization (d) melting point\nFor Visually Challenged Learners\n12. Which of the following is not considered a transition element?\n(a) Scandium (b) Silver (c) Vanadium (d) Zinc",
+      "[INChO 2015 — question paper]\n10. 811 12.011 14.007 15.999 18.998 20.180\n13 14 15 16 17 18\n10 11 IB IIB 12 Aluminum Al Silicon Si Phosphorus P Sulfur S Chlorine Cl Ar Argon\n1B 2B 26.982 28.086 30.974 32.066 35.453 39.948\n28 29 30 31 32 33 34 35 36\nNickel Ni Cu Copper Zn Zinc Ga Gallium Germanium Ge As Arsenic Selenium Se Bromine Br Krypton Kr\n58.693 63.546 65.39 69.732 72.61 74.922 78.09 79.904 84.80\n46 47 48 49 50 51 52 53 54\nPalladium Pd Ag Silver Cadmium Cd Indium In Sn Tin Antimony Sb Tellurium Te Iodine I Xe Xenon\n106.42 107.868 112.411 114.818 118.71 121.760 127.6 126.904 131.29\n78 79 80 81 82 83 84 85 86\nPlatinum Pt Au Gold Hg Mercury Thallium Tl Pb Lead Bismuth Bi Polonium Po Astatine At Rn Radon\n195.08 196.967 2",
+      "[INChO 2016 — question paper]\n10. 811 12.011 14.007 15.999 18.998 20.180\n13 14 15 16 17 18\n10 11 IB IIB 12 Aluminum Al Silicon Si Phosphorus P Sulfur S Chlorine Cl Ar Argon\n1B 2B 26.982 28.086 30.974 32.066 35.453 39.948\n28 29 30 31 32 33 34 35 36\nNickel Ni Cu Copper Zn Zinc Ga Gallium Germanium Ge As Arsenic Selenium Se Bromine Br Krypton Kr\n58.693 63.546 65.39 69.732 72.61 74.922 78.09 79.904 84.80\n46 47 48 49 50 51 52 53 54\nPalladium Pd Ag Silver Cadmium Cd Indium In Sn Tin Antimony Sb Tellurium Te Iodine I Xe Xenon\n106.42 107.868 112.411 114.818 118.71 121.760 127.6 126.904 131.29\n78 79 80 81 82 83 84 85 86\nPlatinum Pt Au Gold Hg Mercury Thallium Tl Pb Lead Bismuth Bi Polonium Po Astatine At Rn Radon\n195.08 196.967 2",
+      "[INChO 2016 — question paper]\n6. 941 9.012\n11 12\nNa Sodium Magnesium Mg IIIB 3 IVB 4 VB 5 VIB 6 VIIB 7 8 VIII 9\n22.990 24.305 3B 4B 5B 6B 7B 8\n19 20 21 22 23 24 25 26 27\nPotassium K Ca Calcium Scandium Sc Titanium Ti Vanadium V Chromium Cr Manganese Mn Fe Iron Co Cobalt\n39.098 40.078 44.956 47.88 50.942 51.996 54.938 55.933 58.933\n37 38 39 40 41 42 43 44 45\nRubidium Rb Strontium Sr Yttrium Y Zirconium Zr Niobium Nb Molybdenum Mo Technetium Tc Ruthenium Ru Rhodium Rh\n84.468 87.62 88.906 91.224 92.906 95.94 98.907 101.07 102.906\n55 56 57-71 72 73 74 75 76 77\nCs Cesium Ba Barium Hafnium Hf Tantalum Ta Tungsten W Rhenium Re Osmium Os Iridium Ir\n132.905 137.327 178.49 180.948 183.85 186.207 190.23 192.22\n87 88 89-103 104 105 "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 142542,
+      "in": 44,
+      "out": 44,
+      "rejects": 0,
+      "promptTokens": 56673,
+      "completionTokens": 9015
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 281180,
+      "in": 44,
+      "out": 30,
+      "rejects": 14,
+      "promptTokens": 24158,
+      "completionTokens": 9519
+    },
+    "solver": {
+      "calls": 213,
+      "ms": 88508,
+      "in": 30,
+      "out": 22,
+      "rejects": 8,
+      "promptTokens": 38374,
+      "completionTokens": 2260
+    },
+    "form": {
+      "calls": 15,
+      "ms": 36167,
+      "in": 22,
+      "out": 11,
+      "rejects": 11,
+      "promptTokens": 3860,
+      "completionTokens": 1166
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3139,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 404210,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 28106,
+      "completionTokens": 14284
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 2,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the significance of the periodic table?",
+      "ms": {
+        "draft": 3082,
+        "critique": 4333,
+        "solver": 1230,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for classifying elements?",
+      "ms": {
+        "draft": 3082,
+        "critique": 4333,
+        "solver": 2131,
+        "form": 1983
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following would be the most logical conclusion about the development of the periodic table?",
+      "ms": {
+        "draft": 3082,
+        "critique": 4523,
+        "solver": 1095,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a new element is discovered and placed in the periodic table, which of the following would most likely be true?",
+      "ms": {
+        "draft": 3082,
+        "critique": 5280,
+        "solver": 1393,
+        "form": 3076
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Mendeleev's Periodic Table was based on the periodicity of which property of elements?",
+      "ms": {
+        "draft": 2910,
+        "critique": 5291
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements about the Modern Periodic Law is true based on the passage?",
+      "ms": {
+        "draft": 2910,
+        "critique": 4989
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did Mendeleev leave gaps in his Periodic Table?",
+      "ms": {
+        "draft": 2910,
+        "critique": 5137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the significance of the modern Periodic Table?",
+      "ms": {
+        "draft": 2910,
+        "critique": 5030
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which element was predicted by Mendeleev but was not known at the time of his table's publication?",
+      "ms": {
+        "draft": 2910,
+        "critique": 4723,
+        "solver": 8363
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why was there a need to modify Mendeleev's Periodic Law?",
+      "ms": {
+        "draft": 2910,
+        "critique": 4705
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the IUPAC name of the element with atomic number 120?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5441,
+        "solver": 1383
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements best justifies the presence of 18 elements in the 5th period?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5234,
+        "solver": 1928,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What would be the IUPAC name of the element with atomic number 119?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5933,
+        "solver": 1444
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the IUPAC symbol for the element with atomic number 120?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5038,
+        "solver": 1356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which block of elements is characterised by the filling of inner d orbitals with electrons?",
+      "ms": {
+        "draft": 3445,
+        "critique": 5261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which group of elements would an element with atomic number 117 belong to?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6781
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is hydrogen placed separately in the periodic table according to the passage?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6590,
+        "solver": 864
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an exception to the classification of elements into s-, p-, d-, and f-blocks?",
+      "ms": {
+        "draft": 3445,
+        "critique": 5025,
+        "solver": 13542
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following statements is true about the size of a cation compared to its parent atom?",
+      "ms": {
+        "draft": 3977,
+        "critique": 4425,
+        "solver": 8483,
+        "form": 2231
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following elements is a metalloid?",
+      "ms": {
+        "draft": 3657,
+        "critique": 4801,
+        "solver": 10886,
+        "form": 1417
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reason for the decrease in ionization enthalpy down a group?",
+      "ms": {
+        "draft": 3593,
+        "critique": 4889
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is likely to have a more negative electron gain enthalpy?",
+      "ms": {
+        "draft": 3593,
+        "critique": 6900
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the second ionization enthalpy of sodium higher than that of magnesium?",
+      "ms": {
+        "draft": 3593,
+        "critique": 5740
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about isoelectronic species?",
+      "ms": {
+        "draft": 3593,
+        "critique": 4646,
+        "solver": 8972,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following elements would have the highest ionization enthalpy?",
+      "ms": {
+        "draft": 3593,
+        "critique": 8149,
+        "solver": 1564
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of elements shows a periodic trend according to the passage?",
+      "ms": {
+        "draft": 2521,
+        "critique": 6409
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about periodic trends?",
+      "ms": {
+        "draft": 2521,
+        "critique": 5425,
+        "solver": 838,
+        "form": 2713
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the basic difference between electron gain enthalpy and electronegativity?",
+      "ms": {
+        "draft": 3593,
+        "critique": 6329,
+        "solver": 13595,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an element is placed in the third period and seventeenth group of the periodic table, what is its atomic number?",
+      "ms": {
+        "draft": 2521,
+        "critique": 6664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following elements is a transition metal?",
+      "ms": {
+        "draft": 2521,
+        "critique": 6779,
+        "solver": 13086,
+        "form": 2048
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a measure of the ease with which an atom adds an electron to form an anion?",
+      "ms": {
+        "draft": 23252,
+        "critique": 5222
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following elements would have the most negative electron gain enthalpy?",
+      "ms": {
+        "draft": 23252,
+        "critique": 4830
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following will have the largest size?",
+      "ms": {
+        "draft": 45448,
+        "critique": 4061,
+        "solver": 604
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main basis of the modern periodic classification?",
+      "ms": {
+        "draft": 3082,
+        "critique": 4617,
+        "solver": 1550,
+        "form": 1977,
+        "translation": 28157
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following correctly describes the valence of an element?",
+      "ms": {
+        "draft": 3207,
+        "critique": 5946,
+        "solver": 1188,
+        "form": 2300,
+        "translation": 42911
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the law of octaves state about elements?",
+      "ms": {
+        "draft": 3082,
+        "critique": 3926,
+        "solver": 1128,
+        "form": 3106,
+        "translation": 42345
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which group of the periodic table would you find an element with atomic number 114?",
+      "ms": {
+        "draft": 2521,
+        "critique": 7235,
+        "solver": 12499,
+        "form": 3259,
+        "translation": 39925
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many elements are present in the 5th period of the Periodic Table?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5566,
+        "solver": 9749,
+        "form": 0,
+        "translation": 38154
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the formula of the compound formed between silicon and bromine?",
+      "ms": {
+        "draft": 3207,
+        "critique": 6183,
+        "solver": 1285,
+        "form": 2334,
+        "translation": 22281
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the formula of the compound formed between aluminium and sulphur?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4860,
+        "solver": 1448,
+        "form": 2566,
+        "translation": 25510
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the chemical reactivity of elements?",
+      "ms": {
+        "draft": 3207,
+        "critique": 6051,
+        "solver": 1123,
+        "form": 2311,
+        "translation": 35039
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does lithium show anomalous properties compared to other alkali metals?",
+      "ms": {
+        "draft": 3207,
+        "critique": 5482,
+        "solver": 1185,
+        "form": 3232,
+        "translation": 34544
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do elements in the same group have similar physical and chemical properties?",
+      "ms": {
+        "draft": 2521,
+        "critique": 5989,
+        "solver": 912,
+        "form": 2537,
+        "translation": 36535
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the IUPAC nomenclature for elements with atomic number above 100 based on the atomic number?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5659,
+        "solver": 1214,
+        "form": 0,
+        "translation": 55634
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the significance of the periodic table?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's description of the periodic tab…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a reason for classifying elements?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's point about studying elements in…\"); distractor 3's reason is not a one-line misconception (\"The correct option is not the longest and is phrased directl…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following would be the most logical conclusion about the development of the periodic table?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a new element is discovered and placed in the periodic table, which of the following would most likely be true?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Contradicts the passage's description of periodic trends…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Mendeleev's Periodic Table was based on the periodicity of which property of elements?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following statements about the Modern Periodic Law is true based on the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why did Mendeleev leave gaps in his Periodic Table?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "According to the passage, what is the significance of the modern Periodic Table?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, which element was predicted by Mendeleev but was not known at the time of his table's publication?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Why was there a need to modify Mendeleev's Periodic Law?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the IUPAC name of the element with atomic number 120?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements best justifies the presence of 18 elements in the 5th period?",
+      "reason": "options 1 and 2 say the same thing (\"The 5th period contains the 5s, 4d, and 5p orbitals.\" / \"The 5th period contains the 5s, 5d, and 5p orbitals.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What would be the IUPAC name of the element with atomic number 119?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the IUPAC symbol for the element with atomic number 120?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which block of elements is characterised by the filling of inner d orbitals with electrons?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which group of elements would an element with atomic number 117 belong to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is hydrogen placed separately in the periodic table according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an exception to the classification of elements into s-, p-, d-, and f-blocks?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following statements is true about the size of a cation compared to its parent atom?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following elements is a metalloid?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the reason for the decrease in ionization enthalpy down a group?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is likely to have a more negative electron gain enthalpy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the second ionization enthalpy of sodium higher than that of magnesium?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about isoelectronic species?",
+      "reason": "options 0 and 1 say the same thing (\"Species with different atomic numbers but same number of electrons\" / \"Species with same atomic number but different number of electrons\"); options 0 and 2 say the same thing (\"Species with different atomic numbers but same number of electrons\" / \"Species with same number of electrons but different atomic numbers\"); options 1 and 2 say the same thing (\"Species with same atomic number but different number of electrons\" / \"Species with same number of electrons but different atomic numbers\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following elements would have the highest ionization enthalpy?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which property of elements shows a periodic trend according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about periodic trends?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Contradicts the passage's statement about atomic radii…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the basic difference between electron gain enthalpy and electronegativity?",
+      "reason": "options 0 and 3 say the same thing (\"Electron gain enthalpy is the energy released when an electron is added, while electronegativity is the ability to attract electrons in a bond\" / \"Electron gain enthalpy is the energy released when an electron is added, while electronegativity is the ability to repel electrons in a bond\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If an element is placed in the third period and seventeenth group of the periodic table, what is its atomic number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following elements is a transition metal?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a measure of the ease with which an atom adds an electron to form an anion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following elements would have the most negative electron gain enthalpy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following will have the largest size?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

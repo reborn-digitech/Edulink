@@ -1,0 +1,667 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T16:33:19.220Z",
+  "finishedAt": "2026-10-21T16:42:23.034Z",
+  "seconds": 544,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo109.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 9 — Biotechnology : Principles and Processes",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n20. Anyone who can use/modify any living organism or their products using 2\ntechnology is considered to be a biotechnologist. (1)\nThus, cheese maker can be a biotechnologist as he uses microbes like\nbacteria, fungi to make cheese for commercial purpose (1)\nOR\nSelection of recombinants due to inactivation of antibiotics is a cumbersome\nprocedure because it requires simultaneous plating on two plates having\ndifferent antibiotics. (1)\nIn insertional inactivation method, insertion of recombinant DNA within the\ncoding sequence of the enzyme beta galactosidase results into inactivation of\nthis enzyme and the colonies do not produce any colour. The presence of a\nchromogenic substrate gives blue col",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n20. Attempt either option A or B. 2\nA. A cheese maker claims to be a biotechnologist. How will you\nsupport the same?\nOR\nB. Why does the 'insertional inactivation' method to detect\nrecombinant DNA is preferred to 'antibiotic resistance' procedure?",
+      "[CBSE Class XII Biology, sample question paper, 2024-25]\n32. Attempt either option A or B. 5\nA. Explain how advent of biotechnology has helped in preventing\ninfestation by nematodes and thereby increasing crop yield.\nOR\nB. In the future, genetic therapies may be used to prevent, treat, or cure\ncertain inherited disorders in humans. Justify the statement with a\nsuitable example.",
+      "[CBSE Class XII Biology, marking scheme, 2023-24]\nc) The Bt-toxin gene is cloned and inserted into the plant genome by recombinant\nDNA technology. These genetically modified (GM) plants express the Bt-toxin genes and\nbecome pest-resistant. [1]\nOR\na) (i) Functional enzyme lipase is given to the patient by injection. [0.5]\n(ii) This procedure is not completely curative. [0.5]\nb)\n The disease can be treated by using Gene therapy. [0.5]\n Gene therapy is a collection of methods that allows correction of a gene defect that has\nbeen diagnosed in a child/embryo. [0.5]\n Here genes are inserted into a person’s cells and tissues to treat a disease. Correction of\na genetic defect involves delivery of a normal gene into the individual or embryo\nto ta"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 134007,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 34941,
+      "completionTokens": 7583
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 267081,
+      "in": 36,
+      "out": 27,
+      "rejects": 9,
+      "promptTokens": 19277,
+      "completionTokens": 7260
+    },
+    "solver": {
+      "calls": 184,
+      "ms": 94193,
+      "in": 27,
+      "out": 25,
+      "rejects": 2,
+      "promptTokens": 31976,
+      "completionTokens": 1928
+    },
+    "form": {
+      "calls": 10,
+      "ms": 28549,
+      "in": 25,
+      "out": 19,
+      "rejects": 6,
+      "promptTokens": 2616,
+      "completionTokens": 761
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 4771,
+      "in": 19,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 73,
+      "ms": 797610,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 46505,
+      "completionTokens": 24693
+    }
+  },
+  "kept": 18,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 9,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main advantage of genetic engineering over traditional hybridisation?",
+      "ms": {
+        "draft": 2920,
+        "critique": 5235,
+        "solver": 1375,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of biotechnology as defined in the passage?",
+      "ms": {
+        "draft": 2920,
+        "critique": 5536,
+        "solver": 2098,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A scientist uses two different restriction enzymes to cut a DNA fragment. The resulting fragments have different sticky ends. What will happen when these fragments are joined together using DNA ligase?",
+      "ms": {
+        "draft": 3554,
+        "critique": 7343
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A scientist wants to create a recombinant DNA molecule that can replicate in a bacterial host. Which of the following must be included in the DNA molecule?",
+      "ms": {
+        "draft": 3554,
+        "critique": 7137,
+        "solver": 15615,
+        "form": 2550
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes how restriction enzymes cut DNA at specific recognition sequences. What is the term used to describe these specific sequences?",
+      "ms": {
+        "draft": 3554,
+        "critique": 6239,
+        "solver": 1334,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of a cloning vector that allows it to replicate independently within a host cell?",
+      "ms": {
+        "draft": 5068,
+        "critique": 6306
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a foreign DNA is inserted into the tetracycline resistance gene of a plasmid, what is the likely outcome for the transformed bacteria?",
+      "ms": {
+        "draft": 5068,
+        "critique": 6385
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a gel electrophoresis experiment, a DNA sample was loaded at one end of the gel. After staining with ethidium bromide and exposing to UV light, the DNA fragments were visualised as bands. Which end of the gel would have the smallest DNA fragments?",
+      "ms": {
+        "draft": 5068,
+        "critique": 6458
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A scientist uses a plasmid with a lacZ gene that allows bacteria to produce β-galactosidase. When a foreign DNA is inserted into the lacZ gene, the bacteria do not produce a blue colour when exposed to a chromogenic substrate. What does this indicate?",
+      "ms": {
+        "draft": 5068,
+        "critique": 6308
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A biotechnologist wants to create a recombinant DNA by inserting a gene of interest into a plasmid. However, the plasmid has multiple restriction sites. What problem might arise from this?",
+      "ms": {
+        "draft": 5068,
+        "critique": 6619,
+        "solver": 16514
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a molecule that can carry foreign DNA into a host cell?",
+      "ms": {
+        "draft": 3893,
+        "critique": 7720,
+        "solver": 11133,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method used to introduce recombinant DNA into a host cell?",
+      "ms": {
+        "draft": 3893,
+        "critique": 8806,
+        "solver": 11617,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of making bacterial cells 'competent' in biotechnology?",
+      "ms": {
+        "draft": 3389,
+        "critique": 8185
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following methods is used to introduce DNA into animal cells?",
+      "ms": {
+        "draft": 3389,
+        "critique": 7785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the ampicillin resistance gene in recombinant DNA technology?",
+      "ms": {
+        "draft": 3389,
+        "critique": 5504
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the 'insertional inactivation' method preferred over the 'antibiotic resistance' method for detecting recombinant DNA?",
+      "ms": {
+        "draft": 3389,
+        "critique": 6141
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the 'insertional inactivation' method preferred over the 'antibiotic resistance' procedure for detecting recombinant DNA?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6078,
+        "solver": 2402
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of a bioreactor in biotechnology?",
+      "ms": {
+        "draft": 3226,
+        "critique": 5448,
+        "solver": 2733,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of using bioreactors in biotechnology?",
+      "ms": {
+        "draft": 3413,
+        "critique": 6055,
+        "solver": 11695,
+        "form": 0,
+        "translation": 42407
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a protein produced by a foreign gene in a host organism?",
+      "ms": {
+        "draft": 3413,
+        "critique": 7218,
+        "solver": 1388,
+        "form": 0,
+        "translation": 37538
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of a cloning vector?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6455,
+        "solver": 1236,
+        "form": 3013,
+        "translation": 30685
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of a bioreactor in the production of a protein?",
+      "ms": {
+        "draft": 3413,
+        "critique": 5266,
+        "solver": 796,
+        "form": 0,
+        "translation": 51002
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of restriction enzymes in biotechnology?",
+      "ms": {
+        "draft": 3226,
+        "critique": 6518,
+        "solver": 1667,
+        "form": 0,
+        "translation": 37415
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are bacteria made 'competent' before introducing recombinant DNA into them?",
+      "ms": {
+        "draft": 3893,
+        "critique": 6477,
+        "solver": 11195,
+        "form": 0,
+        "translation": 44576
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a piece of DNA is transferred into an alien organism, what must happen for it to be replicated?",
+      "ms": {
+        "draft": 2920,
+        "critique": 4532,
+        "solver": 1527,
+        "form": 4239,
+        "translation": 47644
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it important to grow cells in a continuous culture system in biotechnology?",
+      "ms": {
+        "draft": 3226,
+        "critique": 4903,
+        "solver": 1794,
+        "form": 0,
+        "translation": 46416
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which enzyme is used to join two DNA fragments together during the formation of recombinant DNA?",
+      "ms": {
+        "draft": 3554,
+        "critique": 6185,
+        "solver": 2009,
+        "form": 3506,
+        "translation": 34973
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes downstream processing in biotechnology?",
+      "ms": {
+        "draft": 3226,
+        "critique": 5366,
+        "solver": 1920,
+        "form": 0,
+        "translation": 51050
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A biotechnologist wants to insert a gene for antibiotic resistance into a plasmid. The plasmid is then introduced into a bacterial host. Which of the following best describes the purpose of this process?",
+      "ms": {
+        "draft": 3554,
+        "critique": 6638,
+        "solver": 1528,
+        "form": 3583,
+        "translation": 53357
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the colonies when the β-galactosidase gene is inactivated by insertional inactivation?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6563,
+        "solver": 1494,
+        "form": 2737,
+        "translation": 33751
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A scientist claims that they have created a new method to make a plant resistant to pests using biotechnology. Which of the following would best support this claim?",
+      "ms": {
+        "draft": 2920,
+        "critique": 6487,
+        "solver": 1948,
+        "form": 2156,
+        "translation": 42932
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why biotechnology is considered to have an anthropocentric approach?",
+      "ms": {
+        "draft": 2920,
+        "critique": 5932,
+        "solver": 1521,
+        "form": 2341,
+        "translation": 45477
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A company claims to use biotechnology to produce a new enzyme for industrial use. Which of the following is most likely to be a key step in their process?",
+      "ms": {
+        "draft": 3226,
+        "critique": 7809,
+        "solver": 1098,
+        "form": 0,
+        "translation": 46695
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a task to create a recombinant DNA molecule that can replicate in a bacterial host. They decide to use a plasmid without an origin of replication. What will happen to the recombinant DNA in the host?",
+      "ms": {
+        "draft": 3554,
+        "critique": 6268,
+        "solver": 1673,
+        "form": 3492,
+        "translation": 55435
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a piece of DNA is not integrated into the genome of a recipient organism, what is the most likely outcome?",
+      "ms": {
+        "draft": 2920,
+        "critique": 5156,
+        "solver": 1234,
+        "form": 4486,
+        "translation": 47144
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a biotechnology experiment, a student notices that the culture in the bioreactor is not producing the desired protein. What is the most likely cause of this issue?",
+      "ms": {
+        "draft": 3226,
+        "critique": 7790,
+        "solver": 14702,
+        "form": 1,
+        "translation": 43944
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a biotechnology experiment, a scientist wants to select bacteria that have taken up a recombinant plasmid. Which of the following media would be most suitable for this purpose?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main advantage of genetic engineering over traditional hybridisation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (50 vs 26 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of biotechnology as defined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A scientist uses two different restriction enzymes to cut a DNA fragment. The resulting fragments have different sticky ends. What will happen when these fragments are joined together using DNA ligase?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A scientist wants to create a recombinant DNA molecule that can replicate in a bacterial host. Which of the following must be included in the DNA molecule?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes how restriction enzymes cut DNA at specific recognition sequences. What is the term used to describe these specific sequences?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a feature of a cloning vector that allows it to replicate independently within a host cell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a foreign DNA is inserted into the tetracycline resistance gene of a plasmid, what is the likely outcome for the transformed bacteria?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a gel electrophoresis experiment, a DNA sample was loaded at one end of the gel. After staining with ethidium bromide and exposing to UV light, the DNA fragments were visualised as bands. Which end of the gel would have the smallest DNA fragments?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A scientist uses a plasmid with a lacZ gene that allows bacteria to produce β-galactosidase. When a foreign DNA is inserted into the lacZ gene, the bacteria do not produce a blue colour when exposed to a chromogenic substrate. What does this indicate?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A biotechnologist wants to create a recombinant DNA by inserting a gene of interest into a plasmid. However, the plasmid has multiple restriction sites. What problem might arise from this?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for a molecule that can carry foreign DNA into a host cell?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses function of restriction enzyme with vector's role (…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method used to introduce recombinant DNA into a host cell?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses gel electrophoresis with method of introduction, wh…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of making bacterial cells 'competent' in biotechnology?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following methods is used to introduce DNA into animal cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the role of the ampicillin resistance gene in recombinant DNA technology?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the 'insertional inactivation' method preferred over the 'antibiotic resistance' method for detecting recombinant DNA?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the 'insertional inactivation' method preferred over the 'antibiotic resistance' procedure for detecting recombinant DNA?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the primary purpose of a bioreactor in biotechnology?",
+      "reason": "near-duplicate of batch item \"What is the main purpose of using bioreactors in b…\" (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

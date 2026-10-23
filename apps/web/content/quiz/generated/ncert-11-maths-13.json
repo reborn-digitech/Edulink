@@ -1,0 +1,586 @@
+{
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 13 — Statistics",
+  "name": "Statistics",
+  "slug": "maths-11-statistics",
+  "summary": "This chapter teaches how to calculate mean, variance, and standard deviation of data sets.",
+  "position": 13,
+  "source": "generated against NCERT Mathematics, Class 11, chapter 13 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 13 — सांख्यिकी",
+      "summary": "इस अध्याय में डेटा सेट के माध्य, विचलन और मानक विचलन की गणना सीखा जाता है।"
+    },
+    "mr": {
+      "name": "अध्याय 13 — सांख्यिकी",
+      "summary": "हे अध्याय डेटा सेट च्या माध्य, विचलन आणि मानक विचलन गणना करण्याचे शिकवते."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-23T04:06:23.987Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 2,
+      "stem": "What is the primary purpose of using the step-deviation method?",
+      "choices": [
+        "To simplify calculations by reducing the size of the observations",
+        "To increase the complexity of the calculations",
+        "To avoid calculating the mean",
+        "To calculate the median instead of the mean"
+      ],
+      "answerIndex": 0,
+      "solution": "The step-deviation method is used to simplify calculations by reducing the size of the observations, making multiplication and other operations easier. The other options contradict the purpose of the method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "स्टेप-विचलन विधि का प्राथमिक उद्देश्य क्या है?",
+          "choices": [
+            "अवलोकनों के आकार को कम करके गणना को सरल बनाना",
+            "गणना की जटिलता बढ़ाना",
+            "माध्य की गणना से बचना",
+            "माध्य के स्थान पर माध्यिका की गणना करना"
+          ],
+          "solution": "स्टेप-विचलन विधि का उद्देश्य अवलोकनों के आकार को कम करके गणना को सरल बनाना है, जिससे गुणन आदि अन्य संक्रियाएं सरल हो जाती हैं। अन्य विकल्प विधि के उद्देश्य के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुख्य उद्देश वापरण्याचा चरण-विचलन पद्धतीचा काय आहे?",
+          "choices": [
+            "अवलोकनांच्या आकाराला लहान करून गणना सोपी करणे",
+            "गणना अधिक जटिल करणे",
+            "माध्याची गणना टाळणे",
+            "माध्याऐवजी मध्यमानाची गणना करणे"
+          ],
+          "solution": "चरण-विचलन पद्धती अवलोकनांच्या आकाराला लहान करून गणना सोपी करण्यासाठी वापरली जाते, जेणेकरून गुणाकार आणि इतर क्रियांना सोपे केले जाऊ शकेल. इतर विकल्प पद्धतीच्या उद्देशाशी विरोधात आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly believes the method increases complexity",
+        "incorrectly believes the method avoids calculating the mean",
+        "incorrectly believes the method calculates the median"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as the step-deviation method is indeed used to simplify calculations by reducing the size of the observations. The other options represent common misconceptions about the method.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:06:23.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following statements is true about mean deviation?",
+      "choices": [
+        "It can be subjected to further algebraic treatment",
+        "It is based on absolute values of deviations",
+        "It is always less than the standard deviation",
+        "It is calculated using squared deviations"
+      ],
+      "answerIndex": 1,
+      "solution": "Mean deviation is based on the absolute values of deviations, which makes it different from standard deviation. This characteristic means it cannot be easily used in further algebraic calculations. The other options are incorrect because mean deviation does not use squared deviations and is not always less than standard deviation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन माध्य विचलन के बारे में सही है?",
+          "choices": [
+            "इसे आगे के बीजगणितीय उपचार के लिए उपयोग किया जा सकता है",
+            "इसकी गणना विचलन के निरपेक्ष मानों पर आधारित होती है",
+            "इसका मान सामान्य विचलन से हमेशा कम होता है",
+            "इसकी गणना वर्गीकृत विचलनों के उपयोग से की जाती है"
+          ],
+          "solution": "माध्य विचलन विचलन के निरपेक्ष मानों पर आधारित होता है, जिससे यह मानक विचलन से अलग हो जाता है। इस विशेषता के कारण इसका आगे के बीजगणितीय उपचार में उपयोग आसान नहीं होता है। अन्य विकल्प गलत हैं क्योंकि माध्य विचलन वर्गीकृत विचलनों का उपयोग नहीं करता है और मानक विचलन से हमेशा कम नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate statistical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान मध्यम विचलन बद्दल खरा आहे?",
+          "choices": [
+            "त्याला आगातल्या बीजगणितीय उपचारांचा विषय केले जाऊ शकते",
+            "ते विचलनांच्या निरपेक्ष मूल्यांवर आधारित आहे",
+            "ते विचलनाच्या मानकापेक्षा नेहमी कमी असते",
+            "ते वर्गीकृत विचलनांचा वापर करून गणले जाते"
+          ],
+          "solution": "मध्यम विचलन विचलनांच्या निरपेक्ष मूल्यांवर आधारित असते, ज्यामुळे ते मानक विचलनापासून भिन्न असते. ही वैशिष्ट्ये त्याला आगातल्या बीजगणितीय उपचारांसाठी उपयुक्त करत नाही. इतर विकल्प चुकीचे आहेत कारण मध्यम विचलन वर्गीकृत विचलनांचा वापर करत नाही आणि मानक विचलनापेक्षा नेहमी कमी असत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses mean deviation with standard deviation",
+        null,
+        "students confuse mean deviation with standard deviation and think it's always smaller",
+        "Misunderstands the properties of mean deviation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as mean deviation is indeed based on absolute values of deviations. The other options are incorrect: mean deviation cannot be subjected to algebraic treatment due to absolute values, it is not always less than standard deviation, and it does not use squared deviations.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:06:23.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following statements is true regarding the mean of a population?",
+      "choices": [
+        "It is denoted by x̄",
+        "It is a statistic",
+        "Both I and II",
+        "Neither I nor II"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is neither I nor II. The mean of a population is denoted by μ, not x̄. The population mean is a parameter, not a statistic. Therefore, neither statement is true.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन जनसंख्या के माध्य के संबंध में सही है?",
+          "choices": [
+            "इसे x̄ द्वारा निरूपित किया जाता है",
+            "यह एक सांख्यिकी है",
+            "I और II दोनों",
+            "न तो I न ही II"
+          ],
+          "solution": "सही उत्तर न तो I न ही II है। जनसंख्या के माध्य को μ द्वारा निरूपित किया जाता है, x̄ नहीं। जनसंख्या के माध्य के अनुमान के बजाय एक पैरामीटर है। इसलिए, कोई भी कथन सही नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate statistical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान लोकसंख्येच्या माध्याबद्दल खरा आहे?",
+          "choices": [
+            "त्याला x̄ ने दर्शविले जाते",
+            "तो एक सांख्यिकी आहे",
+            "I आणि II दोन्ही",
+            "I किंवा II नाही"
+          ],
+          "solution": "बरोबर उत्तर निर्दिष्ट करा. लोकसंख्येच्या माध्याला μ ने दर्शविले जाते, x̄ नाही. लोकसंख्येच्या माध्याला एक अंकडा म्हणतात, सांख्यिकी नाही. त्यामुळे, कोणतेही विधान खरे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi statistical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses population mean with a statistic",
+        "Incorrectly states it is a statistic",
+        "Incorrectly combines both statements",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The population mean is denoted by μ, not x̄, and it is a parameter, not a statistic. The author's reasoning aligns with standard statistical definitions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "(x − x)"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 11,
+          "pageStart": 20,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "(x − x)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:06:23.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best describes the role of statistics in society?",
+      "choices": [
+        "Statistics is a tool for analyzing data in political states.",
+        "Statistics is used to understand patterns in human civilization.",
+        "Statistics is a modern concept developed in the 17th century.",
+        "Statistics is used for administrative purposes only."
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Statistics is used to understand patterns in human civilization'. Statistics helps identify trends and regularities in large sets of data, which is essential for understanding societal behaviors and developments. Other options are incorrect because they limit statistics to specific contexts like politics, modern times, or administration, whereas statistics applies broadly across many areas of human activity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा सांख्यिकी के भूमिका को समाज में सबसे अच्छा वर्णित करता है?",
+          "choices": [
+            "सांख्यिकी राज्यों में डेटा के विश्लेषण के लिए एक उपकरण है।",
+            "सांख्यिकी मानव सभ्यता में पैटर्न को समझने के लिए उपयोग किया जाता है।",
+            "सांख्यिकी एक आधुनिक अवधारणा है जो 17वीं शताब्दी में विकसित हुई।",
+            "सांख्यिकी केवल प्रशासनिक उद्देश्यों के लिए उपयोग किया जाता है।"
+          ],
+          "solution": "सही उत्तर 'सांख्यिकी मानव सभ्यता में पैटर्न को समझने के लिए उपयोग किया जाता है' है। सांख्यिकी बड़े डेटा सेट में त्रुटियों और नियमितताओं की पहचान में मदद करता है, जो सामाजिक व्यवहार और विकास को समझने के लिए आवश्यक है। अन्य विकल्प गलत हैं क्योंकि वे सांख्यिकी को राजनीति, आधुनिक समय या प्रशासन के विशिष्ट संदर्भ में सीमित कर देते हैं, जबकि सांख्यिकी मानव गतिविधि के कई क्षेत्रों में व्यापक रूप से लागू होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer is in the same position (option 2), and the distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते समाजातील सांख्यिकीच्या भूमिकेचे उत्तम वर्णन करते?",
+          "choices": [
+            "सांख्यिकी ही राजकीय राष्ट्रांमध्ये डेटा विश्लेषित करण्यासाठी एक साधन आहे.",
+            "सांख्यिकी ही मानव संस्कृतीतील पॅटर्न समजून घेण्यासाठी वापरली जाते.",
+            "सांख्यिकी ही 17 व्या शतकात विकसित झालेली आधुनिक अवधारणा आहे.",
+            "सांख्यिकी ही केवळ प्रशासकीय उद्देशांसाठी वापरली जाते."
+          ],
+          "solution": "बरोबर उत्तर 'सांख्यिकी ही मानव संस्कृतीतील पॅटर्न समजून घेण्यासाठी वापरली जाते.' सांख्यिकी मोठ्या डेटा सेटमध्ये ट्रेंड आणि नियमितता ओळखण्यास मदत करते, जे समाजातील वर्तन आणि विकास समजून घेण्यासाठी आवश्यक आहे. इतर विकल्प राजकारण, आधुनिक काळ किंवा प्रशासन या विशिष्ट संदर्भांमध्ये सांख्यिकीला सीमित करतात, जेव्हा सांख्यिकी मानवी क्रियाकलापांच्या बर्याच क्षेत्रांमध्ये विस्तृतपणे लागू होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes statistics is only used by governments for political control",
+        null,
+        "Too narrow in scope and not the best description.",
+        "Incorrect as statistics is not a modern concept."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as it best captures the broad role of statistics in understanding human civilization. The other options reflect misconceptions or overly narrow interpretations.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 15,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "(x − x)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:06:23.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a data set, the mean is 10 and the mean deviation about the mean is 3. If the data set is transformed by adding 5 to each value, what will be the new mean deviation about the mean?",
+      "choices": [
+        "3",
+        "8",
+        "10",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "Adding a constant to each value in a data set shifts the mean by the same constant, but the deviations from the mean remain the same. Therefore, the mean deviation about the mean will remain unchanged at 3. The other options incorrectly assume that the mean deviation changes with the mean or that the transformation affects the spread of the data in a different way.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक डेटा सेट में माध्य 10 है और माध्य के सापेक्ष माध्य विचलन 3 है। यदि डेटा सेट में प्रत्येक मान में 5 जोड़ा जाता है तो माध्य के सापेक्ष नया माध्य विचलन क्या होगा?",
+          "choices": [
+            "3",
+            "8",
+            "10",
+            "15"
+          ],
+          "solution": "प्रत्येक मान में एक नियतांक जोड़ने से डेटा सेट का माध्य उसी नियतांक द्वारा स्थानांतरित हो जाता है, लेकिन माध्य के सापेक्ष विचलन समान रहते हैं। इसलिए माध्य के सापेक्ष माध्य विचलन 3 पर अपरिवर्तित रहेगा। अन्य विकल्प गलत तरीके से माध्य विचलन के माध्य के साथ परिवर्तन की कल्पना करते हैं या यह मान लेते हैं कि रूपांतरण डेटा के बिखराव को अलग तरीके से प्रभावित करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate statistical terminology common in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "माहितीच्या एका सेटमध्ये माध्य 10 आहे आणि माध्याच्या आजूबाजूचे माध्य विचलन 3 आहे. जर माहितीच्या सेटमध्ये प्रत्येक मूल्याला 5 मिळवले जाते, तर माध्याच्या आजूबाजूचे नवीन माध्य विचलन काय असेल?",
+          "choices": [
+            "3",
+            "8",
+            "10",
+            "15"
+          ],
+          "solution": "माहितीच्या सेटमध्ये प्रत्येक मूल्याला एक स्थिरांक जोडल्याने माध्य त्या स्थिरांकने स्थानांतरित होतो, परंतु माध्यापासूनचे विचलन समान राहतात. त्यामुळे माध्याच्या आजूबाजूचे माध्य विचलन 3 ने अपरिवर्तित राहील. इतर विकल्प चुकीचे मानतात की माध्य विचलन माध्यासह बदलते किंवा परिवर्तन माहितीच्या विस्तारावर वेगळ्या प्रकारे प्रभाव पाडते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes adding a constant to all values changes the mean deviation by the same amount",
+        "Confuses mean with mean deviation",
+        "Confuses mean with mean deviation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Adding a constant to all values does not change the mean deviation about the mean, as deviations are calculated relative to the mean, which also shifts by the same constant.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:06:23.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following best explains why the standard deviation is used instead of the variance as a measure of dispersion?",
+      "choices": [
+        "It is easier to calculate",
+        "It has the same units as the data",
+        "It is always smaller",
+        "It is more accurate"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is it has the same units as the data. The standard deviation is the square root of the variance, and it has the same units as the data, making it more interpretable. It is not necessarily easier to calculate, it is not always smaller, and it is not more accurate than the variance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा मानक विचलन के स्थान पर विचलन के माप के रूप में विचरण के बजाय उपयोग किए जाने के कारण के लिए सबसे अच्छा स्पष्टीकरण है?",
+          "choices": [
+            "इसकी गणना करना आसान है",
+            "इसके इकाइयाँ डेटा के समान होती हैं",
+            "यह हमेशा छोटा होता है",
+            "यह अधिक सटीक होता है"
+          ],
+          "solution": "सही उत्तर यह है कि इसके इकाइयाँ डेटा के समान होती हैं। मानक विचलन विचरण के वर्गमूल होता है, और इसके इकाइयाँ डेटा के समान होती हैं, जिससे इसकी व्याख्या आसान हो जाती है। यह आवश्यक रूप से गणना करने में आसान नहीं होता है, यह हमेशा छोटा नहीं होता है, और यह विचरण की तुलना में अधिक सटीक नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate statistical terminology commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते सर्वात चांगले स्पष्टीकरण देते की विचलनाच्या मापनासाठी विचलन मापनाऐवजी विचलनाच्या मापनाचा वापर केला जातो?",
+          "choices": [
+            "ते काढणे सोपे असते",
+            "त्याचे एकक डेटाच्या एककांसारखे असते",
+            "ते नेहमी लहान असते",
+            "ते अधिक अचूक असते"
+          ],
+          "solution": "बरोबर उत्तर त्याचे एकक डेटाच्या एककांसारखे असते. विचलन मापन विचलनाच्या वर्गमूळ असते आणि त्याचे एकक डेटाच्या एककांसारखे असते, ज्यामुळे ते अधिक व्याख्यात्मक असते. ते नेहमी काढणे सोपे नसते, ते नेहमी लहान असते नाही आणि ते विचलनापेक्षा अधिक अचूक नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate statistical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students often think that standard deviation is used because it is simpler to compute, not realizing it's due to unit consistency.",
+        null,
+        "Confuses it with a different measure",
+        "Incorrectly assumes it is always smaller"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that standard deviation is preferred because it shares the same units as the data, and the reasoning for the wrong options aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "(x − x)"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh113.pdf",
+          "ordinal": 11,
+          "pageStart": 20,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "(x − x)"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T04:06:23.987Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

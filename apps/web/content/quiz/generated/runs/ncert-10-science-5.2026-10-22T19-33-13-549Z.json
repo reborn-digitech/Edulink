@@ -1,0 +1,745 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T19:33:13.549Z",
+  "finishedAt": "2026-10-22T19:41:32.292Z",
+  "seconds": 499,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc105.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Life Processes",
+    "edition": "Reprint 2026-27",
+    "chunks": 30,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n29. No photosynthesis will occur so no glucose will be made. Also no respiration will 3\ntake place as no Oxygen will be taken in. (1)\nNo transpiration will occur so there would be no upward movement of water or\nminerals from the soil as there will be no transpirational pull.(1)\nTemperature regulation of leaf surface will be affected. (1)\nOR\nLymph carries digested and absorbed fat from the intestine (1) and drains excess\nfluid from extracellular space back into the blood (1). Blockage of lymphatic\nsystem will lead to water retention and poor fat absorption in the body\n(1- any one)",
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 173286,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 40574,
+      "completionTokens": 10785
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 257509,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 22090,
+      "completionTokens": 7902
+    },
+    "solver": {
+      "calls": 223,
+      "ms": 98456,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 36399,
+      "completionTokens": 2168
+    },
+    "form": {
+      "calls": 14,
+      "ms": 64438,
+      "in": 28,
+      "out": 14,
+      "rejects": 14,
+      "promptTokens": 7651,
+      "completionTokens": 1912
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 4478,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 501187,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 34063,
+      "completionTokens": 17581
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main characteristic of living organisms according to the passage?",
+      "ms": {
+        "draft": 3504,
+        "critique": 4233,
+        "solver": 854
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main source of energy for life processes in organisms?",
+      "ms": {
+        "draft": 3504,
+        "critique": 4573,
+        "solver": 1996
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why viruses are considered a controversial topic in terms of being alive?",
+      "ms": {
+        "draft": 3504,
+        "critique": 5987
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important for living organisms to maintain order in their structures?",
+      "ms": {
+        "draft": 3504,
+        "critique": 5821,
+        "solver": 12250,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of stomata in plants?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5845,
+        "solver": 2115,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why are guard cells important in the process of photosynthesis?",
+      "ms": {
+        "draft": 3905,
+        "critique": 7612,
+        "solver": 1283,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is placed in an air-tight jar with potassium hydroxide, what would happen to its ability to perform photosynthesis?",
+      "ms": {
+        "draft": 3905,
+        "critique": 7155,
+        "solver": 11126
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the human body is responsible for the initial breakdown of starch into simple sugars?",
+      "ms": {
+        "draft": 4571,
+        "critique": 7099,
+        "solver": 9565,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the small intestine?",
+      "ms": {
+        "draft": 4571,
+        "critique": 6754,
+        "solver": 1416,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, which part of the alimentary canal is responsible for the digestion of proteins?",
+      "ms": {
+        "draft": 4571,
+        "critique": 4575,
+        "solver": 1052,
+        "form": 3492
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a condition that prevents the production of saliva, what would be the immediate effect on their digestion?",
+      "ms": {
+        "draft": 4571,
+        "critique": 6026,
+        "solver": 1556,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the small intestine longer in herbivores compared to carnivores?",
+      "ms": {
+        "draft": 4571,
+        "critique": 5657
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described, what does the change in lime water indicate?",
+      "ms": {
+        "draft": 3890,
+        "critique": 6231,
+        "solver": 1539,
+        "form": 1961
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the human respiratory system is responsible for the exchange of gases?",
+      "ms": {
+        "draft": 11810,
+        "critique": 6869,
+        "solver": 5886,
+        "form": 999
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a function of the circulatory system in humans?",
+      "ms": {
+        "draft": 2818,
+        "critique": 9001
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main source of energy used in autotrophic nutrition?",
+      "ms": {
+        "draft": 2818,
+        "critique": 4580,
+        "solver": 10319,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which system in the human body is responsible for removing waste products like soluble nitrogen compounds?",
+      "ms": {
+        "draft": 2818,
+        "critique": 4553,
+        "solver": 11154,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a function of the excretory system in humans?",
+      "ms": {
+        "draft": 6512,
+        "critique": 5649
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram of the human excretory system, which part is responsible for storing urine before it is expelled from the body?",
+      "ms": {
+        "draft": 6512,
+        "critique": 5945
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student performed an experiment with two pots, one containing a plant and the other a stick, both covered with plastic sheets and placed in sunlight. After some time, the student observed water droplets on the plastic sheet covering the pot with the plant. Which of the following is the most likely reason for this observation?",
+      "ms": {
+        "draft": 6512,
+        "critique": 4240,
+        "solver": 1572,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the transport of food in plants different from the transport of water?",
+      "ms": {
+        "draft": 3653,
+        "critique": 5709,
+        "solver": 1624,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a function of the lymphatic system?",
+      "ms": {
+        "draft": 3653,
+        "critique": 6042,
+        "solver": 14681
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the context of excretion, which of the following best explains why the nephron is considered the functional unit of the kidney?",
+      "ms": {
+        "draft": 6512,
+        "critique": 5958,
+        "solver": 1445,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the separation of oxygenated and deoxygenated blood important in the human heart?",
+      "ms": {
+        "draft": 4115,
+        "critique": 4581,
+        "solver": 672
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the primary source of energy for autotrophic organisms?",
+      "ms": {
+        "draft": 3905,
+        "critique": 7093,
+        "solver": 9048,
+        "form": 2630
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the plant is responsible for transporting water from the roots to the leaves?",
+      "ms": {
+        "draft": 2818,
+        "critique": 4170,
+        "solver": 1102,
+        "form": 0,
+        "translation": 25595
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a product of anaerobic respiration in yeast?",
+      "ms": {
+        "draft": 3890,
+        "critique": 4955,
+        "solver": 1112,
+        "form": 2236,
+        "translation": 34339
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of storing carbohydrates in plants as starch?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5637,
+        "solver": 1495,
+        "form": 2060,
+        "translation": 41275
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the sphincter muscle at the exit of the stomach?",
+      "ms": {
+        "draft": 4571,
+        "critique": 6326,
+        "solver": 9151,
+        "form": 3183,
+        "translation": 32415
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the process of breaking down food for energy called?",
+      "ms": {
+        "draft": 3504,
+        "critique": 4232,
+        "solver": 1654,
+        "form": 2793,
+        "translation": 30262
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the pyruvate molecule in the presence of oxygen?",
+      "ms": {
+        "draft": 3890,
+        "critique": 5117,
+        "solver": 1554,
+        "form": 3266,
+        "translation": 46093
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is kept in the dark for a long time, what would happen to its ability to perform photosynthesis?",
+      "ms": {
+        "draft": 3905,
+        "critique": 6153,
+        "solver": 1383,
+        "form": 0,
+        "translation": 39778
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the development of a transportation system in multi-cellular organisms?",
+      "ms": {
+        "draft": 3504,
+        "critique": 7222,
+        "solver": 997,
+        "form": 3605,
+        "translation": 42768
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the process of gas exchange in the human respiratory system?",
+      "ms": {
+        "draft": 4115,
+        "critique": 5986,
+        "solver": 1586,
+        "form": 0,
+        "translation": 47695
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person inhales air that contains a high concentration of carbon dioxide, what would happen to the rate of breathing?",
+      "ms": {
+        "draft": 3890,
+        "critique": 5232,
+        "solver": 2628,
+        "form": 2518,
+        "translation": 40764
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is correct about the human heart and its function?",
+      "ms": {
+        "draft": 4115,
+        "critique": 5965,
+        "solver": 768,
+        "form": 0,
+        "translation": 33161
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the upward movement of water in tall trees?",
+      "ms": {
+        "draft": 3653,
+        "critique": 5550,
+        "solver": 2431,
+        "form": 0,
+        "translation": 45222
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the process of respiration in plants different from that in animals?",
+      "ms": {
+        "draft": 3890,
+        "critique": 7173,
+        "solver": 1566,
+        "form": 2681,
+        "translation": 35994
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main function of ATP in cells?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main characteristic of living organisms according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main source of energy for life processes in organisms?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best explains why viruses are considered a controversial topic in terms of being alive?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important for living organisms to maintain order in their structures?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of stomata in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why are guard cells important in the process of photosynthesis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a plant is placed in an air-tight jar with potassium hydroxide, what would happen to its ability to perform photosynthesis?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the human body is responsible for the initial breakdown of starch into simple sugars?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the small intestine?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, so no reason is given…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given passage, which part of the alimentary canal is responsible for the digestion of proteins?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the role of the mouth in starch digestion and the f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person has a condition that prevents the production of saliva, what would be the immediate effect on their digestion?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the role of bile in fat emulsification, so no reaso…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the small intestine longer in herbivores compared to carnivores?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment described, what does the change in lime water indicate?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the human respiratory system is responsible for the exchange of gases?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "In which part of the cell does the breakdown of pyruvate to give carbon dioxide, water and energy take place?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a correct difference between xylem and phloem in plants?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a function of the circulatory system in humans?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main source of energy used in autotrophic nutrition?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which system in the human body is responsible for removing waste products like soluble nitrogen compounds?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is NOT a function of the excretory system in humans?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given diagram of the human excretory system, which part is responsible for storing urine before it is expelled from the body?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student performed an experiment with two pots, one containing a plant and the other a stick, both covered with plastic sheets and placed in sunlight. After some time, the student observed water droplets on the plastic sheet covering the pot with the plant. Which of the following is the most likely reason for this observation?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no reason needed for this option (it's the c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the transport of food in plants different from the transport of water?",
+      "reason": "options 0 and 1 say the same thing (\"Because food is transported in the xylem and water in the phloem\" / \"Because food is transported in the phloem and water in the xylem\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a function of the lymphatic system?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the context of excretion, which of the following best explains why the nephron is considered the functional unit of the kidney?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'diagram'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the separation of oxygenated and deoxygenated blood important in the human heart?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the primary source of energy for autotrophic organisms?",
+      "reason": "near-duplicate of served question cmvgv7cow04zugpfh6h17qc65 (cosine 0.921 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

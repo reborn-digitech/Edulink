@@ -1,0 +1,747 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T20:46:37.128Z",
+  "finishedAt": "2026-10-21T20:56:18.553Z",
+  "seconds": 581,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Introductory Microeconomics",
+    "bookCode": "leec2",
+    "document": "ncert/12/economics/leec204.pdf",
+    "classLevel": 12,
+    "subject": "Economics",
+    "chapter": "Chapter 4 — The Theory of the Firm under Perfect Competition",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n11. Suppose in a hypothetical economy there are only two Firms A and B, Firm A sold goods\nfor ₹ 2,000 to Firm B and purchased goods for ₹ 1,000. Firm B exported goods for ₹ 2,500 3\nand had domestic sales of ₹ 1,500. Calculate Net Domestic Product at market price, if\nconsumption of fixed capital is ₹ 200.",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n11. Gross Value Added of Firm B = (i) – (iv) ½\n= 1,000 – 250 = ₹ 750 crore ½\nGross Value Added of Firm A = Gross Value Added of Firm B = ₹ 750 crore\nDomestic Sales of Firm A = Gross Value Added of Firm A – (iii) – (v) + (ii) 1\n= 750 – 200 – 150 + 300 ½\n= ₹ 700 crore ½",
+      "[CBSE Class XII Economics, marking scheme, 2026-27]\n10. (C) 1, infinity 1\n11 A Value-Added Method:\nGross Domestic Product at Market Price = (ii) - (viii) ½\n= 1,900 – 330 ½\n= ₹ 1,570 crore ½\nExpenditure Method:\nGross Domestic Product at Market Price = (i) + (iii) + (iv) + (vii) ½\n= 500 + 400 + 600 + 70 ½\n= ₹ 1,570 crore ½\nOR\n11 B (I) Two factors of production and their respective remunerations earned are:\n• Land - Rent ½ + ½\n• Capital - Interest ½ + ½\n(II) The remuneration earned by the Land can be defined as:\nRent: Income earned by the owner of the land (natural resources). 1",
+      "[CBSE Class XII Economics, marking scheme, 2024-25]\n4. B. flexible"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 184295,
+      "in": 40,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 50100,
+      "completionTokens": 11808
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 269416,
+      "in": 38,
+      "out": 24,
+      "rejects": 14,
+      "promptTokens": 23385,
+      "completionTokens": 8530
+    },
+    "solver": {
+      "calls": 185,
+      "ms": 88582,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 37529,
+      "completionTokens": 1976
+    },
+    "form": {
+      "calls": 3,
+      "ms": 20211,
+      "in": 20,
+      "out": 9,
+      "rejects": 11,
+      "promptTokens": 6124,
+      "completionTokens": 525
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 646,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 350911,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 23747,
+      "completionTokens": 12203
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 3,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "In a perfectly competitive market, what is the relationship between the price, average revenue, and marginal revenue for a firm?",
+      "ms": {
+        "draft": 4075,
+        "critique": 6546,
+        "solver": 1242,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A firm in a perfectly competitive market sells its product at ₹ 100 per unit. Its total cost function is TC = 1000 + 20Q, where Q is the quantity produced. At what output level will the firm break even?",
+      "ms": {
+        "draft": 12157,
+        "critique": 5257
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Figure 4.4, the market price is p, and the firm is producing at output level q. The total revenue of the firm is represented by the area of the rectangle OpAq. What does this imply about the firm's decision to produce at q?",
+      "ms": {
+        "draft": 12157,
+        "critique": 5808,
+        "solver": 1281
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A firm's profit at output level q is calculated as TR - (TVC + TFC). What does this imply about the firm's decision to produce at q?",
+      "ms": {
+        "draft": 6140,
+        "critique": 6058,
+        "solver": 1429
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a firm's total revenue at a given output level is exactly equal to its total variable cost, what is the firm's profit or loss situation?",
+      "ms": {
+        "draft": 6140,
+        "critique": 8158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between average revenue (AR) and market price for a perfectly competitive firm?",
+      "ms": {
+        "draft": 12157,
+        "critique": 5639,
+        "solver": 11395,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a firm's total revenue at output level q is less than its total variable cost, what is the firm's likely decision in the short run?",
+      "ms": {
+        "draft": 6140,
+        "critique": 6071,
+        "solver": 1601,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a firm is producing a positive output in the long run, what must be true about the market price relative to the firm’s costs?",
+      "ms": {
+        "draft": 7929,
+        "critique": 6223,
+        "solver": 1158,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A firm is producing at an output level where the market price is less than the average variable cost. What is the firm's optimal decision in the short run?",
+      "ms": {
+        "draft": 6140,
+        "critique": 5949,
+        "solver": 1212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a determinant of a firm's supply curve?",
+      "ms": {
+        "draft": 2976,
+        "critique": 5124
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of normal profit according to the passage?",
+      "ms": {
+        "draft": 7929,
+        "critique": 6232,
+        "solver": 1621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the condition for a firm to produce a positive output in the short run?",
+      "ms": {
+        "draft": 7929,
+        "critique": 6518,
+        "solver": 11616,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to a firm's supply curve when there is a technological progress?",
+      "ms": {
+        "draft": 2976,
+        "critique": 5916
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the definition of price elasticity of supply?",
+      "ms": {
+        "draft": 9122,
+        "critique": 5280,
+        "solver": 11241,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relation between market price and average revenue of a price-taking firm?",
+      "ms": {
+        "draft": 12607,
+        "critique": 5968,
+        "solver": 11356,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the supply curve of a firm in the short run?",
+      "ms": {
+        "draft": 12607,
+        "critique": 6236,
+        "solver": 11582,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relation between market price and marginal revenue of a price-taking firm?",
+      "ms": {
+        "draft": 12607,
+        "critique": 5720,
+        "solver": 13040,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A firm sells 10 units at a market price of ₹ 10. It then sells 12 units at a market price of ₹ 12. What is the marginal revenue of the firm for the 11th and 12th units?",
+      "ms": {
+        "draft": 12607,
+        "critique": 10703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a firm is operating in a perfectly competitive market and the market price of its product increases, what will happen to its total revenue, assuming it sells the same quantity of goods?",
+      "ms": {
+        "draft": 3467,
+        "critique": 5259
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a perfectly competitive market?",
+      "ms": {
+        "draft": 3467,
+        "critique": 6819,
+        "solver": 11248
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how is the total revenue of a firm related to the market price and quantity sold?",
+      "ms": {
+        "draft": 3467,
+        "critique": 6175,
+        "solver": 12510,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the supply curve of a firm is a straight line that passes through the origin, what is the price elasticity of supply at any point on the curve?",
+      "ms": {
+        "draft": 3467,
+        "critique": 5455
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary effect of technological progress on a firm's supply curve?",
+      "ms": {
+        "draft": 4400,
+        "critique": 5039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the price of an input increases, how does it affect a firm's supply curve?",
+      "ms": {
+        "draft": 4400,
+        "critique": 5214
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a market with two firms, how is the market supply curve derived?",
+      "ms": {
+        "draft": 4400,
+        "critique": 4795
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the condition for a firm to continue production in the short run?",
+      "ms": {
+        "draft": 19717,
+        "critique": 4734
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A firm produces 100 units of output and sells them at ₹ 20 per unit. Its total variable cost is ₹ 1,500 and total fixed cost is ₹ 500. What is the firm's profit or loss?",
+      "ms": {
+        "draft": 19717,
+        "critique": 5252
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the long run, a firm will exit the market if it cannot cover its costs. According to the passage, which of the following is the minimum level of profit that a firm must earn to continue in business?",
+      "ms": {
+        "draft": 19717,
+        "critique": 4416
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the short run, a profit-maximising firm will produce zero output when the market price is less than the minimum of which cost?",
+      "ms": {
+        "draft": 3431,
+        "critique": 3264
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A perfectly competitive firm's marginal cost is ₹ 20, and the market price is ₹ 15. What should the firm do to maximise profit?",
+      "ms": {
+        "draft": 12157,
+        "critique": 6658,
+        "solver": 1550,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In a perfectly competitive market, what is the relationship between market price and average revenue for a price-taking firm?",
+      "ms": {
+        "draft": 3718,
+        "critique": 6396,
+        "solver": 8975,
+        "form": 0,
+        "translation": 38910
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A firm in a perfectly competitive market sells its product at a market price of ₹ 50 per unit. If the firm sells 100 units, what is its total revenue?",
+      "ms": {
+        "draft": 4075,
+        "critique": 4481,
+        "solver": 1121,
+        "form": 0,
+        "translation": 40821
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A firm in a perfectly competitive market sells its product at a market price of ₹ 150. What is the firm’s average revenue when it sells 10 units?",
+      "ms": {
+        "draft": 4075,
+        "critique": 6046,
+        "solver": 1434,
+        "form": 0,
+        "translation": 39183
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A perfectly competitive firm produces and sells goods at a market price of ₹ 50 per unit. If the firm's marginal cost is ₹ 40 at the current level of output, what should the firm do to maximise profit?",
+      "ms": {
+        "draft": 12157,
+        "critique": 5632,
+        "solver": 10852,
+        "form": 0,
+        "translation": 40220
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a perfectly competitive market, a firm can sell any quantity of its product at the market price. What does this imply about the firm's ability to influence the market price?",
+      "ms": {
+        "draft": 4075,
+        "critique": 4510,
+        "solver": 2040,
+        "form": 1,
+        "translation": 66159
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a defining feature of a perfectly competitive market?",
+      "ms": {
+        "draft": 4075,
+        "critique": 5480,
+        "solver": 1964,
+        "form": 0,
+        "translation": 44239
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A firm in a perfectly competitive market produces and sells 50 units at a market price of ₹ 200 per unit. Its total cost is ₹ 9,000. What is the firm’s profit?",
+      "ms": {
+        "draft": 4075,
+        "critique": 5814,
+        "solver": 1662,
+        "form": 0,
+        "translation": 37409
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a perfectly competitive market, a firm's marginal cost curve is upward sloping. At the profit-maximising output, the market price is equal to the marginal cost. What happens to the firm's output if the market price increases?",
+      "ms": {
+        "draft": 12157,
+        "critique": 6284,
+        "solver": 973,
+        "form": 0,
+        "translation": 40522
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In the short run, a firm will decide to produce only if the market price is greater than or equal to which cost?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a perfectly competitive market, what is the relationship between the price, average revenue, and marginal revenue for a firm?",
+      "reason": "options 0 and 1 are the same (\"Price > Average Revenue > Marginal Revenue\"); options 0 and 2 are the same (\"Price > Average Revenue > Marginal Revenue\"); options 1 and 2 are the same (\"Price < Average Revenue < Marginal Revenue\"); option 0 repeats the stem's wording (\"Price > Average Revenue > Marginal Revenue\"); option 1 repeats the stem's wording (\"Price < Average Revenue < Marginal Revenue\"); option 2 repeats the stem's wording (\"Price = Average Revenue = Marginal Revenue\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A firm in a perfectly competitive market sells its product at ₹ 100 per unit. Its total cost function is TC = 1000 + 20Q, where Q is the quantity produced. At what output level will the firm break even?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Figure 4.4, the market price is p, and the firm is producing at output level q. The total revenue of the firm is represented by the area of the rectangle OpAq. What does this imply about the firm's decision to produce at q?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A firm's profit at output level q is calculated as TR - (TVC + TFC). What does this imply about the firm's decision to produce at q?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a firm's total revenue at a given output level is exactly equal to its total variable cost, what is the firm's profit or loss situation?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between average revenue (AR) and market price for a perfectly competitive firm?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a firm's total revenue at output level q is less than its total variable cost, what is the firm's likely decision in the short run?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a firm is producing a positive output in the long run, what must be true about the market price relative to the firm’s costs?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no misconception here (not a distractor in t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A firm is producing at an output level where the market price is less than the average variable cost. What is the firm's optimal decision in the short run?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a determinant of a firm's supply curve?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the definition of normal profit according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the condition for a firm to produce a positive output in the short run?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to a firm's supply curve when there is a technological progress?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the definition of price elasticity of supply?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"The responsiveness of quantity supplied to changes in the price of the good\" / \"The responsiveness of quantity demanded to changes in the price of the good\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the supply curve of a firm in the long run?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relation between market price and average revenue of a price-taking firm?",
+      "reason": "options 2 and 3 say the same thing (\"Market price is equal to average revenue\" / \"3: Market price is equal to average revenue\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the supply curve of a firm in the short run?",
+      "reason": "options 0 and 1 say the same thing (\"It is the portion of the average variable cost curve\" / \"It is the portion of the average total cost curve\"); options 0 and 3 say the same thing (\"It is the portion of the average variable cost curve\" / \"It is the portion of the average fixed cost curve\"); options 1 and 3 say the same thing (\"It is the portion of the average total cost curve\" / \"It is the portion of the average fixed cost curve\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relation between market price and marginal revenue of a price-taking firm?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A firm sells 10 units at a market price of ₹ 10. It then sells 12 units at a market price of ₹ 12. What is the marginal revenue of the firm for the 11th and 12th units?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a firm is operating in a perfectly competitive market and the market price of its product increases, what will happen to its total revenue, assuming it sells the same quantity of goods?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a perfectly competitive market?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how is the total revenue of a firm related to the market price and quantity sold?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"Total revenue is the sum of market price and quantity sold\" / \"Total revenue is the product of market price and quantity sold\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the supply curve of a firm is a straight line that passes through the origin, what is the price elasticity of supply at any point on the curve?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary effect of technological progress on a firm's supply curve?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the price of an input increases, how does it affect a firm's supply curve?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a market with two firms, how is the market supply curve derived?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the condition for a firm to continue production in the short run?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A firm produces 100 units of output and sells them at ₹ 20 per unit. Its total variable cost is ₹ 1,500 and total fixed cost is ₹ 500. What is the firm's profit or loss?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the long run, a firm will exit the market if it cannot cover its costs. According to the passage, which of the following is the minimum level of profit that a firm must earn to continue in business?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In the short run, a profit-maximising firm will produce zero output when the market price is less than the minimum of which cost?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A perfectly competitive firm's marginal cost is ₹ 20, and the market price is ₹ 15. What should the firm do to maximise profit?",
+      "reason": "near-duplicate of batch item \"A perfectly competitive firm produces and sells go…\" (cosine 0.924 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

@@ -1,0 +1,717 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T22:21:31.418Z",
+  "finishedAt": "2026-10-21T22:30:43.969Z",
+  "seconds": 553,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp108.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Playing with Constructions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n33. Correct given, figure and construction\nCorrect Proof\nsince LM is parallel to QR\nLet PM= 𝑥\n௉௅ ௉ெ\n௉ொ = ௉ோ\nହ.଻ ௫\nଵହ.ଶ = ௫ାହ.ହ\n𝑥 =PM=3.3cm\n½\n½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 211296,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 35615,
+      "completionTokens": 11967
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 262370,
+      "in": 35,
+      "out": 26,
+      "rejects": 9,
+      "promptTokens": 20782,
+      "completionTokens": 7305
+    },
+    "solver": {
+      "calls": 182,
+      "ms": 98681,
+      "in": 26,
+      "out": 21,
+      "rejects": 5,
+      "promptTokens": 37428,
+      "completionTokens": 1949
+    },
+    "form": {
+      "calls": 12,
+      "ms": 75767,
+      "in": 21,
+      "out": 8,
+      "rejects": 13,
+      "promptTokens": 10237,
+      "completionTokens": 2292
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 38,
+      "ms": 6790,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 183239,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12064,
+      "completionTokens": 6121
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the shape formed by all points that are at a fixed distance from a given point?",
+      "ms": {
+        "draft": 14480,
+        "critique": 5292
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square is rotated, what remains the same about it?",
+      "ms": {
+        "draft": 14480,
+        "critique": 4844,
+        "solver": 1313,
+        "form": 3140
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, if AB is the central line of a wave and is 8 cm long, what is the radius of the half-circle used to draw the wave?",
+      "ms": {
+        "draft": 14480,
+        "critique": 7921,
+        "solver": 1793,
+        "form": 2743
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wave is drawn with a central line of 10 cm. If the radius of the half-circle is 5 cm, what is the length of the half-circle curve?",
+      "ms": {
+        "draft": 14480,
+        "critique": 8271,
+        "solver": 16853,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is explained that a rectangle can be divided into three identical squares. What is the relationship between the length and the width of such a rectangle?",
+      "ms": {
+        "draft": 7591,
+        "critique": 6993,
+        "solver": 1806,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle ABCD has AB = 7 cm and BC = 4 cm. A point X is on AD and a point Y is on BC. What is the minimum distance between X and Y?",
+      "ms": {
+        "draft": 7591,
+        "critique": 7648,
+        "solver": 1459
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 7591,
+        "critique": 5904,
+        "solver": 2641
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 12026,
+        "critique": 6784,
+        "solver": 1717,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a square is inscribed in a rectangle such that their centers coincide, and the rectangle has sides 8 cm and 4 cm, what is the side length of the square?",
+      "ms": {
+        "draft": 7591,
+        "critique": 7164,
+        "solver": 15890
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle has one side of 5 cm and a diagonal of 7 cm, what is the most efficient way to find the position of one of the other corners?",
+      "ms": {
+        "draft": 12026,
+        "critique": 6784,
+        "solver": 1940,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the construction of the house, the point A is located by drawing arcs of 5 cm radius from points B and C. Why is this method effective?",
+      "ms": {
+        "draft": 12026,
+        "critique": 6130,
+        "solver": 1452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a rectangle has a diagonal of 7 cm and one side of 5 cm, which of the following is the most likely length of the other side?",
+      "ms": {
+        "draft": 12026,
+        "critique": 5314,
+        "solver": 1798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle is divided into 3 identical squares, what could be the possible dimensions of the rectangle?",
+      "ms": {
+        "draft": 3740,
+        "critique": 7278,
+        "solver": 1407
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a circle?",
+      "ms": {
+        "draft": 6928,
+        "critique": 5755
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a circle?",
+      "ms": {
+        "draft": 6928,
+        "critique": 5756
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of drawing a rough diagram before constructing a figure?",
+      "ms": {
+        "draft": 6928,
+        "critique": 5070,
+        "solver": 1136,
+        "form": 2047
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a circle?",
+      "ms": {
+        "draft": 6928,
+        "critique": 7020
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of drawing a rough diagram before constructing a figure?",
+      "ms": {
+        "draft": 6928,
+        "critique": 6523,
+        "solver": 1385,
+        "form": 2244
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first step in constructing a rectangle when one of its sides is given?",
+      "ms": {
+        "draft": 5708,
+        "critique": 8545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the construction of a house, if all the sides are of length 5 cm, what type of 4-sided figure is formed?",
+      "ms": {
+        "draft": 5708,
+        "critique": 6684,
+        "solver": 1926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of drawing a circle when constructing a rectangle with a given side and diagonal?",
+      "ms": {
+        "draft": 5708,
+        "critique": 7449,
+        "solver": 1423,
+        "form": 4206
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle has sides of length 7 cm and 4 cm. If a point X is placed 5 mm from A on side AD, and a point Y is placed 3 cm from B on side BC, what is the length of XY?",
+      "ms": {
+        "draft": 6821,
+        "critique": 5923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, if the distance between X and Y is measured as 4 cm 5 mm, and X is 5 mm from A on side AD, where is Y located on side BC?",
+      "ms": {
+        "draft": 6821,
+        "critique": 7407
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How can we locate the point A, which is at a distance of 5 cm from points B and C, in the construction of a house?",
+      "ms": {
+        "draft": 5708,
+        "critique": 6770,
+        "solver": 11155,
+        "form": 2337
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student marks a point P and then tries to mark points that are 4 cm away from P. What shape do these points form?",
+      "ms": {
+        "draft": 7971,
+        "critique": 6508
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is given a rectangle ABCD and is asked to name it. Which of the following cannot be a valid name for the rectangle?",
+      "ms": {
+        "draft": 7971,
+        "critique": 6223
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a rectangle with AB = 7 cm and BC = 4 cm, X is 3 cm from A on AD, and Y is 1 cm from B on BC. If the length of XY is 5 cm, what is the distance between X and Y in millimeters?",
+      "ms": {
+        "draft": 6821,
+        "critique": 5927,
+        "solver": 8972,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the figure, if the rectangle is named ABCD, which of the following is NOT a valid name for the rectangle?",
+      "ms": {
+        "draft": 14480,
+        "critique": 6844,
+        "solver": 19015,
+        "form": 2370
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rectangle can be divided into three identical squares, what is the ratio of its length to its width?",
+      "ms": {
+        "draft": 7591,
+        "critique": 7040,
+        "solver": 16243,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a rectangle, if one diagonal divides an angle into 45° and 45°, what can be said about the sides of the rectangle?",
+      "ms": {
+        "draft": 3740,
+        "critique": 5845,
+        "solver": 1078,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to draw a circle with a radius of 4 cm?",
+      "ms": {
+        "draft": 14480,
+        "critique": 5098,
+        "solver": 1767,
+        "form": 2697,
+        "translation": 46720
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 3740,
+        "critique": 5406,
+        "solver": 1868,
+        "form": 1,
+        "translation": 31775
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a rectangle PQRS, diagonals PR and QS are drawn. If the length of PR is 10 cm, what is the length of QS?",
+      "ms": {
+        "draft": 7591,
+        "critique": 6962,
+        "solver": 10587,
+        "form": 0,
+        "translation": 31360
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A rectangle is drawn such that the distance between two points X and Y is the same as the distance between two other points A and B. What can be said about the shape of the quadrilateral ABYX?",
+      "ms": {
+        "draft": 3740,
+        "critique": 6117,
+        "solver": 644,
+        "form": 0,
+        "translation": 30328
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the construction of the house, the point A is found by intersecting two arcs. What is the key mathematical reason for this method?",
+      "ms": {
+        "draft": 12026,
+        "critique": 5889,
+        "solver": 1484,
+        "form": 0,
+        "translation": 38584
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In the construction of a rectangle with one side of 5 cm and a diagonal of 7 cm, what is the purpose of drawing a perpendicular line at one end of the base?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is not a valid name for a square?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the shape formed by all points that are at a fixed distance from a given point?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a square is rotated, what remains the same about it?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the figure, if AB is the central line of a wave and is 8 cm long, what is the radius of the half-circle used to draw the wave?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label AB"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A wave is drawn with a central line of 10 cm. If the radius of the half-circle is 5 cm, what is the length of the half-circle curve?",
+      "reason": "options are in more than one unit (π cm, cm); options 1 and 2 are the same number; ARITHMETIC MISMATCH — checkExpr \"5*3.14\" = 15.700000000000001, but the key says 5"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is explained that a rectangle can be divided into three identical squares. What is the relationship between the length and the width of such a rectangle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Length is three times the width\" / \"Width is three times the length\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A rectangle ABCD has AB = 7 cm and BC = 4 cm. A point X is on AD and a point Y is on BC. What is the minimum distance between X and Y?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks the passage is about painting…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a square is inscribed in a rectangle such that their centers coincide, and the rectangle has sides 8 cm and 4 cm, what is the side length of the square?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a rectangle has one side of 5 cm and a diagonal of 7 cm, what is the most efficient way to find the position of one of the other corners?",
+      "reason": "options 2 and 3 say the same thing (\"Draw a line perpendicular to the side at one end\" / \"Draw a line parallel to the side at one end\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the construction of the house, the point A is located by drawing arcs of 5 cm radius from points B and C. Why is this method effective?",
+      "reason": "option 2 is a catch-all (\"It ensures the correct distance from both B and C\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a rectangle has a diagonal of 7 cm and one side of 5 cm, which of the following is the most likely length of the other side?",
+      "reason": "checkExpr \"sqrt(7^2 - 5^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a rectangle is divided into 3 identical squares, what could be the possible dimensions of the rectangle?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a property of a circle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a property of a circle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of drawing a rough diagram before constructing a figure?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"difficulty':3,'stem':'What is the minimum number of sides a …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a property of a circle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of drawing a rough diagram before constructing a figure?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"difficulty':3,'stem':'What is the minimum number of sides a …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the first step in constructing a rectangle when one of its sides is given?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the construction of a house, if all the sides are of length 5 cm, what type of 4-sided figure is formed?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the purpose of drawing a circle when constructing a rectangle with a given side and diagonal?",
+      "reason": "the key is far longer than every distractor (67 vs 40 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A rectangle has sides of length 7 cm and 4 cm. If a point X is placed 5 mm from A on side AD, and a point Y is placed 3 cm from B on side BC, what is the length of XY?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a rectangle, if the distance between X and Y is measured as 4 cm 5 mm, and X is 5 mm from A on side AD, where is Y located on side BC?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How can we locate the point A, which is at a distance of 5 cm from points B and C, in the construction of a house?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is a common misconception where a student might assume …\"); distractor 3's reason is not a one-line misconception (\"This is not the method described in the passage and is not n…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student marks a point P and then tries to mark points that are 4 cm away from P. What shape do these points form?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A student is given a rectangle ABCD and is asked to name it. Which of the following cannot be a valid name for the rectangle?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a rectangle with AB = 7 cm and BC = 4 cm, X is 3 cm from A on AD, and Y is 1 cm from B on BC. If the length of XY is 5 cm, what is the distance between X and Y in millimeters?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In the figure, if the rectangle is named ABCD, which of the following is NOT a valid name for the rectangle?",
+      "reason": "near-duplicate of served question cmvejr2e000b5god8k1ev26it (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a rectangle can be divided into three identical squares, what is the ratio of its length to its width?",
+      "reason": "near-duplicate of served question cmv3okd4o00eignju9h05kbri (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a rectangle, if one diagonal divides an angle into 45° and 45°, what can be said about the sides of the rectangle?",
+      "reason": "near-duplicate of served question cmvfqcxxd00dtgpfhptj4styr (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

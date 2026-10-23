@@ -1,0 +1,702 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T01:16:42.695Z",
+  "finishedAt": "2026-10-20T01:26:14.832Z",
+  "seconds": 572,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu108.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Measurement of Time and Motion",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2014 — question paper]\n65. A particle is moving on the real line, and its position is observed at four different\ntime stamps. At time t = 0, the particle is at x = 0, at time t = 20 seconds, we have\nx = 40, at time t = 40 seconds, x = 60 and at time t = 60 seconds, we have x = 90.\nShow that at some point of time between 0 and 60 seconds, the acceleration of the\nparticle was zero. [5 Marks]",
+      "[INJSO 2011 — question paper]\n34. Velocity time graph of four athletes for a given interval of time are as given below. Who has\ntravelled maximum distance?\na) A b) B c) C d) D",
+      "[INJSO 2013 — question paper]\n60. A 100 m sprinter increases her speed from rest uniformly at the rate of 1 m/s upto 2\n40 m and covers the remaining distance with uniform speed. The sprinter covers the\nfirst half of the run in t 1 s and the second half in t 2 s. Then:\nA. t 1 > t 2\nB. t < t 1 2\nC. t = t 1 2\nD. information given is incomplete.",
+      "[INJSO 2011 — question paper]\n6. A ball is dropped from a height h on a floor and suffers multiple perfectly elastic bounces. The\nvelocity vs t graph is as shown. Here time T depicts the time required to complete one cycle.\nWhich of the following graph correctly shows the cumulative distance vs time?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 157106,
+      "in": 35,
+      "out": 34,
+      "rejects": 3,
+      "promptTokens": 26992,
+      "completionTokens": 9677
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 284251,
+      "in": 34,
+      "out": 25,
+      "rejects": 9,
+      "promptTokens": 22880,
+      "completionTokens": 8621
+    },
+    "solver": {
+      "calls": 220,
+      "ms": 120104,
+      "in": 25,
+      "out": 17,
+      "rejects": 8,
+      "promptTokens": 47753,
+      "completionTokens": 2560
+    },
+    "form": {
+      "calls": 11,
+      "ms": 31535,
+      "in": 17,
+      "out": 5,
+      "rejects": 12,
+      "promptTokens": 4484,
+      "completionTokens": 879
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3451,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 176931,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11873,
+      "completionTokens": 5798
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a water clock is designed to measure time by the flow of water into a vessel, which of the following would be the most accurate way to mark time intervals?",
+      "ms": {
+        "draft": 3713,
+        "critique": 5002,
+        "solver": 16459
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pendulum clock is moved to a location with a stronger gravitational pull, what would happen to the time it measures?",
+      "ms": {
+        "draft": 3713,
+        "critique": 6185
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sprinter runs 100 meters in 12 seconds. If she maintains the same speed, how long will it take her to run 200 meters?",
+      "ms": {
+        "draft": 3713,
+        "critique": 6676,
+        "solver": 16611
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the time taken by a pendulum to complete one oscillation?",
+      "ms": {
+        "draft": 3237,
+        "critique": 5646,
+        "solver": 1695,
+        "form": 2331
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pendulum takes 10 seconds to complete 5 oscillations, what is its time period?",
+      "ms": {
+        "draft": 3237,
+        "critique": 6188,
+        "solver": 1182,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following devices was used by Buddhist monasteries, royal palaces, and town squares to measure time?",
+      "ms": {
+        "draft": 3713,
+        "critique": 6239,
+        "solver": 15792,
+        "form": 2603
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about pendulums is correct?",
+      "ms": {
+        "draft": 3237,
+        "critique": 6614,
+        "solver": 1553,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a property of a simple pendulum according to the passage?",
+      "ms": {
+        "draft": 3237,
+        "critique": 6826,
+        "solver": 13897
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes uniform linear motion?",
+      "ms": {
+        "draft": 6019,
+        "critique": 7426
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pendulum's time period is 2 seconds, how many oscillations will it complete in 10 seconds?",
+      "ms": {
+        "draft": 3237,
+        "critique": 6409,
+        "solver": 9976
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pendulum completes 20 oscillations in 40 seconds. If its length is halved, what will be the new time period?",
+      "ms": {
+        "draft": 3237,
+        "critique": 8159,
+        "solver": 11842,
+        "form": 6332
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car covers 60 km in the first hour, 70 km in the second hour, and 50 km in the third hour. What is its average speed?",
+      "ms": {
+        "draft": 6019,
+        "critique": 6352,
+        "solver": 1469
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of time?",
+      "ms": {
+        "draft": 6019,
+        "critique": 5446
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following can be used to measure time?",
+      "ms": {
+        "draft": 6019,
+        "critique": 8211,
+        "solver": 10382,
+        "form": 2605
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it difficult to find objects in uniform linear motion in everyday life?",
+      "ms": {
+        "draft": 6019,
+        "critique": 5411,
+        "solver": 5929,
+        "form": 1112
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of uniform linear motion?",
+      "ms": {
+        "draft": 4320,
+        "critique": 4528,
+        "solver": 1199,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The following table shows the distance covered by a car at different times. Is the car in uniform motion?",
+      "ms": {
+        "draft": 4320,
+        "critique": 4918,
+        "solver": 1412,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A runner completes 400 m in 50 seconds. Another runner completes the same distance in 45 seconds. Who has a greater speed and by how much?",
+      "ms": {
+        "draft": 4320,
+        "critique": 6451
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A pendulum takes 2 seconds to complete one oscillation. What is the time period of the pendulum?",
+      "ms": {
+        "draft": 4320,
+        "critique": 5429,
+        "solver": 1582,
+        "form": 2214
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the time taken by a pendulum to complete one oscillation called?",
+      "ms": {
+        "draft": 5408,
+        "critique": 6975
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of periodic motion?",
+      "ms": {
+        "draft": 5408,
+        "critique": 6155
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pendulum completes 10 oscillations in 20 seconds, what is its time period?",
+      "ms": {
+        "draft": 5408,
+        "critique": 5319
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the time period of a simple pendulum?",
+      "ms": {
+        "draft": 5408,
+        "critique": 5714
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of time?",
+      "ms": {
+        "draft": 4320,
+        "critique": 6073,
+        "solver": 9451,
+        "form": 1871
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the length of a pendulum is doubled, what happens to its time period?",
+      "ms": {
+        "draft": 5408,
+        "critique": 9430
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pendulum takes 1 second to complete one oscillation. How many oscillations will it complete in 10 seconds?",
+      "ms": {
+        "draft": 5408,
+        "critique": 5908,
+        "solver": 14174
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description of the simple water clock in the passage, which of the following best explains how it works?",
+      "ms": {
+        "draft": 4186,
+        "critique": 6323,
+        "solver": 1592,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a method used to measure time in ancient times?",
+      "ms": {
+        "draft": 4186,
+        "critique": 7222,
+        "solver": 13523
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following best explains why the pendulum clock was a major breakthrough in timekeeping?",
+      "ms": {
+        "draft": 4186,
+        "critique": 5341,
+        "solver": 5424
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which ancient device used the changing position of the shadow of an object to measure time?",
+      "ms": {
+        "draft": 3713,
+        "critique": 4185,
+        "solver": 1271,
+        "form": 5262,
+        "translation": 34714
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car travels 150 meters in 10 seconds. What is its speed in km/h?",
+      "ms": {
+        "draft": 6019,
+        "critique": 6295,
+        "solver": 13212,
+        "form": 0,
+        "translation": 29527
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A train travels 180 km in 3 hours. What is its average speed in km/h?",
+      "ms": {
+        "draft": 4320,
+        "critique": 5079,
+        "solver": 1952,
+        "form": 0,
+        "translation": 29655
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information provided, what is the main reason the Ghatika-yantra was progressively replaced by pendulum clocks?",
+      "ms": {
+        "draft": 3713,
+        "critique": 4559,
+        "solver": 15527,
+        "form": 3713,
+        "translation": 47856
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A runner completes a 100-metre race in 10 seconds, while another runner completes the same race in 11 seconds. If the race is timed using a stopwatch, which of the following is the most accurate way to determine the winner?",
+      "ms": {
+        "draft": 4186,
+        "critique": 5412,
+        "solver": 1205,
+        "form": 2460,
+        "translation": 31649
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the SI unit of speed?\",\n      \"options\": [\"Km/h\", \"M/"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a water clock is designed to measure time by the flow of water into a vessel, which of the following would be the most accurate way to mark time intervals?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a pendulum clock is moved to a location with a stronger gravitational pull, what would happen to the time it measures?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A sprinter runs 100 meters in 12 seconds. If she maintains the same speed, how long will it take her to run 200 meters?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the time taken by a pendulum to complete one oscillation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, and the other opti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a pendulum takes 10 seconds to complete 5 oscillations, what is its time period?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following devices was used by Buddhist monasteries, royal palaces, and town squares to measure time?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about pendulums is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a property of a simple pendulum according to the passage?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes uniform linear motion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a pendulum's time period is 2 seconds, how many oscillations will it complete in 10 seconds?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A pendulum completes 20 oscillations in 40 seconds. If its length is halved, what will be the new time period?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"40/20\" = 2, but the key says 1"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A car covers 60 km in the first hour, 70 km in the second hour, and 50 km in the third hour. What is its average speed?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the SI unit of time?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following can be used to measure time?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Height is a static measurement and not related to time inter…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it difficult to find objects in uniform linear motion in everyday life?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is a fact from the passage but does not explain the dif…\"); distractor 3's reason is not a one-line misconception (\"This is a characteristic of motion but does not explain why …\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is true about an object in uniform lin"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following statements is true about the water clocks in ancient times?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of uniform linear motion?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses pendulum motion with linear motion and ignores the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The following table shows the distance covered by a car at different times. Is the car in uniform motion?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A runner completes 400 m in 50 seconds. Another runner completes the same distance in 45 seconds. Who has a greater speed and by how much?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A pendulum takes 2 seconds to complete one oscillation. What is the time period of the pendulum?",
+      "reason": "options are in more than one unit (second, seconds)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the time taken by a pendulum to complete one oscillation called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of periodic motion?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a pendulum completes 10 oscillations in 20 seconds, what is its time period?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the time period of a simple pendulum?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the SI unit of time?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the length of a pendulum is doubled, what happens to its time period?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A pendulum takes 1 second to complete one oscillation. How many oscillations will it complete in 10 seconds?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the description of the simple water clock in the passage, which of the following best explains how it works?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Water flows from the top container to the bottom, and the time is measured by the level of water in the top container\" / \"Water flows from the top container to the bottom, and the time is measured by the level of water in the bottom container\"); options 0 and 2 say the same thing (\"Water flows from the top container to the bottom, and the time is measured by the level of water in the top container\" / \"Water flows from the bottom container to the top, and the time is measured by the level of water in the top container\"); options 0 and 3 say the same thing (\"Water flows from the top container to the bottom, and the time is measured by the level of water in the top container\" / \"Water flows from the bottom container to the top, and the time is measured by the level of water in the bottom container\"); options 1 and 2 say the same thing (\"Water flows from the top container to the bottom, and the time is measured by the level of water in the bottom container\" / \"Water flows from the bottom container to the top, and the time is measured by the level of water in the top container\"); options 1 and 3 say the same thing (\"Water flows from the top container to the bottom, and the time is measured by the level of water in the bottom container\" / \"Water flows from the bottom container to the top, and the time is measured by the level of water in the bottom container\"); options 2 and 3 say the same thing (\"Water flows from the bottom container to the top, and the time is measured by the level of water in the top container\" / \"Water flows from the bottom container to the top, and the time is measured by the level of water in the bottom container\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a method used to measure time in ancient times?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following best explains why the pendulum clock was a major breakthrough in timekeeping?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

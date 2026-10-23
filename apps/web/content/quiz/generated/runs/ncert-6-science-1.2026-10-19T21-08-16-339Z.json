@@ -1,0 +1,543 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T21:08:16.339Z",
+  "finishedAt": "2026-10-19T21:11:11.507Z",
+  "seconds": 175,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu101.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 1 — The Wonderful World of Science",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n24. B. Both A and R are true, and R is not the correct explanation of A. 1",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n6. (a) Only i 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 66952,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 14348,
+      "completionTokens": 4395
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 139716,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 11120,
+      "completionTokens": 4671
+    },
+    "solver": {
+      "calls": 142,
+      "ms": 59549,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 20034,
+      "completionTokens": 1353
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6540,
+      "in": 22,
+      "out": 2,
+      "rejects": 20,
+      "promptTokens": 667,
+      "completionTokens": 188
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3528,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 57977,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4609,
+      "completionTokens": 2452
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the role of curiosity in science?",
+      "ms": {
+        "draft": 2323,
+        "critique": 3901,
+        "solver": 1133,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 2323,
+        "critique": 4101,
+        "solver": 1613,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is trying to solve a problem, what would be the first step according to the passage?",
+      "ms": {
+        "draft": 2323,
+        "critique": 4649,
+        "solver": 1819,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of the scientific method as described in the passage?",
+      "ms": {
+        "draft": 2323,
+        "critique": 6240,
+        "solver": 1230,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes the relationship between curiosity and science?",
+      "ms": {
+        "draft": 2323,
+        "critique": 5787,
+        "solver": 1424,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage compare science to?",
+      "ms": {
+        "draft": 2323,
+        "critique": 7400,
+        "solver": 2149,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of being curious?",
+      "ms": {
+        "draft": 2916,
+        "critique": 4800,
+        "solver": 1211,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first step in the scientific method according to the passage?",
+      "ms": {
+        "draft": 2916,
+        "critique": 5721,
+        "solver": 1391,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is trying to find the answer to a question, what should they do according to the passage?",
+      "ms": {
+        "draft": 2916,
+        "critique": 4862,
+        "solver": 1850,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the passage's view of the scientific method?",
+      "ms": {
+        "draft": 2916,
+        "critique": 5502,
+        "solver": 958,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage say that science is about joyful exploration?",
+      "ms": {
+        "draft": 2916,
+        "critique": 4207,
+        "solver": 1546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student asks, 'Why does the sky appear blue?' What should they do next according to the passage?",
+      "ms": {
+        "draft": 2916,
+        "critique": 6069,
+        "solver": 4444,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 2704,
+        "critique": 3992,
+        "solver": 1092,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the first step in the scientific method?",
+      "ms": {
+        "draft": 2704,
+        "critique": 4621,
+        "solver": 2230
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of using the scientific method in daily life?",
+      "ms": {
+        "draft": 2704,
+        "critique": 4376,
+        "solver": 14489
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about curiosity?",
+      "ms": {
+        "draft": 2704,
+        "critique": 7026,
+        "solver": 10281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage say that science is a journey?",
+      "ms": {
+        "draft": 2704,
+        "critique": 5913,
+        "solver": 1362,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 3215,
+        "critique": 5930,
+        "solver": 1260,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the most important quality for learning science?",
+      "ms": {
+        "draft": 3215,
+        "critique": 6810,
+        "solver": 1565,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes a seed growing into a plant, which scientific concept is being demonstrated?",
+      "ms": {
+        "draft": 3215,
+        "critique": 5618,
+        "solver": 991,
+        "form": 3052
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the role of scientists?",
+      "ms": {
+        "draft": 3215,
+        "critique": 6411,
+        "solver": 1260,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the nature of science?",
+      "ms": {
+        "draft": 3215,
+        "critique": 4796,
+        "solver": 6936,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes that plants grow faster in sunlight, what should they do next?",
+      "ms": {
+        "draft": 2704,
+        "critique": 5016,
+        "solver": 1109,
+        "form": 3060,
+        "translation": 28328
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a student is trying to solve a problem using the scientific method, which step would they do first?",
+      "ms": {
+        "draft": 3215,
+        "critique": 4628,
+        "solver": 1125,
+        "form": 1633,
+        "translation": 26598
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the role of curiosity in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (52 vs 28 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (80 vs 45 characters); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage as being about memorisation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is trying to solve a problem, what would be the first step according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of the scientific method as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes the relationship between curiosity and science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage compare science to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Ignores the passage's analogy…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of being curious?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"ignores the passage's emphasis on curiosity…\"); distractor 3's reason is not a one-line misconception (\"contradicts the passage's message about collaboration…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the first step in the scientific method according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is trying to find the answer to a question, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"contradicts the passage's advice on tackling questions…\"); distractor 2's reason is not a one-line misconception (\"fails to take any action as per the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the passage's view of the scientific method?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"contradicts the passage's positive view of the method…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage say that science is about joyful exploration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"contradicts the passage's view of science as accessible…\"); distractor 3's reason is not a one-line misconception (\"misrepresents the passage's focus on exploration…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student asks, 'Why does the sky appear blue?' What should they do next according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"fails to take any action as per the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"misinterprets the passage's main message…\"); distractor 3's reason is not a one-line misconception (\"contradicts the passage's positive view of science…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the first step in the scientific method?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of using the scientific method in daily life?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about curiosity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage's message…\"); distractor 3's reason is not a one-line misconception (\"is a negative view of curiosity not supported by the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage say that science is a journey?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"contradicts the passage's message…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the most important quality for learning science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"overlooks the central theme of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student observes a seed growing into a plant, which scientific concept is being demonstrated?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"focuses on a specific part of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the role of scientists?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"misunderstands the examples given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the nature of science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

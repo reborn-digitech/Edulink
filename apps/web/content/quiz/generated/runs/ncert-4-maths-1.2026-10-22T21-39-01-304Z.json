@@ -1,0 +1,674 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:39:01.304Z",
+  "finishedAt": "2026-10-22T21:48:13.376Z",
+  "seconds": 552,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm101.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Shapes Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 177671,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 23005,
+      "completionTokens": 8600
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 382794,
+      "in": 34,
+      "out": 25,
+      "rejects": 9,
+      "promptTokens": 21320,
+      "completionTokens": 8692
+    },
+    "solver": {
+      "calls": 226,
+      "ms": 154731,
+      "in": 25,
+      "out": 22,
+      "rejects": 3,
+      "promptTokens": 39455,
+      "completionTokens": 2583
+    },
+    "form": {
+      "calls": 5,
+      "ms": 56163,
+      "in": 22,
+      "out": 9,
+      "rejects": 13,
+      "promptTokens": 3032,
+      "completionTokens": 1056
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3683,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 265462,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15018,
+      "completionTokens": 6485
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If you push one side of a rectangle, what happens to its angles?",
+      "ms": {
+        "draft": 4318,
+        "critique": 9575,
+        "solver": 2757
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given dot grid, how many right angles are present?",
+      "ms": {
+        "draft": 4318,
+        "critique": 9017
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an object that has a right angle?",
+      "ms": {
+        "draft": 4318,
+        "critique": 11198,
+        "solver": 20169,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a circle has a radius of 5 cm, what is the length of its diameter?",
+      "ms": {
+        "draft": 4318,
+        "critique": 10268,
+        "solver": 16968,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an object that has an acute angle?",
+      "ms": {
+        "draft": 4318,
+        "critique": 9603,
+        "solver": 19059,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following shapes is most rigid and does not change its shape when pushed?",
+      "ms": {
+        "draft": 4318,
+        "critique": 7170,
+        "solver": 1979,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following shapes have only right angles?",
+      "ms": {
+        "draft": 8775,
+        "critique": 8545,
+        "solver": 13032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which shape has 4 right angles and 2 acute angles?",
+      "ms": {
+        "draft": 8775,
+        "critique": 9081
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many right angles does the given shape have?",
+      "ms": {
+        "draft": 8775,
+        "critique": 7537
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the number of sides and the number of angles in a polygon?",
+      "ms": {
+        "draft": 8775,
+        "critique": 9970,
+        "solver": 13051,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following shapes has 3 acute angles and 1 right angle?",
+      "ms": {
+        "draft": 8775,
+        "critique": 7519
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a shape has 4 angles, and 2 of them are right angles, what could the other 2 angles be?",
+      "ms": {
+        "draft": 8775,
+        "critique": 6986,
+        "solver": 775
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a 2D shape with exactly 4 angles?",
+      "ms": {
+        "draft": 3918,
+        "critique": 5939
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape has exactly 5 angles?",
+      "ms": {
+        "draft": 3918,
+        "critique": 6997
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of these shapes has only right angles?",
+      "ms": {
+        "draft": 3918,
+        "critique": 7557
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which shape has 2 obtuse angles and 2 acute angles?",
+      "ms": {
+        "draft": 3918,
+        "critique": 9169
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which shape has more than 5 angles?",
+      "ms": {
+        "draft": 3918,
+        "critique": 9069,
+        "solver": 18074,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the angles of a rectangle when one of its sides is gently pushed?",
+      "ms": {
+        "draft": 5881,
+        "critique": 10277,
+        "solver": 2021
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a shape that is not rigid?",
+      "ms": {
+        "draft": 5881,
+        "critique": 7645
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which shape is formed when a triangle is made with straws of different sizes and clay?",
+      "ms": {
+        "draft": 5881,
+        "critique": 9897,
+        "solver": 14100,
+        "form": 4220
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a circle is folded in half and then folded again in half, what is the relationship between the length of the diameter and the radius?",
+      "ms": {
+        "draft": 5881,
+        "critique": 8065,
+        "solver": 12936,
+        "form": 4747
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the name of the line from the center of a circle to its border?",
+      "ms": {
+        "draft": 5881,
+        "critique": 11481,
+        "solver": 14843,
+        "form": 5223
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many edges does a cube have?",
+      "ms": {
+        "draft": 5612,
+        "critique": 7279,
+        "solver": 2119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the difference between a prism and a pyramid?",
+      "ms": {
+        "draft": 5612,
+        "critique": 8811,
+        "solver": 12313,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the relationship between the number of faces (F), edges (E), and corners (V) of a 3D shape?",
+      "ms": {
+        "draft": 5612,
+        "critique": 8093,
+        "solver": 9630,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which shape has 2 right angles, 1 acute angle, and 1 obtuse angle?",
+      "ms": {
+        "draft": 3918,
+        "critique": 6312,
+        "solver": 12606,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which 3D shape has all faces the same?",
+      "ms": {
+        "draft": 13674,
+        "critique": 5858,
+        "solver": 2155,
+        "form": 0,
+        "translation": 34757
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What shape would you use to model the Qutub Minar?",
+      "ms": {
+        "draft": 5612,
+        "critique": 8502,
+        "solver": 14293,
+        "form": 0,
+        "translation": 27563
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the shape that has 5 faces, 5 corners, and 8 edges?",
+      "ms": {
+        "draft": 13674,
+        "critique": 5641,
+        "solver": 1432,
+        "form": 0,
+        "translation": 37712
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a 3D shape has 2 flat faces, 1 curved face, and 2 edges, which shape is it?",
+      "ms": {
+        "draft": 13674,
+        "critique": 5892,
+        "solver": 2931,
+        "form": 0,
+        "translation": 38311
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the shape of the face that is common to all prisms?",
+      "ms": {
+        "draft": 13674,
+        "critique": 7530,
+        "solver": 1913,
+        "form": 0,
+        "translation": 35295
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a 5-sided shape?",
+      "ms": {
+        "draft": 5881,
+        "critique": 9866,
+        "solver": 14656,
+        "form": 3212,
+        "translation": 27280
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cube has 6 faces, 12 edges, and 8 corners, what is the value of F + V - E?",
+      "ms": {
+        "draft": 13674,
+        "critique": 8249,
+        "solver": 2704,
+        "form": 0,
+        "translation": 28718
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How many cubes are there in a cube tower made of 3 layers, each with 4 cubes?",
+      "ms": {
+        "draft": 13674,
+        "critique": 6707,
+        "solver": 20243,
+        "form": 1,
+        "translation": 30392
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you push one side of a rectangle, what happens to its angles?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given dot grid, how many right angles are present?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an object that has a right angle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a circle has a radius of 5 cm, what is the length of its diameter?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an object that has an acute angle?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following shapes is most rigid and does not change its shape when pushed?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CA, DE, EF, FG, GD, HI, IG, GH, triangle, square, rectangle, pentagon"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following shapes have only right angles?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which shape has 4 right angles and 2 acute angles?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many right angles does the given shape have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the number of sides and the number of angles in a polygon?",
+      "reason": "options 0 and 2 say the same thing (\"They are always different\" / \"2: They are always different\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following shapes has 3 acute angles and 1 right angle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a shape has 4 angles, and 2 of them are right angles, what could the other 2 angles be?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a 2D shape with exactly 4 angles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which shape has exactly 5 angles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of these shapes has only right angles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which shape has 2 obtuse angles and 2 acute angles?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which shape has more than 5 angles?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What happens to the angles of a rectangle when one of its sides is gently pushed?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is an example of a shape that is not rigid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which shape is formed when a triangle is made with straws of different sizes and clay?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a circle is folded in half and then folded again in half, what is the relationship between the length of the diameter and the radius?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the name of the line from the center of a circle to its border?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "How many edges does a cube have?",
+      "reason": "checkExpr \"12\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the difference between a prism and a pyramid?",
+      "reason": "options 0 and 1 say the same thing (\"A prism has only one base, while a pyramid has two bases\" / \"A pyramid has only one base, while a prism has two bases\"); options 0 and 2 are the same (\"A prism has only one base, while a pyramid has two bases\"); options 1 and 2 say the same thing (\"A pyramid has only one base, while a prism has two bases\" / \"A prism has only one base, while a pyramid has two bases\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the relationship between the number of faces (F), edges (E), and corners (V) of a 3D shape?",
+      "reason": "options 0 and 2 say the same thing (\"F + E = V + 2\" / \"E + V = F + 2\"); options 0 and 3 say the same thing (\"F + E = V + 2\" / \"F + V - E = 2\"); options 2 and 3 say the same thing (\"E + V = F + 2\" / \"F + V - E = 2\"); checkExpr \"F + V - E = 2\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which shape has 2 right angles, 1 acute angle, and 1 obtuse angle?",
+      "reason": "near-duplicate of served question cmvh0hgpx05yngpfh07xqdot1 (cosine 0.946 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

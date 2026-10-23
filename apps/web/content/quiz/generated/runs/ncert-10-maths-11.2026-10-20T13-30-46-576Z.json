@@ -1,0 +1,490 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T13:30:46.576Z",
+  "finishedAt": "2026-10-20T13:35:24.004Z",
+  "seconds": 277,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh111.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — REAS ELATED TO IRCLES",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n10. Take π =22/7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n10. Take π =22/7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n11. A) Irrational and distinct",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 121629,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 15672,
+      "completionTokens": 7829
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 206605,
+      "in": 22,
+      "out": 17,
+      "rejects": 5,
+      "promptTokens": 16805,
+      "completionTokens": 6221
+    },
+    "solver": {
+      "calls": 158,
+      "ms": 82914,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 34259,
+      "completionTokens": 1940
+    },
+    "form": {
+      "calls": 2,
+      "ms": 27647,
+      "in": 12,
+      "out": 5,
+      "rejects": 7,
+      "promptTokens": 2434,
+      "completionTokens": 822
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3465,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 111346,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8512,
+      "completionTokens": 3740
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In a circle of radius 14 cm, a chord subtends an angle of 90° at the center. What is the area of the corresponding segment?",
+      "ms": {
+        "draft": 4621,
+        "critique": 6909,
+        "solver": 1529
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A circle has a radius of 7 cm. What is the length of an arc that subtends an angle of 60° at the center?",
+      "ms": {
+        "draft": 4621,
+        "critique": 7049,
+        "solver": 14065,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A horse is tied to a corner of a square field with a 5 m long rope. What is the area of the field that the horse can graze?",
+      "ms": {
+        "draft": 4621,
+        "critique": 6258,
+        "solver": 1685
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A circular brooch has 10 equal sectors. If the radius of the brooch is 14 cm, what is the area of each sector?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6744
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circular table has 6 equal designs. The radius of the table is 28 cm. If the cost of making each design is Rs 0.35 per cm², what is the total cost of making all the designs?",
+      "ms": {
+        "draft": 4601,
+        "critique": 7071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A lighthouse spreads light over a sector of angle 80° to a distance of 16.5 km. What is the area of the sea over which the ships are warned?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6019,
+        "solver": 13491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A car has two wipers, each of length 25 cm. They sweep through an angle of 115°. What is the total area cleaned at each sweep of the blades?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6342,
+        "solver": 13524,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A circle is divided into 10 equal sectors by 5 diameters. What is the angle of each sector?",
+      "ms": {
+        "draft": 4621,
+        "critique": 5909,
+        "solver": 15666,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A circular brooch has 10 equal sectors. If the radius of the brooch is 7 cm, what is the area of each sector?",
+      "ms": {
+        "draft": 5634,
+        "critique": 5731,
+        "solver": 1907
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 11.9, a brooch has 10 equal sectors. If the radius of the brooch is 7 cm and the total length of the silver wire is 220 cm, what is the area of each sector?",
+      "ms": {
+        "draft": 5634,
+        "critique": 4791,
+        "solver": 12031
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circular table cover has 6 equal designs. If the radius of the cover is 28 cm, and the cost of making each design is `0.35 per cm², what is the total cost of making all the designs?",
+      "ms": {
+        "draft": 5634,
+        "critique": 13371
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the portion of a circular region enclosed by two radii and the corresponding arc?",
+      "ms": {
+        "draft": 6499,
+        "critique": 4279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area of a sector of a circle with radius 6 cm and an angle of 60°, using π = 22/7?",
+      "ms": {
+        "draft": 6499,
+        "critique": 5865,
+        "solver": 1262
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a circle of radius 21 cm, two arcs are drawn, one with an angle of 60° and the other with an angle of 120°. What is the ratio of the lengths of these arcs?",
+      "ms": {
+        "draft": 5634,
+        "critique": 6070,
+        "solver": 11254,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A horse is tied to a corner of a square grass field of side 15 m with a 5 m long rope. What is the area of the field the horse can graze?",
+      "ms": {
+        "draft": 6499,
+        "critique": 8073,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the area of the segment of a circle with radius 21 cm and an angle of 120°, using π = 22/7?",
+      "ms": {
+        "draft": 6499,
+        "critique": 5997,
+        "solver": 11699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A brooch is made with a silver wire in the form of a circle with diameter 35 mm. The wire is also used in making 5 diameters which divide the circle into 10 equal sectors. What is the length of the wire used?",
+      "ms": {
+        "draft": 6499,
+        "critique": 6325
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle θ (in degrees)?",
+      "ms": {
+        "draft": 5634,
+        "critique": 7055,
+        "solver": 10783,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the part of a circular region enclosed by two radii and the corresponding arc?",
+      "ms": {
+        "draft": 4621,
+        "critique": 5976,
+        "solver": 11067,
+        "form": 1911,
+        "translation": 32515
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a sector of a circle has an angle of 90°, what fraction of the circle's area does it represent?",
+      "ms": {
+        "draft": 4621,
+        "critique": 5780,
+        "solver": 936,
+        "form": 0,
+        "translation": 33237
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle θ (in degrees)?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6468,
+        "solver": 10872,
+        "form": 0,
+        "translation": 31198
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the length of an arc of a sector of a circle with radius r and angle θ (in degrees)?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6559,
+        "solver": 10174,
+        "form": 0,
+        "translation": 11182
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a circle of radius 14 cm, a chord subtends an angle of 90° at the center. What is the area of the corresponding segment?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A circle has a radius of 7 cm. What is the length of an arc that subtends an angle of 60° at the center?",
+      "reason": "options 2 and 3 are the same (\"12 cm\"); options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"(60/360)*2*(22/7)*7\" = 7.333333333333332, but the key says 11"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A horse is tied to a corner of a square field with a 5 m long rope. What is the area of the field that the horse can graze?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A circular brooch has 10 equal sectors. If the radius of the brooch is 14 cm, what is the area of each sector?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A circular table has 6 equal designs. The radius of the table is 28 cm. If the cost of making each design is Rs 0.35 per cm², what is the total cost of making all the designs?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A lighthouse spreads light over a sector of angle 80° to a distance of 16.5 km. What is the area of the sea over which the ships are warned?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(80/360)*3.14*(16.5^2)\" = 189.96999999999997, but the key says 220"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A car has two wipers, each of length 25 cm. They sweep through an angle of 115°. What is the total area cleaned at each sweep of the blades?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*((115/360)*22/7*(25^2))\" = 1254.9603174603171, but the key says 1400"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A circle is divided into 10 equal sectors by 5 diameters. What is the angle of each sector?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the formula for the length of an arc of a sector of a circle with radius r and angle θ (in degrees)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A circular brooch has 10 equal sectors. If the radius of the brooch is 7 cm, what is the area of each sector?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Fig. 11.9, a brooch has 10 equal sectors. If the radius of the brooch is 7 cm and the total length of the silver wire is 220 cm, what is the area of each sector?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A circular table cover has 6 equal designs. If the radius of the cover is 28 cm, and the cost of making each design is `0.35 per cm², what is the total cost of making all the designs?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the portion of a circular region enclosed by two radii and the corresponding arc?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the area of a sector of a circle with radius 6 cm and an angle of 60°, using π = 22/7?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a circle of radius 21 cm, two arcs are drawn, one with an angle of 60° and the other with an angle of 120°. What is the ratio of the lengths of these arcs?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(60/360)*(2*(22/7)*21) / ((120/360)*(2*(22/7)*21))\" = 0.5, but the key says 1"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A horse is tied to a corner of a square grass field of side 15 m with a 5 m long rope. What is the area of the field the horse can graze?",
+      "reason": "checkExpr \"(1/4)*pi*5*5\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the area of the segment of a circle with radius 21 cm and an angle of 120°, using π = 22/7?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"(120/360)*(22/7)*21*21 - 0.5*21*21*sin(120 degrees)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A brooch is made with a silver wire in the form of a circle with diameter 35 mm. The wire is also used in making 5 diameters which divide the circle into 10 equal sectors. What is the length of the wire used?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle θ (in degrees)?",
+      "reason": "near-duplicate of batch item \"What is the formula for the area of a sector of a …\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

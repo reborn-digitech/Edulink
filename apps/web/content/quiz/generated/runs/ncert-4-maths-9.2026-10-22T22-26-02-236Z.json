@@ -1,0 +1,587 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:26:02.236Z",
+  "finishedAt": "2026-10-22T22:33:36.356Z",
+  "seconds": 454,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm109.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Equal Groups",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n26. Number of students in each group subject to the given condition = HCF (60,84,108) ½\nHCF (60,84,108) = 12\n଺଴\nNumber of groups in Music = = 5\nଵଶ\n଼ସ\nNumber of groups in Dance = ଵଶ = 7\nଵ଴଼\nNumber of groups in Handicrafts =\nTotal number of rooms required = 21",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n26. National Art convention got registrations from students from all parts of the country, of 3\nwhich 60 are interested in music, 84 are interested in dance and 108 students are interested\nin handicrafts. For optimum cultural exchange, organisers wish to keep them in minimum\nnumber of groups such that each group consists of students interested in the same artform\nand the number of students in each group is the same. Find the number of students in each\ngroup. Find the number of groups in each art form. How many rooms are required if each\ngroup will be allotted a room?",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n4. (b) Parallel.",
+      "[RMO 2010 — question paper]\nform 8k + 4 among them which is divisible by 4 but not by 8. Hence if we take four even\nconsecutive numbers\n1000a + 100b + 10c + 2, 1000a + 100b + 10c + 4,\n1000a + 100b + 10c + 6, 1000a + 100b + 10c + 8,\nthere is exactly one among these four which is divisible by 4 but not by 8. Now we\ncan divide the set of all 4-digit even numbers with non-zero digits into groups of 4 such\nconsecutive even numbers with a, b, c nonzero. And in each group, there is exactly one\nnumber which is divisible by 4 but not by 8. The number of such groups is precisely\nequal to 9 × 9 × 9 = 729, since we can vary a, b.c in the set {1, 2, 3, 4, 5, 6, 7, 8, 9}."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 150954,
+      "in": 33,
+      "out": 29,
+      "rejects": 4,
+      "promptTokens": 29944,
+      "completionTokens": 7180
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 289868,
+      "in": 29,
+      "out": 23,
+      "rejects": 6,
+      "promptTokens": 17524,
+      "completionTokens": 6992
+    },
+    "solver": {
+      "calls": 189,
+      "ms": 121160,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 41807,
+      "completionTokens": 2283
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 4022,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 436598,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 27466,
+      "completionTokens": 11649
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "The cat is on 6 and the rat is on 12. The cat jumps 3 steps forward, and the rat jumps 2 steps forward. Will the cat catch the rat? If yes, at which number?",
+      "ms": {
+        "draft": 4716,
+        "critique": 12014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A sports store has 50 shuttlecocks. Each box holds 4 shuttlecocks. How many boxes are needed to pack all shuttlecocks?",
+      "ms": {
+        "draft": 5218,
+        "critique": 7402,
+        "solver": 2129,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the multiplication statement for 10 rows of 3 saplings each?",
+      "ms": {
+        "draft": 4716,
+        "critique": 9889,
+        "solver": 17720,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If 125 autorickshaws can carry 8 passengers each, how many passengers can travel in total?",
+      "ms": {
+        "draft": 3695,
+        "critique": 7313
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 174 boxes are packed with 6 kulhads each, how many kulhads are there in total?",
+      "ms": {
+        "draft": 3695,
+        "critique": 7712
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 9 boats carry 108 people equally, how many people are in each boat?",
+      "ms": {
+        "draft": 3695,
+        "critique": 6587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A school bus hires 7 buses to take 245 children. How many children are in each bus?",
+      "ms": {
+        "draft": 3695,
+        "critique": 5946
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 94 ÷ 4 is calculated, what is the remainder?",
+      "ms": {
+        "draft": 3695,
+        "critique": 4833,
+        "solver": 7787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many passengers can travel in 125 autorickshaws if each autorickshaw carries 8 passengers?",
+      "ms": {
+        "draft": 3974,
+        "critique": 8776,
+        "solver": 23166
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of wheels in 20 tricycles if each tricycle has 3 wheels?",
+      "ms": {
+        "draft": 5547,
+        "critique": 7004,
+        "solver": 13995,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many bamboo rods are needed for 23 carts if one cart needs 8 bamboo rods?",
+      "ms": {
+        "draft": 5547,
+        "critique": 8723,
+        "solver": 20777
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Radha is packing cupcakes in boxes of 4. She has packed 18 boxes. How many cupcakes are there in the packed boxes?",
+      "ms": {
+        "draft": 5547,
+        "critique": 8546,
+        "solver": 16563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a big aquarium, Jolly fish sees 72 legs of octopuses. How many octopuses are there in the aquarium?",
+      "ms": {
+        "draft": 5547,
+        "critique": 9261,
+        "solver": 19357
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The cat is on 6 and the rat is on 12. When the cat jumps 3 steps forward, the rat jumps 2 steps forward. Will the cat catch the rat? If yes, at which number?",
+      "ms": {
+        "draft": 4260,
+        "critique": 8365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many times did the rabbit jump to reach 48 if it jumps 6 steps at a time?",
+      "ms": {
+        "draft": 4260,
+        "critique": 6890,
+        "solver": 1482,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the smallest 3-digit number on which the rabbit will land if it jumps 6 steps at a time?",
+      "ms": {
+        "draft": 4260,
+        "critique": 8395,
+        "solver": 13345,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number of wheels in 10 tricycles if each tricycle has 3 wheels?",
+      "ms": {
+        "draft": 5547,
+        "critique": 7911,
+        "solver": 1563,
+        "form": 0,
+        "translation": 37909
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which numbers are multiples of 3 and 4?",
+      "ms": {
+        "draft": 4716,
+        "critique": 8505,
+        "solver": 15436,
+        "form": 1,
+        "translation": 35122
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which numbers do both the frog and the squirrel touch?",
+      "ms": {
+        "draft": 4260,
+        "critique": 7589,
+        "solver": 2269,
+        "form": 0,
+        "translation": 31844
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 6 kulhads are packed in one box, how many kulhads are packed in 174 boxes?",
+      "ms": {
+        "draft": 3974,
+        "critique": 6056,
+        "solver": 1622,
+        "form": 0,
+        "translation": 33468
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the rabbit jumps 6 steps at a time, what is the smallest 3-digit number it will land on?",
+      "ms": {
+        "draft": 4716,
+        "critique": 7779,
+        "solver": 1552,
+        "form": 0,
+        "translation": 27712
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A factory has 60 wheels. Each tempo requires 3 wheels. How many tempos can be made?",
+      "ms": {
+        "draft": 5218,
+        "critique": 7539,
+        "solver": 2651,
+        "form": 0,
+        "translation": 41126
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A dairy farm has 88 legs. How many cows are there if each cow has 4 legs?",
+      "ms": {
+        "draft": 5218,
+        "critique": 7936,
+        "solver": 1647,
+        "form": 0,
+        "translation": 36486
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 300 rupees is shared equally among 3 children, how much does each child get?",
+      "ms": {
+        "draft": 3974,
+        "critique": 5010,
+        "solver": 1442,
+        "form": 0,
+        "translation": 32456
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Gulabo has 80 petals from hibiscus flowers. Each flower has 5 petals. How many flowers did she have?",
+      "ms": {
+        "draft": 4716,
+        "critique": 8319,
+        "solver": 1939,
+        "form": 0,
+        "translation": 32655
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 234 children contribute ₹5 each for a mela, how much money is collected in total?",
+      "ms": {
+        "draft": 3974,
+        "critique": 9215,
+        "solver": 1088,
+        "form": 0,
+        "translation": 32391
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If Radha bakes 18 cupcakes in one tray, how many cupcakes can she make in one attempt if she uses two trays?",
+      "ms": {
+        "draft": 4716,
+        "critique": 7282,
+        "solver": 13616,
+        "form": 0,
+        "translation": 25733
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the pattern in the multiplication table where the numbers in row 7 are the same as the numbers in column 7?",
+      "ms": {
+        "draft": 4260,
+        "critique": 3637,
+        "solver": 630,
+        "form": 0,
+        "translation": 33801
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 6 tyres are on a truck and Chippi sees 60 tyres, how many trucks are there?",
+      "ms": {
+        "draft": 3974,
+        "critique": 8020,
+        "solver": 2724,
+        "form": 0,
+        "translation": 31579
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Rakul Chachi planted 75 saplings of roses. Each row has 5 saplings. How many rows are there?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A book shop has 14 piles of books. Each pile has 9 books. How many books are there in total?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Radha is packing cupcakes in boxes of 4. She has packed 18 boxes. How many cupcakes are there?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The cat is on 6 and the rat is on 12. The cat jumps 3 steps forward, and the rat jumps 2 steps forward. Will the cat catch the rat? If yes, at which number?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A sports store has 50 shuttlecocks. Each box holds 4 shuttlecocks. How many boxes are needed to pack all shuttlecocks?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"50/4\" = 12.5, but the key says 13"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the multiplication statement for 10 rows of 3 saplings each?",
+      "reason": "options 0 and 1 say the same thing (\"10 × 3 = 30\" / \"3 × 10 = 30\"); options 2 and 3 say the same thing (\"10 + 3 = 13\" / \"3 + 10 = 13\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "If 125 autorickshaws can carry 8 passengers each, how many passengers can travel in total?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If 174 boxes are packed with 6 kulhads each, how many kulhads are there in total?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If 9 boats carry 108 people equally, how many people are in each boat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A school bus hires 7 buses to take 245 children. How many children are in each bus?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 94 ÷ 4 is calculated, what is the remainder?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If 108 people are to be ferried in 9 boats, how many people should be in each boat?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many passengers can travel in 125 autorickshaws if each autorickshaw carries 8 passengers?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total number of wheels in 20 tricycles if each tricycle has 3 wheels?",
+      "reason": "options 1 and 3 are the same (\"30\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many bamboo rods are needed for 23 carts if one cart needs 8 bamboo rods?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Radha is packing cupcakes in boxes of 4. She has packed 18 boxes. How many cupcakes are there in the packed boxes?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a big aquarium, Jolly fish sees 72 legs of octopuses. How many octopuses are there in the aquarium?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The cat is on 6 and the rat is on 12. When the cat jumps 3 steps forward, the rat jumps 2 steps forward. Will the cat catch the rat? If yes, at which number?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "How many times did the rabbit jump to reach 48 if it jumps 6 steps at a time?",
+      "reason": "near-duplicate of served question cmvh1svz3068xgpfhhksao4jf (cosine 0.978 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the smallest 3-digit number on which the rabbit will land if it jumps 6 steps at a time?",
+      "reason": "near-duplicate of batch item \"If the rabbit jumps 6 steps at a time, what is the…\" (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

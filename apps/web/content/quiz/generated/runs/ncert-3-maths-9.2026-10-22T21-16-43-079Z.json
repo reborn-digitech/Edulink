@@ -1,0 +1,304 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:16:43.079Z",
+  "finishedAt": "2026-10-22T21:20:09.629Z",
+  "seconds": 207,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm109.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — House of Hundreds - I I",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n37. CASE STUDY 2\nAlia and Shagun are friends living on the same street in Patel Nagar. Shagun’s house is at the\nintersection of one street with another street on which there is a library. They both study in\nthe same school and that is not far from Shagun's house. Suppose the school is situated at\nthe point O, i.e., the origin, Alia's house is at A. Shagun’s house is at B and library is at C.\nBased on the above information, answer the following questions.\n(i) How far is Alia's house from Shagun’s house?\n(ii) How far is the library from Shagun’s house?\n(iii) Show that for Shagun, school is farther compared to Alia’s house and library.\nOR\nShow that Alia’s house, shagun’s house and library for a",
+      "[PRMO 2019 — question paper]\n30. Let E denote the set of all natural numbers n such that 3 < n < 100 and the set\n{1, 2, 3, . . . , n} can be partitioned in to 3 subsets with equal sums. Find the number of elements\nof E.\nSPACE FOR ROUGH WORK\n27. हम कहӒगे ўक ўकसी शͫद के अ̯रӖ के बमचय मӒ कोई िःथर अ̯र नहҰं है अगर, जब हम बमचय को\nशͫद के ठұक नीचे ѠलखӒ, तो ўकसी भी ःतंभ मӒ एक हҰ अ̯र ऊपर नीचे दोनӖ जगह नहҰं होगा। जैसे ўक\nशͫद B H A R A T के बमचय H B R A T A मӒ कोई िःथर अ̯र नहҰं है। B H A R A\nT के अलग-अलग ऐसे ўकतने बमचय हӔ िजनमӒ कोई िःथर अ̯र नहҰं है? (यहाँ मानӒगे ўक दोनӖ A मӒ\nकोई भेद नहҰं है।)\n28. मान लो ўक ABC एक िऽभुज है िजसकҴ भुजाओं का मान 51, 52, 53 है। मान लो ўक Ω िऽभुज\n△ABC का अंतःवृа है। Ω के वह ःपश˨क बनाओ जो ўक ABC कҴ भुजाओं ",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n27. HCF (36,60,84) =12 1 ½\nଷ଺ ଺଴ ସ଼\nRequired number of rooms= ଵଶ ଵଶ ଵଶ + + 1\n=3+5+7\n=15 ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n18. 3\nD)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 40782,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 10630,
+      "completionTokens": 2300
+    },
+    "critique": {
+      "calls": 16,
+      "ms": 104872,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 6774,
+      "completionTokens": 2857
+    },
+    "solver": {
+      "calls": 64,
+      "ms": 36210,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 10584,
+      "completionTokens": 624
+    },
+    "form": {
+      "calls": 5,
+      "ms": 12169,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 1269,
+      "completionTokens": 376
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3656,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 124987,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9381,
+      "completionTokens": 3763
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the sum of the numbers 530 and 540?",
+      "ms": {
+        "draft": 12315,
+        "critique": 7812,
+        "solver": 3317
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number is written as 'Nine Hundred and Sixty Three' in words?",
+      "ms": {
+        "draft": 12315,
+        "critique": 7437,
+        "solver": 11698,
+        "form": 4011
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of crows that Birbal said were in the city?",
+      "ms": {
+        "draft": 3277,
+        "critique": 6785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a crane needs to reach the fish and takes steps of 33, how many steps will it take to reach from 667 to 700?",
+      "ms": {
+        "draft": 3277,
+        "critique": 7500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is between 595 and 605?",
+      "ms": {
+        "draft": 3277,
+        "critique": 7532
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using the number line, which of the following numbers would be located between 703 and 721?",
+      "ms": {
+        "draft": 3277,
+        "critique": 8160
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number has 3 hundreds, 6 tens, and 7 ones, what is the number?",
+      "ms": {
+        "draft": 3277,
+        "critique": 6837,
+        "solver": 9635
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers lies between 600 and 700?",
+      "ms": {
+        "draft": 12315,
+        "critique": 7163,
+        "solver": 12877,
+        "form": 2843,
+        "translation": 27094
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If you take 300 + 60 + 8, what number do you get?",
+      "ms": {
+        "draft": 12315,
+        "critique": 5661,
+        "solver": 1518,
+        "form": 3633,
+        "translation": 28492
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a number is 6 less than 625, what is the number?",
+      "ms": {
+        "draft": 12315,
+        "critique": 5579,
+        "solver": 1113,
+        "form": 2041,
+        "translation": 25060
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a number is 68 more than 300, which of the following is that number?",
+      "ms": {
+        "draft": 3277,
+        "critique": 9060,
+        "solver": 7835,
+        "form": 0,
+        "translation": 15600
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the largest number that can be made using six slips of paper, each with 100 written on it?",
+      "ms": {
+        "draft": 12315,
+        "critique": 5404,
+        "solver": 959,
+        "form": 1896,
+        "translation": 24246
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the sum of the numbers 530 and 540?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which number is written as 'Nine Hundred and Sixty Three' in words?",
+      "reason": "options 0 and 2 say the same thing (\"Nine Hundred and Sixty\" / \"Nine Hundred and Sixty Three\"); options 1 and 2 say the same thing (\"Nine Hundred and Three\" / \"Nine Hundred and Sixty Three\"); option 0 repeats the stem's wording (\"Nine Hundred and Sixty\"); option 2 repeats the stem's wording (\"Nine Hundred and Sixty Three\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the total number of crows that Birbal said were in the city?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a crane needs to reach the fish and takes steps of 33, how many steps will it take to reach from 667 to 700?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following numbers is between 595 and 605?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Using the number line, which of the following numbers would be located between 703 and 721?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number has 3 hundreds, 6 tens, and 7 ones, what is the number?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

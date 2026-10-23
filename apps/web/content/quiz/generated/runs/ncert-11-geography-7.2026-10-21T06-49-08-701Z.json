@@ -1,0 +1,454 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T06:49:08.701Z",
+  "finishedAt": "2026-10-21T06:53:12.707Z",
+  "seconds": 244,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy207.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 7 — NIT LIMATE",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n16. Ans: D- Nigeria 1\nFor Visually Challenged students\nAns: B - The arrangement or spread of people across a given area.",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nSection E\n29 A- Northern part of Eurasia 1X5\nB- Vancouver\nC- Kolkata\nD- Jeddah\nE- Darwin\nF- Panama Canal\nG- St. Lawrence waterway\nFor Visually Impaired Candidates only\n29 A- Arabian peninsula /Mongolia/Central China\n29 B- Vancouver\n29 C- Kolkata\n29 D- Johannesburg\n29 E- Darwin\n29 F- Suez Canal\n29 G- St. Lawrence waterway\n30 Locate and label any five of the following geographical features on the 1x5\nPolitical Outline map of India with appropriate symbols:\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Bailadila iron-ore mines, Chattisgarh\nE. Jamnagar\nF. Uttar Pradesh\nG. Thiruvananthapuram\nFor visually impaired students\nAttempt any five.\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Chhatisga",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n9. a. Hugli, Salem, Bhilai",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 58772,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 15347,
+      "completionTokens": 3768
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 142121,
+      "in": 21,
+      "out": 16,
+      "rejects": 5,
+      "promptTokens": 10536,
+      "completionTokens": 4686
+    },
+    "solver": {
+      "calls": 112,
+      "ms": 43400,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 16301,
+      "completionTokens": 1071
+    },
+    "form": {
+      "calls": 12,
+      "ms": 24783,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 2661,
+      "completionTokens": 792
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 667,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 303417,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19231,
+      "completionTokens": 9409
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following gases is primarily responsible for the greenhouse effect?",
+      "ms": {
+        "draft": 3283,
+        "critique": 5382,
+        "solver": 1913
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true according to the passage?",
+      "ms": {
+        "draft": 3283,
+        "critique": 5068,
+        "solver": 1577
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which layer of the atmosphere contains the ozone layer?",
+      "ms": {
+        "draft": 3283,
+        "critique": 4984,
+        "solver": 10658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the temperature in the mesosphere as altitude increases?",
+      "ms": {
+        "draft": 3283,
+        "critique": 4720,
+        "solver": 9889,
+        "form": 2607
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following gases is transparent to incoming solar radiation but opaque to outgoing terrestrial radiation?",
+      "ms": {
+        "draft": 2250,
+        "critique": 5553,
+        "solver": 5539,
+        "form": 856
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "ms": {
+        "draft": 2357,
+        "critique": 6207
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, and smoke associated with?",
+      "ms": {
+        "draft": 2357,
+        "critique": 6711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "ms": {
+        "draft": 2357,
+        "critique": 7524
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following layers of the atmosphere contains the ozone layer?",
+      "ms": {
+        "draft": 2286,
+        "critique": 6349
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which layer of the atmosphere contains dust particles and water vapour?",
+      "ms": {
+        "draft": 2357,
+        "critique": 6431,
+        "solver": 11211,
+        "form": 2493
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the amount of carbon dioxide in the atmosphere increases, what will happen?",
+      "ms": {
+        "draft": 2286,
+        "critique": 5570
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the atmosphere important for life on Earth?",
+      "ms": {
+        "draft": 2286,
+        "critique": 3883,
+        "solver": 523
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which layer of the atmosphere contains all changes in climate and weather?",
+      "ms": {
+        "draft": 2250,
+        "critique": 5008,
+        "solver": 1212,
+        "form": 2568,
+        "translation": 34617
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a variable gas in the atmosphere?",
+      "ms": {
+        "draft": 3283,
+        "critique": 4954,
+        "solver": 1023,
+        "form": 2727,
+        "translation": 35710
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a component of the Earth's atmosphere?",
+      "ms": {
+        "draft": 2286,
+        "critique": 6065,
+        "solver": 1843,
+        "form": 2295,
+        "translation": 24145
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main element of the atmosphere that influences life on Earth?",
+      "ms": {
+        "draft": 2250,
+        "critique": 5109,
+        "solver": 1422,
+        "form": 2432,
+        "translation": 31518
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the Earth's temperature being moderate?",
+      "ms": {
+        "draft": 2286,
+        "critique": 7354,
+        "solver": 9856,
+        "form": 1608,
+        "translation": 27016
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which gas makes up the majority of the Earth's atmosphere?",
+      "ms": {
+        "draft": 2250,
+        "critique": 6123,
+        "solver": 1158,
+        "form": 3082,
+        "translation": 35799
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which layer of the atmosphere is described as the most important for all biological activity?",
+      "ms": {
+        "draft": 2250,
+        "critique": 4929,
+        "solver": 1634,
+        "form": 2142,
+        "translation": 38992
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a characteristic of the tropopause?",
+      "ms": {
+        "draft": 2250,
+        "critique": 4658,
+        "solver": 900,
+        "form": 1947,
+        "translation": 34477
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the function of the ozone layer in the atmosphere?",
+      "ms": {
+        "draft": 3283,
+        "critique": 5393,
+        "solver": 1634,
+        "form": 2618,
+        "translation": 37946
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following gases is primarily responsible for the greenhouse effect?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements is true according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which layer of the atmosphere contains the ozone layer?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the temperature in the mesosphere as altitude increases?",
+      "reason": "options 0 and 3 are the same (\"It increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following gases is transparent to incoming solar radiation but opaque to outgoing terrestrial radiation?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "At what height is oxygen gas in negligible quantity?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which gas is transparent to incoming solar radiation and opaque to outgoing terrestrial radiation?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, and smoke associated with?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following layers of the atmosphere contains the ozone layer?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which layer of the atmosphere contains dust particles and water vapour?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the amount of carbon dioxide in the atmosphere increases, what will happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the atmosphere important for life on Earth?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

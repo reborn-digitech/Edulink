@@ -1,0 +1,631 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T05:24:04.247Z",
+  "finishedAt": "2026-10-20T05:30:41.823Z",
+  "seconds": 398,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 18 — Ecosystems",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2020 — question paper]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph",
+      "[INJSO 2020 — solutions or answer key]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n12. About 100 acres of forest land was declared as Natural reserve park. The 2\nfollowing organisms were predominant in the Natural reserve park:\nrabbit, frog, grass, fish, fox, water insects, zebra, peacock, snake, trees, bird,\nowl, insects, tiger, vulture, duck.\nCreate a food web comprising two separate food chains with different\nproducers by using the above data.",
+      "[INJSO 2023 — solutions or answer key]\n16. A food chain and a food web from ecosystems 1 and 2 are represented below. HBCSE 8\nEagle Eagle\nSnake Snake\nFrog Sparrow\nLocust Locust\nTiger\nOwls Mongoose Fox\nMoles Rabbit\nCorn Plants Corn Plants Shrubs\nEcosystem I Ecosystem II\nConsider the two pyramids shown below and from the options, identify what they would\nrepresent:\nM N\nA. M could be the number pyramid of food web 2 while N could be the number pyramid\nof food chain 1\nB. M could be the energy pyramid of food web 2 and N could be the energy pyramid\nof food chain 1.\nC. M could be the number pyramid as well as energy pyramid for food chain\n1.\nD. M could be the number pyramid as well as energy pyramid of food web\n2.\nSolution:\nRef: Class "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 124233,
+      "in": 34,
+      "out": 32,
+      "rejects": 2,
+      "promptTokens": 25552,
+      "completionTokens": 7402
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 200381,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 16285,
+      "completionTokens": 6100
+    },
+    "solver": {
+      "calls": 176,
+      "ms": 76884,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 22870,
+      "completionTokens": 1560
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 29,
+      "out": 18,
+      "rejects": 11,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 41,
+      "ms": 5911,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 63,
+      "ms": 472529,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 31455,
+      "completionTokens": 14841
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 4,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 9,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a producer in an ecosystem?",
+      "ms": {
+        "draft": 6099,
+        "critique": 4615,
+        "solver": 1224,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a decomposer in an ecosystem?",
+      "ms": {
+        "draft": 6099,
+        "critique": 4971,
+        "solver": 1594,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a biotic factor?",
+      "ms": {
+        "draft": 6099,
+        "critique": 5226,
+        "solver": 1993,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is a correct representation of an ecosystem?",
+      "ms": {
+        "draft": 6099,
+        "critique": 7725,
+        "solver": 1440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the information provided, which of the following best describes the relationship between decomposers and producers in an ecosystem?",
+      "ms": {
+        "draft": 6099,
+        "critique": 6801,
+        "solver": 1514,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a grassland ecosystem, which of the following would most likely be affected if the number of decomposers decreases?",
+      "ms": {
+        "draft": 6099,
+        "critique": 7632,
+        "solver": 2431,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an aquatic ecosystem, which of the following is found at the bottom of the water reservoir?",
+      "ms": {
+        "draft": 4850,
+        "critique": 5921
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an ecosystem, which of the following is an example of a tertiary consumer?",
+      "ms": {
+        "draft": 4850,
+        "critique": 6755
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a large dam is built in a river, which of the following is most likely to happen to the ecosystem in the area where the dam is constructed?",
+      "ms": {
+        "draft": 4850,
+        "critique": 5131,
+        "solver": 1080,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a primary consumer in an ecosystem?",
+      "ms": {
+        "draft": 4850,
+        "critique": 5872,
+        "solver": 1641,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of aquatic ecosystem?",
+      "ms": {
+        "draft": 4850,
+        "critique": 5143,
+        "solver": 10888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the role of decomposers in an ecosystem?",
+      "ms": {
+        "draft": 4850,
+        "critique": 5902,
+        "solver": 12604,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist observes that in an ecosystem, the number of producers is less than the number of primary consumers. Which type of ecological pyramid would this scenario represent?",
+      "ms": {
+        "draft": 2327,
+        "critique": 6404,
+        "solver": 8199
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a producer in an aquatic ecosystem?",
+      "ms": {
+        "draft": 2720,
+        "critique": 6024,
+        "solver": 11582,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a biotic factor in an ecosystem?",
+      "ms": {
+        "draft": 2155,
+        "critique": 6034,
+        "solver": 2224,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of producers in an ecosystem?",
+      "ms": {
+        "draft": 2155,
+        "critique": 5556,
+        "solver": 1132,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an aquatic ecosystem?",
+      "ms": {
+        "draft": 2720,
+        "critique": 5498,
+        "solver": 1104,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a biotic factor?",
+      "ms": {
+        "draft": 3831,
+        "critique": 7821,
+        "solver": 1302,
+        "form": 0,
+        "translation": 27707
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a decomposer?",
+      "ms": {
+        "draft": 3831,
+        "critique": 6997,
+        "solver": 1698,
+        "form": 0,
+        "translation": 20087
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of producers in an ecosystem?",
+      "ms": {
+        "draft": 2327,
+        "critique": 6850,
+        "solver": 1252,
+        "form": 0,
+        "translation": 30876
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an abiotic factor in an ecosystem?",
+      "ms": {
+        "draft": 2155,
+        "critique": 6034,
+        "solver": 1598,
+        "form": 0,
+        "translation": 21641
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a biotic factor in an ecosystem?",
+      "ms": {
+        "draft": 2327,
+        "critique": 7533,
+        "solver": 1204,
+        "form": 0,
+        "translation": 20176
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a forest is converted into a farm, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 2155,
+        "critique": 5830,
+        "solver": 1126,
+        "form": 0,
+        "translation": 29410
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a grassland ecosystem, which of the following is a tertiary consumer?",
+      "ms": {
+        "draft": 3831,
+        "critique": 5785,
+        "solver": 932,
+        "form": 0,
+        "translation": 45321
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct match of a consumer and its role in an ecosystem?",
+      "ms": {
+        "draft": 2720,
+        "critique": 5547,
+        "solver": 1659,
+        "form": 0,
+        "translation": 35599
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which type of ecosystem would you expect to find a large number of trees, shrubs, and a wide variety of animals?",
+      "ms": {
+        "draft": 2327,
+        "critique": 6611,
+        "solver": 1594,
+        "form": 0,
+        "translation": 34825
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In an ecosystem, which of the following is most likely to have the highest number of individuals?",
+      "ms": {
+        "draft": 2155,
+        "critique": 5021,
+        "solver": 1660,
+        "form": 0,
+        "translation": 28849
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about ecosystems?",
+      "ms": {
+        "draft": 3831,
+        "critique": 3457,
+        "solver": 455,
+        "form": 0,
+        "translation": 25138
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be a tertiary consumer in a forest ecosystem?",
+      "ms": {
+        "draft": 2720,
+        "critique": 5006,
+        "solver": 2560,
+        "form": 0,
+        "translation": 39010
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A large dam is built in a river, and as a result, the surrounding area becomes a different ecosystem. Which of the following is the most likely reason for this change?",
+      "ms": {
+        "draft": 2155,
+        "critique": 4894,
+        "solver": 2044,
+        "form": 0,
+        "translation": 40524
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If an ecosystem is affected by a large dam, which of the following is most likely to be affected the most?",
+      "ms": {
+        "draft": 2720,
+        "critique": 6994,
+        "solver": 1956,
+        "form": 0,
+        "translation": 38869
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, the population of predators increases dramatically. How would this affect the population of primary consumers?",
+      "ms": {
+        "draft": 2327,
+        "critique": 5192,
+        "solver": 990,
+        "form": 0,
+        "translation": 30962
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following best describes an ecosystem?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a producer in an ecosystem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Sunflower' as it is a plant that produces…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a decomposer in an ecosystem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Bacteria' as they are microorganisms that…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a biotic factor?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Algae' as it is a living organism, not an…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is a correct representation of an ecosystem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is 'Living and non-living factors interacting…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the information provided, which of the following best describes the relationship between decomposers and producers in an ecosystem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Producers depend on decomposers for nutri…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a grassland ecosystem, which of the following would most likely be affected if the number of decomposers decreases?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Number of producers' because decomposers …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an aquatic ecosystem, which of the following is found at the bottom of the water reservoir?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In an ecosystem, which of the following is an example of a tertiary consumer?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a large dam is built in a river, which of the following is most likely to happen to the ecosystem in the area where the dam is constructed?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that dams have a positive impact on ecos…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a primary consumer in an ecosystem?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses primary consumers with secondary consumers, as Frog…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a type of aquatic ecosystem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best describes the role of decomposers in an ecosystem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the role of consumers with decomposers, as decompos…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A scientist observes that in an ecosystem, the number of producers is less than the number of primary consumers. Which type of ecological pyramid would this scenario represent?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a decomposer in an ecosystem?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a producer in an aquatic ecosystem?",
+      "reason": "options 1 and 3 are the same (\"Small fishes\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a biotic factor in an ecosystem?",
+      "reason": "near-duplicate of batch item \"Which of the following is a biotic factor in an ec…\" (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the role of producers in an ecosystem?",
+      "reason": "near-duplicate of batch item \"What is the role of producers in an ecosystem?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of an aquatic ecosystem?",
+      "reason": "near-duplicate of served question cmvf4yw0i037ggod896c03uue (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

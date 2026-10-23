@@ -1,0 +1,317 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T17:54:45.677Z",
+  "finishedAt": "2026-10-20T17:56:02.818Z",
+  "seconds": 77,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm110.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Fun at Class Party!",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n13. (𝑐) 𝜋:2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 36380,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8396,
+      "completionTokens": 2205
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 76526,
+      "in": 12,
+      "out": 2,
+      "rejects": 10,
+      "promptTokens": 5865,
+      "completionTokens": 2493
+    },
+    "solver": {
+      "calls": 24,
+      "ms": 11495,
+      "in": 2,
+      "out": 0,
+      "rejects": 2,
+      "promptTokens": 5512,
+      "completionTokens": 361
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4272,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 164,
+      "completionTokens": 317
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If Shelly and Adi use their hand spans to measure the length of the same table, what will happen?",
+      "ms": {
+        "draft": 2664,
+        "critique": 4390
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of measuring length using an informal tool?",
+      "ms": {
+        "draft": 2664,
+        "critique": 5094
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How can Shelly and Adi find out if the table can go through the door without lifting it?",
+      "ms": {
+        "draft": 2664,
+        "critique": 5848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a paper strip is one arm long, how many such paper strips would be needed to measure a metre?",
+      "ms": {
+        "draft": 2664,
+        "critique": 5028
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the activity where children measure their body parts to make costumes?",
+      "ms": {
+        "draft": 2664,
+        "critique": 5552
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student estimates the length of a metre using a piece of string, how can they verify if their estimate is correct?",
+      "ms": {
+        "draft": 2664,
+        "critique": 5590,
+        "solver": 5093
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an informal tool for measuring length?",
+      "ms": {
+        "draft": 3400,
+        "critique": 6078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child measures the length of a table using a paper string that is 20 cm long, and it takes 5 paper strings to cover the table, what is the length of the table?",
+      "ms": {
+        "draft": 3400,
+        "critique": 6500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the activity where children measure their body parts?",
+      "ms": {
+        "draft": 3400,
+        "critique": 6867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Shelly and Adi are trying to figure out if a table can go through a door. They measure the breadth of the table and the width of the door. What is the most important thing they need to do next?",
+      "ms": {
+        "draft": 3400,
+        "critique": 7003
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A paper strip is 30 cm long. Shelly uses it to measure the length of a wall and finds that the wall is 4 paper strips long. What is the length of the wall?",
+      "ms": {
+        "draft": 3400,
+        "critique": 6824
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a child estimates the length of a metre rope by using their arm span, and their arm span is 50 cm, how many arm spans would they need to measure a 3-metre rope?",
+      "ms": {
+        "draft": 3400,
+        "critique": 6444,
+        "solver": 7401
+      },
+      "outcome": "solver",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Shelly and Adi use their hand spans to measure the length of the same table, what will happen?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of measuring length using an informal tool?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How can Shelly and Adi find out if the table can go through the door without lifting it?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a paper strip is one arm long, how many such paper strips would be needed to measure a metre?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of the activity where children measure their body parts to make costumes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student estimates the length of a metre using a piece of string, how can they verify if their estimate is correct?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of an informal tool for measuring length?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a child measures the length of a table using a paper string that is 20 cm long, and it takes 5 paper strings to cover the table, what is the length of the table?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of the activity where children measure their body parts?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Shelly and Adi are trying to figure out if a table can go through a door. They measure the breadth of the table and the width of the door. What is the most important thing they need to do next?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A paper strip is 30 cm long. Shelly uses it to measure the length of a wall and finds that the wall is 4 paper strips long. What is the length of the wall?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a child estimates the length of a metre rope by using their arm span, and their arm span is 50 cm, how many arm spans would they need to measure a 3-metre rope?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

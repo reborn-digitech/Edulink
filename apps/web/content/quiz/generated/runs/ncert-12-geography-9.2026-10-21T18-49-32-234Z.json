@@ -1,0 +1,730 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T18:49:32.234Z",
+  "finishedAt": "2026-10-21T18:59:30.793Z",
+  "seconds": 599,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "India -People And Economy",
+    "bookCode": "legy2",
+    "document": "ncert/12/geography/legy209.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 9 — Geographical Perspective on Selected Issues and Problems",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n7. Section E Question number 29 and 30 are Map based questions.",
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\nSECTION D\nQuestion numbers 29 & 30 are Map based questions having 5\nsub-parts each.",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n12. b. Both the statements are true and statement II correctly\npresents the reason for statement I.",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n6. Section D Question number 24 to 28 are Long Answer type questions carrying 5 marks\neach. Answer to these questions shall be written in 120 to 150 words."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 114851,
+      "in": 40,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 38127,
+      "completionTokens": 7485
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 281274,
+      "in": 38,
+      "out": 36,
+      "rejects": 2,
+      "promptTokens": 21139,
+      "completionTokens": 8510
+    },
+    "solver": {
+      "calls": 261,
+      "ms": 109429,
+      "in": 36,
+      "out": 31,
+      "rejects": 5,
+      "promptTokens": 42211,
+      "completionTokens": 2690
+    },
+    "form": {
+      "calls": 17,
+      "ms": 41922,
+      "in": 31,
+      "out": 16,
+      "rejects": 15,
+      "promptTokens": 4108,
+      "completionTokens": 1214
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 933,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 67,
+      "ms": 571325,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 38111,
+      "completionTokens": 18737
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is a major contributor to water pollution according to the passage?",
+      "ms": {
+        "draft": 3029,
+        "critique": 5678,
+        "solver": 1490
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a source of noise pollution as described in the passage?",
+      "ms": {
+        "draft": 3031,
+        "critique": 4896,
+        "solver": 1290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a source of water pollution as per the passage?",
+      "ms": {
+        "draft": 3029,
+        "critique": 6106,
+        "solver": 12999
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the problem of noise pollution in urban areas. Which of the following best explains why noise pollution is considered a serious issue in big cities?",
+      "ms": {
+        "draft": 3031,
+        "critique": 6443,
+        "solver": 1090,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the main reason for the increase in air pollution in urban areas?",
+      "ms": {
+        "draft": 3031,
+        "critique": 5050,
+        "solver": 11236,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a city has a high level of air pollution due to industrial emissions, which of the following steps should be taken to reduce its impact on the environment?",
+      "ms": {
+        "draft": 3031,
+        "critique": 7268,
+        "solver": 9681,
+        "form": 2985
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is one of the main consequences of improper waste disposal in urban areas?",
+      "ms": {
+        "draft": 3031,
+        "critique": 5725,
+        "solver": 10560,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which factor contributes to the rapid increase in urban population in India?",
+      "ms": {
+        "draft": 2620,
+        "critique": 5418,
+        "solver": 1742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The case study of Daurala describes an effort to restore the ecology and improve health conditions. Which of the following factors contributed most to the success of this initiative?",
+      "ms": {
+        "draft": 3031,
+        "critique": 4995,
+        "solver": 10398,
+        "form": 2812
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of rural-urban migration, what is the impact of low wages in urban areas on families?",
+      "ms": {
+        "draft": 2620,
+        "critique": 5935,
+        "solver": 1350
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the case of Ramesh illustrate about rural-urban migration in India?",
+      "ms": {
+        "draft": 2620,
+        "critique": 5786,
+        "solver": 1543
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main cause of land degradation according to the passage?",
+      "ms": {
+        "draft": 3225,
+        "critique": 5525,
+        "solver": 1394,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which one of the following river is highly polluted?",
+      "ms": {
+        "draft": 46144,
+        "critique": 5930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason given for the poor performance of primary activities in rural areas?",
+      "ms": {
+        "draft": 3225,
+        "critique": 5753,
+        "solver": 9903,
+        "form": 1812
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for land degradation in rural areas as mentioned in the passage?",
+      "ms": {
+        "draft": 3223,
+        "critique": 5687,
+        "solver": 1544,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the outcome of the watershed management programmes in Jhabua district?",
+      "ms": {
+        "draft": 3223,
+        "critique": 5621,
+        "solver": 12850,
+        "form": 3442
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, why are slums considered a form of land degradation?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6867,
+        "solver": 11849,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what role does community participation play in managing land degradation?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6495,
+        "solver": 9392,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for rural-urban migration in India?",
+      "ms": {
+        "draft": 18458,
+        "critique": 4863,
+        "solver": 1459,
+        "form": 2121
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a source of water pollution according to the passage?",
+      "ms": {
+        "draft": 3703,
+        "critique": 7384
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between rural and urban areas?",
+      "ms": {
+        "draft": 18458,
+        "critique": 6255,
+        "solver": 11143,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main cause of air pollution according to the passage?",
+      "ms": {
+        "draft": 26033,
+        "critique": 6571,
+        "solver": 8272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of pollution is caused by the release of substances and energy from waste products of human activities?",
+      "ms": {
+        "draft": 3029,
+        "critique": 5272,
+        "solver": 1134,
+        "form": 3269,
+        "translation": 43154
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the improvement in the standard of living of Ramesh’s family?",
+      "ms": {
+        "draft": 18458,
+        "critique": 5342,
+        "solver": 1377,
+        "form": 2207,
+        "translation": 30402
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when the concentration of suspended particles and substances in water increases?",
+      "ms": {
+        "draft": 3029,
+        "critique": 5245,
+        "solver": 738,
+        "form": 3164,
+        "translation": 37243
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a major source of air pollution?",
+      "ms": {
+        "draft": 2153,
+        "critique": 6198,
+        "solver": 1679,
+        "form": 1800,
+        "translation": 33671
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of acid rain?",
+      "ms": {
+        "draft": 2153,
+        "critique": 5508,
+        "solver": 1027,
+        "form": 0,
+        "translation": 31848
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for the growth of slums in urban areas?",
+      "ms": {
+        "draft": 2620,
+        "critique": 5690,
+        "solver": 883,
+        "form": 3311,
+        "translation": 43706
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How do the people in Petlawad block manage their common property resources?",
+      "ms": {
+        "draft": 3225,
+        "critique": 5828,
+        "solver": 1351,
+        "form": 2061,
+        "translation": 33214
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an effect of air pollution on human health?",
+      "ms": {
+        "draft": 2153,
+        "critique": 5736,
+        "solver": 1387,
+        "form": 0,
+        "translation": 31804
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do poor people in rural areas often bypass smaller and medium cities to move directly to mega cities?",
+      "ms": {
+        "draft": 2620,
+        "critique": 5562,
+        "solver": 1131,
+        "form": 2545,
+        "translation": 38909
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which river is mentioned as highly polluted in the context of India?",
+      "ms": {
+        "draft": 2153,
+        "critique": 6508,
+        "solver": 12677,
+        "form": 2733,
+        "translation": 38965
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the high percentage of rural-urban migration in India?",
+      "ms": {
+        "draft": 2620,
+        "critique": 5220,
+        "solver": 1625,
+        "form": 2200,
+        "translation": 35758
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a river has high levels of nitrates from agricultural activities, what type of pollution is likely to occur?",
+      "ms": {
+        "draft": 3029,
+        "critique": 5236,
+        "solver": 1519,
+        "form": 3562,
+        "translation": 36966
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following diseases is caused by water pollution?",
+      "ms": {
+        "draft": 2153,
+        "critique": 6166,
+        "solver": 1898,
+        "form": 0,
+        "translation": 24025
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Ganga river considered to be a major concern in terms of pollution?",
+      "ms": {
+        "draft": 3029,
+        "critique": 6029,
+        "solver": 983,
+        "form": 3489,
+        "translation": 34060
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the community participation in the Petlawad block's watershed management?",
+      "ms": {
+        "draft": 3225,
+        "critique": 5301,
+        "solver": 1551,
+        "form": 2444,
+        "translation": 42736
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a major problem associated with urban waste disposal in India?",
+      "ms": {
+        "draft": 2153,
+        "critique": 6021,
+        "solver": 1307,
+        "form": 0,
+        "translation": 30528
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a major contributor to water pollution according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a source of noise pollution as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (skipped in distractorReaso…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a source of water pollution as per the passage?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the problem of noise pollution in urban areas. Which of the following best explains why noise pollution is considered a serious issue in big cities?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (skipped in distractorReaso…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the main reason for the increase in air pollution in urban areas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a city has a high level of air pollution due to industrial emissions, which of the following steps should be taken to reduce its impact on the environment?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is one of the main consequences of improper waste disposal in urban areas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which factor contributes to the rapid increase in urban population in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage as stating all factors are equally…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The case study of Daurala describes an effort to restore the ecology and improve health conditions. Which of the following factors contributed most to the success of this initiative?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the context of rural-urban migration, what is the impact of low wages in urban areas on families?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What does the case of Ramesh illustrate about rural-urban migration in India?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main cause of land degradation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which one of the following river is highly polluted?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the reason given for the poor performance of primary activities in rural areas?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Students may confuse the cause of rural poverty with land co…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a natural cause of land degradation?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a source of noise pollution as mentioned in the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a reason for land degradation in rural areas as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (54 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the outcome of the watershed management programmes in Jhabua district?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, why are slums considered a form of land degradation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what role does community participation play in managing land degradation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a reason for rural-urban migration in India?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct reason is not chosen…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's message about rural areas as a r…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a source of water pollution according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between rural and urban areas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"students may misinterpret the passage as suggesting tension …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main cause of air pollution according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

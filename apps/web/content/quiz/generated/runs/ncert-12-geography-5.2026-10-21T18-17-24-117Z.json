@@ -1,0 +1,605 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T18:17:24.117Z",
+  "finishedAt": "2026-10-21T18:24:41.003Z",
+  "seconds": 437,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy105.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 5 — Secondary Activities",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n23. “Quaternary activities centre around research and development.” 3\nExamine the statement.",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n10. a. Complex way of life, manufacturing of finished goods,\nnodes of economic growth.",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\n With social and cultural Development, humans develop better and more\nefficient technology.\n They move from a state of Necessity to a state of freedom.\n They create Possibilities with the resources obtained from the\nenvironment.\n Human has modified their surroundings according to their needs.\n Imprints of human may be seen everywhere on the earth.\nOR\nAns. The three dualism in geography which started wide-ranging debates in\nthe discipline of geography are:\na. Whether geography as a discipline should be a law making/ the orising\n(nomothetic) or descriptive (idiographic).\nb. Whether the approach of the study should be regional or systematic?\nc. Whether geographical phenomena can be interpr",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n17. (b) Voluntary labour"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 86663,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 24719,
+      "completionTokens": 5687
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 187635,
+      "in": 32,
+      "out": 29,
+      "rejects": 3,
+      "promptTokens": 14765,
+      "completionTokens": 6069
+    },
+    "solver": {
+      "calls": 173,
+      "ms": 63839,
+      "in": 29,
+      "out": 21,
+      "rejects": 8,
+      "promptTokens": 24143,
+      "completionTokens": 1587
+    },
+    "form": {
+      "calls": 13,
+      "ms": 28246,
+      "in": 21,
+      "out": 16,
+      "rejects": 5,
+      "promptTokens": 3061,
+      "completionTokens": 953
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 488,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 67,
+      "ms": 590405,
+      "in": 32,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 38802,
+      "completionTokens": 20162
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a factory produces plastic toys, which type of manufacturing is it using?",
+      "ms": {
+        "draft": 3001,
+        "critique": 4462
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a secondary activity?",
+      "ms": {
+        "draft": 3001,
+        "critique": 4827
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why are large-scale industries located near markets?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6562
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention that secondary activities transform raw materials into valuable products?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6449,
+        "solver": 1164
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A company wants to set up a factory in an area with a high population but low purchasing power. What is the most likely outcome?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6790,
+        "solver": 10198
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which type of industry is most likely to benefit from being located near a major transport network?",
+      "ms": {
+        "draft": 2556,
+        "critique": 5261,
+        "solver": 1216
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following industries is described as using natural chemical minerals as raw material?",
+      "ms": {
+        "draft": 9843,
+        "critique": 4759,
+        "solver": 1064
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which type of industry is described as being concentrated in peripheral areas of major metropolitan centres?",
+      "ms": {
+        "draft": 9843,
+        "critique": 6902,
+        "solver": 1376
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a basic industry?",
+      "ms": {
+        "draft": 9843,
+        "critique": 5416,
+        "solver": 12658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is correct regarding joint sector industries?",
+      "ms": {
+        "draft": 2541,
+        "critique": 4461,
+        "solver": 2337,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of high-tech industries?",
+      "ms": {
+        "draft": 2541,
+        "critique": 4176,
+        "solver": 13850
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of industry is described as the smallest manufacturing unit, where tools and simple techniques are used in homes?",
+      "ms": {
+        "draft": 3465,
+        "critique": 4837,
+        "solver": 1351
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are industries that use bulky raw materials often located close to the source of raw materials?",
+      "ms": {
+        "draft": 3465,
+        "critique": 5147,
+        "solver": 1367,
+        "form": 2727
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following industries would most likely be located near a source of energy?",
+      "ms": {
+        "draft": 3465,
+        "critique": 4582,
+        "solver": 1224,
+        "form": 2223
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main purpose of secondary activities?",
+      "ms": {
+        "draft": 2612,
+        "critique": 5600,
+        "solver": 1472,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why do large-scale industries choose specific locations?",
+      "ms": {
+        "draft": 2612,
+        "critique": 3098,
+        "solver": 431,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of secondary activities?",
+      "ms": {
+        "draft": 3001,
+        "critique": 4091,
+        "solver": 9558,
+        "form": 2282,
+        "translation": 38491
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of secondary activity?",
+      "ms": {
+        "draft": 2612,
+        "critique": 6147,
+        "solver": 925,
+        "form": 0,
+        "translation": 26019
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of industry uses local raw materials and simple tools to produce everyday goods in homes?",
+      "ms": {
+        "draft": 2556,
+        "critique": 5441,
+        "solver": 1340,
+        "form": 2554,
+        "translation": 41729
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an agro-based industry?",
+      "ms": {
+        "draft": 2556,
+        "critique": 4743,
+        "solver": 1540,
+        "form": 2015,
+        "translation": 30810
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an animal-based industry?",
+      "ms": {
+        "draft": 2541,
+        "critique": 5130,
+        "solver": 1258,
+        "form": 0,
+        "translation": 33173
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A steel plant is likely to be located near the source of which raw material?",
+      "ms": {
+        "draft": 2556,
+        "critique": 5714,
+        "solver": 1418,
+        "form": 1881,
+        "translation": 33428
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following industries is described as using raw materials from animals?",
+      "ms": {
+        "draft": 9843,
+        "critique": 6892,
+        "solver": 864,
+        "form": 2593,
+        "translation": 33043
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following industries is an example of a basic industry?",
+      "ms": {
+        "draft": 2541,
+        "critique": 4338,
+        "solver": 1489,
+        "form": 0,
+        "translation": 31310
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of industry is most affected by the availability of skilled labor?",
+      "ms": {
+        "draft": 2556,
+        "critique": 6138,
+        "solver": 1172,
+        "form": 2590,
+        "translation": 38002
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which industries benefit from being near a leader-industry and other industries?",
+      "ms": {
+        "draft": 3465,
+        "critique": 5853,
+        "solver": 1179,
+        "form": 2434,
+        "translation": 37228
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A company that produces small quantities of goods and employs a small labor force is most likely to be classified as which type of industry?",
+      "ms": {
+        "draft": 2556,
+        "critique": 5123,
+        "solver": 1593,
+        "form": 2565,
+        "translation": 42749
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a high-tech industry?",
+      "ms": {
+        "draft": 9843,
+        "critique": 4420,
+        "solver": 890,
+        "form": 1461,
+        "translation": 28852
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following industries is best described as a footloose industry?",
+      "ms": {
+        "draft": 2541,
+        "critique": 7413,
+        "solver": 910,
+        "form": 0,
+        "translation": 41054
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary reason for the development of large-scale manufacturing in certain regions?",
+      "ms": {
+        "draft": 3465,
+        "critique": 5601,
+        "solver": 1176,
+        "form": 2702,
+        "translation": 20438
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following industries is described as using intensive research and development efforts?",
+      "ms": {
+        "draft": 9843,
+        "critique": 4391,
+        "solver": 666,
+        "form": 1021,
+        "translation": 41517
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the role of high-tech industries in the development of technopolies?",
+      "ms": {
+        "draft": 2541,
+        "critique": 6612,
+        "solver": 1560,
+        "form": 0,
+        "translation": 68400
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a factory produces plastic toys, which type of manufacturing is it using?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a secondary activity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, why are large-scale industries located near markets?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the passage mention that secondary activities transform raw materials into valuable products?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A company wants to set up a factory in an area with a high population but low purchasing power. What is the most likely outcome?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which type of industry is most likely to benefit from being located near a major transport network?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following industries is described as using natural chemical minerals as raw material?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which type of industry is described as being concentrated in peripheral areas of major metropolitan centres?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a basic industry?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is correct regarding joint sector industries?",
+      "reason": "the key is far longer than every distractor (88 vs 44 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of high-tech industries?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which type of industry is described as the smallest manufacturing unit, where tools and simple techniques are used in homes?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why are industries that use bulky raw materials often located close to the source of raw materials?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Refers to environmental concerns not mentioned in the passag…\"); distractor 3's reason is not a one-line misconception (\"Mentions a factor unrelated to the reason given in the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following industries would most likely be located near a source of energy?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mentions an industry not explicitly linked to energy sources…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main purpose of secondary activities?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why do large-scale industries choose specific locations?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Avoiding regulations and reducing workers are not mentioned …\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention reducing the number of workers …\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

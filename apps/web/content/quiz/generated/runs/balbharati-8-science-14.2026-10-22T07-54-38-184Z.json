@@ -1,0 +1,821 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T07:54:38.184Z",
+  "finishedAt": "2026-10-22T08:02:22.807Z",
+  "seconds": 465,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 14 — Measurement and Effects of Heat",
+    "edition": "First Edition 2018",
+    "chunks": 16,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[INJSO 2013 — question paper]\n56. A steel ball is dropped from a height of 1 m on to a horizontal non-conducting surface.\nEvery time it bounces, it reaches 80% of its previous height. Nearly by how much\nwill the temperature of the ball rise after 4 bounces? Specific heat capacity of the\nball (steel) =0.1 cal/g-. Neglect loss in heat to the surroundings and the floor.\nA. 0.014 \nB. 0.059 \nC. 0.59 \nD. 1.4 ",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n28. A. Silver\nB. (ii) 20 s\nAttempt either sub-part C or D.\n(1)\n(1) 4\n(1)\nC. Yes, the time required for candles to drop will increase for all the\nmetals. The order of falling of candles will remain the same. Particles\nvibrate and transfer heat to one another in conduction. Conduction of\nheat will take more time from one end to the other because heat has to\ntravel through a longer distance. (2)\nOR\nD. No, if the thickness of rods is changed the inference will not be correct.\nThe dimensions of the rods have to be the same. A thicker rod will take\nmore time to conduct heat. (2)\nFor visually impaired students\nA. Metal B (1)\nB. (ii) 20 s (1)\nAttempt either sub-part C or D.\nC. Yes, the time required",
+      "[INJSO 2013 — solutions or answer key]\n56. A steel ball is dropped from a height of 1 m on to a horizontal non-conducting surface.\nEvery time it bounces, it reaches 80% of its previous height. Nearly by how much\nwill the temperature of the ball rise after 4 bounces? Specific heat capacity of the\nball (steel) =0.1 cal/g-. Neglect loss in heat to the surroundings and the floor.\nA. 0.014 \nB. 0.059 \nC. 0.59 \nD. 1.4 "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 205478,
+      "in": 42,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 36798,
+      "completionTokens": 10045
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 393532,
+      "in": 40,
+      "out": 36,
+      "rejects": 4,
+      "promptTokens": 24921,
+      "completionTokens": 9299
+    },
+    "solver": {
+      "calls": 267,
+      "ms": 153140,
+      "in": 36,
+      "out": 25,
+      "rejects": 11,
+      "promptTokens": 54446,
+      "completionTokens": 2853
+    },
+    "form": {
+      "calls": 10,
+      "ms": 28248,
+      "in": 25,
+      "out": 5,
+      "rejects": 20,
+      "promptTokens": 2619,
+      "completionTokens": 704
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 57,
+      "ms": 9432,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 115049,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6886,
+      "completionTokens": 3414
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the heat content of two objects made of the same substance?",
+      "ms": {
+        "draft": 3881,
+        "critique": 5646,
+        "solver": 1964,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an effect of heat mentioned in the passage?",
+      "ms": {
+        "draft": 3881,
+        "critique": 6248,
+        "solver": 2963,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the difference between heat and temperature?",
+      "ms": {
+        "draft": 3881,
+        "critique": 8310,
+        "solver": 1471,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A steel ball is dropped from a height of 1 m and bounces back to 80% of its previous height. If the specific heat capacity of steel is 0.1 cal/g-°C, by how much will the temperature of the ball rise after 4 bounces?",
+      "ms": {
+        "draft": 3881,
+        "critique": 10406,
+        "solver": 12466,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "When a hot object is placed in a calorimeter containing water, which of the following statements is true?",
+      "ms": {
+        "draft": 5236,
+        "critique": 7739,
+        "solver": 2298,
+        "form": 2798
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the temperature in Kelvin if the temperature in Celsius is 20°C?",
+      "ms": {
+        "draft": 5236,
+        "critique": 7641,
+        "solver": 15803
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to convert Celsius to Kelvin?",
+      "ms": {
+        "draft": 5236,
+        "critique": 8675,
+        "solver": 1687,
+        "form": 3571
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 100 g of water at 80°C is mixed with 200 g of water at 20°C, what will be the final temperature of the mixture?",
+      "ms": {
+        "draft": 5236,
+        "critique": 7438,
+        "solver": 16197
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A steel ball is dropped from a height of 1 m on to a horizontal non-conducting surface. Every time it bounces, it reaches 80% of its previous height. What is the temperature increase in the ball after 4 bounces? (Specific heat capacity of the ball = 0.1 cal/g°C)",
+      "ms": {
+        "draft": 5236,
+        "critique": 8583,
+        "solver": 14716,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A steel rod of length 0.5 m is heated, and its temperature increases by 60 C. The coefficient of linear expansion of steel is 0.000013 (1/C). What is the increase in length of the rod?",
+      "ms": {
+        "draft": 6570,
+        "critique": 9316,
+        "solver": 2064
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A copper calorimeter with water is used to determine the specific heat of an object. The mass of the calorimeter, water, and the object are the same. The initial temperature of the calorimeter and water is 30 C, and the initial temperature of the object is 60 C. What will be the final temperature of the water?",
+      "ms": {
+        "draft": 6570,
+        "critique": 8062,
+        "solver": 1124
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A steel ball is dropped from a height of 1 m and bounces back to 80% of its previous height. If the specific heat capacity of steel is 0.1 cal/g-C, what is the approximate temperature rise after 4 bounces?",
+      "ms": {
+        "draft": 6570,
+        "critique": 8092,
+        "solver": 1547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of heat transfer by conduction?",
+      "ms": {
+        "draft": 4583,
+        "critique": 9219
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A liquid in a container is heated, and its volume increases. If the initial volume is 100 mL and the volumetric expansion coefficient is 0.0002 (1/C), what is the change in volume when the temperature increases by 25 C?",
+      "ms": {
+        "draft": 6570,
+        "critique": 7724,
+        "solver": 21359
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a steel ball is dropped from a height of 1 meter and bounces back to 80% of its previous height each time, what is the temperature increase after 4 bounces, assuming all lost energy is converted to heat?",
+      "ms": {
+        "draft": 4583,
+        "critique": 7837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rod of length 1 m is heated, causing it to expand. If the coefficient of linear expansion of the rod is 0.00001 (1/C), what is the increase in length when the temperature increases by 50 C?",
+      "ms": {
+        "draft": 6570,
+        "critique": 11715,
+        "solver": 20107
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A bridge made of 20 m long iron rods has a gap of 0.4 cm between them at 18°C. What is the maximum temperature at which the bridge will remain in good shape?",
+      "ms": {
+        "draft": 4583,
+        "critique": 4077,
+        "solver": 6291,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about heat and temperature is correct according to the passage?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7407,
+        "solver": 2242,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of heat according to the passage?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7145,
+        "solver": 12890,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the temperature of a substance is measured in Fahrenheit and it is twice its value in Celsius, what is the temperature in Fahrenheit?",
+      "ms": {
+        "draft": 4243,
+        "critique": 8990,
+        "solver": 2290
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a steel ball is dropped from a height of 1 m and reaches 80% of its previous height after each bounce, how much will its temperature rise after 4 bounces, given the specific heat capacity of steel is 0.1 cal/g-°C?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7812,
+        "solver": 15648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a correct statement about the expansion of solids?",
+      "ms": {
+        "draft": 4243,
+        "critique": 5674,
+        "solver": 1757
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two substances A and B have specific heats c and 2c respectively, and they are given Q and 4Q amounts of heat energy, what is the mass of B if the mass of A is m?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7370,
+        "solver": 1852
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A steel rod of length 0.5 m is heated, causing its temperature to increase by 60 C. The coefficient of linear expansion of steel is 0.000013 (1/C). What is the increase in length of the rod?",
+      "ms": {
+        "draft": 5231,
+        "critique": 7938,
+        "solver": 1595
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A calorimeter, water, and a hot object all have the same mass. The initial temperature of the calorimeter and water is 30 C, and the hot object is 60 C. The specific heat of copper is 0.09 cal/(gm C), and that of water is 1 cal/(gm C). What is the final temperature of the water?",
+      "ms": {
+        "draft": 5231,
+        "critique": 6932,
+        "solver": 2164,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of the coefficient of linear expansion of a solid?",
+      "ms": {
+        "draft": 5231,
+        "critique": 7874,
+        "solver": 1560,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a calorimeter experiment, the masses of the calorimeter, water, and a hot object are all the same. The initial temperature of the calorimeter and water is 30 C, and the hot object is 60 C. What will be the final temperature of the system?",
+      "ms": {
+        "draft": 5231,
+        "critique": 8408,
+        "solver": 2004
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A steel ball is dropped from a height of 1 m on a non-conducting surface. After each bounce, it reaches 80% of the previous height. After 4 bounces, what is the approximate temperature rise of the ball, given its specific heat capacity is 0.1 cal/(g C)?",
+      "ms": {
+        "draft": 5231,
+        "critique": 7565,
+        "solver": 13532,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the temperature in Kelvin if the temperature in Celsius is 20°C?",
+      "ms": {
+        "draft": 4231,
+        "critique": 7511,
+        "solver": 1115,
+        "form": 2574
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a hot object is placed in a calorimeter, what happens to the heat?",
+      "ms": {
+        "draft": 4231,
+        "critique": 7315,
+        "solver": 2106,
+        "form": 3848
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A steel ball is dropped from a height of 1 m and bounces back to 80% of the previous height. If the specific heat of the ball is 0.1 cal/g°C, what is the approximate rise in temperature after 4 bounces?",
+      "ms": {
+        "draft": 4231,
+        "critique": 8614,
+        "solver": 1691,
+        "form": 3038
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a unit of heat in the SI system?",
+      "ms": {
+        "draft": 5012,
+        "critique": 7956
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the clinical thermometer?",
+      "ms": {
+        "draft": 4231,
+        "critique": 8382,
+        "solver": 15568,
+        "form": 3987
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 45000 calories of heat is required to raise the temperature of 1.5 kg of water by 30°C, how much heat in joules is this?",
+      "ms": {
+        "draft": 5012,
+        "critique": 6206
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two objects A and B, made of the same substance, have masses in the ratio 2:1. If their temperatures are equal, what can be said about their heat content?",
+      "ms": {
+        "draft": 5012,
+        "critique": 5460,
+        "solver": 5138,
+        "form": 1089
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is the calorimeter made of copper?",
+      "ms": {
+        "draft": 5236,
+        "critique": 7031,
+        "solver": 1596,
+        "form": 2955
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the calorimeter made of copper?",
+      "ms": {
+        "draft": 4231,
+        "critique": 7123,
+        "solver": 2200,
+        "form": 2833
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of heat in the SI system?",
+      "ms": {
+        "draft": 3881,
+        "critique": 8301,
+        "solver": 2018,
+        "form": 3077,
+        "translation": 31766
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 300 cal of heat is given to water and its temperature changes by 10°C, what is the mass of the water?",
+      "ms": {
+        "draft": 3881,
+        "critique": 5208,
+        "solver": 20213,
+        "form": 0,
+        "translation": 35374
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A copper rod and an iron rod, both of the same length, are heated by the same temperature. If the coefficient of linear expansion of copper is 0.000017 (1/C) and that of iron is 0.000012 (1/C), which rod will expand more?",
+      "ms": {
+        "draft": 6570,
+        "critique": 7942,
+        "solver": 2317,
+        "form": 0,
+        "translation": 42770
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the correct unit of heat?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the heat content of two objects made of the same substance?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The object with higher mass has more heat content\" / \"The object with higher temperature has more heat content\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an effect of heat mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the difference between heat and temperature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Heat is the total kinetic energy of atoms, while temperature is the average kinetic energy\" / \"Heat is the average kinetic energy of atoms, while temperature is the total kinetic energy\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A steel ball is dropped from a height of 1 m and bounces back to 80% of its previous height. If the specific heat capacity of steel is 0.1 cal/g-°C, by how much will the temperature of the ball rise after 4 bounces?",
+      "reason": "options are written to different precisions (1 and 2 and 3 and 4 decimals); ARITHMETIC MISMATCH — checkExpr \"(1*9.8*0.8^4)/0.1\" = 40.140800000000006, but the key says 0.059"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "When a hot object is placed in a calorimeter containing water, which of the following statements is true?",
+      "reason": "options 0 and 1 say the same thing (\"The hot object loses heat and the water gains heat\" / \"The hot object gains heat and the water loses heat\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the temperature in Kelvin if the temperature in Celsius is 20°C?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to convert Celsius to Kelvin?",
+      "reason": "options 0 and 2 are the same (\"K = C + 273.15\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 100 g of water at 80°C is mixed with 200 g of water at 20°C, what will be the final temperature of the mixture?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A steel ball is dropped from a height of 1 m on to a horizontal non-conducting surface. Every time it bounces, it reaches 80% of its previous height. What is the temperature increase in the ball after 4 bounces? (Specific heat capacity of the ball = 0.1 cal/g°C)",
+      "reason": "options are written to different precisions (1 and 2 and 3 and 4 decimals); ARITHMETIC MISMATCH — checkExpr \"(0.1*9.8*1*(1-0.8^4))/(0.1*1000)\" = 0.00578592, but the key says 0.059"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A steel rod of length 0.5 m is heated, and its temperature increases by 60 C. The coefficient of linear expansion of steel is 0.000013 (1/C). What is the increase in length of the rod?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A copper calorimeter with water is used to determine the specific heat of an object. The mass of the calorimeter, water, and the object are the same. The initial temperature of the calorimeter and water is 30 C, and the initial temperature of the object is 60 C. What will be the final temperature of the water?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A steel ball is dropped from a height of 1 m and bounces back to 80% of its previous height. If the specific heat capacity of steel is 0.1 cal/g-C, what is the approximate temperature rise after 4 bounces?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); ARITHMETIC MISMATCH — checkExpr \"((1 - 0.8^4)*9.8*1)/0.1\" = 57.859199999999994, but the key says 0.059"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of heat transfer by conduction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A liquid in a container is heated, and its volume increases. If the initial volume is 100 mL and the volumetric expansion coefficient is 0.0002 (1/C), what is the change in volume when the temperature increases by 25 C?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a steel ball is dropped from a height of 1 meter and bounces back to 80% of its previous height each time, what is the temperature increase after 4 bounces, assuming all lost energy is converted to heat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A rod of length 1 m is heated, causing it to expand. If the coefficient of linear expansion of the rod is 0.00001 (1/C), what is the increase in length when the temperature increases by 50 C?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A bridge made of 20 m long iron rods has a gap of 0.4 cm between them at 18°C. What is the maximum temperature at which the bridge will remain in good shape?",
+      "reason": "checkExpr \"(0.4 / (20 * 1.2e-5)) + 18\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A solid expands in all directions when heated. What is this type of expansion called?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements about heat and temperature is correct according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the unit of heat according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the temperature of a substance is measured in Fahrenheit and it is twice its value in Celsius, what is the temperature in Fahrenheit?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a steel ball is dropped from a height of 1 m and reaches 80% of its previous height after each bounce, how much will its temperature rise after 4 bounces, given the specific heat capacity of steel is 0.1 cal/g-°C?",
+      "reason": "options are written to different precisions (1 and 2 and 3 and 4 decimals); ARITHMETIC MISMATCH — checkExpr \"(1*0.2*0.2*0.2*0.2*9.8*1000)/0.1\" = 156.80000000000007, but the key says 0.059"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a correct statement about the expansion of solids?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two substances A and B have specific heats c and 2c respectively, and they are given Q and 4Q amounts of heat energy, what is the mass of B if the mass of A is m?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A steel rod of length 0.5 m is heated, causing its temperature to increase by 60 C. The coefficient of linear expansion of steel is 0.000013 (1/C). What is the increase in length of the rod?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A calorimeter, water, and a hot object all have the same mass. The initial temperature of the calorimeter and water is 30 C, and the hot object is 60 C. The specific heat of copper is 0.09 cal/(gm C), and that of water is 1 cal/(gm C). What is the final temperature of the water?",
+      "reason": "options are written to different precisions (0 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"(60*0.09 + 30*1.09)/(0.09 + 1.09)\" = 32.28813559322034, but the key says 32.29"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the unit of the coefficient of linear expansion of a solid?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a calorimeter experiment, the masses of the calorimeter, water, and a hot object are all the same. The initial temperature of the calorimeter and water is 30 C, and the hot object is 60 C. What will be the final temperature of the system?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A steel ball is dropped from a height of 1 m on a non-conducting surface. After each bounce, it reaches 80% of the previous height. After 4 bounces, what is the approximate temperature rise of the ball, given its specific heat capacity is 0.1 cal/(g C)?",
+      "reason": "options are written to different precisions (1 and 2 and 3 and 4 decimals); ARITHMETIC MISMATCH — checkExpr \"(1*(1 - 0.8^4)*9.8*1000)/(0.1*1000)\" = 57.8592, but the key says 0.059"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the temperature in Kelvin if the temperature in Celsius is 20°C?",
+      "reason": "options are written to different precisions (0 and 1 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a hot object is placed in a calorimeter, what happens to the heat?",
+      "reason": "options 0 and 1 say the same thing (\"Heat is lost by the hot object and gained by the calorimeter and water\" / \"Heat is gained by the hot object and lost by the calorimeter and water\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A steel ball is dropped from a height of 1 m and bounces back to 80% of the previous height. If the specific heat of the ball is 0.1 cal/g°C, what is the approximate rise in temperature after 4 bounces?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); ARITHMETIC MISMATCH — checkExpr \"(1 - 0.8^4) * 9.8 * 1 / (0.1 * 1000)\" = 0.0578592, but the key says 0.059"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a unit of heat in the SI system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the clinical thermometer?",
+      "reason": "options 1 and 3 say the same thing (\"It is used to measure the temperature of the atmosphere\" / \"It is used to measure the temperature of the earth\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 45000 calories of heat is required to raise the temperature of 1.5 kg of water by 30°C, how much heat in joules is this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Two objects A and B, made of the same substance, have masses in the ratio 2:1. If their temperatures are equal, what can be said about their heat content?",
+      "reason": "options 0 and 1 say the same thing (\"Heat content of A is less than B\" / \"Heat content of B is less than A\"); option 2 repeats the stem's wording (\"2: Heat content of A and B is the same\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why is the calorimeter made of copper?",
+      "reason": "near-duplicate of served question cmvf3mucc031egod8v99tkxr5 (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the calorimeter made of copper?",
+      "reason": "near-duplicate of served question cmvf3mucc031egod8v99tkxr5 (cosine 0.929 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,791 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T03:27:54.058Z",
+  "finishedAt": "2026-10-23T03:37:31.650Z",
+  "seconds": 578,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh109.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Straight Lines",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2025-26]\n10. The solution of the differential equation 𝑥𝑑𝑥 + 𝑦𝑑𝑦 = 0 represents a family of 1\n(A) straight lines (B) parabolas (C) Circles (D) Ellipses",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n22. 𝑦 = sin(𝑥 + 𝑦) ⇒ sin −1 𝑦 = 𝑥 + 𝑦\n1 𝑑𝑥 𝑑𝑥 1−√1−𝑦 2 1\n⇒ √1−𝑦 2 = 𝑑𝑦 + 1 ⇒ 𝑑𝑦 = √1−𝑦 2\n𝑑𝑦 √1−𝑦 2\n⇒ 𝑑𝑥 = 1−√1−𝑦 2\n𝑑𝑦\nSo , 𝑑𝑥 = 0 ⇒ 𝑦 = ±1\nAlternative way:\n𝑦 = sin(𝑥 + 𝑦) ⇒ 𝑑𝑦 𝑑𝑥 = cos(𝑥 + 𝑦) (1 + 𝑑𝑦 𝑑𝑥 )\n𝑑𝑦 1\n⇒ 𝑑𝑥 (1 − cos(𝑥 + 𝑦)) = cos(𝑥 + 𝑦)\n⇒ cos(𝑥 + 𝑦) = 0 as 𝑑𝑦 𝑑𝑥 = 0 1\n⇒ sin(𝑥 + 𝑦) = ±1 ⇒ y = ±1\n23(A). Given points are 𝐴(2,6,5), 𝐵(3, 𝑝, 7), 𝐶(−4, 3,4) and 𝐷(−1,0, 𝑞)\nDirection ratios of the line 𝐴𝐵⃡ are 〈1, 𝑝 − 6, 2〉 and\nDirection ratios of the line 𝐶𝐷⃡ are 〈3, −3, 𝑞 − 4〉\nAs the lines are parallel, so we have\n1 3 = 𝑝−6 −3 = 𝑞−4 2\n⇒ −1 = 𝑝 − 6 𝑎𝑛𝑑 𝑞 − 4 = 3 × 2\n⇒ 𝑝 = −1 + 6 = 5, 𝑞 = 6 + 4 = 10\nThus, 𝑞 𝑝 = 10",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points.",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n5. The lines r  i  j  k    2i  3 j  6k and r  2i  j  k    6i  9 j  18k ; (where  &  are\nscalars) are\n(a) coincident (b) skew\n  dy "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 225200,
+      "in": 43,
+      "out": 40,
+      "rejects": 3,
+      "promptTokens": 53664,
+      "completionTokens": 11337
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 346288,
+      "in": 40,
+      "out": 29,
+      "rejects": 11,
+      "promptTokens": 23364,
+      "completionTokens": 8496
+    },
+    "solver": {
+      "calls": 201,
+      "ms": 118515,
+      "in": 29,
+      "out": 25,
+      "rejects": 4,
+      "promptTokens": 42573,
+      "completionTokens": 2087
+    },
+    "form": {
+      "calls": 12,
+      "ms": 69684,
+      "in": 25,
+      "out": 13,
+      "rejects": 12,
+      "promptTokens": 8373,
+      "completionTokens": 1477
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4959,
+      "in": 13,
+      "out": 9,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 319089,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19870,
+      "completionTokens": 8580
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the distance between the points (6, -4) and (3, 0)?",
+      "ms": {
+        "draft": 14589,
+        "critique": 7120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the combination of analysis and geometry, as introduced by René Descartes?",
+      "ms": {
+        "draft": 14589,
+        "critique": 7781
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the slope of a line that makes an angle of 60° with the positive direction of the x-axis?",
+      "ms": {
+        "draft": 14589,
+        "critique": 8143,
+        "solver": 1499,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the condition for two lines to be perpendicular in terms of their slopes?",
+      "ms": {
+        "draft": 14589,
+        "critique": 8219
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two lines are parallel if their slopes are:",
+      "ms": {
+        "draft": 14589,
+        "critique": 6844,
+        "solver": 1800,
+        "form": 2367
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the distance between two points (x1, y1) and (x2, y2)?",
+      "ms": {
+        "draft": 14589,
+        "critique": 7237,
+        "solver": 1795,
+        "form": 3063
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A line passes through the points (–2, 6) and (4, 8). What is the slope of this line?",
+      "ms": {
+        "draft": 3992,
+        "critique": 8005
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the angle between two lines is 60° and the slope of one line is 1, what is the slope of the other line?",
+      "ms": {
+        "draft": 3992,
+        "critique": 6759,
+        "solver": 1866,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A line passes through (x1, y1) and (h, k). If the slope of the line is m, what is the relationship between k, y1, h, x1, and m?",
+      "ms": {
+        "draft": 3992,
+        "critique": 7093,
+        "solver": 2546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A line passes through the point (– 2, 3) and has a slope of – 4. What is the equation of this line?",
+      "ms": {
+        "draft": 5041,
+        "critique": 8197
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The slope of a line is double the slope of another line. If the tangent of the angle between them is 1/2, find the slopes of the lines.",
+      "ms": {
+        "draft": 3992,
+        "critique": 7948,
+        "solver": 17157,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A line passes through the point (–3, 5) and is perpendicular to the line through the points (2, 5) and (–3, 6). What is the equation of this line?",
+      "ms": {
+        "draft": 5041,
+        "critique": 8837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A line passes through the points (1, –1) and (3, 5). What is the equation of this line?",
+      "ms": {
+        "draft": 5041,
+        "critique": 6234,
+        "solver": 13606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the angle between the lines 3x + y = 1 and x + 3y = 1?",
+      "ms": {
+        "draft": 5794,
+        "critique": 6272,
+        "solver": 1225
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perpendicular distance (d) of a line Ax + By + C = 0 from a point (x, y)?",
+      "ms": {
+        "draft": 5794,
+        "critique": 7028,
+        "solver": 12198,
+        "form": 5767
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Find the equation of the line that is perpendicular to the line x - 7y + 5 = 0 and has an x-intercept of 3.",
+      "ms": {
+        "draft": 5794,
+        "critique": 5243,
+        "solver": 2189,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the slope of a line passing through two points (x₁, y₁) and (x₂, y₂)?",
+      "ms": {
+        "draft": 3696,
+        "critique": 7314,
+        "solver": 1999,
+        "form": 5556
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the perpendicular distance of the point (3, -5) from the line 3x - 4y - 26 = 0?",
+      "ms": {
+        "draft": 6151,
+        "critique": 8028
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance between the parallel lines 3x - 4y + 7 = 0 and 3x - 4y + 5 = 0?",
+      "ms": {
+        "draft": 6151,
+        "critique": 7039,
+        "solver": 1658,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for three points A, B, and C to be collinear?",
+      "ms": {
+        "draft": 3696,
+        "critique": 7332,
+        "solver": 17255
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The line through the points (h, 3) and (4, 1) intersects the line 7x - 9y - 19 = 0 at a right angle. What is the value of h?",
+      "ms": {
+        "draft": 6151,
+        "critique": 7541,
+        "solver": 1402
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A line passes through the point (4, 7) and has a slope of 3. What is the equation of the line?",
+      "ms": {
+        "draft": 8863,
+        "critique": 7407
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A line has an x-intercept of 4 and a y-intercept of 3. What is the equation of the line?",
+      "ms": {
+        "draft": 8863,
+        "critique": 9127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the slope of a line that makes an angle of 30° with the positive direction of the y-axis, measured anticlockwise?",
+      "ms": {
+        "draft": 4810,
+        "critique": 9416
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the slope of a line that is perpendicular to the line joining the points (–2, 6) and (4, 8)?",
+      "ms": {
+        "draft": 4810,
+        "critique": 8096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A line passes through the point (1, 2) and is perpendicular to the line 2x + 3y = 6. What is the equation of the line?",
+      "ms": {
+        "draft": 8863,
+        "critique": 7967,
+        "solver": 2104,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a line passes through the points (x1, y1) and (h, k), and its slope is m, what is the relationship between the coordinates of the points?",
+      "ms": {
+        "draft": 4810,
+        "critique": 8746,
+        "solver": 18472
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the distance between the parallel lines 3x - 4y + 7 = 0 and 3x - 4y + 5 = 0?",
+      "ms": {
+        "draft": 5794,
+        "critique": 6296,
+        "solver": 2101,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the condition for two lines to be perpendicular?",
+      "ms": {
+        "draft": 3816,
+        "critique": 6249,
+        "solver": 1706,
+        "form": 1781
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of the equation of a straight line?",
+      "ms": {
+        "draft": 3696,
+        "critique": 7283,
+        "solver": 1014,
+        "form": 6276
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for two lines to be perpendicular?",
+      "ms": {
+        "draft": 3696,
+        "critique": 7628,
+        "solver": 14987,
+        "form": 3925
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of the equation of a straight line?",
+      "ms": {
+        "draft": 3816,
+        "critique": 9619,
+        "solver": 1854,
+        "form": 3034,
+        "translation": 32784
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a line makes an angle α with the positive direction of the x-axis, what is the slope of the line?",
+      "ms": {
+        "draft": 3696,
+        "critique": 6943,
+        "solver": 1677,
+        "form": 6545,
+        "translation": 38062
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for two lines to be perpendicular based on their slopes?",
+      "ms": {
+        "draft": 3992,
+        "critique": 7133,
+        "solver": 1492,
+        "form": 0,
+        "translation": 40245
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the equation of a vertical line at a distance b from the y-axis?",
+      "ms": {
+        "draft": 3992,
+        "critique": 8054,
+        "solver": 1888,
+        "form": 0,
+        "translation": 29974
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the equation of the line passing through the points (2, 5) and (5, 11)?",
+      "ms": {
+        "draft": 8863,
+        "critique": 7449,
+        "solver": 1747,
+        "form": 0,
+        "translation": 40096
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the slope of a line that makes an angle of 60° with the positive direction of the x-axis?",
+      "ms": {
+        "draft": 5692,
+        "critique": 6873,
+        "solver": 15565,
+        "form": 0,
+        "translation": 34669
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A line passes through the point (2, 3) and is perpendicular to the line x - 7y + 5 = 0. What is the equation of the line?",
+      "ms": {
+        "draft": 6151,
+        "critique": 7391,
+        "solver": 1957,
+        "form": 0,
+        "translation": 35383
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the slope of a line is 1, what is the angle of inclination of the line with the positive direction of the x-axis?",
+      "ms": {
+        "draft": 5692,
+        "critique": 8635,
+        "solver": 13398,
+        "form": 0,
+        "translation": 33813
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the equation of a line that is parallel to the y-axis and passes through the point (a, b)?",
+      "ms": {
+        "draft": 3816,
+        "critique": 3532,
+        "solver": 912,
+        "form": 0,
+        "translation": 29971
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A line has a slope of 1/2 and an x-intercept of 4. What is the equation of this line?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A line has x-intercept –3 and y-intercept 2. What is the equation of this line?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the distance between the points (6, -4) and (3, 0)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the combination of analysis and geometry, as introduced by René Descartes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the slope of a line that makes an angle of 60° with the positive direction of the x-axis?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses tan(60°) with tan(45°) which is 1, not √3, and inco…\"); checkExpr \"sqrt(3)\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the condition for two lines to be perpendicular in terms of their slopes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Two lines are parallel if their slopes are:",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses horizontal lines with parallel lines, which is inco…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the distance between two points (x1, y1) and (x2, y2)?",
+      "reason": "options 0 and 1 say the same thing (\"√[(x2 + x1)² + (y2 + y1)²]\" / \"√[(x2 - x1)² + (y2 - y1)²]\"); options 1 and 2 say the same thing (\"√[(x2 - x1)² + (y2 - y1)²]\" / \"√[(x2 - x1) + (y2 - y1)]\"); options 1 and 3 say the same thing (\"√[(x2 - x1)² + (y2 - y1)²]\" / \"√[(x2 + x1) - (y2 + y1)]\"); options 2 and 3 say the same thing (\"√[(x2 - x1) + (y2 - y1)]\" / \"√[(x2 + x1) - (y2 + y1)]\"); distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly adds the differences without squaring them and d…\"); checkExpr \"sqrt((x2-x1)^2 + (y2-y1)^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A line passes through the points (–2, 6) and (4, 8). What is the slope of this line?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the angle between two lines is 60° and the slope of one line is 1, what is the slope of the other line?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A line passes through (x1, y1) and (h, k). If the slope of the line is m, what is the relationship between k, y1, h, x1, and m?",
+      "reason": "options 0 and 1 say the same thing (\"k - y1 = m(h - x1)\" / \"k + y1 = m(h + x1)\"); options 0 and 2 say the same thing (\"k - y1 = m(h - x1)\" / \"k - y1 = m(h + x1)\"); options 0 and 3 say the same thing (\"k - y1 = m(h - x1)\" / \"k + y1 = m(h - x1)\"); options 1 and 2 say the same thing (\"k + y1 = m(h + x1)\" / \"k - y1 = m(h + x1)\"); options 1 and 3 say the same thing (\"k + y1 = m(h + x1)\" / \"k + y1 = m(h - x1)\"); options 2 and 3 say the same thing (\"k - y1 = m(h + x1)\" / \"k + y1 = m(h - x1)\"); option 1 repeats the stem's wording (\"k + y1 = m(h + x1)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A line passes through the point (– 2, 3) and has a slope of – 4. What is the equation of this line?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The slope of a line is double the slope of another line. If the tangent of the angle between them is 1/2, find the slopes of the lines.",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options 0 and 1 say the same thing (\"1 and 2\" / \"1: 1 and 2\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A line passes through the point (–3, 5) and is perpendicular to the line through the points (2, 5) and (–3, 6). What is the equation of this line?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A line passes through the points (1, –1) and (3, 5). What is the equation of this line?",
+      "reason": "options 0 and 1 say the same thing (\"y + 1 = 3(x – 1)\" / \"y – 1 = 3(x – 1)\"); options 2 and 3 say the same thing (\"y + 1 = 2(x – 1)\" / \"y – 1 = 2(x + 1)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the angle between the lines 3x + y = 1 and x + 3y = 1?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the perpendicular distance (d) of a line Ax + By + C = 0 from a point (x, y)?",
+      "reason": "options 0 and 1 are the same (\"d = (Ax + By + C) / (A + B)\"); options 2 and 3 are the same (\"d = |Ax + By + C| / √(A² + B²)\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Find the equation of the line that is perpendicular to the line x - 7y + 5 = 0 and has an x-intercept of 3.",
+      "reason": "figure: figure spec refused: spec.points.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the equation of a vertical line that is at a distance b from the y-axis?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the slope of a line passing through two points (x₁, y₁) and (x₂, y₂)?",
+      "reason": "options 0 and 1 say the same thing (\"m = (y₂ - y₁)/(x₂ - x₁)\" / \"m = (x₂ - x₁)/(y₂ - y₁)\"); options 0 and 2 say the same thing (\"m = (y₂ - y₁)/(x₂ - x₁)\" / \"m = (y₂ + y₁)/(x₂ + x₁)\"); options 0 and 3 say the same thing (\"m = (y₂ - y₁)/(x₂ - x₁)\" / \"m = (x₂ + x₁)/(y₂ + y₁)\"); options 1 and 2 say the same thing (\"m = (x₂ - x₁)/(y₂ - y₁)\" / \"m = (y₂ + y₁)/(x₂ + x₁)\"); options 1 and 3 say the same thing (\"m = (x₂ - x₁)/(y₂ - y₁)\" / \"m = (x₂ + x₁)/(y₂ + y₁)\"); options 2 and 3 say the same thing (\"m = (y₂ + y₁)/(x₂ + x₁)\" / \"m = (x₂ + x₁)/(y₂ + y₁)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the perpendicular distance of the point (3, -5) from the line 3x - 4y - 26 = 0?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the distance between the parallel lines 3x - 4y + 7 = 0 and 3x - 4y + 5 = 0?",
+      "reason": "checkExpr \"abs(7-5)/sqrt(3^2+(-4)^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the condition for three points A, B, and C to be collinear?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The line through the points (h, 3) and (4, 1) intersects the line 7x - 9y - 19 = 0 at a right angle. What is the value of h?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A line passes through the point (4, 7) and has a slope of 3. What is the equation of the line?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A line has an x-intercept of 4 and a y-intercept of 3. What is the equation of the line?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the slope of a line that makes an angle of 30° with the positive direction of the y-axis, measured anticlockwise?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the slope of a line that is perpendicular to the line joining the points (–2, 6) and (4, 8)?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A line passes through the point (1, 2) and is perpendicular to the line 2x + 3y = 6. What is the equation of the line?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point B, which is not defined"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a line passes through the points (x1, y1) and (h, k), and its slope is m, what is the relationship between the coordinates of the points?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the distance between the parallel lines 3x - 4y + 7 = 0 and 3x - 4y + 5 = 0?",
+      "reason": "near-duplicate of served question cmvhbp6t007zzgpfh3sgmw4rf (cosine 0.980 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the condition for two lines to be perpendicular?",
+      "reason": "near-duplicate of batch item \"What is the condition for two lines to be perpendi…\" (cosine 0.988 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the general form of the equation of a straight line?",
+      "reason": "near-duplicate of batch item \"What is the general form of the equation of a stra…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the condition for two lines to be perpendicular?",
+      "reason": "near-duplicate of served question cmvhbp6ss07zhgpfhfgoh4eyb (cosine 0.913 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+    "figure of \"What is the equation of the line passing…\": figure spec refused: labels.Line.hi: String must contain at most 40 character(s)"
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:40:56.801Z",
+  "finishedAt": "2026-10-23T02:41:01.015Z",
+  "seconds": 4,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh102.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Relations and Functions",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n33. Let  be the set of all natural numbers and R be a relation on    defined by\n a b R c d,   ,   ad  bc for all  a b,   , c d,   . Show that R is an equivalence relation on\n   . Also, find the equivalence class of  2,6  , i.e.,    2,6    .\nOR\nShow that the function f :    x   : 1  x  1  defined by f  x   x , x   is one-one and\n1  x\nonto function.",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n32. Let 𝐴 = 𝑁 × 𝑁, where 𝑁 is the set of natural numbers and a relation 𝑅 is\n(A). defined on 𝐴 such that (𝑎, 𝑏)𝑅(𝑐, 𝑑) 𝑖𝑓 𝑎𝑛𝑑 𝑜𝑛𝑙𝑦 𝑖𝑓 𝑎 + 𝑑 = 𝑏 + 𝑐 . 2 2 2 2\nCheck whether 𝑅 is an equivalence relation or not?\nOR\nQ32 A relation 𝑅: (−∞, ∞) → [0, ∞) is defined as 𝑅 = {(𝑥, 𝑦): 𝑦 = 𝑥 + 5} 2\n(B). Draw its graph and check whether it is a function or not.\nIf the given relation is a function, then examine whether the function is 5\ninjective, and whether it is surjective or not.\nFor Visually Impaired:\nA relation 𝑅: (−∞, ∞) → [0, ∞) is defined as 𝑅 = {(𝑥, 𝑦): 𝑦 = 𝑥 + 7}. 2\nCheck whether it is a function or not. If the given relation is a function, then\nexamine whe",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n20. ASSERTION (A): The relation f : 1,2,3,4     x y z p,, ,  defined by f    1, x   , 2, y   , 3,z   is a\nbijective function.\nREASON (R): The function f : 1,2,3     x y z p,, ,  such that f    1, x   , 2, y   , 3,z   is one-one.",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\nSection –D\n[This section comprises of solution of long answer type questions (LA) of 5 marks each]\n32(A). Given relation 𝑅 is defined on 𝐴 = 𝑁 × 𝑁 such that\n(𝑎, 𝑏)𝑅(𝑐, 𝑑) 𝑖𝑓 𝑎𝑛𝑑 𝑜𝑛𝑙𝑦 𝑖𝑓 𝑎 + 𝑑 = 𝑏 + 𝑐 2 2 2 2\nReflexive:\nLet (𝑝, 𝑞) ∈ 𝐴 = 𝑁 × 𝑁\nThen as 𝑝, 𝑞 ∈ 𝑁, so 𝑝 + 𝑞 = 𝑞 + 𝑝 2 2 2 2\n⇒(𝑝, 𝑞)𝑅(𝑝, 𝑞) ∀(𝑝, 𝑞) ∈ 𝑁 × 𝑁\n⇒ 𝑅 is a reflexive relation. 1 ½\nSymmetric:\nLet (𝑝, 𝑞) 𝑎𝑛𝑑 (𝑟, 𝑠) ∈ 𝐴 = 𝑁 × 𝑁 such that (𝑝, 𝑞) 𝑅 (𝑟, 𝑠)\n⇒ 𝑝 + 𝑠 = 𝑞 + 𝑟 2 2 2 2\n⇒ 𝑞 + 𝑟 = 𝑝 + 𝑠 2 2 2 2\n⇒ 𝑟 + 𝑞 = 𝑠 + 𝑝 2 2 2 2\n⇒ (𝑟, 𝑠) 𝑅 (𝑝, 𝑞)\nThus, 𝑅 is a symmetric relation. 1 ½\nTransitive:\nLet (𝑝, 𝑞), (𝑟, 𝑠), (𝑢, 𝑣) ∈ 𝐴 such that (𝑝, 𝑞) 𝑅 (\ud835"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 10,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "critique": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "solver": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4208,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 149,
+      "completionTokens": 313
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"[json.exception.parse_error.101] parse error at line 1, column 12089: syntax error while parsing value - invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF; last read: '\\\"Book: NCERT, \\\\\\\"Mathematics\\\\\\\", class 11, Mathematics, Reprint 2026-27"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

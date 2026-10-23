@@ -1,0 +1,230 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T20:56:28.605Z",
+  "finishedAt": "2026-10-22T20:58:43.757Z",
+  "seconds": 135,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm103.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Double Century",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n31. The sum of a two-digit number and the number obtained by reversing the order 3\nof its digits is 99. If ten’s digit is 3 more than the unit’s digit, then find the number.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 14274,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4585,
+      "completionTokens": 913
+    },
+    "critique": {
+      "calls": 7,
+      "ms": 37927,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 2861,
+      "completionTokens": 1286
+    },
+    "solver": {
+      "calls": 26,
+      "ms": 11269,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 3779,
+      "completionTokens": 261
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2995,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3070,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 177,
+      "completionTokens": 245
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "How many matchstick bundles of 10 make 100?",
+      "ms": {
+        "draft": 2379,
+        "critique": 4654
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which number is shown on the number line if you place an arrow at 125 and a smiley at 149?",
+      "ms": {
+        "draft": 2379,
+        "critique": 5490,
+        "solver": 1378
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you have 65 and jump 35 more, what number do you reach?",
+      "ms": {
+        "draft": 2379,
+        "critique": 8543,
+        "solver": 1437
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a number is 100 and 25 more, what is the total?",
+      "ms": {
+        "draft": 2379,
+        "critique": 4474,
+        "solver": 11567
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you have 100 and add 51 more, what is the total?",
+      "ms": {
+        "draft": 2379,
+        "critique": 4222
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number that comes just after 99?",
+      "ms": {
+        "draft": 2379,
+        "critique": 4829,
+        "solver": 2101,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the number that comes just after 99?\",\n      \"options"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many matchstick bundles of 10 make 100?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which number is shown on the number line if you place an arrow at 125 and a smiley at 149?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you have 65 and jump 35 more, what number do you reach?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a number is 100 and 25 more, what is the total?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If you have 100 and add 51 more, what is the total?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the number that comes just after 99?",
+      "reason": "near-duplicate of served question cmvgyk22205jxgpfhp85929ic (cosine 0.950 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

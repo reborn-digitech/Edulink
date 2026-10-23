@@ -1,0 +1,503 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:43:51.512Z",
+  "finishedAt": "2026-10-23T01:48:29.406Z",
+  "seconds": 278,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap111.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 11 — Sunita in Space",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 109084,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 21658,
+      "completionTokens": 5919
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 174368,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 12028,
+      "completionTokens": 4411
+    },
+    "solver": {
+      "calls": 88,
+      "ms": 38626,
+      "in": 15,
+      "out": 11,
+      "rejects": 4,
+      "promptTokens": 12222,
+      "completionTokens": 798
+    },
+    "form": {
+      "calls": 9,
+      "ms": 25709,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 2146,
+      "completionTokens": 639
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2849,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 179586,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10672,
+      "completionTokens": 5246
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage say about the shape of the earth?",
+      "ms": {
+        "draft": 2886,
+        "critique": 5244
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Uzaira show on the globe?",
+      "ms": {
+        "draft": 2886,
+        "critique": 5671
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do people not fall off the earth even though it is round?",
+      "ms": {
+        "draft": 2886,
+        "critique": 7932
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Sunita saw the earth from space, what would she most likely not be able to see?",
+      "ms": {
+        "draft": 3621,
+        "critique": 6116,
+        "solver": 1839
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Sunita experience in space that made her think about the earth's gravity?",
+      "ms": {
+        "draft": 3621,
+        "critique": 8483,
+        "solver": 16516
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the table, what is the difference in the time of moon rise between 28 October and 29 October?",
+      "ms": {
+        "draft": 3621,
+        "critique": 6734
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason Sunita Williams wanted to become a school teacher?",
+      "ms": {
+        "draft": 3650,
+        "critique": 6981
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Sunita Williams say that different countries cannot be seen as separate from space?",
+      "ms": {
+        "draft": 3650,
+        "critique": 7824
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there was a slide in Sunita's spacecraft, would children slide up or down?",
+      "ms": {
+        "draft": 3650,
+        "critique": 6694,
+        "solver": 1222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does Sunita think that children should not give up when they don't get what they want?",
+      "ms": {
+        "draft": 3650,
+        "critique": 5781
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Sunita say that different countries cannot be seen as separate from space?",
+      "ms": {
+        "draft": 9719,
+        "critique": 6184
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a slide was present in Sunita's spacecraft, would children slide up or down?",
+      "ms": {
+        "draft": 9719,
+        "critique": 7036
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Sunita Williams set a record for in 2007?",
+      "ms": {
+        "draft": 9719,
+        "critique": 6534,
+        "solver": 1228,
+        "form": 3400
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what did Sunita find when she looked at the Earth from space?",
+      "ms": {
+        "draft": 3917,
+        "critique": 7748,
+        "solver": 1516,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does Sunita's example show about achieving one's goals?",
+      "ms": {
+        "draft": 9719,
+        "critique": 7550,
+        "solver": 1610,
+        "form": 4374
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the lines on a globe?",
+      "ms": {
+        "draft": 3917,
+        "critique": 7008,
+        "solver": 1933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did Sunita not feel the pull of the Earth while in space?",
+      "ms": {
+        "draft": 3917,
+        "critique": 7199,
+        "solver": 1476,
+        "form": 3263
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is it difficult to see the moon or stars during the day?",
+      "ms": {
+        "draft": 3917,
+        "critique": 6964,
+        "solver": 2050,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Sunita Williams' hair keep standing up in space?",
+      "ms": {
+        "draft": 3478,
+        "critique": 6025,
+        "solver": 1164,
+        "form": 3711
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Uzaira show on the globe to explain where they are?",
+      "ms": {
+        "draft": 3478,
+        "critique": 6090,
+        "solver": 1348,
+        "form": 3592,
+        "translation": 80227
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the small stone and the paper fall at the same time in the magic trick?",
+      "ms": {
+        "draft": 3621,
+        "critique": 8068,
+        "solver": 1838,
+        "form": 2347,
+        "translation": 43473
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did Sunita's hair stand up in space?",
+      "ms": {
+        "draft": 2886,
+        "critique": 5276,
+        "solver": 11743,
+        "form": 3319,
+        "translation": 36087
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the earth is round like a globe, why do people not fall off?",
+      "ms": {
+        "draft": 3478,
+        "critique": 5882,
+        "solver": 1762,
+        "form": 2490,
+        "translation": 34345
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did Sunita Williams say about the shape of the earth?",
+      "ms": {
+        "draft": 3478,
+        "critique": 5917,
+        "solver": 1816,
+        "form": 1248,
+        "translation": 35224
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the shape of the earth?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Uzaira show on the globe?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why do people not fall off the earth even though it is round?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Sunita saw the earth from space, what would she most likely not be able to see?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Sunita experience in space that made her think about the earth's gravity?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the table, what is the difference in the time of moon rise between 28 October and 29 October?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main reason Sunita Williams wanted to become a school teacher?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Sunita Williams say that different countries cannot be seen as separate from space?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If there was a slide in Sunita's spacecraft, would children slide up or down?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why does Sunita think that children should not give up when they don't get what they want?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Sunita say that different countries cannot be seen as separate from space?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a slide was present in Sunita's spacecraft, would children slide up or down?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Sunita Williams set a record for in 2007?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes she walked on the moon, but the passage …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what did Sunita find when she looked at the Earth from space?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"does not match the passage's description of beauty…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does Sunita's example show about achieving one's goals?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that achieving goals is easy, but the pa…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that plans cannot change, but the passag…\"); distractor 3's reason is not a one-line misconception (\"Correct answer because the passage clearly emphasizes that S…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest about the lines on a globe?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why did Sunita not feel the pull of the Earth while in space?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"does not accurately reflect the passage's explanation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why is it difficult to see the moon or stars during the day?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Sunita Williams' hair keep standing up in space?",
+      "reason": "options 1 and 2 say the same thing (\"Because of the gravity\" / \"Because of the lack of gravity\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

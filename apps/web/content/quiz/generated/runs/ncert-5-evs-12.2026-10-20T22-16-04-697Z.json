@@ -1,0 +1,378 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:16:04.697Z",
+  "finishedAt": "2026-10-20T22:18:11.128Z",
+  "seconds": 126,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap112.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 12 — What if it Finishes...?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 46080,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15432,
+      "completionTokens": 3169
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 90025,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 7492,
+      "completionTokens": 2908
+    },
+    "solver": {
+      "calls": 73,
+      "ms": 28799,
+      "in": 13,
+      "out": 6,
+      "rejects": 7,
+      "promptTokens": 10307,
+      "completionTokens": 653
+    },
+    "form": {
+      "calls": 3,
+      "ms": 4315,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 771,
+      "completionTokens": 204
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 1887,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 96438,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6882,
+      "completionTokens": 3513
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which fuel is used by the tractor mentioned in the passage?",
+      "ms": {
+        "draft": 2897,
+        "critique": 5110,
+        "solver": 870
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to reduce the use of petrol and diesel according to the passage?",
+      "ms": {
+        "draft": 2897,
+        "critique": 5249,
+        "solver": 1511
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason given in the passage for saving petrol and diesel?",
+      "ms": {
+        "draft": 2897,
+        "critique": 5567,
+        "solver": 1909,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why Durga has to collect wood for the chulha?",
+      "ms": {
+        "draft": 3296,
+        "critique": 4873,
+        "solver": 1024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which fuel is mentioned as being limited and also coming from below the earth?",
+      "ms": {
+        "draft": 2897,
+        "critique": 6561,
+        "solver": 1415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which fuel was used the least in 1976?",
+      "ms": {
+        "draft": 3296,
+        "critique": 7379
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 60 houses out of 100 used uple and wood in 1976, and this decreased to 40 houses in 1996, what is the percentage decrease?",
+      "ms": {
+        "draft": 3296,
+        "critique": 7997
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a use of petroleum as mentioned in the passage?",
+      "ms": {
+        "draft": 3296,
+        "critique": 6282,
+        "solver": 9997
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a use of oil according to the passage?",
+      "ms": {
+        "draft": 2477,
+        "critique": 6144
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which fuel is used the most in 1976 according to the passage?",
+      "ms": {
+        "draft": 2477,
+        "critique": 5798,
+        "solver": 1622
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the data from 1976 to 1996, what can be concluded about the use of LPG and kerosene?",
+      "ms": {
+        "draft": 2477,
+        "critique": 5345,
+        "solver": 1136
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which fuel is used by tractors?",
+      "ms": {
+        "draft": 2850,
+        "critique": 4566,
+        "solver": 1482
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is one reason why the price of petrol and diesel is increasing?",
+      "ms": {
+        "draft": 2850,
+        "critique": 3928,
+        "solver": 1042,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is it important to switch off the engine when a car stops?",
+      "ms": {
+        "draft": 2850,
+        "critique": 4737,
+        "solver": 1163,
+        "form": 1591,
+        "translation": 29653
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to reduce the number of vehicles on the road?",
+      "ms": {
+        "draft": 2850,
+        "critique": 5448,
+        "solver": 650,
+        "form": 1007,
+        "translation": 31090
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Durga's family stops using wood and switches to LPG, what would be the most immediate benefit?",
+      "ms": {
+        "draft": 2477,
+        "critique": 5652,
+        "solver": 1016,
+        "form": 2323,
+        "translation": 32434
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which fuel is used by the tractor mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What can be done to reduce the use of petrol and diesel according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason given in the passage for saving petrol and diesel?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Thinks the main reason is their high cost, which is not the …\"); distractor 3's reason is not a one-line misconception (\"Assumes the reason is that few people use them, which is not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why Durga has to collect wood for the chulha?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which fuel is mentioned as being limited and also coming from below the earth?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which fuel was used the least in 1976?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 60 houses out of 100 used uple and wood in 1976, and this decreased to 40 houses in 1996, what is the percentage decrease?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a use of petroleum as mentioned in the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a use of oil according to the passage?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which fuel is used the most in 1976 according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the data from 1976 to 1996, what can be concluded about the use of LPG and kerosene?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which fuel is used by tractors?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is one reason why the price of petrol and diesel is increasing?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

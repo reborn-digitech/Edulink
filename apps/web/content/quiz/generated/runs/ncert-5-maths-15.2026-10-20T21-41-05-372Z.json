@@ -1,0 +1,321 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:41:05.372Z",
+  "finishedAt": "2026-10-20T21:42:56.088Z",
+  "seconds": 111,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm115.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 15 — Data Through Pictures",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n35. The median of the following data is 50. Find the values of ‘p’ and ‘q’, if the sum of all frequencies is 5\n90. Also find the mode of the data.\nMarks obtained\n30 – 40\n40 – 50\n50 – 60\n60 – 70\n70 – 80\n80 - 90\nNumber of students\np\nq",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n25. Calculate mode of the following distribution:\nClass 5-10 10-15 15-20\nFrequency 5 6 15\n20-25 25-30 30-35\n10 5 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 48152,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8692,
+      "completionTokens": 3318
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 66055,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 6757,
+      "completionTokens": 2375
+    },
+    "solver": {
+      "calls": 59,
+      "ms": 27200,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 9953,
+      "completionTokens": 572
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8177,
+      "in": 7,
+      "out": 2,
+      "rejects": 5,
+      "promptTokens": 2536,
+      "completionTokens": 353
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2783,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 39929,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4113,
+      "completionTokens": 2022
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a pictograph?",
+      "ms": {
+        "draft": 4930,
+        "critique": 4264,
+        "solver": 1538,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a pictograph?",
+      "ms": {
+        "draft": 4930,
+        "critique": 4609,
+        "solver": 1957,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pictograph, how many more two-wheelers were seen on Friday than on Wednesday?",
+      "ms": {
+        "draft": 4930,
+        "critique": 6039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the bar graph, how many more hours does Sheela spend studying compared to Raman?",
+      "ms": {
+        "draft": 4930,
+        "critique": 4758,
+        "solver": 2437
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the total food wastage over the weekdays is 15 kg, how many children could have been fed with this food if 1 kg of food can feed 2 children?",
+      "ms": {
+        "draft": 4930,
+        "critique": 3614,
+        "solver": 1158,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of graph is used to record the daily routine of Raman and Sheela?",
+      "ms": {
+        "draft": 3096,
+        "critique": 4916
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1cm on the bar graph represents 1 hour, what is the total time spent on activities by the students?",
+      "ms": {
+        "draft": 3096,
+        "critique": 4349,
+        "solver": 10623,
+        "form": 2065
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the bar graph of index finger lengths, which student has the longest index finger?",
+      "ms": {
+        "draft": 3096,
+        "critique": 4627,
+        "solver": 12689
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the pictograph of two-wheelers uses 1 icon = 3 two-wheelers, how many icons would represent 21 two-wheelers?",
+      "ms": {
+        "draft": 3096,
+        "critique": 5309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of graph shown in the passage?",
+      "ms": {
+        "draft": 3096,
+        "critique": 3931,
+        "solver": 421,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If one icon represents 5 toys, how many icons would be needed to represent 25 toys?",
+      "ms": {
+        "draft": 4930,
+        "critique": 4111,
+        "solver": 886,
+        "form": 0,
+        "translation": 16991
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Joseph Uncle uses a scale of 1 icon = 10 items, how many icons would represent 50 toys?",
+      "ms": {
+        "draft": 3096,
+        "critique": 6677,
+        "solver": 1424,
+        "form": 2330,
+        "translation": 19413
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a pictograph?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason needed here for this distractor…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of a pictograph?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason needed here for this distractor…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the pictograph, how many more two-wheelers were seen on Friday than on Wednesday?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the bar graph, how many more hours does Sheela spend studying compared to Raman?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the total food wastage over the weekdays is 15 kg, how many children could have been fed with this food if 1 kg of food can feed 2 children?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of graph is used to record the daily routine of Raman and Sheela?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 1cm on the bar graph represents 1 hour, what is the total time spent on activities by the students?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Adds extra hours not shown in the graph and includes extra a…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the bar graph of index finger lengths, which student has the longest index finger?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the pictograph of two-wheelers uses 1 icon = 3 two-wheelers, how many icons would represent 21 two-wheelers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a type of graph shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

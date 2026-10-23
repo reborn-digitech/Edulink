@@ -1,0 +1,629 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T00:35:03.344Z",
+  "finishedAt": "2026-10-20T00:44:44.305Z",
+  "seconds": 581,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu104.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 4 — The World of Metals and Non-metals",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n6. C. X is a non-metal and Y is a metal.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. The electronic configuration of three elements X, Y and Z are X- 2, 8, 7; Y- 2,\n8, 2; and Z - 2, 8 1\nA. Y and Z are metals\nB. Y and X are non-metals\nC. X is a non -metal and Y is a metal\nD. Y is a non-metal and Z is a metal",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n2. Match column I with column II and select the correct option using the given\ncodes. 1\nColumn I Column II\na. A metal that forms amphoteric oxides (i) Ga\nb. A metal which melts when kept on our palm (ii) Au\nc. A metal that reacts with nitric acid (iii) Al\nd. A metal which cannot displace hydrogen from (iv) Mn\nacids\nA. a – (ii), b – (i), c – (iii), d – (iv)\nB. a – (iii), b – (i), c – (iv), d – (ii)\nC. a – (iv), b – (ii), c – (iii), d – (i)\nD. a – (iii), b – (ii), c – (i), d – (iv)\nThe solution in the given figure is likely to be\nA. HNO 3\nB. C 2 H 5 OH\nC. H 2 SO 4\nD. CO 2 in water\n- - - - - - - - - - - - - -\nFor Visual Impaired Students\nWhich among the following is considered as the strongest "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 130418,
+      "in": 36,
+      "out": 32,
+      "rejects": 4,
+      "promptTokens": 36189,
+      "completionTokens": 7040
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 245420,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 17647,
+      "completionTokens": 7019
+    },
+    "solver": {
+      "calls": 213,
+      "ms": 102190,
+      "in": 31,
+      "out": 29,
+      "rejects": 2,
+      "promptTokens": 34023,
+      "completionTokens": 2105
+    },
+    "form": {
+      "calls": 20,
+      "ms": 65659,
+      "in": 29,
+      "out": 19,
+      "rejects": 10,
+      "promptTokens": 8303,
+      "completionTokens": 1740
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3468,
+      "in": 19,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 77,
+      "ms": 715359,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 43677,
+      "completionTokens": 21743
+    }
+  },
+  "kept": 18,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 4,
+    "4": 2,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following properties is common to all metals?",
+      "ms": {
+        "draft": 3086,
+        "critique": 7588,
+        "solver": 1593,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following materials is a good conductor of electricity according to the passage?",
+      "ms": {
+        "draft": 4085,
+        "critique": 7541,
+        "solver": 10842
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of metals according to the passage?",
+      "ms": {
+        "draft": 4085,
+        "critique": 8920,
+        "solver": 11438,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the experiment described in the passage, what happens to an iron nail when it is exposed to both air and water?",
+      "ms": {
+        "draft": 4085,
+        "critique": 6711,
+        "solver": 1868,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, an iron nail was placed in a glass bottle with water and air. What was observed?",
+      "ms": {
+        "draft": 3377,
+        "critique": 6457,
+        "solver": 1458,
+        "form": 3385
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage say that sodium is stored in kerosene?",
+      "ms": {
+        "draft": 3377,
+        "critique": 6295,
+        "solver": 1310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following non-metals is essential for respiration in living organisms?",
+      "ms": {
+        "draft": 17792,
+        "critique": 8288,
+        "solver": 1821,
+        "form": 2680
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following metals reacts with water and catches fire?",
+      "ms": {
+        "draft": 17792,
+        "critique": 7119,
+        "solver": 1005,
+        "form": 3427
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are only a few metals suitable for making jewellery?",
+      "ms": {
+        "draft": 17792,
+        "critique": 6236,
+        "solver": 9389,
+        "form": 1199
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the brown deposit formed on iron objects called?",
+      "ms": {
+        "draft": 3233,
+        "critique": 4512,
+        "solver": 1212,
+        "form": 3991
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the experiment with the iron nails, which bottle shows the formation of brown deposits due to the presence of both air and water?",
+      "ms": {
+        "draft": 5395,
+        "critique": 5253
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following properties is shown by metals but not by non-metals?",
+      "ms": {
+        "draft": 3655,
+        "critique": 4931,
+        "solver": 1275
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the experiment described in the passage, which of the following is a correct observation?",
+      "ms": {
+        "draft": 5395,
+        "critique": 6595,
+        "solver": 9897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of non-metals?",
+      "ms": {
+        "draft": 2656,
+        "critique": 5160,
+        "solver": 2089,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 17792,
+        "critique": 7634,
+        "solver": 12225,
+        "form": 0,
+        "translation": 33494
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of metals is demonstrated by the fact that they are used for making cooking vessels?",
+      "ms": {
+        "draft": 5395,
+        "critique": 7602,
+        "solver": 11149,
+        "form": 3165,
+        "translation": 47671
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a non-metal?",
+      "ms": {
+        "draft": 3233,
+        "critique": 4685,
+        "solver": 1758,
+        "form": 2919,
+        "translation": 30558
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of metals allows them to be shaped into thin sheets?",
+      "ms": {
+        "draft": 3086,
+        "critique": 4543,
+        "solver": 1258,
+        "form": 3838,
+        "translation": 37162
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of non-metals?",
+      "ms": {
+        "draft": 3377,
+        "critique": 5504,
+        "solver": 1423,
+        "form": 3739,
+        "translation": 41633
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the experiment with the iron nails in glass bottles?",
+      "ms": {
+        "draft": 3377,
+        "critique": 6253,
+        "solver": 1412,
+        "form": 3803,
+        "translation": 44463
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following materials would most likely be used to make a musical instrument that requires wires?",
+      "ms": {
+        "draft": 3086,
+        "critique": 5000,
+        "solver": 1781,
+        "form": 0,
+        "translation": 33860
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a metal that is not solid at room temperature?",
+      "ms": {
+        "draft": 3086,
+        "critique": 5832,
+        "solver": 1841,
+        "form": 1755,
+        "translation": 25982
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a material that is a poor conductor of heat?",
+      "ms": {
+        "draft": 4085,
+        "critique": 5773,
+        "solver": 1696,
+        "form": 1963,
+        "translation": 31994
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when sulfur is burned in air?",
+      "ms": {
+        "draft": 3377,
+        "critique": 6871,
+        "solver": 10259,
+        "form": 2783,
+        "translation": 39126
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the property of metals that allows them to be drawn into wires?",
+      "ms": {
+        "draft": 3655,
+        "critique": 4059,
+        "solver": 678,
+        "form": 0,
+        "translation": 15475
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of galvanisation?",
+      "ms": {
+        "draft": 3233,
+        "critique": 6316,
+        "solver": 13802,
+        "form": 3943,
+        "translation": 44211
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that a metal object produces a ringing sound when dropped on the floor. What property of the metal is being demonstrated?",
+      "ms": {
+        "draft": 3086,
+        "critique": 6000,
+        "solver": 1541,
+        "form": 0,
+        "translation": 53346
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An electrician uses a screwdriver with a plastic handle. Why is this done?",
+      "ms": {
+        "draft": 4085,
+        "critique": 5347,
+        "solver": 1129,
+        "form": 2731,
+        "translation": 35146
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the Iron Pillar in Delhi?",
+      "ms": {
+        "draft": 3377,
+        "critique": 5432,
+        "solver": 1522,
+        "form": 3112,
+        "translation": 37226
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about the reaction of metals and non-metals with water?",
+      "ms": {
+        "draft": 3233,
+        "critique": 7074,
+        "solver": 912,
+        "form": 4881,
+        "translation": 56137
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are metals like copper and aluminium commonly used in electrical wiring?",
+      "ms": {
+        "draft": 3086,
+        "critique": 7361,
+        "solver": 15263,
+        "form": 0,
+        "translation": 66670
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to use a material that is a poor conductor of heat for the handle of a cooking vessel?",
+      "ms": {
+        "draft": 4085,
+        "critique": 6440,
+        "solver": 1802,
+        "form": 2824,
+        "translation": 36102
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following properties is common to all metals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following materials is a good conductor of electricity according to the passage?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of metals according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the experiment described in the passage, what happens to an iron nail when it is exposed to both air and water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, an iron nail was placed in a glass bottle with water and air. What was observed?",
+      "reason": "options 0 and 1 say the same thing (\"No brown deposits formed on the nail\" / \"Brown deposits formed on the nail\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage say that sodium is stored in kerosene?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (49 vs 27 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following non-metals is essential for respiration in living organisms?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following metals reacts with water and catches fire?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are only a few metals suitable for making jewellery?",
+      "reason": "options 1 and 2 are the same (\"Because they are not malleable\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which non-metal is essential for respiration in living organisms?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a use of a non-metal in water purification?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a non-metal that is used in making fertilisers?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a metal that is commonly used for making electrical wiring?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the brown deposit formed on iron objects called?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not recognize the specific term used in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the experiment with the iron nails, which bottle shows the formation of brown deposits due to the presence of both air and water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following properties is shown by metals but not by non-metals?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the experiment described in the passage, which of the following is a correct observation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The wooden spoon conducts heat better than the metal spoon\" / \"The metal spoon conducts heat better than the wooden spoon\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of non-metals?",
+      "reason": "near-duplicate of served question cmvesi04c01fdgod8eli2gb4y (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

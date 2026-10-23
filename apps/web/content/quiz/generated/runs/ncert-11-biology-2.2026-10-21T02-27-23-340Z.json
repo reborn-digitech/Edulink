@@ -1,0 +1,734 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T02:27:23.340Z",
+  "finishedAt": "2026-10-21T02:36:39.187Z",
+  "seconds": 556,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo102.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 2 — Biological Classification",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2005 — question paper]\n22. If a taxon of animals is further classified on the basis of ‘canal systems’,\nthe taxon has to be:\na. Phylum Echinodermata\nb. Phylum Porifera\nc. Class Osteichthyes\nd. Class Insecta\nGENETICS & EVOLUTION",
+      "[INBO 2025 — question paper]\n56. (4 points) A classification of animals is shown below with important evolutionary traits.\nPlace the given phyla against the appropriate alphabet.\nIndicate the position of the following phyla (1 – 4) in the cladogram and fill in the\nrespective alphabet (P – W) in the blanks.\n1. Echinoderms\n2. Mollusks\n3. Roundworms\n4. Arthropods\n********* END OF SECTION B *********",
+      "[INBO 2014 — question paper]\n38. (1 point) In the following scheme, three domain classification key with one\nrepresentative example on each domain is shown. A, B and C respectively are:\nA B C\nCyanobacteria Halophiles\nCiliates\na. Plantae, Eubacteria, Animalia\nb. Plantae, Archaebacteria, Eukaryota\nc. Eubacteria, Archaebacteria, Eukaryota\nd. Plantae, Prokaryota, Eukaryota.\n********* END OF SECTION A *******\nINDIAN NATIONAL BIOLOGY OLYMPIAD – 2014",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 150614,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 36847,
+      "completionTokens": 9387
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 240077,
+      "in": 39,
+      "out": 38,
+      "rejects": 1,
+      "promptTokens": 19035,
+      "completionTokens": 7393
+    },
+    "solver": {
+      "calls": 215,
+      "ms": 85890,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 31418,
+      "completionTokens": 1873
+    },
+    "form": {
+      "calls": 27,
+      "ms": 95183,
+      "in": 33,
+      "out": 18,
+      "rejects": 15,
+      "promptTokens": 15860,
+      "completionTokens": 2987
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5903,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 73,
+      "ms": 745707,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 44806,
+      "completionTokens": 23109
+    }
+  },
+  "kept": 18,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 4,
+    "4": 0,
+    "5": 3,
+    "6": 4
+  },
+  "flagged": 7,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "The passage describes that the fungi are placed in a separate kingdom because they have a different cell wall composition than plants. What is the main reason for this classification?",
+      "ms": {
+        "draft": 3720,
+        "critique": 6216,
+        "solver": 1157,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that the classification of organisms is based on multiple factors. If an organism has a eukaryotic cell, no cell wall, and is heterotrophic, what would be the most likely kingdom it belongs to?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5929,
+        "solver": 1676,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a new organism is found that has a eukaryotic cell, a cell wall, and is heterotrophic, which kingdom would it most likely belong to based on the passage?",
+      "ms": {
+        "draft": 3720,
+        "critique": 6302,
+        "solver": 2360,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason dinoflagellates can cause red tides?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5615,
+        "solver": 1338,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of dinoflagellates?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6944,
+        "solver": 974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of dinoflagellates in marine ecosystems?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6639,
+        "solver": 3108,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a biologist classifies an organism as a dinoflagellate, which of the following is most likely true?",
+      "ms": {
+        "draft": 4004,
+        "critique": 8632,
+        "solver": 1009,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the gelatinous sheath in cyanobacteria?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5242,
+        "solver": 1388
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of fungi?",
+      "ms": {
+        "draft": 3287,
+        "critique": 5097,
+        "solver": 1558,
+        "form": 2125
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the classification of fungi?",
+      "ms": {
+        "draft": 3287,
+        "critique": 5953,
+        "solver": 1578
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A fungus that forms a dikaryotic stage during its life cycle is most likely to belong to which group?",
+      "ms": {
+        "draft": 3287,
+        "critique": 5363,
+        "solver": 9489,
+        "form": 3305
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements about viruses is true?",
+      "ms": {
+        "draft": 3870,
+        "critique": 5270,
+        "solver": 1586,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a microorganism that lacks a cell wall, is not classified in the five-kingdom system, and has RNA as its genetic material. Based on the passage, which of the following is it most likely to be?",
+      "ms": {
+        "draft": 3870,
+        "critique": 8174
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A researcher found an organism that is a symbiotic association of an autotrophic and a heterotrophic component, and it is used as an indicator of pollution. Based on the passage, which of the following is it most likely to be?",
+      "ms": {
+        "draft": 3870,
+        "critique": 5365,
+        "solver": 908,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which kingdom includes all single-celled eukaryotes such as Dinoflagellates?",
+      "ms": {
+        "draft": 4903,
+        "critique": 5615,
+        "solver": 718,
+        "form": 1220
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes an organism that has a cell wall, is multicellular, and is heterotrophic. Which kingdom does it belong to?",
+      "ms": {
+        "draft": 3955,
+        "critique": 6384,
+        "solver": 1426
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram showing a unicellular organism with a cell wall, chlorophyll, and a nucleus. Which kingdom does it belong to?",
+      "ms": {
+        "draft": 3955,
+        "critique": 6476,
+        "solver": 1786
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of an organism that is partially heterotrophic?",
+      "ms": {
+        "draft": 2852,
+        "critique": 6333,
+        "solver": 11875
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of viruses as described in the passage?",
+      "ms": {
+        "draft": 2852,
+        "critique": 5261,
+        "solver": 2453,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between phycomycetes and ascomycetes?",
+      "ms": {
+        "draft": 3555,
+        "critique": 4504,
+        "solver": 11377,
+        "form": 3507
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic feature of dinoflagellates as described in the passage?",
+      "ms": {
+        "draft": 8789,
+        "critique": 6121,
+        "solver": 6104,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which kingdom includes organisms that have cell walls made of chitin?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5634,
+        "solver": 823,
+        "form": 3562,
+        "translation": 37217
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a characteristic of the kingdom Plantae?",
+      "ms": {
+        "draft": 3870,
+        "critique": 4687,
+        "solver": 1675,
+        "form": 2208,
+        "translation": 37693
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which kingdom includes all single-celled eukaryotes?",
+      "ms": {
+        "draft": 3955,
+        "critique": 4125,
+        "solver": 880,
+        "form": 3790,
+        "translation": 36279
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "ms": {
+        "draft": 3555,
+        "critique": 4707,
+        "solver": 1779,
+        "form": 3650,
+        "translation": 38827
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which kingdom contains organisms that are both autotrophic and heterotrophic?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5946,
+        "solver": 2192,
+        "form": 2124,
+        "translation": 37596
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of the kingdom Plantae?",
+      "ms": {
+        "draft": 2852,
+        "critique": 6961,
+        "solver": 1133,
+        "form": 2646,
+        "translation": 43345
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the mode of nutrition in most fungi?",
+      "ms": {
+        "draft": 3955,
+        "critique": 4359,
+        "solver": 2110,
+        "form": 2297,
+        "translation": 31958
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A new organism is found that has a cell wall and is heterotrophic. Based on the classification criteria, which kingdom would it most likely belong to?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5634,
+        "solver": 1692,
+        "form": 3177,
+        "translation": 44088
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an insectivorous plant?",
+      "ms": {
+        "draft": 3870,
+        "critique": 5147,
+        "solver": 1206,
+        "form": 2534,
+        "translation": 28952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scientist wants to classify organisms based on the presence of a cell wall made of cellulose, which kingdom should they focus on?",
+      "ms": {
+        "draft": 2852,
+        "critique": 5213,
+        "solver": 1386,
+        "form": 3068,
+        "translation": 42939
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student finds a unicellular organism with a defined nucleus and membrane-bound organelles, which kingdom should it be classified into?",
+      "ms": {
+        "draft": 3955,
+        "critique": 4153,
+        "solver": 1685,
+        "form": 2709,
+        "translation": 36434
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a list of organisms and asked to classify them based on their mode of nutrition. Which of the following organisms should be classified as holozoic?",
+      "ms": {
+        "draft": 2852,
+        "critique": 6294,
+        "solver": 948,
+        "form": 3560,
+        "translation": 45099
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a fungus that forms spores inside a sac-like structure and has a branched, septate mycelium. Which group is this fungus most likely to belong to?",
+      "ms": {
+        "draft": 3287,
+        "critique": 6224,
+        "solver": 1245,
+        "form": 3924,
+        "translation": 56334
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Based on the classification of fungi, which of the following would most likely be found in the same class as Penicillium?",
+      "ms": {
+        "draft": 3555,
+        "critique": 6305,
+        "solver": 1635,
+        "form": 3952,
+        "translation": 26878
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a scientist discovers an organism that lacks a cell wall and has a nucleic acid core, which of the following is most likely to be true about the organism?",
+      "ms": {
+        "draft": 2852,
+        "critique": 6037,
+        "solver": 1556,
+        "form": 2389,
+        "translation": 44223
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student observes an organism that reproduces both sexually and asexually, has a defined nucleus, and is unicellular. Which kingdom is it most likely to belong to?",
+      "ms": {
+        "draft": 3955,
+        "critique": 5675,
+        "solver": 1234,
+        "form": 3766,
+        "translation": 45297
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How does the presence of different pigments in dinoflagellates affect their ecological role?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5657,
+        "solver": 1703,
+        "form": 1878,
+        "translation": 61471
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a new fungus is found to have a coenocytic mycelium and produces motile spores, which group would it most likely belong to?",
+      "ms": {
+        "draft": 3287,
+        "critique": 5293,
+        "solver": 1579,
+        "form": 2614,
+        "translation": 47813
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main function of the mycelium in fungi?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes that the fungi are placed in a separate kingdom because they have a different cell wall composition than plants. What is the main reason for this classification?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that the classification of organisms is based on multiple factors. If an organism has a eukaryotic cell, no cell wall, and is heterotrophic, what would be the most likely kingdom it belongs to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a new organism is found that has a eukaryotic cell, a cell wall, and is heterotrophic, which kingdom would it most likely belong to based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason dinoflagellates can cause red tides?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of dinoflagellates?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the role of dinoflagellates in marine ecosystems?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a biologist classifies an organism as a dinoflagellate, which of the following is most likely true?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main function of the gelatinous sheath in cyanobacteria?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of fungi?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (skipped in distractor reas…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the classification of fungi?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A fungus that forms a dikaryotic stage during its life cycle is most likely to belong to which group?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements about viruses is true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed a microorganism that lacks a cell wall, is not classified in the five-kingdom system, and has RNA as its genetic material. Based on the passage, which of the following is it most likely to be?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A researcher found an organism that is a symbiotic association of an autotrophic and a heterotrophic component, and it is used as an indicator of pollution. Based on the passage, which of the following is it most likely to be?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which kingdom includes all single-celled eukaryotes such as Dinoflagellates?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"cell\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student observes an organism that has a cell wall, is multicellular, and is heterotrophic. Which kingdom does it belong to?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is given a diagram showing a unicellular organism with a cell wall, chlorophyll, and a nucleus. Which kingdom does it belong to?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of an organism that is partially heterotrophic?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of viruses as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between phycomycetes and ascomycetes?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a characteristic feature of dinoflagellates as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Student incorrectly assumes dinoflagellates are exclusively …\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

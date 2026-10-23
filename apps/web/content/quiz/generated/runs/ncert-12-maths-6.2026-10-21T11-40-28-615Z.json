@@ -1,0 +1,644 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T11:40:28.615Z",
+  "finishedAt": "2026-10-21T11:51:01.725Z",
+  "seconds": 633,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh206.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Linear Programming",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n30. Solve the following Linear Programming Problem graphically:\nMinimize: z  x  2y ,\nsubject to the constraints: x  2y  100, 2x  y  0, 2x  y  200, x y,  0.\nOR\nSolve the following Linear Programming Problem graphically:\nMaximize: z  x  2y ,\nsubject to the constraints: x  3, x  y  5, x  2y  6, y  0.\nx y d y 2 ",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n25. The feasible region of a linear programming problem is shown in the given 2\nfigure:\nWrite all the constraints on the decision variables involved\nFor Visually Impaired:\nFor a linear programming problem, the maximum value of an objective\nfunction 𝑍 = 3𝑥 + 4𝑦 exists at the points (𝑝, 𝑞) and (2𝑝, ). Find the relation 𝑞 2\nbetween 𝑝 and 𝑞.",
+      "[CBSE Class XII Mathematics, sample question paper, 2025-26]\n30. Solve graphically: 3\nMaximise 𝑍 = 2𝑥 + 𝑦 subject to\n𝑥 + 𝑦 ≤ 1200\n𝑥 + 𝑦 ≥ 600\n𝑦 ≤ 𝑥 2\n𝑥 ≥ 0, 𝑦 ≥ 0 .\n30 For Visually Impaired:\nThe objective function 𝑍 = 3𝑥 + 2𝑦 of a linear programming problem under\nsome constraints is to be maximized and minimized. The corner points of the\nfeasible region are 𝐴(600,0), 𝐵(1200,0), 𝐶(800, 400) and 𝐷(400, 200). Find the\npoint at which 𝑍 is maximum and the point at which 𝑍 is minimum. Also, find the\ncorresponding maximum and minimum values of 𝑍.)",
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n30. Solve the following Linear Programming Problem graphically:\nMaximize Z = 400x + 300y subject to 𝑥 + 𝑦 ≤ 200, 𝑥 ≤ 40, 𝑥 ≥ 20, 𝑦 ≥ 0\n൫௫ ା௫ାଵ൯ య"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 211846,
+      "in": 35,
+      "out": 32,
+      "rejects": 3,
+      "promptTokens": 28762,
+      "completionTokens": 10063
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 320695,
+      "in": 32,
+      "out": 25,
+      "rejects": 7,
+      "promptTokens": 19836,
+      "completionTokens": 7185
+    },
+    "solver": {
+      "calls": 178,
+      "ms": 111064,
+      "in": 25,
+      "out": 16,
+      "rejects": 9,
+      "promptTokens": 38638,
+      "completionTokens": 1943
+    },
+    "form": {
+      "calls": 6,
+      "ms": 61171,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 5408,
+      "completionTokens": 1370
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3448,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 516561,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 25388,
+      "completionTokens": 11860
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 3,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In a linear programming problem, what is the significance of the corner points of the feasible region?",
+      "ms": {
+        "draft": 5372,
+        "critique": 6872,
+        "solver": 2653,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A company produces two products, A and B, and wants to maximise its profit. The profit per unit of A is Rs 50 and for B is Rs 60. The company has 100 units of raw material and 80 hours of labour available. Each unit of A requires 2 units of raw material and 1 hour of labour, while each unit of B requires 1 unit of raw material and 2 hours of labour. What is the maximum profit the company can make?",
+      "ms": {
+        "draft": 5372,
+        "critique": 11805
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A furniture dealer wants to maximise his profit, which is given by the function Z = 250x + 75y, where x is the number of tables and y is the number of chairs. What is the maximum number of items he can store, given the storage constraint x + y ≤ 60?",
+      "ms": {
+        "draft": 5372,
+        "critique": 6490,
+        "solver": 18331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A linear programming problem has a feasible region with corner points at (0, 0), (0, 5), (2, 3), and (4, 0). The objective function is Z = 3x + 2y. What is the maximum value of Z?",
+      "ms": {
+        "draft": 7902,
+        "critique": 8735,
+        "solver": 1702
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A linear programming problem has a feasible region defined by the inequalities x ≥ 0, y ≥ 0, x + y ≤ 8, and 2x + y ≤ 12. What are the coordinates of the corner points of the feasible region?",
+      "ms": {
+        "draft": 7902,
+        "critique": 8876
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A company produces two products, A and B. The profit per unit of A is Rs 50 and for B is Rs 70. The company has 200 units of raw material and 150 hours of labor available. Each unit of A requires 2 units of raw material and 1 hour of labor, while each unit of B requires 3 units of raw material and 2 hours of labor. What is the maximum profit the company can make?",
+      "ms": {
+        "draft": 7902,
+        "critique": 8421
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a linear programming problem, the feasible region is bounded, and the objective function is Z = 3x + 4y. If the maximum value of Z occurs at (2, 5) and the minimum value occurs at (1, 1), what can be said about the relationship between the coefficients of x and y?",
+      "ms": {
+        "draft": 7902,
+        "critique": 7488,
+        "solver": 1803,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A linear programming problem has a feasible region defined by the inequalities x ≥ 0, y ≥ 0, x + y ≤ 6, and x + 2y ≤ 8. What are the coordinates of the corner points of the feasible region?",
+      "ms": {
+        "draft": 7902,
+        "critique": 8809
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the objective function Z at the point (5, 5) in Example 3?",
+      "ms": {
+        "draft": 17502,
+        "critique": 8917,
+        "solver": 1738
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Example 3, why does the objective function Z have the same maximum value at points C (15, 15) and D (0, 20)?",
+      "ms": {
+        "draft": 17502,
+        "critique": 8122,
+        "solver": 2067,
+        "form": 5740
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the feasible region in Example 5 is unbounded, what can we conclude about the minimum value of the objective function Z = –50x + 20y?",
+      "ms": {
+        "draft": 17502,
+        "critique": 8643,
+        "solver": 3538,
+        "form": 5103
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the objective function in a linear programming problem?",
+      "ms": {
+        "draft": 3547,
+        "critique": 8875
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the example where Z = 3x + 9y is maximised, at which point is the maximum value of Z obtained?",
+      "ms": {
+        "draft": 3547,
+        "critique": 8341,
+        "solver": 2128
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A linear programming problem's feasible region is shown in a graph. Which of the following is true about the feasible region?",
+      "ms": {
+        "draft": 7218,
+        "critique": 10996,
+        "solver": 2063,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the example where Z = 3x + 9y is maximised, why is it possible for multiple points to give the same maximum value?",
+      "ms": {
+        "draft": 3547,
+        "critique": 8982,
+        "solver": 14707
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the problem where Z = 3x + 2y is minimised, what is the reason there is no feasible region?",
+      "ms": {
+        "draft": 3547,
+        "critique": 8368,
+        "solver": 19733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A linear programming problem has constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and 2x + y ≤ 15. What is the maximum value of Z = 3x + 2y?",
+      "ms": {
+        "draft": 7218,
+        "critique": 8664,
+        "solver": 13618
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A linear programming problem has constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and 2x + 3y ≤ 18. Which of the following points will yield the maximum value of Z = x + y?",
+      "ms": {
+        "draft": 7218,
+        "critique": 10497
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the objective function in the given problem?",
+      "ms": {
+        "draft": 5407,
+        "critique": 7510,
+        "solver": 1683
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A linear programming problem has constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and 3x + y ≤ 18. What is the minimum value of Z = 4x + 5y?",
+      "ms": {
+        "draft": 7218,
+        "critique": 9114,
+        "solver": 19311
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the non-negative constraints in the problem?",
+      "ms": {
+        "draft": 5407,
+        "critique": 7609,
+        "solver": 1836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the profit per table is increased by Rs 50, what would be the new objective function?",
+      "ms": {
+        "draft": 5407,
+        "critique": 8677
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the method suggested by G. B. Dantzig to solve linear programming problems?",
+      "ms": {
+        "draft": 3547,
+        "critique": 7512,
+        "solver": 1652,
+        "form": 0,
+        "translation": 35530
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the linear function that needs to be maximised or minimised in a linear programming problem?",
+      "ms": {
+        "draft": 5372,
+        "critique": 5824,
+        "solver": 1692,
+        "form": 0,
+        "translation": 48926
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the conditions that must be satisfied in a linear programming problem?",
+      "ms": {
+        "draft": 5372,
+        "critique": 7676,
+        "solver": 1988,
+        "form": 0,
+        "translation": 46580
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A linear programming problem has a feasible region with corner points at (0, 0), (0, 4), (3, 2), and (5, 0). The objective function is Z = 2x + y. What is the minimum value of Z?",
+      "ms": {
+        "draft": 7902,
+        "critique": 7345,
+        "solver": 17547,
+        "form": 1,
+        "translation": 39282
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the dealer can now store 70 pieces instead of 60, which constraint will change?",
+      "ms": {
+        "draft": 5407,
+        "critique": 6374,
+        "solver": 10936,
+        "form": 0,
+        "translation": 30032
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a linear programming problem, the optimal solution occurs at which type of point in the feasible region?",
+      "ms": {
+        "draft": 7218,
+        "critique": 7602,
+        "solver": 2044,
+        "form": 6297,
+        "translation": 65650
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the example where Z = –50x + 20y is minimised, what is the reason for checking if the open half plane –5x + 2y < –30 has points in common with the feasible region?",
+      "ms": {
+        "draft": 3547,
+        "critique": 7681,
+        "solver": 1698,
+        "form": 0,
+        "translation": 58479
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the dealer wants to minimize the cost instead of maximizing the profit, what should be the objective function?",
+      "ms": {
+        "draft": 5407,
+        "critique": 7480,
+        "solver": 1291,
+        "form": 0,
+        "translation": 39383
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a linear programming problem, the feasible region is bounded by the constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and x ≤ 5. If the objective function is Z = 3x + 4y, at which point does Z attain its maximum value?",
+      "ms": {
+        "draft": 5372,
+        "critique": 8388,
+        "solver": 13669,
+        "form": 0,
+        "translation": 92223
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the summary, it is mentioned that linear programming problems were first formulated by L. Kantorovich and F. L. Hitchcock. What was the context of their work?",
+      "ms": {
+        "draft": 17502,
+        "critique": 9286,
+        "solver": 1233,
+        "form": 4555,
+        "translation": 55121
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the minimum value of the objective function Z = – 3x + 4y in Exercise 2?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In Example 4, what is the significance of the inequality –5x + 2y < –30?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a linear programming problem, what is the significance of the corner points of the feasible region?",
+      "reason": "options 0 and 1 say the same thing (\"They represent the minimum possible values of the objective function\" / \"They represent the maximum possible values of the objective function\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A company produces two products, A and B, and wants to maximise its profit. The profit per unit of A is Rs 50 and for B is Rs 60. The company has 100 units of raw material and 80 hours of labour available. Each unit of A requires 2 units of raw material and 1 hour of labour, while each unit of B requires 1 unit of raw material and 2 hours of labour. What is the maximum profit the company can make?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A furniture dealer wants to maximise his profit, which is given by the function Z = 250x + 75y, where x is the number of tables and y is the number of chairs. What is the maximum number of items he can store, given the storage constraint x + y ≤ 60?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A linear programming problem has a feasible region with corner points at (0, 0), (0, 5), (2, 3), and (4, 0). The objective function is Z = 3x + 2y. What is the maximum value of Z?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A linear programming problem has a feasible region defined by the inequalities x ≥ 0, y ≥ 0, x + y ≤ 8, and 2x + y ≤ 12. What are the coordinates of the corner points of the feasible region?",
+      "reason": "the critic finds option 2 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A company produces two products, A and B. The profit per unit of A is Rs 50 and for B is Rs 70. The company has 200 units of raw material and 150 hours of labor available. Each unit of A requires 2 units of raw material and 1 hour of labor, while each unit of B requires 3 units of raw material and 2 hours of labor. What is the maximum profit the company can make?",
+      "reason": "the critic finds option 2 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a linear programming problem, the feasible region is bounded, and the objective function is Z = 3x + 4y. If the maximum value of Z occurs at (2, 5) and the minimum value occurs at (1, 1), what can be said about the relationship between the coefficients of x and y?",
+      "reason": "options 0 and 1 say the same thing (\"The coefficient of x is greater than the coefficient of y\" / \"The coefficient of y is greater than the coefficient of x\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A linear programming problem has a feasible region defined by the inequalities x ≥ 0, y ≥ 0, x + y ≤ 6, and x + 2y ≤ 8. What are the coordinates of the corner points of the feasible region?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of the objective function Z at the point (5, 5) in Example 3?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Example 3, why does the objective function Z have the same maximum value at points C (15, 15) and D (0, 20)?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CD, DA"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the feasible region in Example 5 is unbounded, what can we conclude about the minimum value of the objective function Z = –50x + 20y?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CD, DA"
+    },
+    {
+      "stage": "draft",
+      "level": 6,
+      "stem": "A linear programming problem has constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and 2x + y ≤ 15. Which of the following points will yield the minimum value of Z = 3x + 2y?",
+      "reason": "level 6 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the objective function in a linear programming problem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the example where Z = 3x + 9y is maximised, at which point is the maximum value of Z obtained?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A linear programming problem's feasible region is shown in a graph. Which of the following is true about the feasible region?",
+      "reason": "options 1 and 2 say the same thing (\"It is the region that represents the maximum value of the objective function\" / \"It is the region that represents the minimum value of the objective function\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the example where Z = 3x + 9y is maximised, why is it possible for multiple points to give the same maximum value?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the problem where Z = 3x + 2y is minimised, what is the reason there is no feasible region?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A linear programming problem has constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and 2x + y ≤ 15. What is the maximum value of Z = 3x + 2y?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A linear programming problem has constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and 2x + 3y ≤ 18. Which of the following points will yield the maximum value of Z = x + y?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the objective function in the given problem?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A linear programming problem has constraints x ≥ 0, y ≥ 0, x + y ≤ 10, and 3x + y ≤ 18. What is the minimum value of Z = 4x + 5y?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents the non-negative constraints in the problem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, so no reason given for it being wrong as per…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the profit per table is increased by Rs 50, what would be the new objective function?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

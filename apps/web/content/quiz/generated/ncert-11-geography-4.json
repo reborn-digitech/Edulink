@@ -1,0 +1,571 @@
+{
+  "subject": "GEOGRAPHY",
+  "classLevel": 11,
+  "chapter": "Chapter 4 — Map Projections",
+  "name": "Map Projections",
+  "slug": "geography-11-map-projections",
+  "summary": "This chapter explains different types of map projections used to represent the Earth's surface on a flat map.",
+  "position": 4,
+  "source": "generated against NCERT Geography, Class 11, chapter 4 (2026 edition (the site's Last-Modified))",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "मानचित्र प्रक्षेपण",
+      "summary": "इस अध्याय में गोलाकार पृथ्वी की सतह को तल मानचित्र पर प्रस्तुत करने के विभिन्न प्रकार के मानचित्र प्रक्षेपण समझाए गए हैं।"
+    },
+    "mr": {
+      "name": "मानचित्र प्रक्षेपण",
+      "summary": "ही अध्यायात भूमितीच्या पृष्ठभागाचे तल मानचित्रावर दर्शविण्यासाठी वापरल्या जाणार्‍या विविध मानचित्र प्रक्षेपणांची समज दिली आहे."
+    }
+  },
+  "board": "NCERT",
+  "book": "Pratical Work in Geography",
+  "edition": "2026 edition (the site's Last-Modified)",
+  "generatedAt": "2026-10-21T06:25:38.182Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which map projection has correct direction and shape but greatly exaggerates area polewards?",
+      "choices": [
+        "Cylindrical Equal Area",
+        "Mercator",
+        "Conical",
+        "All the above"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is Mercator. Mercator projection maintains accurate directions and shapes, especially for navigation, but distorts areas significantly near the poles. Cylindrical Equal Area preserves area but not shape, and Conical projections do not consistently maintain correct shape and direction as described.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा मानचित्र प्रक्षेप (projection) सही दिशा एवं आकृति के साथ-साथ ध्रुवों की ओर बड़े पैमाने पर क्षेत्र के विकृतिकरण को बढ़ा देता है?",
+          "choices": [
+            "बेलनाकार समक्षेत्र (Cylindrical Equal Area)",
+            "मर्केटर",
+            "शंकु (Conical)",
+            "उपरोक्त सभी"
+          ],
+          "solution": "सही उत्तर मर्केटर है। मर्केटर प्रक्षेप सही दिशा एवं आकृति को बरकरार रखता है, विशेष रूप से नौवहन के लिए, लेकिन ध्रुवों के पास क्षेत्र के विकृतिकरण को बहुत अधिक बढ़ा देता है। बेलनाकार समक्षेत्र क्षेत्र को संरक्षित करता है लेकिन आकृति नहीं, और शंकु प्रक्षेप वर्णित आकृति एवं दिशा के संगत नहीं रहते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium geography textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या नकाशा आकृतीमध्ये योग्य दिशा आणि आकार असतो परंतु ध्रुवांच्या दिशेने क्षेत्रफळाचा जास्तीत जास्त विकृती होतो?",
+          "choices": [
+            "बेलून समान क्षेत्रफळ",
+            "मर्केटर",
+            "शंकू",
+            "सर्व वरील"
+          ],
+          "solution": "योग्य उत्तर मर्केटर आहे. मर्केटर आकृती योग्य दिशा आणि आकार ठेवते, विशेषतः नेव्हिगेशनसाठी, परंतु ध्रुवांच्या दिशेने क्षेत्रफळाची जास्तीत जास्त विकृती होते. बेलून समान क्षेत्रफळ क्षेत्रफळ ठेवते परंतु आकार नाही, आणि शंकू आकृतीमध्ये वर्णनात दिल्याप्रमाणे योग्य आकार आणि दिशा सामान्यतः ठेवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for map projections.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a projection that preserves area",
+        null,
+        "Believes conical projections preserve shape and direction but don't account for area distortion",
+        "Misunderstands the properties of conical projections"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Mercator, as it preserves direction and shape but exaggerates area polewards. The other options either do not meet the criteria or are based on misconceptions about their properties.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "EXERCISE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "ACTIVITY"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:25:38.182Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the name of the projection where the source of light is at the center of the globe?",
+      "choices": [
+        "Orthographic",
+        "Stereographic",
+        "Gnomonic",
+        "All the above"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is Gnomonic. In this projection, the light source is positioned at the center of the globe, which creates a specific type of map projection. Orthographic and Stereographic projections use different light source positions, making them incorrect. All the above is wrong because only Gnomonic matches the described condition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गोलाकार गोले के केंद्र में प्रकाश के स्रोत के रूप में कौन सा प्रक्षेप नामित किया जाता है?",
+          "choices": [
+            "ओर्थोग्राफिक",
+            "स्टीरियोग्राफिक",
+            "ग्नोमोनिक",
+            "उपर्युक्त सभी"
+          ],
+          "solution": "सही उत्तर ग्नोमोनिक है। इस प्रक्षेप में प्रकाश के स्रोत को गोले के केंद्र पर स्थित किया जाता है, जो विशिष्ट प्रकार के मानचित्र प्रक्षेप के लिए बनाया जाता है। ओर्थोग्राफिक और स्टीरियोग्राफिक प्रक्षेप में अलग-अलग प्रकाश स्रोत स्थिति का उपयोग किया जाता है, जिसके कारण वे गलत हैं। उपर्युक्त सभी गलत है क्योंकि केवल ग्नोमोनिक वर्णित स्थिति के अनुरूप है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium geography textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गोलाच्या केंद्रावर ज्योती स्रोत असलेल्या आकाराच्या नकाशाचे नाव काय आहे?",
+          "choices": [
+            "ओर्थोग्राफिक",
+            "स्टीरिओग्राफिक",
+            "ग्नोमॉनिक",
+            "सर्व वरील"
+          ],
+          "solution": "योग्य उत्तर ग्नोमॉनिक आहे. या आकाराच्या नकाशामध्ये ज्योती स्रोत गोलाच्या केंद्रावर ठेवला जातो, जे विशिष्ट प्रकारचा नकाशा आकार तयार करतो. ओर्थोग्राफिक आणि स्टीरिओग्राफिक आकारांमध्ये ज्योती स्रोत वेगळ्या जागी असतात, ज्यामुळे ते चुकीचे ठरतात. सर्व वरील चुकीचे आहे कारण केवळ ग्नोमॉनिक वर्णनानुसार असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographic projections.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a projection with light source at a different location",
+        "Chooses a projection with light source outside the globe",
+        null,
+        "Misunderstands the description of Gnomonic projection"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Gnomonic, as the light source is at the center of the globe. The other options have different light source placements, and the 'All the above' option is incorrect because only Gnomonic meets the condition.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "EXERCISE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "ACTIVITY"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:25:38.182Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a reason for using a map projection?",
+      "choices": [
+        "To create a detailed study of a region that is not possible with a globe.",
+        "To calculate the exact temperature of the Earth's surface.",
+        "To show the Earth as a perfect sphere without distortion.",
+        "To create a 3D model of the Earth."
+      ],
+      "answerIndex": 0,
+      "solution": "A map projection is used to create a detailed study of a region that is not possible with a globe because a globe's spherical shape limits the ability to show fine details clearly. Calculating temperature, showing a perfect sphere, or creating a 3D model are not functions of map projections, as they do not address the challenge of representing a curved surface on a flat medium.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक मानचित्र प्रक्षेप का उपयोग करने का कारण है?",
+          "choices": [
+            "एक क्षेत्र के विस्तृत अध्ययन के लिए जो गोले के साथ संभव नहीं है।",
+            "भूमि की सतह के ठीक तापमान की गणना करने के लिए।",
+            "भूमि को विकृति के बिना एक पूर्ण गोला के रूप में दिखाना।",
+            "भूमि के 3 डी मॉडल का निर्माण करना।"
+          ],
+          "solution": "एक मानचित्र प्रक्षेप का उपयोग एक क्षेत्र के विस्तृत अध्ययन के लिए किया जाता है जो गोले के साथ संभव नहीं है क्योंकि गोले के गोलाकार आकार के कारण बिंदुवार विवरण स्पष्ट रूप से दिखाना संभव नहीं है। तापमान की गणना, एक पूर्ण गोला दिखाना या 3 डी मॉडल बनाना मानचित्र प्रक्षेप के कार्य नहीं हैं क्योंकि वे वक्र सतह के तल पर प्रस्तुत करने की चुनौती के सामने नहीं आते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक नकाशा प्रक्षेपण वापरण्याचे कारण आहे?",
+          "choices": [
+            "एका प्रदेशाचा विस्तृत अभ्यास करण्यासाठी जे गोलाकृती गोलाच्या वापरामुळे शक्य नाही.",
+            "भूमिपृष्ठाचा अचूक तापमान काढण्यासाठी.",
+            "भूमीला विकृती शिवाय एक पूर्ण गोलाकार दाखवण्यासाठी.",
+            "भूमीचा 3D मॉडेल तयार करण्यासाठी."
+          ],
+          "solution": "नकाशा प्रक्षेपण एका प्रदेशाचा विस्तृत अभ्यास करण्यासाठी वापरले जाते जे गोलाकृती गोलाच्या वापरामुळे शक्य नाही, कारण गोलाच्या गोलाकृती आकारामुळे विस्तृत विवरण स्पष्टपणे दाखवता येत नाही. तापमान काढणे, पूर्ण गोलाकृती दाखवणे किंवा 3D मॉडेल तयार करणे ही नकाशा प्रक्षेपणाच्या कार्यांचा भाग नाहीत, कारण ते वक्र सतह च्या समतल माध्यमावर प्रतिबिंबित करण्याच्या आव्हानाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geographical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinking map projections are used for weather or climate data rather than geographic representation.",
+        "Believing that map projections can eliminate all distortion and maintain the Earth's true spherical shape.",
+        "A pupil might confuse map projection with 3D modeling, thinking it's about creating depth rather than flattening the Earth's surface."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as map projections are used to create flat maps for detailed study, which is not possible with a globe. The other options represent common misconceptions about the purpose of map projections.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 4: Map Projections"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Map Projections"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Map Projections"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:25:38.182Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which map projection is most useful for navigational purposes?",
+      "choices": [
+        "Conical",
+        "Cylindrical Equal Area",
+        "Mercator",
+        "Gnomonic"
+      ],
+      "answerIndex": 2,
+      "solution": "The Mercator projection is most useful for navigation because it preserves angles and shapes, allowing for accurate direction and course plotting. Conical projections are better for specific regions, Cylindrical Equal Area sacrifices directional accuracy for area accuracy, and Gnomonic projections are used for great circle routes but not general navigation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन सा मानचित्र प्रक्षेप नौवहन के लिए सबसे उपयोगी है?",
+          "choices": [
+            "शंकु आकार",
+            "बेलनाकार सम क्षेत्र",
+            "मर्केटर",
+            "ग्नोमॉनिक"
+          ],
+          "solution": "मर्केटर प्रक्षेप सबसे उपयोगी है क्योंकि यह कोणों और आकृतियों को बरकरार रखता है, जिससे दिशा और मार्ग चिह्नित करने में सटीकता होती है। शंकु प्रक्षेप विशिष्ट क्षेत्रों के लिए बेहतर हैं, बेलनाकार सम क्षेत्र दिशा की सटीकता के बदले क्षेत्र की सटीकता को खो देता है, और ग्नोमॉनिक प्रक्षेप बड़े वृत्त मार्गों के लिए उपयोग किया जाता है लेकिन सामान्य नौवहन के लिए नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi geography textbooks, and the solution correctly identifies the Mercator projection as the correct answer.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या नकाशा उपप्रतिमेचा उपयोग नौविहारी कार्यांसाठी सर्वात जास्त केला जातो?",
+          "choices": [
+            "शंकूआकार",
+            "बेलून समान क्षेत्र",
+            "मर्केटर",
+            "ग्नॉमॉनिक"
+          ],
+          "solution": "मर्केटर उपप्रतिमा नौविहारी कार्यांसाठी सर्वात जास्त उपयुक्त आहे कारण ती कोन आणि आकृती जतन करते, ज्यामुळे निर्देश आणि मार्ग निर्माणासाठी अचूकता राखली जाते. शंकूआकार उपप्रतिमा विशिष्ट क्षेत्रांसाठी चांगल्या आहेत, बेलून समान क्षेत्र उपप्रतिमा क्षेत्र अचूकतेसाठी दिशा अचूकता त्यागते, आणि ग्नॉमॉनिक उपप्रतिमा मोठ्या वृत्ताच्या मार्गांसाठी वापरली जाते परंतु सामान्य नौविहारी कार्यांसाठी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for map projections.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses Conical with Mercator",
+        "Believes Cylindrical Equal Area is useful for navigation",
+        null,
+        "Thinks Gnomonic is useful for navigation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Mercator), as it is specifically designed for navigation due to its ability to preserve angles and directions. The author's key is correct, but their solution is misleading because they incorrectly state that the passage mentions Mercator as useful for navigation. The reasoning for the distractors is valid as they reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "EXERCISE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "ACTIVITY"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:25:38.182Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following statements about map projections is correct?",
+      "choices": [
+        "All map projections are equal area",
+        "Only Mercator projection has correct shape",
+        "No single map projection represents the globe truly",
+        "All map projections have correct directions"
+      ],
+      "answerIndex": 2,
+      "solution": "No single map projection represents the globe truly because all map projections involve some form of distortion when representing a three-dimensional sphere on a two-dimensional surface. The other options are incorrect because no projection is entirely equal in area, no single projection has perfect shape, and no projection maintains correct directions everywhere.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा मानचित्र प्रक्षेपों के बारे में कथन सही है?",
+          "choices": [
+            "सभी मानचित्र प्रक्षेप समान क्षेत्र के होते हैं",
+            "केवल मर्केटर प्रक्षेप का आकार सही होता है",
+            "कोई भी एक मानचित्र प्रक्षेप गोले को वास्तव में प्रतिबिंबित नहीं करता है",
+            "सभी मानचित्र प्रक्षेप सही दिशा के होते हैं"
+          ],
+          "solution": "कोई भी एक मानचित्र प्रक्षेप गोले को वास्तव में प्रतिबिंबित नहीं करता है क्योंकि सभी मानचित्र प्रक्षेप त्रिआयामी गोले को द्वि-आयामी सतह पर प्रतिबिंबित करते समय किसी न किसी रूप में विकृति का कारण बनते हैं। अन्य विकल्प गलत हैं क्योंकि कोई भी प्रक्षेप वास्तव में क्षेत्र में समान नहीं होता, कोई भी एक प्रक्षेप आकृति में पूर्ण नहीं होता, और कोई भी प्रक्षेप सभी जगह सही दिशा बनाए रखता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता नकाशा प्रक्षेपणाबद्दलचा विधान बरोबर आहे?",
+          "choices": [
+            "सर्व नकाशा प्रक्षेपणे समान क्षेत्रफळ असतात",
+            "मार्केटर प्रक्षेपण फक्त खरा आकार असतो",
+            "एकाही नकाशा प्रक्षेपण गोलाचे खरे प्रतिनिधित्व करत नाही",
+            "सर्व नकाशा प्रक्षेपणांमध्ये खरा दिशा असतो"
+          ],
+          "solution": "एकाही नकाशा प्रक्षेपण गोलाचे खरे प्रतिनिधित्व करत नाही, कारण सर्व नकाशा प्रक्षेपणांमध्ये त्रिविमीय गोलाचे द्विमीय सतहवर प्रतिनिधित्व करताना विकृतीचा समावेश असतो. इतर विधाने अयोग्य आहेत कारण कोणतेही प्रक्षेपण समान क्षेत्रफळ नसते, कोणतेही प्रक्षेपण खरा आकार नसतो आणि कोणतेही प्रक्षेपण सर्वत्र खरा दिशा ठेवत नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi terminology for map projections.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes all map projections are equal area",
+        "Thinks only Mercator has correct shape",
+        null,
+        "Confuses all map projections with having correct directions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as no map projection can represent the globe without distortion. The other options reflect common misconceptions about map projections.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "EXERCISE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Map Projections",
+            "ACTIVITY"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:25:38.182Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a projection that preserves the shape of a region?",
+      "choices": [
+        "Cylindrical Equal Area Projection",
+        "Mercator’s Projection",
+        "Simple Conical Projection with one standard parallel",
+        "Homolographic Projection"
+      ],
+      "answerIndex": 1,
+      "solution": "Mercator’s Projection is an example of a projection that preserves the shape of a region. It is a conformal projection, meaning it maintains local angles and shapes, which is essential for navigation. The Cylindrical Equal Area Projection preserves area but distorts shape, the Simple Conical Projection with one standard parallel is designed to minimize distortion in specific regions but does not preserve shape globally, and the Homolographic Projection is another name for an equal-area projection, which also distorts shape.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ऐसा प्रक्षेप (projection) का उदाहरण है जो क्षेत्र के आकार को संरक्षित रखता है?",
+          "choices": [
+            "बेलनाकार समक्षेत्र प्रक्षेप",
+            "मर्केटर का प्रक्षेप",
+            "एक मानक समान्तर के साथ साधारण शंकु प्रक्षेप",
+            "होमोलॉग्राफिक प्रक्षेप"
+          ],
+          "solution": "मर्केटर का प्रक्षेप एक ऐसे प्रक्षेप का उदाहरण है जो क्षेत्र के आकार को संरक्षित रखता है। यह एक समकोणीय प्रक्षेप है, जिसका अर्थ है कि यह स्थानीय कोणों और आकारों को बरकरार रखता है, जो नौवहन के लिए महत्वपूर्ण है। बेलनाकार समक्षेत्र प्रक्षेप क्षेत्र को संरक्षित रखता है लेकिन आकार को विकृत करता है, एक मानक समान्तर के साथ साधारण शंकु प्रक्षेप विशिष्ट क्षेत्रों में विकृति को कम करने के लिए डिज़ाइन किया गया है लेकिन सामान्य रूप से आकार को संरक्षित नहीं रखता है और होमोलॉग्राफिक प्रक्षेप एक समक्षेत्र प्रक्षेप का अन्य नाम है, जो आकार को विकृत करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the technical terms and meaning of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक वितरण आहे जे एका भागाच्या आकृतीचे निर्वहन करते?",
+          "choices": [
+            "सिलिंड्रिकल बरोबर क्षेत्र वितरण",
+            "मर्केटरचे वितरण",
+            "एका मानक समांतरासह साधे शंकू वितरण",
+            "होमोलॉग्राफिक वितरण"
+          ],
+          "solution": "मर्केटरचे वितरण हे एक वितरण आहे जे एका भागाच्या आकृतीचे निर्वहन करते. ते एक आकृती संरक्षक वितरण आहे, जे स्थानिक कोन आणि आकृती टिकवून ठेवते, जे नौविमानासाठी आवश्यक आहे. सिलिंड्रिकल बरोबर क्षेत्र वितरण क्षेत्र निर्वहन करते परंतु आकृती विकृत करते, एका मानक समांतरासह साधे शंकू वितरण विशिष्ट भागात विकृती कमी करण्यासाठी डिझाइन केले गेले आहे परंतु सामान्यपणे आकृती निर्वहन करत नाही आणि होमोलॉग्राफिक वितरण हे बरोबर क्षेत्र वितरणचे दुसरे नाव आहे, जे आकृती विकृत करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographic projections.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of a cylindrical equal area projection, which preserves area, not shape",
+        null,
+        "Believes that conical projections preserve shape due to their use in mapping mid-latitudes",
+        "Confuses the function of a simple conical projection, which is used for specific regions, not for shape preservation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is Mercator’s Projection, which is a conformal projection that preserves shape. The author's reasoning is accurate, and the misconceptions listed for the distractors are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 4: Map Projections"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Map Projections"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy304.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Map Projections"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-21T06:25:38.182Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

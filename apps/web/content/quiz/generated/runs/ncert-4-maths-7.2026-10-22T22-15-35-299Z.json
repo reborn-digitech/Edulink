@@ -1,0 +1,520 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:15:35.299Z",
+  "finishedAt": "2026-10-22T22:19:20.556Z",
+  "seconds": 225,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm107.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — The Cleanest Village",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n4. (d) 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 111455,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17786,
+      "completionTokens": 5258
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 243192,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 13128,
+      "completionTokens": 5428
+    },
+    "solver": {
+      "calls": 86,
+      "ms": 63431,
+      "in": 10,
+      "out": 3,
+      "rejects": 7,
+      "promptTokens": 17599,
+      "completionTokens": 1008
+    },
+    "form": {
+      "calls": 2,
+      "ms": 7861,
+      "in": 3,
+      "out": 0,
+      "rejects": 3,
+      "promptTokens": 460,
+      "completionTokens": 163
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4522,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 180,
+      "completionTokens": 266
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person buys 1 kg of onion and 1 kg of sapota, what is the total cost?",
+      "ms": {
+        "draft": 4870,
+        "critique": 8700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cost of 1 kg of custard apple?",
+      "ms": {
+        "draft": 4870,
+        "critique": 10166,
+        "solver": 2023
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total cost of 2 kg of beans?",
+      "ms": {
+        "draft": 4870,
+        "critique": 7380,
+        "solver": 2163,
+        "form": 3518
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the mother buys things for ₹163, which of the following could she have bought?",
+      "ms": {
+        "draft": 4870,
+        "critique": 10906
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the total number of children going on the trip?",
+      "ms": {
+        "draft": 4870,
+        "critique": 8120,
+        "solver": 2713
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Daisy and Lou spent ₹38 on a large piece of pusaw and ₹16 on a small piece, how much did they spend in total?",
+      "ms": {
+        "draft": 4966,
+        "critique": 9811
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 10 Ones?",
+      "ms": {
+        "draft": 4966,
+        "critique": 10018,
+        "solver": 1945,
+        "form": 4343
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person pays ₹200 for a cost of ₹185, what is the balance?",
+      "ms": {
+        "draft": 4870,
+        "critique": 8555,
+        "solver": 19022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Daisy and Lou had ₹185 in their piggy bank and their mother gave them ₹125 more, how much money did they have in total?",
+      "ms": {
+        "draft": 4966,
+        "critique": 8612
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 215 children went to see the Living Roots Bridge and there were 438 children in total, how many children were waiting to visit the bridge?",
+      "ms": {
+        "draft": 4966,
+        "critique": 7919
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Lou and Daisy brought ₹310 and spent ₹179, how much money is left with them?",
+      "ms": {
+        "draft": 4966,
+        "critique": 7312
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Ranganna made 639 dolls and sold 531, how many dolls are left?",
+      "ms": {
+        "draft": 4966,
+        "critique": 6149
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents 37?",
+      "ms": {
+        "draft": 3060,
+        "critique": 5431,
+        "solver": 1960,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 3 Tens?",
+      "ms": {
+        "draft": 3060,
+        "critique": 7683
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 10 Ones?",
+      "ms": {
+        "draft": 3060,
+        "critique": 8047
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the estimated total of ₹38 and ₹16?",
+      "ms": {
+        "draft": 3060,
+        "critique": 7894,
+        "solver": 17775
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 more girls join the music school, and 20 girls are already learning the tabla, how many girls play the tabla now?",
+      "ms": {
+        "draft": 3060,
+        "critique": 7845,
+        "solver": 21971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Daisy and Lou had ₹185 in their piggy bank. Their mother gave them ₹125 more. How much money did they take for the trip?",
+      "ms": {
+        "draft": 3060,
+        "critique": 7903,
+        "solver": 23290
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cost of 1 kg of custard apple according to the passage?",
+      "ms": {
+        "draft": 5680,
+        "critique": 8079
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a main attraction in Mawlynnong according to the passage?",
+      "ms": {
+        "draft": 5680,
+        "critique": 8558
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mother buys 2 kg of radish and 1 kg of yam, what is the total cost according to the passage?",
+      "ms": {
+        "draft": 5680,
+        "critique": 9609
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Krishna and Sudama each buy two oranges. Krishna pays with a ₹50 note, and Sudama with a ₹100 note. What is the total balance they get together?",
+      "ms": {
+        "draft": 5680,
+        "critique": 8242
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that 438 children are going from Daisy and Lou's school, and 476 children from a neighborhood school are also going. If the number of teachers is estimated as 2 Tens 4 Ones, what is the total number of teachers and children going to Mawlynnong?",
+      "ms": {
+        "draft": 5680,
+        "critique": 9949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the mother buys 3 kg of bananas, how much does she pay according to the passage?",
+      "ms": {
+        "draft": 5680,
+        "critique": 10030,
+        "solver": 9641
+      },
+      "outcome": "solver",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person buys 1 kg of onion and 1 kg of sapota, what is the total cost?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the cost of 1 kg of custard apple?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total cost of 2 kg of beans?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"this is an incorrect guess or an option that is not based on…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the mother buys things for ₹163, which of the following could she have bought?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the total number of children going on the trip?",
+      "reason": "the solver picked option 2 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Daisy and Lou spent ₹38 on a large piece of pusaw and ₹16 on a small piece, how much did they spend in total?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 10 Ones?",
+      "reason": "options are in more than one unit (tens, hundred, ten, hundreds); options 0 and 3 are the same number; options 1 and 2 are the same number; distractor 3's reason is not a one-line misconception (\"Correct answer is 1 Ten, so this is correct, not a distracto…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person pays ₹200 for a cost of ₹185, what is the balance?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Daisy and Lou had ₹185 in their piggy bank and their mother gave them ₹125 more, how much money did they have in total?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If 215 children went to see the Living Roots Bridge and there were 438 children in total, how many children were waiting to visit the bridge?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If Lou and Daisy brought ₹310 and spent ₹179, how much money is left with them?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If Ranganna made 639 dolls and sold 531, how many dolls are left?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents 37?",
+      "reason": "options 0 and 1 say the same thing (\"3 Tens + 7 Ones\" / \"3 Ones + 7 Tens\"); distractor 1's reason is not a one-line misconception (\"correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of 3 Tens?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of 10 Ones?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the estimated total of ₹38 and ₹16?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 15 more girls join the music school, and 20 girls are already learning the tabla, how many girls play the tabla now?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Daisy and Lou had ₹185 in their piggy bank. Their mother gave them ₹125 more. How much money did they take for the trip?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the cost of 1 kg of custard apple according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a main attraction in Mawlynnong according to the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a mother buys 2 kg of radish and 1 kg of yam, what is the total cost according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Krishna and Sudama each buy two oranges. Krishna pays with a ₹50 note, and Sudama with a ₹100 note. What is the total balance they get together?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The passage mentions that 438 children are going from Daisy and Lou's school, and 476 children from a neighborhood school are also going. If the number of teachers is estimated as 2 Tens 4 Ones, what is the total number of teachers and children going to Mawlynnong?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the mother buys 3 kg of bananas, how much does she pay according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

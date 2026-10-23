@@ -1,0 +1,419 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T17:38:09.541Z",
+  "finishedAt": "2026-10-20T17:42:50.184Z",
+  "seconds": 281,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm106.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — House of Hundreds - I",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[PRMO 2019 — question paper]\n30. Let E denote the set of all natural numbers n such that 3 < n < 100 and the set\n{1, 2, 3, . . . , n} can be partitioned in to 3 subsets with equal sums. Find the number of elements\nof E.\nSPACE FOR ROUGH WORK\n27. हम कहӒगे ўक ўकसी शͫद के अ̯रӖ के बमचय मӒ कोई िःथर अ̯र नहҰं है अगर, जब हम बमचय को\nशͫद के ठұक नीचे ѠलखӒ, तो ўकसी भी ःतंभ मӒ एक हҰ अ̯र ऊपर नीचे दोनӖ जगह नहҰं होगा। जैसे ўक\nशͫद B H A R A T के बमचय H B R A T A मӒ कोई िःथर अ̯र नहҰं है। B H A R A\nT के अलग-अलग ऐसे ўकतने बमचय हӔ िजनमӒ कोई िःथर अ̯र नहҰं है? (यहाँ मानӒगे ўक दोनӖ A मӒ\nकोई भेद नहҰं है।)\n28. मान लो ўक ABC एक िऽभुज है िजसकҴ भुजाओं का मान 51, 52, 53 है। मान लो ўक Ω िऽभुज\n△ABC का अंतःवृа है। Ω के वह ःपश˨क बनाओ जो ўक ABC कҴ भुजाओं ",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n27. HCF (36,60,84) =12 1 ½\nଷ଺ ଺଴ ସ଼\nRequired number of rooms= ଵଶ ଵଶ ଵଶ + + 1\n=3+5+7\n=15 ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n37. CASE STUDY 2\nAlia and Shagun are friends living on the same street in Patel Nagar. Shagun’s house is at the\nintersection of one street with another street on which there is a library. They both study in\nthe same school and that is not far from Shagun's house. Suppose the school is situated at\nthe point O, i.e., the origin, Alia's house is at A. Shagun’s house is at B and library is at C.\nBased on the above information, answer the following questions.\n(i) How far is Alia's house from Shagun’s house?\n(ii) How far is the library from Shagun’s house?\n(iii) Show that for Shagun, school is farther compared to Alia’s house and library.\nOR\nShow that Alia’s house, shagun’s house and library for a",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n18. 3\nD)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 56868,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 15317,
+      "completionTokens": 3148
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 147565,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 10899,
+      "completionTokens": 4620
+    },
+    "solver": {
+      "calls": 129,
+      "ms": 75304,
+      "in": 16,
+      "out": 6,
+      "rejects": 10,
+      "promptTokens": 26793,
+      "completionTokens": 1518
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6624,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 738,
+      "completionTokens": 172
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2494,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 90925,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7572,
+      "completionTokens": 2999
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "How many triangles are there in a line of triangular toran?",
+      "ms": {
+        "draft": 3149,
+        "critique": 5383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many toffees are there altogether if Jojo has 2 toffees and the total is 300?",
+      "ms": {
+        "draft": 3149,
+        "critique": 5991
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of bangles according to the passage?",
+      "ms": {
+        "draft": 3149,
+        "critique": 5024,
+        "solver": 968
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which number is more: 393 or 400?",
+      "ms": {
+        "draft": 3149,
+        "critique": 5323,
+        "solver": 15465,
+        "form": 2668
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is 15 less than 250, what is the number?",
+      "ms": {
+        "draft": 3149,
+        "critique": 5602,
+        "solver": 16847,
+        "form": 2804
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers has the same hundreds digit as 487?",
+      "ms": {
+        "draft": 2844,
+        "critique": 5963,
+        "solver": 1300
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following numbers is less than 329?",
+      "ms": {
+        "draft": 2844,
+        "critique": 7692,
+        "solver": 1592
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers has the same tens digit as 325 and the same ones digit as 235?",
+      "ms": {
+        "draft": 2844,
+        "critique": 9084,
+        "solver": 8133
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of triangles in the mela?",
+      "ms": {
+        "draft": 3486,
+        "critique": 4727,
+        "solver": 1167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many more triangles are needed to make 300?",
+      "ms": {
+        "draft": 3486,
+        "critique": 5489,
+        "solver": 1304
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of bangles in the mela?",
+      "ms": {
+        "draft": 3486,
+        "critique": 5881,
+        "solver": 1984
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is between 200 and 210, and the flag points to the right, what does it mean?",
+      "ms": {
+        "draft": 3486,
+        "critique": 6216,
+        "solver": 2057
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Jojo has 2 toffees in his hand and there are 298 toffees in the boxes, how many toffees are there altogether?",
+      "ms": {
+        "draft": 3486,
+        "critique": 6653,
+        "solver": 13335
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 200 and 35 more is written as a number sentence, what is the number?",
+      "ms": {
+        "draft": 3486,
+        "critique": 7029,
+        "solver": 13344
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is more than 231?",
+      "ms": {
+        "draft": 2844,
+        "critique": 6341,
+        "solver": 1323,
+        "form": 0,
+        "translation": 25373
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is less than 153?",
+      "ms": {
+        "draft": 2844,
+        "critique": 5946,
+        "solver": 2094,
+        "form": 0,
+        "translation": 26421
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is less than 200 and has 9 ones, which number could it be?",
+      "ms": {
+        "draft": 3149,
+        "critique": 6551,
+        "solver": 13350,
+        "form": 2521,
+        "translation": 22424
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following numbers is greater than 423 and less than 487?",
+      "ms": {
+        "draft": 2844,
+        "critique": 8206,
+        "solver": 9713,
+        "form": 0,
+        "translation": 12851
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many triangles are there in a line of triangular toran?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many toffees are there altogether if Jojo has 2 toffees and the total is 300?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of bangles according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which number is more: 393 or 400?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is 15 less than 250, what is the number?",
+      "reason": "options 1 and 3 are the same (\"230\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following numbers has the same hundreds digit as 487?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following numbers is less than 329?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following numbers has the same tens digit as 325 and the same ones digit as 235?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"Which of the following numbers is greater than 321 but less than 331?\",\"options\":[\"312"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of triangles in the mela?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many more triangles are needed to make 300?",
+      "reason": "the solver picked option 2 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of bangles in the mela?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number is between 200 and 210, and the flag points to the right, what does it mean?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Jojo has 2 toffees in his hand and there are 298 toffees in the boxes, how many toffees are there altogether?",
+      "reason": "after redraft: the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 200 and 35 more is written as a number sentence, what is the number?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T23:03:15.373Z",
+  "finishedAt": "2026-10-20T23:06:47.291Z",
+  "seconds": 212,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh104.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Complex Numbers and Quadratic Equations",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n16. The roots of quadratic equation 3𝑥 − 4√3𝑥 + 4 = 0 are 2 1\n(A) not real (B) real and equal\n(C) rational and distinct (D) irrational and distinct",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n4. The nature of roots of the quadratic equation 9x – 6x – 2 = 0 is: 2 1\n(a) No real roots (b) 2 equal real roots\n(c) 2 distinct real roots (d) More than 2 real roots",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n24. Find the nature of roots of the quadratic equation 𝒙 + 4𝒙 − 3√2 = 0. 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. The roots of the quadratic equation 𝑥 +x-1 = 0 are 2 1\nA) Irrational and distinct\nC ) rational and distinct"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 71029,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 21106,
+      "completionTokens": 4797
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 169574,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 14923,
+      "completionTokens": 5575
+    },
+    "solver": {
+      "calls": 156,
+      "ms": 64499,
+      "in": 20,
+      "out": 18,
+      "rejects": 2,
+      "promptTokens": 28966,
+      "completionTokens": 1546
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9689,
+      "in": 18,
+      "out": 7,
+      "rejects": 11,
+      "promptTokens": 800,
+      "completionTokens": 222
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2603,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 148761,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 12182,
+      "completionTokens": 5063
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "What is the value of i^4?",
+      "ms": {
+        "draft": 2340,
+        "critique": 5433,
+        "solver": 1258,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two complex numbers are equal, what must be true about their real and imaginary parts?",
+      "ms": {
+        "draft": 2340,
+        "critique": 5606,
+        "solver": 9530
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the real part of the complex number 2 + i5?",
+      "ms": {
+        "draft": 2340,
+        "critique": 6981,
+        "solver": 1209,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a quadratic equation has a discriminant D = b^2 - 4ac < 0, what can be said about its roots?",
+      "ms": {
+        "draft": 2340,
+        "critique": 6781,
+        "solver": 13131,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the multiplicative inverse of a non-zero complex number z = a + ib?",
+      "ms": {
+        "draft": 3199,
+        "critique": 5905,
+        "solver": 1506,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of a complex number?",
+      "ms": {
+        "draft": 3199,
+        "critique": 5774,
+        "solver": 8297,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of multiplying the complex numbers (1 + 2i) and (1 - 2i)?",
+      "ms": {
+        "draft": 3199,
+        "critique": 5286,
+        "solver": 1155,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a complex number z has a modulus of 5 and an argument of 60 degrees, what is the real part of z?",
+      "ms": {
+        "draft": 3199,
+        "critique": 5148
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the conjugate of a complex number z = a + ib?",
+      "ms": {
+        "draft": 3422,
+        "critique": 3892,
+        "solver": 1246,
+        "form": 4451
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of the modulus of a complex number z = a + ib?",
+      "ms": {
+        "draft": 3422,
+        "critique": 4511,
+        "solver": 10646,
+        "form": 4297
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If z = 2 - i and z = 1 + i, find the value of (z + z + 1)/(z - z + 1).",
+      "ms": {
+        "draft": 3422,
+        "critique": 4257,
+        "solver": 1826
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "For the quadratic equation 3x² - 4√3x + 4 = 0, what is the nature of the roots?",
+      "ms": {
+        "draft": 3422,
+        "critique": 6114,
+        "solver": 9951,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the complex numbers 4 + i(3x - y) and 3 + i(-6) are equal, what is the value of x?",
+      "ms": {
+        "draft": 2878,
+        "critique": 7102
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of i^2?",
+      "ms": {
+        "draft": 2878,
+        "critique": 4806
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the imaginary part of the complex number 2 + i3?",
+      "ms": {
+        "draft": 2878,
+        "critique": 5743,
+        "solver": 9089,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the nature of the roots of the quadratic equation 3x^2 - 4√3x + 4 = 0?",
+      "ms": {
+        "draft": 2878,
+        "critique": 5026
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of i^4?",
+      "ms": {
+        "draft": 2878,
+        "critique": 4412,
+        "solver": 3671,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "ms": {
+        "draft": 3199,
+        "critique": 5016,
+        "solver": 1378,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the general form of a complex number?",
+      "ms": {
+        "draft": 2340,
+        "critique": 4990,
+        "solver": 890,
+        "form": 0,
+        "translation": 20846
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the conjugate of the complex number z = 2 - 3i?",
+      "ms": {
+        "draft": 3199,
+        "critique": 6445,
+        "solver": 1113,
+        "form": 0,
+        "translation": 21044
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of (2 + i3) + (–6 + i5)?",
+      "ms": {
+        "draft": 2878,
+        "critique": 6660,
+        "solver": 882,
+        "form": 0,
+        "translation": 24603
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the multiplicative inverse of the complex number 2 - 3i?",
+      "ms": {
+        "draft": 3422,
+        "critique": 4682,
+        "solver": 11198,
+        "form": 0,
+        "translation": 29182
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the additive identity for complex numbers?",
+      "ms": {
+        "draft": 2340,
+        "critique": 5348,
+        "solver": 1084,
+        "form": 0,
+        "translation": 21353
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance of the complex number x + iy from the origin in the Argand plane?",
+      "ms": {
+        "draft": 3422,
+        "critique": 5828,
+        "solver": 9265,
+        "form": 3097,
+        "translation": 28583
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of i^4?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If two complex numbers are equal, what must be true about their real and imaginary parts?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the real part of the complex number 2 + i5?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a quadratic equation has a discriminant D = b^2 - 4ac < 0, what can be said about its roots?",
+      "reason": "options 0 and 1 say the same thing (\"The roots are real and distinct\" / \"1: The roots are real and distinct\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the multiplicative inverse of a non-zero complex number z = a + ib?",
+      "reason": "options 2 and 3 say the same thing (\"(a - ib)/(a^2 + b^2)\" / \"(a + ib)/(a^2 + b^2)\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the standard form of a complex number?",
+      "reason": "options 0 and 3 are the same (\"a + ib\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of multiplying the complex numbers (1 + 2i) and (1 - 2i)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a complex number z has a modulus of 5 and an argument of 60 degrees, what is the real part of z?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the conjugate of a complex number z = a + ib?",
+      "reason": "options 0 and 2 say the same thing (\"a - ib\" / \"ib - a\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of the modulus of a complex number z = a + ib?",
+      "reason": "options 2 and 3 are the same (\"The non-negative real number √(a² + b²)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If z = 2 - i and z = 1 + i, find the value of (z + z + 1)/(z - z + 1).",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "For the quadratic equation 3x² - 4√3x + 4 = 0, what is the nature of the roots?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the complex numbers 4 + i(3x - y) and 3 + i(-6) are equal, what is the value of x?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of i^2?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the imaginary part of the complex number 2 + i3?",
+      "reason": "options 2 and 3 are the same (\"i3\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the nature of the roots of the quadratic equation 3x^2 - 4√3x + 4 = 0?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of i^4?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "reason": "near-duplicate of served question cmsmn74d409t0y26j31wfp3kk (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

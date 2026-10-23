@@ -1,0 +1,534 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T18:54:05.727Z",
+  "finishedAt": "2026-10-20T19:00:14.213Z",
+  "seconds": 368,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm109.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Equal Groups",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n26. Number of students in each group subject to the given condition = HCF (60,84,108) ½\nHCF (60,84,108) = 12\n଺଴\nNumber of groups in Music = = 5\nଵଶ\n଼ସ\nNumber of groups in Dance = ଵଶ = 7\nଵ଴଼\nNumber of groups in Handicrafts =\nTotal number of rooms required = 21",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n26. National Art convention got registrations from students from all parts of the country, of 3\nwhich 60 are interested in music, 84 are interested in dance and 108 students are interested\nin handicrafts. For optimum cultural exchange, organisers wish to keep them in minimum\nnumber of groups such that each group consists of students interested in the same artform\nand the number of students in each group is the same. Find the number of students in each\ngroup. Find the number of groups in each art form. How many rooms are required if each\ngroup will be allotted a room?",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n4. (b) Parallel.",
+      "[RMO 2010 — question paper]\nform 8k + 4 among them which is divisible by 4 but not by 8. Hence if we take four even\nconsecutive numbers\n1000a + 100b + 10c + 2, 1000a + 100b + 10c + 4,\n1000a + 100b + 10c + 6, 1000a + 100b + 10c + 8,\nthere is exactly one among these four which is divisible by 4 but not by 8. Now we\ncan divide the set of all 4-digit even numbers with non-zero digits into groups of 4 such\nconsecutive even numbers with a, b, c nonzero. And in each group, there is exactly one\nnumber which is divisible by 4 but not by 8. The number of such groups is precisely\nequal to 9 × 9 × 9 = 729, since we can vary a, b.c in the set {1, 2, 3, 4, 5, 6, 7, 8, 9}."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 144350,
+      "in": 33,
+      "out": 23,
+      "rejects": 10,
+      "promptTokens": 29944,
+      "completionTokens": 8201
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 229961,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 16777,
+      "completionTokens": 6414
+    },
+    "solver": {
+      "calls": 182,
+      "ms": 102377,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 38767,
+      "completionTokens": 2172
+    },
+    "form": {
+      "calls": 8,
+      "ms": 24078,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 2322,
+      "completionTokens": 594
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2907,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 263086,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 19870,
+      "completionTokens": 8151
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the cat jumps 3 steps and the rat jumps 2 steps, will the cat catch the rat if the cat starts at 6 and the rat at 12?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6508
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the smallest 3-digit number that the rabbit will land on if it jumps 6 steps at a time?",
+      "ms": {
+        "draft": 3449,
+        "critique": 7192
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 80 petals are found in total and each hibiscus flower has 5 petals, how many flowers are there?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6147,
+        "solver": 15731
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the pattern in the ones digit of the products in row 8 of the multiplication chart?",
+      "ms": {
+        "draft": 4681,
+        "critique": 6606,
+        "solver": 1180,
+        "form": 4782
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A factory has ordered 58 wheels for the small tempos that they make. Each tempo has 3 wheels. How many tempos can the factory make using the 58 wheels?",
+      "ms": {
+        "draft": 4681,
+        "critique": 7879,
+        "solver": 1163
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 125 autorickshaws can carry 8 passengers each, how many passengers can travel in total?",
+      "ms": {
+        "draft": 3729,
+        "critique": 6832,
+        "solver": 11352
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A load carrying truck has 6 tyres. If Chippi sees 60 tyres, how many trucks are there?",
+      "ms": {
+        "draft": 3729,
+        "critique": 5447,
+        "solver": 9561
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A school bus hires 7 buses to take 245 children to the transport museum. Each bus carries the same number of children. How many children are traveling in each bus?",
+      "ms": {
+        "draft": 3621,
+        "critique": 7567,
+        "solver": 18045
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ones digit of the product 12 × 8?",
+      "ms": {
+        "draft": 5058,
+        "critique": 10722,
+        "solver": 17460
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which numbers are multiples of 3?",
+      "ms": {
+        "draft": 6544,
+        "critique": 6220,
+        "solver": 12936,
+        "form": 4624
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many times did the frog jump to reach 60?",
+      "ms": {
+        "draft": 6544,
+        "critique": 7285
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many times did the rabbit jump to reach 48?",
+      "ms": {
+        "draft": 6544,
+        "critique": 7570,
+        "solver": 7128
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ones digit of the product 11 × 8?",
+      "ms": {
+        "draft": 5058,
+        "critique": 6547,
+        "solver": 1820,
+        "form": 5964
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which numbers are multiples of 6 and 8?",
+      "ms": {
+        "draft": 6544,
+        "critique": 7681,
+        "solver": 13307,
+        "form": 1344,
+        "translation": 25123
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the number of groups if 108 students are divided into groups of 12?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6981,
+        "solver": 9917,
+        "form": 0,
+        "translation": 19202
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ones digit of 11 × 8?",
+      "ms": {
+        "draft": 4681,
+        "critique": 7196,
+        "solver": 1223,
+        "form": 2200,
+        "translation": 21482
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Radha is packing cupcakes in boxes of 4. She has packed 18 boxes. How many cupcakes are there in total?",
+      "ms": {
+        "draft": 4681,
+        "critique": 5803,
+        "solver": 15411,
+        "form": 3172,
+        "translation": 25910
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Kahlu and Rabia packed 174 boxes, each containing 6 kulhads. How many kulhads did they make?",
+      "ms": {
+        "draft": 3729,
+        "critique": 6327,
+        "solver": 2059,
+        "form": 0,
+        "translation": 34727
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A load carrying truck has 6 tyres. Chippi the lizard sees 60 tyres. How many trucks are there?",
+      "ms": {
+        "draft": 3621,
+        "critique": 5996,
+        "solver": 1402,
+        "form": 0,
+        "translation": 31326
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many times did the rabbit jump to reach 48 if it jumps 6 steps at a time?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6339,
+        "solver": 12935,
+        "form": 0,
+        "translation": 20007
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an auditorium, 8 children are sitting in each row. There are 15 such rows in the school auditorium. How many children are in the auditorium?",
+      "ms": {
+        "draft": 4681,
+        "critique": 6558,
+        "solver": 1671,
+        "form": 2037,
+        "translation": 27595
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers is a common multiple of 3 and 4?",
+      "ms": {
+        "draft": 3449,
+        "critique": 7043,
+        "solver": 10524,
+        "form": 0,
+        "translation": 22778
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A dairy farm has many cows. Chippi the lizard is surprised to see 88 legs. How many cows are there in the farm?",
+      "ms": {
+        "draft": 4681,
+        "critique": 6130,
+        "solver": 1487,
+        "form": 3170,
+        "translation": 30755
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "BP Girl’s school has 465 students and gives each student 2 pencils. How many pencils does the school need to buy?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "234 children each contribute `5 for the school mela. How much money is collected?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "9 boats need to ferry 108 people. How many people will each boat carry?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the cat jumps 3 steps and the rat jumps 2 steps, will the cat catch the rat if the cat starts at 6 and the rat at 12?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the smallest 3-digit number that the rabbit will land on if it jumps 6 steps at a time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 80 petals are found in total and each hibiscus flower has 5 petals, how many flowers are there?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the pattern in the ones digit of the products in row 8 of the multiplication chart?",
+      "reason": "options 1 and 2 say the same thing (\"8, 9, 0, 1, 2, 3, 4, 5, 6, 7\" / \"8, 7, 6, 5, 4, 3, 2, 1, 0, 9\"); option 3 repeats the stem's wording (\"8, 8, 8, 8, 8, 8, 8, 8, 8, 8\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A factory has ordered 58 wheels for the small tempos that they make. Each tempo has 3 wheels. How many tempos can the factory make using the 58 wheels?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 125 autorickshaws can carry 8 passengers each, how many passengers can travel in total?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A load carrying truck has 6 tyres. If Chippi sees 60 tyres, how many trucks are there?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A fancy shop has packed 800 rubber bands in several packets. Each packet has 4 rubber bands. How many packets of rubber bands does the shop have?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "9 boats have to ferry 108 people waiting along the banks of the Cauvery River. Every boat carries the same number of people. How many people should be ferried in each boat?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Anu saves `45 every month by putting it in her piggy bank. How much money will Anu save in 6 months?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The Darjeeling Himalayan Railway is fondly called the “Toy Train”. This toy train ride is also a UNESCO World Heritage Site. This amazing train runs 88 km daily. How much distance does it travel in a week?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the ones digit of the product 13 × 8?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which digit does not appear as the ones digit in row 8 of the chart?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which row in the chart has all the digits from 0 to 9 as the ones digit?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A school bus hires 7 buses to take 245 children to the transport museum. Each bus carries the same number of children. How many children are traveling in each bus?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the ones digit of the product 12 × 8?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which numbers are multiples of 3?",
+      "reason": "options 2 and 3 say the same thing (\"These numbers are multiples of 3.\" / \"3: These numbers are multiples of 6.\"); distractor 0's reason is not a one-line misconception (\"Confuses the number mentioned in the passage with another.…\"); distractor 1's reason is not a one-line misconception (\"Confuses the number mentioned in the passage with another.…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many times did the frog jump to reach 60?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many times did the rabbit jump to reach 48?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the ones digit of the product 11 × 8?",
+      "reason": "near-duplicate of batch item \"What is the ones digit of 11 × 8?…\" (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

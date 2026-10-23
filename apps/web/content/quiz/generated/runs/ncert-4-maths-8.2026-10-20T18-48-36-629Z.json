@@ -1,0 +1,452 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T18:48:36.629Z",
+  "finishedAt": "2026-10-20T18:54:04.903Z",
+  "seconds": 328,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm108.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Weigh It, Pour It",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n15. In what ratio shall I add water to the liquid detergent costing ₹ 480 per litre to get resulting\nmixture worth ₹ 300 per litre?\na) 5:3 b) 3:8 c) 3:5 d) 5:8 1",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n2. Vessel A contains milk and water in the ratio 4 : 5. Vessel B contains milk and 1\nwater in the ratio 5 : 1. In what ratio should quantities be taken from both vessels\nto form a mixture in which milk and water are in the ratio 5 : 4?\n(A) 5 : 2 (B) 5 : 3 (C) 4 : 1 (D) 1 : 4",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n2. (A) 𝟓: 𝟐\n Vessel A (Milk fraction): 4+5 =\n Vessel B (Milk fraction): 5+1 =\n Target Mixture (Milk fraction):\n5 5\n6 − 9 5 1\nRequired ratio = 5 4 = 18 ∶ 9\n9 − 9",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2024-25]\n21. (a) In what ratio water must be added in milk costing ₹ 60 per litre, so that the resulting\nmixture would be of worth ₹ 50 per litre?\nOR\nQ.21. (b) A pump can fill a tank with water in 2 hours. Because of leakage, it took 3 hrs to fill the\ntank. How much time will it take for the leakage to drain all the water in the full tank?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 85443,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 16642,
+      "completionTokens": 5143
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 188334,
+      "in": 20,
+      "out": 19,
+      "rejects": 1,
+      "promptTokens": 12960,
+      "completionTokens": 5238
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 90172,
+      "in": 19,
+      "out": 12,
+      "rejects": 7,
+      "promptTokens": 33747,
+      "completionTokens": 2005
+    },
+    "form": {
+      "calls": 6,
+      "ms": 23766,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 1646,
+      "completionTokens": 604
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2789,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 233784,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17471,
+      "completionTokens": 7544
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 3,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to express 1000 grams?",
+      "ms": {
+        "draft": 4181,
+        "critique": 4310,
+        "solver": 1490,
+        "form": 4805
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 250 g of daal is required to make one meal, how many meals can be made from a 2 kg bag of daal?",
+      "ms": {
+        "draft": 4181,
+        "critique": 9563,
+        "solver": 15929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper sells 500 g of rice for ₹ 20. How much would 2 kg of rice cost?",
+      "ms": {
+        "draft": 4181,
+        "critique": 7597,
+        "solver": 14846
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a standard capacity used for measuring liquids in the chapter?",
+      "ms": {
+        "draft": 11609,
+        "critique": 6671,
+        "solver": 973,
+        "form": 3575
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the activity where students visit shops to list items sold in specific quantities?",
+      "ms": {
+        "draft": 11609,
+        "critique": 5243,
+        "solver": 1937
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a water purifier leaks 50 ml of water per hour, how much water is wasted in a day?",
+      "ms": {
+        "draft": 11609,
+        "critique": 6961,
+        "solver": 2412,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a container holds 500 ml of water, how many 100 ml bottles can be filled from it?",
+      "ms": {
+        "draft": 11609,
+        "critique": 5612,
+        "solver": 15733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a bucket can hold 1000 ml of water and a glass can hold 250 ml, how many glasses of water can be poured into the bucket?",
+      "ms": {
+        "draft": 11609,
+        "critique": 7675,
+        "solver": 11860
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A container has 250 ml of water. How many 50 ml bottles can be filled from it?",
+      "ms": {
+        "draft": 3082,
+        "critique": 6433,
+        "solver": 16558
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many 250 g daal packets will balance one 500 g daal packet?",
+      "ms": {
+        "draft": 4130,
+        "critique": 8751,
+        "solver": 10254,
+        "form": 3612
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A 100 g soap bar will weigh the same as 5 erasers. How many erasers will weigh the same as 250 g sugar?",
+      "ms": {
+        "draft": 4130,
+        "critique": 7783,
+        "solver": 1478
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many 250 ml bottles will fill a 1 l bottle?",
+      "ms": {
+        "draft": 4130,
+        "critique": 3973
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a 1 kg packet of sugar is divided into 5 equal parts, what is the weight of each part?",
+      "ms": {
+        "draft": 4181,
+        "critique": 5381,
+        "solver": 11890,
+        "form": 4723,
+        "translation": 33749
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A jug holds 1000 ml of water. How many 250 ml bottles can be filled from it?",
+      "ms": {
+        "draft": 3082,
+        "critique": 6189,
+        "solver": 1566,
+        "form": 0,
+        "translation": 30266
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A bottle holds 500 ml. How many 100 ml bottles can be filled from it?",
+      "ms": {
+        "draft": 3082,
+        "critique": 5770,
+        "solver": 1227,
+        "form": 1,
+        "translation": 27855
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 500 ml of oil is poured into a 1 litre bottle, how much more oil can be added?",
+      "ms": {
+        "draft": 4181,
+        "critique": 9492,
+        "solver": 14924,
+        "form": 0,
+        "translation": 27385
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "How many 100 ml bottles will fill a 1 l bottle?",
+      "ms": {
+        "draft": 4130,
+        "critique": 7322,
+        "solver": 1304,
+        "form": 4694,
+        "translation": 25606
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a sweet shop, 1 kg Kaju-katli is packed in boxes of 250 g each. How many boxes will be needed to pack 5 kg of Kaju-katli?",
+      "ms": {
+        "draft": 4130,
+        "critique": 5597,
+        "solver": 1671,
+        "form": 3584,
+        "translation": 28930
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A container can hold 1 litre of water. If 250 ml of water is poured into it, how much more water can be added?",
+      "ms": {
+        "draft": 4181,
+        "critique": 6217,
+        "solver": 15424,
+        "form": 0,
+        "translation": 27737
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a jug holds 900 ml of water and a student pours 250 ml into a glass, how much water is left in the jug?",
+      "ms": {
+        "draft": 11609,
+        "critique": 6505,
+        "solver": 812,
+        "form": 0,
+        "translation": 29430
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct way to express 1000 grams?",
+      "reason": "options are in more than one unit (kilograms, grams, kilogram); distractor 3's reason is not a one-line misconception (\"correct answer, no reason needed for distractors…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 250 g of daal is required to make one meal, how many meals can be made from a 2 kg bag of daal?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A shopkeeper sells 500 g of rice for ₹ 20. How much would 2 kg of rice cost?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a standard capacity used for measuring liquids in the chapter?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"adds extra values not in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of the activity where students visit shops to list items sold in specific quantities?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a water purifier leaks 50 ml of water per hour, how much water is wasted in a day?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"50*24\" = 1200, but the key says 12000"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a container holds 500 ml of water, how many 100 ml bottles can be filled from it?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a bucket can hold 1000 ml of water and a glass can hold 250 ml, how many glasses of water can be poured into the bucket?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A container has 900 ml of water. How many 100 ml bottles can be filled from it?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A bucket holds 2000 ml of water. How many 500 ml bottles can be filled from it?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A container has 1500 ml of water. How many 250 ml bottles can be filled from it?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A container has 250 ml of water. How many 50 ml bottles can be filled from it?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How many 250 g daal packets will balance one 500 g daal packet?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct for 1 kg, not 500 g…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A 100 g soap bar will weigh the same as 5 erasers. How many erasers will weigh the same as 250 g sugar?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many 250 ml bottles will fill a 1 l bottle?",
+      "reason": "the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

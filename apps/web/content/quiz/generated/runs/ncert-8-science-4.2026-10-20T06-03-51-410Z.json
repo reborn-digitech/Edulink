@@ -1,0 +1,711 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T06:03:51.410Z",
+  "finishedAt": "2026-10-20T06:15:52.013Z",
+  "seconds": 721,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu104.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Electricity: Magnetic and Heating Effects",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n13. A complete circuit is left on for several minutes, causing the connecting copper wire to 1\nbecome hot. As the temperature of the wire increases, the electrical resistance of the wire\n(a) decreases.\n(b) remains the same.\n(c) increases.\n(d) increases for some time and then decreases .",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, marking scheme, 2025-26]\nCurrent through R 2 :\nStep 2: Calculate the Heat Generated in Each Resistor\nUsing Joule’s Law of Heating, H = I Rt: 2\n Heat generate in R 1 :\n Heat generate in R 2 :\n Total Heat Generated H:\nSo, the total heat generated in both resistor is 43200 J.\nStep 3 : Determine if each Resistor is safe\nThe power dissipated by each resistor can be calculated using P = V x I\n Power dissipated by R 1 :\n Power dissipated by R 2 :\nGiven that the power rating of each resistor is 100 W:\n R 1 is operating at 96 W, which is within the 100 W limit. Hence, it is\nsafe.\n R 2 is operating at 48 W, which is also within the 100 W limit. Hence,\nit is safe.\n**********"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 173526,
+      "in": 40,
+      "out": 36,
+      "rejects": 4,
+      "promptTokens": 37186,
+      "completionTokens": 10287
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 205303,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 15648,
+      "completionTokens": 6007
+    },
+    "solver": {
+      "calls": 170,
+      "ms": 62585,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 21960,
+      "completionTokens": 1360
+    },
+    "form": {
+      "calls": 26,
+      "ms": 210184,
+      "in": 34,
+      "out": 18,
+      "rejects": 16,
+      "promptTokens": 34238,
+      "completionTokens": 5985
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 45,
+      "ms": 6637,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 625680,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 36403,
+      "completionTokens": 18439
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 4,
+    "4": 3,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What happens to the compass needle when current flows through a wire?",
+      "ms": {
+        "draft": 14747,
+        "critique": 6405,
+        "solver": 1932,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of wrapping a wire around an iron nail in an electromagnet?",
+      "ms": {
+        "draft": 14747,
+        "critique": 6245,
+        "solver": 1251,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the deflection of a compass needle near a current-carrying wire indicate?",
+      "ms": {
+        "draft": 14747,
+        "critique": 6552,
+        "solver": 3949,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observes that the compass needle deflects more when a longer wire is used. What could explain this observation?",
+      "ms": {
+        "draft": 14747,
+        "critique": 7106
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the magnetic compass needle when current is passed through a coil?",
+      "ms": {
+        "draft": 5908,
+        "critique": 6232,
+        "solver": 1620,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the temperature of a copper wire increases, what happens to its resistance and why?",
+      "ms": {
+        "draft": 14747,
+        "critique": 5254,
+        "solver": 1661,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the phenomenon called when a current-carrying wire produces a magnetic field around it?",
+      "ms": {
+        "draft": 14747,
+        "critique": 5750,
+        "solver": 1404,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What determines the strength of an electromagnet?",
+      "ms": {
+        "draft": 5908,
+        "critique": 5540,
+        "solver": 1498,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to an electromagnet when the current is stopped?",
+      "ms": {
+        "draft": 5908,
+        "critique": 5602,
+        "solver": 1344,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a nichrome wire is used in a circuit and becomes warm, what is the reason?",
+      "ms": {
+        "draft": 5908,
+        "critique": 5895,
+        "solver": 1712,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of an iron core in an electromagnet?",
+      "ms": {
+        "draft": 5908,
+        "critique": 6465,
+        "solver": 1367,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What happens to the poles of an electromagnet if the direction of the current is reversed?",
+      "ms": {
+        "draft": 5908,
+        "critique": 6044,
+        "solver": 1411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, the wire heats up when an electric current passes through it. What factor affects the amount of heat generated in the wire?",
+      "ms": {
+        "draft": 3868,
+        "critique": 6385
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student makes a lemon cell using copper and iron electrodes. If the lemon is replaced with a salt solution, what will happen to the current produced?",
+      "ms": {
+        "draft": 3868,
+        "critique": 5592,
+        "solver": 1646,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about rechargeable batteries?",
+      "ms": {
+        "draft": 11441,
+        "critique": 5077,
+        "solver": 1377,
+        "form": 2616
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a lemon cell, what role does the lemon juice play?",
+      "ms": {
+        "draft": 3679,
+        "critique": 5228,
+        "solver": 1869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the reason a Voltaic cell stops working after some time?",
+      "ms": {
+        "draft": 3679,
+        "critique": 6304,
+        "solver": 1812,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of using a magnetic compass in the given experiment?",
+      "ms": {
+        "draft": 8229,
+        "critique": 4724,
+        "solver": 544,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a current is passed through a nichrome wire and then through a copper wire of the same thickness, which wire will generate more heat?",
+      "ms": {
+        "draft": 11441,
+        "critique": 7468,
+        "solver": 1474,
+        "form": 2610
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "ms": {
+        "draft": 3679,
+        "critique": 5311,
+        "solver": 1584,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a device that generates electric current because of chemical reactions taking place inside it?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5631,
+        "solver": 1700,
+        "form": 1742,
+        "translation": 31293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason why rechargeable batteries are useful?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5706,
+        "solver": 1722,
+        "form": 2992,
+        "translation": 62682
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the device that behaves like a magnet when electric current flows through it?",
+      "ms": {
+        "draft": 15138,
+        "critique": 5906,
+        "solver": 1332,
+        "form": 2628,
+        "translation": 36331
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using an iron core in an electromagnet?",
+      "ms": {
+        "draft": 11441,
+        "critique": 5964,
+        "solver": 1072,
+        "form": 1847,
+        "translation": 32293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a direct application of the heating effect of electric current?",
+      "ms": {
+        "draft": 3868,
+        "critique": 5168,
+        "solver": 1272,
+        "form": 1,
+        "translation": 28559
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the iron nail in an electromagnet when the current is switched off?",
+      "ms": {
+        "draft": 11441,
+        "critique": 4794,
+        "solver": 1125,
+        "form": 0,
+        "translation": 48158
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following appliances uses the heating effect of electric current to function?",
+      "ms": {
+        "draft": 3868,
+        "critique": 6918,
+        "solver": 1756,
+        "form": 0,
+        "translation": 28879
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of using a fuse in a household circuit?",
+      "ms": {
+        "draft": 3868,
+        "critique": 5989,
+        "solver": 1326,
+        "form": 0,
+        "translation": 31921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a wire is connected to a battery with two cells instead of one, what happens to the amount of heat generated in the wire?",
+      "ms": {
+        "draft": 3679,
+        "critique": 5500,
+        "solver": 1125,
+        "form": 1,
+        "translation": 43423
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "When electric current flows through a conductor, what happens?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5137,
+        "solver": 1411,
+        "form": 2126,
+        "translation": 40093
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following cases will the compass needle show deflection when current flows through a coil?",
+      "ms": {
+        "draft": 11441,
+        "critique": 5267,
+        "solver": 2167,
+        "form": 2725,
+        "translation": 48883
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the magnetic effect of the coil when the current is stopped?",
+      "ms": {
+        "draft": 15138,
+        "critique": 5804,
+        "solver": 1549,
+        "form": 1990,
+        "translation": 30290
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the deflection of the compass needle when the number of turns of the coil is increased?",
+      "ms": {
+        "draft": 15138,
+        "critique": 5467,
+        "solver": 1198,
+        "form": 1478,
+        "translation": 29992
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student uses a copper wire and an iron wire of the same length and thickness in two separate circuits. Which wire will produce more heat when the same current flows through them?",
+      "ms": {
+        "draft": 3868,
+        "critique": 5298,
+        "solver": 1563,
+        "form": 0,
+        "translation": 46423
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a household circuit, why is it important to use wires rated for the specified electric current?",
+      "ms": {
+        "draft": 3679,
+        "critique": 5624,
+        "solver": 1751,
+        "form": 0,
+        "translation": 41012
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why might a rechargeable battery require charging more often after a year or two?",
+      "ms": {
+        "draft": 11441,
+        "critique": 5823,
+        "solver": 1638,
+        "form": 3057,
+        "translation": 40844
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the correct reason for the deflection of a compass needle near a current-carrying wire?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the compass needle when current flows through a wire?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'switchClosed'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main purpose of wrapping a wire around an iron nail in an electromagnet?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the deflection of a compass needle near a current-carrying wire indicate?",
+      "reason": "figure: figure spec refused: spec.parts.3.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'switchClosed'"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, a student observes that the compass needle deflects more when a longer wire is used. What could explain this observation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the magnetic compass needle when current is passed through a coil?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the temperature of a copper wire increases, what happens to its resistance and why?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the phenomenon called when a current-carrying wire produces a magnetic field around it?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What determines the strength of an electromagnet?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'current'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to an electromagnet when the current is stopped?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'switchClosed'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a nichrome wire is used in a circuit and becomes warm, what is the reason?",
+      "reason": "figure: figure spec refused: spec.parts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of an iron core in an electromagnet?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What happens to the poles of an electromagnet if the direction of the current is reversed?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'current direction'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, the wire heats up when an electric current passes through it. What factor affects the amount of heat generated in the wire?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student makes a lemon cell using copper and iron electrodes. If the lemon is replaced with a salt solution, what will happen to the current produced?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a safety measure to prevent overheating in household circuits?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What causes the nichrome wire to feel warm when current flows through it?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main reason the iron paper clips are attracted to the nail in the electromagnet experiment?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about rechargeable batteries?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is the only one that matches the passage's st…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a lemon cell, what role does the lemon juice play?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains the reason a Voltaic cell stops working after some time?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of using a magnetic compass in the given experiment?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.needle: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a current is passed through a nichrome wire and then through a copper wire of the same thickness, which wire will generate more heat?",
+      "reason": "near-duplicate of served question cmvf6yvrw03gogod8jyznzqmg (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "reason": "near-duplicate of batch item \"Which of the following is a direct application of …\" (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

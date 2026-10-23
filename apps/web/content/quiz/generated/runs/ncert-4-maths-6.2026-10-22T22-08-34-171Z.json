@@ -1,0 +1,412 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:08:34.171Z",
+  "finishedAt": "2026-10-22T22:15:32.895Z",
+  "seconds": 419,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm106.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Measuring Length",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n4. (C) 6cm\nAB+CD=AD+BC\nAB+4=3+7\nAB=6cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n10. (c) 8cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n17. (a) 3.5 cm"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 77693,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 11880,
+      "completionTokens": 3702
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 199676,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 10822,
+      "completionTokens": 4484
+    },
+    "solver": {
+      "calls": 129,
+      "ms": 102831,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 28258,
+      "completionTokens": 1549
+    },
+    "form": {
+      "calls": 4,
+      "ms": 17720,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 921,
+      "completionTokens": 301
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 4097,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 268728,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 12947,
+      "completionTokens": 6206
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 2,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "A measuring tape is divided into 100 equal parts. What is the length of each part?",
+      "ms": {
+        "draft": 3079,
+        "critique": 8063,
+        "solver": 1462,
+        "form": 5046
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student's arm length is 45 cm, how many centimetres more is this than 40 cm?",
+      "ms": {
+        "draft": 3079,
+        "critique": 8284,
+        "solver": 22193
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student measures an object and finds that it is 20 cm long, and another object is 10 cm longer, what is the length of the second object?",
+      "ms": {
+        "draft": 3079,
+        "critique": 8416,
+        "solver": 20033,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a car travels 15 cm on a ramp, and another car travels 25 cm, what is the total distance covered by both cars?",
+      "ms": {
+        "draft": 3079,
+        "critique": 9773,
+        "solver": 22206
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a unit of length?",
+      "ms": {
+        "draft": 3079,
+        "critique": 7881,
+        "solver": 19623
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the same as 1 m 20 cm?",
+      "ms": {
+        "draft": 5644,
+        "critique": 8732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to express 200 cm?",
+      "ms": {
+        "draft": 5644,
+        "critique": 9775,
+        "solver": 14388
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a shape has a perimeter of 20 cm and all its sides are equal, what is the length of each side?",
+      "ms": {
+        "draft": 5644,
+        "critique": 6815
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where length is measured in centimetres?",
+      "ms": {
+        "draft": 4226,
+        "critique": 7477
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student measures their hand and finds it to be 15 cm, how many such hands would be needed to measure the length of a 60 cm long book?",
+      "ms": {
+        "draft": 4226,
+        "critique": 11990,
+        "solver": 17511
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a board is 2 metres long and a sticker is 20 cm long, how many stickers are needed to cover the entire length?",
+      "ms": {
+        "draft": 5644,
+        "critique": 7729,
+        "solver": 2662,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the unit used to measure small lengths like the length of an eraser or a rice grain?",
+      "ms": {
+        "draft": 4226,
+        "critique": 7519,
+        "solver": 19017,
+        "form": 5305
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many centimetres make one metre?",
+      "ms": {
+        "draft": 4226,
+        "critique": 6543,
+        "solver": 1846,
+        "form": 5903,
+        "translation": 38235
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a unit of length?",
+      "ms": {
+        "draft": 3079,
+        "critique": 8313,
+        "solver": 2896,
+        "form": 3802,
+        "translation": 35397
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a treasure hunt, the path is made up of yellow tiles, and each tile is 1 cm in length. If a student walks 30 tiles, what is the total length of their path in centimetres?",
+      "ms": {
+        "draft": 4226,
+        "critique": 8840,
+        "solver": 1725,
+        "form": 0,
+        "translation": 50010
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the number line provided, what is the distance between the marks 20 cm and 60 cm?",
+      "ms": {
+        "draft": 5644,
+        "critique": 6709,
+        "solver": 1397,
+        "form": 0,
+        "translation": 42654
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a long jump competition, one student jumps 1.5 m, and another jumps 145 cm. Who jumped farther?",
+      "ms": {
+        "draft": 4226,
+        "critique": 8512,
+        "solver": 1315,
+        "form": 0,
+        "translation": 53156
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the perimeter of a rectangle is 20 cm, and one of its sides is 6 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 5644,
+        "critique": 5858,
+        "solver": 1196,
+        "form": 0,
+        "translation": 42946
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A measuring tape is divided into 100 equal parts. What is the length of each part?",
+      "reason": "options are in more than one unit (mm, cm, m, km); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student's arm length is 45 cm, how many centimetres more is this than 40 cm?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student measures an object and finds that it is 20 cm long, and another object is 10 cm longer, what is the length of the second object?",
+      "reason": "options 1 and 2 are the same (\"20 cm\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a car travels 15 cm on a ramp, and another car travels 25 cm, what is the total distance covered by both cars?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a unit of length?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the same as 1 m 20 cm?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct way to express 200 cm?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a shape has a perimeter of 20 cm and all its sides are equal, what is the length of each side?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"What is the length of a board in centimetres if it is 2 metres long?\",\"options\":[\"20 c"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where length is measured in centimetres?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student measures their hand and finds it to be 15 cm, how many such hands would be needed to measure the length of a 60 cm long book?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a board is 2 metres long and a sticker is 20 cm long, how many stickers are needed to cover the entire length?",
+      "reason": "near-duplicate of served question cmvh197uu064ogpfh9efuy7u2 (cosine 0.979 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the unit used to measure small lengths like the length of an eraser or a rice grain?",
+      "reason": "near-duplicate of served question cmvh197um064cgpfhm4o5sx6h (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

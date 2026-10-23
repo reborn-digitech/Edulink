@@ -21,258 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T01:34:08.202Z",
+  "generatedAt": "2026-10-21T23:04:41.503Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a nutrient that provides energy to the body?",
+      "stem": "What does the Sanskrit saying 'annena jātāni jivanti' mean?",
       "choices": [
-        "Protein",
-        "Vitamin",
-        "Mineral",
-        "Carbohydrate"
-      ],
-      "answerIndex": 3,
-      "solution": "Carbohydrates are the primary energy source for the body. Proteins are body-building nutrients, while vitamins and minerals help in strengthening the body. Hence, the correct answer is carbohydrate.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक पोषक तत्व है जो शरीर को ऊर्जा प्रदान करता है?",
-          "choices": [
-            "प्रोटीन",
-            "विटामिन",
-            "खनिज",
-            "कार्बोहाइड्रेट"
-          ],
-          "solution": "कार्बोहाइड्रेट शरीर के प्राथमिक ऊर्जा स्रोत होते हैं। प्रोटीन शरीर निर्माण के पोषक तत्व होते हैं, जबकि विटामिन और खनिज शरीर को मजबूत बनाने में सहायता करते हैं। अतः सही उत्तर कार्बोहाइड्रेट है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता पोषक तत्त्व शरीराला ऊर्जा पुरवतो?",
-          "choices": [
-            "प्रोटीन",
-            "व्हिटॅमिन",
-            "खनिज",
-            "कार्बोहायड्रेट"
-          ],
-          "solution": "कार्बोहायड्रेट शरीराच्या मुख्य ऊर्जा स्रोत आहेत. प्रोटीन शरीर बांधणारे पोषक तत्त्व असतात, तर व्हिटॅमिन आणि खनिज शरीराला मजबूत करण्यामध्ये मदत करतात. म्हणून, योग्य उत्तर कार्बोहायड्रेट आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses body-building nutrients with energy sources",
-        "Ignores the role of nutrients in energy provision",
-        "Overlooks the function of energy-providing nutrients",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies carbohydrates as the primary energy source, and the reasoning aligns with standard nutritional knowledge. The distractors reflect common misconceptions about the roles of proteins, vitamins, and minerals.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 14,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 15,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 16,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a reason to avoid eating junk food frequently?",
-      "choices": [
-        "It is more expensive",
-        "It is less tasty",
-        "It can cause obesity",
-        "It can cause diabetes"
-      ],
-      "answerIndex": 2,
-      "solution": "Junk food is typically high in calories and low in essential nutrients, which can lead to weight gain and obesity over time. While it may be less tasty or more expensive, these are not direct health risks. The option 'It can cause diabetes' is also a valid health concern, but 'It can cause obesity' is the most directly supported by the science of nutrition and calorie intake.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक कारण है जिसके कारण अक्सर जंक फूड खाने से बचना चाहिए?",
-          "choices": [
-            "यह अधिक महंगा होता है",
-            "यह कम स्वादिष्ट होता है",
-            "इसके कारण मोटापा हो सकता है",
-            "इसके कारण मधुमेह हो सकता है"
-          ],
-          "solution": "जंक फूड आमतौर पर कैलोरी में अधिक होता है और आवश्यक पोषक तत्वों में कम होता है, जो समय के साथ वजन बढ़ा सकता है और मोटापा का कारण बन सकता है। यह कम स्वादिष्ट या अधिक महंगा हो सकता है, लेकिन ये सीधे स्वास्थ्य जोखिम नहीं हैं। विकल्प 'इसके कारण मधुमेह हो सकता है' एक वैध स्वास्थ्य समस्या है, लेकिन 'इसके कारण मोटापा हो सकता है' आहार विज्ञान और कैलोरी लेने के विज्ञान द्वारा सबसे अधिक सीधे समर्थित है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक वारंवार जंक फूड खाणे टाळण्याचे कारण आहे?",
-          "choices": [
-            "ते जास्त खर्चिक असते",
-            "ते कमी चवीने असते",
-            "ते वजन वाढवू शकते",
-            "ते डायबिटीस लावू शकते"
-          ],
-          "solution": "जंक फूड सामान्यतः कॅलरी च्या उच्च प्रमाणात असते आणि आवश्यक पोषक घटकांमध्ये कमी असते, जे वेळेनुसार वजन वाढीस कारणीभूत होऊ शकते. ते कमी चवीने किंवा जास्त खर्चिक असल्याचे ते सीधा आरोग्य धोका नसू शकते. 'ते डायबिटीस लावू शकते' हे देखील एक वैध आरोग्य चिंता आहे, परंतु 'ते वजन वाढवू शकते' हे पोषण आणि कॅलरी घेण्याच्या विज्ञानाने सर्वात जास्त समर्थित आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for health concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses cost with health impact",
-        "Focuses on taste instead of health",
-        null,
-        "students may confuse the effects of junk food with diabetes instead of obesity"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as the passage explicitly links frequent junk food consumption to obesity. The other options are invalid for the reasons stated by the author.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.4 Balanced Diet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 11,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.4 Balanced Diet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.5 Millets: Nutrition-rich Cereals"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a source of Vitamin C?",
-      "choices": [
-        "Papaya",
-        "Butter",
-        "Wheat",
-        "Eggs"
+        "Food gives life to living beings",
+        "Food is the source of all living things",
+        "Food is necessary for survival",
+        "Food is the basis of all life"
       ],
       "answerIndex": 0,
-      "solution": "Papaya is a source of Vitamin C because it contains this essential nutrient, which is known to be present in various fruits. Butter, wheat, and eggs do not naturally contain significant amounts of Vitamin C, as they are primarily sources of fat, carbohydrates, and protein, respectively.",
+      "solution": "The correct option, 'Food gives life to living beings,' directly reflects the meaning of the Sanskrit saying, which emphasizes the role of food in sustaining life. The other options, while related, are broader or less precise in capturing the specific message of the saying.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन विटामिन सी का स्रोत है?",
+          "stem": "संस्कृत उक्ति 'अन्नेन जातानि जीवन्ति' का अर्थ क्या है?",
           "choices": [
-            "आम",
-            "मक्खन",
-            "गेहूं",
-            "अंडे"
+            "भोजन जीवित जीवों को जीवित रखता है",
+            "भोजन सभी जीवों का स्रोत है",
+            "भोजन जीवित रहने के लिए आवश्यक है",
+            "भोजन सभी जीवन का आधार है"
           ],
-          "solution": "आम विटामिन सी का स्रोत है क्योंकि यह आवश्यक पोषक तत्व रखता है, जिसे विभिन्न फलों में मौजूद होने के रूप में जाना जाता है। मक्खन, गेहूं और अंडे स्वाभाविक रूप से विटामिन सी के महत्वपूर्ण मात्रा में नहीं होते हैं, क्योंकि वे क्रमशः वसा, कार्बोहाइड्रेट और प्रोटीन के मुख्य स्रोत हैं।",
+          "solution": "सही विकल्प, 'भोजन जीवित जीवों को जीवित रखता है,' संस्कृत उक्ति के अर्थ को सीधे दर्शाता है, जो भोजन के जीवन के बचाव में भूमिका को बल देती है। अन्य विकल्प, जबकि संबंधित हैं, उक्ति के विशिष्ट संदेश को पकड़ने में कम सटीक हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and nuance of the original English question. Technical terms like 'जीवित जीवों' (living beings) and 'जीवन के बचाव' (sustaining life) are appropriately used in a Hindi educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते विटामिन सी चे स्रोत आहे?",
+          "stem": "संस्कृत उक्ती 'अन्नेन जातानि जीवन्ति' म्हणजे काय?",
           "choices": [
-            "पपई",
-            "मक्खन",
-            "गहू",
-            "अंडी"
+            "खाद्य पदार्थ जीवित जीवांना जीवन देतो",
+            "खाद्य पदार्थ सर्व जीवांचा स्रोत आहे",
+            "खाद्य पदार्थ जीवनासाठी आवश्यक आहे",
+            "खाद्य पदार्थ सर्व जीवनाचा आधार आहे"
           ],
-          "solution": "पपई विटामिन सी चा स्रोत आहे कारण त्यामध्ये हे आवश्यक पोषक तत्व असते, जे विविध फळांमध्ये असल्याचे माहीत आहे. मक्खन, गहू आणि अंडी यांमध्ये विटामिन सी ची नैसर्गिक अल्प मात्रा नसते, कारण ते त्यांच्या प्रमुख पोषक तत्वांमुळे वसा, कार्बोहायड्रेट आणि प्रोटीन चे स्रोत आहेत.",
+          "solution": "सही विकल्प, 'खाद्य पदार्थ जीवित जीवांना जीवन देतो,' संस्कृत उक्तीचा अर्थ सीधा प्रतिबिंबित करतो, जी खाद्याच्या जीवनाच्या स्थिरतेतील भूमिकेवर भर देते. इतर विकल्प, जे जीवितांच्या स्रोताच्या आणि जीवनाच्या आधाराच्या अर्थाने जवळ आहेत, परंतु उक्तीच्या विशिष्ट संदेशाच्या अधिक शुद्ध आणि विशिष्ट वर्णनाच्या बाबतीत कमी अचूक आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for nutrients and food items.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
           "flag": null
         }
       },
@@ -282,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses Vitamin C with other vitamins",
-        "Confuses sources of fats with sources of vitamins",
-        "Confuses sources of B vitamins with sources of C vitamins"
+        "Confuses the meaning of the saying",
+        "Overgeneralizes the meaning",
+        "Misinterprets the saying as a statement about necessity rather than life-giving power"
       ],
       "solverAnswers": [
         0,
@@ -294,35 +85,43 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0 (Papaya), as it is a known source of Vitamin C. The author's reasoning for the other options aligns with common misconceptions about vitamin sources.",
+      "critique": "The correct answer is 0, as the saying 'annena jātāni jivanti' directly translates to 'food gives life to living beings.' The other options are either too broad or misinterpret the meaning.",
       "sources": [
         {
           "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.2 What are the Components of Food?",
-            "स्वस्थ आहार, स्वस्थ जी्व न"
+            "3.1 What Do We Eat?"
           ]
         },
         {
           "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.2 What are the Components of Food?",
-            "स्वस्थ आहार, स्वस्थ जी्व न"
+            "3.1 What Do We Eat?"
           ]
         },
         {
           "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.1 What Do We Eat?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
             "3.2 What are the Components of Food?",
@@ -331,49 +130,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "Which of the following is an example of a fortified food?",
+      "difficulty": 1,
+      "stem": "Which of the following is a source of dietary fibre?",
       "choices": [
-        "Iodized salt",
-        "Rice",
-        "Water",
-        "Bread"
+        "Cereals",
+        "Milk",
+        "Butter",
+        "Sugar"
       ],
       "answerIndex": 0,
-      "solution": "Iodized salt is an example of a fortified food because it has iodine added to it, which is a nutrient that supports thyroid function. Rice, water, and bread do not naturally contain added nutrients unless specifically enhanced, which is not indicated here. Fortification involves intentionally adding nutrients to a food to enhance its nutritional value.",
+      "solution": "Cereals are a source of dietary fibre because they are a type of wholegrain, which contains the fibrous parts of the grain. Milk, butter, and sugar are primarily composed of proteins, fats, and sugars, which do not contribute dietary fibre.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक बूस्टेड खाद्य पदार्थ का उदाहरण है?",
+          "stem": "निम्नलिखित में से कौन आहार रेशे का स्रोत है?",
           "choices": [
-            "आयोडीन युक्त नमक",
-            "चावल",
-            "पानी",
-            "रोटी"
+            "अनाज",
+            "दूध",
+            "मक्खन",
+            "चीनी"
           ],
-          "solution": "आयोडीन युक्त नमक एक बूस्टेड खाद्य पदार्थ का उदाहरण है क्योंकि इसमें थायरॉइड कार्य को समर्थन देने वाला एक पोषक तत्व आयोडीन जोड़ा गया है। चावल, पानी और रोटी आमतौर पर जोड़े गए पोषक तत्वों के बिना प्राकृतिक रूप से मौजूद नहीं होते हैं, जबकि यहां ऐसा कोई संकेत नहीं है। बूस्टेशन में खाद्य पदार्थ में पोषक तत्वों को बढ़ाने के लिए जानबूझकर जोड़ा जाता है।",
+          "solution": "अनाज आहार रेशे का स्रोत है क्योंकि ये पूर्ण अनाज के प्रकार होते हैं, जिनमें अनाज के रेशेदार हिस्से होते हैं। दूध, मक्खन और चीनी मुख्य रूप से प्रोटीन, वसा और शर्करा से बने होते हैं, जो आहार रेशे का योगदान नहीं करते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for nutritional concepts.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक ताजे खाद्यपदार्थाचे उदाहरण आहे?",
+          "stem": "खालीलपैकी कोणते खाद्य फायबरचे स्रोत आहे?",
           "choices": [
-            "आयोडीनीकृत लवंग",
-            "चावल",
-            "पाणी",
-            "रोटी"
+            "दुधीय पदार्थ",
+            "दूध",
+            "मक्खन",
+            "शक्कर"
           ],
-          "solution": "आयोडीनीकृत लवंग हा ताजे खाद्यपदार्थाचा उदाहरण आहे कारण त्यामध्ये थायरॉइड कार्यासाठी आवश्यक असलेले आयोडीन जोडले जाते. चावल, पाणी आणि रोटी यांमध्ये स्वाभाविकपणे जोडलेले पोषक घटक नसतात, जर त्यांना विशेषतः सुधारित नसेल तर जे येथे सूचित केले जात नाही. ताजेपण एका खाद्यपदार्थामध्ये पोषक घटक जोडण्याच्या उद्देशाने नियोजितपणे केले जाते.",
+          "solution": "दुधीय पदार्थ खाद्य फायबरचे स्रोत आहेत कारण ते एक प्रकारचे पूर्ण दानेदार अन्न आहेत, जे दानेदार भागांचा समावेश करतात. दूध, मक्खन आणि शक्कर असे प्रथिने, तेल आणि शर्करा यांच्या आधिक्याने बनलेले असतात, जे खाद्य फायबरच्या योगदानास अनुकूल नसतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'fortified food' and related concepts.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer (1) is in the same position as in the English version. All distractors remain incorrect.",
           "flag": null
         }
       },
@@ -383,9 +182,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Assumes all common foods are fortified",
-        "Does not recognize the definition of fortified food",
-        "Confuses common food items with fortified ones"
+        "Confuses dietary fibre with other nutrients",
+        "Thinks dairy products are a source of fibre",
+        "Believes fats are a source of fibre"
       ],
       "solverAnswers": [
         0,
@@ -395,216 +194,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0 (Iodized salt), as it is explicitly mentioned in the passage as a fortified food. The other options are incorrect because they are not fortified unless explicitly stated. The author's reasoning for the wrong options reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.4 Balanced Diet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 11,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.4 Balanced Diet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.5 Millets: Nutrition-rich Cereals"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following diseases is caused by a deficiency of iodine?",
-      "choices": [
-        "Scurvy",
-        "Rickets",
-        "Goitre",
-        "Anaemia"
-      ],
-      "answerIndex": 2,
-      "solution": "Goitre is caused by a deficiency of iodine, which affects the thyroid gland and causes it to enlarge. Scurvy results from a lack of vitamin C, rickets from a lack of vitamin D, and anaemia from a lack of iron. These deficiencies affect different bodily functions and do not involve iodine.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रोग आयोडीन की कमी के कारण होता है?",
-          "choices": [
-            "स्कर्वी",
-            "रिकेट्स",
-            "गॉइटर",
-            "एनीमिया"
-          ],
-          "solution": "गॉइटर आयोडीन की कमी के कारण होता है, जो थायरॉइड ग्रंथि को प्रभावित करता है और इसे बढ़ा देता है। स्कर्वी विटामिन सी की कमी से होती है, रिकेट्स विटामिन डी की कमी से होती है, और एनीमिया लौह धातु की कमी से होती है। ये कमी विभिन्न शारीरिक कार्यों को प्रभावित करती हैं और आयोडीन के साथ कोई संबंध नहीं रखतीं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi medical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालील रोगांपैकी कोणता आयोडिनच्या अभावामुळे होतो?",
-          "choices": [
-            "स्कर्वी",
-            "रिकेट्स",
-            "गॉइटर",
-            "एनिमिया"
-          ],
-          "solution": "गॉइटर हा आयोडिनच्या अभावामुळे होतो, जो थायरॉइड ग्रंथीला प्रभावित करतो आणि तिला वाढवतो. स्कर्वी हा व्हिटॅमिन सीच्या अभावामुळे होतो, रिकेट्स हा व्हिटॅमिन डीच्या अभावामुळे आणि एनिमिया हा लोहाच्या अभावामुळे होतो. हे अभाव वेगवेगळ्या शारीरिक कार्यांवर प्रभाव टाकतात आणि आयोडिनच्या संबंधात नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses Vitamin C deficiency with iodine deficiency",
-        "Confuses Vitamin D deficiency with iodine deficiency",
-        null,
-        "Confuses iron deficiency with iodine deficiency"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common nutritional deficiencies. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.2 What are the Components of Food?",
-            "स्वस्थ आहार, स्वस्थ जी्व न"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.2 What are the Components of Food?",
-            "स्वस्थ आहार, स्वस्थ जी्व न"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.2 What are the Components of Food?",
-            "स्वस्थ आहार, स्वस्थ जी्व न"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following foods would show a blue-black colour when tested with iodine solution?",
-      "choices": [
-        "Cucumber",
-        "Rice",
-        "Butter",
-        "Peanuts"
-      ],
-      "answerIndex": 1,
-      "solution": "Rice would show a blue-black colour when tested with iodine solution, as it contains starch. Cucumber does not contain starch, butter is a fat source, and peanuts contain proteins and fats. The iodine test is specifically for starch detection.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित भोजन में से कौन-सा आयोडीन घोल के साथ परीक्षण करने पर नीला-काला रंग दिखाएगा?",
-          "choices": [
-            "ककड़ी",
-            "चावल",
-            "मक्खन",
-            "मूंगफली"
-          ],
-          "solution": "चावल आयोडीन घोल के साथ परीक्षण करने पर नीला-काला रंग दिखाएगा, क्योंकि इसमें स्टार्च होता है। ककड़ी में स्टार्च नहीं होता, मक्खन वसा का स्रोत होता है और मूंगफली में प्रोटीन और वसा होती है। आयोडीन परीक्षण केवल स्टार्च के निर्णय के लिए होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणत्या खाद्यपदार्थाला आयोडीन द्रावणाने तपासल्यास नील-काळा रंग दाखवेल?",
-          "choices": [
-            "कॅबेज",
-            "चावल",
-            "मका",
-            "मूगदाना"
-          ],
-          "solution": "चावल आयोडीन द्रावणाने तपासल्यास नील-काळा रंग दाखवेल, कारण त्यामध्ये स्टार्च असतो. कॅबेज मध्ये स्टार्च नसतो, मका एक चरबीचा स्रोत आहे आणि मूगदानामध्ये प्रोटीन आणि चरबी असते. आयोडीन परीक्षण स्टार्च ओळखण्यासाठी विशिष्ट असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses cucumber with a starch-containing food",
-        null,
-        "Confuses butter with a starch-containing food",
-        "Confuses peanuts with a starch-containing food"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Iodine solution turns blue-black in the presence of starch, and rice is the only option containing significant starch. The other options are correctly dismissed as not containing starch.",
+      "critique": "The correct answer is 0 (Cereals), as they are a type of wholegrain and a source of dietary fibre. The author's reasoning for the distractors aligns with common misconceptions about fibre sources.",
       "sources": [
         {
           "document": "ncert/6/science/fecu103.pdf",
@@ -641,258 +231,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Why did the doctor give Vitamin D syrup along with calcium tablets to Gourav?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a traditional food item from Manipur?",
       "choices": [
-        "To increase the absorption of calcium",
-        "To reduce pain",
-        "To strengthen the bones",
-        "To improve digestion"
-      ],
-      "answerIndex": 0,
-      "solution": "Vitamin D helps the body absorb calcium more effectively. While strengthening bones and reducing pain might occur as secondary effects, the primary purpose of combining Vitamin D with calcium is to enhance calcium absorption. Improving digestion is not a direct function of Vitamin D in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "डॉक्टर ने गौरव को कैल्शियम के टैबलेट के साथ विटामिन डी का सिरप क्यों दिया?",
-          "choices": [
-            "कैल्शियम के अवशोषण में वृद्धि करना",
-            "दर्द कम करना",
-            "हड्डियों को मजबूत करना",
-            "पाचन में सुधार करना"
-          ],
-          "solution": "विटामिन डी शरीर के द्वारा कैल्शियम के अवशोषण को अधिक प्रभावी बनाता है। जबकि हड्डियों को मजबूत करना और दर्द कम करना द्विगुण प्रभाव हो सकते हैं, कैल्शियम के साथ विटामिन डी के संयोजन का मुख्य उद्देश्य कैल्शियम के अवशोषण में वृद्धि करना है। पाचन में सुधार इस संदर्भ में विटामिन डी का प्रत्यक्ष कार्य नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi medical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "डॉक्टरांनी गौरवला कॅल्शियम टॅबलेट्ससोबत व्हिटॅमिन डीचे औषध का दिले?",
-          "choices": [
-            "कॅल्शियम अवशोषण वाढविण्यासाठी",
-            "वेदना कमी करण्यासाठी",
-            "हाडे मजबूत करण्यासाठी",
-            "पचन सुधारण्यासाठी"
-          ],
-          "solution": "व्हिटॅमिन डी शरीराला कॅल्शियम अवशोषित करण्यास मदत करते. हाडे मजबूत करणे आणि वेदना कमी करणे हे दुसरे परिणाम असू शकतात, परंतु कॅल्शियमसह व्हिटॅमिन डी जोडण्याचे प्राथमिक उद्देश अवशोषण वाढविणे आहे. पचन सुधारणे हे व्हिटॅमिन डीचे लक्ष्य नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student thinks vitamins are pain relievers rather than nutrient absorbers",
-        "confuses secondary effects with primary function",
-        "confuses secondary effects with primary function"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as Vitamin D is essential for calcium absorption. The author's reasoning aligns with scientific understanding, and the misconceptions listed for the distractors are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 14,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 15,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 16,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following is a benefit of eating local food?",
-      "choices": [
-        "It is more processed",
-        "It reduces food miles",
-        "It is more nutritious",
-        "It is less nutritious"
-      ],
-      "answerIndex": 1,
-      "solution": "Eating local food reduces the distance food travels, which lowers the environmental impact and transportation costs. This is why 'It reduces food miles' is the correct answer. The other options are incorrect because there is no direct evidence that local food is more or less nutritious, and it is typically less processed, not more.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा घटना स्थानीय भोजन खाने का लाभ है?",
-          "choices": [
-            "यह अधिक प्रक्रियाकृत होता है",
-            "यह भोजन के दूरी कम करता है",
-            "यह अधिक पोषक होता है",
-            "यह कम पोषक होता है"
-          ],
-          "solution": "स्थानीय भोजन खाने से भोजन की यात्रा की दूरी कम हो जाती है जो पर्यावरणीय प्रभाव और परिवहन लागत कम करती है। इसलिए 'यह भोजन के दूरी कम करता है' सही उत्तर है। अन्य विकल्प गलत हैं क्योंकि स्थानीय भोजन अधिक या कम पोषक होने के सीधे साक्ष्य नहीं हैं, और यह आमतौर पर अधिक प्रक्रियाकृत नहीं होता है, बल्कि कम प्रक्रियाकृत होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते वस्तुनिष्ठ खाद्य पदार्थ खाण्याचे फायदा आहे?",
-          "choices": [
-            "ते अधिक प्रक्रियाकृत असते",
-            "ते खाद्य अंतर कमी करते",
-            "ते अधिक पोषक असते",
-            "ते कमी पोषक असते"
-          ],
-          "solution": "स्थानिक खाद्य पदार्थ खाणे खाद्याच्या परिवहनाच्या अंतराला कमी करते, जे पर्यावरणीय परिणाम आणि परिवहन खर्च कमी करते. यामुळे 'ते खाद्य अंतर कमी करते' हे बरोबर उत्तर आहे. इतर विकल्प चुकीचे आहेत कारण स्थानिक खाद्य पदार्थ अधिक किंवा कमी पोषक असल्याचे सीधे पुरावा नाही आहे, आणि ते अधिक प्रक्रियाकृत नसून कमी प्रक्रियाकृत असते.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option (2), and the distractors are still incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses food processing with benefits",
-        null,
-        "Believes local food is always more nutritious regardless of variety or source",
-        "Mistakes cost with health benefits"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as reducing food miles is a valid benefit of eating local food. The other options are incorrect, and the author's reasons for the wrong options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.4 Balanced Diet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 11,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.4 Balanced Diet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.5 Millets: Nutrition-rich Cereals"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 13,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following is a healthy food choice for a person with a sedentary lifestyle?",
-      "choices": [
-        "Fast food",
-        "Fried snacks",
-        "Whole grains",
-        "Sugary drinks"
+        "Idli",
+        "Dosa",
+        "Rice, eromba, utti, singju, kangsoi",
+        "Coconut chutney"
       ],
       "answerIndex": 2,
-      "solution": "Whole grains are a healthy choice because they provide essential nutrients and fiber, which support overall health and digestion. A sedentary lifestyle benefits from foods that help maintain energy levels and prevent health issues. Fast food, fried snacks, and sugary drinks are high in unhealthy fats and sugars, which can lead to weight gain and other health problems.",
+      "solution": "Rice, eromba, utti, singju, kangsoi are traditional food items from Manipur, as they are staple or culturally significant dishes in the region. Idli and dosa are South Indian foods, while coconut chutney is more commonly associated with coastal Indian cuisines.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक बैठे जीवनशैली वाले व्यक्ति के लिए स्वस्थ आहार का चयन है?",
+          "stem": "निम्नलिखित में से कौन-सा मणिपुर के पारंपरिक भोजन का उदाहरण है?",
           "choices": [
-            "फास्ट फूड",
-            "तले हुए स्नैक्स",
-            "पूर्ण अनाज",
-            "चीनी वाले पेय"
+            "इडली",
+            "दोसा",
+            "चावल, एरोम्बा, उत्ती, सिंजू, कांगसोई",
+            "नारियल की चटनी"
           ],
-          "solution": "पूर्ण अनाज एक स्वस्थ विकल्प है क्योंकि ये आवश्यक पोषक तत्वों और फाइबर प्रदान करते हैं, जो स्वास्थ्य और पाचन को समर्थन देते हैं। बैठे जीवनशैली को ऊर्जा स्तर बनाए रखने और स्वास्थ्य संबंधी समस्याओं से बचाने में मदद करने वाले भोजन की आवश्यकता होती है। फास्ट फूड, तले हुए स्नैक्स और चीनी वाले पेय अस्वस्थ वसा और शर्करा में उच्च होते हैं, जो वजन बढ़ाने और अन्य स्वास्थ्य समस्याओं का कारण बन सकते हैं।",
+          "solution": "चावल, एरोम्बा, उत्ती, सिंजू, कांगसोई मणिपुर के पारंपरिक भोजन के उदाहरण हैं, क्योंकि ये क्षेत्र में स्थानीय या सांस्कृतिक रूप से महत्वपूर्ण व्यंजन हैं। इडली और दोसा दक्षिण भारतीय भोजन हैं, जबकि नारियल की चटनी समुद्रतटीय भारतीय व्यंजनों से जुड़ी हुई है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for health concepts.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2).",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक निष्क्रिय जीवनशैली असलेल्या व्यक्तीसाठी आरोग्यप्रद अन्न निवड आहे?",
+          "stem": "खालीलपैकी कोणते मणिपूरच्या पारंपारिक खाद्य पदार्थाचे उदाहरण आहे?",
           "choices": [
-            "फास्ट फूड",
-            "तळलेले खाद्यपदार्थ",
-            "पूर्ण अन्न",
-            "मधयुक्त पेय"
+            "इडली",
+            "दोसा",
+            "भात, एरोम्बा, उत्ती, सिंगजू, कंगसॉई",
+            "कोकोनट चटणी"
           ],
-          "solution": "पूर्ण अन्न आरोग्यप्रद निवड आहे कारण ते आवश्यक पोषक तत्वे आणि फायबर प्रदान करतात, जे समग्र आरोग्य आणि पाचन योग्यतेला समर्थन करतात. एका निष्क्रिय जीवनशैलीला ऊर्जा पातळी बरी करण्यास आणि आरोग्य समस्या टाळण्यास मदत करणारे अन्न आवश्यक असतात. फास्ट फूड, तळलेले खाद्यपदार्थ आणि मधयुक्त पेय अशुद्ध तेले आणि शर्करा असलेले असतात, जे वजन वाढीस आणि इतर आरोग्य समस्यांस नेमून देतात.",
+          "solution": "भात, एरोम्बा, उत्ती, सिंगजू, कंगसॉई हे मणिपूरचे पारंपारिक खाद्य पदार्थ आहेत, कारण ते प्रादेशिक आहारात किंवा सांस्कृतिक अर्थाने महत्वाचे व्यंजन आहेत. इडली आणि दोसा दक्षिण भारतीय खाद्य आहेत, तर कोकोनट चटणी ही तटीय भारतीय खाद्यांशी संबंधित आहे.",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for health concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for food items.",
           "flag": null
         }
       },
@@ -901,10 +282,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses unhealthy choices with healthy ones",
-        "confuses unhealthy choices with healthy ones",
+        "Mistakes a food item from another state as being from Manipur",
+        "Confuses food items from different states",
         null,
-        "Believes that drinks with calories can provide energy even if they are unhealthy"
+        "Confuses food items from another region with Manipur's traditional foods"
       ],
       "solverAnswers": [
         2,
@@ -913,88 +294,96 @@
         2,
         2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2 (Whole grains), as they are nutrient-dense and beneficial for a sedentary lifestyle. The other options are clearly unhealthy, and the author's reasoning for the wrong options reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as it lists specific traditional food items from Manipur as stated in the passage. The other options are from different regions and are common misconceptions among students.",
       "sources": [
         {
           "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 14,
-          "pageStart": 22,
-          "pageEnd": 23,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Let us enhance our learning"
+            "3.1 What Do We Eat?"
           ]
         },
         {
           "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 15,
-          "pageStart": 23,
-          "pageEnd": 24,
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Let us enhance our learning"
+            "3.1 What Do We Eat?"
           ]
         },
         {
           "document": "ncert/6/science/fecu103.pdf",
-          "ordinal": 16,
-          "pageStart": 24,
-          "pageEnd": 25,
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
-            "3.6 Food Miles: From Farm to Our Plate",
-            "Learning further"
+            "3.1 What Do We Eat?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why might a person who eats only white bread, biscuits, and noodles experience constipation?",
+      "difficulty": 2,
+      "stem": "Which of the following is a balanced diet?",
       "choices": [
-        "They are high in fibre",
-        "They are low in fibre",
-        "They are low in protein",
-        "They are high in vitamins"
+        "A diet high in sugar and fats",
+        "A diet with all essential nutrients in the right quantities",
+        "A diet with only fruits and vegetables",
+        "A diet with no water"
       ],
       "answerIndex": 1,
-      "solution": "White bread, biscuits, and noodles are low in dietary fibre, which is necessary for proper digestion and regular bowel movements. Without enough fibre, the digestive system can become sluggish, leading to constipation. High fibre, protein, and vitamins are beneficial for health, but the issue here is the lack of fibre.",
+      "solution": "A balanced diet includes all essential nutrients in the correct amounts, ensuring the body gets everything it needs to function properly. Options that focus only on certain foods or exclude important components like water fail to meet this requirement. A diet high in sugar and fats lacks variety and can lead to health issues, while a diet with only fruits and vegetables misses other necessary nutrients.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "क्योंकि एक व्यक्ति जो केवल सफेद रोटी, बिस्कुट और नूडल्स खाता है, अपच का अनुभव कर सकता है?",
+          "stem": "निम्नलिखित में से कौन एक संतुलित आहार है?",
           "choices": [
-            "वे फाइबर में उच्च होते हैं",
-            "वे फाइबर में कम होते हैं",
-            "वे प्रोटीन में कम होते हैं",
-            "वे विटामिन में उच्च होते हैं"
+            "शर्करा और वसा में अधिक वाला आहार",
+            "आवश्यक पोषक तत्वों के सही मात्रा में वाला आहार",
+            "केवल फल और सब्जियों वाला आहार",
+            "कोई पानी न वाला आहार"
           ],
-          "solution": "सफेद रोटी, बिस्कुट और नूडल्स आहार फाइबर में कम होते हैं, जो उचित पाचन और नियमित बारी बारी से आवश्यक होते हैं। फाइबर के कम होने के कारण पाचन तंत्र धीमा हो सकता है, जिसके कारण अपच हो सकता है। उच्च फाइबर, प्रोटीन और विटामिन स्वास्थ्य के लिए लाभकारी होते हैं, लेकिन यहां समस्या फाइबर की कमी है।",
+          "solution": "एक संतुलित आहार में आवश्यक पोषक तत्वों की सही मात्रा होती है, जो शरीर को सही तरीके से काम करने के लिए आवश्यक सभी चीजें प्रदान करती है। केवल कुछ भोजन पर केंद्रित या पानी जैसे महत्वपूर्ण घटकों को छोड़ देने वाले विकल्प इस आवश्यकता को पूरा नहीं करते। शर्करा और वसा में अधिक वाला आहार विविधता की कमी के कारण स्वास्थ्य समस्याओं का कारण बन सकता है, जबकि केवल फल और सब्जियां वाला आहार अन्य आवश्यक पोषक तत्वों को छोड़ देता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian educational context.",
-          "flag": null
+          "critique": "The Hindi translation is accurate and maintains the meaning of the original. However, the key is incorrect - the correct answer should be option (2), not (1).",
+          "flag": "translation critique: not one answer at the same position"
         },
         "mr": {
-          "stem": "कोणत्या कारणामुळे फक्त श्वेत रोटी, बिस्किट आणि नूडल्स खाणारा व्यक्ती अपच अनुभवू शकतो?",
+          "stem": "खालीलपैकी कोणते एक संतुलित आहार आहे?",
           "choices": [
-            "ते फायबरमध्ये उच्च असतात",
-            "ते फायबरमध्ये कमी असतात",
-            "ते प्रोटीनमध्ये कमी असतात",
-            "ते व्हिटॅमिनमध्ये उच्च असतात"
+            "शर्करा आणि तेलाने भरलेला आहार",
+            "आवश्यक पोषक घटकांच्या योग्य मात्रेत असलेला आहार",
+            "मात्र फळे आणि भाज्या असलेला आहार",
+            "पाणी नसलेला आहार"
           ],
-          "solution": "श्वेत रोटी, बिस्किट आणि नूडल्स खाद्य फायबरमध्ये कमी असतात, जे योग्य पाचन आणि नियमित गुदमार्ग चलनासाठी आवश्यक आहे. फायबरच्या अभावामुळे, पाचन प्रणाली धीमी होऊ शकते आणि अपच होऊ शकतो. उच्च फायबर, प्रोटीन आणि व्हिटॅमिन हे आरोग्यासाठी फायदेशीर आहेत, परंतु येथे समस्या फायबरच्या अभावाशी संबंधित आहे.",
+          "solution": "संतुलित आहारामध्ये आवश्यक पोषक घटकांच्या योग्य मात्रेत असतात, जेणेकरून शरीराला योग्यरित्या कार्य करण्यासाठी आवश्यक असलेले सर्व घटक मिळतात. फक्त काही खाद्यपदार्थांवर भर देणारे किंवा पाणी यासारख्या महत्वपूर्ण घटकांना बाजूला ठेवणारे विकल्प या आवश्यकतेला पूर्ण करू शकत नाहीत. शर्करा आणि तेलाने भरलेला आहार विविधता नसल्यामुळे आरोग्य समस्यांचा कारण बनू शकतो, तर मात्र फळे आणि भाज्या असलेला आहार इतर आवश्यक पोषक घटकांचा अभाव असतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for dietary fibre and related concepts.",
-          "flag": null
+          "critique": "The key is incorrect - the correct answer should be option (2), not (1). The Marathi translation is accurate but the key is wrong.",
+          "flag": "translation critique: not one answer at the same position"
         }
       },
       "imageKey": null,
@@ -1002,10 +391,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the role of fibre in digestion",
+        "Misunderstands the definition of a balanced diet",
         null,
-        "students may confuse fibre with protein and think that low protein causes constipation",
-        "confuses beneficial nutrients with the cause of the problem"
+        "Overlooks the importance of all nutrients",
+        "Ignores the need for water and roughage"
       ],
       "solverAnswers": [
         1,
@@ -1014,8 +403,8 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, with a clear and correct answer. The reasoning for the distractors aligns with common misconceptions about dietary fibre and digestion.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as a balanced diet includes all essential nutrients in the right quantities. The author's reasoning aligns with standard nutritional definitions, and the distractors represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu103.pdf",
@@ -1052,7 +441,520 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:34:08.202Z",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the purpose of dietary fibre in the body?",
+      "choices": [
+        "To provide energy",
+        "To help the body get rid of undigested food",
+        "To build muscles",
+        "To increase body weight"
+      ],
+      "answerIndex": 1,
+      "solution": "Dietary fibre helps the body eliminate undigested food by adding bulk to the stool and promoting regular bowel movements. It does not provide energy, as it is not digested by the body, nor does it help build muscles or increase body weight, as it is not a source of calories or muscle-building nutrients.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शरीर में आहार फाइबर का उद्देश्य क्या है?",
+          "choices": [
+            "ऊर्जा प्रदान करना",
+            "शरीर को अपचित भोजन से छुटकारा दिलाना",
+            "मांसपेशियां बनाना",
+            "शरीर के वजन को बढ़ाना"
+          ],
+          "solution": "आहार फाइबर शरीर में अपचित भोजन को निकालने में सहायता करता है क्योंकि यह गोली में बढ़ोतरी करता है और नियमित बाजू गतिविधि को बढ़ावा देता है। यह शरीर द्वारा पचाया नहीं जाता है, इसलिए यह ऊर्जा प्रदान नहीं करता है, न ही मांसपेशियां बनाने या शरीर के वजन को बढ़ाने में सहायता करता है, क्योंकि यह कैलोरी या मांसपेशी बनाने वाले पोषक तत्वों का स्रोत नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Indian science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शरीरात आहारी फायबरचा उद्देश काय आहे?",
+          "choices": [
+            "ऊर्जा पुरविणे",
+            "शरीराला अचालनीय खाद्य दूर करण्यास मदत करणे",
+            "मांसपेशी बांधणे",
+            "शरीराचा वजन वाढवणे"
+          ],
+          "solution": "आहारी फायबर शरीराला अचालनीय खाद्य दूर करण्यास मदत करते, कारण ते खाद्याच्या दाबात वाढ करते आणि नियमित आंतरिक चलन उत्पन्न करते. शरीराने त्याचे पाचन करू शकत नाही म्हणून ते ऊर्जा पुरवत नाही, मांसपेशी बांधण्यास किंवा शरीराचा वजन वाढवण्यास मदत करत नाही, कारण ते कॅलरी किंवा मांसपेशी बांधण्यासाठी आवश्यक पोषक तत्वांचा स्रोत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses dietary fibre with carbohydrates",
+        null,
+        "Thinks fibre is used for bodybuilding",
+        "Believes fibre causes weight gain"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as dietary fibre aids in digestion and waste elimination. The reasoning for the wrong options aligns with common misconceptions about fibre.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.3 How to Test Different Components",
+            "of Food?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 9,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.3 How to Test Different Components",
+            "of Food?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a good source of vitamin C?",
+      "choices": [
+        "Wheat",
+        "Milk",
+        "Orange",
+        "Butter"
+      ],
+      "answerIndex": 2,
+      "solution": "Orange is a good source of vitamin C because it naturally contains high levels of this nutrient. Wheat, milk, and butter do not provide significant amounts of vitamin C. Vitamin C is primarily found in fruits and vegetables, not in dairy or grains.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन विटामिन सी का अच्छा स्रोत है?",
+          "choices": [
+            "गेहूं",
+            "दूध",
+            "संतरा",
+            "मक्खन"
+          ],
+          "solution": "संतरा विटामिन सी का अच्छा स्रोत है क्योंकि इसमें इस पोषक तत्व की उच्च मात्रा प्राकृतिक रूप से उपस्थित होती है। गेहूं, दूध और मक्खन विटामिन सी की निर्जात मात्रा प्रदान नहीं करते। विटामिन सी मुख्य रूप से फलों और सब्जियों में पाया जाता है, डेयरी या अनाज में नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विटामिन सी चे चांगले स्रोत आहे?",
+          "choices": [
+            "गहू",
+            "दूध",
+            "संत्रा",
+            "मका"
+          ],
+          "solution": "संत्रा विटामिन सी चे चांगले स्रोत आहे कारण त्यामध्ये हा पोषक तत्व उच्च प्रमाणात असतो. गहू, दूध आणि मका विटामिन सी च्या महत्वपूर्ण प्रमाणात देत नाहीत. विटामिन सी मुख्यतः फळे आणि भाज्यांमध्ये असते, डेअरी किंवा धान्यामध्ये नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi terminology for nutrients and food items.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses vitamin C with other nutrients",
+        "Confuses vitamin C with dairy products",
+        null,
+        "Confuses fat sources with vitamin C sources"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Orange), as oranges are a well-known source of vitamin C. The other options are incorrect, and the author's reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a source of iodine?",
+      "choices": [
+        "Seaweed",
+        "Milk",
+        "Eggs",
+        "Butter"
+      ],
+      "answerIndex": 0,
+      "solution": "Seaweed is a natural source of iodine because it absorbs iodine from seawater. Milk, eggs, and butter do not contain significant amounts of iodine compared to seaweed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन आयोडिन का स्रोत है?",
+          "choices": [
+            "समुद्री शैवाल",
+            "दूध",
+            "अंडा",
+            "मक्खन"
+          ],
+          "solution": "समुद्री शैवाल आयोडिन का प्राकृतिक स्रोत है क्योंकि यह समुद्र के पानी से आयोडिन अवशोषित करता है। दूध, अंडा और मक्खन समुद्री शैवाल की तुलना में आयोडिन की निर्जल राशि नहीं रखते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते आयोडिनचे स्त्रोत आहे?",
+          "choices": [
+            "समुद्री वनस्पती",
+            "दूध",
+            "अ tel",
+            "मक्खन"
+          ],
+          "solution": "समुद्री वनस्पती समुद्रातून आयोडिन शोषून घेते. दूध, अ tel आणि मक्खन समुद्री वनस्पतीच्या तुलनेत आयोडिनच्या महत्त्वाच्या प्रमाणात नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the original meaning. The option (3) appears to be incomplete ('अ tel') but this may be a typo or formatting issue. Assuming it's meant to be 'अ tel' (egg), the question is valid.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses iodine with other nutrients",
+        "Confuses iodine with dairy products",
+        "Confuses iodine with other nutrients"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Seaweed), as it is a known source of iodine. The other options are not typically considered significant sources of iodine, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a good source of vitamin D?",
+      "choices": [
+        "Carrot",
+        "Pumpkin seeds",
+        "Eggs",
+        "Milk"
+      ],
+      "answerIndex": 3,
+      "solution": "Milk is a good source of vitamin D because it is naturally rich in this nutrient or is often fortified with it. Carrots are primarily a source of vitamin A, pumpkin seeds are high in magnesium and healthy fats, and eggs contain some vitamin D but not as much as milk. Therefore, milk is the best choice among the options provided.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन विटामिन डी का अच्छा स्रोत है?",
+          "choices": [
+            "गाजर",
+            "कद्दू के बीज",
+            "अंडा",
+            "दूध"
+          ],
+          "solution": "दूध विटामिन डी का अच्छा स्रोत है क्योंकि यह इस न्यूट्रिएंट में प्राकृतिक रूप से समृद्ध है या इसे अक्सर इसके साथ बूस्ट किया जाता है। गाजर मुख्य रूप से विटामिन ए का स्रोत है, कद्दू के बीज मैग्नीशियम और स्वस्थ वसा में समृद्ध हैं, और अंडे में कुछ विटामिन डी होती है लेकिन दूध की तुलना में नहीं। इसलिए, प्रदान किए गए विकल्पों में दूध सबसे अच्छा विकल्प है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for nutrients and food items.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विटामिन डीचे चांगले स्रोत आहे?",
+          "choices": [
+            "गाजर",
+            "कोकोस बिया",
+            "अंडे",
+            "दूध"
+          ],
+          "solution": "दूध विटामिन डीचे चांगले स्रोत आहे कारण ते ह्या पोषक तत्वाने प्राकृतिकरित्या समृद्ध असते किंवा त्यामध्ये त्याची वृद्धी केली जाते. गाजर मुख्यतः विटामिन एचे स्रोत आहे, कोकोस बिया मॅग्नेशियम आणि आरोग्यदायी चरबींमध्ये उच्च असतात आणि अंड्यामध्ये विटामिन डी असतो परंतु दूधापेक्षा त्याची प्रमाण ओलांडत नाही. त्यामुळे, दिलेल्या पर्यायांमध्ये दूध हा सर्वोत्तम निवड आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for nutrients and food items.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses vitamin D with other nutrients",
+        "Confuses vitamin D with other nutrients",
+        "Confuses vitamin D with other nutrients",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is milk, as it is a known source of vitamin D. The other options are not typically considered primary sources of vitamin D, and the author's reasoning that students confuse vitamin D with other nutrients is plausible.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person from a region where rice is a major crop, which of the following is most likely to be a traditional food?",
+      "choices": [
+        "Makki di roti",
+        "Idli",
+        "Laddoos",
+        "Buttermilk"
+      ],
+      "answerIndex": 1,
+      "solution": "Idli is a traditional food made from rice, which is a major crop in many regions. The other options are not primarily made from rice. Laddoos are typically made from flour or nuts, buttermilk is a drink, and makki di roti is made from cornmeal. Therefore, idli is the most likely traditional food in a rice-growing region.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति एक क्षेत्र से है जहां चावल एक प्रमुख फसल है, तो निम्नलिखित में से कौन-सा सबसे अधिक संभावना है कि एक पारंपरिक भोजन हो?",
+          "choices": [
+            "मक्की दी रोटी",
+            "इडली",
+            "लड्डू",
+            "दही"
+          ],
+          "solution": "इडली चावल से बना एक पारंपरिक भोजन है, जो कई क्षेत्रों में एक प्रमुख फसल है। अन्य विकल्प चावल से मुख्य रूप से नहीं बनाए जाते हैं। लड्डू आमतौर पर आटा या नट्स से बनाए जाते हैं, दही एक पेय है, और मक्की दी रोटी मक्के के आटे से बनाई जाती है। इसलिए, चावल उत्पादन वाले क्षेत्र में इडली सबसे अधिक संभावना है कि पारंपरिक भोजन हो।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या व्यक्तीला एखाद्या भागातून आलेल्या असेल जेथे धान एक मुख्य शेतीची पिके आहे, तर खालीलपैकी कोणते एक विशिष्ट खाद्य पदार्थ असण्याची शक्यता अधिक आहे?",
+          "choices": [
+            "मक्की दी रोटी",
+            "इडली",
+            "लडू",
+            "मलई"
+          ],
+          "solution": "इडली हा धानापासून बनलेला एक विशिष्ट खाद्य पदार्थ आहे, जो बर्याच भागांमध्ये मुख्य पिक आहे. इतर विकल्प धानापासून मुख्यतः बनलेले नाहीत. लडू खास बेसन किंवा बाजू वरून बनतात, मलई हे एक पेय आहे आणि मक्की दी रोटी ही मक्का चालीत बनते. म्हणून, धान उत्पादक क्षेत्रात इडली हा विशिष्ट खाद्य पदार्थ असण्याची शक्यता अधिक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for food items.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a food item from a different region",
+        null,
+        "Confuses food items from different categories",
+        "Mistakes a beverage for a food item"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1 (Idli), as it is traditionally made from rice, which aligns with the premise of the question. The author's reasoning is sound and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.1 What Do We Eat?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.1 What Do We Eat?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.1 What Do We Eat?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu103.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Mindful Eating: A Pathto a Healthy Body",
+            "3.2 What are the Components of Food?",
+            "स्वस्थ आहार, स्वस्थ जी्व न"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T23:04:41.503Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

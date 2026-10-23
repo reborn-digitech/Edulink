@@ -1,0 +1,751 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T09:59:20.909Z",
+  "finishedAt": "2026-10-20T10:14:10.629Z",
+  "seconds": 890,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc105.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Exploring Mixtures and their Separation",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 27,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2023 — question paper]\n31. (4 marks) As a part of an experiment to study Tyndall effect, Aamir adds sugar to aqueous dispersion of gold nanoparticles of size 100 nm. Once the experiment is completed, he plans HBCSE property of shikimic acid leads to this difference in amount in the two recipes. 15\nto recover gold nanoparticles and use them in another experiment. As he tries to separate\ngold nanoparticles and sugar, by mistake, he adds the mixture to a tube containing calcium\ncarbonate. This results in a mixture containing gold nanoparticles, sugar, water, and calcium\ncarbonate.\nHe separates the constituents in three steps by using set of apparatus available in the lab.\nInstruments and materials available in the la",
+      "[INJSO 2023 — solutions or answer key]\n31. (4 marks) As a part of an experiment to study Tyndall effect, Aamir adds sugar to aqueous\ndispersion of gold nanoparticles of size 100 nm. Once the experiment is completed, he plans\nto recover gold nanoparticles and use them in another experiment. As he tries to separate\ngold nanoparticles and sugar, by mistake, he adds the mixture to a tube containing calcium\ncarbonate. This results in a mixture containing gold nanoparticles, sugar, water, and calcium\ncarbonate.\nHe separates the constituents in three steps by using set of apparatus available in the lab.\nInstruments and materials available in the lab: Heater, sublimation set up, beaker, filter\npaper, funnel, centrifuge, centrifuge tubes,",
+      "[INJSO 2021 — question paper]\nSumit and Rekha were separately preparing tincture iodine using the above procedure. Sumit was\nworking hurriedly, as he wanted to join a birthday party. By mistake, he added carbon tetrachloride\nin the flask instead of alcohol. At the end of the procedure, two immiscible liquid layers appeared in\nhis flask. Sumit shook the flask vigorously and kept it for some time. The two layers remained\nseparate. He observed that the lower layer was strongly colored, while the upper layer had a faint\ncolour different from the lower layer. Rekha followed the protocol perfectly and got a homogenous\nmixture.\nIdentify the compositions of the top and the bottom layers in Sumit’s flask.",
+      "[NSEJS 2016 — question paper]\n67. A chemist mixes two ideal liquids A and B to form a homogeneous mixture. The densities of the liquids are 2.0\ng/mL for A and 3 g/mL for B. When she drops a small object into the mixture, she finds that the object becomes\nsuspended in the liquid; that is, it neither sinks to the bottom nor does it float on the surface. If the mixture is\nmade of 40% A and 60% B, by volume, what is the density of the object?\na) 2.60 g/mL\nb) 2.50 g/mL\nc) 2.40 g/mL\nd) 1.50 g/mL\nJS530"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 274526,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 48173,
+      "completionTokens": 11435
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 438548,
+      "in": 39,
+      "out": 25,
+      "rejects": 14,
+      "promptTokens": 24844,
+      "completionTokens": 9231
+    },
+    "solver": {
+      "calls": 211,
+      "ms": 156606,
+      "in": 25,
+      "out": 18,
+      "rejects": 7,
+      "promptTokens": 41830,
+      "completionTokens": 2354
+    },
+    "form": {
+      "calls": 7,
+      "ms": 66834,
+      "in": 18,
+      "out": 10,
+      "rejects": 8,
+      "promptTokens": 5531,
+      "completionTokens": 1191
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 4947,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 498923,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 23138,
+      "completionTokens": 11252
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 4,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In an experiment, a student passes a laser beam through three mixtures: (A) salt and water, (B) chalk powder and water, (C) milk and water. Which of these will show the Tyndall effect?",
+      "ms": {
+        "draft": 19480,
+        "critique": 7099
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "ms": {
+        "draft": 19480,
+        "critique": 9225,
+        "solver": 14735,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given a mixture of salt, sugar, and chalk powder in water. Which of the following is the best method to separate the components?",
+      "ms": {
+        "draft": 19480,
+        "critique": 10545,
+        "solver": 1787,
+        "form": 6068
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student adds 5 g of salt to 95 g of water and then adds 10 g of sugar to the same solution. What is the mass by mass percentage of salt in the final solution?",
+      "ms": {
+        "draft": 19480,
+        "critique": 10000,
+        "solver": 25386
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A chemist mixes 40% liquid A and 60% liquid B to form a homogeneous mixture. The densities of A and B are 2.0 g/mL and 3.0 g/mL, respectively. If an object is dropped into the mixture and it neither sinks nor floats, what is the density of the object?",
+      "ms": {
+        "draft": 8438,
+        "critique": 11254
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 mL of a liquid pesticide is mixed with water to make 100 mL of a pesticide spray, what is the volume by volume percentage of the pesticide in the spray?",
+      "ms": {
+        "draft": 8438,
+        "critique": 10131,
+        "solver": 22668,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process is used to separate a mixture of two miscible liquids based on their boiling points?",
+      "ms": {
+        "draft": 7564,
+        "critique": 9831
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the solubility curve in Fig. 5.6, which compound has a solubility that increases more with temperature: compound A or compound B?",
+      "ms": {
+        "draft": 8438,
+        "critique": 11273,
+        "solver": 2333,
+        "form": 3525
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a hot, saturated solution of copper sulfate is cooled rapidly, what type of crystals are formed?",
+      "ms": {
+        "draft": 7564,
+        "critique": 8138
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the process of crystallization, what is the purpose of covering the beaker with a watch glass?",
+      "ms": {
+        "draft": 7564,
+        "critique": 7604
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student mixed acetone and water, two miscible liquids, and wants to separate them. Which method would be most suitable?",
+      "ms": {
+        "draft": 7564,
+        "critique": 8112
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of sulfuric acid in the crystallization of copper sulfate?",
+      "ms": {
+        "draft": 7564,
+        "critique": 7724,
+        "solver": 2647
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In fractional distillation, which property of the components is used to separate them?",
+      "ms": {
+        "draft": 5462,
+        "critique": 10457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A mixture containing gold nanoparticles, sugar, water, and calcium carbonate is created. Which of the following methods can be used to separate the gold nanoparticles from the mixture?",
+      "ms": {
+        "draft": 5462,
+        "critique": 7633
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the same amount of two different salts is dissolved in water and their solutions are cooled from 80°C to 60°C, which salt is more likely to form more crystals?",
+      "ms": {
+        "draft": 7564,
+        "critique": 8541,
+        "solver": 23364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student mixed 30 g of sugar in 80 g of water. What is the concentration of the solution in mass percentage?",
+      "ms": {
+        "draft": 8413,
+        "critique": 7672,
+        "solver": 17089,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Table 5.5, which mixture can be separated by distillation?",
+      "ms": {
+        "draft": 8413,
+        "critique": 8571,
+        "solver": 17178
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to separate a mixture of sand and salt. Which technique should they use?",
+      "ms": {
+        "draft": 8413,
+        "critique": 6511,
+        "solver": 2309,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6759
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student made a saturated solution of potassium chloride at 80°C and cooled it to 25°C. What would they observe?",
+      "ms": {
+        "draft": 8413,
+        "critique": 7880,
+        "solver": 3006
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following mixtures shows the Tyndall effect?",
+      "ms": {
+        "draft": 3843,
+        "critique": 8587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is used to separate a mixture of salt and water?",
+      "ms": {
+        "draft": 3843,
+        "critique": 11741
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which technique is used to separate a mixture of alcohol and chloroform based on their boiling points?",
+      "ms": {
+        "draft": 8413,
+        "critique": 6360,
+        "solver": 17338,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A mixture contains oil, water, and salt. Which method can be used to separate them?",
+      "ms": {
+        "draft": 3843,
+        "critique": 7621
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A mixture of sand and naphthalene is heated. What happens to naphthalene?",
+      "ms": {
+        "draft": 3843,
+        "critique": 7403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a colloid?",
+      "ms": {
+        "draft": 6114,
+        "critique": 8198
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a mixture contains a colloid and a suspension, which of the following will occur when it is filtered?",
+      "ms": {
+        "draft": 6114,
+        "critique": 9377,
+        "solver": 2340
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when two immiscible liquids of the same density are mixed in a separating funnel?",
+      "ms": {
+        "draft": 72823,
+        "critique": 9172,
+        "solver": 1422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a thin beam of light is passed through a mixture, and its path becomes visible. What can be inferred about the mixture?",
+      "ms": {
+        "draft": 6114,
+        "critique": 7360,
+        "solver": 13300,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given a mixture containing gold nanoparticles, sugar, water, and calcium carbonate. The student needs to recover the gold nanoparticles for another experiment. Which of the following methods would be most suitable for separating the gold nanoparticles from the mixture?",
+      "ms": {
+        "draft": 8438,
+        "critique": 10564,
+        "solver": 2248,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following methods is used to extract fragrances from flowers to make perfumes?",
+      "ms": {
+        "draft": 5462,
+        "critique": 8330,
+        "solver": 15686,
+        "form": 3530,
+        "translation": 57051
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when a solid changes directly into a vapour on heating and then condenses back into a solid on cooling?",
+      "ms": {
+        "draft": 6417,
+        "critique": 8676,
+        "solver": 7828,
+        "form": 0,
+        "translation": 61997
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a colloid?",
+      "ms": {
+        "draft": 5134,
+        "critique": 7326,
+        "solver": 1760,
+        "form": 0,
+        "translation": 43736
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following mixtures are correctly classified as homogeneous (Hm) and heterogeneous (Ht)?",
+      "ms": {
+        "draft": 78209,
+        "critique": 7727,
+        "solver": 2904,
+        "form": 0,
+        "translation": 61706
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a solution where the solute is a liquid and the solvent is a liquid?",
+      "ms": {
+        "draft": 8438,
+        "critique": 10450,
+        "solver": 14587,
+        "form": 0,
+        "translation": 58470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mass by volume percentage solution?",
+      "ms": {
+        "draft": 8438,
+        "critique": 11003,
+        "solver": 13609,
+        "form": 0,
+        "translation": 59833
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method would best separate salt and water from their mixture?",
+      "ms": {
+        "draft": 19480,
+        "critique": 6292,
+        "solver": 15407,
+        "form": 5726,
+        "translation": 49917
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student prepares a solution by dissolving 10 g of sugar in 90 g of water. What is the mass by mass percentage of the solution?",
+      "ms": {
+        "draft": 19480,
+        "critique": 13601,
+        "solver": 1935,
+        "form": 6186,
+        "translation": 51246
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student adds sugar to a suspension of gold nanoparticles and then mistakenly adds calcium carbonate. Which method would best help recover the gold nanoparticles?",
+      "ms": {
+        "draft": 6114,
+        "critique": 6570,
+        "solver": 1596,
+        "form": 0,
+        "translation": 48303
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an experiment, a student passes a laser beam through three mixtures: (A) salt and water, (B) chalk powder and water, (C) milk and water. Which of these will show the Tyndall effect?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is given a mixture of salt, sugar, and chalk powder in water. Which of the following is the best method to separate the components?",
+      "reason": "the key is far longer than every distractor (34 vs 12 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student adds 5 g of salt to 95 g of water and then adds 10 g of sugar to the same solution. What is the mass by mass percentage of salt in the final solution?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A chemist mixes 40% liquid A and 60% liquid B to form a homogeneous mixture. The densities of A and B are 2.0 g/mL and 3.0 g/mL, respectively. If an object is dropped into the mixture and it neither sinks nor floats, what is the density of the object?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 1 mL of a liquid pesticide is mixed with water to make 100 mL of a pesticide spray, what is the volume by volume percentage of the pesticide in the spray?",
+      "reason": "options 2 and 3 are the same (\"100%\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which process is used to separate a mixture of two miscible liquids based on their boiling points?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the solubility curve in Fig. 5.6, which compound has a solubility that increases more with temperature: compound A or compound B?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a hot, saturated solution of copper sulfate is cooled rapidly, what type of crystals are formed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the process of crystallization, what is the purpose of covering the beaker with a watch glass?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student mixed acetone and water, two miscible liquids, and wants to separate them. Which method would be most suitable?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the role of sulfuric acid in the crystallization of copper sulfate?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In fractional distillation, which property of the components is used to separate them?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A mixture containing gold nanoparticles, sugar, water, and calcium carbonate is created. Which of the following methods can be used to separate the gold nanoparticles from the mixture?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the same amount of two different salts is dissolved in water and their solutions are cooled from 80°C to 60°C, which salt is more likely to form more crystals?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a property of colloids?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student mixed 30 g of sugar in 80 g of water. What is the concentration of the solution in mass percentage?",
+      "reason": "options are written to different precisions (0 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"30/(30+80)*100\" = 27.27272727272727, but the key says 28.57"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on Table 5.5, which mixture can be separated by distillation?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student wants to separate a mixture of sand and salt. Which technique should they use?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'filter paper'"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student made a saturated solution of potassium chloride at 80°C and cooled it to 25°C. What would they observe?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following mixtures shows the Tyndall effect?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which method is used to separate a mixture of salt and water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which technique is used to separate a mixture of alcohol and chloroform based on their boiling points?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A mixture contains oil, water, and salt. Which method can be used to separate them?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A mixture of sand and naphthalene is heated. What happens to naphthalene?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a colloid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a mixture contains a colloid and a suspension, which of the following will occur when it is filtered?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What happens when two immiscible liquids of the same density are mixed in a separating funnel?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, a thin beam of light is passed through a mixture, and its path becomes visible. What can be inferred about the mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A student is given a mixture containing gold nanoparticles, sugar, water, and calcium carbonate. The student needs to recover the gold nanoparticles for another experiment. Which of the following methods would be most suitable for separating the gold nanoparticles from the mixture?",
+      "reason": "near-duplicate of served question cmvfh6wdy04gsgod8rbrf5y1x (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

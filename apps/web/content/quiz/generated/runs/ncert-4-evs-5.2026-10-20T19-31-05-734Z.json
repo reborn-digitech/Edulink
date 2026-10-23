@@ -1,0 +1,363 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:31:05.734Z",
+  "finishedAt": "2026-10-20T19:34:35.108Z",
+  "seconds": 209,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap105.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 5 — Anita and the Honeybees",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 57596,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13526,
+      "completionTokens": 3407
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 127532,
+      "in": 16,
+      "out": 11,
+      "rejects": 5,
+      "promptTokens": 8795,
+      "completionTokens": 3560
+    },
+    "solver": {
+      "calls": 88,
+      "ms": 47599,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 13883,
+      "completionTokens": 924
+    },
+    "form": {
+      "calls": 8,
+      "ms": 19618,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 1850,
+      "completionTokens": 528
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 1978,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 224372,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13003,
+      "completionTokens": 6237
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "How much money did Anita spend on buying two boxes for keeping bees?",
+      "ms": {
+        "draft": 3709,
+        "critique": 4526,
+        "solver": 1362
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the project that tells the stories of girls who have changed their lives by going to school?",
+      "ms": {
+        "draft": 3709,
+        "critique": 4931,
+        "solver": 1631,
+        "form": 4859
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many kilograms of honey did Anita get in total from all her boxes?",
+      "ms": {
+        "draft": 3709,
+        "critique": 9857
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which insects live and work together like honeybees?",
+      "ms": {
+        "draft": 4162,
+        "critique": 6946
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Anita learn from the government course?",
+      "ms": {
+        "draft": 3709,
+        "critique": 5199,
+        "solver": 14224
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What do worker ants do in an ant colony?",
+      "ms": {
+        "draft": 4162,
+        "critique": 7890
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are no worker bees in a hive, what will happen?",
+      "ms": {
+        "draft": 4162,
+        "critique": 7303
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which insect is mentioned as living and working together like honeybees?",
+      "ms": {
+        "draft": 2879,
+        "critique": 7077
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a role of ants as described in the passage?",
+      "ms": {
+        "draft": 2879,
+        "critique": 8444,
+        "solver": 15137
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the older boys in the village scold and scare the children?",
+      "ms": {
+        "draft": 3650,
+        "critique": 5197,
+        "solver": 837,
+        "form": 1049
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the girl who is the main character of the story?",
+      "ms": {
+        "draft": 3650,
+        "critique": 5092,
+        "solver": 1144,
+        "form": 3400,
+        "translation": 29288
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Anita learn from the government course?",
+      "ms": {
+        "draft": 3650,
+        "critique": 5139,
+        "solver": 1851,
+        "form": 3275,
+        "translation": 34808
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of worker bees in a hive?",
+      "ms": {
+        "draft": 2879,
+        "critique": 6448,
+        "solver": 12125,
+        "form": 4074,
+        "translation": 40310
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Anita sells 12 kilograms of honey from each of her 20 boxes, how many kilograms of honey does she have in total?",
+      "ms": {
+        "draft": 3650,
+        "critique": 5166,
+        "solver": 867,
+        "form": 2202,
+        "translation": 32965
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are no worker bees, what will happen to the hive?",
+      "ms": {
+        "draft": 2879,
+        "critique": 7077,
+        "solver": 12874,
+        "form": 2932,
+        "translation": 40614
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a similarity between honeybees and ants?",
+      "ms": {
+        "draft": 4162,
+        "critique": 6260,
+        "solver": 4163,
+        "form": 1093,
+        "translation": 42318
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How much money did Anita spend on buying two boxes for keeping bees?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the project that tells the stories of girls who have changed their lives by going to school?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"creates a new name that is not in the passage…\"); distractor 3's reason is not a one-line misconception (\"another made-up term not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many kilograms of honey did Anita get in total from all her boxes?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which insects live and work together like honeybees?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Anita learn from the government course?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What do worker ants do in an ant colony?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If there are no worker bees in a hive, what will happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which insect is mentioned as living and working together like honeybees?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a role of ants as described in the passage?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did the older boys in the village scold and scare the children?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Chooses a reason not mentioned in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

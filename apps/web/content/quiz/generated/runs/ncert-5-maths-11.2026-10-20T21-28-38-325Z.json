@@ -1,0 +1,494 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:28:38.325Z",
+  "finishedAt": "2026-10-20T21:33:27.550Z",
+  "seconds": 289,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm111.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Grandmother’s Quilt",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n15. (B) ଽ 1\nସ\nProbability of getting vowels in the word Mathematics is ଵଵ ସ ,\nSo, ଶ௫ାଵ ଵଵ ଶ = ସ\nଽ\n⇒ 𝑥 = ସ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A-E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 74415,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 14702,
+      "completionTokens": 5286
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 197235,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 16238,
+      "completionTokens": 6622
+    },
+    "solver": {
+      "calls": 190,
+      "ms": 90331,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 36916,
+      "completionTokens": 2295
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10864,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 897,
+      "completionTokens": 252
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2677,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 167971,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14345,
+      "completionTokens": 6262
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following shapes can be used to measure area without leaving gaps or overlaps?",
+      "ms": {
+        "draft": 2935,
+        "critique": 4372,
+        "solver": 10164,
+        "form": 3939
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following shapes, if used to measure area, would not leave any gaps or overlaps?",
+      "ms": {
+        "draft": 2935,
+        "critique": 6740
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following rectangles would have the same area but a different perimeter?",
+      "ms": {
+        "draft": 2935,
+        "critique": 5378,
+        "solver": 12272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a game, the first player rolls a die and picks up tiles equal to the number on the die. The second player then takes a turn and adds tiles to the same shape. If the first player picks up 4 tiles and the second player picks up 6 tiles, and the perimeter of the shape becomes 24, what is the initial perimeter before the second player added tiles?",
+      "ms": {
+        "draft": 3628,
+        "critique": 5407
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the breadth of a rectangular garden with an area of 64 square m and a length of 16 m?",
+      "ms": {
+        "draft": 3628,
+        "critique": 4996,
+        "solver": 13100
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area of a rectangular field if its length is 32 cm and breadth is 6 cm?",
+      "ms": {
+        "draft": 3628,
+        "critique": 5629,
+        "solver": 12696
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangular field is to be divided into two equal parts, each with the same area. If the original field is 42 m long and 34 m wide, what is the length of each part if the breadth is kept the same?",
+      "ms": {
+        "draft": 3628,
+        "critique": 3136,
+        "solver": 4837
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate the area of a rectangle?",
+      "ms": {
+        "draft": 9860,
+        "critique": 3859
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area of a rectangular field with length 42 m and breadth 34 m?",
+      "ms": {
+        "draft": 9860,
+        "critique": 4677,
+        "solver": 10971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the perimeter of a rectangle if its length is 12 cm and its breadth is 6 cm?",
+      "ms": {
+        "draft": 9860,
+        "critique": 4512,
+        "solver": 13840
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a game, players roll a die and add tiles equal to the number of dots shown. If the perimeter of the shape made with the tiles is 24, how many tiles could have been used?",
+      "ms": {
+        "draft": 9860,
+        "critique": 5918
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangular garden has an area of 64 m² and a length of 16 m. What is its breadth?",
+      "ms": {
+        "draft": 9860,
+        "critique": 7437,
+        "solver": 12144,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the length of the border of a shape?",
+      "ms": {
+        "draft": 2881,
+        "critique": 5643,
+        "solver": 9061,
+        "form": 2162
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage says that the area of a rectangle can be found by multiplying its length and breadth. If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "ms": {
+        "draft": 2881,
+        "critique": 6176,
+        "solver": 1282,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two rectangles have the same area but different perimeters. Which of the following could be true?",
+      "ms": {
+        "draft": 2881,
+        "critique": 5963,
+        "solver": 10801,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A square has a perimeter of 20 cm. What is the area of this square?",
+      "ms": {
+        "draft": 2881,
+        "critique": 6741,
+        "solver": 9859,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the length of the border of a shape?",
+      "ms": {
+        "draft": 2935,
+        "critique": 4171,
+        "solver": 9688,
+        "form": 4031,
+        "translation": 26118
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the perimeter of a rectangular field with a length of 42 m and a breadth of 34 m?",
+      "ms": {
+        "draft": 3628,
+        "critique": 4424,
+        "solver": 1437,
+        "form": 0,
+        "translation": 27936
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the perimeter of a rectangle with length 32 cm and breadth 12 cm?",
+      "ms": {
+        "draft": 9860,
+        "critique": 7031,
+        "solver": 12207,
+        "form": 0,
+        "translation": 23452
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "ms": {
+        "draft": 2935,
+        "critique": 3922,
+        "solver": 1023,
+        "form": 3261,
+        "translation": 20617
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square has a side length of 5 cm, what is its perimeter?",
+      "ms": {
+        "draft": 2881,
+        "critique": 6459,
+        "solver": 8191,
+        "form": 0,
+        "translation": 13320
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular tile is made using 12 square tiles arranged in a shape. What is the perimeter of the shape if the length is 6 tiles and the breadth is 2 tiles?",
+      "ms": {
+        "draft": 3628,
+        "critique": 6172,
+        "solver": 1421,
+        "form": 0,
+        "translation": 32824
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a square has a perimeter of 20 cm, what is its area?",
+      "ms": {
+        "draft": 2935,
+        "critique": 4410,
+        "solver": 1434,
+        "form": 0,
+        "translation": 20160
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following shapes can be used to measure area without leaving gaps or overlaps?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following shapes, if used to measure area, would not leave any gaps or overlaps?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following rectangles would have the same area but a different perimeter?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a game, the first player rolls a die and picks up tiles equal to the number on the die. The second player then takes a turn and adds tiles to the same shape. If the first player picks up 4 tiles and the second player picks up 6 tiles, and the perimeter of the shape becomes 24, what is the initial perimeter before the second player added tiles?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the breadth of a rectangular garden with an area of 64 square m and a length of 16 m?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the area of a rectangular field if its length is 32 cm and breadth is 6 cm?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A rectangular field is to be divided into two equal parts, each with the same area. If the original field is 42 m long and 34 m wide, what is the length of each part if the breadth is kept the same?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is NOT a unit for measuring area?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the formula to calculate the area of a rectangle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the area of a rectangular field with length 42 m and breadth 34 m?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the perimeter of a rectangle if its length is 12 cm and its breadth is 6 cm?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a game, players roll a die and add tiles equal to the number of dots shown. If the perimeter of the shape made with the tiles is 24, how many tiles could have been used?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A rectangular garden has an area of 64 m² and a length of 16 m. What is its breadth?",
+      "reason": "options 0 and 3 are the same (\"4 m\"); options 1 and 2 are the same (\"2 m\"); options 0 and 3 are the same number; options 1 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used to describe the length of the border of a shape?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage says that the area of a rectangle can be found by multiplying its length and breadth. If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Two rectangles have the same area but different perimeters. Which of the following could be true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A square has a perimeter of 20 cm. What is the area of this square?",
+      "reason": "near-duplicate of batch item \"If a square has a perimeter of 20 cm, what is its …\" (cosine 0.986 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

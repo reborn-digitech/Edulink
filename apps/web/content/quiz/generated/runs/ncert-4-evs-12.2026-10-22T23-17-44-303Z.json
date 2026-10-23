@@ -1,0 +1,378 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:17:44.303Z",
+  "finishedAt": "2026-10-22T23:20:12.887Z",
+  "seconds": 149,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap112.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 12 — Changing Times",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 51316,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13650,
+      "completionTokens": 2895
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 122033,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 7682,
+      "completionTokens": 3359
+    },
+    "solver": {
+      "calls": 63,
+      "ms": 30879,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 8398,
+      "completionTokens": 582
+    },
+    "form": {
+      "calls": 3,
+      "ms": 5968,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 689,
+      "completionTokens": 202
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 2956,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 63575,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4463,
+      "completionTokens": 2263
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did Chetandas' family use mud in the construction of their house?",
+      "ms": {
+        "draft": 3452,
+        "critique": 7408
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What change in house construction did Chetandas' family make when they built a new room?",
+      "ms": {
+        "draft": 3452,
+        "critique": 7661
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas' family built their house?",
+      "ms": {
+        "draft": 3452,
+        "critique": 8343
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the changes in Chetandas' house over time?",
+      "ms": {
+        "draft": 3452,
+        "critique": 6644
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chapter in the passage?",
+      "ms": {
+        "draft": 3138,
+        "critique": 7234,
+        "solver": 1385,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What should a teacher do if there is a construction site near the school?",
+      "ms": {
+        "draft": 3138,
+        "critique": 7189,
+        "solver": 1789
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a construction site uses 5 trucks of sand, 1000 bricks, and 50 bags of cement, and the price of one truck of sand is ₹2000, one brick is ₹5, and one bag of cement is ₹300, what is the total cost of the materials?",
+      "ms": {
+        "draft": 3138,
+        "critique": 7119
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main activity suggested for the students in the passage?",
+      "ms": {
+        "draft": 2238,
+        "critique": 7877,
+        "solver": 2576
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the most important thing to do when making a model of a house?",
+      "ms": {
+        "draft": 2238,
+        "critique": 6264,
+        "solver": 1631
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chapter in the passage?",
+      "ms": {
+        "draft": 2238,
+        "critique": 7565,
+        "solver": 11599,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to know how many trucks of bricks are used for making a building, what should they do?",
+      "ms": {
+        "draft": 2238,
+        "critique": 6964,
+        "solver": 13136,
+        "form": 2608
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas and his family built their house?",
+      "ms": {
+        "draft": 4001,
+        "critique": 7219
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Amma mix husk with the mud when making the house?",
+      "ms": {
+        "draft": 4001,
+        "critique": 7263
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What change did Chetandas' family make in their house when their daughter got married?",
+      "ms": {
+        "draft": 4001,
+        "critique": 5207,
+        "solver": 1127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of students is making a model of a house using paper and cloth, which material is likely to be used for the roof?",
+      "ms": {
+        "draft": 3138,
+        "critique": 6188,
+        "solver": 813,
+        "form": 2237,
+        "translation": 30761
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which material was used for the floor of the new room that Chetandas' family built?",
+      "ms": {
+        "draft": 4001,
+        "critique": 4506,
+        "solver": 4749,
+        "form": 1123,
+        "translation": 28609
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Chetandas' family use mud in the construction of their house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What change in house construction did Chetandas' family make when they built a new room?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas' family built their house?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the changes in Chetandas' house over time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the chapter in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What should a teacher do if there is a construction site near the school?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a construction site uses 5 trucks of sand, 1000 bricks, and 50 bags of cement, and the price of one truck of sand is ₹2000, one brick is ₹5, and one bag of cement is ₹300, what is the total cost of the materials?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main activity suggested for the students in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the most important thing to do when making a model of a house?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the chapter in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to know how many trucks of bricks are used for making a building, what should they do?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas and his family built their house?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Amma mix husk with the mud when making the house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What change did Chetandas' family make in their house when their daughter got married?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,707 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T01:26:15.616Z",
+  "finishedAt": "2026-10-20T01:33:57.381Z",
+  "seconds": 462,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu109.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Life Processes in Animals",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n10. Unlike animals, plants do not have any excretory products as they do not eat 2\nfood. Comment upon the statement with justification.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[NSEJS 2015 — question paper]\n72. Regeneration in animal kingdom is observed in which of the following animals?\na) Frog b) Planaria (C) Birds (D) Snakes"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 160674,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 37146,
+      "completionTokens": 9841
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 203614,
+      "in": 36,
+      "out": 32,
+      "rejects": 4,
+      "promptTokens": 16308,
+      "completionTokens": 6295
+    },
+    "solver": {
+      "calls": 166,
+      "ms": 59656,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 23320,
+      "completionTokens": 1358
+    },
+    "form": {
+      "calls": 19,
+      "ms": 90305,
+      "in": 30,
+      "out": 14,
+      "rejects": 16,
+      "promptTokens": 14243,
+      "completionTokens": 2661
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3692,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 485734,
+      "in": 24,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 30644,
+      "completionTokens": 15445
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Why does the colour of the rice in test tube A turn blue-black when iodine is added, but the colour in test tube B does not change much?",
+      "ms": {
+        "draft": 3871,
+        "critique": 5278,
+        "solver": 1629
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the human digestive system, which organ produces digestive juices that help break down starch?",
+      "ms": {
+        "draft": 3871,
+        "critique": 4558,
+        "solver": 1635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the role of the finger-like projections in the small intestine?",
+      "ms": {
+        "draft": 3427,
+        "critique": 5632,
+        "solver": 1609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an organism that digests food outside its body?",
+      "ms": {
+        "draft": 3427,
+        "critique": 6062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the opening in the stomach that allows observation of digestion?",
+      "ms": {
+        "draft": 3427,
+        "critique": 7540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the diaphragm during breathing?",
+      "ms": {
+        "draft": 4322,
+        "critique": 5778,
+        "solver": 1550,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why is the process of respiration essential for all living beings?",
+      "ms": {
+        "draft": 4322,
+        "critique": 6513,
+        "solver": 1319,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student made a model of the human respiratory system using a plastic bottle, balloons, and a rubber sheet. What does the balloon represent in this model?",
+      "ms": {
+        "draft": 4322,
+        "critique": 5386,
+        "solver": 3046,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 9.8, which structure is responsible for the exchange of gases in the lungs?",
+      "ms": {
+        "draft": 4322,
+        "critique": 5947,
+        "solver": 1238,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the process of gas exchange in the lungs?",
+      "ms": {
+        "draft": 5233,
+        "critique": 6356,
+        "solver": 1413,
+        "form": 3227
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to lime water when it reacts with carbon dioxide?",
+      "ms": {
+        "draft": 5233,
+        "critique": 5334,
+        "solver": 1659,
+        "form": 2133
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person inhales air with 21% oxygen and exhales air with 16% oxygen, what does this indicate about the respiratory process?",
+      "ms": {
+        "draft": 5233,
+        "critique": 5813,
+        "solver": 1320,
+        "form": 2683
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 9.15, what would be the observation when iodine solution is added to test tube A (without saliva) and test tube B (with saliva)?",
+      "ms": {
+        "draft": 4107,
+        "critique": 5309,
+        "solver": 1878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct statement about respiration and breathing?",
+      "ms": {
+        "draft": 4107,
+        "critique": 6453,
+        "solver": 1024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Anusha was breathing faster than Paridhi after running. Which of the following could explain this?",
+      "ms": {
+        "draft": 4107,
+        "critique": 7429,
+        "solver": 1220
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of breathing according to the passage?",
+      "ms": {
+        "draft": 5620,
+        "critique": 6042,
+        "solver": 1900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that the lime water in test tube A did not change color, but the lime water in test tube B turned milky. What can be concluded about the air in test tube A?",
+      "ms": {
+        "draft": 5620,
+        "critique": 5063,
+        "solver": 1574,
+        "form": 3340
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the process of gas exchange in alveoli?",
+      "ms": {
+        "draft": 5620,
+        "critique": 6251,
+        "solver": 1861,
+        "form": 2976
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the human respiratory system is responsible for filtering dust and dirt from the inhaled air?",
+      "ms": {
+        "draft": 3242,
+        "critique": 5690
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that breathing is a physical process and respiration is a chemical process. Which of the following statements best supports this distinction?",
+      "ms": {
+        "draft": 5620,
+        "critique": 6664,
+        "solver": 1255,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following organisms is food broken down and absorbed outside the body?",
+      "ms": {
+        "draft": 3242,
+        "critique": 7332
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the mucus secreted in the stomach?",
+      "ms": {
+        "draft": 5117,
+        "critique": 3331,
+        "solver": 671,
+        "form": 994
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the mucus secreted by the stomach?",
+      "ms": {
+        "draft": 3427,
+        "critique": 5671,
+        "solver": 9380,
+        "form": 2083
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the alimentary canal absorbs most of the water and some salts from the undigested food?",
+      "ms": {
+        "draft": 4107,
+        "critique": 5012,
+        "solver": 1291,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of breathing?",
+      "ms": {
+        "draft": 5233,
+        "critique": 5664,
+        "solver": 1154,
+        "form": 2743,
+        "translation": 35324
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the digestive system is responsible for absorbing most of the remaining water and some salts from the undigested food?",
+      "ms": {
+        "draft": 4555,
+        "critique": 4352,
+        "solver": 433,
+        "form": 923,
+        "translation": 33318
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of saliva in the mouth?",
+      "ms": {
+        "draft": 3871,
+        "critique": 4309,
+        "solver": 1012,
+        "form": 0,
+        "translation": 46663
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to lime water when exhaled air is passed through it?",
+      "ms": {
+        "draft": 5620,
+        "critique": 5943,
+        "solver": 1297,
+        "form": 3623,
+        "translation": 20261
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the diaphragm in breathing?",
+      "ms": {
+        "draft": 4107,
+        "critique": 4206,
+        "solver": 1413,
+        "form": 0,
+        "translation": 27430
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an experiment, test tube A had boiled rice and test tube B had chewed boiled rice. After adding iodine, test tube A turned blue-black while test tube B showed little to no change. What does this indicate?",
+      "ms": {
+        "draft": 3871,
+        "critique": 4956,
+        "solver": 1785,
+        "form": 0,
+        "translation": 53636
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to food after it is chewed in the mouth?",
+      "ms": {
+        "draft": 3871,
+        "critique": 4898,
+        "solver": 1553,
+        "form": 0,
+        "translation": 32713
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which part of the alimentary canal is the food partially digested and transformed into a semi-liquid mass?",
+      "ms": {
+        "draft": 3427,
+        "critique": 6427,
+        "solver": 1218,
+        "form": 2667,
+        "translation": 35699
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which process do ruminants like cows perform to aid digestion?",
+      "ms": {
+        "draft": 4322,
+        "critique": 6685,
+        "solver": 1047,
+        "form": 0,
+        "translation": 45599
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student performs an experiment with boiled rice and observes that after chewing for a longer time, the rice starts tasting sweet. What is the best explanation for this?",
+      "ms": {
+        "draft": 3871,
+        "critique": 6247,
+        "solver": 1010,
+        "form": 2864,
+        "translation": 45018
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the process of respiration considered a chemical process and not just a physical one?",
+      "ms": {
+        "draft": 5233,
+        "critique": 5326,
+        "solver": 1265,
+        "form": 1470,
+        "translation": 40007
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the small intestine called 'small' even though it is the longest part of the alimentary canal?",
+      "ms": {
+        "draft": 3427,
+        "critique": 4939,
+        "solver": 965,
+        "form": 2781,
+        "translation": 64893
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How do birds break down their food without teeth?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the colour of the rice in test tube A turn blue-black when iodine is added, but the colour in test tube B does not change much?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the human digestive system, which organ produces digestive juices that help break down starch?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'mouth'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the role of the finger-like projections in the small intestine?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (43 vs 19 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of an organism that digests food outside its body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the opening in the stomach that allows observation of digestion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the diaphragm during breathing?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'diaphragm'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why is the process of respiration essential for all living beings?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student made a model of the human respiratory system using a plastic bottle, balloons, and a rubber sheet. What does the balloon represent in this model?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'bottle'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 9.8, which structure is responsible for the exchange of gases in the lungs?",
+      "reason": "figure: figure spec refused: spec.parts.3.text.nasal passages: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the process of gas exchange in the lungs?",
+      "reason": "options 0 and 1 say the same thing (\"Oxygen from the alveoli enters the blood, and carbon dioxide from the blood enters the alveoli\" / \"Oxygen from the blood enters the alveoli, and carbon dioxide from the alveoli enters the blood\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to lime water when it reacts with carbon dioxide?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'pichkari'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person inhales air with 21% oxygen and exhales air with 16% oxygen, what does this indicate about the respiratory process?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"misinterprets the data in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 9.15, what would be the observation when iodine solution is added to test tube A (without saliva) and test tube B (with saliva)?",
+      "reason": "options 1 and 2 say the same thing (\"Test tube A turns blue-black and test tube B remains unchanged\" / \"Test tube A remains unchanged and test tube B turns blue-black\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a correct statement about respiration and breathing?",
+      "reason": "options 1 and 2 say the same thing (\"Breathing is a chemical process and respiration is a physical process\" / \"Breathing is a physical process and respiration is a chemical process\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Anusha was breathing faster than Paridhi after running. Which of the following could explain this?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of breathing according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that the lime water in test tube A did not change color, but the lime water in test tube B turned milky. What can be concluded about the air in test tube A?",
+      "reason": "options 0 and 1 say the same thing (\"It contains less carbon dioxide than the air in test tube B\" / \"It contains more carbon dioxide than the air in test tube B\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the process of gas exchange in alveoli?",
+      "reason": "options 0 and 1 say the same thing (\"Oxygen from the alveoli passes into the blood, and carbon dioxide from the blood passes into the alveoli\" / \"Oxygen from the blood passes into the alveoli, and carbon dioxide from the alveoli passes into the blood\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the human respiratory system is responsible for filtering dust and dirt from the inhaled air?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that breathing is a physical process and respiration is a chemical process. Which of the following statements best supports this distinction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"contradicts the passage's explanation…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In which of the following organisms is food broken down and absorbed outside the body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main function of the mucus secreted in the stomach?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Understands the protective function of mucus but is unsure o…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main function of the mucus secreted by the stomach?",
+      "reason": "near-duplicate of served question cmveu6vcg01okgod84wlychv9 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of the alimentary canal absorbs most of the water and some salts from the undigested food?",
+      "reason": "near-duplicate of batch item \"Which part of the digestive system is responsible …\" (cosine 0.943 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

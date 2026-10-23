@@ -1,0 +1,384 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:18:51.237Z",
+  "finishedAt": "2026-10-23T02:22:35.525Z",
+  "seconds": 224,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap119.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 19 — A Seed Tells a Farmer’s Story",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 57539,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15868,
+      "completionTokens": 3203
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 143296,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 8880,
+      "completionTokens": 3613
+    },
+    "solver": {
+      "calls": 97,
+      "ms": 58771,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 19677,
+      "completionTokens": 1156
+    },
+    "form": {
+      "calls": 4,
+      "ms": 11564,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 975,
+      "completionTokens": 268
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3039,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 62909,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4404,
+      "completionTokens": 2205
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which grain is the seed in the passage talking about?",
+      "ms": {
+        "draft": 17147,
+        "critique": 5878,
+        "solver": 2233
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the farmer start buying expensive fertilizer?",
+      "ms": {
+        "draft": 17147,
+        "critique": 7193,
+        "solver": 1860
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Hasmukh do differently from his father Damjibhai in farming?",
+      "ms": {
+        "draft": 17147,
+        "critique": 5564,
+        "solver": 14832
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer uses only one kind of seed and grows only one kind of crop, what might be a possible consequence according to the passage?",
+      "ms": {
+        "draft": 3395,
+        "critique": 7304,
+        "solver": 1868,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is one reason why farmers may not be able to repay their loans?",
+      "ms": {
+        "draft": 3395,
+        "critique": 6854,
+        "solver": 1421,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the effect of growing the same crop repeatedly?",
+      "ms": {
+        "draft": 3395,
+        "critique": 5802,
+        "solver": 12311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of earthworms in farming?",
+      "ms": {
+        "draft": 3395,
+        "critique": 4359,
+        "solver": 658,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Bhaskarbhai not use fertilizers made in factories?",
+      "ms": {
+        "draft": 3504,
+        "critique": 6695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Hasmukh's son Paresh become a truck driver instead of a farmer?",
+      "ms": {
+        "draft": 3504,
+        "critique": 6944
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What might happen to Hasmukh's farm after some years if the same crop is grown continuously?",
+      "ms": {
+        "draft": 3504,
+        "critique": 7365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the use of the same kind of seed and crop?",
+      "ms": {
+        "draft": 3504,
+        "critique": 6675
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the reason for putting neem leaves in the wooden box?",
+      "ms": {
+        "draft": 4121,
+        "critique": 6829,
+        "solver": 20345,
+        "form": 2123
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the change in farming practices in the village?",
+      "ms": {
+        "draft": 4121,
+        "critique": 8683,
+        "solver": 17293,
+        "form": 2593
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer wants to grow crops that are sold at a good price, what might happen to traditional crops?",
+      "ms": {
+        "draft": 4121,
+        "critique": 8172,
+        "solver": 14639
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the farmer who stored the seeds in a wooden box?",
+      "ms": {
+        "draft": 4121,
+        "critique": 6969,
+        "solver": 1297,
+        "form": 4120,
+        "translation": 27822
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Damjibhai store seeds in a wooden box?",
+      "ms": {
+        "draft": 17147,
+        "critique": 5203,
+        "solver": 1434,
+        "form": 4726,
+        "translation": 31616
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which grain is the seed in the passage talking about?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why did the farmer start buying expensive fertilizer?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What did Hasmukh do differently from his father Damjibhai in farming?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a farmer uses only one kind of seed and grows only one kind of crop, what might be a possible consequence according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is one reason why farmers may not be able to repay their loans?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the effect of growing the same crop repeatedly?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the role of earthworms in farming?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why did Bhaskarbhai not use fertilizers made in factories?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Hasmukh's son Paresh become a truck driver instead of a farmer?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What might happen to Hasmukh's farm after some years if the same crop is grown continuously?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about the use of the same kind of seed and crop?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the reason for putting neem leaves in the wooden box?",
+      "reason": "options 1 and 2 are the same (\"To keep the seeds from getting too hot\"); options 1 and 3 are the same (\"To keep the seeds from getting too hot\"); options 2 and 3 are the same (\"To keep the seeds from getting too hot\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main reason for the change in farming practices in the village?",
+      "reason": "options 1 and 2 are the same (\"The need to grow crops that could be stored for longer periods\"); distractor 3's reason is not a one-line misconception (\"A student might think that modern technology like electric m…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a farmer wants to grow crops that are sold at a good price, what might happen to traditional crops?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,774 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T06:25:38.182Z",
+  "finishedAt": "2026-10-21T06:32:51.945Z",
+  "seconds": 434,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy304.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 4 — Map Projections",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\nSection E\nQuestion numbers 29 & 30 are Map based questions having 5 sub-parts each. 2X5=10\n29 On the given political map of the World, seven geographical features have been 5\nmarked as A, B, C, D, E, F and G. Identify any five with the help of the following\ninformation and write their correct names on the lines drawn near each feature.\nA. A major seaport.\nB. An international airport.\nC. An important Seaway.\nD. An area of subsistence gathering in South America.\nE. An important seaport of Asia.\nF. An area of Nomadic Herding.\nG. Region of extensive commercial grain agriculture.\nThe following questions are for Visually Impaired Candidates only in lieu of",
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n29. Map World 2X5=1\nOn the given political map of the world, the following seven features 5 are 0\nshown. Identify any five of these features and write their correct names on the\nlines marked near each feature.\nA. Cape town\nB. Rome\nC. St. Lawrence sea way\nD. Amazon\nE. Shanghai\nF. Tropical Africa/ North Africa\nG. Canterbury Grasslands/Plains\nThe following questions are for Visually Impaired Candidates only in lieu of\nQuestion No.29.\n29 A. Cape town\n29 B. Rome\n29 C. St. Lawrence sea way\n29 D. Amazon\n29 E. Shanghai\n29 F. Tropical Africa/ North Africa\n29 G. Canterbury Grasslands/Plains\n30 Locate and label any five of the following geographical features on the 5\nPolitical Outline map of India with",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n7. Section E Question number 29 and 30 are Map based questions."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 180104,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 34009,
+      "completionTokens": 11729
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 234911,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 21813,
+      "completionTokens": 7765
+    },
+    "solver": {
+      "calls": 204,
+      "ms": 82955,
+      "in": 33,
+      "out": 22,
+      "rejects": 11,
+      "promptTokens": 33530,
+      "completionTokens": 1935
+    },
+    "form": {
+      "calls": 18,
+      "ms": 52737,
+      "in": 22,
+      "out": 8,
+      "rejects": 14,
+      "promptTokens": 6729,
+      "completionTokens": 1674
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 281,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 211116,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14858,
+      "completionTokens": 7840
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct definition of a map projection?",
+      "ms": {
+        "draft": 4136,
+        "critique": 4609,
+        "solver": 1293,
+        "form": 4546
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following properties is NOT necessarily preserved in a map projection?",
+      "ms": {
+        "draft": 4136,
+        "critique": 5211,
+        "solver": 13301
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following can be inferred about the use of a map projection?",
+      "ms": {
+        "draft": 4136,
+        "critique": 6241,
+        "solver": 1146,
+        "form": 3940
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a 'reduced earth' in the context of map projections?",
+      "ms": {
+        "draft": 4136,
+        "critique": 5491,
+        "solver": 1477,
+        "form": 2605
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following can be concluded about the properties of a conical projection from the passage?",
+      "ms": {
+        "draft": 6914,
+        "critique": 6151,
+        "solver": 1390
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to construct a conical projection for a region between 10°N and 70°N latitudes. According to the passage, what is the main reason for selecting a standard parallel in the construction of such a projection?",
+      "ms": {
+        "draft": 6914,
+        "critique": 5661,
+        "solver": 1615,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the properties of a developable surface?",
+      "ms": {
+        "draft": 6914,
+        "critique": 5887,
+        "solver": 1366,
+        "form": 3188
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the primary purpose of using a developable surface in map projections?",
+      "ms": {
+        "draft": 6914,
+        "critique": 4945,
+        "solver": 1632,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is supported by the passage regarding conical projections?",
+      "ms": {
+        "draft": 6914,
+        "critique": 4584,
+        "solver": 1509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A map projection is constructed using a conical developable surface, with the cone touching the globe along a standard parallel. Which of the following properties of the projection is most directly affected by the choice of the standard parallel?",
+      "ms": {
+        "draft": 6914,
+        "critique": 5381,
+        "solver": 1296,
+        "form": 3357
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct property of the Simple Conical Projection with one standard parallel?",
+      "ms": {
+        "draft": 4655,
+        "critique": 6772,
+        "solver": 924
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the limitation of the Cylindrical Equal Area Projection?",
+      "ms": {
+        "draft": 4655,
+        "critique": 6227,
+        "solver": 1739,
+        "form": 3312
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct use of the Mercator’s Projection?",
+      "ms": {
+        "draft": 4655,
+        "critique": 5830,
+        "solver": 1327,
+        "form": 3256
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Mercator’s Projection not suitable for showing the size of countries near the poles?",
+      "ms": {
+        "draft": 4655,
+        "critique": 6553,
+        "solver": 1162,
+        "form": 2484
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of map projection that is neither equal in area nor in shape, and has incorrect directions?",
+      "ms": {
+        "draft": 2595,
+        "critique": 4589,
+        "solver": 1676
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the map projection that is least suitable for a world map?",
+      "ms": {
+        "draft": 2595,
+        "critique": 5033,
+        "solver": 1125
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following map projections is neither equal area nor correct in shape, and has incorrect directions?",
+      "ms": {
+        "draft": 2990,
+        "critique": 4413,
+        "solver": 1511
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following map projections is least suitable for a world map?",
+      "ms": {
+        "draft": 2990,
+        "critique": 4683,
+        "solver": 1933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A geographer is using a map projection that maintains correct shapes but distorts areas. Which projection is this most likely to be?",
+      "ms": {
+        "draft": 4024,
+        "critique": 5675
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a map is drawn using the Cylindrical Equal Area Projection, which of the following is most likely to be true about the representation of landmasses near the poles?",
+      "ms": {
+        "draft": 4024,
+        "critique": 5599,
+        "solver": 1719
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a map uses Mercator’s Projection, which of the following features is most likely to be represented accurately?",
+      "ms": {
+        "draft": 4024,
+        "critique": 4672,
+        "solver": 1396
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a use of the Simple Conical Projection with one standard parallel?",
+      "ms": {
+        "draft": 4024,
+        "critique": 5389,
+        "solver": 1271
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a property of the Simple Conical Projection with one standard parallel?",
+      "ms": {
+        "draft": 4024,
+        "critique": 5673,
+        "solver": 9554,
+        "form": 2160
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to construct a conical projection for a region bounded by 10°N to 70°N latitude and 10°E to 130°E longitude, with a scale of 1:250,000,000. According to the passage, which of the following is the standard parallel used in this projection?",
+      "ms": {
+        "draft": 5891,
+        "critique": 6574
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that no projection can maintain all the global properties (area, shape, direction, and distance) simultaneously. Based on this, which of the following can be inferred about the construction of a conical projection?",
+      "ms": {
+        "draft": 5891,
+        "critique": 6589,
+        "solver": 1220
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is asked to draw a conical projection. According to the passage, which of the following is a property of a conical projection?",
+      "ms": {
+        "draft": 5891,
+        "critique": 6846
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of map projection?",
+      "ms": {
+        "draft": 18257,
+        "critique": 5292
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a property that a map projection aims to preserve?",
+      "ms": {
+        "draft": 18257,
+        "critique": 7140
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes a Mercator projection?",
+      "ms": {
+        "draft": 18257,
+        "critique": 5298,
+        "solver": 903,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements correctly describes the nature of a conical projection?",
+      "ms": {
+        "draft": 5891,
+        "critique": 6979,
+        "solver": 10000,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which map projection has correct direction and shape but greatly exaggerates area near the poles?",
+      "ms": {
+        "draft": 2990,
+        "critique": 4010,
+        "solver": 1191,
+        "form": 3925
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which map projection is created when the source of light is at the center of the globe?",
+      "ms": {
+        "draft": 2990,
+        "critique": 5623,
+        "solver": 1126,
+        "form": 3812
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which map projection has correct direction and shape but greatly exaggerates area polewards?",
+      "ms": {
+        "draft": 2595,
+        "critique": 3805,
+        "solver": 5580,
+        "form": 814,
+        "translation": 31755
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the projection where the source of light is at the center of the globe?",
+      "ms": {
+        "draft": 2595,
+        "critique": 4829,
+        "solver": 987,
+        "form": 1510,
+        "translation": 29637
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for using a map projection?",
+      "ms": {
+        "draft": 4136,
+        "critique": 5756,
+        "solver": 13599,
+        "form": 2775,
+        "translation": 38947
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which map projection is most useful for navigational purposes?",
+      "ms": {
+        "draft": 2990,
+        "critique": 5671,
+        "solver": 1405,
+        "form": 2195,
+        "translation": 32311
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about map projections is correct?",
+      "ms": {
+        "draft": 2990,
+        "critique": 5361,
+        "solver": 1205,
+        "form": 2407,
+        "translation": 32478
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a projection that preserves the shape of a region?",
+      "ms": {
+        "draft": 4136,
+        "critique": 5549,
+        "solver": 10462,
+        "form": 3984,
+        "translation": 42210
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a correct feature of the Cylindrical Equal Area Projection?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following best describes the main use of the Simple Conical Projection with one standard parallel?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct definition of a map projection?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mistakenly thinks a map projection involves creating a 3D mo…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following properties is NOT necessarily preserved in a map projection?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following can be inferred about the use of a map projection?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes that distortion is not a concern in map projections…\"); distractor 1's reason is not a one-line misconception (\"Confuses the primary use of map projections, thinking they a…\"); distractor 3's reason is not a one-line misconception (\"Thinks that a map projection is a perfect model of the Earth…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a 'reduced earth' in the context of map projections?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the purpose of a 'reduced earth' as creating …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following can be concluded about the properties of a conical projection from the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is asked to construct a conical projection for a region between 10°N and 70°N latitudes. According to the passage, what is the main reason for selecting a standard parallel in the construction of such a projection?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses equidistant projections with conical projections, w…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage, which mentions that equal area pr…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that the passage says the main purpose i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the properties of a developable surface?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses conical projection with direct projection on a cone…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the primary purpose of using a developable surface in map projections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage, which mentions that equal area pr…\"); distractor 1's reason is not a one-line misconception (\"Confuses the idea of equi-distant projections with the use o…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage, which does not state that the tr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is supported by the passage regarding conical projections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage, which states that conical project…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that the cone touches the globe at a sin…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A map projection is constructed using a conical developable surface, with the cone touching the globe along a standard parallel. Which of the following properties of the projection is most directly affected by the choice of the standard parallel?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the effect of the standard parallel with the direct…\"); distractor 1's reason is not a one-line misconception (\"Misunderstands the passage, which states that distortion is …\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that the distance along the central meri…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a correct property of the Simple Conical Projection with one standard parallel?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the limitation of the Cylindrical Equal Area Projection?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Incorrectly assumes the shape is not preserved near the equa…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly believes the projection does not distort shape, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct use of the Mercator’s Projection?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes the projection shows the entire world without disto…\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the purpose of the projection, thinking it is…\"); distractor 3's reason is not a one-line misconception (\"Confuses the use of the projection, thinking it is for mid-l…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the Mercator’s Projection not suitable for showing the size of countries near the poles?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses the reason for the projection's inaccuracy, thinkin…\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the distortion, thinking it is about shape, b…\"); distractor 3's reason is not a one-line misconception (\"Believes the main issue is that it is not equal area, but th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of map projection that is neither equal in area nor in shape, and has incorrect directions?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the map projection that is least suitable for a world map?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "The passage describes a conical projection with one standard parallel. If a student is asked to construct a similar projection for a region bounded by 20°N to 60°N latitude and 20°E to 120°E longitude, which of the following would be the most appropriate standard parallel?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following map projections is neither equal area nor correct in shape, and has incorrect directions?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following map projections is least suitable for a world map?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A geographer is using a map projection that maintains correct shapes but distorts areas. Which projection is this most likely to be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a map is drawn using the Cylindrical Equal Area Projection, which of the following is most likely to be true about the representation of landmasses near the poles?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a map uses Mercator’s Projection, which of the following features is most likely to be represented accurately?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a use of the Simple Conical Projection with one standard parallel?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a property of the Simple Conical Projection with one standard parallel?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is asked to construct a conical projection for a region bounded by 10°N to 70°N latitude and 10°E to 130°E longitude, with a scale of 1:250,000,000. According to the passage, which of the following is the standard parallel used in this projection?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage states that no projection can maintain all the global properties (area, shape, direction, and distance) simultaneously. Based on this, which of the following can be inferred about the construction of a conical projection?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student is asked to draw a conical projection. According to the passage, which of the following is a property of a conical projection?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of map projection?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is not a property that a map projection aims to preserve?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best describes a Mercator projection?",
+      "reason": "options 0 and 1 say the same thing (\"It preserves the shape of regions but distorts size\" / \"It preserves the size of regions but distorts shape\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements correctly describes the nature of a conical projection?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.principalAxis: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which map projection has correct direction and shape but greatly exaggerates area near the poles?",
+      "reason": "near-duplicate of batch item \"Which map projection has correct direction and sha…\" (cosine 0.988 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which map projection is created when the source of light is at the center of the globe?",
+      "reason": "near-duplicate of batch item \"What is the name of the projection where the sourc…\" (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

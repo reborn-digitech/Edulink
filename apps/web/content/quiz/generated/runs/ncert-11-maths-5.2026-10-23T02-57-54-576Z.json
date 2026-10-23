@@ -1,0 +1,631 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:57:54.576Z",
+  "finishedAt": "2026-10-23T03:04:53.744Z",
+  "seconds": 419,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh105.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Linear Inequalities",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n11. (c) We observe,  0,0  does not satisfy the inequality x  y  1\nSo, the half plane represented by the above inequality will not contain origin\ntherefore, it will not contain the shaded feasible region.",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n7. (b) The strict inequality represents an open half plane and it\ncontains the origin as (0, 0) satisfies it.",
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n7. The solution set of the inequality 3x + 5y < 4 is\n(a) an open half-plane not containing the origin.\n(b) an open half-plane containing the origin.\n(c) the whole XY-plane not containing the line 3x + 5y = 4.\n(d) a closed half plane containing the origin.",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n11. The feasible region corresponding to the linear constraints of a Linear Programming Problem is given\nbelow.\nWhich of the following is not a constraint to the given Linear Programming Problem?\n(a) x  y  2 (b) x  2y  10 (c) x  y  1 (d) x  y  1\n       "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 153828,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 27655,
+      "completionTokens": 8121
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 300300,
+      "in": 31,
+      "out": 25,
+      "rejects": 6,
+      "promptTokens": 19426,
+      "completionTokens": 7466
+    },
+    "solver": {
+      "calls": 198,
+      "ms": 142012,
+      "in": 25,
+      "out": 16,
+      "rejects": 9,
+      "promptTokens": 49048,
+      "completionTokens": 2362
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6284,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 491,
+      "completionTokens": 140
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4423,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 277817,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16289,
+      "completionTokens": 7725
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If 30x < 200, which of the following values of x is a solution to the inequality?",
+      "ms": {
+        "draft": 5394,
+        "critique": 5930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a constraint in the given feasible region?",
+      "ms": {
+        "draft": 5394,
+        "critique": 9502,
+        "solver": 1638
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a strict inequality?",
+      "ms": {
+        "draft": 5394,
+        "critique": 7829,
+        "solver": 12413,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the origin (0, 0) satisfies the inequality x - y ≥ 1, which of the following is true about the feasible region?",
+      "ms": {
+        "draft": 5394,
+        "critique": 9664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the origin (0, 0) satisfies the inequality 3x + 5y < 4, which of the following is true about the solution set?",
+      "ms": {
+        "draft": 5394,
+        "critique": 7081,
+        "solver": 15007,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a valid constraint for the feasible region shown in the figure?",
+      "ms": {
+        "draft": 5736,
+        "critique": 9863,
+        "solver": 1815
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following represents the solution set of the inequality 3x + 5y < 4?",
+      "ms": {
+        "draft": 5736,
+        "critique": 11991,
+        "solver": 1831
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the inequality 30x < 200 and find the solution when x is a natural number.",
+      "ms": {
+        "draft": 5736,
+        "critique": 8128,
+        "solver": 16491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Solve the system of inequalities: 3x - 7 < 5 + x and 11 - 5x ≤ 1, and represent the solution on the number line.",
+      "ms": {
+        "draft": 5736,
+        "critique": 7851
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the solution of the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "ms": {
+        "draft": 4077,
+        "critique": 5681,
+        "solver": 1820,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the solution to the inequality 5x + 1 > – 24?",
+      "ms": {
+        "draft": 4077,
+        "critique": 6028,
+        "solver": 1461,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the solution to the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "ms": {
+        "draft": 4164,
+        "critique": 7100,
+        "solver": 20412,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the solution to the inequality 5x + 1 > – 24 and 5x – 1 < 24?",
+      "ms": {
+        "draft": 4164,
+        "critique": 7069,
+        "solver": 21306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution is to be kept between 68° F and 77° F, what is the range in Celsius using the formula F = (9/5)C + 32?",
+      "ms": {
+        "draft": 4164,
+        "critique": 8154,
+        "solver": 21012
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution of 8% boric acid is to be diluted by adding a 2% boric acid solution to it. The resulting mixture is to be more than 4% but less than 6% boric acid. If we have 640 litres of the 8% solution, how many litres of the 2% solution will have to be added?",
+      "ms": {
+        "draft": 4164,
+        "critique": 6701,
+        "solver": 1582
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a constraint to the given Linear Programming Problem if the feasible region is shown in a graph?",
+      "ms": {
+        "draft": 4164,
+        "critique": 9508
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the solution set of the inequality 3x + 5y < 4?",
+      "ms": {
+        "draft": 5516,
+        "critique": 10654
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a constraint to the given Linear Programming Problem?",
+      "ms": {
+        "draft": 5516,
+        "critique": 10924
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student solved the inequality 2x - 3 < 4x - 5 and found x > 1. Which of the following is the correct solution set?",
+      "ms": {
+        "draft": 5516,
+        "critique": 5846,
+        "solver": 1392,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the solution to the inequality 2x - 3 < 4x - 5 is x > 1, which of the following is the correct set of integers that satisfy the inequality?",
+      "ms": {
+        "draft": 5516,
+        "critique": 7136,
+        "solver": 2072
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the solution set of the inequality 30x < 200 when x is a natural number?",
+      "ms": {
+        "draft": 5516,
+        "critique": 8372,
+        "solver": 18411
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a linear inequality in one variable?",
+      "ms": {
+        "draft": 3525,
+        "critique": 9218,
+        "solver": 14690
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the sign of an inequality when both sides are multiplied or divided by a negative number?",
+      "ms": {
+        "draft": 5736,
+        "critique": 8582,
+        "solver": 1523,
+        "form": 2613
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution is to be kept between 68°F and 77°F. What is the range in Celsius if F = C + 32?",
+      "ms": {
+        "draft": 4077,
+        "critique": 5002,
+        "solver": 766,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a strict inequality?",
+      "ms": {
+        "draft": 3525,
+        "critique": 8887,
+        "solver": 2450,
+        "form": 0,
+        "translation": 36621
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which rule states that equal numbers can be added to or subtracted from both sides of an inequality without affecting the sign of the inequality?",
+      "ms": {
+        "draft": 5736,
+        "critique": 6272,
+        "solver": 2031,
+        "form": 3671,
+        "translation": 43927
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the symbol '≤' represent in inequalities?",
+      "ms": {
+        "draft": 4077,
+        "critique": 6136,
+        "solver": 1786,
+        "form": 0,
+        "translation": 37740
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a literal inequality?",
+      "ms": {
+        "draft": 5394,
+        "critique": 5470,
+        "solver": 12786,
+        "form": 0,
+        "translation": 24128
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If an inequality is reversed when both sides are multiplied by a negative number, which of the following is the correct action?",
+      "ms": {
+        "draft": 4077,
+        "critique": 5722,
+        "solver": 1140,
+        "form": 0,
+        "translation": 62502
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The feasible region for a linear programming problem is represented by the inequality x - y ≥ 1. Which of the following is true?",
+      "ms": {
+        "draft": 3525,
+        "critique": 9445,
+        "solver": 1851,
+        "form": 0,
+        "translation": 23509
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How many litres of water will have to be added to 1125 litres of the 45% solution of acid so that the resulting mixture will contain more than 25% but less than 30% acid content?",
+      "ms": {
+        "draft": 4164,
+        "critique": 6661,
+        "solver": 17948,
+        "form": 0,
+        "translation": 44121
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 30x < 200, which of the following values of x is a solution to the inequality?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is not a constraint in the given feasible region?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a strict inequality?",
+      "reason": "options 0 and 3 are the same (\"x ≥ 3\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the origin (0, 0) satisfies the inequality x - y ≥ 1, which of the following is true about the feasible region?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the origin (0, 0) satisfies the inequality 3x + 5y < 4, which of the following is true about the solution set?",
+      "reason": "options 0 and 1 say the same thing (\"It is an open half-plane not containing the origin\" / \"It is an open half-plane containing the origin\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a valid constraint for the feasible region shown in the figure?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following represents the solution set of the inequality 3x + 5y < 4?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Solve the inequality 30x < 200 and find the solution when x is a natural number.",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"200/30\" = 6.666666666666667, but the key says 6"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Solve the system of inequalities: 3x - 7 < 5 + x and 11 - 5x ≤ 1, and represent the solution on the number line.",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the solution of the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "reason": "options 0 and 1 are the same (\"x ≤ 3\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the solution to the inequality 5x + 1 > – 24?",
+      "reason": "options 0 and 1 are the same (\"x > –5\"); options 2 and 3 are the same (\"x > 5\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for statements involving signs like '<', '>', '≤', and '≥'?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the solution to the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "reason": "options 0 and 1 are the same (\"x ≤ 2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following represents the solution to the inequality 5x + 1 > – 24 and 5x – 1 < 24?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a solution is to be kept between 68° F and 77° F, what is the range in Celsius using the formula F = (9/5)C + 32?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A solution of 8% boric acid is to be diluted by adding a 2% boric acid solution to it. The resulting mixture is to be more than 4% but less than 6% boric acid. If we have 640 litres of the 8% solution, how many litres of the 2% solution will have to be added?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is not a constraint to the given Linear Programming Problem if the feasible region is shown in a graph?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is the solution set of the inequality 3x + 5y < 4?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is not a constraint to the given Linear Programming Problem?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student solved the inequality 2x - 3 < 4x - 5 and found x > 1. Which of the following is the correct solution set?",
+      "reason": "options 0 and 1 are the same (\"x > 1\"); options 0 and 2 are the same (\"x > 1\"); options 0 and 3 are the same (\"x > 1\"); options 1 and 2 are the same (\"x < 1\"); options 1 and 3 are the same (\"x < 1\"); options 2 and 3 are the same (\"x = 1\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the solution to the inequality 2x - 3 < 4x - 5 is x > 1, which of the following is the correct set of integers that satisfy the inequality?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the solution set of the inequality 30x < 200 when x is a natural number?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a linear inequality in one variable?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What happens to the sign of an inequality when both sides are multiplied or divided by a negative number?",
+      "reason": "near-duplicate of served question cmvhas55h07vtgpfhwkcvxs5p (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A solution is to be kept between 68°F and 77°F. What is the range in Celsius if F = C + 32?",
+      "reason": "near-duplicate of served question cmsmn74e009xby26j8fdx8rel (cosine 0.917 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

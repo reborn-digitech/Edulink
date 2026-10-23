@@ -1,0 +1,244 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:34:36.103Z",
+  "finishedAt": "2026-10-20T19:36:25.817Z",
+  "seconds": 110,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap106.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 6 — Omana’s Journey",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 20869,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6520,
+      "completionTokens": 1234
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 64452,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4086,
+      "completionTokens": 1773
+    },
+    "solver": {
+      "calls": 55,
+      "ms": 32448,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 9810,
+      "completionTokens": 584
+    },
+    "form": {
+      "calls": 5,
+      "ms": 10216,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 1130,
+      "completionTokens": 319
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2059,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 135413,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6873,
+      "completionTokens": 3462
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why was there so much noise at the station called Valsad?",
+      "ms": {
+        "draft": 2544,
+        "critique": 7060,
+        "solver": 2400
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why was there so much noise at the station called Valsad?",
+      "ms": {
+        "draft": 2674,
+        "critique": 5136,
+        "solver": 1297
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are some of the things that are sold at railway stations?",
+      "ms": {
+        "draft": 2674,
+        "critique": 5454,
+        "solver": 17700
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the ticket-checker do on the train?",
+      "ms": {
+        "draft": 2674,
+        "critique": 9855,
+        "solver": 1829,
+        "form": 2624
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Omana see from the window during her train journey?",
+      "ms": {
+        "draft": 2674,
+        "critique": 5868,
+        "solver": 15676,
+        "form": 1520
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Omana see from the window during the train journey?",
+      "ms": {
+        "draft": 2544,
+        "critique": 6584,
+        "solver": 820,
+        "form": 3732,
+        "translation": 41081
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are some of the things that are sold at railway stations?",
+      "ms": {
+        "draft": 2544,
+        "critique": 6608,
+        "solver": 1798,
+        "form": 3341,
+        "translation": 46036
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the ticket-checker do during a train journey?",
+      "ms": {
+        "draft": 2544,
+        "critique": 3568,
+        "solver": 693,
+        "form": 1029,
+        "translation": 45452
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why was there so much noise at the station called Valsad?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why was there so much noise at the station called Valsad?",
+      "reason": "the solver picked option 2 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What are some of the things that are sold at railway stations?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What does the ticket-checker do on the train?",
+      "reason": "near-duplicate of batch item \"What does the ticket-checker do during a train jou…\" (cosine 0.984 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What did Omana see from the window during her train journey?",
+      "reason": "near-duplicate of batch item \"What did Omana see from the window during the trai…\" (cosine 0.993 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

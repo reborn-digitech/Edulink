@@ -1,0 +1,529 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:35:19.606Z",
+  "finishedAt": "2026-10-22T21:39:00.176Z",
+  "seconds": 221,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm114.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — The Surajkund Fair",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 89629,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15804,
+      "completionTokens": 4394
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 260541,
+      "in": 24,
+      "out": 14,
+      "rejects": 10,
+      "promptTokens": 14133,
+      "completionTokens": 5913
+    },
+    "solver": {
+      "calls": 142,
+      "ms": 96860,
+      "in": 14,
+      "out": 8,
+      "rejects": 6,
+      "promptTokens": 32014,
+      "completionTokens": 1721
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4585,
+      "in": 8,
+      "out": 0,
+      "rejects": 8,
+      "promptTokens": 484,
+      "completionTokens": 131
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4407,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 183,
+      "completionTokens": 269
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following statements about symmetry is best supported by the passage?",
+      "ms": {
+        "draft": 4663,
+        "critique": 6291,
+        "solver": 3239,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mala has 6 beads of one colour and 2 beads of another, how many symmetrical arrangements can be made?",
+      "ms": {
+        "draft": 4663,
+        "critique": 7764,
+        "solver": 2560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a child uses 5 beads of one colour and 3 beads of another to make a symmetrical mala, how many beads will be on each side?",
+      "ms": {
+        "draft": 4663,
+        "critique": 7544
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these is an example of symmetry as described in the passage?",
+      "ms": {
+        "draft": 4663,
+        "critique": 6253,
+        "solver": 11946,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which activity is suggested in the passage to help children understand directions?",
+      "ms": {
+        "draft": 3111,
+        "critique": 9279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rangoli has 12 dots and is symmetrical, how many dots must be on each half?",
+      "ms": {
+        "draft": 4663,
+        "critique": 7241,
+        "solver": 13987,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the map mentioned in the passage?",
+      "ms": {
+        "draft": 3111,
+        "critique": 9427,
+        "solver": 2070,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Avi and Soni follow the path described in the passage, which lane will they take after the green lane?",
+      "ms": {
+        "draft": 3111,
+        "critique": 8853
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which activity in the passage helps children recognize symmetry?",
+      "ms": {
+        "draft": 4663,
+        "critique": 8602,
+        "solver": 18162,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a way to exit the Surajkund fair according to the passage?",
+      "ms": {
+        "draft": 3111,
+        "critique": 7768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the uncle is at the chaupal and needs to reach the ATM, which route should he take?",
+      "ms": {
+        "draft": 3111,
+        "critique": 7532,
+        "solver": 11203
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a child is asked to create a path using tiles, which of the following skills is most directly involved?",
+      "ms": {
+        "draft": 3111,
+        "critique": 7664,
+        "solver": 10073
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which activity did Soni and Avi do at the Surajkund Fair?",
+      "ms": {
+        "draft": 3893,
+        "critique": 5391
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Avi and Soni follow the path starting with the blue lane and then turning right on the green lane, which direction are they moving in?",
+      "ms": {
+        "draft": 3893,
+        "critique": 6160
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many exit routes are there in the Surajkund Fair according to the passage?",
+      "ms": {
+        "draft": 3893,
+        "critique": 8833,
+        "solver": 1998
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the map at the Surajkund Fair?",
+      "ms": {
+        "draft": 3893,
+        "critique": 5893,
+        "solver": 18374
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the fair has a maze and a straight path to exit, and you want to avoid the maze, which path should you choose?",
+      "ms": {
+        "draft": 3893,
+        "critique": 8790
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the fair that Soni and Avi are going to visit?",
+      "ms": {
+        "draft": 3272,
+        "critique": 7487
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the map shows a hut with handicraft stalls, where would you expect to find the handicraft stalls?",
+      "ms": {
+        "draft": 3893,
+        "critique": 9450,
+        "solver": 14023,
+        "form": 3556
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mala has 8 beads, 4 of one color and 4 of another, how many symmetrical malas can be made?",
+      "ms": {
+        "draft": 3272,
+        "critique": 9004
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the teacher ask the students to do with the rangolis?",
+      "ms": {
+        "draft": 3272,
+        "critique": 8701,
+        "solver": 18503,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student is asked to make a symmetrical mala with 6 beads of one color and 2 beads of another, how many symmetrical arrangements are possible?",
+      "ms": {
+        "draft": 3272,
+        "critique": 8814
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How can a student check if a rangoli is symmetrical?",
+      "ms": {
+        "draft": 3272,
+        "critique": 9532,
+        "solver": 19735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student wants to make a symmetrical mask, which of the following is true?",
+      "ms": {
+        "draft": 3272,
+        "critique": 9042,
+        "solver": 14128,
+        "form": 1029
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements about symmetry is best supported by the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage's emphasis on symmetry…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a mala has 6 beads of one colour and 2 beads of another, how many symmetrical arrangements can be made?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a child uses 5 beads of one colour and 3 beads of another to make a symmetrical mala, how many beads will be on each side?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of these is an example of symmetry as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which activity is suggested in the passage to help children understand directions?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a rangoli has 12 dots and is symmetrical, how many dots must be on each half?",
+      "reason": "checkExpr \"6\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the map mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Avi and Soni follow the path described in the passage, which lane will they take after the green lane?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which activity in the passage helps children recognize symmetry?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a way to exit the Surajkund fair according to the passage?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the uncle is at the chaupal and needs to reach the ATM, which route should he take?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a child is asked to create a path using tiles, which of the following skills is most directly involved?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which activity did Soni and Avi do at the Surajkund Fair?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Avi and Soni follow the path starting with the blue lane and then turning right on the green lane, which direction are they moving in?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many exit routes are there in the Surajkund Fair according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of the map at the Surajkund Fair?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the fair has a maze and a straight path to exit, and you want to avoid the maze, which path should you choose?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the fair that Soni and Avi are going to visit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the map shows a hut with handicraft stalls, where would you expect to find the handicraft stalls?",
+      "reason": "options 0 and 3 are the same (\"Near the restaurant\"); distractor 2's reason is not a one-line misconception (\"Selects a place mentioned in the passage but not related to …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a mala has 8 beads, 4 of one color and 4 of another, how many symmetrical malas can be made?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the teacher ask the students to do with the rangolis?",
+      "reason": "options 0 and 3 are the same (\"Draw lines that divide them into two identical halves\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a student is asked to make a symmetrical mala with 6 beads of one color and 2 beads of another, how many symmetrical arrangements are possible?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How can a student check if a rangoli is symmetrical?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student wants to make a symmetrical mask, which of the following is true?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

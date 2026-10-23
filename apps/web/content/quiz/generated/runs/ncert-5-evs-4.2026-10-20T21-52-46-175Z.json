@@ -1,0 +1,255 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:52:46.175Z",
+  "finishedAt": "2026-10-20T21:53:46.171Z",
+  "seconds": 60,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap104.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 4 — Mangoes Round the Year",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 19593,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8288,
+      "completionTokens": 1363
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 40869,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3761,
+      "completionTokens": 1571
+    },
+    "solver": {
+      "calls": 46,
+      "ms": 16058,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 6295,
+      "completionTokens": 397
+    },
+    "form": {
+      "calls": 3,
+      "ms": 4941,
+      "in": 6,
+      "out": 1,
+      "rejects": 5,
+      "promptTokens": 656,
+      "completionTokens": 211
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 1656,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15261,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2193,
+      "completionTokens": 1258
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is it important to dry glass jars and bottles before filling them with pickles?",
+      "ms": {
+        "draft": 2918,
+        "critique": 5444,
+        "solver": 939,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family wants to keep food fresh for a short period, which of the following methods would be most appropriate according to the passage?",
+      "ms": {
+        "draft": 2918,
+        "critique": 5635,
+        "solver": 1544
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of food spoilage as described in the passage?",
+      "ms": {
+        "draft": 2918,
+        "critique": 5996,
+        "solver": 1697,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for making pickles, aam papad, and chutney?",
+      "ms": {
+        "draft": 2918,
+        "critique": 3214,
+        "solver": 427,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done with food items that can get spoilt in 2-3 days?",
+      "ms": {
+        "draft": 1980,
+        "critique": 4021,
+        "solver": 985
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason food gets spoilt?",
+      "ms": {
+        "draft": 1980,
+        "critique": 4612,
+        "solver": 1564,
+        "form": 2722
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Biji return the bread packet?",
+      "ms": {
+        "draft": 1980,
+        "critique": 4192,
+        "solver": 8357,
+        "form": 911
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why was the mamidi tandra made in the sun?",
+      "ms": {
+        "draft": 1980,
+        "critique": 5437,
+        "solver": 785,
+        "form": 1308,
+        "translation": 11742
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why is it important to dry glass jars and bottles before filling them with pickles?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a family wants to keep food fresh for a short period, which of the following methods would be most appropriate according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of food spoilage as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for making pickles, aam papad, and chutney?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What should be done with food items that can get spoilt in 2-3 days?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason food gets spoilt?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, so this is a distr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Biji return the bread packet?",
+      "reason": "options 0 and 1 are the same (\"It was not packed properly\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

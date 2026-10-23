@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-19T09:25:54.023Z",
+  "generatedAt": "2026-10-22T07:14:26.807Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which instrument is used to record earthquakes?",
+      "stem": "What is an earthquake?",
       "choices": [
-        "Seismometer",
-        "Barometer",
-        "Thermometer",
-        "Pyrometer"
+        "Sudden vibrations on the earth and shaking of the earth surface",
+        "A type of weather condition",
+        "A natural phenomenon that only occurs in mountainous regions",
+        "A result of underground nuclear explosions"
       ],
       "answerIndex": 0,
-      "solution": "A seismometer is the instrument specifically designed to detect and record the vibrations caused by earthquakes. A barometer measures atmospheric pressure, a thermometer measures temperature, and a pyrometer measures high temperatures, none of which are related to recording seismic activity.",
+      "solution": "An earthquake is a sudden vibration and shaking of the Earth's surface caused by the movement of tectonic plates beneath the surface. The other options are incorrect because earthquakes are not a type of weather, they can occur in various regions, and they are not caused by human activities like nuclear explosions.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "भूकंप के रिकॉर्ड करने के लिए कौन-सा उपकरण प्रयोग किया जाता है?",
+          "stem": "भूकंप क्या है?",
           "choices": [
-            "सीस्मोमीटर",
-            "बैरोमीटर",
-            "थर्मामीटर",
-            "पायरोमीटर"
+            "भूमि पर अचानक कंपन और भूमि के सतह का हिलना",
+            "एक प्रकार की मौसमी स्थिति",
+            "केवल पहाड़ी क्षेत्रों में होने वाली एक प्राकृतिक घटना",
+            "भूमिगत परमाणु विस्फोटों का परिणाम"
           ],
-          "solution": "सीस्मोमीटर भूकंप के कारण होने वाले दोहरे झटकों को बराबर रूप से खोजने और रिकॉर्ड करने के लिए विशेष रूप से डिज़ाइन किया गया उपकरण है। बैरोमीटर वातावरणीय दबाव को मापता है, थर्मामीटर तापमान को मापता है और पायरोमीटर उच्च तापमान को मापता है, जिनमें से कोई भी भूकंप के गतिविधि के रिकॉर्डिंग से संबंधित नहीं है।",
+          "solution": "भूकंप भूमि के सतह पर अचानक कंपन और हिलना होता है जो भूमि के नीचे विवर्तनीय प्लेटों के गति के कारण होता है। अन्य विकल्प गलत हैं क्योंकि भूकंप मौसमी स्थिति नहीं है, वे विभिन्न क्षेत्रों में हो सकते हैं और वे परमाणु विस्फोट जैसे मानव गतिविधियों के कारण नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate technical terms and correct answer placement.",
           "flag": null
         },
         "mr": {
-          "stem": "भूकंप रेकॉर्ड करण्यासाठी कोणता उपकरण वापरला जातो?",
+          "stem": "भूकंप काय आहे?",
           "choices": [
-            "सिस्मोमीटर",
-            "बॅरोमीटर",
-            "थर्मॉमीटर",
-            "पायरोमीटर"
+            "भूमीवरील अचानक विद्रवणे आणि भूमीचा हालचाल करणे",
+            "एक प्रकारचे हवामानाचे स्थिती",
+            "एक स्वाभाविक घटना जी फक्त पर्वतीय प्रदेशांमध्ये घडते",
+            "भूमीखालील परमाणु स्फोटांचा परिणाम"
           ],
-          "solution": "सिस्मोमीटर हा भूकंप झाल्यामुळे उद्भवलेल्या विद्रवणांना ओळखण्यासाठी आणि रेकॉर्ड करण्यासाठी विशेषतः डिझाइन केलेला उपकरण आहे. बॅरोमीटर वातावरणाचा दाब मोजतो, थर्मॉमीटर तापमान मोजतो आणि पायरोमीटर उच्च तापमान मोजतो, जे सर्व भूकंपीय क्रियाकलापांशी संबंधित नाहीत.",
+          "solution": "भूकंप हा भूमीच्या पृष्ठभागावरील अचानक विद्रवण आणि हालचाल आहे जे भूमीखालील भूतांतरीय प्लेटच्या गतीमुळे होते. इतर विकल्प अयोग्य आहेत कारण भूकंप हवामानाचा प्रकार नाहीत, ते विविध प्रदेशांमध्ये घडू शकतात आणि ते परमाणु स्फोटांसारख्या मानवी क्रियाकलापांमुळे होत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi technical terms for scientific instruments.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology used in textbooks.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses seismometer with barometer, which measures pressure.",
-        "Confuses seismometer with thermometer, which measures temperature.",
-        "Confuses seismometer with pyrometer, which measures high temperatures."
+        "Confuses earthquakes with weather-related phenomena",
+        "Belief that earthquakes are limited to specific geographic areas like mountains",
+        "Belief that earthquakes are caused by human-made explosions rather than natural tectonic activity"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is Seismometer, as it is the instrument used to record earthquakes. The other options are correctly identified as unrelated to earthquake detection, and the misconceptions described are plausible for students.",
+      "critique": "The correct answer is clearly option 0, as it accurately defines an earthquake. The other options represent common misconceptions, which the author has correctly identified.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -116,47 +116,333 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
+      "generatedAt": "2026-10-22T07:14:26.807Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following is a precaution to take during a fire?",
+      "difficulty": 3,
+      "stem": "What should you do if you are in a building during an earthquake?",
       "choices": [
-        "Switch on the gas regulator when leaving the house",
-        "Leave the electrical appliances on when going out",
-        "Shout loudly to alert others and call for help",
-        "Do not provide information on using fire extinguishers"
+        "Take shelter near the window",
+        "Use the elevator",
+        "Find shelter under a bed or table",
+        "Stand in the middle of the room"
       ],
       "answerIndex": 2,
-      "solution": "The correct option is to shout loudly to alert others and call for help. This is essential because it ensures that people nearby are aware of the danger and can respond quickly. Switching on the gas regulator or leaving electrical appliances on increases the risk of further hazards, and not providing information on using fire extinguishers would prevent others from acting effectively in an emergency.",
+      "solution": "Finding shelter under a bed or table protects you from falling objects, which is crucial during an earthquake. Using an elevator is unsafe because it may stop or malfunction, and standing in the middle of a room offers no protection from debris. Taking shelter near a window is dangerous because glass can shatter and cause injury.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन सा आग लगने के दौरान लेने वाला एक सावधानी है?",
+          "stem": "भूकंप के दौरान आप अगर इमारत में हों तो आप क्या करना चाहिए?",
           "choices": [
-            "घर छोड़ते समय गैस रेगुलेटर को चालू करें",
-            "बाहर जाते समय बिजली के यंत्र चालू छोड़ दें",
-            "अन्य लोगों को चेतावनी देने और सहायता के लिए कहें",
-            "अग्निशामक के उपयोग के बारे में जानकारी प्रदान न करें"
+            "खिड़की के पास छिप जाएं",
+            "एलिवेटर का उपयोग करें",
+            "बिस्तर या मेज के नीचे छिप जाएं",
+            "कमरे के बीच में खड़े हो जाएं"
           ],
-          "solution": "सही विकल्प अन्य लोगों को चेतावनी देने और सहायता के लिए कहना है। यह आवश्यक है क्योंकि इससे पास के लोग खतरे के बारे में जागरूक हो जाते हैं और तेजी से प्रतिक्रिया कर सकते हैं। गैस रेगुलेटर को चालू करना या बिजली के यंत्र चालू छोड़ देना आगे के खतरों के जोखिम को बढ़ा देता है, और अग्निशामक के उपयोग के बारे में जानकारी प्रदान न करना आपातकाल में अन्य लोगों के कार्य करने में बाधा डाल सकता है।",
+          "solution": "बिस्तर या मेज के नीचे छिप जाना आपको गिरते वस्तुओं से सुरक्षा प्रदान करता है, जो भूकंप के दौरान आवश्यक है। एलिवेटर का उपयोग असुरक्षित होता है क्योंकि यह रुक सकता है या खराब हो सकता है, और कमरे के बीच में खड़े रहना अप्राकृतिक वस्तुओं से कोई सुरक्षा नहीं देता है। खिड़की के पास छिप जाना खतरनाक होता है क्योंकि कांच टूट सकता है और चोट लगा सकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option 2, and all distractors are still incorrect. The terminology used is standard in Hindi-medium educational materials.",
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते आग झाल्याच्या वेळी घेण्याचे सावधगिरी आहे?",
+          "stem": "भूकंपादरम्यान तुम्ही इमारतीत असल्यास काय करावे?",
           "choices": [
-            "घराबाहेर जाताना गॅस रेग्युलेटर चालू करा",
-            "बाहेर जाताना विद्युत उपकरण चालू ठेवा",
-            "इतरांना चीत्कार करून अलर्ट करा आणि मदत मागा",
-            "आग विरोधी उपकरणाच्या वापराबद्दल माहिती देऊ नका"
+            "बाहेरील खिडकीजवळ छावणी करा",
+            "लिफ्ट वापरा",
+            "बेड किंवा मेजाखाली छावणी करा",
+            "खोलीच्या मध्यात उभे रहा"
           ],
-          "solution": "खालीलपैकी योग्य पर्याय इतरांना चीत्कार करून अलर्ट करा आणि मदत मागा हा आहे. हे आवश्यक आहे कारण ते जवळच्या लोकांना धोक्याबद्दल जाणीव करून देते आणि ते वेगाने प्रतिसाद देऊ शकतात. गॅस रेग्युलेटर चालू करणे किंवा विद्युत उपकरणे चालू ठेवणे अतिरिक्त धोक्यांचा जोखीम वाढवते, आणि आग विरोधी उपकरणाच्या वापराबद्दल माहिती देणे टाळल्यास आपत्कालीन परिस्थितीत इतरांना कार्य करण्यास अडथळा येऊ शकतो.",
+          "solution": "बेड किंवा मेजाखाली छावणी करणे तुम्हाला खाली पडणाऱ्या वस्तूंपासून बचाव करते, जे भूकंपादरम्यान महत्वपूर्ण आहे. लिफ्ट वापरणे असुरक्षित आहे कारण ती थांबू शकते किंवा अडथळा निर्माण करू शकते, आणि खोलीच्या मध्यात उभे रहाणे खोदकांपासून बचाव करत नाही. खिडकीजवळ छावणी करणे धोकादायक आहे कारण शीशा फुटू शकतो आणि जखम होऊ शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for safety instructions during an earthquake.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakenly identifies a dangerous action as safe during an earthquake",
+        "Mistakenly identifies a risky action as safe during an earthquake",
+        null,
+        "Believes that being in the center of a room is safer during an earthquake"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as taking shelter under a bed or table is a standard safety recommendation during an earthquake. The other options are all unsafe and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 86,
+          "pageStart": 74,
+          "pageEnd": 75,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 87,
+          "pageStart": 75,
+          "pageEnd": 76,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 88,
+          "pageStart": 76,
+          "pageEnd": 76,
+          "headingPath": [
+            "9. Disaster Management",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:14:26.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person is in a vehicle during an earthquake, what should they do?",
+      "choices": [
+        "Park the vehicle and stay inside",
+        "Get out of the vehicle and run to the nearest building",
+        "Drive to the nearest building",
+        "Stop the vehicle and stand near it"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct action is to park the vehicle and stay inside because it provides protection from falling debris and reduces the risk of being hit by objects. Getting out of the vehicle and running or driving to a building increases the danger due to unstable ground and potential hazards. Standing near the vehicle also leaves you exposed to risks from the earthquake itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति भूकंप के दौरान एक वाहन में हो, तो उसे क्या करना चाहिए?",
+          "choices": [
+            "वाहन को खड़ा कर दें और अंदर रहें",
+            "वाहन से बाहर निकलें और निकटतम भवन में भागें",
+            "निकटतम भवन तक वाहन चलाएं",
+            "वाहन रोकें और उसके पास खड़े रहें"
+          ],
+          "solution": "सही कार्यवाही वाहन को खड़ा कर देना और अंदर रहना है क्योंकि यह गिरते हुए टुकड़ों से सुरक्षा प्रदान करता है और वस्तुओं द्वारा मारे जाने के जोखिम को कम करता है। वाहन से बाहर निकलकर भागना या भवन तक वाहन चलाना अस्थिर जमीन और संभावित खतरों के कारण खतरनाक होता है। वाहन के पास खड़े रहना भूकंप के स्वयं के जोखिम से आपको खुला छोड़ देता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with educational materials.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वाहनात असताना भूकंपाच्या वेळी एखाद्या व्यक्तीने काय करावे?",
+          "choices": [
+            "वाहन थांबवा आणि त्यात रहा",
+            "वाहनातून बाहेर पडा आणि जवळच्या इमारतीत धावा",
+            "जवळच्या इमारतीत जाण्यासाठी वाहन चालवा",
+            "वाहन थांबवा आणि त्याजवर उभा रहा"
+          ],
+          "solution": "योग्य कृत्य वाहन थांबवा आणि त्यात रहा कारण ते जमीन खाली पडणाऱ्या खड्ड्यांपासून संरक्षण प्रदान करते आणि वस्तूंच्या धोक्याचा धोका कमी करते. वाहनातून बाहेर पडणे आणि धावणे किंवा इमारतीत जाण्यासाठी वाहन चालवणे अस्थिर जमीन आणि विपदांमुळे धोकादायक असते. वाहनाजवळ उभा रहाणे भूकंपाच्या आपत्कालीन धोक्यांमुळे खतरनाक असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for earthquake safety procedures.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that moving to a building is safer during an earthquake",
+        "Chooses a dangerous action during an earthquake",
+        "Chooses a dangerous action during an earthquake"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the solution correctly interprets the passage. All other options are unsafe during an earthquake, and the author's reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 83,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 84,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 85,
+          "pageStart": 73,
+          "pageEnd": 74,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:14:26.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is a correct precaution to take after an earthquake?",
+      "choices": [
+        "Use candles to light the area",
+        "Switch on the main electric supply",
+        "Use a torch or battery for lighting",
+        "Run outside immediately"
+      ],
+      "answerIndex": 2,
+      "solution": "Using a torch or battery for lighting is correct because it avoids the risk of fire from open flames or electrical sparks. Using candles can cause fires if gas lines are damaged. Switching on the main electric supply may lead to electrical hazards. Running outside immediately can be dangerous due to potential aftershocks or falling debris.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा भूकंप के बाद लेने वाला सही सावधानी है?",
+          "choices": [
+            "क्षेत्र को रोशन करने के लिए मोमबत्ती का उपयोग करें",
+            "मुख्य बिजली सप्लाई चालू करें",
+            "रोशनी के लिए टॉर्च या बैटरी का उपयोग करें",
+            "तुरंत बाहर भाग जाएं"
+          ],
+          "solution": "टॉर्च या बैटरी का उपयोग रोशनी के लिए सही है क्योंकि यह खुले आग या बिजली के चिंगारी से आग लगने के जोखिम को बचाता है। मोमबत्ती का उपयोग गैस लाइन टूटे होने पर आग लगा सकता है। मुख्य बिजली सप्लाई चालू करने से बिजली के खतरे हो सकते हैं। तुरंत बाहर भाग जाना आफटरशॉक या गिरते टुकड़ों के कारण खतरनाक हो सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains option 2.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता भूकंपानंतर घ्यावयाचा योग्य खबरदारीचा उपाय आहे?",
+          "choices": [
+            "क्षणाच्या ज्वाला वापरा",
+            "मुख्य विद्युत पुरवठा चालू करा",
+            "टॉर्च किंवा बॅटरी वापरा ज्वाला करण्यासाठी",
+            "तात्काळ बाहेर धावा"
+          ],
+          "solution": "टॉर्च किंवा बॅटरी वापरणे योग्य आहे कारण ते खुल्या ज्वाला किंवा विद्युत चिंगारीमुळे आग लागण्याच्या धोक्याचा टाळते. ज्वाला वापरल्यास गॅस लाईन्स फुटल्यास आग लागू शकते. मुख्य विद्युत पुरवठा चालू केल्यास विद्युत धोका असू शकतो. तात्काळ बाहेर धावल्यास भूकंपाच्या अवशेष वा विघटित पदार्थांमुळे धोका असू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks candles are safe after an earthquake",
+        "Believes the electric supply should be turned on",
+        null,
+        "Thinks running is safe after an earthquake"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as using a torch or battery for lighting is safe after an earthquake to avoid fire risks. The other options are unsafe or not recommended.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 83,
+          "pageStart": 72,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 84,
+          "pageStart": 73,
+          "pageEnd": 73,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 85,
+          "pageStart": 73,
+          "pageEnd": 74,
+          "headingPath": [
+            "9. Disaster Management"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:14:26.807Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are non-conductive fire extinguishers used for electrical fires?",
+      "choices": [
+        "They are cheaper",
+        "They prevent the risk of electric shock",
+        "They are more effective",
+        "They are more widely available"
+      ],
+      "answerIndex": 1,
+      "solution": "Non-conductive fire extinguishers are used for electrical fires because they do not conduct electricity, which helps prevent electric shock. Using conductive materials could allow electricity to pass through the extinguisher and harm the person using it. The other options are not related to the safety concerns of electrical fires.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "विद्युत अग्नि के लिए अचालक अग्निशामक क्यों उपयोग किए जाते हैं?",
+          "choices": [
+            "वे सस्ते होते हैं",
+            "वे विद्युत झटका के जोखिम को रोकते हैं",
+            "वे अधिक प्रभावी होते हैं",
+            "वे अधिक उपलब्ध होते हैं"
+          ],
+          "solution": "अचालक अग्निशामक विद्युत अग्नि के लिए इसलिए उपयोग किए जाते हैं क्योंकि वे विद्युत का संचालन नहीं करते, जो विद्युत झटका को रोकने में मदद करता है। चालक सामग्री का उपयोग करने से विद्युत अग्निशामक के माध्यम से पारित हो सकता है और इससे इसका उपयोग करने वाले व्यक्ति को नुकसान हो सकता है। अन्य विकल्प विद्युत अग्नि के सुरक्षा संबंधी चिंताओं से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and technical terms of the original English question. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विद्युत आगीसाठी अवाहक अग्निशामक वापरले जातात कारण काय?",
+          "choices": [
+            "ते स्वस्त असतात",
+            "ते विद्युत झटका टाळतात",
+            "ते अधिक प्रभावी असतात",
+            "ते अधिक उपलब्ध असतात"
+          ],
+          "solution": "अवाहक अग्निशामक विद्युत आगीसाठी वापरले जातात कारण ते विद्युत वाहू नाहीत, जे विद्युत झटका टाळण्यास मदत करते. वाहक पदार्थ वापरल्यास अग्निशामक माध्यमातून विद्युत प्रवाह होऊ शकतो आणि त्यामुळे त्याचा वापर करणारा व्यक्ती जखमी होऊ शकतो. इतर विकल्प विद्युत आगीच्या सुरक्षा चिंतांशी संबंधित नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -167,202 +453,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the action of turning on with turning off",
-        "Thinks leaving appliances on is safe",
+        "Thinks cost is the main factor",
         null,
-        "Does not understand the importance of alerting others in an emergency"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as shouting loudly to alert others and call for help is a standard precaution during a fire. The other options are clearly incorrect and represent common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 86,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 87,
-          "pageStart": 75,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 88,
-          "pageStart": 76,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a precaution to take during a disaster?",
-      "choices": [
-        "Switch on the gas regulator when leaving the house",
-        "Leave electrical appliances on when going out",
-        "Shout loudly to alert others",
-        "Ignore the fire brigade"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'Shout loudly to alert others' because it is essential to communicate danger and seek help during a disaster. Switching on the gas regulator or leaving electrical appliances on can increase risks, and ignoring the fire brigade can delay critical assistance.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा आपदा के दौरान लेने वाला सावधानी है?",
-          "choices": [
-            "घर छोड़ते समय गैस रेगुलेटर चालू कर दें",
-            "बाहर जाते समय बिजली के यंत्र चालू छोड़ दें",
-            "अन्य लोगों को चेतावनी देने के लिए लाउडस्पीकर से चिल्लाएं",
-            "अग्निशमन दल की अवहेलना करें"
-          ],
-          "solution": "सही उत्तर 'अन्य लोगों को चेतावनी देने के लिए लाउडस्पीकर से चिल्लाएं' है क्योंकि आपदा के दौरान खतरे की सूचना देना और सहायता मांगना आवश्यक है। गैस रेगुलेटर को चालू करना या बिजली के यंत्र चालू छोड़ देना जोखिम बढ़ा सकता है, और अग्निशमन दल की अवहेलना करना आवश्यक सहायता में देरी कर सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'गैस रेगुलेटर' (gas regulator) and 'अग्निशमन दल' (fire brigade) are appropriately translated and commonly used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक आपत्कालात घेण्यात येणारे सावधगिरीचे उपाय आहे?",
-          "choices": [
-            "घर सोडताना गॅस रेग्युलेटर चालू करा",
-            "बाहेर जाताना विद्युत उपकरण चालू ठेवा",
-            "इतरांना चिंता देण्यासाठी जोरात ओरडा",
-            "अग्निशमन दलाला नजरअंदाज करा"
-          ],
-          "solution": "बरोबर उत्तर 'इतरांना चिंता देण्यासाठी जोरात ओरडा' आहे कारण आपत्कालात धोका संप्रेषित करणे आणि मदत मागणे आवश्यक आहे. गॅस रेग्युलेटर चालू करणे किंवा विद्युत उपकरण चालू ठेवणे धोकादायक असू शकते, आणि अग्निशमन दलाला नजरअंदाज करणे महत्वपूर्ण सहाय्य विलंबित करू शकते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for disaster preparedness.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the action of switching on with switching off",
-        "Thinks leaving appliances on is safe",
-        null,
-        "Does not understand the importance of alerting others in a disaster situation"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as shouting loudly to alert others is a valid precaution during a disaster. The other options are clearly incorrect as they involve unsafe actions like leaving gas or appliances on, or ignoring emergency services.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 86,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 87,
-          "pageStart": 75,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 88,
-          "pageStart": 76,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a correct first aid measure during a disaster?",
-      "choices": [
-        "Let the patient stand and move around",
-        "Let the patient sit or sleep in a comfortable position",
-        "Ignore the patient and focus on the disaster",
-        "Call the doctor after a long time"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'Let the patient sit or sleep in a comfortable position' because this helps prevent further injury and allows the patient to rest, which is essential during a disaster. The other options are incorrect because moving the patient unnecessarily can worsen injuries, ignoring the patient is unsafe, and delaying medical help can be life-threatening.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा आपदा के दौरान सही प्राथमिक देखभाल उपाय है?",
-          "choices": [
-            "रोगी को खड़ा होकर घूमने दें",
-            "रोगी को आरामदायक स्थिति में बैठाएं या सोने दें",
-            "रोगी की अनदेखी करें और आपदा पर ध्यान केंद्रित करें",
-            "कुछ समय बाद डॉक्टर को बुलाएं"
-          ],
-          "solution": "सही उत्तर 'रोगी को आरामदायक स्थिति में बैठाएं या सोने दें' है क्योंकि यह आगे के चोट को रोकता है और रोगी के आराम की अनुमति देता है, जो आपदा के दौरान आवश्यक है। अन्य विकल्प गलत हैं क्योंकि रोगी को अनावश्यक रूप से घूमाना चोट को बर्बाद कर सकता है, रोगी की अनदेखी असुरक्षित है और चिकित्सा सहायता के देरी करना जानलेवा हो सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate medical terminology commonly found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता एक विनोदात दुर्घटना झाल्यास योग्य प्रथम उपाय आहे?",
-          "choices": [
-            "रुग्णाला उभे राहण्यास आणि चालण्यास सांगा",
-            "रुग्णाला आरामदायक जागी बसू द्या किंवा झोपू द्या",
-            "रुग्णाला अनादर करा आणि दुर्घटनेवर लक्ष केंद्रित करा",
-            "लहान वेळानंतर डॉक्टरला बोलावा"
-          ],
-          "solution": "योग्य उत्तर 'रुग्णाला आरामदायक जागी बसू द्या किंवा झोपू द्या' आहे कारण हे अतिरिक्त जखम रोखते आणि रुग्णाला आराम घेण्यास मदत करते, जे दुर्घटनेदरम्यान आवश्यक आहे. इतर विकल्प चुकीचे आहेत कारण अवाजवीपणे रुग्णाला चालवल्याने जखम वाढू शकते, रुग्णाला अनादर करणे असुरक्षित आहे आणि चिकित्सक मदत विलंबित करणे जीवघेणे असू शकते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for first aid concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks movement helps in recovery",
-        null,
-        "Believes ignoring the patient is safe",
-        "Does not understand the urgency of calling a doctor"
+        "Confuses effectiveness with safety",
+        "Believes availability is the main reason"
       ],
       "solverAnswers": [
         1,
@@ -371,104 +465,8 @@
         1,
         1
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as sitting or sleeping in a comfortable position is a standard first aid measure during a disaster. The other options are clearly incorrect and reflect common misconceptions about first aid.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 86,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 87,
-          "pageStart": 75,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 88,
-          "pageStart": 76,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What should a person do if they are inside a building during an earthquake?",
-      "choices": [
-        "Run outside immediately",
-        "Stand still and cover their head",
-        "Use the lift to go down quickly",
-        "Sit near a window to get fresh air"
-      ],
-      "answerIndex": 1,
-      "solution": "Standing still and covering the head is the correct action during an earthquake because it protects the person from falling or flying objects while minimizing the risk of injury. Running outside can be dangerous due to potential falling debris, using a lift during an earthquake can trap a person, and sitting near a window increases the risk of being hurt by broken glass.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक भूकंप के दौरान अगर कोई व्यक्ति इमारत के अंदर हो तो उसे क्या करना चाहिए?",
-          "choices": [
-            "तुरंत बाहर निकल जाए",
-            "खड़े रहें और अपने सिर को ढक लें",
-            "तेजी से नीचे जाने के लिए लिफ्ट का उपयोग करें",
-            "ताजा हवा पाने के लिए खिड़की के पास बैठ जाए"
-          ],
-          "solution": "भूकंप के दौरान खड़े रहना और सिर को ढक लेना सही कार्य है क्योंकि यह व्यक्ति को गिरते या उड़ते वस्तुओं से बचाता है जबकि चोट के जोखिम को कम करता है। बाहर निकलना गिरते हुए टुकड़ों के कारण खतरनाक हो सकता है, भूकंप के दौरान लिफ्ट का उपयोग व्यक्ति को फंसा सकता है, और खिड़की के पास बैठना टूटे कांच से चोट के जोखिम को बढ़ाता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "भूकंपादरम्यान एका इमारतीत असलेल्या व्यक्तीने काय करावे?",
-          "choices": [
-            "तात्काळ बाहेर पळावे",
-            "थांबून आपले डोके ढकलावे",
-            "तत्काळ खाली जाण्यासाठी लिफ्ट वापरावी",
-            "ताजे हवा मिळविण्यासाठी खिडकीजवळ बसावे"
-          ],
-          "solution": "भूकंपादरम्यान थांबून आपले डोके ढकलणे हा योग्य कृत्य आहे कारण तो व्यक्तीला जमीनीवर पडणाऱ्या किंवा उडणाऱ्या वस्तूंपासून बचाव करते आणि ईजिस जखमी होण्याचा धोका कमी करते. बाहेर पळणे जखमी होण्याच्या धोक्याने भरलेले असू शकते, भूकंपादरम्यान लिफ्ट वापरणे व्यक्तीला फसवू शकते आणि खिडकीजवळ बसणे तुटलेल्या काचेमुळे जखमी होण्याचा धोका वाढवते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for earthquake safety procedures.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks running is the correct action during an earthquake",
-        null,
-        "Believes using the lift is safe during an earthquake",
-        "Chooses an action that could expose the person to danger from broken windows"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as it aligns with standard earthquake safety guidelines. The other options are clearly unsafe and reflect common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as non-conductive extinguishers prevent electric shock. The other options are common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -499,295 +497,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If there is a landslide in a mountainous region, which of the following would most likely happen?",
-      "choices": [
-        "Rivers change their paths",
-        "The school management committee is formed",
-        "The foundation of earthquake-proof buildings is separated from other land",
-        "The government launches a program to forecast landslides"
-      ],
-      "answerIndex": 0,
-      "solution": "A landslide in a mountainous region can alter the landscape, causing rivers to change their paths due to the accumulation of debris and changes in the terrain. The other options are not direct consequences of a landslide but rather human responses or unrelated events.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पहाड़ी क्षेत्र में भूस्खलन होने पर, निम्नलिखित में से कौन-सा अधिक संभावना है?",
-          "choices": [
-            "नदियाँ अपने मार्ग बदल देती हैं",
-            "स्कूल प्रबंधन समिति गठित की जाती है",
-            "भूकंप-सुरक्षित इमारतों के आधार को अन्य भूमि से अलग कर दिया जाता है",
-            "सरकार भूस्खलन की भविष्यवाणी करने के लिए एक कार्यक्रम शुरू करती है"
-          ],
-          "solution": "एक पहाड़ी क्षेत्र में भूस्खलन भूमि के आकार को बदल सकता है, जिसके कारण नदियाँ बरफ और भूमि के बदलाव के कारण अपने मार्ग बदल देती हैं। अन्य विकल्प भूस्खलन के सीधे परिणाम नहीं हैं, बल्कि मानवीय प्रतिक्रियाएँ या असंबंधित घटनाएँ हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पर्वतीय क्षेत्रात एक भूस्खलन झाल्यास, खालीलपैकी कोणते घडू शकते?",
-          "choices": [
-            "नद्या आपल्या मार्गांचा बदल करतात",
-            "शाळा प्रबंधन समिती तयार केली जाते",
-            "भूकंपासाठी बांधलेल्या इमारतीचा पाया इतर जमीनपासून विलग होतो",
-            "सरकार भूस्खलनाचे अंदाज लावण्यासाठी कार्यक्रम सुरू करते"
-          ],
-          "solution": "पर्वतीय क्षेत्रात भूस्खलन भूपटाचा बदल करू शकतो, ज्यामुळे जमीनाच्या बदलामुळे व अवशेषांच्या जमा होण्यामुळे नद्या आपल्या मार्गांचा बदल करतात. इतर विकल्प भूस्खलनाचे थेट परिणाम नसून वास्तविक घटनांच्या विरुद्ध मानवी प्रतिक्रिया आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the effect of a landslide with a preventive measure",
-        "Thinks the formation of a committee is a direct result of a landslide",
-        "Mistakes a preventive measure for a direct effect"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Landslides can alter river courses by blocking or redirecting them. The other options are either preventive measures or unrelated actions, as correctly noted by the author.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 86,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 87,
-          "pageStart": 75,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 88,
-          "pageStart": 76,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If heavy rains cause water to enter cracks in hard rocks, what is the most likely outcome?",
-      "choices": [
-        "The rocks become stronger",
-        "The rocks break due to weathering",
-        "The rocks become submerged",
-        "The rocks become lighter"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'The rocks break due to weathering' because water entering cracks can cause physical weathering, which weakens and breaks rocks over time. The other options are incorrect because rocks do not typically become stronger, submerged, or lighter as a direct result of water entering cracks.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि भारी बरसात से पत्थरों के कटों में पानी प्रवेश कर जाता है, तो सबसे संभावित परिणाम क्या होगा?",
-          "choices": [
-            "पत्थर मजबूत हो जाते हैं",
-            "पत्थर जलवायु परिवर्तन के कारण टूट जाते हैं",
-            "पत्थर डूब जाते हैं",
-            "पत्थर हल्के हो जाते हैं"
-          ],
-          "solution": "सही उत्तर 'पत्थर जलवायु परिवर्तन के कारण टूट जाते हैं' है क्योंकि कटों में पानी प्रवेश करने से भौतिक जलवायु परिवर्तन होता है, जो समय के साथ पत्थरों को कमजोर बना देता है। अन्य विकल्प गलत हैं क्योंकि पत्थर आमतौर पर कटों में पानी प्रवेश के कारण मजबूत, डूबे या हल्के नहीं होते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for geological processes.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर भारी वर्षाच्या कारणाने पाणी कठोर खडकांमधील फुटींमध्ये जात असेल, तर त्याचा सर्वात शक्य निकाल काय असेल?",
-          "choices": [
-            "खडक अधिक शक्तिशाली होतात",
-            "खडक जुन्या वातावरणामुळे तुटतात",
-            "खडक डुबलेले असतात",
-            "खडक हलके होतात"
-          ],
-          "solution": "योग्य उत्तर 'खडक जुन्या वातावरणामुळे तुटतात' आहे कारण पाणी फुटींमध्ये जाऊन भौतिक वातावरणाच्या कारणाने खडकांना कमजोर करते आणि वेळेवर तुटतात. इतर विकल्प चुकीचे आहेत कारण खडकांना पाणी फुटींमध्ये जाऊन अचूकपणे शक्तिशाली, डुबलेले किंवा हलके होण्याची शक्यता नसते.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for weathering and geological processes.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks water strengthens rocks",
-        null,
-        "Student thinks water in cracks causes rocks to sink rather than weaken them",
-        "Misunderstands the process of weathering"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that water entering cracks in rocks leads to weathering, which causes the rocks to break. The reasoning for the other options aligns with common misconceptions about the effects of water on rocks.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 86,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 87,
-          "pageStart": 75,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 88,
-          "pageStart": 76,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a school has a disaster management plan, which of the following would be most important to include in the plan?",
-      "choices": [
-        "A list of students' hobbies",
-        "A map showing the location of the school ground",
-        "A list of possible hazards and measures to address them",
-        "A description of the school's history"
-      ],
-      "answerIndex": 2,
-      "solution": "A list of possible hazards and measures to address them would be most important in a disaster management plan. This directly relates to identifying risks and preparing effective responses. Other options, such as students' hobbies or the school's history, do not contribute to managing emergencies.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक स्कूल में आपदा प्रबंधन योजना है, तो निम्नलिखित में से कौन-सा योजना में सबसे महत्वपूर्ण होना चाहिए?",
-          "choices": [
-            "छात्रों की रुचियों की सूची",
-            "स्कूल के मैदान की स्थिति दर्शाने वाला मानचित्र",
-            "संभावित खतरों और उनके सामना करने के उपायों की सूची",
-            "स्कूल के इतिहास का वर्णन"
-          ],
-          "solution": "आपदा प्रबंधन योजना में संभावित खतरों और उनके सामना करने के उपायों की सूची सबसे महत्वपूर्ण होनी चाहिए। यह सीधे जोखिमों की पहचान और प्रभावी उत्तरों की तैयारी से संबंधित है। छात्रों की रुचियों या स्कूल के इतिहास के अन्य विकल्प आपदा प्रबंधन में योगदान नहीं करते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for disaster management concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर शाळेला अपघात व्यवस्थापन योजना असेल, तर खालीलपैकी काय सर्वात महत्वाचे असेल ती योजनेत समाविष्ट करावी?",
-          "choices": [
-            "विद्यार्थ्यांच्या आवडा यादी",
-            "शाळेच्या मैदानाच्या ठिकाणाचे नकाशा",
-            "संभाव्य धोके आणि त्यांच्यावर उपायांची यादी",
-            "शाळेच्या इतिहासाचे वर्णन"
-          ],
-          "solution": "अपघात व्यवस्थापन योजनेत संभाव्य धोके आणि त्यांच्यावर उपायांची यादी सर्वात महत्वाची असेल. हे जोखीम ओळखण्यास आणि उपयुक्त प्रतिसाद तयार करण्यास सीधा संबंध आहे. विद्यार्थ्यांच्या आवडा किंवा शाळेच्या इतिहासासारख्या इतर विषयांचा अपघातांच्या व्यवस्थापनाशी कोणताही संबंध नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for disaster management concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Focuses on irrelevant information",
-        "Thinks the school ground's location is the main focus",
-        null,
-        "Confuses historical details with disaster management"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as identifying hazards and preparedness measures is central to disaster management. The other options are indeed irrelevant or misaligned with the purpose of the plan.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 86,
-          "pageStart": 74,
-          "pageEnd": 75,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 87,
-          "pageStart": 75,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 88,
-          "pageStart": 76,
-          "pageEnd": 76,
-          "headingPath": [
-            "9. Disaster Management",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:25:54.023Z",
+      "generatedAt": "2026-10-22T07:14:26.807Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

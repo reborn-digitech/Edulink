@@ -21,47 +21,47 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-19T09:31:47.641Z",
+  "generatedAt": "2026-10-22T07:20:33.663Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the main function of the cell wall?",
+      "stem": "Which of the following is the chemical factory of the cell?",
       "choices": [
-        "To protect the cell",
-        "To allow entry of excess water",
-        "To control cell division",
-        "To store genetic material"
+        "Mitochondria",
+        "Cell wall",
+        "Endoplasmic reticulum",
+        "Ribosomes"
       ],
-      "answerIndex": 0,
-      "solution": "The cell wall's main function is to protect the cell by providing structural support and preventing the entry of excess water, which could cause the cell to burst. The other options describe functions of different cell structures, such as the cell membrane or nucleus.",
+      "answerIndex": 2,
+      "solution": "The chemical factory of the cell is the endoplasmic reticulum. Mitochondria are the ATP-producing factories. The cell wall supports the cell but is not a chemical factory. Ribosomes are involved in protein synthesis, not chemical production.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कोशिका भित्ति का मुख्य कार्य क्या है?",
+          "stem": "निम्नलिखित में से कौन कोशिका का रासायनिक फैक्टरी है?",
           "choices": [
-            "कोशिका की रक्षा करना",
-            "अत्यधिक पानी के प्रवेश की अनुमति देना",
-            "कोशिका विभाजन का नियंत्रण करना",
-            "आनुवंशिक सामग्री को संग्रहीत करना"
+            "माइटोकॉन्ड्रिया",
+            "कोशिका भित्ति",
+            "एंडोप्लाज्मिक रेटिकुलम",
+            "राइबोसोम"
           ],
-          "solution": "कोशिका भित्ति का मुख्य कार्य कोशिका की रक्षा करना है, जो संरचनात्मक समर्थन प्रदान करती है और अत्यधिक पानी के प्रवेश को रोकती है, जो कोशिका के फटने का कारण बन सकता है। अन्य विकल्प अलग-अलग कोशिका संरचनाओं, जैसे कोशिका झिल्ली या केंद्रक के कार्यों का वर्णन करते हैं।",
+          "solution": "कोशिका का रासायनिक फैक्टरी एंडोप्लाज्मिक रेटिकुलम है। माइटोकॉन्ड्रिया एटीपी उत्पादन के कारखाने हैं। कोशिका भित्ति कोशिका का समर्थन करती है लेकिन रासायनिक फैक्टरी नहीं है। राइबोसोम प्रोटीन संश्लेषण में लगे रहते हैं, रासायनिक उत्पादन में नहीं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology used.",
           "flag": null
         },
         "mr": {
-          "stem": "कोशिका भित्तीचे मुख्य कार्य काय आहे?",
+          "stem": "खालीलपैकी कोशिकेचे रसायनिक कारखाना कोणता आहे?",
           "choices": [
-            "कोशिकेचे रक्षण करणे",
-            "अतिरिक्त पाणी प्रवेश करण्यास परवानगी देणे",
-            "कोशिका विभाजन नियंत्रित करणे",
-            "जीनेटिक सामग्री भंडारण करणे"
+            "माइटोकॉन्ड्रिया",
+            "कोशिकाभित्ती",
+            "अंतर्ग्रंथी नलिका",
+            "राइबोसोम"
           ],
-          "solution": "कोशिका भित्तीचे मुख्य कार्य कोशिकेचे रक्षण करणे आहे, जे संरचनात्मक समर्थन प्रदान करते आणि अतिरिक्त पाणी प्रवेश करू देत नाही, जे कोशिका फुगून जाण्यास कारणीभूत होऊ शकते. इतर विकल्पांमध्ये विविध कोशिका संरचना, जसे की कोशिका झिल्ली किंवा न्यूक्लियस, च्या कार्याचे वर्णन केले आहे.",
+          "solution": "कोशिकेचा रसायनिक कारखाना अंतर्ग्रंथी नलिका आहे. माइटोकॉन्ड्रिया एटीपी उत्पादन करणारे कारखाने आहेत. कोशिकाभित्ती कोशिकेचा समर्थन करते परंतु रसायनिक कारखाना नाही. राइबोसोम प्रोटीन संश्लेषणात सहभागी होतात, रसायन उत्पादनात नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
           "flag": null
@@ -72,210 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses mitochondria with the chemical factory",
+        "Thinks the cell wall is a chemical factory",
         null,
-        "Confuses the function of the cell wall with another structure",
-        "Misunderstands the protective role of the cell wall",
-        "Confuses the function of the nucleus with that of the cell wall"
+        "Does not know the role of ribosomes"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as the cell wall's primary function is to protect the cell. The other options are incorrect and correspond to known misconceptions about cell structures.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 89,
-          "pageStart": 77,
-          "pageEnd": 78,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 90,
-          "pageStart": 78,
-          "pageEnd": 79,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 91,
-          "pageStart": 79,
-          "pageEnd": 80,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the function of the cell wall in plant cells?",
-      "choices": [
-        "To provide energy to the cell",
-        "To protect and support the cell",
-        "To control the cell's activities",
-        "To store genetic material"
-      ],
-      "answerIndex": 1,
-      "solution": "The cell wall provides structure and protection to plant cells, helping them maintain their shape and resist damage. Other options describe functions of different cell structures, such as mitochondria providing energy or the nucleus storing genetic material.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पौधे की कोशिका में कोशिका भित्ति का कार्य क्या है?",
-          "choices": [
-            "कोशिका को ऊर्जा प्रदान करना",
-            "कोशिका की सुरक्षा एवं समर्थन करना",
-            "कोशिका की गतिविधियों का नियंत्रण करना",
-            "आनुवंशिक सामग्री को संग्रहीत करना"
-          ],
-          "solution": "कोशिका भित्ति पौधे की कोशिकाओं की संरचना एवं सुरक्षा प्रदान करती है, जिससे वे अपनी आकृति बनाए रख सकें एवं क्षति से बच सकें। अन्य विकल्प विभिन्न कोशिका संरचनाओं के कार्यों का वर्णन करते हैं, जैसे माइटोकॉन्ड्रिया ऊर्जा प्रदान करती है या केंद्रक आनुवंशिक सामग्री को संग्रहीत करता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "वनस्पतीच्या कोशिकेमध्ये कोशिकाभित्तीचे कार्य काय आहे?",
-          "choices": [
-            "कोशिकेला ऊर्जा पुरवणे",
-            "कोशिकेला रक्षण आणि समर्थन पुरवणे",
-            "कोशिकेच्या क्रियांचे नियंत्रण करणे",
-            "जीनेटिक पदार्थ जमा करणे"
-          ],
-          "solution": "कोशिकाभित्ती वनस्पतीच्या कोशिकांना संरचना आणि रक्षण पुरवते, ज्यामुळे त्यांचे आकार आणि नुकसान टाळण्याची क्षमता राखली जाते. इतर विकल्पांमध्ये ऊर्जा पुरवणार्या माइटोकॉन्ड्रिया किंवा जीनेटिक पदार्थ जमा करणार्या केंद्रकाचे कार्य वर्णन केले आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of mitochondria",
-        null,
-        "Confuses the function of the nucleus with that of the cell wall",
-        "Confuses the function of the nucleus"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the cell wall's primary function is to provide structural support and protection. The other options correspond to known misconceptions about the functions of mitochondria, nucleus, and other organelles.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 89,
-          "pageStart": 77,
-          "pageEnd": 78,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 90,
-          "pageStart": 78,
-          "pageEnd": 79,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 91,
-          "pageStart": 79,
-          "pageEnd": 80,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is the site of ATP production in a cell?",
-      "choices": [
-        "Mitochondria",
-        "Nucleus",
-        "Endoplasmic reticulum",
-        "Vacuole"
-      ],
-      "answerIndex": 0,
-      "solution": "Mitochondria are the sites where ATP is produced through cellular respiration. The nucleus controls the cell's activities, the endoplasmic reticulum is involved in protein and lipid synthesis, and the vacuole is used for storing substances.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन सा कोशिका में ATP उत्पादन का स्थान है?",
-          "choices": [
-            "माइटोकॉन्ड्रिया",
-            "केंद्रक",
-            "अंतः प्रद्रव्य जालिका",
-            "रिक्तिका"
-          ],
-          "solution": "माइटोकॉन्ड्रिया में कोशिका श्वसन के माध्यम से ATP उत्पादन होता है। केंद्रक कोशिका की क्रियाओं को नियंत्रित करता है, अंतः प्रद्रव्य जालिका प्रोटीन और लिपिड संश्लेषण में शामिल होती है, और रिक्तिका पदार्थों के भंडारण के लिए उपयोग की जाती है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोशिकेत एटीपी उत्पादनाचे स्थान कोणते आहे?",
-          "choices": [
-            "माइटोकॉन्ड्रिया",
-            "न्यूक्लियस",
-            "अंतर्ग्रंथी नलिका",
-            "खालील"
-          ],
-          "solution": "माइटोकॉन्ड्रिया हे कोशिका श्वसनाद्वारे एटीपी उत्पादनाचे स्थान आहेत. न्यूक्लियस कोशिकेच्या क्रियांचे नियंत्रण करते, अंतर्ग्रंथी नलिका प्रोटीन आणि लिपिड संश्लेषणात सहभागी आहे आणि खालील पदार्थ जमा करण्यासाठी वापरले जाते.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses standard biological terminology as taught in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the function of the nucleus with that of mitochondria",
-        "Misunderstands the role of the endoplasmic reticulum",
-        "Incorrectly assumes the vacuole is involved in energy production"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies mitochondria as the site of ATP production.",
+      "critique": "The solution is correct. The endoplasmic reticulum is indeed the chemical factory of the cell, as it is involved in the synthesis of lipids, proteins, and detoxification. The other options are correctly dismissed based on their actual functions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -289,49 +99,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
+      "generatedAt": "2026-10-22T07:20:33.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a cell is unable to digest waste material, which organelle is likely to be malfunctioning?",
+      "difficulty": 2,
+      "stem": "What is the function of the Golgi Complex in the cell?",
       "choices": [
-        "Nucleus",
-        "Mitochondria",
-        "Golgi Complex",
-        "Lysosomes"
+        "To produce energy-rich compounds",
+        "To digest waste materials",
+        "To modify, sort and package materials",
+        "To produce vacuoles and secretory vesicles"
       ],
-      "answerIndex": 3,
-      "solution": "Lysosomes are responsible for digesting waste material and breaking down worn-out organelles. If a cell is unable to digest waste, the most likely malfunctioning organelle is the lysosome. The nucleus, mitochondria, and Golgi complex do not directly perform this function.",
+      "answerIndex": 2,
+      "solution": "The Golgi Complex modifies, sorts, and packages materials like proteins and lipids, preparing them for transport to their final destinations within or outside the cell. This function is essential for organizing cellular products. Other organelles, such as lysosomes, handle digestion, while mitochondria generate energy, and vacuoles store materials.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोशिका अपशिष्ट सामग्री का अपचय नहीं कर सकती है, तो कौन सा अंगक बर्बर रूप से कार्य कर रहा होगा?",
+          "stem": "कोशिका में गॉल्गी जटिल का कार्य क्या है?",
           "choices": [
-            "केंद्रक",
-            "माइटोकॉन्ड्रिया",
-            "गॉल्गी जटिल",
-            "लाइसोसोम"
+            "ऊर्जा से समृद्ध यौगिक उत्पादित करना",
+            "अपशिष्ट सामग्री का पाचन करना",
+            "सामग्री को संशोधित, वर्गीकृत और पैक करना",
+            "वैक्यूओल्स और स्रावी वेसिकल्स का उत्पादन करना"
           ],
-          "solution": "लाइसोसोम अपशिष्ट सामग्री के अपचय और खराब हो गए अंगकों के टूटने के लिए उत्तरदायी होते हैं। यदि कोशिका अपशिष्ट का अपचय नहीं कर सकती है, तो सबसे संभावित अंगक बर्बर रूप से कार्य कर रहा होगा लाइसोसोम। केंद्रक, माइटोकॉन्ड्रिया और गॉल्गी जटिल इस कार्य को सीधे नहीं करते हैं।",
+          "solution": "गॉल्गी जटिल प्रोटीन और लिपिड जैसी सामग्री को संशोधित, वर्गीकृत और पैक करता है, जिसके द्वारा उन्हें कोशिका के भीतर या बाहर अंतिम गंतव्य तक परिवहन के लिए तैयार किया जाता है। यह कार्य कोशिका उत्पादों के संगठन के लिए महत्वपूर्ण है। अन्य कोशिका अंग, जैसे लाइसोसोम, पाचन का कार्य करते हैं, जबकि माइटोकॉन्ड्रिया ऊर्जा उत्पन्न करते हैं और वैक्यूओल्स सामग्री को भंडारित करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological structures.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "जर कोशिका अपशिष्ट पदार्थांचे पाचन करू शकत नाही, तर कोशिकांग खालीलपैकी कोणते असंगत कार्य करत असेल?",
+          "stem": "कोशिकेतील गॉल्गी कॉम्प्लेक्सचे कार्य काय आहे?",
           "choices": [
-            "न्यूक्लियस",
-            "माइटोकॉन्ड्रिया",
-            "गॉल्गी कॉम्प्लेक्स",
-            "लायसोसोम्स"
+            "ऊर्जा-समृद्ध अणू तयार करणे",
+            "अपशिष्ट सामग्रीचे पाचन करणे",
+            "सामग्रींचे संशोधन, वर्गीकरण आणि पॅकेजिंग करणे",
+            "रिक्त अंगांचे आणि खाली टाकणाऱ्या वेसिकल्सचे तयार करणे"
           ],
-          "solution": "लायसोसोम्स अपशिष्ट पदार्थांचे पाचन करण्यासाठी जबाबदार असतात आणि निर्जीव झालेल्या कोशिकांगांचे विघटन करतात. जर कोशिका अपशिष्ट पदार्थांचे पाचन करू शकत नाही, तर असंगत कार्य करणारा सर्वात शक्य कोशिकांग लायसोसोम्स असेल. न्यूक्लियस, माइटोकॉन्ड्रिया आणि गॉल्गी कॉम्प्लेक्स यांच्याकडून या कार्याचे सीधे कार्य करण्याची शक्यता नाही.",
+          "solution": "गॉल्गी कॉम्प्लेक्स प्रोटीन आणि लिपिडसारख्या सामग्रींचे संशोधन, वर्गीकरण आणि पॅकेजिंग करते, ज्यामुळे त्यांचे अंतिम ठिकाणी वाहतूक करणे शक्य होते. हे कार्य कोशिकेच्या उत्पादनांच्या संगठनासाठी आवश्यक आहे. इतर ऑर्गेनेल्स, जसे की लाइसोसोम्स, पाचन व्हायचे आहेत, आणि माइटोकॉन्ड्रिया ऊर्जा तयार करतात, आणि रिक्त अंगांमध्ये सामग्री भंडारित करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
           "flag": null
         }
       },
@@ -340,9 +150,260 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses lysosomes with the nucleus, which does not play a role in digestion.",
-        "Confuses lysosomes with mitochondria, which produce energy.",
-        "Confuses lysosomes with the Golgi complex, which is involved in packaging and modifying materials.",
+        "Confuses the function of mitochondria with that of the Golgi Complex.",
+        "Confuses the function of lysosomes with that of the Golgi Complex.",
+        null,
+        "Student confuses Golgi function with that of vesicle production, thinking it directly creates them instead of modifying and packaging"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the Golgi Complex is indeed responsible for modifying, sorting, and packaging materials. The author's explanations for the incorrect options align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 92,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 93,
+          "pageStart": 81,
+          "pageEnd": 82,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 94,
+          "pageStart": 82,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:20:33.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If there had been no difference between mitochondria and plastids, what would have happened?",
+      "choices": [
+        "Cell would have been unable to perform photosynthesis.",
+        "Cell would have been unable to perform respiration.",
+        "Cell would have been unable to produce ATP.",
+        "Cell would have been unable to maintain osmotic pressure."
+      ],
+      "answerIndex": 0,
+      "solution": "If there had been no difference between mitochondria and plastids, the cell would have been unable to perform photosynthesis. Mitochondria are responsible for respiration, while plastids are responsible for photosynthesis. The inability to perform photosynthesis would affect the cell's ability to produce energy from light.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि माइटोकॉन्ड्रिया और प्लास्टिड में कोई अंतर नहीं होता, तो क्या होता?",
+          "choices": [
+            "कोशिका प्रकाश संश्लेषण करने में असमर्थ होती।",
+            "कोशिका श्वसन करने में असमर्थ होती।",
+            "कोशिका एटीपी उत्पादित करने में असमर्थ होती।",
+            "कोशिका ऑस्मोटिक दबाव को बनाए रखने में असमर्थ होती।"
+          ],
+          "solution": "यदि माइटोकॉन्ड्रिया और प्लास्टिड में कोई अंतर नहीं होता, तो कोशिका प्रकाश संश्लेषण करने में असमर्थ होती। माइटोकॉन्ड्रिया श्वसन के लिए उत्तरदायी होते हैं, जबकि प्लास्टिड प्रकाश संश्लेषण के लिए उत्तरदायी होते हैं। प्रकाश संश्लेषण करने में असमर्थता कोशिका के प्रकाश से ऊर्जा उत्पादन की क्षमता को प्रभावित करती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard biological terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर माइटोकॉन्ड्रिया आणि प्लास्टिडमध्ये फरक नसत तर काय झाले असते?",
+          "choices": [
+            "कोशिका फोटोसंश्लेषण करू शकली नसती.",
+            "कोशिका श्वसन करू शकली नसती.",
+            "कोशिका एटीपी तयार करू शकली नसती.",
+            "कोशिका ऑस्मोटिक दाब बरोबर ठेवू शकली नसती."
+          ],
+          "solution": "जर माइटोकॉन्ड्रिया आणि प्लास्टिडमध्ये फरक नसत तर कोशिका फोटोसंश्लेषण करू शकली नसती. माइटोकॉन्ड्रिया श्वसनासाठी जबाबदार असतात, तर प्लास्टिड फोटोसंश्लेषणासाठी जबाबदार असतात. फोटोसंश्लेषण करण्याची अयोग्यता कोशिकेच्या प्रकाशापासून ऊर्जा तयार करण्याच्या क्षमतेवर प्रभाव टाकेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the main function of mitochondria is photosynthesis",
+        "Confuses the roles of mitochondria and plastids",
+        "Does not understand the role of plastids in photosynthesis"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that plastids are responsible for photosynthesis, and if mitochondria and plastids were indistinguishable, photosynthesis would be impaired. The reasoning aligns with the key and the misconceptions described.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 95,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Cell and Cell Organelles",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:20:33.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a plant cell did not have a cell wall, what would most likely happen?",
+      "choices": [
+        "It would burst due to osmotic pressure",
+        "It would shrink due to plasmolysis",
+        "It would become rigid and lose shape",
+        "It would grow faster"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is It would burst due to osmotic pressure because the cell wall maintains the cell's shape and prevents it from bursting when water enters. Without a cell wall, the cell would not be able to withstand the pressure from osmosis.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पौधे कोशिका के पास कोशिका भित्ति न हो, तो सबसे अधिक संभावना क्या होगी?",
+          "choices": [
+            "इसके अपोस्मोटिक दबाव के कारण फट जाएगा",
+            "इसके प्लाज्मोलिसिस के कारण सिकुड़ जाएगा",
+            "इसके कठोर हो जाने और आकृति खो जाने के कारण",
+            "इसके तेजी से बढ़ जाने के कारण"
+          ],
+          "solution": "सही उत्तर यह है कि इसके अपोस्मोटिक दबाव के कारण फट जाएगा क्योंकि कोशिका भित्ति कोशिका के आकार को बनाए रखती है और पानी प्रवेश करने पर इसके फटने से रोकती है। कोशिका भित्ति के बिना, कोशिका अपोस्मोसिस के दबाव को सहन नहीं कर सकेगी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वनस्पतीच्या कोशिकेला कोशिका भित्ती नसेल, तर त्याला सर्वात जास्त काय होईल?",
+          "choices": [
+            "ती ओस्मोटिक दाबामुळे फुगेल",
+            "ती प्लाझ्मोलिसिसमुळे खाली पडेल",
+            "ती खुली रहाईल आणि आकार गमावेल",
+            "ती जास्त वेगाने वाढेल"
+          ],
+          "solution": "हे बरोबर उत्तर ओस्मोटिक दाबामुळे फुगेल कारण कोशिका भित्ती कोशिकेचा आकार टिकवून ठेवते आणि पाणी प्रवेश केल्यास तिच्यावरील दाब टाळते. कोशिका भित्ती नसल्यास, कोशिका ओस्मोसिसच्या दाबाला सहन करू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses cell wall with the plasma membrane, which can cause plasmolysis.",
+        "Confuses cell wall with the cytoplasm, which is not related to rigidity.",
+        "Confuses cell wall with the nucleus, which is not related to growth."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Without a cell wall, a plant cell cannot resist the osmotic pressure from water entering the cell, leading to bursting. The author's reasoning for the distractors is based on plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 95,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Cell and Cell Organelles",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T07:20:33.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a function of the endoplasmic reticulum (ER)?",
+      "choices": [
+        "Controls the movement of substances in and out of the cell",
+        "Stores genetic material",
+        "Provides structural support to the cell",
+        "Transports proteins and detoxifies harmful substances"
+      ],
+      "answerIndex": 3,
+      "solution": "The endoplasmic reticulum transports proteins and detoxifies harmful substances. It is responsible for moving newly made proteins to their correct locations and neutralizing toxins. The plasma membrane controls substance movement, the nucleus stores genetic material, and the cell wall provides structural support.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अंतःप्रद्रव्यी जालिका (ई.आर.) का कार्य है?",
+          "choices": [
+            "कोशिका में अंदर और बाहर अवयवों के गति का नियंत्रण करता है",
+            "आनुवंशिक सामग्री को भंडारित करता है",
+            "कोशिका के लिए संरचनात्मक समर्थन प्रदान करता है",
+            "प्रोटीन के परिवहन और हानिकारक पदार्थों के विश्लेषण में सहायता करता है"
+          ],
+          "solution": "अंतःप्रद्रव्यी जालिका प्रोटीन के परिवहन और हानिकारक पदार्थों के विश्लेषण में सहायता करता है। यह नए बने प्रोटीन के अपने सही स्थान पर ले जाने के लिए जिम्मेदार है और जहरीले तत्वों को अक्रिय करता है। प्लाज्मा झिल्ली अवयवों के गति का नियंत्रण करता है, केंद्रक आनुवंशिक सामग्री को भंडारित करता है, और कोशिका भित्ति कोशिका के लिए संरचनात्मक समर्थन प्रदान करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated, with the correct answer remaining in the same position (option 3). The distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एंडोप्लाझमिक रेटिकुलम (ई.आर.) चे कार्य आहे?",
+          "choices": [
+            "कोशिकेच्या आत आणि बाहेर द्रव्यांच्या गतीचा नियंत्रण करते",
+            "जीनेटिक द्रव्य जमा करते",
+            "कोशिकेला संरचनात्मक समर्थन पुरवते",
+            "प्रोटीन वाहते आणि अवांछित पदार्थांचे विशोधन करते"
+          ],
+          "solution": "एंडोप्लाझमिक रेटिकुलम प्रोटीन वाहते आणि अवांछित पदार्थांचे विशोधन करते. ते निर्मित प्रोटीन त्यांच्या योग्य स्थानावर पोहोचविण्यास जबाबदार आहे आणि विषाणूंचे निष्क्रिय करते. प्लाझमा कलेल द्रव्यांच्या गतीचा नियंत्रण करते, न्यूक्लियस जीनेटिक द्रव्य जमा करते आणि कोशिका भित्ती संरचनात्मक समर्थन पुरवते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the ER with the plasma membrane, which controls substance movement.",
+        "Confuses the ER with the nucleus, which stores genetic material.",
+        "Confuses the ER with the cell wall, which provides structural support.",
         null
       ],
       "solverAnswers": [
@@ -352,276 +413,8 @@
         3,
         3
       ],
-      "levelFlag": null,
-      "critique": "The solution is accurate and aligns with the correct answer. Lysosomes are indeed responsible for digesting waste, and the author's reasoning for the other options is based on common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 92,
-          "pageStart": 80,
-          "pageEnd": 81,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 93,
-          "pageStart": 81,
-          "pageEnd": 82,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 94,
-          "pageStart": 82,
-          "pageEnd": 83,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a cell has very few mitochondria, what might be the consequence?",
-      "choices": [
-        "Decreased energy production",
-        "Increased storage of waste material",
-        "Improved protein synthesis",
-        "Increased production of digestive enzymes"
-      ],
-      "answerIndex": 0,
-      "solution": "Mitochondria are the site of energy production in the form of ATP. If a cell has very few mitochondria, it will have decreased energy production. The other options are not directly related to the number of mitochondria. Waste storage, protein synthesis, and digestion are performed by other organelles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोशिका में अत्यंत कम माइटोकॉन्ड्रिया हैं, तो परिणाम क्या हो सकता है?",
-          "choices": [
-            "ऊर्जा उत्पादन में कमी",
-            "अपशिष्ट सामग्री के भंडारण में वृद्धि",
-            "प्रोटीन संश्लेषण में सुधार",
-            "पाचक एंजाइमों के उत्पादन में वृद्धि"
-          ],
-          "solution": "माइटोकॉन्ड्रिया एटीपी के रूप में ऊर्जा उत्पादन के स्थान होते हैं। यदि कोशिका में अत्यंत कम माइटोकॉन्ड्रिया हैं, तो ऊर्जा उत्पादन में कमी होगी। अन्य विकल्प माइटोकॉन्ड्रिया की संख्या से सीधे संबंधित नहीं हैं। अपशिष्ट भंडारण, प्रोटीन संश्लेषण और पाचन अन्य ऑर्गेनेल्स द्वारा किए जाते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कोशिकेत खूप कमी माइटोकॉन्ड्रिया असतील, तर त्याचा परिणाम काय असू शकतो?",
-          "choices": [
-            "ऊर्जा उत्पादन कमी होईल",
-            "अपशिष्ट सामग्रीचे जमा करणे वाढेल",
-            "उत्तम प्रोटीन संश्लेषण",
-            "पाचक एंजाइमचे उत्पादन वाढेल"
-          ],
-          "solution": "माइटोकॉन्ड्रिया एटीपीच्या रूपात ऊर्जा उत्पादनाचे स्थान आहे. जर कोशिकेत खूप कमी माइटोकॉन्ड्रिया असतील, तर ऊर्जा उत्पादन कमी होईल. इतर विकल्प माइटोकॉन्ड्रियाच्या संख्येशी सीधा संबंध नाही. अपशिष्ट साठवणे, प्रोटीन संश्लेषण आणि पाचन हे इतर अंगांकडून केले जाते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes mitochondria are responsible for waste management rather than energy production",
-        "Believes mitochondria are involved in protein production rather than energy generation",
-        "Student confuses lysosomes with mitochondria, thinking mitochondria produce enzymes for digestion"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly identifies the role of mitochondria in energy production.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 92,
-          "pageStart": 80,
-          "pageEnd": 81,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 93,
-          "pageStart": 81,
-          "pageEnd": 82,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 94,
-          "pageStart": 82,
-          "pageEnd": 83,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a cell had no mitochondria, what would be the most immediate effect?",
-      "choices": [
-        "The cell would not be able to produce ATP",
-        "The cell would not be able to replicate",
-        "The cell would not be able to store water",
-        "The cell would not be able to grow"
-      ],
-      "answerIndex": 0,
-      "solution": "Mitochondria are responsible for producing ATP, the energy currency of the cell. Without mitochondria, the cell would lose its primary source of ATP, making it unable to perform energy-requiring processes. Replication, water storage, and growth can occur through other cellular mechanisms, even in the absence of mitochondria.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी कोशिका में माइटोकॉन्ड्रिया नहीं होते तो सबसे आम असर क्या होगा?",
-          "choices": [
-            "कोशिका एटीपी उत्पादित नहीं कर सकेगी",
-            "कोशिका अपनी प्रतिकृति नहीं कर सकेगी",
-            "कोशिका पानी का भंडार नहीं कर सकेगी",
-            "कोशिका बढ़ नहीं सकेगी"
-          ],
-          "solution": "माइटोकॉन्ड्रिया कोशिका के एटीपी के उत्पादन के लिए जिम्मेदार होते हैं, जो कोशिका के ऊर्जा के मुख्य स्रोत होते हैं। माइटोकॉन्ड्रिया के अभाव में, कोशिका एटीपी के प्राथमिक स्रोत के बिना रह जाएगी, जिसके कारण ऊर्जा की आवश्यकता वाली प्रक्रियाएं करने में असमर्थ हो जाएगी। प्रतिकृति, पानी का भंडारण और वृद्धि अन्य कोशिकीय यंत्रों के माध्यम से हो सकती हैं, भले ही माइटोकॉन्ड्रिया अनुपस्थित हों।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कोशिकेला माइटोकॉन्ड्रिया नसतील तर त्याचा सर्वात आधीचा परिणाम काय असेल?",
-          "choices": [
-            "कोशिका ATP तयार करू शकणार नाही",
-            "कोशिका प्रतिकृती करू शकणार नाही",
-            "कोशिका पाणी भरू शकणार नाही",
-            "कोशिका वाढू शकणार नाही"
-          ],
-          "solution": "माइटोकॉन्ड्रिया कोशिकेच्या ऊर्जा विनिमयासाठी ATP तयार करतात. माइटोकॉन्ड्रिया नसल्यास, कोशिका ATP चा प्राथमिक स्रोत गमावेल, ज्यामुळे ऊर्जा आवश्यक असलेल्या प्रक्रियांना अडथळा येईल. प्रतिकृती, पाणी भरणे आणि वाढ ही अन्य कोशिकीय यंत्रणांद्वारे होऊ शकतात, जरी माइटोकॉन्ड्रिया नसले तरी.",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes replication is directly dependent on mitochondria",
-        "Confuses the role of the vacuole with that of mitochondria",
-        "Misunderstands the role of mitochondria in growth"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as mitochondria are the primary site of ATP production. The other options reflect common misconceptions about the roles of mitochondria in replication, water storage, and growth.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 95,
-          "pageStart": 83,
-          "pageEnd": 84,
-          "headingPath": [
-            "10. Cell and Cell Organelles",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the main reason for the turgidity of plant cells?",
-      "choices": [
-        "Presence of a cell wall",
-        "Presence of a large central vacuole",
-        "Presence of chloroplasts",
-        "Presence of a nucleus"
-      ],
-      "answerIndex": 1,
-      "solution": "The main reason for the turgidity of plant cells is the presence of a large central vacuole, which stores water and creates pressure against the cell wall, maintaining the cell's rigidity. Other structures like the cell wall, chloroplasts, and nucleus do not directly contribute to turgidity. The cell wall provides structural support but does not generate the pressure, chloroplasts are involved in photosynthesis, and the nucleus contains genetic material, none of which are directly responsible for turgidity.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पौधे के कोशिकाओं की टर्गिडिटी के मुख्य कारण क्या है?",
-          "choices": [
-            "कोशिका भित्ति की उपस्थिति",
-            "एक बड़े केंद्रीय रिक्तिका की उपस्थिति",
-            "क्लोरोप्लास्ट की उपस्थिति",
-            "नाभिक की उपस्थिति"
-          ],
-          "solution": "पौधे की कोशिकाओं की टर्गिडिटी के मुख्य कारण एक बड़े केंद्रीय रिक्तिका की उपस्थिति है, जो पानी को भंडारित करता है और कोशिका भित्ति पर दबाव उत्पन्न करता है, कोशिका की कठोरता बनाए रखता है। कोशिका भित्ति, क्लोरोप्लास्ट और नाभिक जैसी अन्य संरचनाएं टर्गिडिटी के सीधे योगदानकर्ता नहीं हैं। कोशिका भित्ति संरचनात्मक समर्थन प्रदान करती है लेकिन दबाव उत्पन्न नहीं करती है, क्लोरोप्लास्ट प्रकाश संश्लेषण में भाग लेते हैं, और नाभिक आनुवंशिक सामग्री को रखता है, जिनमें से कोई भी टर्गिडिटी के सीधे जिम्मेदार नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard biological terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "वनस्पतीच्या कोशिकांच्या तुर्गिडिटीचे मुख्य कारण काय आहे?",
-          "choices": [
-            "कोशिका भित्तीचा असणे",
-            "मोठ्या मध्य वैक्यूओलचा असणे",
-            "क्लोरोप्लास्टचा असणे",
-            "न्यूक्लियसचा असणे"
-          ],
-          "solution": "वनस्पतीच्या कोशिकांच्या तुर्गिडिटीचे मुख्य कारण मोठ्या मध्य वैक्यूओलचे असणे आहे, जो पाणी जमा करतो आणि कोशिका भित्तीवर दाब तयार करतो, जो कोशिकेची कठोरता बरोबर ठेवतो. कोशिका भित्ती, क्लोरोप्लास्ट आणि न्यूक्लियस या इतर संरचना तुर्गिडिटीला सीधा योगदान देत नाहीत. कोशिका भित्ती संरचनात्मक समर्थन प्रदान करते परंतु दाब तयार करत नाही, क्लोरोप्लास्ट प्रकाशसंश्लेषणात भाग घेतात आणि न्यूक्लियस आनुवंशिक विषय धारण करतो, जे तुर्गिडिटीला सीधा जबाबदार नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes a structural feature, not the reason for turgidity",
-        null,
-        "Confuses the role of chloroplasts",
-        "Confuses the role of the nucleus"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the large central vacuole is directly responsible for turgidity in plant cells. The other options are structural components but not the primary cause of turgidity.",
+      "critique": "The solution correctly identifies the function of the ER and distinguishes it from other organelles. The reasoning for the distractors is accurate and reflects common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -652,49 +445,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
+      "generatedAt": "2026-10-22T07:20:33.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following is true about a eukaryotic cell?",
+      "difficulty": 5,
+      "stem": "If a cell is exposed to a condition that damages its mitochondria, what would be the immediate effect on the cell?",
       "choices": [
-        "It has a nucleoid",
-        "It has membrane-bound organelles",
-        "It is smaller than a prokaryotic cell",
-        "It does not have a nucleus"
+        "The cell would stop producing proteins",
+        "The cell would stop digesting waste material",
+        "The cell would lose its ability to produce energy",
+        "The cell would stop producing lipids"
       ],
-      "answerIndex": 1,
-      "solution": "Eukaryotic cells are defined by having membrane-bound organelles, which separates them from prokaryotic cells. A nucleoid is a feature of prokaryotic cells, not eukaryotic ones. Eukaryotic cells are typically larger than prokaryotic cells and always contain a nucleus.",
+      "answerIndex": 2,
+      "solution": "The immediate effect of damaged mitochondria would be the loss of the cell's ability to produce energy in the form of ATP. This is because the mitochondria are responsible for energy production. Lysosomes are for digestion, vacuoles for storage, and the nucleus for protein synthesis.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्न में से कौन-सा एक यूकैरियोटिक कोशिका के बारे में सही है?",
+          "stem": "यदि किसी कोशिका को एक ऐसी स्थिति के सामना करना पड़ता है जो इसके माइटोकॉन्ड्रिया को क्षति पहुंचाती है, तो कोशिका पर तत्काल प्रभाव क्या होगा?",
           "choices": [
-            "इसमें न्यूक्लियॉइड होता है",
-            "इसमें झिल्ली से घिरे अंगक होते हैं",
-            "यह प्रोकैरियोटिक कोशिका से छोटी होती है",
-            "इसमें नाभिक नहीं होता"
+            "कोशिका प्रोटीन बनाना बंद कर देगी",
+            "कोशिका अपशिष्ट सामग्री का अपचयन बंद कर देगी",
+            "कोशिका ऊर्जा उत्पादन क्षमता खो देगी",
+            "कोशिका लिपिड बनाना बंद कर देगी"
           ],
-          "solution": "यूकैरियोटिक कोशिकाएं झिल्ली से घिरे अंगकों के कारण परिभाषित होती हैं, जो उन्हें प्रोकैरियोटिक कोशिकाओं से अलग करते हैं। न्यूक्लियॉइड प्रोकैरियोटिक कोशिकाओं की विशेषता होती है, न कि यूकैरियोटिक कोशिकाओं की। यूकैरियोटिक कोशिकाएं आमतौर पर प्रोकैरियोटिक कोशिकाओं की तुलना में बड़ी होती हैं और हमेशा एक नाभिक रखती हैं।",
+          "solution": "क्षतिग्रस्त माइटोकॉन्ड्रिया का तत्काल प्रभाव कोशिका के एटीपी के रूप में ऊर्जा उत्पादन क्षमता खो देना होगा। इसका कारण यह है कि माइटोकॉन्ड्रिया ऊर्जा उत्पादन के लिए जिम्मेदार हैं। लाइसोसोम अपचयन के लिए होते हैं, वैक्यूओल्स भंडारण के लिए और केंद्रक प्रोटीन संश्लेषण के लिए।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi biological terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक युकॅरियोटिक कोशिकेबद्दल खरे आहे?",
+          "stem": "जर कोशिकेला एखाद्या परिस्थितीमुळे माइटोकॉन्ड्रिया नुकसान होत असेल, तर कोशिकेवर तात्काळ परिणाम काय होईल?",
           "choices": [
-            "तिला न्यूक्लिओइड असतो",
-            "तिला कल्पित मार्गदर्शक अंगरचना असतात",
-            "ती प्रोकॅरियोटिक कोशिकेपेक्षा लहान असते",
-            "तिला न्यूक्लियस नसतो"
+            "कोशिका प्रोटीन तयार करणे बंद करेल",
+            "कोशिका अपशिष्ट सामग्रीचे पाचन बंद करेल",
+            "कोशिका ऊर्जा तयार करण्याची क्षमता गमावेल",
+            "कोशिका लिपिड तयार करणे बंद करेल"
           ],
-          "solution": "युकॅरियोटिक कोशिका मार्गदर्शक अंगरचना असलेल्या विशिष्ट लक्षणांमुळे ओळखल्या जातात, जे प्रोकॅरियोटिक कोशिकांपासून भिन्न असतात. न्यूक्लिओइड हा प्रोकॅरियोटिक कोशिकांचा लक्षण असतो, युकॅरियोटिक कोशिकांचा नसतो. युकॅरियोटिक कोशिका प्रोकॅरियोटिक कोशिकांपेक्षा जास्त मोठ्या असतात आणि नेहमी न्यूक्लियस असतो.",
+          "solution": "नुकसान झालेल्या माइटोकॉन्ड्रियांचा तात्काळ परिणाम कोशिकेच्या एटीपी च्या रूपात ऊर्जा तयार करण्याची क्षमता गमावणे असेल. हे कारण माइटोकॉन्ड्रिया ऊर्जा उत्पादनासाठी जबाबदार आहेत. लाइसोसोम्स पाचनासाठी आहेत, वॅक्यूओल्स साठवण्यासाठी आहेत आणि न्यूक्लियस प्रोटीन संश्लेषणासाठी जबाबदार आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
           "flag": null
         }
       },
@@ -703,74 +496,91 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses prokaryotic and eukaryotic cell features",
+        "Confuses the function of the nucleus with that of the mitochondria.",
+        "Confuses the function of lysosomes with that of the mitochondria.",
         null,
-        "Misunderstands the size comparison between cell types",
-        "Incorrectly assumes eukaryotic cells lack a nucleus"
+        "Confuses mitochondria with the smooth endoplasmic reticulum, which is responsible for lipid synthesis"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 1, as eukaryotic cells are defined by having membrane-bound organelles. The other options reflect common misconceptions about eukaryotic vs. prokaryotic cells.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that mitochondria are the site of ATP production, and the other options confuse mitochondria with other organelles. The reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 95,
-          "pageStart": 83,
-          "pageEnd": 84,
+          "ordinal": 92,
+          "pageStart": 80,
+          "pageEnd": 81,
           "headingPath": [
-            "10. Cell and Cell Organelles",
-            "Exercises"
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 93,
+          "pageStart": 81,
+          "pageEnd": 82,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 94,
+          "pageStart": 82,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
+      "generatedAt": "2026-10-22T07:20:33.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a plant cell lacked chlorophyll, which of the following would be true?",
+      "difficulty": 6,
+      "stem": "What is the primary reason for the loss of the nucleus in mammalian red blood cells?",
       "choices": [
-        "It would not be able to perform photosynthesis",
-        "It would not be able to store water",
-        "It would not be able to grow",
-        "It would not be able to divide"
+        "To allow more space for oxygen transport",
+        "To increase the surface area for gas exchange",
+        "To make the cell more flexible",
+        "To reduce the cell's size"
       ],
       "answerIndex": 0,
-      "solution": "Chlorophyll is essential for photosynthesis, the process by which plants convert light energy into chemical energy. Without chlorophyll, a plant cell would be unable to carry out this process. Storing water, growing, and dividing are functions not directly dependent on chlorophyll.",
+      "solution": "The primary reason for the loss of the nucleus in mammalian red blood cells is to allow more space for oxygen transport. Without the nucleus, the cell can contain more hemoglobin, which is essential for carrying oxygen. The other options, while related to cell structure, do not address the main functional advantage of losing the nucleus.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक पौधे कोशिका में क्लोरोफिल की कमी हो, तो निम्नलिखित में से कौन सा सत्य होगा?",
+          "stem": "मानव लाल रक्त कणिकाओं में नाभिक के नुकसान का प्राथमिक कारण क्या है?",
           "choices": [
-            "यह प्रकाश संश्लेषण करने में सक्षम नहीं होगा",
-            "यह पानी का भंडारण नहीं कर सकेगा",
-            "यह बढ़ सकेगा नहीं",
-            "यह विभाजित नहीं हो सकेगा"
+            "ऑक्सीजन परिवहन के लिए अधिक जगह छोड़ने के लिए",
+            "गैस विनिमय के लिए सतह क्षेत्र बढ़ाने के लिए",
+            "कोशिका को अधिक लचीला बनाने के लिए",
+            "कोशिका के आकार को कम करने के लिए"
           ],
-          "solution": "क्लोरोफिल प्रकाश संश्लेषण के लिए आवश्यक है, जिसमें पौधे प्रकाश ऊर्जा को रासायनिक ऊर्जा में बदल देते हैं। क्लोरोफिल के बिना, एक पौधे की कोशिका इस प्रक्रिया को करने में सक्षम नहीं होगी। पानी का भंडारण, बढ़ना और विभाजित होना क्लोरोफिल पर सीधे निर्भर नहीं करते हैं।",
+          "solution": "मानव लाल रक्त कणिकाओं में नाभिक के नुकसान का प्राथमिक कारण ऑक्सीजन परिवहन के लिए अधिक जगह छोड़ना है। नाभिक के बिना कोशिका अधिक हीमोग्लोबिन धारण कर सकती है, जो ऑक्सीजन के परिवहन के लिए आवश्यक है। अन्य विकल्प, यद्यपि कोशिका संरचना से संबंधित हैं, लेकिन नाभिक के नुकसान के मुख्य कार्यात्मक लाभ को संबोधित नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium biology curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका वनस्पतीच्या कोशिकेत क्लोरोफिल नसेल, तर खालीलपैकी कोणते खरे असेल?",
+          "stem": "मानवी लाल रक्त कणांमध्ये न्यूक्लियसच्या गमावण्याचा प्राथमिक कारण काय आहे?",
           "choices": [
-            "ती प्रकाशसंश्लेषण करू शकणार नाही",
-            "ती पाणी जमा करू शकणार नाही",
-            "ती वाढू शकणार नाही",
-            "ती विभाजित होऊ शकणार नाही"
+            "ऑक्सीजन परिवहनासाठी जास्त जागा देण्यासाठी",
+            "गॅस विनिमयासाठी पृष्ठभागाच्या क्षेत्राचा वाढविण्यासाठी",
+            "कोशिकेची अधिक लचका बनविण्यासाठी",
+            "कोशिकेच्या आकाराचा घटविण्यासाठी"
           ],
-          "solution": "क्लोरोफिल प्रकाशसंश्लेषणासाठी आवश्यक आहे, ज्या माध्यमातून वनस्पती प्रकाश ऊर्जेचे रासायनिक ऊर्जेमध्ये रूपांतर करतात. क्लोरोफिल नसल्यास, एका वनस्पतीच्या कोशिकेला हा प्रक्रिया करता येणार नाही. पाणी जमा करणे, वाढणे आणि विभाजित होणे ही क्रिया क्लोरोफिलवर अवलंबून नाहीत.",
+          "solution": "मानवी लाल रक्त कणांमध्ये न्यूक्लियसच्या गमावण्याचा प्राथमिक कारण ऑक्सीजन परिवहनासाठी जास्त जागा देण्यासाठी आहे. न्यूक्लियस नसल्यामुळे कोशिकेमध्ये अधिक हिमोग्लोबिन असू शकतो, जे ऑक्सीजन वाहून नेण्यासाठी आवश्यक आहे. इतर विकल्प, जे कोशिकेच्या रचनेशी संबंधित आहेत, ते न्यूक्लियस गमावण्याच्या मुख्य कार्यक्षमतेला जास्त नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
@@ -782,87 +592,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the role of chlorophyll with that of vacuoles",
-        "Misunderstands the role of chlorophyll in growth",
-        "Believes division is directly dependent on chlorophyll"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as chlorophyll is essential for photosynthesis. The other options reflect common misconceptions about the roles of chlorophyll in plant cells.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 95,
-          "pageStart": 83,
-          "pageEnd": 84,
-          "headingPath": [
-            "10. Cell and Cell Organelles",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why are animal cells more granular and dense compared to plant cells?",
-      "choices": [
-        "Because they lack a cell wall",
-        "Because they have a nucleus",
-        "Because they have a smaller central vacuole",
-        "Because they have more cytoplasm"
-      ],
-      "answerIndex": 0,
-      "solution": "Animal cells lack a cell wall, which allows their cytoplasm to be more granular and dense compared to plant cells, which have a rigid cell wall. The presence of a large central vacuole in plant cells pushes the cytoplasm to the periphery, making it less dense. The nucleus and amount of cytoplasm alone do not explain the difference in density and granularity.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जानवर कोशिकाएं पौधे कोशिकाओं की तुलना में अधिक कणीय और घनी क्यों होती हैं?",
-          "choices": [
-            "क्योंकि उनमें कोशिका भित्ति नहीं होती",
-            "क्योंकि उनमें एक केंद्रक होता है",
-            "क्योंकि उनमें छोटा केंद्रीय रिक्तिका होता है",
-            "क्योंकि उनमें अधिक साइटोप्लाज्म होता है"
-          ],
-          "solution": "जानवर कोशिकाओं में कोशिका भित्ति नहीं होती, जो उनके साइटोप्लाज्म को पौधे कोशिकाओं की तुलना में अधिक कणीय और घनी बनाती है, जिनमें कठोर कोशिका भित्ति होती है। पौधे कोशिकाओं में बड़ा केंद्रीय रिक्तिका होता है, जो साइटोप्लाज्म को किनारे तक धकेल देता है, जिससे यह कम घना हो जाता है। केंद्रक और साइटोप्लाज्म की मात्रा अकेले घनत्व और कणिता में अंतर की व्याख्या नहीं कर सकती।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "प्राणी कोशिका वनस्पती कोशिकांच्या तुलनेत अधिक ग्रेन्युलर आणि घन का असतात?",
-          "choices": [
-            "कारण त्यांना कोशिका भिंत नसते",
-            "कारण त्यांना न्यूक्लियस असतो",
-            "कारण त्यांना लहान आंतरिक वैक्यूओल असतो",
-            "कारण त्यांना अधिक साइटोप्लाझम असतो"
-          ],
-          "solution": "प्राणी कोशिकांमध्ये कोशिका भिंत नसल्यामुळे त्यांचा साइटोप्लाझम वनस्पती कोशिकांच्या तुलनेत अधिक ग्रेन्युलर आणि घन असतो, ज्यांची एक कठोर कोशिका भिंत असते. वनस्पती कोशिकांमध्ये एक मोठा आंतरिक वैक्यूओल असतो जो साइटोप्लाझमला कोशिकेच्या किनारपट्टीकडे धक्का देतो, ज्यामुळे तो कमी घन असतो. न्यूक्लियस आणि साइटोप्लाझमचा प्रमाण फक्त घनता आणि ग्रेन्युलरतेमध्ये फरक स्पष्ट करू शकत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "A student might think that the presence of a nucleus causes density, not realizing that both animal and plant cells have nuclei.",
-        "Believes plant cells have smaller vacuoles and that vacuole size affects density",
-        "Students often confuse cytoplasmic content with cell density, thinking more cytoplasm equals more density"
+        "Confuses the reason for nuclear loss with increased surface area for gas exchange.",
+        "Confuses the reason for nuclear loss with increased flexibility of the cell.",
+        "Confuses the reason for nuclear loss with reducing the cell's size."
       ],
       "solverAnswers": [
         0,
@@ -872,7 +604,7 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the absence of a cell wall in animal cells leads to a more granular and dense cytoplasm. The author's solution and reasoning are sound and align with the correct answer.",
+      "critique": "The solution correctly identifies option 0 as the correct answer, and the reasoning aligns with the biological fact that the loss of the nucleus in mammalian red blood cells allows for more hemoglobin and thus more oxygen transport. The distractors represent common misconceptions about the purpose of nuclear loss.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -903,85 +635,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following is an example of a cell organelle that is not membrane-bound?",
-      "choices": [
-        "Mitochondria",
-        "Endoplasmic reticulum",
-        "Ribosomes",
-        "Lysosomes"
-      ],
-      "answerIndex": 2,
-      "solution": "Ribosomes are not enclosed by a membrane, making them an example of a cell organelle that is not membrane-bound. Mitochondria, endoplasmic reticulum, and lysosomes all have membranes surrounding them, which is a key feature of their structure. This distinction is based on the fundamental organization of cellular components.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन सा कोशिका अंगक का उदाहरण है जो झिल्ली-सीमित नहीं है?",
-          "choices": [
-            "माइटोकॉन्ड्रिया",
-            "एंडोप्लाज्मिक रेटिकुलम",
-            "राइबोसोम्स",
-            "लाइसोसोम्स"
-          ],
-          "solution": "राइबोसोम्स एक झिल्ली द्वारा घिरे नहीं होते हैं, जिसके कारण वे एक झिल्ली-सीमित नहीं होने वाले कोशिका अंगक का उदाहरण बन जाते हैं। माइटोकॉन्ड्रिया, एंडोप्लाज्मिक रेटिकुलम और लाइसोसोम्स के आसपास एक झिल्ली होती है, जो इनकी संरचना की मुख्य विशेषता है। यह अंतर कोशिकीय घटकों के मूल संगठन पर आधारित है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते कोशिका अंगाचे उदाहरण आहे जे झिल्ली-बांधलेले नाही?",
-          "choices": [
-            "मायटोकॉन्ड्रिया",
-            "अंतर्गत प्रोटीन नलिका",
-            "राइबोसोम्स",
-            "लायसोसोम्स"
-          ],
-          "solution": "राइबोसोम्स झिल्लीने बंद नसतात, ज्यामुळे ते झिल्ली-बांधलेले नसलेल्या कोशिका अंगाचे उदाहरण बनतात. मायटोकॉन्ड्रिया, अंतर्गत प्रोटीन नलिका आणि लायसोसोम्स यांच्यावर झिल्ली असते, जे त्यांच्या संरचनेचा मुख्य लक्षण आहे. ही विभाजनाची तत्त्वे कोशिका घटकांच्या मूळ व्यवस्थेवर आधारित आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and answer are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses mitochondria with non-membrane-bound organelles",
-        "Misunderstands the structure of the endoplasmic reticulum",
-        null,
-        "Believes lysosomes are not membrane-bound"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Ribosomes are indeed non-membrane-bound organelles, while mitochondria, endoplasmic reticulum, and lysosomes are all membrane-bound. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 95,
-          "pageStart": 83,
-          "pageEnd": 84,
-          "headingPath": [
-            "10. Cell and Cell Organelles",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T09:31:47.641Z",
+      "generatedAt": "2026-10-22T07:20:33.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

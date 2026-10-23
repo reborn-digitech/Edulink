@@ -1,0 +1,634 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:03:11.088Z",
+  "finishedAt": "2026-10-20T21:08:43.471Z",
+  "seconds": 332,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm106.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — The Dairy Farm",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n5. (d) 0,8",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\nSection D consists of 4 questions of 5 marks each",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n4. Hence, modal agriculture holdings of the village is 6.17 hectare (approx.)\nOR\n27 (B).\nClass interval f i\n0-20 7\n20-40 p\n40-60 10\n60-80 9\n80-100 13\nTotal 39 + p\nx i\n(Mid- d i = 𝒙 𝒊 −𝟑𝟎 𝒉 f i d i\nvalue)\n10 − 1 − 7\n30 0 0\n50 1 10\n70 2 18\n90 3 39\nAssumed mean(A) = 30, Width of the interval (h) = 20\nMean = 30 + 60 × 20 = 54 ⟹ 50 = 39 + p ⟹ p = 11 1\n39+p\n28.\nTangents drawn to a circle from an external point are equal.\nSo, AP = AS, PB = BQ, 1½\nCR = CQ, DR = DS\nOn adding the above equations,\n(AP + PB) + (CR + RD) = (AS + BQ) + (CQ + DS)\n⟹ AB + CD = AD + BC\nAB + CD\n⟹ AD + BC = 1 ½\nQuestion given for Visually Impaired candidates\nParallelogram ABCD circumscribes a circle as shown in figure.\nTan"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 118009,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 31320,
+      "completionTokens": 7306
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 228855,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 18276,
+      "completionTokens": 7032
+    },
+    "solver": {
+      "calls": 207,
+      "ms": 98846,
+      "in": 31,
+      "out": 18,
+      "rejects": 13,
+      "promptTokens": 43819,
+      "completionTokens": 2272
+    },
+    "form": {
+      "calls": 5,
+      "ms": 18227,
+      "in": 18,
+      "out": 10,
+      "rejects": 8,
+      "promptTokens": 1391,
+      "completionTokens": 527
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2332,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 247062,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 20148,
+      "completionTokens": 8239
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 4,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How much money is saved by the family by making compost instead of buying it?",
+      "ms": {
+        "draft": 3303,
+        "critique": 7098,
+        "solver": 1528
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the minimum number of cows from which the dairy cooperative gets milk?",
+      "ms": {
+        "draft": 3303,
+        "critique": 5315,
+        "solver": 942
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 10 × 40?",
+      "ms": {
+        "draft": 2912,
+        "critique": 6962,
+        "solver": 15144
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "ms": {
+        "draft": 3303,
+        "critique": 5313,
+        "solver": 1512
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 3 more rows of seats get filled in the movie theater, how many more people will be there?",
+      "ms": {
+        "draft": 3303,
+        "critique": 6366,
+        "solver": 1782
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a multiplication pattern from the passage?",
+      "ms": {
+        "draft": 3473,
+        "critique": 6526,
+        "solver": 1561
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "ms": {
+        "draft": 3473,
+        "critique": 6357,
+        "solver": 14717,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct way to find 16 × 25?",
+      "ms": {
+        "draft": 3473,
+        "critique": 4747,
+        "solver": 17057,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 101 × 22 = 2,222, what is 101 × 23?",
+      "ms": {
+        "draft": 3473,
+        "critique": 7574,
+        "solver": 15846,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the correct way to estimate 193 × 272?",
+      "ms": {
+        "draft": 3473,
+        "critique": 4955,
+        "solver": 6699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a multiplication pattern shown in the passage?",
+      "ms": {
+        "draft": 4893,
+        "critique": 5994,
+        "solver": 1011,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 67 × 67 = 4489, what is 67 × 68?",
+      "ms": {
+        "draft": 4893,
+        "critique": 6818,
+        "solver": 2240,
+        "form": 3247
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about the multiplication patterns in the passage is correct?",
+      "ms": {
+        "draft": 4893,
+        "critique": 5932,
+        "solver": 1196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following pairs of number pairs has the largest product?",
+      "ms": {
+        "draft": 4893,
+        "critique": 6334,
+        "solver": 13925,
+        "form": 4777
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many kilograms of kitchen waste does a family of 4 produce in a year?",
+      "ms": {
+        "draft": 4442,
+        "critique": 7144
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How much money does a family save in a year by making their own compost?",
+      "ms": {
+        "draft": 4442,
+        "critique": 6597,
+        "solver": 987
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the minimum number of cows the dairy cooperative gets its milk from?",
+      "ms": {
+        "draft": 4442,
+        "critique": 6857,
+        "solver": 1244
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "ms": {
+        "draft": 4442,
+        "critique": 6222,
+        "solver": 1295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How much money does the dairy cooperative earn by selling 125 kg of ghee in a month?",
+      "ms": {
+        "draft": 4442,
+        "critique": 5740,
+        "solver": 1610
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The dairy has packed butter milk pouches in the following manner: 30 × 2 = 60. What is the total number of pouches if there are 5 such arrangements?",
+      "ms": {
+        "draft": 3335,
+        "critique": 4230,
+        "solver": 1703
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A dairy has packed butter milk pouches in the following manner: 30 × 2 = 60. If the dairy has 30 such arrangements, what is the total number of pouches?",
+      "ms": {
+        "draft": 3335,
+        "critique": 6897,
+        "solver": 1396
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 30 × 2 = 60, what is 60 × 2?",
+      "ms": {
+        "draft": 3335,
+        "critique": 7589,
+        "solver": 9697
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 4 × 10?",
+      "ms": {
+        "draft": 2912,
+        "critique": 5547,
+        "solver": 1878,
+        "form": 0,
+        "translation": 24989
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 10 × 10?",
+      "ms": {
+        "draft": 2912,
+        "critique": 5410,
+        "solver": 1168,
+        "form": 0,
+        "translation": 25204
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 3 × 100?",
+      "ms": {
+        "draft": 2912,
+        "critique": 5183,
+        "solver": 924,
+        "form": 0,
+        "translation": 23865
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the quantity of kitchen waste produced by a family of 4 in a year?",
+      "ms": {
+        "draft": 3303,
+        "critique": 7633,
+        "solver": 934,
+        "form": 4011,
+        "translation": 37440
+      },
+      "outcome": "kept",
+      "flag": "level 1 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 2,
+      "stem": "What is 20 × 10?",
+      "ms": {
+        "draft": 2912,
+        "critique": 5453,
+        "solver": 1496,
+        "form": 0,
+        "translation": 23718
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 30 × 2?",
+      "ms": {
+        "draft": 3335,
+        "critique": 5194,
+        "solver": 899,
+        "form": 0,
+        "translation": 19010
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 × 5 = 50, what is 5 × 10?",
+      "ms": {
+        "draft": 2912,
+        "critique": 3937,
+        "solver": 946,
+        "form": 0,
+        "translation": 21641
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How much money does the dairy cooperative earn by selling 125 kg of ghee in a month?",
+      "ms": {
+        "draft": 3303,
+        "critique": 6412,
+        "solver": 1418,
+        "form": 4964,
+        "translation": 28429
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 99 × 100 = 9900, what is 99 × 99?",
+      "ms": {
+        "draft": 4893,
+        "critique": 8304,
+        "solver": 1233,
+        "form": 2513,
+        "translation": 18235
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A dairy has packed butter milk pouches in the following manner: 30 × 2 = 60. If the number of arrangements is doubled, how many more pouches will be packed?",
+      "ms": {
+        "draft": 3335,
+        "critique": 6606,
+        "solver": 1259,
+        "form": 0,
+        "translation": 21793
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How much money is saved by the family by making compost instead of buying it?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the minimum number of cows from which the dairy cooperative gets milk?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is 10 × 40?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 3 more rows of seats get filled in the movie theater, how many more people will be there?",
+      "reason": "the solver picked option 2 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a multiplication pattern from the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "reason": "options 1 and 2 are the same (\"391 + 24\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct way to find 16 × 25?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 101 × 22 = 2,222, what is 101 × 23?",
+      "reason": "options 0 and 2 are the same (\"2,222 + 22\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the correct way to estimate 193 × 272?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a multiplication pattern shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, so no reason needed f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 67 × 67 = 4489, what is 67 × 68?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"4489+67\" = 4556, but the key says 4498"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about the multiplication patterns in the passage is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"When the multiplier is halved and the multiplicand is doubled, the product remains the same.\" / \"When the multiplier is doubled and the multiplicand is halved, the product is halved.\"); options 0 and 2 say the same thing (\"When the multiplier is halved and the multiplicand is doubled, the product remains the same.\" / \"When the multiplier is doubled and the multiplicand is halved, the product is doubled.\"); options 0 and 3 say the same thing (\"When the multiplier is halved and the multiplicand is doubled, the product remains the same.\" / \"When the multiplier is halved and the multiplicand is doubled, the product is doubled.\"); options 1 and 2 say the same thing (\"When the multiplier is doubled and the multiplicand is halved, the product is halved.\" / \"When the multiplier is doubled and the multiplicand is halved, the product is doubled.\"); options 1 and 3 say the same thing (\"When the multiplier is doubled and the multiplicand is halved, the product is halved.\" / \"When the multiplier is halved and the multiplicand is doubled, the product is doubled.\"); options 2 and 3 say the same thing (\"When the multiplier is doubled and the multiplicand is halved, the product is doubled.\" / \"When the multiplier is halved and the multiplicand is doubled, the product is doubled.\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following pairs of number pairs has the largest product?",
+      "reason": "options 0 and 1 say the same thing (\"1 × 2 and 3 × 4\" / \"1 × 3 and 3 × 4\"); options 0 and 2 say the same thing (\"1 × 2 and 3 × 4\" / \"2: 1 × 4 and 1 × 2\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many kilograms of kitchen waste does a family of 4 produce in a year?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How much money does a family save in a year by making their own compost?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the minimum number of cows the dairy cooperative gets its milk from?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "reason": "the solver picked option 2 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "How much money does the dairy cooperative earn by selling 125 kg of ghee in a month?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The dairy has packed butter milk pouches in the following manner: 30 × 2 = 60. What is the total number of pouches if there are 5 such arrangements?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A dairy has packed butter milk pouches in the following manner: 30 × 2 = 60. If the dairy has 30 such arrangements, what is the total number of pouches?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 30 × 2 = 60, what is 60 × 2?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

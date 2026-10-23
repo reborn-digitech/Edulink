@@ -1,0 +1,515 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:00:14.999Z",
+  "finishedAt": "2026-10-20T19:04:02.706Z",
+  "seconds": 228,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm110.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Elephants, Tigers, and Leopards",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 92505,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16212,
+      "completionTokens": 5625
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 198465,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 14698,
+      "completionTokens": 5792
+    },
+    "solver": {
+      "calls": 143,
+      "ms": 71771,
+      "in": 19,
+      "out": 4,
+      "rejects": 15,
+      "promptTokens": 28833,
+      "completionTokens": 1590
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2939,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 217,
+      "completionTokens": 69
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2913,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 90382,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6780,
+      "completionTokens": 2937
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the total is 8 and it is your turn, what should you add to ensure you win the game?",
+      "ms": {
+        "draft": 2892,
+        "critique": 6575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In the NIM game, what is the maximum number a player can add in one turn?",
+      "ms": {
+        "draft": 2892,
+        "critique": 6422,
+        "solver": 1138
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the target number in the NIM game described in the passage?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5847,
+        "solver": 1905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the total is 7 and it is your turn, what should you add to ensure you win the game?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5246,
+        "solver": 10068
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following can be filled in the blank to make the difference between any two neighboring squares even?",
+      "ms": {
+        "draft": 4768,
+        "critique": 9127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a subtraction problem that can be solved by first subtracting 100 and then adding 1?",
+      "ms": {
+        "draft": 4768,
+        "critique": 8352,
+        "solver": 12632
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the current total is 4 and it is your turn, and you add 1, what will be the new total?",
+      "ms": {
+        "draft": 2892,
+        "critique": 6598,
+        "solver": 16309
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total amount deposited by Raju, Rani, and Roja is ₹ 2045, ₹ 3578, and ₹ 1240 respectively, what is the total amount deposited by all of them?",
+      "ms": {
+        "draft": 4768,
+        "critique": 5887,
+        "solver": 1345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an addition problem that can be solved by adding 100 and then subtracting 4?",
+      "ms": {
+        "draft": 4768,
+        "critique": 6453,
+        "solver": 5158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to represent ₹2045 in words?",
+      "ms": {
+        "draft": 3694,
+        "critique": 6226,
+        "solver": 1034
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Raju has ₹2045 and he wants to deposit it using the fewest number of notes, which combination of notes should he choose?",
+      "ms": {
+        "draft": 3694,
+        "critique": 9573,
+        "solver": 1087
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Raju has ₹2045 and he gives ₹99 to Rani, how much money does Raju have left?",
+      "ms": {
+        "draft": 3694,
+        "critique": 8871,
+        "solver": 1311
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Rani has ₹3578 and Roja has ₹1240, what is the total amount they have together?",
+      "ms": {
+        "draft": 3694,
+        "critique": 6375,
+        "solver": 16766
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to represent ₹3578 in words?",
+      "ms": {
+        "draft": 3694,
+        "critique": 8054,
+        "solver": 1433
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the objective of the NIM Game described in the passage?",
+      "ms": {
+        "draft": 4063,
+        "critique": 5923,
+        "solver": 1337
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Raju has ₹2045 and Rani has ₹3578, and they want to divide the total amount equally between them, how much money will each get?",
+      "ms": {
+        "draft": 3694,
+        "critique": 8330,
+        "solver": 17662
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the other player has reached a total of 8 and it is your turn, what should you do to ensure you win the game?",
+      "ms": {
+        "draft": 4063,
+        "critique": 6271,
+        "solver": 1283
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the addition chart, how many times does the number 9 appear?",
+      "ms": {
+        "draft": 4063,
+        "critique": 6732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which game is discussed in the chapter that involves adding 1 or 2 to reach a target number?",
+      "ms": {
+        "draft": 4063,
+        "critique": 7244,
+        "solver": 10742,
+        "form": 3530
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the population of elephants in Karnataka is 6049 and in Kerala is 3054, what is the total number of elephants in these two states?",
+      "ms": {
+        "draft": 4063,
+        "critique": 6700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the problem where the number of tigers in Madhya Pradesh is 341 more than in Maharashtra and Uttarakhand has 116 more tigers than Maharashtra, what is the total number of tigers in Madhya Pradesh and Uttarakhand?",
+      "ms": {
+        "draft": 4063,
+        "critique": 5187
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a player reaches a total of 6 and it is your turn, what should you add to ensure you win the game?",
+      "ms": {
+        "draft": 2892,
+        "critique": 4406,
+        "solver": 1394,
+        "form": 0,
+        "translation": 31698
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 139 + 175 = 314, what is 314 – 175?",
+      "ms": {
+        "draft": 4768,
+        "critique": 4865,
+        "solver": 2016,
+        "form": 0,
+        "translation": 26630
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 354 + 167 = 521, what is 354 + 168?",
+      "ms": {
+        "draft": 4768,
+        "critique": 6003,
+        "solver": 980,
+        "form": 0,
+        "translation": 27915
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the total is 8 and it is your turn, what should you add to ensure you win the game?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In the NIM game, what is the maximum number a player can add in one turn?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the target number in the NIM game described in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the total is 7 and it is your turn, what should you add to ensure you win the game?",
+      "reason": "after redraft: the solver picked option 0 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following can be filled in the blank to make the difference between any two neighboring squares even?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a subtraction problem that can be solved by first subtracting 100 and then adding 1?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the current total is 4 and it is your turn, and you add 1, what will be the new total?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the total amount deposited by Raju, Rani, and Roja is ₹ 2045, ₹ 3578, and ₹ 1240 respectively, what is the total amount deposited by all of them?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of an addition problem that can be solved by adding 100 and then subtracting 4?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct way to represent ₹2045 in words?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Raju has ₹2045 and he wants to deposit it using the fewest number of notes, which combination of notes should he choose?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Raju has ₹2045 and he gives ₹99 to Rani, how much money does Raju have left?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If Rani has ₹3578 and Roja has ₹1240, what is the total amount they have together?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct way to represent ₹3578 in words?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the objective of the NIM Game described in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Raju has ₹2045 and Rani has ₹3578, and they want to divide the total amount equally between them, how much money will each get?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the other player has reached a total of 8 and it is your turn, what should you do to ensure you win the game?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the addition chart, how many times does the number 9 appear?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which game is discussed in the chapter that involves adding 1 or 2 to reach a target number?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the population of elephants in Karnataka is 6049 and in Kerala is 3054, what is the total number of elephants in these two states?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the problem where the number of tigers in Madhya Pradesh is 341 more than in Maharashtra and Uttarakhand has 116 more tigers than Maharashtra, what is the total number of tigers in Madhya Pradesh and Uttarakhand?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

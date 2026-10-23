@@ -1,0 +1,240 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:34:26.308Z",
+  "finishedAt": "2026-10-20T20:36:41.568Z",
+  "seconds": 135,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap126.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 26 — Defence Officer: Wahida",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 26402,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7826,
+      "completionTokens": 1466
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 50946,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3726,
+      "completionTokens": 1533
+    },
+    "solver": {
+      "calls": 48,
+      "ms": 26451,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 7767,
+      "completionTokens": 484
+    },
+    "form": {
+      "calls": 6,
+      "ms": 13473,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 1440,
+      "completionTokens": 418
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2716,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 163049,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 10102,
+      "completionTokens": 5269
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the first woman to lead a parade in the Indian Navy?",
+      "ms": {
+        "draft": 3728,
+        "critique": 7108,
+        "solver": 1646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Wahida's father want one of his daughters to become?",
+      "ms": {
+        "draft": 3728,
+        "critique": 7511,
+        "solver": 1568
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was Wahida's responsibility on the naval ship?",
+      "ms": {
+        "draft": 3728,
+        "critique": 6705,
+        "solver": 1246,
+        "form": 3083
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Wahida mean when she said she wanted to be like a prism?",
+      "ms": {
+        "draft": 2873,
+        "critique": 5245,
+        "solver": 1124,
+        "form": 4951
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason behind Wahida's decision to join the Indian Navy?",
+      "ms": {
+        "draft": 2873,
+        "critique": 5272,
+        "solver": 14771,
+        "form": 1403,
+        "translation": 25319
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main challenge that Wahida faced while pursuing her education?",
+      "ms": {
+        "draft": 2873,
+        "critique": 5143,
+        "solver": 1123,
+        "form": 1864,
+        "translation": 43412
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a naval ship is at sea for three to four months, what is the main responsibility of a naval doctor?",
+      "ms": {
+        "draft": 2873,
+        "critique": 5557,
+        "solver": 3032,
+        "form": 3776,
+        "translation": 49075
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Wahida's father give her the name 'Prism'?",
+      "ms": {
+        "draft": 3728,
+        "critique": 3707,
+        "solver": 699,
+        "form": 968,
+        "translation": 42191
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the first woman to lead a parade in the Indian Navy?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Wahida's father want one of his daughters to become?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was Wahida's responsibility on the naval ship?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Imagines a role that is not described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did Wahida mean when she said she wanted to be like a prism?",
+      "reason": "the key is far longer than every distractor (48 vs 26 characters)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

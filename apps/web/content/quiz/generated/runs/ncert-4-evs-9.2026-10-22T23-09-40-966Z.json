@@ -1,0 +1,250 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:09:40.966Z",
+  "finishedAt": "2026-10-22T23:10:46.850Z",
+  "seconds": 66,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap109.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 9 — Changing Families",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 31424,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7912,
+      "completionTokens": 1576
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 50300,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 4007,
+      "completionTokens": 1559
+    },
+    "solver": {
+      "calls": 16,
+      "ms": 7070,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2560,
+      "completionTokens": 160
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4477,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 474,
+      "completionTokens": 170
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3183,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4277,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 194,
+      "completionTokens": 287
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main topic of the chapter?",
+      "ms": {
+        "draft": 3703,
+        "critique": 5090
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How might Nimmi's daily routine change with the arrival of her baby sister?",
+      "ms": {
+        "draft": 3703,
+        "critique": 6239
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many members were in Nimmi’s family before the arrival of her baby sister?",
+      "ms": {
+        "draft": 3703,
+        "critique": 6389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What will change in Tsering’s family after his father’s transfer?",
+      "ms": {
+        "draft": 3703,
+        "critique": 3238,
+        "solver": 5085,
+        "form": 1038
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason for the change in Nazli’s family?",
+      "ms": {
+        "draft": 4153,
+        "critique": 7289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason for the change in Tsering’s family?",
+      "ms": {
+        "draft": 4153,
+        "critique": 8202
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many members are there in Nimmi’s family now?",
+      "ms": {
+        "draft": 4153,
+        "critique": 5259
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason for the change in Nimmi’s family?",
+      "ms": {
+        "draft": 4153,
+        "critique": 6584,
+        "solver": 1681,
+        "form": 3439
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main topic of the chapter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How might Nimmi's daily routine change with the arrival of her baby sister?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many members were in Nimmi’s family before the arrival of her baby sister?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What will change in Tsering’s family after his father’s transfer?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Assumes a new baby without any evidence from the passage…\"); distractor 3's reason is not a one-line misconception (\"Assumes a wedding without any evidence from the passage and …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the reason for the change in Nazli’s family?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the reason for the change in Tsering’s family?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many members are there in Nimmi’s family now?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the reason for the change in Nimmi’s family?",
+      "reason": "near-duplicate of served question cmvh3b80a06kogpfhee2nkbu4 (cosine 0.921 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

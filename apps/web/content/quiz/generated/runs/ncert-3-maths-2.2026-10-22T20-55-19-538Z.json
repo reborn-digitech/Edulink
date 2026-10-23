@@ -1,0 +1,279 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T20:55:19.538Z",
+  "finishedAt": "2026-10-22T20:56:27.599Z",
+  "seconds": 68,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm102.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Toy Joy",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2013 — question paper]\n3. A finite non-empty set of integers is called 3-good if the sum of its elements is divisible by 3.\nFind the number of non-empty 3-good subsets of {0, 1, 2, . . . , 9}.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[RMO 2015 — question paper]\n4. Find all three digit natural numbers of the form (abc) 10 such that (abc) 10 , (bca) 10 and (cab) 10\nare in geometric progression. (Here (abc) 10 is representation in base 10.)",
+      "[RMO 2013 — question paper]\nPaper 3 Regional Mathematical Olympiad 2013 December 1, 2013"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 20286,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 7696,
+      "completionTokens": 1315
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 45291,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3566,
+      "completionTokens": 1686
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 22812,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 9024,
+      "completionTokens": 589
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2958,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 29268,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 2967,
+      "completionTokens": 1218
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What shape has a pointed top?",
+      "ms": {
+        "draft": 1774,
+        "critique": 4894,
+        "solver": 10460,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape is used to make a rocket?",
+      "ms": {
+        "draft": 1607,
+        "critique": 6102,
+        "solver": 1489
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which shape is on the top of the orange cylinder?",
+      "ms": {
+        "draft": 1607,
+        "critique": 3296,
+        "solver": 411
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has no edges?",
+      "ms": {
+        "draft": 1774,
+        "critique": 4215,
+        "solver": 1388,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape is a special type of cuboid?",
+      "ms": {
+        "draft": 1607,
+        "critique": 5396,
+        "solver": 1067,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has no edges?",
+      "ms": {
+        "draft": 1607,
+        "critique": 5636,
+        "solver": 1457,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the shape of a bottle?",
+      "ms": {
+        "draft": 1774,
+        "critique": 4059,
+        "solver": 1134,
+        "form": 0,
+        "translation": 13057
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has 6 faces?",
+      "ms": {
+        "draft": 1774,
+        "critique": 6180,
+        "solver": 6914,
+        "form": 0,
+        "translation": 12909
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the shape of a dice?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What shape has a flat top and bottom?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What shape has a pointed top?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which shape has only curved faces?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which shape has both flat and curved faces?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which shape is used to make a rocket?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which shape is on the top of the orange cylinder?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which shape has no edges?",
+      "reason": "near-duplicate of served question cmvgygqe405jagpfh80t9546v (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which shape is a special type of cuboid?",
+      "reason": "near-duplicate of served question cmvgygqe005iygpfh78pg1aov (cosine 0.974 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which shape has no edges?",
+      "reason": "near-duplicate of served question cmvgygqe405jagpfh80t9546v (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

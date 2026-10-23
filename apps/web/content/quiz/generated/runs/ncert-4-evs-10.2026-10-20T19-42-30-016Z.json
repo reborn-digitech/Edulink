@@ -1,0 +1,378 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:42:30.016Z",
+  "finishedAt": "2026-10-20T19:45:56.731Z",
+  "seconds": 207,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap110.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 10 — Hu Tu Tu, Hu Tu Tu",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 59466,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13660,
+      "completionTokens": 3062
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 144623,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 8253,
+      "completionTokens": 3541
+    },
+    "solver": {
+      "calls": 95,
+      "ms": 63514,
+      "in": 13,
+      "out": 6,
+      "rejects": 7,
+      "promptTokens": 17590,
+      "completionTokens": 1051
+    },
+    "form": {
+      "calls": 5,
+      "ms": 16335,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 1149,
+      "completionTokens": 379
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2626,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 160031,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6712,
+      "completionTokens": 3339
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the game that the girls in the passage are playing?",
+      "ms": {
+        "draft": 3248,
+        "critique": 6342,
+        "solver": 1733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of rules in games?",
+      "ms": {
+        "draft": 3248,
+        "critique": 10439,
+        "solver": 2134,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Leela and Heera's mama scold them in the cinema hall?",
+      "ms": {
+        "draft": 3651,
+        "critique": 9524,
+        "solver": 1798
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Leela and Heera have strong will for?",
+      "ms": {
+        "draft": 3651,
+        "critique": 9056,
+        "solver": 21084
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 children want to play Kho-Kho and form two teams with equal numbers, what will happen?",
+      "ms": {
+        "draft": 3651,
+        "critique": 8751,
+        "solver": 8781,
+        "form": 1604
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What game did Heera become a coach for?",
+      "ms": {
+        "draft": 3637,
+        "critique": 5736
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Leela and Heera feel excited about their matches?",
+      "ms": {
+        "draft": 3637,
+        "critique": 6803
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a coach taught a game with different rules?",
+      "ms": {
+        "draft": 3637,
+        "critique": 5478,
+        "solver": 1560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the game described in the passage?",
+      "ms": {
+        "draft": 4331,
+        "critique": 6055,
+        "solver": 1593
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 15 children want to play Kho-Kho, how can they form teams with equal numbers?",
+      "ms": {
+        "draft": 3637,
+        "critique": 10500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Shyamala's team get 'out' in the game?",
+      "ms": {
+        "draft": 4331,
+        "critique": 6583,
+        "solver": 1671,
+        "form": 3117
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happened when Shyamala touched the line in the game?",
+      "ms": {
+        "draft": 4331,
+        "critique": 7288,
+        "solver": 2173
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many players are there in a team when playing Kabaddi?",
+      "ms": {
+        "draft": 4331,
+        "critique": 8328,
+        "solver": 10383
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When did Shyamala’s team get 'out' in the game?",
+      "ms": {
+        "draft": 3248,
+        "critique": 6813,
+        "solver": 2130,
+        "form": 4872,
+        "translation": 48998
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Heera become after facing difficulties in Kabaddi?",
+      "ms": {
+        "draft": 3651,
+        "critique": 8303,
+        "solver": 1343,
+        "form": 4667,
+        "translation": 50682
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many players got 'out' when Shyamala touched the line?",
+      "ms": {
+        "draft": 3248,
+        "critique": 7037,
+        "solver": 20348,
+        "form": 4585,
+        "translation": 54401
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the game that the girls in the passage are playing?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of rules in games?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's message about rules…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Leela and Heera's mama scold them in the cinema hall?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Leela and Heera have strong will for?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 15 children want to play Kho-Kho and form two teams with equal numbers, what will happen?",
+      "reason": "options 0 and 1 are the same (\"One child will be left out\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What game did Heera become a coach for?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Leela and Heera feel excited about their matches?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if a coach taught a game with different rules?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the game described in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If 15 children want to play Kho-Kho, how can they form teams with equal numbers?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Shyamala's team get 'out' in the game?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What happened when Shyamala touched the line in the game?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many players are there in a team when playing Kabaddi?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T18:44:57.337Z",
+  "finishedAt": "2026-10-20T18:48:35.856Z",
+  "seconds": 219,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm107.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — The Cleanest Village",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n4. (d) 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 83263,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17786,
+      "completionTokens": 4969
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 177668,
+      "in": 24,
+      "out": 13,
+      "rejects": 11,
+      "promptTokens": 11608,
+      "completionTokens": 4957
+    },
+    "solver": {
+      "calls": 87,
+      "ms": 36199,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 14234,
+      "completionTokens": 858
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4510,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 475,
+      "completionTokens": 141
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2653,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 136275,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9960,
+      "completionTokens": 4176
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the cost of 1 kg of custard apple?",
+      "ms": {
+        "draft": 3381,
+        "critique": 6158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the cost of 2 kg of beans?",
+      "ms": {
+        "draft": 3381,
+        "critique": 7558
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the mother bought 1 kg of onion and 1 kg of sapota, what is the total cost?",
+      "ms": {
+        "draft": 3381,
+        "critique": 7846
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 3 kg of bananas cost ₹165, what is the cost of 1 kg of bananas?",
+      "ms": {
+        "draft": 3381,
+        "critique": 8118
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total cost of 2 kg of radish and 1 kg of radish?",
+      "ms": {
+        "draft": 3381,
+        "critique": 6314,
+        "solver": 1755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total money spent by Daisy and Lou on pusaw if they bought one large piece for ₹38 and one small piece for ₹16?",
+      "ms": {
+        "draft": 4101,
+        "critique": 7096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many mangoes did Ram Chacha get this year if he got 264 mangoes last year and 527 mangoes this year?",
+      "ms": {
+        "draft": 4101,
+        "critique": 6751,
+        "solver": 658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How much money did Daisy and Lou take for the trip?",
+      "ms": {
+        "draft": 2698,
+        "critique": 6973
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total money spent by Daisy and Lou on pusaw?",
+      "ms": {
+        "draft": 2698,
+        "critique": 6278,
+        "solver": 1363
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 10 Ones?",
+      "ms": {
+        "draft": 2698,
+        "critique": 8558
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many children are waiting to visit the Living Roots Bridge?",
+      "ms": {
+        "draft": 2698,
+        "critique": 6845,
+        "solver": 1029
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many more mangoes did Ram Chacha get this year than last year?",
+      "ms": {
+        "draft": 2698,
+        "critique": 6317
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How much money have Lou and Daisy spent till now?",
+      "ms": {
+        "draft": 2698,
+        "critique": 6438,
+        "solver": 1734
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the total cost of 1 kg of custard apple, 1 kg of sapota, and 2 kg of radish?",
+      "ms": {
+        "draft": 3697,
+        "critique": 7674
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the mother bought 1 kg of radish and 2 kg of onion, what is the total cost?",
+      "ms": {
+        "draft": 3697,
+        "critique": 8869
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT listed as an activity in Mawlynnong?",
+      "ms": {
+        "draft": 3697,
+        "critique": 6907,
+        "solver": 13722,
+        "form": 1716
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 2 kg of beans cost ₹190, how much would 1 kg of beans cost?",
+      "ms": {
+        "draft": 3697,
+        "critique": 7642,
+        "solver": 12029,
+        "form": 3481
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the mother spent ₹163 on groceries, which of the following could she have bought?",
+      "ms": {
+        "draft": 3697,
+        "critique": 7204
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a main attraction in Mawlynnong?",
+      "ms": {
+        "draft": 3697,
+        "critique": 3536,
+        "solver": 6329
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total money Daisy and Lou took for the trip if they had ₹185 in their piggy bank and their mother gave them ₹125 more?",
+      "ms": {
+        "draft": 4101,
+        "critique": 6061,
+        "solver": 1030,
+        "form": 0,
+        "translation": 29762
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 more girls join the music school and they want to learn to play the tabla, and initially 20 girls were learning, how many girls play the tabla now?",
+      "ms": {
+        "draft": 4101,
+        "critique": 5852,
+        "solver": 1611,
+        "form": 0,
+        "translation": 31366
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many children are waiting to visit the Living Roots Bridge if 438 children decided to visit and 215 went first?",
+      "ms": {
+        "draft": 4101,
+        "critique": 6444,
+        "solver": 1538,
+        "form": 0,
+        "translation": 28671
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a customer paid ₹200 for a cost of ₹185, what is the balance?",
+      "ms": {
+        "draft": 3381,
+        "critique": 6390,
+        "solver": 1318,
+        "form": 1,
+        "translation": 21480
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "How much money have Lou and Daisy spent if they brought ₹310 and are left with ₹179?",
+      "ms": {
+        "draft": 4101,
+        "critique": 6560,
+        "solver": 991,
+        "form": 0,
+        "translation": 21316
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the cost of 1 kg of custard apple?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the cost of 2 kg of beans?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the mother bought 1 kg of onion and 1 kg of sapota, what is the total cost?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If 3 kg of bananas cost ₹165, what is the cost of 1 kg of bananas?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total cost of 2 kg of radish and 1 kg of radish?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the total money spent by Daisy and Lou on pusaw if they bought one large piece for ₹38 and one small piece for ₹16?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "How many mangoes did Ram Chacha get this year if he got 264 mangoes last year and 527 mangoes this year?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How much money did Daisy and Lou take for the trip?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total money spent by Daisy and Lou on pusaw?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of 10 Ones?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many children are waiting to visit the Living Roots Bridge?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many more mangoes did Ram Chacha get this year than last year?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How much money have Lou and Daisy spent till now?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the total cost of 1 kg of custard apple, 1 kg of sapota, and 2 kg of radish?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the mother bought 1 kg of radish and 2 kg of onion, what is the total cost?",
+      "reason": "the critic finds option 0 correct, the key is 1; option 0 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is NOT listed as an activity in Mawlynnong?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 2 kg of beans cost ₹190, how much would 1 kg of beans cost?",
+      "reason": "checkExpr \"95\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the mother spent ₹163 on groceries, which of the following could she have bought?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a main attraction in Mawlynnong?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

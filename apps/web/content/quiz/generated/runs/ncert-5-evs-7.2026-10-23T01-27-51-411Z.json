@@ -1,0 +1,313 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:27:51.411Z",
+  "finishedAt": "2026-10-23T01:31:52.717Z",
+  "seconds": 241,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap107.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 7 — Experiments with Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 42185,
+      "in": 12,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 10823,
+      "completionTokens": 2309
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 101638,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 6239,
+      "completionTokens": 2551
+    },
+    "solver": {
+      "calls": 49,
+      "ms": 29489,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8443,
+      "completionTokens": 497
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14968,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 1451,
+      "completionTokens": 399
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2669,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 122487,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6934,
+      "completionTokens": 3482
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did the soap case float on water even after the soap was put in it?",
+      "ms": {
+        "draft": 3988,
+        "critique": 7575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happened when Ayesha put a puffed puri in a bowl of water?",
+      "ms": {
+        "draft": 3988,
+        "critique": 6905,
+        "solver": 13010,
+        "form": 2399
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a steel plate is placed on water, what is most likely to happen?",
+      "ms": {
+        "draft": 3988,
+        "critique": 7412,
+        "solver": 14711,
+        "form": 2019
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Ayesha's mother find very little water left in the pan after boiling?",
+      "ms": {
+        "draft": 3415,
+        "critique": 7354
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason Chittibabu and Chinnababu kept their mango jelly in the sun?",
+      "ms": {
+        "draft": 3415,
+        "critique": 6972
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you want to dry your handkerchief quickly, which of the following would help?",
+      "ms": {
+        "draft": 3415,
+        "critique": 6386
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How is salt made according to the passage?",
+      "ms": {
+        "draft": 3415,
+        "critique": 5194
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happened to the puri when it was put in hot oil?",
+      "ms": {
+        "draft": 3144,
+        "critique": 7268
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the soap case float on water even when the soap was inside it?",
+      "ms": {
+        "draft": 3144,
+        "critique": 7243,
+        "solver": 1992,
+        "form": 2758
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a steel plate is put on water, what would happen?",
+      "ms": {
+        "draft": 3144,
+        "critique": 6897,
+        "solver": 1471,
+        "form": 4155,
+        "translation": 38726
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the eggs come up and start floating in salty water?",
+      "ms": {
+        "draft": 3988,
+        "critique": 9359,
+        "solver": 13286,
+        "form": 2867,
+        "translation": 40252
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What did Ayesha observe when she put eggs in saltwater?",
+      "ms": {
+        "draft": 3144,
+        "critique": 6251,
+        "solver": 517,
+        "form": 1242,
+        "translation": 40334
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did the soap case float on water even after the soap was put in it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What happened when Ayesha put a puffed puri in a bowl of water?",
+      "reason": "options 0 and 2 are the same (\"It sank to the bottom\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a steel plate is placed on water, what is most likely to happen?",
+      "reason": "options 0 and 2 are the same (\"It will float on the surface\"); options 1 and 3 are the same (\"It will sink to the bottom\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Ayesha's mother find very little water left in the pan after boiling?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the reason Chittibabu and Chinnababu kept their mango jelly in the sun?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you want to dry your handkerchief quickly, which of the following would help?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How is salt made according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What happened to the water in the pan when Ayesha's mother fo"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happened to the puri when it was put in hot oil?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why did the soap case float on water even when the soap was inside it?",
+      "reason": "near-duplicate of served question cmvh8aj5i07i8gpfhw9m198jg (cosine 0.950 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

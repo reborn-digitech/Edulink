@@ -1,0 +1,376 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:03:59.721Z",
+  "finishedAt": "2026-10-20T20:08:00.374Z",
+  "seconds": 241,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap116.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 16 — A Busy Month",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 77157,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14056,
+      "completionTokens": 2982
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 184927,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 7763,
+      "completionTokens": 3286
+    },
+    "solver": {
+      "calls": 70,
+      "ms": 42895,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 10757,
+      "completionTokens": 693
+    },
+    "form": {
+      "calls": 4,
+      "ms": 18997,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 935,
+      "completionTokens": 312
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3281,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 190143,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6728,
+      "completionTokens": 3448
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a child sees a bird's nest on a tree branch, which bird is most likely to have made it?",
+      "ms": {
+        "draft": 4826,
+        "critique": 9427,
+        "solver": 1843
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the way birds build nests?",
+      "ms": {
+        "draft": 4826,
+        "critique": 11296,
+        "solver": 2290,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do cows use their large and flat teeth for?",
+      "ms": {
+        "draft": 5068,
+        "critique": 11399
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do cats use their sharp teeth for?",
+      "ms": {
+        "draft": 5068,
+        "critique": 11430
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What would happen to a squirrel's teeth if it did not gnaw on things?",
+      "ms": {
+        "draft": 5068,
+        "critique": 9998
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person had no back teeth, what kind of food would be difficult to eat?",
+      "ms": {
+        "draft": 5068,
+        "critique": 6913
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What kind of teeth do cows have for chewing grass?",
+      "ms": {
+        "draft": 4428,
+        "critique": 9540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has no back teeth, what would they have difficulty eating?",
+      "ms": {
+        "draft": 4428,
+        "critique": 10157
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a cat's teeth?",
+      "ms": {
+        "draft": 4428,
+        "critique": 11881,
+        "solver": 17416,
+        "form": 4059
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What would a person without any teeth be able to eat?",
+      "ms": {
+        "draft": 4428,
+        "critique": 10403,
+        "solver": 17252,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many types of birds are mentioned in the passage?",
+      "ms": {
+        "draft": 4968,
+        "critique": 10551,
+        "solver": 2302
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child observes a bird's nest in their house and notices that the bird brings small insects to the nest, which bird is the child most likely observing?",
+      "ms": {
+        "draft": 4968,
+        "critique": 10664,
+        "solver": 1683
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which bird uses its beak to stitch leaves together to make a nest?",
+      "ms": {
+        "draft": 4968,
+        "critique": 8848,
+        "solver": 9306,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which bird is mentioned as not making its own nest?",
+      "ms": {
+        "draft": 4826,
+        "critique": 10021,
+        "solver": 1657,
+        "form": 6768,
+        "translation": 59896
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which bird is described as using its beak to stitch leaves together to make a nest?",
+      "ms": {
+        "draft": 4826,
+        "critique": 10057,
+        "solver": 2925,
+        "form": 4613,
+        "translation": 61503
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which bird is described as having a 'crown on the head and coins on the tail'?",
+      "ms": {
+        "draft": 4968,
+        "critique": 10273,
+        "solver": 3252,
+        "form": 4819,
+        "translation": 61293
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a child sees a bird's nest on a tree branch, which bird is most likely to have made it?",
+      "reason": "the solver picked option 0 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the way birds build nests?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What do cows use their large and flat teeth for?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What do cats use their sharp teeth for?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What would happen to a squirrel's teeth if it did not gnaw on things?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person had no back teeth, what kind of food would be difficult to eat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What kind of teeth do cows have for chewing grass?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has no back teeth, what would they have difficulty eating?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of a cat's teeth?",
+      "reason": "options 0 and 2 are the same (\"To cut and crush seeds\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What would a person without any teeth be able to eat?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How many types of birds are mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a child observes a bird's nest in their house and notices that the bird brings small insects to the nest, which bird is the child most likely observing?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which bird uses its beak to stitch leaves together to make a nest?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

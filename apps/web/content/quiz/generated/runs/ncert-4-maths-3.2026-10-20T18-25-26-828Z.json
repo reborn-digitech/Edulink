@@ -1,0 +1,306 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T18:25:26.828Z",
+  "finishedAt": "2026-10-20T18:27:56.997Z",
+  "seconds": 150,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm103.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Patterns Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 38889,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 6862,
+      "completionTokens": 2390
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 115912,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 7824,
+      "completionTokens": 3205
+    },
+    "solver": {
+      "calls": 94,
+      "ms": 55138,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 19579,
+      "completionTokens": 1159
+    },
+    "form": {
+      "calls": 1,
+      "ms": 22383,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 2044,
+      "completionTokens": 555
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2288,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 101625,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 8093,
+      "completionTokens": 3061
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which numbers can be paired without any left over?",
+      "ms": {
+        "draft": 3432,
+        "critique": 6367
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is even, then what can be said about the number before it?",
+      "ms": {
+        "draft": 3432,
+        "critique": 6774
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is not an even number?",
+      "ms": {
+        "draft": 3432,
+        "critique": 8071,
+        "solver": 14429
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Shirley notices that both the numbers, before and after an odd number, are even. Which of the following numbers would follow this pattern?",
+      "ms": {
+        "draft": 3432,
+        "critique": 6758,
+        "solver": 865
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Shirley and Shiv arranged their coins in triangles. If Shiv has 15 coins in his triangle, how many coins are there in each row?",
+      "ms": {
+        "draft": 3050,
+        "critique": 5565,
+        "solver": 2188,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Shirley and Shiv are arranging 24 coins in a pattern. If they arrange them in 6 rows with the same number of coins in each row, how many coins will be in each row?",
+      "ms": {
+        "draft": 3050,
+        "critique": 11349,
+        "solver": 13091
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Shirley noticed that after an odd number, the next number is always even. If the number is 17, what will be the next two numbers?",
+      "ms": {
+        "draft": 3050,
+        "critique": 5978,
+        "solver": 10500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an odd number?",
+      "ms": {
+        "draft": 3432,
+        "critique": 7170,
+        "solver": 14198,
+        "form": 0,
+        "translation": 23367
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is even?",
+      "ms": {
+        "draft": 3050,
+        "critique": 4282,
+        "solver": 1446,
+        "form": 0,
+        "translation": 20519
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is odd?",
+      "ms": {
+        "draft": 3050,
+        "critique": 4476,
+        "solver": 981,
+        "form": 0,
+        "translation": 16184
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the next even number after 22?",
+      "ms": {
+        "draft": 3432,
+        "critique": 8013,
+        "solver": 13843,
+        "form": 0,
+        "translation": 19372
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Shirley arranged 12 coins in groups of 2. How many groups did she make?",
+      "ms": {
+        "draft": 3050,
+        "critique": 5068,
+        "solver": 16412,
+        "form": 0,
+        "translation": 18500
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which numbers can be paired without any left over?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a number is even, then what can be said about the number before it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following numbers is not an even number?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Shirley notices that both the numbers, before and after an odd number, are even. Which of the following numbers would follow this pattern?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Shirley and Shiv arranged their coins in triangles. If Shiv has 15 coins in his triangle, how many coins are there in each row?",
+      "reason": "figure: figure spec refused: spec.frame.unit: Invalid enum value. Expected 'cm' | 'units', received 'coins'"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Shirley and Shiv are arranging 24 coins in a pattern. If they arrange them in 6 rows with the same number of coins in each row, how many coins will be in each row?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Shirley noticed that after an odd number, the next number is always even. If the number is 17, what will be the next two numbers?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

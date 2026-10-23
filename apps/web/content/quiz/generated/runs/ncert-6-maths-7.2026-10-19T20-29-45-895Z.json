@@ -1,0 +1,719 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T20:29:45.895Z",
+  "finishedAt": "2026-10-19T20:40:06.670Z",
+  "seconds": 621,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp107.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Fractions",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 152019,
+      "in": 42,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 50725,
+      "completionTokens": 8891
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 325078,
+      "in": 38,
+      "out": 36,
+      "rejects": 2,
+      "promptTokens": 23645,
+      "completionTokens": 9324
+    },
+    "solver": {
+      "calls": 274,
+      "ms": 126099,
+      "in": 36,
+      "out": 28,
+      "rejects": 8,
+      "promptTokens": 49223,
+      "completionTokens": 2838
+    },
+    "form": {
+      "calls": 15,
+      "ms": 50235,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 3949,
+      "completionTokens": 1338
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 5683,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 83,
+      "ms": 693121,
+      "in": 40,
+      "out": 40,
+      "rejects": 0,
+      "promptTokens": 46318,
+      "completionTokens": 21132
+    }
+  },
+  "kept": 20,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 3,
+    "4": 4,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 10,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes a fraction less than one?",
+      "ms": {
+        "draft": 3611,
+        "critique": 6742
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a strip of paper is folded 3 times, how many equal parts is it divided into?",
+      "ms": {
+        "draft": 3058,
+        "critique": 6192,
+        "solver": 13440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a mixed number?",
+      "ms": {
+        "draft": 3611,
+        "critique": 6747
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Looking at the fraction wall, which of the following fractions is equivalent to 1/2?",
+      "ms": {
+        "draft": 3611,
+        "critique": 6041,
+        "solver": 13737
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 3/4 of a cake is eaten, what fraction of the cake is left?",
+      "ms": {
+        "draft": 3611,
+        "critique": 6928,
+        "solver": 9673,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are fractions called when their shares are equal?",
+      "ms": {
+        "draft": 3680,
+        "critique": 6303,
+        "solver": 11460
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "ms": {
+        "draft": 3680,
+        "critique": 6369,
+        "solver": 9885
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 4 kg of potatoes are divided equally into 3 bags, how many bags will contain 12 kg of potatoes if the share per bag is the same?",
+      "ms": {
+        "draft": 3680,
+        "critique": 6655,
+        "solver": 12315
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5 glasses of juice are shared equally among 4 friends, how many glasses would 8 friends need to get the same share?",
+      "ms": {
+        "draft": 3680,
+        "critique": 5958,
+        "solver": 11507
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first step in comparing the sizes of two or more fractions?",
+      "ms": {
+        "draft": 13411,
+        "critique": 7226,
+        "solver": 1231,
+        "form": 4472
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of and ?",
+      "ms": {
+        "draft": 13411,
+        "critique": 5975,
+        "solver": 1249
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If and are converted to equivalent fractions with the same denominator, what is their sum?",
+      "ms": {
+        "draft": 13411,
+        "critique": 6122,
+        "solver": 1346,
+        "form": 2749
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the top number in a fraction?",
+      "ms": {
+        "draft": 4517,
+        "critique": 5168,
+        "solver": 1309,
+        "form": 2086
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Meena ate 1/2 of a chikki and her brother ate 1/4 of it. How much of the total chikki did they eat together?",
+      "ms": {
+        "draft": 13411,
+        "critique": 7239,
+        "solver": 9962,
+        "form": 2993
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 2 cakes are divided equally among 5 children, how much cake does each child get?",
+      "ms": {
+        "draft": 3967,
+        "critique": 6505,
+        "solver": 15151
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following fractions is equivalent to the sum of and ?",
+      "ms": {
+        "draft": 3879,
+        "critique": 8009,
+        "solver": 1521
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If one roti is shared equally among 5 children, how much roti does each child get?",
+      "ms": {
+        "draft": 3058,
+        "critique": 6424,
+        "solver": 1679,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a whole chikki is divided into 6 equal parts, and one part is further divided into 2 equal parts, what fraction of the original chikki does each of the smaller parts represent?",
+      "ms": {
+        "draft": 3058,
+        "critique": 7802,
+        "solver": 1968,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the ancient Indian name for a fraction?",
+      "ms": {
+        "draft": 2917,
+        "critique": 5998,
+        "solver": 1175,
+        "form": 2418,
+        "translation": 24424
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the Sanskrit word 'bhinna' in the context of fractions?",
+      "ms": {
+        "draft": 3414,
+        "critique": 5949,
+        "solver": 13669,
+        "form": 3039,
+        "translation": 35310
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the number above the line in a fraction?",
+      "ms": {
+        "draft": 2862,
+        "critique": 5245,
+        "solver": 1600,
+        "form": 2706,
+        "translation": 35103
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the number below the line in a fraction?",
+      "ms": {
+        "draft": 2862,
+        "critique": 5521,
+        "solver": 1587,
+        "form": 2343,
+        "translation": 28884
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to read the fraction 1/2?",
+      "ms": {
+        "draft": 3058,
+        "critique": 6232,
+        "solver": 1037,
+        "form": 0,
+        "translation": 29786
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the top number in a fraction?",
+      "ms": {
+        "draft": 3058,
+        "critique": 5762,
+        "solver": 1523,
+        "form": 0,
+        "translation": 28515
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 2 divided by 4?",
+      "ms": {
+        "draft": 3967,
+        "critique": 5311,
+        "solver": 1267,
+        "form": 3297,
+        "translation": 33013
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 4 friends shared 3 glasses of sugarcane juice equally, how much juice did each friend get?",
+      "ms": {
+        "draft": 2862,
+        "critique": 7287,
+        "solver": 11856,
+        "form": 0,
+        "translation": 34457
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 7 rotis are divided among 5 children, and the number of rotis is doubled to 14, how many children would get the same share?",
+      "ms": {
+        "draft": 3967,
+        "critique": 5849,
+        "solver": 1431,
+        "form": 7128,
+        "translation": 52157
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the fraction that represents the length of a blue line if it is divided into 5 equal parts and the blue line covers 3 of those parts?",
+      "ms": {
+        "draft": 3611,
+        "critique": 6157,
+        "solver": 1627,
+        "form": 0,
+        "translation": 37237
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is greater, 1/4 or 1/5?",
+      "ms": {
+        "draft": 3058,
+        "critique": 6853,
+        "solver": 2037,
+        "form": 0,
+        "translation": 29526
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Meena ate of a chikki and her brother ate of it. What fraction of the chikki did they eat together?",
+      "ms": {
+        "draft": 3879,
+        "critique": 6317,
+        "solver": 1206,
+        "form": 0,
+        "translation": 51453
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which group has a larger share for each child: 3 glasses of juice among 4 children or 7 glasses among 10 children?",
+      "ms": {
+        "draft": 3967,
+        "critique": 7540,
+        "solver": 11270,
+        "form": 4036,
+        "translation": 43129
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an equivalent fraction to 3/6?",
+      "ms": {
+        "draft": 3944,
+        "critique": 6007,
+        "solver": 1487,
+        "form": 0,
+        "translation": 21620
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Rahim mixes 1/3 litre of yellow paint with 1/4 litre of blue paint. What is the total volume of green paint he has made?",
+      "ms": {
+        "draft": 13411,
+        "critique": 7810,
+        "solver": 10847,
+        "form": 3711,
+        "translation": 28715
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 4 glasses of juice are divided among 7 children, and then 5 glasses are divided among the same 7 children, which group has a larger share for each child?",
+      "ms": {
+        "draft": 3967,
+        "critique": 5162,
+        "solver": 1233,
+        "form": 4517,
+        "translation": 48266
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a fraction is 5/3, what is the mixed number representation of this fraction?",
+      "ms": {
+        "draft": 3611,
+        "critique": 5528,
+        "solver": 1476,
+        "form": 0,
+        "translation": 27311
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 12/18 is simplified, what is the equivalent fraction in its lowest terms?",
+      "ms": {
+        "draft": 3967,
+        "critique": 5615,
+        "solver": 1376,
+        "form": 4676,
+        "translation": 39149
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "On a number line, a unit is divided into 4 equal parts. A blue line starts from 0 and ends at the third division. What is the fraction that represents the length of the blue line?",
+      "ms": {
+        "draft": 7799,
+        "critique": 4095,
+        "solver": 4368,
+        "form": 0,
+        "translation": 29226
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following fractions is in its simplest form?",
+      "ms": {
+        "draft": 3680,
+        "critique": 8711,
+        "solver": 14635,
+        "form": 2839,
+        "translation": 31401
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes a fraction less than one?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a strip of paper is folded 3 times, how many equal parts is it divided into?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a mixed number?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Looking at the fraction wall, which of the following fractions is equivalent to 1/2?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 2 correct, the key is 3; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 3/4 of a cake is eaten, what fraction of the cake is left?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What are fractions called when their shares are equal?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 4 kg of potatoes are divided equally into 3 bags, how many bags will contain 12 kg of potatoes if the share per bag is the same?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 5 glasses of juice are shared equally among 4 friends, how many glasses would 8 friends need to get the same share?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the first step in comparing the sizes of two or more fractions?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct method is not chosen…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes converting to decimals is the first step…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the sum of and ?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If and are converted to equivalent fractions with the same denominator, what is their sum?",
+      "reason": "has a blank option; options 0 and 1 are the same (\"\"); options 0 and 2 are the same (\"\"); options 0 and 3 are the same (\"\"); options 1 and 2 are the same (\"\"); options 1 and 3 are the same (\"\"); options 2 and 3 are the same (\"\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the top number in a fraction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the numerator, not the mixed fraction…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Meena ate 1/2 of a chikki and her brother ate 1/4 of it. How much of the total chikki did they eat together?",
+      "reason": "options 0 and 2 are the same (\"1/2\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If 1 kg of rice is divided into 4 equal packets, what is the weight of each packet?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which ancient Indian mathematician is known for describing the rules of addition and subtraction of fractions?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "According to the passage, which ancient text shows that the rules for operations with fractions were known during Vedic times?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is the simplest form of 16/20?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If 2 cakes are divided equally among 5 children, how much cake does each child get?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following fractions is equivalent to the sum of and ?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If one roti is shared equally among 5 children, how much roti does each child get?",
+      "reason": "near-duplicate of served question cmvejdnti0087god8nvnw8wpq (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a whole chikki is divided into 6 equal parts, and one part is further divided into 2 equal parts, what fraction of the original chikki does each of the smaller parts represent?",
+      "reason": "near-duplicate of served question cmveh0n8l00k1go636so6g69i (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

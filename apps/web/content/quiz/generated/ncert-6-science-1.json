@@ -21,7 +21,7 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T01:20:37.885Z",
+  "generatedAt": "2026-10-21T22:48:58.361Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
@@ -29,39 +29,193 @@
       "difficulty": 1,
       "stem": "Which of the following is the first step in the scientific method?",
       "choices": [
-        "Observing something interesting",
-        "Testing a guess through experiments",
-        "Analyzing the results",
-        "Asking friends for help"
+        "Observing",
+        "Hypothesizing",
+        "Experimenting",
+        "Analyzing"
       ],
       "answerIndex": 0,
-      "solution": "The first step in the scientific method is observing something interesting because it involves noticing a phenomenon that sparks curiosity. Testing a guess through experiments comes after forming a hypothesis, analyzing the results occurs after gathering data, and asking friends for help is not a standard step in the scientific method.",
+      "solution": "The first step in the scientific method is observing. This involves noticing and describing events or patterns in the natural world. Hypothesizing, experimenting, and analyzing all occur after the initial observation has been made.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से वैज्ञानिक विधि का पहला चरण कौन-सा है?",
+          "stem": "निम्नलिखित में से विज्ञानी विधि का पहला चरण कौन-सा है?",
           "choices": [
-            "कुछ रोचक बात का अवलोकन करना",
-            "परीक्षण के माध्यम से अनुमान का परीक्षण करना",
-            "परिणामों का विश्लेषण करना",
-            "मित्रों से मदद मांगना"
+            "अवलोकन करना",
+            "अनुमान लगाना",
+            "प्रयोग करना",
+            "विश्लेषण करना"
           ],
-          "solution": "वैज्ञानिक विधि का पहला चरण कुछ रोचक बात का अवलोकन करना है क्योंकि इसमें एक घटना का ध्यान देना शामिल है जो जिज्ञासा उत्पन्न करती है। अनुमान के परीक्षण के माध्यम से परीक्षण करना एक परिकल्पना बनाने के बाद आता है, परिणामों का विश्लेषण डेटा एकत्र करने के बाद होता है, और मित्रों से मदद मांगना वैज्ञानिक विधि के मानक चरण में से नहीं है।",
+          "solution": "विज्ञानी विधि का पहला चरण अवलोकन करना होता है। इसमें प्रकृति में घटित होने वाली घटनाओं या पैटर्न को देखना और वर्णन करना शामिल होता है। अनुमान लगाना, प्रयोग करना और विश्लेषण करना सभी तब होते हैं जब पहले अवलोकन किया जा चुका होता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology used.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
           "stem": "खालीलपैकी विज्ञानी पद्धतीचा पहिला टप्पा कोणता आहे?",
           "choices": [
-            "काही रमणीय गोष्ट निरीक्षित करणे",
-            "परीक्षणाद्वारे अनुमान तपासणे",
-            "परिणामांचे विश्लेषण करणे",
-            "मित्रांना मदत मागणे"
+            "अवलोकन करणे",
+            "अनुमान लावणे",
+            "प्रयोग करणे",
+            "विश्लेषण करणे"
           ],
-          "solution": "विज्ञानी पद्धतीचा पहिला टप्पा काही रमणीय गोष्ट निरीक्षित करणे आहे कारण त्यात एका घटनेचे लक्ष वेधले जाते जे चिंतनाची उत्तेजना देते. अनुमानाचे परीक्षण परिकल्पना तयार केल्यानंतर होते, परिणामांचे विश्लेषण डेटा एकत्रित केल्यानंतर होते आणि मित्रांना मदत मागणे ही विज्ञानी पद्धतीचा मानक टप्पा नाही.",
+          "solution": "विज्ञानी पद्धतीचा पहिला टप्पा अवलोकन करणे आहे. हे प्राकृतिक जगातील घटना किंवा पॅटर्न लक्षात घेण्याच्या विवरणाशी संबंधित आहे. अनुमान लावणे, प्रयोग करणे आणि विश्लेषण करणे हे सर्व अवलोकन करण्यानंतर घडतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the order of steps in the scientific method",
+        "Refers to the second step in the process",
+        "Refers to the third step in the process"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Observing), as it is the first step in the scientific method. The author's solution and reasoning are accurate and align with standard scientific methodology.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the scientific method?",
+      "choices": [
+        "A way to prove a theory is correct",
+        "A process to find answers through observation and testing",
+        "A method to create new technologies",
+        "A way to avoid mistakes in experiments"
+      ],
+      "answerIndex": 1,
+      "solution": "The scientific method is a process used to find answers by observing, asking questions, forming hypotheses, testing, and analyzing results. Proving a theory, creating technology, and avoiding mistakes are not the main goals of the scientific method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा विज्ञान की विधि का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "एक तरीका जिससे किसी सिद्धांत के सही होने की पुष्टि की जा सकती है",
+            "अवलोकन और परीक्षण के माध्यम से उत्तर खोजने की प्रक्रिया",
+            "नए प्रौद्योगिकी बनाने की विधि",
+            "प्रयोगों में त्रुटियां बचने का एक तरीका"
+          ],
+          "solution": "विज्ञान की विधि अवलोकन, प्रश्न उठाना, परिकल्पना बनाना, परीक्षण करना और परिणामों का विश्लेषण करने के माध्यम से उत्तर खोजने की प्रक्रिया है। किसी सिद्धांत की पुष्टि करना, प्रौद्योगिकी बनाना और त्रुटियां बचना विज्ञान की विधि के मुख्य उद्देश्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विज्ञानीय पद्धतीचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "एक विचारसरणी जी एखाद्या सिद्धांताच्या बरोबरीचे सिद्ध करते",
+            "अवलोकन आणि परीक्षणाद्वारे उत्तरे शोधण्याची प्रक्रिया",
+            "नवीन तंत्रज्ञान तयार करण्याची पद्धत",
+            "प्रयोगांमध्ये चूका टाळण्याचा मार्ग"
+          ],
+          "solution": "विज्ञानीय पद्धत ही अवलोकन, प्रश्न विचारणे, परिकल्पना तयार करणे, परीक्षण करणे आणि निकालांचा विश्लेषण करण्याद्वारे उत्तरे शोधण्यासाठी वापरली जाणारी प्रक्रिया आहे. सिद्धांताच्या बरोबरीचे सिद्ध करणे, तंत्रज्ञान तयार करणे आणि चूका टाळणे हे विज्ञानीय पद्धतीचे मुख्य उद्दिष्ट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "understands the method as proof",
+        null,
+        "Believes the scientific method's main purpose is to invent technology rather than understand natural phenomena",
+        "Confuses the goal of the scientific method with error prevention rather than hypothesis testing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer aligns with the standard definition of the scientific method as a process for inquiry and testing. The author's reasoning for the wrong options reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student sees a seed grow into a plant, which scientific method step is being used?",
+      "choices": [
+        "Observing",
+        "Hypothesising",
+        "Experimenting",
+        "Concluding"
+      ],
+      "answerIndex": 0,
+      "solution": "Observing is the first step of the scientific method, where you watch and record what happens. The other steps come after observation, such as forming a hypothesis or experimenting.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र बीज के पौधे में बदलते देखता है, तो कौन सा वैज्ञानिक विधि का चरण उपयोग में लाया जा रहा है?",
+          "choices": [
+            "अवलोकन करना",
+            "अनुमान लगाना",
+            "प्रयोग करना",
+            "निष्कर्ष निकालना"
+          ],
+          "solution": "अवलोकन करना वैज्ञानिक विधि का पहला चरण होता है, जहां आप देखते हैं और घटित हो रही बातों को लिखते हैं। अनुमान लगाना या प्रयोग करना जैसे अन्य चरण अवलोकन के बाद आते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक विद्यार्थी बीजाच्या वृद्धीमुळे वनस्पती बनण्याचे पाहतो, तर त्याच्याद्वारे कोणत्या वैज्ञानिक पद्धतीचा वापर केला जात आहे?",
+          "choices": [
+            "अवलोकन करणे",
+            "अनुमान घेणे",
+            "प्रयोग करणे",
+            "निष्कर्ष काढणे"
+          ],
+          "solution": "अवलोकन ही वैज्ञानिक पद्धतीची पहिली टप्पा आहे, जेथे तुम्ही घडत असलेल्या गोष्टी बघता आणि नोंद करता. अवलोकनानंतर अनुमान घेणे किंवा प्रयोग करणे यासारख्या इतर टप्प्यांचा समावेश होतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -73,9 +227,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses testing with the first step",
-        "describes a later step in the process",
-        "mentions collaboration, which is not the first step"
+        "Confuses observation with other steps.",
+        "Refers to a later step in the process.",
+        "Refers to a later step in the process."
       ],
       "solverAnswers": [
         0,
@@ -85,7 +239,197 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as observing something interesting is indeed the first step in the scientific method. The author's reasoning aligns with standard scientific process, and the distractors represent common misconceptions.",
+      "critique": "The correct answer is 'Observing' as the student is simply watching and recording the growth of the seed. The other options are later steps in the scientific method and are correctly dismissed by the author.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If you notice that the water in your glass is freezing, which scientific method step would you use to explain this?",
+      "choices": [
+        "Observing and asking a question",
+        "Making a hypothesis",
+        "Making an observation",
+        "Making an experiment"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct step is observing and asking a question because noticing the water freezing is an observation that leads to a question about why it is happening. Making a hypothesis comes after forming a question, making an experiment occurs later in the process, and making an observation is part of the broader step of observing and asking a question.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर आप ध्यान देते हैं कि आपके ग्लास में पानी जम रहा है, तो इसे समझाने के लिए आप कौन से वैज्ञानिक विधि के चरण का उपयोग करेंगे?",
+          "choices": [
+            "अवलोकन और प्रश्न पूछना",
+            "एक परिकल्पना बनाना",
+            "एक अवलोकन बनाना",
+            "एक प्रयोग बनाना"
+          ],
+          "solution": "सही चरण अवलोकन और प्रश्न पूछना है क्योंकि पानी जमने को देखना एक अवलोकन है जो इसके होने के कारणों के बारे में प्रश्न उठाता है। परिकल्पना बनाना प्रश्न बनाने के बाद आता है, प्रयोग बनाना प्रक्रिया में बाद में होता है, और अवलोकन बनाना अवलोकन और प्रश्न पूछने के व्यापक चरण का एक हिस्सा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (1).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर तुम्हाला तुमच्या ग्लासमधील पाणी जमत असल्याचे लक्षात आले, तर याची स्पष्टीकरण करण्यासाठी तुम्ही कोणता विज्ञानीय पद्धतीचा टप्पा वापराल?",
+          "choices": [
+            "अवलोकन करणे आणि प्रश्न विचारणे",
+            "एका अनुमानाची तयारी करणे",
+            "अवलोकन करणे",
+            "एका प्रयोगाची तयारी करणे"
+          ],
+          "solution": "योग्य टप्पा अवलोकन करणे आणि प्रश्न विचारणे आहे कारण पाणी जमत असल्याचे लक्षात आले हे अवलोकन आहे जे त्याच्या घडण्याच्या कारणाबद्दल प्रश्न विचारण्यास प्रेरित करते. एका अनुमानाची तयारी करणे प्रश्न तयार करण्यानंतर होते, एका प्रयोगाची तयारी करणे हा प्रक्रियेत नंतर होते आणि अवलोकन करणे हा अवलोकन करणे आणि प्रश्न विचारणे या मोठ्या टप्प्याचा भाग आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses hypothesis with a guess, thinking they are the same step in the scientific method",
+        "Confuses observation with the act of making a hypothesis",
+        "Believes that explaining requires testing rather than concluding"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, and the correct answer (0) aligns with the scientific method's first step. The author's reasoning for the distractors reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student is trying to find out why a plant is not growing, what would be the best next step after making an observation?",
+      "choices": [
+        "Ask a friend for help",
+        "Form a hypothesis",
+        "Draw a conclusion",
+        "Record the data"
+      ],
+      "answerIndex": 1,
+      "solution": "After making an observation, forming a hypothesis is the best next step because it involves proposing a possible explanation for the observed problem. Asking a friend for help, drawing a conclusion, or recording data typically occur after a hypothesis has been formed and tested.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र यह पता लगाने की कोशिश कर रहा है कि एक पौधा क्यों बढ़ नहीं रहा है, तो एक अवलोकन के बाद अगला सबसे अच्छा कदम क्या होगा?",
+          "choices": [
+            "एक दोस्त से मदद मांगें",
+            "एक परिकल्पना बनाएं",
+            "एक निष्कर्ष निकालें",
+            "डेटा दर्ज करें"
+          ],
+          "solution": "एक अवलोकन के बाद, एक परिकल्पना बनाना सबसे अच्छा अगला कदम होता है क्योंकि इसमें अवलोकित समस्या के लिए संभावित व्याख्या प्रस्तुत करना शामिल होता है। एक दोस्त से मदद मांगना, निष्कर्ष निकालना या डेटा दर्ज करना आमतौर पर एक परिकल्पना के परीक्षण के बाद होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific process structure. Technical terms like 'hypothesis' (परिकल्पना) and 'conclusion' (निष्कर्ष) are correctly used in Hindi scientific context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीला एका वनस्पतीच्या वाढत नसल्याचे कारण शोधण्याचा प्रयत्न असल्यास, निरीक्षण केल्यानंतर चांगला पुढील पाऊल काय असेल?",
+          "choices": [
+            "मित्राला मदत मागणे",
+            "एका परिकल्पना तयार करणे",
+            "एका निष्कर्षाची नोंद करणे",
+            "माहिती नोंदवणे"
+          ],
+          "solution": "निरीक्षण केल्यानंतर, परिकल्पना तयार करणे हा चांगला पुढील पाऊल असतो कारण त्यामध्ये निरीक्षित समस्येचे एक संभाव्य स्पष्टीकरण प्रस्तावित केले जाते. मित्राला मदत मागणे, निष्कर्ष काढणे किंवा माहिती नोंदवणे ही क्रिया सामान्यतः परिकल्पना तयार करून तिचे परीक्षण केल्यानंतर होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses an action that happens later in the process",
+        null,
+        "Refers to the step that follows hypothesis formation",
+        "Refers to the final step in the scientific method"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the scientific method sequence. After observation, forming a hypothesis is the next logical step, and the author's reasoning for the other options aligns with common misconceptions about the order of steps in the scientific method.",
       "sources": [
         {
           "document": "ncert/6/science/fecu101.pdf",
@@ -98,47 +442,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:20:37.885Z",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A student observes that a ball rolls faster on a smooth surface than on a rough one. Which step of the scientific method would involve explaining this observation?",
+      "difficulty": 3,
+      "stem": "If a student notices that plants in a sunny window grow faster than those in a dark room, which step of the scientific method would they perform next?",
       "choices": [
-        "Forming a hypothesis",
-        "Making an observation",
-        "Conducting an experiment",
-        "Drawing a conclusion"
+        "Form a hypothesis",
+        "Make a hypothesis",
+        "Make a prediction",
+        "Test the hypothesis"
       ],
-      "answerIndex": 3,
-      "solution": "Drawing a conclusion is the step where we analyze the results of an experiment or observation to see if they answer our question. The other options are steps that occur before or during the process of analyzing the results.",
+      "answerIndex": 0,
+      "solution": "After making an observation, the next step is to form a hypothesis. The student has already made an observation about plant growth. Drawing a conclusion and testing the hypothesis come later in the process.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र देखता है कि एक गेंद चिकनी सतह पर काफी तेज लुढ़कती है जबकि खुरदरी सतह पर धीमी होती है। वैज्ञानिक पद्धति का कौन-सा चरण इस अवलोकन की व्याख्या करने में सहायता करेगा?",
+          "stem": "यदि एक छात्र को ध्यान रहे कि एक सूर्यमुखी खिड़की में लगे पौधे अंधेरे कमरे में लगे पौधों की तुलना में तेजी से बढ़ते हैं, तो वह विज्ञान की विधि के कौन से चरण को अगला करेगा?",
           "choices": [
-            "एक परिकल्पना बनाना",
-            "अवलोकन करना",
-            "एक प्रयोग करना",
-            "निष्कर्ष निकालना"
+            "एक परिकल्पना बनाएं",
+            "एक परिकल्पना बनाएं",
+            "एक भविष्यवाणी करें",
+            "परिकल्पना का परीक्षण करें"
           ],
-          "solution": "निष्कर्ष निकालना वह चरण है जिसमें हम एक प्रयोग या अवलोकन के परिणामों का विश्लेषण करते हैं ताकि यह देखा जा सके कि क्या ये हमारे प्रश्न का उत्तर देते हैं। अन्य विकल्प ऐसे चरण हैं जो परिणामों के विश्लेषण के पहले या दौरान होते हैं।",
+          "solution": "अवलोकन के बाद अगला चरण परिकल्पना बनाना होता है। छात्र ने पौधों के वृद्धि के बारे में पहले से ही अवलोकन कर लिया है। निष्कर्ष निकालना और परिकल्पना का परीक्षण बाद में होता है।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate scientific terminology used in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The technical terms like 'परिकल्पना' (hypothesis) and 'भविष्यवाणी' (prediction) are standard in Hindi science education.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याने लक्षात घेतले की एका गोला चिकट पृष्ठभागावर वेगाने फिरतो आणि खरदर पृष्ठभागावर जास्त वेगाने फिरतो. वैज्ञानिक पद्धतीच्या कोणत्या टप्प्यात ही निरीक्षणे स्पष्ट करण्याचा प्रयत्न होतो?",
+          "stem": "एका विद्यार्थीने लक्षात घेतले की सूर्यप्रकाशाच्या खिडकीतील वनस्पती अंधारातील वनस्पतींपेक्षा जास्त वेगाने वाढतात, तर त्यांनी वैज्ञानिक पद्धतीच्या कोणत्या टप्प्याचा अनुसरण करावा?",
           "choices": [
-            "एका परिकल्पना तयार करणे",
-            "निरीक्षण करणे",
-            "एका प्रयोगाचे आयोजन करणे",
-            "एका निष्कर्षावर येणे"
+            "एका अभिकल्पना तयार करा",
+            "एका अभिकल्पना तयार करा",
+            "एका भविष्यवाणी करा",
+            "अभिकल्पना तपासा"
           ],
-          "solution": "एका निष्कर्षावर येणे हा टप्पा असतो जेथे आम्ही एका प्रयोगाच्या किंवा निरीक्षणाच्या निष्कर्षांचा विश्लेषण करतो आणि ते आमच्या प्रश्नाचे उत्तर देतात की नाही हे पाहतो. इतर विकल्प अशा टप्प्यात येतात जेथे आम्ही निष्कर्षांचा विश्लेषण करतो त्यापूर्वी किंवा त्यादरम्यान घडतात.",
+          "solution": "अवलोकन केल्यानंतर अभिकल्पना तयार करणे हा अगला टप्पा असतो. विद्यार्थीने वनस्पतींच्या वाढीबद्दल अवलोकन केले आहे. निष्कर्ष काढणे आणि अभिकल्पना तपासणे हे नंतरचे टप्पे असतात.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
           "flag": null
@@ -149,20 +493,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "is an earlier step in the process",
-        "is the initial step in the process",
-        "is a step that leads to the conclusion",
-        null
+        null,
+        "Student thinks observation directly leads to hypothesis without first forming a question",
+        "Student confuses hypothesis with prediction, thinking the next step is to predict outcomes rather than form a hypothesis",
+        "Student thinks observation directly leads to testing, skipping hypothesis formation"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies that explaining an observation is part of drawing a conclusion. The author's reasoning aligns with standard scientific method steps.",
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Form a hypothesis), as the next step after an observation is to form a hypothesis. The author's reasoning is accurate and aligns with standard scientific method steps.",
       "sources": [
         {
           "document": "ncert/6/science/fecu101.pdf",
@@ -175,7 +519,161 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:20:37.885Z",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A student notices that a ball rolls faster down a smooth surface than a rough surface. Which of the following would be the most appropriate next step?",
+      "choices": [
+        "Form a hypothesis",
+        "Make an observation",
+        "Draw a conclusion",
+        "Test the hypothesis"
+      ],
+      "answerIndex": 0,
+      "solution": "The next step after making an observation is to form a hypothesis. The student has already observed the difference in rolling speed. Drawing a conclusion and testing the hypothesis occur later in the scientific method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को ध्यान रहे कि एक गेंद चिकनी सतह पर खरोंच वाली सतह की तुलना में तेजी से लुढ़कती है। निम्नलिखित में से कौन सा अगला सबसे उपयुक्त कदम होगा?",
+          "choices": [
+            "एक परिकल्पना बनाएं",
+            "एक अवलोकन करें",
+            "एक निष्कर्ष निकालें",
+            "परिकल्पना का परीक्षण करें"
+          ],
+          "solution": "अवलोकन के बाद अगला कदम परिकल्पना बनाना होता है। छात्र ने पहले से ही लुढ़कने की गति में अंतर का अवलोकन कर लिया है। निष्कर्ष निकालना और परिकल्पना का परीक्षण विज्ञान के विधि में बाद में होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific context with appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीला लक्षात आले की एका गोला चिकट वर्तुळावर जास्त वेगाने फिरतो आणि खोल वर्तुळावर जास्त वेगाने फिरतो. खालीलपैकी कोणता सर्वात उपयुक्त पुढील टप्पा असेल?",
+          "choices": [
+            "एका अभिधानाची तयारी करा",
+            "एका निरीक्षणाची नोंद करा",
+            "एका निष्कर्षाची नोंद करा",
+            "अभिधानाची चाचणी करा"
+          ],
+          "solution": "निरीक्षण केल्यानंतर अभिधानाची तयारी करणे हा अनुसरलेला पुढील टप्पा असतो. विद्यार्थीने आधीच वेगाच्या फरकाचे निरीक्षण केले आहे. निष्कर्ष काढणे आणि अभिधानाची चाचणी वैज्ञानिक पद्धतीत नंतर होते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific context. 'अभिधान' is the correct Marathi term for 'hypothesis' and 'निरीक्षण' for 'observation'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student believes observation is the first step after noticing a phenomenon, not realizing it's already been done",
+        "confuses observation with the next step",
+        "confuses conclusion with the next step"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that forming a hypothesis is the next logical step after an observation. The reasoning aligns with the scientific method.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a student observes that a plant is not growing and wants to use the scientific method, what must they do first?",
+      "choices": [
+        "Design an experiment",
+        "Draw a conclusion",
+        "Ask a question",
+        "Make an observation"
+      ],
+      "answerIndex": 3,
+      "solution": "The scientific method begins with observing a phenomenon, such as a plant not growing, to identify a problem or area of interest. Making an observation is the first step because it leads to questions and further investigation. Designing an experiment, drawing a conclusion, and asking a question all come after the initial observation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र को लगता है कि एक पौधा बढ़ नहीं रहा है और वह विज्ञान के विधि का उपयोग करना चाहता है, तो उसे पहले क्या करना चाहिए?",
+          "choices": [
+            "एक प्रयोग डिज़ाइन करें",
+            "एक निष्कर्ष निकालें",
+            "एक प्रश्न पूछें",
+            "एक अवलोकन करें"
+          ],
+          "solution": "वैज्ञानिक विधि एक घटना के अवलोकन, जैसे कि एक पौधा बढ़ नहीं रहा है, से शुरू होती है जो एक समस्या या रुचि के क्षेत्र की पहचान करती है। अवलोकन करना पहला चरण है क्योंकि यह प्रश्नों और आगे की जांच के कारण बनता है। प्रयोग डिज़ाइन करना, निष्कर्ष निकालना और प्रश्न पूछना सभी पहले अवलोकन के बाद आते हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, with appropriate Hindi scientific terminology. The correct answer remains option 3, and all distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला असे दिसते की एका वनस्पतीचा वाढत नाही आणि तो वैज्ञानिक पद्धतीचा वापर करू इच्छितो, तर त्याने सर्वात आधी काय करावे लागेल?",
+          "choices": [
+            "एका प्रयोगाची डिझाइन करा",
+            "एका निष्कर्षाची लिहा",
+            "एका प्रश्नाची विचार करा",
+            "एका निरीक्षणाची करा"
+          ],
+          "solution": "वैज्ञानिक पद्धती सर्वात आधी एखाद्या घटनेचे निरीक्षण करून सुरू होते, जसे की एका वनस्पतीचा वाढत नाही. निरीक्षण हे पहिले टप्पा असते कारण ते समस्या किंवा रुचीच्या क्षेत्राची ओळख करते. प्रयोगाची डिझाइन करणे, निष्कर्ष घेणे आणि प्रश्न विचारणे हे सर्व निरीक्षणानंतर येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a step that comes after observation",
+        "Refers to the final step in the process",
+        "Confuses the order of steps in the scientific method",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3 (Make an observation), as the scientific method begins with observation. The author's reasoning is accurate and aligns with standard scientific process.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu101.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: The Wonderful World of Science"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T22:48:58.361Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

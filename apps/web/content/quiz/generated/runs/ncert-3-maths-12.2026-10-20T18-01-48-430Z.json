@@ -1,0 +1,498 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T18:01:48.430Z",
+  "finishedAt": "2026-10-20T18:06:18.735Z",
+  "seconds": 270,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm112.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Give and Take",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n2. (a) |𝐴𝐴 | = |𝐴||𝐴′| = (−3)(−3) = 9 ᇱ"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 74661,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 14846,
+      "completionTokens": 4511
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 165949,
+      "in": 24,
+      "out": 14,
+      "rejects": 10,
+      "promptTokens": 11514,
+      "completionTokens": 5014
+    },
+    "solver": {
+      "calls": 102,
+      "ms": 49883,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 19400,
+      "completionTokens": 1282
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10016,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 989,
+      "completionTokens": 244
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2981,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 165933,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 11376,
+      "completionTokens": 4801
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Peter uncle has `465 in the morning and `756 in the afternoon. How much did he earn?",
+      "ms": {
+        "draft": 3362,
+        "critique": 7956,
+        "solver": 1256
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Kishan has 456 saplings and distributes 63. How many saplings are left?",
+      "ms": {
+        "draft": 3362,
+        "critique": 6806,
+        "solver": 16847,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Shireen has `150 in her piggy bank and adds `100 every week. How much money does she have at the end of four weeks?",
+      "ms": {
+        "draft": 3362,
+        "critique": 9069,
+        "solver": 1651
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a sum?",
+      "ms": {
+        "draft": 2845,
+        "critique": 5975
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Reena bought groceries for `209 and gave a `500 note. How much money should Peter uncle return?",
+      "ms": {
+        "draft": 3362,
+        "critique": 7564,
+        "solver": 16705
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these is a way to make a larger number?",
+      "ms": {
+        "draft": 2845,
+        "critique": 6202,
+        "solver": 1648
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If I add 7 and 9, what will be the result?",
+      "ms": {
+        "draft": 2845,
+        "critique": 5819
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is the largest?",
+      "ms": {
+        "draft": 2845,
+        "critique": 7019
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If you have 12 apples and give away 5, how many apples do you have left?",
+      "ms": {
+        "draft": 2845,
+        "critique": 4644
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following can be used to make the number 10?",
+      "ms": {
+        "draft": 2845,
+        "critique": 5521,
+        "solver": 5238
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the teacher suggest children use to create different numbers?",
+      "ms": {
+        "draft": 11040,
+        "critique": 4447
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child uses number cards, what can they do?",
+      "ms": {
+        "draft": 11040,
+        "critique": 4723
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the teacher's note about children doing?",
+      "ms": {
+        "draft": 11040,
+        "critique": 5178
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of the teacher's note?",
+      "ms": {
+        "draft": 11040,
+        "critique": 4970
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What should children do to make different numbers?",
+      "ms": {
+        "draft": 11040,
+        "critique": 5170
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it better to use number cards instead of paper for this task?",
+      "ms": {
+        "draft": 11040,
+        "critique": 5617
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Kishan has 270 saplings and his friend has 36, how many more saplings does Kishan have than his friend?",
+      "ms": {
+        "draft": 3524,
+        "critique": 7880,
+        "solver": 1677
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Reena bought groceries for `209 and gave a `500 note, how much money should Peter uncle return to her?",
+      "ms": {
+        "draft": 3524,
+        "critique": 7745,
+        "solver": 8379
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 364 + 52?",
+      "ms": {
+        "draft": 3362,
+        "critique": 6203,
+        "solver": 1459,
+        "form": 0,
+        "translation": 23517
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of saplings Kishan has after adding 52 saplings to his initial 364 saplings?",
+      "ms": {
+        "draft": 3524,
+        "critique": 5810,
+        "solver": 1109,
+        "form": 3263,
+        "translation": 30355
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 230 - 75?",
+      "ms": {
+        "draft": 3362,
+        "critique": 5787,
+        "solver": 1001,
+        "form": 0,
+        "translation": 22763
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many saplings does Kishan need to pack if he has already packed 75 out of 230 ordered saplings?",
+      "ms": {
+        "draft": 3524,
+        "critique": 5523,
+        "solver": 1837,
+        "form": 3840,
+        "translation": 33004
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Kishan had 456 saplings and distributed 63, how many saplings are left with him?",
+      "ms": {
+        "draft": 3524,
+        "critique": 6108,
+        "solver": 1434,
+        "form": 1531,
+        "translation": 26499
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Peter uncle had `465 in his money box in the morning and `756 in the afternoon, how much did he earn?",
+      "ms": {
+        "draft": 3524,
+        "critique": 7048,
+        "solver": 1308,
+        "form": 3263,
+        "translation": 26545
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Peter uncle has `465 in the morning and `756 in the afternoon. How much did he earn?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Kishan has 456 saplings and distributes 63. How many saplings are left?",
+      "reason": "options 0 and 3 are the same (\"393\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Shireen has `150 in her piggy bank and adds `100 every week. How much money does she have at the end of four weeks?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a sum?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Reena bought groceries for `209 and gave a `500 note. How much money should Peter uncle return?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of these is a way to make a larger number?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If I add 7 and 9, what will be the result?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following numbers is the largest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If you have 12 apples and give away 5, how many apples do you have left?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following can be used to make the number 10?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did the teacher suggest children use to create different numbers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a child uses number cards, what can they do?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the teacher's note about children doing?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the purpose of the teacher's note?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What should children do to make different numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it better to use number cards instead of paper for this task?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If Kishan has 270 saplings and his friend has 36, how many more saplings does Kishan have than his friend?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Reena bought groceries for `209 and gave a `500 note, how much money should Peter uncle return to her?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:22:36.557Z",
+  "finishedAt": "2026-10-23T02:26:59.105Z",
+  "seconds": 263,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap120.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 20 — Whose Forests?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 55844,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 16032,
+      "completionTokens": 3067
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 130340,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 9490,
+      "completionTokens": 3704
+    },
+    "solver": {
+      "calls": 94,
+      "ms": 62667,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 21174,
+      "completionTokens": 1209
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10412,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 1011,
+      "completionTokens": 288
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3062,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 21302,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2450,
+      "completionTokens": 1338
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What would happen if the forests are not there, according to Suryamani?",
+      "ms": {
+        "draft": 16343,
+        "critique": 5237,
+        "solver": 2236
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Suryamani say is as important as reading books?",
+      "ms": {
+        "draft": 16343,
+        "critique": 4586,
+        "solver": 1402,
+        "form": 3758
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Suryamani’s father move to the town?",
+      "ms": {
+        "draft": 16343,
+        "critique": 5017,
+        "solver": 1773,
+        "form": 3342
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Suryamani’s father not like her work with the movement to save the forests?",
+      "ms": {
+        "draft": 16343,
+        "critique": 5918,
+        "solver": 2078
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family in Mizoram is not able to farm on time, what do other families do?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6679
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does jhoom farming help keep the soil fertile?",
+      "ms": {
+        "draft": 3843,
+        "critique": 8062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of Suryamani’s ‘Torang’ centre?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6534,
+        "solver": 10644,
+        "form": 2797
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Right to Forest Act 2007 say about people who have lived in forests for 25 years?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6828,
+        "solver": 10463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Suryamani want children to learn at the 'Torang' centre?",
+      "ms": {
+        "draft": 17052,
+        "critique": 4908
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the people of Jharkhand need a new forest law according to the passage?",
+      "ms": {
+        "draft": 17052,
+        "critique": 5451
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of the lottery in Mizoram as described in the passage?",
+      "ms": {
+        "draft": 17052,
+        "critique": 5908
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how does jhoom farming help the soil become fertile?",
+      "ms": {
+        "draft": 17052,
+        "critique": 6733
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Suryamani say is as important as reading books?",
+      "ms": {
+        "draft": 3807,
+        "critique": 5817,
+        "solver": 13673
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person wants to understand the importance of forests, what should they do according to the passage?",
+      "ms": {
+        "draft": 3807,
+        "critique": 9820,
+        "solver": 16287,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does Budhiyamai mean when she says the forest is a 'collective bank'?",
+      "ms": {
+        "draft": 3807,
+        "critique": 7138,
+        "solver": 9164,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Suryamani say that if the forests are not there, they too will not remain?",
+      "ms": {
+        "draft": 3807,
+        "critique": 5146,
+        "solver": 18075,
+        "form": 2385,
+        "translation": 17400
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if the forests are not there, according to Suryamani?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does Suryamani say is as important as reading books?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"does not understand the context of the passage…\"); distractor 3's reason is not a one-line misconception (\"does not pay attention to the passage details…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why does Suryamani’s father move to the town?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"thinks the passage talks about education…\"); distractor 3's reason is not a one-line misconception (\"believes the passage says the father is afraid of the forest…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why did Suryamani’s father not like her work with the movement to save the forests?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a family in Mizoram is not able to farm on time, what do other families do?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How does jhoom farming help keep the soil fertile?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of Suryamani’s ‘Torang’ centre?",
+      "reason": "options 0 and 3 are the same (\"To teach children to make flutes and drums\"); distractor 0's reason is not a one-line misconception (\"This is a detail mentioned in the passage but not the main p…\"); distractor 1's reason is not a one-line misconception (\"This is the opposite of what the passage says…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the Right to Forest Act 2007 say about people who have lived in forests for 25 years?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does Suryamani want children to learn at the 'Torang' centre?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why do the people of Jharkhand need a new forest law according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the purpose of the lottery in Mizoram as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, how does jhoom farming help the soil become fertile?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does Suryamani say is as important as reading books?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person wants to understand the importance of forests, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"Focus only on the trees and ignore the animals and plants around them\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What does Budhiyamai mean when she says the forest is a 'collective bank'?",
+      "reason": "near-duplicate of served question cmvh9tl3f07s6gpfhic15ozt3 (cosine 0.940 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:24:14.107Z",
+  "finishedAt": "2026-10-22T23:26:37.029Z",
+  "seconds": 143,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap115.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 15 — From Market to Home",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 12262,
+      "in": 4,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 3789,
+      "completionTokens": 728
+    },
+    "critique": {
+      "calls": 6,
+      "ms": 31735,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 2577,
+      "completionTokens": 1040
+    },
+    "solver": {
+      "calls": 34,
+      "ms": 19248,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 6866,
+      "completionTokens": 385
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 0,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4306,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 178,
+      "completionTokens": 293
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why does Babuji start his work at 3 o'clock in the morning?",
+      "ms": {
+        "draft": 3066,
+        "critique": 5996,
+        "solver": 1722
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a vegetable-seller has to work for 18 hours a day, how many hours does he or she rest in a day?",
+      "ms": {
+        "draft": 3066,
+        "critique": 6424,
+        "solver": 2298
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the person who sells vegetables in the passage?",
+      "ms": {
+        "draft": 3066,
+        "critique": 5502,
+        "solver": 11365,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is mentioned that the family sorts the vegetables quickly. What could be the reason for this?",
+      "ms": {
+        "draft": 3066,
+        "critique": 6305,
+        "solver": 8319,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the name of the person who sells vegetables in the passage?\",\"options\":[\"Vaish"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why does Babuji start his work at 3 o'clock in the morning?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a vegetable-seller has to work for 18 hours a day, how many hours does he or she rest in a day?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the person who sells vegetables in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Confuses the mother with the vegetable seller due to family …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is mentioned that the family sorts the vegetables quickly. What could be the reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"To sell the vegetables before they get too expensive\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

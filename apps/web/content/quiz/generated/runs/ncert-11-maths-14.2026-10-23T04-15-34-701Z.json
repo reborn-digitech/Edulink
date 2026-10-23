@@ -1,0 +1,726 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T04:15:34.701Z",
+  "finishedAt": "2026-10-23T04:26:00.885Z",
+  "seconds": 626,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh114.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Probability",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n18. (A) Probability of occurrence of any one of them is 1 1\n⇒ 𝑃(𝐴 ∩ 𝐵) + 𝑃(𝐴 ∩ 𝐵 ) = ′ ′ 1 3 ⇒ 𝑃(𝐴 )𝑃(𝐵) + 𝑃(𝐴)𝑃(𝐵 ) = ′ ′ 1 3\n⇒ (1 − ) 𝑘 + (1 − 𝑘) = 1 6 1 6 1 3 ⇒ 𝑘 ( − ) = 5 6 1 6 1 3 − 1 6 ⇒ 𝑘 = 1 6 × 6 4 = 1 4",
+      "[CBSE Class XII Mathematics, sample question paper, 2025-26]\n31. Two students Mehul and Rashi are seeking admission in a college. The 3\nprobability that Mehul is selected is 0.4 and the probability of selection of exactly\none of the them is 0.5. Chances of selection of them is independent of each\nother. Find the chances of selection of Rashi. Also find the probability of selection\nof at least one of them.",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n= 𝑃(𝐸 1 )𝑃(𝐴|𝐸 1 )+𝑃(𝐸 2 )𝑃(𝐴|𝐸 2 )+𝑃(𝐸 3 )𝑃(𝐴|𝐸 3 )+𝑃(𝐸 4 )𝑃(𝐴|𝐸 4 )\n0.3×0.02 0.006 6\n= 0.019 = 0.019 = 19 1 ½",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n19. Assertion (A) : Kuhu and Beena are two equally capable badminton players. Probability that Beena\nwill beat Kuhu in 3 games out of 4 is 25%\nReason (R) : The probability of 𝑟 successes in 𝑛 trials, denoted by P(X = 𝑟) is given by\nP(X = 𝑟) = C n r 𝑝 𝑞 𝑟 𝑛−𝑟 , 𝑟 = 0, 1, . . . , 𝑛 where 𝑝 denotes success and 𝑞 denotes failure in each trial. 1\na) (i) b) (ii) c) (iii) d) (iv)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 221462,
+      "in": 43,
+      "out": 35,
+      "rejects": 8,
+      "promptTokens": 55340,
+      "completionTokens": 11232
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 353224,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 25073,
+      "completionTokens": 8883
+    },
+    "solver": {
+      "calls": 253,
+      "ms": 155935,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 55062,
+      "completionTokens": 2924
+    },
+    "form": {
+      "calls": 2,
+      "ms": 8955,
+      "in": 25,
+      "out": 15,
+      "rejects": 10,
+      "promptTokens": 521,
+      "completionTokens": 174
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 5238,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 487165,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 29907,
+      "completionTokens": 13021
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A die is rolled once. What is the probability of getting an even number?",
+      "ms": {
+        "draft": 4404,
+        "critique": 7666,
+        "solver": 17077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two events A and B are mutually exclusive, which of the following is true?",
+      "ms": {
+        "draft": 4083,
+        "critique": 7476,
+        "solver": 2242,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A die is rolled once. What is the probability of getting a number greater than 4?",
+      "ms": {
+        "draft": 4404,
+        "critique": 7945,
+        "solver": 15987
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for the probability of an event E according to the axiomatic approach?",
+      "ms": {
+        "draft": 7298,
+        "critique": 7341,
+        "solver": 1669,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a condition for the probability of the sample space S according to the axiomatic approach?",
+      "ms": {
+        "draft": 7298,
+        "critique": 7424,
+        "solver": 1688,
+        "form": 6129
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of an event not occurring, if the probability of the event occurring is 0.6?",
+      "ms": {
+        "draft": 6772,
+        "critique": 7078,
+        "solver": 1643,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a class of 30 students, the probability that a student passes the test is 0.7. What is the probability that exactly 20 students pass the test?",
+      "ms": {
+        "draft": 6772,
+        "critique": 6332
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A die is rolled. What is the probability of rolling a number greater than or equal to 3?",
+      "ms": {
+        "draft": 6772,
+        "critique": 7113,
+        "solver": 1233,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many outcomes are there in the sample space of an experiment where a coin is tossed twice?",
+      "ms": {
+        "draft": 7298,
+        "critique": 10007,
+        "solver": 11659,
+        "form": 3484
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A die has two faces each with number '1', three faces each with number '2' and one face with number '3'. What is the probability of rolling a '2' on this die?",
+      "ms": {
+        "draft": 32670,
+        "critique": 8051
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two students, Mehul and Rashi, are seeking admission in a college. The probability that Mehul is selected is 0.4 and the probability of selection of exactly one of them is 0.5. The chances of selection of them are independent of each other. What is the probability of selection of Rashi?",
+      "ms": {
+        "draft": 32670,
+        "critique": 6944
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A die has two faces each with number ‘1’, three faces each with number ‘2’ and one face with number ‘3’. If die is rolled once, what is the probability of getting 2?",
+      "ms": {
+        "draft": 5486,
+        "critique": 7006,
+        "solver": 17628
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of getting a head when a fair coin is tossed once?",
+      "ms": {
+        "draft": 4151,
+        "critique": 5479
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a class of 60 students, 30 opted for NCC, 32 opted for NSS and 24 opted for both NCC and NSS. What is the probability that a randomly selected student has opted for NCC or NSS?",
+      "ms": {
+        "draft": 4151,
+        "critique": 6263
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the probability of the union of two events A and B?",
+      "ms": {
+        "draft": 3916,
+        "critique": 6415,
+        "solver": 1599,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of an event not occurring if the probability of the event is P(A)?",
+      "ms": {
+        "draft": 3916,
+        "critique": 7472,
+        "solver": 1824,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If A and B are mutually exclusive events, what is the probability of their union?",
+      "ms": {
+        "draft": 3916,
+        "critique": 6056,
+        "solver": 1732,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a requirement for assigning probabilities according to the axiomatic approach?",
+      "ms": {
+        "draft": 5425,
+        "critique": 6489,
+        "solver": 17807
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a die-rolling experiment, two events A and B are defined as follows: A = {1, 3, 5} (odd numbers) and B = {2, 4, 6} (even numbers). Which of the following statements about A and B is correct?",
+      "ms": {
+        "draft": 6780,
+        "critique": 6546,
+        "solver": 13082,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a random experiment, the sample space S has n outcomes, and each outcome is equally likely. If the probability of event A is 0.4 and the probability of event B is 0.5, what is the minimum possible value of P(A ∩ B)?",
+      "ms": {
+        "draft": 5425,
+        "critique": 8968,
+        "solver": 14924
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A fair coin with 1 marked on one face and 6 on the other and a fair die are both tossed. What is the probability of getting a sum of 3?",
+      "ms": {
+        "draft": 4724,
+        "critique": 9683,
+        "solver": 1265,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A die has two faces each with number ‘1’, three faces each with number ‘2’ and one face with number ‘3’. If die is rolled once, what is the probability of getting not 3?",
+      "ms": {
+        "draft": 5486,
+        "critique": 9648,
+        "solver": 1721,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A and B are two events such that P(A) = 0.54, P(B) = 0.69 and P(A ∩ B) = 0.35. What is P(A ∪ B)?",
+      "ms": {
+        "draft": 5486,
+        "critique": 7216,
+        "solver": 16840,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of the empty set φ according to the axiomatic approach?",
+      "ms": {
+        "draft": 7298,
+        "critique": 7443,
+        "solver": 16991,
+        "form": 0,
+        "translation": 36378
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of getting a number less than 6 when a die is rolled?",
+      "ms": {
+        "draft": 4724,
+        "critique": 6801,
+        "solver": 1446,
+        "form": 0,
+        "translation": 41700
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of getting a number greater than 4 when a fair die is rolled once?",
+      "ms": {
+        "draft": 4151,
+        "critique": 6142,
+        "solver": 15649,
+        "form": 0,
+        "translation": 28908
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a coin is tossed, what is the probability of getting a head?",
+      "ms": {
+        "draft": 4404,
+        "critique": 5818,
+        "solver": 12741,
+        "form": 0,
+        "translation": 37760
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A box contains 10 red marbles, 20 blue marbles and 30 green marbles. 5 marbles are drawn from the box. What is the probability that all will be blue?",
+      "ms": {
+        "draft": 5486,
+        "critique": 7878,
+        "solver": 2389,
+        "form": 0,
+        "translation": 44289
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If A and B are two events such that A ∩ B = φ, which of the following statements is true?",
+      "ms": {
+        "draft": 4083,
+        "critique": 6409,
+        "solver": 1245,
+        "form": 0,
+        "translation": 48866
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a sample space of 10 outcomes, an event E has 3 outcomes. What is the probability of the event E not occurring?",
+      "ms": {
+        "draft": 4404,
+        "critique": 6528,
+        "solver": 13013,
+        "form": 0,
+        "translation": 46530
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the probability of getting an ace of spades when a card is selected from a pack of 52 cards?",
+      "ms": {
+        "draft": 4724,
+        "critique": 6987,
+        "solver": 1728,
+        "form": 0,
+        "translation": 38323
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A bag contains 6 red balls and 4 blue balls. A ball is drawn at random. What is the probability that it is not blue?",
+      "ms": {
+        "draft": 4404,
+        "critique": 6868,
+        "solver": 13865,
+        "form": 0,
+        "translation": 44356
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The probability of winning a lottery by choosing six different natural numbers from 1 to 20 is?",
+      "ms": {
+        "draft": 4724,
+        "critique": 9235,
+        "solver": 1644,
+        "form": 0,
+        "translation": 38588
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a class of 40 students, 25 are boys and 15 are girls. A student is selected at random. What is the probability that the selected student is a girl?",
+      "ms": {
+        "draft": 4404,
+        "critique": 6577,
+        "solver": 12129,
+        "form": 1,
+        "translation": 42044
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Two events A and B are such that P(A) = 0.5, P(B) = 0.6, and P(A ∩ B) = 0.3. What is the probability of A ∪ B?",
+      "ms": {
+        "draft": 6772,
+        "critique": 8235,
+        "solver": 16528,
+        "form": 0,
+        "translation": 36361
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a sample space, if two events A and B are such that A ∪ B = S, what can be said about A and B?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If two events A and B are such that A ∩ B ≠ φ, which of the following is true?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a condition for two events to be mutually exclusive?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If A and B are two events such that A ∪ B = S and A ∩ B = φ, what can be said about A and B?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the condition for the probability of each outcome in a sample space according to the axiomatic approach?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A die is rolled once. What is the probability of getting an even number?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two events A and B are mutually exclusive, which of the following is true?",
+      "reason": "options 0 and 1 are the same (\"A ∪ B = S\"); options 2 and 3 are the same (\"A ∩ B = φ\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A die is rolled once. What is the probability of getting a number greater than 4?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the condition for the probability of an event E according to the axiomatic approach?",
+      "reason": "options 0 and 2 are the same (\"P(E) ≤ 0\"); options 0 and 3 are the same (\"P(E) ≤ 0\"); options 2 and 3 are the same (\"P(E) ≥ 0\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but this is the co…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a condition for the probability of the sample space S according to the axiomatic approach?",
+      "reason": "options 1 and 2 are the same (\"P(S) = 1\"); options 1 and 3 are the same (\"P(S) = 1\"); options 2 and 3 are the same (\"P(S) < 1\"); distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but this is the co…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the probability of an event not occurring, if the probability of the event occurring is 0.6?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the probability of an event not occurring is always 1…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a class of 30 students, the probability that a student passes the test is 0.7. What is the probability that exactly 20 students pass the test?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A die is rolled. What is the probability of rolling a number greater than or equal to 3?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks that the probability of rolling a number greater than…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How many outcomes are there in the sample space of an experiment where a coin is tossed twice?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "A die has two faces each with number '1', three faces each with number '2' and one face with number '3'. What is the probability of rolling a '2' on this die?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Two students, Mehul and Rashi, are seeking admission in a college. The probability that Mehul is selected is 0.4 and the probability of selection of exactly one of them is 0.5. The chances of selection of them are independent of each other. What is the probability of selection of Rashi?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a certain lottery 10,000 tickets are sold and ten equal prizes are awarded. What is the probability of not getting a prize if you buy one ticket?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Out of 100 students, two sections of 40 and 60 are formed. What is the probability that you and your friend both enter the same section?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In a lottery, a person chooses six different natural numbers at random from 1 to 20, and if these six numbers match with the six numbers already fixed by the lottery committee, he wins the prize. What is the probability of winning the prize in the game?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A die has two faces each with number ‘1’, three faces each with number ‘2’ and one face with number ‘3’. If die is rolled once, what is the probability of getting 2?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the probability of getting a head when a fair coin is tossed once?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a class of 60 students, 30 opted for NCC, 32 opted for NSS and 24 opted for both NCC and NSS. What is the probability that a randomly selected student has opted for NCC or NSS?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the probability of the union of two events A and B?",
+      "reason": "options 0 and 2 say the same thing (\"P(A) + P(B) - P(A ∩ B)\" / \"P(A) - P(B) + P(A ∩ B)\"); options 0 and 3 say the same thing (\"P(A) + P(B) - P(A ∩ B)\" / \"P(A) - P(B) - P(A ∩ B)\"); options 2 and 3 say the same thing (\"P(A) - P(B) + P(A ∩ B)\" / \"P(A) - P(B) - P(A ∩ B)\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of an event not occurring if the probability of the event is P(A)?",
+      "reason": "options 0 and 3 say the same thing (\"P(A) + 1\" / \"1 + P(A)\"); options 1 and 2 say the same thing (\"1 - P(A)\" / \"P(A) - 1\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If A and B are mutually exclusive events, what is the probability of their union?",
+      "reason": "options 0 and 2 say the same thing (\"P(A) + P(B) - P(A ∩ B)\" / \"P(A) - P(B)\"); options 1 and 3 are the same (\"P(A) + P(B)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a requirement for assigning probabilities according to the axiomatic approach?",
+      "reason": "after redraft: the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a die-rolling experiment, two events A and B are defined as follows: A = {1, 3, 5} (odd numbers) and B = {2, 4, 6} (even numbers). Which of the following statements about A and B is correct?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a random experiment, the sample space S has n outcomes, and each outcome is equally likely. If the probability of event A is 0.4 and the probability of event B is 0.5, what is the minimum possible value of P(A ∩ B)?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A fair coin with 1 marked on one face and 6 on the other and a fair die are both tossed. What is the probability of getting a sum of 3?",
+      "reason": "near-duplicate of served question cmvhdalfs088zgpfh4wil6z84 (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A die has two faces each with number ‘1’, three faces each with number ‘2’ and one face with number ‘3’. If die is rolled once, what is the probability of getting not 3?",
+      "reason": "near-duplicate of served question cmvhdalft0895gpfhiohjodd3 (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A and B are two events such that P(A) = 0.54, P(B) = 0.69 and P(A ∩ B) = 0.35. What is P(A ∪ B)?",
+      "reason": "near-duplicate of batch item \"Two events A and B are such that P(A) = 0.5, P(B) …\" (cosine 0.930 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

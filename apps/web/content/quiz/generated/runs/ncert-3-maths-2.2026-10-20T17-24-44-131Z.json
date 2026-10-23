@@ -1,0 +1,302 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T17:24:44.131Z",
+  "finishedAt": "2026-10-20T17:26:48.295Z",
+  "seconds": 124,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm102.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Toy Joy",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2013 — question paper]\n3. A finite non-empty set of integers is called 3-good if the sum of its elements is divisible by 3.\nFind the number of non-empty 3-good subsets of {0, 1, 2, . . . , 9}.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[RMO 2015 — question paper]\n4. Find all three digit natural numbers of the form (abc) 10 such that (abc) 10 , (bca) 10 and (cab) 10\nare in geometric progression. (Here (abc) 10 is representation in base 10.)",
+      "[RMO 2013 — question paper]\nPaper 3 Regional Mathematical Olympiad 2013 December 1, 2013"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 33839,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7696,
+      "completionTokens": 2042
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 65169,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 4872,
+      "completionTokens": 2060
+    },
+    "solver": {
+      "calls": 30,
+      "ms": 11379,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 2935,
+      "completionTokens": 240
+    },
+    "form": {
+      "calls": 5,
+      "ms": 12049,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 1140,
+      "completionTokens": 321
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2249,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 143746,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9926,
+      "completionTokens": 4663
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "If you join a cube and a cuboid, what shape do you get?",
+      "ms": {
+        "draft": 2724,
+        "critique": 6687
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape has a pointed beak and is used to make a bird face?",
+      "ms": {
+        "draft": 2916,
+        "critique": 4599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Jaya uses one cube and one cylinder to build a rocket, how many shapes is she using in total?",
+      "ms": {
+        "draft": 2916,
+        "critique": 4846
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student arranges 3 cubes in a line and then places a cylinder on top of the middle cube, how many shapes are visible from above?",
+      "ms": {
+        "draft": 2916,
+        "critique": 5747
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a toy is made using 3 cubes, 2 cylinders, and 1 cone, what is the total number of shapes used?",
+      "ms": {
+        "draft": 2916,
+        "critique": 6490
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape is used to make a pig face with narrow eyes?",
+      "ms": {
+        "draft": 2916,
+        "critique": 4651
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following shapes has both flat and curved faces?",
+      "ms": {
+        "draft": 2916,
+        "critique": 5297,
+        "solver": 1671,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape is a special type of cuboid?",
+      "ms": {
+        "draft": 2724,
+        "critique": 4891,
+        "solver": 1927,
+        "form": 3855,
+        "translation": 35881
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following has both flat and curved faces?",
+      "ms": {
+        "draft": 2724,
+        "critique": 4891,
+        "solver": 1293,
+        "form": 2996,
+        "translation": 28031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a shape has no edges, which shape could it be?",
+      "ms": {
+        "draft": 2724,
+        "critique": 4615,
+        "solver": 1087,
+        "form": 3199,
+        "translation": 29865
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many red cylinders are there in Devika’s toy engine?",
+      "ms": {
+        "draft": 2724,
+        "critique": 6200,
+        "solver": 1254,
+        "form": 2457,
+        "translation": 22502
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a shape has only flat faces, which of the following could it be?",
+      "ms": {
+        "draft": 2724,
+        "critique": 6256,
+        "solver": 1946,
+        "form": 1743,
+        "translation": 23879
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If you join a cube and a cuboid, what shape do you get?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which shape has a pointed beak and is used to make a bird face?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Jaya uses one cube and one cylinder to build a rocket, how many shapes is she using in total?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a student arranges 3 cubes in a line and then places a cylinder on top of the middle cube, how many shapes are visible from above?",
+      "reason": "the critic finds option 1 correct, the key is 2"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a toy is made using 3 cubes, 2 cylinders, and 1 cone, what is the total number of shapes used?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which shape is used to make a pig face with narrow eyes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following shapes has both flat and curved faces?",
+      "reason": "near-duplicate of batch item \"Which of the following has both flat and curved fa…\" (cosine 0.920 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

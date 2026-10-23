@@ -1,0 +1,347 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:01:55.872Z",
+  "finishedAt": "2026-10-20T22:04:39.181Z",
+  "seconds": 163,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap108.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 8 — A Treat for Mosquitoes",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 36208,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 15552,
+      "completionTokens": 2473
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 81256,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 6889,
+      "completionTokens": 2846
+    },
+    "solver": {
+      "calls": 94,
+      "ms": 42829,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16797,
+      "completionTokens": 1004
+    },
+    "form": {
+      "calls": 9,
+      "ms": 15948,
+      "in": 14,
+      "out": 8,
+      "rejects": 6,
+      "promptTokens": 1945,
+      "completionTokens": 561
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 1804,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 203509,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15713,
+      "completionTokens": 7519
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a blood test according to the passage?",
+      "ms": {
+        "draft": 2492,
+        "critique": 4232,
+        "solver": 2476,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to prevent the spread of malaria according to the passage?",
+      "ms": {
+        "draft": 2492,
+        "critique": 3916,
+        "solver": 13503,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has low haemoglobin, what should they do according to the passage?",
+      "ms": {
+        "draft": 2492,
+        "critique": 4068,
+        "solver": 14010,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is it important to prevent water from collecting around homes?",
+      "ms": {
+        "draft": 2492,
+        "critique": 6414,
+        "solver": 13160,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did the scientists in the passage catch and observe mosquitoes?",
+      "ms": {
+        "draft": 2561,
+        "critique": 3735,
+        "solver": 977,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What evidence did Ronald Ross find in the mosquito's stomach to prove that mosquitoes spread malaria?",
+      "ms": {
+        "draft": 2561,
+        "critique": 6321,
+        "solver": 1179,
+        "form": 2377
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the disease that was once called 'bad air'?",
+      "ms": {
+        "draft": 2561,
+        "critique": 3992,
+        "solver": 1324,
+        "form": 2529
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Rajat have to take for his illness?",
+      "ms": {
+        "draft": 1946,
+        "critique": 5688,
+        "solver": 1169,
+        "form": 1404,
+        "translation": 23959
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of mosquito spreads malaria?",
+      "ms": {
+        "draft": 1946,
+        "critique": 4749,
+        "solver": 1180,
+        "form": 2112,
+        "translation": 17691
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the disease that was once called 'bad air'?",
+      "ms": {
+        "draft": 2052,
+        "critique": 6110,
+        "solver": 1065,
+        "form": 2566,
+        "translation": 23924
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the scientist observe in the stomach of a mosquito that proved it spread malaria?",
+      "ms": {
+        "draft": 2052,
+        "critique": 5912,
+        "solver": 1359,
+        "form": 2548,
+        "translation": 25953
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Ronald Ross discover about mosquitoes?",
+      "ms": {
+        "draft": 2561,
+        "critique": 4368,
+        "solver": 1404,
+        "form": 1809,
+        "translation": 42423
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you find a pond near your school that is covered with plants and has mosquitoes, what should you do?",
+      "ms": {
+        "draft": 2052,
+        "critique": 3564,
+        "solver": 788,
+        "form": 1589,
+        "translation": 32084
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did the scientist do to prove that mosquitoes spread malaria?",
+      "ms": {
+        "draft": 2052,
+        "critique": 3659,
+        "solver": 664,
+        "form": 1034,
+        "translation": 34318
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of a blood test according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Does not understand the context of the passage…\"); distractor 3's reason is not a one-line misconception (\"Does not pay attention to the details in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a way to prevent the spread of malaria according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has low haemoglobin, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why is it important to prevent water from collecting around homes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What did Rajat say about the blood test?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What does the blood test show about Rajat?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why did the scientists in the passage catch and observe mosquitoes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What evidence did Ronald Ross find in the mosquito's stomach to prove that mosquitoes spread malaria?",
+      "reason": "the key is far longer than every distractor (54 vs 31 characters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the disease that was once called 'bad air'?",
+      "reason": "near-duplicate of batch item \"What is the name of the disease that was once call…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

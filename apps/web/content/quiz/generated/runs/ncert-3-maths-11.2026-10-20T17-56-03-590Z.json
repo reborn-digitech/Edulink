@@ -1,0 +1,408 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T17:56:03.590Z",
+  "finishedAt": "2026-10-20T18:01:47.484Z",
+  "seconds": 344,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm111.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Filling and L ifting",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n18. (d) 2 2 2  1  2  1  2  1 2  1  2\nWe know, l  m  n  1           1  3    1  c   3 .\n c   c   c   c "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 67338,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12134,
+      "completionTokens": 3929
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 163764,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 11069,
+      "completionTokens": 4397
+    },
+    "solver": {
+      "calls": 127,
+      "ms": 83353,
+      "in": 15,
+      "out": 11,
+      "rejects": 4,
+      "promptTokens": 27573,
+      "completionTokens": 1530
+    },
+    "form": {
+      "calls": 4,
+      "ms": 11026,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 1030,
+      "completionTokens": 297
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2935,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 215965,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15585,
+      "completionTokens": 7424
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does the passage say about why Chintu does not take the challenge?",
+      "ms": {
+        "draft": 3746,
+        "critique": 6126
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the capacity of a 1-litre bottle?",
+      "ms": {
+        "draft": 3746,
+        "critique": 9438
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the capacity of vessels?",
+      "ms": {
+        "draft": 3746,
+        "critique": 4686,
+        "solver": 14888
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug holds 1 litre of water, how many half-litre mugs can be filled from it?",
+      "ms": {
+        "draft": 3746,
+        "critique": 5470,
+        "solver": 11978,
+        "form": 2365
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which object is heavier than 1 kilogram according to the passage?",
+      "ms": {
+        "draft": 3115,
+        "critique": 7534,
+        "solver": 17075
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a bottle holds 2 litres, how many 500 ml glasses can be filled from it, and what does this show about capacity?",
+      "ms": {
+        "draft": 3746,
+        "critique": 7283,
+        "solver": 18730,
+        "form": 2576
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pan-balance is used to compare an apple and an orange, and the apple side goes down, what can be concluded?",
+      "ms": {
+        "draft": 3115,
+        "critique": 8551,
+        "solver": 1706,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How can you identify the heaviest ball among three same-sized balls using a pan-balance?",
+      "ms": {
+        "draft": 3115,
+        "critique": 6497,
+        "solver": 16983,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the weight of an object if it balances with 4 marbles?",
+      "ms": {
+        "draft": 3115,
+        "critique": 5921,
+        "solver": 630
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Chintu not take the challenge of drinking 6 glasses of juice?",
+      "ms": {
+        "draft": 4363,
+        "critique": 6563
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the capacity of the glasses?",
+      "ms": {
+        "draft": 4363,
+        "critique": 6934,
+        "solver": 1777
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug holds 1 litre of water and a glass holds a quarter litre, how many glasses can be filled with 3 jugs of lemonade?",
+      "ms": {
+        "draft": 4363,
+        "critique": 6344,
+        "solver": 1327,
+        "form": 0,
+        "translation": 30153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the teacher's note, if a 1 litre bottle is used to check the capacity of other vessels, which of the following is correct?",
+      "ms": {
+        "draft": 4363,
+        "critique": 7800,
+        "solver": 1080,
+        "form": 2581,
+        "translation": 26360
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a pan-balance is used to compare two objects, and the left side goes down, what does it indicate?",
+      "ms": {
+        "draft": 3115,
+        "critique": 5083,
+        "solver": 1277,
+        "form": 1,
+        "translation": 33079
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a jug holds exactly 1 litre and a glass can hold 250 ml, how many glasses can be filled from the jug?",
+      "ms": {
+        "draft": 3746,
+        "critique": 7520,
+        "solver": 18574,
+        "form": 3949,
+        "translation": 27026
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a bucket holds more than 1 litre and a mug holds less than half a litre, how many mugs would be needed to fill the bucket?",
+      "ms": {
+        "draft": 4363,
+        "critique": 7923,
+        "solver": 1672,
+        "form": 0,
+        "translation": 29089
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a bag has 3 books and another bag has 5 books, and both bags are of the same size, which bag is likely to be heavier?",
+      "ms": {
+        "draft": 3115,
+        "critique": 8106,
+        "solver": 10912,
+        "form": 0,
+        "translation": 33863
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 4 quarter litre glasses equal 1 litre, and 2 half litre mugs equal 1 litre, how many quarter litre glasses would equal 3 half litre mugs?",
+      "ms": {
+        "draft": 4363,
+        "critique": 5652,
+        "solver": 2078,
+        "form": 0,
+        "translation": 32551
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the passage say about why Chintu does not take the challenge?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the capacity of a 1-litre bottle?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about the capacity of vessels?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a jug holds 1 litre of water, how many half-litre mugs can be filled from it?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which object is heavier than 1 kilogram according to the passage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a bottle holds 2 litres, how many 500 ml glasses can be filled from it, and what does this show about capacity?",
+      "reason": "options 1 and 3 say the same thing (\"3 glasses, showing that smaller vessels hold less\" / \"3: 5 glasses, showing that smaller vessels hold less\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a pan-balance is used to compare an apple and an orange, and the apple side goes down, what can be concluded?",
+      "reason": "options 1 and 2 say the same thing (\"The orange is heavier than the apple\" / \"The apple is heavier than the orange\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How can you identify the heaviest ball among three same-sized balls using a pan-balance?",
+      "reason": "options 0 and 2 are the same (\"Weigh one ball against the third and then compare the other with the third\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the weight of an object if it balances with 4 marbles?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is an example of an object that weighs"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why does Chintu not take the challenge of drinking 6 glasses of juice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following statements is true about the capacity of the glasses?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

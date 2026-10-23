@@ -1,0 +1,831 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T15:25:07.502Z",
+  "finishedAt": "2026-10-22T15:43:27.237Z",
+  "seconds": 1100,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc108.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Journey Inside the Atom",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 28,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2013 — question paper]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[INJSO 2013 — solutions or answer key]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[INJSO 2020 — solutions or answer key]\n30. (16 marks) The year 2019 was proclaimed by UNESCO as the International Year of the\nPeriodic Table (IYPT 2019), marking the 150 th anniversary of the Mendeleev periodic table,\nwhich is an iconic representation and a vital tool to all who learn and work in science. In\nthis question, some elements have had their symbols replaced by greek letters α, β, γ, etc.,\nbut not in order. All such elements in this question have atomic number of 20 or less. In\naddition, two more elements in the periodic table have been assigned codes X and Q.\nUse the information about their properties, as given below, to assign each element to its\ncorrect greek / roman alphabet code.\n(a) Elements α, β and γ are unreact"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 318035,
+      "in": 44,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 45931,
+      "completionTokens": 13979
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 457008,
+      "in": 43,
+      "out": 29,
+      "rejects": 14,
+      "promptTokens": 25192,
+      "completionTokens": 9438
+    },
+    "solver": {
+      "calls": 219,
+      "ms": 138460,
+      "in": 29,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 42289,
+      "completionTokens": 2251
+    },
+    "form": {
+      "calls": 11,
+      "ms": 89511,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 12007,
+      "completionTokens": 1708
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 8351,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 557496,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 25741,
+      "completionTokens": 13537
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 4
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "According to Thomson's model of the atom, how are electrons arranged?",
+      "ms": {
+        "draft": 8092,
+        "critique": 8320
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did J. J. Thomson conclude about cathode rays?",
+      "ms": {
+        "draft": 8092,
+        "critique": 8321
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an atom has a radius of 1 Å (angstrom), and the nucleus has a radius of 1 femtometer (fm), what is the approximate ratio of the size of the atom to the size of the nucleus?",
+      "ms": {
+        "draft": 8092,
+        "critique": 9844
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did J. J. Thomson's experiments prove about atoms?",
+      "ms": {
+        "draft": 8092,
+        "critique": 9688,
+        "solver": 14863,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the development of atomic models?",
+      "ms": {
+        "draft": 8092,
+        "critique": 11460,
+        "solver": 15604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did Thomson's model of the atom, compared to a watermelon, fail to explain certain phenomena?",
+      "ms": {
+        "draft": 8092,
+        "critique": 8872,
+        "solver": 18819,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the gold foil experiment, a few alpha particles were deflected at large angles. What conclusion did Rutherford draw from this observation?",
+      "ms": {
+        "draft": 6451,
+        "critique": 7182,
+        "solver": 4642,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the thickness of the gold foil in the gold foil experiment were increased, what would be the most likely effect on the number of alpha particles that are deflected?",
+      "ms": {
+        "draft": 6451,
+        "critique": 13310,
+        "solver": 1715,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does Bohr's model state about the movement of electrons in an atom?",
+      "ms": {
+        "draft": 21496,
+        "critique": 8443
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an electron moves from the L-shell (n=2) to the K-shell (n=1), what happens?",
+      "ms": {
+        "draft": 21496,
+        "critique": 8314
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the term 'plum pudding model' refer to?",
+      "ms": {
+        "draft": 6451,
+        "critique": 7089,
+        "solver": 2084,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the stability of atoms according to Bohr’s model?",
+      "ms": {
+        "draft": 21496,
+        "critique": 8417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a helium atom has two protons and four times the mass of a hydrogen atom, what does this indicate?",
+      "ms": {
+        "draft": 21496,
+        "critique": 9599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are neutrons important in the nucleus of heavier atoms?",
+      "ms": {
+        "draft": 21496,
+        "critique": 9099
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which subatomic particle was discovered by James Chadwick?",
+      "ms": {
+        "draft": 21496,
+        "critique": 8580
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many neutrons are present in a lithium atom, as shown in Fig. 8.10?",
+      "ms": {
+        "draft": 6155,
+        "critique": 8652
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a rule for writing chemical symbols as per IUPAC?",
+      "ms": {
+        "draft": 6155,
+        "critique": 8055,
+        "solver": 1836,
+        "form": 4627
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the maximum number of electrons that can be accommodated in the outermost shell of an atom?",
+      "ms": {
+        "draft": 10589,
+        "critique": 10057
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an atom has 20 protons and a mass number of 41, how many neutrons are present in the nucleus?",
+      "ms": {
+        "draft": 6155,
+        "critique": 9941,
+        "solver": 18713
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If all the electrons in an atom are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will happen to the atom's atomic number?",
+      "ms": {
+        "draft": 15704,
+        "critique": 7527
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If all the electrons in an atom are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will happen to the atom's mass number?",
+      "ms": {
+        "draft": 15704,
+        "critique": 8879,
+        "solver": 1846
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An atom has 12 protons and 12 neutrons. If all the electrons are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will be the overall charge of the atom?",
+      "ms": {
+        "draft": 15704,
+        "critique": 9498
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student draws a bar graph showing the number of electrons in each energy level for three elements. Which of the following elements would have the highest number of electrons in the first energy level?",
+      "ms": {
+        "draft": 15704,
+        "critique": 9793,
+        "solver": 15916
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 15704,
+        "critique": 7976,
+        "solver": 1980
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the shells of an atom?",
+      "ms": {
+        "draft": 6901,
+        "critique": 8941,
+        "solver": 1912,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what conclusion did Rutherford draw about the position and characteristics of the atom's positively charged part?",
+      "ms": {
+        "draft": 6901,
+        "critique": 10415,
+        "solver": 13830,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an isotope of carbon?",
+      "ms": {
+        "draft": 11722,
+        "critique": 9084,
+        "solver": 1273,
+        "form": 4188
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If chlorine has two isotopes, ³⁵Cl and ³⁷Cl, with relative abundances of 75% and 25%, what is its weighted average atomic mass?",
+      "ms": {
+        "draft": 11722,
+        "critique": 7762,
+        "solver": 2102,
+        "form": 5747
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An atom has 19 protons and 22 neutrons. Which of the following is true about this atom?",
+      "ms": {
+        "draft": 11722,
+        "critique": 10585
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are atoms of the same element with different numbers of neutrons called?",
+      "ms": {
+        "draft": 11722,
+        "critique": 7837,
+        "solver": 1229,
+        "form": 5359
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the maximum number of electrons that can be accommodated in the outermost shell of an atom?",
+      "ms": {
+        "draft": 4069,
+        "critique": 6695,
+        "solver": 2186,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which model of the atom was proposed by Niels Bohr in 1913?",
+      "ms": {
+        "draft": 5319,
+        "critique": 9146,
+        "solver": 10793,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An atom has a mass number of 23 and 11 protons. How many neutrons does it have?",
+      "ms": {
+        "draft": 4069,
+        "critique": 8555,
+        "solver": 16981
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An atom has 11 protons and 12 neutrons. What is its mass number?",
+      "ms": {
+        "draft": 6901,
+        "critique": 8973,
+        "solver": 1864,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for atoms of the same element that have the same number of protons but different numbers of neutrons?",
+      "ms": {
+        "draft": 70722,
+        "critique": 7805,
+        "solver": 9150,
+        "form": 1345,
+        "translation": 54847
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following elements has an electronic configuration of 2, 8, 1?",
+      "ms": {
+        "draft": 4069,
+        "critique": 8567,
+        "solver": 1709,
+        "form": 9604,
+        "translation": 48087
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to Rutherford's model of the atom, where are the electrons located?",
+      "ms": {
+        "draft": 6451,
+        "critique": 7521,
+        "solver": 1647,
+        "form": 0,
+        "translation": 55305
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the gold foil experiment, most alpha particles passed through the gold foil without deflection. What does this observation suggest about the structure of an atom?",
+      "ms": {
+        "draft": 6451,
+        "critique": 9425,
+        "solver": 2753,
+        "form": 0,
+        "translation": 69670
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An atom has 79 protons and a mass number of 197. What will be the mass number if two neutrons are added to its nucleus?",
+      "ms": {
+        "draft": 6901,
+        "critique": 7897,
+        "solver": 1967,
+        "form": 0,
+        "translation": 69302
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If an atom has 18 neutrons and an atomic number of 17, what is its mass number?",
+      "ms": {
+        "draft": 6155,
+        "critique": 9078,
+        "solver": 17856,
+        "form": 0,
+        "translation": 37678
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why did Rutherford’s model fail to explain atomic stability, while Bohr’s model succeeded?",
+      "ms": {
+        "draft": 6901,
+        "critique": 9777,
+        "solver": 2215,
+        "form": 1,
+        "translation": 81907
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an atom, the number of protons is equal to the number of electrons. If all the electrons are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will be the impact on the atom’s chemical properties?",
+      "ms": {
+        "draft": 15704,
+        "critique": 8937,
+        "solver": 14432,
+        "form": 0,
+        "translation": 66178
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Rutherford's model could not explain the stability of the atom. What is the main reason for this limitation?",
+      "ms": {
+        "draft": 6451,
+        "critique": 9581,
+        "solver": 2109,
+        "form": 0,
+        "translation": 67193
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "According to Thomson's model of the atom, how are electrons arranged?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did J. J. Thomson conclude about cathode rays?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If an atom has a radius of 1 Å (angstrom), and the nucleus has a radius of 1 femtometer (fm), what is the approximate ratio of the size of the atom to the size of the nucleus?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did J. J. Thomson's experiments prove about atoms?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the development of atomic models?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did Thomson's model of the atom, compared to a watermelon, fail to explain certain phenomena?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the gold foil experiment, a few alpha particles were deflected at large angles. What conclusion did Rutherford draw from this observation?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the thickness of the gold foil in the gold foil experiment were increased, what would be the most likely effect on the number of alpha particles that are deflected?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does Bohr's model state about the movement of electrons in an atom?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an electron moves from the L-shell (n=2) to the K-shell (n=1), what happens?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the term 'plum pudding model' refer to?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the stability of atoms according to Bohr’s model?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a helium atom has two protons and four times the mass of a hydrogen atom, what does this indicate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are neutrons important in the nucleus of heavier atoms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which subatomic particle was discovered by James Chadwick?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many neutrons are present in a lithium atom, as shown in Fig. 8.10?",
+      "reason": "the critic finds option 2 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a rule for writing chemical symbols as per IUPAC?",
+      "reason": "options 0 and 1 say the same thing (\"The second letter of a symbol is always written in lowercase.\" / \"The first letter of a symbol is always written in lowercase.\"); distractor 3's reason is not a one-line misconception (\"Believes symbols are derived from English names, but they ar…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the maximum number of electrons that can be accommodated in the outermost shell of an atom?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an atom has 20 protons and a mass number of 41, how many neutrons are present in the nucleus?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is true about isotopes?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which international organisation approves the names and symbo"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If all the electrons in an atom are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will happen to the atom's atomic number?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If all the electrons in an atom are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will happen to the atom's mass number?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An atom has 12 protons and 12 neutrons. If all the electrons are replaced with hypothetical particles that have the same charge as electrons but are 500 times heavier, what will be the overall charge of the atom?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student draws a bar graph showing the number of electrons in each energy level for three elements. Which of the following elements would have the highest number of electrons in the first energy level?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the shells of an atom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what conclusion did Rutherford draw about the position and characteristics of the atom's positively charged part?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an isotope of carbon?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If chlorine has two isotopes, ³⁵Cl and ³⁷Cl, with relative abundances of 75% and 25%, what is its weighted average atomic mass?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An atom has 19 protons and 22 neutrons. Which of the following is true about this atom?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are atoms of the same element with different numbers of neutrons called?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label Isotopes"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the maximum number of electrons that can be accommodated in the outermost shell of an atom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which model of the atom was proposed by Niels Bohr in 1913?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An atom has a mass number of 23 and 11 protons. How many neutrons does it have?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "An atom has 11 protons and 12 neutrons. What is its mass number?",
+      "reason": "near-duplicate of served question cmvgkg0a70464gpfhtkjabjjb (cosine 0.981 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

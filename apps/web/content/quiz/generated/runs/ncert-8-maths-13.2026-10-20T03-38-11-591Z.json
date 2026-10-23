@@ -1,0 +1,390 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T03:38:11.591Z",
+  "finishedAt": "2026-10-20T03:44:33.182Z",
+  "seconds": 382,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh113.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Introduction to Graphs",
+    "edition": "Reprint 2024-25",
+    "chunks": 10,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n15. The graph drawn below depicts\n(A) y = 𝑠𝑖𝑛 −1 𝑥 (B) y = 𝑐𝑜𝑠 −1 𝑥\n(C) 𝑦 = 𝑥𝑙𝑜𝑔𝑥 + 𝑥 + 𝑐 (D) 𝑦 = 𝑥 + 𝑐\n(C) y = 𝑐𝑜𝑠 𝑒 𝑐 −1 𝑥 (D) y = 𝑐𝑜𝑡 −1 𝑥",
+      "[CBSE Class XII Mathematics, marking scheme, 2025-26]\nSECTION-A (MCQs of 1 mark each)\nSol. N. Hint / Solution Marks\n1 1\nClearly from the graph Domain is [− , ] 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 51219,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13730,
+      "completionTokens": 3063
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 118748,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 9337,
+      "completionTokens": 3718
+    },
+    "solver": {
+      "calls": 112,
+      "ms": 48719,
+      "in": 17,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 19128,
+      "completionTokens": 1111
+    },
+    "form": {
+      "calls": 9,
+      "ms": 20938,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 2173,
+      "completionTokens": 619
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5248,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 442937,
+      "in": 24,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 28096,
+      "completionTokens": 13722
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 2878,
+        "critique": 6405,
+        "solver": 1225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the graph showing the temperature of a patient in a hospital, what was the patient's temperature at 1 p.m.?",
+      "ms": {
+        "draft": 2878,
+        "critique": 5743,
+        "solver": 1135,
+        "form": 4128
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the graph showing the distances of a car from City P, what was the distance covered by the car during the 3rd hour?",
+      "ms": {
+        "draft": 2878,
+        "critique": 7704,
+        "solver": 1256
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the graph showing the sales figures for a manufacturing company, in which year was there the greatest difference between the sales as compared to its previous year?",
+      "ms": {
+        "draft": 2878,
+        "critique": 6487
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the graph showing the total runs scored by two batsmen, A and B, during each of the ten matches in 2007, in which match did both batsmen score the same number of runs?",
+      "ms": {
+        "draft": 2878,
+        "critique": 6434,
+        "solver": 12333,
+        "form": 2173
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between two quantities that change continuously over time, as shown in a line graph?",
+      "ms": {
+        "draft": 2769,
+        "critique": 4844,
+        "solver": 10755,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does a line graph primarily show?",
+      "ms": {
+        "draft": 2890,
+        "critique": 5556,
+        "solver": 1041,
+        "form": 2472,
+        "translation": 40324
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the x-axis of a graph usually represent?",
+      "ms": {
+        "draft": 2890,
+        "critique": 4919,
+        "solver": 1304,
+        "form": 1691,
+        "translation": 16781
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a linear graph?",
+      "ms": {
+        "draft": 2769,
+        "critique": 5449,
+        "solver": 1611,
+        "form": 0,
+        "translation": 26214
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the graph showing the growth of two plants, how much did Plant A grow during the 3rd week?",
+      "ms": {
+        "draft": 2878,
+        "critique": 4974,
+        "solver": 5737,
+        "form": 1195,
+        "translation": 30249
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line graph shows the distance of a car from a city, what does the vertical axis represent?",
+      "ms": {
+        "draft": 2890,
+        "critique": 6650,
+        "solver": 1581,
+        "form": 3642,
+        "translation": 39333
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a graph shows the distance covered by a car over time, and the graph is a straight line, what can we infer about the car's speed?",
+      "ms": {
+        "draft": 2769,
+        "critique": 4440,
+        "solver": 1177,
+        "form": 0,
+        "translation": 34085
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred from a horizontal line on a distance-time graph?",
+      "ms": {
+        "draft": 2890,
+        "critique": 6382,
+        "solver": 1399,
+        "form": 3111,
+        "translation": 61135
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph of the cost of petrol versus the number of litres, what does it mean if the graph passes through the origin?",
+      "ms": {
+        "draft": 2769,
+        "critique": 5438,
+        "solver": 11195,
+        "form": 0,
+        "translation": 46115
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a line graph shows the temperature of a patient recorded every hour, what does the point at 1 p.m. indicate?",
+      "ms": {
+        "draft": 2890,
+        "critique": 5379,
+        "solver": 1615,
+        "form": 2352,
+        "translation": 37145
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A graph shows the distance covered by a person over time. The person stops for a while during the journey. How would this be represented on the graph?",
+      "ms": {
+        "draft": 2769,
+        "critique": 7790,
+        "solver": 1354,
+        "form": 0,
+        "translation": 29620
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a line graph showing the performance of two batsmen, what does it mean if their lines intersect at a point?",
+      "ms": {
+        "draft": 2890,
+        "critique": 4827,
+        "solver": 872,
+        "form": 2268,
+        "translation": 36889
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A graph shows the relation between the amount of deposit and the simple interest earned. The graph is a straight line passing through the origin. What does this imply about the relationship between the deposit and the interest?",
+      "ms": {
+        "draft": 2769,
+        "critique": 5282,
+        "solver": 1399,
+        "form": 0,
+        "translation": 41495
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following best describes a line graph?\",\n      \""
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Refers to a specific example from the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the graph showing the temperature of a patient in a hospital, what was the patient's temperature at 1 p.m.?",
+      "reason": "options are written to different precisions (0 and 1 decimals); distractor 3's reason is not a one-line misconception (\"Chooses a temperature that is not explicitly mentioned in th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the graph showing the distances of a car from City P, what was the distance covered by the car during the 3rd hour?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the graph showing the sales figures for a manufacturing company, in which year was there the greatest difference between the sales as compared to its previous year?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the graph showing the total runs scored by two batsmen, A and B, during each of the ten matches in 2007, in which match did both batsmen score the same number of runs?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between two quantities that change continuously over time, as shown in a line graph?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

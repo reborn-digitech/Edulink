@@ -1,0 +1,810 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T13:28:30.005Z",
+  "finishedAt": "2026-10-21T13:52:18.011Z",
+  "seconds": 1428,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-I",
+    "bookCode": "leph1",
+    "document": "ncert/12/physics/leph107.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 7 — Alternating Current",
+    "edition": "Reprint 2026-27",
+    "chunks": 24,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEP 2020 — question paper]\n16. An Alternating Current is expressed as i = i cos wt + i sin wt. The RMS value of current is 1\n(a)  i  i 1 2  2 (b) i i 1 2\n2 2\n(c)  i  i 1 2 2 2  (d)  i 1 i 2  2\n2 2",
+      "[CBSE Class XII Physics, sample question paper, 2025-26]\n3. If the phasor diagram for a device connected to AC supply is as shown in the fig, 1\nthen which of the following statements is true?\n(A) When the frequency of the AC source is increased than the impedance of the\ndevice decreases.\n(B) This device behaves as conducting wire when connected across DC source.\n(C) When the frequency of the AC source is decreased than the impedance of the\ndevice decreases.\n(D) D. This device stores energy in the form of magnetic potential energy.",
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n28. An a.c. source generating a voltage ε = ε 0 sin ωt is connected to a 3\ncapacitor of capacitance C. Find the expression for the current I flowing\nthrough it. Plot a graph of ε and I versus t to show that the current is\nahead of the voltage by π/2.\nOR\nAn ac voltage V = V 0 sin t is applied across a pure inductor of\ninductance L. Find an expression for the current i, flowing in the circuit\nand show mathematically that the current flowing through it lags behind\n\nthe applied voltage by a phase angle of . Also draw graphs of V and\ni versus t for the circuit.",
+      "[CBSE Class XII Physics, marking scheme, 2025-26]\n3. Answer: (A) 1\nWhen the frequency of the AC source is increased than the impedance of\nthe device decreases.\nAs in phasor diagram current leads the voltage, so given appliance is\ncapacitor."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 283616,
+      "in": 41,
+      "out": 41,
+      "rejects": 3,
+      "promptTokens": 49961,
+      "completionTokens": 11974
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 433232,
+      "in": 41,
+      "out": 37,
+      "rejects": 4,
+      "promptTokens": 23999,
+      "completionTokens": 8608
+    },
+    "solver": {
+      "calls": 243,
+      "ms": 168962,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 43807,
+      "completionTokens": 2343
+    },
+    "form": {
+      "calls": 24,
+      "ms": 223115,
+      "in": 36,
+      "out": 13,
+      "rejects": 23,
+      "promptTokens": 24280,
+      "completionTokens": 3867
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 7318,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 745230,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 30728,
+      "completionTokens": 15575
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If an AC source is connected to an inductor, what happens to the current in the circuit?",
+      "ms": {
+        "draft": 5296,
+        "critique": 7222,
+        "solver": 17293,
+        "form": 5194
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a purely inductive AC circuit, what is the average power consumed over a complete cycle?",
+      "ms": {
+        "draft": 5296,
+        "critique": 7888,
+        "solver": 15577,
+        "form": 6983
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the phase angle of voltage and current in a purely resistive ac circuit?",
+      "ms": {
+        "draft": 5296,
+        "critique": 8321,
+        "solver": 17424,
+        "form": 5352
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An AC source with a frequency of 50 Hz is connected to a pure inductor. If the inductive reactance is 157 Ω, what is the inductance of the inductor?",
+      "ms": {
+        "draft": 5296,
+        "critique": 8519,
+        "solver": 2015
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An AC voltage is applied to a circuit with a resistor and a capacitor in series. If the frequency of the AC source is increased, what happens to the current in the circuit?",
+      "ms": {
+        "draft": 6022,
+        "critique": 10408
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a purely capacitive AC circuit, how does the current relate to the voltage?",
+      "ms": {
+        "draft": 6022,
+        "critique": 11142,
+        "solver": 19023,
+        "form": 5138
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the phasor diagram in Figure 7.8(a), what can be inferred about the device in the circuit?",
+      "ms": {
+        "draft": 6022,
+        "critique": 10088,
+        "solver": 18350,
+        "form": 4663
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an LCR series circuit, if the inductive reactance is greater than the capacitive reactance, what is the phase relationship between the current and the voltage?",
+      "ms": {
+        "draft": 9934,
+        "critique": 9997,
+        "solver": 1575,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a series LCR circuit, the impedance is given by Z = √(R² + (X_L - X_C)²). If the inductive reactance is 10 Ω and the capacitive reactance is 6 Ω, and the resistance is 8 Ω, what is the impedance of the circuit?",
+      "ms": {
+        "draft": 9934,
+        "critique": 9801,
+        "solver": 2367,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A series LCR circuit is connected to an AC source. If the resistance R is doubled while the inductance and capacitance remain the same, how does the resonant frequency of the circuit change?",
+      "ms": {
+        "draft": 9934,
+        "critique": 6795,
+        "solver": 1884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an AC circuit, the instantaneous voltage is given by v = v_m sin(ωt) and the instantaneous current is given by i = i_m sin(ωt + φ). If the phase difference φ is π/2, which of the following statements is true?",
+      "ms": {
+        "draft": 9934,
+        "critique": 9007,
+        "solver": 3141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an AC circuit, the RMS value of current is given by I_rms = I_m / √2. If the peak current is 10 A, what is the RMS current?",
+      "ms": {
+        "draft": 9934,
+        "critique": 11816,
+        "solver": 17632,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an AC circuit, the voltage is given by v = v_m sin(ωt) and the current is given by i = i_m sin(ωt + φ). If the power factor of the circuit is 0.5, what is the phase angle φ?",
+      "ms": {
+        "draft": 9934,
+        "critique": 8791,
+        "solver": 2411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an AC circuit, if the phase angle between the voltage and current is 53.1°, what is the power factor of the circuit?",
+      "ms": {
+        "draft": 5916,
+        "critique": 9661,
+        "solver": 1719,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the factor that affects the average power dissipated in an AC circuit along with voltage and current?",
+      "ms": {
+        "draft": 5916,
+        "critique": 8735,
+        "solver": 22755,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the principle used in a transformer to change alternating voltage?",
+      "ms": {
+        "draft": 41971,
+        "critique": 9708
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In an ideal transformer, what is the relationship between the number of turns in the primary and secondary coils and the voltage?",
+      "ms": {
+        "draft": 41971,
+        "critique": 7903,
+        "solver": 6983,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A resistor of 200 ohms and a capacitor of 15.0 microfarads are connected in series to a 220 V, 50 Hz AC source. What is the impedance of the circuit?",
+      "ms": {
+        "draft": 19810,
+        "critique": 9187,
+        "solver": 1832,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An AC voltage of 283 V peak is applied to an LCR series circuit with R = 3 ohms, L = 25.48 mH, and C = 796 mF. What is the power dissipated in the circuit?",
+      "ms": {
+        "draft": 19810,
+        "critique": 11572
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an AC circuit, if the phase difference between the voltage and current is 90 degrees, what is the power factor of the circuit?",
+      "ms": {
+        "draft": 19810,
+        "critique": 9738,
+        "solver": 2609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a series LCR circuit, what is the condition for resonance?",
+      "ms": {
+        "draft": 19810,
+        "critique": 8346,
+        "solver": 2654,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an LCR series circuit, the impedance Z is given by Z = √[R² + (X_L - X_C)²]. What does this equation represent?",
+      "ms": {
+        "draft": 7595,
+        "critique": 9572,
+        "solver": 1998,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A phasor diagram for a device connected to an AC supply shows that the current leads the voltage. Which of the following statements is true about this device?",
+      "ms": {
+        "draft": 7595,
+        "critique": 8666,
+        "solver": 2687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a series LCR circuit, when the frequency of the AC source is equal to the resonant frequency, the current amplitude becomes maximum. What is the reason for this?",
+      "ms": {
+        "draft": 7595,
+        "critique": 8315,
+        "solver": 3061,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a series LCR circuit, the phase angle φ is given by tanφ = (X_L - X_C)/R. What does this equation tell us?",
+      "ms": {
+        "draft": 7595,
+        "critique": 9163,
+        "solver": 2211,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The resonant frequency of a series RLC circuit is given by ω = 1/√(LC). What does this formula represent?",
+      "ms": {
+        "draft": 7595,
+        "critique": 10356,
+        "solver": 2142,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a series LCR circuit, the current amplitude is given by i = v / √[R² + (X_L - X_C)²]. What does this equation indicate about the circuit?",
+      "ms": {
+        "draft": 7595,
+        "critique": 9062,
+        "solver": 2512,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a voltage that varies sinusoidally with time?",
+      "ms": {
+        "draft": 6319,
+        "critique": 7671
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of capacitive reactance?",
+      "ms": {
+        "draft": 5386,
+        "critique": 8620,
+        "solver": 2708,
+        "form": 3961
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the rotating vector that represents the amplitude and phase of an alternating current or voltage?",
+      "ms": {
+        "draft": 5296,
+        "critique": 7351,
+        "solver": 3218,
+        "form": 4920,
+        "translation": 107230
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a vector that rotates about the origin with angular speed and represents the sinusoidally varying quantities in an AC circuit?",
+      "ms": {
+        "draft": 5619,
+        "critique": 7719,
+        "solver": 1972,
+        "form": 4411,
+        "translation": 51938
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an AC circuit, what happens to the power dissipated in a purely inductive or capacitive circuit?",
+      "ms": {
+        "draft": 5916,
+        "critique": 10919,
+        "solver": 2443,
+        "form": 0,
+        "translation": 52490
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the effective value of an alternating current?",
+      "ms": {
+        "draft": 6557,
+        "critique": 5627,
+        "solver": 1622,
+        "form": 0,
+        "translation": 48752
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the unit of capacitive reactance?",
+      "ms": {
+        "draft": 6022,
+        "critique": 9299,
+        "solver": 3014,
+        "form": 5415,
+        "translation": 40904
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the frequency of the AC source is doubled, what happens to the capacitive reactance?",
+      "ms": {
+        "draft": 6022,
+        "critique": 8561,
+        "solver": 19433,
+        "form": 4541,
+        "translation": 51507
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the average power dissipated in a purely capacitive AC circuit?",
+      "ms": {
+        "draft": 19810,
+        "critique": 8038,
+        "solver": 3573,
+        "form": 0,
+        "translation": 44442
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a purely inductive AC circuit, how does the current relate to the voltage in terms of phase angle?",
+      "ms": {
+        "draft": 5619,
+        "critique": 8701,
+        "solver": 1412,
+        "form": 2965,
+        "translation": 62407
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an AC circuit, if the current leads the voltage by π/2, what type of component is likely to be present?",
+      "ms": {
+        "draft": 5386,
+        "critique": 9454,
+        "solver": 2055,
+        "form": 5417,
+        "translation": 59313
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an AC circuit, if the current lags the voltage by a phase angle φ, what is the effect of connecting a capacitor in parallel on the power factor?",
+      "ms": {
+        "draft": 19810,
+        "critique": 8427,
+        "solver": 1906,
+        "form": 0,
+        "translation": 61132
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A capacitor is connected to an AC source. If the frequency of the source is increased, what happens to the current in the circuit?",
+      "ms": {
+        "draft": 5296,
+        "critique": 6846,
+        "solver": 1800,
+        "form": 6631,
+        "translation": 69169
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a purely capacitive AC circuit, the power supplied to the capacitor over a complete cycle is zero. Why is this the case?",
+      "ms": {
+        "draft": 6022,
+        "critique": 10672,
+        "solver": 1598,
+        "form": 5849,
+        "translation": 88469
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the term used to describe a voltage that varies sinus"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an AC source is connected to an inductor, what happens to the current in the circuit?",
+      "reason": "options 0 and 3 say the same thing (\"The current leads the voltage by π/2\" / \"3: The current leads the voltage by π/2\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a purely inductive AC circuit, what is the average power consumed over a complete cycle?",
+      "reason": "option lengths are unalike (10 to 63 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the phase angle of voltage and current in a purely resistive ac circuit?",
+      "reason": "options 0 and 1 say the same thing (\"The current leads the voltage by π/2\" / \"The voltage leads the current by π/2\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An AC source with a frequency of 50 Hz is connected to a pure inductor. If the inductive reactance is 157 Ω, what is the inductance of the inductor?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An AC voltage is applied to a circuit with a resistor and a capacitor in series. If the frequency of the AC source is increased, what happens to the current in the circuit?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a purely capacitive AC circuit, how does the current relate to the voltage?",
+      "reason": "options 0 and 3 say the same thing (\"It lags the voltage by π/2\" / \"3: It lags the voltage by π/2\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the phasor diagram in Figure 7.8(a), what can be inferred about the device in the circuit?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In an LCR series circuit, if the inductive reactance is greater than the capacitive reactance, what is the phase relationship between the current and the voltage?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'seriesRLC'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a series LCR circuit, the impedance is given by Z = √(R² + (X_L - X_C)²). If the inductive reactance is 10 Ω and the capacitive reactance is 6 Ω, and the resistance is 8 Ω, what is the impedance of the circuit?",
+      "reason": "checkExpr \"sqrt(8^2 + (10 - 6)^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A series LCR circuit is connected to an AC source. If the resistance R is doubled while the inductance and capacitance remain the same, how does the resonant frequency of the circuit change?",
+      "reason": "figure: figure spec refused: spec.parts.1.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'inductor'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an AC circuit, the instantaneous voltage is given by v = v_m sin(ωt) and the instantaneous current is given by i = i_m sin(ωt + φ). If the phase difference φ is π/2, which of the following statements is true?",
+      "reason": "figure: figure spec refused: spec.x.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an AC circuit, the RMS value of current is given by I_rms = I_m / √2. If the peak current is 10 A, what is the RMS current?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"10 / sqrt(2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an AC circuit, the voltage is given by v = v_m sin(ωt) and the current is given by i = i_m sin(ωt + φ). If the power factor of the circuit is 0.5, what is the phase angle φ?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'seriesRLC'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an AC circuit, if the phase angle between the voltage and current is 53.1°, what is the power factor of the circuit?",
+      "reason": "checkExpr \"cos(53.1)\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the factor that affects the average power dissipated in an AC circuit along with voltage and current?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the principle used in a transformer to change alternating voltage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "In an ideal transformer, what is the relationship between the number of turns in the primary and secondary coils and the voltage?",
+      "reason": "options 0 and 1 say the same thing (\"V_p / V_s = N_p / N_s\" / \"V_p / V_s = N_s / N_p\"); options 0 and 2 say the same thing (\"V_p / V_s = N_p / N_s\" / \"V_p * V_s = N_p * N_s\"); options 0 and 3 say the same thing (\"V_p / V_s = N_p / N_s\" / \"V_p + V_s = N_p + N_s\"); options 1 and 2 say the same thing (\"V_p / V_s = N_s / N_p\" / \"V_p * V_s = N_p * N_s\"); options 1 and 3 say the same thing (\"V_p / V_s = N_s / N_p\" / \"V_p + V_s = N_p + N_s\"); options 2 and 3 are the same (\"V_p * V_s = N_p * N_s\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"An alternating current is given by i = i_1 cos wt + i_2 sin wt. What is the RMS value "
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the main purpose of a transformer as described in the"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A resistor of 200 ohms and a capacitor of 15.0 microfarads are connected in series to a 220 V, 50 Hz AC source. What is the impedance of the circuit?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); checkExpr \"sqrt(200^2 + (1/(2*3.14*50*15*10^-6))^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An AC voltage of 283 V peak is applied to an LCR series circuit with R = 3 ohms, L = 25.48 mH, and C = 796 mF. What is the power dissipated in the circuit?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an AC circuit, if the phase difference between the voltage and current is 90 degrees, what is the power factor of the circuit?",
+      "reason": "options are written to different precisions (0 and 1 and 3 decimals); checkExpr \"cos(90*pi/180)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a series LCR circuit, what is the condition for resonance?",
+      "reason": "options 0 and 1 are the same (\"X_L = X_C\"); options 0 and 2 are the same (\"X_L = X_C\"); options 1 and 2 are the same (\"X_L > X_C\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an LCR series circuit, the impedance Z is given by Z = √[R² + (X_L - X_C)²]. What does this equation represent?",
+      "reason": "figure: figure spec refused: spec.parts.1.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'inductor'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A phasor diagram for a device connected to an AC supply shows that the current leads the voltage. Which of the following statements is true about this device?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a series LCR circuit, when the frequency of the AC source is equal to the resonant frequency, the current amplitude becomes maximum. What is the reason for this?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'resistor'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a series LCR circuit, the phase angle φ is given by tanφ = (X_L - X_C)/R. What does this equation tell us?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.phase: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "The resonant frequency of a series RLC circuit is given by ω = 1/√(LC). What does this formula represent?",
+      "reason": "figure: figure spec refused: spec.parts.1.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'capacitor'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a series LCR circuit, the current amplitude is given by i = v / √[R² + (X_L - X_C)²]. What does this equation indicate about the circuit?",
+      "reason": "figure: figure spec refused: spec.parts.2.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'capacitor'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe a voltage that varies sinusoidally with time?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of capacitive reactance?",
+      "reason": "near-duplicate of batch item \"What is the unit of capacitive reactance?…\" (cosine 0.959 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

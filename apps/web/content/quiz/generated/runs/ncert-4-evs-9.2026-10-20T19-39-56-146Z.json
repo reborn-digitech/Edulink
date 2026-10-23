@@ -1,0 +1,237 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:39:56.146Z",
+  "finishedAt": "2026-10-20T19:42:29.013Z",
+  "seconds": 153,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap109.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 9 — Changing Families",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 30762,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7912,
+      "completionTokens": 1674
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 46730,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3293,
+      "completionTokens": 1399
+    },
+    "solver": {
+      "calls": 40,
+      "ms": 17372,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4920,
+      "completionTokens": 320
+    },
+    "form": {
+      "calls": 6,
+      "ms": 15653,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 1478,
+      "completionTokens": 433
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2167,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 223751,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12368,
+      "completionTokens": 6477
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the reason for a change in Nimmi’s family?",
+      "ms": {
+        "draft": 3860,
+        "critique": 7755,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is one reason that a family might change?",
+      "ms": {
+        "draft": 3860,
+        "critique": 4620,
+        "solver": 602,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What will happen to Nimmi’s mother after the arrival of the new baby?",
+      "ms": {
+        "draft": 3831,
+        "critique": 5542,
+        "solver": 1984,
+        "form": 3511
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the reason for a change in Nimmi’s family?",
+      "ms": {
+        "draft": 3831,
+        "critique": 6031,
+        "solver": 2445,
+        "form": 3067,
+        "translation": 42404
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one change that may happen in Nimmi’s family after the arrival of the new baby?",
+      "ms": {
+        "draft": 3860,
+        "critique": 7346,
+        "solver": 1823,
+        "form": 3010,
+        "translation": 40000
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family member is promoted and has to move to another city, what is a likely change in the family?",
+      "ms": {
+        "draft": 3860,
+        "critique": 6920,
+        "solver": 1237,
+        "form": 4463,
+        "translation": 51746
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family member moves to another city for work, what is likely to happen?",
+      "ms": {
+        "draft": 3831,
+        "critique": 5313,
+        "solver": 1401,
+        "form": 3975,
+        "translation": 46838
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What change is likely in a family when a new baby is born?",
+      "ms": {
+        "draft": 3831,
+        "critique": 3205,
+        "solver": 627,
+        "form": 1145,
+        "translation": 38252
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was the reason for a change in Nimmi’s family?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is one reason that a family might change?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What will happen to Nimmi’s mother after the arrival of the new baby?",
+      "reason": "near-duplicate of batch item \"What is one change that may happen in Nimmi’s fami…\" (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

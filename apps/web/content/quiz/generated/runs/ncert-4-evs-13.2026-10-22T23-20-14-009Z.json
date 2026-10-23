@@ -1,0 +1,234 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:20:14.009Z",
+  "finishedAt": "2026-10-22T23:22:12.773Z",
+  "seconds": 119,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap113.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 13 — A River’s Tale",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 28143,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7046,
+      "completionTokens": 1672
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 52273,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 3753,
+      "completionTokens": 1524
+    },
+    "solver": {
+      "calls": 26,
+      "ms": 11997,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 3619,
+      "completionTokens": 233
+    },
+    "form": {
+      "calls": 4,
+      "ms": 9766,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 951,
+      "completionTokens": 287
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3117,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 138426,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8973,
+      "completionTokens": 4426
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a river is polluted by oil, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 3774,
+        "critique": 6383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do some places in the river have more fish and others have fewer or dead fish?",
+      "ms": {
+        "draft": 3774,
+        "critique": 6603
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for the change in the colour of water in a river?",
+      "ms": {
+        "draft": 3774,
+        "critique": 6651
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What would happen if a river had no plants in it?",
+      "ms": {
+        "draft": 3774,
+        "critique": 2579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for the change in the colour of the river water?",
+      "ms": {
+        "draft": 3262,
+        "critique": 7610,
+        "solver": 9429,
+        "form": 1978,
+        "translation": 25739
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to clean drinking water?",
+      "ms": {
+        "draft": 3262,
+        "critique": 6313,
+        "solver": 1113,
+        "form": 3188,
+        "translation": 30349
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a river is used for washing clothes, what effect might this have on the water?",
+      "ms": {
+        "draft": 3262,
+        "critique": 6510,
+        "solver": 1933,
+        "form": 4226,
+        "translation": 44410
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the water in a river has a foul smell, what might this indicate?",
+      "ms": {
+        "draft": 3262,
+        "critique": 4715,
+        "solver": 1120,
+        "form": 2024,
+        "translation": 34493
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a river is polluted by oil, which of the following is most likely to happen?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why do some places in the river have more fish and others have fewer or dead fish?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a reason for the change in the colour of water in a river?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What would happen if a river had no plants in it?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

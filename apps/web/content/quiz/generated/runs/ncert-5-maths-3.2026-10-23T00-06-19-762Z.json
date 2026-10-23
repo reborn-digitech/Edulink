@@ -1,0 +1,468 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T00:06:19.762Z",
+  "finishedAt": "2026-10-23T00:10:22.337Z",
+  "seconds": 243,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm103.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Angles as Turns",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n24. We know that, in 60 minutes, the tip of minute hand moves 360°\nIn 1 minute, it will move =360°/60 = 6° ½\n∴ From 7 : 05 pm to 7: 40 pm i.e. 35 min, it will move through = 35 × 6° = 210° ½\n∴ Area of swept by the minute hand in 35 min = Area of sector with sectorial angle θ\nof 210° and radius of 6 cm\n= 210 360 x π x 6 2 ½\n7 22\n= 12 x 7 x 6 x 6\n=66cm 2 ½\nOR\nLet the measure of ∠A, ∠B, ∠C and ∠D be θ₁, θ₂, θ₃ and θ₄ respectively\nRequired area = Area of sector with centre A + Area of sector with centre B ½\n+ Area of sector with centre C + Area of sector with centre D\n= 360 𝛉₁ x π x 7 + 2 360 𝛉₂ x π x 7 + 2 360 𝛉₃ x π x 7 + 2 360 𝛉₄ x π x 7 2 ½\n( 𝛉₁ + 𝛉₂ + 𝛉₃ + 𝛉₄) 2\n= 360 x π x 7\n= ( 𝟑",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n9. (B) 12°\nsin 5𝑥 = √ଷ ଶ\nSo, 5𝑥 = 60°\nAnd hence 𝑥 = 12°",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n9. If O is centre of a circle and Chord PQ makes an angle 50° with the tangent PR at the point of contact 1\nP, then the angle subtended by the chord at the centre is P R\n(a) 130° (b) 100°\n(c) 50° (d) 30° O Q",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n5. In the given figure, PQ and PR are tangents to a circle centred at O. If 1\n∠QPR=35 then ∠QOR is equal to ∘\n(A) 70 ∘ (B) 90 ∘ (C) 135 ∘ (D) 145 ∘"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 70207,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 16607,
+      "completionTokens": 3964
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 189836,
+      "in": 20,
+      "out": 19,
+      "rejects": 1,
+      "promptTokens": 12816,
+      "completionTokens": 5143
+    },
+    "solver": {
+      "calls": 164,
+      "ms": 93337,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 29689,
+      "completionTokens": 1876
+    },
+    "form": {
+      "calls": 4,
+      "ms": 22799,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 2810,
+      "completionTokens": 478
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3364,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 150672,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10069,
+      "completionTokens": 4544
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If Reema takes 2 quarter turns in the same direction, what type of turn does this represent?",
+      "ms": {
+        "draft": 3637,
+        "critique": 5216,
+        "solver": 1783
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many quarter turns does a minute hand make to complete a full circle?",
+      "ms": {
+        "draft": 3637,
+        "critique": 5390,
+        "solver": 17534,
+        "form": 2691
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the minute hand moves from 12 to 6 on a clock, how many turns has it made?",
+      "ms": {
+        "draft": 3637,
+        "critique": 9107,
+        "solver": 15889,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the minute hand makes a turn of 270 degrees, what is the equivalent in terms of quarter turns?",
+      "ms": {
+        "draft": 3637,
+        "critique": 7112,
+        "solver": 17099,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the minute hand moves by 45 minutes, it has made a _______ turn of the circle.",
+      "ms": {
+        "draft": 2576,
+        "critique": 6783
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by ______ minutes.",
+      "ms": {
+        "draft": 2576,
+        "critique": 8519,
+        "solver": 1415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by _____ minutes.",
+      "ms": {
+        "draft": 2576,
+        "critique": 5939,
+        "solver": 9621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If Padma is facing the toy shop and takes a half turn clockwise, what place will she face?",
+      "ms": {
+        "draft": 2638,
+        "critique": 6108,
+        "solver": 2080
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a full turn?",
+      "ms": {
+        "draft": 3420,
+        "critique": 7298,
+        "solver": 12253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the angle made when the minute hand of a clock moves from 12 to 3 and then from 3 to 6?",
+      "ms": {
+        "draft": 3420,
+        "critique": 6614,
+        "solver": 5886
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the minute hand has turned a full-circle, it has moved by ______ minutes.",
+      "ms": {
+        "draft": 2576,
+        "critique": 5605,
+        "solver": 1692,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which direction do the hands of a clock move?",
+      "ms": {
+        "draft": 2576,
+        "critique": 6130,
+        "solver": 8949,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by ______ minutes.",
+      "ms": {
+        "draft": 2638,
+        "critique": 4921,
+        "solver": 2036,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the minute hand moves by 45 minutes, it has made a _______ turn of the circle.",
+      "ms": {
+        "draft": 2638,
+        "critique": 4616,
+        "solver": 11796,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Reema makes two half turns in the same direction. What is the total turn she makes?",
+      "ms": {
+        "draft": 3420,
+        "critique": 8006,
+        "solver": 1215,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the angle formed when a straw is turned more than a quarter but less than a half?",
+      "ms": {
+        "draft": 3637,
+        "critique": 5061,
+        "solver": 13783,
+        "form": 3102,
+        "translation": 37357
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of angle is formed when a straw is turned less than a quarter?",
+      "ms": {
+        "draft": 3637,
+        "critique": 8897,
+        "solver": 16713,
+        "form": 3248,
+        "translation": 32677
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the minute hand of a clock moves from 12 to 6, what type of turn has it made?",
+      "ms": {
+        "draft": 3420,
+        "critique": 7491,
+        "solver": 1845,
+        "form": 0,
+        "translation": 24705
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Padma is facing north and takes 3 right angles clockwise, what direction will she face?",
+      "ms": {
+        "draft": 2638,
+        "critique": 7159,
+        "solver": 1203,
+        "form": 0,
+        "translation": 31199
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the minute hand of a clock moves from 12 to 9, what is the angle made by the hand?",
+      "ms": {
+        "draft": 3420,
+        "critique": 6719,
+        "solver": 1307,
+        "form": 0,
+        "translation": 20939
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by _____ minutes.",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If Reema takes 2 quarter turns in the same direction, what type of turn does this represent?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many quarter turns does a minute hand make to complete a full circle?",
+      "reason": "options 2 and 3 are the same (\"6\"); options 2 and 3 are the same number; checkExpr \"4\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the minute hand moves from 12 to 6 on a clock, how many turns has it made?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'clock'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the minute hand makes a turn of 270 degrees, what is the equivalent in terms of quarter turns?",
+      "reason": "checkExpr \"3\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "When the minute hand moves by 45 minutes, it has made a _______ turn of the circle.",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by ______ minutes.",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by _____ minutes.",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "When the minute hand has turned a full-circle, it has moved by ______ minutes.",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "In which direction do the hands of a clock move?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If Padma is facing the toy shop and takes a half turn clockwise, what place will she face?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a full turn?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the angle made when the minute hand of a clock moves from 12 to 3 and then from 3 to 6?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When the minute hand has turned a full-circle, it has moved by ______ minutes.",
+      "reason": "near-duplicate of served question cmvh5u9tv0709gpfh8wejy1rw (cosine 0.976 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "In which direction do the hands of a clock move?",
+      "reason": "near-duplicate of served question cmvh5u9tx070fgpfh1xpithdy (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by ______ minutes.",
+      "reason": "near-duplicate of served question cmvh5u9tv0709gpfh8wejy1rw (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When the minute hand moves by 45 minutes, it has made a _______ turn of the circle.",
+      "reason": "near-duplicate of served question cmvh5u9tr0703gpfhcdllrex0 (cosine 0.977 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Reema makes two half turns in the same direction. What is the total turn she makes?",
+      "reason": "near-duplicate of served question cmvh5u9u30713gpfh5zdctvyu (cosine 0.960 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

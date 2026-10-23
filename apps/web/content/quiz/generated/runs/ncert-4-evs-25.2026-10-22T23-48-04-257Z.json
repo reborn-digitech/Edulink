@@ -1,0 +1,238 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:48:04.257Z",
+  "finishedAt": "2026-10-22T23:50:44.286Z",
+  "seconds": 160,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap125.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 25 — Spicy Riddles",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 20518,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6694,
+      "completionTokens": 1180
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 44757,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 3567,
+      "completionTokens": 1533
+    },
+    "solver": {
+      "calls": 41,
+      "ms": 17129,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 5196,
+      "completionTokens": 352
+    },
+    "form": {
+      "calls": 3,
+      "ms": 5948,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 674,
+      "completionTokens": 208
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3345,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 135188,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8217,
+      "completionTokens": 3909
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which spice is described in the riddle: 'I can be powdered fine to make food hot and spicy'",
+      "ms": {
+        "draft": 2676,
+        "critique": 5164
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described in the riddle: 'Grind me and powder me – to make your food look yellow'",
+      "ms": {
+        "draft": 2676,
+        "critique": 5165,
+        "solver": 7994
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a spice that is put into both sweet and salty things?",
+      "ms": {
+        "draft": 15536,
+        "critique": 5302,
+        "solver": 1837
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described in the riddle: 'I am a small and skinny chap, sometimes I am brown and sometimes black'",
+      "ms": {
+        "draft": 2676,
+        "critique": 5742,
+        "solver": 998,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described in the riddle: 'Small and round like a pearl, I am black when I am whole'",
+      "ms": {
+        "draft": 2676,
+        "critique": 4936,
+        "solver": 1226,
+        "form": 0,
+        "translation": 31704
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which spice is described as looking like a nail but being a bud?",
+      "ms": {
+        "draft": 15536,
+        "critique": 4652,
+        "solver": 1471,
+        "form": 3159,
+        "translation": 35771
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a spice is added to food and makes it taste sour, what is that spice likely to be?",
+      "ms": {
+        "draft": 15536,
+        "critique": 6321,
+        "solver": 1875,
+        "form": 2099,
+        "translation": 42366
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which spice is described as being black when it is whole and having a sharp and spicy taste?",
+      "ms": {
+        "draft": 15536,
+        "critique": 4567,
+        "solver": 689,
+        "form": 1233,
+        "translation": 21209
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which spice is described in the riddle: 'I can be powdered fine to make food hot and spicy'",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which spice is described in the riddle: 'Grind me and powder me – to make your food look yellow'",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is a spice that is put into both sweet and salty things?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which spice is described in the riddle: 'I am a small and skinny chap, sometimes I am brown and sometimes black'",
+      "reason": "near-duplicate of batch item \"Which spice is described in the riddle: 'Small and…\" (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

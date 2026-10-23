@@ -1,0 +1,790 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T02:46:29.512Z",
+  "finishedAt": "2026-10-21T02:56:14.882Z",
+  "seconds": 585,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo104.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 4 — Animal Kingdom",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2005 — question paper]\n54. A cladistic classification of kingdom Animalia is shown. Assign the\nappropriate features (from the options given below) to the numbers 1- 9.\nSalamander\nLung fish 9\nShark\nSea squirt 6\n5 7 8\nlung\n3 4\n1 2\nAorta\n1. Cephalization\n2. ____________\n3. Hinged jaw\n4. ____________\n5. ____________\n6. ____________\n7. Limbs\n8. ____________\n9. ____________\nSwim bladder\nLimbs\nThree chambered heart\nHinged jaw\nVertebrae\nInternal development of egg\nLong sticky tongue\nCephalization\nGill slits\nAmniotic egg\nFibrous protein skeleton\nBony fin\nMuscular lobed fins\n***************",
+      "[INBO 2025 — question paper]\n56. (4 points) A classification of animals is shown below with important evolutionary traits.\nPlace the given phyla against the appropriate alphabet.\nIndicate the position of the following phyla (1 – 4) in the cladogram and fill in the\nrespective alphabet (P – W) in the blanks.\n1. Echinoderms\n2. Mollusks\n3. Roundworms\n4. Arthropods\n********* END OF SECTION B *********",
+      "[INBO 2005 — question paper]\n22. If a taxon of animals is further classified on the basis of ‘canal systems’,\nthe taxon has to be:\na. Phylum Echinodermata\nb. Phylum Porifera\nc. Class Osteichthyes\nd. Class Insecta\nGENETICS & EVOLUTION",
+      "[INBO 2014 — question paper]\n38. (1 point) In the following scheme, three domain classification key with one\nrepresentative example on each domain is shown. A, B and C respectively are:\nA B C\nCyanobacteria Halophiles\nCiliates\na. Plantae, Eubacteria, Animalia\nb. Plantae, Archaebacteria, Eukaryota\nc. Eubacteria, Archaebacteria, Eukaryota\nd. Plantae, Prokaryota, Eukaryota.\n********* END OF SECTION A *******\nINDIAN NATIONAL BIOLOGY OLYMPIAD – 2014"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 190462,
+      "in": 41,
+      "out": 39,
+      "rejects": 3,
+      "promptTokens": 41610,
+      "completionTokens": 11293
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 283849,
+      "in": 39,
+      "out": 31,
+      "rejects": 8,
+      "promptTokens": 21849,
+      "completionTokens": 8606
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 84923,
+      "in": 31,
+      "out": 29,
+      "rejects": 2,
+      "promptTokens": 34724,
+      "completionTokens": 1994
+    },
+    "form": {
+      "calls": 14,
+      "ms": 56966,
+      "in": 29,
+      "out": 7,
+      "rejects": 22,
+      "promptTokens": 7618,
+      "completionTokens": 1672
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6088,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 235821,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16332,
+      "completionTokens": 7958
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a feature that distinguishes chordates from non-chordates?",
+      "ms": {
+        "draft": 4752,
+        "critique": 6343,
+        "solver": 1543,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of diploblastic animals?",
+      "ms": {
+        "draft": 4752,
+        "critique": 6623,
+        "solver": 2088
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following features would you expect to find in a coelomate animal but not in a pseudocoelomate?",
+      "ms": {
+        "draft": 4752,
+        "critique": 6937,
+        "solver": 1346,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A classification diagram of animals is given. Based on the passage, which of the following features is most likely to appear in the branch that includes chordates?",
+      "ms": {
+        "draft": 4752,
+        "critique": 7784,
+        "solver": 2321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the phylum Arthropoda?",
+      "ms": {
+        "draft": 4337,
+        "critique": 7069,
+        "solver": 1351,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic feature of all members of the phylum Cnidaria?",
+      "ms": {
+        "draft": 4337,
+        "critique": 7066,
+        "solver": 1590,
+        "form": 4020
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a triploblastic animal?",
+      "ms": {
+        "draft": 4752,
+        "critique": 5863,
+        "solver": 1101,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a classification of animals with traits and is asked to identify the phylum that would have both gill slits and a closed circulatory system. Based on the passage, which phylum is this?",
+      "ms": {
+        "draft": 4337,
+        "critique": 6371,
+        "solver": 1570,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A question asks which phylum includes animals with both a chitinous exoskeleton and a complete digestive system. Based on the passage, which phylum is this?",
+      "ms": {
+        "draft": 4337,
+        "critique": 5480,
+        "solver": 1627,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a cladogram with traits and asked to identify the phylum that has both a true coelom and a closed circulatory system. Based on the passage, which phylum is this?",
+      "ms": {
+        "draft": 4337,
+        "critique": 6761,
+        "solver": 1273,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to identify the phylum that includes animals with a calcareous shell and a mantle cavity. Based on the passage, which phylum is this?",
+      "ms": {
+        "draft": 4337,
+        "critique": 5446,
+        "solver": 1559,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a cartilaginous fish?",
+      "ms": {
+        "draft": 4583,
+        "critique": 5742
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which feature is a distinguishing characteristic of echinoderms?",
+      "ms": {
+        "draft": 4583,
+        "critique": 5204
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an animal has a post-anal tail and a closed circulatory system, which phylum does it most likely belong to?",
+      "ms": {
+        "draft": 4583,
+        "critique": 5642
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a cladogram showing evolutionary relationships, which of the following would be the most primitive group?",
+      "ms": {
+        "draft": 4583,
+        "critique": 5092
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of amphibians?",
+      "ms": {
+        "draft": 5617,
+        "critique": 5091,
+        "solver": 1228,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given a classification table that includes traits like 'three-chambered heart', 'moist skin', and 'external fertilization'. Based on this, which of the following is the most appropriate classification for an animal with these traits?",
+      "ms": {
+        "draft": 5617,
+        "critique": 4641,
+        "solver": 1171,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a characteristic of amphibians?",
+      "ms": {
+        "draft": 4118,
+        "critique": 5805
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes a fish with a bony skeleton, a two-chambered heart, and external fertilization. Based on this, the student concludes it belongs to a class with a less advanced circulatory system. Which class is the student referring to?",
+      "ms": {
+        "draft": 4118,
+        "critique": 7993
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A fish has four pairs of gills, a bony skeleton, and an air bladder. However, it lacks a cloaca. Which class of fishes is this likely to be?",
+      "ms": {
+        "draft": 4118,
+        "critique": 6453,
+        "solver": 10583,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes a fish with a bony endoskeleton, gills covered by an operculum, and an air bladder. Which class of fishes does this fish belong to?",
+      "ms": {
+        "draft": 4118,
+        "critique": 6604,
+        "solver": 11069,
+        "form": 3088
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of Phylum Echinodermata?",
+      "ms": {
+        "draft": 12752,
+        "critique": 6618
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a Chondrichthyes?",
+      "ms": {
+        "draft": 12752,
+        "critique": 5439
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of bony fishes?",
+      "ms": {
+        "draft": 4118,
+        "critique": 7530,
+        "solver": 11111,
+        "form": 2692
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is given a diagram of a fish with gills covered by an operculum, cycloid scales, and a two-chambered heart. Which class of fishes does this diagram represent?",
+      "ms": {
+        "draft": 4118,
+        "critique": 7318,
+        "solver": 8904,
+        "form": 3221
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic feature of the phylum Ctenophora?",
+      "ms": {
+        "draft": 8831,
+        "critique": 6862,
+        "solver": 1593,
+        "form": 2638
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a marine organism with a calcareous shell, a muscular foot, and a mantle. It has a file-like structure for feeding. Which phylum does this organism belong to?",
+      "ms": {
+        "draft": 8831,
+        "critique": 5061,
+        "solver": 1007,
+        "form": 4103
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student studied two animals: one has a chitinous exoskeleton and jointed appendages, while the other has a pseudocoelom and a complete digestive system. Which of the following combinations correctly identifies these two animals?",
+      "ms": {
+        "draft": 8831,
+        "critique": 5676,
+        "solver": 1175,
+        "form": 3678
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature used to classify animals based on the arrangement of cells?",
+      "ms": {
+        "draft": 3665,
+        "critique": 6060,
+        "solver": 1485,
+        "form": 2538
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a coelomate animal?",
+      "ms": {
+        "draft": 3665,
+        "critique": 6847,
+        "solver": 1398,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a feature of the phylum Platyhelminthes?",
+      "ms": {
+        "draft": 8831,
+        "critique": 6455,
+        "solver": 969,
+        "form": 4465
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an animal has a notochord during its embryonic development, which of the following is most likely true about its classification?",
+      "ms": {
+        "draft": 3665,
+        "critique": 6858,
+        "solver": 7844
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which group of animals is known for having a water vascular system?",
+      "ms": {
+        "draft": 3688,
+        "critique": 6965,
+        "solver": 1617,
+        "form": 2658,
+        "translation": 39574
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which phylum is characterized by the presence of a notochord?",
+      "ms": {
+        "draft": 3688,
+        "critique": 4218,
+        "solver": 4933,
+        "form": 1240,
+        "translation": 30627
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which class of animals is known for having a bony endoskeleton?",
+      "ms": {
+        "draft": 5617,
+        "critique": 6938,
+        "solver": 9909,
+        "form": 0,
+        "translation": 24204
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between Urochordata and Cephalochordata?",
+      "ms": {
+        "draft": 12752,
+        "critique": 5797,
+        "solver": 1570,
+        "form": 0,
+        "translation": 32446
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes an animal with a coelom, bilateral symmetry, and a complete digestive system. Which level of organisation does this animal exhibit?",
+      "ms": {
+        "draft": 4752,
+        "critique": 6141,
+        "solver": 1081,
+        "form": 0,
+        "translation": 40744
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student finds an animal with a three-chambered heart, moist skin, and external fertilization, which class does it belong to?",
+      "ms": {
+        "draft": 5617,
+        "critique": 5436,
+        "solver": 11233,
+        "form": 0,
+        "translation": 36668
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student classified an animal as having a body cavity lined by mesoderm and bilateral symmetry. Based on this information, which of the following is most likely the classification of this animal?",
+      "ms": {
+        "draft": 3665,
+        "critique": 7722,
+        "solver": 9867,
+        "form": 1366,
+        "translation": 28532
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a feature that distinguishes chordates from non-chordates?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a characteristic of diploblastic animals?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following features would you expect to find in a coelomate animal but not in a pseudocoelomate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A classification diagram of animals is given. Based on the passage, which of the following features is most likely to appear in the branch that includes chordates?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the phylum Arthropoda?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, so not a distractor, but the explanation is …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a characteristic feature of all members of the phylum Cnidaria?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so not a distractor, but the explanation is …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a triploblastic animal?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"cell\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a classification of animals with traits and is asked to identify the phylum that would have both gill slits and a closed circulatory system. Based on the passage, which phylum is this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A question asks which phylum includes animals with both a chitinous exoskeleton and a complete digestive system. Based on the passage, which phylum is this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a cladogram with traits and asked to identify the phylum that has both a true coelom and a closed circulatory system. Based on the passage, which phylum is this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is asked to identify the phylum that includes animals with a calcareous shell and a mantle cavity. Based on the passage, which phylum is this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a cartilaginous fish?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which feature is a distinguishing characteristic of echinoderms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an animal has a post-anal tail and a closed circulatory system, which phylum does it most likely belong to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a cladogram showing evolutionary relationships, which of the following would be the most primitive group?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of amphibians?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (this is the correct o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is given a classification table that includes traits like 'three-chambered heart', 'moist skin', and 'external fertilization'. Based on this, which of the following is the most appropriate classification for an animal with these traits?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (this is the correct o…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which group of animals is characterised by the presence of a water vascular system?\",\""
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the distinguishing feature of Phylum Chordata?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a feature of Phylum Hemichordata?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a characteristic of amphibians?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student observes a fish with a bony skeleton, a two-chambered heart, and external fertilization. Based on this, the student concludes it belongs to a class with a less advanced circulatory system. Which class is the student referring to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A fish has four pairs of gills, a bony skeleton, and an air bladder. However, it lacks a cloaca. Which class of fishes is this likely to be?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student observes a fish with a bony endoskeleton, gills covered by an operculum, and an air bladder. Which class of fishes does this fish belong to?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of Phylum Echinodermata?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a Chondrichthyes?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of bony fishes?",
+      "reason": "options 0 and 3 are the same (\"They have a three-chambered heart\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is given a diagram of a fish with gills covered by an operculum, cycloid scales, and a two-chambered heart. Which class of fishes does this diagram represent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a characteristic feature of the phylum Ctenophora?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not here, but a pupil with incomplete unde…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed a marine organism with a calcareous shell, a muscular foot, and a mantle. It has a file-like structure for feeding. Which phylum does this organism belong to?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not here, but a pupil might confuse it wit…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student studied two animals: one has a chitinous exoskeleton and jointed appendages, while the other has a pseudocoelom and a complete digestive system. Which of the following combinations correctly identifies these two animals?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not here, but a pupil might think this is …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature used to classify animals based on the arrangement of cells?",
+      "reason": "options 2 and 3 say the same thing (\"Organ level of organisation\" / \"Organ system level of organisation\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a coelomate animal?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a feature of the phylum Platyhelminthes?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cytoplasm: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If an animal has a notochord during its embryonic development, which of the following is most likely true about its classification?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:45:57.993Z",
+  "finishedAt": "2026-10-20T19:50:08.813Z",
+  "seconds": 251,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap111.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 11 — The Valley of Flowers",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 57377,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 13689,
+      "completionTokens": 2468
+    },
+    "critique": {
+      "calls": 16,
+      "ms": 115521,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 6422,
+      "completionTokens": 2658
+    },
+    "solver": {
+      "calls": 87,
+      "ms": 63050,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 13824,
+      "completionTokens": 880
+    },
+    "form": {
+      "calls": 8,
+      "ms": 21924,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 1837,
+      "completionTokens": 455
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2760,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 305167,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14389,
+      "completionTokens": 6769
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the reason given for flowers blooming only for a few weeks in the year?",
+      "ms": {
+        "draft": 3694,
+        "critique": 8210,
+        "solver": 2290,
+        "form": 3201
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a use of flowers?",
+      "ms": {
+        "draft": 3694,
+        "critique": 7650,
+        "solver": 22210
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do people buy flowers, according to the passage?",
+      "ms": {
+        "draft": 3767,
+        "critique": 6250,
+        "solver": 1691,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way to preserve fallen flowers, as described in the passage?",
+      "ms": {
+        "draft": 3767,
+        "critique": 6534,
+        "solver": 2391,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one way in which flower-sellers sell their flowers?",
+      "ms": {
+        "draft": 3767,
+        "critique": 6854,
+        "solver": 3280
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the Madhubani painting style?",
+      "ms": {
+        "draft": 5812,
+        "critique": 7433,
+        "solver": 2279,
+        "form": 2907
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a use of flowers as mentioned in the passage?",
+      "ms": {
+        "draft": 5812,
+        "critique": 8204,
+        "solver": 10861
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which place in Uttarakhand is known for having flowers everywhere?",
+      "ms": {
+        "draft": 3694,
+        "critique": 7956,
+        "solver": 1545,
+        "form": 4810,
+        "translation": 46114
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one way that flower-sellers sell their flowers?",
+      "ms": {
+        "draft": 3977,
+        "critique": 8000,
+        "solver": 4073,
+        "form": 3001,
+        "translation": 56544
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of these is a reason people buy flowers?",
+      "ms": {
+        "draft": 3977,
+        "critique": 7380,
+        "solver": 17017,
+        "form": 4135,
+        "translation": 45824
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of pressing flowers between the pages of a newspaper?",
+      "ms": {
+        "draft": 3977,
+        "critique": 8673,
+        "solver": 2689,
+        "form": 3555,
+        "translation": 51986
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way that flowers are used after they dry up?",
+      "ms": {
+        "draft": 3977,
+        "critique": 3979,
+        "solver": 971,
+        "form": 1102,
+        "translation": 53675
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student sees a flower with white petals and green leaves, which part of the flower is the green structure?",
+      "ms": {
+        "draft": 3694,
+        "critique": 8247,
+        "solver": 3087,
+        "form": 2646,
+        "translation": 46463
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the reason given for flowers blooming only for a few weeks in the year?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands the metaphor used in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a use of flowers?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of these is a use of dried flowers?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do people buy flowers, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is one way to preserve fallen flowers, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is one way in which flower-sellers sell their flowers?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the Madhubani painting style?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage describes it as an old form of folk art…\"); distractor 1's reason is not a one-line misconception (\"The passage mentions natural materials, not synthetic chemic…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention metal surfaces as a medium for …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a use of flowers as mentioned in the passage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,702 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T05:33:18.432Z",
+  "finishedAt": "2026-10-22T05:42:45.990Z",
+  "seconds": 568,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh111.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Direct and Inverse Proportions",
+    "edition": "Reprint 2024-25",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n8. (b) 5 : 1",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n9. In the given figure, DE ∥ BC, AE = a units, EC =b units, DE =x units and BC = y 1\nunits. Which of the following is true?\n(a) x= 𝑎+𝑏 𝑎𝑦 (b) y= 𝑎+𝑏 𝑎𝑥 (c) x= 𝑎+𝑏 𝑎𝑦 (d) 𝑦 𝑥 = 𝑎 𝑏",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. In which ratio the y-axis divides the line segment joining the points (5, – 6) and (–1, – 4)?. 1\n(a) 1 : 5 (b) 5 : 1 (c) 1 : 1 (d) 1 : 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 180785,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 34977,
+      "completionTokens": 8289
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 391361,
+      "in": 36,
+      "out": 30,
+      "rejects": 6,
+      "promptTokens": 24105,
+      "completionTokens": 9210
+    },
+    "solver": {
+      "calls": 267,
+      "ms": 190624,
+      "in": 30,
+      "out": 22,
+      "rejects": 8,
+      "promptTokens": 56367,
+      "completionTokens": 3021
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9436,
+      "in": 22,
+      "out": 16,
+      "rejects": 6,
+      "promptTokens": 757,
+      "completionTokens": 238
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 34,
+      "ms": 7307,
+      "in": 16,
+      "out": 11,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 473514,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24457,
+      "completionTokens": 11521
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If the petrol consumption of a car is 4 litres for 60 km and increases to 12 litres, what is the ratio of petrol consumption to distance travelled?",
+      "ms": {
+        "draft": 5143,
+        "critique": 6024,
+        "solver": 2310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 2 students take 20 minutes to arrange chairs, how much time would 5 students take to do the same job?",
+      "ms": {
+        "draft": 5143,
+        "critique": 5500,
+        "solver": 1136
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 metres of cloth cost ₹210, what is the cost of 10 metres of the same cloth?",
+      "ms": {
+        "draft": 5827,
+        "critique": 6729
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements best describes direct proportion?",
+      "ms": {
+        "draft": 5827,
+        "critique": 8568
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 12 sheets of paper weigh 40 grams, how many sheets of the same paper would weigh 2 kilograms?",
+      "ms": {
+        "draft": 5827,
+        "critique": 7702
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A train travels at a uniform speed of 75 km/hour. How far will it travel in 20 minutes?",
+      "ms": {
+        "draft": 5827,
+        "critique": 6522,
+        "solver": 14056,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a photograph of a bacteria is enlarged 50,000 times and has a length of 5 cm, what is the actual length of the bacteria?",
+      "ms": {
+        "draft": 5827,
+        "critique": 8717,
+        "solver": 1926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of inverse proportion?",
+      "ms": {
+        "draft": 3713,
+        "critique": 7198
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "On a map, the scale is 1 cm : 8 km. If a distance of 2 cm is shown on the map, what is the actual distance?",
+      "ms": {
+        "draft": 5827,
+        "critique": 9033,
+        "solver": 20702
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 pipes can fill a tank in 80 minutes, how long will it take 5 pipes to fill the same tank?",
+      "ms": {
+        "draft": 3713,
+        "critique": 9479,
+        "solver": 20482
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A hostel has 100 students and food for 20 days. If 25 more students join, how many days will the food last?",
+      "ms": {
+        "draft": 3713,
+        "critique": 7779,
+        "solver": 23055
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the angle between consecutive spokes of a wheel is 40°, how many spokes are there on the wheel?",
+      "ms": {
+        "draft": 4369,
+        "critique": 8503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of direct proportion?",
+      "ms": {
+        "draft": 3510,
+        "critique": 6042
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of direct proportion?",
+      "ms": {
+        "draft": 3510,
+        "critique": 6999,
+        "solver": 15020,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of inverse proportion?",
+      "ms": {
+        "draft": 3510,
+        "critique": 6072,
+        "solver": 17309,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car travels at 60 km/h and takes 2 hours to reach its destination. How long will it take if the speed is increased to 80 km/h?",
+      "ms": {
+        "draft": 3510,
+        "critique": 7423,
+        "solver": 15740
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 pipes are required to fill a tank in 80 minutes, how long will it take if only 5 pipes are used?",
+      "ms": {
+        "draft": 6204,
+        "critique": 10445,
+        "solver": 15535
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a hostel, 100 students have food for 20 days. If 25 more students join, how long will the food last?",
+      "ms": {
+        "draft": 6204,
+        "critique": 7441,
+        "solver": 17013
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car travels at a speed of 60 km/h and takes 3 hours to reach a destination. If the speed is increased to 90 km/h, how long will the journey take?",
+      "ms": {
+        "draft": 6204,
+        "critique": 5865,
+        "solver": 18896,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a train travels 75 km in 60 minutes, how far will it travel in 20 minutes?",
+      "ms": {
+        "draft": 5260,
+        "critique": 8101,
+        "solver": 8525,
+        "form": 1407
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car uses 4 litres of petrol to travel 60 km. How far will it travel using 12 litres of petrol?",
+      "ms": {
+        "draft": 5143,
+        "critique": 6247,
+        "solver": 3387,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are required to build the wall in 30 hours?",
+      "ms": {
+        "draft": 3713,
+        "critique": 9883,
+        "solver": 19145,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of inverse proportion?",
+      "ms": {
+        "draft": 3510,
+        "critique": 10659,
+        "solver": 14416,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are needed to build the same wall in 30 hours?",
+      "ms": {
+        "draft": 6204,
+        "critique": 9554,
+        "solver": 16164,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the cost of 1 kg of sugar is 36, what is the cost of 3 kg of sugar?",
+      "ms": {
+        "draft": 7360,
+        "critique": 6451,
+        "solver": 1362,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a case of inverse proportion?",
+      "ms": {
+        "draft": 4369,
+        "critique": 7330,
+        "solver": 2379,
+        "form": 0,
+        "translation": 41941
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for two quantities to be in inverse proportion?",
+      "ms": {
+        "draft": 3713,
+        "critique": 8719,
+        "solver": 1865,
+        "form": 0,
+        "translation": 49081
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the cost of 1 kg of sugar is 36, what would be the cost of 3 kg of sugar?",
+      "ms": {
+        "draft": 5143,
+        "critique": 5272,
+        "solver": 1799,
+        "form": 0,
+        "translation": 42319
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the length of a cloth increases, what happens to its cost?",
+      "ms": {
+        "draft": 5260,
+        "critique": 8053,
+        "solver": 1526,
+        "form": 3938,
+        "translation": 36145
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 workers can complete a job in 10 days, how many days will it take for 10 workers to complete the same job?",
+      "ms": {
+        "draft": 3510,
+        "critique": 7926,
+        "solver": 15408,
+        "form": 0,
+        "translation": 38629
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 3 persons can rewire a house in 4 days, how many days will it take for 4 persons to complete the job?",
+      "ms": {
+        "draft": 4369,
+        "critique": 7433,
+        "solver": 1560,
+        "form": 0,
+        "translation": 35155
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If 5 metres of cloth cost ₹210, what is the cost of 2 metres of cloth?",
+      "ms": {
+        "draft": 5260,
+        "critique": 6754,
+        "solver": 2471,
+        "form": 4958,
+        "translation": 34582
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a car uses 4 litres of petrol to travel 60 km, and then uses 12 litres, what is the distance it travels?",
+      "ms": {
+        "draft": 5143,
+        "critique": 8625,
+        "solver": 3035,
+        "form": 0,
+        "translation": 49800
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A farmer has food for 20 animals for 6 days. If 10 more animals are added, how many days will the food last?",
+      "ms": {
+        "draft": 4369,
+        "critique": 8805,
+        "solver": 7688,
+        "form": 0,
+        "translation": 35770
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the petrol consumption of a car is 4 litres for 60 km, and then increases to 12 litres, what is the relationship between petrol consumption and distance travelled?",
+      "ms": {
+        "draft": 5143,
+        "critique": 6801,
+        "solver": 2127,
+        "form": 0,
+        "translation": 58970
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the speed of a vehicle doubles, what happens to the time taken to cover a fixed distance?",
+      "ms": {
+        "draft": 3713,
+        "critique": 7167,
+        "solver": 14416,
+        "form": 0,
+        "translation": 46776
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the petrol consumption of a car is 4 litres for 60 km and increases to 12 litres, what is the ratio of petrol consumption to distance travelled?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"4/60\" = 0.06666666666666667, but the key says 1"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If 2 students take 20 minutes to arrange chairs, how much time would 5 students take to do the same job?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 5 metres of cloth cost ₹210, what is the cost of 10 metres of the same cloth?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements best describes direct proportion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 12 sheets of paper weigh 40 grams, how many sheets of the same paper would weigh 2 kilograms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A train travels at a uniform speed of 75 km/hour. How far will it travel in 20 minutes?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes the train travels the full hourly distance without a…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a photograph of a bacteria is enlarged 50,000 times and has a length of 5 cm, what is the actual length of the bacteria?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of inverse proportion?",
+      "reason": "option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "On a map, the scale is 1 cm : 8 km. If a distance of 2 cm is shown on the map, what is the actual distance?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 6 pipes can fill a tank in 80 minutes, how long will it take 5 pipes to fill the same tank?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A hostel has 100 students and food for 20 days. If 25 more students join, how many days will the food last?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the angle between consecutive spokes of a wheel is 40°, how many spokes are there on the wheel?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the cost of a book is 40 and 150 books can be bought with a certain amount, how many books can be bought if the cost per book is 50?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of direct proportion?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of direct proportion?",
+      "reason": "options 0 and 1 say the same thing (\"If the increase in one quantity causes a decrease in the other\" / \"If the decrease in one quantity causes an increase in the other\"); options 2 and 3 say the same thing (\"If the ratio of their corresponding values remains constant\" / \"If the sum of their corresponding values remains constant\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of inverse proportion?",
+      "reason": "options 2 and 3 say the same thing (\"If the ratio of their corresponding values remains constant\" / \"If the product of their corresponding values remains constant\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A car travels at 60 km/h and takes 2 hours to reach its destination. How long will it take if the speed is increased to 80 km/h?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 6 pipes are required to fill a tank in 80 minutes, how long will it take if only 5 pipes are used?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a hostel, 100 students have food for 20 days. If 25 more students join, how long will the food last?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A car travels at a speed of 60 km/h and takes 3 hours to reach a destination. If the speed is increased to 90 km/h, how long will the journey take?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a train travels 75 km in 60 minutes, how far will it travel in 20 minutes?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A car uses 4 litres of petrol to travel 60 km. How far will it travel using 12 litres of petrol?",
+      "reason": "near-duplicate of served question cmvg4m8zh0243gpfhulhxqf3c (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are required to build the wall in 30 hours?",
+      "reason": "near-duplicate of served question cmvez3pcu02e0god821fe17ma (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of inverse proportion?",
+      "reason": "near-duplicate of batch item \"Which of the following is a case of inverse propor…\" (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are needed to build the same wall in 30 hours?",
+      "reason": "near-duplicate of served question cmvez3pcu02e0god821fe17ma (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If the cost of 1 kg of sugar is 36, what is the cost of 3 kg of sugar?",
+      "reason": "near-duplicate of batch item \"If the cost of 1 kg of sugar is 36, what would be …\" (cosine 0.998 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

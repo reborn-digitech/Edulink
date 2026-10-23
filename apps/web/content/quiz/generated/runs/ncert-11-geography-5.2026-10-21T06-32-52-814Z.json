@@ -1,0 +1,675 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T06:32:52.814Z",
+  "finishedAt": "2026-10-21T06:39:54.362Z",
+  "seconds": 422,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy305.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 5 — Topographical Maps",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n7. Section E Question number 29 and 30 are Map based questions.",
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\nSECTION D\nQuestion numbers 29 & 30 are Map based questions having 5\nsub-parts each.",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\nSECTION E\nQuestion numbers 29 & 30 are Map based questions having 5 sub-parts each."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 99780,
+      "in": 36,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 26895,
+      "completionTokens": 6638
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 197938,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 16449,
+      "completionTokens": 6557
+    },
+    "solver": {
+      "calls": 174,
+      "ms": 72879,
+      "in": 26,
+      "out": 19,
+      "rejects": 7,
+      "promptTokens": 30017,
+      "completionTokens": 1762
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14581,
+      "in": 19,
+      "out": 10,
+      "rejects": 9,
+      "promptTokens": 1484,
+      "completionTokens": 444
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 387,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 368725,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 22729,
+      "completionTokens": 11916
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the significance of the spacing between contour lines on a topographical map?",
+      "ms": {
+        "draft": 2911,
+        "critique": 3996
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A topographical map shows a series of contour lines that are very close together. What does this indicate about the terrain?",
+      "ms": {
+        "draft": 2911,
+        "critique": 4023
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method used to depict relief features on a topographical map?",
+      "ms": {
+        "draft": 2911,
+        "critique": 4813
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary purpose of a topographical map?",
+      "ms": {
+        "draft": 2911,
+        "critique": 5507
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the term used for the vertical distance between two successive contour lines?",
+      "ms": {
+        "draft": 2911,
+        "critique": 4342
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A topographical map shows contours that are closely spaced at the bottom and widely spaced at the top. Which of the following features is most likely represented by this contour pattern?",
+      "ms": {
+        "draft": 3226,
+        "critique": 5024,
+        "solver": 1493
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A topographical map shows a spur. Which of the following best describes the shape of the contours representing this feature?",
+      "ms": {
+        "draft": 3226,
+        "critique": 6126,
+        "solver": 871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A topographical map shows a U-shaped valley. Which of the following describes the contour lines in the lower part of this valley?",
+      "ms": {
+        "draft": 3226,
+        "critique": 5675,
+        "solver": 1460
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organisation prepares topographical maps of India?",
+      "ms": {
+        "draft": 3112,
+        "critique": 5677,
+        "solver": 1411,
+        "form": 2031
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the spacing of contours indicate?",
+      "ms": {
+        "draft": 3112,
+        "critique": 6475,
+        "solver": 1110
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a topographical sheet shows a dense forest and a railway line, what can be inferred about the area?",
+      "ms": {
+        "draft": 3112,
+        "critique": 6300,
+        "solver": 1356,
+        "form": 2234
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a river flows through the southeast quarter of a map, what is its general direction of flow?",
+      "ms": {
+        "draft": 2631,
+        "critique": 6077,
+        "solver": 1303
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct order of the steps to interpret a topographical map?",
+      "ms": {
+        "draft": 2340,
+        "critique": 4423,
+        "solver": 2089,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a concave slope based on the passage?",
+      "ms": {
+        "draft": 2666,
+        "critique": 4399
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does a steep slope indicate about the spacing of contours?",
+      "ms": {
+        "draft": 2666,
+        "critique": 5515
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of slope as described in the passage?",
+      "ms": {
+        "draft": 2666,
+        "critique": 5848,
+        "solver": 972,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of topographical maps according to the passage?",
+      "ms": {
+        "draft": 2523,
+        "critique": 5701,
+        "solver": 976,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map shows contours that are closely spaced at the edges and widely spaced in the center, what type of landform is it likely to represent?",
+      "ms": {
+        "draft": 2666,
+        "critique": 6494,
+        "solver": 1405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a topographical map and notices that the innermost contour line of a feature has a very small gap between its two sides. What type of valley is this feature likely to represent?",
+      "ms": {
+        "draft": 2666,
+        "critique": 6738,
+        "solver": 1550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a feature shown on topographical maps according to the passage?",
+      "ms": {
+        "draft": 2523,
+        "critique": 6692,
+        "solver": 14724
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A topographical map with a contour interval of 20 meters is being studied. If two contour lines are very close together, what does this indicate about the terrain?",
+      "ms": {
+        "draft": 2523,
+        "critique": 5289,
+        "solver": 14420,
+        "form": 2818
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a topographical map has a scale of 1:25,000, what does this indicate about the map's detail?",
+      "ms": {
+        "draft": 2523,
+        "critique": 6733,
+        "solver": 12514,
+        "form": 4138
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is studying a topographical map and notices that some contour lines are merged together. What does this most likely represent according to the passage?",
+      "ms": {
+        "draft": 2523,
+        "critique": 3574,
+        "solver": 5300,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the yellow colour on a topographical map typically indicate?",
+      "ms": {
+        "draft": 2340,
+        "critique": 3953,
+        "solver": 901,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the yellow colour on a topographical map usually represent?",
+      "ms": {
+        "draft": 2631,
+        "critique": 6194,
+        "solver": 1189,
+        "form": 0,
+        "translation": 43426
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the most common means of crossing a river on a topographical map?",
+      "ms": {
+        "draft": 2631,
+        "critique": 5760,
+        "solver": 1157,
+        "form": 0,
+        "translation": 22325
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A topographical map shows which of the following features?",
+      "ms": {
+        "draft": 2911,
+        "critique": 4496,
+        "solver": 7652,
+        "form": 1856,
+        "translation": 40547
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the main purpose of conventional signs and symbols on a topographical map?",
+      "ms": {
+        "draft": 2340,
+        "critique": 4120,
+        "solver": 1590,
+        "form": 0,
+        "translation": 30264
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A topographical map has a V-shaped valley. Which of the following describes the contour lines in the lowermost part of this valley?",
+      "ms": {
+        "draft": 3226,
+        "critique": 5037,
+        "solver": 1424,
+        "form": 0,
+        "translation": 52589
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A topographical map shows a plateau with closely spaced contour lines at the margins and a wide gap between the innermost contour lines. Which of the following is the most accurate interpretation of this feature?",
+      "ms": {
+        "draft": 3226,
+        "critique": 5093,
+        "solver": 1313,
+        "form": 1,
+        "translation": 59381
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a contour map is superimposed over a land use map, what relationship can be studied?",
+      "ms": {
+        "draft": 3112,
+        "critique": 6132,
+        "solver": 13022,
+        "form": 2827,
+        "translation": 43103
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What does the presence of white patches in a river on a topographical map indicate?",
+      "ms": {
+        "draft": 2631,
+        "critique": 2700,
+        "solver": 443,
+        "form": 0,
+        "translation": 27283
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A topographical map shows a feature where the contour lines merge into one another. Which of the following features is this most likely to represent?",
+      "ms": {
+        "draft": 3226,
+        "critique": 5372,
+        "solver": 1445,
+        "form": 0,
+        "translation": 45686
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the significance of the spacing between contour lines on a topographical map?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A topographical map shows a series of contour lines that are very close together. What does this indicate about the terrain?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a method used to depict relief features on a topographical map?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the primary purpose of a topographical map?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the term used for the vertical distance between two successive contour lines?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A topographical map shows contours that are closely spaced at the bottom and widely spaced at the top. Which of the following features is most likely represented by this contour pattern?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A topographical map shows a spur. Which of the following best describes the shape of the contours representing this feature?",
+      "reason": "option lengths are unalike (8 to 53 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A topographical map shows a U-shaped valley. Which of the following describes the contour lines in the lower part of this valley?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which organisation prepares topographical maps of India?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly associates the task with a geophysical research …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the spacing of contours indicate?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a topographical sheet shows a dense forest and a railway line, what can be inferred about the area?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes industrialisation without any direct evidence from t…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly infers high population density from the presence…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the presence of a railway and forest as a sign…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a river flows through the southeast quarter of a map, what is its general direction of flow?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What does a white patch on a topographical map indicate?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is the most common type of vegetation shown on a topographical map?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What does the term 'contour lines' refer to on a topographical map?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"What is the primary purpose of conventional signs and symbols on topographical maps?\","
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the correct order of the steps to interpret a topographical map?",
+      "reason": "options 0 and 1 say the same thing (\"Identify the scale, note the contour lines, locate the symbols, and understand the legend.\" / \"Identify the legend, locate the symbols, note the contour lines, and understand the scale.\"); options 0 and 2 say the same thing (\"Identify the scale, note the contour lines, locate the symbols, and understand the legend.\" / \"Note the contour lines, identify the scale, locate the symbols, and understand the legend.\"); options 0 and 3 say the same thing (\"Identify the scale, note the contour lines, locate the symbols, and understand the legend.\" / \"Understand the legend, note the contour lines, locate the symbols, and identify the scale.\"); options 1 and 2 say the same thing (\"Identify the legend, locate the symbols, note the contour lines, and understand the scale.\" / \"Note the contour lines, identify the scale, locate the symbols, and understand the legend.\"); options 1 and 3 say the same thing (\"Identify the legend, locate the symbols, note the contour lines, and understand the scale.\" / \"Understand the legend, note the contour lines, locate the symbols, and identify the scale.\"); options 2 and 3 say the same thing (\"Note the contour lines, identify the scale, locate the symbols, and understand the legend.\" / \"Understand the legend, note the contour lines, locate the symbols, and identify the scale.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes a concave slope based on the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does a steep slope indicate about the spacing of contours?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of slope as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary purpose of topographical maps according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer is not this…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a map shows contours that are closely spaced at the edges and widely spaced in the center, what type of landform is it likely to represent?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is given a topographical map and notices that the innermost contour line of a feature has a very small gap between its two sides. What type of valley is this feature likely to represent?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a feature shown on topographical maps according to the passage?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A topographical map with a contour interval of 20 meters is being studied. If two contour lines are very close together, what does this indicate about the terrain?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a topographical map has a scale of 1:25,000, what does this indicate about the map's detail?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is studying a topographical map and notices that some contour lines are merged together. What does this most likely represent according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What does the yellow colour on a topographical map typically indicate?",
+      "reason": "near-duplicate of batch item \"What does the yellow colour on a topographical map…\" (cosine 0.960 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T01:10:45.797Z",
+  "generatedAt": "2026-10-21T22:40:01.112Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the result of (+40) + ______ = +200?",
+      "difficulty": 4,
+      "stem": "Which of the following numbers is the smallest?",
       "choices": [
-        "+160",
-        "+240",
-        "+200",
-        "+120"
+        "-7",
+        "-15",
+        "0",
+        "4"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is +160 because 40 + 160 = 200. The other options are incorrect because they either exceed the target value or do not add up correctly to 200.",
+      "answerIndex": 1,
+      "solution": "The smallest number is -15 because it is the most negative. -7 is greater than -15 because it is closer to zero. 0 is greater than both -7 and -15. 4 is the greatest number among all.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "(+40) + ______ = +200 का परिणाम क्या है?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या सबसे छोटी है?",
           "choices": [
-            "+160",
-            "+240",
-            "+200",
-            "+120"
+            "-7",
+            "-15",
+            "0",
+            "4"
           ],
-          "solution": "सही उत्तर +160 है क्योंकि 40 + 160 = 200। अन्य विकल्प गलत हैं क्योंकि वे लक्ष्य मान के ऊपर जाते हैं या 200 तक सही रूप से जोड़ नहीं सकते।",
+          "solution": "सबसे छोटी संख्या -15 है क्योंकि यह सबसे अधिक ऋणात्मक है। -7, -15 की तुलना में बड़ा है क्योंकि यह शून्य के निकट है। 0, -7 और -15 दोनों से बड़ा है। 4 सभी में सबसे बड़ी संख्या है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणते परिणाम येईल (+40) + ______ = +200?",
+          "stem": "खालीलपैकी कोणती संख्या सर्वात लहान आहे?",
           "choices": [
-            "+160",
-            "+240",
-            "+200",
-            "+120"
+            "-7",
+            "-15",
+            "0",
+            "4"
           ],
-          "solution": "बरोबर उत्तर +160 आहे कारण 40 + 160 = 200. इतर विकल्प चुकीचे आहेत कारण ते लक्ष्य मूल्यापेक्षा जास्त असतात किंवा 200 पर्यंत योग न करता असतात.",
+          "solution": "सर्वात लहान संख्या -15 आहे कारण ती सर्वात जास्त नकारात्मक आहे. -7 ही -15 पेक्षा मोठी आहे कारण ती शून्याजवळ आहे. 0 ही -7 आणि -15 दोन्ही पेक्षा मोठी आहे. 4 ही सर्वात मोठी संख्या आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -72,108 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the order of negative numbers",
         null,
-        "Adding the numbers instead of subtracting, thinking that 200 + 40 = 240",
-        "assumes the result is the same as the target number",
-        "mistakenly adds 40 to 200 instead of finding the difference"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the correct answer is clearly +160. The author's reasoning for the distractors aligns with common misconceptions, such as adding instead of subtracting or assuming the result equals the target.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 8,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following describes the movement of the lift when the '-' button is pressed twice?",
-      "choices": [
-        "Moves up two floors",
-        "Moves down two floors",
-        "Stays at the same floor",
-        "Moves up one floor"
-      ],
-      "answerIndex": 1,
-      "solution": "Pressing the '-' button twice causes the lift to move down two floors, as each press of the '-' button corresponds to moving down one floor. The other options are incorrect because the '+' button is used for moving up, no button press would keep the lift stationary, and a single '-' press would only move it down one floor.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा लिफ्ट के गति का वर्णन करता है जब '-' बटन को दो बार दबाया जाता है?",
-          "choices": [
-            "दो मंजिल ऊपर जाता है",
-            "दो मंजिल नीचे जाता है",
-            "एक ही मंजिल पर रहता है",
-            "एक मंजिल ऊपर जाता है"
-          ],
-          "solution": "'-' बटन को दो बार दबाने से लिफ्ट दो मंजिल नीचे जाता है, क्योंकि '-' बटन के प्रत्येक दबाव के साथ लिफ्ट एक मंजिल नीचे जाता है। अन्य विकल्प गलत हैं क्योंकि '+' बटन का उपयोग ऊपर जाने के लिए किया जाता है, कोई बटन दबाए बिना लिफ्ट स्थिर रहता है, और एक बार '-' बटन दबाने से केवल एक मंजिल नीचे जाया जाता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for lift controls.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते लिफ्टच्या गतीचे वर्णन करते जेव्हा '-' बटण दोनदा दाबले जाते?",
-          "choices": [
-            "दोन मजले वर जाते",
-            "दोन मजले खाली जाते",
-            "त्याच मजल्यावर राहते",
-            "एक मजला वर जाते"
-          ],
-          "solution": "''-'' बटण दोनदा दाबल्याने लिफ्ट दोन मजले खाली जाते, कारण ''-'' बटण दाबल्याने लिफ्ट एक मजला खाली जाते. इतर विकल्प चुकीचे आहेत कारण '+' बटण वर जाण्यासाठी वापरले जाते, कोणताही बटण दाबला नाही तर लिफ्ट स्थिर राहते आणि एकदा ''-'' बटण दाबल्याने ते केवळ एक मजला खाली जाते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for lift controls.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses '-' with '+'",
-        null,
-        "Incorrectly assumes no movement",
-        "Refers to moving up one floor"
+        "Does not recognize that negative numbers are less than zero",
+        "Thinks zero is the smallest number"
       ],
       "solverAnswers": [
         1,
@@ -182,85 +84,84 @@
         1,
         1
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The reasoning aligns with the given explanation, and the misconceptions listed for the wrong options are plausible for students.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning about negative numbers and their order is accurate.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "ZERO",
-            "Integers"
+            "10.3 Integers in Other Places"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
+          "ordinal": 13,
+          "pageStart": 22,
+          "pageEnd": 24,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
+            "10.4 Explorations with Integers"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 25,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
+            "10.4 Explorations with Integers"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
+      "generatedAt": "2026-10-21T22:40:01.112Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following is correct?",
+      "difficulty": 5,
+      "stem": "A bank account has a balance of ₹100. A withdrawal of ₹150 is made. What is the new balance?",
       "choices": [
-        "+3 < +4",
-        "–3 < –4",
-        "+2 < –2",
-        "–1 > +1"
+        "₹50",
+        "₹-50",
+        "₹100",
+        "₹-100"
       ],
-      "answerIndex": 0,
-      "solution": "The correct statement is +3 < +4 because +3 is to the left of +4 on the number line. A pupil who misunderstands the direction of negative numbers might pick –3 < –4. One who confuses the signs might pick +2 < –2. A pupil who misinterprets the comparison might pick –1 > +1.",
+      "answerIndex": 1,
+      "solution": "The correct answer is ₹-50. Starting with ₹100, a withdrawal of ₹150 means subtracting 150 from 100, resulting in -50. The other options are incorrect because they either assume the balance remains positive or misinterpret the subtraction.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा सही है?",
+          "stem": "एक बैंक खाते में ₹100 का शेष है। ₹150 की निकासी की जाती है। नया शेष क्या है?",
           "choices": [
-            "+3 < +4",
-            "–3 < –4",
-            "+2 < –2",
-            "–1 > +1"
+            "₹50",
+            "₹-50",
+            "₹100",
+            "₹-100"
           ],
-          "solution": "सही कथन +3 < +4 है क्योंकि +3 संख्या रेखा पर +4 के बाईं ओर है। ऋणात्मक संख्याओं की दिशा को गलती से समझने वाला छात्र –3 < –4 चुन सकता है। चिह्नों को गलती से समझने वाला छात्र +2 < –2 चुन सकता है। तुलना को गलती से समझने वाला छात्र –1 > +1 चुन सकता है।",
+          "solution": "सही उत्तर ₹-50 है। ₹100 के साथ शुरू करते हुए, ₹150 की निकासी का अर्थ 100 में से 150 को घटाना है, जिसके परिणामस्वरूप -50 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे यह मान लेते हैं कि शेष धनात्मक रहता है या घटाव के गलत अर्थ को समझते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते बरोबर आहे?",
+          "stem": "एक बँक खात्यात शिल्लक ₹100 आहे. ₹150 ची काढणी केली जाते. नवीन शिल्लक काय आहे?",
           "choices": [
-            "+3 < +4",
-            "–3 < –4",
-            "+2 < –2",
-            "–1 > +1"
+            "₹50",
+            "₹-50",
+            "₹100",
+            "₹-100"
           ],
-          "solution": "बरोबर विधान +3 < +4 आहे कारण +3 हे संख्या रेषेवर +4 च्या बाजूला आहे. ऋणात्मक संख्यांच्या दिशेचे असमज असलेला विद्यार्थी –3 < –4 निवडू शकतो. चिन्हांच्या चुकीच्या ओळखीमुळे +2 < –2 निवडू शकतो. तुलनेच्या चुकीच्या अटलेल्या विद्यार्थी –1 > +1 निवडू शकतो.",
+          "solution": "बरोबर उत्तर ₹-50 आहे. ₹100 पासून ₹150 ची काढणी केल्याने 100 मधून 150 वजा करावे लागते, जे -50 च्या बरोबर होते. इतर उत्तरे चुकीची आहेत कारण ते शिल्लक धनात्मक राहते असे मानतात किंवा वजा करण्याचा चुकीचा अर्थ काढतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi financial terminology.",
           "flag": null
         }
       },
@@ -269,217 +170,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Assumes the balance remains positive",
         null,
-        "confuses the order of negative numbers",
-        "confuses the sign of the numbers",
-        "misunderstands the comparison of negative and positive numbers"
+        "Incorrectly calculates the difference",
+        "Fails to consider the negative result"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0: +3 < +4, as +3 is to the left of +4 on the number line. The other options reflect common misconceptions about negative numbers, signs, and comparisons.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a person is on Floor +1 and presses the '+' button three times, where will they end up?",
-      "choices": [
-        "Floor +2",
-        "Floor +3",
-        "Floor +4",
-        "Floor -1"
-      ],
-      "answerIndex": 2,
-      "solution": "Pressing the '+' button adds one floor each time. Starting at Floor +1 and pressing it three times adds 3, resulting in Floor +4. Floor +2 is only one addition, Floor +3 is two additions, and Floor -1 is a decrease, which does not match the action of pressing the '+' button.",
-      "checkExpr": "1+3",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई व्यक्ति मंजिल +1 पर है और '+' बटन तीन बार दबाता है, तो वह कहाँ पहुँचेगा?",
-          "choices": [
-            "मंजिल +2",
-            "मंजिल +3",
-            "मंजिल +4",
-            "मंजिल -1"
-          ],
-          "solution": "'+' बटन दबाने से प्रत्येक बार एक मंजिल जोड़ी जाती है। मंजिल +1 से शुरू करके इसे तीन बार दबाने से 3 जोड़ दिया जाता है, जिससे मंजिल +4 प्राप्त होती है। मंजिल +2 केवल एक जोड़ है, मंजिल +3 दो जोड़ हैं और मंजिल -1 घटाव है, जो '+' बटन दबाने के क्रियान्वयन के अनुरूप नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, structure, and technical terms. All options and solution are correctly translated.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक व्यक्ती फ्लोर +1 वर असेल आणि '+' बटण तीन वेळा दाबेल, तर ते कोणत्या फ्लोरवर पोहोचेल?",
-          "choices": [
-            "फ्लोर +2",
-            "फ्लोर +3",
-            "फ्लोर +4",
-            "फ्लोर -1"
-          ],
-          "solution": "'+' बटण दाबल्याने फ्लोर एक वाढतो. फ्लोर +1 वरून तीन वेळा '+' बटण दाबल्याने 3 जोडला जातो, ज्यामुळे फ्लोर +4 होतो. फ्लोर +2 एक जोडल्याने होतो, फ्लोर +3 दोन जोडल्याने होतो आणि फ्लोर -1 घट झाल्याने होतो, जो '+' बटण दाबण्याच्या क्रियेशी जुळत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution correctly identifies option (2) as the answer, and all distractors remain incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "The student thinks each '+' button press adds 1, but only counts the first two presses.",
-        "Adds only two times",
-        null,
-        "Confuses '+' with '-'"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct: pressing '+' three times from +1 adds 3, resulting in +4. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "ZERO",
-            "Integers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a bank account starts at ₹0, and there are credits of ₹30, ₹40, and ₹50, and debits of ₹40, ₹50, and ₹60, what is the final balance?",
-      "choices": [
-        "₹30",
-        "₹0",
-        "₹-30",
-        "₹60"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is ₹-30. Adding all the credits (₹30 + ₹40 + ₹50) gives ₹120, and adding all the debits (₹40 + ₹50 + ₹60) gives ₹150. Subtracting the debits from the credits gives ₹120 - ₹150 = ₹-30. The other options are incorrect because they do not correctly calculate the net result of credits and debits.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक बैंक खाता ₹0 पर शुरू होता है, और ₹30, ₹40 और ₹50 के डेबिट हैं, और ₹40, ₹50 और ₹60 के क्रेडिट हैं, तो अंतिम शेष क्या है?",
-          "choices": [
-            "₹30",
-            "₹0",
-            "₹-30",
-            "₹60"
-          ],
-          "solution": "सही उत्तर ₹-30 है। सभी क्रेडिट को जोड़ने पर (₹30 + ₹40 + ₹50) ₹120 प्राप्त होता है, और सभी डेबिट को जोड़ने पर (₹40 + ₹50 + ₹60) ₹150 प्राप्त होता है। डेबिट को क्रेडिट से घटाने पर ₹120 - ₹150 = ₹-30 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे क्रेडिट और डेबिट के शुद्ध परिणाम की गणना सही ढंग से नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate financial terminology used in Indian context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका बँक खात्याची सुरुवात ₹0 असून, ₹30, ₹40 आणि ₹50 च्या क्रेडिट आहेत आणि ₹40, ₹50 आणि ₹60 च्या डेबिट आहेत, तर अंतिम बॅलन्स किती असेल?",
-          "choices": [
-            "₹30",
-            "₹0",
-            "₹-30",
-            "₹60"
-          ],
-          "solution": "योग्य उत्तर ₹-30 आहे. सर्व क्रेडिट जोडल्याने (₹30 + ₹40 + ₹50) ₹120 मिळते आणि सर्व डेबिट जोडल्याने (₹40 + ₹50 + ₹60) ₹150 मिळते. डेबिट वरून क्रेडिट वजा केल्याने ₹120 - ₹150 = ₹-30 मिळते. इतर उत्तरे चुकीची आहेत कारण ते क्रेडिट आणि डेबिट चा नेट परिणाम चुकीचा गणना करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi financial terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly adds the credits and debits without subtracting",
-        "Assumes the balance remains at ₹0",
-        null,
-        "Incorrectly adds the debits instead of subtracting them"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly calculates the net balance by summing credits and debits separately and then subtracting. The correct answer is ₹-30, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The question tests understanding of negative numbers in the context of banking, and the reasoning for the correct answer is sound.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
@@ -516,49 +220,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
+      "generatedAt": "2026-10-21T22:40:01.112Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "If a person starts at Floor +2 and presses the '-' button 5 times, what is their final floor number?",
+      "difficulty": 5,
+      "stem": "A bank account starts at ₹0. A customer deposits ₹200, then withdraws ₹250. What is the final balance?",
       "choices": [
-        "Floor -2",
-        "Floor -3",
-        "Floor -5",
-        "Floor +3"
+        "₹50",
+        "₹-50",
+        "₹200",
+        "₹250"
       ],
       "answerIndex": 1,
-      "solution": "Pressing the '-' button 5 times from Floor +2 means subtracting 5 from +2, resulting in Floor -3. The other options are incorrect because they either miscount the number of presses or misinterpret the direction of movement.",
-      "checkExpr": "2-5",
+      "solution": "The customer deposits ₹200 (a credit) and withdraws ₹250 (a debit). This results in a net change of -₹50. So, the final balance is -₹50. The option ₹50 is wrong because it subtracts in the wrong order. The option ₹200 is wrong because it ignores the withdrawal. The option ₹250 is wrong because it only considers the withdrawal.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई व्यक्ति फ्लोर +2 से शुरू करता है और '-' बटन को 5 बार दबाता है, तो उसका अंतिम फ्लोर संख्या क्या होगी?",
+          "stem": "एक बैंक खाता ₹0 पर शुरू होता है। एक ग्राहक ₹200 जमा करता है, फिर ₹250 निकाल लेता है। अंतिम शेष क्या है?",
           "choices": [
-            "फ्लोर -2",
-            "फ्लोर -3",
-            "फ्लोर -5",
-            "फ्लोर +3"
+            "₹50",
+            "₹-50",
+            "₹200",
+            "₹250"
           ],
-          "solution": "फ्लोर +2 से '-' बटन को 5 बार दबाने का अर्थ है +2 से 5 घटाना, जिसके परिणामस्वरूप फ्लोर -3 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे बटन दबाने की संख्या गलत गिनती या गति की दिशा के अंतर्प्रेरण के कारण हैं।",
+          "solution": "ग्राहक ₹200 जमा करता है (एक डेबिट) और ₹250 निकाल लेता है (एक क्रेडिट)। इससे -₹50 का शुद्ध परिवर्तन होता है। अतः अंतिम शेष -₹50 है। ₹50 विकल्प गलत है क्योंकि यह घटाने के क्रम को गलत करता है। ₹200 विकल्प गलत है क्योंकि यह निकासी को अनदेखा करता है। ₹250 विकल्प गलत है क्योंकि यह केवल निकासी को ध्यान में रखता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate use of terms like 'फ्लोर' (floor) and correct mathematical interpretation.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate financial terminology and correct answer positioning.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक व्यक्ती फ्लोर +2 वरून सुरू करते आणि '-' बटण 5 वेळा दाबते, तर त्यांचा अंतिम फ्लोर क्रमांक काय असेल?",
+          "stem": "एक बँक खाते ₹0 वरून सुरू होते. एक ग्राहक ₹200 जमा करतो, नंतर ₹250 काढतो. अंतिम शिल्लक काय आहे?",
           "choices": [
-            "फ्लोर -2",
-            "फ्लोर -3",
-            "फ्लोर -5",
-            "फ्लोर +3"
+            "₹50",
+            "₹-50",
+            "₹200",
+            "₹250"
           ],
-          "solution": "फ्लोर +2 वरून '-' बटण 5 वेळा दाबल्याने +2 मधून 5 वजा करावा लागतो, जे फ्लोर -3 च्या बरोबर येते. इतर विकल्प चुकीचे आहेत कारण ते बटण दाबल्याच्या संख्येचा गणना करताना चूक करतात किंवा गतीच्या दिशेचे चुकीचे अर्थ समजतात.",
+          "solution": "ग्राहक ₹200 जमा करतो (क्रेडिट) आणि ₹250 काढतो (डेबिट). हे -₹50 च्या नेट बदलाचे निर्माण करते. म्हणून, अंतिम शिल्लक -₹50 आहे. ₹50 ची पर्याय चुकीच्या क्रमाने वजाबाकी केल्यामुळे चुकीची आहे. ₹200 ची पर्याय वजाबाकी न लक्षात घेतल्यामुळे चुकीची आहे. ₹250 ची पर्याय वजाबाकीच्या फक्त एका बाजूला लक्ष दिल्यामुळे चुकीची आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for floors and mathematical operations.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi financial terminology.",
           "flag": null
         }
       },
@@ -567,10 +271,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly subtracts only 2",
+        "subtracts in the wrong order",
         null,
-        "Adds instead of subtracts",
-        "Confuses the direction of movement"
+        "adds the amounts without considering signs",
+        "ignores the withdrawal amount"
       ],
       "solverAnswers": [
         1,
@@ -579,305 +283,8 @@
         1,
         1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly interprets the '-' button as subtraction, leading to 2 - 5 = -3. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "ZERO",
-            "Integers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.1 Bela’s Building of Fun"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If a number is subtracted from zero, what is the result?",
-      "choices": [
-        "The number itself",
-        "Zero",
-        "The additive inverse of the number",
-        "The number multiplied by -1"
-      ],
-      "answerIndex": 2,
-      "solution": "According to Brahmagupta’s rules, subtracting a number from zero gives the number’s inverse. The additive inverse of a number is the number with the opposite sign. The other options are incorrect because subtracting a number from zero does not give the number itself or zero, and the statement 'the number multiplied by -1' is equivalent to the additive inverse, which is not the exact phrasing of the rule.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी संख्या को शून्य से घटाया जाए, तो परिणाम क्या होता है?",
-          "choices": [
-            "संख्या स्वयं",
-            "शून्य",
-            "संख्या का योज्य प्रतिलोम",
-            "संख्या को -1 से गुणा करना"
-          ],
-          "solution": "ब्रह्मगुप्त के नियमानुसार, शून्य में से किसी संख्या को घटाने पर संख्या का विलोम प्राप्त होता है। किसी संख्या का योज्य प्रतिलोम वह संख्या होती है जिसका चिह्न विपरीत होता है। अन्य विकल्प गलत हैं क्योंकि शून्य में से किसी संख्या को घटाने पर संख्या स्वयं या शून्य प्राप्त नहीं होता, और 'संख्या को -1 से गुणा करना' कथन योज्य प्रतिलोम के समान होता है, जो नियम के ठीक शब्दों में व्यक्त नहीं होता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर शून्यमधून एक संख्या वजा केली जाते, तर परिणाम काय असतो?",
-          "choices": [
-            "संख्या स्वतः",
-            "शून्य",
-            "संख्येचे विलोम",
-            "संख्या वजा 1 ने गुणली गेली"
-          ],
-          "solution": "ब्रह्मगुप्तांच्या नियमानुसार, शून्यमधून एक संख्या वजा केल्यास संख्येचा विलोम मिळतो. एखाद्या संख्येचा विलोम ही ती संख्या असते जिचा चिन्ह विलोम असतो. इतर विकल्प अयोग्य आहेत कारण शून्यमधून एक संख्या वजा करणे संख्या स्वतः किंवा शून्य देत नाही, आणि 'संख्या वजा 1 ने गुणली गेली' हा विधान विलोमासारखा असतो, जो नियमाच्या अचूक विधानापेक्षा वेगळा आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the rule for subtraction from zero.",
-        "Confuses the rule for subtracting zero from a number.",
-        null,
-        "Uses a different phrasing for the same concept but not the exact rule."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as subtracting a number from zero yields its additive inverse. The solution is sound and aligns with the correct reasoning. The author's reasons for the distractors are valid and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 15,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 16,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 17,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If 10 is subtracted from (-5), what is the result?",
-      "choices": [
-        "-15",
-        "-10",
-        "5",
-        "15"
-      ],
-      "answerIndex": 0,
-      "solution": "Subtracting a positive number from a negative number is equivalent to adding the negative of that positive number. So, (-5) - 10 is the same as (-5) + (-10), which equals -15. The other options are incorrect because subtracting a positive number from a negative number results in a more negative number, not a smaller or positive number.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि (-5) में से 10 घटाया जाए, तो परिणाम क्या होगा?",
-          "choices": [
-            "-15",
-            "-10",
-            "5",
-            "15"
-          ],
-          "solution": "एक ऋणात्मक संख्या में एक धनात्मक संख्या घटाना उस धनात्मक संख्या के ऋणात्मक के जोड़ के बराबर होता है। अतः (-5) - 10, (-5) + (-10) के बराबर होता है, जो -15 के बराबर होता है। अन्य विकल्प गलत हैं क्योंकि एक ऋणात्मक संख्या में एक धनात्मक संख्या घटाने से एक अधिक ऋणात्मक संख्या प्राप्त होती है, न कि एक छोटी या धनात्मक संख्या।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर (-5) मधून 10 वजा केला, तर निकाल काय असेल?",
-          "choices": [
-            "-15",
-            "-10",
-            "5",
-            "15"
-          ],
-          "solution": "एका ऋणात्मक संख्येपासून धनात्मक संख्या वजा करणे हे त्या धनात्मक संख्येच्या ऋणात्मकाच्या जोडण्यासारखे असते. म्हणून, (-5) - 10 हे (-5) + (-10) इतकेच असते, जे -15 च्या बरोबर असते. इतर विकल्प चुकीचे असतात कारण ऋणात्मक संख्येपासून धनात्मक संख्या वजा केल्यास निकाल अधिक ऋणात्मक होतो, नक्कीच लहान किंवा धनात्मक होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for negative numbers and arithmetic operations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses subtracting 10 with adding 10, or misapplies the operation as a simple sign change",
-        "Misinterprets the subtraction as addition of positive numbers.",
-        "Incorrectly assumes that the result should be positive."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the mathematical operation of subtracting a positive number from a negative number. The reasoning for the distractors reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 15,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 16,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 17,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the lift attendant had 17 positive tokens and 25 negative tokens in his pocket, and then he added 8 more negative tokens, how many zero pairs can he cancel out?",
-      "choices": [
-        "17",
-        "25",
-        "8",
-        "33"
-      ],
-      "answerIndex": 0,
-      "solution": "The lift attendant initially had 17 positive tokens and 25 negative tokens, which allows for 17 zero pairs. After adding 8 more negative tokens, he has 25 + 8 = 33 negative tokens. However, the number of zero pairs is still limited by the number of positive tokens, which is 17. The correct answer is 17 zero pairs. The option 25 is incorrect because it incorrectly assumes the number of zero pairs is based on the negative tokens alone, and the other options are incorrect because they do not account for the actual number of zero pairs that can be formed.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि लिफ्ट अधिकारी के पास उसके जेब में 17 धनात्मक टोकन और 25 ऋणात्मक टोकन थे, और फिर उसने 8 और ऋणात्मक टोकन जोड़ दिए, तो वह कितने शून्य जोड़े रद्द कर सकता है?",
-          "choices": [
-            "17",
-            "25",
-            "8",
-            "33"
-          ],
-          "solution": "लिफ्ट अधिकारी के पास शुरू में 17 धनात्मक टोकन और 25 ऋणात्मक टोकन थे, जिससे 17 शून्य जोड़े बन सकते हैं। 8 और ऋणात्मक टोकन जोड़ने के बाद, उसके पास 25 + 8 = 33 ऋणात्मक टोकन हो जाते हैं। हालांकि, शून्य जोड़ों की संख्या अभी भी धनात्मक टोकनों की संख्या, जो 17 है, द्वारा सीमित है। सही उत्तर 17 शून्य जोड़े हैं। विकल्प 25 गलत है क्योंकि यह गलत तरीके से मान लेता है कि शून्य जोड़ों की संख्या ऋणात्मक टोकनों के आधार पर होती है, और अन्य विकल्प गलत हैं क्योंकि वे वास्तविक शून्य जोड़ों की संख्या को ध्यान में नहीं रखते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used for 'positive tokens', 'negative tokens', and 'zero pairs'.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर लिफ्ट अटेंडंटच्या खिशात 17 धनात्मक टोकन आणि 25 ऋणात्मक टोकन होते, आणि नंतर त्याने 8 अधिक ऋणात्मक टोकन जोडले, तर त्याला किती शून्य जोड्या रद्द करता येतील?",
-          "choices": [
-            "17",
-            "25",
-            "8",
-            "33"
-          ],
-          "solution": "लिफ्ट अटेंडंटने सुरुवातीला 17 धनात्मक टोकन आणि 25 ऋणात्मक टोकन असल्याने 17 शून्य जोड्या रद्द करता येतात. 8 अधिक ऋणात्मक टोकन जोडल्यानंतर त्याला 25 + 8 = 33 ऋणात्मक टोकन असतात. मात्र, शून्य जोड्यांची संख्या धनात्मक टोकनांच्या संख्येने सीमित राहते, जी 17 आहे. योग्य उत्तर 17 शून्य जोड्या आहे. 25 चे उत्तर चुकीचे आहे कारण ते चुकीचे असे असे आहे की शून्य जोड्यांची संख्या ऋणात्मक टोकनांच्या संख्येवर आधारित आहे, आणि इतर उत्तरे चुकीचे आहेत कारण ते खरोखर तयार करता येणार्या शून्य जोड्यांची संख्या लक्षात घेत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "assumes the number of zero pairs is based on the negative tokens alone",
-        "assumes the number of zero pairs is based on the added negative tokens alone",
-        "does not account for the actual number of zero pairs that can be formed"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Zero pairs are formed by matching one positive with one negative token, so the number of zero pairs is limited by the smaller of the two quantities. The author's reasoning is sound and matches the correct answer.",
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
@@ -911,204 +318,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In a grid, the border sum is the total of numbers in each row and column. If the border sum of a grid is -4, which of the following could be the sum of all numbers in the grid?",
-      "choices": [
-        "-4",
-        "-8",
-        "-12",
-        "-16"
-      ],
-      "answerIndex": 1,
-      "solution": "The border sum is the total of numbers in each row and column. If the border sum is -4, and there are two rows and two columns, the total of all numbers in the grid would be -8. The other options are incorrect because they do not match the relationship between the border sum and the total of all numbers in the grid. -4 would be the border sum itself, not the total. -12 and -16 are not possible with the given conditions.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक ग्रिड में, सीमा योग प्रत्येक पंक्ति और स्तंभ में संख्याओं का कुल योग होता है। यदि एक ग्रिड का सीमा योग -4 है, तो निम्नलिखित में से कौन-सा ग्रिड में सभी संख्याओं के कुल योग हो सकता है?",
-          "choices": [
-            "-4",
-            "-8",
-            "-12",
-            "-16"
-          ],
-          "solution": "सीमा योग प्रत्येक पंक्ति और स्तंभ में संख्याओं का कुल योग होता है। यदि सीमा योग -4 है, और दो पंक्तियां और दो स्तंभ हैं, तो ग्रिड में सभी संख्याओं का कुल योग -8 होगा। अन्य विकल्प गलत हैं क्योंकि वे ग्रिड में सभी संख्याओं के कुल योग और सीमा योग के बीच संबंध के साथ मेल नहीं खाते। -4 सीमा योग ही होगा, न कि कुल योग। -12 और -16 दिए गए शर्तों के साथ संभव नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options and the solution are correctly translated and maintain the same logical relationships.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "संख्यांच्या जाळ्यात, सीमा बेरीज ही प्रत्येक ओळ आणि स्तंभातील संख्यांची एकूण बेरीज आहे. जर जाळ्याची सीमा बेरीज -4 असेल, तर खालीलपैकी कोणती जाळ्यातील सर्व संख्यांची बेरीज असू शकते?",
-          "choices": [
-            "-4",
-            "-8",
-            "-12",
-            "-16"
-          ],
-          "solution": "सीमा बेरीज ही प्रत्येक ओळ आणि स्तंभातील संख्यांची एकूण बेरीज आहे. जर सीमा बेरीज -4 असेल आणि दोन ओळी आणि दोन स्तंभ असतील, तर जाळ्यातील सर्व संख्यांची एकूण बेरीज -8 असेल. इतर विकल्प अयोग्य आहेत कारण ते जाळ्याच्या सीमा बेरीज आणि जाळ्यातील सर्व संख्यांच्या एकूण बेरीजमधील संबंधाशी जुळत नाहीत. -4 ही सीमा बेरीजच असेल, एकूण बेरीज नव्हे. -12 आणि -16 दिलेल्या अटींमुळे शक्य नाहीत.",
-          "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms, and logical structure. The solution correctly identifies option (1) as the answer, and the reasoning aligns with the original.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "assumes the border sum is the total of all numbers",
-        null,
-        "does not account for the two rows and two columns",
-        "does not consider the grid's structure"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution assumes a 2x2 grid, which is not explicitly stated in the question. However, the reasoning that the total of all numbers in the grid is double the border sum (i.e., -8) is valid for a 2x2 grid. The author's key and solution are correct under this assumption, but the question lacks clarity about the grid size.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 12,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.3 Integers in Other Places"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 13,
-          "pageStart": 22,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.4 Explorations with Integers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 14,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.4 Explorations with Integers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the result of subtracting (-4) from (-2)?",
-      "choices": [
-        "-6",
-        "-2",
-        "2",
-        "6"
-      ],
-      "answerIndex": 2,
-      "solution": "Subtracting a negative number is the same as adding the positive of that number. So, (-2) - (-4) is the same as (-2) + 4, which equals 2. The other options are incorrect because subtracting a negative number does not result in a more negative number or a smaller number, and the result cannot be negative in this case.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "(-2) में से (-4) को घटाने पर परिणाम क्या होता है?",
-          "choices": [
-            "-6",
-            "-2",
-            "2",
-            "6"
-          ],
-          "solution": "एक ऋणात्मक संख्या को घटाना उस संख्या के धनात्मक के जोड़ने के समान होता है। अतः (-2) - (-4) एक ही (-2) + 4 के बराबर होता है जो 2 के बराबर होता है। अन्य विकल्प गलत हैं क्योंकि ऋणात्मक संख्या को घटाने से एक अधिक ऋणात्मक संख्या या छोटी संख्या प्राप्त नहीं होती है और इस मामले में परिणाम ऋणात्मक नहीं हो सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology and correct answer placement.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "(-2) मधून (-4) वजा करण्याचा परिणाम काय आहे?",
-          "choices": [
-            "-6",
-            "-2",
-            "2",
-            "6"
-          ],
-          "solution": "ऋणात्मक संख्या वजा करणे हे त्या संख्येच्या धनात्मक नंतर जोडण्यासारखे आहे. म्हणून, (-2) - (-4) हे (-2) + 4 इतके आहे, जे 2 च्या बरोबर आहे. इतर विकल्प चुकीचे आहेत कारण ऋणात्मक संख्या वजा करणे ऋणात्मक संख्या अधिक नकारात्मक करत नाही किंवा लहान करत नाही आणि या प्रकरणात परिणाम ऋणात्मक असू शकत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the rule for subtracting a positive number from a negative number.",
-        "Fails to recognize that subtracting a negative number is equivalent to adding a positive number.",
-        null,
-        "Incorrectly assumes that the result should be negative."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that subtracting a negative is equivalent to adding a positive, leading to the correct answer of 2. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 15,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 16,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 17,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.5 A Pinch of History",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T01:10:45.797Z",
+      "generatedAt": "2026-10-21T22:40:01.112Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

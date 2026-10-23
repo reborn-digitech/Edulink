@@ -1,0 +1,244 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:26:07.299Z",
+  "finishedAt": "2026-10-20T20:27:52.890Z",
+  "seconds": 106,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap122.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 22 — The World in my Home",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 41709,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7804,
+      "completionTokens": 1850
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 68618,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 3897,
+      "completionTokens": 1596
+    },
+    "solver": {
+      "calls": 16,
+      "ms": 9979,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 2615,
+      "completionTokens": 159
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1756,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 235,
+      "completionTokens": 54
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 3310,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 28500,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2463,
+      "completionTokens": 1483
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does Marietta's family quarrel over every day?",
+      "ms": {
+        "draft": 4595,
+        "critique": 7030
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does Pratibha think about the rules for her brothers compared to her?",
+      "ms": {
+        "draft": 4595,
+        "critique": 7570
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Akshay’s grandmother warn him not to drink water in Anil’s house?",
+      "ms": {
+        "draft": 4595,
+        "critique": 5070
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the quarrel in Marietta's family?",
+      "ms": {
+        "draft": 5832,
+        "critique": 8531
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who is the person in the passage who pays for seven kulfis when only five were sold?",
+      "ms": {
+        "draft": 5832,
+        "critique": 10482
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about rules in a family?",
+      "ms": {
+        "draft": 5832,
+        "critique": 8111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Akshay’s grandmother warn him not to drink water from Anil’s house?",
+      "ms": {
+        "draft": 5832,
+        "critique": 9084,
+        "solver": 10888
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if girls had to follow rules made for boys?",
+      "ms": {
+        "draft": 4595,
+        "critique": 7070,
+        "solver": 1530,
+        "form": 1756,
+        "translation": 22047
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does Marietta's family quarrel over every day?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does Pratibha think about the rules for her brothers compared to her?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why did Akshay’s grandmother warn him not to drink water in Anil’s house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main reason for the quarrel in Marietta's family?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who is the person in the passage who pays for seven kulfis when only five were sold?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about rules in a family?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why does Akshay’s grandmother warn him not to drink water from Anil’s house?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

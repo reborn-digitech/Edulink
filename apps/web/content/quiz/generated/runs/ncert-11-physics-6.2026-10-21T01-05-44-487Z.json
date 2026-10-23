@@ -1,0 +1,856 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T01:05:44.487Z",
+  "finishedAt": "2026-10-21T01:16:18.652Z",
+  "seconds": 634,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "keph2",
+    "document": "ncert/11/physics/keph206.pdf",
+    "classLevel": 11,
+    "subject": "Physics",
+    "chapter": "Chapter 6 — Oscillations",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, marking scheme, 2025-26]\n10. Answer: (C) 1\nV=2V o sin 2ωt\nAs V= NBA𝜔 sin 𝜔𝑡",
+      "[NSEP 2015 — question paper]\n5. A thin rod of length l in the shape of a semicircle is pivoted at one of its ends such that it\nis free to oscillate in its own plane. The frequency f of small oscillations of the\nsemicircular rod is\n(a) ⡰ゕ ⡩ 㒕 〴ゕ ⡰〹 (b) ⡰ゕ ⡩ 㒕 〴√ゕ ⡸⡲ ⡰〹 ㄘ\n(c) ⡰ゕ ⡩ 㒕 〴䙦ゕ⡸⡰䙧 〹 (d) ⡰ゕ ⡩ 㒕 〴䙦ゕ ⡸⡩䙧 ⡰ゕ〹 ㄘ",
+      "[NSEP 2020 — question paper]\n29. A particle of mass m is located in a one dimensional potential field U (x) = U (1 - cos ax); 0\nU and a are constants. Which of the following statement/s is/are correct? 0\n(a) The particle will execute Simple Harmonic Motion for small displacements.\n(b) The stable equilibrium condition is x = 0\n2 m\n(c) The time period of small oscillations is\na U 0\nU 0\n(d) The angular frequency for small oscillations is   a\nm",
+      "[INPhO 2022 — solutions or answer key]\nAlso, let T 1 and T 2 be the time taken to complete the first and the second oscillations,\nrespectively, starting from the initial displacement, x 0 .\nCompare the above times and distances by inserting an appropriate sign (from among <, >,\nor = only) between the given quantities in each of the boxes below. Note that you will be\npenalised for 0.5 marks for giving each incorrect answer in this part. You need not to justify\nyour answer.\nt 1 t 2\nd 1 d 2\nSolution:\nt 1 > t 2\nd 1 > d 2\nt 2 t 3 t 1 t 3\nd 2 d 4 T 1 T 2\nt 2 < t 3 t 1 < t 3\nd 2 > d 4 T 1 = T 2\n(d) [2 marks] Qualitatively plot the displacement x from the unstretched position vs the time\nt.\nSolution: Equations of motion are\nmx¨ = −kx + μ"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 172851,
+      "in": 45,
+      "out": 45,
+      "rejects": 0,
+      "promptTokens": 46648,
+      "completionTokens": 11760
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 278156,
+      "in": 45,
+      "out": 36,
+      "rejects": 9,
+      "promptTokens": 24513,
+      "completionTokens": 9327
+    },
+    "solver": {
+      "calls": 237,
+      "ms": 87621,
+      "in": 36,
+      "out": 32,
+      "rejects": 4,
+      "promptTokens": 39654,
+      "completionTokens": 2221
+    },
+    "form": {
+      "calls": 17,
+      "ms": 53293,
+      "in": 32,
+      "out": 11,
+      "rejects": 21,
+      "promptTokens": 8001,
+      "completionTokens": 1631
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5113,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 362632,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26434,
+      "completionTokens": 12975
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the term used to describe a motion that repeats itself at regular intervals of time?",
+      "ms": {
+        "draft": 3239,
+        "critique": 4112
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a body is displaced from its equilibrium position and a force tries to bring it back, what kind of motion does it execute?",
+      "ms": {
+        "draft": 3239,
+        "critique": 4437
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of periodic motion?",
+      "ms": {
+        "draft": 3239,
+        "critique": 5056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is not an example of oscillatory motion?",
+      "ms": {
+        "draft": 3239,
+        "critique": 3805
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the unit of frequency of a periodic motion?",
+      "ms": {
+        "draft": 3239,
+        "critique": 4748,
+        "solver": 9800,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A body oscillates with a period of 0.5 seconds. What is its frequency?",
+      "ms": {
+        "draft": 3239,
+        "critique": 4296,
+        "solver": 10721,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the maximum displacement of a particle in simple harmonic motion?",
+      "ms": {
+        "draft": 5434,
+        "critique": 7017,
+        "solver": 1219,
+        "form": 2882
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage states that any periodic function can be expressed as a sum of sine and cosine functions. Which of the following is a correct conclusion from this statement?",
+      "ms": {
+        "draft": 5434,
+        "critique": 4802,
+        "solver": 894,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that 'the function e is not periodic, it decreases monotonically with increasing time and tends to zero as t → ∞.' Which of the following statements is true about the function e?",
+      "ms": {
+        "draft": 5434,
+        "critique": 5957,
+        "solver": 1218,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A particle is undergoing simple harmonic motion described by x(t) = A cos(ωt + φ). If the particle starts at x = 0, which of the following must be true?",
+      "ms": {
+        "draft": 5434,
+        "critique": 5211,
+        "solver": 1472,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A particle executing SHM has a displacement x(t) = A cos (ωt + φ). What is the time period of the motion?",
+      "ms": {
+        "draft": 10399,
+        "critique": 5716,
+        "solver": 1162,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that the projection of uniform circular motion on a diameter follows SHM. Based on this, what can be said about the phase difference between the x and y projections of the motion?",
+      "ms": {
+        "draft": 10399,
+        "critique": 5854,
+        "solver": 1445,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the motion of a particle executing simple harmonic motion (SHM)?",
+      "ms": {
+        "draft": 10399,
+        "critique": 4963,
+        "solver": 8944,
+        "form": 2455
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that SHM can be represented as the projection of uniform circular motion on a diameter. Which of the following correctly relates the angular frequency ω of SHM to the frequency of revolution f of the circular motion?",
+      "ms": {
+        "draft": 10399,
+        "critique": 6059,
+        "solver": 1459,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the phase constant φ in the equation x(t) = A cos (ωt + φ)?",
+      "ms": {
+        "draft": 10399,
+        "critique": 5968,
+        "solver": 850,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of angle mentioned in the passage when it is stated without units?",
+      "ms": {
+        "draft": 12402,
+        "critique": 5958,
+        "solver": 1525,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a trigonometric function is written as sin(15), what does it mean according to the passage?",
+      "ms": {
+        "draft": 12402,
+        "critique": 6507
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A particle oscillates with SHM according to the equation x = 5 cos [2π t + π/4]. What is the displacement of the particle at t = 1.5 s?",
+      "ms": {
+        "draft": 12402,
+        "critique": 4979,
+        "solver": 1199,
+        "form": 3711
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the unit of angle when it is not mentioned in a trigonometric function?",
+      "ms": {
+        "draft": 12402,
+        "critique": 5115,
+        "solver": 9681,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the relationship between acceleration and displacement in simple harmonic motion according to the passage?",
+      "ms": {
+        "draft": 12402,
+        "critique": 5832,
+        "solver": 712,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total mechanical energy of a harmonic oscillator?",
+      "ms": {
+        "draft": 52286,
+        "critique": 3614,
+        "solver": 541,
+        "form": 984
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A particle executes simple harmonic motion with angular frequency ω. Its displacement is given by x(t) = A cos(ωt + φ). If the initial position of the particle is 1 cm and the initial velocity is ω cm/s, what is the initial phase angle φ?",
+      "ms": {
+        "draft": 3825,
+        "critique": 3841,
+        "solver": 1170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A spring is mounted on a horizontal table. A mass of 3 kg is attached to the free end of the spring and pulled sideways to a distance of 2.0 cm. What is the maximum acceleration of the mass?",
+      "ms": {
+        "draft": 3825,
+        "critique": 4291,
+        "solver": 1218
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cylindrical piece of cork of density ρ_cork floats in a liquid of density ρ_liquid. When depressed slightly and released, it executes simple harmonic motion. What is the period of oscillation of the cork?",
+      "ms": {
+        "draft": 3825,
+        "critique": 7457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A spring balance reads from 0 to 50 kg with a scale length of 20 cm. A body suspended from it oscillates with a period of 0.6 s. What is the weight of the body?",
+      "ms": {
+        "draft": 3825,
+        "critique": 7342,
+        "solver": 9635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the motion of a simple pendulum?",
+      "ms": {
+        "draft": 3481,
+        "critique": 6684,
+        "solver": 1296,
+        "form": 3995
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage compares simple harmonic motion to the projection of uniform circular motion. What is the key difference between the two?",
+      "ms": {
+        "draft": 3481,
+        "critique": 5104,
+        "solver": 1238
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A particle executes simple harmonic motion with an amplitude of 10 cm and a frequency of 2 Hz. What is the maximum acceleration of the particle?",
+      "ms": {
+        "draft": 3481,
+        "critique": 6382
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A simple pendulum has a time period of 2 seconds. What is its length?",
+      "ms": {
+        "draft": 3481,
+        "critique": 6784,
+        "solver": 9691,
+        "form": 2381
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the potential energy of a particle executing simple harmonic motion?",
+      "ms": {
+        "draft": 11928,
+        "critique": 5493
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the example given, what is the total energy of the block when it is 5 cm away from the mean position?",
+      "ms": {
+        "draft": 11928,
+        "critique": 5260,
+        "solver": 1354
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the time after which the motion of a particle in simple harmonic motion repeats itself?",
+      "ms": {
+        "draft": 6843,
+        "critique": 5163
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the condition for the motion of a particle to be considered simple harmonic motion?",
+      "ms": {
+        "draft": 11928,
+        "critique": 6933,
+        "solver": 9546,
+        "form": 2945
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A particle executing simple harmonic motion has a displacement given by x(t) = A cos(ωt + φ). What is the phase difference between the velocity and displacement plots?",
+      "ms": {
+        "draft": 4732,
+        "critique": 4893,
+        "solver": 7153
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key characteristic of simple harmonic motion?",
+      "ms": {
+        "draft": 3481,
+        "critique": 5215,
+        "solver": 1137,
+        "form": 3006,
+        "translation": 36449
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the unit of angle used in trigonometric functions if no unit is specified?",
+      "ms": {
+        "draft": 4732,
+        "critique": 5382,
+        "solver": 791,
+        "form": 2507,
+        "translation": 21987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total mechanical energy of a harmonic oscillator?",
+      "ms": {
+        "draft": 11928,
+        "critique": 4879,
+        "solver": 1147,
+        "form": 3381,
+        "translation": 39944
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a displacement variable in a physical context?",
+      "ms": {
+        "draft": 5434,
+        "critique": 6107,
+        "solver": 9222,
+        "form": 3166,
+        "translation": 34918
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the acceleration and displacement of a particle in simple harmonic motion?",
+      "ms": {
+        "draft": 4732,
+        "critique": 5078,
+        "solver": 1017,
+        "form": 2451,
+        "translation": 20778
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A particle is in linear simple harmonic motion between two points, A and B, 10 cm apart. What is the direction of the force acting on the particle when it is at the end A?",
+      "ms": {
+        "draft": 3825,
+        "critique": 4695,
+        "solver": 1628,
+        "form": 0,
+        "translation": 33561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a particle undergoes simple harmonic motion with a displacement function x(t) = A cos(ωt + φ), what is the condition for the motion to be periodic?",
+      "ms": {
+        "draft": 5434,
+        "critique": 5588,
+        "solver": 1970,
+        "form": 2674,
+        "translation": 41457
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A particle executing simple harmonic motion is described by the displacement function x(t) = A cos(ωt + φ). What is the maximum speed of the particle?",
+      "ms": {
+        "draft": 3825,
+        "critique": 5484,
+        "solver": 1374,
+        "form": 0,
+        "translation": 27171
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a particle executes simple harmonic motion, what is the relationship between its kinetic and potential energies at the mean position?",
+      "ms": {
+        "draft": 11928,
+        "critique": 4840,
+        "solver": 1412,
+        "form": 2618,
+        "translation": 41135
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A particle is undergoing SHM with angular frequency ω. If the displacement is given by x(t) = A cos (ωt + φ), which of the following statements is true about the velocity of the particle?",
+      "ms": {
+        "draft": 10399,
+        "critique": 5323,
+        "solver": 1300,
+        "form": 0,
+        "translation": 35624
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A particle executes simple harmonic motion with a frequency ν. What is the relationship between the time period and the frequency?",
+      "ms": {
+        "draft": 3481,
+        "critique": 5374,
+        "solver": 1456,
+        "form": 2117,
+        "translation": 26862
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe a motion that repeats itself at regular intervals of time?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a body is displaced from its equilibrium position and a force tries to bring it back, what kind of motion does it execute?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of periodic motion?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is not an example of oscillatory motion?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the unit of frequency of a periodic motion?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A body oscillates with a period of 0.5 seconds. What is its frequency?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the maximum displacement of a particle in simple harmonic motion?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'block'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage states that any periodic function can be expressed as a sum of sine and cosine functions. Which of the following is a correct conclusion from this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Contradicts the passage's statement about periodic functions…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's explanation of periodic function…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that 'the function e is not periodic, it decreases monotonically with increasing time and tends to zero as t → ∞.' Which of the following statements is true about the function e?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's explanation of the function e…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A particle is undergoing simple harmonic motion described by x(t) = A cos(ωt + φ). If the particle starts at x = 0, which of the following must be true?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'block'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A particle executing SHM has a displacement x(t) = A cos (ωt + φ). What is the time period of the motion?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is stated that the projection of uniform circular motion on a diameter follows SHM. Based on this, what can be said about the phase difference between the x and y projections of the motion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the motion of a particle executing simple harmonic motion (SHM)?",
+      "reason": "options 2 and 3 say the same thing (\"It moves with acceleration proportional to its displacement from the equilibrium position\" / \"It moves with acceleration proportional to the square of its displacement from the equilibrium position\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that SHM can be represented as the projection of uniform circular motion on a diameter. Which of the following correctly relates the angular frequency ω of SHM to the frequency of revolution f of the circular motion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the phase constant φ in the equation x(t) = A cos (ωt + φ)?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the unit of angle mentioned in the passage when it is stated without units?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"confuses the unit mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a trigonometric function is written as sin(15), what does it mean according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A particle oscillates with SHM according to the equation x = 5 cos [2π t + π/4]. What is the displacement of the particle at t = 1.5 s?",
+      "reason": "options are written to different precisions (0 and 3 decimals); ARITHMETIC MISMATCH — checkExpr \"5*0.707\" = 3.5349999999999997, but the key says -3.535"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the unit of angle when it is not mentioned in a trigonometric function?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misinterprets the unit mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the relationship between acceleration and displacement in simple harmonic motion according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the total mechanical energy of a harmonic oscillator?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes energy changes with time in SHM, not con…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A particle executes simple harmonic motion with angular frequency ω. Its displacement is given by x(t) = A cos(ωt + φ). If the initial position of the particle is 1 cm and the initial velocity is ω cm/s, what is the initial phase angle φ?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A spring is mounted on a horizontal table. A mass of 3 kg is attached to the free end of the spring and pulled sideways to a distance of 2.0 cm. What is the maximum acceleration of the mass?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A cylindrical piece of cork of density ρ_cork floats in a liquid of density ρ_liquid. When depressed slightly and released, it executes simple harmonic motion. What is the period of oscillation of the cork?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A spring balance reads from 0 to 50 kg with a scale length of 20 cm. A body suspended from it oscillates with a period of 0.6 s. What is the weight of the body?",
+      "reason": "checkExpr \"150\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the motion of a simple pendulum?",
+      "reason": "options 1 and 2 say the same thing (\"It is simple harmonic motion for large angular displacements\" / \"It is simple harmonic motion for small angular displacements\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor reasoning, a…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage compares simple harmonic motion to the projection of uniform circular motion. What is the key difference between the two?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A particle executes simple harmonic motion with an amplitude of 10 cm and a frequency of 2 Hz. What is the maximum acceleration of the particle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A simple pendulum has a time period of 2 seconds. What is its length?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(4*9.8)/(4*3.1416^2)\" = 0.9929429558243651, but the key says 1"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for the potential energy of a particle executing simple harmonic motion?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the example given, what is the total energy of the block when it is 5 cm away from the mean position?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the time after which the motion of a particle in simple harmonic motion repeats itself?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the condition for the motion of a particle to be considered simple harmonic motion?",
+      "reason": "options 0 and 1 say the same thing (\"Force is proportional to displacement\" / \"Force is proportional to displacement squared\"); options 0 and 2 say the same thing (\"Force is proportional to displacement\" / \"Force is inversely proportional to displacement\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A particle executing simple harmonic motion has a displacement given by x(t) = A cos(ωt + φ). What is the phase difference between the velocity and displacement plots?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

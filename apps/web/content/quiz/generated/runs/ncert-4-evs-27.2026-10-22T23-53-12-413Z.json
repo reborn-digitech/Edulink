@@ -1,0 +1,244 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:53:12.413Z",
+  "finishedAt": "2026-10-22T23:55:18.607Z",
+  "seconds": 126,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap127.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 27 — Chuskit Goes to School",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 22746,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7100,
+      "completionTokens": 1263
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 67410,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4977,
+      "completionTokens": 2022
+    },
+    "solver": {
+      "calls": 69,
+      "ms": 43690,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 14435,
+      "completionTokens": 829
+    },
+    "form": {
+      "calls": 5,
+      "ms": 11043,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 1168,
+      "completionTokens": 299
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3467,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 136284,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7198,
+      "completionTokens": 3767
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What made Chuskit happy when she was sitting near the window?",
+      "ms": {
+        "draft": 2739,
+        "critique": 5020,
+        "solver": 1836
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main problem that Chuskit faced in going to school?",
+      "ms": {
+        "draft": 2948,
+        "critique": 5512,
+        "solver": 2754
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did the children of Skitpo Pul village help Chuskit reach school?",
+      "ms": {
+        "draft": 2948,
+        "critique": 4152,
+        "solver": 7572
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason Chuskit could not go to school at first?",
+      "ms": {
+        "draft": 2739,
+        "critique": 4995,
+        "solver": 14917,
+        "form": 2397
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the children do to help Chuskit go to school?",
+      "ms": {
+        "draft": 2739,
+        "critique": 5512,
+        "solver": 17657,
+        "form": 2080
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why was Chuskit excited about going to school for the first time?",
+      "ms": {
+        "draft": 2948,
+        "critique": 5242,
+        "solver": 1953,
+        "form": 2917,
+        "translation": 38312
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were Abdul, what would you do to help a child like Chuskit?",
+      "ms": {
+        "draft": 2739,
+        "critique": 9969,
+        "solver": 11036,
+        "form": 1212,
+        "translation": 47057
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Abdul do after learning about Chuskit's problem?",
+      "ms": {
+        "draft": 2948,
+        "critique": 5084,
+        "solver": 1176,
+        "form": 4719,
+        "translation": 47308
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What made Chuskit happy when she was sitting near the window?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What was the main problem that Chuskit faced in going to school?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How did the children of Skitpo Pul village help Chuskit reach school?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main reason Chuskit could not go to school at first?",
+      "reason": "near-duplicate of served question cmvh5bloj06xcgpfhw1syo9c7 (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What did the children do to help Chuskit go to school?",
+      "reason": "near-duplicate of served question cmvh5blov06xugpfhz5jjmbfn (cosine 0.934 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

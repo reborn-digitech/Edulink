@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-19T10:28:02.059Z",
+  "generatedAt": "2026-10-22T08:09:28.147Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the main reason we can see objects around us?",
+      "stem": "Why do we not see our image in a dark room?",
       "choices": [
-        "Because they emit light",
-        "Because they absorb light",
-        "Because light from them enters our eyes",
-        "Because they reflect sound"
+        "Because there is no light",
+        "Because the surface is smooth",
+        "Because the surface is rough",
+        "Because the normal is absent"
       ],
-      "answerIndex": 2,
-      "solution": "We can see objects because light from them enters our eyes. This is how vision works—our eyes detect light that comes from objects, allowing us to perceive them. The other options are incorrect because objects do not emit light on their own (except for light sources), they do not absorb light in a way that allows us to see them, and sound is not involved in vision.",
+      "answerIndex": 0,
+      "solution": "We cannot see our image in a dark room because there is no light to reflect off surfaces and reach our eyes. Without light, there is no reflection, and thus no image can be formed. The other options are incorrect because the smoothness or roughness of a surface affects how light reflects, but not the presence of an image. The normal is a concept in reflection, but its absence does not explain the lack of an image.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "हम अपने आसपास के वस्तुओं को क्यों देख सकते हैं?",
+          "stem": "हम अंधेरे कमरे में अपनी छाया क्यों नहीं देख पाते?",
           "choices": [
-            "क्योंकि वे प्रकाश उत्सर्जित करते हैं",
-            "क्योंकि वे प्रकाश अवशोषित करते हैं",
-            "क्योंकि उनसे प्रकाश हमारी आंखों में प्रवेश करता है",
-            "क्योंकि वे ध्वनि परावर्तित करते हैं"
+            "क्योंकि अंधेरा है",
+            "क्योंकि सतह चिकनी है",
+            "क्योंकि सतह कोमल है",
+            "क्योंकि सामान्य अनुपस्थित है"
           ],
-          "solution": "हम वस्तुओं को देख सकते हैं क्योंकि उनसे प्रकाश हमारी आंखों में प्रवेश करता है। यह दृष्टि का तरीका है—हमारी आंखें वस्तुओं से आने वाले प्रकाश को अनुभव करती हैं, जिससे हम उन्हें देख सकते हैं। अन्य विकल्प गलत हैं क्योंकि वस्तुएं अपने आप प्रकाश उत्सर्जित नहीं करती हैं (केवल प्रकाश स्रोत ऐसा करते हैं), वे प्रकाश को इस प्रकार अवशोषित नहीं करती हैं जिससे हम उन्हें देख सकें, और ध्वनि दृष्टि में शामिल नहीं होती है।",
+          "solution": "हम अंधेरे कमरे में अपनी छाया नहीं देख पाते क्योंकि कोई प्रकाश नहीं होता जो सतहों से परावर्तित होकर हमारी आंखों तक पहुंचे। प्रकाश के अभाव में परावर्तन नहीं होता, इसलिए कोई छाया बनती है। अन्य विकल्प गलत हैं क्योंकि सतह की चिकनाई या कोमलता प्रकाश के परावर्तन को प्रभावित करती है, लेकिन छाया की उपस्थिति को नहीं। सामान्य एक परावर्तन की अवधारणा है, लेकिन इसके अभाव में छाया के अभाव की व्याख्या नहीं की जा सकती।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
+          "critique": "The Hindi translation accurately conveys the meaning of the English question and options, with appropriate technical terms like 'छाया' (image) and 'प्रकाश' (light) used in the context of optics.",
           "flag": null
         },
         "mr": {
-          "stem": "आम्ही आजूबाजूच्या वस्तू दिसू शकतो याचा मुख्य कारण काय आहे?",
+          "stem": "आम्ही गडद खोलीत आमचे चित्र का पाहत नाही?",
           "choices": [
-            "कारण ते प्रकाश उत्सर्जित करतात",
-            "कारण ते प्रकाश शोषतात",
-            "कारण त्यांचा प्रकाश आमच्या डोळ्यांमध्ये प्रवेश करतो",
-            "कारण ते आवाज परावर्तित करतात"
+            "कारण त्यात प्रकाश नाही",
+            "कारण सतह चिकट आहे",
+            "कारण सतह खोल आहे",
+            "कारण सामान्य अनुपस्थित आहे"
           ],
-          "solution": "आम्ही वस्तू दिसू शकतो कारण त्यांचा प्रकाश आमच्या डोळ्यांमध्ये प्रवेश करतो. हे दृष्टीचे कार्य आहे- आमच्या डोळ्या वस्तूंमधून येणारा प्रकाश ओळखतात, ज्यामुळे आम्ही त्यांना ओळखू शकतो. इतर विकल्प चुकीचे आहेत कारण वस्तू आपोआप प्रकाश उत्सर्जित करत नाहीत (प्रकाश स्रोत वगळता), ते प्रकाश शोषत नाहीत जेणेकरून आम्ही त्यांना दिसू शकतो, आणि आवाज दृष्टीशी संबंधित नाही.",
+          "solution": "आम्ही गडद खोलीत आमचे चित्र पाहत नाही कारण प्रकाश नाही जो सतहींवर परावर्तित होऊन आमच्या डोळ्यांपर्यंत पोहोचत नाही. प्रकाश नसल्यास परावर्तन नसते, आणि त्यामुळे चित्र तयार होत नाही. इतर विकल्प चुकीचे आहेत कारण सतहींच्या चिकटतेचा किंवा खोलतेचा प्रकाशाच्या परावर्तनावर परिणाम होतो, परंतु चित्राच्या उपस्थितीवर परिणाम होत नाही. सामान्य हा परावर्तनाचा अवयव आहे, परंतु त्याच्या अनुपस्थितीमुळे चित्राच्या अनुपस्थितीचे स्पष्टीकरण नाही.",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Marathi terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
         }
       },
@@ -72,67 +72,60 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses light emission with vision",
-        "Ignores the role of light entering the eyes",
         null,
-        "Incorrectly states the mechanism of vision"
+        "Believes that smooth surfaces prevent reflection instead of enabling it",
+        "Confuses the reason for not seeing an image with surface type",
+        "Confuses the reason for not seeing an image with surface type"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as light entering the eyes is the fundamental mechanism of vision. The other options reflect common misconceptions or irrelevant concepts.",
+      "critique": "The correct answer is 0 because without light, there is no reflection, and thus no image can be seen. The other options are incorrect and represent common misconceptions about reflection and image formation.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 142,
-          "pageStart": 120,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 143,
-          "pageStart": 120,
-          "pageEnd": 122,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 144,
+          "ordinal": 146,
           "pageStart": 122,
-          "pageEnd": 122,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 145,
-          "pageStart": 122,
-          "pageEnd": 122,
+          "pageEnd": 123,
           "headingPath": [
             "16. Reflection of Light",
-            "i r"
+            "i =r , i =r ,..."
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 147,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i =r , i =r ,..."
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 148,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "16. Reflection of Light",
+            "Exercises"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
+      "generatedAt": "2026-10-22T08:09:28.147Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What type of reflection occurs when light reflects from a smooth surface?",
+      "stem": "Which type of reflection is responsible for the formation of images in a mirror?",
       "choices": [
         "Regular reflection",
         "Irregular reflection",
@@ -140,411 +133,133 @@
         "Refraction"
       ],
       "answerIndex": 0,
-      "solution": "Regular reflection occurs when light reflects from a smooth surface because the surface is even, allowing the light rays to reflect in a predictable and uniform direction. Irregular reflection happens on rough surfaces, scattering refers to the random reflection of light in many directions, and refraction involves the bending of light as it passes through different media, not reflection.",
+      "solution": "Regular reflection is responsible for the formation of clear and sharp images in a mirror. Irregular reflection causes scattered light and no distinct images. Scattering and refraction are not responsible for mirror images.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किस प्रकार का परावर्तन तब होता है जब प्रकाश चिकनी सतह से परावर्तित होता है?",
+          "stem": "किस प्रकार के परावर्तन के कारण दर्पण में छवियां बनती हैं?",
           "choices": [
             "नियमित परावर्तन",
             "अनियमित परावर्तन",
-            "बिखराव",
+            "प्रकीर्णन",
             "अपवर्तन"
           ],
-          "solution": "नियमित परावर्तन तब होता है जब प्रकाश चिकनी सतह से परावर्तित होता है क्योंकि सतह समान होती है, जिससे प्रकाश की किरणें एक पूर्वानुमानित और समान दिशा में परावर्तित होती हैं। अनियमित परावर्तन की घटना खुरदरी सतह पर होती है, बिखराव का अर्थ है प्रकाश की अनेक दिशाओं में यादृच्छिक परावर्तन और अपवर्तन में प्रकाश की किरणें विभिन्न माध्यमों से गुजरते समय मुड़ जाती हैं, जो कि परावर्तन नहीं है।",
+          "solution": "नियमित परावर्तन दर्पण में स्पष्ट एवं तीक्ष्ण छवियों के बनने के लिए उत्तरदायी होता है। अनियमित परावर्तन से प्रकाश बिखर जाता है और कोई स्पष्ट छवि नहीं बनती है। प्रकीर्णन एवं अपवर्तन दर्पण छवियों के बनने के लिए उत्तरदायी नहीं होते।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "प्रकाशाच्या परावर्तनाचा कोणता प्रकार चिकन सतह वरून होतो?",
+          "stem": "कोणत्या प्रकारच्या प्रतिबिंबामुळे दर्पणात चित्रांची निर्मिती होते?",
           "choices": [
-            "नियमित परावर्तन",
-            "अनियमित परावर्तन",
+            "नियमित प्रतिबिंब",
+            "अनियमित प्रतिबिंब",
             "प्रसरण",
             "अपवर्तन"
           ],
-          "solution": "प्रकाश चिकन सतह वरून परावर्तित होत असताना नियमित परावर्तन होतो कारण सतह समान असते, ज्यामुळे प्रकाशाचे किरण अपेक्षित आणि एकरूप दिशेने परावर्तित होतात. अनियमित परावर्तन खोल वर्णन करतो, प्रसरण हा प्रकाशाच्या अनेक दिशांमध्ये अयोग्य परावर्तनाचा अर्थ आहे आणि अपवर्तन हा प्रकाशाच्या विविध माध्यमांमध्ये जाताना वक्रीभवनाचा अर्थ आहे, परावर्तनाचा नाही.",
+          "solution": "नियमित प्रतिबिंब दर्पणात स्पष्ट आणि तीक्ष्ण चित्रांची निर्मिती करते. अनियमित प्रतिबिंब अपूर्ण प्रकाशाच्या विखुरलेल्या प्रतिबिंबामुळे होते आणि कोणतेही स्पष्ट चित्र निर्माण होत नाही. प्रसरण आणि अपवर्तन दर्पणातील चित्रांची निर्मिती करत नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard terminology used in Marathi science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses irregular reflection with regular reflection.",
-        "Confuses scattering with regular reflection.",
-        "Confuses refraction with regular reflection."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies regular reflection as the correct answer and explains the other options accurately.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 146,
-          "pageStart": 122,
-          "pageEnd": 123,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 147,
-          "pageStart": 123,
-          "pageEnd": 124,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 148,
-          "pageStart": 124,
-          "pageEnd": 125,
-          "headingPath": [
-            "16. Reflection of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What happens to the left and right sides of an image when seen in a mirror?",
-      "choices": [
-        "They remain the same",
-        "They are reversed",
-        "They are inverted",
-        "They disappear"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is that they are reversed. When you look in a mirror, your left side appears on the right side of the image, and your right side appears on the left side. This is known as lateral inversion. The other options are incorrect because the sides are not the same, the image is not inverted (upside down), and the image does not disappear.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक दर्पण में देखे जाने पर छवि के बाएं और दाएं पक्ष क्या होते हैं?",
-          "choices": [
-            "वे वही रहते हैं",
-            "वे उलट जाते हैं",
-            "वे उल्टे हो जाते हैं",
-            "वे लुप्त हो जाते हैं"
-          ],
-          "solution": "सही उत्तर यह है कि वे उलट जाते हैं। जब आप दर्पण में देखते हैं, तो आपका बायां पक्ष छवि के दाहिने पक्ष पर दिखाई देता है, और आपका दाहिना पक्ष छवि के बाएं पक्ष पर दिखाई देता है। इसे पार्श्व उल्टापन कहा जाता है। अन्य विकल्प गलत हैं क्योंकि पक्ष वही नहीं रहते हैं, छवि उल्टी नहीं होती (ऊपर से नीचे की ओर) और छवि लुप्त नहीं होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately conveys the meaning of the original English question. Technical terms like 'lateral inversion' are appropriately translated as 'पार्श्व उल्टापन'.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दर्पणात पाहिलेल्या चित्राच्या बाजूंवर काय होते?",
-          "choices": [
-            "ते त्याच रूपात राहतात",
-            "ते उलटलेल्या दिसतात",
-            "ते उलटलेल्या दिसतात",
-            "ते अदृश्य होतात"
-          ],
-          "solution": "बरोबर उत्तर ते उलटलेल्या दिसतात. जेव्हा आपण दर्पणात पाहतो तेव्हा आपली बाजू चित्राच्या उजव्या बाजूला दिसते आणि उजवी बाजू डाव्या बाजूला दिसते. हे बाजूमार्गी उलट असते. इतर उत्तरे चुकीची आहेत कारण बाजू त्याच रूपात राहत नाहीत, चित्र उलटलेले नाही (उलट वरून खाली) आणि चित्र अदृश्य होत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The options are correctly ordered, and the solution aligns with the English version.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the effect of a mirror",
-        null,
-        "Confuses lateral inversion with inversion",
-        "Believes the image disappears in a mirror"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies lateral inversion as the phenomenon where left and right are reversed in a mirror. The reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 146,
-          "pageStart": 122,
-          "pageEnd": 123,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 147,
-          "pageStart": 123,
-          "pageEnd": 124,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 148,
-          "pageStart": 124,
-          "pageEnd": 125,
-          "headingPath": [
-            "16. Reflection of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens when light rays fall on a smooth surface?",
-      "choices": [
-        "They are absorbed.",
-        "They are scattered in all directions.",
-        "They are reflected in a particular direction.",
-        "They are refracted."
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is that they are reflected in a particular direction. On a smooth surface, light rays undergo regular reflection, meaning they follow the laws of reflection and are reflected in a predictable direction. The first option is incorrect because light is not absorbed in reflection. The second option describes irregular reflection, which occurs on rough surfaces. The fourth option refers to refraction, which is different from reflection.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब प्रकाश की किरणें एक चिकनी सतह पर गिरती हैं तो क्या होता है?",
-          "choices": [
-            "उन्हें अवशोषित कर लिया जाता है।",
-            "उन्हें सभी दिशाओं में बिखरा दिया जाता है।",
-            "उन्हें एक विशिष्ट दिशा में परावर्तित कर दिया जाता है।",
-            "उन्हें अपवर्तित कर दिया जाता है।"
-          ],
-          "solution": "सही उत्तर यह है कि उन्हें एक विशिष्ट दिशा में परावर्तित कर दिया जाता है। एक चिकनी सतह पर, प्रकाश की किरणें नियमित परावर्तन के अधीन होती हैं, जिसका अर्थ है कि वे परावर्तन के नियमों का पालन करती हैं और एक पूर्वनिर्धारित दिशा में परावर्तित होती हैं। पहला विकल्प गलत है क्योंकि परावर्तन में प्रकाश को अवशोषित नहीं किया जाता है। दूसरा विकल्प अनियमित परावर्तन का वर्णन करता है, जो कि कच्ची सतहों पर होता है। चौथा विकल्प अपवर्तन के संदर्भ में है, जो परावर्तन से अलग है।",
-          "imageAlt": "एक समतल दर्पण के साथ एक आपतित किरण और एक परावर्तित किरण जो एक विशिष्ट दिशा में है।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणते होते जेव्हा प्रकाशाचे किरण चकचकीत सतहवर पडतात?",
-          "choices": [
-            "ते शोषले जातात.",
-            "ते सर्व दिशांमध्ये फैलावतात.",
-            "ते एका विशिष्ट दिशेने परावर्तित होतात.",
-            "ते अपवर्तित होतात."
-          ],
-          "solution": "बरोबर उत्तर म्हणजे ते एका विशिष्ट दिशेने परावर्तित होतात. चकचकीत सतहवर, प्रकाशाचे किरण नियमित परावर्तन अनुभवतात, ज्यामुळे ते परावर्तनाच्या कायद्यांचे अनुसरण करतात आणि अपेक्षित दिशेने परावर्तित होतात. पहिला विकल्प चुकीचा आहे कारण परावर्तनामध्ये प्रकाश शोषला जात नाही. दुसरा विकल्प अनियमित परावर्तन दर्शवतो, जे खोल सतहींवर होते. चौथा विकल्प अपवर्तनाकडे दुर्लक्ष करतो, जे परावर्तनापासून वेगळे आहे.",
-          "imageAlt": "एक चित्र ज्यामध्ये एक समतल दर्पण आहे आणि त्यावर एक अभिसरण किरण आणि एक परावर्तित किरण विशिष्ट दिशेने दाखवले आहेत.",
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A diagram showing a plane mirror with an incident ray and a reflected ray in a particular direction.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 50,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror"
-              ],
-              "text": {
-                "incidentRay": "incident_ray",
-                "reflectedRay": "reflected_ray",
-                "normal": "normal"
-              }
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                40,
-                30
-              ],
-              "to": [
-                50,
-                30
-              ],
-              "label": "incident_ray",
-              "curved": false
-            },
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                60,
-                30
-              ],
-              "label": "reflected_ray",
-              "curved": false
-            },
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                50,
-                20
-              ],
-              "label": "normal",
-              "curved": false
-            }
-          ]
-        },
-        "labels": {
-          "incident_ray": {
-            "en": "incident ray",
-            "hi": "आपतित किरण",
-            "mr": "अभिसरण किरण"
-          },
-          "reflected_ray": {
-            "en": "reflected ray",
-            "hi": "परावर्तित किरण",
-            "mr": "परावर्तित किरण"
-          },
-          "normal": {
-            "en": "normal",
-            "hi": "अभिलंब",
-            "mr": "सामान्य"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes light is absorbed in reflection.",
-        "Describes irregular reflection, not regular reflection.",
         null,
-        "Confuses reflection with refraction, thinking light changes direction only when entering a new medium."
+        "Confuses regular with irregular reflection",
+        "Confuses regular with scattering",
+        "Confuses regular with refraction"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 2, as light reflects in a particular direction on a smooth surface. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "critique": "The solution correctly identifies regular reflection as the cause of mirror images, and the reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 142,
-          "pageStart": 120,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 143,
-          "pageStart": 120,
-          "pageEnd": 122,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 144,
+          "ordinal": 146,
           "pageStart": 122,
-          "pageEnd": 122,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 145,
-          "pageStart": 122,
-          "pageEnd": 122,
+          "pageEnd": 123,
           "headingPath": [
             "16. Reflection of Light",
-            "i r"
+            "i =r , i =r ,..."
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 147,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i =r , i =r ,..."
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 148,
+          "pageStart": 124,
+          "pageEnd": 125,
+          "headingPath": [
+            "16. Reflection of Light",
+            "Exercises"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
+      "generatedAt": "2026-10-22T08:09:28.147Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a light ray hits a mirror at an angle of 35 degrees with the mirror surface, what is the angle of reflection?",
+      "stem": "A student shines a light ray on a mirror and measures the angle of incidence to be 45°. What will be the angle of reflection?",
       "choices": [
-        "35 degrees",
-        "55 degrees",
-        "90 degrees",
-        "180 degrees"
+        "30°",
+        "45°",
+        "60°",
+        "90°"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is 55 degrees. The angle of incidence is measured with respect to the normal, not the mirror surface. If the angle with the mirror is 35 degrees, the angle with the normal is 90 - 35 = 55 degrees. According to the law of reflection, the angle of reflection is equal to the angle of incidence, so the angle of reflection is also 55 degrees. The other options are incorrect because they do not correctly apply the law of reflection or the relationship between the angle with the mirror and the normal.",
+      "solution": "The law of reflection states that the angle of reflection is equal to the angle of incidence. Since the angle of incidence is 45°, the angle of reflection will also be 45°. A pupil who confuses the angle of incidence with a different value might choose 30°, one who mistakes the angle of reflection for the angle between the reflected ray and the surface might choose 60°, and one who misunderstands the law might choose 90°.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक प्रकाश किरण दर्पण पर 35 डिग्री के कोण पर दर्पण की सतह के साथ टकराती है, तो परावर्तन का कोण क्या है?",
+          "stem": "एक छात्र एक दर्पण पर प्रकाश किरण डालता है और आपतन कोण को 45° मापता है। परावर्तन कोण क्या होगा?",
           "choices": [
-            "35 डिग्री",
-            "55 डिग्री",
-            "90 डिग्री",
-            "180 डिग्री"
+            "30°",
+            "45°",
+            "60°",
+            "90°"
           ],
-          "solution": "सही उत्तर 55 डिग्री है। आपतन कोण का मापन दर्पण की सतह के सापेक्ष नहीं, अपितु अभिलंब के सापेक्ष किया जाता है। यदि दर्पण के साथ कोण 35 डिग्री है, तो अभिलंब के साथ कोण 90 - 35 = 55 डिग्री होगा। परावर्तन के नियम के अनुसार, परावर्तन का कोण आपतन के कोण के बराबर होता है, इसलिए परावर्तन का कोण भी 55 डिग्री होगा। अन्य विकल्प गलत हैं क्योंकि वे परावर्तन के नियम या दर्पण के साथ कोण और अभिलंब के साथ कोण के संबंध को सही तरीके से लागू नहीं करते।",
+          "solution": "परावर्तन के नियम के अनुसार, परावर्तन कोण आपतन कोण के बराबर होता है। चूंकि आपतन कोण 45° है, परावर्तन कोण भी 45° होगा। एक छात्र जो आपतन कोण के मान को गलत रूप से समझता है, 30° चुन सकता है, जो परावर्तित किरण और सतह के बीच कोण के रूप में परावर्तन कोण को गलत तरीके से समझता है, 60° चुन सकता है, और जो नियम को गलत तरीके से समझता है, 90° चुन सकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the logic of the solution matches the original.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एखादा प्रकाश किरण 35 अंशांच्या कोनात दर्पणावर आपटला, तर परावर्तनाचा कोन किती असेल?",
+          "stem": "एका विद्यार्थ्याने एका दर्पणावर प्रकाशाचा एक किरण टाकला आणि अविर्भाव कोन 45° असल्याचे मोजले. प्रतिबिंब कोन किती असेल?",
           "choices": [
-            "35 अंश",
-            "55 अंश",
-            "90 अंश",
-            "180 अंश"
+            "30°",
+            "45°",
+            "60°",
+            "90°"
           ],
-          "solution": "बरोबर उत्तर 55 अंश आहे. अंतर्गत कोन सामान्य रेषेशी मोजला जातो, दर्पणाच्या पृष्ठभागाशी नाही. जर दर्पणाशी 35 अंशाचा कोन असेल, तर सामान्य रेषेशी कोन 90 - 35 = 55 अंश असेल. परावर्तनाच्या कायद्यानुसार, परावर्तनाचा कोन अंतर्गत कोनाशी समान असतो, म्हणून परावर्तनाचा कोन 55 अंश असेल. इतर उत्तरे चुकीची आहेत कारण ते परावर्तनाच्या कायद्याचा योग्य उपयोग करत नाहीत किंवा दर्पणाशी आणि सामान्य रेषेशी असलेल्या कोनाच्या संबंधाचा योग्य उपयोग करत नाहीत.",
+          "solution": "प्रतिबिंबाचा नियम सांगतो की प्रतिबिंब कोन अविर्भाव कोनासोबत समान असतो. अविर्भाव कोन 45° असल्याने, प्रतिबिंब कोन 45° असेल. अविर्भाव कोन वेगळ्या मूल्याचा असल्याचा चूक करणारा विद्यार्थी 30° निवडू शकतो, प्रतिबिंब कोन आणि दर्पणाच्या सतह दरम्यानचा कोन असे चूक करणारा विद्यार्थी 60° निवडू शकतो, आणि नियम चूक करणारा विद्यार्थी 90° निवडू शकतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
           "flag": null
         }
       },
@@ -553,10 +268,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Fails to account for the normal line",
+        "Believes the angle of reflection is always smaller than the angle of incidence",
         null,
-        "Confuses angle with mirror for angle with normal",
-        "Incorrectly assumes the angle of reflection is always 90 degrees"
+        "Confuses the angle of incidence with a 30-60-90 triangle relationship",
+        "students may confuse the angle of reflection with the angle between the mirror and the reflected ray"
       ],
       "solverAnswers": [
         1,
@@ -566,83 +281,195 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly accounts for the angle with the normal, and the reasoning aligns with the law of reflection. The distractors reflect common misconceptions about the relationship between the angle with the mirror and the normal.",
+      "critique": "The question correctly applies the law of reflection, and the solution is sound. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 146,
+          "ordinal": 142,
+          "pageStart": 120,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 143,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 144,
           "pageStart": 122,
-          "pageEnd": 123,
+          "pageEnd": 122,
           "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
+            "16. Reflection of Light"
           ]
         },
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 147,
-          "pageStart": 123,
-          "pageEnd": 124,
+          "ordinal": 145,
+          "pageStart": 122,
+          "pageEnd": 122,
           "headingPath": [
             "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 148,
-          "pageStart": 124,
-          "pageEnd": 125,
-          "headingPath": [
-            "16. Reflection of Light",
-            "Exercises"
+            "i r"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
+      "generatedAt": "2026-10-22T08:09:28.147Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the name of the line drawn perpendicular to the mirror at the point of incidence?",
+      "choices": [
+        "Incident ray",
+        "Reflected ray",
+        "Normal",
+        "Angle of incidence"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Normal'. The normal is the line drawn perpendicular to the mirror at the point of incidence. The other options are incorrect because the incident ray is the ray that falls on the surface, the reflected ray is the ray that bounces back, and the angle of incidence is the angle between the incident ray and the normal.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दर्पण पर अपतित बिंदु पर लंब खींची गई रेखा का नाम क्या है?",
+          "choices": [
+            "अपतित किरण",
+            "परावर्तित किरण",
+            "अभिलंब",
+            "आपतन कोण"
+          ],
+          "solution": "सही उत्तर 'अभिलंब' है। अभिलंब दर्पण पर अपतित बिंदु पर लंब खींची गई रेखा होती है। अन्य विकल्प गलत हैं क्योंकि अपतित किरण सतह पर गिरने वाली किरण होती है, परावर्तित किरण वापस लौटने वाली किरण होती है, और आपतन कोण अपतित किरण और अभिलंब के बीच का कोण होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दर्शक चौकटीवर अंगावर आगमन बिंदूवर लांबवलेल्या रेषेचे नाव काय आहे?",
+          "choices": [
+            "आगमन किरण",
+            "परावर्तित किरण",
+            "सामान्य",
+            "आगमन कोन"
+          ],
+          "solution": "बरोबर उत्तर 'सामान्य' आहे. सामान्य ही दर्शक चौकटीवर अंगावर आगमन बिंदूवर लांबवलेल्या रेषेचे नाव आहे. इतर विकल्प चूकीचे आहेत कारण आगमन किरण हा तलावर पडणारा किरण आहे, परावर्तित किरण हा परावर्तित होणारा किरण आहे आणि आगमन कोन हा आगमन किरण आणि सामान्य यांच्यातील कोन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is the ray that falls on the surface, not the line perpendicular to it.",
+        "This is the ray that bounces back from the surface, not the line perpendicular to it.",
+        null,
+        "This is the angle between the incident ray and the normal, not the line itself."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies 'Normal' as the correct answer. The reasoning for the distractors aligns with common misconceptions students might have.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 142,
+          "pageStart": 120,
+          "pageEnd": 120,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 143,
+          "pageStart": 120,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 144,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 145,
+          "pageStart": 122,
+          "pageEnd": 122,
+          "headingPath": [
+            "16. Reflection of Light",
+            "i r"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:09:28.147Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "In a periscope, how do the two mirrors help in viewing objects that are not directly in line of sight?",
+      "stem": "What is the reason for the blurring of images when a stone is thrown into a vessel of still water?",
       "choices": [
-        "They absorb light",
-        "They reflect light in a straight line",
-        "They change the direction of light",
-        "They change the colour of light"
+        "The surface becomes smooth",
+        "The surface becomes rough",
+        "The light is scattered",
+        "The light is refracted"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is that they change the direction of light. In a periscope, two mirrors are placed at 45-degree angles to each other. The first mirror reflects the light from the object upwards, and the second mirror reflects the light into the viewer's eye. This allows the viewer to see objects that are not directly in line of sight. The other options are incorrect because mirrors do not absorb light, they do not reflect light in a straight line (they change its direction), and they do not change the color of light.",
+      "answerIndex": 1,
+      "solution": "When a stone is thrown into still water, the surface becomes rough, which causes light to scatter in different directions instead of reflecting in a single direction. This scattering of light leads to blurred images. Smooth surfaces reflect light regularly, producing clear images, while rough surfaces cause diffuse reflection, resulting in blurriness.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक पेरिस्कोप में दो दर्पण अप्रत्यक्ष दृष्टि में वस्तुओं को देखने में कैसे सहायता करते हैं?",
+          "stem": "एक शांत जल वाले बर्तन में एक पत्थर फेंके जाने पर छायाओं के धुंधला होने का क्या कारण है?",
           "choices": [
-            "वे प्रकाश को अवशोषित कर लेते हैं",
-            "वे प्रकाश को सीधी रेखा में परावर्तित कर देते हैं",
-            "वे प्रकाश की दिशा बदल देते हैं",
-            "वे प्रकाश के रंग को बदल देते हैं"
+            "सतह चिकनी हो जाती है",
+            "सतह कठिन हो जाती है",
+            "प्रकाश बिखर जाता है",
+            "प्रकाश अपवर्तित हो जाता है"
           ],
-          "solution": "सही उत्तर यह है कि वे प्रकाश की दिशा बदल देते हैं। पेरिस्कोप में दो दर्पण एक दूसरे से 45 डिग्री के कोण पर रखे जाते हैं। पहला दर्पण वस्तु से आने वाले प्रकाश को ऊपर की ओर परावर्तित कर देता है, और दूसरा दर्पण प्रकाश को दर्शक की आंख में परावर्तित कर देता है। इससे दर्शक अप्रत्यक्ष दृष्टि में वस्तुओं को देख सकता है। अन्य विकल्प गलत हैं क्योंकि दर्पण प्रकाश को अवशोषित नहीं करते हैं, वे प्रकाश को सीधी रेखा में नहीं परावर्तित करते (वे इसकी दिशा बदल देते हैं), और वे प्रकाश के रंग को नहीं बदलते हैं।",
+          "solution": "जब एक पत्थर शांत जल में फेंका जाता है तो सतह कठिन हो जाती है, जिसके कारण प्रकाश एक ही दिशा में परावर्तित होने के बजाय विभिन्न दिशाओं में बिखर जाता है। इस प्रकाश के बिखराव के कारण छायाएं धुंधली हो जाती हैं। चिकनी सतहें प्रकाश का नियमित परावर्तन करती हैं, जिसके कारण स्पष्ट छायाएं बनती हैं, जबकि कठिन सतहें विसरित परावर्तन के कारण धुंधलापन उत्पन्न करती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option 3, and all distractors are still incorrect.",
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate terminology and correct answer placement.",
           "flag": null
         },
         "mr": {
-          "stem": "पेरिस्कोपमध्ये, दोन दर्पणांचा दृष्टीच्या रेषेत नसलेल्या वस्तूंचे दर्शन करून देण्यास कसा मदत होते?",
+          "stem": "एका शांत पाण्याच्या वासर्यात एका शिलाला टाकल्यास छायाचित्रांच्या अस्पष्टतेचे कारण काय आहे?",
           "choices": [
-            "ते प्रकाश शोषतात",
-            "ते प्रकाश थेट रेषेत परावर्तित करतात",
-            "ते प्रकाशाच्या दिशेत बदल करतात",
-            "ते प्रकाशाचा रंग बदलतात"
+            "पृष्ठभाग चिकणा होतो",
+            "पृष्ठभाग खरदरा होतो",
+            "प्रकाश विखुरला जातो",
+            "प्रकाश अपवर्तित होतो"
           ],
-          "solution": "योग्य उत्तर हे ते प्रकाशाच्या दिशेत बदल करतात. पेरिस्कोपमध्ये दोन दर्पणांना 45 अंशांच्या कोनात ठेवले जाते. पहिला दर्पण वस्तूपासून आलेला प्रकाश वर फेकतो आणि दुसरा दर्पण प्रकाश निरीक्षकाच्या डोळ्यात फेकतो. हे निरीक्षकाला दृष्टीच्या रेषेत नसलेल्या वस्तूंचे दर्शन करून देते. इतर विकल्प अयोग्य आहेत कारण दर्पण प्रकाश शोषत नाहीत, ते प्रकाश थेट रेषेत परावर्तित करत नाहीत (ते त्याची दिशा बदलतात), आणि ते प्रकाशाचा रंग बदलत नाहीत.",
+          "solution": "जेव्हा एका शिलाला शांत पाण्यात टाकले जाते, तेव्हा पृष्ठभाग खरदरा होतो, जे प्रकाशाला एका दिशेने परावर्तित होण्याऐवजी विविध दिशांमध्ये विखुरून देतो. हा प्रकाशाचा विखुरलेला प्रकार अस्पष्ट छायाचित्रांच्या निर्मितीला कारणीभूत ठरतो. चिकण पृष्ठभाग प्रकाशाला नियमित परावर्तित करतात, ज्यामुळे स्पष्ट छायाचित्रे तयार होतात, तर खरदर पृष्ठभाग विस्तृत परावर्तन करतात, ज्यामुळे अस्पष्टता उद्भवते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for optics.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
         }
       },
@@ -651,20 +478,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the function of mirrors",
-        "Confuses reflection with straight-line travel",
+        "Confuses the effect of a smooth surface with blurring",
         null,
-        "Believes mirrors alter the light's color"
+        "Pupil believes light spreads out in all directions after hitting the water surface",
+        "Refers to a different phenomenon"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and correctly identifies option 2 as the correct answer. The reasoning aligns with the physics of light reflection in a periscope.",
+      "critique": "The correct answer is 1, as throwing a stone into still water makes the surface rough, leading to diffuse reflection and blurred images. The reasoning in the solution is sound and matches the explanation provided.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -698,49 +525,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
+      "generatedAt": "2026-10-22T08:09:28.147Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "In a situation where light rays are incident on a rough surface, what is the most likely effect on the reflected rays?",
+      "stem": "A ray of light is incident on a rough surface. What can be said about the reflected rays?",
       "choices": [
-        "They are all parallel",
-        "They spread out in different directions",
-        "They are focused to a single point",
-        "They bend at the same angle"
+        "They are parallel to each other",
+        "They are scattered in different directions",
+        "They form a spectrum",
+        "They converge at a point"
       ],
       "answerIndex": 1,
-      "solution": "When light rays are incident on a rough surface, the reflected rays spread out in different directions. This is because the surface is irregular, leading to irregular reflection. The other options describe scenarios that occur on smooth surfaces or are incorrect in the context of rough surfaces.",
+      "solution": "The correct answer is that the reflected rays are scattered in different directions. This is because a rough surface produces irregular reflection, where the reflected rays spread out in various directions. The other options are incorrect because parallel rays occur on smooth surfaces, a spectrum is formed due to dispersion, and converging rays require a curved surface.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक ऐसी स्थिति में जहां प्रकाश की किरणें एक कच्ची सतह पर आपतित होती हैं, परावर्तित किरणों पर सबसे अधिक संभावित प्रभाव क्या होगा?",
+          "stem": "एक प्रकाश की किरण एक अपरिष्कृत सतह पर आपतित होती है। परावर्तित किरणों के बारे में क्या कहा जा सकता है?",
           "choices": [
-            "वे सभी समांतर होती हैं",
-            "वे विभिन्न दिशाओं में फैल जाती हैं",
-            "वे एक बिंदु पर केंद्रित हो जाती हैं",
-            "वे एक ही कोण पर मुड़ जाती हैं"
+            "वे एक दूसरे के समांतर होती हैं",
+            "वे विभिन्न दिशाओं में बिखर जाती हैं",
+            "वे एक वर्णक्रम बनाती हैं",
+            "वे एक बिंदु पर अभिसरित होती हैं"
           ],
-          "solution": "जब प्रकाश की किरणें एक कच्ची सतह पर आपतित होती हैं, तो परावर्तित किरणें विभिन्न दिशाओं में फैल जाती हैं। इसका कारण यह है कि सतह असमान होती है, जिसके कारण असमान परावर्तन होता है। अन्य विकल्पों में ऐसी स्थितियां वर्णित हैं जो चिकनी सतहों पर होती हैं या कच्ची सतहों के संदर्भ में गलत हैं।",
+          "solution": "सही उत्तर यह है कि परावर्तित किरणें विभिन्न दिशाओं में बिखर जाती हैं। ऐसा इसलिए होता है क्योंकि अपरिष्कृत सतह अनियमित परावर्तन उत्पन्न करती है, जहां परावर्तित किरणें विभिन्न दिशाओं में फैल जाती हैं। अन्य विकल्प गलत हैं क्योंकि समांतर किरणें चिकनी सतह पर होती हैं, वर्णक्रम अपवर्तन के कारण बनता है, और अभिसरित किरणें वक्र सतह के लिए आवश्यक होती हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms (e.g., 'कच्ची सतह' for 'rough surface', 'असमान परावर्तन' for 'irregular reflection').",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका असमान पृष्ठभागावर प्रकाशाच्या किरणांच्या अभिसरणाच्या स्थितीत, परावर्तित किरणांवर सर्वात शक्य असलेला परिणाम काय असेल?",
+          "stem": "एक किरण प्रकाश खरदर तलावर आपतित होतो. परावर्तित किरणांबद्दल काय म्हणायला शकता?",
           "choices": [
-            "ते सर्व समांतर असतात",
-            "ते विविध दिशांमध्ये विस्तारतात",
-            "ते एका बिंदूवर केंद्रित होतात",
-            "ते एकसारख्या कोनावर मोडतात"
+            "ते एकमेकांना समांतर असतात",
+            "ते विविध दिशांमध्ये बिखरलेले असतात",
+            "ते वर्णपट तयार करतात",
+            "ते एका बिंदूवर अभिसरित होतात"
           ],
-          "solution": "जेव्हा प्रकाशाचे किरण असमान पृष्ठभागावर अभिसरण करतात तेव्हा परावर्तित किरण विविध दिशांमध्ये विस्तारतात. हे असे कारण आहे कारण पृष्ठभाग असमान असतो, ज्यामुळे असमान परावर्तन होते. इतर विकल्पांमध्ये जे वर्णन आहे ते चिकन पृष्ठभागांवर होणाऱ्या स्थितींचे आहेत किंवा असमान पृष्ठभागांच्या संदर्भात अयोग्य आहेत.",
+          "solution": "योग्य उत्तर म्हणजे परावर्तित किरण विविध दिशांमध्ये बिखरलेले असतात. हे त्यामुळे होते की खरदर तलावर अनियमित परावर्तन होतो, जेथे परावर्तित किरण विविध दिशांमध्ये विस्तारतात. इतर विकल्प अयोग्य असतात कारण समांतर किरणांची उत्पत्ती चिकण तलावर होते, वर्णपट विच्छेदनामुळे तयार होतो आणि अभिसरित किरणांची आवश्यकता वक्र तलाची असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physics concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -749,10 +576,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Describes regular reflection",
+        "This describes regular reflection, which occurs on smooth surfaces.",
         null,
-        "Student thinks reflection from rough surfaces focuses light like a lens",
-        "Confuses reflection with refraction, thinking light bends uniformly like in a prism"
+        "Confuses reflection with dispersion of light into colors",
+        "Confuses reflection from a rough surface with reflection from a curved mirror"
       ],
       "solverAnswers": [
         1,
@@ -762,7 +589,7 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, with a clear distinction between regular and irregular reflection. The correct answer is 1, and the author's reasoning aligns with standard physics principles.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly identifies the nature of reflection from a rough surface.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -803,481 +630,7 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a ray of light is incident perpendicular to a mirror, what is the angle of reflection?",
-      "choices": [
-        "0°",
-        "30°",
-        "45°",
-        "90°"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 0°. When a light ray is incident perpendicular to a mirror, the angle of incidence is 0°, and according to the law of reflection, the angle of reflection is equal to the angle of incidence, so the angle of reflection is also 0°. The second option is a common angle but not the correct one for a perpendicular incident ray. The third option is a typical angle in reflection problems but not relevant here. The fourth option is incorrect because a 90° angle of reflection would mean the ray is parallel to the mirror, which does not happen when the ray is incident perpendicular to it.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि प्रकाश की एक किरण दर्पण के लंबवत आपतित होती है, तो परावर्तन का कोण क्या है?",
-          "choices": [
-            "0°",
-            "30°",
-            "45°",
-            "90°"
-          ],
-          "solution": "सही उत्तर 0° है। जब प्रकाश की किरण दर्पण के लंबवत आपतित होती है, तो आपतन कोण 0° होता है, और परावर्तन के नियम के अनुसार, परावर्तन कोण आपतन कोण के बराबर होता है, इसलिए परावर्तन कोण भी 0° होता है। दूसरा विकल्प एक सामान्य कोण है लेकिन लंबवत आपतित किरण के लिए सही नहीं है। तीसरा विकल्प परावर्तन के समस्याओं में एक सामान्य कोण है लेकिन यहां उपयुक्त नहीं है। चौथा विकल्प गलत है क्योंकि 90° परावर्तन कोण का अर्थ है कि किरण दर्पण के समांतर है, जो तब नहीं होता जब किरण दर्पण के लंबवत आपतित होती है।",
-          "imageAlt": "एक समतल दर्पण के साथ एक आरेख जिसमें एक किरण इसके लंबवत आपतित होती है और एक परावर्तित किरण इसी दिशा में होती है।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक प्रकाशाचा किरण दर्पणावर लंबरूपाने आपतित होत असेल, तर प्रतिबिंबनाचा कोन किती असेल?",
-          "choices": [
-            "0°",
-            "30°",
-            "45°",
-            "90°"
-          ],
-          "solution": "बरोबर उत्तर 0° आहे. जेव्हा प्रकाशाचा किरण दर्पणावर लंबरूपाने आपतित होत असतो, तेव्हा आपतन कोन 0° असतो, आणि प्रतिबिंबनाच्या कायद्यानुसार, प्रतिबिंबनाचा कोन आपतन कोनासोबत समान असतो, म्हणून प्रतिबिंबनाचा कोन 0° असतो. दुसरा विकल्प सामान्य कोन असतो पण लंबरूपाने आपतित किरणासाठी बरोबर नसतो. तिसरा विकल्प प्रतिबिंबनाच्या समस्यांमध्ये एक सामान्य कोन असतो पण येथे संबंधित नसतो. चौथा विकल्प चुकीचा असतो कारण 90° प्रतिबिंबनाचा कोन असल्यास किरण दर्पणाला समांतर असतो, जे लंबरूपाने आपतित किरणासाठी होत नाही.",
-          "imageAlt": "एक समतल दर्पण दर्शविणारा आकृती ज्यामध्ये लंबरूपाने आपतित असलेला किरण आणि त्याचा प्रतिबिंबित किरण एकाच दिशेत असतो.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for optics.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing a plane mirror with a ray incident perpendicular to it and a reflected ray in the same direction.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 50,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror"
-              ],
-              "text": {
-                "incidentRay": "incident_ray",
-                "reflectedRay": "reflected_ray",
-                "normal": "normal"
-              }
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                50,
-                20
-              ],
-              "label": "incident_ray",
-              "curved": false
-            },
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                50,
-                40
-              ],
-              "label": "reflected_ray",
-              "curved": false
-            },
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                50,
-                20
-              ],
-              "label": "normal",
-              "curved": false
-            }
-          ]
-        },
-        "labels": {
-          "incident_ray": {
-            "en": "incident ray",
-            "hi": "आपतित किरण",
-            "mr": "आपतित किरण"
-          },
-          "reflected_ray": {
-            "en": "reflected ray",
-            "hi": "परावर्तित किरण",
-            "mr": "प्रतिबिंबित किरण"
-          },
-          "normal": {
-            "en": "normal",
-            "hi": "अभिलंब",
-            "mr": "लंब"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "Believes the angle of reflection depends on the angle of incidence in a non-linear way",
-        "Confuses the angle of reflection with the angle between the incident ray and the mirror",
-        "student thinks reflection angle is always perpendicular to the surface"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed and the solution is correct. The correct answer is 0°, as the angle of incidence is 0° when the ray is perpendicular to the mirror, and the law of reflection states that the angle of reflection equals the angle of incidence.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 142,
-          "pageStart": 120,
-          "pageEnd": 120,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 143,
-          "pageStart": 120,
-          "pageEnd": 122,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 144,
-          "pageStart": 122,
-          "pageEnd": 122,
-          "headingPath": [
-            "16. Reflection of Light"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 145,
-          "pageStart": 122,
-          "pageEnd": 122,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i r"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "What happens to the image when a stone is thrown into a still water surface?",
-      "choices": [
-        "The image becomes clearer",
-        "The image becomes blurred",
-        "The image disappears",
-        "The image inverts"
-      ],
-      "answerIndex": 1,
-      "solution": "When a stone is thrown into still water, the surface becomes uneven, leading to irregular reflection of light. This disrupts the clear image, causing it to become blurred. The other options do not align with how light reflects off rough surfaces. Regular reflection from smooth surfaces creates clear images, while rough surfaces scatter light in different directions.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब एक पत्थर शांत जल की सतह में फेंका जाता है तो छवि पर क्या प्रभाव पड़ता है?",
-          "choices": [
-            "छवि स्पष्ट हो जाती है",
-            "छवि अस्पष्ट हो जाती है",
-            "छवि लुप्त हो जाती है",
-            "छवि उलट जाती है"
-          ],
-          "solution": "जब एक पत्थर शांत जल में फेंका जाता है तो सतह असमान हो जाती है, जिसके कारण प्रकाश के अनियमित परावर्तन होता है। यह स्पष्ट छवि को बाधित करता है, जिसके कारण छवि अस्पष्ट हो जाती है। अन्य विकल्प प्रकाश के रूप में असमान सतहों पर परावर्तन के तरीके के साथ संगत नहीं हैं। समान सतहों से नियमित परावर्तन स्पष्ट छवि बनाता है, जबकि असमान सतहें प्रकाश को विभिन्न दिशाओं में बिखेर देती हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms for reflection and image formation.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जेव्हा एका शिलाला थांबलेल्या पाण्याच्या पृष्ठभागावर फेकला जातो तेव्हा छायाचित्राचा काय फेराफार होतो?",
-          "choices": [
-            "छायाचित्र स्पष्ट होते",
-            "छायाचित्र अस्पष्ट होते",
-            "छायाचित्र अदृश्य होते",
-            "छायाचित्र उलटते"
-          ],
-          "solution": "जेव्हा एका शिलाला थांबलेल्या पाण्याच्या पृष्ठभागावर फेकला जातो तेव्हा पृष्ठभाग असमान होतो आणि प्रकाशाचे अनियमित प्रतिबिंब होते. हे स्पष्ट छायाचित्र अस्पष्ट करते. इतर विकल्प प्रकाशाच्या असमान पृष्ठभागांवर प्रतिबिंबित होण्याच्या पद्धतीशी संगत नाहीत. समान पृष्ठभागांवर प्रतिबिंबित होणारा प्रकाश स्पष्ट छायाचित्र तयार करतो, तर असमान पृष्ठभाग विविध दिशांमध्ये प्रकाश विखुरतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optics.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks that the image becomes clearer due to movement.",
-        null,
-        "Thinks that the image disappears due to disturbance.",
-        "Thinks that the image inverts due to disturbance."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the roughened surface causes irregular reflection, leading to a blurred image. All distractors are based on plausible misconceptions about how disturbances affect reflections.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 146,
-          "pageStart": 122,
-          "pageEnd": 123,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 147,
-          "pageStart": 123,
-          "pageEnd": 124,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 148,
-          "pageStart": 124,
-          "pageEnd": 125,
-          "headingPath": [
-            "16. Reflection of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why can we not see objects in a dark room?",
-      "choices": [
-        "There is no light",
-        "The objects are too small",
-        "The objects are transparent",
-        "The objects are black"
-      ],
-      "answerIndex": 0,
-      "solution": "We cannot see objects in a dark room because there is no light to reflect off them and enter our eyes. Light is essential for vision, as it allows our eyes to detect the presence of objects. The other options do not explain the absence of visual information, which is the core reason for not seeing in darkness.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "हम अंधेरे कमरे में वस्तुओं क्यों नहीं देख सकते?",
-          "choices": [
-            "प्रकाश नहीं है",
-            "वस्तुएं बहुत छोटी हैं",
-            "वस्तुएं पारदर्शी हैं",
-            "वस्तुएं काली हैं"
-          ],
-          "solution": "हम अंधेरे कमरे में वस्तुओं को नहीं देख सकते क्योंकि उन पर प्रकाश नहीं होता जो हमारी आंखों में प्रवेश करे। दृष्टि के लिए प्रकाश आवश्यक है, क्योंकि यह हमारी आंखों को वस्तुओं की उपस्थिति का अनुभव करने की अनुमति देता है। अन्य विकल्प प्रकाश के अभाव के कारण दृश्य सूचना के अभाव को समझाने में असमर्थ हैं, जो अंधेरे में देखने की अक्षमता का मूल कारण है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आपण अंधारातील खोलीतील वस्तू दिसू शकत नाही का?",
-          "choices": [
-            "त्यात प्रकाश नाही",
-            "वस्तू खूप लहान आहेत",
-            "वस्तू अपारदर्शक आहेत",
-            "वस्तू काळ्या आहेत"
-          ],
-          "solution": "आपण अंधारातील खोलीतील वस्तू दिसू शकत नाही कारण त्यांच्यावर प्रकाश नाही जो आपल्या डोळ्यांमध्ये प्रवेश करू शकतो. पाहण्यासाठी प्रकाश आवश्यक आहे, कारण तो आपल्या डोळ्यांना वस्तूंच्या उपस्थितीचे निरीक्षण करण्यास मदत करतो. इतर विकल्प पाहण्याच्या अभावाचे व्याख्यान देत नाहीत, जे अंधारात दिसण्याचे मूलभूत कारण आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinks that the objects are too small to be seen.",
-        "Thinks that transparency affects visibility in darkness.",
-        "Thinks that darkness makes objects invisible regardless of light."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the absence of light is the fundamental reason we cannot see objects in the dark. The other options represent common misconceptions about visibility.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 146,
-          "pageStart": 122,
-          "pageEnd": 123,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 147,
-          "pageStart": 123,
-          "pageEnd": 124,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 148,
-          "pageStart": 124,
-          "pageEnd": 125,
-          "headingPath": [
-            "16. Reflection of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why do the images in a kaleidoscope not repeat themselves easily?",
-      "choices": [
-        "Because the mirrors are curved",
-        "Because the glass pieces are always in motion",
-        "Because the reflections create unique patterns each time",
-        "Because the light is absorbed by the mirrors"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is that the reflections create unique patterns each time. A kaleidoscope uses multiple mirrors to reflect the glass pieces in different ways. Since the glass pieces are randomly placed, each time the kaleidoscope is rotated, the reflections create different and unique patterns. The other options are incorrect because the mirrors in a kaleidoscope are not curved, the glass pieces are not always in motion, and the mirrors do not absorb light.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कलीडोस्कोप में चित्र क्यों आसानी से दोहराए नहीं जाते?",
-          "choices": [
-            "क्योंकि दर्पण वक्र होते हैं",
-            "क्योंकि कांच के टुकड़े हमेशा गतिशील रहते हैं",
-            "क्योंकि प्रतिबिंब एक अद्वितीय पैटर्न बनाते हैं",
-            "क्योंकि प्रकाश दर्पण द्वारा अवशोषित कर लिया जाता है"
-          ],
-          "solution": "सही उत्तर यह है कि प्रतिबिंब हर बार अद्वितीय पैटर्न बनाते हैं। कलीडोस्कोप में कांच के टुकड़ों के विभिन्न तरीकों से परावर्तन के लिए कई दर्पण उपयोग किए जाते हैं। कांच के टुकड़े यादृच्छिक रूप से रखे जाते हैं, इसलिए प्रत्येक बार कलीडोस्कोप को घुमाए जाने पर, परावर्तन अलग-अलग और अद्वितीय पैटर्न बनाते हैं। अन्य विकल्प गलत हैं क्योंकि कलीडोस्कोप में दर्पण वक्र नहीं होते, कांच के टुकड़े हमेशा गतिशील नहीं रहते, और दर्पण प्रकाश को अवशोषित नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कॅलिडोस्कोपमधील चित्रे सहजपणे पुनरावृत्ती होत नाहीत का?",
-          "choices": [
-            "कारण दर्पणे वक्र आहेत",
-            "कारण ग्लासचे तुकडे हमखास गतीत असतात",
-            "कारण प्रतिबिंबांमुळे प्रत्येकवेळी अद्वितीय आकृत्या तयार होतात",
-            "कारण प्रकाश दर्पणांमुळे शोषला जातो"
-          ],
-          "solution": "योग्य उत्तर हे आहे की प्रतिबिंबांमुळे प्रत्येकवेळी अद्वितीय आकृत्या तयार होतात. एक कॅलिडोस्कोप विविध प्रकारे ग्लासच्या तुकड्यांचे प्रतिबिंब तयार करण्यासाठी अनेक दर्पणांचा वापर करतो. ग्लासचे तुकडे यादृच्छिकपणे ठेवले जातात, म्हणून प्रत्येकवेळी कॅलिडोस्कोप फिरवल्यास प्रतिबिंबांमुळे वेगवेगळ्या आणि अद्वितीय आकृत्या तयार होतात. इतर विकल्प अयोग्य आहेत कारण कॅलिडोस्कोपमधील दर्पणे वक्र नसतात, ग्लासचे तुकडे हमखास गतीत नसतात आणि दर्पण प्रकाश शोषू शकत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misconceives the function of curved mirrors",
-        "Believes the glass pieces are always in motion",
-        null,
-        "Incorrectly assumes mirrors absorb light"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the unique patterns are due to the random arrangement of glass pieces and the multiple reflections. The other options reflect common misconceptions about mirrors and light.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 146,
-          "pageStart": 122,
-          "pageEnd": 123,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 147,
-          "pageStart": 123,
-          "pageEnd": 124,
-          "headingPath": [
-            "16. Reflection of Light",
-            "i =r , i =r ,..."
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 148,
-          "pageStart": 124,
-          "pageEnd": 125,
-          "headingPath": [
-            "16. Reflection of Light",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:28:02.059Z",
+      "generatedAt": "2026-10-22T08:09:28.147Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

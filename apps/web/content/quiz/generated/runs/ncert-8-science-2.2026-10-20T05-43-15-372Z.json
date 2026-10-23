@@ -1,0 +1,749 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T05:43:15.372Z",
+  "finishedAt": "2026-10-20T05:53:11.550Z",
+  "seconds": 596,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu102.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 2 — The Invisible Living World: Beyond Our Naked Eye",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n2. C. R 1\nFor visually impaired students\nB. The leaf kept in darkness will show the presence of starch",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 160462,
+      "in": 46,
+      "out": 38,
+      "rejects": 8,
+      "promptTokens": 50234,
+      "completionTokens": 9472
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 265465,
+      "in": 38,
+      "out": 35,
+      "rejects": 3,
+      "promptTokens": 20072,
+      "completionTokens": 7811
+    },
+    "solver": {
+      "calls": 231,
+      "ms": 99994,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 38944,
+      "completionTokens": 2257
+    },
+    "form": {
+      "calls": 33,
+      "ms": 107115,
+      "in": 35,
+      "out": 22,
+      "rejects": 13,
+      "promptTokens": 20385,
+      "completionTokens": 2856
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 6222,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 81,
+      "ms": 792211,
+      "in": 40,
+      "out": 40,
+      "rejects": 0,
+      "promptTokens": 48307,
+      "completionTokens": 24885
+    }
+  },
+  "kept": 20,
+  "keptByLevel": {
+    "1": 4,
+    "2": 4,
+    "3": 3,
+    "4": 3,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 9,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the book published by Robert Hooke that showed detailed drawings of tiny things?",
+      "ms": {
+        "draft": 4576,
+        "critique": 5622,
+        "solver": 1342,
+        "form": 4047
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using a magnifying glass in the experiment described in the passage?",
+      "ms": {
+        "draft": 4576,
+        "critique": 6664,
+        "solver": 10415,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Robert Hooke call the small, empty spaces he saw in the cork?",
+      "ms": {
+        "draft": 4576,
+        "critique": 6329,
+        "solver": 11690,
+        "form": 1629
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you place a round-bottom flask filled with water on an open book, what will happen to the letters you see through it?",
+      "ms": {
+        "draft": 4576,
+        "critique": 5914,
+        "solver": 14771,
+        "form": 3111
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the cell membrane in a cell?",
+      "ms": {
+        "draft": 3768,
+        "critique": 6343,
+        "solver": 1694,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observed that the letters on a book appeared larger when viewed through a round-bottom flask filled with water. What is the reason for this effect?",
+      "ms": {
+        "draft": 4576,
+        "critique": 7096,
+        "solver": 11936,
+        "form": 2214
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following cells is most likely to have a branched structure?",
+      "ms": {
+        "draft": 3768,
+        "critique": 5960,
+        "solver": 8773,
+        "form": 2305
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is true about the levels of organisation in a multicellular organism?",
+      "ms": {
+        "draft": 3768,
+        "critique": 5985,
+        "solver": 1432,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using methylene blue in the experiment to observe cheek cells?",
+      "ms": {
+        "draft": 3768,
+        "critique": 6363,
+        "solver": 12634,
+        "form": 2038
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Table 2.1, which microorganism is described as a single cell that moves with the help of specialized structures?",
+      "ms": {
+        "draft": 3025,
+        "critique": 6371,
+        "solver": 936,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a benefit of microorganisms in the environment?",
+      "ms": {
+        "draft": 3379,
+        "critique": 6491,
+        "solver": 1171,
+        "form": 2229
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a beneficial microorganism that helps in increasing soil nitrogen?",
+      "ms": {
+        "draft": 6073,
+        "critique": 6341
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a microorganism is found to have a nucleoid region but no well-defined nucleus, which of the following is it most likely to be?",
+      "ms": {
+        "draft": 6073,
+        "critique": 6048
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a microorganism that lives in the roots of legumes and helps in nitrogen fixation?",
+      "ms": {
+        "draft": 4169,
+        "critique": 3488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a microorganism used in food fermentation?",
+      "ms": {
+        "draft": 2574,
+        "critique": 4785,
+        "solver": 872,
+        "form": 3438
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following ways do microorganisms help the environment?",
+      "ms": {
+        "draft": 2497,
+        "critique": 5814,
+        "solver": 1290,
+        "form": 3444
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What would happen if microorganisms did not exist on Earth?",
+      "ms": {
+        "draft": 2497,
+        "critique": 5853,
+        "solver": 1665,
+        "form": 2412
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is yeast used in making bread and cakes?",
+      "ms": {
+        "draft": 2497,
+        "critique": 4502,
+        "solver": 1053,
+        "form": 2974
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a microorganism that helps in the formation of manure?",
+      "ms": {
+        "draft": 2497,
+        "critique": 5849,
+        "solver": 1221,
+        "form": 3577,
+        "translation": 36306
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of adding methylene blue to the cheek cell sample?",
+      "ms": {
+        "draft": 3181,
+        "critique": 6867,
+        "solver": 1327,
+        "form": 2253,
+        "translation": 33051
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason microorganisms are not visible to the naked eye?",
+      "ms": {
+        "draft": 3163,
+        "critique": 5933,
+        "solver": 10937,
+        "form": 0,
+        "translation": 30038
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of using a microscope to observe microorganisms?",
+      "ms": {
+        "draft": 3163,
+        "critique": 4423,
+        "solver": 1726,
+        "form": 0,
+        "translation": 32788
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a benefit of growing legumes in rotation with other crops?",
+      "ms": {
+        "draft": 3217,
+        "critique": 6407,
+        "solver": 1385,
+        "form": 2860,
+        "translation": 41939
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of microalgae in the environment?",
+      "ms": {
+        "draft": 3217,
+        "critique": 5798,
+        "solver": 976,
+        "form": 3042,
+        "translation": 37675
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the difference between unicellular and multicellular organisms?",
+      "ms": {
+        "draft": 3217,
+        "critique": 6487,
+        "solver": 1220,
+        "form": 3079,
+        "translation": 53846
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of microorganisms?",
+      "ms": {
+        "draft": 3025,
+        "critique": 6954,
+        "solver": 1575,
+        "form": 0,
+        "translation": 36706
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of microorganisms in the decomposition of plant and animal waste?",
+      "ms": {
+        "draft": 2574,
+        "critique": 4813,
+        "solver": 1596,
+        "form": 2686,
+        "translation": 39782
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the sugar solution in test tube B after adding yeast and keeping it in a warm place?",
+      "ms": {
+        "draft": 2574,
+        "critique": 4433,
+        "solver": 986,
+        "form": 3383,
+        "translation": 36793
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following microorganisms is unicellular and moves using special structures?",
+      "ms": {
+        "draft": 3025,
+        "critique": 6566,
+        "solver": 965,
+        "form": 0,
+        "translation": 31369
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an organism that is visible to the naked eye but is still considered tiny?",
+      "ms": {
+        "draft": 4576,
+        "critique": 7276,
+        "solver": 13903,
+        "form": 2732,
+        "translation": 34961
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations would the process of decomposition be fastest?",
+      "ms": {
+        "draft": 3379,
+        "critique": 5284,
+        "solver": 1654,
+        "form": 2645,
+        "translation": 36485
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 2.5, which part of the cell is responsible for controlling the cell's activities?",
+      "ms": {
+        "draft": 3768,
+        "critique": 5727,
+        "solver": 1373,
+        "form": 3053,
+        "translation": 43072
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student performs an experiment where he puts some fruit peels in a container with soil and observes them over a few weeks. He notices that the peels have disappeared and the soil has become richer in nutrients. What is the most likely reason for this observation?",
+      "ms": {
+        "draft": 3379,
+        "critique": 5715,
+        "solver": 1614,
+        "form": 2450,
+        "translation": 52075
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following organisms is known to carry out digestion outside its body?",
+      "ms": {
+        "draft": 3768,
+        "critique": 4899,
+        "solver": 1430,
+        "form": 3379,
+        "translation": 35167
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a microorganism in a soil suspension that was spherical and had a green pigment. Which of the following microorganisms did the student most likely observe?",
+      "ms": {
+        "draft": 3025,
+        "critique": 5903,
+        "solver": 1765,
+        "form": 1829,
+        "translation": 39399
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why Robert Hooke's discovery of cells was a milestone in science?",
+      "ms": {
+        "draft": 4836,
+        "critique": 6083,
+        "solver": 1216,
+        "form": 0,
+        "translation": 43496
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student wants to make manure at home. He puts dry leaves and fruit peels in a pit and covers them with soil. After a few weeks, he finds the leaves and peels have turned into dark, nutrient-rich material. What is the key factor that helped this process?",
+      "ms": {
+        "draft": 3379,
+        "critique": 6166,
+        "solver": 1151,
+        "form": 2403,
+        "translation": 46894
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do pickles and murabbas not get infected by microorganisms?",
+      "ms": {
+        "draft": 3025,
+        "critique": 5940,
+        "solver": 1624,
+        "form": 2803,
+        "translation": 45827
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main purpose of using a microscope when observing microorganisms?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a microorganism that helps in making bread rise?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the book published by Robert Hooke that showed detailed drawings of tiny things?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'book'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of using a magnifying glass in the experiment described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Robert Hooke call the small, empty spaces he saw in the cork?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label Cells"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you place a round-bottom flask filled with water on an open book, what will happen to the letters you see through it?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'book'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the cell membrane in a cell?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, and it directly st…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, a student observed that the letters on a book appeared larger when viewed through a round-bottom flask filled with water. What is the reason for this effect?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'book'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following cells is most likely to have a branched structure?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is true about the levels of organisation in a multicellular organism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Cells form tissues, tissues form organs, organs form organ systems, and organ systems form an organism\" / \"Tissues form cells, cells form organs, organs form organ systems, and organ systems form an organism\"); options 0 and 2 say the same thing (\"Cells form tissues, tissues form organs, organs form organ systems, and organ systems form an organism\" / \"Cells form organ systems, organ systems form tissues, tissues form organs, and organs form an organism\"); options 0 and 3 say the same thing (\"Cells form tissues, tissues form organs, organs form organ systems, and organ systems form an organism\" / \"Organ systems form cells, cells form tissues, tissues form organs, and organs form an organism\"); options 1 and 2 say the same thing (\"Tissues form cells, cells form organs, organs form organ systems, and organ systems form an organism\" / \"Cells form organ systems, organ systems form tissues, tissues form organs, and organs form an organism\"); options 1 and 3 say the same thing (\"Tissues form cells, cells form organs, organs form organ systems, and organ systems form an organism\" / \"Organ systems form cells, cells form tissues, tissues form organs, and organs form an organism\"); options 2 and 3 say the same thing (\"Cells form organ systems, organ systems form tissues, tissues form organs, and organs form an organism\" / \"Organ systems form cells, cells form tissues, tissues form organs, and organs form an organism\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of using methylene blue in the experiment to observe cheek cells?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on Table 2.1, which microorganism is described as a single cell that moves with the help of specialized structures?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'microscope'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a benefit of microorganisms in the environment?",
+      "reason": "the key is far longer than every distractor (66 vs 41 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a beneficial microorganism that helps in increasing soil nitrogen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a microorganism is found to have a nucleoid region but no well-defined nucleus, which of the following is it most likely to be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a microorganism that lives in the roots of legumes and helps in nitrogen fixation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following microorganisms is used in the formation of curd?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the purpose of adding dried leaves to the waste in pit A?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main function of microorganisms in the root nodules of legumes?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Why is Spirulina called a superfood?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the function of the nucleoid in a bacterial cell?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which part of the cell is responsible for regulating all activities within the cell?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a microorganism used in food fermentation?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which of the following ways do microorganisms help the environment?",
+      "reason": "the key is far longer than every distractor (46 vs 23 characters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "What would happen if microorganisms did not exist on Earth?",
+      "reason": "near-duplicate of served question cmvf60m6203c1god8i7hxnihp (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is yeast used in making bread and cakes?",
+      "reason": "near-duplicate of served question cmvf60m6c03cvgod8d18jk24d (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

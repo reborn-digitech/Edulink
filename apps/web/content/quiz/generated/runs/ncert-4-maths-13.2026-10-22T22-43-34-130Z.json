@@ -1,0 +1,681 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:43:34.130Z",
+  "finishedAt": "2026-10-22T22:50:44.187Z",
+  "seconds": 430,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm113.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — The Transport Museum",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\nSection E consists of 3 case study based questions of 4 marks each."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 126371,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 25588,
+      "completionTokens": 7100
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 299923,
+      "in": 35,
+      "out": 25,
+      "rejects": 10,
+      "promptTokens": 19551,
+      "completionTokens": 7964
+    },
+    "solver": {
+      "calls": 186,
+      "ms": 113166,
+      "in": 25,
+      "out": 13,
+      "rejects": 12,
+      "promptTokens": 40553,
+      "completionTokens": 2251
+    },
+    "form": {
+      "calls": 11,
+      "ms": 34297,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 2953,
+      "completionTokens": 944
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4255,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 242112,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 16967,
+      "completionTokens": 6975
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If a toy train has 15 coaches and each coach can seat 14 children, how many coaches are needed to seat 324 children if each coach can only seat 14 children?",
+      "ms": {
+        "draft": 3854,
+        "critique": 7842
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 11 × 100?",
+      "ms": {
+        "draft": 13541,
+        "critique": 10299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 15 × 100?",
+      "ms": {
+        "draft": 13541,
+        "critique": 6146
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many children can be seated in 12 buses if each bus can seat 20 people?",
+      "ms": {
+        "draft": 3854,
+        "critique": 8450,
+        "solver": 15366
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the Vande Bharat Mission, 64 flights carried 152 people each. How many people were evacuated in the first week?",
+      "ms": {
+        "draft": 13541,
+        "critique": 7363
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 10 × 100 = 1000, what is 20 × 100?",
+      "ms": {
+        "draft": 13541,
+        "critique": 6528,
+        "solver": 16219
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 960 participants volunteered for a race and each boat is pedalled by 64 people, how many boats are needed?",
+      "ms": {
+        "draft": 13541,
+        "critique": 8127,
+        "solver": 15094
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cost of the ticket in the passage?",
+      "ms": {
+        "draft": 3198,
+        "critique": 6948,
+        "solver": 1570,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer has 600 kg of rice. If each sack weighs 10 kg, how many sacks does he need?",
+      "ms": {
+        "draft": 13541,
+        "critique": 7556,
+        "solver": 16207
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ticket cost is Rs 120 and the cashier counts Chinnu's coins at a rate of 1 coin per second, how many minutes will it take to count all her coins?",
+      "ms": {
+        "draft": 3198,
+        "critique": 7448
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If each aeroplane can carry 30 people and each train sleeper coach can carry 15 people, how many more people can an aeroplane carry than a train sleeper coach?",
+      "ms": {
+        "draft": 3198,
+        "critique": 8008,
+        "solver": 1340
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If each cycle can carry 1 person, each auto can carry 2 people, and each car can carry 4 people, how many people can all the cycles, autos, and cars carry together?",
+      "ms": {
+        "draft": 3198,
+        "critique": 6773,
+        "solver": 1395,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the pattern in the multiplications shown in the passage is followed, which of the following will give the same product as 13 × 14?",
+      "ms": {
+        "draft": 3198,
+        "critique": 6445
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which child has all coins of 50 paise?",
+      "ms": {
+        "draft": 3198,
+        "critique": 7047,
+        "solver": 13531,
+        "form": 1296
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the cost of the ticket in the passage?",
+      "ms": {
+        "draft": 2837,
+        "critique": 5111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "ms": {
+        "draft": 2837,
+        "critique": 4767,
+        "solver": 1228
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the pattern in the multiplication problems given in the passage?",
+      "ms": {
+        "draft": 2837,
+        "critique": 6323,
+        "solver": 1737
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the ticket cost was ₹15 instead of ₹12, which child would have the exact amount?",
+      "ms": {
+        "draft": 2837,
+        "critique": 6695,
+        "solver": 1781
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 50 × 100?",
+      "ms": {
+        "draft": 4170,
+        "critique": 6082
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 11 × 100?",
+      "ms": {
+        "draft": 4170,
+        "critique": 7414
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many people can travel in 24 coaches if each coach can carry 72 passengers?",
+      "ms": {
+        "draft": 4170,
+        "critique": 5442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ticket cost was ₹17 and Chinnu has only 1 rupee coins, how many coins would he need?",
+      "ms": {
+        "draft": 2837,
+        "critique": 7182,
+        "solver": 13643
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a sack of rice weighs 100 kg, how many sacks are needed for 600 kg of rice?",
+      "ms": {
+        "draft": 4170,
+        "critique": 7448,
+        "solver": 18222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 8 people go on a boat trip and the boat ride costs `800/-, how much does each person need to pay?",
+      "ms": {
+        "draft": 4170,
+        "critique": 8591,
+        "solver": 14553
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If each coach can seat 14 children, how many coaches are needed for 324 children?",
+      "ms": {
+        "draft": 3369,
+        "critique": 5679,
+        "solver": 1152
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 10 × 10 in terms of tens?",
+      "ms": {
+        "draft": 3854,
+        "critique": 7373,
+        "solver": 2582,
+        "form": 2772
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If each coach can seat 14 children and there are 15 coaches, how many children can be seated in total?",
+      "ms": {
+        "draft": 3854,
+        "critique": 7032,
+        "solver": 1124,
+        "form": 5416
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 10 × 10?",
+      "ms": {
+        "draft": 3369,
+        "critique": 5652,
+        "solver": 1263,
+        "form": 5356,
+        "translation": 25667
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 16 × 10 in terms of tens?",
+      "ms": {
+        "draft": 3854,
+        "critique": 7063,
+        "solver": 2090,
+        "form": 3216,
+        "translation": 31528
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many children can be seated in 15 coaches if each coach seats 14 children?",
+      "ms": {
+        "draft": 3369,
+        "critique": 5365,
+        "solver": 1783,
+        "form": 4012,
+        "translation": 30253
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many people can travel in 103 cars if each car can carry 4 people?",
+      "ms": {
+        "draft": 2837,
+        "critique": 5616,
+        "solver": 1572,
+        "form": 1679,
+        "translation": 27751
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 12 buses can each seat 20 people, how many people can be seated in total?",
+      "ms": {
+        "draft": 3369,
+        "critique": 5280,
+        "solver": 1900,
+        "form": 2946,
+        "translation": 28715
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the total cost of tickets for 36 children if the ticket price for children is `359/-?",
+      "ms": {
+        "draft": 4170,
+        "critique": 5853,
+        "solver": 22004,
+        "form": 3768,
+        "translation": 36821
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 15 × 14 = 210, what is 15 × 140?",
+      "ms": {
+        "draft": 3854,
+        "critique": 6183,
+        "solver": 1539,
+        "form": 6568,
+        "translation": 35055
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 12 × 20 = 240, what is 12 × 40?",
+      "ms": {
+        "draft": 3369,
+        "critique": 4676,
+        "solver": 1126,
+        "form": 2005,
+        "translation": 21882
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a toy train has 15 coaches and each coach can seat 14 children, how many coaches are needed to seat 324 children if each coach can only seat 14 children?",
+      "reason": "the critic finds option 1 correct, the key is 2"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is 11 × 100?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is 15 × 100?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many children can be seated in 12 buses if each bus can seat 20 people?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In the Vande Bharat Mission, 64 flights carried 152 people each. How many people were evacuated in the first week?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If 10 × 100 = 1000, what is 20 × 100?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 960 participants volunteered for a race and each boat is pedalled by 64 people, how many boats are needed?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the cost of the ticket in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the cost with another amount mentioned in the passa…\"); distractor 1's reason is not a one-line misconception (\"Confuses the cost with another amount mentioned in the passa…\"); distractor 3's reason is not a one-line misconception (\"The correct answer is Rs 120, so this is incorrect because i…\"); checkExpr \"120\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A farmer has 600 kg of rice. If each sack weighs 10 kg, how many sacks does he need?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the ticket cost is Rs 120 and the cashier counts Chinnu's coins at a rate of 1 coin per second, how many minutes will it take to count all her coins?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If each aeroplane can carry 30 people and each train sleeper coach can carry 15 people, how many more people can an aeroplane carry than a train sleeper coach?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If each cycle can carry 1 person, each auto can carry 2 people, and each car can carry 4 people, how many people can all the cycles, autos, and cars carry together?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"75+52*2+103*4\" = 591, but the key says 200"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the pattern in the multiplications shown in the passage is followed, which of the following will give the same product as 13 × 14?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which child has all coins of 50 paise?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the cost of the ticket in the passage?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the pattern in the multiplication problems given in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the ticket cost was ₹15 instead of ₹12, which child would have the exact amount?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the result of 50 × 100?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is 11 × 100?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many people can travel in 24 coaches if each coach can carry 72 passengers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the ticket cost was ₹17 and Chinnu has only 1 rupee coins, how many coins would he need?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a sack of rice weighs 100 kg, how many sacks are needed for 600 kg of rice?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 8 people go on a boat trip and the boat ride costs `800/-, how much does each person need to pay?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If each coach can seat 14 children, how many coaches are needed for 324 children?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is 10 × 10 in terms of tens?",
+      "reason": "near-duplicate of served question cmvh2eyud06btgpfhwf0maf9g (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If each coach can seat 14 children and there are 15 coaches, how many children can be seated in total?",
+      "reason": "near-duplicate of served question cmvh2eyui06cbgpfh5fnc5zh7 (cosine 0.979 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

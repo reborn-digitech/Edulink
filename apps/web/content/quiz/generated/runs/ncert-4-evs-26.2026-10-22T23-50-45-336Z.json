@@ -1,0 +1,237 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T23:50:45.336Z",
+  "finishedAt": "2026-10-22T23:53:11.032Z",
+  "seconds": 146,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap126.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 26 — Defence Officer: Wahida",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 25487,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7826,
+      "completionTokens": 1415
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 62732,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4793,
+      "completionTokens": 1858
+    },
+    "solver": {
+      "calls": 64,
+      "ms": 39985,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 13520,
+      "completionTokens": 816
+    },
+    "form": {
+      "calls": 4,
+      "ms": 9273,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 949,
+      "completionTokens": 240
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3418,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 185080,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10911,
+      "completionTokens": 5329
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What was the main reason Wahida wanted to become a doctor?",
+      "ms": {
+        "draft": 3503,
+        "critique": 7340,
+        "solver": 15127,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of a naval doctor?",
+      "ms": {
+        "draft": 3503,
+        "critique": 8622,
+        "solver": 9556,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the meaning of the word 'Prism' in Wahida's name?",
+      "ms": {
+        "draft": 2870,
+        "critique": 5436,
+        "solver": 13464,
+        "form": 998
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main job of a naval doctor on a ship?",
+      "ms": {
+        "draft": 2870,
+        "critique": 5412,
+        "solver": 1617,
+        "form": 3787,
+        "translation": 37076
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Wahida move with her grandmother to Rajouri?",
+      "ms": {
+        "draft": 3503,
+        "critique": 6448,
+        "solver": 1403,
+        "form": 0,
+        "translation": 34958
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Wahida do to prepare for leading the parade?",
+      "ms": {
+        "draft": 2870,
+        "critique": 4987,
+        "solver": 1430,
+        "form": 4780,
+        "translation": 32577
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a naval doctor is responsible for keeping the ship healthy, what would happen if there was no doctor on the ship?",
+      "ms": {
+        "draft": 3503,
+        "critique": 7113,
+        "solver": 1652,
+        "form": 0,
+        "translation": 46868
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Wahida's parents face problems?",
+      "ms": {
+        "draft": 2870,
+        "critique": 5234,
+        "solver": 891,
+        "form": 1759,
+        "translation": 30275
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main reason Wahida wanted to become a doctor?",
+      "reason": "options 0 and 2 are the same (\"She wanted to ride a motorcycle\"); distractor 0's reason is not a one-line misconception (\"The pupil confuses a personal interest mentioned in the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of a naval doctor?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the meaning of the word 'Prism' in Wahida's name?",
+      "reason": "the key is far longer than every distractor (52 vs 25 characters); distractor 1's reason is not a one-line misconception (\"The student confuses 'Prism' with 'Navy' or 'ship' due to th…\"); distractor 3's reason is not a one-line misconception (\"Confuses the name 'Prism' with the word 'parade' mentioned i…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

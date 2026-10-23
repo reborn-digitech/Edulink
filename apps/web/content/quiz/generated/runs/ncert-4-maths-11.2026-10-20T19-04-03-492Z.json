@@ -1,0 +1,312 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:04:03.492Z",
+  "finishedAt": "2026-10-20T19:06:50.417Z",
+  "seconds": 167,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm111.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Fun with Symmetry",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n3. Number of symmetric matrices of order 3 × 3 with each entry 1 or −1 is 1\n(A) 512 (B) 64 (C) 8 (D) 4",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n4. 2 1 −2\n𝜋\n(B) [0, 𝜋] − { } 2\n𝜋 3𝜋\n(D) [ , 2 2 ] − {𝜋}\n(B) (− , ) 1 1 2 2\n(D) (−∞, − ] ∪ [ , ∞) 1 2 1 2\n(C) π 3 (D) 𝜋 2\nIf 𝐴 = [3𝑎 0 4 ] is a symmetric matrix, then value of √6𝑎 + 2𝑏 + 3𝑐 is:\n𝑏 2𝑐 1\n(A) −2 (B) 2 (C) ±2 (D) 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 35680,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8552,
+      "completionTokens": 2049
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 92398,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7216,
+      "completionTokens": 2894
+    },
+    "solver": {
+      "calls": 96,
+      "ms": 50580,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 17839,
+      "completionTokens": 1087
+    },
+    "form": {
+      "calls": 2,
+      "ms": 7536,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 524,
+      "completionTokens": 169
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2992,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 174934,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11334,
+      "completionTokens": 5648
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of symmetry in nature?",
+      "ms": {
+        "draft": 2898,
+        "critique": 5432,
+        "solver": 12038,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a symmetrical shape?",
+      "ms": {
+        "draft": 2898,
+        "critique": 6442,
+        "solver": 14281
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of a line of symmetry in the design of a paper airplane, as described in the passage?",
+      "ms": {
+        "draft": 3049,
+        "critique": 6082,
+        "solver": 1083,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT an example of symmetry in the passage?",
+      "ms": {
+        "draft": 3049,
+        "critique": 5561,
+        "solver": 1162,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of symmetry in nature, as discussed in the passage?",
+      "ms": {
+        "draft": 3049,
+        "critique": 6606,
+        "solver": 14017,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers has the same mirror image?",
+      "ms": {
+        "draft": 3049,
+        "critique": 3358,
+        "solver": 5311
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a shape has more than one line of symmetry, what can you say about the shape?",
+      "ms": {
+        "draft": 3049,
+        "critique": 8633,
+        "solver": 1714,
+        "form": 3111
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the line that divides a shape into two equal halves?",
+      "ms": {
+        "draft": 2898,
+        "critique": 6050,
+        "solver": 1265,
+        "form": 0,
+        "translation": 31121
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a paper airplane is folded along a line of symmetry, what will happen when you fly it?",
+      "ms": {
+        "draft": 2898,
+        "critique": 4357,
+        "solver": 1462,
+        "form": 0,
+        "translation": 38132
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you fold a piece of paper and cut out a shape, and then open it, how will the resulting shape look?",
+      "ms": {
+        "draft": 3049,
+        "critique": 6296,
+        "solver": 1837,
+        "form": 4834,
+        "translation": 30864
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a shape has more than one line of symmetry, what can you say about it?",
+      "ms": {
+        "draft": 2898,
+        "critique": 5180,
+        "solver": 1352,
+        "form": 0,
+        "translation": 38868
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a shape has three lines of symmetry, what could it be?",
+      "ms": {
+        "draft": 2898,
+        "critique": 6426,
+        "solver": 13167,
+        "form": 1,
+        "translation": 31598
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of symmetry in nature?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is not a symmetrical shape?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the purpose of a line of symmetry in the design of a paper airplane, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is NOT an example of symmetry in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Ignores the explicit examples of symmetry in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of symmetry in nature, as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following numbers has the same mirror image?",
+      "reason": "after redraft: the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a shape has more than one line of symmetry, what can you say about the shape?",
+      "reason": "near-duplicate of batch item \"If a shape has more than one line of symmetry, wha…\" (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

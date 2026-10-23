@@ -1,0 +1,615 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T04:45:57.549Z",
+  "finishedAt": "2026-10-21T04:54:34.581Z",
+  "seconds": 517,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo117.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 17 — Locomotion and Movement",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n45. (2.5 points) A few types of locomotory actions are listed in column A. Choose\nfrom the options and fill in the table with the number of the appropriate animal.\nNo. A B\n1. Ciliary locomotion\n2. Looping movements\n3. Alternate movements of multiple limbs\n4. Alternate contraction circular and longitudinal muscles in the body\nI. Earthworm\nII. Nereis\nIII. Crab\nIV. Planarian\nV. Amoeba\nVI. Leech\nGENETICS & EVOLUTION (11.5 points)",
+      "[NSEB 2017 — question paper]\n44. Which of the following assist in the locomotion of earthworm?\ni. Muscles in the body wall\nii. Coelomic fluid\niii. Septa\niv. Setae\na) i, ii, iii and iv\nb) Only i, ii and iv\nc) Only ii, iii and iv\nd) Only i and iv\nB221",
+      "[INBO 2015 — question paper]\n45. (2 points) The chart shows different types of limb modifications (A, B, C and\nD) found in mammals. Limb\nLong\nA B\nPrehensile Non-prehensile\ndigits end with digits modified\nclaws and fused.\nShort\nC D\nPresence of Complete\ncompact strong modification, reduction\nbones, paws and compression of\nwith claws component bones\nAssign these modifications (A to D) to the animals with the following lifestyles.\n1. Animal prefers to run on ground. ________\n2. Animals swim in aquatic habitat. _________\n3. Animals live a subterranean life. _________\n4. Climbing animals living in and moving through trees. _________\nGENETICS & EVOLUTION (16.5 points)",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n18. The movement of landmasses over geological time changed the distribution 2\nand evolution of animals. Explain this idea using two examples from different\nregions of the world."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 137824,
+      "in": 33,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 33332,
+      "completionTokens": 8894
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 195985,
+      "in": 32,
+      "out": 28,
+      "rejects": 4,
+      "promptTokens": 16758,
+      "completionTokens": 6291
+    },
+    "solver": {
+      "calls": 167,
+      "ms": 60561,
+      "in": 28,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 26386,
+      "completionTokens": 1544
+    },
+    "form": {
+      "calls": 18,
+      "ms": 69936,
+      "in": 26,
+      "out": 16,
+      "rejects": 10,
+      "promptTokens": 14106,
+      "completionTokens": 2461
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 7178,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 619120,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 41961,
+      "completionTokens": 21992
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 4,
+    "4": 0,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of movement exhibited by unicellular organisms?",
+      "ms": {
+        "draft": 4680,
+        "critique": 4749,
+        "solver": 1925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram, what is the structure that contains many nuclei in a muscle fibre?",
+      "ms": {
+        "draft": 4680,
+        "critique": 7517
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a muscle fibre has many nuclei, what is it called?",
+      "ms": {
+        "draft": 4680,
+        "critique": 5757,
+        "solver": 10361,
+        "form": 3959
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it incorrect to say that all movements are locomotions?",
+      "ms": {
+        "draft": 4680,
+        "critique": 6358,
+        "solver": 1641
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the sliding filament theory, what happens to the I band during muscle contraction?",
+      "ms": {
+        "draft": 3269,
+        "critique": 5544,
+        "solver": 1197,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the sternum?",
+      "ms": {
+        "draft": 3277,
+        "critique": 5555,
+        "solver": 1546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes a diagram showing a joint with a synovial cavity, which of the following is most likely to be the type of joint?",
+      "ms": {
+        "draft": 3277,
+        "critique": 6111,
+        "solver": 1195,
+        "form": 2779
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the 'A' band in a sarcomere?",
+      "ms": {
+        "draft": 5442,
+        "critique": 5772,
+        "solver": 1435,
+        "form": 4971
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following joints allows the most movement and is involved in locomotion?",
+      "ms": {
+        "draft": 5442,
+        "critique": 3563,
+        "solver": 713,
+        "form": 1081
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the 'A' band in a sarcomere?",
+      "ms": {
+        "draft": 5133,
+        "critique": 5933
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a muscle fibre is deprived of ATP, what would happen to the cross bridges between actin and myosin?",
+      "ms": {
+        "draft": 5133,
+        "critique": 5778
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a diagram of a sarcomere and notes that the 'A' band remains constant in length during muscle contraction. Which of the following best explains this observation?",
+      "ms": {
+        "draft": 5133,
+        "critique": 4688,
+        "solver": 1656,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the skeleton is formed by the fusion of three bones?",
+      "ms": {
+        "draft": 25626,
+        "critique": 5367,
+        "solver": 1187,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which protein is responsible for binding to actin filaments during muscle contraction?",
+      "ms": {
+        "draft": 3533,
+        "critique": 5892
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following joints allows the most movement?",
+      "ms": {
+        "draft": 25626,
+        "critique": 5877,
+        "solver": 9383,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the relationship between movement and locomotion as discussed in the passage?",
+      "ms": {
+        "draft": 4464,
+        "critique": 4733,
+        "solver": 617,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the structure that connects a motor neuron to a muscle fibre?",
+      "ms": {
+        "draft": 3533,
+        "critique": 6690,
+        "solver": 1125,
+        "form": 2402,
+        "translation": 28874
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the skeleton is formed by the fusion of the ilium, ischium and pubis?",
+      "ms": {
+        "draft": 3277,
+        "critique": 6149,
+        "solver": 10316,
+        "form": 3360,
+        "translation": 27155
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of cilia in the trachea?",
+      "ms": {
+        "draft": 4680,
+        "critique": 4727,
+        "solver": 12320,
+        "form": 3259,
+        "translation": 38691
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the neuromuscular junction in muscle contraction?",
+      "ms": {
+        "draft": 3269,
+        "critique": 6042,
+        "solver": 1141,
+        "form": 0,
+        "translation": 43633
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of troponin in the muscle contraction process?",
+      "ms": {
+        "draft": 3269,
+        "critique": 5540,
+        "solver": 1142,
+        "form": 0,
+        "translation": 34876
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the intervertebral disc?",
+      "ms": {
+        "draft": 3277,
+        "critique": 5490,
+        "solver": 848,
+        "form": 3730,
+        "translation": 33195
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of movement that occurs in human cells?",
+      "ms": {
+        "draft": 5133,
+        "critique": 4549,
+        "solver": 928,
+        "form": 3694,
+        "translation": 32859
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of muscle is found in the walls of the stomach?",
+      "ms": {
+        "draft": 5133,
+        "critique": 4667,
+        "solver": 1492,
+        "form": 1907,
+        "translation": 30240
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a muscle fibre is not receiving signals from the nervous system, what would happen to the contraction process?",
+      "ms": {
+        "draft": 3269,
+        "critique": 5252,
+        "solver": 1242,
+        "form": 0,
+        "translation": 36558
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a damaged synovial joint, which activity would be most affected?",
+      "ms": {
+        "draft": 3277,
+        "critique": 5761,
+        "solver": 1301,
+        "form": 2183,
+        "translation": 31407
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a locomotory movement in a multicellular organism?",
+      "ms": {
+        "draft": 4680,
+        "critique": 5858,
+        "solver": 1001,
+        "form": 2313,
+        "translation": 35475
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the sliding filament theory of muscle contraction, what is the role of calcium ions?",
+      "ms": {
+        "draft": 5442,
+        "critique": 5668,
+        "solver": 1178,
+        "form": 0,
+        "translation": 56945
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where calcium ions are not released in the sarcoplasm, what would be the effect on muscle contraction?",
+      "ms": {
+        "draft": 3269,
+        "critique": 5828,
+        "solver": 1176,
+        "form": 0,
+        "translation": 39218
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct explanation of the difference between red and white muscle fibers?",
+      "ms": {
+        "draft": 5442,
+        "critique": 5422,
+        "solver": 724,
+        "form": 0,
+        "translation": 69307
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do red muscle fibres have a higher number of mitochondria compared to white muscle fibres?",
+      "ms": {
+        "draft": 3269,
+        "critique": 6277,
+        "solver": 1450,
+        "form": 0,
+        "translation": 41912
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the vertebral column described as having a 'dorsally placed' structure?",
+      "ms": {
+        "draft": 3277,
+        "critique": 5417,
+        "solver": 1593,
+        "form": 2343,
+        "translation": 35910
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following statements is true about the human skeleton?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of movement exhibited by unicellular organisms?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram, what is the structure that contains many nuclei in a muscle fibre?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a muscle fibre has many nuclei, what is it called?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.nuclei: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is it incorrect to say that all movements are locomotions?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the sliding filament theory, what happens to the I band during muscle contraction?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sarcomere'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the sternum?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (74 vs 36 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student observes a diagram showing a joint with a synovial cavity, which of the following is most likely to be the type of joint?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the 'A' band in a sarcomere?",
+      "reason": "the key is far longer than every distractor (79 vs 40 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following joints allows the most movement and is involved in locomotion?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'bone'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the 'A' band in a sarcomere?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a muscle fibre is deprived of ATP, what would happen to the cross bridges between actin and myosin?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes a diagram of a sarcomere and notes that the 'A' band remains constant in length during muscle contraction. Which of the following best explains this observation?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sarcomere'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the skeleton is formed by the fusion of three bones?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not here; the pelvic girdle is formed by t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which protein is responsible for binding to actin filaments during muscle contraction?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following joints allows the most movement?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the relationship between movement and locomotion as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"All movements are locomotions, but not all locomotions are movements.\" / \"All locomotions are movements, but not all movements are locomotions.\"); distractor 3's reason is not a one-line misconception (\"Fails to understand that movement and locomotion are distinc…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

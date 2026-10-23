@@ -1,0 +1,234 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:26:19.146Z",
+  "finishedAt": "2026-10-20T19:28:41.896Z",
+  "seconds": 143,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap103.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 3 — A Day with Nandu",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 28482,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7596,
+      "completionTokens": 1608
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 61970,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 4654,
+      "completionTokens": 1837
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 30500,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 10458,
+      "completionTokens": 660
+    },
+    "form": {
+      "calls": 5,
+      "ms": 11030,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 1122,
+      "completionTokens": 335
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 1818,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 173611,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10919,
+      "completionTokens": 5415
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If Nandu weighs 200 kilograms, how many children of your weight would add up to his weight?",
+      "ms": {
+        "draft": 3402,
+        "critique": 5005,
+        "solver": 13619,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the oldest female elephant in the herd?",
+      "ms": {
+        "draft": 3719,
+        "critique": 6655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Nandu weighs 200 kilograms, how many children of your weight would add up to Nandu’s weight?",
+      "ms": {
+        "draft": 3719,
+        "critique": 6627,
+        "solver": 1292
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the oldest female elephant in the herd?",
+      "ms": {
+        "draft": 3402,
+        "critique": 4975,
+        "solver": 1060,
+        "form": 3809,
+        "translation": 27270
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason why elephants move in a group?",
+      "ms": {
+        "draft": 3402,
+        "critique": 5571,
+        "solver": 2442,
+        "form": 3184,
+        "translation": 38647
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What do baby elephants do in the water?",
+      "ms": {
+        "draft": 3719,
+        "critique": 7346,
+        "solver": 10557,
+        "form": 2504,
+        "translation": 36103
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do elephants use water and mud?",
+      "ms": {
+        "draft": 3402,
+        "critique": 5679,
+        "solver": 1022,
+        "form": 1557,
+        "translation": 37018
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason why elephants live in herds?",
+      "ms": {
+        "draft": 3719,
+        "critique": 6691,
+        "solver": 7788,
+        "form": 1100,
+        "translation": 30145
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If Nandu weighs 200 kilograms, how many children of your weight would add up to his weight?",
+      "reason": "options 2 and 3 are the same (\"20 children\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the oldest female elephant in the herd?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Nandu weighs 200 kilograms, how many children of your weight would add up to Nandu’s weight?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,864 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T09:09:59.923Z",
+  "finishedAt": "2026-10-20T09:25:55.850Z",
+  "seconds": 956,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc102.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Cell: The Building Block of Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEJS 2016 — question paper]\n23. Which of the following does NOT contain living cells?\na) Bone tissue\nb) Xylem sieve tubes\nc) Phloem\nd) Epidermis",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 262002,
+      "in": 46,
+      "out": 44,
+      "rejects": 3,
+      "promptTokens": 54620,
+      "completionTokens": 12224
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 451505,
+      "in": 44,
+      "out": 38,
+      "rejects": 6,
+      "promptTokens": 25772,
+      "completionTokens": 9779
+    },
+    "solver": {
+      "calls": 256,
+      "ms": 160119,
+      "in": 38,
+      "out": 31,
+      "rejects": 7,
+      "promptTokens": 46595,
+      "completionTokens": 2686
+    },
+    "form": {
+      "calls": 9,
+      "ms": 87564,
+      "in": 31,
+      "out": 10,
+      "rejects": 21,
+      "promptTokens": 11590,
+      "completionTokens": 1630
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4423,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 578620,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 26814,
+      "completionTokens": 13585
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the purpose of using an electron microscope?",
+      "ms": {
+        "draft": 5615,
+        "critique": 8690,
+        "solver": 2063,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are thermophiles found in hot springs significant for understanding the origin of life?",
+      "ms": {
+        "draft": 5615,
+        "critique": 9413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a light microscope with 10X eyepiece and 40X objective lens to view an onion cell that is 200 μm in size, how large will the cell appear?",
+      "ms": {
+        "draft": 5615,
+        "critique": 10428,
+        "solver": 1896,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the cell?",
+      "ms": {
+        "draft": 5615,
+        "critique": 7878,
+        "solver": 18042
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the limit of resolution of the human eye?",
+      "ms": {
+        "draft": 5615,
+        "critique": 7450,
+        "solver": 2315,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in the passage, which of the following best describes the structure of the cell membrane?",
+      "ms": {
+        "draft": 4687,
+        "critique": 8377,
+        "solver": 2215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is placed in a solution where the solute concentration outside the cell is lower than inside, what will happen to the cell?",
+      "ms": {
+        "draft": 4687,
+        "critique": 9082,
+        "solver": 2748
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do plant cells not burst when placed in a hypotonic solution, unlike animal cells?",
+      "ms": {
+        "draft": 4687,
+        "critique": 9757
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the difference in shape between plant and animal cells?",
+      "ms": {
+        "draft": 4687,
+        "critique": 7919,
+        "solver": 14186,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant cell were to lose its cell wall, what would most likely happen?",
+      "ms": {
+        "draft": 5152,
+        "critique": 6747
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason plant cells have a cell wall?",
+      "ms": {
+        "draft": 5152,
+        "critique": 8119,
+        "solver": 12818,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of prokaryotic cells as described in the passage?",
+      "ms": {
+        "draft": 5152,
+        "critique": 9170,
+        "solver": 15802,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that prokaryotic cells lack membrane-bound organelles. Which of the following can be inferred from this?",
+      "ms": {
+        "draft": 5152,
+        "critique": 8309,
+        "solver": 1797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a feature of eukaryotic cells as described in the passage?",
+      "ms": {
+        "draft": 5152,
+        "critique": 8676,
+        "solver": 16149,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a function of the nucleus?",
+      "ms": {
+        "draft": 4769,
+        "critique": 8480,
+        "solver": 16858
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the structure of a nucleus?",
+      "ms": {
+        "draft": 4769,
+        "critique": 11846,
+        "solver": 14261
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What happens to the chromatin material in a cell that is not dividing?",
+      "ms": {
+        "draft": 4769,
+        "critique": 8594,
+        "solver": 2103,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of cell division in living organisms?",
+      "ms": {
+        "draft": 4706,
+        "critique": 8835
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a chloroplast contains the pigments that give plants their green colour?",
+      "ms": {
+        "draft": 72675,
+        "critique": 8639,
+        "solver": 1739
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the basic structural and functional unit of all living organisms?",
+      "ms": {
+        "draft": 8013,
+        "critique": 6105
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 2.20, which part of the cell is responsible for controlling all the activities of the cell?",
+      "ms": {
+        "draft": 9598,
+        "critique": 5841,
+        "solver": 1365,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant cell is placed in a hypertonic solution, what would happen to the cell?",
+      "ms": {
+        "draft": 9598,
+        "critique": 6115,
+        "solver": 4102,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 9598,
+        "critique": 7207,
+        "solver": 5775,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the cell wall in plant cells?",
+      "ms": {
+        "draft": 9598,
+        "critique": 6538,
+        "solver": 1568,
+        "form": 5351
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell loses its nucleus, what would be the most immediate effect on the cell?",
+      "ms": {
+        "draft": 9598,
+        "critique": 6176,
+        "solver": 2507,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes that in meiosis, the parent cell divides twice, resulting in four daughter cells. Which of the following correctly explains why this process is important for sexual reproduction?",
+      "ms": {
+        "draft": 14900,
+        "critique": 9642,
+        "solver": 2167,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the cell wall in plant cells?",
+      "ms": {
+        "draft": 9598,
+        "critique": 8724,
+        "solver": 14849,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage states that plant cells do not show contact inhibition, unlike animal cells. Which of the following best explains what this means?",
+      "ms": {
+        "draft": 14900,
+        "critique": 7947,
+        "solver": 1389,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that plant cells have the ability to form different types of cells and change them. This ability is known as totipotency. Which of the following best explains why this is important for plant tissue culture?",
+      "ms": {
+        "draft": 14900,
+        "critique": 9531,
+        "solver": 2267,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for a plant looking wilted when it does not get enough water?",
+      "ms": {
+        "draft": 4059,
+        "critique": 9958,
+        "solver": 1387,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following is the most likely reason for the presence of DNA in mitochondria and plastids?",
+      "ms": {
+        "draft": 4059,
+        "critique": 8303,
+        "solver": 1253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the vacuole in a plant cell?",
+      "ms": {
+        "draft": 4059,
+        "critique": 8936,
+        "solver": 19065
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a function of the nucleus?",
+      "ms": {
+        "draft": 4376,
+        "critique": 7665,
+        "solver": 18819
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the cell membrane?",
+      "ms": {
+        "draft": 9652,
+        "critique": 7051
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of the endoplasmic reticulum?",
+      "ms": {
+        "draft": 4376,
+        "critique": 9656,
+        "solver": 1413,
+        "form": 0,
+        "translation": 49417
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of the cell wall in plant cells?",
+      "ms": {
+        "draft": 5279,
+        "critique": 10157,
+        "solver": 13672,
+        "form": 3122,
+        "translation": 56592
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the cell membrane?",
+      "ms": {
+        "draft": 4687,
+        "critique": 6292,
+        "solver": 1485,
+        "form": 0,
+        "translation": 58161
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a microscope has an eyepiece with 10X magnification and an objective lens with 40X magnification, what is the total magnification?",
+      "ms": {
+        "draft": 5615,
+        "critique": 7101,
+        "solver": 1859,
+        "form": 0,
+        "translation": 43856
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes a cell undergoing division and notes that the number of chromosomes in the daughter cells is half that of the parent cell. Which type of cell division is this most likely to be?",
+      "ms": {
+        "draft": 14900,
+        "critique": 7270,
+        "solver": 1848,
+        "form": 0,
+        "translation": 65452
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a plant cell when it is placed in a hypertonic solution?",
+      "ms": {
+        "draft": 4687,
+        "critique": 9093,
+        "solver": 15197,
+        "form": 0,
+        "translation": 77227
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why are mature red blood cells (RBCs) enucleate?",
+      "ms": {
+        "draft": 4769,
+        "critique": 7692,
+        "solver": 1680,
+        "form": 0,
+        "translation": 44590
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cell does not have a vacuole, which of the following would most likely happen?",
+      "ms": {
+        "draft": 4059,
+        "critique": 8733,
+        "solver": 2390,
+        "form": 3009,
+        "translation": 49787
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a skin cell starts dividing by meiosis instead of mitosis, what would be the most likely outcome?",
+      "ms": {
+        "draft": 14900,
+        "critique": 8002,
+        "solver": 1562,
+        "form": 0,
+        "translation": 67392
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it not possible to reconstruct a whole organism from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 5279,
+        "critique": 7930,
+        "solver": 2268,
+        "form": 3501,
+        "translation": 59747
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the purpose of using an electron microscope?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (66 vs 38 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are thermophiles found in hot springs significant for understanding the origin of life?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses a light microscope with 10X eyepiece and 40X objective lens to view an onion cell that is 200 μm in size, how large will the cell appear?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"200*400\" = 80000, but the key says 2000"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the cell?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 2 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the limit of resolution of the human eye?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in the passage, which of the following best describes the structure of the cell membrane?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a cell is placed in a solution where the solute concentration outside the cell is lower than inside, what will happen to the cell?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do plant cells not burst when placed in a hypotonic solution, unlike animal cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for the difference in shape between plant and animal cells?",
+      "reason": "options 0 and 1 say the same thing (\"Plant cells have a cell membrane, while animal cells do not\" / \"Plant cells have a cell wall, while animal cells do not\"); options 2 and 3 say the same thing (\"Plant cells have a nucleus, while animal cells do not\" / \"Plant cells have a vacuole, while animal cells do not\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a plant cell were to lose its cell wall, what would most likely happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason plant cells have a cell wall?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a characteristic of prokaryotic cells as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that prokaryotic cells lack membrane-bound organelles. Which of the following can be inferred from this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a feature of eukaryotic cells as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a function of the nucleus?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is true about the structure of a nucleus?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What happens to the chromatin material in a cell that is not dividing?",
+      "reason": "the key is far longer than every distractor (57 vs 32 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of cell division in living organisms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which part of a chloroplast contains the pigments that give plants their green colour?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the basic structural and functional unit of all living organisms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is a function of the cell membrane?\",\"options\":[\"It stores gene"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The passage explains that in meiosis, the number of chromosomes is reduced to half in the daughter cells. Which of the following processes restores the original number of chromosomes in the offspring?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a function of plastids in plant cells?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 2.20, which part of the cell is responsible for controlling all the activities of the cell?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant cell is placed in a hypertonic solution, what would happen to the cell?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cell membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the cell wall in plant cells?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a cell loses its nucleus, what would be the most immediate effect on the cell?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes that in meiosis, the parent cell divides twice, resulting in four daughter cells. Which of the following correctly explains why this process is important for sexual reproduction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the cell wall in plant cells?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellMembrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage states that plant cells do not show contact inhibition, unlike animal cells. Which of the following best explains what this means?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that plant cells have the ability to form different types of cells and change them. This ability is known as totipotency. Which of the following best explains why this is important for plant tissue culture?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for a plant looking wilted when it does not get enough water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following is the most likely reason for the presence of DNA in mitochondria and plastids?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the vacuole in a plant cell?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a function of the nucleus?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the function of the cell membrane?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

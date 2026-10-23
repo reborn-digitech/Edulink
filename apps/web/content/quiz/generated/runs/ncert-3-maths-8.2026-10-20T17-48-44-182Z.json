@@ -1,0 +1,305 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T17:48:44.182Z",
+  "finishedAt": "2026-10-20T17:51:42.283Z",
+  "seconds": 178,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm108.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Fair Share",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n18. (a) 1/3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 42791,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8006,
+      "completionTokens": 2616
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 118688,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 8505,
+      "completionTokens": 3376
+    },
+    "solver": {
+      "calls": 86,
+      "ms": 48003,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 17784,
+      "completionTokens": 1004
+    },
+    "form": {
+      "calls": 5,
+      "ms": 12794,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 1157,
+      "completionTokens": 375
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2644,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 164484,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11191,
+      "completionTokens": 5439
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of dividing something into halves?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6691
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a number line, how far is 13 from the double of 7?",
+      "ms": {
+        "draft": 3223,
+        "critique": 7959
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6206,
+        "solver": 11200,
+        "form": 2929
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Shabnam has half the number of marbles that Mukta has. If Mukta has 10 marbles, how many marbles does Shabnam have?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6851
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to show one-half of a whole?",
+      "ms": {
+        "draft": 3909,
+        "critique": 8196,
+        "solver": 12074
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 10 marbles are double of 5 marbles, then what is 5 marbles in relation to 10 marbles?",
+      "ms": {
+        "draft": 3909,
+        "critique": 5709
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a correct way to represent half of a shape?",
+      "ms": {
+        "draft": 3909,
+        "critique": 7388,
+        "solver": 12223,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "ms": {
+        "draft": 3909,
+        "critique": 6886,
+        "solver": 12269,
+        "form": 3582,
+        "translation": 30630
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a chikki is eaten from 2 sides, how much of it is left?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6985,
+        "solver": 2321,
+        "form": 2658,
+        "translation": 34439
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Shabnam has eaten some chikki from 3 sides, what is the most likely remaining part of the chikki?",
+      "ms": {
+        "draft": 3909,
+        "critique": 7513,
+        "solver": 13676,
+        "form": 3135,
+        "translation": 34473
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Lakshanya and Peehu have 16 flowers each. Lakshanya tied half of her flowers, and Peehu tied half of her flowers. How many flowers did they tie in total?",
+      "ms": {
+        "draft": 3223,
+        "critique": 5910,
+        "solver": 6137,
+        "form": 0,
+        "translation": 29519
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a whole is shared equally among 4 people, what is each share called?",
+      "ms": {
+        "draft": 3909,
+        "critique": 6969,
+        "solver": 9457,
+        "form": 1155,
+        "translation": 32667
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of dividing something into halves?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a number line, how far is 13 from the double of 7?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "reason": "options 0 and 3 are the same (\"One third\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Shabnam has half the number of marbles that Mukta has. If Mukta has 10 marbles, how many marbles does Shabnam have?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct way to show one-half of a whole?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 10 marbles are double of 5 marbles, then what is 5 marbles in relation to 10 marbles?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a correct way to represent half of a shape?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 are the same (\"Drawing a line to show one-half of the shape's perimeter\"); options 1 and 3 say the same thing (\"Drawing a line to show one-half of the shape's perimeter\" / \"Drawing a line to show one-half of the shape's area\"); options 2 and 3 say the same thing (\"Drawing a line to show one-half of the shape's perimeter\" / \"Drawing a line to show one-half of the shape's area\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

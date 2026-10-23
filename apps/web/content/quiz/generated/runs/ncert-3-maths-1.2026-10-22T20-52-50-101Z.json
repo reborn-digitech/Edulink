@@ -1,0 +1,223 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T20:52:50.101Z",
+  "finishedAt": "2026-10-22T20:55:18.523Z",
+  "seconds": 148,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm101.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — What’s in a Name?",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n3. (B) option\nn = 34 ⇒ 𝑣 = 34 − 1 = 33",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n12. 3\nC)\n√3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 16285,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4086,
+      "completionTokens": 1030
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 46913,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 3409,
+      "completionTokens": 1507
+    },
+    "solver": {
+      "calls": 22,
+      "ms": 8530,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 3852,
+      "completionTokens": 236
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2912,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15890,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2284,
+      "completionTokens": 1162
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "ms": {
+        "draft": 2714,
+        "critique": 5997
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the story about Deba and Deep?",
+      "ms": {
+        "draft": 2714,
+        "critique": 5997
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many cows had reached home if two marks were left on the wall?",
+      "ms": {
+        "draft": 2714,
+        "critique": 7503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a number between 1 and 99 that has the longest name?",
+      "ms": {
+        "draft": 2714,
+        "critique": 5677
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a number name with 8 letters?",
+      "ms": {
+        "draft": 2714,
+        "critique": 6134,
+        "solver": 7745
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the number that has a name with two words, where the first word has 6 letters and the second has 5 letters, and is very near to 100?",
+      "ms": {
+        "draft": 2714,
+        "critique": 7417,
+        "solver": 6245,
+        "form": 0,
+        "translation": 12631
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main idea of the story about Deba and Deep?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many cows had reached home if two marks were left on the wall?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a number between 1 and 99 that has the longest name?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a number name with 8 letters?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What was the method used by Deba and Deep to keep track of th"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

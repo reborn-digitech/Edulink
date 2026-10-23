@@ -1,0 +1,869 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T00:48:53.161Z",
+  "finishedAt": "2026-10-21T00:58:53.527Z",
+  "seconds": 600,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "keph2",
+    "document": "ncert/11/physics/keph204.pdf",
+    "classLevel": 11,
+    "subject": "Physics",
+    "chapter": "Chapter 4 — Thermodynamics",
+    "edition": "Reprint 2026-27",
+    "chunks": 28,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INPhO 2009 — question paper]\n7. Using the first law of thermodynamics, obtain the expression for specific heat C for the above\nlinear process in terms of {R, γ, V , V }. 0",
+      "[NSEP 2021 — solutions]\n3. From first law of thermodynamics dQ  dU  dW C dT  C dT  P dV. Given that\nP \nC  C V  Substituting the value we get \nT \non integration we get  nT V constant or\nV\nP  dT\nC V   dT C dT  PdV  V  dV\nT  T\nT  Ae V / Ans: d\n I 0",
+      "[INPhO 2016 — question paper and solutions]\nAlso, u = βT , where β is a constant and T is absolute temperature at which radiation 4\nis in equilibrium with the walls of the cavity.\n(a) Using the first law of thermodynamics obtain an expression for dQ in terms of [3]\nvolume, temperature and other related quantities.\nSolution: From first law of thermodynamics we have\ndQ = dU + dW = d(uV ) + P dV\nUsing u = βT , du = 4βT dT 4 3\n4β ( 4 3 )\ndQ = T dV + 3T V dT (7)\n(b) For a reversible process the entropy is defined as dS = dQ/T. Obtain an expres- [2]\nsion for S(V, T) for the radiation gas.\nSolution: ( )\ndQ 4β 3\n= dS = d T V (8)\nT 3\nAt T = 0, S = 0. Hence\n(c) Imagine the universe to be a perfectly spherical adiabatic enclosure of radius r con",
+      "[INPhO 2010 — question paper]\n2. Consider a closed cylinder whose walls are adiabatic. The cylinder lies in a horizontal\nposition and is divided into three parts A 1 , A 2 and A 3 by means of partitions S 1 and\nS 2 which can move along the length of the cylinder without friction. Piston S 1 is\nadiabatic while S 2 is conducting. Initially each of the parts A 1 , A 2 and A 3 contains\none mole of Helium gas at pressure P , temperature T , and volume V (see Fig. (2)). 0 0 0\nHelium is to be regarded as an ideal monoatomic gas. Also C = 3R/2, C = 5R/2 v p\nand γ = 5/3.\nNow heat is slowly supplied to the gas in part A till the temperature in part A 1 3\nbecomes T = 9T /4. 3 0\nA 1\nS 1\n[ 3.5 + 2 + 2 + 2.5 = 10 ]\nA 2 A 3\nS 2\nFigure "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 171339,
+      "in": 46,
+      "out": 45,
+      "rejects": 1,
+      "promptTokens": 48051,
+      "completionTokens": 11717
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 312664,
+      "in": 45,
+      "out": 35,
+      "rejects": 10,
+      "promptTokens": 27229,
+      "completionTokens": 10375
+    },
+    "solver": {
+      "calls": 253,
+      "ms": 98381,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 46624,
+      "completionTokens": 2635
+    },
+    "form": {
+      "calls": 15,
+      "ms": 39085,
+      "in": 30,
+      "out": 9,
+      "rejects": 21,
+      "promptTokens": 5508,
+      "completionTokens": 1296
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 4901,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 335854,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 23572,
+      "completionTokens": 11982
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following processes best describes the conversion of work into heat?",
+      "ms": {
+        "draft": 12607,
+        "critique": 4730
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the concept of thermodynamics?",
+      "ms": {
+        "draft": 12607,
+        "critique": 5891
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the difference between a diathermic wall and an adiabatic wall as described in the passage?",
+      "ms": {
+        "draft": 12607,
+        "critique": 5135,
+        "solver": 1452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of the passage, which of the following statements is true about thermodynamic equilibrium?",
+      "ms": {
+        "draft": 12607,
+        "critique": 5327,
+        "solver": 1397,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a correct understanding of the difference between thermodynamics and mechanics?",
+      "ms": {
+        "draft": 12607,
+        "critique": 5581,
+        "solver": 1452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary focus of thermodynamics?",
+      "ms": {
+        "draft": 12607,
+        "critique": 4883,
+        "solver": 937,
+        "form": 3049
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the Zeroth Law of Thermodynamics help us understand?",
+      "ms": {
+        "draft": 2607,
+        "critique": 5000,
+        "solver": 1435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two systems are in thermal equilibrium with a third system, what can be concluded about the two systems?",
+      "ms": {
+        "draft": 2607,
+        "critique": 5595,
+        "solver": 1584,
+        "form": 1894
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes internal energy?",
+      "ms": {
+        "draft": 2607,
+        "critique": 5430,
+        "solver": 1127,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a system that depends only on its current state, not on the path taken to reach that state?",
+      "ms": {
+        "draft": 2607,
+        "critique": 5693,
+        "solver": 9596,
+        "form": 2491
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A system is in thermal equilibrium with a third system. What can be said about the temperatures of the two systems?",
+      "ms": {
+        "draft": 2607,
+        "critique": 5893,
+        "solver": 1220,
+        "form": 1691
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a system, if the internal energy is found to increase, what must be true about the system?",
+      "ms": {
+        "draft": 2607,
+        "critique": 8076
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general principle that states the energy supplied to a system is partly used to increase its internal energy and partly used to do work on the surroundings?",
+      "ms": {
+        "draft": 3799,
+        "critique": 5330
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a gas expands against a constant pressure, what is the formula for the work done by the gas?",
+      "ms": {
+        "draft": 3799,
+        "critique": 4321
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that for a gas in a cylinder with a movable piston, the internal energy change is given by ΔQ = ΔU + PΔV. What does this equation imply about the heat supplied to the system?",
+      "ms": {
+        "draft": 3799,
+        "critique": 6634
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main difference between heat and internal energy?",
+      "ms": {
+        "draft": 3799,
+        "critique": 5228,
+        "solver": 8900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A gas is heated in a cylinder with a movable piston, causing it to expand. If the pressure is constant, and the volume changes from V1 to V2, what is the work done by the gas?",
+      "ms": {
+        "draft": 3799,
+        "critique": 4751,
+        "solver": 9651,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the distinction between heat and internal energy in thermodynamics?",
+      "ms": {
+        "draft": 3799,
+        "critique": 5488,
+        "solver": 9181,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a gas is allowed to expand freely against a vacuum, what can be said about its state?",
+      "ms": {
+        "draft": 11596,
+        "critique": 5492,
+        "solver": 1144,
+        "form": 2495
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the specific heat capacity of water in SI units?",
+      "ms": {
+        "draft": 11596,
+        "critique": 5673,
+        "solver": 12666
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes a quasi-static process?",
+      "ms": {
+        "draft": 4525,
+        "critique": 5232,
+        "solver": 4007,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A gas is taken from state A to B via a process where the net heat absorbed by the system is 9.35 cal. How much is the net work done by the system in this case?",
+      "ms": {
+        "draft": 4339,
+        "critique": 7435
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A gas is compressed adiabatically to half its original volume. What is the factor by which the pressure of the gas increases?",
+      "ms": {
+        "draft": 4339,
+        "critique": 6298,
+        "solver": 1767
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A closed cylinder contains three parts A1, A2, and A3 with one mole of helium each. Heat is supplied to A1 until its temperature becomes 9T0/4. What is the final pressure in A1?",
+      "ms": {
+        "draft": 4339,
+        "critique": 5589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A thermodynamic system undergoes a linear process from state D to E and then an isobaric process from E to F. What is the total work done by the gas during this process?",
+      "ms": {
+        "draft": 4339,
+        "critique": 5955,
+        "solver": 900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A gas is heated at constant pressure, and its temperature is raised by 45 °C. What is the amount of heat supplied to 2.0 kg of nitrogen?",
+      "ms": {
+        "draft": 4339,
+        "critique": 5415,
+        "solver": 1651
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A thermodynamic system is taken from an original state to an intermediate state by a linear process. What is the work done by the gas during this process?",
+      "ms": {
+        "draft": 4339,
+        "critique": 5277,
+        "solver": 1374
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A gas undergoes an adiabatic process. What is the change in internal energy of the gas?",
+      "ms": {
+        "draft": 3550,
+        "critique": 6175
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A gas undergoes an isothermal process at temperature T. The work done by the gas is W. What is the heat absorbed by the gas during this process?",
+      "ms": {
+        "draft": 3550,
+        "critique": 5506,
+        "solver": 12693,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A gas is heated at constant volume. What is the relationship between the heat supplied and the change in internal energy?",
+      "ms": {
+        "draft": 3550,
+        "critique": 4706,
+        "solver": 1449,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the efficiency of a Carnot engine dependent on?",
+      "ms": {
+        "draft": 15058,
+        "critique": 5290,
+        "solver": 1203,
+        "form": 3081
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key feature of a Carnot engine?",
+      "ms": {
+        "draft": 15058,
+        "critique": 5292,
+        "solver": 10224,
+        "form": 2347
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the efficiency of a Carnot engine depend on, according to the passage?",
+      "ms": {
+        "draft": 15058,
+        "critique": 6403,
+        "solver": 1422,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sequence of processes in a Carnot cycle?",
+      "ms": {
+        "draft": 15058,
+        "critique": 5796,
+        "solver": 13807
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the molar specific heat capacity of a solid at ordinary temperatures?",
+      "ms": {
+        "draft": 4362,
+        "critique": 6522
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the internal energy of an ideal gas during an isothermal process?",
+      "ms": {
+        "draft": 4629,
+        "critique": 6175,
+        "solver": 7310,
+        "form": 1239
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the equation of state for an ideal gas?",
+      "ms": {
+        "draft": 11596,
+        "critique": 6518,
+        "solver": 1255,
+        "form": 2588,
+        "translation": 26861
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as one where the volume of the gas remains constant?",
+      "ms": {
+        "draft": 2918,
+        "critique": 4910,
+        "solver": 1446,
+        "form": 2207,
+        "translation": 33228
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which process is the pressure of the gas kept constant?",
+      "ms": {
+        "draft": 2918,
+        "critique": 4670,
+        "solver": 1426,
+        "form": 2062,
+        "translation": 29757
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a quasi-static process?",
+      "ms": {
+        "draft": 4629,
+        "critique": 5663,
+        "solver": 8531,
+        "form": 0,
+        "translation": 31902
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which type of process does the system return to its initial state after completing a cycle?",
+      "ms": {
+        "draft": 2918,
+        "critique": 5781,
+        "solver": 1111,
+        "form": 2200,
+        "translation": 29272
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A gas is compressed in a cylinder at constant pressure. What is the relationship between the heat added to the system and the work done on the system?",
+      "ms": {
+        "draft": 3550,
+        "critique": 7523,
+        "solver": 9686,
+        "form": 0,
+        "translation": 57239
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a gas is heated at constant pressure, which of the following equations correctly represents the first law of thermodynamics?",
+      "ms": {
+        "draft": 11596,
+        "critique": 5954,
+        "solver": 1568,
+        "form": 3350,
+        "translation": 37759
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A gas is taken through a cyclic process. What is the net change in the internal energy of the gas after one complete cycle?",
+      "ms": {
+        "draft": 3550,
+        "critique": 6238,
+        "solver": 1769,
+        "form": 0,
+        "translation": 43985
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the context of thermodynamics, what is the significance of extensive and intensive variables?",
+      "ms": {
+        "draft": 11596,
+        "critique": 7078,
+        "solver": 1152,
+        "form": 2200,
+        "translation": 43096
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following processes best describes the conversion of work into heat?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the concept of thermodynamics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the difference between a diathermic wall and an adiabatic wall as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"A diathermic wall allows heat to flow, while an adiabatic wall does not\" / \"A diathermic wall allows work to flow, while an adiabatic wall does not\"); options 0 and 2 say the same thing (\"A diathermic wall allows heat to flow, while an adiabatic wall does not\" / \"A diathermic wall allows pressure to flow, while an adiabatic wall does not\"); options 0 and 3 say the same thing (\"A diathermic wall allows heat to flow, while an adiabatic wall does not\" / \"A diathermic wall allows volume to flow, while an adiabatic wall does not\"); options 1 and 2 say the same thing (\"A diathermic wall allows work to flow, while an adiabatic wall does not\" / \"A diathermic wall allows pressure to flow, while an adiabatic wall does not\"); options 1 and 3 say the same thing (\"A diathermic wall allows work to flow, while an adiabatic wall does not\" / \"A diathermic wall allows volume to flow, while an adiabatic wall does not\"); options 2 and 3 say the same thing (\"A diathermic wall allows pressure to flow, while an adiabatic wall does not\" / \"A diathermic wall allows volume to flow, while an adiabatic wall does not\"); distractor 1's reason is not a one-line misconception (\"Correct answer as per the passage, which explicitly states t…\"); distractor 2 has no reason; distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the context of the passage, which of the following statements is true about thermodynamic equilibrium?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer as per the passage, which explicitly states t…\"); distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a correct understanding of the difference between thermodynamics and mechanics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Thermodynamics is concerned with the motion of the system as a whole, while mechanics is concerned with the internal state of the body\" / \"Thermodynamics is concerned with the internal macroscopic state of the body, while mechanics is concerned with the motion of the system as a whole\"); distractor 0's reason is not a one-line misconception (\"This is the opposite of what the passage states. The passage…\"); distractor 2 has no reason; distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary focus of thermodynamics?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This is a part of thermodynamics, but not the primary focus …\"); distractor 2 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the Zeroth Law of Thermodynamics help us understand?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's explanation of the Zeroth Law…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two systems are in thermal equilibrium with a third system, what can be concluded about the two systems?",
+      "reason": "options 0 and 1 say the same thing (\"They are not in thermal equilibrium with each other\" / \"They are in thermal equilibrium with each other\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes internal energy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of a system that depends only on its current state, not on the path taken to reach that state?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A system is in thermal equilibrium with a third system. What can be said about the temperatures of the two systems?",
+      "reason": "options 2 and 3 say the same thing (\"They are higher than the third system's temperature\" / \"They are lower than the third system's temperature\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a system, if the internal energy is found to increase, what must be true about the system?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the general principle that states the energy supplied to a system is partly used to increase its internal energy and partly used to do work on the surroundings?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a gas expands against a constant pressure, what is the formula for the work done by the gas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage mentions that for a gas in a cylinder with a movable piston, the internal energy change is given by ΔQ = ΔU + PΔV. What does this equation imply about the heat supplied to the system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main difference between heat and internal energy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the nature of heat as a type of work, which i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A gas is heated in a cylinder with a movable piston, causing it to expand. If the pressure is constant, and the volume changes from V1 to V2, what is the work done by the gas?",
+      "reason": "options 0 and 1 say the same thing (\"W = P × (V1 + V2)\" / \"W = P × (V2 - V1)\"); options 0 and 3 are the same (\"W = P × (V1 + V2)\"); options 1 and 2 say the same thing (\"W = P × (V2 - V1)\" / \"W = P / (V2 - V1)\"); options 1 and 3 say the same thing (\"W = P × (V2 - V1)\" / \"W = P × (V1 + V2)\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the distinction between heat and internal energy in thermodynamics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly equates heat with internal energy, which the pas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a gas is allowed to expand freely against a vacuum, what can be said about its state?",
+      "reason": "options 2 and 3 say the same thing (\"It is in a state of thermal equilibrium only\" / \"It is in a state of mechanical equilibrium only\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the specific heat capacity of water in SI units?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes a quasi-static process?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A gas expands isothermally and then is compressed adiabatically. What can be said about the total work done on the gas?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A gas is taken from state A to B via a process where the net heat absorbed by the system is 9.35 cal. How much is the net work done by the system in this case?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A gas is compressed adiabatically to half its original volume. What is the factor by which the pressure of the gas increases?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A closed cylinder contains three parts A1, A2, and A3 with one mole of helium each. Heat is supplied to A1 until its temperature becomes 9T0/4. What is the final pressure in A1?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A thermodynamic system undergoes a linear process from state D to E and then an isobaric process from E to F. What is the total work done by the gas during this process?",
+      "reason": "figure: figure spec refused: spec.curves.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A gas is heated at constant pressure, and its temperature is raised by 45 °C. What is the amount of heat supplied to 2.0 kg of nitrogen?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A thermodynamic system is taken from an original state to an intermediate state by a linear process. What is the work done by the gas during this process?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A gas undergoes an adiabatic process. What is the change in internal energy of the gas?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A gas undergoes an isothermal process at temperature T. The work done by the gas is W. What is the heat absorbed by the gas during this process?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A gas is heated at constant volume. What is the relationship between the heat supplied and the change in internal energy?",
+      "reason": "options 1 and 2 say the same thing (\"Heat supplied is greater than the change in internal energy\" / \"Heat supplied is less than the change in internal energy\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the efficiency of a Carnot engine dependent on?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage clearly states that the efficiency is independen…\"); distractor 2's reason is not a one-line misconception (\"The passage does not mention any dependence on volume or pre…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention any dependence on volume or pre…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key feature of a Carnot engine?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"The passage clearly states that the Carnot engine is reversi…\"); distractor 3's reason is not a one-line misconception (\"The passage explains that the Carnot engine absorbs heat fro…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the efficiency of a Carnot engine depend on, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"The passage clearly states that the efficiency of a Carnot e…\"); distractor 2's reason is not a one-line misconception (\"The passage does not mention any dependence on the volume of…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention any dependence on the pressure …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the sequence of processes in a Carnot cycle?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the molar specific heat capacity of a solid at ordinary temperatures?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the internal energy of an ideal gas during an isothermal process?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

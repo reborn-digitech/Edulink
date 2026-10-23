@@ -1,0 +1,881 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T10:14:11.479Z",
+  "finishedAt": "2026-10-20T10:28:49.121Z",
+  "seconds": 878,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc106.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 6 — How Forces Affect Motion",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 30,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2014 — question paper]\n45. A ball falls from rest through air and eventually reaches a constant velocity. For\nthis fall, force X and Y vary with time as shown.\nWhich of the following should be force X and Force Y?\nForce X Force Y\na) Air Resistance Resultant Force\nb) Air Resistance Weight\nc) Up thrust Resultant Force\nd) Up thrust Weight",
+      "[NSEJS 2016 — question paper]\n17. Velocity of a particle moving along a straight line varies with time as shown\nin the adjacent figure. Net forces acting on the particle are , , ,\nand in the intervals OA, AB, BC, CD and DE respectively. Indentify the\ncorrect statement\na) increases with time.\nb) is initially positive and then becomes negative\nc) and are in opposite directions\nd) is negative.",
+      "[INJSO 2013 — question paper]\n70. Consider following statements.\nI. At position (1), the vertical distance from surface of the liquid to the bottom of\nthe block is m/h ρ. 2\nII. After removal of force F, the upward velocity of the block continuously increases\nuntil it reaches position (1).\nIII. During upward motion, after crossing position (1), the velocity of the block goes\non decreasing.\nIV. During upward motion, from position (2), the velocity of the block increases\nlinearly till it reaches position (1).\nWhich of the above statements are correct?\nA. I, II, III and IV.\nB. I, II and III only.\nC. I and III only.\nD. I and II only.",
+      "[NSEJS 2020 — answer key]\n5. a system = = 90N / 30 kg = 3 m/s 2\nSituation I : F A = m B a = 30 N ( force on B due to A)\nSituation II : F B = m a a = 60 N ( force on A due to B)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 324928,
+      "in": 47,
+      "out": 43,
+      "rejects": 4,
+      "promptTokens": 51093,
+      "completionTokens": 14066
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 441407,
+      "in": 43,
+      "out": 35,
+      "rejects": 8,
+      "promptTokens": 23817,
+      "completionTokens": 8507
+    },
+    "solver": {
+      "calls": 219,
+      "ms": 139871,
+      "in": 35,
+      "out": 31,
+      "rejects": 4,
+      "promptTokens": 38664,
+      "completionTokens": 2106
+    },
+    "form": {
+      "calls": 11,
+      "ms": 139647,
+      "in": 31,
+      "out": 6,
+      "rejects": 25,
+      "promptTokens": 17503,
+      "completionTokens": 2528
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 5209,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 239065,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 11203,
+      "completionTokens": 5863
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A block is being pushed by two forces, one of 20 N to the right and another of 15 N to the left. What is the magnitude and direction of the net force acting on the block?",
+      "ms": {
+        "draft": 6123,
+        "critique": 8609,
+        "solver": 1757,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram, a block is being pulled by two forces in the same direction, one of 8 N and the other of 5 N. What is the net force acting on the block?",
+      "ms": {
+        "draft": 6123,
+        "critique": 8940,
+        "solver": 2327,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball is moving in a straight line and is subject to two forces: one force of 10 N to the right and another force of 6 N to the left. What is the net force acting on the ball?",
+      "ms": {
+        "draft": 6123,
+        "critique": 12087,
+        "solver": 14891,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an activity, a stack of coins is placed on a surface and pushed by a stretched rubber band. After the rubber band loses contact with the coins, what happens to their motion?",
+      "ms": {
+        "draft": 4943,
+        "critique": 10580,
+        "solver": 16956
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When a box is being pushed on a horizontal surface, what force acts in the direction opposite to the applied force?",
+      "ms": {
+        "draft": 4943,
+        "critique": 8972,
+        "solver": 17588,
+        "form": 4455
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A box is pushed on a wooden table top and then on a polished marble floor. The box travels a longer distance on the marble floor. What does this indicate about the forces acting on the box?",
+      "ms": {
+        "draft": 4943,
+        "critique": 10187,
+        "solver": 15551,
+        "form": 7730
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student pushes a box on a rough surface and notices that the box moves in the direction of the force applied. However, when the student stops pushing, the box comes to rest. Why does this happen?",
+      "ms": {
+        "draft": 4943,
+        "critique": 9681
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A block is pulled with a force of 10 N on a horizontal surface, and it moves with constant velocity. What can you say about the force of friction acting on the block?",
+      "ms": {
+        "draft": 4943,
+        "critique": 10424
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the motion of an object when the net force acting on it is zero?",
+      "ms": {
+        "draft": 4943,
+        "critique": 8441
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Based on the passage, what is the main factor that affects the acceleration of an object when a force is applied?",
+      "ms": {
+        "draft": 6366,
+        "critique": 9667,
+        "solver": 3858,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A block is pulled by a spring balance on a horizontal surface. The spring balance shows a reading that increases gradually until the block starts moving. What does this reading represent when the block is moving with constant velocity?",
+      "ms": {
+        "draft": 17903,
+        "critique": 9498,
+        "solver": 2317,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity described in the passage, what happens to the acceleration of the cart when the mass of the cup is doubled?",
+      "ms": {
+        "draft": 6366,
+        "critique": 10707,
+        "solver": 1516
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A block is moving on a horizontal surface with constant velocity. A spring balance is attached to the block and pulled horizontally. What will happen to the reading on the spring balance if the surface becomes smoother?",
+      "ms": {
+        "draft": 17903,
+        "critique": 10078,
+        "solver": 1914,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the experiment, if the force applied is kept constant and the mass of the cart is increased, what can be said about the acceleration?",
+      "ms": {
+        "draft": 6366,
+        "critique": 7968
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the cart's mass is doubled while the force remains constant, what will happen to its acceleration?",
+      "ms": {
+        "draft": 6366,
+        "critique": 9484
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of acceleration?",
+      "ms": {
+        "draft": 73458,
+        "critique": 7171
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of Newton's third law of motion?",
+      "ms": {
+        "draft": 16461,
+        "critique": 8707,
+        "solver": 2626,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to Newton's third law of motion, what happens when one object exerts a force on another object?",
+      "ms": {
+        "draft": 12674,
+        "critique": 8992
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to Newton's third law of motion, what happens when one object exerts a force on another object?",
+      "ms": {
+        "draft": 12309,
+        "critique": 7909,
+        "solver": 9231,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A force-mass graph is plotted for an object. If the acceleration is 2 m/s², what is the force acting on the object?",
+      "ms": {
+        "draft": 7032,
+        "critique": 9549,
+        "solver": 3429,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A tractor pulls a harrow with a net force F, resulting in acceleration a. It then pulls a trolley with the same force F, resulting in acceleration a'. If the tractor pulls both the harrow and trolley together, what is the new acceleration in terms of a and a'?",
+      "ms": {
+        "draft": 7032,
+        "critique": 9056,
+        "solver": 2436,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An object of mass 10 kg has a velocity-time graph as shown. What is the force acting on the object?",
+      "ms": {
+        "draft": 7032,
+        "critique": 8437,
+        "solver": 1966,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A bullet of mass 50 g is moving at 100 m/s and comes to rest after penetrating 50 cm. What is the stopping force on the bullet?",
+      "ms": {
+        "draft": 7032,
+        "critique": 9547,
+        "solver": 1896
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A football is kicked with a speed of 108 km/h, and the force imparted is 800 N. The mass of the ball is 0.4 kg. What is the time of contact between the foot and the ball?",
+      "ms": {
+        "draft": 7032,
+        "critique": 8790,
+        "solver": 2859
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the definition of Newton's third law of motion?",
+      "ms": {
+        "draft": 20412,
+        "critique": 10130,
+        "solver": 1549,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the definition of Newton's second law of motion?",
+      "ms": {
+        "draft": 20412,
+        "critique": 11579,
+        "solver": 2538,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the definition of Newton's first law of motion?",
+      "ms": {
+        "draft": 20412,
+        "critique": 9317,
+        "solver": 21120,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, when two boxes are treated as a single system, what is the acceleration of the system?",
+      "ms": {
+        "draft": 20412,
+        "critique": 8449,
+        "solver": 2964,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the example of two boxes connected by a string on a frictionless surface, what is the net external force acting on the system?",
+      "ms": {
+        "draft": 20412,
+        "critique": 9157,
+        "solver": 1448,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which direction does a balloon move when the air rushes out of it?",
+      "ms": {
+        "draft": 8753,
+        "critique": 7379,
+        "solver": 2350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of Newton's third law of motion?",
+      "ms": {
+        "draft": 8753,
+        "critique": 9036,
+        "solver": 17425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a force of 2 N is applied on a 0.1 kg bullet, what is its initial acceleration?",
+      "ms": {
+        "draft": 8753,
+        "critique": 9511
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the net force acting on an object moving with constant velocity?",
+      "ms": {
+        "draft": 6357,
+        "critique": 8448,
+        "solver": 2565,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage explain about the force applied by the ground when a person walks or runs?",
+      "ms": {
+        "draft": 6357,
+        "critique": 9019,
+        "solver": 2318,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A toy car of mass 100 g is moving with a constant velocity of 0.5 m/s. What is the net force acting on the toy car?",
+      "ms": {
+        "draft": 6357,
+        "critique": 8180,
+        "solver": 2317,
+        "form": 4103
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the activity described in the passage, when you push a table while sitting on a chair with wheels, what happens to the chair?",
+      "ms": {
+        "draft": 6357,
+        "critique": 8092,
+        "solver": 2325,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the Earth not appear to move towards a falling fruit even though the forces are equal?",
+      "ms": {
+        "draft": 8753,
+        "critique": 8789,
+        "solver": 1483,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A block is moving with constant velocity on a horizontal surface. A spring balance is used to pull the block. The reading on the spring balance is the same as the force of friction. What can be concluded about the net force on the block?",
+      "ms": {
+        "draft": 17903,
+        "critique": 8038,
+        "solver": 1724,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A block is pulled by a spring balance. When the block just starts moving, the spring balance shows a reading. What does this reading represent?",
+      "ms": {
+        "draft": 17903,
+        "critique": 8707,
+        "solver": 2354,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when two forces acting on an object are balanced?",
+      "ms": {
+        "draft": 6123,
+        "critique": 9244,
+        "solver": 3715,
+        "form": 0,
+        "translation": 61454
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two people are pushing a car in the same direction. One applies a force of 15 N and the other applies a force of 10 N. What is the net force acting on the car?",
+      "ms": {
+        "draft": 6123,
+        "critique": 10926,
+        "solver": 2088,
+        "form": 0,
+        "translation": 48160
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball falls from rest through air and reaches a constant velocity. Which of the following correctly identifies the forces acting on the ball?",
+      "ms": {
+        "draft": 7032,
+        "critique": 9190,
+        "solver": 2355,
+        "form": 0,
+        "translation": 40625
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A block is being pulled by two forces: one of 12 N to the right and another of 10 N to the left. If the block is moving with constant velocity, what can be said about the forces acting on it?",
+      "ms": {
+        "draft": 6123,
+        "critique": 8446,
+        "solver": 2053,
+        "form": 0,
+        "translation": 82053
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the net force on an object is zero, what can be said about its motion?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If a block is moving with constant velocity on a horizontal surface, what can be said about the forces acting on it?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "According to the passage, what is the effect of increasing the force on an object of constant mass?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A block is being pushed by two forces, one of 20 N to the right and another of 15 N to the left. What is the magnitude and direction of the net force acting on the block?",
+      "reason": "option 0 repeats the stem's wording (\"5 N to the left\"); options are in more than one unit (n to the left, n to the right); options 0 and 1 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the diagram, a block is being pulled by two forces in the same direction, one of 8 N and the other of 5 N. What is the net force acting on the block?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'arrow'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A ball is moving in a straight line and is subject to two forces: one force of 10 N to the right and another force of 6 N to the left. What is the net force acting on the ball?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In an activity, a stack of coins is placed on a surface and pushed by a stretched rubber band. After the rubber band loses contact with the coins, what happens to their motion?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "When a box is being pushed on a horizontal surface, what force acts in the direction opposite to the applied force?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A box is pushed on a wooden table top and then on a polished marble floor. The box travels a longer distance on the marble floor. What does this indicate about the forces acting on the box?",
+      "reason": "options 1 and 2 say the same thing (\"The force of friction is greater on the marble floor\" / \"The force of friction is smaller on the marble floor\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student pushes a box on a rough surface and notices that the box moves in the direction of the force applied. However, when the student stops pushing, the box comes to rest. Why does this happen?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A block is pulled with a force of 10 N on a horizontal surface, and it moves with constant velocity. What can you say about the force of friction acting on the block?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the motion of an object when the net force acting on it is zero?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Based on the passage, what is the main factor that affects the acceleration of an object when a force is applied?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Ignores the role of mass in motion equations from the passag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A block is pulled by a spring balance on a horizontal surface. The spring balance shows a reading that increases gradually until the block starts moving. What does this reading represent when the block is moving with constant velocity?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'springBalance'"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the activity described in the passage, what happens to the acceleration of the cart when the mass of the cup is doubled?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A block is moving on a horizontal surface with constant velocity. A spring balance is attached to the block and pulled horizontally. What will happen to the reading on the spring balance if the surface becomes smoother?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'springBalance'"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the experiment, if the force applied is kept constant and the mass of the cart is increased, what can be said about the acceleration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the cart's mass is doubled while the force remains constant, what will happen to its acceleration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of acceleration?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of Newton's third law of motion?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct option, no reason needed for distractor reason list …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to Newton's third law of motion, what happens when one object exerts a force on another object?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to Newton's third law of motion, what happens when one object exerts a force on another object?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What happens to a rocket when its engine fires in the direction of its motion?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A force-mass graph is plotted for an object. If the acceleration is 2 m/s², what is the force acting on the object?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A tractor pulls a harrow with a net force F, resulting in acceleration a. It then pulls a trolley with the same force F, resulting in acceleration a'. If the tractor pulls both the harrow and trolley together, what is the new acceleration in terms of a and a'?",
+      "reason": "options 2 and 3 say the same thing (\"a / a'\" / \"a * a' / (a + a')\"); checkExpr \"(a*a')/(a+a')\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "An object of mass 10 kg has a velocity-time graph as shown. What is the force acting on the object?",
+      "reason": "figure: figure spec refused: spec.x.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A bullet of mass 50 g is moving at 100 m/s and comes to rest after penetrating 50 cm. What is the stopping force on the bullet?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A football is kicked with a speed of 108 km/h, and the force imparted is 800 N. The mass of the ball is 0.4 kg. What is the time of contact between the foot and the ball?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the definition of Newton's third law of motion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the definition of Newton's second law of motion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the definition of Newton's first law of motion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, when two boxes are treated as a single system, what is the acceleration of the system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"a = F / (m1 + m2)\" / \"a = F / m1\"); options 0 and 2 say the same thing (\"a = F / (m1 + m2)\" / \"a = F / m2\"); options 0 and 3 say the same thing (\"a = F / (m1 + m2)\" / \"a = (m1 + m2) / F\"); options 1 and 3 say the same thing (\"a = F / m1\" / \"a = (m1 + m2) / F\"); options 2 and 3 say the same thing (\"a = F / m2\" / \"a = (m1 + m2) / F\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the example of two boxes connected by a string on a frictionless surface, what is the net external force acting on the system?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.box1: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which direction does a balloon move when the air rushes out of it?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of Newton's third law of motion?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a force of 2 N is applied on a 0.1 kg bullet, what is its initial acceleration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the net force acting on an object moving with constant velocity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage explain about the force applied by the ground when a person walks or runs?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A toy car of mass 100 g is moving with a constant velocity of 0.5 m/s. What is the net force acting on the toy car?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); checkExpr \"0\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the activity described in the passage, when you push a table while sitting on a chair with wheels, what happens to the chair?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the Earth not appear to move towards a falling fruit even though the forces are equal?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'fruit'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A block is moving with constant velocity on a horizontal surface. A spring balance is used to pull the block. The reading on the spring balance is the same as the force of friction. What can be concluded about the net force on the block?",
+      "reason": "near-duplicate of served question cmvfhrw8n04j9god8lhy8jbv3 (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A block is pulled by a spring balance. When the block just starts moving, the spring balance shows a reading. What does this reading represent?",
+      "reason": "near-duplicate of served question cmvfhrw5v04ilgod8s63vvv6t (cosine 0.915 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

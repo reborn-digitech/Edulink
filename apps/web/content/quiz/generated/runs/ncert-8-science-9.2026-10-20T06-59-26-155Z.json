@@ -1,0 +1,691 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T06:59:26.155Z",
+  "finishedAt": "2026-10-20T07:06:32.789Z",
+  "seconds": 427,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu109.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 9 — The Amazing World of Solutes, Solvents, and Solutions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2020 — question paper]\n8. A U-shaped tube with a semipermeable membrane is filled with 2 L of water as shown in\nfigure I. When 0.1 mol of compound X is completely dissolved in the right arm of the tube,\nthe level of X (aq) solution rises as shown in the figure II. Assume that the rise in the solution\nlevel is proportional to the number of solute particles in an aqueous solution.\nI 0.1 mol of X II\nh\nH O 2 (l) H O 2 (l) H O 2 (l) X (aq)\nSemipermeable membrane Semipermeable membrane\nThe height h would be the highest when X is\nA. MgCl 2 B. CH COOH 3 C. NH NO 4 3 D. Cane Sugar",
+      "[INJSO 2022 — question paper]\n2. A student took a sandy soil sample from a desert area, put it in a bucket and poured tap water on it. After\nsome time, the soil settled down in the bucket. She wanted to know if the sample had any soluble\nsubstances in it. Comparison of which of these properties between supernatant bucket water and the\noriginal tap water will most likely answer her question definitively.\nA. pH B. density C. temperature D. light scattering in identical containers",
+      "[INJSO 2022 — solutions or answer key]\n2. B. If some soluble components from soil dissolve in water, then density of water is most likely to change. Other\nparameters may or may not change significantly.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n27. Give reason for the following : 3\nA. A solution of sports electrolyte drink conducts electricity, but coconut oil does\nnot.\nB. Milkiness disappears when excess of carbon dioxide is passed through lime\nwater.\nC. An iron bridge near the sea rusts much faster than an iron bridge located in a\ndry hilly region."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 144831,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 39266,
+      "completionTokens": 8476
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 217997,
+      "in": 35,
+      "out": 32,
+      "rejects": 3,
+      "promptTokens": 18199,
+      "completionTokens": 6564
+    },
+    "solver": {
+      "calls": 179,
+      "ms": 74189,
+      "in": 32,
+      "out": 25,
+      "rejects": 7,
+      "promptTokens": 29687,
+      "completionTokens": 1739
+    },
+    "form": {
+      "calls": 13,
+      "ms": 64060,
+      "in": 25,
+      "out": 12,
+      "rejects": 13,
+      "promptTokens": 12408,
+      "completionTokens": 1780
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 47,
+      "ms": 6945,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 427718,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26959,
+      "completionTokens": 13298
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about saturated solutions is correct?",
+      "ms": {
+        "draft": 3151,
+        "critique": 5723,
+        "solver": 1047,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is water considered a good solvent according to the passage?",
+      "ms": {
+        "draft": 3151,
+        "critique": 5935,
+        "solver": 1697,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a science experiment, a student adds oil to water and observes that the oil floats on the surface. What is the most likely reason for this observation?",
+      "ms": {
+        "draft": 4031,
+        "critique": 5104,
+        "solver": 1575,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes two forests: one with trees closely packed (Fig. 9.10a) and another with trees far apart (Fig. 9.10b). Based on the passage, which of the following best describes the relationship between the density of a substance and its volume?",
+      "ms": {
+        "draft": 4031,
+        "critique": 5643,
+        "solver": 1597,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducts an experiment to determine if a soil sample contains soluble substances. Which of the following properties should be compared between the original tap water and the water after the soil has been soaked in it?",
+      "ms": {
+        "draft": 4031,
+        "critique": 6865,
+        "solver": 966
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, the solubility of a substance in water is affected by temperature. What is the most accurate explanation for why this happens?",
+      "ms": {
+        "draft": 4031,
+        "critique": 6305,
+        "solver": 1704,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the solubility of gases in water?",
+      "ms": {
+        "draft": 4031,
+        "critique": 5519,
+        "solver": 1627,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between the size of a measuring cylinder and its accuracy?",
+      "ms": {
+        "draft": 3357,
+        "critique": 5339,
+        "solver": 1800
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to measure 45 mL of a liquid accurately. Which measuring cylinder should they use based on the information in the passage?",
+      "ms": {
+        "draft": 3357,
+        "critique": 5195,
+        "solver": 1304
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a 50 mL measuring cylinder to measure 70 mL of water, what problem will they face?",
+      "ms": {
+        "draft": 3357,
+        "critique": 5041,
+        "solver": 12782
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the solubility of gases in liquids?",
+      "ms": {
+        "draft": 5718,
+        "critique": 5015
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the liquid component in a solution?",
+      "ms": {
+        "draft": 4124,
+        "critique": 4346
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a saturated solution?",
+      "ms": {
+        "draft": 4124,
+        "critique": 5442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student dissolves 50 g of salt in 200 mL of water. What is the solubility of salt in water?",
+      "ms": {
+        "draft": 4124,
+        "critique": 5000,
+        "solver": 13940,
+        "form": 2986
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure, why does the unpeeled orange float while the peeled one sinks?",
+      "ms": {
+        "draft": 4124,
+        "critique": 6135,
+        "solver": 1495,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student wants to determine if a soil sample contains soluble substances. Which property should they compare between the supernatant water and the original tap water?",
+      "ms": {
+        "draft": 4124,
+        "critique": 5472,
+        "solver": 13127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student uses a measuring cylinder to find the volume of a stone. The initial volume of water is 50 mL, and after placing the stone in the cylinder, the water level rises to 55 mL. What is the volume of the stone?",
+      "ms": {
+        "draft": 4515,
+        "critique": 6171,
+        "solver": 1426,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does a bamboo raft float on water?",
+      "ms": {
+        "draft": 4515,
+        "critique": 5538,
+        "solver": 1249,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to determine if a soil sample contains soluble substances. Which property of the soil sample and tap water should be compared?",
+      "ms": {
+        "draft": 4515,
+        "critique": 4568,
+        "solver": 1457
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "ms": {
+        "draft": 4515,
+        "critique": 6019,
+        "solver": 1425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which instrument is used to measure the mass of an object?",
+      "ms": {
+        "draft": 8222,
+        "critique": 5202,
+        "solver": 1640,
+        "form": 2082
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the mass of a solid object as 16.4 g and its volume as 5 cm³. What is its density?",
+      "ms": {
+        "draft": 4515,
+        "critique": 8322,
+        "solver": 11070
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a solution?",
+      "ms": {
+        "draft": 6862,
+        "critique": 6161,
+        "solver": 452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short like a beaker?",
+      "ms": {
+        "draft": 3370,
+        "critique": 6452,
+        "solver": 1368,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for a uniform mixture of a solute and a solvent?",
+      "ms": {
+        "draft": 3151,
+        "critique": 4232,
+        "solver": 917,
+        "form": 3133,
+        "translation": 32596
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a non-uniform mixture?",
+      "ms": {
+        "draft": 3151,
+        "critique": 4439,
+        "solver": 1420,
+        "form": 2402,
+        "translation": 33713
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about mass?",
+      "ms": {
+        "draft": 3357,
+        "critique": 6396,
+        "solver": 1985,
+        "form": 3294,
+        "translation": 39625
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution is formed by mixing two liquids, which one is considered the solute?",
+      "ms": {
+        "draft": 3151,
+        "critique": 4794,
+        "solver": 1749,
+        "form": 2386,
+        "translation": 41311
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student dissolves as much baking soda as possible in water at 20°C. Then, the water is heated to 70°C and more baking soda is added. What is the most likely explanation for the increased solubility of baking soda at higher temperatures?",
+      "ms": {
+        "draft": 4031,
+        "critique": 6383,
+        "solver": 1016,
+        "form": 0,
+        "translation": 52088
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A stone is placed in a measuring cylinder containing 50 mL of water, and the water level rises to 55 mL. What is the volume of the stone?",
+      "ms": {
+        "draft": 3370,
+        "critique": 5306,
+        "solver": 1389,
+        "form": 0,
+        "translation": 32917
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student adds 5 spoons of salt to water and some remains undissolved, what can be inferred about the solution?",
+      "ms": {
+        "draft": 3151,
+        "critique": 6088,
+        "solver": 1321,
+        "form": 3418,
+        "translation": 57509
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student places an egg in a glass of water and notices that the egg sinks. What change can be made to make the egg float?",
+      "ms": {
+        "draft": 3370,
+        "critique": 6032,
+        "solver": 1206,
+        "form": 0,
+        "translation": 34299
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student dissolved 0.1 mol of compound X in 2 L of water. The level of the solution rose. Which of the following compounds would cause the highest rise in level?",
+      "ms": {
+        "draft": 4124,
+        "critique": 7890,
+        "solver": 1313,
+        "form": 0,
+        "translation": 26723
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "ms": {
+        "draft": 3370,
+        "critique": 4952,
+        "solver": 782,
+        "form": 0,
+        "translation": 31089
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to read the bottom of the meniscus when measuring the volume of a liquid?",
+      "ms": {
+        "draft": 3357,
+        "critique": 4428,
+        "solver": 1596,
+        "form": 3172,
+        "translation": 40439
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the passage, what is the difference between mass and weight?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about saturated solutions is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is water considered a good solvent according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a science experiment, a student adds oil to water and observes that the oil floats on the surface. What is the most likely reason for this observation?",
+      "reason": "options 1 and 2 say the same thing (\"Oil is less dense than water\" / \"Water is less dense than oil\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student observes two forests: one with trees closely packed (Fig. 9.10a) and another with trees far apart (Fig. 9.10b). Based on the passage, which of the following best describes the relationship between the density of a substance and its volume?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Density increases as volume increases\" / \"Density decreases as volume increases\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student conducts an experiment to determine if a soil sample contains soluble substances. Which of the following properties should be compared between the original tap water and the water after the soil has been soaked in it?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, the solubility of a substance in water is affected by temperature. What is the most accurate explanation for why this happens?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the solubility of gases in water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between the size of a measuring cylinder and its accuracy?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student wants to measure 45 mL of a liquid accurately. Which measuring cylinder should they use based on the information in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student uses a 50 mL measuring cylinder to measure 70 mL of water, what problem will they face?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is true about the solubility of gases in liquids?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the liquid component in a solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a saturated solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student dissolves 50 g of salt in 200 mL of water. What is the solubility of salt in water?",
+      "reason": "options 0 and 2 say the same thing (\"25 g per 100 mL\" / \"100 g per 100 mL\"); options 1 and 2 say the same thing (\"50 g per 100 mL\" / \"100 g per 100 mL\"); options 2 and 3 say the same thing (\"100 g per 100 mL\" / \"200 g per 100 mL\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the figure, why does the unpeeled orange float while the peeled one sinks?",
+      "reason": "figure: figure spec refused: spec.parts: beaker has no label \"orange\" (it has beaker, liquid)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student wants to determine if a soil sample contains soluble substances. Which property should they compare between the supernatant water and the original tap water?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student uses a measuring cylinder to find the volume of a stone. The initial volume of water is 50 mL, and after placing the stone in the cylinder, the water level rises to 55 mL. What is the volume of the stone?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why does a bamboo raft float on water?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"bamboo\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student wants to determine if a soil sample contains soluble substances. Which property of the soil sample and tap water should be compared?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ice'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which instrument is used to measure the mass of an object?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'balance'"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student measures the mass of a solid object as 16.4 g and its volume as 5 cm³. What is its density?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of a solution?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here for this option, but…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short like a beaker?",
+      "reason": "near-duplicate of served question cmvf9fy2y03nvgod8qcwyf3d8 (cosine 0.945 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

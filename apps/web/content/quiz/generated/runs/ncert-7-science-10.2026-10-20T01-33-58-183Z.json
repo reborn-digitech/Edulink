@@ -1,0 +1,821 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T01:33:58.183Z",
+  "finishedAt": "2026-10-20T01:44:15.994Z",
+  "seconds": 618,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu110.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Life Processes in Plants",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\nC. Growth of pollen tubes towards the ovule is an example of\nchemotropism whereas bending of shoots towards sunlight is an\nexample of phototropism. (1)\nD.\ni) Although both plants and animals show electrical–chemical means to\nconvey the information from cell to cell but unlike nerve cells in\nanimals there is no specialized tissue in plants for conduction of\ninformation. (0.5)\nii) In animal cells, change in shape occurs because of the specialized\nproteins found in muscle cells; plant cells change shape by changing\nthe amount of water in them. (0.5)",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n29. No photosynthesis will occur so no glucose will be made. Also no respiration will 3\ntake place as no Oxygen will be taken in. (1)\nNo transpiration will occur so there would be no upward movement of water or\nminerals from the soil as there will be no transpirational pull.(1)\nTemperature regulation of leaf surface will be affected. (1)\nOR\nLymph carries digested and absorbed fat from the intestine (1) and drains excess\nfluid from extracellular space back into the blood (1). Blockage of lymphatic\nsystem will lead to water retention and poor fat absorption in the body\n(1- any one)",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n10. It is completely wrong to say that plants do not produce any excretory 2\nproducts.\nHowever, plants use completely different strategies for excretion than those\nof the animals.They get rid of these wastes in different manner (any two):\ni. Oxygen, a photosynthetic waste, is removed through stomata.\nii. Excess water is removed by transpiration through stomata.\niii. Other metabolic wastes are either stored in dead cells, resins and\ngums or are removed through falling of old leaves.\niv. Many waste products are stored in cellular vacuoles",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n38. Mohan and Rohit observed that shoots of a plant growing in shade bend 4\ntowards the sunlight. Whereas, leaves of ‘Touch me not’ plant fold and droop\nsoon after touching. They were curious to know how these movements occur\nin plants.\nA. Shoots of a plant bending towards light\nB. Folding of leaves Touch me not plant\nIn order to help them understand the movements in the plants, answer the\nfollowing questions:\nAttempt either subpart A or B.\nA. What causes the bending of shoots in the plants as shown in figure A?\nOR\nB. What causes the folding of the leaves in ‘Touch me not’ plant as shown\nin figure B? (2)\nC. Compare the movement of growth of the pollen tube towards ovule with\nthe movements sh"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 207905,
+      "in": 43,
+      "out": 42,
+      "rejects": 2,
+      "promptTokens": 38702,
+      "completionTokens": 12289
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 283291,
+      "in": 42,
+      "out": 34,
+      "rejects": 8,
+      "promptTokens": 21253,
+      "completionTokens": 7962
+    },
+    "solver": {
+      "calls": 200,
+      "ms": 83812,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 29510,
+      "completionTokens": 1760
+    },
+    "form": {
+      "calls": 19,
+      "ms": 97824,
+      "in": 30,
+      "out": 10,
+      "rejects": 20,
+      "promptTokens": 18716,
+      "completionTokens": 2610
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 3865,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 406991,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24119,
+      "completionTokens": 13567
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 6,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a conclusion drawn from the observations in Table 10.2?",
+      "ms": {
+        "draft": 3508,
+        "critique": 6697,
+        "solver": 1934,
+        "form": 3194
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be concluded about the role of chlorophyll in photosynthesis?",
+      "ms": {
+        "draft": 3508,
+        "critique": 6394,
+        "solver": 11208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the experiment described in Activity 10.4, what would happen if the bottle containing sodium hydroxide was not used?",
+      "ms": {
+        "draft": 3508,
+        "critique": 4953,
+        "solver": 1524
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most accurate description of the process of photosynthesis?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5115,
+        "solver": 2140,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which part of the plant does the exchange of gases occur?",
+      "ms": {
+        "draft": 4185,
+        "critique": 6742
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which gas is released during photosynthesis according to the passage?",
+      "ms": {
+        "draft": 4185,
+        "critique": 7753
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the xylem in plants?",
+      "ms": {
+        "draft": 4185,
+        "critique": 5173
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct statement about the excretion process in plants?",
+      "ms": {
+        "draft": 4185,
+        "critique": 5724
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of stomata in leaves?",
+      "ms": {
+        "draft": 4185,
+        "critique": 7488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a product of respiration in plants?",
+      "ms": {
+        "draft": 6044,
+        "critique": 6645,
+        "solver": 1134,
+        "form": 3544
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is kept in complete darkness, what would be the effect on its photosynthesis?",
+      "ms": {
+        "draft": 4185,
+        "critique": 5837,
+        "solver": 10983,
+        "form": 2724
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of stomata in plants?",
+      "ms": {
+        "draft": 6044,
+        "critique": 6111,
+        "solver": 1431,
+        "form": 2737
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is kept in a closed container with no carbon dioxide, what will happen to the rate of photosynthesis?",
+      "ms": {
+        "draft": 6044,
+        "critique": 7285,
+        "solver": 1594
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct word equation for respiration in plants?",
+      "ms": {
+        "draft": 6044,
+        "critique": 6664,
+        "solver": 2649,
+        "form": 3199
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of the passage about Kamala Sohonie?",
+      "ms": {
+        "draft": 3295,
+        "critique": 4507,
+        "solver": 1395,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist is mentioned in the passage as having contributed to the study of respiration in plants?",
+      "ms": {
+        "draft": 3295,
+        "critique": 5356,
+        "solver": 1683,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How does the passage help us understand the significance of Kamala Sohonie's work?",
+      "ms": {
+        "draft": 3295,
+        "critique": 6015,
+        "solver": 931
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of Kamala Sohonie's work?",
+      "ms": {
+        "draft": 3295,
+        "critique": 7799,
+        "solver": 7334,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Kamala Sohonie contribute to the study of plants?",
+      "ms": {
+        "draft": 4345,
+        "critique": 5993,
+        "solver": 1647
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist is mentioned in the chapter for her work on respiration in plants?",
+      "ms": {
+        "draft": 4345,
+        "critique": 6273,
+        "solver": 2091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process do plants use to produce their own food?",
+      "ms": {
+        "draft": 6242,
+        "critique": 6113,
+        "solver": 1692,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the function of the xylem in plants?",
+      "ms": {
+        "draft": 6242,
+        "critique": 6313,
+        "solver": 924,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plant is kept in a sealed container with no carbon dioxide, what will happen to its ability to perform photosynthesis?",
+      "ms": {
+        "draft": 6242,
+        "critique": 6182,
+        "solver": 2103,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the plant helps in the exchange of carbon dioxide and oxygen?",
+      "ms": {
+        "draft": 4406,
+        "critique": 4598
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the plant is responsible for the exchange of gases like oxygen and carbon dioxide?",
+      "ms": {
+        "draft": 6242,
+        "critique": 6419,
+        "solver": 1682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 10.9, why does the lime water turn milky?",
+      "ms": {
+        "draft": 6242,
+        "critique": 6421,
+        "solver": 1520,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 10.7, what caused the red colour to appear in the stem, leaves, and flowers of the plant in tumbler B?",
+      "ms": {
+        "draft": 4406,
+        "critique": 6226,
+        "solver": 12122,
+        "form": 3129
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant's stomata are blocked, what would be the immediate effect on the plant?",
+      "ms": {
+        "draft": 4406,
+        "critique": 5967,
+        "solver": 11642,
+        "form": 2880
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements about photosynthesis is correct?",
+      "ms": {
+        "draft": 4406,
+        "critique": 6276,
+        "solver": 1359,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas from the air is essential in the process of food preparation in plants?",
+      "ms": {
+        "draft": 6933,
+        "critique": 6165
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a plant was kept in direct sunlight with adequate water, another in direct sunlight without water, and a third in the dark with adequate water. Which plant is expected to show the most growth?",
+      "ms": {
+        "draft": 9588,
+        "critique": 4589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the iodine test indicate about the presence of starch in a leaf?",
+      "ms": {
+        "draft": 6933,
+        "critique": 5921,
+        "solver": 1030,
+        "form": 1552
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the plant is the primary site for photosynthesis?",
+      "ms": {
+        "draft": 3508,
+        "critique": 7710,
+        "solver": 1441,
+        "form": 1742,
+        "translation": 33075
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the bottle garden shown in the figure?",
+      "ms": {
+        "draft": 4345,
+        "critique": 5993,
+        "solver": 894,
+        "form": 0,
+        "translation": 38284
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a plant is kept in complete darkness for a long time?",
+      "ms": {
+        "draft": 6044,
+        "critique": 6166,
+        "solver": 1244,
+        "form": 0,
+        "translation": 43955
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In Activity 10.4, why was the leaf kept in the dark for 36 hours before the experiment?",
+      "ms": {
+        "draft": 3508,
+        "critique": 6025,
+        "solver": 1307,
+        "form": 4465,
+        "translation": 44365
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is the bottle garden important for understanding plant life?",
+      "ms": {
+        "draft": 4345,
+        "critique": 6377,
+        "solver": 1435,
+        "form": 0,
+        "translation": 44735
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a plant is placed in complete darkness. What will happen to the plant after a few days?",
+      "ms": {
+        "draft": 6242,
+        "critique": 6591,
+        "solver": 1319,
+        "form": 0,
+        "translation": 24588
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a plant's response to external stimuli as discussed in the chapter?",
+      "ms": {
+        "draft": 3295,
+        "critique": 6492,
+        "solver": 1080,
+        "form": 3943,
+        "translation": 44344
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant in a bottle garden stops growing, what might be the reason?",
+      "ms": {
+        "draft": 4345,
+        "critique": 6176,
+        "solver": 1739,
+        "form": 0,
+        "translation": 41885
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What would happen if a plant is unable to transport food from the leaves to other parts of the plant?",
+      "ms": {
+        "draft": 6044,
+        "critique": 4927,
+        "solver": 1114,
+        "form": 0,
+        "translation": 41877
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How does the bottle garden demonstrate the process of respiration in plants?",
+      "ms": {
+        "draft": 4345,
+        "critique": 9339,
+        "solver": 1407,
+        "form": 0,
+        "translation": 45069
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the main purpose of the experiment described in the passage?\",\"options\":[\"To t"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a conclusion drawn from the observations in Table 10.2?",
+      "reason": "options 0 and 1 say the same thing (\"Starch is produced only in non-green parts of the leaf\" / \"Starch is produced only in green parts of the leaf\"); options 1 and 3 say the same thing (\"Starch is produced only in green parts of the leaf\" / \"Starch is not produced in green parts of the leaf\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be concluded about the role of chlorophyll in photosynthesis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"Chlorophyll is the only factor required for photosynthesis\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the experiment described in Activity 10.4, what would happen if the bottle containing sodium hydroxide was not used?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most accurate description of the process of photosynthesis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is a process by which plants absorb carbon dioxide and release oxygen\" / \"It is a process by which plants absorb water and release carbon dioxide\"); options 0 and 3 say the same thing (\"It is a process by which plants absorb carbon dioxide and release oxygen\" / \"It is a process by which plants absorb sunlight and release carbon dioxide\"); options 1 and 3 say the same thing (\"It is a process by which plants absorb water and release carbon dioxide\" / \"It is a process by which plants absorb sunlight and release carbon dioxide\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In which part of the plant does the exchange of gases occur?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which gas is released during photosynthesis according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the role of the xylem in plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is a correct statement about the excretion process in plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of stomata in leaves?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a product of respiration in plants?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is carbon dioxide, but this is a common misco…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant is kept in complete darkness, what would be the effect on its photosynthesis?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the role of stomata in plants?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the exchange of gases, but this is a commo…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a plant is kept in a closed container with no carbon dioxide, what will happen to the rate of photosynthesis?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the correct word equation for respiration in plants?",
+      "reason": "options 0 and 1 say the same thing (\"Carbon dioxide + Water → Glucose + Oxygen\" / \"Glucose + Oxygen → Carbon dioxide + Water + Energy\"); options 0 and 2 say the same thing (\"Carbon dioxide + Water → Glucose + Oxygen\" / \"Oxygen + Glucose → Carbon dioxide + Water\"); options 0 and 3 say the same thing (\"Carbon dioxide + Water → Glucose + Oxygen\" / \"Carbon dioxide + Glucose → Oxygen + Water\"); options 1 and 2 say the same thing (\"Glucose + Oxygen → Carbon dioxide + Water + Energy\" / \"Oxygen + Glucose → Carbon dioxide + Water\"); options 1 and 3 say the same thing (\"Glucose + Oxygen → Carbon dioxide + Water + Energy\" / \"Carbon dioxide + Glucose → Oxygen + Water\"); options 2 and 3 say the same thing (\"Oxygen + Glucose → Carbon dioxide + Water\" / \"Carbon dioxide + Glucose → Oxygen + Water\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main purpose of the passage about Kamala Sohonie?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misinterprets the passage as biographical…\"); distractor 3's reason is not a one-line misconception (\"focuses on a specific detail mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which scientist is mentioned in the passage as having contributed to the study of respiration in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "How does the passage help us understand the significance of Kamala Sohonie's work?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of Kamala Sohonie's work?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the role of the xylem in plants?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What did Kamala Sohonie contribute to the study of plants?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which scientist is mentioned in the chapter for her work on respiration in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which process do plants use to produce their own food?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: photosynthesis is the process of making food…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the function of the xylem in plants?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly believes the xylem stores starch, but the xylem …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a plant is kept in a sealed container with no carbon dioxide, what will happen to its ability to perform photosynthesis?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes that photosynthesis does not require carbon dioxide…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the plant helps in the exchange of carbon dioxide and oxygen?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which part of the plant is responsible for the exchange of gases like oxygen and carbon dioxide?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer: leaves are the main site for gas exchange du…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 10.9, why does the lime water turn milky?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.flask: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 10.7, what caused the red colour to appear in the stem, leaves, and flowers of the plant in tumbler B?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the role of the stem, which transports the ink, not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant's stomata are blocked, what would be the immediate effect on the plant?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misconceives that blocking stomata would stop growth, which …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements about photosynthesis is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misconceives that oxygen is stored in the plant, which is no…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which gas from the air is essential in the process of food preparation in plants?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an experiment, a plant was kept in direct sunlight with adequate water, another in direct sunlight without water, and a third in the dark with adequate water. Which plant is expected to show the most growth?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the iodine test indicate about the presence of starch in a leaf?",
+      "reason": "figure: figure spec refused: spec.parts: leaf has no label \"green_patch\" (it has lamina, midrib, vein, petiole)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,559 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T07:27:55.692Z",
+  "finishedAt": "2026-10-21T07:35:44.957Z",
+  "seconds": 469,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy213.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 13 — Movements of Ocean Water",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\nWater provides a smooth surface for very cheap transport provided there is\nno turbulence.\nWaterways are the cheapest means of transport for heavy and bulky goods\nand it is more favored for international trading.\nIndented coastline is suitable for ports.\nOpening of Suez Canal also promotes encouraged seaports along the west\ncoast\nOR\nPorts as gateways of international trade-The chief gateways of the world of\ninternational trade are the harbours and ports.\nThe ports act as suction points of the resources from their hinterlands. The\nextension of railways and roadways towards the interior facilitates the linking\nof the local markets to regional markets, regional markets to national markets\nand na",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n6. c. It is situated at the head of Gulf of Kachchh",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n15. (b) Watershed development"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 117131,
+      "in": 31,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 24745,
+      "completionTokens": 7641
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 192935,
+      "in": 28,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 15241,
+      "completionTokens": 6008
+    },
+    "solver": {
+      "calls": 173,
+      "ms": 74861,
+      "in": 26,
+      "out": 24,
+      "rejects": 2,
+      "promptTokens": 29040,
+      "completionTokens": 1757
+    },
+    "form": {
+      "calls": 26,
+      "ms": 79990,
+      "in": 24,
+      "out": 16,
+      "rejects": 8,
+      "promptTokens": 11705,
+      "completionTokens": 2285
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1262,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 67,
+      "ms": 678842,
+      "in": 32,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 41098,
+      "completionTokens": 21414
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 10,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of ocean waves?",
+      "ms": {
+        "draft": 4786,
+        "critique": 5540,
+        "solver": 860,
+        "form": 2904
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a form of vertical motion of ocean water?",
+      "ms": {
+        "draft": 4786,
+        "critique": 4986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be a location with a high tidal range?",
+      "ms": {
+        "draft": 4786,
+        "critique": 5722,
+        "solver": 9448,
+        "form": 2910
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ship is trying to enter a harbour near a river. It is experiencing difficulty due to a shallow bar at the entrance. What is the most likely cause of this issue?",
+      "ms": {
+        "draft": 3498,
+        "critique": 6778,
+        "solver": 1345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the occurrence of tides?",
+      "ms": {
+        "draft": 3498,
+        "critique": 6740,
+        "solver": 1391,
+        "form": 3032
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of ocean movement?",
+      "ms": {
+        "draft": 2537,
+        "critique": 6471,
+        "solver": 1273,
+        "form": 1843
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes ocean currents to move in a specific direction?",
+      "ms": {
+        "draft": 2537,
+        "critique": 5964,
+        "solver": 13653,
+        "form": 2709
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Figure 13.3, which of the following is a cold ocean current in the Pacific Ocean?",
+      "ms": {
+        "draft": 2537,
+        "critique": 6303,
+        "solver": 10446,
+        "form": 3648
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a direct influence of ocean currents on human activities?",
+      "ms": {
+        "draft": 5424,
+        "critique": 5422
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region experiences a warm current along its coast, what is the most likely effect on the climate?",
+      "ms": {
+        "draft": 5424,
+        "critique": 4190,
+        "solver": 1231,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a region experiences a cold current along its coast, which of the following is most likely to be true about its climate?",
+      "ms": {
+        "draft": 5424,
+        "critique": 5080,
+        "solver": 1569,
+        "form": 2919
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of waves?",
+      "ms": {
+        "draft": 2337,
+        "critique": 5943,
+        "solver": 9646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What causes waves to form in the ocean?",
+      "ms": {
+        "draft": 2337,
+        "critique": 4490,
+        "solver": 940,
+        "form": 1479,
+        "translation": 21774
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of tide has two high tides and two low tides every day?",
+      "ms": {
+        "draft": 3498,
+        "critique": 5969,
+        "solver": 1397,
+        "form": 3419,
+        "translation": 34685
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of tide based on its frequency of occurrence?",
+      "ms": {
+        "draft": 3164,
+        "critique": 5194,
+        "solver": 1586,
+        "form": 2870,
+        "translation": 37901
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to waves as they approach a shallow shoreline?",
+      "ms": {
+        "draft": 4786,
+        "critique": 5540,
+        "solver": 1544,
+        "form": 3665,
+        "translation": 41238
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are tides important for harbours near rivers and estuaries?",
+      "ms": {
+        "draft": 3498,
+        "critique": 5152,
+        "solver": 14350,
+        "form": 2413,
+        "translation": 48773
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the effect of warm ocean currents on coastal areas?",
+      "ms": {
+        "draft": 2537,
+        "critique": 5143,
+        "solver": 1048,
+        "form": 3906,
+        "translation": 44199
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements correctly describes the formation of tides?",
+      "ms": {
+        "draft": 4786,
+        "critique": 5977,
+        "solver": 1994,
+        "form": 3294,
+        "translation": 82120
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What causes cold-water ocean currents?",
+      "ms": {
+        "draft": 3498,
+        "critique": 6186,
+        "solver": 9404,
+        "form": 2437,
+        "translation": 40471
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about ocean currents is correct?",
+      "ms": {
+        "draft": 3164,
+        "critique": 6186,
+        "solver": 1162,
+        "form": 4111,
+        "translation": 45992
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, which of the following best explains why the western margins of subtropical anti-cyclones have warm and rainy climates?",
+      "ms": {
+        "draft": 5424,
+        "critique": 4677,
+        "solver": 2846,
+        "form": 1638,
+        "translation": 46446
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following places is most likely to experience the highest tides due to its geographical location?",
+      "ms": {
+        "draft": 3164,
+        "critique": 5664,
+        "solver": 1320,
+        "form": 3368,
+        "translation": 32587
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a direct influence of ocean currents on human activities?",
+      "ms": {
+        "draft": 2537,
+        "critique": 6060,
+        "solver": 1438,
+        "form": 2629,
+        "translation": 34540
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a map of ocean currents and asked to identify the region where warm and cold currents mix. Which of the following is most likely to be the correct region?",
+      "ms": {
+        "draft": 5424,
+        "critique": 8574,
+        "solver": 1246,
+        "form": 2344,
+        "translation": 56003
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do waves break as they approach the shore?",
+      "ms": {
+        "draft": 4786,
+        "critique": 4611,
+        "solver": 1767,
+        "form": 2800,
+        "translation": 40519
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do cold-water currents move towards the equator?",
+      "ms": {
+        "draft": 3498,
+        "critique": 5393,
+        "solver": 9928,
+        "form": 1789,
+        "translation": 35117
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following explains why cold ocean currents cause arid conditions on some coasts?",
+      "ms": {
+        "draft": 2537,
+        "critique": 3110,
+        "solver": 666,
+        "form": 782,
+        "translation": 32997
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of ocean waves?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"correct answer, no reason given for distractor here as it's …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is not a form of vertical motion of ocean water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is most likely to be a location with a high tidal range?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ship is trying to enter a harbour near a river. It is experiencing difficulty due to a shallow bar at the entrance. What is the most likely cause of this issue?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for the occurrence of tides?",
+      "reason": "the key is far longer than every distractor (38 vs 14 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of ocean movement?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What causes ocean currents to move in a specific direction?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on Figure 13.3, which of the following is a cold ocean current in the Pacific Ocean?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is the primary reason for the movement of ocean currents?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main reason for the formation of deep water currents?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What determines the maximum height of a wave?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a direct influence of ocean currents on human activities?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a region experiences a warm current along its coast, what is the most likely effect on the climate?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a region experiences a cold current along its coast, which of the following is most likely to be true about its climate?",
+      "reason": "the key is far longer than every distractor (58 vs 25 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of waves?",
+      "reason": "after redrafting distractors 0, 1, 2: option 1 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:24:03.332Z",
+  "finishedAt": "2026-10-23T01:27:50.347Z",
+  "seconds": 227,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap106.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 6 — Every Drop Counts",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 60557,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14394,
+      "completionTokens": 3225
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 114380,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 7403,
+      "completionTokens": 3129
+    },
+    "solver": {
+      "calls": 66,
+      "ms": 35988,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 11835,
+      "completionTokens": 713
+    },
+    "form": {
+      "calls": 4,
+      "ms": 12434,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 963,
+      "completionTokens": 307
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2759,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 117583,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7233,
+      "completionTokens": 3725
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What was the purpose of the nine lakes described in the passage?",
+      "ms": {
+        "draft": 4267,
+        "critique": 6220,
+        "solver": 2666,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did people in the past build stepwells?",
+      "ms": {
+        "draft": 4267,
+        "critique": 7212,
+        "solver": 1611
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "ms": {
+        "draft": 4291,
+        "critique": 6911,
+        "solver": 1453
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do some people have to buy drinking water according to the passage?",
+      "ms": {
+        "draft": 4291,
+        "critique": 7088,
+        "solver": 1888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did the group Tarun Bharat Sangh do to help Darki Mai's village?",
+      "ms": {
+        "draft": 4291,
+        "critique": 7772,
+        "solver": 13213
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "ms": {
+        "draft": 16650,
+        "critique": 7355
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do some people have to buy drinking water according to the passage?",
+      "ms": {
+        "draft": 16650,
+        "critique": 7804
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the word 'sar' in the name Ghadsisar?",
+      "ms": {
+        "draft": 3594,
+        "critique": 6396
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why did the women of Darki Mai's village have to leave the village during summer?",
+      "ms": {
+        "draft": 16650,
+        "critique": 7154,
+        "solver": 1501,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did people in Jaisalmer build the Ghadsisar lake?",
+      "ms": {
+        "draft": 3594,
+        "critique": 6227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a new building is constructed near a stepwell?",
+      "ms": {
+        "draft": 3594,
+        "critique": 5201
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of water in the past?",
+      "ms": {
+        "draft": 3594,
+        "critique": 4258
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if someone puts a pump directly in the Jal Board pipeline?",
+      "ms": {
+        "draft": 16650,
+        "critique": 6611,
+        "solver": 1715,
+        "form": 3063
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the lake shown in the picture?",
+      "ms": {
+        "draft": 4267,
+        "critique": 5779,
+        "solver": 2189,
+        "form": 3513,
+        "translation": 28918
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a village in Rajasthan has no wells or lakes, what might be the most likely reason?",
+      "ms": {
+        "draft": 4267,
+        "critique": 5753,
+        "solver": 1188,
+        "form": 5003,
+        "translation": 40713
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What could happen if a person puts a pump directly in the Jal Board pipeline?",
+      "ms": {
+        "draft": 4291,
+        "critique": 6532,
+        "solver": 13096,
+        "form": 2796,
+        "translation": 43923
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the purpose of the nine lakes described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Refers to a secondary purpose mentioned in the text…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why did people in the past build stepwells?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do some people have to buy drinking water according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"States a fact from the passage but not the reason…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What did the group Tarun Bharat Sangh do to help Darki Mai's village?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why do some people have to buy drinking water according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the meaning of the word 'sar' in the name Ghadsisar?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why did the women of Darki Mai's village have to leave the village during summer?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did people in Jaisalmer build the Ghadsisar lake?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would happen if a new building is constructed near a stepwell?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the importance of water in the past?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What would happen if someone puts a pump directly in the Jal Board pipeline?",
+      "reason": "near-duplicate of batch item \"What could happen if a person puts a pump directly…\" (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:39:47.530Z",
+  "finishedAt": "2026-10-23T01:43:50.444Z",
+  "seconds": 243,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap110.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 10 — Walls Tell Stories",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 63159,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15984,
+      "completionTokens": 3313
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 105077,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 6946,
+      "completionTokens": 2836
+    },
+    "solver": {
+      "calls": 51,
+      "ms": 22361,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 6443,
+      "completionTokens": 431
+    },
+    "form": {
+      "calls": 4,
+      "ms": 8381,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 897,
+      "completionTokens": 223
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2909,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 169166,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9253,
+      "completionTokens": 4976
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If you were inside the fort and wanted to look outside, which part of the wall would you most likely use?",
+      "ms": {
+        "draft": 3666,
+        "critique": 5277,
+        "solver": 1477
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the structure that is higher than the wall and is part of the fort's security?",
+      "ms": {
+        "draft": 3666,
+        "critique": 5548,
+        "solver": 2101
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why were big holes made in the bastions of the fort?",
+      "ms": {
+        "draft": 3666,
+        "critique": 6089,
+        "solver": 2489,
+        "form": 1951
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to visit a museum, what would you expect to find there?",
+      "ms": {
+        "draft": 17552,
+        "critique": 6949,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way that people in the past lifted water from wells?",
+      "ms": {
+        "draft": 17552,
+        "critique": 6125,
+        "solver": 1077,
+        "form": 1458
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "ms": {
+        "draft": 3477,
+        "critique": 5294
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is standing at Fateh Darwaza, how can they be heard at the king's palace?",
+      "ms": {
+        "draft": 3477,
+        "critique": 6478
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why might a museum be important according to the passage?",
+      "ms": {
+        "draft": 3477,
+        "critique": 8329
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why were bastions made in the fort wall?",
+      "ms": {
+        "draft": 5463,
+        "critique": 8003
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the purpose of the thick walls in the fort?",
+      "ms": {
+        "draft": 5463,
+        "critique": 6985
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were a soldier in the fort, how would the holes in the bastions help you?",
+      "ms": {
+        "draft": 5463,
+        "critique": 6957
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the map of the fort, if you are entering from Banjara Darwaza, in which direction from you is Katora Hauz?",
+      "ms": {
+        "draft": 5463,
+        "critique": 3456
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the chapter 'Walls Tell Stories'?",
+      "ms": {
+        "draft": 17552,
+        "critique": 7204,
+        "solver": 1243,
+        "form": 0,
+        "translation": 50475
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What can we learn from old items kept in a museum?",
+      "ms": {
+        "draft": 3477,
+        "critique": 5656,
+        "solver": 11668,
+        "form": 2745,
+        "translation": 23552
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did the fountains in the fort work without electricity?",
+      "ms": {
+        "draft": 3666,
+        "critique": 8499,
+        "solver": 2008,
+        "form": 2227,
+        "translation": 42131
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Why is it important to keep old things in a museum?",
+      "ms": {
+        "draft": 17552,
+        "critique": 4639,
+        "solver": 850,
+        "form": 0,
+        "translation": 47598
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you were inside the fort and wanted to look outside, which part of the wall would you most likely use?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the structure that is higher than the wall and is part of the fort's security?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why were big holes made in the bastions of the fort?",
+      "reason": "the key is far longer than every distractor (48 vs 22 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you were to visit a museum, what would you expect to find there?",
+      "reason": "the key is far longer than every distractor (48 vs 25 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is one way that people in the past lifted water from wells?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand the methods described in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person is standing at Fateh Darwaza, how can they be heard at the king's palace?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why might a museum be important according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why were bastions made in the fort wall?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about the purpose of the thick walls in the fort?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you were a soldier in the fort, how would the holes in the bastions help you?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the map of the fort, if you are entering from Banjara Darwaza, in which direction from you is Katora Hauz?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

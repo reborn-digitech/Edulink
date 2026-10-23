@@ -1,0 +1,364 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:48:30.448Z",
+  "finishedAt": "2026-10-23T01:51:30.015Z",
+  "seconds": 180,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap112.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 12 — What if it Finishes...?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 59356,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 15432,
+      "completionTokens": 3324
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 113235,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 8265,
+      "completionTokens": 3295
+    },
+    "solver": {
+      "calls": 86,
+      "ms": 39786,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 13240,
+      "completionTokens": 828
+    },
+    "form": {
+      "calls": 2,
+      "ms": 3867,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 494,
+      "completionTokens": 119
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2816,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 149473,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8694,
+      "completionTokens": 4413
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage say about the formation of petrol and diesel?",
+      "ms": {
+        "draft": 3478,
+        "critique": 4688,
+        "solver": 1144,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is one way to reduce the use of petrol and diesel?",
+      "ms": {
+        "draft": 3478,
+        "critique": 9127,
+        "solver": 1856
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, from where do we get petrol and diesel?",
+      "ms": {
+        "draft": 3478,
+        "critique": 4946,
+        "solver": 15024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which fuel is used to run machines according to the passage?",
+      "ms": {
+        "draft": 3303,
+        "critique": 6797,
+        "solver": 1725,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which fuel is used for lighting according to the passage?",
+      "ms": {
+        "draft": 3303,
+        "critique": 8097,
+        "solver": 11087,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 60 houses out of 100 used uple and wood in 1976, and 30 houses used them in 1996, what is the percentage decrease?",
+      "ms": {
+        "draft": 3303,
+        "critique": 5158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the poem 'Who Am I?' refer to?",
+      "ms": {
+        "draft": 3205,
+        "critique": 6349,
+        "solver": 1934
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the bar chart mentioned in the passage, which fuel was used the least in 1976?",
+      "ms": {
+        "draft": 3205,
+        "critique": 7613
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where does the passage say petrol and diesel come from?",
+      "ms": {
+        "draft": 4854,
+        "critique": 6535
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main source of fuel for most vehicles discussed in the passage?",
+      "ms": {
+        "draft": 4854,
+        "critique": 7438,
+        "solver": 8825
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is one way to save petrol and diesel?",
+      "ms": {
+        "draft": 4854,
+        "critique": 5516,
+        "solver": 6425
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason Durga has to collect wood for the chulha?",
+      "ms": {
+        "draft": 3303,
+        "critique": 6406,
+        "solver": 1524,
+        "form": 2549,
+        "translation": 45943
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the poem 'Who Am I?'?",
+      "ms": {
+        "draft": 3205,
+        "critique": 4837,
+        "solver": 1170,
+        "form": 0,
+        "translation": 34969
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If petrol and diesel are not made as fast as they are used, what might happen?",
+      "ms": {
+        "draft": 3478,
+        "critique": 5152,
+        "solver": 2583,
+        "form": 2044,
+        "translation": 42198
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Durga cannot get wood for her chulha, what would be a better alternative?",
+      "ms": {
+        "draft": 3205,
+        "critique": 5105,
+        "solver": 1984,
+        "form": 0,
+        "translation": 22407
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the formation of petrol and diesel?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is one way to reduce the use of petrol and diesel?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, from where do we get petrol and diesel?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"From the trees\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which fuel is used to run machines according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which fuel is used for lighting according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 60 houses out of 100 used uple and wood in 1976, and 30 houses used them in 1996, what is the percentage decrease?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage say about the time it takes to form petrol and diesel?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the poem 'Who Am I?' refer to?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the bar chart mentioned in the passage, which fuel was used the least in 1976?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Where does the passage say petrol and diesel come from?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main source of fuel for most vehicles discussed in the passage?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest is one way to save petrol and diesel?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

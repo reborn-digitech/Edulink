@@ -1,0 +1,536 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T05:08:17.840Z",
+  "finishedAt": "2026-10-20T05:14:34.642Z",
+  "seconds": 377,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 15 — Sound",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — question paper]\n20. (6 marks) Smartphones can be used to perform simple experiments related to sound. There are various\napps which record the intensity of an audio signal. An app (WaveEditor TM here) displays the audio signal\nin the form of a wave, whose amplitude is proportional to the loudness of the audio signal.\nTwo students Fatima (F) and Bharat (B) conduct a simple experiment using smartphones. In an open\nfield, both place their smartphones at a distance d from each other as shown in the figure. They stand\nnext to their smartphones, and clap one after another. The audio signals from the claps are digitally\nrecorded by WaveEditor TM and the output produced on their smartphone screens are shown next to ",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air.",
+      "[INJSO 2022 — question paper]\n6. On a windy day, standing on your balcony, you hear the whistle of a stationary train at a distance. Which\namong the velocity and frequency of the sound is/are affected by the wind?\nA. only velocity B. only frequency\nB. both velocity and frequency D. neither velocity nor frequency",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 100951,
+      "in": 28,
+      "out": 23,
+      "rejects": 6,
+      "promptTokens": 19855,
+      "completionTokens": 6352
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 156824,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 12564,
+      "completionTokens": 4913
+    },
+    "solver": {
+      "calls": 127,
+      "ms": 59019,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 22879,
+      "completionTokens": 1363
+    },
+    "form": {
+      "calls": 15,
+      "ms": 64052,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 11188,
+      "completionTokens": 1941
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 5579,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 192615,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12036,
+      "completionTokens": 6132
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What factor determines the frequency of sound produced when a glass cup is struck in the Jaltarang experiment?",
+      "ms": {
+        "draft": 2836,
+        "critique": 5055,
+        "solver": 1811
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a factor in determining the pitch of a sound?",
+      "ms": {
+        "draft": 2836,
+        "critique": 6207,
+        "solver": 12562
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the frequency of a sound wave if 1000 compressions and rarefactions are produced per second?",
+      "ms": {
+        "draft": 2306,
+        "critique": 4509,
+        "solver": 4082,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What determines the frequency of sound produced by a glass cup in the Jaltarang experiment?",
+      "ms": {
+        "draft": 3013,
+        "critique": 6417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do astronauts on the moon not hear each other directly?",
+      "ms": {
+        "draft": 2954,
+        "critique": 5888,
+        "solver": 14090,
+        "form": 2686
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the human body is responsible for producing sound when we speak or sing?",
+      "ms": {
+        "draft": 3013,
+        "critique": 7175
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Jaltarang experiment, how does the height of the air column in the glass cup affect the sound produced?",
+      "ms": {
+        "draft": 3013,
+        "critique": 5399
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures the frequency of sound from a glass cup and finds that it is 440 Hz, what could be the reason for this frequency?",
+      "ms": {
+        "draft": 3013,
+        "critique": 5252
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the Jaltarang experiment, if the water level in a glass cup is increased, what happens to the frequency of the sound produced?",
+      "ms": {
+        "draft": 3013,
+        "critique": 5003
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of sound production according to the passage?",
+      "ms": {
+        "draft": 7461,
+        "critique": 5978,
+        "solver": 12533,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment with the bell jar and electric bell, what happens when air is removed from the jar?",
+      "ms": {
+        "draft": 7461,
+        "critique": 4938,
+        "solver": 2128,
+        "form": 2584
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the prongs of a tuning fork are struck and start vibrating, what happens in the surrounding air?",
+      "ms": {
+        "draft": 7461,
+        "critique": 4737,
+        "solver": 1227,
+        "form": 6552
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the frequency of a tuning fork remain the same even if it is placed in a different medium?",
+      "ms": {
+        "draft": 7461,
+        "critique": 5558,
+        "solver": 857,
+        "form": 1855
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a tuning fork is struck and then placed in a vacuum, what will happen to the sound it produces?",
+      "ms": {
+        "draft": 7461,
+        "critique": 5679,
+        "solver": 7455,
+        "form": 1993
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 2306,
+        "critique": 6127,
+        "solver": 1229,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "ms": {
+        "draft": 2306,
+        "critique": 5301,
+        "solver": 1274,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the medium that is necessary for the generation of sound?",
+      "ms": {
+        "draft": 2306,
+        "critique": 4767,
+        "solver": 733,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 2954,
+        "critique": 5595,
+        "solver": 954,
+        "form": 4564
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason for the grains on the stretched rubber to dance when someone shouts into a glass?",
+      "ms": {
+        "draft": 2954,
+        "critique": 5767,
+        "solver": 15108,
+        "form": 2755,
+        "translation": 31835
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a musician wants to produce a higher pitch on a string instrument, what should they do?",
+      "ms": {
+        "draft": 2836,
+        "critique": 4384,
+        "solver": 1055,
+        "form": 2996,
+        "translation": 37567
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Jaltarang experiment, what causes the different sounds from each glass cup?",
+      "ms": {
+        "draft": 2836,
+        "critique": 4568,
+        "solver": 1375,
+        "form": 2949,
+        "translation": 32666
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student uses a smartphone app to measure the frequency of a sound produced by a glass cup. What will happen if the water level in the cup is increased?",
+      "ms": {
+        "draft": 2836,
+        "critique": 5398,
+        "solver": 1390,
+        "form": 3546,
+        "translation": 50585
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does a flute produce different notes when different holes are opened or closed?",
+      "ms": {
+        "draft": 2836,
+        "critique": 5833,
+        "solver": 1225,
+        "form": 4191,
+        "translation": 36505
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the term used for the state of high pressure and high"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the characteristic that differentiates one sound note from another?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What type of energy is converted into sound energy in a loudspeaker?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What factor determines the frequency of sound produced when a glass cup is struck in the Jaltarang experiment?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a factor in determining the pitch of a sound?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the frequency of a sound wave if 1000 compressions and rarefactions are produced per second?",
+      "reason": "checkExpr \"1000\" is a bare literal"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the total number of compressions and rarefactions produced per second in a sound wave?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the energy conversion that takes place in a loudspeaker?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What determines the frequency of sound produced by a glass cup in the Jaltarang experiment?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do astronauts on the moon not hear each other directly?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of the human body is responsible for producing sound when we speak or sing?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the Jaltarang experiment, how does the height of the air column in the glass cup affect the sound produced?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student measures the frequency of sound from a glass cup and finds that it is 440 Hz, what could be the reason for this frequency?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the Jaltarang experiment, if the water level in a glass cup is increased, what happens to the frequency of the sound produced?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main cause of sound production according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment with the bell jar and electric bell, what happens when air is removed from the jar?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'bellJar'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the prongs of a tuning fork are struck and start vibrating, what happens in the surrounding air?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels vibration, compression, rarefaction"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the frequency of a tuning fork remain the same even if it is placed in a different medium?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a tuning fork is struck and then placed in a vacuum, what will happen to the sound it produces?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "reason": "near-duplicate of served question cmvf42bln032pgod8dx393ak6 (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the medium that is necessary for the generation of sound?",
+      "reason": "near-duplicate of served question cmvf42blk032jgod87gh3woz9 (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

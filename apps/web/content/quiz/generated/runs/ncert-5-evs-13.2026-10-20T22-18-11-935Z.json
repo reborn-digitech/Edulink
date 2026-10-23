@@ -1,0 +1,474 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:18:11.935Z",
+  "finishedAt": "2026-10-20T22:22:44.870Z",
+  "seconds": 273,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap113.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 13 — A Shelter so High!",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 69625,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 21408,
+      "completionTokens": 4945
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 152409,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 12807,
+      "completionTokens": 5110
+    },
+    "solver": {
+      "calls": 153,
+      "ms": 63764,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 25689,
+      "completionTokens": 1612
+    },
+    "form": {
+      "calls": 12,
+      "ms": 24567,
+      "in": 13,
+      "out": 9,
+      "rejects": 4,
+      "promptTokens": 2777,
+      "completionTokens": 781
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 1944,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 203089,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15447,
+      "completionTokens": 7734
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a type of house mentioned in the passage?",
+      "ms": {
+        "draft": 3774,
+        "critique": 3923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Gaurav Jani say that it was difficult to breathe normally in the Changthang area?",
+      "ms": {
+        "draft": 3774,
+        "critique": 4493,
+        "solver": 1667
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is traveling from Mumbai to Leh, which of the following states would they NOT pass through?",
+      "ms": {
+        "draft": 3774,
+        "critique": 3943,
+        "solver": 12225
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the houses in Srinagar?",
+      "ms": {
+        "draft": 2972,
+        "critique": 5672,
+        "solver": 1250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 12143,
+        "critique": 5770,
+        "solver": 1493
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pashmina shawl is as warm as six sweaters, how many pashmina shawls would be needed to match the warmth of 12 sweaters?",
+      "ms": {
+        "draft": 2972,
+        "critique": 5153,
+        "solver": 10579
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person lives in a place where it is very hot, which feature might they include in their house?",
+      "ms": {
+        "draft": 12143,
+        "critique": 6074,
+        "solver": 1311,
+        "form": 2865
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one reason why houses in Kashmir are built with sloping roofs?",
+      "ms": {
+        "draft": 12143,
+        "critique": 5083,
+        "solver": 12459
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can you infer about the houses in Jammu and Kashmir?",
+      "ms": {
+        "draft": 12143,
+        "critique": 4828,
+        "solver": 6994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason why houses in Jammu and Kashmir are built differently?",
+      "ms": {
+        "draft": 3678,
+        "critique": 6530
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the houses in Jammu and Kashmir?",
+      "ms": {
+        "draft": 3678,
+        "critique": 6072,
+        "solver": 1481,
+        "form": 1789
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way the houses in the passage are different from the houses in a city?",
+      "ms": {
+        "draft": 3678,
+        "critique": 6478,
+        "solver": 10925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which states did Gaurav Jani pass through while travelling from Mumbai to Delhi?",
+      "ms": {
+        "draft": 3119,
+        "critique": 5213,
+        "solver": 7302,
+        "form": 1983
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "ms": {
+        "draft": 2701,
+        "critique": 5715,
+        "solver": 1738,
+        "form": 2274
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason the Changpas build their tents with yak hair?",
+      "ms": {
+        "draft": 2701,
+        "critique": 5647,
+        "solver": 1522,
+        "form": 2777
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "ms": {
+        "draft": 2972,
+        "critique": 5188,
+        "solver": 1434,
+        "form": 2035,
+        "translation": 25506
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the Changpas use yak hair to make their tents?",
+      "ms": {
+        "draft": 2972,
+        "critique": 5174,
+        "solver": 1210,
+        "form": 2580,
+        "translation": 26427
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the Changpas keep their animals in a lekha?",
+      "ms": {
+        "draft": 2701,
+        "critique": 5472,
+        "solver": 8332,
+        "form": 2604,
+        "translation": 30975
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do Tashi and his family live on the ground floor during winters?",
+      "ms": {
+        "draft": 3119,
+        "critique": 6032,
+        "solver": 6571,
+        "form": 787,
+        "translation": 16612
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a Changpa's goat sheds its fur in summer, what is the fur used for?",
+      "ms": {
+        "draft": 2701,
+        "critique": 4507,
+        "solver": 1532,
+        "form": 2236,
+        "translation": 29937
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person lives in a place where it rains a lot, which feature might they include in their house?",
+      "ms": {
+        "draft": 3678,
+        "critique": 5862,
+        "solver": 1046,
+        "form": 2219,
+        "translation": 32230
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason the Changpa tribe lives at high altitudes?",
+      "ms": {
+        "draft": 3774,
+        "critique": 5853,
+        "solver": 1363,
+        "form": 2448,
+        "translation": 37750
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT a type of house mentioned in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Gaurav Jani say that it was difficult to breathe normally in the Changthang area?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person is traveling from Mumbai to Leh, which of the following states would they NOT pass through?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the houses in Srinagar?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pashmina shawl is as warm as six sweaters, how many pashmina shawls would be needed to match the warmth of 12 sweaters?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person lives in a place where it is very hot, which feature might they include in their house?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"A basement is not mentioned in the passage.…\"); distractor 3's reason is not a one-line misconception (\"A balcony is not mentioned in the passage.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is one reason why houses in Kashmir are built with sloping roofs?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can you infer about the houses in Jammu and Kashmir?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"The passage says the houses are suitable for the climate.…\"); distractor 3's reason is not a one-line misconception (\"The passage mentions houses used in both summer and winter.…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "In which state is Manali located?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a reason why houses in Jammu and Kashmir are built differently?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of the houses in Jammu and Kashmir?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Fails to understand the primary function of a house\",\"Correc…\"); distractor 2's reason is not a one-line misconception (\"difficulty\":2,\"stem\":\"What is one way the houses in the pass…\"); distractor 3's reason is not a one-line misconception (\"difficulty\":2,\"stem\":\"What is one way the houses in the pass…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is one way the houses in the passage are different from the houses in a city?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which states did Gaurav Jani pass through while travelling from Mumbai to Delhi?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"includes states not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"includes states not mentioned in the passage…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "reason": "near-duplicate of batch item \"What is the name of the tent used by the Changpas?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the main reason the Changpas build their tents with yak hair?",
+      "reason": "near-duplicate of batch item \"Why do the Changpas use yak hair to make their ten…\" (cosine 0.952 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,863 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T14:30:09.048Z",
+  "finishedAt": "2026-10-21T14:43:33.360Z",
+  "seconds": 804,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech102.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 2 — Electrochemistry",
+    "edition": "Reprint 2026-27",
+    "chunks": 33,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2022-23]\n23. Anode: Zn (s)  Zn 2+ (aq) + 2 e-\n– –\n(1/2+1/2)\n(1/2)\n(1/2)\n(1/2)\nCathode: O 2 (g) + 2H 2 O(l) + 4e → 4OH (aq). (1/2)\nOverall: 2 Zn (s) + O 2 (g) + 2H 2 O(l)  2 Zn 2+ (aq) + 4OH (aq) –\n2 Zn (s) + O 2 (g) + 2H 2 O(l)  2 Zn(OH) 2 (ppt) (1)",
+      "[CBSE Class XII Chemistry, sample question paper, 2022-23]\n23. Corrosion is an electrochemical phenomenon. The oxygen in moist air reacts as\nfollows:\nO 2 (g) + 2H 2 O(l) + 4e → 4OH (aq). – –\nWrite down the possible reactions for corrosion of zinc occurring at anode, cathode, and\noverall reaction to form a white layer of zinc hydroxide.",
+      "[CBSE Class XII Chemistry, sample question paper, 2022-23]\n33. a. Why does the cell voltage of a mercury cell remain constant during its\nlifetime?\nb. Write the reaction occurring at anode and cathode and the products of\nelectrolysis of aq KCl.\nc. What is the pH of HCl solution when the hydrogen gas electrode shows\na potential of -0.59 V at standard temperature and pressure?\nOR\na. Molar conductivity of substance “A” is 5.9×10 S/m and “B” is 1 x 10 3 -16\nS/m. Which of the two is most likely to be copper metal and why?\nb. What is the quantity of electricity in Coulombs required to produce 4.8 g of\nMg from molten MgCl 2 ? How much Ca will be produced if the same\namount of electricity was passed through molten CaCl 2 ? (Atomic mass of\nMg = 24 u, atomic m",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n16. (d) A is false but R is true.\nCu will deposit at cathode"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 223235,
+      "in": 48,
+      "out": 45,
+      "rejects": 4,
+      "promptTokens": 51134,
+      "completionTokens": 11537
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 343252,
+      "in": 45,
+      "out": 34,
+      "rejects": 11,
+      "promptTokens": 23397,
+      "completionTokens": 8900
+    },
+    "solver": {
+      "calls": 208,
+      "ms": 99399,
+      "in": 34,
+      "out": 27,
+      "rejects": 7,
+      "promptTokens": 34660,
+      "completionTokens": 1944
+    },
+    "form": {
+      "calls": 6,
+      "ms": 26061,
+      "in": 27,
+      "out": 13,
+      "rejects": 14,
+      "promptTokens": 3253,
+      "completionTokens": 666
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 4008,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 533560,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 31843,
+      "completionTokens": 15591
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 1,
+    "4": 4,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the term used for the portion of a galvanic cell where reduction occurs?",
+      "ms": {
+        "draft": 3440,
+        "critique": 4963
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the standard electrode potential of the hydrogen electrode?",
+      "ms": {
+        "draft": 3440,
+        "critique": 5205
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct representation of a galvanic cell according to IUPAC convention?",
+      "ms": {
+        "draft": 3440,
+        "critique": 6682
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of a salt bridge in a galvanic cell?",
+      "ms": {
+        "draft": 3440,
+        "critique": 6968
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of an inert electrode?",
+      "ms": {
+        "draft": 3440,
+        "critique": 5689
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a Daniell cell, what happens to the cell potential when the concentration of Zn²+ ions increases and the concentration of Cu²+ ions decreases?",
+      "ms": {
+        "draft": 16229,
+        "critique": 7477
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the standard electrode potential of a redox couple?",
+      "ms": {
+        "draft": 16229,
+        "critique": 7559,
+        "solver": 1374,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a galvanic cell, if the emf of the cell is positive, what does it indicate about the cell reaction?",
+      "ms": {
+        "draft": 3440,
+        "critique": 5979,
+        "solver": 12088,
+        "form": 2909
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given the standard electrode potential of a cell is 1.1 V, what is the value of log K for the reaction at 298 K?",
+      "ms": {
+        "draft": 16229,
+        "critique": 7032,
+        "solver": 1210
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is constructed with Mg(s) | Mg²+(0.130M) || Ag⁺(0.0001M) | Ag(s), and the standard cell potential is 3.17 V, what is the actual cell potential?",
+      "ms": {
+        "draft": 16229,
+        "critique": 6401,
+        "solver": 2004,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cell reaction has a standard potential of 0.46 V and involves the transfer of 2 electrons. What is the value of K at 298 K?",
+      "ms": {
+        "draft": 16229,
+        "critique": 6775,
+        "solver": 1550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the standard electrode potential of a redox couple?",
+      "ms": {
+        "draft": 16229,
+        "critique": 7346,
+        "solver": 1218,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a galvanic cell has an emf of 1.1 V and 2 moles of electrons are transferred in the reaction, what is the standard Gibbs energy change (ΔG) for the reaction?",
+      "ms": {
+        "draft": 4850,
+        "critique": 9315
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct explanation for the high conductivity of certain organic polymers like polyacetylene?",
+      "ms": {
+        "draft": 4850,
+        "critique": 7927,
+        "solver": 1338
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about the conductivity of materials is correct?",
+      "ms": {
+        "draft": 4850,
+        "critique": 8801,
+        "solver": 13196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A galvanic cell has an emf of 1.5 V, and the reaction involves the transfer of 3 moles of electrons. What is the standard Gibbs energy change (ΔG) for the reaction?",
+      "ms": {
+        "draft": 4850,
+        "critique": 9034,
+        "solver": 15544,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The resistance of a conductivity cell filled with 0.1 mol/L KCl is 100 Ω, and with 0.02 mol/L KCl is 520 Ω. If the conductivity of 0.1 mol/L KCl is 1.29 S/m, what is the conductivity of 0.02 mol/L KCl?",
+      "ms": {
+        "draft": 17162,
+        "critique": 6268,
+        "solver": 1424,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the relationship between resistivity (ρ) and conductivity (κ)?",
+      "ms": {
+        "draft": 4850,
+        "critique": 7465,
+        "solver": 11848
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the conductance of one unit volume of solution kept between two platinum electrodes with unit area of cross section and at a distance of unit length?",
+      "ms": {
+        "draft": 4989,
+        "critique": 7158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How does the molar conductivity of a solution change with a decrease in concentration?",
+      "ms": {
+        "draft": 4989,
+        "critique": 6489
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the dissociation constant of acetic acid if its molar conductivity is 390.5 S cm mol and the conductivity of 0.001028 mol L acetic acid is 4.95 × 10 S cm?",
+      "ms": {
+        "draft": 7095,
+        "critique": 4782
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a galvanic cell?",
+      "ms": {
+        "draft": 3433,
+        "critique": 6579,
+        "solver": 2432,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A fuel cell uses hydrogen and oxygen to produce water and electricity. If the cell is operating at standard conditions, and the hydrogen electrode shows a potential of -0.59 V, what is the pH of the solution?",
+      "ms": {
+        "draft": 4377,
+        "critique": 9995,
+        "solver": 982
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a hydrogen fuel cell, the overall reaction is 2H (g) + O (g) → 2H O(l). If the cell is operating under non-standard conditions, and the hydrogen gas is at a pressure of 1 atm, what is the effect on the cell potential?",
+      "ms": {
+        "draft": 4377,
+        "critique": 7850,
+        "solver": 1743
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the lead storage battery when it is charged?",
+      "ms": {
+        "draft": 3468,
+        "critique": 5845,
+        "solver": 1740,
+        "form": 2167
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the concentration of H+ ions in a solution is 1×10^-3 M, what is the pH of the solution?",
+      "ms": {
+        "draft": 3468,
+        "critique": 7067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an electrolytic cell?",
+      "ms": {
+        "draft": 4716,
+        "critique": 6625,
+        "solver": 1925,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "During the electrolysis of aqueous sodium chloride solution, why is hydrogen gas produced at the cathode instead of sodium metal?",
+      "ms": {
+        "draft": 3468,
+        "critique": 6697,
+        "solver": 1819,
+        "form": 4261
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct order of the reactions taking place during electrolysis of copper sulphate solution with copper electrodes?",
+      "ms": {
+        "draft": 4716,
+        "critique": 7288,
+        "solver": 2009,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a current of 2 amperes is passed through a copper sulphate solution for 10 minutes, what is the mass of copper deposited at the cathode?",
+      "ms": {
+        "draft": 4716,
+        "critique": 6887,
+        "solver": 1893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the correct relationship between the molar conductivity of an electrolyte and its degree of dissociation?",
+      "ms": {
+        "draft": 4716,
+        "critique": 5675,
+        "solver": 1188,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The molar conductivity of a solution increases with dilution. What is the main reason for this increase?",
+      "ms": {
+        "draft": 7620,
+        "critique": 6229,
+        "solver": 874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a primary battery?",
+      "ms": {
+        "draft": 3468,
+        "critique": 6378,
+        "solver": 1387,
+        "form": 2787,
+        "translation": 42771
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main component of the anode in a mercury cell?",
+      "ms": {
+        "draft": 3468,
+        "critique": 6145,
+        "solver": 1797,
+        "form": 3083,
+        "translation": 26657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of an electrolyte in an electrochemical cell?",
+      "ms": {
+        "draft": 3433,
+        "critique": 6275,
+        "solver": 1640,
+        "form": 1,
+        "translation": 40800
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the standard Gibbs energy change (ΔG) and the standard electrode potential (E) of a reaction?",
+      "ms": {
+        "draft": 4850,
+        "critique": 6515,
+        "solver": 12628,
+        "form": 0,
+        "translation": 36680
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a galvanic cell, where does oxidation take place?",
+      "ms": {
+        "draft": 3433,
+        "critique": 6136,
+        "solver": 1101,
+        "form": 0,
+        "translation": 27407
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A conductivity cell has two platinum electrodes coated with platinum black. What is the main purpose of this coating?",
+      "ms": {
+        "draft": 17162,
+        "critique": 6300,
+        "solver": 1294,
+        "form": 0,
+        "translation": 52961
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the corrosion of iron, which of the following is the correct cathode reaction?",
+      "ms": {
+        "draft": 4377,
+        "critique": 7904,
+        "solver": 17146,
+        "form": 0,
+        "translation": 63542
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the overall reaction in the corrosion of iron?",
+      "ms": {
+        "draft": 4377,
+        "critique": 7734,
+        "solver": 2220,
+        "form": 0,
+        "translation": 37757
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the salt bridge in an electrochemical cell?",
+      "ms": {
+        "draft": 3433,
+        "critique": 7695,
+        "solver": 1288,
+        "form": 1,
+        "translation": 37108
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the corrosion of iron, which of the following is the correct role of hydrogen ions (H⁺)?",
+      "ms": {
+        "draft": 4377,
+        "critique": 7500,
+        "solver": 1429,
+        "form": 1,
+        "translation": 45821
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the standard electrode potential of a metal is lower than that of another metal, what can be inferred about its reducing power?",
+      "ms": {
+        "draft": 3433,
+        "critique": 7267,
+        "solver": 1649,
+        "form": 0,
+        "translation": 45006
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is alternating current (AC) used instead of direct current (DC) in conductivity measurements?",
+      "ms": {
+        "draft": 17162,
+        "critique": 7690,
+        "solver": 1004,
+        "form": 0,
+        "translation": 39398
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a non-spontaneous redox reaction?",
+      "ms": {
+        "draft": 3433,
+        "critique": 6863,
+        "solver": 2171,
+        "form": 0,
+        "translation": 32941
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which type of cell converts chemical energy into electrical e"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the correct formula for molar conductivity?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "The resistance of a conductivity cell filled with a solution is 520 Ω. If the cell constant is 129 m⁻¹, what is the conductivity of the solution?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the portion of a galvanic cell where reduction occurs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the standard electrode potential of the hydrogen electrode?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the correct representation of a galvanic cell according to IUPAC convention?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the function of a salt bridge in a galvanic cell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is an example of an inert electrode?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a Daniell cell, what happens to the cell potential when the concentration of Zn²+ ions increases and the concentration of Cu²+ ions decreases?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the standard electrode potential of a redox couple?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct statement, no misconception.…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes fluorine has the lowest potential, while…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a galvanic cell, if the emf of the cell is positive, what does it indicate about the cell reaction?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Given the standard electrode potential of a cell is 1.1 V, what is the value of log K for the reaction at 298 K?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a cell is constructed with Mg(s) | Mg²+(0.130M) || Ag⁺(0.0001M) | Ag(s), and the standard cell potential is 3.17 V, what is the actual cell potential?",
+      "reason": "checkExpr \"3.17 - (0.0591/2)*log(0.130/(0.0001**2))\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A cell reaction has a standard potential of 0.46 V and involves the transfer of 2 electrons. What is the value of K at 298 K?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is true about the standard electrode potential of a redox couple?",
+      "reason": "options 0 and 1 say the same thing (\"It is the potential of the redox couple under standard conditions.\" / \"It is the potential of the redox couple under all conditions.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a galvanic cell has an emf of 1.1 V and 2 moles of electrons are transferred in the reaction, what is the standard Gibbs energy change (ΔG) for the reaction?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a correct explanation for the high conductivity of certain organic polymers like polyacetylene?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements about the conductivity of materials is correct?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A galvanic cell has an emf of 1.5 V, and the reaction involves the transfer of 3 moles of electrons. What is the standard Gibbs energy change (ΔG) for the reaction?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"-3*1.5*96487\" = -434191.5, but the key says -434200"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The resistance of a conductivity cell filled with 0.1 mol/L KCl is 100 Ω, and with 0.02 mol/L KCl is 520 Ω. If the conductivity of 0.1 mol/L KCl is 1.29 S/m, what is the conductivity of 0.02 mol/L KCl?",
+      "reason": "options are written to different precisions (2 and 3 decimals); ARITHMETIC MISMATCH — checkExpr \"129/520\" = 0.24807692307692308, but the key says 0.248"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the relationship between resistivity (ρ) and conductivity (κ)?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the conductance of one unit volume of solution kept between two platinum electrodes with unit area of cross section and at a distance of unit length?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How does the molar conductivity of a solution change with a decrease in concentration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of the dissociation constant of acetic acid if its molar conductivity is 390.5 S cm mol and the conductivity of 0.001028 mol L acetic acid is 4.95 × 10 S cm?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In the lead storage battery, what happens during recharging?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes a galvanic cell?",
+      "reason": "options 0 and 2 say the same thing (\"It converts electrical energy into chemical energy\" / \"It converts chemical energy into electrical energy\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A fuel cell uses hydrogen and oxygen to produce water and electricity. If the cell is operating at standard conditions, and the hydrogen electrode shows a potential of -0.59 V, what is the pH of the solution?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a hydrogen fuel cell, the overall reaction is 2H (g) + O (g) → 2H O(l). If the cell is operating under non-standard conditions, and the hydrogen gas is at a pressure of 1 atm, what is the effect on the cell potential?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the lead storage battery when it is charged?",
+      "reason": "options 0 and 2 say the same thing (\"Lead sulfate is converted to lead and lead dioxide\" / \"Lead dioxide is converted to lead sulfate\"); options 2 and 3 say the same thing (\"Lead dioxide is converted to lead sulfate\" / \"Lead is converted to lead dioxide\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the concentration of H+ ions in a solution is 1×10^-3 M, what is the pH of the solution?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an electrolytic cell?",
+      "reason": "the key is far longer than every distractor (42 vs 15 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "During the electrolysis of aqueous sodium chloride solution, why is hydrogen gas produced at the cathode instead of sodium metal?",
+      "reason": "options 0 and 1 say the same thing (\"Sodium has a higher reduction potential than hydrogen\" / \"Hydrogen has a higher reduction potential than sodium\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the correct order of the reactions taking place during electrolysis of copper sulphate solution with copper electrodes?",
+      "reason": "options 0 and 1 say the same thing (\"Oxidation at cathode, reduction at anode\" / \"Reduction at cathode, oxidation at anode\"); options 0 and 2 say the same thing (\"Oxidation at cathode, reduction at anode\" / \"Reduction at anode, oxidation at cathode\"); options 1 and 2 say the same thing (\"Reduction at cathode, oxidation at anode\" / \"Reduction at anode, oxidation at cathode\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a current of 2 amperes is passed through a copper sulphate solution for 10 minutes, what is the mass of copper deposited at the cathode?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the correct relationship between the molar conductivity of an electrolyte and its degree of dissociation?",
+      "reason": "options 0 and 1 say the same thing (\"Molar conductivity is inversely proportional to the degree of dissociation\" / \"Molar conductivity is directly proportional to the degree of dissociation\"); options 1 and 3 say the same thing (\"Molar conductivity is directly proportional to the degree of dissociation\" / \"Molar conductivity is directly proportional to the square of the degree of dissociation\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The molar conductivity of a solution increases with dilution. What is the main reason for this increase?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct reason, not a distractor (answer is this option, so …\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

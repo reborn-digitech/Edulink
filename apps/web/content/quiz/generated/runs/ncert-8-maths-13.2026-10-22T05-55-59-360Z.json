@@ -1,0 +1,506 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T05:55:59.360Z",
+  "finishedAt": "2026-10-22T06:04:27.325Z",
+  "seconds": 508,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh113.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Introduction to Graphs",
+    "edition": "Reprint 2024-25",
+    "chunks": 10,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n15. The graph drawn below depicts\n(A) y = 𝑠𝑖𝑛 −1 𝑥 (B) y = 𝑐𝑜𝑠 −1 𝑥\n(C) 𝑦 = 𝑥𝑙𝑜𝑔𝑥 + 𝑥 + 𝑐 (D) 𝑦 = 𝑥 + 𝑐\n(C) y = 𝑐𝑜𝑠 𝑒 𝑐 −1 𝑥 (D) y = 𝑐𝑜𝑡 −1 𝑥",
+      "[CBSE Class XII Mathematics, marking scheme, 2025-26]\nSECTION-A (MCQs of 1 mark each)\nSol. N. Hint / Solution Marks\n1 1\nClearly from the graph Domain is [− , ] 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 93108,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18210,
+      "completionTokens": 4480
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 214650,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 11618,
+      "completionTokens": 4794
+    },
+    "solver": {
+      "calls": 133,
+      "ms": 82344,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 22642,
+      "completionTokens": 1290
+    },
+    "form": {
+      "calls": 10,
+      "ms": 47551,
+      "in": 18,
+      "out": 8,
+      "rejects": 10,
+      "promptTokens": 5971,
+      "completionTokens": 948
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 7541,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 419157,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19645,
+      "completionTokens": 9696
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 3582,
+        "critique": 6417,
+        "solver": 2061,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph in the passage, during which period did the patient's temperature show an upward trend?",
+      "ms": {
+        "draft": 3582,
+        "critique": 8036,
+        "solver": 1996
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main advantage of using a graph over a table according to the passage?",
+      "ms": {
+        "draft": 3582,
+        "critique": 7542,
+        "solver": 2101,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the relation between two quantities in a graph?",
+      "ms": {
+        "draft": 14646,
+        "critique": 7103,
+        "solver": 2321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In Example 3, the graph of the quantity of petrol and its cost is a straight line. What does this indicate?",
+      "ms": {
+        "draft": 14646,
+        "critique": 6811,
+        "solver": 1817,
+        "form": 3321
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that the graph of the distance covered by Ajit on his scooter is a straight line. What can we conclude about the speed at which he is riding?",
+      "ms": {
+        "draft": 14646,
+        "critique": 8119,
+        "solver": 1882,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using a graph to present data?",
+      "ms": {
+        "draft": 14646,
+        "critique": 7743,
+        "solver": 1332,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage says that the graph of a situation where two quantities are in direct variation will always be a linear graph. If a graph is not linear, what can we conclude about the relationship between the two quantities?",
+      "ms": {
+        "draft": 14646,
+        "critique": 8953,
+        "solver": 10192,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a dependent variable?",
+      "ms": {
+        "draft": 4533,
+        "critique": 8054
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does a linear graph represent?",
+      "ms": {
+        "draft": 4533,
+        "critique": 8355
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person travels 120 km in 2 hours, what is the speed?",
+      "ms": {
+        "draft": 4533,
+        "critique": 9527
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a graph showing the relationship between deposit and simple interest, if the graph passes through the origin, what does it indicate?",
+      "ms": {
+        "draft": 4533,
+        "critique": 7447,
+        "solver": 2247,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a graph shows the relationship between the amount of electricity used and the bill, what is the nature of the relationship?",
+      "ms": {
+        "draft": 4533,
+        "critique": 8035,
+        "solver": 21856
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given graph of distance and time, what can be concluded about the motion?",
+      "ms": {
+        "draft": 4533,
+        "critique": 9277,
+        "solver": 22045,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the vertical axis of a graph usually show?",
+      "ms": {
+        "draft": 14888,
+        "critique": 9052,
+        "solver": 2074
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 14888,
+        "critique": 9325,
+        "solver": 13340,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a graph shows the temperature of a patient every hour, what does the vertical axis represent?",
+      "ms": {
+        "draft": 3582,
+        "critique": 5647,
+        "solver": 1774,
+        "form": 4370,
+        "translation": 55119
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car travels 50 km in the first hour and 100 km in the second hour, what can be inferred about its speed?",
+      "ms": {
+        "draft": 14888,
+        "critique": 7541,
+        "solver": 1858,
+        "form": 4706,
+        "translation": 58273
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph of the patient's temperature, what can be concluded about the temperature at 1:30 p.m.?",
+      "ms": {
+        "draft": 14888,
+        "critique": 8262,
+        "solver": 2216,
+        "form": 3035,
+        "translation": 51480
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In Example 4, the graph of deposit and simple interest is a straight line. What does this indicate about the relationship between the two quantities?",
+      "ms": {
+        "draft": 14646,
+        "critique": 8493,
+        "solver": 1733,
+        "form": 4199,
+        "translation": 67544
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a line graph shows the distance of a car from a city, and the graph has a horizontal line segment, what does this indicate?",
+      "ms": {
+        "draft": 3582,
+        "critique": 8635,
+        "solver": 1857,
+        "form": 4420,
+        "translation": 52560
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the sales of a company increased from 2002 to 2006, and the difference between the sales in 2002 and 2006 is 100, what could the sales in 2002 be if the sales in 2006 were 300?",
+      "ms": {
+        "draft": 14888,
+        "critique": 9083,
+        "solver": 1192,
+        "form": 0,
+        "translation": 29329
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a graph comparing the runs scored by two batsmen, what does a point where the two lines meet indicate?",
+      "ms": {
+        "draft": 3582,
+        "critique": 8052,
+        "solver": 2059,
+        "form": 4390,
+        "translation": 64027
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the temperature of a patient increases continuously from 8 a.m. to 12 p.m., what can be said about the graph of the temperature?",
+      "ms": {
+        "draft": 14888,
+        "critique": 5220,
+        "solver": 872,
+        "form": 1284,
+        "translation": 36422
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the role of figures in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the graph in the passage, during which period did the patient's temperature show an upward trend?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main advantage of using a graph over a table according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the relation between two quantities in a graph?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In Example 3, the graph of the quantity of petrol and its cost is a straight line. What does this indicate?",
+      "reason": "options 1 and 2 say the same thing (\"The cost is directly proportional to the quantity of petrol\" / \"The cost is inversely proportional to the quantity of petrol\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that the graph of the distance covered by Ajit on his scooter is a straight line. What can we conclude about the speed at which he is riding?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using a graph to present data?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage says that the graph of a situation where two quantities are in direct variation will always be a linear graph. If a graph is not linear, what can we conclude about the relationship between the two quantities?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"They are in direct variation\" / \"They are not in direct variation\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a dependent variable?",
+      "reason": "more than one defensible answer, or none; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does a linear graph represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person travels 120 km in 2 hours, what is the speed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a graph showing the relationship between deposit and simple interest, if the graph passes through the origin, what does it indicate?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a graph shows the relationship between the amount of electricity used and the bill, what is the nature of the relationship?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given graph of distance and time, what can be concluded about the motion?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the vertical axis of a graph usually show?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Student confuses the example in the passage with the general…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

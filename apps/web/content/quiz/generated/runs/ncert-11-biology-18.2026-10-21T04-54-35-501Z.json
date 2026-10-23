@@ -1,0 +1,677 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T04:54:35.501Z",
+  "finishedAt": "2026-10-21T05:01:16.801Z",
+  "seconds": 401,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo118.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 18 — Neural Control and Coordination",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2022 — question paper]\n22. (2 points) The stimulus received from external factors like heat, pressure, odour, movement\nand current generates impulse which travels rapidly along the length of a neuron. This\ntransmission of impulse is not a simple electric current but it is an electrochemical change\npropagating through the length of an axon. This is how the neurons communicate the\nstimulus to another neuron or effector organ.\nConsider a situation where an isolated neuron from Aplysia (sea slug) having a long axon is\nplaced under experimental condition. Two electrodes (I and II) are placed several centimeters\napart on the surface of the axon. They are connected to the recording equipment. During an\nexperiment, an ext",
+      "[INBO 2024 — question paper]\n51. (2 points) The sympathetic nervous system is best known for its role in responding to\ndangerous or stressful situations and parasympathetic nervous systems controls various\ninvoluntary physiological processes, including but not limited to those illustrated in the table\nbelow:\nPhysiologic functions Effects\nCardiovascular Decreased cardiac output (a) Increased cardiac output (b)\nPulmonary Bronchial dilation (a) Bronchial constriction (b)\nPupillary Pupillary dilation (a) Pupillary constriction (b)\nMusculoskeletal Muscular relaxation (a) Muscular contraction (b)\nAssociate physiological functions with either the sympathetic or parasympathetic nervous\nsystem and fill in the choices using alpha",
+      "[INBO 2017 — question paper]\n34. (2 points) Following are the functional aspects of stimulation of autonomous nervous\nsystem. Mark P for parasympathetic and S for sympathetic response against them.\nParasympathetic (P) or Sympathetic (S)\ni. Increase peristalsis in gastro\nintestinal tract\nii. Constriction of bronchi in lungs\niii. Dilation of pupil\niv. Inhibition of contraction of urinary\nbladder",
+      "[NSEB 2015 — question paper]\n69. Activation of the sympathetic nervous system corresponds to arousal and energy\ngeneration- the so called “fight and flight”- response. Which of the following is an\nexample of this?\na) Stimulation of activity of the stomach and intestine.\nb) Stimulation of salivary glands.\nc) Stimulation of glucose release from liver.\nd) Constriction of bronchi in the lungs.\nB 342"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 156085,
+      "in": 35,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 26016,
+      "completionTokens": 10459
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 224807,
+      "in": 33,
+      "out": 23,
+      "rejects": 10,
+      "promptTokens": 18350,
+      "completionTokens": 6965
+    },
+    "solver": {
+      "calls": 157,
+      "ms": 63605,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 26072,
+      "completionTokens": 1468
+    },
+    "form": {
+      "calls": 9,
+      "ms": 42643,
+      "in": 21,
+      "out": 6,
+      "rejects": 15,
+      "promptTokens": 11360,
+      "completionTokens": 1266
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 40,
+      "ms": 7215,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 217269,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14075,
+      "completionTokens": 7463
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 4,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which part of the human neural system is responsible for information processing and control?",
+      "ms": {
+        "draft": 4344,
+        "critique": 5293,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's autonomic nervous system is damaged, which function is most likely to be affected?",
+      "ms": {
+        "draft": 4344,
+        "critique": 5801,
+        "solver": 9763,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what happens to the ion concentration inside and outside the axon when the neuron is at rest?",
+      "ms": {
+        "draft": 4344,
+        "critique": 8322,
+        "solver": 11076,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, an isolated neuron from Aplysia with a long axon is placed under a recording setup. Two electrodes are placed several centimeters apart on the axon. What would happen if an electric stimulus is applied at one electrode?",
+      "ms": {
+        "draft": 4344,
+        "critique": 7187,
+        "solver": 10715,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the electrical charge on the outer surface of a neuron's membrane when a stimulus is applied?",
+      "ms": {
+        "draft": 5736,
+        "critique": 4321,
+        "solver": 1407,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a neuron's membrane at site A becomes depolarized, what happens to the membrane at site B immediately ahead?",
+      "ms": {
+        "draft": 5736,
+        "critique": 5145,
+        "solver": 1137,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student records the effect of a stimulus on a neuron's membrane. After the stimulus, the membrane at site A becomes positively charged on the inner surface. What is the likely result at site B?",
+      "ms": {
+        "draft": 5736,
+        "critique": 7745,
+        "solver": 1299
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct characteristic of electrical synapses?",
+      "ms": {
+        "draft": 5736,
+        "critique": 5209,
+        "solver": 1721,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the permeability to Na+ increases rapidly but briefly, followed by a rise in K+ permeability, what is the result for the membrane potential?",
+      "ms": {
+        "draft": 5736,
+        "critique": 5620,
+        "solver": 1229
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the brain is responsible for coordinating voluntary movements and maintaining balance?",
+      "ms": {
+        "draft": 2350,
+        "critique": 5551
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person suffers damage to the medulla oblongata, which of the following functions would most likely be affected?",
+      "ms": {
+        "draft": 2350,
+        "critique": 5987
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the role of the hypothalamus in the brain?",
+      "ms": {
+        "draft": 2350,
+        "critique": 6622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to identify the region of the brain that is responsible for integrating sensory input and initiating motor output. Based on the passage, which of the following is the correct answer?",
+      "ms": {
+        "draft": 2350,
+        "critique": 6214
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A researcher is studying the neural pathways in the brain and finds that a particular region is involved in both sensory input and motor output. Which part of the brain is most likely to be the focus of this study?",
+      "ms": {
+        "draft": 2350,
+        "critique": 4885
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the hypothalamus in the brain?",
+      "ms": {
+        "draft": 5736,
+        "critique": 6583,
+        "solver": 9187,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the hindbrain?",
+      "ms": {
+        "draft": 3364,
+        "critique": 5445,
+        "solver": 1039,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a neuron is placed in a solution that disrupts the ion concentration gradient across its membrane. Which of the following would most likely occur?",
+      "ms": {
+        "draft": 3364,
+        "critique": 6257,
+        "solver": 1189,
+        "form": 2467
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the medulla as being connected to the spinal cord and containing centres for respiration, cardiovascular reflexes, and gastric secretions. Which of the following best explains why the medulla is critical for maintaining homeostasis?",
+      "ms": {
+        "draft": 3364,
+        "critique": 5006,
+        "solver": 1742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary function of the synaptic cleft in a chemical synapse?",
+      "ms": {
+        "draft": 5773,
+        "critique": 6106
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of the hypothalamus in the brain?",
+      "ms": {
+        "draft": 5773,
+        "critique": 6483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a neuron is placed in a solution with a high concentration of potassium ions. What is the most likely outcome?",
+      "ms": {
+        "draft": 5773,
+        "critique": 5963
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person experiences a sudden increase in heart rate and dilation of the pupils, which part of the nervous system is most likely active?",
+      "ms": {
+        "draft": 5773,
+        "critique": 4675
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the brain is responsible for coordinating sensory and motor signaling?",
+      "ms": {
+        "draft": 5773,
+        "critique": 7044
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is studying the human neural system and comes across the term 'afferent fibres'. What is the main function of afferent fibres?",
+      "ms": {
+        "draft": 14586,
+        "critique": 6894,
+        "solver": 1552,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage explains that the neural system and the endocrine system work together. Based on the passage, what is the main difference between the neural system and the endocrine system?",
+      "ms": {
+        "draft": 14586,
+        "critique": 5580,
+        "solver": 1181,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is in a stressful situation, and their body shows an increased heart rate, dilated pupils, and faster breathing. Based on the information in the passage, which part of the nervous system is most likely responsible for these responses?",
+      "ms": {
+        "draft": 14586,
+        "critique": 4527,
+        "solver": 1049,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the structure of a neuron, including the presence of Nissl's granules. Based on this information, what is the most likely function of Nissl's granules in a neuron?",
+      "ms": {
+        "draft": 14586,
+        "critique": 4224,
+        "solver": 925,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of the autonomic neural system?",
+      "ms": {
+        "draft": 4344,
+        "critique": 6015,
+        "solver": 11117,
+        "form": 0,
+        "translation": 38076
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when a stimulus is applied to a polarised membrane of a neuron?",
+      "ms": {
+        "draft": 5773,
+        "critique": 6763,
+        "solver": 8346,
+        "form": 0,
+        "translation": 38867
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the brain is responsible for controlling respiration, cardiovascular reflexes, and gastric secretions?",
+      "ms": {
+        "draft": 3364,
+        "critique": 6693,
+        "solver": 1817,
+        "form": 2640,
+        "translation": 35561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the cerebellum?",
+      "ms": {
+        "draft": 3364,
+        "critique": 4344,
+        "solver": 1120,
+        "form": 2978,
+        "translation": 36872
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has damage to the hindbrain, which of the following functions is most likely to be affected?",
+      "ms": {
+        "draft": 3364,
+        "critique": 5446,
+        "solver": 2100,
+        "form": 2971,
+        "translation": 30224
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of the 'fight or flight' response mediated by the sympathetic nervous system?",
+      "ms": {
+        "draft": 4344,
+        "critique": 6249,
+        "solver": 9011,
+        "form": 0,
+        "translation": 34073
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following best describes the function of the synaptic cleft?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the human neural system is responsible for information processing and control?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no misconception here, no distractor reason …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person's autonomic nervous system is damaged, which function is most likely to be affected?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what happens to the ion concentration inside and outside the axon when the neuron is at rest?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"High Na+ and low K+ inside the axon\" / \"High K+ and low Na+ inside the axon\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, an isolated neuron from Aplysia with a long axon is placed under a recording setup. Two electrodes are placed several centimeters apart on the axon. What would happen if an electric stimulus is applied at one electrode?",
+      "reason": "options 0 and 2 say the same thing (\"The impulse would travel from the first electrode to the second electrode\" / \"The impulse would only travel from the second electrode to the first\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the electrical charge on the outer surface of a neuron's membrane when a stimulus is applied?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label stimulus"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a neuron's membrane at site A becomes depolarized, what happens to the membrane at site B immediately ahead?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'axon'"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student records the effect of a stimulus on a neuron's membrane. After the stimulus, the membrane at site A becomes positively charged on the inner surface. What is the likely result at site B?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct characteristic of electrical synapses?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the permeability to Na+ increases rapidly but briefly, followed by a rise in K+ permeability, what is the result for the membrane potential?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the brain is responsible for coordinating voluntary movements and maintaining balance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person suffers damage to the medulla oblongata, which of the following functions would most likely be affected?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the role of the hypothalamus in the brain?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is asked to identify the region of the brain that is responsible for integrating sensory input and initiating motor output. Based on the passage, which of the following is the correct answer?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A researcher is studying the neural pathways in the brain and finds that a particular region is involved in both sensory input and motor output. Which part of the brain is most likely to be the focus of this study?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the hypothalamus in the brain?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'brain'"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The passage describes the three types of neurons based on the number of axons and dendrites. Which type of neuron has one axon and two or more dendrites?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the hindbrain?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (67 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, a neuron is placed in a solution that disrupts the ion concentration gradient across its membrane. Which of the following would most likely occur?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes that a stronger resting potential would form, which …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the medulla as being connected to the spinal cord and containing centres for respiration, cardiovascular reflexes, and gastric secretions. Which of the following best explains why the medulla is critical for maintaining homeostasis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the primary function of the synaptic cleft in a chemical synapse?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of the hypothalamus in the brain?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, a neuron is placed in a solution with a high concentration of potassium ions. What is the most likely outcome?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a person experiences a sudden increase in heart rate and dilation of the pupils, which part of the nervous system is most likely active?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of the brain is responsible for coordinating sensory and motor signaling?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is studying the human neural system and comes across the term 'afferent fibres'. What is the main function of afferent fibres?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor here (index 2 is correct, s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage explains that the neural system and the endocrine system work together. Based on the passage, what is the main difference between the neural system and the endocrine system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person is in a stressful situation, and their body shows an increased heart rate, dilated pupils, and faster breathing. Based on the information in the passage, which part of the nervous system is most likely responsible for these responses?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the structure of a neuron, including the presence of Nissl's granules. Based on this information, what is the most likely function of Nissl's granules in a neuron?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

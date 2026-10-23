@@ -1,0 +1,252 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:30:38.693Z",
+  "finishedAt": "2026-10-20T20:32:56.639Z",
+  "seconds": 138,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap124.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 24 — Home and Abroad",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 35441,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7626,
+      "completionTokens": 2166
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 45498,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 4225,
+      "completionTokens": 1553
+    },
+    "solver": {
+      "calls": 43,
+      "ms": 17512,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 6816,
+      "completionTokens": 424
+    },
+    "form": {
+      "calls": 3,
+      "ms": 4706,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 675,
+      "completionTokens": 198
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2519,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 20365,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2496,
+      "completionTokens": 1391
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Where did Chittappan get a job five years ago?",
+      "ms": {
+        "draft": 18031,
+        "critique": 6963
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Maalu think that Abu Dhabi was far from India?",
+      "ms": {
+        "draft": 18031,
+        "critique": 6964,
+        "solver": 1905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is a reason that people in Abu Dhabi wear loose cotton clothes?",
+      "ms": {
+        "draft": 18031,
+        "critique": 6654,
+        "solver": 1308,
+        "form": 2240
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why are there no trees in desert areas according to the passage?",
+      "ms": {
+        "draft": 18031,
+        "critique": 4247,
+        "solver": 478,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Chittappan and his family come back to India?",
+      "ms": {
+        "draft": 3305,
+        "critique": 5061,
+        "solver": 1584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How long did it take Chittappan's family to travel from Abu Dhabi to India?",
+      "ms": {
+        "draft": 3305,
+        "critique": 5330,
+        "solver": 1900
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the currency used in Abu Dhabi?",
+      "ms": {
+        "draft": 3305,
+        "critique": 4699,
+        "solver": 1263,
+        "form": 3109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do people in Abu Dhabi wear loose cotton clothes and keep themselves fully covered?",
+      "ms": {
+        "draft": 3305,
+        "critique": 4118,
+        "solver": 6177,
+        "form": 1091,
+        "translation": 17117
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Where did Chittappan get a job five years ago?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Maalu think that Abu Dhabi was far from India?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is a reason that people in Abu Dhabi wear loose cotton clothes?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Mistakenly thinks that people wear loose cotton clothes to p…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that the reason for wearing loose cotton…\"); distractor 3's reason is not a one-line misconception (\"Confuses the reason for wearing clothes with protection from…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why are there no trees in desert areas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that the lack of trees in deserts is due…\"); distractor 2's reason is not a one-line misconception (\"Mistakenly thinks that the lack of trees is due to the heat,…\"); distractor 3's reason is not a one-line misconception (\"Confuses the reason for no trees with the absence of soil, b…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Why did Chittappan and his family come back to India?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How long did it take Chittappan's family to travel from Abu Dhabi to India?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the currency used in Abu Dhabi?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"suggests a different currency, which is not mentioned in the…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

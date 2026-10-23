@@ -1,0 +1,714 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T06:08:22.992Z",
+  "finishedAt": "2026-10-21T06:13:43.440Z",
+  "seconds": 320,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy301.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 1 — Introduction to Maps",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n7. Section E Question number 29 and 30 are Map based questions.",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\nSECTION E\nQuestion numbers 29 & 30 are Map based questions having 5 sub-parts each.",
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\nSECTION D\nQuestion numbers 29 & 30 are Map based questions having 5\nsub-parts each.",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 111176,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 24738,
+      "completionTokens": 7508
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 246389,
+      "in": 36,
+      "out": 20,
+      "rejects": 16,
+      "promptTokens": 19052,
+      "completionTokens": 7602
+    },
+    "solver": {
+      "calls": 149,
+      "ms": 61697,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 27964,
+      "completionTokens": 1602
+    },
+    "form": {
+      "calls": 6,
+      "ms": 15175,
+      "in": 15,
+      "out": 4,
+      "rejects": 11,
+      "promptTokens": 1544,
+      "completionTokens": 465
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 70,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 123648,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9384,
+      "completionTokens": 4818
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of generalisation in map-making?",
+      "ms": {
+        "draft": 3435,
+        "critique": 5623
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a map according to the passage?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6520
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the scale of a map?",
+      "ms": {
+        "draft": 3435,
+        "critique": 7284,
+        "solver": 1281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a map is drawn at a scale of 1:10,000, what does that mean?",
+      "ms": {
+        "draft": 3435,
+        "critique": 7471,
+        "solver": 1087,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a requirement of a map according to the passage?",
+      "ms": {
+        "draft": 3435,
+        "critique": 5981,
+        "solver": 12716
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is map projection important in the process of map-making?",
+      "ms": {
+        "draft": 3435,
+        "critique": 5923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of physical map that shows the distribution of different types of soils?",
+      "ms": {
+        "draft": 11181,
+        "critique": 4901,
+        "solver": 9848,
+        "form": 2036
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which type of map would be most suitable for studying the distribution of rainfall in a region?",
+      "ms": {
+        "draft": 11181,
+        "critique": 6405,
+        "solver": 9927,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is preparing a map to show the location of different types of soils in Nagpur District. Which figure from the passage would be most relevant?",
+      "ms": {
+        "draft": 11181,
+        "critique": 6287
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following would be a suitable scale for a village map?",
+      "ms": {
+        "draft": 11181,
+        "critique": 5837,
+        "solver": 11025,
+        "form": 3862
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about map-making in India is supported by the passage?",
+      "ms": {
+        "draft": 11181,
+        "critique": 4874,
+        "solver": 1594
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which type of map would be most suitable for showing the location of schools and post offices in a region?",
+      "ms": {
+        "draft": 11181,
+        "critique": 4501,
+        "solver": 1073
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of population maps according to the passage?",
+      "ms": {
+        "draft": 2377,
+        "critique": 5131
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an economic map according to the passage?",
+      "ms": {
+        "draft": 2377,
+        "critique": 6791
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the role of the north direction on a map?",
+      "ms": {
+        "draft": 2377,
+        "critique": 6662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a polar planimeter to measure the area of a region on a map, which of the following will they need to do?",
+      "ms": {
+        "draft": 2377,
+        "critique": 6006
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of map generalisation?",
+      "ms": {
+        "draft": 2377,
+        "critique": 4667
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to measure the distance of a river on a map, which method should they use according to the passage?",
+      "ms": {
+        "draft": 2377,
+        "critique": 5407,
+        "solver": 7452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of map shows the distribution of population, density, and growth in an area?",
+      "ms": {
+        "draft": 2981,
+        "critique": 5146
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is used to measure the area of a region on a map?",
+      "ms": {
+        "draft": 2981,
+        "critique": 5610
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements is true about maps?",
+      "ms": {
+        "draft": 2981,
+        "critique": 5779,
+        "solver": 1339,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a map has a scale of 1:4000, which of the following is most likely to be the type of map?",
+      "ms": {
+        "draft": 2981,
+        "critique": 6240,
+        "solver": 1143
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of a cadastral map?",
+      "ms": {
+        "draft": 3345,
+        "critique": 7330
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following maps would best show the general topography of an area?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6225
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map is drawn at a scale of 1:25,000, what type of map is it likely to be?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6437
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a map is drawn to show the distribution of rainfall and temperature in an area, what type of map would it be?",
+      "ms": {
+        "draft": 3345,
+        "critique": 4970
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements about the types of maps is correct?",
+      "ms": {
+        "draft": 3345,
+        "critique": 5641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary purpose of generalisation in map-making?",
+      "ms": {
+        "draft": 2834,
+        "critique": 4208,
+        "solver": 1162,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is a map defined as?",
+      "ms": {
+        "draft": 2834,
+        "critique": 4640,
+        "solver": 1569,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given two maps of the same area, one with a scale of 1:1000 and the other with a scale of 1:5000. Which map will show more detailed information?",
+      "ms": {
+        "draft": 2834,
+        "critique": 7011,
+        "solver": 1171,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains why a map cannot show the exact size and shape of all features on the Earth's surface?",
+      "ms": {
+        "draft": 2834,
+        "critique": 4963,
+        "solver": 13859,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a feature of a map according to the passage?",
+      "ms": {
+        "draft": 2834,
+        "critique": 5134,
+        "solver": 5460
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a physical map?",
+      "ms": {
+        "draft": 3345,
+        "critique": 5767,
+        "solver": 9368,
+        "form": 2141,
+        "translation": 35852
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not an essential element of a map?",
+      "ms": {
+        "draft": 2981,
+        "critique": 6037,
+        "solver": 1506,
+        "form": 2325,
+        "translation": 27384
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a map is drawn without a scale, which of the following is it most likely to be called?",
+      "ms": {
+        "draft": 2834,
+        "critique": 6221,
+        "solver": 1420,
+        "form": 3082,
+        "translation": 21086
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important for a map to have a north direction?",
+      "ms": {
+        "draft": 2981,
+        "critique": 5942,
+        "solver": 1517,
+        "form": 2288,
+        "translation": 36061
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of generalisation in map-making?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of a map according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the scale of a map?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a map is drawn at a scale of 1:10,000, what does that mean?",
+      "reason": "options 0 and 1 say the same thing (\"1 unit on the map represents 10,000 units on the ground\" / \"10,000 units on the map represent 1 unit on the ground\"); distractor 1's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a requirement of a map according to the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is map projection important in the process of map-making?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a type of physical map that shows the distribution of different types of soils?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which type of map would be most suitable for studying the distribution of rainfall in a region?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is preparing a map to show the location of different types of soils in Nagpur District. Which figure from the passage would be most relevant?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following would be a suitable scale for a village map?",
+      "reason": "options 0 and 2 are the same (\"1:250,000\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements about map-making in India is supported by the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which type of map would be most suitable for showing the location of schools and post offices in a region?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary purpose of population maps according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an economic map according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the role of the north direction on a map?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student uses a polar planimeter to measure the area of a region on a map, which of the following will they need to do?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of map generalisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to measure the distance of a river on a map, which method should they use according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of map shows the distribution of population, density, and growth in an area?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which method is used to measure the area of a region on a map?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements is true about maps?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a map has a scale of 1:4000, which of the following is most likely to be the type of map?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary purpose of a cadastral map?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following maps would best show the general topography of an area?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a map is drawn at a scale of 1:25,000, what type of map is it likely to be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a map is drawn to show the distribution of rainfall and temperature in an area, what type of map would it be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following statements about the types of maps is correct?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary purpose of generalisation in map-making?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (64 vs 39 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is a map defined as?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given two maps of the same area, one with a scale of 1:1000 and the other with a scale of 1:5000. Which map will show more detailed information?",
+      "reason": "option 0 repeats the stem's wording (\"The map with a scale of 1:1000\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best explains why a map cannot show the exact size and shape of all features on the Earth's surface?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a feature of a map according to the passage?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

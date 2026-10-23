@@ -1,0 +1,842 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:56:32.523Z",
+  "finishedAt": "2026-10-20T23:03:14.562Z",
+  "seconds": 402,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh103.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Trigonometric Functions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n29. If 𝑠𝑖𝑛𝛳 + 𝑐𝑜𝑠𝛳 = √3 ,then prove that 𝑡𝑎𝑛𝛳 + 𝑐𝑜𝑡𝛳 = 1 3\nOR\nProve that 𝑐𝑜𝑠𝐴−𝑠𝑖𝑛𝐴+1 𝑐𝑜𝑠𝐴+𝑠𝑖𝑛𝐴−1 =cosecA + cotA",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n13. 1−𝑡𝑎𝑛 30 2 ∘ is equal to\n1+𝑡𝑎𝑛 30 2 ∘\n(A) cos 60 ∘ (B) sin 60 ∘",
+      "[CBSE Class XII Mathematics, sample question paper, 2025-26]\n1. Identify the function shown in the graph\n(A) sin −1 𝑥 (B) sin −1 (2𝑥)\nFor Visually Impaired:\n(C) sin −1 ( ) 𝑥 2 (D) 2 sin −1 𝑥\n1 1\n1. Inverse Trigonometric Function, whose domain is [− , ] , is …\n(A) cos −1 𝑥\n(C) cos −1 (3𝑥)\n3 3\n(B) cos −1 ( ) 𝑥 3\n(D) 3 cos −1 𝑥",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n21. Find the value of sin  cos   .\n  5  \nOR\nFind the domain of sin 1  x  4 . 2 "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 169300,
+      "in": 46,
+      "out": 42,
+      "rejects": 4,
+      "promptTokens": 48214,
+      "completionTokens": 10844
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 249277,
+      "in": 42,
+      "out": 32,
+      "rejects": 10,
+      "promptTokens": 22608,
+      "completionTokens": 8708
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 82444,
+      "in": 32,
+      "out": 26,
+      "rejects": 6,
+      "promptTokens": 38388,
+      "completionTokens": 2006
+    },
+    "form": {
+      "calls": 8,
+      "ms": 21838,
+      "in": 26,
+      "out": 8,
+      "rejects": 18,
+      "promptTokens": 2125,
+      "completionTokens": 676
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2521,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 176650,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14350,
+      "completionTokens": 6243
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does the term 'trigonometry' mean?",
+      "ms": {
+        "draft": 2687,
+        "critique": 4243,
+        "solver": 1925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the radian measure of an angle that is one complete revolution?",
+      "ms": {
+        "draft": 2687,
+        "critique": 5356,
+        "solver": 1193,
+        "form": 2806
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the formula for the length of an arc of a circle in terms of the radius and the angle in radians?",
+      "ms": {
+        "draft": 2687,
+        "critique": 5147,
+        "solver": 1102,
+        "form": 2812
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Convert 40° 20′ into radian measure.",
+      "ms": {
+        "draft": 2687,
+        "critique": 5755,
+        "solver": 1548,
+        "form": 3255
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the radian measure of an angle that subtends an arc of length 2π cm in a circle of radius 1.5 cm?",
+      "ms": {
+        "draft": 5317,
+        "critique": 4791,
+        "solver": 1431
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the arcs of the same length in two circles subtend angles of 65° and 110° at the center, what is the ratio of their radii?",
+      "ms": {
+        "draft": 5317,
+        "critique": 5257,
+        "solver": 1362
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a circle of diameter 40 cm, the length of a chord is 20 cm. What is the length of the minor arc of the chord?",
+      "ms": {
+        "draft": 5317,
+        "critique": 4959,
+        "solver": 1025,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of cos(π) based on the unit circle?",
+      "ms": {
+        "draft": 5317,
+        "critique": 4687,
+        "solver": 1350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given that the minute hand of a clock turns through of a revolution in 40 minutes, what is the angle in radians it turns through in 40 minutes?",
+      "ms": {
+        "draft": 5317,
+        "critique": 5106,
+        "solver": 1484,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, then what is the value of tan θ + cot θ?",
+      "ms": {
+        "draft": 5317,
+        "critique": 7312
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which trigonometric function increases from 0 to infinity as x approaches π/2 in the first quadrant?",
+      "ms": {
+        "draft": 3790,
+        "critique": 5005
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If sin x = 1/2, in which quadrant does x lie if x is between 0 and 2π?",
+      "ms": {
+        "draft": 3790,
+        "critique": 4918
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of sin(π/2 + x) if sin x = 1/2 and cos x = √3/2?",
+      "ms": {
+        "draft": 3790,
+        "critique": 5147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If tan x = 3/4 and x is in the third quadrant, what is the value of sec x?",
+      "ms": {
+        "draft": 3790,
+        "critique": 4624
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the formula for tan(x + y)?",
+      "ms": {
+        "draft": 3923,
+        "critique": 5630,
+        "solver": 9766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an identity involving trigonometric functions?",
+      "ms": {
+        "draft": 3188,
+        "critique": 5213,
+        "solver": 1145,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If sin x = 3/5 and cos y = -4/5, with x and y in the second quadrant, what is the value of sin(x + y)?",
+      "ms": {
+        "draft": 3188,
+        "critique": 5174,
+        "solver": 857
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Prove that cos 2x cos x - sin 2x sin x = cos 3x.",
+      "ms": {
+        "draft": 3188,
+        "critique": 3568,
+        "solver": 462,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which identity is used to find the value of sin(x + y)?",
+      "ms": {
+        "draft": 3840,
+        "critique": 5188
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If sin x = 3/5 and x lies in the second quadrant, what is the value of cos x?",
+      "ms": {
+        "draft": 3840,
+        "critique": 4546,
+        "solver": 11759,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is equal to 1 + tan^2 x?",
+      "ms": {
+        "draft": 3840,
+        "critique": 4711,
+        "solver": 15227,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If tan x = 1/2 and π < x < 3π/2, what is the value of sin x?",
+      "ms": {
+        "draft": 3840,
+        "critique": 4755,
+        "solver": 1364,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the formula for tan(x + y)?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the formula for cos 2x?",
+      "ms": {
+        "draft": 3220,
+        "critique": 5829
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If cos x + cos y = 2 cos((x + y)/2) cos((x - y)/2), what is the value of cos x + cos y when x = π/3 and y = π/6?",
+      "ms": {
+        "draft": 3840,
+        "critique": 4763,
+        "solver": 8003
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of sin 15° according to the passage?",
+      "ms": {
+        "draft": 3220,
+        "critique": 4269,
+        "solver": 1075,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of sin(75°) according to the passage?",
+      "ms": {
+        "draft": 3220,
+        "critique": 5812,
+        "solver": 1179,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If sin x + cos x = √3, then what is the value of tan x + cot x?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of sin(90°)?",
+      "ms": {
+        "draft": 10286,
+        "critique": 4561,
+        "solver": 1221,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If tan(x + y) = (tan x + tan y) / (1 - tan x tan y), what is the value of tan(x - y)?",
+      "ms": {
+        "draft": 3220,
+        "critique": 4511,
+        "solver": 9889,
+        "form": 2425
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using the identity cos(x + y) = cos x cos y - sin x sin y, what is the value of cos(60° + 30°)?",
+      "ms": {
+        "draft": 10286,
+        "critique": 4948
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If sin x = 1/2, and x lies in the second quadrant, what is the value of cos x?",
+      "ms": {
+        "draft": 10286,
+        "critique": 4690,
+        "solver": 1027,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If tan x = 1, and x lies in the third quadrant, what is the value of sin x?",
+      "ms": {
+        "draft": 10286,
+        "critique": 4037,
+        "solver": 1378,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If sin θ + cos θ = √3, what is the value of tan θ + cot θ?",
+      "ms": {
+        "draft": 5684,
+        "critique": 4712,
+        "solver": 646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of cos(π - x)?",
+      "ms": {
+        "draft": 3840,
+        "critique": 8635,
+        "solver": 9172,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of an angle in terms of a full rotation?",
+      "ms": {
+        "draft": 2687,
+        "critique": 3849,
+        "solver": 979,
+        "form": 3189,
+        "translation": 32211
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the reciprocal of cos x?",
+      "ms": {
+        "draft": 10286,
+        "critique": 4325,
+        "solver": 1296,
+        "form": 0,
+        "translation": 21092
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an angle is formed by rotating a ray in the clockwise direction, what is the angle called?",
+      "ms": {
+        "draft": 2687,
+        "critique": 4018,
+        "solver": 1341,
+        "form": 2452,
+        "translation": 29748
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of cos(π + x) if cos x = 1/2?",
+      "ms": {
+        "draft": 3188,
+        "critique": 5267,
+        "solver": 1249,
+        "form": 0,
+        "translation": 20484
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If sin x = 1/2 and cos x = √3/2, what is the value of sin(2x)?",
+      "ms": {
+        "draft": 3790,
+        "critique": 4534,
+        "solver": 10816,
+        "form": 3713,
+        "translation": 29129
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If tan x = 2 and x is in the third quadrant, what is the value of cos(2x)?",
+      "ms": {
+        "draft": 3790,
+        "critique": 5297,
+        "solver": 10121,
+        "form": 3933,
+        "translation": 27337
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If tan(π + x) = tan x, and x lies in the first quadrant, what is the value of tan(π + x)?",
+      "ms": {
+        "draft": 10286,
+        "critique": 4411,
+        "solver": 840,
+        "form": 0,
+        "translation": 12822
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for cos 2x?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for sin 2x?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for tan 2x?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for sin 3x?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does the term 'trigonometry' mean?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the radian measure of an angle that is one complete revolution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the formula for the length of an arc of a circle in terms of the radius and the angle in radians?",
+      "reason": "options 0 and 1 are the same (\"l = r + θ\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Convert 40° 20′ into radian measure.",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"121*3.14/360\" = 1.055388888888889, but the key says 121"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the radian measure of an angle that subtends an arc of length 2π cm in a circle of radius 1.5 cm?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the arcs of the same length in two circles subtend angles of 65° and 110° at the center, what is the ratio of their radii?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a circle of diameter 40 cm, the length of a chord is 20 cm. What is the length of the minor arc of the chord?",
+      "reason": "options are in more than one unit (cm, π cm); options 0 and 2 are the same number; options 1 and 3 are the same number; checkExpr \"10*pi\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of cos(π) based on the unit circle?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Given that the minute hand of a clock turns through of a revolution in 40 minutes, what is the angle in radians it turns through in 40 minutes?",
+      "reason": "checkExpr \"(2*pi)/3\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, then what is the value of tan θ + cot θ?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which trigonometric function increases from 0 to infinity as x approaches π/2 in the first quadrant?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If sin x = 1/2, in which quadrant does x lie if x is between 0 and 2π?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the value of sin(π/2 + x) if sin x = 1/2 and cos x = √3/2?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If tan x = 3/4 and x is in the third quadrant, what is the value of sec x?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the formula for tan(x + y)?",
+      "reason": "options 2 and 3 say the same thing (\"(tan x + tan y)/(1 - tan x tan y)\" / \"(tan x + tan y)/(1 + tan x tan y)\"); option 0 repeats the stem's wording (\"tan x + tan y\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an identity involving trigonometric functions?",
+      "reason": "options 0 and 1 say the same thing (\"sin x + cos x = 1\" / \"sin^2 x + cos^2 x = 1\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If sin x = 3/5 and cos y = -4/5, with x and y in the second quadrant, what is the value of sin(x + y)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Prove that cos 2x cos x - sin 2x sin x = cos 3x.",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which identity is used to find the value of sin(x + y)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If sin x = 3/5 and x lies in the second quadrant, what is the value of cos x?",
+      "reason": "checkExpr \"sqrt(1 - (3/5)^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is equal to 1 + tan^2 x?",
+      "reason": "options 1 and 3 are the same (\"cosec^2 x\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If tan x = 1/2 and π < x < 3π/2, what is the value of sin x?",
+      "reason": "checkExpr \"-2/sqrt(1^2 + 2^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the formula for tan(x + y)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the formula for cos 2x?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If cos x + cos y = 2 cos((x + y)/2) cos((x - y)/2), what is the value of cos x + cos y when x = π/3 and y = π/6?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of sin 15° according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"(√3 - 1)/2√2\" / \"(√3 + 1)/2√2\"); options 2 and 3 say the same thing (\"(√3 - 1)/√2\" / \"(√3 + 1)/√2\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the value of sin(75°) according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"(√3 + 1)/2√2\" / \"(√3 - 1)/2√2\"); options 2 and 3 say the same thing (\"(√3 + 1)/√2\" / \"(√3 - 1)/√2\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If sin x + cos x = √3, then what is the value of tan x + cot x?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of sin(90°)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If tan(x + y) = (tan x + tan y) / (1 - tan x tan y), what is the value of tan(x - y)?",
+      "reason": "options 0 and 1 say the same thing (\"(tan x + tan y) / (1 + tan x tan y)\" / \"(tan x - tan y) / (1 + tan x tan y)\"); options 0 and 2 say the same thing (\"(tan x + tan y) / (1 + tan x tan y)\" / \"(tan x + tan y) / (1 - tan x tan y)\"); options 0 and 3 say the same thing (\"(tan x + tan y) / (1 + tan x tan y)\" / \"(tan x - tan y) / (1 - tan x tan y)\"); options 1 and 2 say the same thing (\"(tan x - tan y) / (1 + tan x tan y)\" / \"(tan x + tan y) / (1 - tan x tan y)\"); options 1 and 3 say the same thing (\"(tan x - tan y) / (1 + tan x tan y)\" / \"(tan x - tan y) / (1 - tan x tan y)\"); options 2 and 3 say the same thing (\"(tan x + tan y) / (1 - tan x tan y)\" / \"(tan x - tan y) / (1 - tan x tan y)\"); option 0 repeats the stem's wording (\"(tan x + tan y) / (1 + tan x tan y)\"); option 1 repeats the stem's wording (\"(tan x - tan y) / (1 + tan x tan y)\"); option 2 repeats the stem's wording (\"(tan x + tan y) / (1 - tan x tan y)\"); option 3 repeats the stem's wording (\"(tan x - tan y) / (1 - tan x tan y)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Using the identity cos(x + y) = cos x cos y - sin x sin y, what is the value of cos(60° + 30°)?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If sin x = 1/2, and x lies in the second quadrant, what is the value of cos x?",
+      "reason": "checkExpr \"-sqrt(1 - (1/2)^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If tan x = 1, and x lies in the third quadrant, what is the value of sin x?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"-sqrt(2)/2\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If sin θ + cos θ = √3, what is the value of tan θ + cot θ?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the value of cos(π - x)?",
+      "reason": "near-duplicate of batch item \"What is the value of cos(π + x) if cos x = 1/2?…\" (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:19:27.992Z",
+  "finishedAt": "2026-10-23T01:24:02.243Z",
+  "seconds": 274,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap105.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 5 — Seeds and Seeds",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 58673,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14174,
+      "completionTokens": 3215
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 158796,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 9735,
+      "completionTokens": 4118
+    },
+    "solver": {
+      "calls": 123,
+      "ms": 83665,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 25830,
+      "completionTokens": 1458
+    },
+    "form": {
+      "calls": 10,
+      "ms": 33322,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 2343,
+      "completionTokens": 708
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2781,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 321855,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16483,
+      "completionTokens": 8401
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did Gopal soak more chana than needed?",
+      "ms": {
+        "draft": 3687,
+        "critique": 5253,
+        "solver": 19359
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a requirement for a seed to sprout?",
+      "ms": {
+        "draft": 3687,
+        "critique": 8524,
+        "solver": 16194
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How do seeds travel to far off places according to the passage?",
+      "ms": {
+        "draft": 3460,
+        "critique": 7577,
+        "solver": 15313
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason that masoor dal cannot sprout?",
+      "ms": {
+        "draft": 4197,
+        "critique": 6233
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following plants did not originally come from India?",
+      "ms": {
+        "draft": 3324,
+        "critique": 6342,
+        "solver": 12120,
+        "form": 3780
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a plant does not get water?",
+      "ms": {
+        "draft": 4197,
+        "critique": 7132
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which bowl did the seeds sprout according to the experiment?",
+      "ms": {
+        "draft": 4197,
+        "critique": 5873
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Gopal's mother do with half of the soaked chana?",
+      "ms": {
+        "draft": 3687,
+        "critique": 5636,
+        "solver": 17802,
+        "form": 3898
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Gopal's mother tie the chana in a wet cloth?",
+      "ms": {
+        "draft": 4197,
+        "critique": 6071,
+        "solver": 10585,
+        "form": 1186
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant was brought to India from South America?",
+      "ms": {
+        "draft": 3460,
+        "critique": 7169,
+        "solver": 1865,
+        "form": 2241,
+        "translation": 30602
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did George Mestral notice about seeds that inspired him to create Velcro?",
+      "ms": {
+        "draft": 3324,
+        "critique": 6650,
+        "solver": 1537,
+        "form": 5853,
+        "translation": 59290
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way in which seeds travel from one place to another?",
+      "ms": {
+        "draft": 3324,
+        "critique": 7223,
+        "solver": 12950,
+        "form": 5178,
+        "translation": 52788
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a seed is kept in a dry cloth, what will happen to it?",
+      "ms": {
+        "draft": 3687,
+        "critique": 4882,
+        "solver": 1247,
+        "form": 6215,
+        "translation": 44501
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if seeds did not spread and remained at one place?",
+      "ms": {
+        "draft": 3460,
+        "critique": 8840,
+        "solver": 1153,
+        "form": 3223,
+        "translation": 45991
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If seeds did not spread, what might happen to plants in an area?",
+      "ms": {
+        "draft": 3324,
+        "critique": 7598,
+        "solver": 13618,
+        "form": 5446,
+        "translation": 38657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did George Mestral get the idea to make Velcro?",
+      "ms": {
+        "draft": 3460,
+        "critique": 7691,
+        "solver": 1818,
+        "form": 2236,
+        "translation": 45903
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Gopal soak more chana than needed?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a requirement for a seed to sprout?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How do seeds travel to far off places according to the passage?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the reason that masoor dal cannot sprout?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following plants did not originally come from India?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would happen if a plant does not get water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which bowl did the seeds sprout according to the experiment?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What did Gopal's mother do with half of the soaked chana?",
+      "reason": "near-duplicate of served question cmvh833mn07hegpfhbcxyghnf (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Why did Gopal's mother tie the chana in a wet cloth?",
+      "reason": "near-duplicate of served question cmvh833mn07hegpfhbcxyghnf (cosine 0.956 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

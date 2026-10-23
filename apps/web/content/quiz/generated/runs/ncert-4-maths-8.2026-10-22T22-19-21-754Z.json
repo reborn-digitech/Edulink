@@ -1,0 +1,490 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:19:21.754Z",
+  "finishedAt": "2026-10-22T22:26:01.103Z",
+  "seconds": 399,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm108.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Weigh It, Pour It",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n15. In what ratio shall I add water to the liquid detergent costing ₹ 480 per litre to get resulting\nmixture worth ₹ 300 per litre?\na) 5:3 b) 3:8 c) 3:5 d) 5:8 1",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n2. Vessel A contains milk and water in the ratio 4 : 5. Vessel B contains milk and 1\nwater in the ratio 5 : 1. In what ratio should quantities be taken from both vessels\nto form a mixture in which milk and water are in the ratio 5 : 4?\n(A) 5 : 2 (B) 5 : 3 (C) 4 : 1 (D) 1 : 4",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n2. (A) 𝟓: 𝟐\n Vessel A (Milk fraction): 4+5 =\n Vessel B (Milk fraction): 5+1 =\n Target Mixture (Milk fraction):\n5 5\n6 − 9 5 1\nRequired ratio = 5 4 = 18 ∶ 9\n9 − 9",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2024-25]\n21. (a) In what ratio water must be added in milk costing ₹ 60 per litre, so that the resulting\nmixture would be of worth ₹ 50 per litre?\nOR\nQ.21. (b) A pump can fill a tank with water in 2 hours. Because of leakage, it took 3 hrs to fill the\ntank. How much time will it take for the leakage to drain all the water in the full tank?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 110339,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 16672,
+      "completionTokens": 5151
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 257278,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 13716,
+      "completionTokens": 5775
+    },
+    "solver": {
+      "calls": 172,
+      "ms": 125987,
+      "in": 21,
+      "out": 17,
+      "rejects": 4,
+      "promptTokens": 34129,
+      "completionTokens": 2107
+    },
+    "form": {
+      "calls": 6,
+      "ms": 24345,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 1540,
+      "completionTokens": 489
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 4143,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 339746,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19203,
+      "completionTokens": 8498
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Mr Shrinathan has to pack 1 kg Kaju-katli in boxes. If each box weighs 250 g, how many boxes are needed?",
+      "ms": {
+        "draft": 4725,
+        "critique": 10089
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Rita and Shabnam saw a vegetable seller weighing vegetables. What is the weight of a half pumpkin if a full pumpkin weighs 2 kg?",
+      "ms": {
+        "draft": 4725,
+        "critique": 7992,
+        "solver": 1585,
+        "form": 3651
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a standard capacity for a bottle as mentioned in the passage?",
+      "ms": {
+        "draft": 4003,
+        "critique": 8774,
+        "solver": 2071,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the activity described in the passage where students visit shops and list items sold in specific quantities?",
+      "ms": {
+        "draft": 4003,
+        "critique": 7003,
+        "solver": 1734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which activity uses the least amount of water?",
+      "ms": {
+        "draft": 4003,
+        "critique": 8731,
+        "solver": 2051,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a tap leaks 50 ml of water in one hour, how much water will be wasted in a week?",
+      "ms": {
+        "draft": 4003,
+        "critique": 11168
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A container holds 1000 ml of water. If 200 ml is poured out, how much water remains?",
+      "ms": {
+        "draft": 4003,
+        "critique": 9252,
+        "solver": 14065
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of water wastage according to the passage?",
+      "ms": {
+        "draft": 4118,
+        "critique": 6997,
+        "solver": 22060
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage says that a crow can drink 50 ml of water at a time. If it drinks 3 times, how much water does it drink in total?",
+      "ms": {
+        "draft": 4118,
+        "critique": 9593,
+        "solver": 23643
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a container holds 1000 ml, how many 50 ml bottles can be filled from it?",
+      "ms": {
+        "draft": 4118,
+        "critique": 7579,
+        "solver": 22311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A shopkeeper has 2 kg of rice. He wants to pack it into 250 g packets. How many packets will he get?",
+      "ms": {
+        "draft": 5543,
+        "critique": 6340,
+        "solver": 8494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many 500 ml bottles will fill a 1 l bottle?",
+      "ms": {
+        "draft": 4725,
+        "critique": 8941,
+        "solver": 1545,
+        "form": 3468
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A water tank can be filled by a pump in 2 hours. But due to a leak, it takes 3 hours to fill the tank. How long would it take for the leak to drain the full tank?",
+      "ms": {
+        "draft": 4118,
+        "critique": 12729,
+        "solver": 20717,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many 250 g daal packets will balance one 500 g daal packet?",
+      "ms": {
+        "draft": 5543,
+        "critique": 7943,
+        "solver": 1882,
+        "form": 7742
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which container can hold exactly 500 ml of liquid?",
+      "ms": {
+        "draft": 4118,
+        "critique": 5629,
+        "solver": 1799,
+        "form": 5949,
+        "translation": 36200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many 250 g daal packets will balance one 500 g daal packet?",
+      "ms": {
+        "draft": 4725,
+        "critique": 8231,
+        "solver": 2472,
+        "form": 4477,
+        "translation": 45741
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a container is estimated to hold 500 ml of water and it is actually measured to hold 480 ml, what is the difference in capacity?",
+      "ms": {
+        "draft": 4003,
+        "critique": 7352,
+        "solver": 15592,
+        "form": 0,
+        "translation": 31864
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a container can hold 250 ml and you fill it 4 times, how much total water is used?",
+      "ms": {
+        "draft": 4118,
+        "critique": 6471,
+        "solver": 17662,
+        "form": 0,
+        "translation": 81784
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 10 packets of 100 grams of sugar are required to make 1 kg, how many packets of 50 grams would be needed to make 1 kg?",
+      "ms": {
+        "draft": 5543,
+        "critique": 9576,
+        "solver": 2243,
+        "form": 0,
+        "translation": 44982
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A pump can fill a tank with water in 2 hours. Because of leakage, it took 3 hours to fill the tank. How much time will it take for the leakage to drain all the water in the full tank?",
+      "ms": {
+        "draft": 4725,
+        "critique": 10713,
+        "solver": 16246,
+        "form": 0,
+        "translation": 44652
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Rita bought 250 g of sugar and 100 g of salt. What is the total weight of the items she bought?",
+      "ms": {
+        "draft": 5543,
+        "critique": 7617,
+        "solver": 1554,
+        "form": 0,
+        "translation": 38723
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A 1 litre water bottle can be filled using 500 ml bottles. How many 500 ml bottles are needed to fill a 1 litre bottle?",
+      "ms": {
+        "draft": 5543,
+        "critique": 6598,
+        "solver": 1284,
+        "form": 2416,
+        "translation": 28464
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A 100 g soap bar will weigh the same as 10 erasers. How many erasers will weigh the same as 250 g sugar?",
+      "ms": {
+        "draft": 4725,
+        "critique": 6020,
+        "solver": 2246,
+        "form": 0,
+        "translation": 38310
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Mr Shrinathan has to pack 1 kg Kaju-katli in boxes. If each box weighs 250 g, how many boxes are needed?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Rita and Shabnam saw a vegetable seller weighing vegetables. What is the weight of a half pumpkin if a full pumpkin weighs 2 kg?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a standard capacity for a bottle as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"confuses with a different capacity mentioned in the passage…\"); distractor 2's reason is not a one-line misconception (\"invents a capacity not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"invents a capacity not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the activity described in the passage where students visit shops and list items sold in specific quantities?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which activity uses the least amount of water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a tap leaks 50 ml of water in one hour, how much water will be wasted in a week?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A container holds 1000 ml of water. If 200 ml is poured out, how much water remains?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many 100 g sugar packets will weigh the same as a 250 g sugar packet?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of water wastage according to the passage?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage says that a crow can drink 50 ml of water at a time. If it drinks 3 times, how much water does it drink in total?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a container holds 1000 ml, how many 50 ml bottles can be filled from it?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A shopkeeper has 2 kg of rice. He wants to pack it into 250 g packets. How many packets will he get?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "How many 500 ml bottles will fill a 1 l bottle?",
+      "reason": "near-duplicate of served question cmvh1kz190674gpfhfuklksf1 (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A water tank can be filled by a pump in 2 hours. But due to a leak, it takes 3 hours to fill the tank. How long would it take for the leak to drain the full tank?",
+      "reason": "near-duplicate of batch item \"A pump can fill a tank with water in 2 hours. Beca…\" (cosine 0.970 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How many 250 g daal packets will balance one 500 g daal packet?",
+      "reason": "near-duplicate of batch item \"How many 250 g daal packets will balance one 500 g…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,851 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T19:19:51.570Z",
+  "finishedAt": "2026-10-21T19:29:42.588Z",
+  "seconds": 591,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Politics in India Since Independence",
+    "bookCode": "leps2",
+    "document": "ncert/12/political-science/leps203.pdf",
+    "classLevel": 12,
+    "subject": "Political Science",
+    "chapter": "Chapter 3 — In this chapter…",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\nSECTION-D (12 MARKS)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – B\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – A\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSection – D\n(12 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 180304,
+      "in": 46,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 29227,
+      "completionTokens": 11897
+    },
+    "critique": {
+      "calls": 58,
+      "ms": 338087,
+      "in": 44,
+      "out": 35,
+      "rejects": 9,
+      "promptTokens": 27191,
+      "completionTokens": 9953
+    },
+    "solver": {
+      "calls": 281,
+      "ms": 143310,
+      "in": 35,
+      "out": 27,
+      "rejects": 8,
+      "promptTokens": 54593,
+      "completionTokens": 3426
+    },
+    "form": {
+      "calls": 8,
+      "ms": 20053,
+      "in": 27,
+      "out": 11,
+      "rejects": 16,
+      "promptTokens": 2011,
+      "completionTokens": 549
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 313,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 401930,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 25557,
+      "completionTokens": 13745
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which challenge of nation-building did the chapter focus on?",
+      "ms": {
+        "draft": 4742,
+        "critique": 5641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main goal of economic development as discussed in the chapter?",
+      "ms": {
+        "draft": 4742,
+        "critique": 6545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the key debate regarding the role of the government in economic development?",
+      "ms": {
+        "draft": 4742,
+        "critique": 7262
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of Orissa, which decision requires political judgment?",
+      "ms": {
+        "draft": 4742,
+        "critique": 6161
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the case of Orissa, what was the main conflict between different groups?",
+      "ms": {
+        "draft": 4742,
+        "critique": 6649,
+        "solver": 1239
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the chapter suggest about the process of development in India?",
+      "ms": {
+        "draft": 4742,
+        "critique": 6512
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of the Planning Commission?",
+      "ms": {
+        "draft": 4050,
+        "critique": 4319,
+        "solver": 1153,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the idea of development in India after independence?",
+      "ms": {
+        "draft": 4050,
+        "critique": 5526,
+        "solver": 1603,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of the debate around development in India after independence?",
+      "ms": {
+        "draft": 4050,
+        "critique": 5256,
+        "solver": 1769
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why was the idea of planning for development accepted by a wide range of people in India after independence?",
+      "ms": {
+        "draft": 4050,
+        "critique": 6291,
+        "solver": 953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following best explains the reason behind the formation of the Planning Commission?",
+      "ms": {
+        "draft": 4050,
+        "critique": 7050,
+        "solver": 1329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a key focus of the First Five Year Plan?",
+      "ms": {
+        "draft": 3319,
+        "critique": 7572,
+        "solver": 1116,
+        "form": 3204
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 4050,
+        "critique": 6039,
+        "solver": 15021,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements is true about the Second Five Year Plan?",
+      "ms": {
+        "draft": 3319,
+        "critique": 6169,
+        "solver": 1199,
+        "form": 2756
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what was the main reason for the decline in savings in India from the early 1960s?",
+      "ms": {
+        "draft": 3319,
+        "critique": 6726
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the main challenge in balancing industry and agriculture during the Third Five Year Plan?",
+      "ms": {
+        "draft": 3319,
+        "critique": 5363,
+        "solver": 12041
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a political party has conflicting economic policies, what might be a possible outcome?",
+      "ms": {
+        "draft": 5633,
+        "critique": 6385
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the Congress party's economic approach after independence?",
+      "ms": {
+        "draft": 5633,
+        "critique": 6345,
+        "solver": 1373
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements is most likely to be true about the Congress party's policies?",
+      "ms": {
+        "draft": 5633,
+        "critique": 6339,
+        "solver": 1102,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following could be a reason for the Congress party's conflicting economic policies?",
+      "ms": {
+        "draft": 5633,
+        "critique": 5800,
+        "solver": 9496
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage imply about the Congress party's ability to maintain a consistent economic policy?",
+      "ms": {
+        "draft": 5633,
+        "critique": 6233,
+        "solver": 10743,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the major thrust of the First Five Year Plan?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6523,
+        "solver": 1245
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was one of the challenges faced during the Second Five Year Plan?",
+      "ms": {
+        "draft": 10370,
+        "critique": 6876,
+        "solver": 1963,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following ideas did not form part of the early phase of India’s development policy?",
+      "ms": {
+        "draft": 10370,
+        "critique": 6429,
+        "solver": 1267,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the idea of 'development' in India after independence?",
+      "ms": {
+        "draft": 3802,
+        "critique": 7091,
+        "solver": 1210,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did the Planning Commission get support from both the left and the right in India after independence?",
+      "ms": {
+        "draft": 3802,
+        "critique": 6244,
+        "solver": 1266,
+        "form": 2430
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements about the Bombay Plan is incorrect?",
+      "ms": {
+        "draft": 10370,
+        "critique": 5916,
+        "solver": 15038
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred from the passage about the role of the Planning Commission in India's development?",
+      "ms": {
+        "draft": 3802,
+        "critique": 6088,
+        "solver": 1172,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what was the main challenge of economic development in India after independence?",
+      "ms": {
+        "draft": 15255,
+        "critique": 6314
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a political decision related to economic development mentioned in the passage?",
+      "ms": {
+        "draft": 15255,
+        "critique": 6795
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what does the mention of the Bombay Plan suggest about the role of the private sector in India's development after independence?",
+      "ms": {
+        "draft": 3802,
+        "critique": 5811,
+        "solver": 11986
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the main reason for the consensus among Indian leaders about the role of the government in development after independence?",
+      "ms": {
+        "draft": 3802,
+        "critique": 6513,
+        "solver": 12309,
+        "form": 3114
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best reflects the political contestation involved in economic development?",
+      "ms": {
+        "draft": 15255,
+        "critique": 6848,
+        "solver": 10831,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would be the likely political implications of the contradiction in the Congress party's economic approach?",
+      "ms": {
+        "draft": 3497,
+        "critique": 4998,
+        "solver": 14013,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the shared vision or model of economic development in India after independence?",
+      "ms": {
+        "draft": 15255,
+        "critique": 6063,
+        "solver": 11566,
+        "form": 1761,
+        "translation": 24887
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a key focus of the First Five Year Plan?",
+      "ms": {
+        "draft": 10370,
+        "critique": 6370,
+        "solver": 1348,
+        "form": 0,
+        "translation": 30297
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the contradiction in the economic approach of the Congress party after independence?",
+      "ms": {
+        "draft": 3497,
+        "critique": 4156,
+        "solver": 1143,
+        "form": 0,
+        "translation": 46998
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was one of the main reasons for the decline in the novelty of planning in India by the Fourth Five Year Plan?",
+      "ms": {
+        "draft": 3319,
+        "critique": 7219,
+        "solver": 12880,
+        "form": 3886,
+        "translation": 37955
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main purpose of dividing the budget into 'non-plan' and 'plan' categories?",
+      "ms": {
+        "draft": 10370,
+        "critique": 6293,
+        "solver": 1250,
+        "form": 0,
+        "translation": 37342
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains why the Fourth Five Year Plan was not implemented?",
+      "ms": {
+        "draft": 10370,
+        "critique": 5714,
+        "solver": 1864,
+        "form": 2025,
+        "translation": 43742
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the Congress party was pursuing both socialist principles and liberal economic policies, what might have been the reason for this approach?",
+      "ms": {
+        "draft": 3497,
+        "critique": 4339,
+        "solver": 13725,
+        "form": 0,
+        "translation": 41346
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Based on the given passage, what would be the most likely outcome of the contradiction in the Congress party's economic approach?",
+      "ms": {
+        "draft": 3497,
+        "critique": 7808,
+        "solver": 1284,
+        "form": 0,
+        "translation": 42331
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following was a criticism of the early phase of India’s development policy?",
+      "ms": {
+        "draft": 3319,
+        "critique": 5738,
+        "solver": 13713,
+        "form": 2144,
+        "translation": 35570
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why might the contradiction in the Congress party's economic approach have been related to the nature of the opposition parties?",
+      "ms": {
+        "draft": 3497,
+        "critique": 5880,
+        "solver": 12455,
+        "form": 0,
+        "translation": 56575
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main issue discussed in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which challenge of nation-building did the chapter focus on?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the main goal of economic development as discussed in the chapter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was the key debate regarding the role of the government in economic development?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the context of Orissa, which decision requires political judgment?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the case of Orissa, what was the main conflict between different groups?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the chapter suggest about the process of development in India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of the Planning Commission?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"misinterprets the passage, which says the Commission was not…\"); distractor 2's reason is not a one-line misconception (\"contradicts the passage, which says the Commission was not c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the idea of development in India after independence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"confuses the passage's point about differing interpretations…\"); distractor 1's reason is not a one-line misconception (\"contradicts the passage, which says the government had a rol…\"); distractor 2's reason is not a one-line misconception (\"contradicts the passage, which states that there was a conse…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of the debate around development in India after independence?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why was the idea of planning for development accepted by a wide range of people in India after independence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"is not explicitly supported by the passage…\"); distractor 3's reason is not a one-line misconception (\"is a partial explanation, but not the main reason given in t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following best explains the reason behind the formation of the Planning Commission?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"contradicts the passage, which says that the Planning Commis…\"); distractor 3's reason is not a one-line misconception (\"is not directly supported by the passage, which does not men…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a key focus of the First Five Year Plan?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Not mentioned in the passage as a focus of the First Plan…\"); distractor 3's reason is not a one-line misconception (\"Not mentioned in the passage as a focus of the First Plan…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following statements is true about the Second Five Year Plan?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This is the opposite of what is stated in the passage…\"); distractor 2's reason is not a one-line misconception (\"This is not what the passage states about the Second Plan…\"); distractor 3's reason is not a one-line misconception (\"This contradicts the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what was the main reason for the decline in savings in India from the early 1960s?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what was the main challenge in balancing industry and agriculture during the Third Five Year Plan?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a political party has conflicting economic policies, what might be a possible outcome?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest about the Congress party's economic approach after independence?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements is most likely to be true about the Congress party's policies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage's mention of 'two contradictory tend…\"); distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"contradicts the passage's description of a contradiction, wh…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following could be a reason for the Congress party's conflicting economic policies?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage imply about the Congress party's ability to maintain a consistent economic policy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the main objective of the Planning Commission as stated in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What was the major thrust of the First Five Year Plan?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what was one of the challenges faced during the Second Five Year Plan?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following ideas did not form part of the early phase of India’s development policy?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the idea of 'development' in India after independence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This contradicts the passage which says there were different…\"); distractor 3's reason is not a one-line misconception (\"This is a narrow view and not supported by the passage, whic…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why did the Planning Commission get support from both the left and the right in India after independence?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This is incorrect because the passage states that the Planni…\"); distractor 1's reason is not a one-line misconception (\"This is incorrect because the passage says the Planning Comm…\"); distractor 3's reason is not a one-line misconception (\"This is the correct answer, so it is not a distractor. The o…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements about the Bombay Plan is incorrect?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What can be inferred from the passage about the role of the Planning Commission in India's development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is incorrect because the passage says the Planning Comm…\"); distractor 1's reason is not a one-line misconception (\"This is incorrect because the passage says the Planning Comm…\"); distractor 2's reason is not a one-line misconception (\"This is incorrect because the passage does not mention that …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what was the main challenge of economic development in India after independence?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a political decision related to economic development mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, what does the mention of the Bombay Plan suggest about the role of the private sector in India's development after independence?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What was the main reason for the consensus among Indian leaders about the role of the government in development after independence?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is incorrect because the passage says there were debate…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best reflects the political contestation involved in economic development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What would be the likely political implications of the contradiction in the Congress party's economic approach?",
+      "reason": "near-duplicate of batch item \"Based on the given passage, what would be the most…\" (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,496 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T01:51:31.062Z",
+  "finishedAt": "2026-10-23T01:56:35.290Z",
+  "seconds": 304,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap113.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 13 — A Shelter so High!",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 95970,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 21408,
+      "completionTokens": 5306
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 234565,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 14976,
+      "completionTokens": 6101
+    },
+    "solver": {
+      "calls": 160,
+      "ms": 98164,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 29720,
+      "completionTokens": 1823
+    },
+    "form": {
+      "calls": 12,
+      "ms": 33598,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 2857,
+      "completionTokens": 823
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 2938,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 145954,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8660,
+      "completionTokens": 4293
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Gaurav Jani see for the first time in Leh?",
+      "ms": {
+        "draft": 3467,
+        "critique": 6552
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did Gaurav Jani have difficulty breathing at Changthang?",
+      "ms": {
+        "draft": 3467,
+        "critique": 8458
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for making houses in different parts of Jammu and Kashmir?",
+      "ms": {
+        "draft": 3529,
+        "critique": 8833
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one special feature of houses in Kashmir that is mentioned in the passage?",
+      "ms": {
+        "draft": 3529,
+        "critique": 7446,
+        "solver": 1431
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pashmina shawl is as warm as six sweaters, how many pashmina shawls would be needed to be as warm as 18 sweaters?",
+      "ms": {
+        "draft": 3941,
+        "critique": 6707,
+        "solver": 14380
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is one reason why the Bakarwal people live in houses made of stone and mud in summer?",
+      "ms": {
+        "draft": 3529,
+        "critique": 6430
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you live in a place with heavy rainfall, what feature would you expect in your house according to the passage?",
+      "ms": {
+        "draft": 3529,
+        "critique": 6450,
+        "solver": 6740,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a special feature of a house that may be found in a place where it rains a lot?",
+      "ms": {
+        "draft": 3469,
+        "critique": 7450,
+        "solver": 17946,
+        "form": 3838
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for making houses in different parts of Jammu and Kashmir?",
+      "ms": {
+        "draft": 3469,
+        "critique": 7451,
+        "solver": 18640,
+        "form": 3765
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is one similarity between the life of the Bakarwal people and the Changpas?",
+      "ms": {
+        "draft": 3469,
+        "critique": 6334
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the Changpas have to carry oxygen cylinders at high altitudes?",
+      "ms": {
+        "draft": 3713,
+        "critique": 5827,
+        "solver": 1802,
+        "form": 2007
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which tribe did Gaurav Jani meet in the Changthang area?",
+      "ms": {
+        "draft": 7833,
+        "critique": 8962
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pashmina shawl is as warm as six sweaters, how many pashmina shawls would be needed to match the warmth of 12 sweaters?",
+      "ms": {
+        "draft": 3713,
+        "critique": 8392,
+        "solver": 13956
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do the Changpas stay on the mountains with their goats?",
+      "ms": {
+        "draft": 7833,
+        "critique": 7504,
+        "solver": 11722,
+        "form": 2077
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main source of livelihood for the Changpas?",
+      "ms": {
+        "draft": 7833,
+        "critique": 8622,
+        "solver": 7544
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why would Tashi and his family live on the ground floor during winters?",
+      "ms": {
+        "draft": 3467,
+        "critique": 9531,
+        "solver": 14020,
+        "form": 2834
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "ms": {
+        "draft": 3941,
+        "critique": 6407,
+        "solver": 1414,
+        "form": 4605
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason the Changpas use yak hair to make their tents?",
+      "ms": {
+        "draft": 3941,
+        "critique": 5096,
+        "solver": 1146,
+        "form": 3885
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the tent that the Changpas use?",
+      "ms": {
+        "draft": 3713,
+        "critique": 5905,
+        "solver": 1305,
+        "form": 3364
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main source of income for the Changpa tribe?",
+      "ms": {
+        "draft": 3467,
+        "critique": 7115,
+        "solver": 12788,
+        "form": 2608,
+        "translation": 72304
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the Changpas carry oxygen cylinders when they go to higher altitudes?",
+      "ms": {
+        "draft": 3941,
+        "critique": 6984,
+        "solver": 1454,
+        "form": 1773,
+        "translation": 38320
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a house is made of stone and mud, what could be a reason for this?",
+      "ms": {
+        "draft": 3469,
+        "critique": 6784,
+        "solver": 17991,
+        "form": 3730,
+        "translation": 45785
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the different types of houses in different regions?",
+      "ms": {
+        "draft": 3713,
+        "critique": 7942,
+        "solver": 11994,
+        "form": 2869,
+        "translation": 32028
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did Gaurav Jani see for the first time in Leh?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why did Gaurav Jani have difficulty breathing at Changthang?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for making houses in different parts of Jammu and Kashmir?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is one special feature of houses in Kashmir that is mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pashmina shawl is as warm as six sweaters, how many pashmina shawls would be needed to be as warm as 18 sweaters?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is one reason why the Bakarwal people live in houses made of stone and mud in summer?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you live in a place with heavy rainfall, what feature would you expect in your house according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Refers to a type of shelter mentioned in the passage but not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is a special feature of a house that may be found in a place where it rains a lot?",
+      "reason": "options 1 and 2 are the same (\"A flat roof\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for making houses in different parts of Jammu and Kashmir?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"students may think that houses in mountainous areas are temp…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is one similarity between the life of the Bakarwal people and the Changpas?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do the Changpas have to carry oxygen cylinders at high altitudes?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"refers to a use not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which tribe did Gaurav Jani meet in the Changthang area?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pashmina shawl is as warm as six sweaters, how many pashmina shawls would be needed to match the warmth of 12 sweaters?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why do the Changpas stay on the mountains with their goats?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the purpose of living on the mountains with protect…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main source of livelihood for the Changpas?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why would Tashi and his family live on the ground floor during winters?",
+      "reason": "near-duplicate of served question cmvh91bi207mbgpfh21yf8dvp (cosine 0.960 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "reason": "near-duplicate of served question cmvh91bhx07ltgpfhgtyvb8n3 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the main reason the Changpas use yak hair to make their tents?",
+      "reason": "near-duplicate of served question cmvh91bhz07lzgpfhdh21h1g9 (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the tent that the Changpas use?",
+      "reason": "near-duplicate of served question cmvh91bhx07ltgpfhgtyvb8n3 (cosine 0.906 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,505 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:42:56.890Z",
+  "finishedAt": "2026-10-20T21:46:20.649Z",
+  "seconds": 204,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap101.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 1 — Super Senses",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 64563,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 20968,
+      "completionTokens": 4527
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 157424,
+      "in": 24,
+      "out": 18,
+      "rejects": 6,
+      "promptTokens": 12169,
+      "completionTokens": 5067
+    },
+    "solver": {
+      "calls": 131,
+      "ms": 54849,
+      "in": 18,
+      "out": 10,
+      "rejects": 8,
+      "promptTokens": 21672,
+      "completionTokens": 1375
+    },
+    "form": {
+      "calls": 7,
+      "ms": 13467,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 1631,
+      "completionTokens": 486
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 1581,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 153586,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11703,
+      "completionTokens": 6004
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did Sushila cover her nose when cleaning Deepak’s nappy but not her own daughter’s?",
+      "ms": {
+        "draft": 3079,
+        "critique": 5426,
+        "solver": 1098
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, how do ants find their way back to their hole?",
+      "ms": {
+        "draft": 3079,
+        "critique": 6035,
+        "solver": 11690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animals can see things only in black and white colours?",
+      "ms": {
+        "draft": 2239,
+        "critique": 5091
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to block the path of ants with a pencil, what would most likely happen?",
+      "ms": {
+        "draft": 3079,
+        "critique": 7863,
+        "solver": 9902
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of making different sounds by animals?",
+      "ms": {
+        "draft": 2239,
+        "critique": 5758
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a child puts their hands over their ears and speaks?",
+      "ms": {
+        "draft": 2239,
+        "critique": 5553,
+        "solver": 1450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which animal has a special language of its own according to the passage?",
+      "ms": {
+        "draft": 2239,
+        "critique": 6447
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one threat to the tiger mentioned in the passage?",
+      "ms": {
+        "draft": 2332,
+        "critique": 5701,
+        "solver": 1125,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the instructions given in the passage?",
+      "ms": {
+        "draft": 2332,
+        "critique": 4961,
+        "solver": 1184
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student follows the instructions given in the passage, what will they create?",
+      "ms": {
+        "draft": 2332,
+        "critique": 4917,
+        "solver": 1117
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the teacher's intent?",
+      "ms": {
+        "draft": 2332,
+        "critique": 4786,
+        "solver": 424
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main threat to tigers according to the passage?",
+      "ms": {
+        "draft": 2544,
+        "critique": 3780,
+        "solver": 947,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of making small cuts on the paper strip?",
+      "ms": {
+        "draft": 2544,
+        "critique": 4048,
+        "solver": 1112
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animals can see things only in black and white?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6088
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which activity helps in understanding how ears help in hearing?",
+      "ms": {
+        "draft": 3057,
+        "critique": 5459
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the sloth's movement?",
+      "ms": {
+        "draft": 3057,
+        "critique": 5142
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct sequence of steps to make the paper dog?",
+      "ms": {
+        "draft": 2544,
+        "critique": 6241,
+        "solver": 12590
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What might happen if a tiger hears a different sound in the forest?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6262,
+        "solver": 8215,
+        "form": 2177
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal can see things from four times the distance that humans can?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5632,
+        "solver": 839,
+        "form": 3228
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How do dogs know if another dog has entered their area?",
+      "ms": {
+        "draft": 3079,
+        "critique": 5596,
+        "solver": 11267,
+        "form": 2775,
+        "translation": 37567
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Sushila cover her nose when cleaning Deepak's nappy?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5338,
+        "solver": 9709,
+        "form": 733,
+        "translation": 18168
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a bird focuses both eyes on the same object?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5631,
+        "solver": 1084,
+        "form": 2415,
+        "translation": 27783
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you wanted to make a paper dog with a different shape, what would you need to do?",
+      "ms": {
+        "draft": 2544,
+        "critique": 4171,
+        "solver": 1806,
+        "form": 2002,
+        "translation": 29928
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do ants follow a path when their way is blocked?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5671,
+        "solver": 1317,
+        "form": 1743,
+        "translation": 37011
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Sushila cover her nose when cleaning Deepak’s nappy but not her own daughter’s?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, how do ants find their way back to their hole?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animals can see things only in black and white colours?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you were to block the path of ants with a pencil, what would most likely happen?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of making different sounds by animals?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if a child puts their hands over their ears and speaks?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which animal has a special language of its own according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is one threat to the tiger mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of the instructions given in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student follows the instructions given in the passage, what will they create?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the teacher's intent?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main threat to tigers according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of making small cuts on the paper strip?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animals can see things only in black and white?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which activity helps in understanding how ears help in hearing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the sloth's movement?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the correct sequence of steps to make the paper dog?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What might happen if a tiger hears a different sound in the forest?",
+      "reason": "the key is far longer than every distractor (45 vs 22 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which animal can see things from four times the distance that humans can?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"No basis in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

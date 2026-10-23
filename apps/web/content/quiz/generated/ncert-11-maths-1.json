@@ -1,0 +1,1142 @@
+{
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 1 — Sets",
+  "name": "Sets",
+  "slug": "maths-11-sets",
+  "summary": "This chapter introduces the concept of sets and their representations.",
+  "position": 1,
+  "source": "generated against NCERT Mathematics, Class 11, chapter 1 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 1 - समुच्चय",
+      "summary": "इस अध्याय में समुच्चय के अवधारणा और उनके प्रतिनिधित्व का परिचय दिया गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 1 - समुच्चय",
+      "summary": "हा अध्याय समुच्चय आणि त्यांच्या प्रतिनिधित्वाच्या संकल्पना आणि त्यांच्या विविध प्रकारांचा अभ्यास करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-23T02:31:41.592Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a well-defined collection of objects?",
+      "choices": [
+        "A pack of cards",
+        "A crowd of people",
+        "A cricket team",
+        "The five most renowned mathematicians of the world"
+      ],
+      "answerIndex": 0,
+      "solution": "A pack of cards is a well-defined collection because we can clearly determine which objects belong to it. The other options are not well-defined as they depend on subjective judgment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा वस्तुओं का अच्छी तरह से परिभाषित संग्रह है?",
+          "choices": [
+            "एक पैकेट कार्ड",
+            "एक भीड़ लोगों",
+            "एक क्रिकेट टीम",
+            "दुनिया के पांच सबसे प्रसिद्ध गणितज्ञ"
+          ],
+          "solution": "एक पैकेट कार्ड एक अच्छी तरह से परिभाषित संग्रह है क्योंकि हम स्पष्ट रूप से निर्धारित कर सकते हैं कि कौन-सी वस्तुएं इसके अंतर्गत आती हैं। अन्य विकल्प अच्छी तरह से परिभाषित नहीं हैं क्योंकि वे व्यक्तिगत राय पर निर्भर करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता वस्तूंचा चांगल्या प्रकारे निश्चित केलेला एकत्रित असतो?",
+          "choices": [
+            "एक पॅक ऑफ कार्ड्स",
+            "लोकांचा गर्दी",
+            "एक क्रिकेट संघ",
+            "जगातील पाच सर्वात प्रसिद्ध गणितज्ञ"
+          ],
+          "solution": "एक पॅक ऑफ कार्ड्स हा चांगल्या प्रकारे निश्चित केलेला एकत्रित असतो कारण आपण स्पष्टपणे ठरवू शकतो की कोणत्या वस्तू त्यात समाविष्ट आहेत. इतर विकल्प चांगल्या प्रकारे निश्चित केलेले नाहीत कारण ते वैयक्तिक मतावर अवलंबून असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses well-defined with general terms",
+        "Confuses well-defined with general terms",
+        "Confuses well-defined with general terms"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly answered with option 0. The reasoning provided by the author is sound, as a pack of cards is a well-defined set, while the other options are subjective and not clearly defined.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the union of two sets A and B?",
+      "choices": [
+        "The set of all elements common to A and B",
+        "The set of all elements in A or B but not both",
+        "The set of all elements in A and B",
+        "The set of all elements in A or B including those in both"
+      ],
+      "answerIndex": 3,
+      "solution": "The union of two sets A and B is the set of all elements that are in A or B, including those that are in both. The correct answer is 'The set of all elements in A or B including those in both'. The other options describe the intersection, symmetric difference, and a general set, which are not the definition of union.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "A और B दो सेटों का संयोजन क्या है?",
+          "choices": [
+            "A और B में सामान्य सभी तत्वों का सेट",
+            "A या B में होने वाले सभी तत्वों का सेट लेकिन दोनों में नहीं",
+            "A और B में सभी तत्वों का सेट",
+            "A या B में होने वाले सभी तत्वों का सेट जिनमें दोनों में होने वाले तत्व भी शामिल हैं"
+          ],
+          "solution": "दो सेट A और B का संयोजन A या B में होने वाले सभी तत्वों का सेट है, जिनमें दोनों में होने वाले तत्व भी शामिल हैं। सही उत्तर 'A या B में होने वाले सभी तत्वों का सेट जिनमें दोनों में होने वाले तत्व भी शामिल हैं' है। अन्य विकल्प प्रतिच्छेदन, सममित अंतर और एक सामान्य सेट का वर्णन करते हैं, जो संयोजन के परिभाषा के रूप में नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms used are standard in Hindi mathematics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "A आणि B या दोन सेटचा युनियन काय आहे?",
+          "choices": [
+            "A आणि B मध्ये सामायिक असलेल्या सर्व घटकांचा सेट",
+            "A किंवा B मध्ये असलेल्या पण दोन्हीत नसलेल्या सर्व घटकांचा सेट",
+            "A आणि B मध्ये असलेल्या सर्व घटकांचा सेट",
+            "A किंवा B मध्ये असलेल्या सर्व घटकांचा सेट, ज्यामध्ये दोन्हीत असलेल्या घटकांचाही समावेश आहे"
+          ],
+          "solution": "A आणि B या दोन सेटचा युनियन हा A किंवा B मध्ये असलेल्या सर्व घटकांचा सेट आहे, ज्यामध्ये दोन्हीत असलेल्या घटकांचाही समावेश आहे. योग्य उत्तर 'A किंवा B मध्ये असलेल्या सर्व घटकांचा सेट, ज्यामध्ये दोन्हीत असलेल्या घटकांचाही समावेश आहे' आहे. इतर विकल्पांमध्ये छेद, सममितीय फरक आणि एक सामान्य सेट वर्णन केला आहे, जे युनियनच्या व्याख्येने नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi mathematics education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses union with intersection",
+        "Confuses union with symmetric difference",
+        "Refers to a general set without specifying union properties",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 3, which correctly defines the union of two sets. The author's solution and reasoning are accurate, and the misconceptions described for the other options are valid.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a correct statement about sets?",
+      "choices": [
+        "A set is a collection of objects that are not well-defined.",
+        "A set which contains no elements is called a finite set.",
+        "A set which contains a definite number of elements is called an infinite set.",
+        "A set which does not contain any element is called an empty set."
+      ],
+      "answerIndex": 3,
+      "solution": "The correct statement is that a set which does not contain any element is called an empty set. This is accurate because an empty set is defined as a set with no elements. The other options are incorrect: a set must be well-defined, a set with a definite number of elements is finite, and an infinite set has an uncountable or indefinite number of elements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा सेट के बारे में सही कथन है?",
+          "choices": [
+            "एक सेट वस्तुओं का एक संग्रह होता है जो अच्छी तरह से परिभाषित नहीं होता है।",
+            "एक सेट जिसमें कोई अवयव नहीं होता है, एक परिमित सेट कहलाता है।",
+            "एक सेट जिसमें निश्चित संख्या में अवयव होते हैं, एक अनंत सेट कहलाता है।",
+            "एक सेट जिसमें कोई अवयव नहीं होता है, एक रिक्त सेट कहलाता है।"
+          ],
+          "solution": "सही कथन यह है कि एक सेट जिसमें कोई अवयव नहीं होता है, एक रिक्त सेट कहलाता है। यह सही है क्योंकि एक रिक्त सेट की परिभाषा एक ऐसे सेट के रूप में है जिसमें कोई अवयव नहीं होता है। अन्य विकल्प गलत हैं: एक सेट को अच्छी तरह से परिभाषित होना चाहिए, एक निश्चित संख्या में अवयव वाला सेट परिमित होता है, और एक अनंत सेट में गिने नहीं जा सकने वाले या अनिश्चित संख्या में अवयव होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक समजूतदार विधान सेटबद्दल आहे?",
+          "choices": [
+            "एक सेट हे वस्तूंचा एक गट आहे जो चांगल्या प्रकारे विशिष्ट नाही.",
+            "एखादा सेट जो कोणतेही घटक नाही असतो तो एक सीमित सेट म्हणतात.",
+            "एखादा सेट जो निश्चित संख्येचे घटक असतो तो अनंत सेट म्हणतात.",
+            "एखादा सेट जो कोणतेही घटक नाही असतो तो एक शून्य सेट म्हणतात."
+          ],
+          "solution": "सही विधान एखादा सेट जो कोणतेही घटक नाही असतो तो एक शून्य सेट म्हणतात. हे खरे आहे कारण शून्य सेट म्हणजे कोणतेही घटक नसलेला सेट आहे. इतर विधाने चूक आहेत: एक सेट विशिष्ट असावा लागतो, निश्चित संख्येचे घटक असलेला सेट सीमित असतो, आणि अनंत सेटमध्ये गणनीय किंवा अनिश्चित संख्येचे घटक असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of a set with that of an unordered collection.",
+        "Confuses finite and infinite sets.",
+        "Confuses finite and infinite sets.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as an empty set is defined as a set with no elements. The other options contain clear misconceptions about the definitions of sets, finite sets, and infinite sets.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 18,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 19,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What does the symbol φ represent in the context of sets?",
+      "choices": [
+        "A finite set",
+        "An infinite set",
+        "An empty set",
+        "A universal set"
+      ],
+      "answerIndex": 2,
+      "solution": "The symbol φ represents an empty set, which is a set containing no elements. A finite set has a specific number of elements, an infinite set has an unending number of elements, and a universal set includes all elements under consideration in a particular context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सेट्स के संदर्भ में संकेत φ क्या प्रतिनिधित्व करता है?",
+          "choices": [
+            "एक परिमित सेट",
+            "एक अनंत सेट",
+            "एक रिक्त सेट",
+            "एक सार्वत्रिक सेट"
+          ],
+          "solution": "संकेत φ एक रिक्त सेट का प्रतिनिधित्व करता है, जो ऐसा सेट है जिसमें कोई अवयव नहीं होते हैं। एक परिमित सेट में एक विशिष्ट संख्या में अवयव होते हैं, एक अनंत सेट में असीम संख्या में अवयव होते हैं, और एक सार्वत्रिक सेट में किसी विशेष संदर्भ में शामिल सभी अवयव होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सेटमध्ये चिन्ह φ काय प्रतिनिधित्व करते?",
+          "choices": [
+            "एक परिमित सेट",
+            "अनंत सेट",
+            "एक खालील सेट",
+            "एक सार्वत्रिक सेट"
+          ],
+          "solution": "चिन्ह φ एक खालील सेट दर्शवते, जो कोणतेही घटक नसलेला सेट आहे. एक परिमित सेटमध्ये निश्चित संख्येने घटक असतात, अनंत सेटमध्ये असीम संख्येने घटक असतात आणि सार्वत्रिक सेटमध्ये एखाद्या विशिष्ट संदर्भातील सर्व घटक असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of a finite set with that of an empty set.",
+        "Confuses the definition of an infinite set with that of an empty set.",
+        null,
+        "Confuses the definition of a universal set with that of an empty set."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly 2 (empty set), and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 18,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 19,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the set-builder form of the set {1, 4, 9, 16, 25, ...}",
+      "choices": [
+        "{x : x is a prime number}",
+        "{x : x is a natural number}",
+        "{x : x = n², where n ∈ N}",
+        "{x : x is an even number}"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is {x : x = n², where n ∈ N}, which represents the set of squares of natural numbers. The other options do not accurately describe the given set. {x : x is a prime number} and {x : x is an even number} do not match the pattern of the set. {x : x is a natural number} is too general and does not specify the square relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सेट {1, 4, 9, 16, 25, ...} का सेट-बिल्डर रूप क्या है?",
+          "choices": [
+            "{x : x एक अभाज्य संख्या है}",
+            "{x : x एक प्राकृत संख्या है}",
+            "{x : x = n², जहाँ n ∈ N}",
+            "{x : x एक सम संख्या है}"
+          ],
+          "solution": "सही उत्तर {x : x = n², जहाँ n ∈ N} है, जो प्राकृत संख्याओं के वर्गों के सेट को दर्शाता है। अन्य विकल्प दिए गए सेट का सटीक वर्णन नहीं करते हैं। {x : x एक अभाज्य संख्या है} और {x : x एक सम संख्या है} सेट के पैटर्न के मेल नहीं खाते हैं। {x : x एक प्राकृत संख्या है} बहुत सामान्य है और वर्ग संबंध को निर्दिष्ट नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सेट-बिल्डर रूपात सेट {1, 4, 9, 16, 25, ...} कोणते आहे?",
+          "choices": [
+            "{x : x अविभाज्य संख्या आहे}",
+            "{x : x प्राकृतिक संख्या आहे}",
+            "{x : x = n², जेथे n ∈ N}",
+            "{x : x सम संख्या आहे}"
+          ],
+          "solution": "सही उत्तर {x : x = n², जेथे n ∈ N} आहे, जे प्राकृतिक संख्यांच्या वर्गांचा सेट दर्शवते. इतर विकल्प दिलेल्या सेटचे अचूक वर्णन करत नाहीत. {x : x अविभाज्य संख्या आहे} आणि {x : x सम संख्या आहे} सेटच्या पॅटर्नशी मेळ बसत नाहीत. {x : x प्राकृतिक संख्या आहे} खूप व्यापक आहे आणि वर्ग संबंध निर्दिष्ट करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the set with prime numbers",
+        "Misinterprets the pattern of the set",
+        null,
+        "Misunderstands the relationship in the set"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The set {1, 4, 9, 16, 25, ...} consists of squares of natural numbers. Option 2 correctly captures this pattern. The other options are incorrect because they do not match the specific pattern of the set.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If set A is a subset of set B and A ≠ B, then what is A called?",
+      "choices": [
+        "Proper subset",
+        "Superset",
+        "Equal set",
+        "Singleton set"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Proper subset' because when set A is entirely contained within set B but is not equal to it, A is defined as a proper subset of B. 'Superset' would describe B in this relationship, 'Equal set' implies A and B have exactly the same elements, and 'Singleton set' refers to a set with only one element, which is unrelated to the relationship described.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सेट A सेट B का उपसमुच्चय है और A ≠ B, तो A क्या कहलाता है?",
+          "choices": [
+            "उचित उपसमुच्चय",
+            "अधिक समुच्चय",
+            "समान समुच्चय",
+            "एकल समुच्चय"
+          ],
+          "solution": "सही उत्तर 'उचित उपसमुच्चय' है क्योंकि जब सेट A पूरी तरह से सेट B में समाहित होता है लेकिन इसके बराबर नहीं होता, तो A को B का उचित उपसमुच्चय कहा जाता है। 'अधिक समुच्चय' इस संबंध में B को दर्शाता है, 'समान समुच्चय' का अर्थ है कि A और B के पूरी तरह से समान अवयव होते हैं, और 'एकल समुच्चय' का अर्थ है एक अवयव वाला समुच्चय, जो वर्णित संबंध से संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर सेट A हा सेट B चा उपसमूह असेल आणि A ≠ B असेल, तर A ला काय म्हणतात?",
+          "choices": [
+            "उचित उपसमूह",
+            "अधिक समूह",
+            "समान समूह",
+            "एकक समूह"
+          ],
+          "solution": "बरोबर उत्तर 'उचित उपसमूह' आहे कारण जेव्हा सेट A पूर्णपणे सेट B मध्ये समाविष्ट असतो परंतु तो त्याच नसतो, तेव्हा A ला B चा उचित उपसमूह म्हणतात. 'अधिक समूह' हा या संबंधात B ला वर्णन करतो, 'समान समूह' असे असते जेव्हा A आणि B च्या घटकांची एकसारखीता असते आणि 'एकक समूह' हा एक घटक असलेल्या समूहाला म्हणतात, जो वर्णन केलेल्या संबंधाशी संबंधित नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for set theory concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the term 'proper subset' with 'superset'",
+        "Does not understand the condition for equal sets",
+        "Does not recognize the definition of a singleton set"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is correct. The correct answer is 'Proper subset' as it accurately describes a set A that is a subset of B but not equal to it.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the set-builder form of the set {1, 3, 5, 7, 9}?",
+      "choices": [
+        "{x : x is an even number less than 10}",
+        "{x : x is a natural number less than 10}",
+        "{x : x is an odd number less than 10}",
+        "{x : x is a prime number less than 10}"
+      ],
+      "answerIndex": 2,
+      "solution": "The set {1, 3, 5, 7, 9} consists of odd numbers less than 10, so its set-builder form is {x : x is an odd number less than 10}. The other options do not describe the set correctly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सेट {1, 3, 5, 7, 9} का सेट-बिल्डर रूप क्या है?",
+          "choices": [
+            "{x : x 10 से कम सम संख्या है}",
+            "{x : x 10 से कम प्राकृतिक संख्या है}",
+            "{x : x 10 से कम विषम संख्या है}",
+            "{x : x 10 से कम अभाज्य संख्या है}"
+          ],
+          "solution": "सेट {1, 3, 5, 7, 9} में 10 से कम विषम संख्याएं हैं, इसलिए इसका सेट-बिल्डर रूप {x : x 10 से कम विषम संख्या है} है। अन्य विकल्प सेट का सही वर्णन नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, correct answer position, and technical terms used in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समुच्चय {1, 3, 5, 7, 9} ची सेट-बिल्डर रूपे कोणती आहे?",
+          "choices": [
+            "{x : x 10 पेक्षा कमी एक सम संख्या आहे}",
+            "{x : x 10 पेक्षा कमी प्राकृतिक संख्या आहे}",
+            "{x : x 10 पेक्षा कमी अविषम संख्या आहे}",
+            "{x : x 10 पेक्षा कमी अभाज्य संख्या आहे}"
+          ],
+          "solution": "समुच्चय {1, 3, 5, 7, 9} मध्ये 10 पेक्षा कमी अविषम संख्या आहेत, म्हणून त्याची सेट-बिल्डर रूपे {x : x 10 पेक्षा कमी अविषम संख्या आहे} आहे. इतर विकल्प समुच्चय च्या योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses odd numbers with even numbers",
+        "Confuses odd numbers with all natural numbers",
+        null,
+        "Confuses odd numbers with prime numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as the set {1, 3, 5, 7, 9} contains odd numbers less than 10. The other options are incorrect for the reasons stated by the author, and those reasons correspond to common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is true about the set A = { x : x ∈ R and x satisfy x² – 8x + 12 = 0 }?",
+      "choices": [
+        "A is an empty set.",
+        "A contains all real numbers.",
+        "A contains exactly two elements.",
+        "A contains infinitely many elements."
+      ],
+      "answerIndex": 2,
+      "solution": "The equation x² – 8x + 12 = 0 is a quadratic equation, which can be factored into (x – 2)(x – 6) = 0, giving two real solutions, 2 and 6. Therefore, the set A contains exactly two elements. An empty set would have no solutions, containing all real numbers would require an identity, and infinitely many elements would imply a non-unique or continuous solution set, which does not apply here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा सेट A = { x : x ∈ R और x समीकरण x² – 8x + 12 = 0 को संतुष्ट करता है } के बारे में सत्य है?",
+          "choices": [
+            "A एक खाली सेट है।",
+            "A में सभी वास्तविक संख्याएँ हैं।",
+            "A में ठीक दो अवयव हैं।",
+            "A में अनंत अवयव हैं।"
+          ],
+          "solution": "समीकरण x² – 8x + 12 = 0 एक द्विघात समीकरण है, जिसे (x – 2)(x – 6) = 0 के रूप में गुणनखंडित किया जा सकता है, जिससे दो वास्तविक हल, 2 और 6 प्राप्त होते हैं। अतः सेट A में ठीक दो अवयव हैं। एक खाली सेट में कोई हल नहीं होता, सभी वास्तविक संख्याएँ होने के लिए एक पहचान की आवश्यकता होती है, और अनंत अवयव होने के लिए एक अद्वितीय या सतत हल सेट की आवश्यकता होती है, जो यहाँ लागू नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते खरे आहे, A = { x : x ∈ R आणि x हे x² – 8x + 12 = 0 च्या समीकरणाचे उकल असते }?",
+          "choices": [
+            "A एक खालील संच आहे.",
+            "A मध्ये सर्व वास्तविक संख्या आहेत.",
+            "A मध्ये तपशील दोन घटक आहेत.",
+            "A मध्ये अनंत घटक आहेत."
+          ],
+          "solution": "समीकरण x² – 8x + 12 = 0 हे द्विघात समीकरण आहे, जे (x – 2)(x – 6) = 0 च्या रूपात फॅक्टर केले जाऊ शकते, ज्यामुळे 2 आणि 6 असे दोन वास्तविक उकल मिळतात. त्यामुळे, संच A मध्ये तपशील दोन घटक आहेत. खालील संच निर्देशांक नसल्यास, सर्व वास्तविक संख्या असल्यास एक ओळख असावी आणि अनंत घटक असल्यास एक अद्वितीय किंवा सतत समाधान सेट असावा, जे येथे लागू होत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that no real numbers satisfy the equation.",
+        "Thinks that all real numbers satisfy the equation.",
+        null,
+        "Thinks that the equation has infinitely many solutions."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly solves the quadratic equation and identifies that it has exactly two real roots, making option 2 the correct answer. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 18,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 19,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Match the set on the left with the correct set-builder form on the right: {P, R, I, N, C, A, L}",
+      "choices": [
+        "{x : x is a prime number}",
+        "{x : x is an integer and x – 9 = 0}",
+        "{x : x is an integer and x + 1 = 1}",
+        "{x : x is a letter of the word PRINCIPAL}"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is {x : x is a letter of the word PRINCIPAL}, as the set {P, R, I, N, C, A, L} contains letters from the word PRINCIPAL. The other options do not match the set. {x : x is a prime number} is not related to the set. {x : x is an integer and x – 9 = 0} represents a single element (x = 9). {x : x is an integer and x + 1 = 1} represents a single element (x = 0).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बाएं ओर के सेट के साथ दाएं ओर सही सेट-बिल्डर रूप का मिलान करें: {P, R, I, N, C, A, L}",
+          "choices": [
+            "{x : x एक अभाज्य संख्या है}",
+            "{x : x एक पूर्णांक है और x – 9 = 0}",
+            "{x : x एक पूर्णांक है और x + 1 = 1}",
+            "{x : x शब्द PRINCIPAL का अक्षर है}"
+          ],
+          "solution": "सही उत्तर {x : x शब्द PRINCIPAL का अक्षर है} है, क्योंकि सेट {P, R, I, N, C, A, L} शब्द PRINCIPAL के अक्षरों से बना है। अन्य विकल्प सेट के साथ मेल नहीं खाते। {x : x एक अभाज्य संख्या है} सेट से संबंधित नहीं है। {x : x एक पूर्णांक है और x – 9 = 0} एक तत्व (x = 9) का प्रतिनिधित्व करता है। {x : x एक पूर्णांक है और x + 1 = 1} एक तत्व (x = 0) का प्रतिनिधित्व करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बाजूला दिलेल्या सेटला योग्य सेट-बिल्डर फॉर्मसह जोडा: {P, R, I, N, C, A, L}",
+          "choices": [
+            "{x : x एक अभाज्य संख्या आहे}",
+            "{x : x एक पूर्णांक आहे आणि x – 9 = 0}",
+            "{x : x एक पूर्णांक आहे आणि x + 1 = 1}",
+            "{x : x शब्द PRINCIPAL चा अक्षर आहे}"
+          ],
+          "solution": "योग्य उत्तर {x : x शब्द PRINCIPAL चा अक्षर आहे} आहे, कारण {P, R, I, N, C, A, L} सेटमध्ये PRINCIPAL शब्दाचे अक्षर आहेत. इतर विकल्प सेटसह जुळत नाहीत. {x : x एक अभाज्य संख्या आहे} सेटशी संबंधित नाही. {x : x एक पूर्णांक आहे आणि x – 9 = 0} एक घटक (x = 9) दर्शवतो. {x : x एक पूर्णांक आहे आणि x + 1 = 1} एक घटक (x = 0) दर्शवतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The solution explanation is correctly aligned with the options.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the set with prime numbers",
+        "Misinterprets the equation as matching the set",
+        "Misunderstands the equation as matching the set",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is clearly 3, as the set {P, R, I, N, C, A, L} consists of the unique letters in the word 'PRINCIPAL'. The other options are clearly incorrect as they represent numerical sets, not letter sets.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If A = {x : x is a natural number and 3 < x < 10}, what is the roster form of A?",
+      "choices": [
+        "{4, 5, 6, 7, 8, 9}",
+        "{5, 6, 7, 8, 9, 10}",
+        "{3, 4, 5, 6, 7, 8}",
+        "{2, 3, 4, 5, 6, 7}"
+      ],
+      "answerIndex": 0,
+      "solution": "The set A includes all natural numbers between 3 and 10, not including 3 and 10. Therefore, the roster form is {4, 5, 6, 7, 8, 9}. The other options include numbers outside the range or exclude some numbers within the range.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि A = {x : x एक प्राकृतिक संख्या है और 3 < x < 10}, तो A के रोस्टर रूप क्या है?",
+          "choices": [
+            "{4, 5, 6, 7, 8, 9}",
+            "{5, 6, 7, 8, 9, 10}",
+            "{3, 4, 5, 6, 7, 8}",
+            "{2, 3, 4, 5, 6, 7}"
+          ],
+          "solution": "सेट A में 3 और 10 के बीच की सभी प्राकृतिक संख्याएं शामिल हैं, 3 और 10 को छोड़कर। इसलिए, रोस्टर रूप {4, 5, 6, 7, 8, 9} है। अन्य विकल्पों में रेंज के बाहर की संख्याएं शामिल हैं या कुछ संख्याएं छूट गई हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "A = {x : x हा प्राकृतिक संख्या आहे आणि 3 < x < 10}, तर A ची रोस्टर रूपे काय आहे?",
+          "choices": [
+            "{4, 5, 6, 7, 8, 9}",
+            "{5, 6, 7, 8, 9, 10}",
+            "{3, 4, 5, 6, 7, 8}",
+            "{2, 3, 4, 5, 6, 7}"
+          ],
+          "solution": "समुच्चय A मध्ये 3 आणि 10 च्या दरम्यानच्या सर्व प्राकृतिक संख्या समाविष्ट आहेत, 3 आणि 10 वगळून. त्यामुळे रोस्टर रूप {4, 5, 6, 7, 8, 9} आहे. इतर विकल्पांमध्ये विस्ताराबाहेरच्या संख्या समाविष्ट आहेत किंवा विस्तारामधील काही संख्या वगळल्या गेल्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Includes 3 and 10, which are not part of the set",
+        "Includes numbers outside the range",
+        "Excludes some numbers within the range"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is {4, 5, 6, 7, 8, 9}, as the set A includes natural numbers strictly between 3 and 10. The other options either include or exclude numbers incorrectly.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following sets is an infinite set?",
+      "choices": [
+        "{x : x is a natural number less than 100}",
+        "{x : x is a solution of x – 16 = 0}",
+        "{x : x is a letter of the word PRINCIPAL}",
+        "{x : x is a point on a line}"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is {x : x is a point on a line}, which is an infinite set because there are infinitely many points on a line. The other options are finite sets. {x : x is a natural number less than 100} is a finite set with 99 elements. {x : x is a solution of x – 16 = 0} has one element (x = 16). {x : x is a letter of the word PRINCIPAL} is a finite set with 7 elements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा समुच्चय अनंत समुच्चय है?",
+          "choices": [
+            "{x : x 100 से कम प्राकृत संख्या है}",
+            "{x : x समीकरण x – 16 = 0 का हल है}",
+            "{x : x शब्द PRINCIPAL के अक्षर है}",
+            "{x : x एक रेखा पर बिंदु है}"
+          ],
+          "solution": "सही उत्तर {x : x एक रेखा पर बिंदु है} है, जो एक अनंत समुच्चय है क्योंकि एक रेखा पर अनंत बिंदु होते हैं। अन्य विकल्प परिमित समुच्चय हैं। {x : x 100 से कम प्राकृत संख्या है} में 99 अवयव होते हैं। {x : x समीकरण x – 16 = 0 का हल है} में एक अवयव (x = 16) होता है। {x : x शब्द PRINCIPAL के अक्षर है} में 7 अवयव होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता सेट अनंत सेट आहे?",
+          "choices": [
+            "{x : x हा 100 पेक्षा कमी प्राकृतिक संख्या आहे}",
+            "{x : x हा x – 16 = 0 चा उकल आहे}",
+            "{x : x हा शब्द PRINCIPAL चा अक्षर आहे}",
+            "{x : x हा रेषेवरील बिंदू आहे}"
+          ],
+          "solution": "बरोबर उत्तर {x : x हा रेषेवरील बिंदू आहे}, हा अनंत सेट आहे कारण रेषेवर अनंत बिंदू आहेत. इतर विकल्प अंतसंख्य आहेत. {x : x हा 100 पेक्षा कमी प्राकृतिक संख्या आहे} हा 99 घटकांचा अंतसंख्य सेट आहे. {x : x हा x – 16 = 0 चा उकल आहे} चा एक घटक (x = 16) आहे. {x : x हा शब्द PRINCIPAL चा अक्षर आहे} हा 7 घटकांचा अंतसंख्य सेट आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misidentifies the set as finite",
+        "Misunderstands the equation as having multiple solutions",
+        "Confuses the set with a finite set",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and clearly identifies the infinite set as {x : x is a point on a line}. The reasoning for the other options is also accurate.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following sets is a subset of every set?",
+      "choices": [
+        "{1}",
+        "{2}",
+        "{ }",
+        "{1, 2}"
+      ],
+      "answerIndex": 2,
+      "solution": "The empty set, represented as { }, is a subset of every set. This is a fundamental property of sets in mathematics. The other options are not subsets of every set.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा समुच्चय प्रत्येक समुच्चय का उपसमुच्चय है?",
+          "choices": [
+            "{1}",
+            "{2}",
+            "{ }",
+            "{1, 2}"
+          ],
+          "solution": "खाली समुच्चय, जिसे { } के रूप में निरूपित किया जाता है, प्रत्येक समुच्चय का उपसमुच्चय होता है। यह गणित में समुच्चयों का एक मूलभूत गुण है। अन्य विकल्प प्रत्येक समुच्चय के उपसमुच्चय नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Hindi terminology for set theory.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता सेट प्रत्येक सेटचा उपसेट आहे?",
+          "choices": [
+            "{1}",
+            "{2}",
+            "{ }",
+            "{1, 2}"
+          ],
+          "solution": "शून्य सेट, { } असे दर्शविले जाते, हा प्रत्येक सेटचा उपसेट आहे. हे गणितातील सेटच्या मूलभूत गुणधर्मांपैकी एक आहे. इतर विकल्प प्रत्येक सेटचे उपसेट नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a non-empty set as a subset of all sets",
+        "Chooses a non-empty set as a subset of all sets",
+        null,
+        "Misunderstands the concept of the empty set as a subset of all sets"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the mathematical definition that the empty set is a subset of every set. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh101.pdf",
+          "ordinal": 8,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Sets"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-23T02:31:41.592Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

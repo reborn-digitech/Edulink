@@ -21,243 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T00:17:28.801Z",
+  "generatedAt": "2026-10-21T21:50:06.390Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following numbers is a prime number?",
+      "stem": "Which of the following statements is true about co-prime numbers?",
       "choices": [
-        "15",
-        "21",
-        "23",
-        "27"
+        "They have at least one common prime factor",
+        "They have exactly two common prime factors",
+        "They have no common prime factors",
+        "They have all prime factors in common"
       ],
       "answerIndex": 2,
-      "solution": "The number 23 is a prime number. 15, 21, and 27 are all composite numbers, as they have factors other than 1 and themselves.",
+      "solution": "Co-prime numbers are defined as numbers that do not share any common prime factors. This means the correct statement is that they have no common prime factors. The first option is wrong because co-prime numbers do not have any common prime factors. The second option is incorrect because it implies a specific number of common factors, which is not true. The fourth option is also wrong because it suggests they share all prime factors, which is the opposite of co-primality.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या एक अभाज्य संख्या है?",
+          "stem": "निम्नलिखित में से कौन-सा कथन सही है सह-अभाज्य संख्याओं के बारे में?",
           "choices": [
-            "15",
-            "21",
-            "23",
-            "27"
+            "उनके पास कम से कम एक उभयनिष्ठ अभाज्य गुणनखंड होता है",
+            "उनके पास ठीक दो उभयनिष्ठ अभाज्य गुणनखंड होते हैं",
+            "उनके पास कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होता है",
+            "उनके पास सभी अभाज्य गुणनखंड उभयनिष्ठ होते हैं"
           ],
-          "solution": "संख्या 23 एक अभाज्य संख्या है। 15, 21 और 27 सभी भाज्य संख्याएँ हैं, क्योंकि इनके 1 और स्वयं के अलावा अन्य गुणनखंड होते हैं।",
+          "solution": "सह-अभाज्य संख्याओं की परिभाषा वे संख्याएँ हैं जिनके कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होते। इसका अर्थ है कि सही कथन यह है कि उनके पास कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होता है। पहला विकल्प गलत है क्योंकि सह-अभाज्य संख्याओं के कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होते। दूसरा विकल्प गलत है क्योंकि यह एक विशिष्ट संख्या के उभयनिष्ठ गुणनखंड का अंतर्दृष्टि देता है, जो सत्य नहीं है। चौथा विकल्प भी गलत है क्योंकि यह इंगित करता है कि वे सभी अभाज्य गुणनखंड उभयनिष्ठ होते हैं, जो सह-अभाज्यता के विपरीत है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and terminology of the original English question. All options and the solution are correctly translated, with the correct answer remaining in the same position (option 3). The distractors remain incorrect, and the technical terms like 'अभाज्य गुणनखंड' (prime factor) are appropriate for a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संख्या अभाज्य संख्या आहे?",
+          "stem": "खालीलपैकी को-अभाज्य संख्यांबद्दल कोणता विधान खरा आहे?",
           "choices": [
-            "15",
-            "21",
-            "23",
-            "27"
+            "त्यांना कमीत कमी एक सामायिक अभाज्य घटक असतो",
+            "त्यांना तीन सामायिक अभाज्य घटक असतात",
+            "त्यांना कोणताही सामायिक अभाज्य घटक नसतो",
+            "त्यांना सर्व अभाज्य घटक सामायिक असतात"
           ],
-          "solution": "संख्या 23 अभाज्य संख्या आहे. 15, 21 आणि 27 ह्या सर्व संख्या भाज्य संख्या आहेत, कारण त्यांच्याकडे 1 आणि त्यांच्यापेक्षा जास्त घटक आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "thinks 15 is prime",
-        "thinks 21 is prime",
-        null,
-        "thinks 27 is prime"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 23, which is a prime number. The other options (15, 21, 27) are all composite numbers. The author's reasoning is accurate and matches the correct solution.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 16,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 17,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 18,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is a common multiple of 4 and 6?",
-      "choices": [
-        "12",
-        "18",
-        "20",
-        "24"
-      ],
-      "answerIndex": 0,
-      "solution": "The number 12 is a common multiple of 4 and 6. 18 is a multiple of 6 but not of 4. 20 is a multiple of 4 but not of 6. 24 is a multiple of both but is not the smallest.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्न में से कौन 4 और 6 का सामान्य गुणज है?",
-          "choices": [
-            "12",
-            "18",
-            "20",
-            "24"
-          ],
-          "solution": "संख्या 12, 4 और 6 का सामान्य गुणज है। 18, 6 का गुणज है लेकिन 4 का नहीं। 20, 4 का गुणज है लेकिन 6 का नहीं। 24, दोनों का गुणज है लेकिन सबसे छोटा नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and logical structure of the original English question.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते 4 आणि 6 चे सामाईक गुणित आहे?",
-          "choices": [
-            "12",
-            "18",
-            "20",
-            "24"
-          ],
-          "solution": "संख्या 12 हे 4 आणि 6 चे सामाईक गुणित आहे. 18 हे 6 चे गुणित आहे पण 4 चे नाही. 20 हे 4 चे गुणित आहे पण 6 चे नाही. 24 हे दोन्ही चे गुणित आहे पण सर्वात लहान नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "thinks 18 is a multiple of 4",
-        "thinks 20 is a multiple of 6",
-        "thinks 24 is the smallest common multiple"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies 12 as the least common multiple of 4 and 6. The reasoning for the distractors reflects common misconceptions about multiples.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 16,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 17,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 18,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a composite number?",
-      "choices": [
-        "17",
-        "23",
-        "29",
-        "30"
-      ],
-      "answerIndex": 3,
-      "solution": "The number 30 is a composite number because it has more than two factors. 17, 23, and 29 are prime numbers as they have only two factors.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक भाज्य संख्या है?",
-          "choices": [
-            "17",
-            "23",
-            "29",
-            "30"
-          ],
-          "solution": "संख्या 30 एक भाज्य संख्या है क्योंकि इसके दो से अधिक गुणनखंड हैं। 17, 23 और 29 अभाज्य संख्याएँ हैं क्योंकि इनके केवल दो गुणनखंड हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणती एक संयुक्त संख्या आहे?",
-          "choices": [
-            "17",
-            "23",
-            "29",
-            "30"
-          ],
-          "solution": "संख्या 30 ही एक संयुक्त संख्या आहे कारण तिचे दोनपेक्षा जास्त अपवर्तक आहेत. 17, 23 आणि 29 ही अभाज्य संख्या आहेत कारण त्यांचे केवळ दोन अपवर्तक आहेत.",
+          "solution": "को-अभाज्य संख्या अशा संख्या आहेत ज्यांचा कोणताही सामायिक अभाज्य घटक नसतो. ह्यामुळे खरा विधान म्हणजे त्यांना कोणताही सामायिक अभाज्य घटक नसतो. पहिला विधान चूक आहे कारण को-अभाज्य संख्यांना कोणताही सामायिक अभाज्य घटक नसतो. दुसरा विधान चूक आहे कारण तो एक विशिष्ट संख्या घटकांचा अस्तित्व सूचित करतो, जे खरे नाही. चौथा विधान देखील चूक आहे कारण तो सुचवतो की त्यांना सर्व अभाज्य घटक सामायिक असतात, जे को-अभाज्यतेच्या विरुद्ध आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -268,9 +72,205 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses prime numbers with composite numbers",
-        "Confuses prime numbers with composite numbers",
-        "Confuses prime numbers with composite numbers",
+        "Confuses co-prime numbers with numbers that have common factors",
+        "Assumes a specific number of common factors",
+        null,
+        "Does not understand the definition of co-prime numbers"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as co-prime numbers are defined as having no common prime factors. The author's reasoning aligns with standard mathematical definitions and the misconceptions listed are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which rule is used to check if a number is divisible by 8?",
+      "choices": [
+        "Check if the last digit is even",
+        "Check if the sum of all digits is divisible by 8",
+        "Check if the number formed by the last three digits is divisible by 8",
+        "Check if the number is a multiple of 10"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct rule for checking if a number is divisible by 8 is to check if the number formed by the last three digits is divisible by 8. This is because 1000 is divisible by 8, so any number's divisibility by 8 depends only on its last three digits. Checking if the last digit is even relates to divisibility by 2, checking the sum of digits relates to divisibility by 3 or 9, and checking if the number is a multiple of 10 relates to divisibility by 10.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "8 से भाज्य होने की जांच करने के लिए कौन-सा नियम उपयोग किया जाता है?",
+          "choices": [
+            "अंतिम अंक युग्म होने की जांच करें",
+            "सभी अंकों के योग 8 से भाज्य होने की जांच करें",
+            "अंतिम तीन अंकों द्वारा बने संख्या 8 से भाज्य होने की जांच करें",
+            "संख्या 10 के गुणज होने की जांच करें"
+          ],
+          "solution": "8 से भाज्य होने की जांच करने का सही नियम यह है कि अंतिम तीन अंकों द्वारा बनी संख्या 8 से भाज्य होने की जांच करें। ऐसा इसलिए है क्योंकि 1000, 8 से भाज्य है, इसलिए किसी संख्या की 8 से भाज्यता केवल उसके अंतिम तीन अंकों पर निर्भर करती है। अंतिम अंक युग्म होने की जांच 2 से भाज्यता से संबंधित है, अंकों के योग की जांच 3 या 9 से भाज्यता से संबंधित है, और संख्या 10 के गुणज होने की जांच 10 से भाज्यता से संबंधित है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi math terminology, and the logic of the solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "8 ने भाग जाऊ शकतो की नाही ते तपासण्यासाठी कोणता नियम वापरला जातो?",
+          "choices": [
+            "अंतिम अंक जोड आहे की नाही ते तपासा",
+            "अंकांच्या बेरजेचा 8 ने भाग जातो की नाही ते तपासा",
+            "अंतिम तीन अंकांद्वारे तयार झालेल्या संख्येचा 8 ने भाग जातो की नाही ते तपासा",
+            "संख्या 10 ची बहुकल्पी आहे की नाही ते तपासा"
+          ],
+          "solution": "8 ने भाग जाऊ शकतो की नाही ते तपासण्यासाठी योग्य नियम हा आहे की अंतिम तीन अंकांद्वारे तयार झालेल्या संख्येचा 8 ने भाग जातो की नाही ते तपासा. हे कारण आहे की 1000 ला 8 ने भाग जातो, म्हणून कोणत्याही संख्येच्या 8 ने भाग जाण्याची शक्यता केवळ त्याच्या अंतिम तीन अंकांवर अवलंबून आहे. अंतिम अंक जोड आहे की नाही ते तपासणे हे 2 ने भाग जाण्याच्या नियमाशी संबंधित आहे, अंकांच्या बेरजेचा 8 ने भाग जातो की नाही ते तपासणे हे 3 किंवा 9 ने भाग जाण्याच्या नियमाशी संबंधित आहे, आणि संख्या 10 ची बहुकल्पी आहे की नाही ते तपासणे हे 10 ने भाग जाण्याच्या नियमाशी संबंधित आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the rule for divisibility by 2",
+        "Refers to the rule for divisibility by 3",
+        null,
+        "A student might confuse divisibility by 8 with divisibility by 10, thinking that both require the number to end in zero."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, which correctly states the divisibility rule for 8. The author's reasoning for the other options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the condition for a number to be divisible by 2?",
+      "choices": [
+        "The sum of its digits must be divisible by 2",
+        "The last digit must be 0 or 5",
+        "The number must be a multiple of 10",
+        "The last digit must be even"
+      ],
+      "answerIndex": 3,
+      "solution": "The condition for a number to be divisible by 2 is that its last digit must be even. This is a basic rule of divisibility. The other options refer to rules for other numbers like 5 or 10.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी संख्या के 2 से विभाज्य होने की शर्त क्या है?",
+          "choices": [
+            "इसके अंकों का योग 2 से विभाज्य होना चाहिए",
+            "अंतिम अंक 0 या 5 होना चाहिए",
+            "संख्या 10 के गुणज होनी चाहिए",
+            "अंतिम अंक सम होना चाहिए"
+          ],
+          "solution": "किसी संख्या के 2 से विभाज्य होने की शर्त यह है कि इसका अंतिम अंक सम हो। यह विभाज्यता का एक मूल नियम है। अन्य विकल्प 5 या 10 के लिए नियमों के संदर्भ में हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संख्येच्या 2 ने भाग जाण्याची अट काय आहे?",
+          "choices": [
+            "त्या संख्येच्या अंकांची बेरीज 2 ने भाग जावी",
+            "अंतिम अंक 0 किंवा 5 असावा",
+            "संख्या 10 ची गुणक असावी",
+            "अंतिम अंक सम असावा"
+          ],
+          "solution": "एका संख्येच्या 2 ने भाग जाण्याची अट म्हणजे तिचा अंतिम अंक सम असावा. हा भागाकाराचा मूलभूत नियम आहे. इतर विकल्पांमध्ये 5 किंवा 10 ने भाग जाण्याच्या नियमांचा उल्लेख आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to the rule for divisibility by 3",
+        "Refers to the rule for divisibility by 5",
+        "Refers to the rule for divisibility by 10",
         null
       ],
       "solverAnswers": [
@@ -281,7 +281,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. 30 is a composite number with more than two factors, while 17, 23, and 29 are prime numbers. The reasons for the wrong options are valid misconceptions.",
+      "critique": "The correct answer is 3, as the divisibility rule for 2 is that the last digit must be even. The other options correspond to rules for 3, 5, and 10, which are correctly identified by the author.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
@@ -315,49 +315,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of two numbers whose first common multiple is the product of the two numbers?",
+      "difficulty": 3,
+      "stem": "If a number is divisible by 8, which of the following must also be true?",
       "choices": [
-        "3 and 7",
-        "3 and 6",
-        "4 and 6",
-        "3 and 12"
+        "The number is divisible by 4",
+        "The number is divisible by 16",
+        "The number is divisible by 2",
+        "The number is divisible by 6"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is 3 and 7 because they are co-prime, meaning they have no common factors other than 1, so their least common multiple is their product, 21. 3 and 6 share a common factor of 3, so their least common multiple is 6, not their product. 4 and 6 share a common factor of 2, so their least common multiple is 12, not their product. 3 and 12 share a common factor of 3, so their least common multiple is 12, not their product.",
+      "solution": "If a number is divisible by 8, it must also be divisible by 4 because 8 is a multiple of 4. The number being divisible by 16 is not necessary, as not all multiples of 8 are multiples of 16. Divisibility by 2 is always true for even numbers, but it is not specific to 8. Divisibility by 6 is not guaranteed because 6 and 8 are not multiples of each other.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा दो संख्याओं का उदाहरण है जिनका प्रथम सामान्य गुणज दोनों संख्याओं के गुणनफल है?",
+          "stem": "यदि कोई संख्या 8 से विभाज्य है, तो निम्नलिखित में से कौन सा आवश्यक रूप से सत्य होगा?",
           "choices": [
-            "3 और 7",
-            "3 और 6",
-            "4 और 6",
-            "3 और 12"
+            "संख्या 4 से विभाज्य है",
+            "संख्या 16 से विभाज्य है",
+            "संख्या 2 से विभाज्य है",
+            "संख्या 6 से विभाज्य है"
           ],
-          "solution": "सही उत्तर 3 और 7 है क्योंकि ये सह-अभाज्य हैं, जिनके अतिरिक्त 1 के अलावा कोई अन्य सामान्य गुणनखंड नहीं है, इसलिए उनका लघुत्तम सामान्य गुणज उनके गुणनफल, 21 है। 3 और 6 के एक सामान्य गुणनखंड 3 है, इसलिए उनका लघुत्तम सामान्य गुणज 6 है, जो उनके गुणनफल के बराबर नहीं है। 4 और 6 के एक सामान्य गुणनखंड 2 है, इसलिए उनका लघुत्तम सामान्य गुणज 12 है, जो उनके गुणनफल के बराबर नहीं है। 3 और 12 के एक सामान्य गुणनखंड 3 है, इसलिए उनका लघुत्तम सामान्य गुणज 12 है, जो उनके गुणनफल के बराबर नहीं है।",
+          "solution": "यदि कोई संख्या 8 से विभाज्य है, तो यह आवश्यक रूप से 4 से विभाज्य होगी क्योंकि 8, 4 का गुणज है। 16 से विभाज्य होना आवश्यक नहीं है, क्योंकि 8 के सभी गुणज 16 के गुणज नहीं होते। 2 से विभाज्य होना हमेशा सत्य होता है, लेकिन यह 8 के लिए विशिष्ट नहीं है। 6 से विभाज्य होना आवश्यक नहीं है क्योंकि 6 और 8 एक दूसरे के गुणज नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते दोन संख्यांचे पहिले सामाईक गुणाकार संख्यांच्या गुणाकाराचे उदाहरण आहे?",
+          "stem": "जर एक संख्या 8 ने विभाज्य असेल, तर खालीलपैकी कोणते खात्रीने खरे असेल?",
           "choices": [
-            "3 आणि 7",
-            "3 आणि 6",
-            "4 आणि 6",
-            "3 आणि 12"
+            "संख्या 4 ने विभाज्य असेल",
+            "संख्या 16 ने विभाज्य असेल",
+            "संख्या 2 ने विभाज्य असेल",
+            "संख्या 6 ने विभाज्य असेल"
           ],
-          "solution": "बरोबर उत्तर 3 आणि 7 आहे कारण ते सह-अभाज्य आहेत, म्हणजेच त्यांना 1 शिवाय इतर कोणतेही सामाईक अपवर्तक नाहीत, म्हणून त्यांचा लहानतम सामाईक गुणाकार त्यांच्या गुणाकाराच्या 21 असतो. 3 आणि 6 ला 3 चा सामाईक अपवर्तक असतो, म्हणून त्यांचा लहानतम सामाईक गुणाकार 6 असतो, त्यांच्या गुणाकारापेक्षा नाही. 4 आणि 6 ला 2 चा सामाईक अपवर्तक असतो, म्हणून त्यांचा लहानतम सामाईक गुणाकार 12 असतो, त्यांच्या गुणाकारापेक्षा नाही. 3 आणि 12 ला 3 चा सामाईक अपवर्तक असतो, म्हणून त्यांचा लहानतम सामाईक गुणाकार 12 असतो, त्यांच्या गुणाकारापेक्षा नाही.",
+          "solution": "जर एक संख्या 8 ने विभाज्य असेल, तर ती 4 ने विभाज्य असेल कारण 8, 4 चा गुणित आहे. संख्या 16 ने विभाज्य असणे आवश्यक नाही, कारण 8 चे सर्व गुणित 16 चे गुणित नाहीत. 2 ने विभाज्यता जोडलेल्या संख्यांसाठी निश्चित असते, परंतु ती 8 च्या विशिष्टतेसाठी नाही. 6 ने विभाज्यता खात्रीने नसते कारण 6 आणि 8 एकमेकांचे गुणित नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for divisibility and multiples.",
           "flag": null
         }
       },
@@ -367,9 +367,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses co-prime numbers with numbers that have a common factor",
-        "Believes that numbers with a common factor other than 1 can still have their product as the LCM",
-        "Student thinks that if one number is a multiple of the other, their LCM is still their product"
+        "confuses the relationship between 8 and 16",
+        "assumes divisibility by 2 is specific to 8",
+        "mixes up the factors of 8 and 6"
       ],
       "solverAnswers": [
         0,
@@ -379,13 +379,23 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that co-prime numbers have their product as the least common multiple. Option 0 (3 and 7) is co-prime, so their LCM is 21, which is their product. The other options are not co-prime, so their LCM is less than their product.",
+      "critique": "The solution is correct. Divisibility by 8 implies divisibility by 4, since 8 is a multiple of 4. The other options are incorrect because divisibility by 16 is not guaranteed, divisibility by 2 is true for all even numbers, and divisibility by 6 is unrelated to 8.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 19,
-          "pageStart": 28,
-          "pageEnd": 30,
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 21,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.6 Fun with numbers"
@@ -393,29 +403,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 20,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 21,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 22,
-          "pageStart": 33,
-          "pageEnd": 33,
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.6 Fun with numbers"
@@ -423,47 +413,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What is the least number that is a multiple of both 6 and 8?",
+      "stem": "Are 56 and 63 co-prime?",
       "choices": [
-        "12",
-        "24",
-        "36",
-        "48"
+        "Yes",
+        "No",
+        "Cannot be determined",
+        "Not enough information"
       ],
       "answerIndex": 1,
-      "solution": "The least number that is a multiple of both 6 and 8 is 24. 12 is a multiple of 6 but not 8, 36 is a multiple of 6 but not 8, and 48 is a multiple of both but not the least.",
+      "solution": "The numbers 56 and 63 are not co-prime because they both have 7 as a common prime factor. Co-prime numbers have no common factors other than 1. The other options are incorrect because the greatest common factor can be determined through prime factorization.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "6 और 8 दोनों के गुणज होने वाली सबसे कम संख्या क्या है?",
+          "stem": "क्या 56 और 63 सह-अभाज्य हैं?",
           "choices": [
-            "12",
-            "24",
-            "36",
-            "48"
+            "हाँ",
+            "नहीं",
+            "निर्धारित नहीं किया जा सकता",
+            "अपर्याप्त जानकारी"
           ],
-          "solution": "6 और 8 दोनों के गुणज होने वाली सबसे कम संख्या 24 है। 12, 6 का गुणज है लेकिन 8 का नहीं, 36, 6 का गुणज है लेकिन 8 का नहीं, और 48, दोनों का गुणज है लेकिन सबसे कम नहीं।",
+          "solution": "संख्याएँ 56 और 63 सह-अभाज्य नहीं हैं क्योंकि वे दोनों 7 के एक सामान्य अभाज्य गुणनखंड के साथ हैं। सह-अभाज्य संख्याओं के अतिरिक्त 1 के कोई अन्य उभयनिष्ठ गुणनखंड नहीं होते हैं। अन्य विकल्प गलत हैं क्योंकि मूलभूत गुणनखंडन द्वारा महत्तम सामान्य गुणनखंड निर्धारित किया जा सकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "6 आणि 8 दोन्हीचा गुणक असणारा सर्वात लहान संख्या कोणती आहे?",
+          "stem": "56 आणि 63 ही सह-अभाज्य आहेत का?",
           "choices": [
-            "12",
-            "24",
-            "36",
-            "48"
+            "होय",
+            "नाही",
+            "निश्चित करता येत नाही",
+            "अपुरक माहिती"
           ],
-          "solution": "6 आणि 8 दोन्हीचा गुणक असणारा सर्वात लहान संख्या 24 आहे. 12 ही 6 चा गुणक आहे पण 8 चा नाही, 36 ही 6 चा गुणक आहे पण 8 चा नाही, आणि 48 ही दोन्हींचा गुणक आहे पण सर्वात लहान नाही.",
+          "solution": "56 आणि 63 ही संख्या सह-अभाज्य नाहीत कारण त्यांना 7 हा सामान्य अभाज्य घटक आहे. सह-अभाज्य संख्यांना 1 व्यतिरिक्त इतर सामान्य घटक नसतात. इतर विकल्प चुकीचे आहेत कारण महत्तम सामान्य घटकाचे अभाज्य घटकीकरणाद्वारे निर्धारण करता येते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -474,10 +464,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "chooses the first multiple of 6",
+        "Incorrectly assumes they are co-prime",
         null,
-        "chooses a higher multiple of 6 and 8",
-        "Confuses least common multiple with a higher common multiple"
+        "Incorrectly claims the information is insufficient",
+        "Confuses the question with another type of problem"
       ],
       "solverAnswers": [
         1,
@@ -487,7 +477,203 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 24, which is the least common multiple of 6 and 8. The author's reasoning is sound and matches the correct solution.",
+      "critique": "The solution is correct. 56 and 63 share a common prime factor (7), so they are not co-prime. The correct answer is 'No'.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The number 8560 needs its last two digits changed to make it a multiple of 8. Which of the following is a valid new number?",
+      "choices": [
+        "8564",
+        "8568",
+        "8570",
+        "8572"
+      ],
+      "answerIndex": 1,
+      "solution": "A number is divisible by 8 if its last three digits form a number divisible by 8. The original number is 8560. Changing the last two digits to 68 makes the last three digits 568, which is divisible by 8. 8564 ends in 564, which is not divisible by 8. 8570 ends in 570, which is not divisible by 8. 8572 ends in 572, which is not divisible by 8.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "संख्या 8560 के अंतिम दो अंकों को बदलकर इसे 8 का गुणज बनाया जाना चाहिए। निम्नलिखित में से कौन-सी एक वैध नई संख्या है?",
+          "choices": [
+            "8564",
+            "8568",
+            "8570",
+            "8572"
+          ],
+          "solution": "एक संख्या 8 से विभाज्य होती है यदि इसके अंतिम तीन अंक एक संख्या बनाते हैं जो 8 से विभाज्य होती है। मूल संख्या 8560 है। अंतिम दो अंकों को 68 बनाने से अंतिम तीन अंक 568 बनते हैं, जो 8 से विभाज्य है। 8564 के अंत में 564 है, जो 8 से विभाज्य नहीं है। 8570 के अंत में 570 है, जो 8 से विभाज्य नहीं है। 8572 के अंत में 572 है, जो 8 से विभाज्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "8560 संख्या च्या शेवटच्या दोन अंकांमध्ये बदल करून ती 8 ची बहुकल्पी बनवायची आहे. खालीलपैकी कोणती एक वैध नवीन संख्या आहे?",
+          "choices": [
+            "8564",
+            "8568",
+            "8570",
+            "8572"
+          ],
+          "solution": "8 ने भागल्यास एक संख्या भाग जाते जर तिच्या शेवटच्या तीन अंकांनी बनलेली संख्या 8 ने भाग जात असेल. मूळ संख्या 8560 आहे. शेवटच्या दोन अंकांना 68 बदलल्यास शेवटच्या तीन अंकांची संख्या 568 होईल, जी 8 ने भाग जाते. 8564 च्या शेवटच्या अंकांची संख्या 564 होईल, जी 8 ने भाग जात नाही. 8570 च्या शेवटच्या अंकांची संख्या 570 होईल, जी 8 ने भाग जात नाही. 8572 च्या शेवटच्या अंकांची संख्या 572 होईल, जी 8 ने भाग जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for divisibility rules.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "chooses a number that ends in 64, which is not divisible by 8",
+        null,
+        "selects 8570, which ends in 570, not divisible by 8",
+        "picks a number that ends in 72, which is not divisible by 8"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the rule that a number is divisible by 8 if its last three digits form a number divisible by 8. The correct answer is 8568, as 568 is divisible by 8. The other options are correctly identified as not divisible by 8.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the smallest number that is a multiple of all the numbers from 1 to 10 except for 7?",
+      "choices": [
+        "2520",
+        "2250",
+        "2100",
+        "1890"
+      ],
+      "answerIndex": 0,
+      "solution": "The smallest number that is a multiple of all the numbers from 1 to 10 except 7 is 2520. 2250 is not a multiple of 8, 2100 is not a multiple of 8 or 9, and 1890 is not a multiple of 8 or 4.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 से 10 तक के सभी संख्याओं के एक गुणज होने वाली सबसे छोटी संख्या क्या है लेकिन 7 के लिए नहीं?",
+          "choices": [
+            "2520",
+            "2250",
+            "2100",
+            "1890"
+          ],
+          "solution": "1 से 10 तक के सभी संख्याओं के एक गुणज होने वाली सबसे छोटी संख्या 2520 है। 2250 8 का गुणज नहीं है, 2100 8 या 9 का गुणज नहीं है और 1890 8 या 4 का गुणज नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 ते 10 पर्यंतच्या सर्व संख्यांचा गुणक असणारी लहानतम संख्या 7 व्यतिरिक्त कोणती आहे?",
+          "choices": [
+            "2520",
+            "2250",
+            "2100",
+            "1890"
+          ],
+          "solution": "1 ते 10 पर्यंतच्या सर्व संख्यांचा गुणक असणारी लहानतम संख्या 7 व्यतिरिक्त 2520 आहे. 2250 8 चा गुणक नाही, 2100 8 किंवा 9 चा गुणक नाही आणि 1890 8 किंवा 4 चा गुणक नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses LCM with a number that has similar factors but incorrect exponents",
+        "Confuses LCM with a number that has the same prime factors but incorrect exponents",
+        "Miscalculates LCM by omitting 8 instead of 9"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2520, which is the LCM of 1-10 excluding 7. The other options fail to be multiples of 8 or 9, which are required. The author's reasoning for the distractors aligns with common misconceptions about LCM calculations.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
@@ -521,47 +707,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following is a correct rule for checking divisibility by 4?",
+      "difficulty": 5,
+      "stem": "Two numbers, 4 and 9, are safe. What does it mean for a pair of numbers to be safe?",
       "choices": [
-        "If the last digit is even, the number is divisible by 4",
-        "If the number formed by the last two digits is divisible by 4, the number is divisible by 4",
-        "If the last two digits are 00, the number is divisible by 4",
-        "If the number ends in 4, the number is divisible by 4"
+        "They are both prime numbers",
+        "They have no common factor other than 1",
+        "They are both composite numbers",
+        "They are both odd numbers"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is that if the number formed by the last two digits is divisible by 4, the number is divisible by 4. This is because 100 is divisible by 4, so the remainder of any number when divided by 4 depends only on its last two digits. The other options either give incorrect rules (like checking only the last digit) or are too limited in scope (like checking only for 00 at the end).",
+      "solution": "A pair of numbers is considered safe if they have no common factor other than 1. This means they are co-prime. The numbers 4 and 9 are safe because they are co-prime. The other options do not define what it means for a pair to be safe.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा भाज्यता जांचने का सही नियम है 4 द्वारा?",
+          "stem": "4 और 9 दो संख्याएँ सुरक्षित हैं। दो संख्याओं के सुरक्षित होने का क्या अर्थ है?",
           "choices": [
-            "यदि अंतिम अंक सम है, तो संख्या 4 से भाज्य है",
-            "यदि अंतिम दो अंकों द्वारा बनी संख्या 4 से भाज्य है, तो संख्या 4 से भाज्य है",
-            "यदि अंतिम दो अंक 00 हैं, तो संख्या 4 से भाज्य है",
-            "यदि संख्या 4 पर समाप्त होती है, तो संख्या 4 से भाज्य है"
+            "वे दोनों अभाज्य संख्याएँ हैं",
+            "उनका एक से अधिक सामान्य गुणनखंड नहीं है",
+            "वे दोनों भाज्य संख्याएँ हैं",
+            "वे दोनों विषम संख्याएँ हैं"
           ],
-          "solution": "सही उत्तर यह है कि यदि अंतिम दो अंकों द्वारा बनी संख्या 4 से भाज्य है, तो संख्या 4 से भाज्य है। ऐसा इसलिए है क्योंकि 100, 4 से भाज्य है, इसलिए किसी भी संख्या के 4 से भाग देने पर शेष केवल उसके अंतिम दो अंकों पर निर्भर करता है। अन्य विकल्प गलत नियम देते हैं (जैसे केवल अंतिम अंक की जांच करना) या सीमित परास में होते हैं (जैसे केवल अंत में 00 की जांच करना)।",
+          "solution": "एक जोड़ी संख्याओं को सुरक्षित माना जाता है यदि उनका केवल 1 के अलावा कोई सामान्य गुणनखंड नहीं होता है। इसका अर्थ है कि वे सह-अभाज्य हैं। संख्याएँ 4 और 9 सुरक्षित हैं क्योंकि वे सह-अभाज्य हैं। अन्य विकल्प दो संख्याओं के सुरक्षित होने का अर्थ निर्दिष्ट नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and correct answer positioning.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता नियम 4 ने भागतो ते तपासण्यासाठी बरोबर आहे?",
+          "stem": "4 आणि 9 हे दोन संख्या, सुरक्षित आहेत. एका संख्याच्या जोडीला सुरक्षित म्हणणे काय अर्थ आहे?",
           "choices": [
-            "जर शेवटचा अंक सम असेल, तर संख्या 4 ने भागते",
-            "जर शेवटच्या दोन अंकांनी बनलेली संख्या 4 ने भागत असेल, तर संख्या 4 ने भागते",
-            "जर शेवटचे दोन अंक 00 असतील, तर संख्या 4 ने भागते",
-            "जर संख्या 4 ने संपत असेल, तर संख्या 4 ने भागते"
+            "ते दोन्ही अभाज्य संख्या आहेत",
+            "त्यांचा 1 शिवाय कोणताही सामायिक अपवर्तक नाही",
+            "ते दोन्ही भाज्य संख्या आहेत",
+            "ते दोन्ही विषम संख्या आहेत"
           ],
-          "solution": "बरोबर उत्तर हे आहे की जर शेवटच्या दोन अंकांनी बनलेली संख्या 4 ने भागत असेल, तर संख्या 4 ने भागते. हे कारण आहे की 100 4 ने भागतो, म्हणून कोणत्याही संख्येचा 4 ने भागाकार केल्यानंतर उर्वर फक्त त्याच्या शेवटच्या दोन अंकांवर अवलंबून असतो. इतर नियम चुकीचे आहेत (जसे की फक्त शेवटचा अंक तपासणे) किंवा त्यांचा विस्तार खूप मर्यादित आहे (जसे की फक्त शेवटचे दोन अंक 00 असल्यास तपासणे).",
+          "solution": "एका संख्याच्या जोडीला सुरक्षित म्हणतात जर त्यांचा 1 शिवाय कोणताही सामायिक अपवर्तक नसेल. हा अर्थ त्यांना सह-अभाज्य म्हणतात. 4 आणि 9 ही संख्या सह-अभाज्य असल्याने त्यांना सुरक्षित म्हणतात. इतर विकल्प एका संख्याच्या जोडीला सुरक्षित म्हणण्याचा अर्थ निर्दिष्ट करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -572,10 +758,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes that checking the last digit is sufficient for divisibility by 4",
+        "confuses prime numbers with safe pairs",
         null,
-        "Misinterprets the rule, thinking that only numbers ending in 00 are divisible by 4",
-        "Believes that the last digit alone determines divisibility by 4, ignoring the role of the last two digits."
+        "Students might confuse 'safe' with being composite, thinking that having more factors makes them 'safe' in some context.",
+        "confuses even numbers with safe pairs"
       ],
       "solverAnswers": [
         1,
@@ -584,82 +770,92 @@
         1,
         1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct rule for divisibility by 4 is that if the number formed by the last two digits is divisible by 4, then the entire number is divisible by 4. This is supported by the fact that 100 is divisible by 4, so only the last two digits affect divisibility by 4. The other options reflect common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as 'safe' is defined as having no common factor other than 1, which is the definition of co-prime numbers. The other options represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 5: Prime Time",
-            "5.4 Prime Factorisation"
+            "5.2 Prime Numbers"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 17,
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
+            "5.2 Prime Numbers"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 19,
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
+            "5.3 Co-prime numbers for safekeeping treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.3 Co-prime numbers for safekeeping treasures"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following pairs of numbers are co-prime?",
+      "difficulty": 6,
+      "stem": "If 80 and 63 have no common prime factors, what can be concluded about them?",
       "choices": [
-        "12 and 18",
-        "15 and 25",
-        "16 and 21",
-        "3: 20 and 30"
+        "They are both prime numbers",
+        "They are co-prime",
+        "They are both multiples of 5",
+        "They are both odd numbers"
       ],
-      "answerIndex": 2,
-      "solution": "The pair 16 and 21 are co-prime because they have no common factors other than 1. 12 and 18 have common factors, 15 and 25 have a common factor of 5, and 20 and 30 have common factors of 2 and 5.",
+      "answerIndex": 1,
+      "solution": "If two numbers have no common prime factors, they are co-prime. Since 80 and 63 share no prime factors, they are co-prime. The other options are incorrect because 80 is not prime, 63 is not a multiple of 5, and 80 is even.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा संख्या युग्म सह-अभाज्य है?",
+          "stem": "यदि 80 और 63 के कोई सामान्य अभाज्य गुणनखंड नहीं हैं, तो इनके बारे में क्या निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "12 और 18",
-            "15 और 25",
-            "16 और 21",
-            "20 और 30"
+            "वे दोनों अभाज्य संख्याएँ हैं",
+            "वे सह-अभाज्य हैं",
+            "वे 5 के दोनों गुणज हैं",
+            "वे दोनों विषम संख्याएँ हैं"
           ],
-          "solution": "16 और 21 सह-अभाज्य हैं क्योंकि उनका कोई उभयनिष्ठ गुणक 1 के अलावा नहीं है। 12 और 18 के उभयनिष्ठ गुणक हैं, 15 और 25 का उभयनिष्ठ गुणक 5 है, और 20 और 30 के उभयनिष्ठ गुणक 2 और 5 हैं।",
+          "solution": "यदि दो संख्याओं के कोई सामान्य अभाज्य गुणनखंड नहीं हैं, तो वे सह-अभाज्य होती हैं। 80 और 63 के कोई सामान्य अभाज्य गुणनखंड नहीं हैं, इसलिए वे सह-अभाज्य हैं। अन्य विकल्प गलत हैं क्योंकि 80 अभाज्य नहीं है, 63, 5 का गुणज नहीं है, और 80 सम संख्या है।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used.",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and terminology of the original English question. The term 'सह-अभाज्य' is the standard Hindi term for 'co-prime' used in textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणती संख्यांची जोडी सह-अविभाज्य आहे?",
+          "stem": "80 आणि 63 च्या सामाईक अविभाज्य अवयव नसल्यास, त्यांबद्दल काय निष्कर्ष काढता येईल?",
           "choices": [
-            "12 आणि 18",
-            "15 आणि 25",
-            "16 आणि 21",
-            "20 आणि 30"
+            "ते दोन्ही अविभाज्य संख्या आहेत",
+            "ते सह-अविभाज्य आहेत",
+            "ते दोन्ही 5 चे गुणक आहेत",
+            "ते दोन्ही विषम संख्या आहेत"
           ],
-          "solution": "16 आणि 21 ही जोडी सह-अविभाज्य आहे कारण त्यांना 1 शिवाय इतर कोणतेही सामायिक अविभाजक नाहीत. 12 आणि 18 ला सामायिक अविभाजक आहेत, 15 आणि 25 ला 5 हा सामायिक अविभाजक आहे, आणि 20 आणि 30 ला 2 आणि 5 हे सामायिक अविभाजक आहेत.",
+          "solution": "जर दोन संख्यांचा सामाईक अविभाज्य अवयव नसेल तर ते सह-अविभाज्य असतात. कारण 80 आणि 63 चा सामाईक अविभाज्य अवयव नाही, तर ते सह-अविभाज्य आहेत. इतर विकल्प चूक आहेत कारण 80 अविभाज्य नाही, 63 5 चा गुणक नाही आणि 80 सम संख्या आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
           "flag": null
@@ -670,216 +866,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "has common factors of 2 and 3",
-        "has a common factor of 5",
+        "Incorrectly assumes both are prime",
         null,
-        "Confuses common factors with co-prime numbers, thinking that numbers with common factors are co-prime"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. 16 and 21 have no common factors other than 1, making them co-prime. The other pairs share common factors, so they are not co-prime. The reasons for the wrong options are valid misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 16,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 17,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 18,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If a number has the prime factorisation 2 × 3 × 7, and another number has the prime factorisation 3 × 7 × 11, which of the following is true?",
-      "choices": [
-        "They are co-prime",
-        "One number divides the other",
-        "They are not co-prime",
-        "Both numbers are prime"
-      ],
-      "answerIndex": 2,
-      "solution": "The numbers share the prime factors 3 and 7, so they are not co-prime. One number does not divide the other because their prime factorisations differ. Both numbers are not prime because they each have more than one prime factor.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी संख्या का अभाज्य गुणनखंडन 2 × 3 × 7 है, और दूसरी संख्या का अभाज्य गुणनखंडन 3 × 7 × 11 है, तो निम्न में से कौन सा सत्य है?",
-          "choices": [
-            "वे सह-अभाज्य हैं",
-            "एक संख्या दूसरी संख्या को विभाजित करती है",
-            "वे सह-अभाज्य नहीं हैं",
-            "दोनों संख्याएँ अभाज्य हैं"
-          ],
-          "solution": "संख्याएँ 3 और 7 अभाज्य गुणनखंड साझा करती हैं, इसलिए वे सह-अभाज्य नहीं हैं। एक संख्या दूसरी संख्या को विभाजित नहीं करती क्योंकि उनके अभाज्य गुणनखंडन अलग हैं। दोनों संख्याएँ अभाज्य नहीं हैं क्योंकि उनमें प्रत्येक में एक से अधिक अभाज्य गुणनखंड हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक संख्येचे अभाज्य अपघटन 2 × 3 × 7 असेल आणि दुसरी संख्या 3 × 7 × 11 असेल, तर खालीलपैकी कोणते खरे आहे?",
-          "choices": [
-            "त्या संख्या सहअभाज्य आहेत",
-            "एक संख्या दुसरीला भाग देते",
-            "त्या संख्या सहअभाज्य नाहीत",
-            "दोन्ही संख्या अभाज्य आहेत"
-          ],
-          "solution": "संख्यांमध्ये 3 आणि 7 अभाज्य घटक सामायिक आहेत, म्हणून त्या सहअभाज्य नाहीत. त्यांच्या अभाज्य अपघटनात फरक असल्यामुळे एक संख्या दुसरीला भाग देत नाही. दोन्ही संख्या अभाज्य नाहीत कारण त्यांच्याकडे एकापेक्षा जास्त अभाज्य घटक आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks that the numbers are co-prime",
-        "Thinks that one number divides the other",
-        null,
-        "Thinks that both numbers are prime"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the numbers share common factors (3 and 7), so they are not co-prime. The reasoning aligns with the correct answer.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 19,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 20,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 21,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 22,
-          "pageStart": 33,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the product of two numbers is a prime number, what must be true about the numbers?",
-      "choices": [
-        "Both numbers are prime",
-        "One number is 1 and the other is prime",
-        "Both numbers are 1",
-        "One number is 0 and the other is prime"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is that one number is 1 and the other is prime. A prime number has only two factors: 1 and itself. Therefore, the only way two numbers can multiply to give a prime is if one is 1 and the other is the prime itself. The other options either incorrectly assume both numbers are prime (which is not always true) or include 0, which would make the product 0, not a prime number.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो संख्याओं का गुणनफल एक अभाज्य संख्या है, तो संख्याओं के बारे में क्या आवश्यकता है?",
-          "choices": [
-            "दोनों संख्याएँ अभाज्य हैं",
-            "एक संख्या 1 है और दूसरी अभाज्य है",
-            "दोनों संख्याएँ 1 हैं",
-            "एक संख्या 0 है और दूसरी अभाज्य है"
-          ],
-          "solution": "सही उत्तर यह है कि एक संख्या 1 है और दूसरी अभाज्य है। एक अभाज्य संख्या के केवल दो गुणनखंड होते हैं: 1 और स्वयं। इसलिए, दो संख्याओं के गुणनफल के रूप में एक अभाज्य संख्या प्राप्त करने के लिए, आवश्यकता है कि एक संख्या 1 हो और दूसरी संख्या अभाज्य हो। अन्य विकल्प गलत रूप से दोनों संख्याओं के अभाज्य होने का अनुमान लगाते हैं (जो हमेशा सत्य नहीं है) या 0 शामिल करते हैं, जिसके कारण गुणनफल 0 हो जाएगा, जो एक अभाज्य संख्या नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन संख्यांचा गुणाकार अभाज्य संख्या असेल, तर त्या संख्यांबद्दल काय खात्री असावी?",
-          "choices": [
-            "दोन्ही संख्या अभाज्य असतात",
-            "एका संख्या 1 असते आणि दुसरी अभाज्य असते",
-            "दोन्ही संख्या 1 असतात",
-            "एका संख्या 0 असते आणि दुसरी अभाज्य असते"
-          ],
-          "solution": "योग्य उत्तर असे आहे की एका संख्या 1 असते आणि दुसरी अभाज्य असते. अभाज्य संख्येचे केवळ दोन घटक असतात: 1 आणि स्वतः. म्हणूनच, अभाज्य संख्या मिळविण्यासाठी दोन संख्यांचा गुणाकार करण्याचा एकमेव मार्ग असतो की एक संख्या 1 असते आणि दुसरी संख्या अभाज्य असते. इतर विकल्प चुकीच्या पद्धतीने दोन्ही संख्या अभाज्य असतील असे मानतात (जे नेहमी खरे नसते) किंवा 0 चा समावेश करतात, ज्यामुळे गुणाकार 0 होतो, अभाज्य संख्या नव्हे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes that both numbers must be prime to give a prime product",
-        null,
-        "Student believes that 1 is a prime number and that multiplying 1 by itself gives a prime",
-        "Fails to recognize that 0 cannot be part of a prime product, as it would make the product 0."
+        "A student might incorrectly assume that because 80 ends in 0, it is a multiple of 5, and 63 is close to 60, which is also a multiple of 5.",
+        "Confuses co-prime with even or odd numbers"
       ],
       "solverAnswers": [
         1,
@@ -888,14 +878,14 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and logically explains why only option 1 is valid. The reasoning aligns with the definition of prime numbers and the properties of multiplication.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that if two numbers have no common prime factors, they are co-prime. The reasoning aligns with the mathematical definition of co-prime numbers.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 5: Prime Time",
             "5.4 Prime Factorisation"
@@ -903,233 +893,27 @@
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 17,
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
+            "5.4 Prime Factorisation"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 19,
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
           "headingPath": [
             "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
+            "5.4 Prime Factorisation"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a number is divisible by both 2 and 3, it is also divisible by which of the following?",
-      "choices": [
-        "4",
-        "6",
-        "8",
-        "10"
-      ],
-      "answerIndex": 1,
-      "solution": "If a number is divisible by both 2 and 3, it is also divisible by 6. This is because 6 is the least common multiple of 2 and 3. 4, 8, and 10 are not guaranteed to divide the number.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या 2 और 3 दोनों द्वारा विभाज्य है, तो यह निम्नलिखित में से किस द्वारा भी विभाज्य होती है?",
-          "choices": [
-            "4",
-            "6",
-            "8",
-            "10"
-          ],
-          "solution": "यदि कोई संख्या 2 और 3 दोनों द्वारा विभाज्य है, तो यह 6 द्वारा भी विभाज्य होती है। इसका कारण यह है कि 6, 2 और 3 का लघुत्तम समापवर्त्य है। 4, 8 और 10 संख्या को आवश्यक रूप से विभाजित नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक संख्या 2 आणि 3 ने भागली जाऊ शकते, तर खालीलपैकी कोणत्याही ने भागली जाईल?",
-          "choices": [
-            "4",
-            "6",
-            "8",
-            "10"
-          ],
-          "solution": "जर एक संख्या 2 आणि 3 ने भागली जाऊ शकते, तर ती 6 ने भागली जाईल. हे कारण 6 ही 2 आणि 3 ची लहानतम सामाईक गुणिज आहे. 4, 8 आणि 10 ने ती नक्की भागली जाणार नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses divisibility by 2 with divisibility by 4",
-        null,
-        "A student might think that if a number is divisible by 2 and 3, it must also be divisible by 8 due to confusion with divisibility rules for 2 and 4.",
-        "Confuses divisibility by 2 with divisibility by 10"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the reasoning that 6 is the least common multiple of 2 and 3, and thus any number divisible by both 2 and 3 must also be divisible by 6.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 15,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the product of two numbers is a prime number, which of the following could be the numbers?",
-      "choices": [
-        "1 and 2",
-        "2 and 3",
-        "1 and 3",
-        "3 and 5"
-      ],
-      "answerIndex": 0,
-      "solution": "A prime number has exactly two distinct positive divisors: 1 and itself. For the product of two numbers to be prime, one of the numbers must be 1 and the other must be a prime number. Only the option 1 and 2 satisfies this condition, as 1 × 2 = 2, which is prime. The other options result in products that are not prime numbers.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो संख्याओं का गुणनफल एक अभाज्य संख्या है, तो निम्नलिखित में से कौन सी संख्याएं हो सकती हैं?",
-          "choices": [
-            "1 और 2",
-            "2 और 3",
-            "1 और 3",
-            "3 और 5"
-          ],
-          "solution": "एक अभाज्य संख्या के ठीक दो अलग-अलग धनात्मक भाजक होते हैं: 1 और स्वयं। दो संख्याओं के गुणनफल के अभाज्य होने के लिए, एक संख्या 1 होनी चाहिए और दूसरी संख्या अभाज्य संख्या होनी चाहिए। केवल विकल्प 1 और 2 इस स्थिति को पूरा करता है, क्योंकि 1 × 2 = 2, जो अभाज्य है। अन्य विकल्पों के गुणनफल अभाज्य संख्याएं नहीं होती हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन संख्यांचा गुणाकार अभाज्य संख्या आहे, तर खालीलपैकी कोणती संख्या असू शकते?",
-          "choices": [
-            "1 आणि 2",
-            "2 आणि 3",
-            "1 आणि 3",
-            "3 आणि 5"
-          ],
-          "solution": "अभाज्य संख्येला तीन वेगवेगळे धन विभाजक असतात: 1 आणि ती स्वतः. दोन संख्यांचा गुणाकार अभाज्य असेल, तर त्यापैकी एक संख्या 1 असावी आणि दुसरी संख्या अभाज्य संख्या असावी. केवळ पर्याय 1 आणि 2 हा या अटीला अनुरूप आहे, कारण 1 × 2 = 2, जो अभाज्य आहे. इतर पर्यायांमुळे अभाज्य संख्या नसलेले गुणाकार मिळतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in a Marathi-medium educational context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinks that the product of two prime numbers can be a prime number",
-        "Thinks that the product of two numbers other than 1 and a prime number can be a prime number",
-        "Thinks that the product of two prime numbers can be a prime number"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0 (1 and 2). The solution is sound and aligns with the definition of prime numbers. The reasoning for the distractors is valid as they reflect common misconceptions about prime numbers and their products.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 19,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 20,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 21,
-          "pageStart": 32,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 22,
-          "pageStart": 33,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T00:17:28.801Z",
+      "generatedAt": "2026-10-21T21:50:06.390Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

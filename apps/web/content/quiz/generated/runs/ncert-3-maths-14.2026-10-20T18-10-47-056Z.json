@@ -1,0 +1,499 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T18:10:47.056Z",
+  "finishedAt": "2026-10-20T18:15:52.776Z",
+  "seconds": 306,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm114.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — The Surajkund Fair",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 81337,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 15804,
+      "completionTokens": 4734
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 153805,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 10914,
+      "completionTokens": 4429
+    },
+    "solver": {
+      "calls": 137,
+      "ms": 61998,
+      "in": 23,
+      "out": 14,
+      "rejects": 9,
+      "promptTokens": 22192,
+      "completionTokens": 1311
+    },
+    "form": {
+      "calls": 5,
+      "ms": 18115,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 3009,
+      "completionTokens": 477
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3037,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 231397,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14718,
+      "completionTokens": 7028
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a mala has 8 beads, 4 of each of two colours, and is symmetrical, which of the following could be the pattern of beads?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6725,
+        "solver": 1901
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Avi places four counters on one side of a line. Which of the following shows that the counters are in a mirror image?",
+      "ms": {
+        "draft": 4437,
+        "critique": 7902,
+        "solver": 1492
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of these is an example of a symmetrical object?",
+      "ms": {
+        "draft": 4437,
+        "critique": 5592,
+        "solver": 12887,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main activity described in the passage?",
+      "ms": {
+        "draft": 3536,
+        "critique": 7305,
+        "solver": 1697
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rangoli has 12 beads arranged in a circular pattern. If the rangoli is symmetrical, how many beads are on each side of the line of symmetry?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6171,
+        "solver": 15366
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a mask is symmetrical, which of the following must be true?",
+      "ms": {
+        "draft": 4437,
+        "critique": 7475,
+        "solver": 1388,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you are following the path described in the passage, what should you do after turning right on the green lane?",
+      "ms": {
+        "draft": 3536,
+        "critique": 6612,
+        "solver": 1223
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many exit routes are mentioned in the passage?",
+      "ms": {
+        "draft": 3536,
+        "critique": 6824,
+        "solver": 1340,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you follow the path described in the passage, which of the following is the last step before reaching the chaupal?",
+      "ms": {
+        "draft": 3536,
+        "critique": 7057,
+        "solver": 1149,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the purpose of the note that says, 'Cut along the dotted lines and fold the dark lines'?",
+      "ms": {
+        "draft": 3536,
+        "critique": 6290,
+        "solver": 10376,
+        "form": 796
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Avi and Soni follow the path, which turn do they make after the green lane?",
+      "ms": {
+        "draft": 2867,
+        "critique": 4991,
+        "solver": 2757
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the map in the Surajkund Fair?",
+      "ms": {
+        "draft": 2867,
+        "critique": 4624,
+        "solver": 2422,
+        "form": 3189
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many exit routes are there in the Surajkund Fair according to the passage?",
+      "ms": {
+        "draft": 2867,
+        "critique": 5618,
+        "solver": 1348
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of directions in the fair?",
+      "ms": {
+        "draft": 2867,
+        "critique": 4850,
+        "solver": 1224,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is at the chaupal and wants to reach the ATM, which direction should they take?",
+      "ms": {
+        "draft": 2867,
+        "critique": 5298,
+        "solver": 1939
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Soni and Avi are making symmetrical malas with 8 beads. If 4 beads are of one colour and 4 are of another, how many different symmetrical arrangements can they make?",
+      "ms": {
+        "draft": 11267,
+        "critique": 6266,
+        "solver": 1709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which place do Soni and Avi's Dada and Dadi wait for them?",
+      "ms": {
+        "draft": 2867,
+        "critique": 4623,
+        "solver": 1251,
+        "form": 4101,
+        "translation": 33135
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to identify a symmetrical object?",
+      "ms": {
+        "draft": 4437,
+        "critique": 4671,
+        "solver": 1425,
+        "form": 1,
+        "translation": 37825
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a symmetrical object?",
+      "ms": {
+        "draft": 11267,
+        "critique": 6829,
+        "solver": 1589,
+        "form": 0,
+        "translation": 41344
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the place where Dada and Dadi are waiting?",
+      "ms": {
+        "draft": 3536,
+        "critique": 6545,
+        "solver": 1205,
+        "form": 2068,
+        "translation": 31089
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Avi placed four counters on his side of a mirror. If the counters on Soni's side are the mirror image of Avi's, how many counters are on Soni's side?",
+      "ms": {
+        "draft": 11267,
+        "critique": 6463,
+        "solver": 1367,
+        "form": 0,
+        "translation": 34114
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rangoli is folded so that one half lies exactly on the other. If the total number of dots in the rangoli is 12, how many dots are on each half?",
+      "ms": {
+        "draft": 11267,
+        "critique": 6038,
+        "solver": 838,
+        "form": 0,
+        "translation": 34473
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a mask is symmetrical, and one half has 3 eyes, how many eyes does the mask have in total?",
+      "ms": {
+        "draft": 11267,
+        "critique": 5938,
+        "solver": 518,
+        "form": 1,
+        "translation": 15763
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a mala has 8 beads, 4 of each of two colours, and is symmetrical, which of the following could be the pattern of beads?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Avi places four counters on one side of a line. Which of the following shows that the counters are in a mirror image?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of these is an example of a symmetrical object?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main activity described in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A rangoli has 12 beads arranged in a circular pattern. If the rangoli is symmetrical, how many beads are on each side of the line of symmetry?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a mask is symmetrical, which of the following must be true?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you are following the path described in the passage, what should you do after turning right on the green lane?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How many exit routes are mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If you follow the path described in the passage, which of the following is the last step before reaching the chaupal?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the purpose of the note that says, 'Cut along the dotted lines and fold the dark lines'?",
+      "reason": "options 2 and 3 are the same (\"To follow directions to find a place\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is NOT a symmetrical object?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Avi and Soni follow the path, which turn do they make after the green lane?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the map in the Surajkund Fair?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"remembers the ATM from the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many exit routes are there in the Surajkund Fair according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of directions in the fair?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person is at the chaupal and wants to reach the ATM, which direction should they take?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Soni and Avi are making symmetrical malas with 8 beads. If 4 beads are of one colour and 4 are of another, how many different symmetrical arrangements can they make?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

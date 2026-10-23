@@ -1,0 +1,610 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T04:01:38.526Z",
+  "finishedAt": "2026-10-20T04:09:13.147Z",
+  "seconds": 455,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Current Electricity and Magnetism",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n33. A. Magnetic field strength is inversely proportional to the distance from the 3\ncurrent carrying wire. Hence when Mona moved the compass away from\nthe current carrying wire, the magnetic effect was less on it and hence the\ndeflection was less. (1)\nB. Magnetic field strength is directly proportional to the current in the wire. So,\nMona could increase the current in the circuit to observe a greater\ndeflection in the compass needle. (1)\nC. The battery suggests that the current is going from top of the plane to the\nbottom of the plane. Using the right hand thumb rule we can say that the\nmagnetic field will be clockwise. (1)\n- - - - - - - - - - - -\nFor visually impaired students\nA. Magnetic f",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n38. A school has installed an automatic electromagnetic door-locking system at the 4\nmain entrance. The locking mechanism uses a solenoid controlled by a switch at\nthe security desk. When electricity flows through the solenoid, it creates a\nmagnetic field strong enough to pull an iron bolt, unlocking the door.\nAs soon as the switch is turned off, the magnetic field disappears, and a spring\npushes the bolt back, locking the door.\nA. Why is an iron core kept inside the solenoid in this locking mechanism?\nB. How can we determine the magnetic poles in this solenoid?\nAttempt either subpart (C) or (D).\nC. If the current in the solenoid is increased from 1 A to 2 A, explain how the\nmagnetic effect ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n14. A copper wire is held between the poles of a magnet. 1\nThe current in the wire can be reversed. The pole of the magnet can also be changed\nover. In how many of the four directions shown can the force act on the wire?\n(a) 1\n(b) 2\n(c) 3\n(d) 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 134731,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 25460,
+      "completionTokens": 8519
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 183727,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 14116,
+      "completionTokens": 5474
+    },
+    "solver": {
+      "calls": 158,
+      "ms": 55907,
+      "in": 29,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 22052,
+      "completionTokens": 1350
+    },
+    "form": {
+      "calls": 22,
+      "ms": 124855,
+      "in": 26,
+      "out": 14,
+      "rejects": 12,
+      "promptTokens": 18697,
+      "completionTokens": 3690
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 4759,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 400577,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 26061,
+      "completionTokens": 12729
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the direction of conventional current in a circuit?",
+      "ms": {
+        "draft": 10545,
+        "critique": 6768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the electric bell described in the passage?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5801,
+        "solver": 1602,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason the electric bell rings repeatedly?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5816,
+        "solver": 1382
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the iron strip in the electric bell when the current stops flowing?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5986,
+        "solver": 1125,
+        "form": 4137
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the current in the electric bell circuit is increased, what effect would this have on the bell's operation?",
+      "ms": {
+        "draft": 3720,
+        "critique": 6225,
+        "solver": 13080,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an electric circuit, if the bulb is not glowing, which of the following should be checked first?",
+      "ms": {
+        "draft": 3889,
+        "critique": 7715,
+        "solver": 1270
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram of an electric bell, what is the purpose of the iron strip?",
+      "ms": {
+        "draft": 3889,
+        "critique": 6262,
+        "solver": 1023,
+        "form": 2797
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the contact screw in the electric bell diagram?",
+      "ms": {
+        "draft": 3889,
+        "critique": 5718,
+        "solver": 808,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Three electric cells of potential difference 1.5 V each are connected as a battery. What will be the potential difference of the battery?",
+      "ms": {
+        "draft": 4138,
+        "critique": 5998,
+        "solver": 1444,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an electric circuit, electrons flow from a point of potential to a point of potential. Which option correctly fills the blanks?",
+      "ms": {
+        "draft": 4138,
+        "critique": 6289,
+        "solver": 1784,
+        "form": 2582
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A copper wire is held between the poles of a magnet. The current in the wire can be reversed. The pole of the magnet can also be changed over. In how many of the four directions shown can the force act on the wire?",
+      "ms": {
+        "draft": 4138,
+        "critique": 6514,
+        "solver": 1233,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the magnetic needle in the experiment when the plug key is closed?",
+      "ms": {
+        "draft": 8130,
+        "critique": 5259,
+        "solver": 1610
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An electric bell has a striker, an iron strip, and a contact screw. How does the electric current cause the bell to ring?",
+      "ms": {
+        "draft": 4138,
+        "critique": 6276,
+        "solver": 1815,
+        "form": 2019
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the current in the solenoid of an electromagnet is increased, what happens to the magnetic field produced?",
+      "ms": {
+        "draft": 8130,
+        "critique": 5330,
+        "solver": 1631,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of connecting multiple cells in a series in an electric circuit?",
+      "ms": {
+        "draft": 8130,
+        "critique": 5409,
+        "solver": 1680,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the iron strip in an electric bell move back to its original position after the contact is broken?",
+      "ms": {
+        "draft": 8130,
+        "critique": 4892,
+        "solver": 1294,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of electric current?",
+      "ms": {
+        "draft": 3020,
+        "critique": 5754,
+        "solver": 1129,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of an electric cell in a circuit?",
+      "ms": {
+        "draft": 3020,
+        "critique": 5701,
+        "solver": 1744,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of electric current?",
+      "ms": {
+        "draft": 10545,
+        "critique": 4321,
+        "solver": 1045,
+        "form": 2448,
+        "translation": 23707
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of an electric cell in a circuit?",
+      "ms": {
+        "draft": 10545,
+        "critique": 4321,
+        "solver": 1694,
+        "form": 2024,
+        "translation": 32631
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is created around a wire when an electric current flows through it?",
+      "ms": {
+        "draft": 3889,
+        "critique": 4946,
+        "solver": 1105,
+        "form": 1794,
+        "translation": 31324
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The difference between the electrostatic potential of the positive end and the negative end of an electric cell is the the cell.",
+      "ms": {
+        "draft": 4138,
+        "critique": 5758,
+        "solver": 1100,
+        "form": 3256,
+        "translation": 32755
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the potential difference across a circuit is increased, what will happen to the electric current?",
+      "ms": {
+        "draft": 10545,
+        "critique": 5553,
+        "solver": 1243,
+        "form": 2721,
+        "translation": 25249
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of the contact screw in the electric bell circuit?",
+      "ms": {
+        "draft": 3720,
+        "critique": 6308,
+        "solver": 1255,
+        "form": 2477,
+        "translation": 36567
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If three electric cells of 1.5 V each are connected in series, what will be the total potential difference of the battery?",
+      "ms": {
+        "draft": 3889,
+        "critique": 5639,
+        "solver": 1609,
+        "form": 0,
+        "translation": 31525
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of the graphite rod in a dry cell?",
+      "ms": {
+        "draft": 10545,
+        "critique": 5426,
+        "solver": 1388,
+        "form": 3264,
+        "translation": 39871
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "An electric current flowing in a wire creates what around the wire?",
+      "ms": {
+        "draft": 4138,
+        "critique": 5703,
+        "solver": 988,
+        "form": 3618,
+        "translation": 33536
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A dry cell is connected in a circuit and the bulb does not glow. What could be the most likely reason?",
+      "ms": {
+        "draft": 10545,
+        "critique": 6303,
+        "solver": 1147,
+        "form": 1893,
+        "translation": 34621
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the electromagnet in the electric bell able to attract the iron strip but not retain it permanently?",
+      "ms": {
+        "draft": 3720,
+        "critique": 5987,
+        "solver": 9856,
+        "form": 2819,
+        "translation": 42854
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the current in a solenoid is doubled, what happens to the magnetic field strength?",
+      "ms": {
+        "draft": 3889,
+        "critique": 6703,
+        "solver": 1309,
+        "form": 1939,
+        "translation": 31758
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the direction of conventional current in a circuit?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the electric bell described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes the electromagnet remains magnetized even without c…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason the electric bell rings repeatedly?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the iron strip in the electric bell when the current stops flowing?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Thinks the iron strip becomes a permanent magnet, which is n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the current in the electric bell circuit is increased, what effect would this have on the bell's operation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In an electric circuit, if the bulb is not glowing, which of the following should be checked first?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the diagram of an electric bell, what is the purpose of the iron strip?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.iron strip: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the function of the contact screw in the electric bell diagram?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.iron strip: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main function of the plug key in an electric circuit?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main function of the graphite rod in a dry cell?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Three electric cells of potential difference 1.5 V each are connected as a battery. What will be the potential difference of the battery?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In an electric circuit, electrons flow from a point of potential to a point of potential. Which option correctly fills the blanks?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"introduces an irrelevant term (0V) not mentioned in the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A copper wire is held between the poles of a magnet. The current in the wire can be reversed. The pole of the magnet can also be changed over. In how many of the four directions shown can the force act on the wire?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What happens to the magnetic needle in the experiment when the plug key is closed?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An electric bell has a striker, an iron strip, and a contact screw. How does the electric current cause the bell to ring?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'striker'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the current in the solenoid of an electromagnet is increased, what happens to the magnetic field produced?",
+      "reason": "figure: figure spec refused: spec.parts.1.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'solenoid'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the purpose of connecting multiple cells in a series in an electric circuit?",
+      "reason": "figure: figure spec refused: spec.parts.3.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'bulb'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the iron strip in an electric bell move back to its original position after the contact is broken?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'electromagnet'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of electric current?",
+      "reason": "near-duplicate of batch item \"What is the SI unit of electric current?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the function of an electric cell in a circuit?",
+      "reason": "near-duplicate of batch item \"What is the function of an electric cell in a circ…\" (cosine 0.984 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

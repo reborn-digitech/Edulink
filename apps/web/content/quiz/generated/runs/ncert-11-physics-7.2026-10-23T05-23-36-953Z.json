@@ -1,0 +1,679 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T05:23:36.953Z",
+  "finishedAt": "2026-10-23T05:32:32.766Z",
+  "seconds": 536,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "keph2",
+    "document": "ncert/11/physics/keph207.pdf",
+    "classLevel": 11,
+    "subject": "Physics",
+    "chapter": "Chapter 7 — Waves",
+    "edition": "Reprint 2026-27",
+    "chunks": 31,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, sample question paper, 2024-25]\n4. The diffraction effect can be observed in\n(A) sound waves only\n(C) ultrasonic waves only\n(D) 3 :4\n(B) light waves only\n(D) sound waves as well as light waves",
+      "[CBSE Class XII Physics, marking scheme, 2026-27]\n6. C. Plane 1\nAs star will act as distance point source hence wavefront detected will be plane.",
+      "[CBSE Class XII Physics, marking scheme, 2025-26]\n26.\nIf c be the speed of light, t be the time taken by light to go from B to C or\nA to D or E to G through F, then\nEF FG\nt= C + C\nt = 𝐴F Sin i C + FC Sinr C\nt = AC Sin r+AF(Sin i−Sin r) C\nFor rays of light from different parts on the incident wavefront, the values 1\nof AF are different. But light from different points of the incident\nwavefront should take the same time to reach the corresponding points on\nthe reflected wavefront.\nSo, t should not depend upon AF. This is possible only if sin i – sin r = 0.\ni.e. sin i = sin r or i = r 1\nHence proved.\nFor VI candidates\n(i) A wavefront is the locus of points (wavelets) having the same phase 1\nof oscillations\n(ii) Each point on a wavefront acts ",
+      "[CBSE Class XII Physics, marking scheme, 2025-26]\n10. Answer: (C) 1\nV=2V o sin 2ωt\nAs V= NBA𝜔 sin 𝜔𝑡"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 182609,
+      "in": 33,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 35164,
+      "completionTokens": 8899
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 234568,
+      "in": 32,
+      "out": 29,
+      "rejects": 3,
+      "promptTokens": 15158,
+      "completionTokens": 5644
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 70503,
+      "in": 29,
+      "out": 29,
+      "rejects": 0,
+      "promptTokens": 20700,
+      "completionTokens": 1269
+    },
+    "form": {
+      "calls": 23,
+      "ms": 83901,
+      "in": 29,
+      "out": 17,
+      "rejects": 12,
+      "promptTokens": 7725,
+      "completionTokens": 2121
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 6656,
+      "in": 17,
+      "out": 4,
+      "rejects": 13,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 217811,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 10084,
+      "completionTokens": 5470
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which type of wave motion is described in the passage as involving oscillations perpendicular to the direction of wave propagation?",
+      "ms": {
+        "draft": 8142,
+        "critique": 8272,
+        "solver": 1404,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of wave is produced when a string is given a periodic up and down jerk?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7882,
+        "solver": 1862,
+        "form": 4657
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a wave that is a combination of transverse and longitudinal motion?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7015,
+        "solver": 1107,
+        "form": 4814
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'wavefront' refer to in the context of wave motion?",
+      "ms": {
+        "draft": 4529,
+        "critique": 6457,
+        "solver": 1716,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A wave is described by the equation y(x, t) = 0.005 sin (80.0 x – 3.0 t). What is the wavelength of the wave?",
+      "ms": {
+        "draft": 4529,
+        "critique": 7859,
+        "solver": 1754,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the relationship between the angular frequency (ω) and the time period (T) of a wave?",
+      "ms": {
+        "draft": 14425,
+        "critique": 6648,
+        "solver": 2068,
+        "form": 4792
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wave traveling along a string is described by the equation y(x, t) = 0.005 sin (80.0 x – 3.0 t). What is the speed of the wave?",
+      "ms": {
+        "draft": 4529,
+        "critique": 9426
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which physical quantity is used to determine the speed of sound in a solid?",
+      "ms": {
+        "draft": 5234,
+        "critique": 5542
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that a transverse wave can propagate only in a medium with shear modulus of elasticity. What is the reason for this?",
+      "ms": {
+        "draft": 4831,
+        "critique": 5442,
+        "solver": 1296,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A string of mass 2.50 kg is under a tension of 200 N. The length of the stretched string is 20.0 m. What is the speed of a transverse wave on the string?",
+      "ms": {
+        "draft": 4831,
+        "critique": 7798
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does a wave represent in terms of energy transfer?",
+      "ms": {
+        "draft": 4831,
+        "critique": 5654,
+        "solver": 2144,
+        "form": 3380
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that in a stationary wave, all particles between two nodes have the same phase at a given instant but have different amplitudes. What does this imply about the nature of a stationary wave?",
+      "ms": {
+        "draft": 4831,
+        "critique": 7941,
+        "solver": 1756,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the fundamental difference between a wind and a sound wave in air?",
+      "ms": {
+        "draft": 4831,
+        "critique": 7992,
+        "solver": 1994,
+        "form": 3792
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What phenomenon is illustrated in Fig. 14.16?",
+      "ms": {
+        "draft": 15203,
+        "critique": 7592,
+        "solver": 1021,
+        "form": 2454
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the phenomenon illustrated in Fig. 14.16?",
+      "ms": {
+        "draft": 67352,
+        "critique": 6113,
+        "solver": 660,
+        "form": 1420
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of waves require a medium for their propagation?",
+      "ms": {
+        "draft": 4248,
+        "critique": 7072,
+        "solver": 1456,
+        "form": 4228
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mechanical wave?",
+      "ms": {
+        "draft": 4248,
+        "critique": 7674,
+        "solver": 2863,
+        "form": 2653
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of elastic forces in the propagation of waves in a material medium?",
+      "ms": {
+        "draft": 4248,
+        "critique": 7563,
+        "solver": 1487,
+        "form": 4103
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the cork pieces when a pebble is dropped into a pond?",
+      "ms": {
+        "draft": 4248,
+        "critique": 7674,
+        "solver": 16635,
+        "form": 3542
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a medium, what happens when a region is compressed and then expands?",
+      "ms": {
+        "draft": 4248,
+        "critique": 7259,
+        "solver": 1746,
+        "form": 4559
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which type of medium can transverse waves propagate?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7338,
+        "solver": 2015,
+        "form": 4189
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a medium can sustain both transverse and longitudinal waves, what can be inferred about its properties?",
+      "ms": {
+        "draft": 8142,
+        "critique": 7007,
+        "solver": 1237,
+        "form": 4093
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the maximum displacement of a wave?",
+      "ms": {
+        "draft": 14425,
+        "critique": 6156,
+        "solver": 1597,
+        "form": 4713
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the SI unit of angular wave number?",
+      "ms": {
+        "draft": 14425,
+        "critique": 6416,
+        "solver": 1494,
+        "form": 4491
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a wave is represented by y(x, t) = a sin(kx + ωt + φ), in which direction is the wave travelling?",
+      "ms": {
+        "draft": 14425,
+        "critique": 6794,
+        "solver": 1923,
+        "form": 4524
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a string, the speed of a transverse wave is given by v = √(T/μ). What does this imply about the speed of the wave?",
+      "ms": {
+        "draft": 4529,
+        "critique": 7003,
+        "solver": 2059,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A wave travels through a medium with a speed v. If the frequency of the wave is doubled, what happens to the wavelength of the wave?",
+      "ms": {
+        "draft": 4529,
+        "critique": 7610,
+        "solver": 1171,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wave is represented by the function y = 2 cos (3x) sin (10t). What type of wave does this represent?",
+      "ms": {
+        "draft": 4831,
+        "critique": 7706,
+        "solver": 1891,
+        "form": 6447
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the phase of a wave determine?",
+      "ms": {
+        "draft": 14425,
+        "critique": 6116,
+        "solver": 1707,
+        "form": 2869,
+        "translation": 49427
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the crest of a wave progress with time?",
+      "ms": {
+        "draft": 14425,
+        "critique": 5983,
+        "solver": 2126,
+        "form": 5014,
+        "translation": 38595
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a wave is propagating through a medium, what does the wavefront represent?",
+      "ms": {
+        "draft": 4248,
+        "critique": 7520,
+        "solver": 2310,
+        "form": 3385,
+        "translation": 43800
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following can be concluded about the propagation of waves in a medium?",
+      "ms": {
+        "draft": 8142,
+        "critique": 6753,
+        "solver": 1642,
+        "form": 4487,
+        "translation": 81657
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the significance of the equation v = λν in the context of wave motion?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which type of wave motion is described in the passage as involving oscillations perpendicular to the direction of wave propagation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands that standing waves are a type of transverse …\"); distractor 3's reason is not a one-line misconception (\"Incorrectly identifies surface waves as those with perpendic…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What type of wave is produced when a string is given a periodic up and down jerk?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly associates periodic motion with electromagnetic …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a wave that is a combination of transverse and longitudinal motion?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses light waves with mechanical waves, which are not de…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the term 'wavefront' refer to in the context of wave motion?",
+      "reason": "the key is far longer than every distractor (83 vs 51 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A wave is described by the equation y(x, t) = 0.005 sin (80.0 x – 3.0 t). What is the wavelength of the wave?",
+      "reason": "options are written to different precisions (1 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"(2*3.14)/80\" = 0.0785, but the key says 7.85"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the relationship between the angular frequency (ω) and the time period (T) of a wave?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*3.14/1\" = 6.28, but the key says 2"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A wave traveling along a string is described by the equation y(x, t) = 0.005 sin (80.0 x – 3.0 t). What is the speed of the wave?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which physical quantity is used to determine the speed of sound in a solid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is stated that a transverse wave can propagate only in a medium with shear modulus of elasticity. What is the reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A string of mass 2.50 kg is under a tension of 200 N. The length of the stretched string is 20.0 m. What is the speed of a transverse wave on the string?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does a wave represent in terms of energy transfer?",
+      "reason": "options 1 and 2 say the same thing (\"Transfer of energy without transfer of matter\" / \"Transfer of matter without transfer of energy\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that matter is transferred with waves li…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that in a stationary wave, all particles between two nodes have the same phase at a given instant but have different amplitudes. What does this imply about the nature of a stationary wave?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the fundamental difference between a wind and a sound wave in air?",
+      "reason": "options 0 and 1 say the same thing (\"Wind involves motion of matter, while sound wave involves motion of energy\" / \"Wind involves motion of energy, while sound wave involves motion of matter\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What phenomenon is illustrated in Fig. 14.16?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Refers to light waves, but the passage discusses sound waves…\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here for this option (answe…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the phenomenon illustrated in Fig. 14.16?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What type of waves require a medium for their propagation?",
+      "reason": "near-duplicate of served question cmvhfjziq08jngpfhzluzc9w4 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a mechanical wave?",
+      "reason": "near-duplicate of served question cmvhfjziw08jzgpfh8k1wv3xj (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the role of elastic forces in the propagation of waves in a material medium?",
+      "reason": "near-duplicate of served question cmvhfjzlc08ktgpfh0p5m7qi5 (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to the cork pieces when a pebble is dropped into a pond?",
+      "reason": "near-duplicate of served question cmvhfjziz08kbgpfhit70x2xz (cosine 0.950 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In a medium, what happens when a region is compressed and then expands?",
+      "reason": "near-duplicate of served question cmvhfjznp08lzgpfhxunr7ns8 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In which type of medium can transverse waves propagate?",
+      "reason": "near-duplicate of served question cmvhfjzl608khgpfha20yzr8t (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a medium can sustain both transverse and longitudinal waves, what can be inferred about its properties?",
+      "reason": "near-duplicate of served question cmvhfjzph08m5gpfhn7yytaac (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the maximum displacement of a wave?",
+      "reason": "near-duplicate of served question cmvhfjziv08jtgpfhrscrcbkc (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the SI unit of angular wave number?",
+      "reason": "near-duplicate of served question cmvhfjzla08kngpfhywo6gf0j (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a wave is represented by y(x, t) = a sin(kx + ωt + φ), in which direction is the wave travelling?",
+      "reason": "near-duplicate of served question cmvhfjznn08ltgpfhltcxfipm (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a string, the speed of a transverse wave is given by v = √(T/μ). What does this imply about the speed of the wave?",
+      "reason": "near-duplicate of served question cmvhfjzlf08l5gpfh45khp1wr (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A wave travels through a medium with a speed v. If the frequency of the wave is doubled, what happens to the wavelength of the wave?",
+      "reason": "near-duplicate of served question cmvhfjzpk08mbgpfhmwxllsui (cosine 0.978 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A wave is represented by the function y = 2 cos (3x) sin (10t). What type of wave does this represent?",
+      "reason": "near-duplicate of served question cmvhfjzli08lhgpfhru313szh (cosine 0.965 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

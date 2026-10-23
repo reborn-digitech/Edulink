@@ -1,0 +1,796 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T04:19:32.648Z",
+  "finishedAt": "2026-10-21T04:28:05.315Z",
+  "seconds": 513,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo114.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 14 — NIT",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — question paper]\nSECTION A\nCELL BIOLOGY (7)",
+      "[INBO 2021 — question paper]\nSECTION A\nCELL BIOLOGY (5 points)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 175273,
+      "in": 44,
+      "out": 42,
+      "rejects": 2,
+      "promptTokens": 31050,
+      "completionTokens": 11604
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 270204,
+      "in": 42,
+      "out": 25,
+      "rejects": 17,
+      "promptTokens": 23160,
+      "completionTokens": 8894
+    },
+    "solver": {
+      "calls": 184,
+      "ms": 82985,
+      "in": 25,
+      "out": 19,
+      "rejects": 6,
+      "promptTokens": 32884,
+      "completionTokens": 1932
+    },
+    "form": {
+      "calls": 16,
+      "ms": 62209,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 7791,
+      "completionTokens": 1731
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 37,
+      "ms": 6930,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 404665,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 28029,
+      "completionTokens": 14736
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following structures is responsible for the exchange of gases in the human respiratory system?",
+      "ms": {
+        "draft": 5480,
+        "critique": 5728
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process involves the exchange of oxygen and carbon dioxide between the atmosphere and the cells?",
+      "ms": {
+        "draft": 5480,
+        "critique": 6227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the epiglottis during swallowing?",
+      "ms": {
+        "draft": 5480,
+        "critique": 7031
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a damaged epiglottis, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 5480,
+        "critique": 6069
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about the respiratory system is most supported by the passage?",
+      "ms": {
+        "draft": 5480,
+        "critique": 6483,
+        "solver": 1935,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary site of gas exchange in the respiratory system?",
+      "ms": {
+        "draft": 3434,
+        "critique": 6237
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct sequence of events during inspiration?",
+      "ms": {
+        "draft": 3434,
+        "critique": 5676
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram, which structure is responsible for reducing friction on the surface of the lungs?",
+      "ms": {
+        "draft": 5480,
+        "critique": 5748,
+        "solver": 1300,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main factor affecting the rate of gas diffusion in the alveoli?",
+      "ms": {
+        "draft": 3434,
+        "critique": 5547
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the thoracic cavity described as an air-tight chamber?",
+      "ms": {
+        "draft": 3434,
+        "critique": 6220
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the primary factor affecting the binding of oxygen with haemoglobin?",
+      "ms": {
+        "draft": 12116,
+        "critique": 4588
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a residual volume of 1200 mL and an expiratory reserve volume of 1100 mL, what is their functional residual capacity?",
+      "ms": {
+        "draft": 3434,
+        "critique": 4675,
+        "solver": 9830
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the partial pressure of carbon dioxide increases in the tissues, what will happen to the binding of carbon dioxide with haemoglobin?",
+      "ms": {
+        "draft": 12116,
+        "critique": 4803,
+        "solver": 1286
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the main reason for the efficient diffusion of oxygen from the alveoli to the tissues?",
+      "ms": {
+        "draft": 12116,
+        "critique": 5868,
+        "solver": 1560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is in an environment with high levels of carbon dioxide, what will be the effect on their breathing rate?",
+      "ms": {
+        "draft": 12116,
+        "critique": 7129
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the main medium of transport for oxygen in the blood?",
+      "ms": {
+        "draft": 12116,
+        "critique": 5703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the diffusion of oxygen from the alveoli to the blood?",
+      "ms": {
+        "draft": 3607,
+        "critique": 6442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does the diffusion of gases occur only in the alveolar region of the respiratory system?",
+      "ms": {
+        "draft": 3607,
+        "critique": 5126
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the oxygen dissociation curve important in understanding gas exchange in the body?",
+      "ms": {
+        "draft": 12116,
+        "critique": 5543,
+        "solver": 9487,
+        "form": 2073
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person's pO is lower than normal, what effect would this have on oxygen transport in the blood?",
+      "ms": {
+        "draft": 3607,
+        "critique": 6035,
+        "solver": 11474
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the main method of transporting carbon dioxide in the blood?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4472,
+        "solver": 909,
+        "form": 3953
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the partial pressure of carbon dioxide in the tissues increases, what happens to the binding of carbon dioxide with haemoglobin?",
+      "ms": {
+        "draft": 3708,
+        "critique": 5365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the partial pressure of oxygen in the tissues increases, what would be the effect on the oxygen dissociation curve?",
+      "ms": {
+        "draft": 3708,
+        "critique": 5694,
+        "solver": 1331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the intra-pulmonary pressure becomes higher than atmospheric pressure, what happens to the air in the lungs?",
+      "ms": {
+        "draft": 3815,
+        "critique": 6597
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the respiratory system is responsible for the actual exchange of oxygen and carbon dioxide between blood and atmospheric air?",
+      "ms": {
+        "draft": 3815,
+        "critique": 6029,
+        "solver": 10021,
+        "form": 3103
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the thoracic chamber described as an air-tight chamber?",
+      "ms": {
+        "draft": 3815,
+        "critique": 5611,
+        "solver": 1645
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the thoracic chamber?",
+      "ms": {
+        "draft": 3815,
+        "critique": 5286,
+        "solver": 13764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of exchange of oxygen from the atmosphere with carbon dioxide produced by the cells called?",
+      "ms": {
+        "draft": 5389,
+        "critique": 4442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which structure is responsible for sound production in the human respiratory system?",
+      "ms": {
+        "draft": 5389,
+        "critique": 4427
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's tidal volume is 500 mL and their inspiratory reserve volume is 2500 mL, what is their inspiratory capacity?",
+      "ms": {
+        "draft": 3434,
+        "critique": 5265,
+        "solver": 7681,
+        "form": 3848
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person's tidal volume is 500 mL and their inspiratory reserve volume is 3000 mL. What is their inspiratory capacity?",
+      "ms": {
+        "draft": 3815,
+        "critique": 4644,
+        "solver": 8969,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a factor that affects the binding of oxygen with haemoglobin?",
+      "ms": {
+        "draft": 3708,
+        "critique": 5046,
+        "solver": 1732,
+        "form": 2302,
+        "translation": 32064
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the conducting part of the respiratory system?",
+      "ms": {
+        "draft": 3815,
+        "critique": 4547,
+        "solver": 9370,
+        "form": 4932,
+        "translation": 30653
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the efficient diffusion of oxygen from alveoli to tissues?",
+      "ms": {
+        "draft": 3708,
+        "critique": 4267,
+        "solver": 1059,
+        "form": 2718,
+        "translation": 34247
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the respiratory system?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4735,
+        "solver": 1655,
+        "form": 2888,
+        "translation": 34049
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the oxygen transport when the partial pressure of carbon dioxide (pCO) increases in the blood?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4598,
+        "solver": 1470,
+        "form": 3803,
+        "translation": 43496
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the transport of carbon dioxide in the blood?",
+      "ms": {
+        "draft": 3708,
+        "critique": 6394,
+        "solver": 1262,
+        "form": 3176,
+        "translation": 42005
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which part of the respiratory system does gas exchange occur?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4626,
+        "solver": 1930,
+        "form": 2437,
+        "translation": 28818
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is working in a stone-breaking industry without a mask. What is the most likely consequence of this exposure?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4777,
+        "solver": 1170,
+        "form": 3473,
+        "translation": 38883
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the binding of carbon dioxide with haemoglobin depend on the partial pressure of oxygen?",
+      "ms": {
+        "draft": 3708,
+        "critique": 5757,
+        "solver": 1408,
+        "form": 2514,
+        "translation": 38944
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the enzyme carbonic anhydrase essential for the transport of carbon dioxide in the blood?",
+      "ms": {
+        "draft": 3607,
+        "critique": 6607,
+        "solver": 10808,
+        "form": 0,
+        "translation": 37927
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the oxygen dissociation curve have a sigmoidal shape?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4724,
+        "solver": 1507,
+        "form": 3365,
+        "translation": 40318
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the primary method of transporting carbon dioxide in the blood?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following structures is responsible for the exchange of gases in the human respiratory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process involves the exchange of oxygen and carbon dioxide between the atmosphere and the cells?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary function of the epiglottis during swallowing?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person has a damaged epiglottis, which of the following is most likely to happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about the respiratory system is most supported by the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Confuses the function of the trachea with that of the alveol…\"); distractor 3's reason is not a one-line misconception (\"Confuses the function of the epiglottis with that of the alv…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary site of gas exchange in the respiratory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the correct sequence of events during inspiration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram, which structure is responsible for reducing friction on the surface of the lungs?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.pleural membranes: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the main factor affecting the rate of gas diffusion in the alveoli?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the thoracic cavity described as an air-tight chamber?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the primary factor affecting the binding of oxygen with haemoglobin?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person has a residual volume of 1200 mL and an expiratory reserve volume of 1100 mL, what is their functional residual capacity?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the partial pressure of carbon dioxide increases in the tissues, what will happen to the binding of carbon dioxide with haemoglobin?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the main reason for the efficient diffusion of oxygen from the alveoli to the tissues?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person is in an environment with high levels of carbon dioxide, what will be the effect on their breathing rate?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the main medium of transport for oxygen in the blood?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main reason for the diffusion of oxygen from the alveoli to the blood?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why does the diffusion of gases occur only in the alveolar region of the respiratory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the oxygen dissociation curve important in understanding gas exchange in the body?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person's pO is lower than normal, what effect would this have on oxygen transport in the blood?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which type of respiration is used by terrestrial animals?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the main method of transporting carbon dioxide in the blood?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not recall the specific percentage mentioned in the pas…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the partial pressure of carbon dioxide in the tissues increases, what happens to the binding of carbon dioxide with haemoglobin?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the partial pressure of oxygen in the tissues increases, what would be the effect on the oxygen dissociation curve?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the intra-pulmonary pressure becomes higher than atmospheric pressure, what happens to the air in the lungs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the respiratory system is responsible for the actual exchange of oxygen and carbon dioxide between blood and atmospheric air?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the thoracic chamber described as an air-tight chamber?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the thoracic chamber?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (66 vs 34 characters); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the process of exchange of oxygen from the atmosphere with carbon dioxide produced by the cells called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which structure is responsible for sound production in the human respiratory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person's tidal volume is 500 mL and their inspiratory reserve volume is 2500 mL, what is their inspiratory capacity?",
+      "reason": "near-duplicate of served question cmsmkeed000i1y2o50h7q2wbg (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A person's tidal volume is 500 mL and their inspiratory reserve volume is 3000 mL. What is their inspiratory capacity?",
+      "reason": "near-duplicate of served question cmsmkeed000i1y2o50h7q2wbg (cosine 0.969 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

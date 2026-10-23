@@ -1,0 +1,502 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T21:54:13.752Z",
+  "finishedAt": "2026-10-22T22:01:58.352Z",
+  "seconds": 465,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm104.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Thousands Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n10. The 4 𝑡ℎ term from the end of the A.P −8, −5, −2, … ,49 is 1\n(A) 37 (B) 40 (C) 1 (D) 43",
+      "[IOQM 2024 — question paper]\n21. An intenger n is such that is a three digit number with equal digits, and is a 4 digit\n9 4\nnumber with the digits 2, 0, 2, 4 in some order. What is the remainder when n is divided by 100?\nSpace for rough work",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[RMO 2013 — question paper]\n1. Find the number of eight-digit numbers the sum of whose digits is 4."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 117062,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18460,
+      "completionTokens": 5560
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 294405,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 16724,
+      "completionTokens": 6665
+    },
+    "solver": {
+      "calls": 190,
+      "ms": 132297,
+      "in": 22,
+      "out": 18,
+      "rejects": 4,
+      "promptTokens": 40148,
+      "completionTokens": 2137
+    },
+    "form": {
+      "calls": 9,
+      "ms": 39089,
+      "in": 18,
+      "out": 10,
+      "rejects": 8,
+      "promptTokens": 2558,
+      "completionTokens": 845
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3914,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 332331,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19627,
+      "completionTokens": 7971
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "The number 106 is represented as 1 Hundred, 0 Tens, and 6 Ones. Which of the following is also represented in the same way?",
+      "ms": {
+        "draft": 5980,
+        "critique": 9292,
+        "solver": 13965,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the number 74 in terms of tens and ones?",
+      "ms": {
+        "draft": 5980,
+        "critique": 6863,
+        "solver": 17741
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expanded form of the number 1001?",
+      "ms": {
+        "draft": 3473,
+        "critique": 8114,
+        "solver": 20052,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of decreasing 3369 by 2?",
+      "ms": {
+        "draft": 3473,
+        "critique": 12879,
+        "solver": 18429
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many numbers are there strictly between 7000 and 8000?",
+      "ms": {
+        "draft": 3473,
+        "critique": 11614,
+        "solver": 1933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which number lies between 2226 and 3226?",
+      "ms": {
+        "draft": 3473,
+        "critique": 8525,
+        "solver": 16958,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the largest 4-digit number that can be formed using the digits 2, 3, 4, 7 without repetition?",
+      "ms": {
+        "draft": 3473,
+        "critique": 5558,
+        "solver": 8233,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct number name for the number 724?",
+      "ms": {
+        "draft": 5960,
+        "critique": 6319,
+        "solver": 16594,
+        "form": 6560
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many numbers are there strictly between 7000 and 8000?",
+      "ms": {
+        "draft": 5960,
+        "critique": 11753
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the number 45?",
+      "ms": {
+        "draft": 14651,
+        "critique": 9445,
+        "solver": 2041,
+        "form": 3388
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is between 2226 and 3226?",
+      "ms": {
+        "draft": 5960,
+        "critique": 8278,
+        "solver": 20454
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the number that is 100 more than 325?",
+      "ms": {
+        "draft": 14651,
+        "critique": 8114
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct way to represent 145 using HTO blocks?",
+      "ms": {
+        "draft": 14651,
+        "critique": 6741,
+        "solver": 2475,
+        "form": 3834
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a way to represent the number 250?",
+      "ms": {
+        "draft": 14651,
+        "critique": 8958,
+        "solver": 12289,
+        "form": 4656
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 10 Hundreds?",
+      "ms": {
+        "draft": 14651,
+        "critique": 7157,
+        "solver": 1706,
+        "form": 5418
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expanded form of the number 1001?",
+      "ms": {
+        "draft": 5960,
+        "critique": 7601,
+        "solver": 17047,
+        "form": 5769,
+        "translation": 39542
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the number that is 200 less than 508?",
+      "ms": {
+        "draft": 14651,
+        "critique": 9269,
+        "solver": 1652,
+        "form": 5436,
+        "translation": 18291
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct number for 7 Thousand 0 Hundreds 2 Tens 4 Ones?",
+      "ms": {
+        "draft": 3473,
+        "critique": 10144,
+        "solver": 1944,
+        "form": 0,
+        "translation": 33604
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 900 + ___ = 1000, what number should fill the blank?",
+      "ms": {
+        "draft": 5980,
+        "critique": 6464,
+        "solver": 1506,
+        "form": 0,
+        "translation": 32248
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many hundreds are there in 800?",
+      "ms": {
+        "draft": 5980,
+        "critique": 8705,
+        "solver": 1625,
+        "form": 0,
+        "translation": 34790
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number 3452 is made up of the cards 3000, 400, 50, and 2, which cards would be used to make 4085?",
+      "ms": {
+        "draft": 5960,
+        "critique": 6955,
+        "solver": 16934,
+        "form": 6111,
+        "translation": 49118
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 2 Hundreds, 13 Tens, and 7 Ones is equal to a number, what is that number?",
+      "ms": {
+        "draft": 5980,
+        "critique": 10934,
+        "solver": 2079,
+        "form": 0,
+        "translation": 41738
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following numbers has the same digit in all places?",
+      "ms": {
+        "draft": 5960,
+        "critique": 6824,
+        "solver": 15528,
+        "form": 3209,
+        "translation": 31735
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following represents the number 1000 in the Indian number system?",
+      "ms": {
+        "draft": 5980,
+        "critique": 8209,
+        "solver": 2048,
+        "form": 0,
+        "translation": 45968
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The number 106 is represented as 1 Hundred, 0 Tens, and 6 Ones. Which of the following is also represented in the same way?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following represents the number 74 in terms of tens and ones?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the expanded form of the number 1001?",
+      "reason": "options 0 and 1 are the same (\"1000 + 10 + 1\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of decreasing 3369 by 2?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many numbers are there strictly between 7000 and 8000?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which number lies between 2226 and 3226?",
+      "reason": "options 0 and 1 are the same (\"2226\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the largest 4-digit number that can be formed using the digits 2, 3, 4, 7 without repetition?",
+      "reason": "options 0 and 3 are the same (\"7432\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct number name for the number 724?",
+      "reason": "options 2 and 3 are the same (\"Seven hundred twenty-four thousand\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many numbers are there strictly between 7000 and 8000?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the number 45?",
+      "reason": "options are in more than one unit (ones, tens, hundreds, thousands); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following numbers is between 2226 and 3226?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the number that is 100 more than 325?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the correct way to represent 145 using HTO blocks?",
+      "reason": "options 0 and 1 say the same thing (\"1 Hundred, 4 Tens, 5 Ones\" / \"1 Hundred, 5 Tens, 4 Ones\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a way to represent the number 250?",
+      "reason": "options 1 and 3 are the same (\"2 Tens + 5 Hundreds\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the value of 10 Hundreds?",
+      "reason": "near-duplicate of served question cmvh0ue7s0612gpfhwzer2fb4 (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,732 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T03:12:55.139Z",
+  "finishedAt": "2026-10-22T03:22:19.815Z",
+  "seconds": 565,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu109.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Life Processes in Animals",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n10. Unlike animals, plants do not have any excretory products as they do not eat 2\nfood. Comment upon the statement with justification.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[NSEJS 2015 — question paper]\n72. Regeneration in animal kingdom is observed in which of the following animals?\na) Frog b) Planaria (C) Birds (D) Snakes"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 180072,
+      "in": 40,
+      "out": 37,
+      "rejects": 3,
+      "promptTokens": 41227,
+      "completionTokens": 10016
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 311800,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 21151,
+      "completionTokens": 8186
+    },
+    "solver": {
+      "calls": 224,
+      "ms": 120047,
+      "in": 31,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 40172,
+      "completionTokens": 2310
+    },
+    "form": {
+      "calls": 11,
+      "ms": 50351,
+      "in": 28,
+      "out": 13,
+      "rejects": 15,
+      "promptTokens": 8195,
+      "completionTokens": 1315
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 4845,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 458830,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 27138,
+      "completionTokens": 13090
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of the alimentary canal in digestion?",
+      "ms": {
+        "draft": 12277,
+        "critique": 5806,
+        "solver": 2552,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention that the mouth feels watery when we recall our favourite food?",
+      "ms": {
+        "draft": 12277,
+        "critique": 6953,
+        "solver": 1854,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student used boiled rice and added iodine to test for starch. If the rice was not chewed, what result would they expect?",
+      "ms": {
+        "draft": 12277,
+        "critique": 9677,
+        "solver": 2193
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the mouth in the digestive system?",
+      "ms": {
+        "draft": 12277,
+        "critique": 5527,
+        "solver": 14423
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of the stomach in the digestive system?",
+      "ms": {
+        "draft": 3312,
+        "critique": 7353,
+        "solver": 1691,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the food after it leaves the stomach?",
+      "ms": {
+        "draft": 3312,
+        "critique": 7709
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the digestive system?",
+      "ms": {
+        "draft": 3312,
+        "critique": 6433,
+        "solver": 1576,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of the finger-like projections in the small intestine?",
+      "ms": {
+        "draft": 3312,
+        "critique": 7085,
+        "solver": 2569,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the model shown in Fig. 9.9, what do the balloons represent?",
+      "ms": {
+        "draft": 3064,
+        "critique": 6075,
+        "solver": 1461,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "When a person exhales air into lime water, what happens and why?",
+      "ms": {
+        "draft": 7467,
+        "critique": 7617
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the alveoli in the lungs?",
+      "ms": {
+        "draft": 7467,
+        "critique": 5892,
+        "solver": 1777,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observed that when a person exhales air into lime water, the water turns milky. What can be concluded about the composition of exhaled air?",
+      "ms": {
+        "draft": 7467,
+        "critique": 8226
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, two test tubes are used to compare the composition of inhaled and exhaled air. Lime water in one test tube turns milky, while in the other it does not. What does this suggest about the air in each test tube?",
+      "ms": {
+        "draft": 7467,
+        "critique": 8543,
+        "solver": 14310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a life process essential for the survival of living beings?",
+      "ms": {
+        "draft": 4368,
+        "critique": 6740,
+        "solver": 10462,
+        "form": 1818
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the diaphragm during breathing?",
+      "ms": {
+        "draft": 6445,
+        "critique": 6176
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Rakshita passed inhaled air through lime water, and exhaled air through another tube. She observed that the lime water in the second tube turned milky. What conclusion can she draw from this?",
+      "ms": {
+        "draft": 6445,
+        "critique": 7171
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the experimental setup in Fig. 9.16, what is the purpose of passing inhaled and exhaled air through lime water?",
+      "ms": {
+        "draft": 6445,
+        "critique": 6583,
+        "solver": 1900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the oxygen in the air we inhale during respiration?",
+      "ms": {
+        "draft": 3424,
+        "critique": 6447,
+        "solver": 13478,
+        "form": 2116
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is breathing in air that has 21% oxygen, and exhales air that has 16% oxygen, what can be inferred about the oxygen in the body?",
+      "ms": {
+        "draft": 3424,
+        "critique": 8513,
+        "solver": 1334,
+        "form": 4346
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following processes is responsible for the breakdown of glucose to release energy in the body?",
+      "ms": {
+        "draft": 3424,
+        "critique": 6317,
+        "solver": 11506,
+        "form": 4211
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the partial digestion of food in the stomach of cows?",
+      "ms": {
+        "draft": 3501,
+        "critique": 6202,
+        "solver": 11985,
+        "form": 4510
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the human digestive system is responsible for the initial breakdown of food into smaller pieces?",
+      "ms": {
+        "draft": 8011,
+        "critique": 5158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of the diaphragm during breathing?",
+      "ms": {
+        "draft": 3501,
+        "critique": 6485,
+        "solver": 9708,
+        "form": 2249
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is responsible for the neutralisation of acidic food coming from the stomach in the small intestine?",
+      "ms": {
+        "draft": 3882,
+        "critique": 7722,
+        "solver": 809
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the small intestine called 'small' even though it is the longest part of the alimentary canal?",
+      "ms": {
+        "draft": 3312,
+        "critique": 6991,
+        "solver": 1406,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas causes lime water to turn milky?",
+      "ms": {
+        "draft": 3424,
+        "critique": 7432,
+        "solver": 11870,
+        "form": 3942,
+        "translation": 38566
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chamber in the digestive system of birds that helps in breaking down food?",
+      "ms": {
+        "draft": 3501,
+        "critique": 5838,
+        "solver": 1355,
+        "form": 3834,
+        "translation": 36909
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of chewing food in the mouth?",
+      "ms": {
+        "draft": 12277,
+        "critique": 7854,
+        "solver": 1232,
+        "form": 0,
+        "translation": 41164
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the respiratory system is responsible for the exchange of gases?",
+      "ms": {
+        "draft": 6445,
+        "critique": 6589,
+        "solver": 1403,
+        "form": 0,
+        "translation": 35451
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of ruminants?",
+      "ms": {
+        "draft": 3064,
+        "critique": 7402,
+        "solver": 1409,
+        "form": 0,
+        "translation": 38529
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person chews food for a longer time, what change would you expect in the iodine test result?",
+      "ms": {
+        "draft": 12277,
+        "critique": 4998,
+        "solver": 1303,
+        "form": 0,
+        "translation": 49483
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student adds iodine solution to a test tube containing chewed chapati, what would be the expected result?",
+      "ms": {
+        "draft": 6445,
+        "critique": 6153,
+        "solver": 1103,
+        "form": 0,
+        "translation": 39308
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Where does the absorption of nutrients mainly take place?",
+      "ms": {
+        "draft": 3312,
+        "critique": 7205,
+        "solver": 11330,
+        "form": 0,
+        "translation": 28960
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How do birds break down their food?",
+      "ms": {
+        "draft": 3064,
+        "critique": 7396,
+        "solver": 11901,
+        "form": 0,
+        "translation": 35899
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an animal that regenerates a lost body part?",
+      "ms": {
+        "draft": 3064,
+        "critique": 7936,
+        "solver": 1522,
+        "form": 0,
+        "translation": 31061
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Anil says that respiration and breathing are the same process. What is the most appropriate question Sanvi can ask to clarify this misconception?",
+      "ms": {
+        "draft": 6445,
+        "critique": 6558,
+        "solver": 16363,
+        "form": 0,
+        "translation": 47025
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is breathing essential for survival?",
+      "ms": {
+        "draft": 3064,
+        "critique": 6061,
+        "solver": 1223,
+        "form": 1,
+        "translation": 31047
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the process of regurgitating and re-chewing food called?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the role of oxygen in the process of respiration?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of the alimentary canal in digestion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage mention that the mouth feels watery when we recall our favourite food?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In an experiment, a student used boiled rice and added iodine to test for starch. If the rice was not chewed, what result would they expect?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the mouth in the digestive system?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of the stomach in the digestive system?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor, so no reason needed, but t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the food after it leaves the stomach?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the digestive system?",
+      "reason": "options 0 and 1 say the same thing (\"The large intestine is the longest part of the alimentary canal\" / \"The small intestine is the longest part of the alimentary canal\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the purpose of the finger-like projections in the small intestine?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.villi: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the model shown in Fig. 9.9, what do the balloons represent?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "When a person exhales air into lime water, what happens and why?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main function of the alveoli in the lungs?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student observed that when a person exhales air into lime water, the water turns milky. What can be concluded about the composition of exhaled air?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, two test tubes are used to compare the composition of inhaled and exhaled air. Lime water in one test tube turns milky, while in the other it does not. What does this suggest about the air in each test tube?",
+      "reason": "options 0 and 1 say the same thing (\"The first test tube contains air with high carbon dioxide and low oxygen\" / \"1: The second test tube contains air with low carbon dioxide and high oxygen\"); options 0 and 2 say the same thing (\"The first test tube contains air with high carbon dioxide and low oxygen\" / \"The first test tube contains air with low oxygen and high carbon dioxide\"); options 0 and 3 say the same thing (\"The first test tube contains air with high carbon dioxide and low oxygen\" / \"The second test tube contains air with high oxygen and low carbon dioxide\"); options 1 and 2 say the same thing (\"1: The second test tube contains air with low carbon dioxide and high oxygen\" / \"The first test tube contains air with low oxygen and high carbon dioxide\"); options 1 and 3 say the same thing (\"1: The second test tube contains air with low carbon dioxide and high oxygen\" / \"The second test tube contains air with high oxygen and low carbon dioxide\"); options 2 and 3 say the same thing (\"The first test tube contains air with low oxygen and high carbon dioxide\" / \"The second test tube contains air with high oxygen and low carbon dioxide\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a life process essential for the survival of living beings?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is an example of an organism that digests food outside its body?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of the diaphragm during breathing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Rakshita passed inhaled air through lime water, and exhaled air through another tube. She observed that the lime water in the second tube turned milky. What conclusion can she draw from this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the experimental setup in Fig. 9.16, what is the purpose of passing inhaled and exhaled air through lime water?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'pipe'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the oxygen in the air we inhale during respiration?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person is breathing in air that has 21% oxygen, and exhales air that has 16% oxygen, what can be inferred about the oxygen in the body?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the data in the passage…\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the correct on…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following processes is responsible for the breakdown of glucose to release energy in the body?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which process is described as the partial digestion of food in the stomach of cows?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the human digestive system is responsible for the initial breakdown of food into smaller pieces?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of the diaphragm during breathing?",
+      "reason": "the key is far longer than every distractor (55 vs 17 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is responsible for the neutralisation of acidic food coming from the stomach in the small intestine?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the small intestine called 'small' even though it is the longest part of the alimentary canal?",
+      "reason": "near-duplicate of served question cmvg0fd2m01lngpfhiwmacafy (cosine 0.962 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

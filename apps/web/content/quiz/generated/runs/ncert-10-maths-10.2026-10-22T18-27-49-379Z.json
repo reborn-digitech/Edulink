@@ -1,0 +1,505 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T18:27:49.379Z",
+  "finishedAt": "2026-10-22T18:33:30.939Z",
+  "seconds": 342,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh110.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Circles",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n7. In the given figure, a tangent has been drawn at a point P on the circle centred at O. 1\nQ\nO\nT P\nIf ∠ TPQ= 110 then ∠POQ is equal to 𝑂\nA) 110 𝑂 B) 70 𝑂",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n25. Area of the circle= sum of areas of 2 circles\n𝜋𝑅 = 𝜋(40) + 𝜋(9) ଶ 2 2\n𝜋𝑅 = 𝜋 x (40 + 9 ) ଶ 2 2\n𝑅 = 1600 + 81 ଶ\n𝑅 = 1681 ଶ\n𝑅 = 41 𝑐𝑚.\n𝐷𝑖𝑎𝑚𝑒𝑡𝑒𝑟 𝑜𝑓 𝑔𝑖𝑣𝑒𝑛 𝑐𝑖𝑟𝑐𝑙𝑒 = 41 × 2 = 82𝑐𝑚\nradius of circle = 10cm, 𝜃 = 90˚\nArea of minor segment = ଷ଺଴˚ ఏ 𝜋r - Area of Δ 2\n= ଷ଺଴˚ ఏ x 𝜋 r - 2 ଵ ଶ x b x h\n= ଷ଺଴˚ ଽ଴˚ x3.14 x 10 x 10 - ଵ ଶ x 10 x 10\n= ଷଵସ ସ – 50\n= 78.5-50 = 28.5 cm 2\nArea of minor segment = 28.5 cm 2\nOR",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n23.\n½\n½\n½\n½\nPA = PB; CA = CE; DE = DB [Tangents to a circle] ½\nPerimeter of ∆PCD = PC + CD + PD\n= PC + CE + ED + PD\n= PC + CA + BD + PD\n= PA + PB 1\nPerimeter of ∆PCD = PA + PA = 2PA = 2(10) = 20 ½\ncm",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n10. Take π =22/7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 166281,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 20414,
+      "completionTokens": 9128
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 181400,
+      "in": 23,
+      "out": 16,
+      "rejects": 7,
+      "promptTokens": 13430,
+      "completionTokens": 4719
+    },
+    "solver": {
+      "calls": 106,
+      "ms": 51247,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 19192,
+      "completionTokens": 983
+    },
+    "form": {
+      "calls": 10,
+      "ms": 87217,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 10461,
+      "completionTokens": 2406
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4487,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 146064,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9702,
+      "completionTokens": 4801
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "A circle has a radius of 10 cm. A tangent is drawn at point P on the circle, and a line from the centre O to a point Q on the tangent makes an angle of 60° with the radius OP. What is the length of OQ?",
+      "ms": {
+        "draft": 5225,
+        "critique": 5936,
+        "solver": 2111,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A line that intersects a circle at two points is called",
+      "ms": {
+        "draft": 5225,
+        "critique": 7640,
+        "solver": 11149
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, a tangent PQ is drawn at point P on the circle with centre O. If ∠OPQ = 30°, what is ∠POQ?",
+      "ms": {
+        "draft": 5225,
+        "critique": 7285,
+        "solver": 12557,
+        "form": 5245
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two tangents are drawn from a point P outside a circle to points A and B on the circle. If PA = 10 cm, what is the length of PB?",
+      "ms": {
+        "draft": 5225,
+        "critique": 7142,
+        "solver": 15499
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if PT and PT are tangents drawn from an external point P to a circle with centre O, and ∠OPQ = 30°, what is ∠PTQ?",
+      "ms": {
+        "draft": 8751,
+        "critique": 5861
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a point lies outside a circle, how many tangents can be drawn from that point to the circle?",
+      "ms": {
+        "draft": 8751,
+        "critique": 7622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many tangents can be drawn to a circle through a point lying outside the circle?",
+      "ms": {
+        "draft": 8751,
+        "critique": 5857,
+        "solver": 1712,
+        "form": 3054
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two tangents PA and PB are drawn from a point P to a circle with centre O. If ∠APB = 100°, what is ∠AOB?",
+      "ms": {
+        "draft": 8751,
+        "critique": 7189,
+        "solver": 1324
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the angle between a tangent and the radius at the point of contact?",
+      "ms": {
+        "draft": 8751,
+        "critique": 7297
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a circle, two tangents are drawn from an external point P to the circle at points A and B. If ∠APB = 120°, what is the measure of ∠AOB, where O is the centre of the circle?",
+      "ms": {
+        "draft": 8751,
+        "critique": 6973,
+        "solver": 1937
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circle has a radius of 10 cm. A tangent is drawn from an external point P, and the length of the tangent is 24 cm. What is the distance of point P from the center of the circle?",
+      "ms": {
+        "draft": 5147,
+        "critique": 10988,
+        "solver": 1950,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A line that touches a circle at exactly one point is called a",
+      "ms": {
+        "draft": 8591,
+        "critique": 5160
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, a tangent is drawn at point P on a circle centered at O. If ∠TPQ is 110°, what is the measure of ∠POQ?",
+      "ms": {
+        "draft": 5147,
+        "critique": 7193,
+        "solver": 1699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, a tangent has been drawn at point P on a circle centred at O. If ∠TPQ = 110°, what is ∠POQ?",
+      "ms": {
+        "draft": 8591,
+        "critique": 7596
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a tangent is drawn at point P on a circle and the radius OP is perpendicular to the tangent, what is the angle between the tangent and the line OP?",
+      "ms": {
+        "draft": 8591,
+        "critique": 6173
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A circle with radius 5 cm has a tangent at point P. A line is drawn from the centre of the circle to point P. What is the angle between the tangent and this line?",
+      "ms": {
+        "draft": 8591,
+        "critique": 5943
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, a circle with center O has two tangents TP and TQ. The angle between the tangents is 70°. What is the angle between the radii OP and OQ?",
+      "ms": {
+        "draft": 5147,
+        "critique": 6848,
+        "solver": 1794,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A circle has a point P outside it. How many tangents can be drawn from point P to the circle?",
+      "ms": {
+        "draft": 5147,
+        "critique": 6689,
+        "solver": 1260,
+        "form": 4631
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two tangents are drawn from an external point P to a circle. What is the relationship between the lengths of these two tangents?",
+      "ms": {
+        "draft": 8591,
+        "critique": 5672,
+        "solver": 1825,
+        "form": 2370
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A line that intersects a circle at only one point is called",
+      "ms": {
+        "draft": 5225,
+        "critique": 6658,
+        "solver": 11987,
+        "form": 3488,
+        "translation": 30759
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tangent is drawn at a point on a circle, the radius through that point is",
+      "ms": {
+        "draft": 5225,
+        "critique": 6295,
+        "solver": 1008,
+        "form": 5614,
+        "translation": 42115
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A circle has two tangents drawn from an external point P. What is the relationship between the lengths of the tangents?",
+      "ms": {
+        "draft": 5147,
+        "critique": 6184,
+        "solver": 1308,
+        "form": 0,
+        "translation": 44511
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two tangents are drawn from an external point P to a circle with center O. The angle between the tangents is 80°. What is the angle between the radii at the points of contact?",
+      "ms": {
+        "draft": 5147,
+        "critique": 6730,
+        "solver": 2225,
+        "form": 0,
+        "translation": 25741
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A circle has a radius of 10 cm. A tangent is drawn at point P on the circle, and a line from the centre O to a point Q on the tangent makes an angle of 60° with the radius OP. What is the length of OQ?",
+      "reason": "options are written to different precisions (0 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "A line that intersects a circle at two points is called",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, a tangent PQ is drawn at point P on the circle with centre O. If ∠OPQ = 30°, what is ∠POQ?",
+      "reason": "figure: figure cannot be drawn in en: no bundled font draws \"∠\" (U+2220)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Two tangents are drawn from a point P outside a circle to points A and B on the circle. If PA = 10 cm, what is the length of PB?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, if PT and PT are tangents drawn from an external point P to a circle with centre O, and ∠OPQ = 30°, what is ∠PTQ?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a point lies outside a circle, how many tangents can be drawn from that point to the circle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How many tangents can be drawn to a circle through a point lying outside the circle?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses with the number of tangents for a point on the circ…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Two tangents PA and PB are drawn from a point P to a circle with centre O. If ∠APB = 100°, what is ∠AOB?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the angle between a tangent and the radius at the point of contact?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a circle, two tangents are drawn from an external point P to the circle at points A and B. If ∠APB = 120°, what is the measure of ∠AOB, where O is the centre of the circle?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A circle has a radius of 5 cm. A tangent is drawn at a point on the circle. What is the length of the radius at the point of contact?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A circle has a radius of 10 cm. A tangent is drawn from an external point P, and the length of the tangent is 24 cm. What is the distance of point P from the center of the circle?",
+      "reason": "checkExpr \"sqrt(10^2+24^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A line that touches a circle at exactly one point is called a",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, a tangent is drawn at point P on a circle centered at O. If ∠TPQ is 110°, what is the measure of ∠POQ?",
+      "reason": "figure: figure spec refused: spec.arcs.0: Unrecognized key(s) in object: 'label'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, a tangent has been drawn at point P on a circle centred at O. If ∠TPQ = 110°, what is ∠POQ?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a tangent is drawn at point P on a circle and the radius OP is perpendicular to the tangent, what is the angle between the tangent and the line OP?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A circle with radius 5 cm has a tangent at point P. A line is drawn from the centre of the circle to point P. What is the angle between the tangent and this line?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, a circle with center O has two tangents TP and TQ. The angle between the tangents is 70°. What is the angle between the radii OP and OQ?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A circle has a point P outside it. How many tangents can be drawn from point P to the circle?",
+      "reason": "near-duplicate of served question cmskzqck705r7y266cc4ijx10 (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Two tangents are drawn from an external point P to a circle. What is the relationship between the lengths of these two tangents?",
+      "reason": "near-duplicate of batch item \"A circle has two tangents drawn from an external p…\" (cosine 0.978 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

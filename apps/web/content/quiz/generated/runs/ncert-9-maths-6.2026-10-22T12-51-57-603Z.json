@@ -1,0 +1,870 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T12:51:57.603Z",
+  "finishedAt": "2026-10-22T13:03:56.828Z",
+  "seconds": 719,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh206.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Math of Space: Surface Area and Volume",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n13. 396\nThe volume of a solid hemisphere is\nhemisphere (in sq.cm) is\n396 594\nA) B)\n7 7\nB) not real\nD) real and equal\nC ) (D) not defined\n√3\n3 1\n𝑐𝑚 .The total surface area of the solid\n549 604\nC) D)\n7 7",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n12. (d) 9π cm 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n18.\ntotal surface area of the resulting cuboid is\n(A) 128 cm 2 (B) 160 cm 2\n(C) 176 cm 2 (D) 192 cm 2\nAssertion-Reason Based Questions\nDirections: Questions number 19 and 20 are Assertion and Reason based\nquestions carrying 1 mark each. Two statements are given, one labelled\nAssertion (A) and the other labelled Reason (R).\nSelect the correct answer from the options (A), (B), (C) and (D) as given\nbelow:\n(A) Both Assertion (A) and Reason (R) are true and (R) is the correct\nexplanation of Assertion (A).\n(B) Both Assertion (A) and Reason (R) are true but (R) is not the correct\nexplanation of Assertion (A).\n(C) Assertion (A) is true but Reason (R) is false.\n(D) Assertion (A) is false but Reason (",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n11. Two cubes each of volume 64 cm are joined end to end to form a solid. The surface 3 1\narea of the resultant cuboid is:\n(A) 192 cm 2 (B) 160 cm 2 (C) 96 cm 2 (D) 80 cm 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 301472,
+      "in": 47,
+      "out": 44,
+      "rejects": 3,
+      "promptTokens": 50262,
+      "completionTokens": 12340
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 510465,
+      "in": 44,
+      "out": 28,
+      "rejects": 16,
+      "promptTokens": 27071,
+      "completionTokens": 10034
+    },
+    "solver": {
+      "calls": 218,
+      "ms": 147801,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 41652,
+      "completionTokens": 2268
+    },
+    "form": {
+      "calls": 7,
+      "ms": 28470,
+      "in": 22,
+      "out": 7,
+      "rejects": 15,
+      "promptTokens": 1749,
+      "completionTokens": 566
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4693,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 263926,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12576,
+      "completionTokens": 5986
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the formula for the volume of a cuboid?",
+      "ms": {
+        "draft": 8061,
+        "critique": 8575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cube has a side length of 5 cm. What is its total surface area?",
+      "ms": {
+        "draft": 8061,
+        "critique": 10413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cuboid has dimensions 9 cm × 6 cm × 4 cm. What is its total surface area?",
+      "ms": {
+        "draft": 8061,
+        "critique": 11049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two cubes each of volume 125 cm³ are joined end to end. What is the surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 8061,
+        "critique": 10999
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "ms": {
+        "draft": 8061,
+        "critique": 9375,
+        "solver": 17553,
+        "form": 4113
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cylinder has a radius of 3.5 cm and a height of 25 cm. What is the area of the curved surface of the cylinder?",
+      "ms": {
+        "draft": 6561,
+        "critique": 10364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cuboid has three faces meeting at a corner with areas 6 cm², 15 cm², and 10 cm². What is the volume of the cuboid?",
+      "ms": {
+        "draft": 8061,
+        "critique": 8966,
+        "solver": 16974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two cylinders, A and B, have radii in the ratio 2:3 and heights in the ratio 3:2. What is the ratio of their volumes?",
+      "ms": {
+        "draft": 6561,
+        "critique": 9245
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cylinder has its radius increased by 10% and height decreased by x%. If the volume remains unchanged, what is the value of x?",
+      "ms": {
+        "draft": 6561,
+        "critique": 8238,
+        "solver": 2397
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cone is generated by rotating a right triangle about one of its legs. What is the relationship between the slant height l, the height h, and the radius r of the base?",
+      "ms": {
+        "draft": 6561,
+        "critique": 9612,
+        "solver": 1977,
+        "form": 4021
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cube of side r cm has the largest possible right circular cylinder cut out of it. What is the volume of the cylinder?",
+      "ms": {
+        "draft": 6561,
+        "critique": 8402,
+        "solver": 18737,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A right circular cone has a slant height of 10 cm and a base radius of 7 cm. What is the curved surface area of the cone?",
+      "ms": {
+        "draft": 18787,
+        "critique": 9804,
+        "solver": 23303
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cone has a base radius of 5 cm and a height of 12 cm. What is the volume of the cone?",
+      "ms": {
+        "draft": 18787,
+        "critique": 13122,
+        "solver": 17639,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cone is formed by rotating a right triangle with sides 5 cm, 12 cm, and 13 cm about the side of 12 cm. What is the volume of the cone?",
+      "ms": {
+        "draft": 18787,
+        "critique": 10134,
+        "solver": 18085,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cone is formed by rotating a right triangle with sides 6 cm, 8 cm, and 10 cm about the side of 8 cm. What is the volume of the cone?",
+      "ms": {
+        "draft": 18787,
+        "critique": 9381
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the volume of a sphere with radius r?",
+      "ms": {
+        "draft": 4677,
+        "critique": 9950
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a hemisphere with radius r?",
+      "ms": {
+        "draft": 4677,
+        "critique": 8602,
+        "solver": 2288,
+        "form": 4451
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A hemispherical bowl has a radius of 3.5 cm. What is the volume of water it can contain?",
+      "ms": {
+        "draft": 4677,
+        "critique": 8545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the surface area of a sphere with radius r?",
+      "ms": {
+        "draft": 4677,
+        "critique": 8316,
+        "solver": 14013,
+        "form": 3911
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cylinder of radius 10 cm and height 50 cm is used to fill spherical golgappas of radius 1.5 cm, and each golgappa is filled to 60% of its volume, how many golgappas can be filled?",
+      "ms": {
+        "draft": 7230,
+        "critique": 10644,
+        "solver": 1387
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cuboid has dimensions l, w, h. If the length is increased by 1 unit, what is the change in its volume?",
+      "ms": {
+        "draft": 4670,
+        "critique": 6714,
+        "solver": 2774,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the formula for the total surface area of a cylinder covered at both ends?",
+      "ms": {
+        "draft": 4670,
+        "critique": 9089,
+        "solver": 2215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cuboid of dimensions 4 cm × 3 cm × 2 cm is split into 1 cm³ cubes. How many cubes have exactly two faces painted?",
+      "ms": {
+        "draft": 4670,
+        "critique": 10075,
+        "solver": 2224
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A spherical ball of radius r is melted and recast into a cylinder of height 2r. What is the ratio of the radius of the cylinder to the radius of the sphere?",
+      "ms": {
+        "draft": 4670,
+        "critique": 10483,
+        "solver": 1643
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two cubes of volume 64 cm³ each are joined end to end. What is the surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 7463,
+        "critique": 9299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cylindrical vessel has a radius of 10 cm and a height of 50 cm. What is the volume of the vessel?",
+      "ms": {
+        "draft": 7463,
+        "critique": 11336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a hemisphere?",
+      "ms": {
+        "draft": 4670,
+        "critique": 11578,
+        "solver": 13336,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The surface area of a sphere of radius 5 cm is five times the area of the curved surface of a cone of radius 4 cm. What is the height of the cone?",
+      "ms": {
+        "draft": 7463,
+        "critique": 8010
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A classroom has dimensions 30 ft × 30 ft × 15 ft. A tennis ball has a radius of 3 cm. How many tennis balls can fit in the classroom?",
+      "ms": {
+        "draft": 7463,
+        "critique": 9807
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cylindrical glass has a diameter of 7 cm and is filled with milk to a height of 12 cm. How many litres of milk are needed to serve 1600 students?",
+      "ms": {
+        "draft": 7463,
+        "critique": 9916
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the radius of a sphere is increased by 10%, by what percentage does its volume increase?",
+      "ms": {
+        "draft": 6027,
+        "critique": 7626,
+        "solver": 1745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total surface area of a hemisphere of radius r?",
+      "ms": {
+        "draft": 6027,
+        "critique": 9160,
+        "solver": 2448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the volume of a cone?",
+      "ms": {
+        "draft": 5877,
+        "critique": 9800
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the volume of a pyramid?",
+      "ms": {
+        "draft": 5877,
+        "critique": 9347
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A hemispherical bowl has a radius of 3.5 cm. What is the volume of water it can contain?",
+      "ms": {
+        "draft": 6027,
+        "critique": 8819,
+        "solver": 16503
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A right triangle with sides 5 cm, 12 cm, and 13 cm is rotated about the side of 12 cm. What is the volume of the solid formed?",
+      "ms": {
+        "draft": 5877,
+        "critique": 9665,
+        "solver": 19559,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the curved surface area of a cylinder?",
+      "ms": {
+        "draft": 5012,
+        "critique": 11165,
+        "solver": 11411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the shape of the cross-section of a cylinder if the slice is parallel to its base?",
+      "ms": {
+        "draft": 6561,
+        "critique": 7765,
+        "solver": 15087,
+        "form": 3953
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cone has a curved surface area of 308 cm² and a slant height of 14 cm. What is the radius of the base of the cone?",
+      "ms": {
+        "draft": 18787,
+        "critique": 8988,
+        "solver": 2013,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the volume of a cylinder?",
+      "ms": {
+        "draft": 7230,
+        "critique": 8125,
+        "solver": 1953,
+        "form": 6576,
+        "translation": 47588
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a guesstimate problem?",
+      "ms": {
+        "draft": 7230,
+        "critique": 8585,
+        "solver": 2813,
+        "form": 3642,
+        "translation": 61845
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the radius of a cylinder is increased by 1 unit, what is the change in its volume?",
+      "ms": {
+        "draft": 4670,
+        "critique": 6683,
+        "solver": 1584,
+        "form": 1,
+        "translation": 59460
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cuboid has length 10 cm, width 8 cm, and height 6 cm. What is its total surface area?",
+      "ms": {
+        "draft": 8882,
+        "critique": 9312,
+        "solver": 1751,
+        "form": 0,
+        "translation": 42660
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The radius of a sphere is increased by x%. The volume of the sphere increases by 72.8%. What is the value of x?",
+      "ms": {
+        "draft": 6027,
+        "critique": 10399,
+        "solver": 2047,
+        "form": 0,
+        "translation": 44635
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A cone has a height of 16 cm and a base radius of 12 cm. What is the total surface area of the cone?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the formula for the volume of a cuboid?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A cube has a side length of 5 cm. What is its total surface area?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A cuboid has dimensions 9 cm × 6 cm × 4 cm. What is its total surface area?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Two cubes each of volume 125 cm³ are joined end to end. What is the surface area of the resulting cuboid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "reason": "options 0 and 3 are the same (\"2(l + w + h)\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A cylinder has a radius of 3.5 cm and a height of 25 cm. What is the area of the curved surface of the cylinder?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A cuboid has three faces meeting at a corner with areas 6 cm², 15 cm², and 10 cm². What is the volume of the cuboid?",
+      "reason": "checkExpr \"sqrt(6*15*10)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Two cylinders, A and B, have radii in the ratio 2:3 and heights in the ratio 3:2. What is the ratio of their volumes?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cylinder has its radius increased by 10% and height decreased by x%. If the volume remains unchanged, what is the value of x?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A cone is generated by rotating a right triangle about one of its legs. What is the relationship between the slant height l, the height h, and the radius r of the base?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed (not a distractor)…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A cube of side r cm has the largest possible right circular cylinder cut out of it. What is the volume of the cylinder?",
+      "reason": "options 2 and 3 are the same (\"πr³/2\"); checkExpr \"pi*(r/2)**2*r\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A right circular cone has a slant height of 10 cm and a base radius of 7 cm. What is the curved surface area of the cone?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A cone has a base radius of 5 cm and a height of 12 cm. What is the volume of the cone?",
+      "reason": "checkExpr \"(1/3)*pi*5^2*12\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A cone is formed by rotating a right triangle with sides 5 cm, 12 cm, and 13 cm about the side of 12 cm. What is the volume of the cone?",
+      "reason": "checkExpr \"(1/3)*pi*5^2*12\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A cone is formed by rotating a right triangle with sides 6 cm, 8 cm, and 10 cm about the side of 8 cm. What is the volume of the cone?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for the volume of a sphere with radius r?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total surface area of a hemisphere with radius r?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A hemispherical bowl has a radius of 3.5 cm. What is the volume of water it can contain?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the surface area of a sphere with radius r?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a cylinder of radius 10 cm and height 50 cm is used to fill spherical golgappas of radius 1.5 cm, and each golgappa is filled to 60% of its volume, how many golgappas can be filled?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "The circumference of the base of a hemispherical dome is 35.2 m. What is the cost of painting it at ₹ 10 per 100 cm²?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a closed cylinder?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A cuboid has dimensions l, w, h. If the length is increased by 1 unit, what is the change in its volume?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the formula for the total surface area of a cylinder covered at both ends?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cuboid of dimensions 4 cm × 3 cm × 2 cm is split into 1 cm³ cubes. How many cubes have exactly two faces painted?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A spherical ball of radius r is melted and recast into a cylinder of height 2r. What is the ratio of the radius of the cylinder to the radius of the sphere?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Two cubes of volume 64 cm³ each are joined end to end. What is the surface area of the resulting cuboid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A cylindrical vessel has a radius of 10 cm and a height of 50 cm. What is the volume of the vessel?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total surface area of a hemisphere?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The surface area of a sphere of radius 5 cm is five times the area of the curved surface of a cone of radius 4 cm. What is the height of the cone?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A classroom has dimensions 30 ft × 30 ft × 15 ft. A tennis ball has a radius of 3 cm. How many tennis balls can fit in the classroom?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A cylindrical glass has a diameter of 7 cm and is filled with milk to a height of 12 cm. How many litres of milk are needed to serve 1600 students?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the radius of a sphere is increased by 10%, by what percentage does its volume increase?",
+      "reason": "options are written to different precisions (0 and 1 decimals); distractor 3's reason is not a one-line misconception (\"correct answer is 33.1% when radius is increased by 10%…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the total surface area of a hemisphere of radius r?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"correct answer is 3πr, not 2πr or 4πr…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for the volume of a cone?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for the volume of a pyramid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A hemispherical bowl has a radius of 3.5 cm. What is the volume of water it can contain?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A right triangle with sides 5 cm, 12 cm, and 13 cm is rotated about the side of 12 cm. What is the volume of the solid formed?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(3.14*5*5*12)\" = 942, but the key says 100"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the curved surface area of a cylinder?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the shape of the cross-section of a cylinder if the slice is parallel to its base?",
+      "reason": "near-duplicate of served question cmvfe16kj0455god86gbhjbvr (cosine 0.974 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A cone has a curved surface area of 308 cm² and a slant height of 14 cm. What is the radius of the base of the cone?",
+      "reason": "near-duplicate of served question cmvgfj83803t0gpfhq6ab233q (cosine 0.989 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

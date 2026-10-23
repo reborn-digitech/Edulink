@@ -1,0 +1,839 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T19:11:19.366Z",
+  "finishedAt": "2026-10-21T19:19:50.471Z",
+  "seconds": 511,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Politics in India Since Independence",
+    "bookCode": "leps2",
+    "document": "ncert/12/political-science/leps202.pdf",
+    "classLevel": 12,
+    "subject": "Political Science",
+    "chapter": "Chapter 2 — In this chapter…",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\nSECTION-D (12 MARKS)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – B\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – A\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSection – D\n(12 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 158040,
+      "in": 44,
+      "out": 43,
+      "rejects": 1,
+      "promptTokens": 36184,
+      "completionTokens": 10105
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 330763,
+      "in": 43,
+      "out": 36,
+      "rejects": 7,
+      "promptTokens": 26103,
+      "completionTokens": 9928
+    },
+    "solver": {
+      "calls": 279,
+      "ms": 130579,
+      "in": 36,
+      "out": 31,
+      "rejects": 5,
+      "promptTokens": 55902,
+      "completionTokens": 3248
+    },
+    "form": {
+      "calls": 16,
+      "ms": 39014,
+      "in": 31,
+      "out": 9,
+      "rejects": 22,
+      "promptTokens": 4219,
+      "completionTokens": 1131
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 288,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 391524,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 23269,
+      "completionTokens": 12283
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main focus of the chapter?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6013,
+        "solver": 969,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the significance of the first general elections in India?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6253,
+        "solver": 11413,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the role of the Election Commission in the first general elections?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6007,
+        "solver": 1237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When did the first general election of India take place?",
+      "ms": {
+        "draft": 3081,
+        "critique": 7319,
+        "solver": 1450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which party won the majority of seats in the first general election of India?",
+      "ms": {
+        "draft": 3081,
+        "critique": 5200,
+        "solver": 1294,
+        "form": 2219
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why was the first general election of India considered a big gamble?",
+      "ms": {
+        "draft": 3081,
+        "critique": 6017,
+        "solver": 10850,
+        "form": 2540
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what was the reason for the dominance of the Indian National Congress in the first general election?",
+      "ms": {
+        "draft": 3081,
+        "critique": 6464,
+        "solver": 1390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of the first general election on the perception of democracy in the world?",
+      "ms": {
+        "draft": 3081,
+        "critique": 6366,
+        "solver": 1515,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the electoral system in India as described in the passage?",
+      "ms": {
+        "draft": 3979,
+        "critique": 6296,
+        "solver": 1223,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred from the passage about the Communist Party's government in Kerala?",
+      "ms": {
+        "draft": 3979,
+        "critique": 5293,
+        "solver": 1532,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the significance of the 1952 general election in the context of global democracy?",
+      "ms": {
+        "draft": 3081,
+        "critique": 6672,
+        "solver": 14058,
+        "form": 2708
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the decline of the Socialist Party?",
+      "ms": {
+        "draft": 3979,
+        "critique": 5884,
+        "solver": 1169
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the Congress party's success in elections?",
+      "ms": {
+        "draft": 3979,
+        "critique": 5609,
+        "solver": 1390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the significance of the 1957 Kerala assembly elections?",
+      "ms": {
+        "draft": 3979,
+        "critique": 6333,
+        "solver": 1449,
+        "form": 2578
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How does the passage compare India's one-party dominance to that of other countries?",
+      "ms": {
+        "draft": 3979,
+        "critique": 5891,
+        "solver": 10577
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the ideology of the Bharatiya Jana Sangh as mentioned in the passage?",
+      "ms": {
+        "draft": 4483,
+        "critique": 6283
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What role did the presence of opposition parties play in Indian politics during the 1950s, according to the passage?",
+      "ms": {
+        "draft": 4483,
+        "critique": 7252
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage suggest that the Congress system was unique in Indian politics?",
+      "ms": {
+        "draft": 4483,
+        "critique": 6813
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for the Congress party's dominance in the political system after independence?",
+      "ms": {
+        "draft": 3264,
+        "critique": 5730,
+        "solver": 9450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who was the leader of the Hindu Mahasabha and founder of the Bharatiya Jana Sangh?",
+      "ms": {
+        "draft": 10894,
+        "critique": 5292
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the reason for the decline of the Congress party's dominance in Indian politics?",
+      "ms": {
+        "draft": 10894,
+        "critique": 6150
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which party won the second largest number of Lok Sabha seats in the first general elections?",
+      "ms": {
+        "draft": 10894,
+        "critique": 4491,
+        "solver": 1483,
+        "form": 1996
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a guiding principle of the Swatantra Party?",
+      "ms": {
+        "draft": 10894,
+        "critique": 6088
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what does the author imply about the role of the Congress party after independence?",
+      "ms": {
+        "draft": 10894,
+        "critique": 5487
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the role of the opposition parties in the 1950s as described in the passage?",
+      "ms": {
+        "draft": 2919,
+        "critique": 4919,
+        "solver": 998,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following would be an example of the Congress system as described?",
+      "ms": {
+        "draft": 2919,
+        "critique": 4864,
+        "solver": 1540,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why the opposition parties were important despite their limited electoral success?",
+      "ms": {
+        "draft": 2919,
+        "critique": 5838,
+        "solver": 1596,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage discusses the role of the Communist Party of India (CPI) in the political landscape of India. Based on the passage, which of the following best describes the CPI's position in the first general elections after independence?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6236,
+        "solver": 1490,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the Congress party's dominance in the political system of India after independence?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6119,
+        "solver": 10631,
+        "form": 2035
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how did the Congress party manage to contain internal differences and maintain unity?",
+      "ms": {
+        "draft": 4081,
+        "critique": 5973,
+        "solver": 13468,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why the Congress party won a large number of seats despite not receiving a majority of the votes?",
+      "ms": {
+        "draft": 3504,
+        "critique": 5625,
+        "solver": 1702,
+        "form": 3654
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the Congress party as a 'platform' for numerous groups, interests, and even political parties. Which of the following best explains why the Congress party's coalition nature was considered a strength?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6140,
+        "solver": 12500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason for the failure of the Socialist Party to gain significant electoral success?",
+      "ms": {
+        "draft": 3504,
+        "critique": 7317,
+        "solver": 11800,
+        "form": 1567
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the unique aspect of the Congress party's dominance in India compared to other countries?",
+      "ms": {
+        "draft": 3504,
+        "critique": 6276,
+        "solver": 10162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which party had the 'first off the blocks' advantage in Indian politics after independence?",
+      "ms": {
+        "draft": 3264,
+        "critique": 6034,
+        "solver": 1260,
+        "form": 1914,
+        "translation": 34714
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the nature of the Congress party during the freedom struggle?",
+      "ms": {
+        "draft": 3264,
+        "critique": 5215,
+        "solver": 1484,
+        "form": 1442,
+        "translation": 36173
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who was the founder-President of the Bharatiya Jana Sangh?",
+      "ms": {
+        "draft": 2919,
+        "critique": 6503,
+        "solver": 1002,
+        "form": 3739,
+        "translation": 28993
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the ideology of the Bharatiya Jana Sangh?",
+      "ms": {
+        "draft": 2919,
+        "critique": 6310,
+        "solver": 909,
+        "form": 2621,
+        "translation": 45138
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason that the Election Commission had to train over 3 lakh officers and polling staff before the first general elections?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6954,
+        "solver": 9526,
+        "form": 4030,
+        "translation": 51586
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why was the first general election in India considered a unique and challenging event?",
+      "ms": {
+        "draft": 4146,
+        "critique": 5973,
+        "solver": 16233,
+        "form": 2340,
+        "translation": 49954
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following was NOT a feature of the Congress system in the first decade of Indian politics?",
+      "ms": {
+        "draft": 2919,
+        "critique": 5761,
+        "solver": 1010,
+        "form": 2568,
+        "translation": 42429
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best supports the idea that India's leaders were committed to democracy despite the challenges?",
+      "ms": {
+        "draft": 4146,
+        "critique": 6517,
+        "solver": 15633,
+        "form": 2301,
+        "translation": 60857
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why did the author say that Gandhi’s view about the Congress was romantic?",
+      "ms": {
+        "draft": 10894,
+        "critique": 6256,
+        "solver": 11412,
+        "form": 0,
+        "translation": 37619
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which party emerged as the largest opposition party after the first general election in 1952?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the main focus of the chapter?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"refers to a specific detail mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the significance of the first general elections in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"refers to a technological advancement not mentioned in the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the role of the Election Commission in the first general elections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"assumes a political bias not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "When did the first general election of India take place?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which party won the majority of seats in the first general election of India?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage mentions the Communist Party of India as the sec…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why was the first general election of India considered a big gamble?",
+      "reason": "the key is far longer than every distractor (64 vs 32 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what was the reason for the dominance of the Indian National Congress in the first general election?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"Both B and C\"); distractor 0's reason is not a one-line misconception (\"The passage mentions the Congress had a strong presence, but…\"); distractor 1's reason is not a one-line misconception (\"The passage mentions the popularity of the leader, but not t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of the first general election on the perception of democracy in the world?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"The passage contradicts this by showing the opposite.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the electoral system in India as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"A system where the party with the most votes wins the most seats\" / \"A system where the party with the fewest votes wins the most seats\"); options 0 and 3 say the same thing (\"A system where the party with the most votes wins the most seats\" / \"A system where the party with the most votes wins the fewest seats\"); options 2 and 3 say the same thing (\"A system where the party with the fewest votes wins the most seats\" / \"A system where the party with the most votes wins the fewest seats\"); distractor 3's reason is not a one-line misconception (\"Believes the system favours the party with the fewest votes,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What can be inferred from the passage about the Communist Party's government in Kerala?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes the Communist Party had majority support, which is n…\"); distractor 1's reason is not a one-line misconception (\"Misunderstands the reason for the dismissal as being due to …\"); distractor 3's reason is not a one-line misconception (\"Thinks the Communist Party was supported by the Congress, wh…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the significance of the 1952 general election in the context of global democracy?",
+      "reason": "options 1 and 3 say the same thing (\"It was the first election in a democratic country\" / \"It was the first election in a non-democratic country\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the decline of the Socialist Party?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the Congress party's success in elections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes there was no competition, which is not stated in the…\"); distractor 2's reason is not a one-line misconception (\"Thinks the party's success was due to media control, which i…\"); distractor 3's reason is not a one-line misconception (\"Believes the military supported the party, which is not stat…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the significance of the 1957 Kerala assembly elections?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes the Congress lost its first election, which is not e…\"); distractor 2's reason is not a one-line misconception (\"Thinks the Socialist Party won an election, which is not sup…\"); distractor 3's reason is not a one-line misconception (\"Believes the Communist Party was formed in 1957, which is no…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How does the passage compare India's one-party dominance to that of other countries?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the ideology of the Bharatiya Jana Sangh as mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What role did the presence of opposition parties play in Indian politics during the 1950s, according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the passage suggest that the Congress system was unique in Indian politics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What was the main reason for the Congress party's dominance in the political system after independence?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who was the leader of the Hindu Mahasabha and founder of the Bharatiya Jana Sangh?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the reason for the decline of the Congress party's dominance in Indian politics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which party won the second largest number of Lok Sabha seats in the first general elections?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no misconception here…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a guiding principle of the Swatantra Party?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Based on the passage, what does the author imply about the role of the Congress party after independence?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the role of the opposition parties in the 1950s as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following would be an example of the Congress system as described?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why the opposition parties were important despite their limited electoral success?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage discusses the role of the Communist Party of India (CPI) in the political landscape of India. Based on the passage, which of the following best describes the CPI's position in the first general elections after independence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main reason for the Congress party's dominance in the political system of India after independence?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"believes the passage says it was the only party allowed…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how did the Congress party manage to contain internal differences and maintain unity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (67 vs 40 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best explains why the Congress party won a large number of seats despite not receiving a majority of the votes?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This is an assumption not supported by the passage.…\"); distractor 1's reason is not a one-line misconception (\"This is not mentioned in the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the Congress party as a 'platform' for numerous groups, interests, and even political parties. Which of the following best explains why the Congress party's coalition nature was considered a strength?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"misinterprets the passage's description of power distributio…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the main reason for the failure of the Socialist Party to gain significant electoral success?",
+      "reason": "options 0 and 1 are the same (\"They were not allowed to campaign in certain regions\"); options 0 and 3 are the same (\"They were not allowed to campaign in certain regions\"); options 1 and 3 are the same (\"They were not allowed to campaign in certain regions\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best describes the unique aspect of the Congress party's dominance in India compared to other countries?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

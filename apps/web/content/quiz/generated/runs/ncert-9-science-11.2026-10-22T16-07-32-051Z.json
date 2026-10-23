@@ -1,0 +1,839 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T16:07:32.051Z",
+  "finishedAt": "2026-10-22T16:21:09.271Z",
+  "seconds": 817,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc111.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Reproduction: How Life Continues",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n18. Assertion: Probability of survival of an organism produced through sexual reproduction is 1\nmore than that of organism produced through asexual mode.\nReason: Variations provide advantages to individuals for survival.",
+      "[INJSO 2014 — question paper]\n7. Which type of reproduction, from the following, gives evidence that the genetic\ninformation needed for the complete development of an individual is contained\nactually in a haploid set of chromosomes?\na) Budding in hydra\nb) Multiple fission in amoeba\nc) Development of male honey bee (Drone) from egg\nd) Binary fission in paramecium"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 208423,
+      "in": 44,
+      "out": 42,
+      "rejects": 3,
+      "promptTokens": 47923,
+      "completionTokens": 10307
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 395131,
+      "in": 42,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 24553,
+      "completionTokens": 9419
+    },
+    "solver": {
+      "calls": 272,
+      "ms": 162138,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 51848,
+      "completionTokens": 3058
+    },
+    "form": {
+      "calls": 22,
+      "ms": 91455,
+      "in": 33,
+      "out": 16,
+      "rejects": 17,
+      "promptTokens": 9111,
+      "completionTokens": 2066
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 36,
+      "ms": 6632,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 420346,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21445,
+      "completionTokens": 11111
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "The passage states that spores are produced in huge numbers. Which of the following is the most likely reason for this?",
+      "ms": {
+        "draft": 13889,
+        "critique": 5459,
+        "solver": 1471,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes how Louis Pasteur proved that new life comes from pre-existing life. Which of the following scenarios best supports this idea?",
+      "ms": {
+        "draft": 13889,
+        "critique": 11451,
+        "solver": 1655
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that spores are lightweight and float easily through air currents. Which of the following best explains this characteristic?",
+      "ms": {
+        "draft": 13889,
+        "critique": 5855,
+        "solver": 18390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main purpose of using a magnifying glass when observing mould on bread?",
+      "ms": {
+        "draft": 13889,
+        "critique": 6851,
+        "solver": 1669,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "During meiosis, how many chromosomes does each human gamete receive?",
+      "ms": {
+        "draft": 7603,
+        "critique": 8654,
+        "solver": 2029,
+        "form": 4633
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of sepals in a flower?",
+      "ms": {
+        "draft": 7603,
+        "critique": 9603,
+        "solver": 1990,
+        "form": 3493
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The passage explains that fungi reproduce by spores. Which of the following is a direct advantage of this method?",
+      "ms": {
+        "draft": 13889,
+        "critique": 7946,
+        "solver": 17186
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a flower, which part is responsible for receiving pollen grains?",
+      "ms": {
+        "draft": 7603,
+        "critique": 7854,
+        "solver": 1930,
+        "form": 3843
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is variation important for the survival of a species?",
+      "ms": {
+        "draft": 7603,
+        "critique": 7584,
+        "solver": 1691,
+        "form": 2841
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the flower is responsible for receiving pollen grains?",
+      "ms": {
+        "draft": 6364,
+        "critique": 8689
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of the ovary in a flower?",
+      "ms": {
+        "draft": 7603,
+        "critique": 6962,
+        "solver": 1565,
+        "form": 3891
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the process of transferring pollen from the anther to the stigma called?",
+      "ms": {
+        "draft": 6364,
+        "critique": 8446
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the experimental setup described, which treatment would result in no fruit formation?",
+      "ms": {
+        "draft": 6364,
+        "critique": 7755,
+        "solver": 1929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity with beads, how many combinations of characters can be formed with three pairs of beads?",
+      "ms": {
+        "draft": 7603,
+        "critique": 8996,
+        "solver": 18262,
+        "form": 3900
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the fusion of male and female gametes?",
+      "ms": {
+        "draft": 3330,
+        "critique": 8662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of reproduction involves the production of offspring from a single parent?",
+      "ms": {
+        "draft": 3330,
+        "critique": 9083
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which animal group produces the highest number of eggs at a time?",
+      "ms": {
+        "draft": 3330,
+        "critique": 7802,
+        "solver": 13225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about reproduction is supported by the passage?",
+      "ms": {
+        "draft": 8980,
+        "critique": 4464,
+        "solver": 686
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct order of stages in sexual reproduction in plants?",
+      "ms": {
+        "draft": 3297,
+        "critique": 6071,
+        "solver": 20564
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason why a mother's health during pregnancy is important?",
+      "ms": {
+        "draft": 4150,
+        "critique": 7959,
+        "solver": 1065,
+        "form": 3467
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a method of preventing the spread of sexually transmitted infections (STIs)?",
+      "ms": {
+        "draft": 4150,
+        "critique": 9266,
+        "solver": 1499,
+        "form": 3506
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the role of the uterus and placenta after implantation of the embryo?",
+      "ms": {
+        "draft": 4150,
+        "critique": 7226,
+        "solver": 13224,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of sexual maturation of reproductive tissues?",
+      "ms": {
+        "draft": 4150,
+        "critique": 6821,
+        "solver": 2149,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what determines the biological sex of a baby?",
+      "ms": {
+        "draft": 4215,
+        "critique": 7482,
+        "solver": 1866,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the process of fertilisation, what is the name of the structure formed when a sperm fuses with an egg?",
+      "ms": {
+        "draft": 4215,
+        "critique": 7102,
+        "solver": 2214,
+        "form": 2852
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a china-rose (hibiscus) plant, a pollen tube grows and continues through the style after pollen lands on the stigma. Which process is about to happen next?",
+      "ms": {
+        "draft": 7053,
+        "critique": 5211,
+        "solver": 1147,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 6364,
+        "critique": 6997,
+        "solver": 15394,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do animals with external fertilisation produce more eggs than animals with internal fertilisation?",
+      "ms": {
+        "draft": 3330,
+        "critique": 8928,
+        "solver": 14090,
+        "form": 2271
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does asexual reproduction produce offspring that are genetically identical to the parent?",
+      "ms": {
+        "draft": 3297,
+        "critique": 7652,
+        "solver": 1216,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 4150,
+        "critique": 7714,
+        "solver": 1596,
+        "form": 2539
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the female reproductive system is a bag-like structure where a foetus develops?",
+      "ms": {
+        "draft": 4215,
+        "critique": 7385,
+        "solver": 1456,
+        "form": 2572
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an egg is not fertilised, what happens to the inner lining of the uterus?",
+      "ms": {
+        "draft": 4215,
+        "critique": 6113,
+        "solver": 1361,
+        "form": 4407
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do animals with external fertilisation produce more eggs than animals with internal fertilisation?",
+      "ms": {
+        "draft": 22288,
+        "critique": 5604,
+        "solver": 1168,
+        "form": 2113
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of asexual reproduction?",
+      "ms": {
+        "draft": 22288,
+        "critique": 7046,
+        "solver": 1652,
+        "form": 3747,
+        "translation": 40685
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the female reproductive system is a bag-like structure where a foetus develops?",
+      "ms": {
+        "draft": 3867,
+        "critique": 6388,
+        "solver": 1502,
+        "form": 3203,
+        "translation": 43580
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process is ensured when a flower’s anthers are removed before it matures and pollen from another plant is dusted on its stigma?",
+      "ms": {
+        "draft": 3297,
+        "critique": 5220,
+        "solver": 1339,
+        "form": 6854,
+        "translation": 45485
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does the menstrual cycle stop during pregnancy?",
+      "ms": {
+        "draft": 3297,
+        "critique": 8166,
+        "solver": 15788,
+        "form": 4274,
+        "translation": 45532
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason human babies are completely dependent on adults for a long time compared to many animals?",
+      "ms": {
+        "draft": 3297,
+        "critique": 5549,
+        "solver": 17630,
+        "form": 2554,
+        "translation": 52800
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following ways is the reproduction in yeast similar to that in hydra?",
+      "ms": {
+        "draft": 13889,
+        "critique": 6218,
+        "solver": 15771,
+        "form": 0,
+        "translation": 64866
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following animals is fertilisation internal?",
+      "ms": {
+        "draft": 22288,
+        "critique": 7107,
+        "solver": 1622,
+        "form": 2779,
+        "translation": 25351
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the case of animals with external fertilisation, what is the main reason for producing a large number of eggs?",
+      "ms": {
+        "draft": 3330,
+        "critique": 7598,
+        "solver": 19411,
+        "form": 0,
+        "translation": 41892
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which type of reproduction ensures that the genetic information needed for the complete development of an individual is contained in a haploid set of chromosomes?",
+      "ms": {
+        "draft": 6364,
+        "critique": 7509,
+        "solver": 1835,
+        "form": 1,
+        "translation": 53347
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is an example of asexual reproduction "
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the process of the formation of gametes called?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage states that spores are produced in huge numbers. Which of the following is the most likely reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage describes how Louis Pasteur proved that new life comes from pre-existing life. Which of the following scenarios best supports this idea?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage mentions that spores are lightweight and float easily through air currents. Which of the following best explains this characteristic?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main purpose of using a magnifying glass when observing mould on bread?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "During meiosis, how many chromosomes does each human gamete receive?",
+      "reason": "options are in more than one unit (pairs, chromosomes); options 0 and 2 are the same number; options 1 and 3 are the same number; distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the third opti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of sepals in a flower?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but the second opt…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The passage explains that fungi reproduce by spores. Which of the following is a direct advantage of this method?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a flower, which part is responsible for receiving pollen grains?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but the fourth opt…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is variation important for the survival of a species?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but the second opt…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the flower is responsible for receiving pollen grains?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main function of the ovary in a flower?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but the fourth opt…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the process of transferring pollen from the anther to the stigma called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the experimental setup described, which treatment would result in no fruit formation?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the activity with beads, how many combinations of characters can be formed with three pairs of beads?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is described as the fusion of male and female gametes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of reproduction involves the production of offspring from a single parent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which animal group produces the highest number of eggs at a time?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Student thinks frogs lay more eggs than fish because they ar…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements about reproduction is supported by the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Why are flowers that bloom at night usually white or light in colour?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is the correct order of stages in sexual reproduction in plants?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a reason why a mother's health during pregnancy is important?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"ignores the passage's recommendation for light exercise and …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a method of preventing the spread of sexually transmitted infections (STIs)?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"does not understand the context of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the role of the uterus and placenta after implantation of the embryo?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"They provide a place for the egg to develop\"); distractor 3's reason is not a one-line misconception (\"ignores the passage's explanation of the role…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of sexual maturation of reproductive tissues?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"ignores the passage's explanation of the purpose…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what determines the biological sex of a baby?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the process of fertilisation, what is the name of the structure formed when a sperm fuses with an egg?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"cell\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a china-rose (hibiscus) plant, a pollen tube grows and continues through the style after pollen lands on the stigma. Which process is about to happen next?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This is the correct process, not a distractor, so it is not …\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "reason": "near-duplicate of served question cmvghacd503yagpfhi1ylpjsm (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why do animals with external fertilisation produce more eggs than animals with internal fertilisation?",
+      "reason": "near-duplicate of served question cmvglvuuj049mgpfhwrl3s3w6 (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why does asexual reproduction produce offspring that are genetically identical to the parent?",
+      "reason": "near-duplicate of served question cmvfkynnw04rggod8im0locqg (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "reason": "near-duplicate of served question cmvghacd503yagpfhi1ylpjsm (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of the female reproductive system is a bag-like structure where a foetus develops?",
+      "reason": "near-duplicate of batch item \"Which part of the female reproductive system is a …\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If an egg is not fertilised, what happens to the inner lining of the uterus?",
+      "reason": "near-duplicate of served question cmvglvuus04a4gpfhe6g88d76 (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do animals with external fertilisation produce more eggs than animals with internal fertilisation?",
+      "reason": "near-duplicate of served question cmvglvuuj049mgpfhwrl3s3w6 (cosine 0.961 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

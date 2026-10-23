@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Exploration",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-19T15:28:30.040Z",
+  "generatedAt": "2026-10-22T13:28:07.332Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a symbol used to represent force in science?",
+      "stem": "What does the magnifying glass symbol on the textbook's pages represent?",
       "choices": [
-        "m",
-        "v",
-        "F",
-        "I"
+        "The use of mathematics in science",
+        "The need for precise measurements",
+        "Careful observation and noticing patterns",
+        "The importance of experiments"
       ],
       "answerIndex": 2,
-      "solution": "The correct answer is F. In science, force is represented by the symbol F. The other options are symbols for mass (m), velocity (v), and electric current (I).",
+      "solution": "The magnifying glass symbol represents the act of carefully observing and identifying patterns, which is essential in scientific inquiry. Other options, such as the use of mathematics or experiments, are important in science but do not directly relate to the function of a magnifying glass. Precise measurements, while valuable, are not the primary purpose of the symbol.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा प्रतीक विज्ञान में बल के प्रतिनिधित्व के लिए प्रयोग किया जाता है?",
+          "stem": "पाठ्यपुस्तक के पृष्ठों पर बढ़ती हुई लेंस का प्रतीक क्या प्रस्तुत करता है?",
           "choices": [
-            "m",
-            "v",
-            "F",
-            "I"
+            "विज्ञान में गणित के उपयोग",
+            "सटीक मापन की आवश्यकता",
+            "ध्यान से अवलोकन और पैटर्न की ओर ध्यान देना",
+            "प्रयोगों के महत्व"
           ],
-          "solution": "सही उत्तर F है। विज्ञान में बल को प्रतीक F द्वारा दर्शाया जाता है। अन्य विकल्प द्रव्यमान (m), वेग (v) और विद्युत धारा (I) के प्रतीक हैं।",
+          "solution": "बढ़ती हुई लेंस का प्रतीक ध्यान से अवलोकन और पैटर्न की ओर ध्यान देने के कार्य को प्रस्तुत करता है, जो वैज्ञानिक खोज में आवश्यक है। अन्य विकल्प, जैसे गणित या प्रयोगों के उपयोग, विज्ञान में महत्वपूर्ण हैं लेकिन बढ़ती हुई लेंस के कार्य से सीधा संबंध नहीं रखते। सटीक मापन, यद्यपि मूल्यवान है, लेकिन प्रतीक का प्राथमिक उद्देश्य नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology commonly found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते शास्त्रात बलाचे प्रतीक दर्शविण्यासाठी वापरले जाते?",
+          "stem": "शिक्षणपुस्तकाच्या पानांवरील वर्धक लेंस संकेताचा अर्थ काय आहे?",
           "choices": [
-            "m",
-            "v",
-            "F",
-            "I"
+            "विज्ञानात गणिताचा वापर",
+            "सुस्पष्ट मोजमापाची आवश्यकता",
+            "सावधगिरीने निरीक्षण करणे आणि पॅटर्न ओळखणे",
+            "प्रयोगांची महत्त्वाची भूमिका"
           ],
-          "solution": "योग्य उत्तर F आहे. शास्त्रात, बलाचे प्रतीक F असते. इतर विकल्पांमध्ये मास (m), वेग (v) आणि विद्युत वाहक (I) चे प्रतीक असते.",
+          "solution": "वर्धक लेंस संकेताचा अर्थ सावधगिरीने निरीक्षण करणे आणि पॅटर्न ओळखणे हा आहे, जो वैज्ञानिक अन्वेषणासाठी आवश्यक आहे. गणिताचा वापर किंवा प्रयोगांचा अर्थ विज्ञानात महत्त्वाचा आहे परंतु ते वर्धक लेंसाच्या कार्याशी सीधा संबंध नाही. सुस्पष्ट मोजमाप महत्त्वाचे असले तरी ते संकेताच्या प्राथमिक उद्देशाशी संबंधित नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses mass with force",
-        "confuses velocity with force",
+        "Confuses the magnifying glass with the role of mathematics in science.",
+        "Incorrectly associates the magnifying glass with measurements.",
         null,
-        "Confuses the symbol for current (I) with the symbol for force (F)"
+        "Incorrectly links the symbol to experiments instead of observation."
       ],
       "solverAnswers": [
         2,
@@ -85,7 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and tests basic scientific notation. The correct answer is F for force, and the other options are correctly identified as symbols for mass, velocity, and current. The distractors reflect common misconceptions.",
+      "critique": "The correct answer is 2, as the magnifying glass symbol is explicitly linked to careful observation and noticing patterns. The other options are plausible but not the intended meaning according to the passage.",
       "sources": [
         {
           "document": "ncert/9/science/iesc101.pdf",
@@ -116,49 +116,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:28:30.040Z",
+      "generatedAt": "2026-10-22T13:28:07.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Why is the speed of light denoted by the symbol 'c'?",
+      "difficulty": 2,
+      "stem": "What is the main reason weather forecasts sometimes go wrong?",
       "choices": [
-        "Because it stands for 'cubic' in a formula",
-        "Because it is the first letter of the word 'speed' in English",
-        "Because it comes from the Latin word 'celeritas', meaning speed",
-        "Because it was chosen arbitrarily by scientists who liked the letter 'c'"
+        "They are based on guesswork",
+        "They depend on many changing factors",
+        "They are based on incomplete data",
+        "They use too many calculations"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is because it comes from the Latin word 'celeritas', meaning speed. This is supported by historical scientific notation where 'c' was used to represent speed in equations. The other options are incorrect as they do not align with the established origin of the symbol.",
+      "answerIndex": 1,
+      "solution": "Weather forecasts depend on many changing factors such as temperature, pressure, humidity, and wind. Small changes in these factors can lead to different outcomes, making long-term predictions uncertain. The other options are incorrect because forecasts are based on evidence, not guesswork, and they are not always incorrect or based solely on calculations.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "प्रकाश के वेग को 'c' चिह्न द्वारा दर्शाया जाता क्यों है?",
+          "stem": "मौसम की भविष्यवाणियां कभी-कभी गलत क्यों हो जाती हैं?",
           "choices": [
-            "क्योंकि यह एक सूत्र में 'घन' के लिए है",
-            "क्योंकि यह अंग्रेजी में शब्द 'गति' के पहले अक्षर है",
-            "क्योंकि यह लैटिन शब्द 'सेलेरिटास' से आया है, जिसका अर्थ है गति",
-            "क्योंकि वैज्ञानिकों द्वारा इसे बेतरतीब ढंग से चुना गया था जिन्हें 'c' अक्षर पसंद था"
+            "वे अनुमान पर आधारित होती हैं",
+            "वे कई बदलते कारकों पर निर्भर करती हैं",
+            "वे अपूर्ण डेटा पर आधारित होती हैं",
+            "वे बहुत अधिक गणनाओं का उपयोग करती हैं"
           ],
-          "solution": "सही उत्तर यह है कि यह लैटिन शब्द 'सेलेरिटास' से आया है, जिसका अर्थ है गति। इसका समर्थन ऐतिहासिक वैज्ञानिक प्रतीकों द्वारा किया जाता है जहां 'c' का उपयोग समीकरणों में गति के लिए किया जाता था। अन्य विकल्प गलत हैं क्योंकि वे संकेत के स्थापित मूल के साथ मेल नहीं खाते।",
+          "solution": "मौसम की भविष्यवाणियां कई बदलते कारकों जैसे तापमान, दबाव, आर्द्रता एवं हवा पर निर्भर करती हैं। इन कारकों में छोटे परिवर्तन अलग-अलग परिणामों की ओर ले जा सकते हैं, जिसके कारण लंबे समय के भविष्यवाणियां अनिश्चित होती हैं। अन्य विकल्प गलत हैं क्योंकि भविष्यवाणियां अनुमान के बजाय साक्ष्य पर आधारित होती हैं और वे हमेशा गलत नहीं होतीं या केवल गणनाओं पर आधारित नहीं होतीं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "प्रकाशाच्या वेगाला 'c' चिन्हाने दर्शवले जाते कारण काय?",
+          "stem": "हवामान अंदाज वारंवार चुकत असतात त्याचा मुख्य कारण काय आहे?",
           "choices": [
-            "कारण ते सूत्रात 'क्यूबिक' चे अक्षर आहे",
-            "कारण ते इंग्रजीत 'स्पीड' शब्दाचे पहिले अक्षर आहे",
-            "कारण ते लॅटिन शब्द 'सेलेरिटास' इतके आहे, ज्याचा अर्थ वेग आहे",
-            "कारण ते वैज्ञानिकांनी याच अक्षराचा निवड केला आहे ज्यांना 'c' चा आवड आहे"
+            "ते अनुमानावर आधारित असतात",
+            "ते बदलत असलेल्या अनेक कारकांवर अवलंबून असतात",
+            "ते अपूर्ण डेटावर आधारित असतात",
+            "त्यांमध्ये जास्तीत जास्त गणना होतात"
           ],
-          "solution": "योग्य उत्तर हे आहे की ते लॅटिन शब्द 'सेलेरिटास' इतके आहे, ज्याचा अर्थ वेग आहे. हे ऐतिहासिक वैज्ञानिक नोटेशनमध्ये समर्थित आहे जेथे 'c' वेग दर्शविण्यासाठी समीकरणांमध्ये वापरले जाते. इतर विकल्प चुकीचे आहेत कारण ते संकेताच्या स्थापित मूळाशी जुळत नाहीत.",
+          "solution": "हवामान अंदाज तापमान, दाब, आर्द्रता आणि हवा या बदलत असलेल्या अनेक कारकांवर अवलंबून असतात. या कारकांमध्ये लहान बदल होऊ शकतात, जे विविध निकालांमध्ये बदल करतात, ज्यामुळे लांब मुदतीच्या अंदाजांमध्ये अनिश्चितता असते. इतर विकल्प चुकीचे आहेत कारण अंदाज अनुमानावर नसतात, तर पुराव्यावर आधारित असतात आणि ते नेहमी चुकीचे नसतात किंवा फक्त गणनांवर आधारित नसतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -167,10 +167,105 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the origin of the symbol with a scientific term",
-        "Misinterprets the meaning of 'speed' in English",
+        "Confuses weather forecasts with guesswork",
         null,
-        "A student might think scientific symbols are chosen randomly without any historical or linguistic basis"
+        "Students often think that weather forecasts are wrong because the data is not complete, not because of complex, chaotic systems",
+        "Students may think that more calculations always mean more errors, not realizing that complexity is necessary for accuracy"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as weather forecasts depend on many changing factors, which introduces uncertainty. The author's reasoning for the other options aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc101.pdf",
+          "ordinal": 6,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Exploration: Entering the World of Secondary Science"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc101.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Exploration: Entering the World of Secondary Science"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc101.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Exploration: Entering the World of Secondary Science"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-22T13:28:07.332Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Why do scientists use models to study complex systems?",
+      "choices": [
+        "To make the system more complicated",
+        "To focus only on unimportant details",
+        "To simplify the system and focus on what is most relevant",
+        "To ignore all details and guess the outcome"
+      ],
+      "answerIndex": 2,
+      "solution": "Scientists use models to simplify complex systems and focus on the most important aspects, making it easier to understand and analyze them. The other options are incorrect because they suggest models complicate, ignore, or guess, which goes against their purpose of highlighting key elements.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वैज्ञानिक क्यों मॉडल का उपयोग जटिल प्रणालियों के अध्ययन के लिए करते हैं?",
+          "choices": [
+            "प्रणाली को अधिक जटिल बनाने के लिए",
+            "केवल अमूल्य विवरणों पर ध्यान केंद्रित करने के लिए",
+            "प्रणाली को सरल बनाने और सबसे महत्वपूर्ण बातों पर ध्यान केंद्रित करने के लिए",
+            "सभी विवरणों को अनदेखा करने और परिणाम का अनुमान लगाने के लिए"
+          ],
+          "solution": "वैज्ञानिक मॉडल का उपयोग जटिल प्रणालियों को सरल बनाने और सबसे महत्वपूर्ण पहलुओं पर ध्यान केंद्रित करने के लिए करते हैं, जिससे उनकी समझ और विश्लेषण आसान हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे मॉडल के जटिल, अनदेखा करने या अनुमान लगाने के बारे में कहते हैं, जो उनके उद्देश्य के विपरीत है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विज्ञानज्ञ कार्यकारी प्रणालींच्या अभ्यासासाठी मॉडेल्स वापरतात का?",
+          "choices": [
+            "प्रणाली अधिक जटिल करण्यासाठी",
+            "महत्वाच्या विवरणांवर फक्त लक्ष केंद्रित करण्यासाठी",
+            "प्रणाली सोपी करण्यासाठी आणि सर्वात महत्वाच्या गोष्टींवर लक्ष केंद्रित करण्यासाठी",
+            "सर्व विवरण नकारून निकाल अनुमान काढण्यासाठी"
+          ],
+          "solution": "विज्ञानज्ञ मॉडेल्स वापरतात कारण ते जटिल प्रणाली अधिक सोपी करतात आणि सर्वात महत्वाच्या गोष्टींवर लक्ष केंद्रित करतात. इतर विकल्प अयोग्य आहेत कारण ते मॉडेल्स जटिल करतात, नकारतात किंवा अनुमान घेतात, जे त्यांच्या उद्देशाशी विरोधी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer remains in the same position (option 2). All distractors are still incorrect and distinct.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the purpose of models as making things more complex.",
+        "Incorrectly assumes that models ignore important details.",
+        null,
+        "Believes that models are based on guessing rather than focusing on relevant aspects."
       ],
       "solverAnswers": [
         2,
@@ -180,80 +275,80 @@
         2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 2, as 'c' does come from the Latin word 'celeritas' meaning speed. The other options reflect common misconceptions about the origin of scientific symbols.",
+      "critique": "The correct answer is clearly supported by the explanation that models simplify systems. All distractors represent common misconceptions about the purpose of scientific models.",
       "sources": [
         {
           "document": "ncert/9/science/iesc101.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 3,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 1: Exploration: Entering the World of Secondary Science"
           ]
         },
         {
           "document": "ncert/9/science/iesc101.pdf",
-          "ordinal": 4,
-          "pageStart": 3,
-          "pageEnd": 3,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 1: Exploration: Entering the World of Secondary Science"
           ]
         },
         {
           "document": "ncert/9/science/iesc101.pdf",
-          "ordinal": 5,
-          "pageStart": 4,
-          "pageEnd": 4,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 1: Exploration: Entering the World of Secondary Science"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:28:30.040Z",
+      "generatedAt": "2026-10-22T13:28:07.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "How can a prediction about rain be made more scientifically testable?",
+      "stem": "If a student models the motion of a falling object by ignoring air resistance, what can be inferred about the model?",
       "choices": [
-        "By asking if the clouds look dark",
-        "By asking about the humidity and wind speed",
-        "By guessing whether it will rain",
-        "By asking if the sky is clear"
+        "The model is incorrect",
+        "The model is too simple to be useful",
+        "The model is an approximation to understand gravity",
+        "The model is not based on any scientific principle"
       ],
-      "answerIndex": 1,
-      "solution": "Asking about humidity and wind speed provides measurable data that can be used to evaluate a prediction about rain. These factors are scientifically relevant and can be observed and recorded. Other options, like guessing or checking the sky's appearance, are subjective and not based on quantifiable evidence.",
+      "answerIndex": 2,
+      "solution": "Ignoring air resistance in a model of a falling object simplifies the scenario to focus on the fundamental effects of gravity. This approach is a common scientific method to understand core principles without unnecessary complexity. The other options incorrectly suggest the model lacks value or is not grounded in science.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "बारिश के बारे में एक भविष्यवाणी को वैज्ञानिक रूप से अधिक परीक्षण योग्य कैसे बनाया जा सकता है?",
+          "stem": "यदि एक छात्र एक गिरते वस्तु की गति के मॉडल को हवा के प्रतिरोध को अनदेखा करके बनाता है, तो मॉडल के बारे में क्या निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "बादलों के अंधेरे दिखाई देने के बारे में पूछकर",
-            "आर्द्रता और हवा की गति के बारे में पूछकर",
-            "यह अनुमान लगाकर कि बारिश होगी",
-            "आकाश के स्पष्ट होने के बारे में पूछकर"
+            "मॉडल गलत है",
+            "मॉडल बहुत सरल है जिसके कारण उपयोगी नहीं है",
+            "मॉडल गुरुत्व को समझने के लिए एक अनुमान है",
+            "मॉडल किसी भी वैज्ञानिक सिद्धांत पर आधारित नहीं है"
           ],
-          "solution": "आर्द्रता और हवा की गति के बारे में पूछना मापनीय डेटा प्रदान करता है जिसका उपयोग बारिश के बारे में भविष्यवाणी के मूल्यांकन के लिए किया जा सकता है। इन कारकों का वैज्ञानिक रूप से महत्व है और इन्हें अवलोकन और रिकॉर्ड किया जा सकता है। अन्य विकल्पों, जैसे अनुमान लगाना या आकाश के दिखाई देने के बारे में पूछना, व्यक्तिगत हैं और मापनीय साक्ष्य पर आधारित नहीं हैं।",
+          "solution": "गिरते वस्तु के मॉडल में हवा के प्रतिरोध को अनदेखा करना स्थिति को सरल बनाता है ताकि गुरुत्व के मूल प्रभावों पर ध्यान केंद्रित किया जा सके। इस प्रक्रिया वैज्ञानिक विधि के सामान्य उपाय है जो अनावश्यक जटिलता के बिना मूल सिद्धांतों को समझने के लिए उपयोग की जाती है। अन्य विकल्प गलत तरीके से मॉडल के मूल्य को नकारते हैं या यह नहीं बताते कि यह विज्ञान पर आधारित है।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option 2 in both languages.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains in the same position, and the distractors are still incorrect. The terminology used is appropriate for a Hindi-medium science curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "वर्षा बद्दलच्या भविष्यवाणीला वैज्ञानिकरित्या परीक्षण करण्यासाठी कशी करावी?",
+          "stem": "एका विद्यार्थीने एका पडत असलेल्या वस्तूच्या गतीचे मॉडेल वापरले आहे आणि हवा प्रतिरोध नजरअंदाज केला आहे, तर मॉडेलबद्दल काय निष्कर्ष काढता येईल?",
           "choices": [
-            "मेघांच्या रंगाबद्दल विचारल्याने",
-            "आर्द्रता आणि वाऱ्याच्या वेगाबद्दल विचारल्याने",
-            "वर्षा होईल की नाही याबद्दल अंदाज बांधल्याने",
-            "आकाश स्पष्ट आहे की नाही याबद्दल विचारल्याने"
+            "मॉडेल चुकीचे आहे",
+            "मॉडेल खूप सोपे आहे आणि उपयोगी नाही",
+            "मॉडेल गुरुत्वाकर्षण लक्षात घेण्यासाठी एक अंदाज आहे",
+            "मॉडेल कोणत्याही वैज्ञानिक तत्त्वावर आधारित नाही"
           ],
-          "solution": "आर्द्रता आणि वाऱ्याच्या वेगाबद्दल विचारल्याने मापनीय डेटा मिळतो जो वर्षा बद्दलच्या भविष्यवाणीच्या तपासणीसाठी वापरता येतो. हे घटक वैज्ञानिकदृष्ट्या महत्वपूर्ण आहेत आणि त्यांचा अवलोकन आणि नोंद करता येतो. इतर विकल्प, जसे की अंदाज बांधणे किंवा आकाशाच्या दृश्याबद्दल विचारल्याने, विषयीक आहेत आणि मापनीय पुराव्यावर आधारित नाहीत.",
+          "solution": "पडत असलेल्या वस्तूच्या मॉडेलमध्ये हवा प्रतिरोध नजरअंदाज करणे संकीर्णता टाळून गुरुत्वाकर्षणच्या मूलभूत परिणामांवर लक्ष केंद्रित करण्यासाठी सोपे करते. ही वैज्ञानिक विधी आहे जी मूलभूत तत्त्वांच्या समजासाठी उपयुक्त आहे. इतर विकल्प चुकीचे असतात जे मॉडेलच्या मूल्याचा अस्तित्व नाकारतात किंवा ते वैज्ञानिक तत्त्वांवर आधारित नसल्याचा अस्पष्ट अर्थ देतात.",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Marathi curriculum, and the correct answer remains option 2 in both languages.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -262,93 +357,93 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "the dark clouds are not enough to make a prediction testable",
+        "Incorrectly assumes that ignoring air resistance makes the model wrong.",
+        "Fails to recognize that simplicity can still be useful.",
         null,
-        "guessing is not based on evidence",
-        "clear sky would not be a testable question"
+        "Believes that scientific models cannot be based on approximations."
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 because measuring humidity and wind speed provides objective, testable data. The other options rely on subjective observations or guesswork, which are not scientifically testable.",
+      "critique": "The correct answer is 2, as the model is an approximation that simplifies reality to focus on key principles like gravity. The other options reflect common misconceptions about the purpose and validity of scientific models.",
       "sources": [
         {
           "document": "ncert/9/science/iesc101.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 3,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 1: Exploration: Entering the World of Secondary Science"
           ]
         },
         {
           "document": "ncert/9/science/iesc101.pdf",
-          "ordinal": 4,
-          "pageStart": 3,
-          "pageEnd": 3,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 1: Exploration: Entering the World of Secondary Science"
           ]
         },
         {
           "document": "ncert/9/science/iesc101.pdf",
-          "ordinal": 5,
-          "pageStart": 4,
-          "pageEnd": 4,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 1: Exploration: Entering the World of Secondary Science"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:28:30.040Z",
+      "generatedAt": "2026-10-22T13:28:07.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a student wants to study how masks block viruses, which of the following would they most likely focus on?",
+      "difficulty": 6,
+      "stem": "Why is it important to connect multiple branches of science when solving real-world problems?",
       "choices": [
-        "The color of the mask",
-        "The material of the mask",
-        "The shape of the mask",
-        "The brand of the mask"
+        "Because science is divided into separate subjects",
+        "Because real-world problems often involve multiple factors",
+        "Because it makes the work more difficult",
+        "Because it is required by the curriculum"
       ],
       "answerIndex": 1,
-      "solution": "The material of the mask is most important because it determines how effectively it can filter out viruses. The color, shape, and brand of the mask do not influence their ability to block viruses. The material's structure and composition are what matter scientifically.",
+      "solution": "Real-world problems, such as climate change or sustainable technology, often involve multiple factors that require knowledge from different branches of science. The other options are incorrect because science is not divided for the sake of separation, solving problems is not made more difficult by connecting branches, and the curriculum is not the main reason for this approach.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक छात्र को यह अध्ययन करना हो कि मास्क वायरस को कैसे रोकते हैं, तो निम्नलिखित में से किस पर वे अधिक संभावना है कि ध्यान केंद्रित करेंगे?",
+          "stem": "वास्तविक दुनिया के समस्याओं के हल करते समय विज्ञान की कई शाखाओं को जोड़ना क्यों महत्वपूर्ण है?",
           "choices": [
-            "मास्क का रंग",
-            "मास्क का सामग्री",
-            "मास्क का आकार",
-            "मास्क का ब्रांड"
+            "क्योंकि विज्ञान को अलग-अलग विषयों में विभाजित किया गया है",
+            "क्योंकि वास्तविक दुनिया की समस्याएं अक्सर कई कारकों को शामिल करती हैं",
+            "क्योंकि यह काम को अधिक कठिन बना देता है",
+            "क्योंकि इसकी आवश्यकता पाठ्यक्रम द्वारा होती है"
           ],
-          "solution": "मास्क की सामग्री सबसे महत्वपूर्ण होती है क्योंकि यह निर्धारित करती है कि यह वायरस को कितनी कुशलता से फ़िल्टर कर सकता है। मास्क के रंग, आकार और ब्रांड का उनकी वायरस को रोकने की क्षमता पर कोई प्रभाव नहीं होता है। वैज्ञानिक रूप से महत्वपूर्ण होती है सामग्री की संरचना और घटक।",
+          "solution": "वास्तविक दुनिया की समस्याएं, जैसे कि जलवायु परिवर्तन या स्थायी प्रौद्योगिकी, अक्सर विभिन्न विज्ञान की शाखाओं के ज्ञान की आवश्यकता रखती हैं। अन्य विकल्प गलत हैं क्योंकि विज्ञान को अलग करने का उद्देश्य अलगाव के लिए नहीं है, समस्याओं को हल करना शाखाओं को जोड़कर कठिन नहीं होता है, और पाठ्यक्रम इस प्रक्रिया के मुख्य कारण नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याला व्हायरस अडवतात याचा अभ्यास करायचा असेल, तर खालीलपैकी काय त्याला सर्वात जास्त लक्ष द्यावे लागेल?",
+          "stem": "वास्तविक जगातील समस्यांचे निराकरण करताना विज्ञानाच्या अनेक शाखांचा जोडणे का महत्वाचे आहे?",
           "choices": [
-            "मास्कचा रंग",
-            "मास्कचा वस्तुमान",
-            "मास्कचा आकार",
-            "मास्कचा ब्रँड"
+            "कारण विज्ञान वेगवेगळ्या विषयांमध्ये विभागले गेले आहे",
+            "कारण वास्तविक जगातील समस्या अक्सर अनेक घटकांचा समावेश करतात",
+            "कारण ते काम अधिक कठीण करते",
+            "कारण ते पाठ्यक्रमाने आवश्यक आहे"
           ],
-          "solution": "मास्कचा वस्तुमान सर्वात महत्वाचा असतो कारण तो व्हायरस अडविण्याच्या क्षमतेनुसार ठरतो. मास्कचा रंग, आकार आणि ब्रँड त्यांच्या व्हायरस अडविण्याच्या क्षमतेवर परिणाम करत नाहीत. वैज्ञानिकदृष्ट्या वस्तुमानाची संरचना आणि घटक असे महत्वाचे असतात.",
+          "solution": "वास्तविक जगातील समस्या, जसे की जलवायू बदल किंवा स्थिर तंत्रज्ञान, अक्सर अनेक घटकांचा समावेश करतात ज्यांच्यासाठी विज्ञानाच्या विविध शाखांचे ज्ञान आवश्यक असते. इतर विकल्प चुकीचे आहेत कारण विज्ञान विभागले गेले नाहीत ते विभागण्यासाठी, समस्यांचे निराकरण शाखांच्या जोडण्यामुळे अधिक कठीण केले जात नाही, आणि पाठ्यक्रम हे या पद्धतीचे मुख्य कारण नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -357,10 +452,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "focuses on the aesthetic aspect of the mask",
+        "Misunderstands the purpose of scientific divisions",
         null,
-        "focuses on the physical shape of the mask",
-        "focuses on commercial aspects of the mask"
+        "Incorrect, as the goal is not to make work harder",
+        "Overlooks the practical importance of interdisciplinary approaches"
       ],
       "solverAnswers": [
         1,
@@ -369,13 +464,31 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the material of the mask is directly related to its ability to block viruses. The other options relate to non-functional aspects like appearance, shape, or brand, which are not relevant to the scientific function of the mask.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as real-world problems typically involve multiple factors that require interdisciplinary knowledge. The author's reasoning for the other options is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc101.pdf",
-          "ordinal": 9,
-          "pageStart": 7,
+          "ordinal": 6,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Exploration: Entering the World of Secondary Science"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc101.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Exploration: Entering the World of Secondary Science"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc101.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
           "pageEnd": 7,
           "headingPath": [
             "Chapter 1: Exploration: Entering the World of Secondary Science"
@@ -383,7 +496,7 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-19T15:28:30.040Z",
+      "generatedAt": "2026-10-22T13:28:07.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

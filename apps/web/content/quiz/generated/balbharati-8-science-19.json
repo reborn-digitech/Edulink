@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-19T10:53:21.504Z",
+  "generatedAt": "2026-10-22T08:29:16.242Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a type of galaxy?",
+      "stem": "Which of the following is the closest star to Earth?",
       "choices": [
-        "Spiral",
-        "Cube",
-        "Square",
-        "Triangle"
+        "The Sun",
+        "Alpha Centauri",
+        "Sirius",
+        "Betelgeuse"
       ],
       "answerIndex": 0,
-      "solution": "Spiral is a type of galaxy, characterized by a flat, rotating disk with spiral arms. Cube, Square, and Triangle are geometric shapes and not classifications of galaxies in astronomy.",
+      "solution": "The Sun is the closest star to Earth because it is part of our solar system and located just 93 million miles away on average. Alpha Centauri, Sirius, and Betelgeuse are all much farther away, with Alpha Centauri being the next closest star system after the Sun. None of the other stars are as near as the Sun, which is the only star that directly influences Earth's climate and life.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक गैलेक्सी के प्रकार है?",
+          "stem": "निम्नलिखित में से कौन-सा पृथ्वी के सबसे निकट का तारा है?",
           "choices": [
-            "स्पिरल",
-            "घन",
-            "वर्ग",
-            "त्रिभुज"
+            "सूर्य",
+            "एल्फा सेंटौरी",
+            "सीरियस",
+            "बेटेलगुस"
           ],
-          "solution": "स्पिरल एक गैलेक्सी के प्रकार है, जिसकी एक चपटी, घूमती हुई डिस्क होती है जिसमें स्पिरल बाहें होती हैं। घन, वर्ग और त्रिभुज ज्यामितीय आकृतियां हैं और खगोल विज्ञान में गैलेक्सी के वर्गीकरण नहीं हैं।",
+          "solution": "सूर्य पृथ्वी के सबसे निकट का तारा है क्योंकि यह हमारे सौर मंडल का हिस्सा है और औसतन 93 मिलियन मील की दूरी पर स्थित है। एल्फा सेंटौरी, सीरियस और बेटेलगुस सभी बहुत दूर हैं, एल्फा सेंटौरी सूर्य के बाद अगला सबसे निकट का तारा प्रणाली है। अन्य कोई तारा पृथ्वी के बराबर निकट नहीं है, जो केवल एक तारा है जो पृथ्वी के जलवायु और जीवन पर सीधा प्रभाव डालता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for astronomical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for astronomical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते गॅलॅक्सीचे प्रकार आहे?",
+          "stem": "खालीलपैकी भूमीच्या जवळचे तारा कोणता आहे?",
           "choices": [
-            "स्पायरल",
-            "क्यूब",
-            "स्क्वेअर",
-            "ट्रायंगल"
+            "सूर्य",
+            "अल्फा सेंटौरी",
+            "सिरियस",
+            "बेटेल्जेस"
           ],
-          "solution": "स्पायरल एक गॅलॅक्सीचा प्रकार आहे, जी सपाट, घुमत्या डिस्कसह स्पायरल आर्म्स असतात. क्यूब, स्क्वेअर आणि ट्रायंगल ही ज्योमेट्रिक आकृती आहेत आणि खगोलशास्त्रात गॅलॅक्सींच्या वर्गीकरणासाठी वापरली जात नाहीत.",
+          "solution": "सूर्य भूमीच्या जवळचा तारा आहे कारण तो आमच्या सौर प्रणालीचा भाग आहे आणि सरासरी 93 मिलियन मैल अंतरावर असतो. अल्फा सेंटौरी, सिरियस आणि बेटेल्जेस हे सर्व अतिशय दूर असतात, आणि अल्फा सेंटौरी हा सूर्यानंतर जवळचा तारा प्रणाली असतो. इतर कोणत्याही ताऱ्यांचे अंतर सूर्यापेक्षा जवळ नसते, जो भूमीच्या जलवायू आणि जीवनावर सीधा परिणाम करतो.",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology for astronomical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi astronomical terms.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses galaxy types with geometric shapes",
-        "Confuses galaxy types with geometric shapes",
-        "Confuses galaxy types with geometric shapes"
+        "Chooses Alpha Centauri as the closest",
+        "Confuses Sirius with the closest star",
+        "Confuses Betelgeuse with the closest star"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is correctly answered with option 0 (Spiral), as it is a recognized galaxy type. The distractors are geometric shapes, which is a reasonable misconception for students who confuse galaxy classifications with basic geometry.",
+      "critique": "The correct answer is clearly the Sun, as it is the closest star to Earth. The other options are all well-known stars but are not the closest. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -116,49 +116,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 1,
-      "stem": "What is the name of our galaxy?",
+      "stem": "Which of the following is a final stage of a star's life cycle?",
       "choices": [
-        "Milky Way",
-        "Andromeda",
-        "Magellanic",
-        "Orion"
+        "White dwarf",
+        "Baby star",
+        "Red giant",
+        "Protostar"
       ],
       "answerIndex": 0,
-      "solution": "The Milky Way is the name of our galaxy, which is a spiral-shaped system of stars, gas, and dust. Andromeda is a separate spiral galaxy, Magellanic refers to smaller galaxies near the Milky Way, and Orion is a constellation within our galaxy. Therefore, the correct answer is 'Milky Way.'",
+      "solution": "The correct answer is 'White dwarf' because it is the stable, dense remnant of a star after it has exhausted its nuclear fuel and shed its outer layers. A 'Baby star' refers to a newly formed star, a 'Red giant' is a later stage where the star expands and cools, and a 'Protostar' is an early stage where the star is still forming.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "हमारे गैलेक्सी का नाम क्या है?",
+          "stem": "निम्नलिखित में से कौन तारा के जीवन चक्र की अंतिम अवस्था है?",
           "choices": [
-            "मिल्की वे",
-            "एंड्रोमेडा",
-            "मैगेलेनिक",
-            "ओरियन"
+            "सफेद बौना",
+            "बच्चा तारा",
+            "लाल दानव",
+            "प्रोटोस्टार"
           ],
-          "solution": "मिल्की वे हमारे गैलेक्सी का नाम है जो तारों, गैस और धूल के स्पाइरल आकार के प्रणाली है। एंड्रोमेडा एक अलग स्पाइरल गैलेक्सी है, मैगेलेनिक हमारे गैलेक्सी के पास के छोटे गैलेक्सी के लिए है और ओरियन हमारे गैलेक्सी में एक तारामंडल है। इसलिए सही उत्तर 'मिल्की वे' है।",
+          "solution": "सही उत्तर 'सफेद बौना' है क्योंकि यह तारा के नाभिकीय ईंधन के उपयोग के बाद अपनी बाहरी परतें छोड़ देने के बाद एक स्थिर, घनत्व वाला अवशेष होता है। 'बच्चा तारा' एक नए बने तारे को संदर्भित करता है, 'लाल दानव' एक बाद की अवस्था है जहां तारा फैल जाता है और ठंडा हो जाता है, और 'प्रोटोस्टार' एक शुरुआती अवस्था है जहां तारा अभी बन रहा होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "आमच्या गॅलेक्सीचे नाव काय आहे?",
+          "stem": "खालीलपैकी कोणते तारकेच्या जीवनाच्या अंतिम टप्प्याचे उदाहरण आहे?",
           "choices": [
-            "मिल्की वे",
-            "अंड्रोमेडा",
-            "मॅगेलनिक",
-            "ओरियन"
+            "सफेद विवर",
+            "बाल तारा",
+            "लाल ग्रेट",
+            "प्रोटोस्टार"
           ],
-          "solution": "मिल्की वे हे आमच्या गॅलेक्सीचे नाव आहे, जी ताऱ्यां, वायू आणि धूल यांच्या स्पायरल-आकाराच्या प्रणालीचे आहे. अंड्रोमेडा ही एक वेगळी स्पायरल गॅलेक्सी आहे, मॅगेलनिक ही मिल्की वेच्या जवळच्या लहान गॅलेक्सींच्या संदर्भात आहे आणि ओरियन ही आमच्या गॅलेक्सीमध्ये असलेल्या एका तारागटाचे नाव आहे. त्यामुळे, योग्य उत्तर 'मिल्की वे' आहे.",
+          "solution": "बरोबर उत्तर 'सफेद विवर' आहे कारण ते तारकेचे स्थिर, घन अवशेष आहे ज्याने आपले न्यूक्लियर ईंधन उत्पादन थांबवल्यानंतर आणि बाहेरील परत विकसित केल्यानंतर राहते. 'बाल तारा' हा नवीन तयार झालेल्या तारकेचे उल्लेख आहे, 'लाल ग्रेट' हा एक नंतरचा टप्पा आहे जेव्हा तारा विस्तारते आणि थंड होते, आणि 'प्रोटोस्टार' हा एक विशाल टप्पा आहे जेव्हा तारा अजून तयार होत आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi astronomical terms. The structure and content match the original English question.",
+          "critique": "The translation is accurate and uses appropriate Marathi astronomical terminology.",
           "flag": null
         }
       },
@@ -168,9 +168,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses our galaxy with other galaxies",
-        "Confuses our galaxy with other galaxies",
-        "Confuses our galaxy with other galaxies"
+        "Refers to an early stage in the formation of a star, not the final stage.",
+        "Refers to a stage in the life cycle of a star, but not the final one.",
+        "Refers to a stage in the life cycle of a star, but not the final one."
       ],
       "solverAnswers": [
         0,
@@ -180,7 +180,85 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and tests recall. The correct answer is clearly 'Milky Way' as stated in the passage. The other options are other galaxies and are commonly confused with the Milky Way.",
+      "critique": "The question is well-constructed and the solution is accurate. White dwarf is indeed a final stage for low- to medium-mass stars, and the other options are earlier stages. The distractors are plausible and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 173,
+          "pageStart": 147,
+          "pageEnd": 148,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following best describes the shape of our galaxy?",
+      "choices": [
+        "A disc with a bulge in the centre",
+        "A perfect circle",
+        "A spiral with no bulge",
+        "A triangular shape"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is a disc with a bulge in the centre because our galaxy, the Milky Way, is classified as a barred spiral galaxy, which has a central bulge surrounded by a flat disc. A perfect circle is incorrect because galaxies are not perfectly circular in shape. A spiral with no bulge is wrong because all spiral galaxies have a central bulge. A triangular shape is not consistent with the observed structure of galaxies.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा हमारे गैलेक्सी के आकार का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "एक डिस्क जिसके केंद्र में एक गोलाकार भाग है",
+            "एक पूर्ण वृत्त",
+            "एक स्पाइरल जिसमें कोई गोलाकार भाग नहीं है",
+            "एक त्रिभुजाकार आकृति"
+          ],
+          "solution": "सही उत्तर एक डिस्क जिसके केंद्र में एक गोलाकार भाग है क्योंकि हमारा गैलेक्सी, मिल्की वे, एक बार-स्पाइरल गैलेक्सी के रूप में वर्गीकृत है, जिसमें एक तलीय डिस्क के चारों ओर एक केंद्रीय गोलाकार भाग होता है। एक पूर्ण वृत्त गलत है क्योंकि गैलेक्सी आकृति में पूर्ण वृत्ताकार नहीं होती है। एक स्पाइरल जिसमें कोई गोलाकार भाग नहीं है गलत है क्योंकि सभी स्पाइरल गैलेक्सी में केंद्रीय गोलाकार भाग होता है। एक त्रिभुजाकार आकृति गैलेक्सी की अवलोकित संरचना के साथ संगत नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately translated, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते आमच्या गॅलेक्सीच्या आकृतीचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "एक डिस्क ज्याच्या मध्यभागी एक गोल आकृती आहे",
+            "एक पूर्ण वर्तुळ",
+            "एक स्पायरल ज्यामध्ये कोणताही गोल आकृती नाही",
+            "एक त्रिकोणाकृती आकृती"
+          ],
+          "solution": "योग्य उत्तर एक डिस्क ज्याच्या मध्यभागी एक गोल आकृती आहे कारण आमच्या गॅलेक्सी, मिल्की वे, एक बार्ड स्पायरल गॅलेक्सी म्हणून वर्गीकृत केली जाते, जी एका तलक डिस्क ज्याच्या मध्यभागी एक गोल आकृती असते. एक पूर्ण वर्तुळ अयोग्य आहे कारण गॅलेक्सी आकृती खूपच नियमित वर्तुळाकृती नसतात. एक स्पायरल ज्यामध्ये कोणताही गोल आकृती नाही हे चूक आहे कारण सर्व स्पायरल गॅलेक्सींमध्ये मध्यभागी एक गोल आकृती असते. एक त्रिकोणाकृती आकृती गॅलेक्सींच्या अवलोकित संरचनेशी संगत नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium textbook. The structure and meaning of the question and options are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the shape of the galaxy with a perfect circle",
+        "Misinterprets the description of the spiral galaxy",
+        "Thinks the spiral galaxy has no bulge in the centre"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as it accurately describes the shape of the Milky Way as a spiral galaxy with a central bulge. The other options represent common misconceptions about the galaxy's shape.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -211,144 +289,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "What is the primary fuel in the Sun?",
+      "difficulty": 2,
+      "stem": "What is the role of gas pressure in a star?",
       "choices": [
-        "Hydrogen",
-        "Oxygen",
-        "Carbon",
-        "Nitrogen"
-      ],
-      "answerIndex": 0,
-      "solution": "The primary fuel in the Sun is hydrogen because it undergoes nuclear fusion to produce energy. Oxygen, carbon, and nitrogen do not serve as the main fuel source in the Sun's energy production. Hydrogen is the only element that is primarily consumed in the fusion process that powers the Sun.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सूर्य में मुख्य ईंधन क्या है?",
-          "choices": [
-            "हाइड्रोजन",
-            "ऑक्सीजन",
-            "कार्बन",
-            "नाइट्रोजन"
-          ],
-          "solution": "सूर्य में मुख्य ईंधन हाइड्रोजन है क्योंकि यह ऊर्जा उत्पन्न करने के लिए परमाणु संलयन से गुजरता है। ऑक्सीजन, कार्बन और नाइट्रोजन सूर्य की ऊर्जा उत्पादन में मुख्य ईंधन के रूप में कार्य नहीं करते हैं। हाइड्रोजन एकमात्र तत्व है जो सूर्य को शक्ति प्रदान करने वाले संलयन प्रक्रिया में मुख्य रूप से उपभोग किया जाता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are standard in Hindi science textbooks, and the structure matches the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सूर्यातील प्राथमिक ईंधन काय आहे?",
-          "choices": [
-            "हायड्रोजन",
-            "ऑक्सीजन",
-            "कार्बन",
-            "नायट्रोजन"
-          ],
-          "solution": "सूर्यातील प्राथमिक ईंधन हायड्रोजन आहे कारण ते न्यूक्लियर फ्यूजनमधून ऊर्जा उत्पन्न करते. ऑक्सीजन, कार्बन आणि नायट्रोजन सूर्याच्या ऊर्जा उत्पादनासाठी मुख्य ईंधन स्रोत म्हणून काम करत नाहीत. हायड्रोजन हेच एकमेव घटक आहे जो सूर्याला शक्ती प्रदान करणार्या संलयन प्रक्रियेमध्ये मुख्यपणे उपभोगला जातो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the primary fuel with other elements",
-        "Confuses the primary fuel with other elements",
-        "Confuses the primary fuel with other elements"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and aligns with basic astrophysics knowledge. The correct answer is clearly hydrogen, and the distractors are common elements that might be confused with the primary fuel of the Sun.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 163,
-          "pageStart": 139,
-          "pageEnd": 139,
-          "headingPath": [
-            "19. Life Cycle of Stars"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 164,
-          "pageStart": 139,
-          "pageEnd": 140,
-          "headingPath": [
-            "19. Life Cycle of Stars"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 165,
-          "pageStart": 140,
-          "pageEnd": 141,
-          "headingPath": [
-            "19. Life Cycle of Stars"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the unit used to measure the mass of stars?",
-      "choices": [
-        "Kilogram",
-        "Solar Mass",
-        "Ton",
-        "Gram"
+        "To cause the star to contract",
+        "To balance the gravitational force",
+        "To increase the star's temperature",
+        "To decrease the star's density"
       ],
       "answerIndex": 1,
-      "solution": "The unit used to measure the mass of stars is based on the mass of the Sun, which is called a Solar Mass. Kilogram, Ton, and Gram are standard units of mass but are not used for measuring stellar masses. Solar Mass provides a more appropriate scale for such large objects.",
+      "solution": "Gas pressure in a star helps to balance the gravitational force, maintaining the star's stability. 'To cause the star to contract' is incorrect because contraction happens when gravity overcomes pressure. 'To increase the star's temperature' is a result, not the role. 'To decrease the star's density' is also incorrect.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "तारों के द्रव्यमान को मापने के लिए किस इकाई का उपयोग किया जाता है?",
+          "stem": "एक तारे में गैस के दबाव की भूमिका क्या है?",
           "choices": [
-            "किलोग्राम",
-            "सौर द्रव्यमान",
-            "टन",
-            "ग्राम"
+            "तारे के संकुचित होने के लिए",
+            "गुरुत्वाकर्षण बल को संतुलित करना",
+            "तारे के तापमान को बढ़ाना",
+            "तारे के घनत्व को कम करना"
           ],
-          "solution": "तारों के द्रव्यमान को मापने के लिए इकाई सूर्य के द्रव्यमान पर आधारित होती है, जिसे सौर द्रव्यमान कहा जाता है। किलोग्राम, टन और ग्राम मानक द्रव्यमान इकाई हैं लेकिन तारों के द्रव्यमान को मापने के लिए इनका उपयोग नहीं किया जाता है। सौर द्रव्यमान ऐसी बड़ी वस्तुओं के लिए अधिक उपयुक्त पैमाना प्रदान करता है।",
+          "solution": "एक तारे में गैस के दबाव गुरुत्वाकर्षण बल को संतुलित करता है, जिससे तारे की स्थिरता बनी रहती है। 'तारे के संकुचित होने के लिए' गलत है क्योंकि संकुचन तब होता है जब गुरुत्वाकर्षण दबाव के ऊपर आ जाता है। 'तारे के तापमान को बढ़ाना' एक परिणाम है, न कि भूमिका। 'तारे के घनत्व को कम करना' भी गलत है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
-          "flag": null
+          "critique": "The Hindi translation is accurate, but the key is incorrect. The correct answer in Hindi should be (2), not (1).",
+          "flag": "translation critique: not one answer at the same position"
         },
         "mr": {
-          "stem": "तारांच्या द्रव्यमानाचे मोजमाप करण्यासाठी वापरल्या जाणार्‍या एककाचे नाव काय आहे?",
+          "stem": "तारेत वायू दाबाची भूमिका काय आहे?",
           "choices": [
-            "किलोग्रॅम",
-            "सौर द्रव्यमान",
-            "टन",
-            "ग्रॅम"
+            "तारेला खंडित करणे",
+            "गुरुत्वाकर्षण बलाचे संतुलन करणे",
+            "तारेचे तापमान वाढवणे",
+            "तारेची घनता कमी करणे"
           ],
-          "solution": "तारांच्या द्रव्यमानाचे मोजमाप करण्यासाठी वापरल्या जाणार्‍या एककाचे नाव सूर्याच्या द्रव्यमानावर आधारित असते, ज्याला सौर द्रव्यमान म्हणतात. किलोग्रॅम, टन आणि ग्रॅम ही मानक द्रव्यमानाची एकके आहेत परंतु तारांच्या द्रव्यमानाचे मोजमाप करण्यासाठी वापरली जात नाहीत. सौर द्रव्यमान हे अशा मोठ्या वस्तूंसाठी अधिक उपयुक्त पैमाना प्रदान करते.",
+          "solution": "तारेत वायू दाबाची भूमिका गुरुत्वाकर्षण बलाचे संतुलन करणे आहे, ज्यामुळे तारेची स्थिरता राखली जाते. 'तारेला खंडित करणे' अयोग्य आहे कारण खंडित होणे गुरुत्वाकर्षणाच्या बलाने दाबाच्या बलाला जिंकल्याने होते. 'तारेचे तापमान वाढवणे' हे परिणाम आहे, नक्की भूमिका नाही. 'तारेची घनता कमी करणे' देखील अयोग्य आहे.",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'गुरुत्वाकर्षण बल' (gravitational force) and 'वायू दाब' (gas pressure) are correctly used in Marathi scientific context.",
           "flag": null
         }
       },
@@ -357,10 +340,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses mass units with standard units",
+        "confuses the effect of pressure with its role",
         null,
-        "Confuses mass units with standard units",
-        "Confuses mass units with standard units"
+        "incorrectly identifies a result as the role",
+        "misunderstands the relationship between pressure and density"
       ],
       "solverAnswers": [
         1,
@@ -370,102 +353,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 'Solar Mass' as it is the standard unit used to measure the mass of stars. The other options are standard units of mass but not used for stellar mass.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 163,
-          "pageStart": 139,
-          "pageEnd": 139,
-          "headingPath": [
-            "19. Life Cycle of Stars"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 164,
-          "pageStart": 139,
-          "pageEnd": 140,
-          "headingPath": [
-            "19. Life Cycle of Stars"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 165,
-          "pageStart": 140,
-          "pageEnd": 141,
-          "headingPath": [
-            "19. Life Cycle of Stars"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What causes a star to remain stable?",
-      "choices": [
-        "Gravitational force only",
-        "Gas pressure only",
-        "Balanced gravitational force and gas pressure",
-        "Unbalanced gravitational force and gas pressure"
-      ],
-      "answerIndex": 2,
-      "solution": "A star remains stable when gravitational force and gas pressure are balanced. This balance ensures that the star neither contracts nor expands. If one force is stronger than the other, the star will either contract or expand, which means the forces are not balanced.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किस कारण से एक तारा स्थिर रहता है?",
-          "choices": [
-            "केवल गुरुत्वाकर्षण बल",
-            "केवल गैस का दबाव",
-            "संतुलित गुरुत्वाकर्षण बल और गैस का दबाव",
-            "असंतुलित गुरुत्वाकर्षण बल और गैस का दबाव"
-          ],
-          "solution": "एक तारा तब स्थिर रहता है जब गुरुत्वाकर्षण बल और गैस का दबाव संतुलित होता है। इस संतुलन के कारण तारा सिकुड़ता नहीं है या फैलता नहीं है। यदि कोई बल दूसरे की तुलना में मजबूत होता है, तो तारा सिकुड़ जाएगा या फैल जाएगा, जिसका अर्थ है कि बल संतुलित नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining option (2).",
-          "flag": null
-        },
-        "mr": {
-          "stem": "तारा स्थिर का रहता है?",
-          "choices": [
-            "केवल गुरुत्वाकर्षण बल",
-            "केवल गैस दबाव",
-            "संतुलित गुरुत्वाकर्षण बल आणि गैस दबाव",
-            "असंतुलित गुरुत्वाकर्षण बल आणि गैस दबाव"
-          ],
-          "solution": "तारा स्थिर रहता है जब गुरुत्वाकर्षण बल आणि गैस दबाव संतुलित होते हैं. इस संतुलन के कारण तारा सिकुड़ता नहीं या फैलता है. यदि कोई बल दूसरे के मुकाबले मजबूत होता है, तो तारा सिकुड़ जाता या फैल जाता है, जिसका अर्थ है कि बल संतुलित नहीं हैं.",
-          "imageAlt": null,
-          "critique": "The key is incorrect. In the Marathi text, the correct answer is option (3), but the key says (2). This is a critical error.",
-          "flag": "translation critique: not one answer at the same position"
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "A pupil might think that only gravitational force is responsible for stability.",
-        "A pupil might think that only gas pressure is responsible for stability.",
-        null,
-        "Believes that a star's stability depends on one force being stronger than the other"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly explains the balance between gravitational force and gas pressure.",
+      "critique": "The correct answer is 1, as gas pressure balances gravitational force in a star. The other options reflect common misconceptions about the role of pressure.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -496,50 +384,50 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which of the following is a stage in the life cycle of a star?",
+      "stem": "Which of the following is an end stage of a star with a mass between 8 and 25 times the mass of the Sun?",
       "choices": [
-        "Nebula",
-        "Molecule",
-        "Atom",
-        "Cell"
+        "White dwarf",
+        "Neutron star",
+        "Black hole",
+        "Supernova"
       ],
-      "answerIndex": 0,
-      "solution": "A nebula is a cloud of gas and dust in space, and it is the first stage in the life cycle of a star. Molecules, atoms, and cells are not stages in the life cycle of a star.",
+      "answerIndex": 1,
+      "solution": "Stars with a mass between 8 and 25 times the Sun's mass end their lives as neutron stars after a supernova explosion. White dwarfs are the remnants of lower-mass stars, while black holes form from more massive stars. A supernova is an explosive event, not an end stage itself. The correct answer is neutron star.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक तारे के जीवन चक्र का चरण है?",
+          "stem": "निम्नलिखित में से कौन सा सूर्य के द्रव्यमान के 8 से 25 गुना द्रव्यमान वाले तारे के अंतिम चरण का प्रतिनिधित्व करता है?",
           "choices": [
-            "नेबुला",
-            "अणु",
-            "परमाणु",
-            "कोशिका"
+            "सफेद बौना",
+            "न्यूट्रॉन तारा",
+            "कृष्ण छिद्र",
+            "सुपरनोवा"
           ],
-          "solution": "एक नेबुला अंतरिक्ष में गैस और धूल का बादल होता है और एक तारे के जीवन चक्र का पहला चरण होता है। अणु, परमाणु और कोशिका तारे के जीवन चक्र के चरण नहीं होते।",
+          "solution": "8 से 25 गुना सूर्य के द्रव्यमान वाले तारे एक सुपरनोवा विस्फोट के बाद न्यूट्रॉन तारे के रूप में अपने जीवन का अंत करते हैं। सफेद बौने कम द्रव्यमान वाले तारों के अवशेष होते हैं, जबकि कृष्ण छिद्र अधिक द्रव्यमान वाले तारों से बनते हैं। एक सुपरनोवा एक विस्फोटक घटना है, यह अंतिम चरण नहीं है। सही उत्तर न्यूट्रॉन तारा है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology.",
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते तारकाच्या जीवनचक्राचे टप्पा आहे?",
+          "stem": "खालीलपैकी सूर्याच्या द्रव्यमानाच्या 8 ते 25 पट द्रव्यमान असलेल्या ताराचा अंतिम टप्पा कोणता आहे?",
           "choices": [
-            "नेबुला",
-            "अणू",
-            "अणु",
-            "कोशिका"
+            "सफेद बौना",
+            "न्यूट्रॉन तारा",
+            "कृष्ण छिद्र",
+            "अतिचंद्रिका"
           ],
-          "solution": "एक नेबुला अंतरिक्षातील वायू आणि धूळचा ढग असतो आणि तारकाच्या जीवनचक्राचा पहिला टप्पा असतो. अणू, अणू आणि कोशिका तारकाच्या जीवनचक्राचे टप्पे नाहीत.",
+          "solution": "सूर्याच्या द्रव्यमानाच्या 8 ते 25 पट द्रव्यमान असलेल्या तारांच्या जीवनाचा अंतिम टप्पा अतिचंद्रिका फुटण्यानंतर न्यूट्रॉन तारा असतो. सफेद बौने कमी द्रव्यमान असलेल्या तारांचे अवशेष असतात, तर कृष्ण छिद्र अधिक द्रव्यमान असलेल्या तारांपासून बनतात. अतिचंद्रिका एक विस्फोटक घटना असते, ती अंतिम टप्पा नसते. योग्य उत्तर न्यूट्रॉन तारा आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation has a critical error: option (2) and (3) are both 'अणू' (atom), making them identical. This violates the principle of 'distractorsStillWrong' as it creates duplicate options and changes the question's structure.",
-          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong"
+          "critique": "Translation accurately conveys scientific meaning with appropriate Marathi terminology.",
+          "flag": null
         }
       },
       "imageKey": null,
@@ -547,260 +435,54 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses end stages with other terms",
         null,
-        "Confuses molecular structures with stellar stages",
-        "Refers to basic units of matter, not stellar stages",
-        "Refers to the basic unit of living organisms, not stellar stages"
+        "Does not recognize the mass range for neutron stars",
+        "Misunderstands the definition of a black hole"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 'Nebula' as it is indeed the first stage in the life cycle of a star. The other options are not related to stellar evolution and represent misconceptions about basic scientific concepts.",
+      "critique": "The correct answer is 1 (Neutron star). The solution is sound and matches the author's key. The reasoning for the wrong options reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 173,
-          "pageStart": 147,
-          "pageEnd": 148,
+          "ordinal": 169,
+          "pageStart": 143,
+          "pageEnd": 143,
           "headingPath": [
-            "19. Life Cycle of Stars",
-            "Exercises"
+            "19. Life Cycle of Stars"
           ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens to a star after it exhausts its nuclear fuel?",
-      "choices": [
-        "It becomes a white dwarf",
-        "It becomes a black hole",
-        "It becomes a neutron star",
-        "It becomes a quasar"
-      ],
-      "answerIndex": 0,
-      "solution": "After a star exhausts its nuclear fuel, it typically collapses and becomes a white dwarf if it is a low-mass star. Black holes and neutron stars are formed from high-mass stars, and quasars are extremely luminous objects powered by supermassive black holes.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक तारा के नाभिकीय ईंधन के उपयोग हो जाने के बाद क्या होता है?",
-          "choices": [
-            "यह एक श्वेत बृहस्पति बन जाता है",
-            "यह एक कृष्ण छिद्र बन जाता है",
-            "यह एक न्यूट्रॉन तारा बन जाता है",
-            "यह एक क्वासर बन जाता है"
-          ],
-          "solution": "जब एक तारा अपने नाभिकीय ईंधन के उपयोग कर लेता है, तो यह आमतौर पर कॉलेप्स हो जाता है और एक श्वेत बृहस्पति बन जाता है यदि यह एक कम द्रव्यमान वाला तारा है। कृष्ण छिद्र और न्यूट्रॉन तारे उच्च द्रव्यमान वाले तारों से बनते हैं, और क्वासर सुपरमैसिव कृष्ण छिद्रों द्वारा संचालित अत्यधिक चमकदार वस्तुएं होती हैं।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original meaning, with appropriate scientific terminology used for astronomical terms.",
-          "flag": null
         },
-        "mr": {
-          "stem": "एका ताराच्या परमाणु इंधन संपल्यानंतर काय होते?",
-          "choices": [
-            "ती एका श्वेत द्वितीयक तारेमध्ये बदलते",
-            "ती एका कृष्ण छिद्रामध्ये बदलते",
-            "ती एका न्यूट्रॉन तारेमध्ये बदलते",
-            "ती एका क्वासरमध्ये बदलते"
-          ],
-          "solution": "एका ताराच्या परमाणु इंधन संपल्यानंतर, ती सामान्यतः कोसळते आणि जर ती निम्न-द्रव्यमान तारा असेल तर ती श्वेत द्वितीयक तारेमध्ये बदलते. कृष्ण छिद्रे आणि न्यूट्रॉन तारा उच्च-द्रव्यमान तारांपासून तयार होतात, आणि क्वासर्स ही सुपरमॅसिव ब्लॅक हॉल द्वारे संचालित अत्यंत उजळ वस्तू आहेत.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Refers to a possible outcome for high-mass stars",
-        "Refers to a possible outcome for very high-mass stars",
-        "Refers to an active galactic nucleus, not a post-fuel stage"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (white dwarf), as low-mass stars become white dwarfs after exhausting their fuel. The other options are incorrect because black holes and neutron stars result from high-mass stars, and quasars are not a post-fuel stage of a star.",
-      "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 173,
-          "pageStart": 147,
-          "pageEnd": 148,
+          "ordinal": 170,
+          "pageStart": 144,
+          "pageEnd": 144,
           "headingPath": [
-            "19. Life Cycle of Stars",
-            "Exercises"
+            "19. Life Cycle of Stars"
           ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is true about the life cycle of a star?",
-      "choices": [
-        "Stars of different masses have different life cycles",
-        "All stars follow the same life cycle",
-        "Stars only live for a few years",
-        "Stars do not change over time"
-      ],
-      "answerIndex": 0,
-      "solution": "Stars of different masses have different life cycles because their mass determines how they evolve and what they become at the end of their lives. All stars do not follow the same life cycle, and stars live for much longer than a few years.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन सा तारे के जीवन चक्र के बारे में सही है?",
-          "choices": [
-            "अलग-अलग द्रव्यमान वाले तारे अलग-अलग जीवन चक्र के होते हैं",
-            "सभी तारे एक ही जीवन चक्र का अनुसरण करते हैं",
-            "तारे केवल कुछ वर्षों तक जीवित रहते हैं",
-            "तारे समय के साथ बदलते नहीं हैं"
-          ],
-          "solution": "अलग-अलग द्रव्यमान वाले तारे अलग-अलग जीवन चक्र के होते हैं क्योंकि उनका द्रव्यमान यह निर्धारित करता है कि वे अपने जीवन के अंत में क्या बन जाते हैं। सभी तारे एक ही जीवन चक्र का अनुसरण नहीं करते हैं, और तारे केवल कुछ वर्षों तक जीवित नहीं रहते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
         },
-        "mr": {
-          "stem": "खालीलपैकी कोणते तारकांच्या जीवन चक्राबद्दल खरे आहे?",
-          "choices": [
-            "वेगवेगळ्या द्रव्यमानाच्या तारांचे वेगवेगळे जीवन चक्र असतात",
-            "सर्व तारांचे एकसारखे जीवन चक्र असतात",
-            "तारांचे फक्त काही वर्षे जीवन असते",
-            "तारा काळानुसार बदलत नाहीत"
-          ],
-          "solution": "वेगवेगळ्या द्रव्यमानाच्या तारांचे वेगवेगळे जीवन चक्र असतात कारण त्यांचे द्रव्यमान त्यांच्या विकासाचे आणि त्यांच्या जीवनाच्या अंती काय होईल यावर परिणाम करते. सर्व तारांचे एकसारखे जीवन चक्र असत नाहीत आणि तारांचे जीवन फक्त काही वर्षांपेक्षा जास्त असते.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Incorrectly assumes all stars have the same life cycle",
-        "Incorrectly assumes stars have short lifespans",
-        "Incorrectly assumes stars do not evolve"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as stars of different masses indeed have different life cycles. The reasoning in the author's solution is sound and aligns with scientific understanding. All distractors represent common misconceptions.",
-      "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 173,
-          "pageStart": 147,
-          "pageEnd": 148,
+          "ordinal": 171,
+          "pageStart": 144,
+          "pageEnd": 144,
           "headingPath": [
             "19. Life Cycle of Stars",
             "Exercises"
           ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A star is observed to have a very high temperature but low luminosity. What could this indicate about its life stage?",
-      "choices": [
-        "It is a white dwarf",
-        "It is a red giant",
-        "It is a main-sequence star",
-        "It is a neutron star"
-      ],
-      "answerIndex": 0,
-      "solution": "A white dwarf is a hot but low-luminosity star, as it has exhausted its nuclear fuel and is no longer generating energy through fusion. A red giant is cool but highly luminous, a main-sequence star is stable, and a neutron star is extremely dense and hot but not typically observed as low-luminosity.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक तारा के बहुत उच्च तापमान के बावजूद कम चमक देखी गई है। इसका इसके जीवन चरण के बारे में क्या अर्थ हो सकता है?",
-          "choices": [
-            "यह एक सफेद बौना है",
-            "यह एक लाल दाना है",
-            "यह एक मुख्य अनुक्रम तारा है",
-            "यह एक न्यूट्रॉन तारा है"
-          ],
-          "solution": "एक सफेद बौना एक गर्म लेकिन कम चमक वाला तारा है, क्योंकि इसके पास परमाणु ईंधन का उपयोग करके ऊर्जा उत्पन्न करने के लिए ईंधन नहीं रह गया है। एक लाल दाना ठंडा लेकिन उच्च चमक वाला होता है, एक मुख्य अनुक्रम तारा स्थिर होता है, और एक न्यूट्रॉन तारा अत्यधिक घनत्व वाला और गर्म होता है लेकिन आमतौर पर कम चमक वाला नहीं देखा जाता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi astronomical terminology.",
-          "flag": null
         },
-        "mr": {
-          "stem": "एका ताराचे अत्यंत उच्च तापमान असले तरी त्याची उजळता कमी असते. याचा त्याच्या जीवन टप्प्याबद्दल काय अर्थ असू शकतो?",
-          "choices": [
-            "ती एक श्वेत द्वार आहे",
-            "ती एक लाल अंडाकृती तारा आहे",
-            "ती मुख्य अक्ष तारा आहे",
-            "ती न्यूट्रॉन स्टार आहे"
-          ],
-          "solution": "श्वेत द्वार ही उष्ण असलेली परंतु कमी उजळता असलेली तारा आहे, कारण तिच्या अणु संलयनामुळे ऊर्जा निर्माण होत नाही. लाल अंडाकृती तारा थंड परंतु उच्च उजळता असते, मुख्य अक्ष तारा स्थिर असते आणि न्यूट्रॉन स्टार अत्यंत घन आणि उष्ण असते परंतु सामान्यतः कमी उजळता असलेल्या तारांमध्ये दिसत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and answer.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Incorrectly associates red giant characteristics with the given description",
-        "Main-sequence stars are stable and not typically described as low-luminosity",
-        "Neutron stars are not typically observed as low-luminosity"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. White dwarfs are indeed hot but low-luminosity, while the other options are correctly dismissed based on their typical characteristics.",
-      "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 173,
-          "pageStart": 147,
-          "pageEnd": 148,
+          "ordinal": 172,
+          "pageStart": 145,
+          "pageEnd": 147,
           "headingPath": [
             "19. Life Cycle of Stars",
             "Exercises"
@@ -808,47 +490,47 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "A star's life cycle is determined primarily by its mass. Which of the following best explains this?",
+      "difficulty": 2,
+      "stem": "What is the main process that occurs in the core of a star?",
       "choices": [
-        "Mass determines the rate of nuclear fusion",
-        "Mass determines the color of the star",
-        "Mass determines the distance from Earth",
-        "Mass determines the number of planets"
+        "Nuclear fusion",
+        "Combustion",
+        "Decomposition",
+        "Oxidation"
       ],
       "answerIndex": 0,
-      "solution": "The mass of a star determines the rate at which it undergoes nuclear fusion, which in turn determines its life span and the stages it goes through. The color, distance, and number of planets are not the primary factors in determining a star's life cycle.",
+      "solution": "The correct answer is 'Nuclear fusion' because it is the process by which stars produce energy, combining light elements into heavier ones under extreme temperatures and pressures. The other options—combustion, decomposition, and oxidation—are chemical reactions that do not occur in the core of a star.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक तारे के जीवन चक्र का निर्धारण मुख्य रूप से इसके द्रव्यमान द्वारा किया जाता है। निम्नलिखित में से कौन-सा सबसे अच्छा इसकी व्याख्या करता है?",
+          "stem": "एक तारा के क्रोड में मुख्य प्रक्रिया क्या होती है?",
           "choices": [
-            "द्रव्यमान नाभिकीय संलयन की दर को निर्धारित करता है",
-            "द्रव्यमान तारे के रंग को निर्धारित करता है",
-            "द्रव्यमान पृथ्वी से दूरी को निर्धारित करता है",
-            "द्रव्यमान ग्रहों की संख्या को निर्धारित करता है"
+            "नाभिकीय संलयन",
+            "दहन",
+            "अपघटन",
+            "ऑक्सीकरण"
           ],
-          "solution": "एक तारे के द्रव्यमान इसके नाभिकीय संलयन की दर को निर्धारित करता है, जो इसके जीवनकाल और चरणों को निर्धारित करता है। रंग, दूरी और ग्रहों की संख्या तारे के जीवन चक्र के निर्धारण के मुख्य कारक नहीं हैं।",
+          "solution": "सही उत्तर 'नाभिकीय संलयन' है क्योंकि यह प्रक्रिया है जिसके द्वारा तारे ऊर्जा उत्पन्न करते हैं, जो चरम तापमान और दबाव के तहत हल्के तत्वों के भारी तत्वों में संयोजन के कारण होता है। अन्य विकल्प—दहन, अपघटन और ऑक्सीकरण—रासायनिक अभिक्रियाएं हैं जो तारे के क्रोड में नहीं होती हैं।",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एका ताराच्या जीवनचक्राचा निर्धार मुख्यतः त्याच्या द्रव्यमानावर होतो. खालीलपैकी कोणते सर्वात चांगले स्पष्टीकरण देते?",
+          "stem": "तारकाच्या कोरमध्ये होणारा मुख्य प्रक्रिया काय आहे?",
           "choices": [
-            "द्रव्यमान न्यूक्लियर संलयनाच्या दराचे निर्धार करते",
-            "द्रव्यमान ताराच्या रंगाचे निर्धार करते",
-            "द्रव्यमान पृथ्वीपासूनच्या अंतराचे निर्धार करते",
-            "द्रव्यमान ग्रहांच्या संख्येचे निर्धार करते"
+            "न्यूक्लियर फ्यूजन",
+            "ज्वलन",
+            "अपघटन",
+            "ऑक्सिडेशन"
           ],
-          "solution": "ताराच्या द्रव्यमानामुळे त्याच्या न्यूक्लियर संलयनाच्या दराचा निर्धार होतो, जो त्याच्या जीवनावधी आणि त्याच्या जागेच्या टप्प्यांच्या निर्धारासाठी महत्वाचा आहे. रंग, अंतर आणि ग्रहांच्या संख्येचा ताराच्या जीवनचक्राच्या निर्धारासाठी मुख्य घटक नाही.",
+          "solution": "बरोबर उत्तर 'न्यूक्लियर फ्यूजन' आहे कारण तारे ऊर्जा उत्पादन करतात, ज्यामध्ये उच्च तापमान आणि दाबाखाली हलक्या घटकांचे जोडले जाते. इतर विकल्प - ज्वलन, अपघटन आणि ऑक्सिडेशन - हे रासायनिक प्रतिक्रिया आहेत जी तारकाच्या कोरमध्ये होत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -860,9 +542,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses color with the primary factor in the life cycle",
-        "Distance from Earth is not related to the life cycle",
-        "Number of planets is not related to the life cycle"
+        "Refers to a chemical process that does not occur in the core of a star.",
+        "Refers to a process that does not occur in the core of a star.",
+        "Refers to a process that does not occur in the core of a star."
       ],
       "solverAnswers": [
         0,
@@ -871,8 +553,8 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as mass directly affects the rate of nuclear fusion, which drives a star's life cycle. The other options are unrelated to the life cycle and represent common misconceptions.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly 'Nuclear fusion,' and the distractors are all chemical processes that do not occur in a star's core, which aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -886,7 +568,1099 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-19T10:53:21.504Z",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a star is born from a cloud of gas and dust, which of the following must happen first?",
+      "choices": [
+        "The cloud starts contracting",
+        "The cloud becomes a black hole",
+        "The cloud forms a planet",
+        "The cloud reaches the Earth"
+      ],
+      "answerIndex": 0,
+      "solution": "The cloud must first start contracting because gravity pulls the gas and dust together, initiating the star formation process. A black hole is not formed at the beginning of a star's life, but rather in the final stages of massive stars. Forming a planet or reaching the Earth are not part of the initial steps in star formation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तारा गैस और धूल के बादल से जन्म लेता है, तो निम्नलिखित में से कौन सा पहले होना आवश्यक है?",
+          "choices": [
+            "बादल संकुचित होना शुरू हो जाता है",
+            "बादल कृष्ण छिद्र बन जाता है",
+            "बादल ग्रह बन जाता है",
+            "बादल पृथ्वी तक पहुंच जाता है"
+          ],
+          "solution": "बादल के संकुचित होने के पहले होना आवश्यक है क्योंकि गुरुत्वाकर्षण गैस और धूल को एक साथ खींचता है, जो तारा निर्माण प्रक्रिया की शुरुआत करता है। एक कृष्ण छिद्र तारे के जीवन के अंतिम चरण में बनता है, न कि शुरू में। ग्रह का निर्माण या पृथ्वी तक पहुंचना तारा निर्माण के प्रारंभिक चरणों में से कोई नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक तारा वायु आणि धूल च्या ढगापासून जन्माला येत असेल, तर खालीलपैकी काय प्रथम घडणे आवश्यक आहे?",
+          "choices": [
+            "ढग खुलण्यास सुरुवात होते",
+            "ढग एक कृष्ण छिद्र बनते",
+            "ढग एक ग्रह तयार करते",
+            "ढग भूमीपृष्ठापर्यंत पोहोचते"
+          ],
+          "solution": "ढग प्रथम खुलण्यास सुरुवात होणे आवश्यक आहे कारण गुरुत्वाकर्षण वायू आणि धूल एकत्र करते, तारा निर्माण प्रक्रियेची सुरुवात करते. एक कृष्ण छिद्र तारा जीवनाच्या अंतिम टप्प्यात तयार होते, निर्माणाच्या सुरुवातीला नाही. ग्रह तयार करणे किंवा भूमीपृष्ठापर्यंत पोहोचणे हे तारा निर्माणाच्या प्रारंभिक टप्प्यात भाग नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the cloud becomes a black hole first",
+        "Confuses the process with planet formation",
+        "Thinks the cloud reaches the Earth first"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the contraction of the cloud is the first step in star formation. The other options represent common misconceptions about the process.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 163,
+          "pageStart": 139,
+          "pageEnd": 139,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 164,
+          "pageStart": 139,
+          "pageEnd": 140,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 165,
+          "pageStart": 140,
+          "pageEnd": 141,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the main reason for the evolution of stars?",
+      "choices": [
+        "Changes in the star's color",
+        "Changes in the star's position in the sky",
+        "Burning of fuel at the centre of the star",
+        "Changes in the star's temperature"
+      ],
+      "answerIndex": 2,
+      "solution": "The main reason for the evolution of stars is the burning of fuel at the centre of the star. This process generates energy and maintains the balance between gas pressure and gravitational force. 'Changes in the star's color' is a result, not a cause. 'Changes in the star's position in the sky' is unrelated. 'Changes in the star's temperature' is a consequence, not the main reason.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तारों के विकास का मुख्य कारण क्या है?",
+          "choices": [
+            "तारे के रंग में परिवर्तन",
+            "आकाश में तारे के स्थान में परिवर्तन",
+            "तारे के केंद्र में ईंधन के जलने के कारण",
+            "तारे के तापमान में परिवर्तन"
+          ],
+          "solution": "तारों के विकास का मुख्य कारण तारे के केंद्र में ईंधन के जलने के कारण है। इस प्रक्रिया से ऊर्जा उत्पन्न होती है और गैस के दबाव और गुरुत्वाकर्षण बल के बीच संतुलन बना रहता है। 'तारे के रंग में परिवर्तन' एक परिणाम है, न कि कारण। 'आकाश में तारे के स्थान में परिवर्तन' असंबंधित है। 'तारे के तापमान में परिवर्तन' एक परिणाम है, न कि मुख्य कारण।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तारांच्या विकासाचे मुख्य कारण काय आहे?",
+          "choices": [
+            "ताराच्या रंगात बदल",
+            "आकाशात ताराच्या ठिकाणात बदल",
+            "ताराच्या केंद्रात ईंधन जाळणे",
+            "ताराच्या तापमानात बदल"
+          ],
+          "solution": "तारांच्या विकासाचे मुख्य कारण ताराच्या केंद्रात ईंधन जाळणे आहे. हा प्रक्रिया ऊर्जा उत्पन्न करते आणि गॅस दाब आणि गुरुत्वाकर्षण बलात तंतोतंत संतुलन राखते. 'ताराच्या रंगात बदल' हा परिणाम आहे, नैमित्तिक कारण नाही. 'आकाशात ताराच्या ठिकाणात बदल' असंबंधित आहे. 'ताराच्या तापमानात बदल' हा परिणाम आहे, नैमित्तिक कारण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "a superficial observation",
+        "a secondary effect",
+        null,
+        "incorrectly identifies a result as the cause"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the burning of fuel at the center of a star is the primary driver of stellar evolution. The other options are either results of the process or unrelated.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 166,
+          "pageStart": 141,
+          "pageEnd": 141,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 167,
+          "pageStart": 142,
+          "pageEnd": 142,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 168,
+          "pageStart": 142,
+          "pageEnd": 143,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a star is observed to be very bright during the day and its light took 6500 years to reach us, what can we infer about the star?",
+      "choices": [
+        "It is a white dwarf",
+        "It is a neutron star",
+        "It exploded in the year 1054 A.D.",
+        "It is a black hole"
+      ],
+      "answerIndex": 2,
+      "solution": "The star's light took 6500 years to reach Earth, meaning it exploded 6500 years ago. If it was visible during the day, it must have been a very bright event, consistent with a supernova. The year 1054 A.D. matches the time when such a bright explosion would have been observed. White dwarfs, neutron stars, and black holes are not typically associated with such bright, visible explosions during the day.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तारा दिन के समय बहुत चमकीला दिखाई देता है और इसकी रोशनी हम तक पहुंचने में 6500 साल लगे, तो हम इस तारे के बारे में क्या निष्कर्ष निकाल सकते हैं?",
+          "choices": [
+            "यह एक श्वेत बौना है",
+            "यह एक न्यूट्रॉन तारा है",
+            "इसने 1054 ईसवी में विस्फोट किया था",
+            "यह एक कृष्ण छिद्र है"
+          ],
+          "solution": "तारे की रोशनी को पृथ्वी तक पहुंचने में 6500 साल लगे, जिसका अर्थ है कि यह 6500 साल पहले विस्फोट कर चुका था। यदि यह दिन के समय दिखाई दे रहा था, तो इसका अर्थ है कि यह एक बहुत चमकीली घटना रही होगी, जो सुपरनोवा के साथ संगत है। 1054 ईसवी वह समय है जब ऐसे चमकीले विस्फोट को देखा गया था। श्वेत बौने, न्यूट्रॉन तारे और कृष्ण छिद्र आमतौर पर दिन के समय दिखाई देने वाले इतने चमकीले विस्फोटों से जुड़े नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate astronomical terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक तारा दिवसात खूप तीव्र दिसत असेल आणि त्याचा प्रकाश आम्हाला पोहोचण्यास 6500 वर्ष लागले असेल, तर तार्याबद्दल आम्ही काय निष्कर्ष काढू शकतो?",
+          "choices": [
+            "तो एक व्हाईट ड्वार्फ आहे",
+            "तो न्यूट्रॉन स्टार आहे",
+            "तो 1054 ईसवीत फटला होता",
+            "तो एक ब्लॅक होल आहे"
+          ],
+          "solution": "तार्याचा प्रकाश धरतीला पोहोचण्यास 6500 वर्ष लागले, जे अर्थात तो 6500 वर्षांपूर्वी फटला होता. जर तो दिवसात दिसला असेल तर त्याचा विस्फोट खूप तीव्र असावा, जो सुपरनोवा च्या तुलनेत असतो. 1054 ईसवी वर्ष असे वर्ष आहे जेव्हा अशा तीव्र विस्फोट दिसला असेल. व्हाईट ड्वार्फ, न्यूट्रॉन स्टार आणि ब्लॅक होल असे तीव्र, दिवसात दिसणारे विस्फोटांशी संबंधित नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi astronomical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses white dwarf with a bright explosion",
+        "confuses neutron star with a bright explosion",
+        null,
+        "misinterprets the timing of the event"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly links the observed brightness and light travel time to a historical supernova event. The solution is sound and matches the author's key. The distractors reflect common misconceptions about stellar remnants.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 169,
+          "pageStart": 143,
+          "pageEnd": 143,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 170,
+          "pageStart": 144,
+          "pageEnd": 144,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 171,
+          "pageStart": 144,
+          "pageEnd": 144,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 172,
+          "pageStart": 145,
+          "pageEnd": 147,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to a star when it runs out of hydrogen fuel?",
+      "choices": [
+        "It becomes a black hole",
+        "It becomes a red giant",
+        "It becomes a white dwarf",
+        "It explodes as a supernova"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'It becomes a red giant' because when a star runs out of hydrogen fuel, it starts to fuse helium and expands into a red giant. The other options describe different stages or events that may happen later in a star's life cycle, but not the immediate result of running out of hydrogen.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तारा क्या होता है जब यह हाइड्रोजन ईंधन समाप्त हो जाता है?",
+          "choices": [
+            "यह एक काला छिद्र बन जाता है",
+            "यह एक लाल दाना बन जाता है",
+            "यह एक सफेद बौना बन जाता है",
+            "यह सुपरनोवा के रूप में फट जाता है"
+          ],
+          "solution": "सही उत्तर 'यह एक लाल दाना बन जाता है' है क्योंकि जब एक तारा हाइड्रोजन ईंधन समाप्त कर देता है तो यह हीलियम के संलयन के साथ विस्तारित होकर लाल दाना बन जाता है। अन्य विकल्प तारे के जीवन चक्र के बाद के अलग-अलग चरणों या घटनाओं का वर्णन करते हैं, लेकिन हाइड्रोजन के समाप्त होने के तुरंत परिणाम नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate astronomical terms used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ताराच्या हायड्रोजन ईंधन निर्जन होत असताना काय होते?",
+          "choices": [
+            "ती कृष्ण छिद्र बनते",
+            "ती लाल दिगंत बनते",
+            "ती पांढरी दिगंत बनते",
+            "ती सुपरनोवा म्हणून फटते"
+          ],
+          "solution": "बरोबर उत्तर 'ती लाल दिगंत बनते' आहे कारण जेव्हा एका ताराचे हायड्रोजन ईंधन निर्जन होते तेव्हा ती हिलियम ज्वलन सुरू करते आणि लाल दिगंत बनते. इतर निवडा ताराच्या जीवनाच्या नंतरच्या टप्प्यांमध्ये घडू शकतात, परंतु हायड्रोजन ईंधन निर्जन होण्याचा तात्काळ परिणाम नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the life cycle stages of a star.",
+        null,
+        "Confuses the life cycle stages of a star.",
+        "Confuses the life cycle stages of a star."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. When a star runs out of hydrogen, it expands into a red giant as it begins fusing helium. The other options describe later stages or events in the star's life cycle.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 173,
+          "pageStart": 147,
+          "pageEnd": 148,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the final stage of a star with a mass less than 8 times that of the Sun?",
+      "choices": [
+        "Supernova explosion",
+        "Neutron star",
+        "Black hole",
+        "White dwarf"
+      ],
+      "answerIndex": 3,
+      "solution": "A star with a mass less than 8 times that of the Sun ends its life as a white dwarf. This occurs when the star's core contracts and cools, becoming a dense, Earth-sized object. Supernova explosions, neutron stars, and black holes are results of much more massive stars that undergo different, more violent evolutionary paths.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "mr": {
+          "stem": "सूर्याच्या द्रव्यमानाच्या 8 पट पेक्षा कमी द्रव्यमान असलेल्या ताराचा अंतिम टप्पा काय आहे?",
+          "choices": [
+            "सुपरनोवा विस्फोट",
+            "न्यूट्रॉन तारा",
+            "कृष्ण छिद्र",
+            "सफेद विवर"
+          ],
+          "solution": "सूर्याच्या द्रव्यमानाच्या 8 पट पेक्षा कमी द्रव्यमान असलेल्या ताराच्या जीवनाचा अंतिम टप्पा सफेद विवर असतो. हा टप्पा ताराच्या कोरच्या संकुचित होण्याच्या आणि थंड होण्याच्या प्रक्रियेमुळे होतो, ज्यामुळे एक घन, पृथ्वीच्या आकाराचे वस्तू बनते. सुपरनोवा विस्फोट, न्यूट्रॉन तारा आणि कृष्ण छिद्र हे अत्यंत जास्त द्रव्यमान असलेल्या तारांच्या विविध, अधिक विनाशकारी विकास मार्गांचे परिणाम आहेत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses with higher mass stars",
+        "confuses with higher mass stars",
+        "confuses with higher mass stars",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the scientific understanding that low-mass stars end as white dwarfs. The author's reasoning for the distractors is valid, as they reflect common misconceptions about stellar evolution.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 166,
+          "pageStart": 141,
+          "pageEnd": 141,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 167,
+          "pageStart": 142,
+          "pageEnd": 142,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 168,
+          "pageStart": 142,
+          "pageEnd": 143,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is true about the life cycle of a massive star?",
+      "choices": [
+        "It ends as a white dwarf",
+        "It ends as a neutron star",
+        "It ends as a black hole",
+        "It ends as a red giant"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'It ends as a black hole' because massive stars, after going through various stages, end their life cycle in a supernova explosion, and the core collapses to form a black hole. The other options describe the end stages of less massive stars, not massive ones.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा भारी तारे के जीवन चक्र के बारे में सत्य है?",
+          "choices": [
+            "यह एक श्वेत बौना बन जाता है",
+            "यह एक न्यूट्रॉन तारा बन जाता है",
+            "यह एक कृष्ण छिद्र बन जाता है",
+            "यह एक लाल दानव बन जाता है"
+          ],
+          "solution": "सही उत्तर 'यह एक कृष्ण छिद्र बन जाता है' है क्योंकि भारी तारे विभिन्न चरणों से गुजरने के बाद अपने जीवन चक्र के अंत में एक सुपरनोवा विस्फोट के साथ समाप्त होते हैं और कोर के एक कृष्ण छिद्र के रूप में गिर जाता है। अन्य विकल्प कम भारी तारों के अंतिम चरणों का वर्णन करते हैं, न कि भारी तारों के।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Hindi textbooks, and preserves the logical structure and meaning of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक भारी ताराच्या जीवन चक्राबद्दल खरे आहे?",
+          "choices": [
+            "तो श्वेत बौना असतो",
+            "तो न्यूट्रॉन तारा असतो",
+            "तो कृष्ण छिद्र असतो",
+            "तो लाल दिगंत असतो"
+          ],
+          "solution": "सही उत्तर 'तो कृष्ण छिद्र असतो' आहे कारण भारी तारा विविध टप्प्यांमधून जाऊन एका सुपरनोवा विस्फोटानंतर आपल्या जीवन चक्राचा अंत करतात आणि छिद्राचा अवशेष कृष्ण छिद्र बनतो. इतर विकल्पांमध्ये कमी भारी ताऱ्यांच्या अंतिम टप्प्यांचे वर्णन आहे, भारी ताऱ्यांच्या नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the life cycle stages of a star.",
+        "Confuses the life cycle stages of a star.",
+        null,
+        "Confuses the life cycle stages of a star."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (black hole), as massive stars end their life cycles in supernova explosions, leaving behind black holes. The other options describe the end stages of less massive stars. The author's reasoning is accurate and matches the scientific understanding.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 173,
+          "pageStart": 147,
+          "pageEnd": 148,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a star's fuel is completely exhausted, what will happen to the balance between gas pressure and gravitational force?",
+      "choices": [
+        "It will be maintained forever",
+        "It will be disrupted",
+        "It will increase",
+        "It will decrease"
+      ],
+      "answerIndex": 1,
+      "solution": "When a star's fuel is exhausted, the energy production stops, causing a drop in temperature and gas pressure. This leads to the disruption of the balance between gas pressure and gravitational force. 'It will be maintained forever' is incorrect because the loss of pressure means the balance cannot continue. 'It will increase' and 'It will decrease' refer to pressure changes, not the balance itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक तारे के ईंधन का पूरी तरह से उपयोग हो गया है, तो गैस दबाव और गुरुत्वाकर्षण बल के बीच संतुलन क्या होगा?",
+          "choices": [
+            "यह हमेशा बना रहेगा",
+            "यह बर्बाद हो जाएगा",
+            "यह बढ़ जाएगा",
+            "यह घट जाएगा"
+          ],
+          "solution": "जब एक तारे का ईंधन समाप्त हो जाता है, तो ऊर्जा उत्पादन रुक जाता है, जिसके कारण तापमान और गैस दबाव में गिरावट आती है। इससे गैस दबाव और गुरुत्वाकर्षण बल के बीच संतुलन बर्बाद हो जाता है। 'यह हमेशा बना रहेगा' गलत है क्योंकि दबाव के नुकसान के कारण संतुलन बरकरार नहीं रह सकता। 'यह बढ़ जाएगा' और 'यह घट जाएगा' दबाव के परिवर्तन के बारे में हैं, न कि संतुलन के बारे में।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर ताराच्या इंधनाचा पूर्णपणे उपभोग झाला, तर अणुविखुरणाच्या दाब आणि गुरुत्वाकर्षण बलाच्या संतुलनावर काय परिणाम होईल?",
+          "choices": [
+            "ते अजूनही टिकून राहील",
+            "ते बिघडेल",
+            "ते वाढेल",
+            "ते कमी होईल"
+          ],
+          "solution": "जेव्हा ताराच्या इंधनाचा उपभोग झाला, तेव्हा ऊर्जा उत्पादन थांबते, ज्यामुळे तापमान आणि अणुविखुरणाच्या दाबात घट होते. हे अणुविखुरणाच्या दाब आणि गुरुत्वाकर्षण बलाच्या संतुलनावर बिघाड होण्याचा कारण बनते. 'ते अजूनही टिकून राहील' अयोग्य आहे कारण दाबाच्या घटीमुळे संतुलन टिकू शकत नाही. 'ते वाढेल' आणि 'ते कमी होईल' हे दाबातील बदलांवर दर्शवतात, संतुलनावर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misinterprets the concept of balance",
+        null,
+        "incorrectly assumes an increase in pressure",
+        "incorrectly assumes a decrease in pressure"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the balance is disrupted when fuel is exhausted, as gas pressure decreases and cannot counteract gravity. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 166,
+          "pageStart": 141,
+          "pageEnd": 141,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 167,
+          "pageStart": 142,
+          "pageEnd": 142,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 168,
+          "pageStart": 142,
+          "pageEnd": 143,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In which stage of a star's life cycle does it start to fuse helium into heavier elements?",
+      "choices": [
+        "Main sequence",
+        "Red giant",
+        "White dwarf",
+        "Supernova"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Red giant' because in the red giant stage, a star begins to fuse helium into heavier elements like carbon and oxygen. The other options are incorrect because they represent different stages of a star's life cycle that do not involve helium fusion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तारा के जीवन चक्र के किस चरण में यह हीलियम के नाभिक को भारी तत्वों में संलयन करना शुरू कर देता है?",
+          "choices": [
+            "मुख्य अनुक्रम",
+            "लाल दानव",
+            "श्वेत बृहस्पति",
+            "सुपरनोवा"
+          ],
+          "solution": "सही उत्तर 'लाल दानव' है क्योंकि लाल दानव चरण में, एक तारा हीलियम के नाभिक को कार्बन और ऑक्सीजन जैसे भारी तत्वों में संलयन करना शुरू कर देता है। अन्य विकल्प गलत हैं क्योंकि वे एक तारा के जीवन चक्र के अलग-अलग चरणों का प्रतिनिधित्व करते हैं जिनमें हीलियम संलयन नहीं होता।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi science textbooks. 'लाल दानव' (Red Giant) is the correct term for the stage where helium fusion begins.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तारकेच्या जीवन चक्राच्या कोणत्या टप्प्यात ती हिलियम फुजन करू लागते?",
+          "choices": [
+            "मुख्य अक्ष",
+            "लाल दिगंत",
+            "काळा दिगंत",
+            "सुपरनोव्हा"
+          ],
+          "solution": "बरोबर उत्तर 'लाल दिगंत' आहे कारण लाल दिगंत टप्प्यात, तारका हिलियम वास्तविक घटकांमध्ये फुजन करू लागते जसे की कार्बन आणि ऑक्सीजन. इतर विकल्प चुकीचे आहेत कारण ते तारकेच्या जीवन चक्राच्या वेगळ्या टप्प्यांना सूचित करतात ज्यामध्ये हिलियम फुजन होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the life cycle stages of a star.",
+        null,
+        "Confuses the life cycle stages of a star.",
+        "Confuses the life cycle stages of a star."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'Red giant' as this is when helium fusion begins. The other options are incorrect, and the author's reasoning for the distractors is valid, as they reflect common misconceptions about stellar life cycles.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 173,
+          "pageStart": 147,
+          "pageEnd": 148,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the Sun's surface temperature were to increase significantly, what would be the most likely effect on Earth?",
+      "choices": [
+        "It would cause changes in Earth's climate",
+        "It would make the Earth uninhabitable",
+        "It would have no effect on Earth",
+        "It would cause the Earth to expand"
+      ],
+      "answerIndex": 0,
+      "solution": "If the Sun's surface temperature increased significantly, it would emit more energy, leading to changes in Earth's climate. The option suggesting the Earth would become uninhabitable is too extreme, as the climate would change but not necessarily become completely uninhabitable. The idea that there would be no effect is incorrect because the Sun's energy directly influences Earth's environment. The notion that the Earth would expand is not supported by scientific principles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सूर्य के सतह का तापमान बहुत अधिक बढ़ जाए, तो पृथ्वी पर सबसे संभावित प्रभाव क्या होगा?",
+          "choices": [
+            "इसके कारण पृथ्वी के जलवायु में परिवर्तन होगा",
+            "इसके कारण पृथ्वी अनुपयोगी हो जाएगी",
+            "इसके कारण पृथ्वी पर कोई प्रभाव नहीं पड़ेगा",
+            "इसके कारण पृथ्वी फैल जाएगी"
+          ],
+          "solution": "यदि सूर्य के सतह का तापमान बहुत अधिक बढ़ जाए, तो यह अधिक ऊर्जा उत्सर्जित करेगा, जिसके कारण पृथ्वी के जलवायु में परिवर्तन होगा। वह विकल्प जो कहता है कि पृथ्वी अनुपयोगी हो जाएगी, बहुत अत्यधिक है, क्योंकि जलवायु बदलेगी लेकिन आवश्यक रूप से पूरी तरह से अनुपयोगी नहीं होगी। यह विचार कि कोई प्रभाव नहीं पड़ेगा, गलत है क्योंकि सूर्य की ऊर्जा पृथ्वी के वातावरण को प्रभावित करती है। पृथ्वी के फैल जाने की अवधारणा वैज्ञानिक सिद्धांतों के समर्थन में नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सूर्याच्या पृष्ठभागाच्या तापमानात चमत्कारिक वाढ झाल्यास, पृथ्वीवर काय असे सर्वात शक्य परिणाम होईल?",
+          "choices": [
+            "त्यामुळे पृथ्वीच्या जलवायूच्या बदल होईल",
+            "त्यामुळे पृथ्वी अनुकूलनीय होईल",
+            "त्यामुळे पृथ्वीवर कोणताही परिणाम होणार नाही",
+            "त्यामुळे पृथ्वी विस्तारित होईल"
+          ],
+          "solution": "सूर्याच्या पृष्ठभागाच्या तापमानात चमत्कारिक वाढ झाल्यास तो अधिक ऊर्जा उत्सर्जित करेल, ज्यामुळे पृथ्वीच्या जलवायूमध्ये बदल होईल. पृथ्वी अनुकूलनीय होईल असा विकल्प अतिशयोक्तीचा आहे, कारण जलवायू बदलेल पण निश्चितपणे पूर्णपणे अनुकूलनीय होणार नाही. जेव्हा कोणताही परिणाम होणार नाही असा विचार अयोग्य आहे कारण सूर्याची ऊर्जा पृथ्वीच्या पर्यावरणाला थेट प्रभावित करते. पृथ्वी विस्तारित होईल असा विचार वैज्ञानिक तत्वांनी समर्थित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Overestimates the effect on Earth",
+        "Thinks there would be no effect",
+        "Imagines the Earth expanding"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as an increase in the Sun's surface temperature would logically affect Earth's climate. The other options represent common misconceptions or overestimations of the effect.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 163,
+          "pageStart": 139,
+          "pageEnd": 139,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 164,
+          "pageStart": 139,
+          "pageEnd": 140,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 165,
+          "pageStart": 140,
+          "pageEnd": 141,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What would happen to a star that continues to contract after a supernova explosion, with no pressure to balance gravity?",
+      "choices": [
+        "It would become a white dwarf",
+        "It would become a neutron star",
+        "It would collapse into a black hole",
+        "It would become a red giant"
+      ],
+      "answerIndex": 2,
+      "solution": "If a star continues to contract after a supernova without pressure to counteract gravity, the gravitational force becomes too strong for any known force to resist, causing the star to collapse into a black hole. White dwarfs and neutron stars form when the remaining core has enough pressure to resist further collapse, which does not happen in this case. Red giants are a much earlier stage in a star's life cycle and not the result of post-supernova contraction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तारा क्या होगा जो सुपरनोवा विस्फोट के बाद भी सिकुड़ता रहे, जिसके पास गुरुत्वाकर्षण के विरुद्ध कोई दबाव न हो?",
+          "choices": [
+            "यह एक श्वेत बौना बन जाएगा",
+            "यह एक न्यूट्रॉन तारा बन जाएगा",
+            "यह एक ब्लैक होल में धंस जाएगा",
+            "यह एक लाल दानव बन जाएगा"
+          ],
+          "solution": "यदि एक तारा सुपरनोवा के बाद भी सिकुड़ता रहे और गुरुत्वाकर्षण के विरुद्ध कोई दबाव न हो तो गुरुत्वाकर्षण बल ऐसा होगा जिसे कोई भी ज्ञात बल रोक नहीं सकता और तारा ब्लैक होल में धंस जाएगा। श्वेत बौने और न्यूट्रॉन तारे तब बनते हैं जब शेष कोर के पास पर्याप्त दबाव होता है जो आगे के सिकुड़ने का विरोध करता है, जो इस स्थिति में नहीं होता। लाल दानव एक तारे के जीवन चक्र के बहुत पहले के चरण होते हैं और सुपरनोवा के बाद के सिकुड़ने के परिणाम नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi astronomical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ताराच्या अवकाशात विस्फोटानंतर आणखी खंडित होत असताना गुरुत्वाकर्षण विरुद्ध कोणताही दाब नसल्यास त्याचा काय फायदा होईल?",
+          "choices": [
+            "ती व्हायला व्हायला जाईल",
+            "ती न्यूट्रॉन तारा बनेल",
+            "ती कृष्ण छिद्रात ढकलली जाईल",
+            "ती लाल दिगंत बनेल"
+          ],
+          "solution": "एका ताराच्या अवकाशात विस्फोटानंतर आणखी खंडित होत असताना गुरुत्वाकर्षण विरुद्ध कोणताही दाब नसल्यास गुरुत्वाकर्षण बल जास्त मजबूत होते जे कोणत्याही ज्ञात बलाच्या विरोधात असते, ज्यामुळे तारा कृष्ण छिद्रात ढकलली जाते. व्हायला व्हायला आणि न्यूट्रॉन तारा तयार होतात जेव्हा उरलेला कोरमध्ये पुढे खंडित होण्यासाठी पर्याप्त दाब असतो, जे या परिस्थितीत नाही. लाल दिगंत हा एका ताराच्या जीवनाच्या अत्यंत प्रारंभिक टप्प्यात असतो आणि अवकाशात विस्फोटानंतर खंडित होण्याचा परिणाम नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses end stages of different mass stars",
+        "confuses end stages of different mass stars",
+        null,
+        "confuses the process of black hole formation with neutron star formation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a star continuing to contract after a supernova with no pressure to balance gravity would collapse into a black hole, which aligns with the author's key. The reasoning for the distractors is valid and reflects common misconceptions about stellar evolution.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 169,
+          "pageStart": 143,
+          "pageEnd": 143,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 170,
+          "pageStart": 144,
+          "pageEnd": 144,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 171,
+          "pageStart": 144,
+          "pageEnd": 144,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 172,
+          "pageStart": 145,
+          "pageEnd": 147,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is a black hole called a black hole?",
+      "choices": [
+        "Because it emits no light",
+        "Because it absorbs all light",
+        "Because it is the end stage of a star",
+        "Because it is the most massive object in the universe"
+      ],
+      "answerIndex": 1,
+      "solution": "A black hole is called a black hole because it absorbs all light, meaning no light can escape from it. This characteristic makes it appear completely dark. The other options are incorrect because the absence of light emission is a result of absorption, not the reason for the name, and the other options describe different properties or stages of celestial objects.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ब्लैक होल क्यों कहा जाता है?",
+          "choices": [
+            "क्योंकि यह कोई प्रकाश उत्सर्जित नहीं करता",
+            "क्योंकि यह सभी प्रकाश अवशोषित कर लेता है",
+            "क्योंकि यह तारा का अंतिम चरण है",
+            "क्योंकि यह ब्रह्मांड का सबसे भारी वस्तु है"
+          ],
+          "solution": "एक ब्लैक होल को ब्लैक होल कहा जाता है क्योंकि यह सभी प्रकाश अवशोषित कर लेता है, जिसका अर्थ है कि कोई प्रकाश इससे बाहर नहीं निकल सकता। इस विशेषता के कारण इसे पूरी तरह अंधेरा दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि प्रकाश के उत्सर्जन की अनुपस्थिति अवशोषण के परिणामस्वरूप होती है, न कि नाम के कारण, और अन्य विकल्प अलग-अलग गैलेक्सी वस्तुओं के गुणों या चरणों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "का गुरुत्वाकर्षण छिद्र गुरुत्वाकर्षण छिद्र म्हणून ओळखले जाते?",
+          "choices": [
+            "कारण ते कोणतेही प्रकाश उत्सर्जित करत नाही",
+            "कारण ते सर्व प्रकाश शोषून घेते",
+            "कारण ते ताराच्या अंतिम टप्प्याचे असते",
+            "कारण ते ब्रह्मांडातील सर्वात जास्त द्रव्यमान असलेला वस्तु असते"
+          ],
+          "solution": "गुरुत्वाकर्षण छिद्र गुरुत्वाकर्षण छिद्र म्हणून ओळखले जाते कारण ते सर्व प्रकाश शोषून घेते, अर्थात त्यापासून प्रकाश कोणतेही बाहेर जाऊ शकत नाही. ही वैशिष्ट्ये त्याला पूर्णपणे काळे दिसून येण्यास कारणीभूत ठरते. इतर विकल्प चुकीचे आहेत कारण प्रकाश उत्सर्जनाचा अभाव शोषणाचा परिणाम आहे, नाहीतर नावाचे कारण. इतर विकल्प वेगवेगळ्या खगोलीय वस्तूंच्या वैशिष्ट्यांचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (1), and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of a black hole",
+        null,
+        "Does not understand the reason for the name",
+        "Misinterprets the end stage of a star"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as black holes are called black because they absorb all light. The solution is sound and matches the reasoning. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 169,
+          "pageStart": 143,
+          "pageEnd": 143,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 170,
+          "pageStart": 144,
+          "pageEnd": 144,
+          "headingPath": [
+            "19. Life Cycle of Stars"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 171,
+          "pageStart": 144,
+          "pageEnd": 144,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 172,
+          "pageStart": 145,
+          "pageEnd": 147,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What determines the ultimate fate of a star?",
+      "choices": [
+        "Its color",
+        "Its mass",
+        "Its brightness",
+        "Its distance from Earth"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Its mass' because the mass of a star determines its life cycle and ultimate fate. A star with a higher mass will have a different life cycle and end in a different way compared to a star with lower mass. The other options do not directly determine the ultimate fate of a star.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस चीज़ द्वारा तारे का अंतिम भाग निर्धारित होता है?",
+          "choices": [
+            "इसका रंग",
+            "इसका द्रव्यमान",
+            "इसकी चमक",
+            "इसकी पृथ्वी से दूरी"
+          ],
+          "solution": "सही उत्तर 'इसका द्रव्यमान' है क्योंकि एक तारे के द्रव्यमान इसके जीवन चक्र और अंतिम भाग को निर्धारित करता है। एक उच्च द्रव्यमान वाला तारा अपने जीवन चक्र में और अंत में एक कम द्रव्यमान वाले तारे के विपरीत अलग तरह से समाप्त होता है। अन्य विकल्प तारे के अंतिम भाग को सीधे निर्धारित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and structure of the original English question. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका ताराच्या अंतिम भागाचे निर्धारण करते काय?",
+          "choices": [
+            "त्याचा रंग",
+            "त्याचा वजन",
+            "त्याची तीव्रता",
+            "त्याचे पृथ्वीपासून अंतर"
+          ],
+          "solution": "बरोबर उत्तर 'त्याचा वजन' आहे कारण तारेच्या वजनामुळे त्याच्या जीवन चक्राचे आणि अंतिम भागाचे निर्धारण होते. ज्या तारेचा वजन जास्त असतो त्याच्या जीवन चक्राचे आणि अंतिम भागाचे अनुक्रम वेगळे असते ज्या तारेचा वजन कमी असतो. इतर विकल्प तारेच्या अंतिम भागाचे निर्धारण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the life cycle stages of a star.",
+        null,
+        "Confuses the life cycle stages of a star.",
+        "Confuses the life cycle stages of a star."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning that mass determines a star's fate is scientifically accurate. The distractors are plausible misconceptions, as color, brightness, and distance are often confused with factors that influence a star's life cycle.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 173,
+          "pageStart": 147,
+          "pageEnd": 148,
+          "headingPath": [
+            "19. Life Cycle of Stars",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-22T08:29:16.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

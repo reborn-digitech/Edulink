@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T07:18:05.322Z",
+  "generatedAt": "2026-10-22T04:49:38.172Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is the correct expression for the number of square tiles in Step n?",
+      "stem": "Which of the following is the general form of the distributive property for two expressions each with two terms?",
       "choices": [
-        "n + 2",
-        "n(n + 2)",
-        "n + 2n",
-        "n(n + 1)"
+        "(a + b) × (c + d) = ac + ad + bc + bd",
+        "(a + b) × (c + d) = a + b + c + d",
+        "(a + b) × (c + d) = ac + bd",
+        "(a + b) × (c + d) = ab + cd"
       ],
-      "answerIndex": 1,
-      "solution": "The correct expression is n(n + 2). This represents the total number of square tiles as the product of the step number and the sum of the step number and two. The first option only adds 2 to n, which does not account for the increasing pattern. The third option incorrectly adds 2n instead of multiplying, and the fourth option represents a different pattern altogether.",
+      "answerIndex": 0,
+      "solution": "The correct option shows the proper expansion of two binomials, where each term in the first binomial is multiplied by each term in the second binomial, resulting in four terms: ac + ad + bc + bd. The other options fail to account for all possible products, either by omitting terms or incorrectly combining them.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा व्यंजक चरण n में वर्ग टाइल्स की संख्या के लिए सही है?",
+          "stem": "निम्नलिखित में से कौन-सा दो व्यंजकों के वितरण गुण का सामान्य रूप है जिनमें दो-दो पद हैं?",
           "choices": [
-            "n + 2",
-            "n(n + 2)",
-            "n + 2n",
-            "n(n + 1)"
+            "(a + b) × (c + d) = ac + ad + bc + bd",
+            "(a + b) × (c + d) = a + b + c + d",
+            "(a + b) × (c + d) = ac + bd",
+            "(a + b) × (c + d) = ab + cd"
           ],
-          "solution": "सही व्यंजक n(n + 2) है। यह चरण संख्या और चरण संख्या तथा दो के योग के गुणन के रूप में वर्ग टाइल्स की कुल संख्या का प्रतिनिधित्व करता है। पहला विकल्प केवल n में 2 जोड़ता है, जो बढ़ते पैटर्न की गणना नहीं करता है। तीसरा विकल्प गलती से 2n जोड़ता है बजाय गुणा के, और चौथा विकल्प एक अलग पैटर्न का प्रतिनिधित्व करता है।",
+          "solution": "सही विकल्प दो द्विपद व्यंजकों के सही विस्तार को दर्शाता है, जहां पहले द्विपद के प्रत्येक पद को दूसरे द्विपद के प्रत्येक पद से गुणा किया जाता है, जिससे चार पद प्राप्त होते हैं: ac + ad + bc + bd। अन्य विकल्प या तो कुछ पदों को छोड़ देते हैं या गलत तरीके से उन्हें संयोजित कर देते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation accurately preserves mathematical meaning and terminology; correct answer remains option 1.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते विधान टप्पा n मधील चौरस टाइल्सच्या संख्येसाठी योग्य आहे?",
+          "stem": "खालीलपैकी कोणते दोन व्यंजकांच्या प्रत्येकाच्या दोन अवयवांच्या वितरक गुणधर्माचे सामान्य रूप आहे?",
           "choices": [
-            "n + 2",
-            "n(n + 2)",
-            "n + 2n",
-            "n(n + 1)"
+            "(a + b) × (c + d) = ac + ad + bc + bd",
+            "(a + b) × (c + d) = a + b + c + d",
+            "(a + b) × (c + d) = ac + bd",
+            "(a + b) × (c + d) = ab + cd"
           ],
-          "solution": "योग्य विधान n(n + 2) आहे. हे टप्पा क्रमांक आणि टप्पा क्रमांक आणि दोनच्या बेरजेच्या गुणाकाराद्वारे चौरस टाइल्सच्या एकूण संख्येला दर्शवते. पहिले विधान केवळ n मध्ये 2 जोडते, जे वाढत्या पॅटर्नचा विचार करत नाही. तिसरे विधान 2n जोडण्याऐवजी गुणाकार करत नाही, आणि चौथे विधान एका वेगळ्या पॅटर्नला दर्शवते.",
+          "solution": "योग्य विकल्प दोन द्विपदांच्या विस्ताराचे योग्य प्रतिनिधित्व करतो, जेथे पहिल्या द्विपदातील प्रत्येक अवयवाला दुसऱ्या द्विपदातील प्रत्येक अवयवाने गुणले जाते, ज्यामुळे चार अवयव मिळतात: ac + ad + bc + bd. इतर विकल्प अशा अवयवांच्या सर्व संभाव्य गुणाकार गमावतात किंवा चुकीच्या पद्धतीने त्यांचे संयोजन करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic concepts.",
           "flag": null
         }
       },
@@ -72,20 +72,120 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "forgets to multiply n by (n + 2)",
         null,
-        "incorrectly adds 2n instead of multiplying",
-        "represents a different pattern"
+        "confuses the distributive property with simple addition",
+        "incorrectly assumes the distributive property doesn't expand",
+        "incorrectly multiplies only the first and last terms"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 1 (n(n + 2)). The author's reasoning aligns with standard misconceptions: option 0 fails to multiply, option 2 incorrectly adds instead of multiplies, and option 3 represents a different pattern. All distractors are plausible for a student at this level.",
+      "critique": "The correct answer is option 0, which correctly applies the distributive property by expanding (a + b)(c + d) to ac + ad + bc + bd. The other options represent common misconceptions, such as adding terms directly, only multiplying the first and last terms, or not expanding at all.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.4 This Way or That Way, All Ways Lead to the Bay"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.4 This Way or That Way, All Ways Lead to the Bay",
+            "WE DISTRIUTE, YET THINGS MULTIPLY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 15,
+          "pageStart": 26,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.4 This Way or That Way, All Ways Lead to the Bay",
+            "WE DISTRIUTE, YET THINGS MULTIPLY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T04:49:38.172Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following expressions is equivalent to (x + 2)(x + 5)?",
+      "choices": [
+        "x^2 + 7x + 10",
+        "x^2 + 5x + 7",
+        "x^2 + 3x + 7",
+        "x^2 + 5x + 10"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct expansion of (x + 2)(x + 5) is x^2 + 7x + 10. The other options are incorrect because they have incorrect coefficients for x or the constant term.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा व्यंजक (x + 2)(x + 5) के समतुल्य है?",
+          "choices": [
+            "x^2 + 7x + 10",
+            "x^2 + 5x + 7",
+            "x^2 + 3x + 7",
+            "x^2 + 5x + 10"
+          ],
+          "solution": "(x + 2)(x + 5) का सही विस्तार x^2 + 7x + 10 है। अन्य विकल्प गलत हैं क्योंकि वे x के गुणांक या अचर पद में गलत गुणांक रखते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता व्यंजक (x + 2)(x + 5) च्या समान आहे?",
+          "choices": [
+            "x^2 + 7x + 10",
+            "x^2 + 5x + 7",
+            "x^2 + 3x + 7",
+            "x^2 + 5x + 10"
+          ],
+          "solution": "(x + 2)(x + 5) ची बरोबर विस्तार x^2 + 7x + 10 आहे. इतर विकल्प अचूक x चे गुणक किंवा अचूक अचल अंक नसल्यामुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic expressions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the middle term and constant term when multiplying binomials",
+        "Confuses the sum of the constants with the sum of the coefficients",
+        "Confuses the distributive property, only multiplying the second term by the second factor and forgetting to distribute the first term properly."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct expansion of (x + 2)(x + 5) is x^2 + 7x + 10. The author's solution and reasoning are accurate, and the distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
@@ -119,343 +219,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T07:18:05.322Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is the correct simplification of (x + 2)(x + 5)?",
-      "choices": [
-        "x + 2x + 5x + 10",
-        "x + 7x + 10",
-        "x² + 7x + 10",
-        "x² + 2x + 5x + 10"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct simplification is x² + 7x + 10. Expanding (x + 2)(x + 5) gives x × x + x × 5 + 2 × x + 2 × 5 = x² + 5x + 2x + 10 = x² + 7x + 10. The option x + 2x + 5x + 10 incorrectly omits the x² term. The option x + 7x + 10 incorrectly omits the x² term. The option x² + 2x + 5x + 10 incorrectly keeps the terms separate instead of combining like terms.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्न में से कौन (x + 2)(x + 5) के सही सरलीकरण है?",
-          "choices": [
-            "x + 2x + 5x + 10",
-            "x + 7x + 10",
-            "x² + 7x + 10",
-            "x² + 2x + 5x + 10"
-          ],
-          "solution": "सही सरलीकरण x² + 7x + 10 है। (x + 2)(x + 5) के विस्तार से x × x + x × 5 + 2 × x + 2 × 5 = x² + 5x + 2x + 10 = x² + 7x + 10 प्राप्त होता है। विकल्प x + 2x + 5x + 10 में x² पद को छोड़ दिया गया है। विकल्प x + 7x + 10 में x² पद को छोड़ दिया गया है। विकल्प x² + 2x + 5x + 10 में लिक टर्म को अलग-अलग रखा गया है बजाय जोड़ने के।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology commonly found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते (x + 2)(x + 5) चे योग्य समाधान आहे?",
-          "choices": [
-            "x + 2x + 5x + 10",
-            "x + 7x + 10",
-            "x² + 7x + 10",
-            "x² + 2x + 5x + 10"
-          ],
-          "solution": "योग्य समाधान x² + 7x + 10 आहे. (x + 2)(x + 5) चे विस्तार करण्यासाठी x × x + x × 5 + 2 × x + 2 × 5 = x² + 5x + 2x + 10 = x² + 7x + 10 मिळते. x + 2x + 5x + 10 ची पर्याय चुकीची आहे कारण x² चे पद नाही. x + 7x + 10 ची पर्याय चुकीची आहे कारण x² चे पद नाही. x² + 2x + 5x + 10 ची पर्याय चुकीची आहे कारण ती समान पदांचे जोडलेले नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "incorrectly omits the x² term",
-        "incorrectly omits the x² term",
-        null,
-        "incorrectly keeps the terms separate instead of combining like terms"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is x² + 7x + 10. The solution correctly expands the expression and combines like terms. The distractors reflect common misconceptions, such as omitting the x² term or failing to combine like terms.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T07:18:05.322Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of like terms?",
-      "choices": [
-        "3x and 2y",
-        "5ab and 7a",
-        "4xy and 6xy",
-        "3: 9p and 10q"
-      ],
-      "answerIndex": 2,
-      "solution": "Like terms are terms that have the same variables raised to the same powers. 4xy and 6xy both have the variables x and y raised to the first power, making them like terms. The other options have different variables or different combinations of variables, so they are not like terms.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक समान पद का उदाहरण है?",
-          "choices": [
-            "3x और 2y",
-            "5ab और 7a",
-            "4xy और 6xy",
-            "9p और 10q"
-          ],
-          "solution": "समान पद वे पद होते हैं जिनमें समान चर एक ही घात पर होते हैं। 4xy और 6xy दोनों में x और y एक प्रथम घात पर होते हैं, इसलिए ये समान पद होते हैं। अन्य विकल्पों में अलग-अलग चर या चरों के अलग-अलग संयोजन होते हैं, इसलिए वे समान पद नहीं होते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक समान पदांचे उदाहरण आहे?",
-          "choices": [
-            "3x आणि 2y",
-            "5ab आणि 7a",
-            "4xy आणि 6xy",
-            "9p आणि 10q"
-          ],
-          "solution": "समान पदे ही पदे आहेत जी समान चलांच्या समान घातांसह असतात. 4xy आणि 6xy दोन्ही चल x आणि y च्या पहिल्या घातासह असतात, ज्यामुळे ते समान पदे बनतात. इतर विकल्पांमध्ये वेगळे चल असतात किंवा वेगळ्या चलांच्या संयोजनासह असतात, ज्यामुळे ते समान पदे नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses different variables as similar",
-        "mixes up coefficients and variables",
-        null,
-        "Confuses variables with coefficients, thinking terms with different variables can be combined"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear definition of like terms. The correct answer is 2 (4xy and 6xy), as they share the same variable part. The other options are correctly identified as incorrect, with plausible misconceptions outlined.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T07:18:05.322Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the general expression for the square of the sum of two numbers, (a + b)?",
-      "choices": [
-        "a + b + 2ab",
-        "a + b + ab",
-        "a + b + 4ab",
-        "a + b + 3ab"
-      ],
-      "answerIndex": 0,
-      "solution": "The general expression for the square of the sum of two numbers, (a + b), is derived by multiplying (a + b) by itself, resulting in a + 2ab + b. The correct option matches this expansion. The other options have incorrect coefficients for the ab term, which do not follow the proper algebraic expansion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो संख्याओं के योग का वर्ग के लिए सामान्य अभिव्यक्ति क्या है, (a + b)?",
-          "choices": [
-            "a + b + 2ab",
-            "a + b + ab",
-            "a + b + 4ab",
-            "a + b + 3ab"
-          ],
-          "solution": "दो संख्याओं के योग के वर्ग, (a + b), के लिए सामान्य अभिव्यक्ति (a + b) को खुद से गुणा करके प्राप्त की जाती है, जिसके परिणामस्वरूप a + 2ab + b प्राप्त होता है। सही विकल्प इस विस्तार के साथ मेल खाता है। अन्य विकल्पों में ab पद के गुणक गलत होते हैं, जो सही बीजगणितीय विस्तार के अनुसार नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन संख्यांच्या बेरजेचे वर्ग म्हणजे काय, (a + b)?",
-          "choices": [
-            "a + b + 2ab",
-            "a + b + ab",
-            "a + b + 4ab",
-            "a + b + 3ab"
-          ],
-          "solution": "दोन संख्यांच्या बेरजेचे वर्ग, (a + b), चे सामान्य व्यंजक (a + b) ला त्याच्याशी गुणून मिळतो, जे a + 2ab + b असते. योग्य पर्याय हा विस्ताराशी जुळतो. इतर पर्यायांमध्ये ab चे गुणक चुकीचे असतात, जे योग्य बीजगणितीय विस्ताराचे अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses the coefficient of ab",
-        "adds ab instead of 2ab",
-        "adds 4ab instead of 2ab"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is (a + b)^2 = a^2 + 2ab + b^2, which matches option 0. The other options have incorrect coefficients for the ab term, which is a common misconception.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.2 Special Cases of the Distributive Property"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.2 Special Cases of the Distributive Property"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.2 Special Cases of the Distributive Property"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T07:18:05.322Z",
+      "generatedAt": "2026-10-22T04:49:38.172Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a number is multiplied by 101, which of the following is the correct method to compute the product in one line?",
+      "stem": "If 26 × 74 is compared to 25 × 75, which product is larger?",
       "choices": [
-        "Add the number to itself",
-        "Multiply the number by 100 and add the number",
-        "Multiply the number by 10 and add the number",
-        "Multiply the number by 100 and subtract the number"
+        "26 × 74",
+        "25 × 75",
+        "Both are equal",
+        "Cannot be determined"
       ],
       "answerIndex": 1,
-      "solution": "Multiplying a number by 101 is the same as multiplying it by (100 + 1), which equals multiplying the number by 100 and then adding the number itself. This matches the correct method. Adding the number to itself gives twice the number, not 101 times. Multiplying by 10 and adding the number gives 11 times the number, not 101. Multiplying by 100 and subtracting the number gives 99 times the number, not 101.",
+      "solution": "By using the identity (a + b)(a - b) = a² - b², 25 × 75 can be seen as (50 - 25)(50 + 25) = 50² - 25², while 26 × 74 is (50 - 24)(50 + 24) = 50² - 24². Since 25² is greater than 24², 25 × 75 is larger. The other options misinterpret the comparison based on the identity.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई संख्या 101 से गुणा की जाती है, तो निम्नलिखित में से कौन-सी विधि एक लाइन में गुणनफल की गणना करने के लिए सही है?",
+          "stem": "यदि 26 × 74 की तुलना 25 × 75 से की जाए, तो कौन-सा गुणनफल बड़ा है?",
           "choices": [
-            "संख्या को स्वयं से जोड़ें",
-            "संख्या को 100 से गुणा करें और संख्या जोड़ें",
-            "संख्या को 10 से गुणा करें और संख्या जोड़ें",
-            "संख्या को 100 से गुणा करें और संख्या घटाएं"
+            "26 × 74",
+            "25 × 75",
+            "दोनों समान हैं",
+            "निर्धारित नहीं किया जा सकता"
           ],
-          "solution": "किसी संख्या को 101 से गुणा करना वही है जिसे (100 + 1) से गुणा करना है, जो संख्या को 100 से गुणा करने के बाद संख्या के स्वयं को जोड़ने के बराबर है। यह सही विधि के साथ मेल खाता है। संख्या को स्वयं से जोड़ने से दो गुना संख्या मिलती है, न कि 101 गुना। 10 से गुणा करके संख्या जोड़ने से 11 गुना संख्या मिलती है, न कि 101 गुना। 100 से गुणा करके संख्या घटाने से 99 गुना संख्या मिलती है, न कि 101 गुना।",
+          "solution": "सर्वसमिका (a + b)(a - b) = a² - b² का उपयोग करके, 25 × 75 को (50 - 25)(50 + 25) = 50² - 25² के रूप में देखा जा सकता है, जबकि 26 × 74 को (50 - 24)(50 + 24) = 50² - 24² के रूप में देखा जा सकता है। 25², 24² से बड़ा होने के कारण 25 × 75 बड़ा है। अन्य विकल्प सर्वसमिका के आधार पर तुलना के गलत अर्थ करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक संख्या 101 ने गुणली जाते, तर खालीलपैकी कोणता खालील एका ओळीत गुणाकार काढण्याचा योग्य पद्धत आहे?",
+          "stem": "26 × 74 ची तुलना 25 × 75 शी केली गेली असता, कोणता गुणाकार जास्त आहे?",
           "choices": [
-            "संख्या तिच्याशी जोडा",
-            "संख्या 100 ने गुणा आणि संख्या जोडा",
-            "संख्या 10 ने गुणा आणि संख्या जोडा",
-            "संख्या 100 ने गुणा आणि संख्या वजा करा"
+            "26 × 74",
+            "25 × 75",
+            "दोन्ही समान आहेत",
+            "निश्चित करता येत नाही"
           ],
-          "solution": "एका संख्येला 101 ने गुणणे हे त्याला (100 + 1) ने गुणण्यासारखे आहे, जे संख्या 100 ने गुणून नंतर संख्या जोडण्यासारखे आहे. हे योग्य पद्धत जुळते. संख्या तिच्याशी जोडणे हे दुप्पट संख्या देते, 101 पट नाही. 10 ने गुणून संख्या जोडणे हे 11 पट संख्या देते, 101 पट नाही. 100 ने गुणून संख्या वजा करणे हे 99 पट संख्या देते, 101 पट नाही.",
+          "solution": "समीकरण (a + b)(a - b) = a² - b² चा वापर करून, 25 × 75 ला (50 - 25)(50 + 25) = 50² - 25² म्हणून पाहता जाते, तर 26 × 74 हे (50 - 24)(50 + 24) = 50² - 24² म्हणून पाहता जाते. कारण 25² 24² पेक्षा जास्त आहे, 25 × 75 जास्त आहे. इतर विकल्पांमध्ये समीकरणावर आधारित तुलनेचा चुकीचा अर्थ केला जातो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -464,10 +270,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses 101 with 2",
+        "incorrectly assumes the larger numbers produce a larger product",
         null,
-        "Confuses 101 with 11, thinking it's 10 + 1 instead of 100 + 1",
-        "incorrectly applies the distributive property"
+        "confuses the identity",
+        "fails to compare the squares properly"
       ],
       "solverAnswers": [
         1,
@@ -477,237 +283,43 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct method is to multiply the number by 100 and add the number, which aligns with the distributive property of multiplication over addition (101 = 100 + 1). The other options represent common misconceptions, such as confusing 101 with 2, 11, or incorrectly applying the distributive property.",
+      "critique": "The solution correctly applies the difference of squares identity to show that 25 × 75 is larger. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 7,
+          "ordinal": 13,
+          "pageStart": 21,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
+            "6.4 This Way or That Way, All Ways Lead to the Bay"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 26,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
+            "6.4 This Way or That Way, All Ways Lead to the Bay",
+            "WE DISTRIUTE, YET THINGS MULTIPLY"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 9,
+          "ordinal": 15,
+          "pageStart": 26,
+          "pageEnd": 29,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
+            "6.4 This Way or That Way, All Ways Lead to the Bay",
+            "WE DISTRIUTE, YET THINGS MULTIPLY"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T07:18:05.322Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Using the identity (a + b)(a - b) = a - b, what is the value of 98 × 102?",
-      "choices": [
-        "9996",
-        "9998",
-        "9999",
-        "9997"
-      ],
-      "answerIndex": 0,
-      "solution": "The expression 98 × 102 can be rewritten as (100 - 2)(100 + 2), which follows the identity (a + b)(a - b) = a² - b². Calculating this gives 100² - 2² = 10000 - 4 = 9996. The other options do not correctly apply this identity or make arithmetic errors.",
-      "checkExpr": "100^2-2^2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सर्वसमिका (a + b)(a - b) = a² - b² का उपयोग करके, 98 × 102 का मान क्या है?",
-          "choices": [
-            "9996",
-            "9998",
-            "9999",
-            "9997"
-          ],
-          "solution": "अभिव्यक्ति 98 × 102 को (100 - 2)(100 + 2) के रूप में पुनः लिखा जा सकता है, जो सर्वसमिका (a + b)(a - b) = a² - b² के अनुरूप है। इसकी गणना करने पर 100² - 2² = 10000 - 4 = 9996 प्राप्त होता है। अन्य विकल्प सही तरीके से इस सर्वसमिका का उपयोग नहीं करते हैं या अंकगणितीय त्रुटियाँ करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समीकरण (a + b)(a - b) = a - b वापरून 98 × 102 ची किंमत काय आहे?",
-          "choices": [
-            "9996",
-            "9998",
-            "9999",
-            "9997"
-          ],
-          "solution": "अभिव्यक्ती 98 × 102 ला (100 - 2)(100 + 2) अशी पुन्हा लिहिता येईल, जी समीकरण (a + b)(a - b) = a² - b² च्या नियमाच्या अनुरूप आहे. याची गणना करताना 100² - 2² = 10000 - 4 = 9996 मिळते. इतर विकल्प या नियमाच्या चुकीच्या अनुसरणामुळे किंवा गणिती चूकीमुळे चुकीचे आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic identities.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinking that (a + b)(a - b) = a^2 - b^2 but subtracting 2b instead of b^2",
-        "Confuses the identity (a + b)(a - b) = a^2 - b^2 with (a + b)(a - b) = a^2 + b^2",
-        "Mistakenly subtracts 3 instead of 5 when using the difference of squares formula"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the identity (a + b)(a - b) = a² - b², and the correct answer is 9996. The author's reasoning for the distractors is plausible and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.2 Special Cases of the Distributive Property"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.2 Special Cases of the Distributive Property"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.2 Special Cases of the Distributive Property"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T07:18:05.322Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following identities follows the pattern established by (a + b)(a + b) = a^2 + 2ab + b^2 and (a + b)(a + 2ab + b) = a^2 + 3a^2b + 3ab + b^2?",
-      "choices": [
-        "(a + b)(a + 3ab + 3a^2b + b) = a^2 + 4a^3b + 6a^2b + 4ab + b^2",
-        "(a + b)(a + 3ab + b) = a^2 + 4ab + b^2",
-        "(a + b)(a + 2ab + 3b) = a^2 + 5ab + b^2",
-        "(a + b)(a + 4ab + b) = a^2 + 5ab + b^2"
-      ],
-      "answerIndex": 0,
-      "solution": "The pattern shows that each subsequent expansion includes more terms with increasing powers of a and b, with coefficients following a specific progression. The first option matches this pattern by adding more terms and increasing the coefficients accordingly. The other options do not maintain this pattern.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा सूत्र (a + b)(a + b) = a^2 + 2ab + b^2 और (a + b)(a + 2ab + b) = a^2 + 3a^2b + 3ab + b^2 के पैटर्न का अनुसरण करता है?",
-          "choices": [
-            "(a + b)(a + 3ab + 3a^2b + b) = a^2 + 4a^3b + 6a^2b + 4ab + b^2",
-            "(a + b)(a + 3ab + b) = a^2 + 4ab + b^2",
-            "(a + b)(a + 2ab + 3b) = a^2 + 5ab + b^2",
-            "(a + b)(a + 4ab + b) = a^2 + 5ab + b^2"
-          ],
-          "solution": "पैटर्न दर्शाता है कि प्रत्येक अगले विस्तार में a और b की बढ़ती हुई घातों के साथ अधिक शब्द शामिल होते हैं, जिनके गुणांक एक विशिष्ट प्रगति का अनुसरण करते हैं। पहला विकल्प इस पैटर्न के अनुरूप है क्योंकि यह अधिक शब्द और बढ़ते गुणांक जोड़ता है। अन्य विकल्प इस पैटर्न का अनुसरण नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the mathematical meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणती ओळख वरील पॅटर्नच्या अनुसार आहे? (a + b)(a + b) = a^2 + 2ab + b^2 आणि (a + b)(a + 2ab + b) = a^2 + 3a^2b + 3ab + b^2?",
-          "choices": [
-            "(a + b)(a + 3ab + 3a^2b + b) = a^2 + 4a^3b + 6a^2b + 4ab + b^2",
-            "(a + b)(a + 3ab + b) = a^2 + 4ab + b^2",
-            "(a + b)(a + 2ab + 3b) = a^2 + 5ab + b^2",
-            "(a + b)(a + 4ab + b) = a^2 + 5ab + b^2"
-          ],
-          "solution": "पॅटर्न दर्शवितो की पुढील विस्तारामध्ये अधिक टर्म्स असतात आणि a आणि b च्या शक्ती वाढत जातात, आणि गुणकांचा विशिष्ट प्रगती असतो. पहिला विकल्प हा पॅटर्न अनुसरतो कारण तो अधिक टर्म्स आणि वाढत्या गुणकांचा वापर करतो. इतर विकल्प पॅटर्न ठेवत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "incorrectly adds terms and coefficients",
-        "omits the increasing power pattern",
-        "does not follow the established progression"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0. The pattern in the given examples involves the expansion of (a + b) multiplied by a polynomial that includes increasing powers of a and b, with coefficients following a binomial-like progression. Option 0 follows this pattern, while the others either have incorrect coefficients or fail to maintain the increasing power structure.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.1 Some Properties of Multiplication"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T07:18:05.322Z",
+      "generatedAt": "2026-10-22T04:49:38.172Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

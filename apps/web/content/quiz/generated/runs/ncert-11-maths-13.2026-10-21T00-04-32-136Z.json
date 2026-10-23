@@ -1,0 +1,742 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T00:04:32.136Z",
+  "finishedAt": "2026-10-21T00:13:48.116Z",
+  "seconds": 556,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh113.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Statistics",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n3. Which of the following is a statistic\n(a) 𝜇 (b) 𝑥̅ (c) 𝜎 ଶ (d) None",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n3. Option (b) 𝑥̅ 𝑖𝑠 𝑎 statistic",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n12. Which of the following statement(s) is/are true: 1\nI: The mean of a population is denoted by 𝑥̅.\nII: The population mean is a statistic.\n(A) I only (B) II only (C) Both I and II (D) Neither I nor II"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 120593,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 41525,
+      "completionTokens": 8420
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 251805,
+      "in": 38,
+      "out": 29,
+      "rejects": 9,
+      "promptTokens": 20753,
+      "completionTokens": 8122
+    },
+    "solver": {
+      "calls": 205,
+      "ms": 87519,
+      "in": 29,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 37877,
+      "completionTokens": 2107
+    },
+    "form": {
+      "calls": 10,
+      "ms": 21971,
+      "in": 24,
+      "out": 12,
+      "rejects": 12,
+      "promptTokens": 2516,
+      "completionTokens": 730
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3436,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 370889,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 27991,
+      "completionTokens": 13287
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the data of the two batsmen, which batsman has a higher range of runs?",
+      "ms": {
+        "draft": 2365,
+        "critique": 5741,
+        "solver": 1547
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the mean of a dataset is 8, and the absolute deviations from the mean are 2, 3, 1, 4, and 5, what is the mean deviation?",
+      "ms": {
+        "draft": 4067,
+        "critique": 4945,
+        "solver": 1398
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the mean of the absolute values of the deviations of observations from a central value?",
+      "ms": {
+        "draft": 4067,
+        "critique": 4839,
+        "solver": 1087,
+        "form": 2636
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a continuous frequency distribution, what assumption is made when calculating the mean?",
+      "ms": {
+        "draft": 4067,
+        "critique": 5859,
+        "solver": 1333,
+        "form": 2575
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a statistic according to the passage?",
+      "ms": {
+        "draft": 4067,
+        "critique": 5278,
+        "solver": 1428,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a statistic?",
+      "ms": {
+        "draft": 3713,
+        "critique": 4880
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the step-deviation method, what is the purpose of dividing the deviations by a common factor?",
+      "ms": {
+        "draft": 3713,
+        "critique": 5129
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the mean of a sample is 50 and the standard deviation is 10, what is the coefficient of variation?",
+      "ms": {
+        "draft": 3713,
+        "critique": 7404
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements is true about the mean deviation about the mean?",
+      "ms": {
+        "draft": 3713,
+        "critique": 4936,
+        "solver": 11291
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a statistic?",
+      "ms": {
+        "draft": 11741,
+        "critique": 6541,
+        "solver": 8387,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is not a limitation of mean deviation?",
+      "ms": {
+        "draft": 3713,
+        "critique": 5957,
+        "solver": 14086
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a measure of dispersion?",
+      "ms": {
+        "draft": 11741,
+        "critique": 4691
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the formula for the standard deviation of a discrete frequency distribution?",
+      "ms": {
+        "draft": 11741,
+        "critique": 5656
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for variance of a discrete frequency distribution?",
+      "ms": {
+        "draft": 47328,
+        "critique": 4472,
+        "solver": 1050,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 2119,
+        "critique": 3878,
+        "solver": 777,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who is known as the father of vital statistics?",
+      "ms": {
+        "draft": 2119,
+        "critique": 3878,
+        "solver": 1537,
+        "form": 3250
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the square root of the variance?",
+      "ms": {
+        "draft": 11481,
+        "critique": 5123
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true?",
+      "ms": {
+        "draft": 2119,
+        "critique": 4972,
+        "solver": 1299,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the variance of a set of data is 14.18, what is the standard deviation?",
+      "ms": {
+        "draft": 11481,
+        "critique": 6309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given formula for variance, what does the symbol 'f' represent?",
+      "ms": {
+        "draft": 11481,
+        "critique": 5536,
+        "solver": 1070,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a statistic?",
+      "ms": {
+        "draft": 13467,
+        "critique": 7669
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The mean of a population is denoted by which of the following?",
+      "ms": {
+        "draft": 13467,
+        "critique": 5013
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the mean of 5 observations is 4.4 and their variance is 8.24, and three of the observations are 1, 2, and 6, what are the other two observations?",
+      "ms": {
+        "draft": 11481,
+        "critique": 5296,
+        "solver": 15340
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The sum of squares of deviations from the mean is not a proper measure of dispersion because it",
+      "ms": {
+        "draft": 13467,
+        "critique": 4460,
+        "solver": 10942,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the variance of a data set is 33, what is the standard deviation?",
+      "ms": {
+        "draft": 13467,
+        "critique": 6306,
+        "solver": 9790,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about statistics and measures of dispersion is correct?",
+      "ms": {
+        "draft": 5303,
+        "critique": 6466,
+        "solver": 6897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a single number that describes the variability of a data set?",
+      "ms": {
+        "draft": 2365,
+        "critique": 5616,
+        "solver": 1757,
+        "form": 1874,
+        "translation": 29564
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the word 'statistics' mean in Latin?",
+      "ms": {
+        "draft": 3105,
+        "critique": 4179,
+        "solver": 939,
+        "form": 669,
+        "translation": 24607
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the word 'statistics' mean in Latin?",
+      "ms": {
+        "draft": 2119,
+        "critique": 4193,
+        "solver": 1894,
+        "form": 2064,
+        "translation": 22928
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a measure of dispersion?",
+      "ms": {
+        "draft": 2365,
+        "critique": 5257,
+        "solver": 1330,
+        "form": 2641,
+        "translation": 23941
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of deviations of a set of observations from their mean is zero, what can be concluded?",
+      "ms": {
+        "draft": 2365,
+        "critique": 5115,
+        "solver": 1020,
+        "form": 3596,
+        "translation": 36294
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student collects data on the heights of students in their class, which of the following would be a statistic?",
+      "ms": {
+        "draft": 2119,
+        "critique": 6870,
+        "solver": 1157,
+        "form": 0,
+        "translation": 37978
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given a discrete frequency distribution, what is the correct method to calculate the mean deviation about the mean?",
+      "ms": {
+        "draft": 4067,
+        "critique": 6921,
+        "solver": 10548,
+        "form": 2659,
+        "translation": 50190
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true?",
+      "ms": {
+        "draft": 11741,
+        "critique": 6418,
+        "solver": 1362,
+        "form": 0,
+        "translation": 32438
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a data set, if the mean is 50 and the standard deviation is 10, what is the approximate range of values that fall within one standard deviation of the mean?",
+      "ms": {
+        "draft": 2365,
+        "critique": 5629,
+        "solver": 11036,
+        "form": 0,
+        "translation": 28224
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the mean of a dataset is 10, and the sum of absolute deviations from the mean is 50, what is the mean deviation?",
+      "ms": {
+        "draft": 4067,
+        "critique": 5654,
+        "solver": 1373,
+        "form": 0,
+        "translation": 28474
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the mean deviation of a data set is zero, which of the following must be true?",
+      "ms": {
+        "draft": 2365,
+        "critique": 5930,
+        "solver": 885,
+        "form": 3374,
+        "translation": 30700
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If each observation in a data set is multiplied by a constant 'k', what happens to the variance of the data set?",
+      "ms": {
+        "draft": 11481,
+        "critique": 6124,
+        "solver": 869,
+        "form": 0,
+        "translation": 22908
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main purpose of using the step-deviation method?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What does the passage say about the sum of squares of deviations from the mean?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the data of the two batsmen, which batsman has a higher range of runs?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the mean of a dataset is 8, and the absolute deviations from the mean are 2, 3, 1, 4, and 5, what is the mean deviation?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for the mean of the absolute values of the deviations of observations from a central value?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Mean deviation' as defined in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a continuous frequency distribution, what assumption is made when calculating the mean?",
+      "reason": "options 2 and 3 say the same thing (\"The frequency in each class is concentrated at the lower limit of the class interval.\" / \"The frequency in each class is concentrated at the upper limit of the class interval.\"); distractor 0's reason is not a one-line misconception (\"This is not the assumption made in the passage; the frequenc…\"); distractor 2's reason is not a one-line misconception (\"Correct answer is 'The frequency in each class is concentrat…\"); distractor 3's reason is not a one-line misconception (\"This is an incorrect assumption and is not mentioned in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a statistic according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer is 'The sample mean', so this is not a distra…\"); distractor 3's reason is not a one-line misconception (\"This is a parameter, not a statistic. The passage does not m…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a statistic?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the step-deviation method, what is the purpose of dividing the deviations by a common factor?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the mean of a sample is 50 and the standard deviation is 10, what is the coefficient of variation?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following statements is true about the mean deviation about the mean?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a statistic?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is not a limitation of mean deviation?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a measure of dispersion?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the formula for the standard deviation of a discrete frequency distribution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for variance of a discrete frequency distribution?",
+      "reason": "options 0 and 1 say the same thing (\"σ = √(f(x - x̄)² / N)\" / \"σ = √(f(x - x̄) / N)\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the name of a book written by Jacob Bernoulli?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Who is known as the father of vital statistics?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the specific contribution mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the square root of the variance?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the variance of a set of data is 14.18, what is the standard deviation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given formula for variance, what does the symbol 'f' represent?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a statistic?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The mean of a population is denoted by which of the following?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the mean of 5 observations is 4.4 and their variance is 8.24, and three of the observations are 1, 2, and 6, what are the other two observations?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The sum of squares of deviations from the mean is not a proper measure of dispersion because it",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options 0 and 1 are the same (\"is affected by the number of observations\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the variance of a data set is 33, what is the standard deviation?",
+      "reason": "options 1 and 3 are the same (\"1750\"); options are written to different precisions (0 and 2 decimals); options 1 and 3 are the same number; checkExpr \"sqrt(33)\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about statistics and measures of dispersion is correct?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

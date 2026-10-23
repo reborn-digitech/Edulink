@@ -1,0 +1,828 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T13:13:52.257Z",
+  "finishedAt": "2026-10-21T13:28:27.223Z",
+  "seconds": 875,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "leph2",
+    "document": "ncert/12/physics/leph206.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 6 — Semiconductor Electronics:",
+    "edition": "Reprint 2025-26",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n23. The figure shows a piece of pure semiconductor S in series with a 2\nvariable resistor R and a source of constant voltage V. Should the value\nof R be increased or decreased to keep the reading of the ammeter\nconstant, when semiconductor S is heated? Justify your answer\nOR\nThe graph of potential barrier versus width of depletion region for an\nunbiased diode is shown in graph A. In comparison to A ,graphs B and\nC are obtained after biasing the diode in different ways .Identify the\ntype of biasing in B and C and justify your answer.",
+      "[CBSE Class XII Physics, sample question paper, 2026-27]\n29. In 2023, researchers developed flexible semiconductor films using organic polymers\nthat could be printed like newspaper sheets. These films can bend, fold, and still\nconduct electricity efficiently. Unlike traditional silicon chips, polymer semiconductors\nare lightweight, biodegradable, and can be integrated into clothing or medical patches.\nImagine a shirt that monitors your heartbeat or a bandage that tracks wound healing in\nreal time. Such innovations extend the idea of semiconductors beyond rigid circuits,\nshowing how manipulating band gaps and carrier mobility in new materials can\nrevolutionize electronics for healthcare, sustainability, and wearable technology.\nI. Which advantage o",
+      "[CBSE Class XII Physics, marking scheme, 2026-27]\n29. I. C. Low power consumption and reliability 1\nWearable devices need to operate continuously with minimal energy usage\nand dependable performance, which semiconductors provide.\nII. B. Diamond’s band gap is too large for thermal excitation at room 1\ntemperature.\nBecause of its large band gap, diamond does not allow sufficient charge\ncarriers to be generated at room temperature, making it unsuitable as a\nsemiconductor\nIII. C. Number of electrons equals number of holes. 1\nIn intrinsic semiconductors, electrons and holes are generated in pairs, so\ntheir numbers are equal.\nIV. In polymer semiconductors, electrical conduction mainly occurs due to 1\nmajority carriers (electrons in n-type or hole",
+      "[CBSE Class XII Physics, marking scheme, 2022-23]\n1. 25\n1.33\n½\n= 0.98\nμ ௪\nThe value of (μ – 1) is negative and ‘f’ will be negative. So it will behave ½\nlike diverging lens.\n23 To keep the reading of ammeter constant value of R should be increased 1\nas with the increase in temperature of a semiconductor, its resistance\ndecreases and current tends to increase. 1\nOR\nB - reverse biased ½\nIn the case of reverse biased diode the potential barrier becomes higher\nas the battery further raises the potential of the n side. ½\nC -forward biased ½\nDue to forward bias connection the potential of P side is raised and hence\nthe height of the potential barrier decreases. ½\n24 Angular width 2φ = 2λ/d\nGiven λ = 6000 Å\nIn Case of new λ (assumed λ’ here),\nangu"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 212478,
+      "in": 45,
+      "out": 42,
+      "rejects": 4,
+      "promptTokens": 54310,
+      "completionTokens": 10336
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 357265,
+      "in": 42,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 24569,
+      "completionTokens": 8765
+    },
+    "solver": {
+      "calls": 251,
+      "ms": 131175,
+      "in": 38,
+      "out": 36,
+      "rejects": 2,
+      "promptTokens": 40344,
+      "completionTokens": 2382
+    },
+    "form": {
+      "calls": 10,
+      "ms": 35872,
+      "in": 36,
+      "out": 17,
+      "rejects": 19,
+      "promptTokens": 2596,
+      "completionTokens": 830
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 6121,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 660343,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 32806,
+      "completionTokens": 17111
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main reason for the controlled flow of electrons in semiconductor devices?",
+      "ms": {
+        "draft": 4862,
+        "critique": 5880,
+        "solver": 1079,
+        "form": 3768
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the energy band theory, what determines whether a material is a conductor, semiconductor, or insulator?",
+      "ms": {
+        "draft": 4862,
+        "critique": 6062,
+        "solver": 2232,
+        "form": 4199
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main characteristic of a semiconductor in terms of electrical conductivity?",
+      "ms": {
+        "draft": 4862,
+        "critique": 5288,
+        "solver": 1578,
+        "form": 5099
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a circuit with a pure semiconductor in series with a variable resistor and a constant voltage source, what should be done to keep the ammeter reading constant when the semiconductor is heated?",
+      "ms": {
+        "draft": 4862,
+        "critique": 6683,
+        "solver": 14055
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the number of free electrons and holes in an intrinsic semiconductor when the temperature increases?",
+      "ms": {
+        "draft": 4803,
+        "critique": 6507,
+        "solver": 1867,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the energy band diagram of a semiconductor, what is the significance of the energy band gap?",
+      "ms": {
+        "draft": 4803,
+        "critique": 9100,
+        "solver": 1498,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A semiconductor is heated, and its resistance decreases. What is the most likely reason for this?",
+      "ms": {
+        "draft": 4803,
+        "critique": 8257,
+        "solver": 2217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an intrinsic semiconductor, how does the number of free electrons compare to the number of holes?",
+      "ms": {
+        "draft": 4803,
+        "critique": 6669,
+        "solver": 13387,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary way in which conduction occurs in intrinsic semiconductors?",
+      "ms": {
+        "draft": 4803,
+        "critique": 7044,
+        "solver": 1546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do intrinsic semiconductors have equal numbers of electrons and holes?",
+      "ms": {
+        "draft": 4803,
+        "critique": 8875,
+        "solver": 2130,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an n-type semiconductor, the number of conduction electrons is much greater than the number of holes. What is the main reason for this?",
+      "ms": {
+        "draft": 5543,
+        "critique": 9092,
+        "solver": 13462,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an intrinsic semiconductor, the number of conduction electrons equals the number of holes. Why is this the case?",
+      "ms": {
+        "draft": 5543,
+        "critique": 7315,
+        "solver": 11847,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an intrinsic semiconductor, the number of conduction electrons equals the number of holes. Why is this the case?",
+      "ms": {
+        "draft": 5543,
+        "critique": 6421,
+        "solver": 1914,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of semiconductor is formed when silicon is doped with a trivalent impurity like boron?",
+      "ms": {
+        "draft": 4239,
+        "critique": 7296
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a silicon crystal is doped with a pentavalent impurity, which of the following is true about the majority carriers?",
+      "ms": {
+        "draft": 4239,
+        "critique": 6246
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the depletion layer width when a p-n junction diode is forward biased?",
+      "ms": {
+        "draft": 5234,
+        "critique": 6637
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a p-type semiconductor, how does the presence of trivalent impurities affect the number of holes and electrons?",
+      "ms": {
+        "draft": 4239,
+        "critique": 7448,
+        "solver": 11957,
+        "form": 2951
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In an n-type silicon, which of the following statement is true?",
+      "ms": {
+        "draft": 6230,
+        "critique": 5849,
+        "solver": 5877,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In intrinsic semiconductors, what is the relationship between the number of electrons and holes?",
+      "ms": {
+        "draft": 4744,
+        "critique": 6540,
+        "solver": 16173,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a p-n junction, what is the effect of forward bias on the potential barrier?",
+      "ms": {
+        "draft": 4744,
+        "critique": 6992,
+        "solver": 16824,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A semiconductor is used in a circuit with a variable resistor and a constant voltage source. If the semiconductor is heated, how should the resistance of the variable resistor be adjusted to keep the ammeter reading constant?",
+      "ms": {
+        "draft": 4744,
+        "critique": 7771,
+        "solver": 1708
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a full-wave rectifier circuit, the secondary of the transformer is provided with a centre tap. What is the purpose of the centre tap?",
+      "ms": {
+        "draft": 14010,
+        "critique": 6930,
+        "solver": 1986,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an n-type semiconductor, which of the following statements is true?",
+      "ms": {
+        "draft": 4744,
+        "critique": 8558,
+        "solver": 14538,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pure semiconductor is doped to form an n-type semiconductor, which of the following is true?",
+      "ms": {
+        "draft": 4601,
+        "critique": 7518,
+        "solver": 1569,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the movement of electrons and holes in a semiconductor when thermal energy is applied?",
+      "ms": {
+        "draft": 66072,
+        "critique": 5538
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pure semiconductor is doped with a pentavalent element. What is the main effect on the conductivity of the semiconductor?",
+      "ms": {
+        "draft": 5543,
+        "critique": 7927,
+        "solver": 1493,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the resistance of a semiconductor when it is heated?",
+      "ms": {
+        "draft": 4744,
+        "critique": 5782,
+        "solver": 15139,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the resistance of a pure semiconductor when it is heated?",
+      "ms": {
+        "draft": 4601,
+        "critique": 7097,
+        "solver": 1623,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the basic building block of many semiconductor devices like diodes and transistors?",
+      "ms": {
+        "draft": 4161,
+        "critique": 6935,
+        "solver": 1618,
+        "form": 4015
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of semiconductor is formed when a tetravalent semiconductor like silicon is doped with a trivalent impurity?",
+      "ms": {
+        "draft": 4700,
+        "critique": 7697,
+        "solver": 1656,
+        "form": 2797,
+        "translation": 33288
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the basic building block of many semiconductor devices like diodes and transistors?",
+      "ms": {
+        "draft": 4060,
+        "critique": 5593,
+        "solver": 1535,
+        "form": 5614,
+        "translation": 43561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the region formed due to the movement of charge carriers across the junction called?",
+      "ms": {
+        "draft": 4161,
+        "critique": 6737,
+        "solver": 2006,
+        "form": 3800,
+        "translation": 52952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main factor that determines whether a material is a conductor, semiconductor, or insulator?",
+      "ms": {
+        "draft": 4744,
+        "critique": 7806,
+        "solver": 2763,
+        "form": 0,
+        "translation": 44196
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a semiconductor is heated, how does its resistance change?",
+      "ms": {
+        "draft": 4862,
+        "critique": 5911,
+        "solver": 2013,
+        "form": 3667,
+        "translation": 44147
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the depletion region when a p-n junction is forward biased?",
+      "ms": {
+        "draft": 4060,
+        "critique": 5645,
+        "solver": 3346,
+        "form": 0,
+        "translation": 35022
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A half-wave rectifier circuit is used to convert alternating current to direct current. If the input voltage to the circuit is increased, what will happen to the output voltage across the load resistor?",
+      "ms": {
+        "draft": 14010,
+        "critique": 7985,
+        "solver": 1645,
+        "form": 0,
+        "translation": 59224
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given passage, what is the main reason for the increase in current through a diode under forward bias?",
+      "ms": {
+        "draft": 4601,
+        "critique": 7066,
+        "solver": 1960,
+        "form": 0,
+        "translation": 64408
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a full-wave rectifier circuit, two diodes are used. What is the main advantage of using a full-wave rectifier over a half-wave rectifier?",
+      "ms": {
+        "draft": 14010,
+        "critique": 7615,
+        "solver": 1571,
+        "form": 0,
+        "translation": 61524
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a rectifier circuit, a capacitor is connected across the output terminals. If the capacitance of the capacitor is reduced, what effect will this have on the output voltage?",
+      "ms": {
+        "draft": 14010,
+        "critique": 7529,
+        "solver": 1653,
+        "form": 0,
+        "translation": 56519
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A pure semiconductor is doped with a pentavalent element. What is the main effect on the conductivity of the semiconductor?",
+      "ms": {
+        "draft": 5543,
+        "critique": 8243,
+        "solver": 1269,
+        "form": 0,
+        "translation": 48741
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary difference between a semiconductor and a conductor in terms of energy bands?",
+      "ms": {
+        "draft": 4862,
+        "critique": 6396,
+        "solver": 2964,
+        "form": 4557,
+        "translation": 58194
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A semiconductor diode is used in a rectifier circuit. If the temperature of the semiconductor increases, how will this affect the reverse saturation current of the diode?",
+      "ms": {
+        "draft": 14010,
+        "critique": 6928,
+        "solver": 1976,
+        "form": 0,
+        "translation": 50538
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 6, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which type of rectifier allows current to flow only during on"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for the controlled flow of electrons in semiconductor devices?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mistakenly thinks external heating is necessary for semicond…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the energy band theory, what determines whether a material is a conductor, semiconductor, or insulator?",
+      "reason": "the key is far longer than every distractor (75 vs 43 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main characteristic of a semiconductor in terms of electrical conductivity?",
+      "reason": "the key is far longer than every distractor (54 vs 22 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a circuit with a pure semiconductor in series with a variable resistor and a constant voltage source, what should be done to keep the ammeter reading constant when the semiconductor is heated?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the number of free electrons and holes in an intrinsic semiconductor when the temperature increases?",
+      "reason": "options 0 and 1 say the same thing (\"The number of free electrons increases and the number of holes decreases\" / \"The number of free electrons decreases and the number of holes increases\"); options 2 and 3 say the same thing (\"The number of free electrons and holes both increase\" / \"The number of free electrons and holes both decrease\"); distractor 3's reason is not a one-line misconception (\"correct answer, no misconception here, so no reason given fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the energy band diagram of a semiconductor, what is the significance of the energy band gap?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no misconception here, so no reason given fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A semiconductor is heated, and its resistance decreases. What is the most likely reason for this?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no misconception here, so no reason given fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In an intrinsic semiconductor, how does the number of free electrons compare to the number of holes?",
+      "reason": "options 0 and 1 say the same thing (\"The number of free electrons is greater than the number of holes\" / \"The number of free electrons is less than the number of holes\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary way in which conduction occurs in intrinsic semiconductors?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer, no misconception here, so no reason given fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do intrinsic semiconductors have equal numbers of electrons and holes?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no misconception here, so no reason given fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an n-type semiconductor, the number of conduction electrons is much greater than the number of holes. What is the main reason for this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an intrinsic semiconductor, the number of conduction electrons equals the number of holes. Why is this the case?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Confuses the concept of carrier mobility in semiconductors\",…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an intrinsic semiconductor, the number of conduction electrons equals the number of holes. Why is this the case?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the concept of carrier mobility in semiconductors\",…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What type of semiconductor is formed when silicon is doped with a trivalent impurity like boron?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a silicon crystal is doped with a pentavalent impurity, which of the following is true about the majority carriers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happens to the depletion layer width when a p-n junction diode is forward biased?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a p-type semiconductor, how does the presence of trivalent impurities affect the number of holes and electrons?",
+      "reason": "options 0 and 1 say the same thing (\"Holes are increased and electrons are decreased\" / \"Holes are decreased and electrons are increased\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "In an n-type silicon, which of the following statement is true?",
+      "reason": "options 1 and 2 say the same thing (\"Electrons are minority carriers and pentavalent atoms are the dopants.\" / \"Holes are minority carriers and pentavalent atoms are the dopants.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A half-wave rectifier circuit produces a pulsating DC output. To make this output more stable, what component is typically added across the output terminals?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "According to the passage, what is the main factor that determines the reverse saturation current in a diode?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the primary type of current carrier in a p-type semiconductor?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In intrinsic semiconductors, what is the relationship between the number of electrons and holes?",
+      "reason": "options 0 and 1 say the same thing (\"The number of electrons is greater than the number of holes\" / \"The number of holes is greater than the number of electrons\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a p-n junction, what is the effect of forward bias on the potential barrier?",
+      "reason": "options 0 and 2 say the same thing (\"It increases the potential barrier\" / \"2: It increases the potential barrier\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A semiconductor is used in a circuit with a variable resistor and a constant voltage source. If the semiconductor is heated, how should the resistance of the variable resistor be adjusted to keep the ammeter reading constant?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a full-wave rectifier circuit, the secondary of the transformer is provided with a centre tap. What is the purpose of the centre tap?",
+      "reason": "the key is far longer than every distractor (79 vs 40 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an n-type semiconductor, which of the following statements is true?",
+      "reason": "options 1 and 2 say the same thing (\"Electrons are minority carriers and pentavalent atoms are the dopants\" / \"Holes are minority carriers and pentavalent atoms are the dopants\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a pure semiconductor is doped to form an n-type semiconductor, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"The number of electrons is greater than the number of holes\" / \"The number of holes is greater than the number of electrons\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the movement of electrons and holes in a semiconductor when thermal energy is applied?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A pure semiconductor is doped with a pentavalent element. What is the main effect on the conductivity of the semiconductor?",
+      "reason": "near-duplicate of batch item \"A pure semiconductor is doped with a pentavalent e…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to the resistance of a semiconductor when it is heated?",
+      "reason": "near-duplicate of batch item \"If a semiconductor is heated, how does its resista…\" (cosine 0.959 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What happens to the resistance of a pure semiconductor when it is heated?",
+      "reason": "near-duplicate of batch item \"If a semiconductor is heated, how does its resista…\" (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the basic building block of many semiconductor devices like diodes and transistors?",
+      "reason": "near-duplicate of batch item \"What is the basic building block of many semicondu…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

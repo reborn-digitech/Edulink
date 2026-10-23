@@ -1,0 +1,682 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T16:58:10.975Z",
+  "finishedAt": "2026-10-22T17:07:10.945Z",
+  "seconds": 540,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh102.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Polynomials",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n3. Answer – D 1\nAs, 𝑓(𝑥) = k(x + 2)(x − 5) ⟹ 𝑓(𝑥) = k(𝑥 − 3x − 10), k ≠ 0 2\nSince k can be any real number. So, there are Infinitely many such polynomials.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n18. A quadratic polynomial whose zeroes are 2\n2 2\n56 76 80\n(C) 30-40 (D) 10-20\n𝑎𝑛𝑑 −1 is 1\n(A) 25𝑥 + 5𝑥 − 2 (B) 5𝑥 − 2𝑥 + 1\n(C) 5𝑥 + 2𝑥 − 1 2 (D) 25𝑥 − 5𝑥 − 2 2\nDIRECTION: In the question number 19 and 20, a statement of Assertion (A)\nis followed by a statement of Reason (R).\nChoose the correct option\nA) Both assertion (A) and reason (R) are true and reason (R) is the correct\nexplanation of assertion (A)\nB) Both assertion (A) and reason (R) are true and reason (R) is not the correct\nexplanation of assertion (A)\nC) Assertion (A) is true but reason (R) is false.\nD) Assertion (A) is false but reason (R) is true.",
+      "[INMO 2023 — question paper]\n2. Suppose a , . . . , a 0 100 are positive reals. Consider the following polynomial for each k\nin {0, 1, . . . , 100}:\na 100+k x 100 + 100a 99+k x 99 + a 98+k x 98 + a 97+k x 97 + · · · + a 2+k x + a 2 1+k x + a , k\nwhere indices are taken modulo 101, i.e., a 100+i = a i−1 for any i in {1, 2, . . . , 100}.\nShow that it is impossible that each of these 101 polynomials has all its roots real.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n3. The number of polynomials having − 2 and 5 as its zeroes is\nA) one\nB) two\nC) three\nD) Infinitely many"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 170725,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 30046,
+      "completionTokens": 7396
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 399336,
+      "in": 34,
+      "out": 25,
+      "rejects": 9,
+      "promptTokens": 20173,
+      "completionTokens": 8125
+    },
+    "solver": {
+      "calls": 201,
+      "ms": 139057,
+      "in": 25,
+      "out": 20,
+      "rejects": 5,
+      "promptTokens": 44759,
+      "completionTokens": 2223
+    },
+    "form": {
+      "calls": 3,
+      "ms": 20570,
+      "in": 20,
+      "out": 8,
+      "rejects": 12,
+      "promptTokens": 4166,
+      "completionTokens": 451
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 5057,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 281962,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13019,
+      "completionTokens": 5733
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the number of zeroes of the quadratic polynomial x^2 - 5x + 6?",
+      "ms": {
+        "draft": 4008,
+        "critique": 5741,
+        "solver": 22279
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a polynomial has zeroes at 1 and -2, what is the form of the polynomial?",
+      "ms": {
+        "draft": 4008,
+        "critique": 11432,
+        "solver": 14075,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of the zeroes of a quadratic polynomial is 5 and the product is 6, what is the polynomial?",
+      "ms": {
+        "draft": 4270,
+        "critique": 8381,
+        "solver": 2012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the degree of the polynomial 5x^3 - 2x^2 + x - 7?",
+      "ms": {
+        "draft": 4008,
+        "critique": 8028,
+        "solver": 15701,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The graph of a polynomial intersects the x-axis at three points. What is the maximum number of zeroes the polynomial can have?",
+      "ms": {
+        "draft": 4270,
+        "critique": 12365,
+        "solver": 1774
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a quadratic polynomial has zeroes at x = 2 and x = -3, what is the sum of its zeroes?",
+      "ms": {
+        "draft": 4270,
+        "critique": 9850,
+        "solver": 20603
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cubic polynomial has zeroes at x = 1, x = -2, and x = 3. What is the polynomial?",
+      "ms": {
+        "draft": 4270,
+        "critique": 10473,
+        "solver": 1928,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A quadratic polynomial has zeroes at x = 1 and x = -2. What is the polynomial?",
+      "ms": {
+        "draft": 4270,
+        "critique": 8611,
+        "solver": 20991
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a quadratic polynomial has zeroes at x = -1 and x = 4, what is the sum of its zeroes?",
+      "ms": {
+        "draft": 4270,
+        "critique": 10108,
+        "solver": 20282
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the polynomial p(x) = x³ + ax² + bx + c has zeroes 1, 2, and 3, what is the value of a + b + c?",
+      "ms": {
+        "draft": 4120,
+        "critique": 8324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cubic polynomial has zeroes 1, -1, and 2, and the coefficient of x³ is 1, what is the constant term?",
+      "ms": {
+        "draft": 4120,
+        "critique": 7944
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a quadratic polynomial has zeroes at 1 and -2, and the coefficient of x is -1, what is the coefficient of x²?",
+      "ms": {
+        "draft": 4120,
+        "critique": 5767
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a quadratic polynomial has zeroes 2 and -3, what is the sum of the zeroes?",
+      "ms": {
+        "draft": 17002,
+        "critique": 7967
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of the zeroes of the quadratic polynomial 2x^2 + 5x + 3?",
+      "ms": {
+        "draft": 17002,
+        "critique": 8456
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a quadratic polynomial?",
+      "ms": {
+        "draft": 17002,
+        "critique": 7156,
+        "solver": 16043,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cubic polynomial has zeroes 1, 2, and 3, what is the relationship between the sum of the zeroes and the coefficients?",
+      "ms": {
+        "draft": 17002,
+        "critique": 10813
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the maximum number of zeroes that a cubic polynomial can have?",
+      "ms": {
+        "draft": 5794,
+        "critique": 9867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the sum and product of the zeroes of a quadratic polynomial are 4 and 3 respectively, what is the polynomial?",
+      "ms": {
+        "draft": 17002,
+        "critique": 11996,
+        "solver": 16970,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadratic polynomial has zeroes at 1 and 3, what is the sum of its zeroes?",
+      "ms": {
+        "draft": 5794,
+        "critique": 8816
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given the graph of a polynomial intersects the x-axis at 4 points, what is the degree of the polynomial?",
+      "ms": {
+        "draft": 5794,
+        "critique": 9803
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A quadratic polynomial has zeroes at 1/3 and -2. What is the quadratic polynomial?",
+      "ms": {
+        "draft": 5794,
+        "critique": 8729,
+        "solver": 2425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a polynomial has zeroes at -1 and 4, which of the following could be the polynomial?",
+      "ms": {
+        "draft": 6679,
+        "critique": 11493,
+        "solver": 2306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The graph of a quadratic polynomial intersects the x-axis at two distinct points. What can be said about the number of zeroes of the polynomial?",
+      "ms": {
+        "draft": 6679,
+        "critique": 10742,
+        "solver": 2044,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cubic polynomial has zeroes at 4, -2, and 1/2. What is the relationship between the product of its zeroes and its constant term?",
+      "ms": {
+        "draft": 5794,
+        "critique": 9626,
+        "solver": 22765,
+        "form": 6285
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a quadratic polynomial has zeroes at 1 and -1, what is the value of the coefficient of x in the polynomial?",
+      "ms": {
+        "draft": 6679,
+        "critique": 7549,
+        "solver": 1432,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The graph of a cubic polynomial intersects the x-axis at three points. What can be said about the number of zeroes of the polynomial?",
+      "ms": {
+        "draft": 6679,
+        "critique": 5729,
+        "solver": 1084,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many quadratic polynomials can have -2 and 5 as zeroes?",
+      "ms": {
+        "draft": 17002,
+        "critique": 10633,
+        "solver": 2140,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a quadratic polynomial?",
+      "ms": {
+        "draft": 5794,
+        "critique": 8306,
+        "solver": 3159,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a linear polynomial?",
+      "ms": {
+        "draft": 4008,
+        "critique": 9305,
+        "solver": 16334,
+        "form": 0,
+        "translation": 47637
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the zero of a linear polynomial is -3, what is the polynomial?",
+      "ms": {
+        "draft": 4008,
+        "critique": 5239,
+        "solver": 1299,
+        "form": 0,
+        "translation": 37732
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadratic polynomial has zeroes at 2 and -3, what is the polynomial?",
+      "ms": {
+        "draft": 4120,
+        "critique": 10299,
+        "solver": 14404,
+        "form": 0,
+        "translation": 46616
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A quadratic polynomial has zeroes at 2 and -3. What is the value of the polynomial when x = 0?",
+      "ms": {
+        "draft": 6679,
+        "critique": 10291,
+        "solver": 2679,
+        "form": 0,
+        "translation": 45824
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a polynomial of degree 3 has zeroes at 1, 2, and -3, what is the coefficient of x² in the expanded form?",
+      "ms": {
+        "draft": 4120,
+        "critique": 8351,
+        "solver": 1739,
+        "form": 0,
+        "translation": 47465
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following cannot be the number of zeroes of a cubic polynomial?",
+      "ms": {
+        "draft": 4008,
+        "critique": 7932,
+        "solver": 1766,
+        "form": 0,
+        "translation": 51988
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the number of zeroes of the quadratic polynomial x^2 - 5x + 6?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a polynomial has zeroes at 1 and -2, what is the form of the polynomial?",
+      "reason": "options 0 and 1 say the same thing (\"k(x - 1)(x + 2) where k ≠ 0\" / \"k(x + 1)(x - 2) where k ≠ 0\"); options 0 and 2 say the same thing (\"k(x - 1)(x + 2) where k ≠ 0\" / \"k(x - 1)(x - 2) where k ≠ 0\"); options 0 and 3 are the same (\"k(x - 1)(x + 2) where k ≠ 0\"); options 1 and 2 say the same thing (\"k(x + 1)(x - 2) where k ≠ 0\" / \"k(x - 1)(x - 2) where k ≠ 0\"); options 1 and 3 say the same thing (\"k(x + 1)(x - 2) where k ≠ 0\" / \"k(x - 1)(x + 2) where k ≠ 0\"); options 2 and 3 say the same thing (\"k(x - 1)(x - 2) where k ≠ 0\" / \"k(x - 1)(x + 2) where k ≠ 0\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the sum of the zeroes of a quadratic polynomial is 5 and the product is 6, what is the polynomial?",
+      "reason": "options 0 and 2 say the same thing (\"x² - 5x + 6\" / \"x² - 5x - 6\"); options 0 and 3 say the same thing (\"x² - 5x + 6\" / \"x² + 5x - 6\"); options 2 and 3 say the same thing (\"x² - 5x - 6\" / \"x² + 5x - 6\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the degree of the polynomial 5x^3 - 2x^2 + x - 7?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The graph of a polynomial intersects the x-axis at three points. What is the maximum number of zeroes the polynomial can have?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a quadratic polynomial has zeroes at x = 2 and x = -3, what is the sum of its zeroes?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A cubic polynomial has zeroes at x = 1, x = -2, and x = 3. What is the polynomial?",
+      "reason": "options 0 and 1 say the same thing (\"x³ - 2x² - 5x + 6\" / \"x³ + 2x² - 5x - 6\"); options 0 and 2 say the same thing (\"x³ - 2x² - 5x + 6\" / \"x³ - 2x² + 5x + 6\"); options 0 and 3 say the same thing (\"x³ - 2x² - 5x + 6\" / \"x³ + 2x² + 5x - 6\"); options 1 and 2 say the same thing (\"x³ + 2x² - 5x - 6\" / \"x³ - 2x² + 5x + 6\"); options 1 and 3 say the same thing (\"x³ + 2x² - 5x - 6\" / \"x³ + 2x² + 5x - 6\"); options 2 and 3 say the same thing (\"x³ - 2x² + 5x + 6\" / \"x³ + 2x² + 5x - 6\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A quadratic polynomial has zeroes at x = 1 and x = -2. What is the polynomial?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a quadratic polynomial has zeroes at x = -1 and x = 4, what is the sum of its zeroes?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the polynomial p(x) = x³ + ax² + bx + c has zeroes 1, 2, and 3, what is the value of a + b + c?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a cubic polynomial has zeroes 1, -1, and 2, and the coefficient of x³ is 1, what is the constant term?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a quadratic polynomial has zeroes at 1 and -2, and the coefficient of x is -1, what is the coefficient of x²?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If a quadratic polynomial has zeroes 2 and -3, what is the sum of the zeroes?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the product of the zeroes of the quadratic polynomial 2x^2 + 5x + 3?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the general form of a quadratic polynomial?",
+      "reason": "options 2 and 3 say the same thing (\"ax^2 + bx + c\" / \"ax^2 + bx^3 + c\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a cubic polynomial has zeroes 1, 2, and 3, what is the relationship between the sum of the zeroes and the coefficients?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the maximum number of zeroes that a cubic polynomial can have?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the sum and product of the zeroes of a quadratic polynomial are 4 and 3 respectively, what is the polynomial?",
+      "reason": "options 0 and 1 say the same thing (\"x^2 - 4x + 3\" / \"x^2 + 4x + 3\"); options 2 and 3 say the same thing (\"x^2 - 3x + 4\" / \"x^2 + 3x - 4\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a quadratic polynomial has zeroes at 1 and 3, what is the sum of its zeroes?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Given the graph of a polynomial intersects the x-axis at 4 points, what is the degree of the polynomial?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A quadratic polynomial has zeroes at 1/3 and -2. What is the quadratic polynomial?",
+      "reason": "options 0 and 1 say the same thing (\"3x² + 5x - 2\" / \"3x² - 5x + 2\"); options 0 and 3 say the same thing (\"3x² + 5x - 2\" / \"3x² - 5x - 2\"); options 1 and 3 say the same thing (\"3x² - 5x + 2\" / \"3x² - 5x - 2\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a polynomial has zeroes at -1 and 4, which of the following could be the polynomial?",
+      "reason": "options 1 and 2 say the same thing (\"(x - 1)(x - 4)\" / \"(x + 1)(x - 4)\"); options 1 and 3 say the same thing (\"(x - 1)(x - 4)\" / \"(x - 1)(x + 4)\"); options 2 and 3 say the same thing (\"(x + 1)(x - 4)\" / \"(x - 1)(x + 4)\"); distractor 3's reason is not a one-line misconception (\"correct answer is the only one with the right signs for the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The graph of a quadratic polynomial intersects the x-axis at two distinct points. What can be said about the number of zeroes of the polynomial?",
+      "reason": "figure: figure spec refused: spec.curves.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A cubic polynomial has zeroes at 4, -2, and 1/2. What is the relationship between the product of its zeroes and its constant term?",
+      "reason": "options 0 and 1 say the same thing (\"Product of zeroes is 8 times the constant term\" / \"Product of zeroes is 4 times the constant term\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a quadratic polynomial has zeroes at 1 and -1, what is the value of the coefficient of x in the polynomial?",
+      "reason": "checkExpr \"0\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The graph of a cubic polynomial intersects the x-axis at three points. What can be said about the number of zeroes of the polynomial?",
+      "reason": "figure: figure spec refused: spec.curves.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "How many quadratic polynomials can have -2 and 5 as zeroes?",
+      "reason": "near-duplicate of served question cmvfme9oz04yzgod8c5quisme (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the general form of a quadratic polynomial?",
+      "reason": "near-duplicate of served question cmvfme9kd04yngod8212yjj3j (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

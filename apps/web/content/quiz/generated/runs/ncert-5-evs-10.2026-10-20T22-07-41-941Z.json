@@ -1,0 +1,367 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T22:07:41.941Z",
+  "finishedAt": "2026-10-20T22:11:21.542Z",
+  "seconds": 220,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap110.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 10 — Walls Tell Stories",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 41408,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15984,
+      "completionTokens": 2948
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 73894,
+      "in": 16,
+      "out": 8,
+      "rejects": 8,
+      "promptTokens": 6774,
+      "completionTokens": 2869
+    },
+    "solver": {
+      "calls": 46,
+      "ms": 15821,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 5878,
+      "completionTokens": 398
+    },
+    "form": {
+      "calls": 4,
+      "ms": 6742,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 919,
+      "completionTokens": 253
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 1816,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 121538,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9148,
+      "completionTokens": 4795
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the purpose of bastions in the fort wall?",
+      "ms": {
+        "draft": 13568,
+        "critique": 4223
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why were big holes made in the bastions?",
+      "ms": {
+        "draft": 13568,
+        "critique": 4995
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you are standing at the Bodli Darwaza, in which direction would you face to look towards Katora Hauz?",
+      "ms": {
+        "draft": 13568,
+        "critique": 4437,
+        "solver": 1180
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why was it difficult for Aurangzeb's army to enter the fort?",
+      "ms": {
+        "draft": 13568,
+        "critique": 6768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "ms": {
+        "draft": 2656,
+        "critique": 5291,
+        "solver": 947
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the reason for wars?",
+      "ms": {
+        "draft": 2393,
+        "critique": 4137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a museum according to the passage?",
+      "ms": {
+        "draft": 2393,
+        "critique": 3874,
+        "solver": 1077,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the round-shaped parts of the fort wall?",
+      "ms": {
+        "draft": 13417,
+        "critique": 4449
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the old painting showing Agra Fort being constructed?",
+      "ms": {
+        "draft": 2393,
+        "critique": 5531,
+        "solver": 1416
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why were big holes made in the bastions of the fort?",
+      "ms": {
+        "draft": 13417,
+        "critique": 4689
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a soldier was standing on a bastion, in which direction would they be able to see the most?",
+      "ms": {
+        "draft": 13417,
+        "critique": 4134
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did the fort's design help in protecting it from attacks?",
+      "ms": {
+        "draft": 13417,
+        "critique": 3251
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the children go to the museum in Hyderabad?",
+      "ms": {
+        "draft": 2656,
+        "critique": 5038,
+        "solver": 1398,
+        "form": 1968,
+        "translation": 34271
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a nuclear bomb were used today?",
+      "ms": {
+        "draft": 2656,
+        "critique": 5335,
+        "solver": 4565,
+        "form": 739,
+        "translation": 33584
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a single nuclear bomb can cause so much destruction, what can be inferred about modern warfare?",
+      "ms": {
+        "draft": 2393,
+        "critique": 4111,
+        "solver": 1322,
+        "form": 2006,
+        "translation": 18730
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did Didi’s voice travel from Fateh Darwaza to the king’s palace?",
+      "ms": {
+        "draft": 2656,
+        "critique": 4504,
+        "solver": 839,
+        "form": 2223,
+        "translation": 30822
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the purpose of bastions in the fort wall?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why were big holes made in the bastions?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you are standing at the Bodli Darwaza, in which direction would you face to look towards Katora Hauz?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why was it difficult for Aurangzeb's army to enter the fort?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the passage say about the reason for wars?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a museum according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name given to the round-shaped parts of the fort wall?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the significance of the old painting showing Agra Fort being constructed?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why were big holes made in the bastions of the fort?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a soldier was standing on a bastion, in which direction would they be able to see the most?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How did the fort's design help in protecting it from attacks?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

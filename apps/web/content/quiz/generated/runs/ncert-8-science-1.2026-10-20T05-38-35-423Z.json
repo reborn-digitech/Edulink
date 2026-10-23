@@ -1,0 +1,515 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T05:38:35.423Z",
+  "finishedAt": "2026-10-20T05:43:14.559Z",
+  "seconds": 279,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu101.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Exploring the Investigative World of Science",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n8. A. Both A and R are true, and R is the correct explanation of A. 1",
+      "[CBSE Class X Science, sample question paper, 2024-25]\nSCIENCE SQP (2024-25)\nCLASS X\n(Science 086)\nMax. Marks: 80 Time Allowed: 3 hours\nGeneral Instructions:",
+      "[CBSE Class X Science, marking scheme, 2024-25]\nMARKING SCHEME\n2024 -25\nClass X Science (086)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 82121,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15876,
+      "completionTokens": 5221
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 165735,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 13097,
+      "completionTokens": 5271
+    },
+    "solver": {
+      "calls": 160,
+      "ms": 74257,
+      "in": 22,
+      "out": 21,
+      "rejects": 1,
+      "promptTokens": 28939,
+      "completionTokens": 1705
+    },
+    "form": {
+      "calls": 8,
+      "ms": 20233,
+      "in": 21,
+      "out": 7,
+      "rejects": 14,
+      "promptTokens": 1951,
+      "completionTokens": 543
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 5882,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 267180,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17291,
+      "completionTokens": 9267
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main goal of the chapter 'Exploring the Investigative World of Science'?",
+      "ms": {
+        "draft": 3514,
+        "critique": 5270
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following scenarios best reflects the investigative approach described in the chapter?",
+      "ms": {
+        "draft": 3514,
+        "critique": 6402,
+        "solver": 1377,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason given in the passage for Earth being suitable for life?",
+      "ms": {
+        "draft": 3230,
+        "critique": 5732,
+        "solver": 2203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to check how the thickness of dough affects how a puri puffs up, what should they do?",
+      "ms": {
+        "draft": 3230,
+        "critique": 5480,
+        "solver": 1302,
+        "form": 3150
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the puffing of a puri?",
+      "ms": {
+        "draft": 3230,
+        "critique": 7003,
+        "solver": 1296,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say is important for a scientific investigation?",
+      "ms": {
+        "draft": 3230,
+        "critique": 4570,
+        "solver": 12877,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the role of humans in Earth's climate?",
+      "ms": {
+        "draft": 3230,
+        "critique": 4725,
+        "solver": 511,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a scientific question that a student might ask while investigating a puri?",
+      "ms": {
+        "draft": 3804,
+        "critique": 4533,
+        "solver": 1252,
+        "form": 4389
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of systematic investigation according to the passage?",
+      "ms": {
+        "draft": 3804,
+        "critique": 4769,
+        "solver": 10350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student decides to test how the thickness of the dough affects the puffing of a puri. Which of the following steps should they follow?",
+      "ms": {
+        "draft": 3804,
+        "critique": 8677
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the process of scientific investigation?",
+      "ms": {
+        "draft": 3804,
+        "critique": 4946,
+        "solver": 12003,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the main purpose of science?",
+      "ms": {
+        "draft": 3140,
+        "critique": 7775,
+        "solver": 1371,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important for a student to keep notes during an experiment?",
+      "ms": {
+        "draft": 3804,
+        "critique": 5876,
+        "solver": 13198,
+        "form": 1701
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a way to stay healthy according to the passage?",
+      "ms": {
+        "draft": 3140,
+        "critique": 6789,
+        "solver": 15579
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between forces and pressure?",
+      "ms": {
+        "draft": 3140,
+        "critique": 6036,
+        "solver": 1243,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the same concepts of force and pressure decide how air moves. What insight does this suggest about the nature of scientific ideas?",
+      "ms": {
+        "draft": 3140,
+        "critique": 3758,
+        "solver": 1937,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student reads the passage and concludes that science is only about experiments. What is the flaw in this reasoning?",
+      "ms": {
+        "draft": 3140,
+        "critique": 4545,
+        "solver": 6621,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the chapter suggest is the foundation of scientific investigation?",
+      "ms": {
+        "draft": 3514,
+        "critique": 4769,
+        "solver": 1557,
+        "form": 2925,
+        "translation": 42353
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the role of questions in scientific investigation?",
+      "ms": {
+        "draft": 3514,
+        "critique": 4568,
+        "solver": 1081,
+        "form": 2450,
+        "translation": 41012
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to find out why dough rises, which of the following steps should they take first?",
+      "ms": {
+        "draft": 3140,
+        "critique": 5531,
+        "solver": 1600,
+        "form": 1961,
+        "translation": 20128
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to test the effect of oil temperature on how a puri puffs, what should they do?",
+      "ms": {
+        "draft": 3804,
+        "critique": 5400,
+        "solver": 10616,
+        "form": 4456,
+        "translation": 44352
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the chapter, what is the best way to ensure that an investigation leads to a deeper understanding of a phenomenon?",
+      "ms": {
+        "draft": 3514,
+        "critique": 4650,
+        "solver": 1178,
+        "form": 0,
+        "translation": 35154
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the importance of systematic investigation?",
+      "ms": {
+        "draft": 3230,
+        "critique": 5441,
+        "solver": 1618,
+        "form": 1272,
+        "translation": 39379
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a student asks a question and designs an experiment to answer it, what is the most important factor in ensuring that the investigation is meaningful?",
+      "ms": {
+        "draft": 3514,
+        "critique": 4697,
+        "solver": 1390,
+        "form": 0,
+        "translation": 40756
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main goal of the chapter 'Exploring the Investigative World of Science'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following scenarios best reflects the investigative approach described in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason given in the passage for Earth being suitable for life?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (78 vs 42 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to check how the thickness of dough affects how a puri puffs up, what should they do?",
+      "reason": "the key is far longer than every distractor (61 vs 33 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the puffing of a puri?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's statement about scientific under…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say is important for a scientific investigation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the role of humans in Earth's climate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's statement about natural cycles.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a scientific question that a student might ask while investigating a puri?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no misconception here (skipped in distractor…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of systematic investigation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the purpose of the passage with cooking…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student decides to test how the thickness of the dough affects the puffing of a puri. Which of the following steps should they follow?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the process of scientific investigation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest is the main purpose of science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important for a student to keep notes during an experiment?",
+      "reason": "options 0 and 3 are the same (\"To know how many puris were made\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a way to stay healthy according to the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between forces and pressure?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the same concepts of force and pressure decide how air moves. What insight does this suggest about the nature of scientific ideas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student reads the passage and concludes that science is only about experiments. What is the flaw in this reasoning?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

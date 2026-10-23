@@ -1,0 +1,365 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:50:09.997Z",
+  "finishedAt": "2026-10-20T19:55:23.438Z",
+  "seconds": 313,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap112.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 12 — Changing Times",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 67887,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13650,
+      "completionTokens": 2869
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 154331,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 8217,
+      "completionTokens": 3421
+    },
+    "solver": {
+      "calls": 100,
+      "ms": 71754,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 16618,
+      "completionTokens": 1070
+    },
+    "form": {
+      "calls": 9,
+      "ms": 29448,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 2130,
+      "completionTokens": 608
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 3084,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 397062,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16101,
+      "completionTokens": 8186
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 4,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did Chetandas' family move from their village?",
+      "ms": {
+        "draft": 4665,
+        "critique": 6907,
+        "solver": 3277,
+        "form": 4227
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main activity that the passage suggests children should do near a construction site?",
+      "ms": {
+        "draft": 3458,
+        "critique": 7434,
+        "solver": 2311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the correct order of materials used in Chetandas’ house over sixty years?",
+      "ms": {
+        "draft": 3458,
+        "critique": 6549,
+        "solver": 951,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chapter?",
+      "ms": {
+        "draft": 3162,
+        "critique": 7068,
+        "solver": 1630,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the activity where students make models of houses?",
+      "ms": {
+        "draft": 3162,
+        "critique": 12667,
+        "solver": 2332
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main activity described in the passage?",
+      "ms": {
+        "draft": 3162,
+        "critique": 7372,
+        "solver": 21550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas and his family built their house?",
+      "ms": {
+        "draft": 5687,
+        "critique": 7818
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What material was used to coat the floor of Chetandas' house?",
+      "ms": {
+        "draft": 5687,
+        "critique": 8289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Chetandas' family use neem and keekar branches on the roof frame?",
+      "ms": {
+        "draft": 5687,
+        "critique": 6929,
+        "solver": 13607,
+        "form": 2845
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the person who wrote about his childhood experiences?",
+      "ms": {
+        "draft": 4665,
+        "critique": 6517,
+        "solver": 1726,
+        "form": 5110,
+        "translation": 47633
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of inviting people from the construction site to the school?",
+      "ms": {
+        "draft": 3458,
+        "critique": 7033,
+        "solver": 3210,
+        "form": 4081,
+        "translation": 71075
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What material was used to make the floor of Chetandas' house?",
+      "ms": {
+        "draft": 4665,
+        "critique": 6867,
+        "solver": 2347,
+        "form": 4561,
+        "translation": 48006
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What change in Chetandas' house shows the use of modern building materials?",
+      "ms": {
+        "draft": 5687,
+        "critique": 8418,
+        "solver": 15211,
+        "form": 1317,
+        "translation": 40667
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of students is making a model of a house using paper and matchboxes, what type of house are they most likely building?",
+      "ms": {
+        "draft": 3458,
+        "critique": 8199,
+        "solver": 1141,
+        "form": 1911,
+        "translation": 55215
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of students is making a model of a house using paper and shoe-boxes, what does this activity help them learn?",
+      "ms": {
+        "draft": 3162,
+        "critique": 7800,
+        "solver": 19949,
+        "form": 4840,
+        "translation": 68254
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason for using neem and keekar branches in the roof of Chetandas' house?",
+      "ms": {
+        "draft": 4665,
+        "critique": 7519,
+        "solver": 1643,
+        "form": 5356,
+        "translation": 60537
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Chetandas' family move from their village?",
+      "reason": "the key is far longer than every distractor (48 vs 20 characters); distractor 2's reason is not a one-line misconception (\"incorrectly interprets the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main activity that the passage suggests children should do near a construction site?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the correct order of materials used in Chetandas’ house over sixty years?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Mud, wood, bricks, cement\" / \"Cement, bricks, wood, mud\"); options 0 and 2 say the same thing (\"Mud, wood, bricks, cement\" / \"Bricks, cement, wood, mud\"); options 0 and 3 say the same thing (\"Mud, wood, bricks, cement\" / \"Wood, cement, bricks, mud\"); options 1 and 2 say the same thing (\"Cement, bricks, wood, mud\" / \"Bricks, cement, wood, mud\"); options 1 and 3 say the same thing (\"Cement, bricks, wood, mud\" / \"Wood, cement, bricks, mud\"); options 2 and 3 say the same thing (\"Bricks, cement, wood, mud\" / \"Wood, cement, bricks, mud\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the chapter?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses the chapter name with another part of the passage…\"); distractor 2's reason is not a one-line misconception (\"Confuses the chapter name with another part of the passage…\"); distractor 3's reason is not a one-line misconception (\"Confuses the chapter name with another part of the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of the activity where students make models of houses?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main activity described in the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas and his family built their house?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What material was used to coat the floor of Chetandas' house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why did Chetandas' family use neem and keekar branches on the roof frame?",
+      "reason": "near-duplicate of batch item \"What was the main reason for using neem and keekar…\" (cosine 0.953 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

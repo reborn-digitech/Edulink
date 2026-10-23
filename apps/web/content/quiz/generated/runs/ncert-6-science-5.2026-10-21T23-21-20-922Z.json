@@ -1,0 +1,782 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T23:21:20.922Z",
+  "finishedAt": "2026-10-21T23:29:36.209Z",
+  "seconds": 495,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu105.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Measurement of Length and Motion",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEJS 2015 — question paper]\n9. A particle moves along the x-axis according to the equation x = 6t where x is displacement 2\nin meters and t is time in seconds. Therefore\na) the acceleration of the particle is 6 ms -2\nb) the particle follows a parabolic path\nc) each second the velocity of the particle changes by 9.8 ms -1\nd) the velocity of the particle is 6 ms at t = 0.5 s -1",
+      "[INJSO 2013 — question paper]\n60. A 100 m sprinter increases her speed from rest uniformly at the rate of 1 m/s upto 2\n40 m and covers the remaining distance with uniform speed. The sprinter covers the\nfirst half of the run in t 1 s and the second half in t 2 s. Then:\nA. t 1 > t 2\nB. t < t 1 2\nC. t = t 1 2\nD. information given is incomplete.",
+      "[INJSO 2011 — question paper]\n34. Velocity time graph of four athletes for a given interval of time are as given below. Who has\ntravelled maximum distance?\na) A b) B c) C d) D",
+      "[INJSO 2016 — question paper]\n39.\nTwo projectiles are fired simultaneously from ground level with same initial speed (u). Both\ncover same horizontal distance of 160 m on reaching the ground level. One of them reaches 6\nsec. prior to the other. Only gravitational acceleration g = 10 m/s governs the motion of both 2\nthe projectiles. Calculate (u).\n[Total = 5 marks]"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 186008,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 34910,
+      "completionTokens": 10673
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 305765,
+      "in": 40,
+      "out": 27,
+      "rejects": 13,
+      "promptTokens": 21513,
+      "completionTokens": 8435
+    },
+    "solver": {
+      "calls": 186,
+      "ms": 89205,
+      "in": 27,
+      "out": 21,
+      "rejects": 6,
+      "promptTokens": 32749,
+      "completionTokens": 1804
+    },
+    "form": {
+      "calls": 16,
+      "ms": 55456,
+      "in": 21,
+      "out": 9,
+      "rejects": 12,
+      "promptTokens": 9148,
+      "completionTokens": 1380
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 5247,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 251672,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15794,
+      "completionTokens": 7757
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the SI unit of length?",
+      "ms": {
+        "draft": 11644,
+        "critique": 6607
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student measures a table using their handspan and finds it to be 13 handspans, what is the unit of measurement in this case?",
+      "ms": {
+        "draft": 11644,
+        "critique": 6427,
+        "solver": 1236,
+        "form": 3124
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about using body parts to measure length?",
+      "ms": {
+        "draft": 11644,
+        "critique": 7020,
+        "solver": 10347,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest length that can be measured using a 15-cm scale?",
+      "ms": {
+        "draft": 11644,
+        "critique": 7021,
+        "solver": 1694,
+        "form": 2768
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a flexible measuring device?",
+      "ms": {
+        "draft": 5774,
+        "critique": 7359,
+        "solver": 1531
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures a table and finds that it is 13.5 handspans, what does this indicate?",
+      "ms": {
+        "draft": 11644,
+        "critique": 5656,
+        "solver": 11614
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does a kilometre stone indicate when it says 'Delhi 70 km'?",
+      "ms": {
+        "draft": 5774,
+        "critique": 6146,
+        "solver": 2666
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the zero mark on a scale is broken, how can the length of an object be measured?",
+      "ms": {
+        "draft": 5774,
+        "critique": 6810,
+        "solver": 13248
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student measures the same object multiple times and gets different results, what could be the reason?",
+      "ms": {
+        "draft": 5774,
+        "critique": 7081
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a broken scale to measure the length of a book, and the readings are 1.5 cm and 12.8 cm, what is the length of the book?",
+      "ms": {
+        "draft": 5774,
+        "critique": 6550,
+        "solver": 11910,
+        "form": 3019
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A ball is moving along a rollercoaster track. Which type of motion is the ball performing when it is moving in a circular path?",
+      "ms": {
+        "draft": 6217,
+        "critique": 6445
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage shows a figure of a metal strip that moves up and down. What type of motion is this?",
+      "ms": {
+        "draft": 3020,
+        "critique": 6711,
+        "solver": 1822,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the length and breadth of a leaf using a 15-cm scale. The leaf's length is 8.5 cm and its breadth is 3.2 cm. Which of the following units should be used to express the measurements?",
+      "ms": {
+        "draft": 6217,
+        "critique": 6743
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bicycle is used to measure the distance between two places. A flexible metal strip is attached to the spoke of the front wheel so that it hits the frame every time the wheel turns, producing a sound. If the wheel makes 100 turns and the circumference of the wheel is 1.5 meters, what is the total distance covered?",
+      "ms": {
+        "draft": 6217,
+        "critique": 7509
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of circular motion?",
+      "ms": {
+        "draft": 6217,
+        "critique": 6292,
+        "solver": 1014,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student measures the thickness of a single page of their notebook using a scale. They measure the thickness of 100 pages and find it to be 1.2 cm. What is the thickness of a single page?",
+      "ms": {
+        "draft": 6217,
+        "critique": 7595,
+        "solver": 7731,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of motion does a ball exhibit when it moves along a rollercoaster track from point A to point F?",
+      "ms": {
+        "draft": 4521,
+        "critique": 6973
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length of a wheel's outer boundary is 60 cm and a bicycle wheel makes 200 turns, what is the total distance covered?",
+      "ms": {
+        "draft": 4521,
+        "critique": 7992
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What type of motion does a pendulum exhibit when it swings back and forth?",
+      "ms": {
+        "draft": 4521,
+        "critique": 7055
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A particle moves along the x-axis with a velocity of 10 m/s. If it starts from rest and accelerates uniformly, what is its displacement after 5 seconds?",
+      "ms": {
+        "draft": 4521,
+        "critique": 8661
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two projectiles are launched with the same initial speed but different angles. One reaches the ground 2 seconds earlier than the other. What can be said about their horizontal ranges?",
+      "ms": {
+        "draft": 4521,
+        "critique": 8744,
+        "solver": 1519
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What kind of motion is shown by the pendulum in a wall clock?",
+      "ms": {
+        "draft": 3541,
+        "critique": 6319,
+        "solver": 1435
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an appropriate tool to measure the length of a pencil?",
+      "ms": {
+        "draft": 3924,
+        "critique": 5678
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a car moving on a straight road. He says the car is in motion. What is the reason for his conclusion?",
+      "ms": {
+        "draft": 3541,
+        "critique": 5936,
+        "solver": 2050,
+        "form": 2743
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done if the zero mark on the scale is not visible?",
+      "ms": {
+        "draft": 3924,
+        "critique": 6721
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ball is rolling on a flat surface. A student says the motion is both circular and linear. What is the correct explanation?",
+      "ms": {
+        "draft": 3541,
+        "critique": 4685,
+        "solver": 1259,
+        "form": 4514
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of a reference point in measuring distance?",
+      "ms": {
+        "draft": 3924,
+        "critique": 6360
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures the length of a curved line using a thread and then a metre scale, what must they do next?",
+      "ms": {
+        "draft": 3924,
+        "critique": 5904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the length of a table using their handspan. Which of the following statements is true about this method of measurement?",
+      "ms": {
+        "draft": 9843,
+        "critique": 7009,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student measures the distance of a place from their house and another student measures the same distance from the bus stand, what will be the result?",
+      "ms": {
+        "draft": 3924,
+        "critique": 5648,
+        "solver": 12291,
+        "form": 2329
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measures the length of a table using a 15-cm scale. If the length of the table is found to be 13.5 cm, how many millimetres is this?",
+      "ms": {
+        "draft": 9843,
+        "critique": 7189,
+        "solver": 9945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When an object moves along a straight line, what is its motion called?",
+      "ms": {
+        "draft": 3020,
+        "critique": 5966,
+        "solver": 1313,
+        "form": 3774
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of length?",
+      "ms": {
+        "draft": 3541,
+        "critique": 6620,
+        "solver": 1674,
+        "form": 2798
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of length?",
+      "ms": {
+        "draft": 3020,
+        "critique": 5752,
+        "solver": 1507,
+        "form": 4017,
+        "translation": 33887
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which unit of length is most suitable for measuring the thickness of a single page of a notebook?",
+      "ms": {
+        "draft": 4521,
+        "critique": 6275,
+        "solver": 1494,
+        "form": 0,
+        "translation": 24489
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What should be the position of the eye while measuring the length of an object?",
+      "ms": {
+        "draft": 5774,
+        "critique": 7293,
+        "solver": 11297,
+        "form": 0,
+        "translation": 40726
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of linear motion?",
+      "ms": {
+        "draft": 3020,
+        "critique": 8109,
+        "solver": 1397,
+        "form": 2915,
+        "translation": 33255
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is observing the motion of a car moving on a straight road. What type of motion is the car in?",
+      "ms": {
+        "draft": 3020,
+        "critique": 5919,
+        "solver": 1263,
+        "form": 2338,
+        "translation": 47851
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of linear motion?",
+      "ms": {
+        "draft": 3541,
+        "critique": 6252,
+        "solver": 1392,
+        "form": 2717,
+        "translation": 23501
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to use standard units of measurement?",
+      "ms": {
+        "draft": 11644,
+        "critique": 7074,
+        "solver": 1541,
+        "form": 3119,
+        "translation": 41130
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used when an object moves to and fro about a fixed position?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of length?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student measures a table using their handspan and finds it to be 13 handspans, what is the unit of measurement in this case?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the unit used in the scenario…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about using body parts to measure length?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the smallest length that can be measured using a 15-cm scale?",
+      "reason": "options are in more than one unit (mm, cm, m, km); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; distractor 1's reason is not a one-line misconception (\"Correct answer is the smallest unit…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a flexible measuring device?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student measures a table and finds that it is 13.5 handspans, what does this indicate?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does a kilometre stone indicate when it says 'Delhi 70 km'?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the zero mark on a scale is broken, how can the length of an object be measured?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a student measures the same object multiple times and gets different results, what could be the reason?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses a broken scale to measure the length of a book, and the readings are 1.5 cm and 12.8 cm, what is the length of the book?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ruler'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A ball is moving along a rollercoaster track. Which type of motion is the ball performing when it is moving in a circular path?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage shows a figure of a metal strip that moves up and down. What type of motion is this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A student measures the length and breadth of a leaf using a 15-cm scale. The leaf's length is 8.5 cm and its breadth is 3.2 cm. Which of the following units should be used to express the measurements?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A bicycle is used to measure the distance between two places. A flexible metal strip is attached to the spoke of the front wheel so that it hits the frame every time the wheel turns, producing a sound. If the wheel makes 100 turns and the circumference of the wheel is 1.5 meters, what is the total distance covered?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of circular motion?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student measures the thickness of a single page of their notebook using a scale. They measure the thickness of 100 pages and find it to be 1.2 cm. What is the thickness of a single page?",
+      "reason": "options are written to different precisions (0 and 1 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of motion does a ball exhibit when it moves along a rollercoaster track from point A to point F?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the length of a wheel's outer boundary is 60 cm and a bicycle wheel makes 200 turns, what is the total distance covered?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What type of motion does a pendulum exhibit when it swings back and forth?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A particle moves along the x-axis with a velocity of 10 m/s. If it starts from rest and accelerates uniformly, what is its displacement after 5 seconds?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Two projectiles are launched with the same initial speed but different angles. One reaches the ground 2 seconds earlier than the other. What can be said about their horizontal ranges?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What kind of motion is shown by the pendulum in a wall clock?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an appropriate tool to measure the length of a pencil?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes a car moving on a straight road. He says the car is in motion. What is the reason for his conclusion?",
+      "reason": "the key is far longer than every distractor (66 vs 39 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What should be done if the zero mark on the scale is not visible?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A ball is rolling on a flat surface. A student says the motion is both circular and linear. What is the correct explanation?",
+      "reason": "figure: figure spec refused: spec.parts: barMagnet has no label \"surface\" (it has north, south, fieldLine)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the purpose of a reference point in measuring distance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student measures the length of a curved line using a thread and then a metre scale, what must they do next?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student measures the length of a table using their handspan. Which of the following statements is true about this method of measurement?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no misconception here (this is the correct o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student measures the distance of a place from their house and another student measures the same distance from the bus stand, what will be the result?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student measures the length of a table using a 15-cm scale. If the length of the table is found to be 13.5 cm, how many millimetres is this?",
+      "reason": "options 2 and 3 are the same (\"1350 mm\"); options are written to different precisions (0 and 1 decimals); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When an object moves along a straight line, what is its motion called?",
+      "reason": "near-duplicate of served question cmvelzucx00k1god80fwa1z4x (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of length?",
+      "reason": "near-duplicate of batch item \"What is the SI unit of length?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:48:59.273Z",
+  "finishedAt": "2026-10-20T20:53:17.279Z",
+  "seconds": 258,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm103.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Angles as Turns",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n24. We know that, in 60 minutes, the tip of minute hand moves 360°\nIn 1 minute, it will move =360°/60 = 6° ½\n∴ From 7 : 05 pm to 7: 40 pm i.e. 35 min, it will move through = 35 × 6° = 210° ½\n∴ Area of swept by the minute hand in 35 min = Area of sector with sectorial angle θ\nof 210° and radius of 6 cm\n= 210 360 x π x 6 2 ½\n7 22\n= 12 x 7 x 6 x 6\n=66cm 2 ½\nOR\nLet the measure of ∠A, ∠B, ∠C and ∠D be θ₁, θ₂, θ₃ and θ₄ respectively\nRequired area = Area of sector with centre A + Area of sector with centre B ½\n+ Area of sector with centre C + Area of sector with centre D\n= 360 𝛉₁ x π x 7 + 2 360 𝛉₂ x π x 7 + 2 360 𝛉₃ x π x 7 + 2 360 𝛉₄ x π x 7 2 ½\n( 𝛉₁ + 𝛉₂ + 𝛉₃ + 𝛉₄) 2\n= 360 x π x 7\n= ( 𝟑",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n9. (B) 12°\nsin 5𝑥 = √ଷ ଶ\nSo, 5𝑥 = 60°\nAnd hence 𝑥 = 12°",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n9. If O is centre of a circle and Chord PQ makes an angle 50° with the tangent PR at the point of contact 1\nP, then the angle subtended by the chord at the centre is P R\n(a) 130° (b) 100°\n(c) 50° (d) 30° O Q",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n5. In the given figure, PQ and PR are tangents to a circle centred at O. If 1\n∠QPR=35 then ∠QOR is equal to ∘\n(A) 70 ∘ (B) 90 ∘ (C) 135 ∘ (D) 145 ∘"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 65358,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 16577,
+      "completionTokens": 4276
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 123422,
+      "in": 20,
+      "out": 17,
+      "rejects": 3,
+      "promptTokens": 10674,
+      "completionTokens": 4284
+    },
+    "solver": {
+      "calls": 109,
+      "ms": 43229,
+      "in": 17,
+      "out": 9,
+      "rejects": 8,
+      "promptTokens": 14041,
+      "completionTokens": 984
+    },
+    "form": {
+      "calls": 1,
+      "ms": 852,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 201,
+      "completionTokens": 55
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2093,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 233821,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 16881,
+      "completionTokens": 7760
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "A fan makes a turn that looks like an acute angle. How many such turns would make a full turn?",
+      "ms": {
+        "draft": 10812,
+        "critique": 5762,
+        "solver": 1929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by ______ minutes.",
+      "ms": {
+        "draft": 2092,
+        "critique": 5630,
+        "solver": 1719
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the direction in which the hands of a clock move?",
+      "ms": {
+        "draft": 3901,
+        "critique": 4207
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Padma is facing the toy shop and takes a half turn clockwise, which direction will she face?",
+      "ms": {
+        "draft": 3901,
+        "critique": 4746,
+        "solver": 1290
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a child turns 3 right angles clockwise, what direction will they face if they start facing North?",
+      "ms": {
+        "draft": 3901,
+        "critique": 5903,
+        "solver": 1568
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the minute hand makes a 270° turn, how many minutes has it moved?",
+      "ms": {
+        "draft": 3901,
+        "critique": 8192
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When the minute hand moves by 45 minutes, it has made a _______ turn of the circle.",
+      "ms": {
+        "draft": 3901,
+        "critique": 5478,
+        "solver": 10573
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A minute hand moves from 12 to 10 on a clock. How many turns has it made?",
+      "ms": {
+        "draft": 3094,
+        "critique": 7562,
+        "solver": 1495
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What type of turn is made when a minute hand moves from 12 to 3 on a clock?",
+      "ms": {
+        "draft": 3094,
+        "critique": 4764,
+        "solver": 10500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the minute hand makes 30 minutes on a clock, how many turns does it make?",
+      "ms": {
+        "draft": 3094,
+        "critique": 6246,
+        "solver": 8534
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the minute hand of a clock moves from 12 to 9, what type of angle does it make?",
+      "ms": {
+        "draft": 3094,
+        "critique": 4662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The direction in which the hands of the clock move is called ______ movement.",
+      "ms": {
+        "draft": 2092,
+        "critique": 4391,
+        "solver": 698,
+        "form": 2033
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the minute hand moves by 45 minutes, it has made a _______ turn of the circle.",
+      "ms": {
+        "draft": 2092,
+        "critique": 5425,
+        "solver": 9288,
+        "form": 0,
+        "translation": 19283
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the minute hand has turned a full-circle, it has moved by ______ minutes.",
+      "ms": {
+        "draft": 2092,
+        "critique": 4713,
+        "solver": 1170,
+        "form": 0,
+        "translation": 21807
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which direction do the hands of a clock move?",
+      "ms": {
+        "draft": 2092,
+        "critique": 5173,
+        "solver": 1542,
+        "form": 0,
+        "translation": 18922
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the angle formed when the minute hand of a clock moves from 12 to 3 on the clock face?",
+      "ms": {
+        "draft": 10812,
+        "critique": 4388,
+        "solver": 1061,
+        "form": 0,
+        "translation": 37010
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the angle formed when a door is fully open?",
+      "ms": {
+        "draft": 10812,
+        "critique": 4510,
+        "solver": 1577,
+        "form": 0,
+        "translation": 33650
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a door is opened halfway, what type of angle does it form?",
+      "ms": {
+        "draft": 10812,
+        "critique": 4548,
+        "solver": 1491,
+        "form": 0,
+        "translation": 35428
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Reema takes two half turns in the same direction. What is the total turn she makes?",
+      "ms": {
+        "draft": 10812,
+        "critique": 4798,
+        "solver": 2160,
+        "form": 0,
+        "translation": 37009
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the minute hand of a clock moves from 12 to 6, how many degrees does it turn?",
+      "ms": {
+        "draft": 10812,
+        "critique": 5727,
+        "solver": 1056,
+        "form": 0,
+        "translation": 27498
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which direction is described as the movement opposite to the hands of a clock?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A fan makes a turn that looks like an acute angle. How many such turns would make a full turn?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by ______ minutes.",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "When the minute hand has turned by of a full turn, it has moved by ______ minutes.",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the direction in which the hands of a clock move?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Padma is facing the toy shop and takes a half turn clockwise, which direction will she face?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a child turns 3 right angles clockwise, what direction will they face if they start facing North?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the minute hand makes a 270° turn, how many minutes has it moved?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "When the minute hand moves by 45 minutes, it has made a _______ turn of the circle.",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A minute hand moves from 12 to 10 on a clock. How many turns has it made?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What type of turn is made when a minute hand moves from 12 to 3 on a clock?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the minute hand makes 30 minutes on a clock, how many turns does it make?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the minute hand of a clock moves from 12 to 9, what type of angle does it make?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "The direction in which the hands of the clock move is called ______ movement.",
+      "reason": "near-duplicate of batch item \"In which direction do the hands of a clock move?…\" (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

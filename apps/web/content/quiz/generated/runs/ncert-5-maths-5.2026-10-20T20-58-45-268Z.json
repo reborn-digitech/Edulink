@@ -1,0 +1,495 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T20:58:45.268Z",
+  "finishedAt": "2026-10-20T21:03:10.152Z",
+  "seconds": 265,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm105.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Far and Near",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n15. The point on the x- axis nearest to the point (-4,-5) is 1\nA) (0, 0) B) (-4, 0) C ) (-5, 0) D) (√41, 0)",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n37. CASE STUDY 2\nAlia and Shagun are friends living on the same street in Patel Nagar. Shagun’s house is at the\nintersection of one street with another street on which there is a library. They both study in\nthe same school and that is not far from Shagun's house. Suppose the school is situated at\nthe point O, i.e., the origin, Alia's house is at A. Shagun’s house is at B and library is at C.\nBased on the above information, answer the following questions.\n(i) How far is Alia's house from Shagun’s house?\n(ii) How far is the library from Shagun’s house?\n(iii) Show that for Shagun, school is farther compared to Alia’s house and library.\nOR\nShow that Alia’s house, shagun’s house and library for a",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n1. LB = √ (𝑥 − 𝑥 ) + (𝑦 − 𝑦 ) ⇒ LB = √ (0 − 5) + (7 − 10) 2 1 2 2 1 2 2 2 ½\nLB = √ (5) + (3) ⇒ LB = √25 + 9 LB = √34 2 2\nHence the distance is 150 √34 km ½",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n24. Find the point(s) on the x-axis which is at a distance of √41 units from the point (8, -5). 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 79799,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18964,
+      "completionTokens": 5124
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 183582,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 14393,
+      "completionTokens": 5557
+    },
+    "solver": {
+      "calls": 155,
+      "ms": 73572,
+      "in": 21,
+      "out": 12,
+      "rejects": 9,
+      "promptTokens": 32456,
+      "completionTokens": 1698
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8467,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 826,
+      "completionTokens": 251
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2395,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 257703,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20182,
+      "completionTokens": 8619
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following distances is the longest?",
+      "ms": {
+        "draft": 3273,
+        "critique": 6202,
+        "solver": 1175
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a standard unit for measuring length?",
+      "ms": {
+        "draft": 3273,
+        "critique": 6231,
+        "solver": 9675
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct conversion for 514 mm?",
+      "ms": {
+        "draft": 3273,
+        "critique": 5271,
+        "solver": 16715
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How much cloth is needed to make shirts for 20 children if each child needs 1 m 80 cm of cloth?",
+      "ms": {
+        "draft": 2829,
+        "critique": 6069,
+        "solver": 1224
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 1 inch equals 2 cm 5 mm, how many centimeters is 1 inch?",
+      "ms": {
+        "draft": 2829,
+        "critique": 5817,
+        "solver": 735,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A road 12 km 600 m long is being laid in 6 days. How much road is laid each day?",
+      "ms": {
+        "draft": 2829,
+        "critique": 5900,
+        "solver": 7840
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Rani has two ribbons, one 3 m 75 cm and another 2 m 25 cm, what is the total length of the ribbons?",
+      "ms": {
+        "draft": 3853,
+        "critique": 5746
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the first section of the Gulmarg Gondola is 2 km 300 m and the second section is 2 km 650 m, what is the total distance covered by the cable car?",
+      "ms": {
+        "draft": 3853,
+        "critique": 6526,
+        "solver": 1053
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct relationship between units of length?",
+      "ms": {
+        "draft": 3345,
+        "critique": 11669,
+        "solver": 1260
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5 m of cloth costs ₹100, how much will 1 m of cloth cost?",
+      "ms": {
+        "draft": 3853,
+        "critique": 6294,
+        "solver": 17318
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rope is 2 m 4 cm long, what is its length in centimetres?",
+      "ms": {
+        "draft": 3345,
+        "critique": 7123
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the height of the Statue of Liberty is 93 m, and the height of the Statue of Unity is 182 m, what is the difference in their heights?",
+      "ms": {
+        "draft": 3345,
+        "critique": 7377
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a train travels from Dibrugarh to Kanniyakumari, and the total distance is 4,187 km, how many metres is this?",
+      "ms": {
+        "draft": 3345,
+        "critique": 5955,
+        "solver": 609
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the length of cable left if 16 m 75 cm is used out of 63 m?",
+      "ms": {
+        "draft": 3853,
+        "critique": 4212,
+        "solver": 1094,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total distance Saji walked in a day if he walked 3 km 450 m in the morning and 4 km 650 m in the evening?",
+      "ms": {
+        "draft": 3853,
+        "critique": 4389,
+        "solver": 1911,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total distance Saji walked in a day if he walked 3 km 450 m in the morning and 4 km 650 m in the evening?",
+      "ms": {
+        "draft": 2829,
+        "critique": 6553,
+        "solver": 11160,
+        "form": 0,
+        "translation": 31509
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the length of the cable left after using 16 m 75 cm from 63 m?",
+      "ms": {
+        "draft": 2829,
+        "critique": 7145,
+        "solver": 1231,
+        "form": 0,
+        "translation": 24585
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rope is 2 m 40 cm long, how many centimetres is that?",
+      "ms": {
+        "draft": 3273,
+        "critique": 5543,
+        "solver": 1089,
+        "form": 4404,
+        "translation": 27417
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a race, water stations are placed every 500 m. How many water stations are there in a 3-km race?",
+      "ms": {
+        "draft": 3345,
+        "critique": 5523,
+        "solver": 1696,
+        "form": 0,
+        "translation": 31330
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If 5 m of cloth costs ₹100, how much does 1 m of cloth cost?",
+      "ms": {
+        "draft": 2829,
+        "critique": 5271,
+        "solver": 1008,
+        "form": 0,
+        "translation": 22804
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a train travels 4187 km from Dibrugarh to Kanniyakumari, and it has already covered 2800 km, how much more distance is left to cover?",
+      "ms": {
+        "draft": 3273,
+        "critique": 5847,
+        "solver": 10623,
+        "form": 3361,
+        "translation": 33191
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a sprout grows to 36 mm on the third day, what is its length in centimetres and millimetres?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6479,
+        "solver": 1625,
+        "form": 0,
+        "translation": 28765
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A sprout grows 36 mm in 4 days. If it continues to grow at the same rate, how long will it be after 10 days?",
+      "ms": {
+        "draft": 3273,
+        "critique": 5802,
+        "solver": 1111,
+        "form": 1734,
+        "translation": 26263
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a 1 m long thread costs ₹50, how much will be needed to buy the thread for a 5 m sari border?",
+      "ms": {
+        "draft": 3853,
+        "critique": 6219,
+        "solver": 14144,
+        "form": 0,
+        "translation": 28921
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following distances is the longest?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a standard unit for measuring length?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the correct conversion for 514 mm?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How much cloth is needed to make shirts for 20 children if each child needs 1 m 80 cm of cloth?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 1 inch equals 2 cm 5 mm, how many centimeters is 1 inch?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A road 12 km 600 m long is being laid in 6 days. How much road is laid each day?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Rani has two ribbons, one 3 m 75 cm and another 2 m 25 cm, what is the total length of the ribbons?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the first section of the Gulmarg Gondola is 2 km 300 m and the second section is 2 km 650 m, what is the total distance covered by the cable car?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the correct relationship between units of length?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 5 m of cloth costs ₹100, how much will 1 m of cloth cost?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a rope is 2 m 4 cm long, what is its length in centimetres?",
+      "reason": "the critic finds option 1 correct, the key is 2; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the height of the Statue of Liberty is 93 m, and the height of the Statue of Unity is 182 m, what is the difference in their heights?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a train travels from Dibrugarh to Kanniyakumari, and the total distance is 4,187 km, how many metres is this?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the length of cable left if 16 m 75 cm is used out of 63 m?",
+      "reason": "near-duplicate of batch item \"What is the length of the cable left after using 1…\" (cosine 0.974 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the total distance Saji walked in a day if he walked 3 km 450 m in the morning and 4 km 650 m in the evening?",
+      "reason": "near-duplicate of batch item \"What is the total distance Saji walked in a day if…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

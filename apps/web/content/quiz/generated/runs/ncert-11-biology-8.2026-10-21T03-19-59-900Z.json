@@ -1,0 +1,687 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T03:19:59.900Z",
+  "finishedAt": "2026-10-21T03:28:39.919Z",
+  "seconds": 520,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo108.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 8 — Nit of",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n26. (1 point) Which of the following correctly depicts a reaction involved in the\nnitrogen cycle?\na. N 2 + H + e + ATP + - NH 3 + ADP + Pi\nb. N 2 + H + e + ADP + Pi + - NH 3\nc. NO + e + ADP + Pi 2 - NH 3 +\nd. NO 3 - + H + e + ADP + Pi + - NH\n+ ATP\n+ ATP\n+\n3 + NO 2 + ATP",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n26. The main sources of biofertilizers are bacteria, fungi and cyanobacteria. 3\n- The nodules on the roots of leguminous plants are formed by the\nsymbiotic association of Rhizobium. These bacteria fix atmospheric\nnitrogen into organic forms, which is used by the plant as a nutrient.\nOther bacteria can fix atmospheric nitrogen while free-living in the soil\n(examples Azospirillum and Azotobacter), thus enriching the nitrogen\ncontent of the soil. (1)\n- Fungi are also known to form symbiotic associations with plants\n(mycorrhiza). Many members of the genus Glomus form mycorrhiza.\nThe fungal symbiont in these associations absorbs phosphorus from\nsoil and passes it to the plant. Plants having such "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 167145,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 34652,
+      "completionTokens": 9998
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 238363,
+      "in": 36,
+      "out": 30,
+      "rejects": 6,
+      "promptTokens": 16985,
+      "completionTokens": 6714
+    },
+    "solver": {
+      "calls": 164,
+      "ms": 63144,
+      "in": 30,
+      "out": 28,
+      "rejects": 2,
+      "promptTokens": 24850,
+      "completionTokens": 1446
+    },
+    "form": {
+      "calls": 18,
+      "ms": 90900,
+      "in": 28,
+      "out": 14,
+      "rejects": 14,
+      "promptTokens": 18784,
+      "completionTokens": 2543
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 6484,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 59,
+      "ms": 602478,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 35139,
+      "completionTokens": 18239
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 5,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the basic unit of life?",
+      "ms": {
+        "draft": 3638,
+        "critique": 6136
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying the structure of a cell, which part of the passage should they refer to for detailed information?",
+      "ms": {
+        "draft": 3638,
+        "critique": 6503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the cell theory?",
+      "ms": {
+        "draft": 3638,
+        "critique": 7739
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key contribution of the cell theory?",
+      "ms": {
+        "draft": 3638,
+        "critique": 6866
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions that the cell theory was modified by Rudolf Virchow. What was the main modification?",
+      "ms": {
+        "draft": 3638,
+        "critique": 6976
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the 'Reductionist Biology' approach mentioned in the passage?",
+      "ms": {
+        "draft": 3638,
+        "critique": 6398
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of the cell membrane in both plant and animal cells?",
+      "ms": {
+        "draft": 4744,
+        "critique": 5956,
+        "solver": 2075,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the fluid mosaic model, what is the main function of the lipid bilayer in the plasma membrane?",
+      "ms": {
+        "draft": 5811,
+        "critique": 6469,
+        "solver": 1158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of the plasma membrane in a cell?",
+      "ms": {
+        "draft": 5811,
+        "critique": 5852,
+        "solver": 1573,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a cell with a rigid cell wall and a large central vacuole. Which type of cell is it most likely to be?",
+      "ms": {
+        "draft": 5811,
+        "critique": 7688,
+        "solver": 1047,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "ms": {
+        "draft": 3540,
+        "critique": 7309,
+        "solver": 14153,
+        "form": 3356
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main function of the cytoskeleton?",
+      "ms": {
+        "draft": 3607,
+        "critique": 5992,
+        "solver": 1368,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a chromosome has a centromere close to its end, what type of chromosome is it?",
+      "ms": {
+        "draft": 6362,
+        "critique": 7949,
+        "solver": 1373
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the centromere in a chromosome?",
+      "ms": {
+        "draft": 6362,
+        "critique": 6095,
+        "solver": 1291,
+        "form": 3009
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of chromosome based on the position of the centromere?",
+      "ms": {
+        "draft": 6362,
+        "critique": 6629,
+        "solver": 1604,
+        "form": 3481
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of a telocentric chromosome?",
+      "ms": {
+        "draft": 6362,
+        "critique": 7392,
+        "solver": 1210,
+        "form": 2137
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a chromosome has a secondary constriction, what is the likely appearance?",
+      "ms": {
+        "draft": 6362,
+        "critique": 6464,
+        "solver": 1416,
+        "form": 2354
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main difference between the ribosomes in eukaryotic and prokaryotic cells?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6224,
+        "solver": 1680,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are chromosomes classified based on the position of the centromere?",
+      "ms": {
+        "draft": 6362,
+        "critique": 6621,
+        "solver": 1435,
+        "form": 2537
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the nucleus?",
+      "ms": {
+        "draft": 4074,
+        "critique": 5902,
+        "solver": 1421,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the structure of a cilium, which of the following is responsible for the 9+2 arrangement?",
+      "ms": {
+        "draft": 4074,
+        "critique": 7217,
+        "solver": 1478,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organelle is described as having a network of tiny tubular structures scattered in the cytoplasm?",
+      "ms": {
+        "draft": 4278,
+        "critique": 5219,
+        "solver": 5277,
+        "form": 1427
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic feature of prokaryotic cells?",
+      "ms": {
+        "draft": 4744,
+        "critique": 6145,
+        "solver": 1448,
+        "form": 0,
+        "translation": 45452
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a non-membrane bound organelle found in all cells?",
+      "ms": {
+        "draft": 4744,
+        "critique": 6407,
+        "solver": 1246,
+        "form": 0,
+        "translation": 35790
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about ribosomes?",
+      "ms": {
+        "draft": 3607,
+        "critique": 6364,
+        "solver": 882,
+        "form": 0,
+        "translation": 62026
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the stroma in a chloroplast?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6211,
+        "solver": 1254,
+        "form": 0,
+        "translation": 37649
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between Gram-positive and Gram-negative bacteria?",
+      "ms": {
+        "draft": 4744,
+        "critique": 7738,
+        "solver": 1144,
+        "form": 0,
+        "translation": 46140
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a unique feature of prokaryotic cells that helps in DNA replication and distribution to daughter cells?",
+      "ms": {
+        "draft": 4744,
+        "critique": 7545,
+        "solver": 1273,
+        "form": 0,
+        "translation": 34890
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct feature of prokaryotic ribosomes?",
+      "ms": {
+        "draft": 5811,
+        "critique": 6393,
+        "solver": 1792,
+        "form": 0,
+        "translation": 47065
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram, which of the following is a function of the plasma membrane in prokaryotic cells?",
+      "ms": {
+        "draft": 4744,
+        "critique": 6969,
+        "solver": 1049,
+        "form": 0,
+        "translation": 34915
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of the Golgi apparatus?",
+      "ms": {
+        "draft": 3540,
+        "critique": 5840,
+        "solver": 1354,
+        "form": 3467,
+        "translation": 41952
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a feature of the centrioles?",
+      "ms": {
+        "draft": 4074,
+        "critique": 5009,
+        "solver": 1383,
+        "form": 0,
+        "translation": 30216
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is actively involved in protein synthesis, which structure would be most abundant?",
+      "ms": {
+        "draft": 3540,
+        "critique": 7603,
+        "solver": 1399,
+        "form": 3223,
+        "translation": 45719
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the 9+2 array in cilia and flagella?",
+      "ms": {
+        "draft": 3607,
+        "critique": 4867,
+        "solver": 657,
+        "form": 0,
+        "translation": 39366
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are prokaryotic ribosomes considered to be different from eukaryotic ribosomes in terms of function?",
+      "ms": {
+        "draft": 5811,
+        "critique": 6978,
+        "solver": 2310,
+        "form": 0,
+        "translation": 54205
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which organelle is known as the 'powerhouse of the cell'?",
+      "ms": {
+        "draft": 3540,
+        "critique": 5771,
+        "solver": 1035,
+        "form": 3080,
+        "translation": 44139
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the basic unit of life?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student is studying the structure of a cell, which part of the passage should they refer to for detailed information?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the cell theory?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key contribution of the cell theory?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The passage mentions that the cell theory was modified by Rudolf Virchow. What was the main modification?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following best describes the 'Reductionist Biology' approach mentioned in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of the cell membrane in both plant and animal cells?",
+      "reason": "the key is far longer than every distractor (60 vs 29 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the fluid mosaic model, what is the main function of the lipid bilayer in the plasma membrane?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main function of the plasma membrane in a cell?",
+      "reason": "the key is far longer than every distractor (60 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes a cell with a rigid cell wall and a large central vacuole. Which type of cell is it most likely to be?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "reason": "options 2 and 3 are the same (\"2: Ribosomes\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the main function of the cytoskeleton?",
+      "reason": "the key is far longer than every distractor (53 vs 32 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a chromosome has a centromere close to its end, what type of chromosome is it?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the centromere in a chromosome?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"centromere\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of chromosome based on the position of the centromere?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'chromosome'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of a telocentric chromosome?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a chromosome has a secondary constriction, what is the likely appearance?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'chromosome'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main difference between the ribosomes in eukaryotic and prokaryotic cells?",
+      "reason": "options 0 and 2 say the same thing (\"Eukaryotic ribosomes are 70S and prokaryotic ribosomes are 80S\" / \"Eukaryotic ribosomes are 80S and prokaryotic ribosomes are 70S\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are chromosomes classified based on the position of the centromere?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'chromosome'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the nucleus?",
+      "reason": "the key is far longer than every distractor (73 vs 37 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the structure of a cilium, which of the following is responsible for the 9+2 arrangement?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'diagram'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which organelle is described as having a network of tiny tubular structures scattered in the cytoplasm?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

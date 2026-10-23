@@ -1,0 +1,813 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T10:34:15.598Z",
+  "finishedAt": "2026-10-21T10:44:30.852Z",
+  "seconds": 615,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec108.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 8 — Comparative Development Experiences of India and Its Neighbours",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n19. C. Britain",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n31. Regional and global economic groupings like G-20, SAARC, BRICS etc., play 3\n(I) a vital role for developing nations like India as they help them to understand\nthe developmental processes pursued by their neighbouring nations to better\ncomprehend their own strengths and weaknesses vis-à-vis their neighbours.\nMoreover, in the unfolding process of globalisation, as developing nations face\ncompetition not only from developed nations but also amongst themselves\nsuch groupings help them to flourish well in a shared environment.\n(II) Special Economic Zone is a geographical region that has economic laws 1\ndifferent from a country’s typical economic laws.",
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\nSECTION B - INDIAN ECONOMIC DEVELOPMENT",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\nSECTION B – INDIAN ECONOMIC DEVELOPMENT"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 191375,
+      "in": 42,
+      "out": 42,
+      "rejects": 0,
+      "promptTokens": 38112,
+      "completionTokens": 9380
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 387917,
+      "in": 42,
+      "out": 31,
+      "rejects": 11,
+      "promptTokens": 22947,
+      "completionTokens": 9124
+    },
+    "solver": {
+      "calls": 230,
+      "ms": 140342,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 43426,
+      "completionTokens": 2617
+    },
+    "form": {
+      "calls": 17,
+      "ms": 62403,
+      "in": 27,
+      "out": 8,
+      "rejects": 19,
+      "promptTokens": 6034,
+      "completionTokens": 1403
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1013,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 400495,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19520,
+      "completionTokens": 10396
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which country is described as the largest democracy in the world in the passage?",
+      "ms": {
+        "draft": 3658,
+        "critique": 5579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of regional and global economic groupings according to the passage?",
+      "ms": {
+        "draft": 3658,
+        "critique": 6224,
+        "solver": 2117,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the developmental strategies of India, China, and Pakistan?",
+      "ms": {
+        "draft": 3658,
+        "critique": 7637,
+        "solver": 1959,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of understanding the developmental processes of neighbouring countries?",
+      "ms": {
+        "draft": 3658,
+        "critique": 7304,
+        "solver": 1519,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what event in China in 1966 had a significant impact on its development?",
+      "ms": {
+        "draft": 3658,
+        "critique": 8599,
+        "solver": 18922,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the agricultural sector in China?",
+      "ms": {
+        "draft": 5026,
+        "critique": 7337,
+        "solver": 1484,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a reason for the low sex ratio in Pakistan?",
+      "ms": {
+        "draft": 5026,
+        "critique": 8291,
+        "solver": 17763,
+        "form": 3477
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which sector contributes the highest share to GDP in India, China, and Pakistan according to the passage?",
+      "ms": {
+        "draft": 6923,
+        "critique": 8018
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the policy of dual pricing was introduced in India?",
+      "ms": {
+        "draft": 5026,
+        "critique": 6930,
+        "solver": 1636,
+        "form": 3924
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If India wants to follow a development path similar to China, which sector should it focus on according to the passage?",
+      "ms": {
+        "draft": 6923,
+        "critique": 7559
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country wants to reduce its poverty rate, which of the following indicators is most directly related to this goal?",
+      "ms": {
+        "draft": 6923,
+        "critique": 7700,
+        "solver": 1872,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which country has the lowest proportion of people living below the poverty line?",
+      "ms": {
+        "draft": 6923,
+        "critique": 6360
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of distinguishing between different phases of a country's development strategies?",
+      "ms": {
+        "draft": 6923,
+        "critique": 9214,
+        "solver": 17761,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Table 8.3, what can be inferred about the workforce distribution in India and Pakistan?",
+      "ms": {
+        "draft": 6923,
+        "critique": 10014,
+        "solver": 21803,
+        "form": 3254
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following is true about India's economic development compared to its neighbours?",
+      "ms": {
+        "draft": 3300,
+        "critique": 8787
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what was the main factor that helped China's economic growth after reforms?",
+      "ms": {
+        "draft": 3300,
+        "critique": 9348,
+        "solver": 1675,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was one of the key reasons for Pakistan's economic slowdown after reforms?",
+      "ms": {
+        "draft": 3300,
+        "critique": 7692,
+        "solver": 15963
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why developing countries like India are keen to understand the developmental processes of their neighbours?",
+      "ms": {
+        "draft": 7187,
+        "critique": 5264,
+        "solver": 5365,
+        "form": 1338
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the impact of the one-child norm in China?",
+      "ms": {
+        "draft": 4688,
+        "critique": 5568
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a similarity in the developmental strategies of India and Pakistan?",
+      "ms": {
+        "draft": 4688,
+        "critique": 7602
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country shifts its economic focus directly from agriculture to the service sector, what might be an implication for its economic development?",
+      "ms": {
+        "draft": 4688,
+        "critique": 9382
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of economic groupings like SAARC and BRICS for developing nations such as India?",
+      "ms": {
+        "draft": 4688,
+        "critique": 9347
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following countries introduced reforms in 1978?",
+      "ms": {
+        "draft": 4688,
+        "critique": 7075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country introduces reforms that lead to a shift from agriculture to the service sector, what might be the likely impact on its GDP?",
+      "ms": {
+        "draft": 4688,
+        "critique": 6221,
+        "solver": 16230,
+        "form": 3695
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the slow growth in Pakistan's economy?",
+      "ms": {
+        "draft": 3276,
+        "critique": 9376,
+        "solver": 1613,
+        "form": 2997
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which country initiated structural reforms in 1978?",
+      "ms": {
+        "draft": 3276,
+        "critique": 7419,
+        "solver": 15688,
+        "form": 2986
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did land reforms in Pakistan affect the rural economy?",
+      "ms": {
+        "draft": 3276,
+        "critique": 8233,
+        "solver": 16148
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did China succeed in raising its growth rate while maintaining political control?",
+      "ms": {
+        "draft": 3276,
+        "critique": 7180,
+        "solver": 1694,
+        "form": 3765
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sector contributes the highest share to GDP in all three countries — India, China and Pakistan?",
+      "ms": {
+        "draft": 4301,
+        "critique": 7507,
+        "solver": 1885,
+        "form": 3002
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the slow growth of the Pakistani economy in the 1980s?",
+      "ms": {
+        "draft": 3276,
+        "critique": 7835,
+        "solver": 16024
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information provided, which country has the highest proportion of its workforce engaged in the service sector?",
+      "ms": {
+        "draft": 4301,
+        "critique": 7182,
+        "solver": 1728
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why do scholars argue that the service sector should not be considered the sole engine of growth for India and Pakistan?",
+      "ms": {
+        "draft": 4301,
+        "critique": 9738
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of human development indicators in assessing the progress of a country?",
+      "ms": {
+        "draft": 4301,
+        "critique": 7082,
+        "solver": 1592,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the low sex ratio in China, India, and Pakistan?",
+      "ms": {
+        "draft": 34913,
+        "critique": 5579,
+        "solver": 946,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which country introduced economic reforms in 1978?",
+      "ms": {
+        "draft": 3300,
+        "critique": 7313,
+        "solver": 1342,
+        "form": 4674,
+        "translation": 39253
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which year did India introduce economic reforms?",
+      "ms": {
+        "draft": 3300,
+        "critique": 7068,
+        "solver": 2188,
+        "form": 2106,
+        "translation": 37789
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the decline in China's population growth rate?",
+      "ms": {
+        "draft": 5026,
+        "critique": 8486,
+        "solver": 2505,
+        "form": 3350,
+        "translation": 55658
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which country is mentioned as having a command economy that has recently started moving towards a democratic system?",
+      "ms": {
+        "draft": 3658,
+        "critique": 5988,
+        "solver": 1316,
+        "form": 3076,
+        "translation": 47124
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which country has the highest density of population among India, China, and Pakistan?",
+      "ms": {
+        "draft": 5026,
+        "critique": 8159,
+        "solver": 1742,
+        "form": 3992,
+        "translation": 48496
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the 'market system' in China's development?",
+      "ms": {
+        "draft": 3276,
+        "critique": 8537,
+        "solver": 1970,
+        "form": 3123,
+        "translation": 53117
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the sex ratio in Pakistan is low and biased against females, which of the following is most likely to be a consequence?",
+      "ms": {
+        "draft": 5026,
+        "critique": 7809,
+        "solver": 1944,
+        "form": 3762,
+        "translation": 54677
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why China's GDP (PPP) is significantly higher than India's and Pakistan's?",
+      "ms": {
+        "draft": 34913,
+        "critique": 6327,
+        "solver": 1289,
+        "form": 0,
+        "translation": 57147
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which country is described as the largest democracy in the world in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of regional and global economic groupings according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the developmental strategies of India, China, and Pakistan?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of understanding the developmental processes of neighbouring countries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what event in China in 1966 had a significant impact on its development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the agricultural sector in China?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's statement about the decline in …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is NOT a reason for the low sex ratio in Pakistan?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which sector contributes the highest share to GDP in India, China, and Pakistan according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the policy of dual pricing was introduced in India?",
+      "reason": "the key is far longer than every distractor (55 vs 30 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If India wants to follow a development path similar to China, which sector should it focus on according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a country wants to reduce its poverty rate, which of the following indicators is most directly related to this goal?",
+      "reason": "figure: figure spec refused: spec.y.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, which country has the lowest proportion of people living below the poverty line?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of distinguishing between different phases of a country's development strategies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"A student might think the passage is only concerned with the…\"); distractor 3's reason is not a one-line misconception (\"A student might think the passage is about avoiding mixing u…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on Table 8.3, what can be inferred about the workforce distribution in India and Pakistan?",
+      "reason": "options 0 and 1 say the same thing (\"India has a higher proportion of workers in agriculture than Pakistan.\" / \"Pakistan has a higher proportion of workers in industry than India.\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Based on the passage, which of the following is true about India's economic development compared to its neighbours?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what was the main factor that helped China's economic growth after reforms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What was one of the key reasons for Pakistan's economic slowdown after reforms?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why developing countries like India are keen to understand the developmental processes of their neighbours?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This is not mentioned as a reason in the passage.…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the impact of the one-child norm in China?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a similarity in the developmental strategies of India and Pakistan?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a country shifts its economic focus directly from agriculture to the service sector, what might be an implication for its economic development?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of economic groupings like SAARC and BRICS for developing nations such as India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following countries introduced reforms in 1978?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country introduces reforms that lead to a shift from agriculture to the service sector, what might be the likely impact on its GDP?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main reason for the slow growth in Pakistan's economy?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); distractor 2's reason is not a one-line misconception (\"Chooses a reason not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which country initiated structural reforms in 1978?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How did land reforms in Pakistan affect the rural economy?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did China succeed in raising its growth rate while maintaining political control?",
+      "reason": "the key is far longer than every distractor (75 vs 42 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which sector contributes the highest share to GDP in all three countries — India, China and Pakistan?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not recall the exact term from the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the main reason for the slow growth of the Pakistani economy in the 1980s?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information provided, which country has the highest proportion of its workforce engaged in the service sector?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Why do scholars argue that the service sector should not be considered the sole engine of growth for India and Pakistan?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of human development indicators in assessing the progress of a country?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Fails to understand the broader implication of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the low sex ratio in China, India, and Pakistan?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

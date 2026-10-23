@@ -1,0 +1,819 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T10:28:49.974Z",
+  "finishedAt": "2026-10-20T10:41:41.905Z",
+  "seconds": 772,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc107.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Work, Energy, and Simple Machines",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 32,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n1. Which one of the following expressions has the same units as power?\na) Force x distance\nb) Work x time\n¢) Force x acceleration\nd) Force x velocity",
+      "[INJSO 2010 — question paper]\n46. A trolley runs from point P to Q along a track, as shown in the figure. At point Q,\nits potential energy is 50 kJ less than at point P. At point P, the trolley has kinetic energy\n5 kJ. Between P and Q, the work done against friction is 10 kJ. What is the kinetic energy\nat point Q?\na) 35 kJ b) 45 kJ c) 55 kJ d) 65 kJ",
+      "[INJSO 2012 — question paper]\n1. A load is to be moved using a wheelbarrow. The total mass of the load and wheelbarrow is 60 kg.\nThe magnitude of gravitational acceleration is 10 ms 2 .\nWhat is the work done if the handle is raised by 50 cm?\na) 35.0 J\nb) 17.5 J\nc) 175 J\nd) 350 J",
+      "[INJSO 2012 — question paper]\n45. The diagram shows a lift system in which the elevator (mass m 1 ) is partly counterbalanced by a\nheavy weight (mass m 2 ).\nAt what rate does the motor provide energy to the system when the elevator is rising at a steady\nspeed v ? (g = acceleration of free fall) (consider the pulley as frictionless at the pivot)\na) (m 1 + m 2 )gv\nb) ½ (m 1 + m 2 )gv\nc) (m 1 m 2 )gv /(m 1 + m 2 )\nd) (m 1 – m 2 )gv"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 291259,
+      "in": 44,
+      "out": 42,
+      "rejects": 2,
+      "promptTokens": 48977,
+      "completionTokens": 12149
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 481548,
+      "in": 42,
+      "out": 28,
+      "rejects": 14,
+      "promptTokens": 25821,
+      "completionTokens": 9425
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 134141,
+      "in": 28,
+      "out": 24,
+      "rejects": 4,
+      "promptTokens": 38453,
+      "completionTokens": 2109
+    },
+    "form": {
+      "calls": 18,
+      "ms": 75784,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 8288,
+      "completionTokens": 1662
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 5238,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 432771,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18491,
+      "completionTokens": 9378
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the graph shown in Fig. 7.4, the force on an object is plotted on the Y-axis against the displacement on the X-axis. What does the area of the shaded rectangle represent?",
+      "ms": {
+        "draft": 4878,
+        "critique": 5935
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a force of 10 N is applied to move an object by 2 m in the direction of the force, what is the work done?",
+      "ms": {
+        "draft": 4878,
+        "critique": 7370
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the SI unit of work?",
+      "ms": {
+        "draft": 4878,
+        "critique": 5904,
+        "solver": 14432,
+        "form": 3207
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force of 10 N is applied to move an object by 2 m in the direction of the force, what is the work done?",
+      "ms": {
+        "draft": 4878,
+        "critique": 9625
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When a force is applied perpendicular to the direction of displacement, what is the work done by the force?",
+      "ms": {
+        "draft": 9077,
+        "critique": 9183
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A force of 10 N is applied on an object, but it does not move. What is the work done in this case?",
+      "ms": {
+        "draft": 4878,
+        "critique": 8144,
+        "solver": 16880,
+        "form": 3083
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A goalkeeper stops a ball by moving her hand back by 15 cm while applying a force of 200 N. What is the work done by the goalkeeper on the ball?",
+      "ms": {
+        "draft": 9077,
+        "critique": 10197
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trolley moves from point P to point Q. Its potential energy decreases by 50 kJ, and the work done against friction is 10 kJ. The trolley has 5 kJ of kinetic energy at P. What is its kinetic energy at Q?",
+      "ms": {
+        "draft": 9077,
+        "critique": 8259,
+        "solver": 2678
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A lift system has an elevator of mass m1 and a counterweight of mass m2. It moves upward at a steady speed v. What is the rate at which the motor provides energy to the system?",
+      "ms": {
+        "draft": 9077,
+        "critique": 9257
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of negative work done?",
+      "ms": {
+        "draft": 9077,
+        "critique": 7965
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "When you pedal a bicycle on a flat road, your muscles supply energy. In what forms does this muscular energy appear as you ride?",
+      "ms": {
+        "draft": 5336,
+        "critique": 11054,
+        "solver": 1302
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A jet aircraft of mass 15000 kg lands on the deck of an aircraft carrier and is stopped within 100 m by a wire that exerts a force of 367500 N. What was the velocity of the aircraft just before the wire caught the hook?",
+      "ms": {
+        "draft": 5336,
+        "critique": 9525,
+        "solver": 2420,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trolley runs from point P to Q along a track. Its potential energy at Q is 50 kJ less than at P, and its kinetic energy at P is 5 kJ. Between P and Q, the work done against friction is 10 kJ. What is the kinetic energy at Q?",
+      "ms": {
+        "draft": 5336,
+        "critique": 11581
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A carrom striker hits a white coin, which then hits a black coin. What kind of work does the striker do on the white coin?",
+      "ms": {
+        "draft": 9077,
+        "critique": 9766,
+        "solver": 16538,
+        "form": 4285
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A lift system has an elevator of mass m₁ and a counterweight of mass m₂. What is the rate at which the motor provides energy to the system when the elevator is rising at a steady speed v?",
+      "ms": {
+        "draft": 5336,
+        "critique": 8837,
+        "solver": 2290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "When a ball is dropped from a greater height, it creates a deeper depression in the sand. Why does this happen?",
+      "ms": {
+        "draft": 5140,
+        "critique": 9732,
+        "solver": 15172,
+        "form": 2617
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball is raised to a height of 2 m and released. The work done in lifting the ball is 100 J. What is the gravitational potential energy of the ball at this height?",
+      "ms": {
+        "draft": 5140,
+        "critique": 10561,
+        "solver": 15441,
+        "form": 4345
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of potential energy?",
+      "ms": {
+        "draft": 6032,
+        "critique": 8999
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main conclusion from the passage about the potential energy of the student when lifted or climbing the stairs?",
+      "ms": {
+        "draft": 6457,
+        "critique": 8904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a crane lifts a mass m to the 10th floor in a certain time, and then lifts the same mass to the 20th floor in double the time, how much more energy and power are required?",
+      "ms": {
+        "draft": 6457,
+        "critique": 10595
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, a ball is thrown up with a velocity of 20 m/s. If the ball reaches a height of 19.4 m, how much work was done by air resistance?",
+      "ms": {
+        "draft": 6457,
+        "critique": 11790
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the velocity of a coconut just before it hits the sand, if it falls from a height of 10 m?",
+      "ms": {
+        "draft": 6457,
+        "critique": 10113
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A man of mass 60 kg rides a scooter of mass 100 kg. He accelerates the scooter to a velocity v. The next day, his son with a mass of 40 kg joins him as a passenger. If the scooter reaches the same speed on both days in the same time interval, what is the ratio of the fuel used on the two days?",
+      "ms": {
+        "draft": 6457,
+        "critique": 10538,
+        "solver": 2606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a simple machine that reduces the force required to perform a task but does not reduce the total work done?",
+      "ms": {
+        "draft": 18624,
+        "critique": 12115,
+        "solver": 1777,
+        "form": 5924
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, a 10.0 kg block is moving on a horizontal floor with negligible friction. A variable force is applied on the block from 0 m to 4 m. The block had a kinetic energy of 180 J at 0 m. What is the speed of the block at 4 m?",
+      "ms": {
+        "draft": 6457,
+        "critique": 9315,
+        "solver": 22642,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given scenario, a seesaw is balanced with two children. One child has a mass of 15 kg and sits on seat A, which is 2 meters from the fulcrum. To balance the seesaw, where should a child of 30 kg sit?",
+      "ms": {
+        "draft": 18624,
+        "critique": 10282,
+        "solver": 1922
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trolley moves from point P to Q along a track. At point P, the trolley has kinetic energy of 5 kJ. The potential energy at Q is 50 kJ less than at P. The work done against friction between P and Q is 10 kJ. What is the kinetic energy at Q?",
+      "ms": {
+        "draft": 18624,
+        "critique": 13990
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit for both work and energy?",
+      "ms": {
+        "draft": 18624,
+        "critique": 7953,
+        "solver": 2639,
+        "form": 3282
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cart is pulled up a ramp with a length of 5 m, and the height of the ramp is 3 m. The force required to pull the cart is 60 N. What is the work done in pulling the cart up the ramp?",
+      "ms": {
+        "draft": 8603,
+        "critique": 9587,
+        "solver": 2041
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person lifts a box vertically and then uses an inclined plane to move the same box to the same height. Which of the following is true about the work done in both cases?",
+      "ms": {
+        "draft": 8603,
+        "critique": 9437,
+        "solver": 15670,
+        "form": 5605
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A box is pushed up a frictionless inclined plane. The height of the plane is 2 m and the length of the plane is 5 m. What is the mechanical advantage of the inclined plane?",
+      "ms": {
+        "draft": 8603,
+        "critique": 9126,
+        "solver": 1917,
+        "form": 5489
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A box is moved up a frictionless inclined plane of length L and height h. A force F is applied to move the box. According to the work-energy theorem, which of the following relationships is correct?",
+      "ms": {
+        "draft": 8603,
+        "critique": 9416,
+        "solver": 2299,
+        "form": 4321
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A force of 5 N is applied on an object, and it is displaced by 4 m in the direction of the force. What is the work done?",
+      "ms": {
+        "draft": 4878,
+        "critique": 10252,
+        "solver": 2207,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of power?",
+      "ms": {
+        "draft": 5738,
+        "critique": 8754,
+        "solver": 1115,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the energy stored in a deformed object or in a system of objects due to their relative positions called?",
+      "ms": {
+        "draft": 5140,
+        "critique": 8121,
+        "solver": 15146,
+        "form": 3124,
+        "translation": 52085
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of power?",
+      "ms": {
+        "draft": 5794,
+        "critique": 8067,
+        "solver": 2188,
+        "form": 3769,
+        "translation": 41650
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of using an inclined plane to lift a heavy object?",
+      "ms": {
+        "draft": 11177,
+        "critique": 9305,
+        "solver": 8322,
+        "form": 1328,
+        "translation": 72019
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of kinetic energy?",
+      "ms": {
+        "draft": 5336,
+        "critique": 8698,
+        "solver": 1908,
+        "form": 0,
+        "translation": 28716
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a lever is used to lift a load, and the effort arm is increased, what happens to the effort required?",
+      "ms": {
+        "draft": 18624,
+        "critique": 11556,
+        "solver": 14237,
+        "form": 3270,
+        "translation": 58824
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A spring is compressed and then released. The spring transfers its stored energy to an object in contact. What is the source of the energy transferred to the object?",
+      "ms": {
+        "draft": 5140,
+        "critique": 7616,
+        "solver": 14012,
+        "form": 5357,
+        "translation": 66527
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A car of mass 1000 kg starts from rest and reaches a speed of 72 km/h in 10 seconds. What is the power of the engine required to achieve this start?",
+      "ms": {
+        "draft": 5738,
+        "critique": 4840,
+        "solver": 1028,
+        "form": 1,
+        "translation": 45229
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A lever is used to lift a load. The mechanical advantage is the ratio of the effort arm to the load arm. If the effort arm is increased, how does the mechanical advantage change?",
+      "ms": {
+        "draft": 18624,
+        "critique": 8493,
+        "solver": 15942,
+        "form": 4981,
+        "translation": 60368
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the velocity of a vehicle doubles, what happens to its kinetic energy?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the graph shown in Fig. 7.4, the force on an object is plotted on the Y-axis against the displacement on the X-axis. What does the area of the shaded rectangle represent?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a force of 10 N is applied to move an object by 2 m in the direction of the force, what is the work done?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the SI unit of work?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A force of 10 N is applied to move an object by 2 m in the direction of the force, what is the work done?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "When a force is applied perpendicular to the direction of displacement, what is the work done by the force?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A force of 10 N is applied on an object, but it does not move. What is the work done in this case?",
+      "reason": "options 0 and 3 are the same (\"10 J\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A goalkeeper stops a ball by moving her hand back by 15 cm while applying a force of 200 N. What is the work done by the goalkeeper on the ball?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A trolley moves from point P to point Q. Its potential energy decreases by 50 kJ, and the work done against friction is 10 kJ. The trolley has 5 kJ of kinetic energy at P. What is its kinetic energy at Q?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A lift system has an elevator of mass m1 and a counterweight of mass m2. It moves upward at a steady speed v. What is the rate at which the motor provides energy to the system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of negative work done?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "When you pedal a bicycle on a flat road, your muscles supply energy. In what forms does this muscular energy appear as you ride?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A jet aircraft of mass 15000 kg lands on the deck of an aircraft carrier and is stopped within 100 m by a wire that exerts a force of 367500 N. What was the velocity of the aircraft just before the wire caught the hook?",
+      "reason": "checkExpr \"sqrt((2*367500*100)/15000)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A trolley runs from point P to Q along a track. Its potential energy at Q is 50 kJ less than at P, and its kinetic energy at P is 5 kJ. Between P and Q, the work done against friction is 10 kJ. What is the kinetic energy at Q?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A carrom striker hits a white coin, which then hits a black coin. What kind of work does the striker do on the white coin?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.reflectedRay: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A lift system has an elevator of mass m₁ and a counterweight of mass m₂. What is the rate at which the motor provides energy to the system when the elevator is rising at a steady speed v?",
+      "reason": "checkExpr \"(m1 - m2)*g*v\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "When a ball is dropped from a greater height, it creates a deeper depression in the sand. Why does this happen?",
+      "reason": "options 0 and 1 say the same thing (\"The ball has more kinetic energy at the higher height\" / \"The ball has more potential energy at the higher height\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A ball is raised to a height of 2 m and released. The work done in lifting the ball is 100 J. What is the gravitational potential energy of the ball at this height?",
+      "reason": "checkExpr \"100\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the unit of potential energy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A person uses a ramp to move a 200 N load to a height of 4 m. The ramp has a length of 10 m. If the person applies a force of 80 N to move the load, what is the work done by the person?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main conclusion from the passage about the potential energy of the student when lifted or climbing the stairs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a crane lifts a mass m to the 10th floor in a certain time, and then lifts the same mass to the 20th floor in double the time, how much more energy and power are required?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the passage, a ball is thrown up with a velocity of 20 m/s. If the ball reaches a height of 19.4 m, how much work was done by air resistance?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the velocity of a coconut just before it hits the sand, if it falls from a height of 10 m?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A man of mass 60 kg rides a scooter of mass 100 kg. He accelerates the scooter to a velocity v. The next day, his son with a mass of 40 kg joins him as a passenger. If the scooter reaches the same speed on both days in the same time interval, what is the ratio of the fuel used on the two days?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Mistakenly thinks the ratio is 1:2 due to incorrect mass com…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a simple machine that reduces the force required to perform a task but does not reduce the total work done?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractors (as per rul…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, a 10.0 kg block is moving on a horizontal floor with negligible friction. A variable force is applied on the block from 0 m to 4 m. The block had a kinetic energy of 180 J at 0 m. What is the speed of the block at 4 m?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; checkExpr \"sqrt(2*180/10)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given scenario, a seesaw is balanced with two children. One child has a mass of 15 kg and sits on seat A, which is 2 meters from the fulcrum. To balance the seesaw, where should a child of 30 kg sit?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A trolley moves from point P to Q along a track. At point P, the trolley has kinetic energy of 5 kJ. The potential energy at Q is 50 kJ less than at P. The work done against friction between P and Q is 10 kJ. What is the kinetic energy at Q?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the SI unit for both work and energy?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractors (as per rul…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cart is pulled up a ramp with a length of 5 m, and the height of the ramp is 3 m. The force required to pull the cart is 60 N. What is the work done in pulling the cart up the ramp?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A person lifts a box vertically and then uses an inclined plane to move the same box to the same height. Which of the following is true about the work done in both cases?",
+      "reason": "option 2 repeats the stem's wording (\"Work done is the same in both cases\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A box is pushed up a frictionless inclined plane. The height of the plane is 2 m and the length of the plane is 5 m. What is the mechanical advantage of the inclined plane?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, so no reason needed for it here…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A box is moved up a frictionless inclined plane of length L and height h. A force F is applied to move the box. According to the work-energy theorem, which of the following relationships is correct?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason needed for it here…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A force of 5 N is applied on an object, and it is displaced by 4 m in the direction of the force. What is the work done?",
+      "reason": "near-duplicate of served question cmvfib97m04kkgod8zz6yojfg (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of power?",
+      "reason": "near-duplicate of batch item \"What is the SI unit of power?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:55:24.565Z",
+  "finishedAt": "2026-10-20T19:58:28.688Z",
+  "seconds": 184,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap113.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 13 — A River’s Tale",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 36722,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7046,
+      "completionTokens": 1546
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 86296,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4934,
+      "completionTokens": 1970
+    },
+    "solver": {
+      "calls": 72,
+      "ms": 65392,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 15584,
+      "completionTokens": 943
+    },
+    "form": {
+      "calls": 7,
+      "ms": 22542,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 1598,
+      "completionTokens": 437
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2966,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 181410,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8410,
+      "completionTokens": 4002
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the colour of the river where it begins?",
+      "ms": {
+        "draft": 4336,
+        "critique": 6255,
+        "solver": 1494,
+        "form": 6062
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What can be seen in the river before it reaches the village?",
+      "ms": {
+        "draft": 4336,
+        "critique": 6618,
+        "solver": 23995
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are there many fish in some parts of the river and dead fish in others?",
+      "ms": {
+        "draft": 4336,
+        "critique": 6985,
+        "solver": 21653,
+        "form": 5067
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "At which places did the colour of the water in the river change and why?",
+      "ms": {
+        "draft": 4336,
+        "critique": 10478,
+        "solver": 14303,
+        "form": 1104
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the colour of the river where it begins?",
+      "ms": {
+        "draft": 4845,
+        "critique": 6962,
+        "solver": 1928,
+        "form": 6245,
+        "translation": 47580
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What can be seen in the river before it reaches the village?",
+      "ms": {
+        "draft": 4845,
+        "critique": 7600,
+        "solver": 2160,
+        "form": 4501,
+        "translation": 42707
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are there many fish in some parts of the river and only a few or dead fish in others?",
+      "ms": {
+        "draft": 4845,
+        "critique": 7635,
+        "solver": 16830,
+        "form": 1467,
+        "translation": 31586
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Where did the colour of the water in the river change and why?",
+      "ms": {
+        "draft": 4845,
+        "critique": 6532,
+        "solver": 1115,
+        "form": 3242,
+        "translation": 55025
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the colour of the river where it begins?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a colour not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Chooses a colour not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What can be seen in the river before it reaches the village?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why are there many fish in some parts of the river and dead fish in others?",
+      "reason": "near-duplicate of batch item \"Why are there many fish in some parts of the river…\" (cosine 0.975 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "At which places did the colour of the water in the river change and why?",
+      "reason": "near-duplicate of batch item \"Where did the colour of the water in the river cha…\" (cosine 0.973 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

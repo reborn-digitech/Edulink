@@ -1,0 +1,245 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T19:24:16.502Z",
+  "finishedAt": "2026-10-20T19:26:17.884Z",
+  "seconds": 121,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap102.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 2 — Ear to Ear",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 24854,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7180,
+      "completionTokens": 1378
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 72272,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 5155,
+      "completionTokens": 2101
+    },
+    "solver": {
+      "calls": 71,
+      "ms": 46263,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 14388,
+      "completionTokens": 871
+    },
+    "form": {
+      "calls": 6,
+      "ms": 15917,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 1409,
+      "completionTokens": 404
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2003,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 108456,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6222,
+      "completionTokens": 3182
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If an animal has hair on its skin, what can you say about its ears?",
+      "ms": {
+        "draft": 4113,
+        "critique": 6330,
+        "solver": 1308,
+        "form": 5484
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which animal has ears on the top of its head?",
+      "ms": {
+        "draft": 4113,
+        "critique": 7147,
+        "solver": 1947
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animals have ears that you can see?",
+      "ms": {
+        "draft": 4113,
+        "critique": 8264,
+        "solver": 14995,
+        "form": 2196
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which animal has ears that cannot be seen?",
+      "ms": {
+        "draft": 2101,
+        "critique": 5192,
+        "solver": 14584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following animals has ears that are not visible?",
+      "ms": {
+        "draft": 2101,
+        "critique": 6191,
+        "solver": 8214,
+        "form": 1054
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears that you can see?",
+      "ms": {
+        "draft": 2101,
+        "critique": 5216,
+        "solver": 2298,
+        "form": 3556,
+        "translation": 34380
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why can we not see a bird's ears?",
+      "ms": {
+        "draft": 4113,
+        "critique": 6842,
+        "solver": 17016,
+        "form": 1676,
+        "translation": 37693
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following animals can be identified by its ears?",
+      "ms": {
+        "draft": 2101,
+        "critique": 5018,
+        "solver": 1129,
+        "form": 4121,
+        "translation": 30814
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an animal has hair on its skin, what can you say about its ears?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage, thinking that animals with hair h…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which animal has ears on the top of its head?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which animals have ears that you can see?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Includes animals whose ears are not visible according to the…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which animal has ears that cannot be seen?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following animals has ears that are not visible?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

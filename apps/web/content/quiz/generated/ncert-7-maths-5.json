@@ -21,54 +21,436 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T03:46:40.616Z",
+  "generatedAt": "2026-10-22T01:11:37.159Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "When two lines intersect each other, what are the angles that are opposite to each other called?",
+      "stem": "Which of the following is true about the angles formed when two lines intersect?",
       "choices": [
-        "Adjacent angles",
-        "Linear pairs",
-        "Vertically opposite angles",
-        "Supplementary angles"
+        "Vertically opposite angles are equal.",
+        "Linear pairs are equal.",
+        "All angles are equal.",
+        "All angles are right angles."
       ],
-      "answerIndex": 2,
-      "solution": "Vertically opposite angles are the angles that are opposite to each other when two lines intersect. They are always equal. Adjacent angles are next to each other, linear pairs add up to 180°, and supplementary angles are any two angles that add up to 180°, but they are not necessarily opposite.",
+      "answerIndex": 0,
+      "solution": "When two lines intersect, they form four angles. Vertically opposite angles are always equal. Linear pairs add up to 180°, but they are not equal. Not all angles are equal unless the lines are perpendicular. Not all angles are right angles unless the lines are perpendicular.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब दो रेखाएं एक दूसरे को काटती हैं, तो एक दूसरे के विपरीत होने वाले कोण क्या कहलाते हैं?",
+          "stem": "जब दो रेखाएं प्रतिच्छेद करती हैं, तो बने कोणों के बारे में निम्नलिखित में से कौन सा सही है?",
           "choices": [
-            "संनिकट कोण",
-            "रेखीय युग्म",
-            "लंबाक्ष कोण",
-            "पूरक कोण"
+            "लम्बाक्ष युग्म बराबर होते हैं।",
+            "रैखिक युग्म बराबर होते हैं।",
+            "सभी कोण बराबर होते हैं।",
+            "सभी कोण समकोण होते हैं।"
           ],
-          "solution": "जब दो रेखाएं एक दूसरे को काटती हैं, तो एक दूसरे के विपरीत होने वाले कोण लंबाक्ष कोण कहलाते हैं। वे हमेशा बराबर होते हैं। संनिकट कोण एक दूसरे के निकट होते हैं, रेखीय युग्म के कोणों का योग 180° होता है, और पूरक कोण के योग 180° होते हैं, लेकिन वे आवश्यक रूप से विपरीत नहीं होते।",
-          "imageAlt": "दो प्रतिच्छेद करने वाली रेखाएं जो चार कोण बनाती हैं जिन्हें a, b, c और d के रूप में चिह्नित किया गया है।",
-          "critique": "Hindi translation accurately conveys the original meaning with appropriate terminology used in Indian curriculum.",
+          "solution": "जब दो रेखाएं प्रतिच्छेद करती हैं, तो चार कोण बनते हैं। लम्बाक्ष युग्म हमेशा बराबर होते हैं। रैखिक युग्म 180° के बराबर होते हैं, लेकिन वे बराबर नहीं होते। सभी कोण बराबर तभी होते हैं जब रेखाएं लंबवत होती हैं। सभी कोण समकोण तभी होते हैं जब रेखाएं लंबवत होती हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, technical terms, and logical structure of the original question.",
           "flag": null
         },
         "mr": {
-          "stem": "जेव्हा दोन रेषा एकमेकांना छेदतात, तेव्हा एकमेकांच्या विरुद्ध असलेल्या कोनांना काय म्हणतात?",
+          "stem": "जेव्हा दोन रेषा छेदतात तेव्हा तयार होणाऱ्या कोनांबद्दल खालीलपैकी कोणते खरे आहे?",
           "choices": [
-            "संलग्न कोन",
-            "रेषीय जोड्या",
-            "उलट कोन",
-            "पूरक कोन"
+            "लंबकोन एकसारखे असतात.",
+            "रेषीय जोड्या एकसारख्या असतात.",
+            "सर्व कोन एकसारखे असतात.",
+            "सर्व कोन समकोन असतात."
           ],
-          "solution": "उलट कोन हे कोन आहेत जे दोन रेषांच्या छेदनबिंदूमुळे एकमेकांच्या विरुद्ध असतात. ते नेहमी समान असतात. संलग्न कोन एकमेकांच्या बरोबर असतात, रेषीय जोड्या 180° चे बरोबर असतात, आणि पूरक कोन हे कोणतेही दोन कोन असतात जे 180° चे बरोबर असतात, परंतु ते नक्की एकमेकांच्या विरुद्ध असत नाहीत.",
-          "imageAlt": "दोन छेदित रेषा ज्यामुळे चार कोन तयार होतात ज्यांना a, b, c आणि d लेबल केले आहे.",
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "solution": "जेव्हा दोन रेषा छेदतात तेव्हा त्यांनी चार कोन तयार केले जातात. लंबकोन नेहमी एकसारखे असतात. रेषीय जोड्या 180° च्या बरोबर असतात, पण ते एकसारखे नसतात. सर्व कोन एकसारखे असतात केव्हा रेषा लंब असतात. सर्व कोन समकोन असतात केव्हा रेषा लंब असतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'लंबकोन' (vertically opposite angles) and 'रेषीय जोड्या' (linear pairs) as used in Marathi textbooks.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "Two intersecting lines forming four angles labeled a, b, c, and d.",
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the property of linear pairs with vertical angles.",
+        "Believes that intersecting lines always form equal angles.",
+        "Thinks all angles are equal regardless of the lines' orientation."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as vertically opposite angles are always equal when two lines intersect. The other options represent common misconceptions about the properties of intersecting lines.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "When two lines intersect and form four equal angles, what are they called?",
+      "choices": [
+        "Parallel",
+        "Perpendicular",
+        "Transversal",
+        "Intersecting"
+      ],
+      "answerIndex": 1,
+      "solution": "When two lines intersect and form four equal angles, each angle must be 90°, which defines perpendicular lines. Perpendicular lines are characterized by forming right angles at their intersection. The other options do not describe lines that form equal angles of 90°.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब दो रेखाएं एक दूसरे को काटती हैं और चार समान कोण बनाती हैं, तो उन्हें क्या कहा जाता है?",
+          "choices": [
+            "समांतर",
+            "लंबवत",
+            "अनुप्रस्थ",
+            "काटने वाली"
+          ],
+          "solution": "जब दो रेखाएं एक दूसरे को काटती हैं और चार समान कोण बनाती हैं, तो प्रत्येक कोण 90° होना चाहिए, जो लंबवत रेखाओं की परिभाषा है। लंबवत रेखाएं अपने प्रतिच्छेदन पर समकोण बनाने के लिए विशेषता रखती हैं। अन्य विकल्प उन रेखाओं का वर्णन नहीं करते जो 90° के समान कोण बनाती हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in Hindi geometry textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जेव्हा दोन रेषा एकमेकांना छेदतात आणि चार समान कोन तयार करतात, त्यांना काय म्हणतात?",
+          "choices": [
+            "समांतर",
+            "लंब",
+            "छेदिका",
+            "छेदिलेल्या"
+          ],
+          "solution": "जेव्हा दोन रेषा एकमेकांना छेदतात आणि चार समान कोन तयार करतात, तेव्हा प्रत्येक कोन 90° असतो, जे लंब रेषांचे वैशिष्ट्य आहे. लंब रेषा त्यांच्या छेदनबिंदूवर लंब कोन तयार करतात. इतर पर्याय असे रेषा वर्णन करत नाहीत ज्या 90° चे समान कोन तयार करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of parallel lines with perpendicular lines",
+        null,
+        "Misunderstands the definition of transversal lines",
+        "Incorrectly identifies the term for intersecting lines"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is correct. The correct answer is 'Perpendicular' because when two lines intersect and form four equal angles, those angles must be 90°, which defines perpendicular lines. The other options are correctly dismissed.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term for two lines that never meet on a plane?",
+      "choices": [
+        "Perpendicular",
+        "Parallel",
+        "Intersecting",
+        "Transversal"
+      ],
+      "answerIndex": 1,
+      "solution": "Parallel lines are defined as two lines that never meet on a plane, no matter how far they are extended. Perpendicular lines intersect at a right angle, intersecting lines cross at some point, and transversal refers to a line that intersects two or more other lines.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तल पर दो ऐसी रेखाओं के लिए क्या शब्द है जो कभी मिलती नहीं?",
+          "choices": [
+            "लंबवत",
+            "समांतर",
+            "छेदक",
+            "अनुप्रस्थ"
+          ],
+          "solution": "समांतर रेखाएं एक तल पर दो ऐसी रेखाएं होती हैं जो कभी मिलती नहीं हैं, चाहे उन्हें कितना भी बढ़ाया जाए। लंबवत रेखाएं समकोण पर मिलती हैं, छेदक रेखाएं किसी बिंदु पर मिलती हैं और अनुप्रस्थ एक ऐसी रेखा होती है जो दो या अधिक अन्य रेखाओं को काटती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्लेनवर एकमेकांना भेटत न राहणार्‍या दोन रेषांच्या नावाचा शोध घ्या?",
+          "choices": [
+            "लंब",
+            "समांतर",
+            "छेदित",
+            "अनुलंब"
+          ],
+          "solution": "समांतर रेषा एका प्लेनवर एकमेकांना भेटत न राहतात, त्यांना कितीही विस्तारले तरी भेटत नाहीत. लंब रेषा समकोनात भेटतात, छेदित रेषा कोणत्याही बिंदूवर भेटतात आणि अनुलंब म्हणजे दोन किंवा अधिक रेषांना छेदणारी रेषा आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in Marathi mathematics education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses perpendicular lines with parallel lines",
+        null,
+        "Misunderstands the definition of intersecting lines",
+        "Incorrectly identifies the term for a line that intersects two other lines"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 'Parallel' (option 1). The author's reasoning is accurate and aligns with the definition of parallel lines. The distractors are all common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a line is drawn parallel to one side of a triangle, intersecting the other two sides, what can be said about the two sides?",
+      "choices": [
+        "They are equal in length",
+        "They are perpendicular to each other",
+        "They are divided in the same ratio",
+        "They are divided in different ratios"
+      ],
+      "answerIndex": 2,
+      "solution": "When a line is drawn parallel to one side of a triangle and intersects the other two sides, it divides those sides proportionally. This is a fundamental geometric principle that ensures the segments on each side are in the same ratio. The other options are incorrect because there is no basis for them in the properties of parallel lines and triangles.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक त्रिभुज के एक भुजा के समांतर एक रेखा खींची जाती है, जो अन्य दो भुजाओं को काटती है, तो दोनों भुजाओं के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "उनकी लंबाई समान होती है",
+            "वे एक दूसरे के लंबवत होती हैं",
+            "उन्हें एक ही अनुपात में विभाजित किया जाता है",
+            "उन्हें अलग-अलग अनुपात में विभाजित किया जाता है"
+          ],
+          "solution": "जब एक त्रिभुज के एक भुजा के समांतर एक रेखा खींची जाती है और अन्य दो भुजाओं को काटती है, तो यह उन भुजाओं को समानुपात में विभाजित करती है। यह एक मूलभूत ज्यामितीय सिद्धांत है जो सुनिश्चित करता है कि प्रत्येक भुजा पर खंड एक ही अनुपात में होते हैं। अन्य विकल्प गलत हैं क्योंकि इनके लिए समांतर रेखाओं और त्रिभुजों के गुणों में कोई आधार नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate geometric terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर त्रिकोणाच्या एका बाजूला समांतर रेषा काढली जाते आणि इतर दोन बाजूंना छेदते, तर दोन बाजूंबद्दल काय म्हणता येईल?",
+          "choices": [
+            "त्या बाजू लांबीने समान असतात",
+            "त्या बाजू एकमेकांना लंब असतात",
+            "त्या बाजू एकाच गुणोत्तरात विभागल्या जातात",
+            "त्या बाजू वेगवेगळ्या गुणोत्तरात विभागल्या जातात"
+          ],
+          "solution": "जर त्रिकोणाच्या एका बाजूला समांतर रेषा काढली जाते आणि इतर दोन बाजूंना छेदते, तर त्या बाजू एकाच गुणोत्तरात विभागल्या जातात. हा एक आधारभूत भूमितीय नियम आहे जो बाजूवरील खंडांच्या एकाच गुणोत्तरात असण्याची खात्री देतो. इतर विकल्प चुकीचे आहेत कारण त्यांचे आधार समांतर रेषा आणि त्रिकोणाच्या गुणधर्मांवर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometric terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the property of parallel lines with equal lengths",
+        "Confuses the property of parallel lines with perpendicularity",
+        null,
+        "Students may think that parallel lines cut the sides proportionally but incorrectly assume the ratios are different"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question correctly applies the basic proportionality theorem (Thales' theorem). The correct answer is 2, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 15,
+          "pageStart": 30,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In Fig. 5.35, if lines LM and PQ are parallel, and a transversal intersects them, what is the measure of angle ∠NOP?",
+      "choices": [
+        "40°",
+        "96°",
+        "55°",
+        "52°"
+      ],
+      "answerIndex": 3,
+      "solution": "When a transversal intersects two parallel lines, alternate interior angles are equal. If one of these angles is given as 52°, then the angle ∠NOP, which is an alternate interior angle, must also be 52°. The other options do not correspond to the correct angle relationship formed by the transversal and the parallel lines.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र 5.35 में, यदि रेखाएँ LM और PQ समांतर हैं, और एक तिर्यक रेखा इनको काटती है, तो कोण ∠NOP का माप क्या है?",
+          "choices": [
+            "40°",
+            "96°",
+            "55°",
+            "52°"
+          ],
+          "solution": "जब एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो विषम अंतः कोण बराबर होते हैं। यदि इनमें से एक कोण 52° दिया गया है, तो कोण ∠NOP, जो एक विषम अंतः कोण है, का माप भी 52° होना चाहिए। अन्य विकल्प तिर्यक रेखा और समांतर रेखाओं द्वारा बने सही कोण संबंध के अनुरूप नहीं हैं।",
+          "imageAlt": "एक आरेख जिसमें समांतर रेखाएँ LM और PQ एक तिर्यक रेखा t द्वारा काटी गई हैं, जिसमें कोण ∠NOP का माप 52° है।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard geometry terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृती 5.35 मध्ये, जर रेखा LM आणि PQ समांतर असतील आणि एक छेदिका त्यांना छेदत असेल, तर ∠NOP चा मोजमाप किती असेल?",
+          "choices": [
+            "40°",
+            "96°",
+            "55°",
+            "52°"
+          ],
+          "solution": "जेव्हा छेदिका दोन समांतर रेषांना छेदते तेव्हा विरुद्ध अंतर्गत कोन समान असतात. जर यापैकी एक कोन 52° असेल, तर ∠NOP हा विरुद्ध अंतर्गत कोन असल्यामुळे त्याचा मोजमाप 52° असेल. इतर विकल्पांमध्ये समांतर रेषां आणि छेदिकेमुळे निर्माण झालेल्या योग्य कोनाच्या संबंधाची नोंद नाही.",
+          "imageAlt": "समांतर रेखा LM आणि PQ ला छेदिका t छेदत असलेली आकृती, ज्यामध्ये ∠NOP चा मोजमाप 52° आहे.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A diagram showing parallel lines LM and PQ intersected by a transversal t, with angle NOP measuring 52°.",
       "figure": {
         "kind": "geometry",
         "spec": {
@@ -81,90 +463,324 @@
           },
           "points": [
             {
-              "id": "A",
+              "id": "N",
               "x": 2,
-              "y": 4
+              "y": 3,
+              "label": "N"
             },
             {
-              "id": "B",
-              "x": 6,
-              "y": 4
+              "id": "O",
+              "x": 5,
+              "y": 3,
+              "label": "O"
             },
             {
-              "id": "C",
-              "x": 4,
-              "y": 2
+              "id": "P",
+              "x": 8,
+              "y": 3,
+              "label": "P"
             },
             {
-              "id": "D",
-              "x": 4,
-              "y": 6
+              "id": "L",
+              "x": 1,
+              "y": 1,
+              "label": "L"
+            },
+            {
+              "id": "M",
+              "x": 9,
+              "y": 1,
+              "label": "M"
+            },
+            {
+              "id": "Q",
+              "x": 1,
+              "y": 5,
+              "label": "Q"
+            },
+            {
+              "id": "R",
+              "x": 9,
+              "y": 5,
+              "label": "R"
             }
           ],
           "segments": [
             {
-              "from": "A",
-              "to": "B",
-              "label": "l"
+              "from": "L",
+              "to": "M",
+              "label": "LM"
             },
             {
-              "from": "C",
-              "to": "D",
-              "label": "m"
+              "from": "Q",
+              "to": "R",
+              "label": "PQ"
+            },
+            {
+              "from": "N",
+              "to": "O",
+              "label": "NO"
+            },
+            {
+              "from": "O",
+              "to": "P",
+              "label": "OP"
+            },
+            {
+              "from": "L",
+              "to": "Q",
+              "label": "t"
             }
           ],
           "angles": [
             {
-              "vertex": "C",
-              "from": "A",
-              "to": "D",
-              "label": "a",
-              "measure": 120
-            },
-            {
-              "vertex": "C",
-              "from": "D",
-              "to": "B",
-              "label": "b",
-              "measure": 60
-            },
-            {
-              "vertex": "C",
-              "from": "B",
-              "to": "D",
-              "label": "c",
-              "measure": 120
-            },
-            {
-              "vertex": "C",
-              "from": "A",
-              "to": "B",
-              "label": "d",
-              "measure": 60
+              "vertex": "O",
+              "from": "N",
+              "to": "P",
+              "measure": 52,
+              "label": "NOP"
             }
           ]
         },
         "labels": {
-          "a": {
-            "en": "angle a"
+          "LM": {
+            "en": "LM",
+            "hi": "LM",
+            "mr": "LM"
           },
-          "b": {
-            "en": "angle b"
+          "PQ": {
+            "en": "PQ",
+            "hi": "PQ",
+            "mr": "PQ"
           },
-          "c": {
-            "en": "angle c"
+          "NO": {
+            "en": "NO",
+            "hi": "NO",
+            "mr": "NO"
           },
-          "d": {
-            "en": "angle d"
+          "OP": {
+            "en": "OP",
+            "hi": "OP",
+            "mr": "OP"
+          },
+          "t": {
+            "en": "t"
+          },
+          "NOP": {
+            "en": "NOP",
+            "hi": "NOP",
+            "mr": "NOP"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
-        "confuses adjacent angles with opposite angles",
-        "thinks linear pairs are the opposite angles",
+        "Confuses the given angle with another angle in the diagram",
+        "Misinterprets the relationship between the transversal and the parallel lines",
+        "Fails to recognize the alternate angle relationship",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is correctly solved by recognizing that ∠NOP is an alternate interior angle to the given 52° angle, and alternate angles are equal when a transversal intersects parallel lines. The key is correct, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a scenario where two lines are parallel and a transversal cuts them, if one of the corresponding angles is 70°, what is the measure of the other corresponding angle?",
+      "choices": [
+        "70°",
+        "110°",
+        "180°",
+        "90°"
+      ],
+      "answerIndex": 0,
+      "solution": "When a transversal intersects two parallel lines, corresponding angles are equal. Therefore, if one corresponding angle is 70°, the other corresponding angle must also be 70°. The other options are incorrect because they do not match the property of corresponding angles being equal.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो रेखाएं समांतर हों और एक तिर्यक रेखा उन्हें काटे, तो यदि एक संगत कोण 70° हो, तो अन्य संगत कोण का माप क्या होगा?",
+          "choices": [
+            "70°",
+            "110°",
+            "180°",
+            "90°"
+          ],
+          "solution": "जब एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो संगत कोण बराबर होते हैं। इसलिए, यदि एक संगत कोण 70° है, तो अन्य संगत कोण भी 70° होगा। अन्य विकल्प गलत हैं क्योंकि वे संगत कोणों के गुण के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard geometry terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन रेषा समांतर असून एक छेदिका त्यांना छेदत असेल, तर जर एका संगत कोनाचा माप 70° असेल, तर इतर संगत कोनाचा माप किती असेल?",
+          "choices": [
+            "70°",
+            "110°",
+            "180°",
+            "90°"
+          ],
+          "solution": "जेव्हा छेदिका दोन समांतर रेषांना छेदते तेव्हा संगत कोन समान असतात. म्हणून, जर एक संगत कोन 70° असेल, तर इतर संगत कोनही 70° असेल. इतर विकल्प चुकीचे आहेत कारण संगत कोन समान असतात या गुणधर्माशी ते जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi geometry terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
         null,
-        "Students often confuse vertically opposite angles with supplementary angles, thinking that opposite angles are always supplementary rather than equal."
+        "Confuses corresponding angles with supplementary angles due to misunderstanding of transversal properties",
+        "Confuses corresponding angles with supplementary angles",
+        "Incorrectly assumes the angles are complementary"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is correct. The key is accurate, and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 25,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Parallel and Intersecting Lines",
+            "5.9 Parallel Illusions",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two lines on a plane do not meet even when extended. What can be concluded about these lines?",
+      "choices": [
+        "They are perpendicular",
+        "They are intersecting",
+        "They are parallel",
+        "They are skew"
+      ],
+      "answerIndex": 2,
+      "solution": "Parallel lines are defined as lines that lie on the same plane and never meet, even when extended. Since the lines in question do not meet, they must be parallel. Perpendicular lines intersect at a right angle, intersecting lines meet at a point, and skew lines are not on the same plane, which is not the case here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समतल पर दो रेखाएं बढ़ाए जाने पर भी मिलती नहीं हैं। इन रेखाओं के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "वे लंबवत हैं",
+            "वे प्रतिच्छेदी हैं",
+            "वे समांतर हैं",
+            "वे असमतलीय हैं"
+          ],
+          "solution": "समांतर रेखाएं उन रेखाओं को कहा जाता है जो एक ही समतल में होती हैं और बढ़ाए जाने पर भी मिलती नहीं हैं। चूंकि प्रश्न में दी गई रेखाएं मिलती नहीं हैं, इसलिए वे आवश्यक रूप से समांतर होनी चाहिए। लंबवत रेखाएं समकोण पर प्रतिच्छेद करती हैं, प्रतिच्छेदी रेखाएं एक बिंदु पर मिलती हैं और असमतलीय रेखाएं एक ही समतल में नहीं होती हैं, जो यहां नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्लेनवरील दोन रेषा विस्तारित केल्यानंतरही भेटत नाहीत. या रेषांबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "त्या लंब आहेत",
+            "त्या छेदक आहेत",
+            "त्या समांतर आहेत",
+            "त्या खुंटलेल्या आहेत"
+          ],
+          "solution": "समांतर रेषा अशा रेषा आहेत ज्या एका प्लेनवर असून विस्तारित केल्यानंतरही भेटत नाहीत. ज्या रेषांना भेटत नाहीत त्या निश्चितपणे समांतर असतात. लंब रेषा समकोनात भेटतात, छेदक रेषा एका बिंदूवर भेटतात आणि खुंटलेल्या रेषा एका प्लेनवर नसतात, जे येथे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses perpendicular with parallel lines",
+        "Thinks lines that do not meet must intersect",
+        null,
+        "Student confuses 3D geometry concepts with 2D plane geometry"
       ],
       "solverAnswers": [
         2,
@@ -173,8 +789,8 @@
         2,
         2
       ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Vertically opposite angles,' and the explanations for the distractors align with common student misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the lines are parallel based on the definition provided. The reasoning for the wrong options aligns with common misconceptions among students.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp105.pdf",
@@ -218,128 +834,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "Which of the following is a method to draw a line parallel to a given line?",
+      "difficulty": 6,
+      "stem": "If two lines are parallel to the same line, what can be said about the relationship between the two lines?",
       "choices": [
-        "Using a protractor to measure the angle 90°",
-        "Using a compass to draw arcs at equal distances",
-        "Sliding a set square along a ruler",
-        "Folding the paper to create a perpendicular line and then drawing another perpendicular"
+        "They are perpendicular to each other",
+        "They are intersecting",
+        "They are parallel to each other",
+        "They are skew lines"
       ],
       "answerIndex": 2,
-      "solution": "Sliding a set square along a ruler is the correct method because it allows the user to maintain a consistent angle while drawing a line parallel to the original. Using a protractor to measure 90° only creates a perpendicular line, not a parallel one. Drawing arcs with a compass may help in constructing angles but does not guarantee parallelism. Folding paper to create a perpendicular line and then drawing another perpendicular would result in a line that is not necessarily parallel to the original.",
+      "solution": "If two lines are parallel to the same line, then they must be parallel to each other. This is a logical consequence of the transitive property of parallel lines. The other options either contradict this property or describe unrelated relationships between lines.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी विधि दिए गए एक रेखा के समांतर रेखा खींचने के लिए है?",
+          "stem": "यदि दो रेखाएं एक ही रेखा के समांतर हैं, तो दोनों रेखाओं के बीच क्या संबंध हो सकता है?",
           "choices": [
-            "90° कोण मापने के लिए प्रोट्रैक्टर का उपयोग करना",
-            "समान दूरी पर चाप खींचने के लिए चांदा का उपयोग करना",
-            "रूलर के साथ सेट स्क्वेयर को फिसलाना",
-            "कागज को मोड़कर लंब रेखा बनाना और फिर एक और लंब खींचना"
+            "वे एक दूसरे के लंबवत हैं",
+            "वे प्रतिच्छेद करती हैं",
+            "वे एक दूसरे के समांतर हैं",
+            "वे विषम रेखाएं हैं"
           ],
-          "solution": "सेट स्क्वेयर को रूलर के साथ फिसलाना सही विधि है क्योंकि यह उपयोक्ता को मूल रेखा के समांतर रेखा खींचते समय एक स्थिर कोण बनाए रखने की अनुमति देता है। 90° कोण मापने के लिए प्रोट्रैक्टर का उपयोग केवल लंब रेखा बनाता है, समांतर नहीं। चांदा से चाप खींचना कोण बनाने में मदद कर सकता है लेकिन समांतरता की गारंटी नहीं देता। कागज को मोड़कर लंब रेखा बनाना और फिर एक और लंब खींचना मूल रेखा के समांतर रेखा बनाने की गारंटी नहीं देता।",
+          "solution": "यदि दो रेखाएं एक ही रेखा के समांतर हैं, तो वे एक दूसरे के समांतर होना चाहिए। यह समांतर रेखाओं के संक्रामक गुण का एक तार्किक परिणाम है। अन्य विकल्प इस गुण के विरोधी हो सकते हैं या रेखाओं के बीच असंबंधित संबंधों का वर्णन कर सकते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक दिलेल्या रेषेला समांतर रेषा काढण्याचा पद्धत आहे?",
+          "stem": "जर दोन रेषा एकाच रेषेला समांतर असतील, तर दोन रेषांच्या संबंधाबद्दल काय म्हणता येईल?",
           "choices": [
-            "90° कोन मोजण्यासाठी प्रोट्रॅक्टर वापरणे",
-            "समान अंतरावर चाकाच्या वर्तुळाचे चाप असलेले कोंब वापरणे",
-            "रेखाटणीच्या फिरणार्‍या चौकोनाच्या रेखाटणीसाठी रूलर वरून घालणे",
-            "कागद टोकडी करून लंब रेषा तयार करणे आणि नंतर दुसरी लंब रेषा काढणे"
+            "त्या एकमेकांना लंब असतात",
+            "त्या छेदत असतात",
+            "त्या एकमेकांना समांतर असतात",
+            "त्या विषम रेषा असतात"
           ],
-          "solution": "रेखाटणीच्या फिरणार्‍या चौकोनाच्या रेखाटणीसाठी रूलर वरून घालणे ही योग्य पद्धत आहे कारण ती वापरकर्त्याला मूळ रेषेला समांतर रेषा काढताना एकसारखा कोन ठेवण्यास मदत करते. 90° कोन मोजण्यासाठी प्रोट्रॅक्टर वापरणे केवळ लंब रेषा तयार करते, समांतर रेषा नाही. कोंब वापरून चाप रेखाटणे कोन तयार करण्यास मदत करू शकते परंतु समांतरता खात्री करत नाही. कागद टोकडी करून लंब रेषा तयार करून नंतर दुसरी लंब रेषा काढणे ही मूळ रेषेला समांतर असलेली रेषा तयार करत नाही.",
+          "solution": "जर दोन रेषा एकाच रेषेला समांतर असतील, तर त्या एकमेकांना समांतर असतील. हे समांतर रेषांच्या होली गुणधर्माचा तार्किक निष्कर्ष आहे. इतर विकल्प या गुणधर्माशी विरोधात असतात किंवा रेषांमधील अनुबंधांचे अनुप्रयोग वर्णन करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and uses appropriate Marathi technical terms for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "A pupil might think that measuring a right angle is sufficient to create a parallel line",
-        "Believing that drawing arcs can create parallel lines without proper alignment",
-        null,
-        "Student assumes that creating two perpendiculars will automatically make lines parallel, not understanding the need for a transversal or consistent angle measures."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as sliding a set square along a ruler is a standard method to draw a parallel line. The other options represent common misconceptions about how to create parallel lines.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 15,
-          "pageStart": 30,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the term used to describe two lines that never meet and are always the same distance apart?",
-      "choices": [
-        "Perpendicular",
-        "Parallel",
-        "Intersecting",
-        "Crossing"
-      ],
-      "answerIndex": 1,
-      "solution": "Parallel is the term used for two lines that never meet and remain the same distance apart. Perpendicular lines meet at right angles, intersecting lines cross each other at any angle, and crossing is not a formal geometric term for this concept.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो रेखाओं के लिए कौन सा शब्द प्रयोग किया जाता है जो कभी मिलती नहीं हैं और हमेशा एक ही दूरी पर रहती हैं?",
-          "choices": [
-            "लंबवत",
-            "समांतर",
-            "छेदक",
-            "पार करना"
-          ],
-          "solution": "समांतर दो रेखाओं के लिए शब्द है जो कभी मिलती नहीं हैं और एक ही दूरी पर रहती हैं। लंबवत रेखाएं समकोण पर मिलती हैं, छेदक रेखाएं किसी भी कोण पर एक दूसरे को काटती हैं और पार करना इस अवधारणा के लिए एक औपचारिक ज्यामितीय शब्द नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate geometric terminology and correct answer placement.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन रेषा कशाच्या नावाने ओळखल्या जातात ज्या कधीही भेटत नाहीत आणि सदैव एकसारख्या अंतरावर असतात?",
-          "choices": [
-            "लंब",
-            "समांतर",
-            "छेदिलेल्या",
-            "क्रॉसिंग"
-          ],
-          "solution": "समांतर हा दोन रेषा यांच्या नावाचा शब्द आहे ज्या कधीही भेटत नाहीत आणि सदैव एकसारख्या अंतरावर असतात. लंब रेषा लंबकोनात भेटतात, छेदिलेल्या रेषा कोणत्याही कोनात एकमेकांना छेदतात आणि क्रॉसिंग हा या संकल्पनेसाठी अधिकृत ज्यामितीय शब्द नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometry.",
           "flag": null
         }
       },
@@ -349,139 +886,19 @@
       "needsFigure": false,
       "distractorReason": [
         "Confuses parallel lines with perpendicular lines",
+        "Confuses parallel lines with intersecting lines",
         null,
-        "Student thinks parallel lines are those that cross each other",
-        "Confuses parallel lines with intersecting lines or crossing lines"
+        "Student thinks parallel lines in 3D must be skew"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the distractors. The solution is accurate and aligns with the correct definition of parallel lines.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.4 Parallel and Perpendicular Lines in Paper",
-            "Folding"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.4 Parallel and Perpendicular Lines in Paper",
-            "Folding"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.5 Transversals"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.6 Corresponding Angles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.6 Corresponding Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is true about two lines that are both perpendicular to the same line?",
-      "choices": [
-        "They intersect at two points",
-        "They are parallel to each other",
-        "They are perpendicular to each other",
-        "They form a triangle"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is that they are parallel to each other. If two lines are both perpendicular to the same line, then they form equal corresponding angles (90°) with that line, making them parallel. The other options are incorrect because intersecting at two points is not possible for straight lines, being perpendicular to each other would mean they form a right angle, and forming a triangle requires three lines.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा दो रेखाओं के बारे में सही है जो एक ही रेखा के लंबवत हैं?",
-          "choices": [
-            "वे दो बिंदुओं पर प्रतिच्छेद करती हैं",
-            "वे एक दूसरे के समांतर होती हैं",
-            "वे एक दूसरे के लंबवत होती हैं",
-            "वे एक त्रिभुज बनाती हैं"
-          ],
-          "solution": "सही उत्तर यह है कि वे एक दूसरे के समांतर होती हैं। यदि दो रेखाएं एक ही रेखा के लंबवत हैं, तो वे उस रेखा के साथ समान संगत कोण (90°) बनाती हैं, जिससे वे समांतर हो जाती हैं। अन्य विकल्प गलत हैं क्योंकि सीधी रेखाएं दो बिंदुओं पर प्रतिच्छेद नहीं कर सकतीं, एक दूसरे के लंबवत होना अर्थात एक समकोण बनाना है, और एक त्रिभुज बनाने के लिए तीन रेखाएं आवश्यक होती हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते दोन रेषा ज्या एका रेषेला लंब आहेत त्यांच्याबद्दल खरे आहे?",
-          "choices": [
-            "त्या दोन बिंदूंवर भेटतात",
-            "त्या एकमेकांना समांतर आहेत",
-            "त्या एकमेकांना लंब आहेत",
-            "त्या त्रिकोण बनवतात"
-          ],
-          "solution": "बरोबर उत्तर एकमेकांना समांतर असल्याचे आहे. जर दोन रेषा एका रेषेला लंब असतील तर त्या रेषेशी 90° कोन तयार करतील, ज्यामुळे त्या रेषा समांतर होतात. इतर विकल्प चुकीचे आहेत कारण सरळ रेषांना दोन बिंदूंवर भेटणे शक्य नाही, एकमेकांना लंब असल्यास त्यांच्यात लंब कोन असेल आणि त्रिकोण बनवण्यासाठी तीन रेषांची आवश्यकता असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "A student might think two lines can intersect at two points, but this is not possible for straight lines.",
-        null,
-        "A student might confuse perpendicular lines with parallel lines.",
-        "A student might think two lines perpendicular to the same line would also be perpendicular to each other, which is incorrect in this case."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and logically sound. The reasoning that two lines perpendicular to the same line are parallel is accurate in Euclidean geometry. The distractors are appropriately explained as common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the transitive property of parallel lines. The reasoning for the distractors reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp105.pdf",
@@ -496,146 +913,136 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following statements is true when two lines are parallel?",
+      "difficulty": 6,
+      "stem": "In the given diagram, lines l and m are parallel. A line is drawn perpendicular to l through a point on l, and another line is drawn perpendicular to m through a point on m. What can be said about the relationship between these two lines?",
       "choices": [
-        "They intersect at one point.",
-        "They form a linear pair of angles.",
-        "They never meet and are always the same distance apart.",
-        "They form right angles with a transversal."
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is that parallel lines never meet and are always the same distance apart. This is a basic property of parallel lines. The other options are incorrect because parallel lines do not intersect, they do not form a linear pair, and they do not necessarily form right angles with a transversal.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन सत्य है जब दो रेखाएं समांतर होती हैं?",
-          "choices": [
-            "वे एक बिंदु पर प्रतिच्छेद करती हैं।",
-            "वे कोणों के एक रैखिक युग्म बनाती हैं।",
-            "वे कभी नहीं मिलती और हमेशा एक ही दूरी पर रहती हैं।",
-            "वे एक तिर्यक रेखा के साथ समकोण बनाती हैं।"
-          ],
-          "solution": "सही उत्तर यह है कि समांतर रेखाएं कभी नहीं मिलती और हमेशा एक ही दूरी पर रहती हैं। यह समांतर रेखाओं का आधारभूत गुण है। अन्य विकल्प गलत हैं क्योंकि समांतर रेखाएं प्रतिच्छेद नहीं करती हैं, वे एक रैखिक युग्म नहीं बनाती हैं, और वे एक तिर्यक रेखा के साथ आवश्यक रूप से समकोण नहीं बनाती हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses parallel lines with intersecting lines.",
-        "Misunderstands the definition of a linear pair.",
-        null,
-        "Incorrectly assumes that parallel lines must form right angles with a transversal."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is clearly 2, as parallel lines never meet and remain equidistant. The author's reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.7 Drawing Parallel Lines"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a transversal intersects two parallel lines, what is the sum of the interior angles on the same side of the transversal?",
-      "choices": [
-        "180°",
-        "90°",
-        "120°",
-        "360°"
+        "They are parallel",
+        "They are perpendicular",
+        "They are intersecting",
+        "They are coincident"
       ],
       "answerIndex": 0,
-      "solution": "When a transversal intersects two parallel lines, the interior angles on the same side of the transversal are supplementary. This means they add up to 180°. The other options are incorrect because 90° is for perpendicular lines, 120° is not a standard angle for this case, and 360° would be the total of all angles around a point, not just the interior angles on one side of the transversal.",
+      "solution": "If two lines are parallel, then any line drawn perpendicular to one will also be perpendicular to the other. This is because the distance between parallel lines is constant. Therefore, the two lines drawn perpendicular to l and m through points on those lines will also be parallel. The other options either contradict this property or describe unrelated relationships between lines.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो तिर्यक रेखा के एक ही ओर के आंतरिक कोणों का योग क्या होता है?",
+          "stem": "दिए गए आरेख में, रेखाएं l और m समांतर हैं। एक रेखा l पर एक बिंदु से l के लंबवत खींची जाती है, और एक अन्य रेखा m पर m पर एक बिंदु से m के लंबवत खींची जाती है। इन दोनों रेखाओं के बीच संबंध क्या कहा जा सकता है?",
           "choices": [
-            "180°",
-            "90°",
-            "120°",
-            "360°"
+            "वे समांतर हैं",
+            "वे लंबवत हैं",
+            "वे प्रतिच्छेद करते हैं",
+            "वे संपाती हैं"
           ],
-          "solution": "जब एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो तिर्यक रेखा के एक ही ओर के आंतरिक कोण संपूरक होते हैं। इसका अर्थ है कि वे 180° के बराबर होते हैं। अन्य विकल्प गलत हैं क्योंकि 90° लंब रेखाओं के लिए होता है, 120° इस मामले के लिए एक मानक कोण नहीं है, और 360° एक बिंदु के आसपास सभी कोणों का कुल योग होता है, न कि केवल तिर्यक रेखा के एक ओर के आंतरिक कोणों का।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
+          "solution": "यदि दो रेखाएं समांतर हैं, तो किसी एक रेखा के लंबवत खींची गई रेखा दूसरी रेखा के भी लंबवत होती है। इसका कारण यह है कि समांतर रेखाओं के बीच की दूरी स्थिर होती है। इसलिए, l और m पर बिंदुओं से खींची गई l और m के लंबवत दोनों रेखाएं भी समांतर होंगी। अन्य विकल्प इस संपत्ति के विरोधी होते हैं या रेखाओं के बीच असंबंधित संबंधों का वर्णन करते हैं।",
+          "imageAlt": "दो समांतर रेखाएं l और m जिन पर प्रत्येक रेखा पर एक बिंदु से लंबवत रेखाएं खींची गई हैं।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक छेदक दोन समांतर रेषांना छेदत असेल, तर छेदकाच्या एकाच बाजूला असलेल्या आंतरिक कोनांची बेरीज किती असते?",
+          "stem": "दिलेल्या आकृतीत, रेषा l आणि m समांतर आहेत. l वरील एका बिंदूतून l ला लंब रेषा काढली जाते, आणि m वरील एका बिंदूतून m ला लंब रेषा काढली जाते. या दोन रेषांमध्ये काय संबंध असू शकतो?",
           "choices": [
-            "180°",
-            "90°",
-            "120°",
-            "360°"
+            "त्या समांतर आहेत",
+            "त्या लंब आहेत",
+            "त्या छेदित आहेत",
+            "त्या संपादित आहेत"
           ],
-          "solution": "जेव्हा एक छेदक दोन समांतर रेषांना छेदत असतो तेव्हा छेदकाच्या एकाच बाजूला असलेले आंतरिक कोन पूरक असतात. याचा अर्थ ते 180° ची बेरीज करतात. इतर विकल्प चुकीचे आहेत कारण 90° लंब रेषांसाठी आहे, 120° हा या प्रकरणासाठी मानक कोन नाही आणि 360° हा एका बिंदू भोवती सर्व कोनांची बेरीज असते, छेदकाच्या एकाच बाजूला असलेल्या आंतरिक कोनांची बेरीज नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "solution": "जर दोन रेषा समांतर असतील, तर एका रेषेला लंब असलेली कोणतीही रेषा दुसर्‍या रेषेला लंब असते. हे समांतर रेषांमधील अंतर स्थिर असल्यामुळे असते. म्हणून, l आणि m वरील बिंदूंमधून काढलेल्या लंब रेषांमध्ये समांतर असण्याची शक्यता असते. इतर विकल्प या गुणधर्माच्या विरोधात असतात किंवा रेषांमधील असंबंधित संबंध वर्णन करतात.",
+          "imageAlt": "दोन समांतर रेषा l आणि m आहेत, ज्यांच्या प्रत्येक रेषेवरील बिंदूंमधून लंब रेषा काढल्या आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "Two parallel lines l and m with perpendicular lines drawn from points on each line.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 10,
+            "unit": "units"
+          },
+          "points": [
+            {
+              "id": "A",
+              "x": 2,
+              "y": 2,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 8,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "id": "C",
+              "x": 2,
+              "y": 6,
+              "label": "C"
+            },
+            {
+              "id": "D",
+              "x": 8,
+              "y": 6,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "label": "l"
+            },
+            {
+              "from": "C",
+              "to": "D",
+              "label": "m"
+            },
+            {
+              "from": "A",
+              "to": "C",
+              "kind": "segment",
+              "label": "p"
+            },
+            {
+              "from": "B",
+              "to": "D",
+              "kind": "segment",
+              "label": "q"
+            }
+          ]
+        },
+        "labels": {
+          "l": {
+            "en": "l"
+          },
+          "m": {
+            "en": "m"
+          },
+          "p": {
+            "en": "perpendicular to l"
+          },
+          "q": {
+            "en": "perpendicular to m"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
         null,
-        "Confuses the property of perpendicular lines with that of parallel lines",
-        "Misunderstands the concept of supplementary angles",
-        "Incorrectly assumes a specific angle value without basis in the given scenario"
+        "Confuses perpendicularity with parallelism when dealing with lines perpendicular to parallel lines",
+        "Confuses the relationship between perpendicular lines and parallel lines",
+        "Confuses the relationship between intersecting lines and parallel lines"
       ],
       "solverAnswers": [
         0,
@@ -644,210 +1051,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 180°, as interior angles on the same side of a transversal are supplementary. The author's reasoning is sound and matches standard geometric principles.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 20,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 14,
-          "pageStart": 25,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following statements is true when two parallel lines are intersected by a transversal?",
-      "choices": [
-        "Corresponding angles are supplementary",
-        "Alternate interior angles are equal",
-        "Consecutive interior angles are equal",
-        "All angles are equal"
-      ],
-      "answerIndex": 1,
-      "solution": "When two parallel lines are intersected by a transversal, alternate interior angles are equal. This is a fundamental property of parallel lines. The other options are incorrect: corresponding angles are equal, not supplementary; consecutive interior angles are supplementary, not equal; and not all angles are equal unless the lines are perpendicular, which is not stated here.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब दो समांतर रेखाएं एक तिर्यक रेखा से काटी जाती हैं तो निम्नलिखित में से कौन-सा कथन सत्य है?",
-          "choices": [
-            "संगत कोण संपूरक होते हैं",
-            "वैकल्पिक आंतरिक कोण बराबर होते हैं",
-            "अनुगामी आंतरिक कोण बराबर होते हैं",
-            "सभी कोण बराबर होते हैं"
-          ],
-          "solution": "जब दो समांतर रेखाएं एक तिर्यक रेखा से काटी जाती हैं तो वैकल्पिक आंतरिक कोण बराबर होते हैं। यह समांतर रेखाओं का एक मूलभूत गुण है। अन्य विकल्प गलत हैं: संगत कोण बराबर होते हैं, न कि संपूरक; अनुगामी आंतरिक कोण संपूरक होते हैं, न कि बराबर; और सभी कोण बराबर नहीं होते हैं जब तक कि रेखाएं लंबवत न हों, जो यहां निर्दिष्ट नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन समांतर रेषा एका छेदिकेने छेदल्या गेल्यास खालीलपैकी कोणता विधान खरा आहे?",
-          "choices": [
-            "अनुरूप कोन अनुपूरक असतात",
-            "विरुद्ध आंतरिक कोन समान असतात",
-            "अनुक्रमिक आंतरिक कोन समान असतात",
-            "सर्व कोन समान असतात"
-          ],
-          "solution": "जेव्हा दोन समांतर रेषा एका छेदिकेने छेदल्या जातात तेव्हा विरुद्ध आंतरिक कोन समान असतात. हे समांतर रेषांच्या मूलभूत गुणधर्मांपैकी एक आहे. इतर विधाने चूक आहेत: अनुरूप कोन समान असतात, अनुपूरक नाहीत; अनुक्रमिक आंतरिक कोन अनुपूरक असतात, समान नाहीत; आणि सर्व कोन समान असतील जर रेषा लंब असतील, जे येथे नमूद केले गेले नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the correct answer position, and uses standard Marathi geometry terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses corresponding angles with supplementary angles",
-        null,
-        "Misunderstands the definition of alternate interior angles",
-        "Incorrectly assumes all angles formed by a transversal are equal"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 1, as alternate interior angles are equal when two parallel lines are intersected by a transversal. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 20,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 14,
-          "pageStart": 25,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a line is drawn through a point outside a given line such that it is parallel to the given line, what is the relationship between the original line and the new line?",
-      "choices": [
-        "They are perpendicular",
-        "They are intersecting",
-        "They are parallel",
-        "They form a right angle"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is that they are parallel. A line drawn through a point outside a given line that is parallel to the given line will never meet the original line, making them parallel. The other options are incorrect because they do not match the definition of parallel lines.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक रेखा दिए गए रेखा के बाहर के एक बिंदु से खींची जाती है जो दी गई रेखा के समांतर होती है, तो मूल रेखा और नई रेखा के बीच क्या संबंध होता है?",
-          "choices": [
-            "वे लंबवत हैं",
-            "वे प्रतिच्छेद करते हैं",
-            "वे समांतर हैं",
-            "वे समकोण बनाते हैं"
-          ],
-          "solution": "सही उत्तर यह है कि वे समांतर हैं। एक रेखा जो दिए गए रेखा के बाहर के एक बिंदु से खींची जाती है और दी गई रेखा के समांतर होती है, मूल रेखा के साथ कभी नहीं मिलती, इसलिए वे समांतर होते हैं। अन्य विकल्प गलत हैं क्योंकि वे समांतर रेखाओं के परिभाषा के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका दिलेल्या रेषेबाहेर एका बिंदूतून एका रेषा काढली जाते जी दिलेल्या रेषेला समांतर असते, तर मूळ रेषा आणि नवीन रेषेचे संबंध काय असतात?",
-          "choices": [
-            "ते लंब आहेत",
-            "ते छेदित आहेत",
-            "ते समांतर आहेत",
-            "ते समकोन तयार करतात"
-          ],
-          "solution": "सही उत्तर हे आहे की ते समांतर आहेत. दिलेल्या रेषेला समांतर असलेली रेषा एका बिंदूतून काढली जाते जी मूळ रेषेशी भेटत नाही, ज्यामुळे ते समांतर बनतात. इतर विकल्प अयोग्य आहेत कारण ते समांतर रेषांच्या व्याख्येशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "A student might think the lines are perpendicular, but this is not the case when they are parallel.",
-        "A student might think the lines intersect, but parallel lines never meet.",
-        null,
-        "A student might think the lines form a right angle, which is not true for parallel lines."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies that parallel lines never meet. The author's reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. If two lines are parallel, then lines drawn perpendicular to them will also be parallel, as the distance between the parallel lines is constant.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp105.pdf",
@@ -862,346 +1067,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In the given diagram, lines l and m are intersected by a transversal t. If ∠6 is 135°, which angle is equal to ∠6?",
+      "difficulty": 6,
+      "stem": "In a diagram, two lines are intersected by a transversal, and one pair of corresponding angles is found to be equal. What can be concluded about the two lines?",
       "choices": [
-        "∠2",
-        "∠3",
-        "∠5",
-        "∠8"
-      ],
-      "answerIndex": 3,
-      "solution": "∠6 and ∠8 are vertically opposite angles, so they are equal. This is a direct application of the property of vertically opposite angles. The other options are incorrect because ∠2 is a corresponding angle, ∠3 is an alternate angle, and ∠5 is a supplementary angle to ∠6.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दिए गए आरेख में, रेखाएं l और m एक अनुलम्ब t द्वारा काटी जाती हैं। यदि ∠6 का मान 135° है, तो कौन-सा कोण ∠6 के बराबर है?",
-          "choices": [
-            "∠2",
-            "∠3",
-            "∠5",
-            "∠8"
-          ],
-          "solution": "∠6 और ∠8 लंबाक्ष कोण हैं, इसलिए वे बराबर हैं। यह लंबाक्ष कोण के गुण के सीधे अनुप्रयोग है। अन्य विकल्प गलत हैं क्योंकि ∠2 संगत कोण है, ∠3 वैकल्पिक कोण है, और ∠5, ∠6 के पूरक कोण है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi geometry terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आकृतीत, रेषा l आणि m एका छेदिका t ने छेदल्या गेल्या आहेत. जर ∠6 135° असेल, तर कोणता कोन ∠6 च्या बरोबरीचा असेल?",
-          "choices": [
-            "∠2",
-            "∠3",
-            "∠5",
-            "∠8"
-          ],
-          "solution": "∠6 आणि ∠8 व्यासार्ध कोन आहेत, म्हणून ते समान असतात. हे व्यासार्ध कोनांच्या गुणधर्माचे सीधे अनुप्रयोग आहे. इतर विकल्प अयोग्य आहेत कारण ∠2 अनुरूप कोन आहे, ∠3 विरुद्ध कोन आहे, आणि ∠5 ∠6 चा पूरक कोन आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for angles.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses corresponding angles with vertically opposite angles.",
-        "Confuses alternate angles with vertically opposite angles.",
-        "Confuses supplementary angles with vertically opposite angles.",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. ∠6 and ∠8 are vertically opposite angles, so they are equal. The other options are correctly identified as incorrect based on common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.7 Drawing Parallel Lines"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the given diagram, line segment AB is parallel to CD and AD is parallel to BC. If ∠DAC is 65° and ∠ADC is 60°, what is the measure of ∠CAB?",
-      "choices": [
-        "65°",
-        "55°",
-        "60°",
-        "120°"
-      ],
-      "answerIndex": 1,
-      "solution": "Since AB is parallel to CD and AD is a transversal, ∠ADC and ∠DAB are supplementary. So, ∠DAB = 180° - 60° = 120°. ∠DAB is the sum of ∠DAC and ∠CAB. So, ∠CAB = 120° - 65° = 55°. The other options are incorrect because they do not follow the correct angle relationships.",
-      "checkExpr": "180-60-65",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दिए गए आरेख में, रेखा खंड AB, CD के समांतर है और AD, BC के समांतर है। यदि ∠DAC 65° है और ∠ADC 60° है, तो ∠CAB का माप क्या है?",
-          "choices": [
-            "65°",
-            "55°",
-            "60°",
-            "120°"
-          ],
-          "solution": "क्योंकि AB, CD के समांतर है और AD एक तिर्यक रेखा है, ∠ADC और ∠DAB पूरक हैं। इसलिए, ∠DAB = 180° - 60° = 120°। ∠DAB ∠DAC और ∠CAB के योग के बराबर है। इसलिए, ∠CAB = 120° - 65° = 55°। अन्य विकल्प गलत हैं क्योंकि वे सही कोण संबंधों का अनुसरण नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 2).",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दिलेल्या आकृतीत, रेख खंड AB CD ला समांतर आहे आणि AD BC ला समांतर आहे. जर ∠DAC 65° आहे आणि ∠ADC 60° आहे, तर ∠CAB चे माप किती आहे?",
-          "choices": [
-            "65°",
-            "55°",
-            "60°",
-            "120°"
-          ],
-          "solution": "कारण AB CD ला समांतर आहे आणि AD एक छेदिका आहे, ∠ADC आणि ∠DAB अतिरिक्त आहेत. म्हणून, ∠DAB = 180° - 60° = 120°. ∠DAB हा ∠DAC आणि ∠CAB च्या बेरजेचा असतो. म्हणून, ∠CAB = 120° - 65° = 55°. इतर विकल्प अयोग्य आहेत कारण ते योग्य कोन संबंधांचे अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses ∠DAC with ∠CAB.",
-        null,
-        "Assumes that ∠CAB is equal to ∠DAC.",
-        "Assumes that ∠CAB is equal to ∠ADC."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that AB is parallel to CD and AD is a transversal, leading to the conclusion that ∠DAB is 120°. Then, since ∠DAB = ∠DAC + ∠CAB, ∠CAB = 120° - 65° = 55°. The reasoning is sound and matches the correct answer.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.7 Drawing Parallel Lines"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If two lines are parallel, and a transversal intersects them, which of the following is true about the corresponding angles?",
-      "choices": [
-        "They are supplementary",
-        "They are equal",
-        "They are complementary",
-        "They are always 90°"
-      ],
-      "answerIndex": 1,
-      "solution": "When a transversal intersects two parallel lines, the corresponding angles are equal. This is a key property of parallel lines and transversals. The other options are incorrect: supplementary angles add up to 180°, complementary angles add up to 90°, and corresponding angles are not always 90° unless the transversal is perpendicular to the lines, which is not stated here.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो रेखाएं समांतर हैं, और एक तिर्यक रेखा इनको काटती है, तो निम्नलिखित में से कौन सा सही है संगत कोणों के बारे में?",
-          "choices": [
-            "वे संपूरक होते हैं",
-            "वे बराबर होते हैं",
-            "वे पूरक होते हैं",
-            "वे हमेशा 90° होते हैं"
-          ],
-          "solution": "जब एक तिर्यक रेखा दो समांतर रेखाओं को काटती है, तो संगत कोण बराबर होते हैं। यह समांतर रेखाओं और तिर्यक रेखा के एक मुख्य गुण है। अन्य विकल्प गलत हैं: संपूरक कोण 180° के योग के बराबर होते हैं, पूरक कोण 90° के योग के बराबर होते हैं, और संगत कोण हमेशा 90° नहीं होते हैं, जब तक कि तिर्यक रेखा रेखाओं के लंबवत न हो, जो यहां नहीं बताया गया है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard geometric terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन रेषा समांतर असतील, आणि एक छेदिका त्यांना छेदत असेल, तर खालीलपैकी कोणते खरे आहे त्यांच्या संगत कोनांबद्दल?",
-          "choices": [
-            "ते अपूरक असतात",
-            "ते समान असतात",
-            "ते पूरक असतात",
-            "ते नेहमी 90° असतात"
-          ],
-          "solution": "जेव्हा छेदिका दोन समांतर रेषांना छेदते, तेव्हा संगत कोन समान असतात. हे समांतर रेषांच्या छेदिकांबद्दलचे मुख्य गुणधर्म आहे. इतर विकल्प चुकीचे आहेत: अपूरक कोनांची बेरीज 180° असते, पूरक कोनांची बेरीज 90° असते, आणि संगत कोन नेहमी 90° असतात नाही, जेव्हा छेदिका रेषांना लंब असते, जे येथे दिले गेले नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses corresponding angles with supplementary angles",
-        null,
-        "Misunderstands the definition of corresponding angles",
-        "Incorrectly assumes that corresponding angles are complementary"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 (They are equal), as corresponding angles formed by a transversal intersecting parallel lines are congruent. The author's solution and reasoning are accurate and align with standard geometric principles.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 20,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 14,
-          "pageStart": 25,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.9 Parallel Illusions",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "The lines representing the given pair of linear equations are non-intersecting. Which of the following statements is true?",
-      "choices": [
-        "The lines are parallel",
-        "The lines are perpendicular",
-        "The lines intersect at one point",
-        "The lines are coincident"
+        "They are parallel",
+        "They are perpendicular",
+        "They are intersecting",
+        "They are not parallel"
       ],
       "answerIndex": 0,
-      "solution": "If the lines are non-intersecting, they never meet, which is a defining characteristic of parallel lines. Perpendicular lines intersect at a right angle, so they are not non-intersecting. Intersecting lines meet at one point, which contradicts the given condition. Coincident lines are the same line and thus overlap entirely, not remaining separate and non-intersecting.",
+      "solution": "If a transversal intersects two lines and a pair of corresponding angles are equal, the lines must be parallel because corresponding angles are congruent only when the lines are parallel. Perpendicular lines form right angles, which is not indicated here. Intersecting lines would not have equal corresponding angles unless they are parallel. Therefore, the correct answer is 'They are parallel'.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दिए गए रैखिक समीकरण के युग्म के निरूपण वाली रेखाएँ अप्रतिच्छेदी हैं। निम्नलिखित में से कौन-सा कथन सत्य है?",
+          "stem": "एक आरेख में, दो रेखाएं एक तिर्यक रेखा द्वारा काटी जाती हैं, और एक जोड़ी संगत कोण पाई जाती है। दोनों रेखाओं के बारे में क्या निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "रेखाएँ समांतर हैं",
-            "रेखाएँ लंबवत हैं",
-            "रेखाएँ एक बिंदु पर प्रतिच्छेद करती हैं",
-            "रेखाएँ संपाती हैं"
+            "वे समांतर हैं",
+            "वे लंबवत हैं",
+            "वे प्रतिच्छेद करती हैं",
+            "वे समांतर नहीं हैं"
           ],
-          "solution": "यदि रेखाएँ अप्रतिच्छेदी हैं, तो वे कभी मिलती नहीं हैं, जो समांतर रेखाओं की एक परिभाषा है। लंबवत रेखाएँ एक समकोण पर प्रतिच्छेद करती हैं, अतः वे अप्रतिच्छेदी नहीं हो सकतीं। प्रतिच्छेदी रेखाएँ एक बिंदु पर मिलती हैं, जो दिए गए शर्त के विरोधाभास है। संपाती रेखाएँ एक ही रेखा होती हैं और अतः पूरी तरह से ओवरलैप करती हैं, न कि अलग-अलग रहकर अप्रतिच्छेदी रहती हैं।",
+          "solution": "यदि एक तिर्यक रेखा दो रेखाओं को काटती है और एक जोड़ी संगत कोण बराबर होती है, तो रेखाएं आवश्यक रूप से समांतर होती हैं क्योंकि संगत कोण केवल तभी सर्वांगसम होते हैं जब रेखाएं समांतर होती हैं। लंबवत रेखाएं समकोण बनाती हैं, जो यहां निर्दिष्ट नहीं है। प्रतिच्छेद करने वाली रेखाएं केवल तभी समान संगत कोण बनाती हैं जब वे समांतर होती हैं। अतः सही उत्तर 'वे समांतर हैं' है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "दिलेल्या रेषीय समीकरणांच्या रेषा असंगत आहेत. खालीलपैकी कोणता विधान खरा आहे?",
+          "stem": "आरेखात, दोन रेषा एका छेदिकेने छेदल्या जातात आणि एक जोडी संगत कोन एकसारखे असल्याचे आढळून आले. दोन रेषांबद्दल काय निष्कर्ष काढता येईल?",
           "choices": [
-            "रेषा समांतर आहेत",
-            "रेषा लंब आहेत",
-            "रेषा एका बिंदूवर छेदतात",
-            "रेषा एकरूप आहेत"
+            "त्या समांतर आहेत",
+            "त्या लंब आहेत",
+            "त्या छेदिलेल्या आहेत",
+            "त्या समांतर नाहीत"
           ],
-          "solution": "जर रेषा असंगत असतील तर त्या कधीही मिळत नाहीत, हे समांतर रेषांचे वैशिष्ट्य आहे. लंब रेषा एका समकोनावर छेदतात, म्हणून त्या असंगत नाहीत. छेदक रेषा एका बिंदूवर छेदतात, हे दिलेल्या अटीशी विरोधाभास आहे. एकरूप रेषा एकच रेषा असतात आणि त्या पूर्णपणे ओव्हरलॅप करतात, जे वेगळ्या आणि असंगत राहण्याच्या अटीशी विरोधाभास आहे.",
+          "solution": "जर एका छेदिकेने दोन रेषांना छेदले जाते आणि एक जोडी संगत कोन एकसारखे असतात, तर रेषा निश्चितपणे समांतर असतात कारण संगत कोन फक्त तेव्हाच एकसारखे असतात जेव्हा रेषा समांतर असतात. लंब रेषा लंब कोन बनवतात, जे येथे सूचित केले जात नाही. छेदिलेल्या रेषांना संगत कोन एकसारखे असतील जर त्या समांतर असतील. म्हणूनच योग्य उत्तर 'त्या समांतर आहेत' आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi geometry terminology.",
           "flag": null
         }
       },
@@ -1212,226 +1120,8 @@
       "distractorReason": [
         null,
         "Confuses parallel with perpendicular",
-        "Thinks intersecting lines are non-intersecting",
-        "Misunderstands the definition of coincident lines"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed and the solution is logically sound. The correct answer is 'The lines are parallel' because non-intersecting lines in a plane must be parallel. The other options are correctly identified as misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.4 Parallel and Perpendicular Lines in Paper",
-            "Folding"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.4 Parallel and Perpendicular Lines in Paper",
-            "Folding"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.5 Transversals"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.6 Corresponding Angles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.6 Corresponding Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "In the given diagram, lines l and m are intersected by a transversal t. If ∠a is 120° and ∠f is 70°, are lines l and m parallel?",
-      "choices": [
-        "Yes, because the corresponding angles are equal.",
-        "No, because the corresponding angles are not equal.",
-        "Yes, because the alternate angles are equal.",
-        "No, because the alternate angles are not equal."
-      ],
-      "answerIndex": 1,
-      "solution": "Lines l and m are not parallel because the corresponding angles formed by the transversal t are not equal. ∠a and ∠f are not equal, so the lines cannot be parallel. The other options are incorrect because they incorrectly assume the angles are equal or refer to alternate angles, which are not the deciding factor here.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दिए गए आरेख में, रेखाएं l और m एक अनुलंब t द्वारा काटी गई हैं। यदि ∠a 120° है और ∠f 70° है, तो क्या रेखाएं l और m समांतर हैं?",
-          "choices": [
-            "हाँ, क्योंकि संगत कोण बराबर हैं।",
-            "नहीं, क्योंकि संगत कोण बराबर नहीं हैं।",
-            "हाँ, क्योंकि एकांतर कोण बराबर हैं।",
-            "नहीं, क्योंकि एकांतर कोण बराबर नहीं हैं।"
-          ],
-          "solution": "रेखाएं l और m समांतर नहीं हैं क्योंकि अनुलंब t द्वारा बने संगत कोण बराबर नहीं हैं। ∠a और ∠f बराबर नहीं हैं, इसलिए रेखाएं समांतर नहीं हो सकती हैं। अन्य विकल्प गलत हैं क्योंकि वे कोणों के बराबर होने की गलत धारणा करते हैं या एकांतर कोणों के संदर्भ में जाते हैं, जो यहां निर्णायक कारक नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दिलेल्या आकृतीत, रेषा l आणि m ला एका छेदिका t ने छेदले आहे. जर ∠a 120° असेल आणि ∠f 70° असेल, तर रेषा l आणि m समांतर आहेत का?",
-          "choices": [
-            "होय, कारण अनुरूप कोन समान आहेत.",
-            "नाही, कारण अनुरूप कोन समान नाहीत.",
-            "होय, कारण विरुद्ध कोन समान आहेत.",
-            "नाही, कारण विरुद्ध कोन समान नाहीत."
-          ],
-          "solution": "रेषा l आणि m समांतर नाहीत कारण छेदिका t द्वारा तयार झालेले अनुरूप कोन समान नाहीत. ∠a आणि ∠f समान नाहीत, म्हणून रेषा समांतर नाहीत. इतर विकल्प चुकीचे आहेत कारण ते कोन समान आहेत असे चुकून मानतात किंवा विरुद्ध कोनांचा उल्लेख करतात, जे येथे निर्णायक कारक नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintaining the original meaning, correct answer position, and appropriate terminology used in Marathi mathematics education.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes that corresponding angles are equal.",
-        null,
-        "Confuses alternate angles with corresponding angles.",
-        "Incorrectly assumes that the lines are parallel based on alternate angles."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 'No, because the corresponding angles are not equal.' The author's reasoning is sound, as ∠a and ∠f are not corresponding angles, and the question lacks sufficient information to determine if any alternate angles are equal. The other options are invalid due to misconceptions about angle relationships.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.7 Drawing Parallel Lines"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Parallel and Intersecting Lines",
-            "5.8 Alternate Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Using the theorem that a line drawn parallel to one side of a triangle divides the other two sides in the same ratio, prove that a line through the point of intersection of the diagonals and parallel to the base of a trapezium divides the non-parallel sides in the same ratio. Which of the following is a correct step in the proof?",
-      "choices": [
-        "Use the properties of parallel lines and transversals",
-        "Assume the lines are not parallel",
-        "Prove that the triangle is equilateral",
-        "Prove that the trapezium is a square"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct step is to use the properties of parallel lines and transversals, as this helps establish the proportional relationships needed for the proof. The other options are incorrect because assuming lines are not parallel contradicts the given condition, and proving the figure is equilateral or a square is unnecessary and unrelated to the theorem.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक त्रिभुज की एक भुजा के समांतर खींची गई रेखा अन्य दो भुजाओं को समान अनुपात में विभाजित करती है, इस प्रमेय का उपयोग करके सिद्ध कीजिए कि एक समलंब चतुर्भुज के विकर्णों के प्रतिच्छेद बिंदु से गुजरने वाली आधार के समांतर रेखा असमांतर भुजाओं को समान अनुपात में विभाजित करती है। सिद्धांत में कौन सा चरण सही है?",
-          "choices": [
-            "समांतर रेखाओं और तिर्यक रेखाओं के गुणों का उपयोग करें",
-            "रेखाओं के समांतर होने का अनुमान लगाएं",
-            "त्रिभुज के समबाहु होने का सिद्ध करें",
-            "समलंब चतुर्भुज के वर्ग होने का सिद्ध करें"
-          ],
-          "solution": "सही चरण समांतर रेखाओं और तिर्यक रेखाओं के गुणों का उपयोग करना है, क्योंकि यह सिद्धांत के लिए आवश्यक अनुपाती संबंध स्थापित करता है। अन्य विकल्प गलत हैं क्योंकि रेखाओं के समांतर होने का अनुमान दिए गए शर्त के विरोध में है, और आकृति के समबाहु या वर्ग होने का सिद्ध करना आवश्यक नहीं है और प्रमेय से संबंधित नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as per Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "त्रिकोणाच्या एका बाजूला समांतर रेषा काढली असता इतर दोन बाजू एकसारख्या गुणोत्तरात विभाजल्या जातात, या सिद्धांताचा वापर करून ट्रॅपेझियमच्या आधाराला समांतर रेषा आणि विकर्णांच्या छेदनबिंदूमार्गे जाणारी रेषा असल्यास असमांतर बाजू एकसारख्या गुणोत्तरात विभाजल्या जातात, हे सिद्ध करा. खालीलपैकी कोणता एक पुराव्यातील योग्य टप्पा आहे?",
-          "choices": [
-            "समांतर रेषा आणि छेदकांच्या गुणधर्मांचा वापर करा",
-            "रेषा समांतर नाहीत असे गृहीत धरा",
-            "त्रिकोण समभुज आहे हे सिद्ध करा",
-            "ट्रॅपेझियम चौरस आहे हे सिद्ध करा"
-          ],
-          "solution": "योग्य टप्पा समांतर रेषा आणि छेदकांच्या गुणधर्मांचा वापर करणे आहे, कारण हे पुराव्यासाठी आवश्यक असलेल्या प्रमाणीकरणाच्या संबंधांचे निर्माण करते. इतर विकल्प चुकीचे आहेत कारण रेषा समांतर नाहीत असे गृहीत धरणे दिलेल्या अटीच्या विरुद्ध आहे आणि आकृतीचे समभुज किंवा चौरस असे सिद्ध करणे अवाजवी आणि थ्योरमशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the theorem with unrelated properties",
-        "Makes an incorrect assumption about the figure",
-        "Focuses on incorrect properties of specific shapes"
+        "Confuses parallel with intersecting",
+        "Confuses parallel with not parallel"
       ],
       "solverAnswers": [
         0,
@@ -1441,7 +1131,7 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct step is to use the properties of parallel lines and transversals, as this is essential for applying the given theorem about the division of sides in a triangle. The other options are irrelevant or incorrect assumptions.",
+      "critique": "The solution is correct and aligns with the geometric principle that equal corresponding angles imply parallel lines. The reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp105.pdf",
@@ -1497,7 +1187,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T03:46:40.616Z",
+      "generatedAt": "2026-10-22T01:11:37.159Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

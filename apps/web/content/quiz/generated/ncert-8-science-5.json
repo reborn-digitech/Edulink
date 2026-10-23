@@ -21,47 +21,148 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-19T11:49:20.406Z",
+  "generatedAt": "2026-10-22T09:20:04.602Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the unit of mass?",
+      "difficulty": 2,
+      "stem": "Which of the following is true about the weight of an object?",
       "choices": [
-        "Newton",
-        "Kilogram",
-        "Pound",
-        "Litre"
+        "It remains the same everywhere on Earth",
+        "It changes depending on the location",
+        "It is the same as mass",
+        "It is always zero"
       ],
       "answerIndex": 1,
-      "solution": "The kilogram is the standard unit used to measure mass in the International System of Units. Newton is a unit of force, pound is a unit of weight or mass in some systems but not the standard, and litre is a unit of volume.",
+      "solution": "Weight depends on the gravitational force acting on an object, which varies with location, so it changes depending on where the object is. Mass is a measure of the amount of matter and does not change, so weight is not the same as mass. Weight is not always zero because gravity exists on Earth and other celestial bodies.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "द्रव्यमान का मात्रक क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा वस्तु के भार के बारे में सही है?",
           "choices": [
-            "न्यूटन",
-            "किलोग्राम",
-            "पाउंड",
-            "लीटर"
+            "यह पृथ्वी पर सभी जगह समान रहता है",
+            "यह स्थान के आधार पर बदल जाता है",
+            "यह द्रव्यमान के समान होता है",
+            "यह हमेशा शून्य होता है"
           ],
-          "solution": "किलोग्राम अंतर्राष्ट्रीय मात्रक प्रणाली में द्रव्यमान के मापन के लिए मानक मात्रक है। न्यूटन बल का मात्रक है, पाउंड कुछ प्रणालियों में भार या द्रव्यमान का मात्रक है लेकिन मानक नहीं है, और लीटर आयतन का मात्रक है।",
+          "solution": "भार वस्तु पर लगने वाले गुरुत्वाकर्षण बल पर निर्भर करता है, जो स्थान के आधार पर बदल जाता है, इसलिए वस्तु के स्थान के आधार पर भार बदल जाता है। द्रव्यमान द्रव्य की मात्रा का माप है और यह बदल नहीं सकता, इसलिए भार द्रव्यमान के समान नहीं होता। भार हमेशा शून्य नहीं होता क्योंकि पृथ्वी और अन्य खगोलीय पिंडों पर गुरुत्व होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as taught in Hindi-medium textbooks.",
+          "critique": "Translation accurately conveys the original meaning with appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "द्रव्यमानाचे एकक काय आहे?",
+          "stem": "खालीलपैकी कोणते वस्तूच्या वजनाबद्दल खरे आहे?",
           "choices": [
-            "न्यूटन",
-            "किलोग्राम",
-            "पाउंड",
-            "लिटर"
+            "ते पृथ्वीवर सर्वत्र एकसारखे रहाते",
+            "ते ठिकाणावर अवलंबून बदलते",
+            "ते द्रव्यमानासारखे असते",
+            "ते नेहमी शून्य असते"
           ],
-          "solution": "किलोग्राम हे आंतरराष्ट्रीय एकक प्रणालीमध्ये द्रव्यमान मोजण्यासाठी वापरले जाणारे मानक एकक आहे. न्यूटन हे बलाचे एकक आहे, पाउंड हे काही प्रणालीमध्ये वजन किंवा द्रव्यमानाचे एकक आहे परंतु मानक नाही आणि लिटर हे आयतनाचे एकक आहे.",
+          "solution": "वजन वस्तूवर कार्य करणारी गुरुत्वीय बलावर अवलंबून असते, जे ठिकाणावर बदलते, त्यामुळे वस्तूच्या ठिकाणावर अवलंबून ते बदलते. द्रव्यमान हे पदार्थाच्या मात्रेचे मोजमाप असते आणि ते बदलत नाही, त्यामुळे वजन द्रव्यमानासारखे नसते. पृथ्वी आणि इतर खगोलीय पिंडांवर गुरुत्व असते, म्हणून वजन नेहमी शून्य नसते.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes weight is constant",
+        null,
+        "Confuses weight with mass",
+        "Misunderstands the concept of weight being zero in space"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as weight does vary with location due to differences in gravitational pull. The other options reflect common misconceptions: assuming weight is constant, confusing weight with mass, and thinking weight is always zero.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: — Exploring Forces",
+            "5.5 Weight and Its Measurement",
+            "Activity 5.11: Let us calculate"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu105.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: — Exploring Forces",
+            "5.5 Weight and Its Measurement",
+            "Activity 5.12: Let us measure"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu105.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: — Exploring Forces",
+            "5.6 Floating and Sinking",
+            "Activity 5.13: Let us investigate"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-22T09:20:04.602Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following forces acts in a direction opposite to the motion of an object?",
+      "choices": [
+        "Gravitational force",
+        "Magnetic force",
+        "Electrostatic force",
+        "Frictional force"
+      ],
+      "answerIndex": 3,
+      "solution": "Frictional force acts in a direction opposite to the motion of an object because it resists relative motion between surfaces. Gravitational force pulls objects toward each other, magnetic force can attract or repel depending on pole orientation, and electrostatic force depends on the charges of the objects involved.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा बल वस्तु के गति की दिशा के विपरीत कार्य करता है?",
+          "choices": [
+            "गुरुत्वीय बल",
+            "चुंबकीय बल",
+            "स्थिर वैद्युत बल",
+            "घर्षण बल"
+          ],
+          "solution": "घर्षण बल वस्तु की गति की दिशा के विपरीत कार्य करता है क्योंकि यह सतहों के बीच सापेक्ष गति का विरोध करता है। गुरुत्वीय बल वस्तुओं को एक दूसरे की ओर खींचता है, चुंबकीय बल ध्रुव की अवस्था पर निर्भर करके आकर्षित या प्रतिकर्षित कर सकता है, और स्थिर वैद्युत बल वस्तुओं के आवेश पर निर्भर करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terminology as found in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता बल वस्तूच्या गतीच्या दिशेस विरुद्ध दिशेने कार्य करतो?",
+          "choices": [
+            "गुरुत्वीय बल",
+            "चुंबकीय बल",
+            "वैद्युत स्थैतिक बल",
+            "घर्षण बल"
+          ],
+          "solution": "घर्षण बल वस्तूच्या गतीच्या दिशेस विरुद्ध दिशेने कार्य करतो कारण ते पृष्ठभागांमधील सापेक्ष गतीला विरोध करतो. गुरुत्वीय बल वस्तूंना एकमेकांकडे खेचतो, चुंबकीय बल ध्रुव अवस्थेवर अवलंबून आकर्षित किंवा प्रतिकर्षित करू शकतो आणि वैद्युत स्थैतिक बल वस्तूंच्या आवेशावर अवलंबून असतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
           "flag": null
@@ -72,211 +173,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses mass with force",
-        null,
-        "Chooses a unit of weight",
-        "Chooses a unit of volume"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and tests basic recall. The correct answer is 'Kilogram' as it is the standard unit of mass. The other options are correctly identified as units of force (Newton), weight (Pound), and volume (Litre).",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.5 Weight and Its Measurement",
-            "Activity 5.11: Let us calculate"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 12,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.5 Weight and Its Measurement",
-            "Activity 5.12: Let us measure"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 13,
-          "pageStart": 15,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main difference between mass and weight?",
-      "choices": [
-        "Mass is measured in newtons and weight is measured in kilograms",
-        "Mass is the amount of matter in an object and weight is the gravitational force exerted on it",
-        "Mass is the force of gravity and weight is the amount of matter in an object",
-        "Mass and weight are the same thing"
-      ],
-      "answerIndex": 1,
-      "solution": "Mass is the amount of matter in an object, while weight is the gravitational force exerted on it. This distinction is fundamental in physics, as mass remains constant regardless of location, whereas weight changes depending on the strength of gravity. The other options incorrectly associate units with the wrong property or confuse the definitions entirely.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मात्रा और भार में मुख्य अंतर क्या है?",
-          "choices": [
-            "मात्रा न्यूटन में मापी जाती है और भार किलोग्राम में मापा जाता है",
-            "मात्रा एक वस्तु में पदार्थ की मात्रा है और भार उस पर लगने वाले गुरुत्वाकर्षण बल है",
-            "मात्रा गुरुत्वाकर्षण का बल है और भार एक वस्तु में पदार्थ की मात्रा है",
-            "मात्रा और भार एक ही चीज हैं"
-          ],
-          "solution": "मात्रा एक वस्तु में पदार्थ की मात्रा है, जबकि भार उस पर लगने वाले गुरुत्वाकर्षण बल है। यह अंतर भौतिकी में मूलभूत है, क्योंकि मात्रा स्थान पर निर्भर नहीं करती है, जबकि भार गुरुत्व की ताकत पर निर्भर करता है। अन्य विकल्प गलत गुण के साथ इकाइयों को जोड़ते हैं या परिभाषाओं को पूरी तरह से गलत कर देते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "द्रव्यमान आणि वजनमध्ये मुख्य फरक काय आहे?",
-          "choices": [
-            "द्रव्यमान न्यूटनमध्ये मोजले जाते आणि वजन किलोग्राममध्ये मोजले जाते",
-            "द्रव्यमान वस्तूमध्ये असलेल्या पदार्थाचे प्रमाण आहे आणि वजन त्यावर लागू होणारा गुरुत्वीय बल आहे",
-            "द्रव्यमान गुरुत्वीय बल आहे आणि वजन वस्तूमध्ये असलेल्या पदार्थाचे प्रमाण आहे",
-            "द्रव्यमान आणि वजन हे एकाच गोष्ट आहेत"
-          ],
-          "solution": "द्रव्यमान वस्तूमध्ये असलेल्या पदार्थाचे प्रमाण आहे, तर वजन त्यावर लागू होणारा गुरुत्वीय बल आहे. हा फरक भौतिकशास्त्रात मूलभूत आहे, कारण द्रव्यमान स्थानावर अवलंबून राहत नाही, तर वजन गुरुत्वाच्या शक्तीवर अवलंबून बदलते. इतर विकल्प योग्य गुणधर्माशी एकत्रित करताना एककांची चूक करतात किंवा व्याख्या पूर्णपणे गुंतवून टाकतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses units of mass and weight",
-        null,
-        "Incorrectly defines weight as the amount of matter",
-        "Believes mass and weight are the same"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 1, which accurately defines mass and weight. The other options reflect common misconceptions about the units and definitions of mass and weight.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.5 Weight and Its Measurement",
-            "Activity 5.11: Let us calculate"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 12,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.5 Weight and Its Measurement",
-            "Activity 5.12: Let us measure"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 13,
-          "pageStart": 15,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a contact force?",
-      "choices": [
-        "Gravitational force",
-        "Electrostatic force",
-        "Magnetic force",
-        "Friction"
-      ],
-      "answerIndex": 3,
-      "solution": "Friction is a contact force because it requires direct contact between two surfaces to act. Gravitational, electrostatic, and magnetic forces are non-contact forces that act without physical contact.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा संपर्क बल है?",
-          "choices": [
-            "गुरुत्वाकर्षण बल",
-            "विद्युत स्थैतिक बल",
-            "चुंबकीय बल",
-            "घर्षण"
-          ],
-          "solution": "घर्षण एक संपर्क बल है क्योंकि यह दो सतहों के सीधे संपर्क में होने पर कार्य करता है। गुरुत्वाकर्षण, विद्युत स्थैतिक एवं चुंबकीय बल असंपर्क बल हैं जो भौतिक संपर्क के बिना कार्य करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक संपर्क बल आहे?",
-          "choices": [
-            "गुरुत्वीय बल",
-            "विद्युतस्थैतिक बल",
-            "चुंबकीय बल",
-            "घर्षण"
-          ],
-          "solution": "घर्षण हे संपर्क बल आहे कारण ते दोन वस्तूंमधील सीधा संपर्क आवश्यक असतो. गुरुत्वीय, विद्युतस्थैतिक आणि चुंबकीय बले असंपर्क बले आहेत जी भौतिक संपर्क शिवाय कार्य करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses non-contact forces with contact forces",
-        "Confuses non-contact forces with contact forces",
-        "Confuses non-contact forces with contact forces",
+        "Confuses with gravitational force",
+        "Confuses with magnetic force",
+        "Confuses with electrostatic force",
         null
       ],
       "solverAnswers": [
@@ -287,108 +186,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. Friction is indeed a contact force, while gravitational, electrostatic, and magnetic forces are non-contact. The reasoning for the distractors is valid, as students often confuse non-contact forces with contact forces.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.3: Let us investigate"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.4: Let us explore"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.6: Let us experiment"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A ball is thrown upwards. What happens to the direction of the force of gravity acting on the ball during its motion?",
-      "choices": [
-        "It changes direction when the ball reaches the top",
-        "It remains downward throughout the motion",
-        "It becomes zero when the ball reaches the top",
-        "It changes direction when the ball starts falling down"
-      ],
-      "answerIndex": 1,
-      "solution": "The force of gravity always acts downward, regardless of the ball's direction of motion. It does not change direction during the motion, even when the ball is moving upward or at its highest point.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक गेंद को ऊपर की ओर फेंका जाता है। गेंद के गति के दौरान गुरुत्वाकर्षण बल की दिशा क्या होती है?",
-          "choices": [
-            "जब गेंद शीर्ष पर पहुंचती है तो इसकी दिशा बदल जाती है",
-            "गति के दौरान यह नीचे की ओर रहता है",
-            "जब गेंद शीर्ष पर पहुंचती है तो यह शून्य हो जाता है",
-            "जब गेंद नीचे गिरना शुरू करती है तो इसकी दिशा बदल जाती है"
-          ],
-          "solution": "गुरुत्वाकर्षण बल हमेशा नीचे की ओर कार्य करता है, गेंद की गति की दिशा के बिना कोई अंतर नहीं होता। गेंद ऊपर की ओर जा रही हो या अपने शीर्ष पर हो, इसकी दिशा बदल नहीं जाती।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains option (2).",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक गोला वर फेकला जातो. गोल्यावर लागणारा गुरुत्वाकर्षणाचा बल किंवा बलाच्या दिशेत काय बदल होतो तो त्याच्या गती दरम्यान?",
-          "choices": [
-            "जेव्हा गोला शीर्षावर पोहोचतो तेव्हा त्याची दिशा बदलते",
-            "त्याची दिशा गती दरम्यान खालच्या दिशेत राहते",
-            "जेव्हा गोला शीर्षावर पोहोचतो तेव्हा तो शून्य होतो",
-            "जेव्हा गोला खाली येऊ लागतो तेव्हा त्याची दिशा बदलते"
-          ],
-          "solution": "गुरुत्वाकर्षणाचा बल नेहमी खालच्या दिशेत कार्य करतो, गोल्याच्या गतीच्या दिशेपेक्षा निर्भर करून. गोला वर जात असल्यास किंवा त्याच्या शीर्षावर असल्यास त्याची दिशा बदलत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in a Marathi-medium educational context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes gravity changes direction at the top of the motion",
-        null,
-        "Mistakenly thinks gravity disappears at the top",
-        "Believes gravity changes direction when the ball starts falling"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about gravity.",
+      "critique": "The correct answer is frictional force, which always opposes motion. The other options can act in various directions depending on the situation, making them incorrect. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/science/hecu105.pdf",
@@ -425,49 +223,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
+      "generatedAt": "2026-10-22T09:20:04.602Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A book slides on a table and comes to rest after some time. What force causes this?",
+      "difficulty": 2,
+      "stem": "Which force is responsible for the Earth pulling objects towards itself?",
       "choices": [
-        "Air resistance",
         "Magnetic force",
-        "Friction",
-        "Gravitational force"
+        "Electrostatic force",
+        "Gravitational force",
+        "Frictional force"
       ],
       "answerIndex": 2,
-      "solution": "Friction is the force that opposes the motion of the book and brings it to rest. It acts between the book and the table surface. Air resistance, magnetic force, and gravitational force do not directly cause the book to stop in this scenario.",
+      "solution": "Gravitational force is responsible for the Earth pulling objects towards itself because it is the force of attraction between masses. Magnetic and electrostatic forces require specific conditions like charges or magnetic materials, which are not universally present. Frictional force acts between surfaces in contact and does not pull objects toward the Earth.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक किताब एक मेज पर फिसलती है और कुछ समय के बाद रुक जाती है। इसके कारण कौन-सा बल होता है?",
+          "stem": "पृथ्वी वस्तुओं को अपनी ओर खींचने वाला बल कौन-सा है?",
           "choices": [
-            "हवा का प्रतिरोध",
             "चुंबकीय बल",
-            "घर्षण",
-            "गुरुत्वाकर्षण बल"
+            "स्थैतिक विद्युत बल",
+            "गुरुत्वीय बल",
+            "घर्षण बल"
           ],
-          "solution": "घर्षण वह बल है जो किताब की गति का विरोध करता है और इसे रुक जाता है। यह किताब और मेज की सतह के बीच कार्य करता है। हवा का प्रतिरोध, चुंबकीय बल और गुरुत्वाकर्षण बल इस परिस्थिति में किताब को रुकने के लिए सीधे उत्तरदायी नहीं होते।",
+          "solution": "गुरुत्वीय बल पृथ्वी द्वारा वस्तुओं को अपनी ओर खींचने के लिए उत्तरदायी है क्योंकि यह द्रव्यमानों के बीच आकर्षण का बल है। चुंबकीय एवं स्थैतिक विद्युत बल के लिए विशिष्ट परिस्थितियां जैसे आवेश या चुंबकीय सामग्री की आवश्यकता होती है, जो सार्वभौमिक रूप से उपलब्ध नहीं होती हैं। घर्षण बल संपर्क में आए पृष्ठों के बीच कार्य करता है एवं वस्तुओं को पृथ्वी की ओर खींचता नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard physics terminology as taught in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एक पुस्तक टेबलवर फिसलते आहे आणि काही वेळानंतर थांबते. हे थांबण्यास कोणता बल कारणीभूत आहे?",
+          "stem": "भूमी वस्तूंना आपल्याकडे खेचत असलेल्या बलाचे नाव काय?",
           "choices": [
-            "वायू प्रतिरोध",
             "चुंबकीय बल",
-            "घर्षण",
-            "गुरुत्वीय बल"
+            "विद्युत स्थैतिक बल",
+            "गुरुत्वीय बल",
+            "घर्षण बल"
           ],
-          "solution": "घर्षण हे बल जे पुस्तकाच्या गतीला विरोध करते आणि त्याला थांबवते. हे पुस्तक आणि टेबलच्या सतहमध्ये कार्य करते. वायू प्रतिरोध, चुंबकीय बल आणि गुरुत्वीय बल हे या परिस्थितीत पुस्तक थांबण्यास थेट कारणीभूत नाहीत.",
+          "solution": "गुरुत्वीय बल भूमी वस्तूंना आपल्याकडे खेचत असते कारण ते द्रव्यमानांमधील आकर्षणाचे बल आहे. चुंबकीय आणि विद्युत स्थैतिक बलांना विशिष्ट परिस्थिती जसे की आवेश किंवा चुंबकीय सामग्री आवश्यक असतात, जी सर्वत्र उपलब्ध नसतात. घर्षण बल दोन सतत वस्तूंमध्ये क्रियाशील असते आणि वस्तूंना भूमीकडे खेचत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -476,10 +274,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses air resistance with friction",
-        "Confuses magnetic force with friction",
+        "Confuses with magnetic force",
+        "Confuses with electrostatic force",
         null,
-        "Confuses gravitational force with friction"
+        "Confuses with frictional force"
       ],
       "solverAnswers": [
         2,
@@ -489,208 +287,164 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is friction, as it is the force that opposes motion and causes the book to stop. The author's reasoning for the distractors is valid, as students often confuse air resistance, magnetic force, and gravity with friction.",
+      "critique": "The question is well-constructed, and the correct answer is clearly supported by scientific understanding. The distractors represent common misconceptions about different types of forces.",
       "sources": [
         {
           "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 14,
+          "pageStart": 16,
+          "pageEnd": 16,
           "headingPath": [
             "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.3: Let us investigate"
+            "5.6 Floating and Sinking",
+            "Activity 5.13: Let us investigate"
           ]
         },
         {
           "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.4: Let us explore"
+            "5.6 Floating and Sinking",
+            "Activity 5.13: Let us investigate"
           ]
         },
         {
           "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 16,
+          "pageStart": 18,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.6: Let us experiment"
+            "5.6 Floating and Sinking",
+            "Activity 5.13: Let us investigate"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If an object is thrown vertically upwards, what happens to its speed while going up?",
-      "choices": [
-        "It increases",
-        "It remains constant",
-        "It decreases",
-        "It becomes zero immediately"
-      ],
-      "answerIndex": 2,
-      "solution": "When an object is thrown vertically upwards, it slows down due to the force of gravity acting against its motion. This causes its speed to decrease until it reaches the highest point, where it momentarily stops. The other options are incorrect because speed does not increase, remain constant, or stop instantly.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक वस्तु को ऊर्ध्वाधर ऊपर की ओर फेंका जाता है, तो ऊपर जाते समय इसकी गति क्या होती है?",
-          "choices": [
-            "इसकी गति बढ़ जाती है",
-            "इसकी गति स्थिर रहती है",
-            "इसकी गति घट जाती है",
-            "इसकी गति तुरंत शून्य हो जाती है"
-          ],
-          "solution": "जब कोई वस्तु ऊर्ध्वाधर ऊपर की ओर फेंकी जाती है, तो गुरुत्वाकर्षण के बल के कारण इसकी गति धीमी हो जाती है। इससे इसकी गति अधिकतम बिंदु पर पहुंचकर अस्थायी रूप से रुक जाती है। अन्य विकल्प गलत हैं क्योंकि गति बढ़ नहीं सकती, स्थिर नहीं रह सकती और तुरंत शून्य नहीं हो सकती।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors are still incorrect, and the technical terms used are standard in Hindi-medium science education.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक वस्तू उभयतः वर फेकली गेली असता, तिच्या वेगावर काय परिणाम होतो?",
-          "choices": [
-            "तो वाढतो",
-            "तो अचल रहातो",
-            "तो कमी होतो",
-            "तो तात्काळ शून्य होतो"
-          ],
-          "solution": "जेव्हा एक वस्तू उभयतः वर फेकली जाते, तेव्हा ती गुरुत्वाकर्षणाच्या बलामुळे वर जाताना धीमी होते. हे तिच्या वेगाला कमी करते जेव्हा ती उच्चतम बिंदूवर पोहोचते, जेथे ती अल्पकाळ थांबते. इतर विकल्प अयोग्य आहेत कारण वेग वाढत नाही, अचल रहात नाही किंवा तात्काळ थांबत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes that speed increases when going up",
-        "Believes that speed remains constant",
-        null,
-        "Incorrectly thinks that speed becomes zero immediately"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2 (It decreases), as gravity acts against the motion of the object, slowing it down. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 8,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.7: Let us experiment"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 9,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.8: Let us observe"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.5 Weight and Its Measurement"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
+      "generatedAt": "2026-10-22T09:20:04.602Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "What can be inferred from the observation that a spring stretches more when a heavier object is hung from it?",
+      "stem": "Which of the following is true about gravitational force?",
       "choices": [
-        "The spring is not strong enough",
-        "The Earth pulls heavier objects more strongly",
-        "The spring is not properly calibrated",
-        "The object is not properly placed"
+        "It is a contact force",
+        "It can be repulsive",
+        "It is always attractive",
+        "It depends on the material of the object"
       ],
-      "answerIndex": 1,
-      "solution": "The observation that a spring stretches more when a heavier object is hung from it suggests that the force of gravity acting on the object is greater, which means the Earth pulls heavier objects more strongly. The other options are unrelated to the physical relationship between mass and gravitational force.",
+      "answerIndex": 2,
+      "solution": "Gravitational force is always attractive because it is a fundamental force that acts between any two masses, pulling them toward each other. It is not a contact force, as it acts over a distance, and it cannot be repulsive, unlike electromagnetic forces. Additionally, gravitational force depends on mass and distance, not the material composition of the objects.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक स्प्रिंग के भारी वस्तु से लटकाए जाने पर अधिक फैलते रहने के अवलोकन से क्या निष्कर्ष निकाला जा सकता है?",
+          "stem": "निम्नलिखित में से कौन-सा गुरुत्वाकर्षण बल के बारे में सही है?",
           "choices": [
-            "स्प्रिंग पर्याप्त रूप से मजबूत नहीं है",
-            "भारी वस्तुओं को पृथ्वी अधिक मजबूती से खींचती है",
-            "स्प्रिंग सही तरीके से कैलिब्रेट नहीं की गई है",
-            "वस्तु सही तरीके से रखी गई है"
+            "यह एक संपर्क बल है",
+            "यह अपाकर्षक हो सकता है",
+            "यह हमेशा आकर्षक होता है",
+            "यह वस्तु के पदार्थ पर निर्भर करता है"
           ],
-          "solution": "एक स्प्रिंग के भारी वस्तु से लटकाए जाने पर अधिक फैलते रहने के अवलोकन से यह सुझाव मिलता है कि वस्तु पर गुरुत्वाकर्षण बल कार्य करता है, जिसका अर्थ है कि पृथ्वी भारी वस्तुओं को अधिक मजबूती से खींचती है। अन्य विकल्प द्रव्यमान और गुरुत्वाकर्षण बल के बीच भौतिक संबंध से संबंधित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "solution": "गुरुत्वाकर्षण बल हमेशा आकर्षक होता है क्योंकि यह किन्हीं दो द्रव्यमानों के बीच एक मूल बल है जो उन्हें एक दूसरे की ओर खींचता है। यह एक संपर्क बल नहीं है, क्योंकि यह दूरी पर कार्य करता है, और यह विद्युत चुंबकीय बलों के विपरीत अपाकर्षक नहीं हो सकता। साथ ही, गुरुत्वाकर्षण बल द्रव्यमान और दूरी पर निर्भर करता है, वस्तु के पदार्थ की संरचना पर नहीं।",
+          "imageAlt": "एक छड़ चुंबक और एक सुई चुंबक के साथ एक आरेख, जिसमें 'चुंबकीय क्षेत्र' और 'गुरुत्वाकर्षण क्षेत्र' लेबल वाली तीर दिखाई देते हैं।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका भारी वस्तूला तागावर लटकवल्यास ताग जास्त विस्तारतो या अवलोकनावरून काय निष्कर्ष काढता येऊ शकतो?",
+          "stem": "खालीलपैकी कोणते गुरुत्वीय बलाबद्दल खरे आहे?",
           "choices": [
-            "ताग पुरेसा शक्तिशाली नाही",
-            "भूमी भारी वस्तूंवर जास्त बल लावते",
-            "ताग योग्यरित्या कॅलिब्रेट केलेला नाही",
-            "वस्तू योग्यरित्या ठेवलेली नाही"
+            "हे स्पर्श बल आहे",
+            "हे विस्थापक असू शकते",
+            "हे नेहमी आकर्षक असते",
+            "हे वस्तूच्या सामग्रीवर अवलंबून असते"
           ],
-          "solution": "एका भारी वस्तूला तागावर लटकवल्यास ताग जास्त विस्तारतो या अवलोकनावरून असे सूचित होते की वस्तूवर कार्य करणारे गुरुत्वाकर्षणाचे बल जास्त आहे, ज्यामुळे भूमी भारी वस्तूंवर जास्त बल लावते. इतर विकल्प द्रव्यमान आणि गुरुत्वाकर्षणाच्या बलामधील भौतिक संबंधाशी संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "solution": "गुरुत्वीय बल नेहमी आकर्षक असते, कारण हे एक मूलभूत बल आहे जे कोणत्याही दोन द्रव्यमानांमध्ये कार्य करते, जे एकमेकांकडे खेचते. हे स्पर्श बल नाही, कारण ते अंतरावर कार्य करते, आणि ते विस्थापक नसू शकते, जे विद्युतचुंबकीय बलांपेक्षा वेगळे आहे. तसेच, गुरुत्वीय बल द्रव्यमान आणि अंतरावर अवलंबून असते, वस्तूच्या सामग्रीवर नाही.",
+          "imageAlt": "एक चौकट चुंबक आणि एक कम्पास दर्शविणारा आकृती, ज्यात 'चुंबकीय क्षेत्र' आणि 'गुरुत्वीय क्षेत्र' असलेल्या तीरांचा समावेश आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A diagram showing a bar magnet and a compass, with arrows labeled 'Magnetic field' and 'Gravitational field'.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "barMagnet",
+              "x": 40,
+              "y": 30,
+              "size": 20
+            },
+            {
+              "part": "compass",
+              "x": 60,
+              "y": 30,
+              "size": 10
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                40,
+                30
+              ],
+              "to": [
+                55,
+                30
+              ],
+              "label": "magneticField",
+              "curved": false
+            },
+            {
+              "from": [
+                60,
+                30
+              ],
+              "to": [
+                75,
+                30
+              ],
+              "label": "gravitationalField",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "magneticField": {
+            "en": "Magnetic field",
+            "hi": "चुंबकीय क्षेत्र",
+            "mr": "चुंबकीय क्षेत्र"
+          },
+          "gravitationalField": {
+            "en": "Gravitational field",
+            "hi": "गुरुत्वाकर्षण क्षेत्र",
+            "mr": "गुरुत्वीय क्षेत्र"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Incorrectly assumes the spring is not strong enough",
+        "Believes gravitational force is a contact force",
+        "Confuses gravitational force with being repulsive",
         null,
-        "Confuses the effect of weight with spring calibration",
-        "Misinterprets the placement of the object"
+        "Thinks gravitational force depends on material"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the observation directly supports the idea that the Earth's gravitational pull increases with the mass of the object. The other options represent common misconceptions about spring mechanics and force.",
+      "critique": "The solution correctly identifies that gravitational force is always attractive, and the reasons for the distractors align with common misconceptions about gravitational force.",
       "sources": [
         {
           "document": "ncert/8/science/hecu105.pdf",
@@ -726,49 +480,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
+      "generatedAt": "2026-10-22T09:20:04.602Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a person is pushing a box, and a second person joins to push it in the same direction, how does this affect the force on the box?",
+      "stem": "If an object is thrown upwards and reaches a maximum height before falling back, which force is primarily responsible for this motion?",
       "choices": [
-        "It decreases",
-        "It increases",
-        "It remains the same",
-        "It depends on the weight of the box"
+        "Magnetic force",
+        "Frictional force",
+        "Electrostatic force",
+        "Gravitational force"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'It increases' because when two people apply force in the same direction, their forces add together, resulting in a greater total force on the box. 'It decreases' is incorrect because adding force in the same direction should not reduce the total force. 'It remains the same' is incorrect because the combined effort of two people changes the total force applied. 'It depends on the weight of the box' is incorrect because the question focuses on the force applied, not the box's mass or weight.",
+      "answerIndex": 3,
+      "solution": "Gravitational force is the primary force that pulls the object back down after it is thrown upwards. This force acts between the Earth and the object, causing it to decelerate on the way up and accelerate on the way down. The other forces listed do not act in this way to influence the motion of the object near the Earth's surface.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक व्यक्ति एक बॉक्स को धक्का दे रहा है, और दूसरा व्यक्ति उसी दिशा में धक्का देने के लिए शामिल हो जाता है, तो बॉक्स पर बल पर क्या प्रभाव पड़ता है?",
+          "stem": "यदि एक वस्तु को ऊपर की ओर फेंका जाता है और अधिकतम ऊंचाई तक पहुंचती है फिर वापस गिर जाती है, इस गति के लिए मुख्य रूप से कौन सा बल उत्तरदायी है?",
           "choices": [
-            "यह कम हो जाता है",
-            "यह बढ़ जाता है",
-            "यह एक ही रहता है",
-            "यह बॉक्स के वजन पर निर्भर करता है"
+            "चुंबकीय बल",
+            "घर्षण बल",
+            "स्थिर वैद्युत बल",
+            "गुरुत्वाकर्षण बल"
           ],
-          "solution": "सही उत्तर 'यह बढ़ जाता है' है क्योंकि जब दो व्यक्ति एक ही दिशा में बल लगाते हैं, तो उनके बल एक साथ जुड़ जाते हैं, जिसके परिणामस्वरूप बॉक्स पर अधिक कुल बल होता है। 'यह कम हो जाता है' गलत है क्योंकि एक ही दिशा में बल जोड़ने से कुल बल कम नहीं होना चाहिए। 'यह एक ही रहता है' गलत है क्योंकि दो व्यक्तियों के संयुक्त प्रयास से लगाए गए कुल बल में परिवर्तन होता है। 'यह बॉक्स के वजन पर निर्भर करता है' गलत है क्योंकि प्रश्न बॉक्स के द्रव्यमान या वजन पर ध्यान केंद्रित नहीं करता है, बल्कि लगाए गए बल पर।",
+          "solution": "गुरुत्वाकर्षण बल वस्तु को ऊपर की ओर फेंके जाने के बाद नीचे की ओर खींचता है। यह बल पृथ्वी और वस्तु के बीच कार्य करता है, जिससे वस्तु ऊपर की ओर जाते समय धीमी हो जाती है और नीचे की ओर जाते समय त्वरित हो जाती है। बताए गए अन्य बलों में वस्तु की गति को पृथ्वी की सतह के पास प्रभावित करने की क्षमता नहीं होती।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for physics concepts.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका व्यक्तीने बॉक्स धक्का दिला आहे आणि दुसरी व्यक्ती त्याच दिशेने धक्का देण्यास जॉईन करते, तर हे बॉक्सवरील बलावर कसे परिणाम करते?",
+          "stem": "एक वस्तू वर फेकली गेली आणि एका महागाईपर्यंत पोहोचली आणि परत पडली, तर या गतीसाठी मुख्यतः कोणता बल जबाबदार आहे?",
           "choices": [
-            "ते कमी होते",
-            "ते वाढते",
-            "ते एकसारखे रहते",
-            "ते बॉक्सच्या वजनावर अवलंबून असते"
+            "चुंबकीय बल",
+            "घर्षण बल",
+            "विद्युत स्थैतिक बल",
+            "गुरुत्वीय बल"
           ],
-          "solution": "हा योग्य उत्तर 'ते वाढते' आहे कारण जेव्हा दोन व्यक्ती एकाच दिशेने बल लावतात, तेव्हा त्यांचे बल एकत्रित करून बॉक्सवर अधिक एकूण बल बनते. 'ते कमी होते' अयोग्य आहे कारण एकाच दिशेने बल जोडल्यामुळे एकूण बल कमी होऊ शकत नाही. 'ते एकसारखे रहते' अयोग्य आहे कारण दोन व्यक्तींच्या प्रयत्नांमुळे लावलेल्या एकूण बलात बदल होतो. 'ते बॉक्सच्या वजनावर अवलंबून असते' अयोग्य आहे कारण प्रश्न बॉक्सच्या द्रव्यमानावर किंवा वजनावर नको, बलाच्या लावण्यावर लक्ष केंद्रित करतो.",
+          "solution": "गुरुत्वीय बल हे वस्तूला वर फेकल्यानंतर परत खाली खेचणारे मुख्य बल आहे. हे बल पृथ्वी आणि वस्तूमध्ये कार्य करते, ज्यामुळे ते वर जाताना वेग घटतो आणि खाली येताना वेग वाढतो. दिलेल्या इतर बलांमध्ये अशा प्रकारे वस्तूच्या गतीवर प्रभाव पडत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -777,119 +531,98 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the effect of multiple forces",
-        null,
-        "Misunderstands the relationship between force and motion",
-        "students often confuse force with mass or weight"
+        "Confuses magnetic force with gravity",
+        "Misunderstands the role of friction in motion",
+        "Incorrectly attributes motion to electrostatic forces",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that adding force in the same direction increases the total force. The reasoning for the distractors aligns with common misconceptions about force and motion.",
+      "critique": "The question is well-constructed. The correct answer is clearly gravitational force, and the distractors represent common misconceptions about other forces.",
       "sources": [
         {
           "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 5: — Exploring Forces",
-            "Probe and ponder"
+            "5.4 What Are the Different Types of Forces?",
+            "Activity 5.7: Let us experiment"
           ]
         },
         {
           "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
+          "ordinal": 9,
+          "pageStart": 11,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 5: — Exploring Forces",
-            "5.1 What Is a Force?",
-            "Activity 5.1: Let us explore"
+            "5.4 What Are the Different Types of Forces?",
+            "Activity 5.8: Let us observe"
           ]
         },
         {
           "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 5: — Exploring Forces",
-            "5.2 What Can a Force Do to the Objects on",
-            "Activity 5.2: Let us analyse"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.3 Are Forces an Interaction Between Two",
-            "or More Objects?"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?"
+            "5.5 Weight and Its Measurement"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
+      "generatedAt": "2026-10-22T09:20:04.602Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If an object is partially submerged in water and experiences a buoyant force equal to its weight, what will happen?",
+      "difficulty": 6,
+      "stem": "An object weighs 10 N on Earth and 1.6 N on the Moon. Which of the following is true about its mass?",
       "choices": [
-        "It will sink",
-        "It will float",
-        "It will sink and then float",
-        "It will rise to the surface"
+        "Mass is 1.6 kg",
+        "Mass is 10 kg",
+        "Mass is 1 kg",
+        "Mass changes on the Moon"
       ],
-      "answerIndex": 1,
-      "solution": "If the buoyant force equals the object's weight, the forces are balanced, so the object will remain suspended, which is floating. If the buoyant force were less, it would sink, and if greater, it would rise. The other options suggest unstable or conflicting motion that doesn't match the balance of forces.",
+      "answerIndex": 2,
+      "solution": "Mass remains the same on the Moon as it does on Earth. Since weight on Earth is 10 N, and 1 kg weighs 10 N, the mass is 1 kg. The other options incorrectly suggest that mass changes or is calculated based on Moon's weight.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई वस्तु पानी में आंशिक रूप से डूबी हुई है और उसे अपने भार के बराबर उत्प्लावक बल का अनुभव होता है, तो क्या होगा?",
+          "stem": "एक वस्तु पृथ्वी पर 10 न्यूटन भार रखती है और चंद्रमा पर 1.6 न्यूटन भार रखती है। इसके द्रव्यमान के बारे में निम्नलिखित में से कौन सत्य है?",
           "choices": [
-            "यह डूब जाएगी",
-            "यह तैरेगी",
-            "यह डूब जाएगी और फिर तैरेगी",
-            "यह सतह तक ऊपर जाएगी"
+            "द्रव्यमान 1.6 किग्रा है",
+            "द्रव्यमान 10 किग्रा है",
+            "द्रव्यमान 1 किग्रा है",
+            "द्रव्यमान चंद्रमा पर बदल जाता है"
           ],
-          "solution": "यदि उत्प्लावक बल वस्तु के भार के बराबर होता है, तो बल संतुलित होते हैं, इसलिए वस्तु लटकी हुई रहेगी, जो तैरना है। यदि उत्प्लावक बल कम होता, तो यह डूब जाती। और यदि अधिक होता, तो ऊपर जाती। अन्य विकल्प अस्थिर या विरोधी गति की ओर संकेत देते हैं जो बलों के संतुलन के अनुरूप नहीं है।",
+          "solution": "द्रव्यमान चंद्रमा पर पृथ्वी के समान रहता है। पृथ्वी पर भार 10 न्यूटन है, और 1 किग्रा का भार 10 न्यूटन होता है, इसलिए द्रव्यमान 1 किग्रा है। अन्य विकल्प गलत रूप से द्रव्यमान के बदलने या चंद्रमा के भार पर आधारित गणना का सुझाव देते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एखादा वस्तू पाण्यात अंशतः डुबलेली असेल आणि तिला वजन समान उत्प्लावक बल असेल, तर काय होईल?",
+          "stem": "एका वस्तूचे भूमीवर 10 न्यूटन आहे आणि चंद्रावर 1.6 न्यूटन आहे. त्याच्या द्रव्यमानाबद्दल खालीलपैकी कोणते खरे आहे?",
           "choices": [
-            "ती डुबेल",
-            "ती तरंगेल",
-            "ती डुबेल आणि तरंगेल",
-            "ती पृष्ठभागापर्यंत उठेल"
+            "द्रव्यमान 1.6 किलोग्रॅम आहे",
+            "द्रव्यमान 10 किलोग्रॅम आहे",
+            "द्रव्यमान 1 किलोग्रॅम आहे",
+            "द्रव्यमान चंद्रावर बदलते"
           ],
-          "solution": "जर उत्प्लावक बल वस्तूच्या वजनाइतका असेल, तर बले संतुलित असतील, म्हणून वस्तू संतुलित राहील, जे तरंगणे आहे. जर उत्प्लावक बल कमी असेल तर ती डुबेल आणि जर जास्त असेल तर ती पृष्ठभागापर्यंत उठेल. इतर विकल्पांमध्ये अस्थिर किंवा विरोधी गतीचा उल्लेख असतो जो बलांच्या संतुलनाशी मेळ नाही.",
+          "solution": "द्रव्यमान चंद्रावर भूमीवरच्या जागी बदलत नाही. भूमीवर वजन 10 न्यूटन असल्याने, आणि 1 किलोग्रॅम 10 न्यूटन वजन करतो, तर द्रव्यमान 1 किलोग्रॅम आहे. इतर विकल्प चंद्रावरील वजन वरून द्रव्यमान गणल्याचा चूक दर्शवतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. 'तरंगेल' is the correct Marathi term for 'float' in this context, and technical terms like 'उत्प्लावक बल' are standard in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology for mass and weight.",
           "flag": null
         }
       },
@@ -898,20 +631,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks the object will sink",
+        "Confuses weight on the Moon with mass",
+        "Assumes mass equals weight on Earth",
         null,
-        "Thinks it will sink and then float",
-        "Thinks it will rise to the surface"
+        "Believes mass changes with gravity"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 (It will float). The reasoning is sound, as the buoyant force being equal to the object's weight means it will float at equilibrium. The author's reasoning for the other options reflects common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 2, as mass remains constant regardless of location. The author's reasoning is sound and aligns with standard physics principles.",
       "sources": [
         {
           "document": "ncert/8/science/hecu105.pdf",
@@ -948,309 +681,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A ball falls through air and reaches a constant velocity. Which of the following forces are responsible for this?",
-      "choices": [
-        "Air resistance and weight",
-        "Air resistance and upthrust",
-        "Friction and gravitational force",
-        "Magnetic force and electrostatic force"
-      ],
-      "answerIndex": 0,
-      "solution": "When a ball falls through air and reaches a constant velocity, the forces acting on it are air resistance (opposing the motion) and weight (due to gravity). These two forces balance each other, resulting in constant velocity.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक गेंद हवा में गिरती है और एक नियत वेग प्राप्त कर लेती है। निम्नलिखित में से कौन-से बल इसके लिए उत्तरदायी हैं?",
-          "choices": [
-            "हवा का प्रतिरोध और भार",
-            "हवा का प्रतिरोध और उत्थापक बल",
-            "घर्षण और गुरुत्वाकर्षण बल",
-            "चुंबकीय बल और वैद्युत स्थैतिक बल"
-          ],
-          "solution": "जब एक गेंद हवा में गिरती है और नियत वेग प्राप्त कर लेती है, तो इस पर कार्य करने वाले बल हवा का प्रतिरोध (गति के विरुद्ध) और भार (गुरुत्वाकर्षण के कारण) होते हैं। ये दोनों बल एक दूसरे को संतुलित करते हैं, जिसके कारण वेग नियत रहता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi physics terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक गोला हवेतून खाली जातो आणि एक स्थिर वेग प्राप्त करतो. खालीलपैकी कोणते बल यासाठी जबाबदार आहेत?",
-          "choices": [
-            "हवेचा प्रतिकार आणि वजन",
-            "हवेचा प्रतिकार आणि उत्थापन बल",
-            "घर्षण आणि गुरुत्वीय बल",
-            "चुंबकीय बल आणि विद्युतस्थैतिक बल"
-          ],
-          "solution": "जेव्हा एक गोला हवेतून खाली जातो आणि स्थिर वेग प्राप्त करतो, तेव्हा त्यावर कार्य करणारे बल हवेचा प्रतिकार (गतीच्या विरुद्ध) आणि वजन (गुरुत्वाकर्षण कारण) असतात. या दोन बलांमुळे गती स्थिर राहते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses upthrust with air resistance",
-        "Incorrectly includes friction and gravitational force",
-        "Mistakenly thinks magnetic and electrostatic forces are involved"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as air resistance and weight are the only forces acting on the ball in this scenario. The other options contain misconceptions about forces that are not relevant in this context.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 14,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 15,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 16,
-          "pageStart": 18,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A ball is thrown upwards. At the topmost point of its motion, what can be said about the net force acting on it?",
-      "choices": [
-        "It is zero",
-        "It is maximum upwards",
-        "It is maximum downwards",
-        "It is equal to the weight of the ball"
-      ],
-      "answerIndex": 3,
-      "solution": "At the topmost point of its motion, the ball's velocity is momentarily zero, but the net force acting on it is still equal to its weight, which is the force of gravity pulling it downward.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक गेंद ऊपर की ओर फेंकी जाती है। इसकी गति के शीर्ष बिंदु पर, इस पर कार्य करने वाले शुद्ध बल के बारे में क्या कहा जा सकता है?",
-          "choices": [
-            "यह शून्य है",
-            "यह अधिकतम ऊपर की ओर है",
-            "यह अधिकतम नीचे की ओर है",
-            "यह गेंद के भार के बराबर है"
-          ],
-          "solution": "गेंद की गति के शीर्ष बिंदु पर, गेंद का वेग अस्थायी रूप से शून्य होता है, लेकिन इस पर कार्य करने वाला शुद्ध बल अभी भी इसके भार के बराबर होता है, जो नीचे की ओर खींचने वाला गुरुत्वाकर्षण बल होता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक गोली वरच्या दिशेने फेकली जाते. तिच्या गतीच्या शीर्षस्थानावर, तिवर लागू असलेल्या नित्यांक बलाबद्दल काय म्हणता येईल?",
-          "choices": [
-            "ते शून्य आहे",
-            "ते वरच्या दिशेने अधिकतम आहे",
-            "ते खालच्या दिशेने अधिकतम आहे",
-            "ते गोलीच्या वजनाइतके आहे"
-          ],
-          "solution": "गोलीच्या गतीच्या शीर्षस्थानावर, गोलीची वेग अचानक शून्य असतो, परंतु तिवर लागू असलेला नित्यांक बल अजूनही तिच्या वजनाइतका असतो, जो खालच्या दिशेने खेचत असलेला गुरुत्वाकर्षणाचा बल आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology for physics concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes there is no force acting on the ball at the top",
-        "Mistakenly assumes the net force is upwards",
-        "Thinks the net force is maximum at the top",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that at the topmost point, the ball's velocity is zero but the net force is still equal to its weight due to gravity. The reasoning aligns with the physics of projectile motion.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 14,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 15,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 16,
-          "pageStart": 18,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.6 Floating and Sinking",
-            "Activity 5.13: Let us investigate"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why do objects of different masses fall at the same rate in a vacuum?",
-      "choices": [
-        "They have the same weight",
-        "They experience the same gravitational force",
-        "They have the same density",
-        "The gravitational force is proportional to their mass"
-      ],
-      "answerIndex": 3,
-      "solution": "The gravitational force is proportional to an object's mass, which means that although heavier objects experience a greater force, they also have more inertia, resulting in the same acceleration. This explains why all objects fall at the same rate in a vacuum. The other options are incorrect because weight and gravitational force are not the same, and density has no direct effect on the rate of fall in a vacuum.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक निर्वात में अलग-अलग द्रव्यमान वाले वस्तुएं क्यों एक ही दर से गिरती हैं?",
-          "choices": [
-            "उनका भार समान होता है",
-            "उन्हें समान गुरुत्वीय बल अनुभव होता है",
-            "उनका घनत्व समान होता है",
-            "गुरुत्वीय बल उनके द्रव्यमान के समानुपाती होता है"
-          ],
-          "solution": "गुरुत्वीय बल वस्तु के द्रव्यमान के समानुपाती होता है, जिसका अर्थ है कि भारी वस्तुएं अधिक बल का अनुभव करती हैं, लेकिन वे अधिक जड़ता भी रखती हैं, जिसके कारण एक ही त्वरण होता है। इसके कारण निर्वात में सभी वस्तुएं एक ही दर से गिरती हैं। अन्य विकल्प गलत हैं क्योंकि भार और गुरुत्वीय बल एक ही नहीं होते हैं, और घनत्व का निर्वात में गिरने की दर पर कोई सीधा प्रभाव नहीं होता है।",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original question and solution, with appropriate Hindi terminology and correct answer positioning.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "विविध द्रव्यमानाच्या वस्तू वैश्विक निर्वातात एकसारख्या दराने का खाली पडतात?",
-          "choices": [
-            "त्यांचे वजन एकसारखे असते",
-            "त्यांना एकसारखे गुरुत्वीय बल अनुभव होते",
-            "त्यांची घनता एकसारखी असते",
-            "गुरुत्वीय बल त्यांच्या द्रव्यमानाशी समानुपाती असते"
-          ],
-          "solution": "गुरुत्वीय बल वस्तूच्या द्रव्यमानाशी समानुपाती असते, ज्यामुळे भारी वस्तूंना जास्त बल अनुभव होते, परंतु त्यांच्याकडे जास्त जडत्व असते, ज्यामुळे समान त्वरण होते. हे वैश्विक निर्वातात सर्व वस्तू एकसारख्या दराने खाली पडतात याचे स्पष्टीकरण देते. इतर विकल्प अयोग्य आहेत कारण वजन आणि गुरुत्वीय बल समान नाहीत, आणि घनतेचा निर्वातात वस्तूंच्या खाली पडण्याच्या दरावर कोणताही सीधा परिणाम नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology used for physics concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes that all objects have the same weight",
-        "Assumes that gravitational force is the same for all objects",
-        "Confuses the concept of density with falling rate",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as gravitational force is proportional to mass, and this leads to equal acceleration in a vacuum. The solution is sound and matches the reasoning.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 8,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.7: Let us experiment"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 9,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.4 What Are the Different Types of Forces?",
-            "Activity 5.8: Let us observe"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu105.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: — Exploring Forces",
-            "5.5 Weight and Its Measurement"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-19T11:49:20.406Z",
+      "generatedAt": "2026-10-22T09:20:04.602Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

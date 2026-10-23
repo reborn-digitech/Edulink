@@ -1,0 +1,940 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T08:36:07.369Z",
+  "finishedAt": "2026-10-21T08:44:52.404Z",
+  "seconds": 525,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps108.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 8 — Secularism",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n7. C) National security and economic development 1",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\n17. Evaluate balance of power as a significant component of traditional security 1+1=2\npolicy.",
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\n28. ‘Reforming the UN means restructuring of the Security Council’. Justify 6\nthis statement with suitable arguments. (CB)\nOR\nWhat makes the UN an indispensable organisation? What steps should\nbe taken to make the UN more relevant in the changing context?",
+      "[CBSE Class XII Political Science, marking scheme, 2026-27]\nPOLITICAL SCIENCE (028)\nMARKING SCHEME\nCLASS-XII (2026-27)\nTime:3 hrs Maximum Marks:80\nQ.NO SECTION-A (12x1=12 Marks) MM\n1 (C) Statement-I is true, but Statement-II is false. 1\n2 (C) 1971. 1\n3 (D) Bangladesh –continuous democracy since its independence in 1971. 1\n4 • (B) World Trade Organization (WTO) 1\n5 (D)The Assertion (A) is correct, but the Reason (R) is incorrect. 1\n6 (C)Liberalisation 1\n7 (C)WTO 1\n8 (C) After the split, Congress(R) was referred to as the ‘Old Congress’. 1\n9 (А) І-ііі, II-і, ІII-iv, IV-ii 1\n10 (D) (ii), (iv), (iii), (i) 1\n11 (A)To bring together opponents of neo-liberal globalisation 1\n12 (C) The policy aimed for a state-controlled economy with reduced foreign 1\ninvest"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 188853,
+      "in": 47,
+      "out": 47,
+      "rejects": 0,
+      "promptTokens": 44228,
+      "completionTokens": 10419
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 359699,
+      "in": 47,
+      "out": 41,
+      "rejects": 6,
+      "promptTokens": 24615,
+      "completionTokens": 9478
+    },
+    "solver": {
+      "calls": 261,
+      "ms": 140248,
+      "in": 41,
+      "out": 34,
+      "rejects": 7,
+      "promptTokens": 44924,
+      "completionTokens": 2630
+    },
+    "form": {
+      "calls": 5,
+      "ms": 13488,
+      "in": 34,
+      "out": 2,
+      "rejects": 32,
+      "promptTokens": 1295,
+      "completionTokens": 384
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 512,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 89709,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5912,
+      "completionTokens": 3479
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the primary purpose of secularism in a democratic society?",
+      "ms": {
+        "draft": 3299,
+        "critique": 6444,
+        "solver": 1294,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what does the author suggest about the relationship between secularism and religion?",
+      "ms": {
+        "draft": 3299,
+        "critique": 6869,
+        "solver": 1856,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the context of the passage, which of the following best describes the concept of 'intra-religious domination'?",
+      "ms": {
+        "draft": 3299,
+        "critique": 7163,
+        "solver": 2401,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main challenge to secularism in India?",
+      "ms": {
+        "draft": 3299,
+        "critique": 5600
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of the state in a secular society?",
+      "ms": {
+        "draft": 3299,
+        "critique": 5696,
+        "solver": 1642,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following examples from the passage best illustrates the idea of inter-religious domination?",
+      "ms": {
+        "draft": 3299,
+        "critique": 7665,
+        "solver": 1568
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest is necessary for a state to be truly secular?",
+      "ms": {
+        "draft": 3128,
+        "critique": 6436,
+        "solver": 1545,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about theocratic states?",
+      "ms": {
+        "draft": 3128,
+        "critique": 7542,
+        "solver": 2692,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the role of the state in relation to religion?",
+      "ms": {
+        "draft": 3128,
+        "critique": 6321,
+        "solver": 1251,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is one reason why a secular state must be committed to non-religious sources?",
+      "ms": {
+        "draft": 3128,
+        "critique": 5219,
+        "solver": 2047,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one way of preventing religious discrimination according to the passage?",
+      "ms": {
+        "draft": 3128,
+        "critique": 8015,
+        "solver": 11452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the nature of separation between religion and state in a secular state?",
+      "ms": {
+        "draft": 3128,
+        "critique": 7312,
+        "solver": 1324,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the key difference between Indian secularism and the secularism practised in Turkey under Ataturk?",
+      "ms": {
+        "draft": 4449,
+        "critique": 7173,
+        "solver": 1758
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best reflects the impact of Western modernity on Indian secularism?",
+      "ms": {
+        "draft": 4449,
+        "critique": 7419,
+        "solver": 1836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a country with a religiously diverse population, which of the following policies would best align with the principles of Indian secularism as described in the passage?",
+      "ms": {
+        "draft": 4449,
+        "critique": 7629,
+        "solver": 1174,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of Indian secularism according to the passage?",
+      "ms": {
+        "draft": 4139,
+        "critique": 7587,
+        "solver": 1736
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best illustrates the principle of equal protection of all religions as described in the passage?",
+      "ms": {
+        "draft": 4449,
+        "critique": 9136,
+        "solver": 2297,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the Indian state engage with religion according to the passage?",
+      "ms": {
+        "draft": 4139,
+        "critique": 7245,
+        "solver": 1816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason Indian secularism is different from Western secularism?",
+      "ms": {
+        "draft": 4449,
+        "critique": 6635,
+        "solver": 18148,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the main idea behind providing a lift or a ramp for people with physical challenges?",
+      "ms": {
+        "draft": 4952,
+        "critique": 7693
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the example of the train compartment used in the passage?",
+      "ms": {
+        "draft": 4139,
+        "critique": 8097,
+        "solver": 1721,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following is a key characteristic of Indian secularism?",
+      "ms": {
+        "draft": 55857,
+        "critique": 5584,
+        "solver": 928
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main argument against the claim that secularism is a Western concept?",
+      "ms": {
+        "draft": 4139,
+        "critique": 5671,
+        "solver": 15614,
+        "form": 2220
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes 'principled distance' in the context of Indian secularism?",
+      "ms": {
+        "draft": 3999,
+        "critique": 5567
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not compatible with the idea of secularism?",
+      "ms": {
+        "draft": 3999,
+        "critique": 6346
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of Indian secularism according to the passage?",
+      "ms": {
+        "draft": 3999,
+        "critique": 6882
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is most supported by the passage regarding the role of the state in Indian secularism?",
+      "ms": {
+        "draft": 3999,
+        "critique": 6346,
+        "solver": 15242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the relationship between secularism and religious diversity in India?",
+      "ms": {
+        "draft": 3999,
+        "critique": 5746,
+        "solver": 18549,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a political party in India focuses on emotive issues for electoral gains, what does this imply about the party's approach to secularism?",
+      "ms": {
+        "draft": 3999,
+        "critique": 6545,
+        "solver": 17198,
+        "form": 2605
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind secularism?",
+      "ms": {
+        "draft": 3905,
+        "critique": 7579,
+        "solver": 1786,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage imply about personal laws and secularism?",
+      "ms": {
+        "draft": 3905,
+        "critique": 6937,
+        "solver": 1136,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about treating people with disabilities in public spaces?",
+      "ms": {
+        "draft": 3905,
+        "critique": 6842,
+        "solver": 13693
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How does the passage view vote bank politics in a secular context?",
+      "ms": {
+        "draft": 3905,
+        "critique": 7026,
+        "solver": 1845
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of the state in religious reform?",
+      "ms": {
+        "draft": 3905,
+        "critique": 7908,
+        "solver": 1274,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key feature of Indian secularism as described in the passage?",
+      "ms": {
+        "draft": 13862,
+        "critique": 7188,
+        "solver": 1892,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the phrase 'equal respect for all religions' in the context of Indian secularism?",
+      "ms": {
+        "draft": 13862,
+        "critique": 8253,
+        "solver": 1811,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a state intervenes to ban a religious practice that promotes social inequality, what does this demonstrate according to the passage?",
+      "ms": {
+        "draft": 13862,
+        "critique": 7681,
+        "solver": 1581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the Western model of secularism in relation to Indian secularism?",
+      "ms": {
+        "draft": 13862,
+        "critique": 7430,
+        "solver": 1902,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, why might a minority's fundamental interests need to be protected by constitutional law?",
+      "ms": {
+        "draft": 13862,
+        "critique": 8260,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the claim that secularism is a Western concept and therefore unsuitable for India?",
+      "ms": {
+        "draft": 13862,
+        "critique": 7555,
+        "solver": 1855,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main focus of Ataturk's secularism in Turkey?",
+      "ms": {
+        "draft": 4212,
+        "critique": 6812,
+        "solver": 1799,
+        "form": 2702
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what did Nehru mean by secularism in India?",
+      "ms": {
+        "draft": 4212,
+        "critique": 7003,
+        "solver": 1385,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In what way is Indian secularism different from Western secularism, as described in the passage?",
+      "ms": {
+        "draft": 4212,
+        "critique": 6247,
+        "solver": 2244,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a government in a diverse society wants to ensure equal treatment of all religious communities, which approach is most aligned with Indian secularism?",
+      "ms": {
+        "draft": 4212,
+        "critique": 6347
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the role of the state in a secular society, according to the passage?",
+      "ms": {
+        "draft": 6915,
+        "critique": 3887,
+        "solver": 5178,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a state provides equal holidays for all religions, what does this indicate about its secularism?",
+      "ms": {
+        "draft": 3905,
+        "critique": 7748,
+        "solver": 1517,
+        "form": 3253,
+        "translation": 39118
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country's secularism is based on the idea that the state should protect all religions without favoring any, which of the following actions would be most aligned with this principle?",
+      "ms": {
+        "draft": 4449,
+        "critique": 7269,
+        "solver": 1514,
+        "form": 2709,
+        "translation": 46834
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the primary purpose of secularism in a democratic society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what does the author suggest about the relationship between secularism and religion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the context of the passage, which of the following best describes the concept of 'intra-religious domination'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the main challenge to secularism in India?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of the state in a secular society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following examples from the passage best illustrates the idea of inter-religious domination?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest is necessary for a state to be truly secular?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly suggests that a theocratic state is a secular st…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly suggests that a secular state should have an off…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that a secular state should promote a s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about theocratic states?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's description of theocratic state…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly suggests that theocratic states do not have an o…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly states that theocratic states allow complete fre…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the role of the state in relation to religion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's view that the state should not …\"); distractor 2's reason is not a one-line misconception (\"Incorrectly suggests that the state should support religious…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that the state should promote one relig…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is one reason why a secular state must be committed to non-religious sources?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's purpose of promoting harmony an…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly suggests that a secular state should support rel…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that a secular state should encourage r…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is one way of preventing religious discrimination according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on equality and separat…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that favouring a religion is a solution…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the nature of separation between religion and state in a secular state?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's suggestion that the separation …\"); distractor 2's reason is not a one-line misconception (\"Incorrectly suggests that the separation should be the same …\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that the separation should be based on …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the key difference between Indian secularism and the secularism practised in Turkey under Ataturk?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best reflects the impact of Western modernity on Indian secularism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Assumes Indian secularism became identical to Western secula…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a country with a religiously diverse population, which of the following policies would best align with the principles of Indian secularism as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main idea of Indian secularism according to the passage?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best illustrates the principle of equal protection of all religions as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How does the Indian state engage with religion according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"It only engages with religion in a negative way\" / \"It only engages with religion in a positive way\"); the key is far longer than every distractor (83 vs 47 characters); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's idea of engagement with religion…\"); distractor 1's reason is not a one-line misconception (\"Believes the state only engages in a negative way, ignoring …\"); distractor 3's reason is not a one-line misconception (\"Overlooks the nuanced approach described in the passage, whi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason Indian secularism is different from Western secularism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the main idea behind providing a lift or a ramp for people with physical challenges?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the example of the train compartment used in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (78 vs 47 characters); distractor 0's reason is not a one-line misconception (\"Misunderstands the example as showing that voting is always …\"); distractor 1's reason is not a one-line misconception (\"Believes the passage argues that minority rights are not jus…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, which of the following is a key characteristic of Indian secularism?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main argument against the claim that secularism is a Western concept?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following best describes 'principled distance' in the context of Indian secularism?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not compatible with the idea of secularism?",
+      "reason": "option 0 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of Indian secularism according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements is most supported by the passage regarding the role of the state in Indian secularism?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the relationship between secularism and religious diversity in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a political party in India focuses on emotive issues for electoral gains, what does this imply about the party's approach to secularism?",
+      "reason": "options 0 and 3 are the same (\"It promotes the idea of a single state religion\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind secularism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"contradicts the passage's explanation of secularism…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage imply about personal laws and secularism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misinterprets the passage's stance on personal laws…\"); distractor 1's reason is not a one-line misconception (\"overstates the position of the passage…\"); distractor 3's reason is not a one-line misconception (\"contradicts the passage's suggestion of reform…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest about treating people with disabilities in public spaces?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How does the passage view vote bank politics in a secular context?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of the state in religious reform?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misunderstands the state's role as described in the passage…\"); distractor 3's reason is not a one-line misconception (\"contradicts the idea of facilitation presented in the passag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key feature of Indian secularism as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the phrase 'equal respect for all religions' in the context of Indian secularism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's critique of the phrase…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that the passage endorses the phrase…\"); distractor 3's reason is not a one-line misconception (\"Overstates the passage's position by calling the phrase comp…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a state intervenes to ban a religious practice that promotes social inequality, what does this demonstrate according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's explanation of secularism as ant…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's position on religious dominatio…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the Western model of secularism in relation to Indian secularism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's explanation of secularism's ori…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, why might a minority's fundamental interests need to be protected by constitutional law?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misunderstands the passage's view on the importance of minor…\"); distractor 3's reason is not a one-line misconception (\"Overstates the passage's position by suggesting minorities h…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the claim that secularism is a Western concept and therefore unsuitable for India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly accepts the claim as valid without considering t…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's explanation of secularism's val…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the main focus of Ataturk's secularism in Turkey?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's description of Ataturk's actions…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what did Nehru mean by secularism in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In what way is Indian secularism different from Western secularism, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's focus on state-supported reform…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a government in a diverse society wants to ensure equal treatment of all religious communities, which approach is most aligned with Indian secularism?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best describes the role of the state in a secular society, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

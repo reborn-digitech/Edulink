@@ -1,0 +1,387 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T21:56:09.151Z",
+  "finishedAt": "2026-10-20T21:58:20.916Z",
+  "seconds": 132,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap106.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 6 — Every Drop Counts",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 45827,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14394,
+      "completionTokens": 3235
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 107116,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 8612,
+      "completionTokens": 3604
+    },
+    "solver": {
+      "calls": 105,
+      "ms": 46805,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 18611,
+      "completionTokens": 1128
+    },
+    "form": {
+      "calls": 6,
+      "ms": 12091,
+      "in": 9,
+      "out": 2,
+      "rejects": 7,
+      "promptTokens": 1416,
+      "completionTokens": 389
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 1696,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 44609,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4360,
+      "completionTokens": 2167
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why was Ghadsisar important for the people of Jaisalmer?",
+      "ms": {
+        "draft": 2821,
+        "critique": 5627,
+        "solver": 2119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the drying up of wells according to the passage?",
+      "ms": {
+        "draft": 2821,
+        "critique": 5500,
+        "solver": 1405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "ms": {
+        "draft": 2746,
+        "critique": 4898,
+        "solver": 1073,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a person puts a pump directly in the Jal Board pipeline?",
+      "ms": {
+        "draft": 2746,
+        "critique": 6074,
+        "solver": 1353,
+        "form": 2261
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do some people have to buy drinking water according to the passage?",
+      "ms": {
+        "draft": 2746,
+        "critique": 5457,
+        "solver": 11279
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main problem faced by people in Darki Mai's village according to the passage?",
+      "ms": {
+        "draft": 2746,
+        "critique": 6767,
+        "solver": 6739,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "ms": {
+        "draft": 2825,
+        "critique": 4056,
+        "solver": 1046
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to solve the problem of water scarcity according to the passage?",
+      "ms": {
+        "draft": 2825,
+        "critique": 4272,
+        "solver": 1350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a problem people face due to water scarcity?",
+      "ms": {
+        "draft": 2825,
+        "critique": 4468,
+        "solver": 2022,
+        "form": 2091
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main purpose of building Ghadsisar lake?",
+      "ms": {
+        "draft": 3066,
+        "critique": 5949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason given for the drying up of wells in Punita's area?",
+      "ms": {
+        "draft": 3066,
+        "critique": 7375
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why do some people have to buy drinking water?",
+      "ms": {
+        "draft": 2825,
+        "critique": 6097,
+        "solver": 12762
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did the people of Rajasthan value every drop of water?",
+      "ms": {
+        "draft": 3066,
+        "critique": 4836,
+        "solver": 9104,
+        "form": 1981
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a village in Rajasthan has no rain for a long time, what would be the most likely effect on water availability?",
+      "ms": {
+        "draft": 3066,
+        "critique": 4505,
+        "solver": 1115,
+        "form": 770
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the word 'sar' mean in the context of Ghadsisar?",
+      "ms": {
+        "draft": 2821,
+        "critique": 5396,
+        "solver": 11904,
+        "form": 1525,
+        "translation": 18035
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to rainwater if there were no lakes or stepwells in an area?",
+      "ms": {
+        "draft": 2821,
+        "critique": 5168,
+        "solver": 975,
+        "form": 4402,
+        "translation": 23413
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why was Ghadsisar important for the people of Jaisalmer?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main reason for the drying up of wells according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen if a person puts a pump directly in the Jal Board pipeline?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"does not recognize that the passage does not mention cleanli…\"); distractor 3's reason is not a one-line misconception (\"does not understand that the passage does not mention cost…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why do some people have to buy drinking water according to the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main problem faced by people in Darki Mai's village according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"does not recognize that the passage does not mention excess …\"); distractor 3's reason is not a one-line misconception (\"does not understand that the passage does not focus on anima…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What can be done to solve the problem of water scarcity according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Chooses a solution not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a problem people face due to water scarcity?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Mistakenly thinks the passage says people get water all day…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main purpose of building Ghadsisar lake?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason given for the drying up of wells in Punita's area?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, why do some people have to buy drinking water?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why did the people of Rajasthan value every drop of water?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Incorrect as the passage says Rajasthan gets very little rai…\"); distractor 3's reason is not a one-line misconception (\"Thinks water was valuable for religious reasons, but the pas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a village in Rajasthan has no rain for a long time, what would be the most likely effect on water availability?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Implies water is stored, but the passage focuses on scarcity…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

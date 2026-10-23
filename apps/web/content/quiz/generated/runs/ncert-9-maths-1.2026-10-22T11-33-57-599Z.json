@@ -1,0 +1,432 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T11:33:57.599Z",
+  "finishedAt": "2026-10-22T11:45:29.310Z",
+  "seconds": 692,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh201.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Propositions and their Converses",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 195668,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12880,
+      "completionTokens": 6302
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 343696,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 14899,
+      "completionTokens": 5063
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 188530,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 38579,
+      "completionTokens": 2000
+    },
+    "form": {
+      "calls": 1,
+      "ms": 39516,
+      "in": 9,
+      "out": 2,
+      "rejects": 7,
+      "promptTokens": 2316,
+      "completionTokens": 486
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 5458,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 166651,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 7059,
+      "completionTokens": 3799
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the given diagram, if AB is parallel to CD and EF is parallel to AB, which of the following is true?",
+      "ms": {
+        "draft": 11230,
+        "critique": 9791,
+        "solver": 2381,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. Which of the following is the converse of this statement?",
+      "ms": {
+        "draft": 11230,
+        "critique": 10585,
+        "solver": 21457,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Consider the statement: 'If a number is divisible by 8, then it is divisible by both 2 and 4.' Which of the following is a correct counterexample to the converse of this statement?",
+      "ms": {
+        "draft": 11230,
+        "critique": 15058,
+        "solver": 35552
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given triangle, DE is parallel to BC. If AD = 6 cm, DB = 9 cm, and AE = 8 cm, what is the length of EC?",
+      "ms": {
+        "draft": 11230,
+        "critique": 11430,
+        "solver": 23254,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a proposition where the converse is false?",
+      "ms": {
+        "draft": 11230,
+        "critique": 17163,
+        "solver": 33572
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements is true but its converse is false?",
+      "ms": {
+        "draft": 11230,
+        "critique": 12623,
+        "solver": 14122
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. Which of the following is the converse of this proposition?",
+      "ms": {
+        "draft": 10725,
+        "critique": 13645,
+        "solver": 4126,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, AB is parallel to CD, and EF intersects them at G and H. If ∠AGE = 120°, what is the measure of ∠CHG?",
+      "ms": {
+        "draft": 10725,
+        "critique": 16062,
+        "solver": 3595
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If x = y, then a + x = a + y'?",
+      "ms": {
+        "draft": 10725,
+        "critique": 9802,
+        "solver": 3508,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a quadrilateral has equal diagonals, then it is a rectangle. A student claims that this statement is true and its converse is also true. Which of the following is a counterexample to the converse of this proposition?",
+      "ms": {
+        "draft": 10725,
+        "critique": 12964,
+        "solver": 23374,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, DE is parallel to BC. If AD = 6 cm, DB = 9 cm, AE = 8 cm, and EC = 12 cm, what is the measure of ∠ABC?",
+      "ms": {
+        "draft": 10656,
+        "critique": 14743
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is divisible by 8, then it is divisible by both 2 and 4. Which of the following numbers is a counterexample to the converse of this proposition?",
+      "ms": {
+        "draft": 10725,
+        "critique": 17362,
+        "solver": 32372
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, a circle is inscribed touching all four sides. If AB = 12 cm, BC = 16 cm, CD = 8 cm, and DA = 14 cm, what is the value of AB + CD?",
+      "ms": {
+        "draft": 10656,
+        "critique": 15329
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle ABC, altitudes AD and CE intersect at point P. Which of the following is true?",
+      "ms": {
+        "draft": 10656,
+        "critique": 11251,
+        "solver": 3310
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a counterexample to the proposition: 'If a number is a multiple of 6, then it is a multiple of 3'",
+      "ms": {
+        "draft": 10656,
+        "critique": 15266,
+        "solver": 30753
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number has an odd number of factors, which of the following must be true?",
+      "ms": {
+        "draft": 10656,
+        "critique": 7776,
+        "solver": 11457,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a proposition?",
+      "ms": {
+        "draft": 10656,
+        "critique": 15926,
+        "solver": 3653,
+        "form": 0,
+        "translation": 80145
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Consider the proposition: 'If a number is divisible by 8, then it is divisible by both 2 and 4.' A student claims that the converse of this proposition is also true. Which of the following is a counterexample to the converse of the proposition?",
+      "ms": {
+        "draft": 10725,
+        "critique": 14458,
+        "solver": 33185,
+        "form": 0,
+        "translation": 79925
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"Which of the following is the converse of the proposition 'If two sides of a triangle "
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, if AB is parallel to CD and EF is parallel to AB, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"EF is not parallel to CD.\" / \"EF is parallel to CD.\"); options 2 and 3 say the same thing (\"The angles formed by EF and AB are not equal.\" / \"The angles formed by EF and CD are not equal.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. Which of the following is the converse of this statement?",
+      "reason": "options 0 and 2 say the same thing (\"If all angles of a quadrilateral are equal, then it is a square.\" / \"If all angles of a quadrilateral are not equal, then it is not a square.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Consider the statement: 'If a number is divisible by 8, then it is divisible by both 2 and 4.' Which of the following is a correct counterexample to the converse of this statement?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the given triangle, DE is parallel to BC. If AD = 6 cm, DB = 9 cm, and AE = 8 cm, what is the length of EC?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a proposition where the converse is false?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following statements is true but its converse is false?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. Which of the following is the converse of this proposition?",
+      "reason": "options 0 and 1 say the same thing (\"If all its angles are equal, then it is a square.\" / \"If it is not a square, then not all its angles are equal.\"); options 0 and 2 say the same thing (\"If all its angles are equal, then it is a square.\" / \"If all its angles are equal, then it is a rectangle.\"); options 0 and 3 say the same thing (\"If all its angles are equal, then it is a square.\" / \"If it is a rectangle, then all its angles are equal.\"); options 2 and 3 say the same thing (\"If all its angles are equal, then it is a rectangle.\" / \"If it is a rectangle, then all its angles are equal.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the figure, AB is parallel to CD, and EF intersects them at G and H. If ∠AGE = 120°, what is the measure of ∠CHG?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If x = y, then a + x = a + y'?",
+      "reason": "options 0 and 1 say the same thing (\"If a + x = a + y, then x = y.\" / \"If x ≠ y, then a + x ≠ a + y.\"); options 0 and 2 are the same (\"If a + x = a + y, then x = y.\"); options 0 and 3 say the same thing (\"If a + x = a + y, then x = y.\" / \"If x = y, then a + x ≠ a + y.\"); options 1 and 2 say the same thing (\"If x ≠ y, then a + x ≠ a + y.\" / \"If a + x ≠ a + y, then x ≠ y.\"); options 1 and 3 are the same (\"If x ≠ y, then a + x ≠ a + y.\"); options 2 and 3 say the same thing (\"If a + x ≠ a + y, then x ≠ y.\" / \"If x = y, then a + x ≠ a + y.\"); option 0 repeats the stem's wording (\"If a + x = a + y, then x = y.\"); option 1 repeats the stem's wording (\"If x ≠ y, then a + x ≠ a + y.\"); option 2 repeats the stem's wording (\"If a + x ≠ a + y, then x ≠ y.\"); option 3 repeats the stem's wording (\"If x = y, then a + x ≠ a + y.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a quadrilateral has equal diagonals, then it is a rectangle. A student claims that this statement is true and its converse is also true. Which of the following is a counterexample to the converse of this proposition?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, DE is parallel to BC. If AD = 6 cm, DB = 9 cm, AE = 8 cm, and EC = 12 cm, what is the measure of ∠ABC?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a number is divisible by 8, then it is divisible by both 2 and 4. Which of the following numbers is a counterexample to the converse of this proposition?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, a circle is inscribed touching all four sides. If AB = 12 cm, BC = 16 cm, CD = 8 cm, and DA = 14 cm, what is the value of AB + CD?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a triangle ABC, altitudes AD and CE intersect at point P. Which of the following is true?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a counterexample to the proposition: 'If a number is a multiple of 6, then it is a multiple of 3'",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a number has an odd number of factors, which of the following must be true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

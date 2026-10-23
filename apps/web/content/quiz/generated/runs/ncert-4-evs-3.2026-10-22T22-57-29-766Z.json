@@ -1,0 +1,249 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-22T22:57:29.766Z",
+  "finishedAt": "2026-10-22T22:59:14.179Z",
+  "seconds": 104,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap103.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 3 — A Day with Nandu",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 27737,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7596,
+      "completionTokens": 1652
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 49021,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4263,
+      "completionTokens": 1701
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 27636,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 10280,
+      "completionTokens": 621
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10748,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 942,
+      "completionTokens": 280
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 2753,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 11,
+      "ms": 66818,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5763,
+      "completionTokens": 2893
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main reason elephants sleep for only two to four hours a day?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6986,
+        "solver": 2684
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about elephant herds?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5155,
+        "solver": 792,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Nandu weighs 200 kilograms and a child weighs 20 kilograms, how many children would equal Nandu's weight?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6713,
+        "solver": 10789
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the oldest female elephant in a herd?",
+      "ms": {
+        "draft": 3200,
+        "critique": 5346,
+        "solver": 2099,
+        "form": 2156
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a reason for elephants to live in herds?",
+      "ms": {
+        "draft": 3200,
+        "critique": 2844,
+        "solver": 6457
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the oldest female elephant in the herd?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6195,
+        "solver": 1430,
+        "form": 4236
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do elephants flap their ears?",
+      "ms": {
+        "draft": 3200,
+        "critique": 5134,
+        "solver": 1640,
+        "form": 3358,
+        "translation": 29300
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Nandu weighs 200 kilograms, how many children of your weight would add up to Nandu's weight?",
+      "ms": {
+        "draft": 3200,
+        "critique": 4708,
+        "solver": 1382,
+        "form": 3918,
+        "translation": 32969
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason elephants sleep for only two to four hours a day?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about elephant herds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Nandu weighs 200 kilograms and a child weighs 20 kilograms, how many children would equal Nandu's weight?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name given to the oldest female elephant in a herd?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Refers to a sibling or relative not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a reason for elephants to live in herds?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the oldest female elephant in the herd?",
+      "reason": "near-duplicate of served question cmvh2thtm06fxgpfhvjn4lily (cosine 0.918 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

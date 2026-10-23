@@ -1,0 +1,811 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T02:36:40.140Z",
+  "finishedAt": "2026-10-21T02:46:28.678Z",
+  "seconds": 589,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo103.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 3 — Plant Kingdom",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2016 — question paper]\n58. (2 points) A classification of plant kingdom based on evolution of various characters is\nshown below.\norsetail ycad\nAlgae ornwort Liverwort Moss Club mossH C Angiosperm\nH\nU\nT\nS\nR\nQ\nP\nA few of these characters (I to IV) are listed below. For each of these characters, choose a\nsingle appropriate alphabet from the cladogram and fill in the blanks.\nI. Wood: ______\nII. Seed development: ______\nIII. Cuticle, protected embryo: ______\nIV. Independent sporophyte: ______\n********* END OF SECTION B *********",
+      "[INBO 2011 — question paper]\n66. (3 points) A tree of major taxa of vascular plants is shown below. Choose\nfrom the options given below and match them against I – IV and VI – VII.\nGnetales\nI II III IV V VI VII\n200 mya\nSporangium covered by carpel 300 mya\nSporangium covered by integument\n400 mya\nSporangium not covered by integument\nA. Pteridophytes\nB. Eudicotyledons\nC. Monocotyledons\nD. Magnolids\nE. Conifers\nF. Basal angiosperms\nI. ________\nII. ________\nIII. ________\nIV. ________\nVI. ________\nVII. ________\n********",
+      "[INBO 2014 — question paper]\n38. (1 point) In the following scheme, three domain classification key with one\nrepresentative example on each domain is shown. A, B and C respectively are:\nA B C\nCyanobacteria Halophiles\nCiliates\na. Plantae, Eubacteria, Animalia\nb. Plantae, Archaebacteria, Eukaryota\nc. Eubacteria, Archaebacteria, Eukaryota\nd. Plantae, Prokaryota, Eukaryota.\n********* END OF SECTION A *******\nINDIAN NATIONAL BIOLOGY OLYMPIAD – 2014",
+      "[INBO 2011 — question paper]\n30. (1 point) Which of the following best depicts the evolutionary sequence of\nplant characters?\n1. Transition to land habitat\n2. Evolution of seeds\n3. Evolution of fruits\n4. Evolution of vascular structures\na. 1 – 4 – 2 – 3\nb. 4 – 1 – 2 – 3\nc. 1 – 4 – 3 – 2\nd. 4 – 1 – 3 – 2\nETHOLOGY (3)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 169120,
+      "in": 42,
+      "out": 42,
+      "rejects": 0,
+      "promptTokens": 37134,
+      "completionTokens": 10384
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 347865,
+      "in": 42,
+      "out": 32,
+      "rejects": 10,
+      "promptTokens": 26209,
+      "completionTokens": 9817
+    },
+    "solver": {
+      "calls": 237,
+      "ms": 108394,
+      "in": 32,
+      "out": 29,
+      "rejects": 3,
+      "promptTokens": 44294,
+      "completionTokens": 2569
+    },
+    "form": {
+      "calls": 17,
+      "ms": 53445,
+      "in": 29,
+      "out": 9,
+      "rejects": 20,
+      "promptTokens": 8281,
+      "completionTokens": 1676
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 5991,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 402764,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 23866,
+      "completionTokens": 12144
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following algae is an example of a filamentous form?",
+      "ms": {
+        "draft": 3088,
+        "critique": 6937,
+        "solver": 1421
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary method of reproduction in most green algae?",
+      "ms": {
+        "draft": 3088,
+        "critique": 5870,
+        "solver": 1466,
+        "form": 3042
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a classification of the plant kingdom based on evolution?",
+      "ms": {
+        "draft": 3088,
+        "critique": 6791,
+        "solver": 1128,
+        "form": 2996
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key feature of natural classification systems?",
+      "ms": {
+        "draft": 3088,
+        "critique": 5822,
+        "solver": 1780,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the evolutionary sequence of plant characters?",
+      "ms": {
+        "draft": 3088,
+        "critique": 6901
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the reproductive process in brown algae?",
+      "ms": {
+        "draft": 4699,
+        "critique": 7328,
+        "solver": 1576,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic feature of brown algae?",
+      "ms": {
+        "draft": 4699,
+        "critique": 7450,
+        "solver": 1974,
+        "form": 3805
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most accurate statement about the evolutionary relationship between algae and bryophytes?",
+      "ms": {
+        "draft": 4699,
+        "critique": 5943,
+        "solver": 1314,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct classification of algae based on pigments?",
+      "ms": {
+        "draft": 3088,
+        "critique": 7380,
+        "solver": 15366,
+        "form": 3329
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason bryophytes are called amphibians of the plant kingdom?",
+      "ms": {
+        "draft": 4699,
+        "critique": 6067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary habitat of brown algae?",
+      "ms": {
+        "draft": 4699,
+        "critique": 4985,
+        "solver": 1593,
+        "form": 2894
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist is studying the evolutionary sequence of plant characters. Which of the following sequences correctly represents the order of evolution of these characters: 1. Vascular tissues, 2. Seeds, 3. Fruits, 4. Independent sporophyte?",
+      "ms": {
+        "draft": 12866,
+        "critique": 5883
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes a plant that has vascular tissues and produces spores in sporangia. It also has leaves that are either small or large, and the sporophyte is the dominant phase of its life cycle. Which of the following is the most likely classification of this plant?",
+      "ms": {
+        "draft": 12866,
+        "critique": 6165,
+        "solver": 11756,
+        "form": 2993
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student studies the life cycle of a plant and notices that the gametophyte is small, photosynthetic, and requires a moist environment to grow. The sporophyte is the dominant phase and has vascular tissues. Which of the following plants matches this description?",
+      "ms": {
+        "draft": 12866,
+        "critique": 7553,
+        "solver": 12205,
+        "form": 3307
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main characteristic of gymnosperms that differentiates them from angiosperms?",
+      "ms": {
+        "draft": 3073,
+        "critique": 5901
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes a plant with a thalloid body, which is dorsiventral and closely attached to the substrate. It reproduces asexually by gemmae. Which of the following is the most likely plant?",
+      "ms": {
+        "draft": 12866,
+        "critique": 7087,
+        "solver": 11949,
+        "form": 2242
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which part of the gymnosperm life cycle does the formation of pollen grains occur?",
+      "ms": {
+        "draft": 3073,
+        "critique": 5713
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is studying the life cycle of a plant and notices that the sporophyte is differentiated into a foot, seta, and capsule. The gametophyte is small and photosynthetic. Which of the following plants is this most likely to be?",
+      "ms": {
+        "draft": 12866,
+        "critique": 6862,
+        "solver": 12111
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key feature of angiosperms that is not found in gymnosperms?",
+      "ms": {
+        "draft": 3073,
+        "critique": 6143
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a plant with seeds that are not enclosed in any structure. Which group does this plant most likely belong to?",
+      "ms": {
+        "draft": 3073,
+        "critique": 4075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a gymnosperm?",
+      "ms": {
+        "draft": 5158,
+        "critique": 7425,
+        "solver": 11833,
+        "form": 2597
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the life cycle of a gymnosperm, where does the development of the female gametophyte take place?",
+      "ms": {
+        "draft": 5158,
+        "critique": 7269
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given a plant whose life cycle includes a diploid sporophyte that produces spores, and the gametophyte is reduced and confined within the sporangium. The seeds are not enclosed in fruits. Which of the following statements best explains this plant's classification?",
+      "ms": {
+        "draft": 5158,
+        "critique": 7488,
+        "solver": 1213
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the development of the zygote into a young embryo within the female gametophyte in heterosporous pteridophytes?",
+      "ms": {
+        "draft": 4128,
+        "critique": 7744,
+        "solver": 1374,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a plant with a sporophyte that produces both male and female gametophytes within sporangia, and the seeds are not enclosed in fruits. Which group does this plant belong to?",
+      "ms": {
+        "draft": 5158,
+        "critique": 7187,
+        "solver": 14797,
+        "form": 3331
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following pteridophytes is the sporophyte the dominant phase of the life cycle?",
+      "ms": {
+        "draft": 4128,
+        "critique": 7461,
+        "solver": 1315,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best represents the evolutionary sequence of plant characters as described in the passage?",
+      "ms": {
+        "draft": 4128,
+        "critique": 6358
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the sporangia in pteridophytes?",
+      "ms": {
+        "draft": 4128,
+        "critique": 4752,
+        "solver": 1968,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are pteridophytes restricted to narrow geographical regions, as mentioned in the passage?",
+      "ms": {
+        "draft": 4128,
+        "critique": 5978,
+        "solver": 12970,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why bryophytes are called amphibians of the plant kingdom?",
+      "ms": {
+        "draft": 10589,
+        "critique": 6958,
+        "solver": 1190,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the evolutionary sequence of plant characters, which of the following represents the correct order?",
+      "ms": {
+        "draft": 10589,
+        "critique": 5858
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a plant that is classified as a bryophyte?",
+      "ms": {
+        "draft": 10589,
+        "critique": 5993,
+        "solver": 11774,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a common example of green algae?",
+      "ms": {
+        "draft": 5348,
+        "critique": 5711,
+        "solver": 1468,
+        "form": 2122
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main pigment responsible for the green color in green algae?",
+      "ms": {
+        "draft": 5348,
+        "critique": 5544,
+        "solver": 667,
+        "form": 2388,
+        "translation": 28455
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of gymnosperms?",
+      "ms": {
+        "draft": 5158,
+        "critique": 6733,
+        "solver": 13492,
+        "form": 2404,
+        "translation": 39255
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of red algae?",
+      "ms": {
+        "draft": 10589,
+        "critique": 6795,
+        "solver": 1248,
+        "form": 0,
+        "translation": 34372
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of pteridophytes that differentiates them from bryophytes?",
+      "ms": {
+        "draft": 4128,
+        "critique": 7295,
+        "solver": 1275,
+        "form": 0,
+        "translation": 52835
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a feature of the life cycle of gymnosperms that is different from bryophytes and pteridophytes?",
+      "ms": {
+        "draft": 5158,
+        "critique": 7868,
+        "solver": 14302,
+        "form": 0,
+        "translation": 57997
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a common feature of all algae?",
+      "ms": {
+        "draft": 10589,
+        "critique": 6894,
+        "solver": 972,
+        "form": 0,
+        "translation": 25137
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant has a cellulosic wall covered in a gelatinous coating of algin and stores food as laminarin, which group does it most likely belong to?",
+      "ms": {
+        "draft": 4699,
+        "critique": 4769,
+        "solver": 1551,
+        "form": 3275,
+        "translation": 47971
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is true about the reproductive structures of bryophytes?",
+      "ms": {
+        "draft": 10589,
+        "critique": 5992,
+        "solver": 1192,
+        "form": 0,
+        "translation": 36628
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student is analyzing the classification of plants based on their reproductive structures. Which of the following characteristics would best distinguish gymnosperms from pteridophytes?",
+      "ms": {
+        "draft": 12866,
+        "critique": 6248,
+        "solver": 10319,
+        "form": 2805,
+        "translation": 77220
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following algae is an example of a filamentous form?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary method of reproduction in most green algae?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a classification of the plant kingdom based on evolution?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key feature of natural classification systems?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best describes the evolutionary sequence of plant characters?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the reproductive process in brown algae?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage, which says they reproduce asexual…\"); distractor 2's reason is not a one-line misconception (\"Confuses the asexual and sexual methods described in the pas…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage, which says they reproduce asexual…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a characteristic feature of brown algae?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the description of the cell wall in the passag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most accurate statement about the evolutionary relationship between algae and bryophytes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage, which states that bryophytes are …\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the evolutionary relationship between algae an…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a correct classification of algae based on pigments?",
+      "reason": "options 0 and 1 say the same thing (\"Chlorophyceae - Brown algae, Phaeophyceae - Red algae, Rhodophyceae - Green algae\" / \"Chlorophyceae - Green algae, Phaeophyceae - Brown algae, Rhodophyceae - Red algae\"); options 0 and 2 say the same thing (\"Chlorophyceae - Brown algae, Phaeophyceae - Red algae, Rhodophyceae - Green algae\" / \"Chlorophyceae - Red algae, Phaeophyceae - Brown algae, Rhodophyceae - Green algae\"); options 0 and 3 say the same thing (\"Chlorophyceae - Brown algae, Phaeophyceae - Red algae, Rhodophyceae - Green algae\" / \"Chlorophyceae - Brown algae, Phaeophyceae - Green algae, Rhodophyceae - Red algae\"); options 1 and 2 say the same thing (\"Chlorophyceae - Green algae, Phaeophyceae - Brown algae, Rhodophyceae - Red algae\" / \"Chlorophyceae - Red algae, Phaeophyceae - Brown algae, Rhodophyceae - Green algae\"); options 1 and 3 say the same thing (\"Chlorophyceae - Green algae, Phaeophyceae - Brown algae, Rhodophyceae - Red algae\" / \"Chlorophyceae - Brown algae, Phaeophyceae - Green algae, Rhodophyceae - Red algae\"); options 2 and 3 say the same thing (\"Chlorophyceae - Red algae, Phaeophyceae - Brown algae, Rhodophyceae - Green algae\" / \"Chlorophyceae - Brown algae, Phaeophyceae - Green algae, Rhodophyceae - Red algae\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason bryophytes are called amphibians of the plant kingdom?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary habitat of brown algae?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage, which states that brown algae are…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A scientist is studying the evolutionary sequence of plant characters. Which of the following sequences correctly represents the order of evolution of these characters: 1. Vascular tissues, 2. Seeds, 3. Fruits, 4. Independent sporophyte?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student observes a plant that has vascular tissues and produces spores in sporangia. It also has leaves that are either small or large, and the sporophyte is the dominant phase of its life cycle. Which of the following is the most likely classification of this plant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student studies the life cycle of a plant and notices that the gametophyte is small, photosynthetic, and requires a moist environment to grow. The sporophyte is the dominant phase and has vascular tissues. Which of the following plants matches this description?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main characteristic of gymnosperms that differentiates them from angiosperms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student observes a plant with a thalloid body, which is dorsiventral and closely attached to the substrate. It reproduces asexually by gemmae. Which of the following is the most likely plant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "In which part of the gymnosperm life cycle does the formation of pollen grains occur?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student is studying the life cycle of a plant and notices that the sporophyte is differentiated into a foot, seta, and capsule. The gametophyte is small and photosynthetic. Which of the following plants is this most likely to be?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a key feature of angiosperms that is not found in gymnosperms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed a plant with seeds that are not enclosed in any structure. Which group does this plant most likely belong to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a gymnosperm?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the life cycle of a gymnosperm, where does the development of the female gametophyte take place?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student is given a plant whose life cycle includes a diploid sporophyte that produces spores, and the gametophyte is reduced and confined within the sporangium. The seeds are not enclosed in fruits. Which of the following statements best explains this plant's classification?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the development of the zygote into a young embryo within the female gametophyte in heterosporous pteridophytes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed a plant with a sporophyte that produces both male and female gametophytes within sporangia, and the seeds are not enclosed in fruits. Which group does this plant belong to?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which of the following pteridophytes is the sporophyte the dominant phase of the life cycle?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"sporophyte\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best represents the evolutionary sequence of plant characters as described in the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the sporangia in pteridophytes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are pteridophytes restricted to narrow geographical regions, as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why bryophytes are called amphibians of the plant kingdom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the evolutionary sequence of plant characters, which of the following represents the correct order?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a plant that is classified as a bryophyte?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a common example of green algae?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels ray, line, planeMirror"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

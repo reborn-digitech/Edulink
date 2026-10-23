@@ -1,0 +1,642 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-20T04:45:22.369Z",
+  "finishedAt": "2026-10-20T04:50:25.034Z",
+  "seconds": 303,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Human Body and Organ System",
+    "edition": "First Edition 2018",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n11. Students to attempt either option A or B. 2\nA. How many chambers are there in the heart of the following organisms?\nHow is mixing of oxygenated and deoxygenated blood prevented in their\nbody?\n(i) Fishes\n(ii) Humans\nOR\nB. Explain the mechanism by which the water is transported in plants?",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n23. What is the purpose of making urine in the human body? Name the organs that stores and 2\nreleases the urine.\nOR\nWhy do arteries have thick and elastic walls whereas veins have valves?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 98757,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 25719,
+      "completionTokens": 5957
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 196065,
+      "in": 32,
+      "out": 24,
+      "rejects": 8,
+      "promptTokens": 14333,
+      "completionTokens": 5799
+    },
+    "solver": {
+      "calls": 133,
+      "ms": 52473,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 17519,
+      "completionTokens": 1142
+    },
+    "form": {
+      "calls": 13,
+      "ms": 36519,
+      "in": 23,
+      "out": 13,
+      "rejects": 10,
+      "promptTokens": 4865,
+      "completionTokens": 971
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 37,
+      "ms": 5277,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 273810,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18147,
+      "completionTokens": 9174
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Why is it important for the diaphragm to move up and down during breathing?",
+      "ms": {
+        "draft": 4149,
+        "critique": 5847,
+        "solver": 1196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of alveoli in the respiratory system?",
+      "ms": {
+        "draft": 4149,
+        "critique": 6172,
+        "solver": 1557,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "ms": {
+        "draft": 4149,
+        "critique": 6430,
+        "solver": 1884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is studying the human respiratory system and observes that during inhalation, the diaphragm contracts and moves downward. What is the main reason for this movement?",
+      "ms": {
+        "draft": 4149,
+        "critique": 5894,
+        "solver": 1630,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the respiratory system includes the nose, pharynx, trachea, bronchi, and alveoli. Which of these structures is primarily responsible for the exchange of gases between the blood and the air?",
+      "ms": {
+        "draft": 4149,
+        "critique": 5470,
+        "solver": 3281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a part of the respiratory system?",
+      "ms": {
+        "draft": 4149,
+        "critique": 4151,
+        "solver": 1184,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about veins?",
+      "ms": {
+        "draft": 3092,
+        "critique": 7112,
+        "solver": 1208
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about capillaries?",
+      "ms": {
+        "draft": 3092,
+        "critique": 6097,
+        "solver": 1046,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is a person with AB blood group called a universal recipient?",
+      "ms": {
+        "draft": 2598,
+        "critique": 5635,
+        "solver": 983,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is blood donation considered the best donation according to the passage?",
+      "ms": {
+        "draft": 2598,
+        "critique": 5707,
+        "solver": 1307,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of red blood cells?",
+      "ms": {
+        "draft": 2246,
+        "critique": 5796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of blood vessel carries blood away from the heart?",
+      "ms": {
+        "draft": 2246,
+        "critique": 6138
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention that blood production occurs continuously in the body?",
+      "ms": {
+        "draft": 3299,
+        "critique": 6759,
+        "solver": 12024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following organisms is food digested outside the body?",
+      "ms": {
+        "draft": 2246,
+        "critique": 5973
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do arteries have thick and elastic walls?",
+      "ms": {
+        "draft": 2246,
+        "critique": 6664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the diaphragm during breathing?",
+      "ms": {
+        "draft": 2825,
+        "critique": 4364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process involves the exchange of gases between cells and tissue fluid?",
+      "ms": {
+        "draft": 2825,
+        "critique": 5109
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "ms": {
+        "draft": 2825,
+        "critique": 3816
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the diaphragm important for breathing?",
+      "ms": {
+        "draft": 2825,
+        "critique": 3349
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 2598,
+        "critique": 5663,
+        "solver": 1633,
+        "form": 3236
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person with AB blood group needs a blood transfusion, which blood group can they receive from?",
+      "ms": {
+        "draft": 2598,
+        "critique": 5733,
+        "solver": 1358,
+        "form": 1190
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 3299,
+        "critique": 5508,
+        "solver": 1039,
+        "form": 3623
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is blood donation considered the best donation?",
+      "ms": {
+        "draft": 3299,
+        "critique": 6179,
+        "solver": 1561,
+        "form": 2641
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has blood group AB, which blood groups can they receive blood from?",
+      "ms": {
+        "draft": 3299,
+        "critique": 5683,
+        "solver": 1441,
+        "form": 3489
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of blood?",
+      "ms": {
+        "draft": 3092,
+        "critique": 9702,
+        "solver": 10675,
+        "form": 2643,
+        "translation": 43173
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of blood donation?",
+      "ms": {
+        "draft": 2598,
+        "critique": 5790,
+        "solver": 1600,
+        "form": 2697,
+        "translation": 32096
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a wound and blood starts flowing, which part of the blood helps in forming a clot?",
+      "ms": {
+        "draft": 3092,
+        "critique": 6062,
+        "solver": 1121,
+        "form": 1720,
+        "translation": 35377
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary function of the heart in the circulatory system?",
+      "ms": {
+        "draft": 3092,
+        "critique": 6594,
+        "solver": 1185,
+        "form": 3238,
+        "translation": 37556
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the circulatory system?",
+      "ms": {
+        "draft": 3299,
+        "critique": 6294,
+        "solver": 1697,
+        "form": 3146,
+        "translation": 24425
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Why do veins have valves?",
+      "ms": {
+        "draft": 2246,
+        "critique": 5703,
+        "solver": 1433,
+        "form": 0,
+        "translation": 19747
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following situations is blood donation most likely to be necessary?",
+      "ms": {
+        "draft": 3299,
+        "critique": 6061,
+        "solver": 1148,
+        "form": 3419,
+        "translation": 34469
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the case of a person who is injured and bleeding, which of the following is true?",
+      "ms": {
+        "draft": 3092,
+        "critique": 6264,
+        "solver": 1173,
+        "form": 3798,
+        "translation": 43034
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why is it important for the diaphragm to move up and down during breathing?",
+      "reason": "the key is far longer than every distractor (69 vs 38 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of alveoli in the respiratory system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "reason": "the key is far longer than every distractor (55 vs 33 characters); distractor 3's reason is not a one-line misconception (\"Does not understand the main role of the respiratory system …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is studying the human respiratory system and observes that during inhalation, the diaphragm contracts and moves downward. What is the main reason for this movement?",
+      "reason": "options 0 and 1 say the same thing (\"To increase the volume of the lungs and decrease the pressure inside them\" / \"To decrease the volume of the lungs and increase the pressure inside them\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that the respiratory system includes the nose, pharynx, trachea, bronchi, and alveoli. Which of these structures is primarily responsible for the exchange of gases between the blood and the air?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a part of the respiratory system?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is true about veins?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about capillaries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why is a person with AB blood group called a universal recipient?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is blood donation considered the best donation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main function of red blood cells?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of blood vessel carries blood away from the heart?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage mention that blood production occurs continuously in the body?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In which of the following organisms is food digested outside the body?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do arteries have thick and elastic walls?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of the diaphragm during breathing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process involves the exchange of gases between cells and tissue fluid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the diaphragm important for breathing?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "near-duplicate of served question cmvf2pnyn02w6god80r3gf6bo (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a person with AB blood group needs a blood transfusion, which blood group can they receive from?",
+      "reason": "near-duplicate of served question cmvf2pnyx02x6god8gc2g0k2x (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "near-duplicate of served question cmvf2pnyn02w6god80r3gf6bo (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why is blood donation considered the best donation?",
+      "reason": "near-duplicate of served question cmvf2pnyr02wigod85s9619dn (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person has blood group AB, which blood groups can they receive blood from?",
+      "reason": "near-duplicate of served question cmvf2pnyx02x6god8gc2g0k2x (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

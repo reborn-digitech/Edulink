@@ -1,0 +1,687 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T07:35:46.027Z",
+  "finishedAt": "2026-10-21T07:41:08.492Z",
+  "seconds": 322,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy214.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 14 — NIT IFE ON THE ARTH",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n16. Ans: D- Nigeria 1\nFor Visually Challenged students\nAns: B - The arrangement or spread of people across a given area.",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n5. b. Iron ore",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nSection E\n29 A- Northern part of Eurasia 1X5\nB- Vancouver\nC- Kolkata\nD- Jeddah\nE- Darwin\nF- Panama Canal\nG- St. Lawrence waterway\nFor Visually Impaired Candidates only\n29 A- Arabian peninsula /Mongolia/Central China\n29 B- Vancouver\n29 C- Kolkata\n29 D- Johannesburg\n29 E- Darwin\n29 F- Suez Canal\n29 G- St. Lawrence waterway\n30 Locate and label any five of the following geographical features on the 1x5\nPolitical Outline map of India with appropriate symbols:\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Bailadila iron-ore mines, Chattisgarh\nE. Jamnagar\nF. Uttar Pradesh\nG. Thiruvananthapuram\nFor visually impaired students\nAttempt any five.\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Chhatisga",
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n13. Ans: A Both I and III 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 105637,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 23590,
+      "completionTokens": 6965
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 209644,
+      "in": 34,
+      "out": 24,
+      "rejects": 10,
+      "promptTokens": 16164,
+      "completionTokens": 6344
+    },
+    "solver": {
+      "calls": 139,
+      "ms": 54436,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 21499,
+      "completionTokens": 1319
+    },
+    "form": {
+      "calls": 7,
+      "ms": 14205,
+      "in": 20,
+      "out": 6,
+      "rejects": 14,
+      "promptTokens": 1643,
+      "completionTokens": 507
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1242,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 204875,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13759,
+      "completionTokens": 7026
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a reason for the decline in biodiversity?",
+      "ms": {
+        "draft": 10457,
+        "critique": 5481
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of biodiversity in an ecosystem?",
+      "ms": {
+        "draft": 10457,
+        "critique": 6234
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does biodiversity refer to?",
+      "ms": {
+        "draft": 10457,
+        "critique": 6834
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the relationship between genetic diversity and species survival?",
+      "ms": {
+        "draft": 10457,
+        "critique": 6063
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the stability of ecosystems with high biodiversity?",
+      "ms": {
+        "draft": 10457,
+        "critique": 6143
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary cause of biodiversity loss according to the passage?",
+      "ms": {
+        "draft": 10457,
+        "critique": 6290
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between human activities and biodiversity?",
+      "ms": {
+        "draft": 4483,
+        "critique": 6411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the role of biodiversity according to the passage?",
+      "ms": {
+        "draft": 4483,
+        "critique": 6223,
+        "solver": 1420,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the significance of biodiversity hotspots?",
+      "ms": {
+        "draft": 4483,
+        "critique": 5490,
+        "solver": 1420,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the importance of protecting species?",
+      "ms": {
+        "draft": 4483,
+        "critique": 6457,
+        "solver": 1215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the Wild Life (Protection) Act, 1972 according to the passage?",
+      "ms": {
+        "draft": 4483,
+        "critique": 5792,
+        "solver": 1504,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Threatened species are those which :",
+      "ms": {
+        "draft": 2138,
+        "critique": 6626,
+        "solver": 1049,
+        "form": 2795
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of biodiversity mentioned in the passage?",
+      "ms": {
+        "draft": 4483,
+        "critique": 7473,
+        "solver": 11822,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a step suggested for biodiversity conservation?",
+      "ms": {
+        "draft": 2138,
+        "critique": 5622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct step for biodiversity conservation as mentioned in the passage?",
+      "ms": {
+        "draft": 2962,
+        "critique": 4220,
+        "solver": 897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for conserving biodiversity?",
+      "ms": {
+        "draft": 2962,
+        "critique": 4398,
+        "solver": 1529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is not supported by the passage?",
+      "ms": {
+        "draft": 2962,
+        "critique": 6115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage and Figure 14.3, what is the significance of Humbodtia decurrens Bedd?",
+      "ms": {
+        "draft": 2962,
+        "critique": 6183,
+        "solver": 1444,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following countries was the ‘Earth Summit’ held according to the passage?",
+      "ms": {
+        "draft": 2962,
+        "critique": 5982,
+        "solver": 1170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of ecosystem diversity mentioned in the passage?",
+      "ms": {
+        "draft": 3111,
+        "critique": 5571,
+        "solver": 1205,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary reason for the loss of biodiversity according to the passage?",
+      "ms": {
+        "draft": 3111,
+        "critique": 5589,
+        "solver": 1489,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a reason for the extinction of species according to the passage?",
+      "ms": {
+        "draft": 3111,
+        "critique": 5558,
+        "solver": 1169
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main ethical responsibility of humans towards biodiversity according to the passage?",
+      "ms": {
+        "draft": 3111,
+        "critique": 4319,
+        "solver": 1234,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is an example of a biodiversity hotspot?",
+      "ms": {
+        "draft": 3111,
+        "critique": 5844,
+        "solver": 1621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of biodiversity in the development of human culture according to the passage?",
+      "ms": {
+        "draft": 3111,
+        "critique": 5472,
+        "solver": 1220
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the basic building block of various life forms?",
+      "ms": {
+        "draft": 2437,
+        "critique": 5094
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a level of biodiversity?",
+      "ms": {
+        "draft": 2437,
+        "critique": 5056,
+        "solver": 11606
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a reason for the stability of an ecosystem?",
+      "ms": {
+        "draft": 2437,
+        "critique": 6419,
+        "solver": 11845,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Conservation of biodiversity is important for :",
+      "ms": {
+        "draft": 2138,
+        "critique": 6299,
+        "solver": 1218,
+        "form": 2691,
+        "translation": 28231
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "National parks and sanctuaries are established for the purpose of :",
+      "ms": {
+        "draft": 2138,
+        "critique": 6052,
+        "solver": 1713,
+        "form": 1698,
+        "translation": 35964
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Biodiversity is richer in :",
+      "ms": {
+        "draft": 2138,
+        "critique": 6275,
+        "solver": 800,
+        "form": 1479,
+        "translation": 38082
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a species that is found only in a specific region and is at risk of extinction?",
+      "ms": {
+        "draft": 2962,
+        "critique": 5397,
+        "solver": 1458,
+        "form": 2402,
+        "translation": 33278
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is most likely to have a high level of biodiversity?",
+      "ms": {
+        "draft": 2437,
+        "critique": 6835,
+        "solver": 1494,
+        "form": 3154,
+        "translation": 32485
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a region has a high species diversity, which of the following is most likely to be true?",
+      "ms": {
+        "draft": 2437,
+        "critique": 4560,
+        "solver": 799,
+        "form": 1464,
+        "translation": 34079
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "In which one of the following countries, the ‘Earth Summit’ was held?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is NOT a reason for the decline in biodiversity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the significance of biodiversity in an ecosystem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does biodiversity refer to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best describes the relationship between genetic diversity and species survival?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the stability of ecosystems with high biodiversity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary cause of biodiversity loss according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between human activities and biodiversity?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the role of biodiversity according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Emphasizes ethical responsibility mentioned but not the prim…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the significance of biodiversity hotspots?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Ignores the vulnerability and species diversity mentioned in…\"); distractor 3's reason is not a one-line misconception (\"Assumes that conservation efforts are unnecessary in these a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the importance of protecting species?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Underestimates the interdependence of species mentioned in t…\"); distractor 2's reason is not a one-line misconception (\"Focuses on economic factors instead of the ecological balanc…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on collective responsib…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of the Wild Life (Protection) Act, 1972 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the main purpose of the act as promoting touri…\"); distractor 2's reason is not a one-line misconception (\"Confuses the main purpose with a specific regulation mention…\"); distractor 3's reason is not a one-line misconception (\"Focuses on a specific regulation instead of the main purpose…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Threatened species are those which :",
+      "reason": "the key is far longer than every distractor (43 vs 22 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of biodiversity mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a step suggested for biodiversity conservation?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct step for biodiversity conservation as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's message about endangered species…\"); distractor 3's reason is not a one-line misconception (\"Focuses on plant conservation only, which is not the main po…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for conserving biodiversity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following statements is not supported by the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage and Figure 14.3, what is the significance of Humbodtia decurrens Bedd?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's description of the tree as not b…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In which of the following countries was the ‘Earth Summit’ held according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of ecosystem diversity mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (52 vs 21 characters); option lengths are unalike (9 to 52 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary reason for the loss of biodiversity according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a reason for the extinction of species according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main ethical responsibility of humans towards biodiversity according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, which of the following is an example of a biodiversity hotspot?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the role of biodiversity in the development of human culture according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the basic building block of various life forms?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a level of biodiversity?",
+      "reason": "after redrafting distractors 0, 1, 2: option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a reason for the stability of an ecosystem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

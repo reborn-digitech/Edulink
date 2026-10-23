@@ -1,0 +1,838 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 3 — Dual Nature of Radiation",
+  "name": "Dual Nature of Radiation",
+  "slug": "physics-12-dual-nature-of-radiation",
+  "summary": "This chapter explains how light and matter exhibit both wave and particle properties, introducing key concepts like the photoelectric effect and wave-particle duality.",
+  "position": 3,
+  "source": "generated against NCERT Physics, Class 12, chapter 3 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "विकिरण की द्वैत प्रकृति ।",
+      "summary": "इस अध्याय में प्रकाश और पदार्थ के तरंग और कण दोनों गुणों के साथ व्यवहार के बारे में समझाया गया है, फोटोइलेक्ट्रिक प्रभाव और तरंग-कण द्वैत जैसी महत्वपूर्ण अवधारणाओं की चर्चा की गई है।"
+    },
+    "mr": {
+      "name": "किरणांची द्वैत प्रकृती .",
+      "summary": "ही अध्यायात जागतिक आणि पदार्थाच्या तरंग आणि कण दोन्ही गुणांच्या वर्तनाबद्दल समज दिली जाते, फोटोइलेक्ट्रिक प्रभाव आणि तरंग-कण द्वैत अशा महत्वाच्या अवधारणांचा अभ्यास केला जातो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Physics Part-II",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-21T12:34:52.479Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the unit of Planck's constant?",
+      "choices": [
+        "J s",
+        "N m",
+        "W s",
+        "A s"
+      ],
+      "answerIndex": 0,
+      "solution": "Planck's constant has the unit of joule-second (J s) because it relates energy to frequency in the equation E = hf, where energy is in joules and frequency is in hertz (1/s). Newton-meter is a unit of torque, watt-second is a unit of energy, and ampere-second is a unit of electric charge, none of which correspond to the physical meaning of Planck's constant.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्लैंक नियतांक की इकाई क्या है?",
+          "choices": [
+            "जे से",
+            "एन एम",
+            "डब्ल्यू से",
+            "ए एस"
+          ],
+          "solution": "प्लैंक नियतांक की इकाई जूल-सेकंड (जे से) होती है क्योंकि यह समीकरण E = hf में ऊर्जा और आवृत्ति के बीच संबंध बनाता है, जहां ऊर्जा जूल में होती है और आवृत्ति हर्ट्ज (1/से) में होती है। न्यूटन-मीटर टॉर्क की इकाई है, वॉट-सेकंड ऊर्जा की इकाई है और एम्पियर-सेकंड विद्युत आवेश की इकाई है, जो कि प्लैंक नियतांक के भौतिक अर्थ के साथ संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्लॅंकच्या खोट्याची एकक कोणती आहे?",
+          "choices": [
+            "जे एस",
+            "एन एम",
+            "डब्लू एस",
+            "ए एस"
+          ],
+          "solution": "प्लॅंकच्या खोट्याची एकक जूल-सेकंद (जे एस) आहे कारण ते ऊर्जा आणि आवृत्ती यांच्यातील संबंध असलेल्या समीकरण E = hf मध्ये ऊर्जा जूलमध्ये आहे आणि आवृत्ती हर्ट्जमध्ये (1/से) आहे. न्यूटन-मीटर हे टॉर्कचे एकक आहे, वॉट-सेकंद हे ऊर्जेचे एकक आहे आणि एम्पिअर-सेकंद हे विद्युत आवेशाचे एकक आहे, जे प्लॅंकच्या खोट्याच्या भौतिक अर्थाशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi science education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses with unit of torque",
+        "confuses with unit of energy",
+        "confuses with unit of electric charge"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is J s, as Planck's constant has units of energy × time. The other options represent units of torque, energy, and electric charge, which are common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 19,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 20,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 21,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the correct unit for measuring work function?",
+      "choices": [
+        "Joule",
+        "Newton",
+        "Electron volt",
+        "Watt"
+      ],
+      "answerIndex": 2,
+      "solution": "The work function is the minimum energy required for an electron to escape from a metal surface. It is commonly measured in electron volts (eV), as this is a convenient unit in atomic and nuclear physics. Joule is a standard unit of energy but not typically used for such small scales. Newton is a unit of force, and Watt is a unit of power.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा मापन के लिए कार्य-फलन की सही इकाई है?",
+          "choices": [
+            "जूल",
+            "न्यूटन",
+            "इलेक्ट्रॉन वोल्ट",
+            "वॉट"
+          ],
+          "solution": "कार्य-फलन एक धातु के सतह से इलेक्ट्रॉन के बाहर निकलने के लिए आवश्यक न्यूनतम ऊर्जा होती है। इसकी माप इलेक्ट्रॉन वोल्ट (ईवी) में की जाती है, क्योंकि यह परमाणु एवं परमाणु भौतिकी में एक उपयोगी इकाई है। जूल ऊर्जा की मानक इकाई है लेकिन इसका उपयोग ऐसे छोटे स्केल पर आमतौर पर नहीं किया जाता है। न्यूटन बल की इकाई है और वॉट शक्ति की इकाई है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक कार्य क्षमता मोजण्याचे योग्य एकक आहे?",
+          "choices": [
+            "जूल",
+            "न्यूटन",
+            "इलेक्ट्रॉन व्हॉल्ट",
+            "वॉट"
+          ],
+          "solution": "कार्य क्षमता ही धातूच्या पृष्ठभागावरून इलेक्ट्रॉन बाहेर पडण्यासाठी आवश्यक कमाल ऊर्जा आहे. ती इलेक्ट्रॉन व्हॉल्ट (eV) मध्ये सामान्यतः मोजली जाते, कारण हे परमाणू आणि न्यूक्लियस भौतिकीमध्ये सुविधाजनक एकक आहे. जूल हे ऊर्जेचे मानक एकक आहे परंतु अशा लहान अस्तित्वासाठी वापरले जात नाही. न्यूटन हे बलाचे एकक आहे, आणि वॉट हे शक्तीचे एकक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses work function with energy, thinking it is measured in SI unit Joule instead of electron volt",
+        "Confuses work function with force, thinking it is measured in units of force rather than energy",
+        null,
+        "Confuses power with energy or work"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is electron volt (option 2), and the author's reasoning for the other options aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "MATTER"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "MATTER"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.2"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.3"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the significance of the threshold frequency in the photoelectric effect?",
+      "choices": [
+        "It is the frequency at which the photoelectric current becomes maximum",
+        "It is the minimum frequency required to eject electrons from the metal",
+        "It is the frequency at which the stopping potential is zero",
+        "It is the frequency at which the work function is maximum"
+      ],
+      "answerIndex": 1,
+      "solution": "The threshold frequency is the minimum frequency required to eject electrons from a metal because only photons with sufficient energy, corresponding to this frequency, can overcome the binding energy of the electrons. The other options are incorrect because the photoelectric current does not become maximum at this frequency, the stopping potential is not zero at this point, and the work function is a property of the material, not dependent on frequency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "फोटोइलेक्ट्रिक प्रभाव में अनुक्रम आवृत्ति का क्या महत्व है?",
+          "choices": [
+            "यह वह आवृत्ति है जिस पर फोटोइलेक्ट्रिक धारा अधिकतम हो जाती है",
+            "यह धातु से इलेक्ट्रॉन निकालने के लिए आवश्यक न्यूनतम आवृत्ति है",
+            "यह वह आवृत्ति है जिस पर अवरोधन विभव शून्य हो जाता है",
+            "यह वह आवृत्ति है जिस पर कार्य फलन अधिकतम हो जाता है"
+          ],
+          "solution": "अनुक्रम आवृत्ति धातु से इलेक्ट्रॉन निकालने के लिए आवश्यक न्यूनतम आवृत्ति है क्योंकि केवल उन फोटॉनों की ऊर्जा, जो इस आवृत्ति के साथ मेल खाती है, इलेक्ट्रॉनों के बंधन ऊर्जा को पार कर सकती है। अन्य विकल्प गलत हैं क्योंकि फोटोइलेक्ट्रिक धारा इस आवृत्ति पर अधिकतम नहीं होती, अवरोधन विभव इस बिंदु पर शून्य नहीं होता है, और कार्य फलन आवृत्ति पर निर्भर नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "फोटोइलेक्ट्रीक प्रभावातील थ्रेशोल्ड फ्रीक्वेंसीचा अर्थ काय आहे?",
+          "choices": [
+            "ही फोटोइलेक्ट्रीक प्रवाह अधिकतम होत असलेली फ्रीक्वेंसी आहे",
+            "ही धातूमधून इलेक्ट्रॉन बाहेर काढण्यासाठी आवश्यक असलेली न्यूनतम फ्रीक्वेंसी आहे",
+            "ही थांबवण्याच्या विद्युत विभवाची शून्य असलेली फ्रीक्वेंसी आहे",
+            "ही कार्य क्षमतेची अधिकतम असलेली फ्रीक्वेंसी आहे"
+          ],
+          "solution": "थ्रेशोल्ड फ्रीक्वेंसी ही धातूमधून इलेक्ट्रॉन बाहेर काढण्यासाठी आवश्यक असलेली न्यूनतम फ्रीक्वेंसी आहे कारण केवळ या फ्रीक्वेंसी ने अनुरूप ऊर्जा असलेले फोटॉनच इलेक्ट्रॉनच्या बाधन ऊर्जेला ओलांडू शकतात. इतर विकल्प अयोग्य आहेत कारण फोटोइलेक्ट्रीक प्रवाह ही फ्रीक्वेंसी वर अधिकतम होत नाही, थांबवण्याच्या विद्युत विभवाची शून्य नसते आणि कार्य क्षमता हा पदार्थाचा गुणधर्म आहे जो फ्रीक्वेंसीवर अवलंबून नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses threshold frequency with maximum current",
+        null,
+        "Misunderstands the relationship between frequency and emission",
+        "Incorrectly assumes work function varies with frequency"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as the threshold frequency is indeed the minimum frequency required to eject electrons from a metal. The other options represent common misconceptions about the photoelectric effect.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 19,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 20,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 21,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the frequency of incident light is above the threshold frequency, what happens to the photoelectric current if the intensity of the light is increased?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 0,
+      "solution": "When the frequency of incident light is above the threshold frequency, increasing the intensity increases the number of photons striking the surface, which results in more electrons being emitted. This leads to an increase in the photoelectric current. The other options are incorrect because the current does not decrease, stay the same, or vanish when intensity is increased under these conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि आपतित प्रकाश की आवृत्ति प्रतिबंध आवृत्ति से अधिक है, तो प्रकाश-विद्युत धारा क्या होती है यदि प्रकाश की तीव्रता बढ़ा दी जाती है?",
+          "choices": [
+            "यह बढ़ जाता है",
+            "यह घट जाता है",
+            "यह एक ही रहता है",
+            "यह शून्य हो जाता है"
+          ],
+          "solution": "जब आपतित प्रकाश की आवृत्ति प्रतिबंध आवृत्ति से अधिक होती है, तो तीव्रता बढ़ाने से सतह पर टकराने वाले फोटॉनों की संख्या बढ़ जाती है, जिसके परिणामस्वरूप अधिक इलेक्ट्रॉन उत्सर्जित होते हैं। इससे प्रकाश-विद्युत धारा में वृद्धि होती है। अन्य विकल्प गलत हैं क्योंकि इन स्थितियों में तीव्रता बढ़ाने पर धारा घटती नहीं, एक ही रहती है या शून्य हो जाती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms commonly found in Hindi-medium physics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर आपातन प्रकाशाची वारंवारता थ्रेशोल्ड वारंवारतेपेक्षा जास्त असेल, तर प्रकाशाच्या तीव्रता वाढवल्यास फोटोइलेक्ट्रिक विद्युतप्रवाह काय होतो?",
+          "choices": [
+            "तो वाढतो",
+            "तो घटतो",
+            "तो एकसारखा रहातो",
+            "तो शून्य होतो"
+          ],
+          "solution": "जर आपातन प्रकाशाची वारंवारता थ्रेशोल्ड वारंवारतेपेक्षा जास्त असेल, तर तीव्रता वाढवल्याने सतहवर पडणाऱ्या फोटॉनची संख्या वाढते, ज्यामुळे अधिक इलेक्ट्रॉन उत्सर्जित होतात. यामुळे फोटोइलेक्ट्रिक विद्युतप्रवाह वाढतो. इतर विकल्प अयोग्य आहेत कारण या परिस्थितीत विद्युतप्रवाह घटत नाही, एकसारखा रहात नाही किंवा शून्य होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of intensity on current",
+        "Misunderstands the role of threshold frequency",
+        "Incorrectly assumes intensity has no effect on current when frequency is above threshold"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the physical principles of the photoelectric effect. The correct answer is 0, as increasing intensity increases the number of photons and thus the photoelectric current when frequency is above the threshold.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 19,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 20,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 21,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What determines the maximum kinetic energy of the photoelectrons in the photoelectric effect?",
+      "choices": [
+        "The intensity of the incident light",
+        "The frequency of the incident light",
+        "The material of the emitter",
+        "Both the frequency and the material of the emitter"
+      ],
+      "answerIndex": 3,
+      "solution": "The maximum kinetic energy of the photoelectrons depends on the frequency of the incident light and the material of the emitter. The correct answer is 'Both the frequency and the material of the emitter'. The other options are incorrect because intensity does not determine the maximum kinetic energy, and the material alone is not sufficient to determine it.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "फोटोइलेक्ट्रिक प्रभाव में फोटोइलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा किसके द्वारा निर्धारित होती है?",
+          "choices": [
+            "आपतित प्रकाश की तीव्रता",
+            "आपतित प्रकाश की आवृत्ति",
+            "उत्सर्जक के पदार्थ",
+            "आवृत्ति और उत्सर्जक के पदार्थ दोनों"
+          ],
+          "solution": "फोटोइलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा आपतित प्रकाश की आवृत्ति और उत्सर्जक के पदार्थ पर निर्भर करती है। सही उत्तर 'आवृत्ति और उत्सर्जक के पदार्थ दोनों' है। अन्य विकल्प गलत हैं क्योंकि तीव्रता अधिकतम गतिज ऊर्जा को निर्धारित नहीं करती है, और पदार्थ के अकेले होने से इसका निर्धारण नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, maintains original meaning, and uses standard technical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "फोटोइलेक्ट्रिक प्रभावात फोटोइलेक्ट्रॉनच्या महामानाच्या गतिशक्तीला निश्चित करते काय?",
+          "choices": [
+            "आपतल्या प्रकाशाची तीव्रता",
+            "आपतल्या प्रकाशाची वारंवारता",
+            "उत्सर्जकाच्या सामग्री",
+            "वारंवारता आणि उत्सर्जकाच्या सामग्री दोन्ही"
+          ],
+          "solution": "फोटोइलेक्ट्रॉनच्या महामानाच्या गतिशक्तीवर आपतल्या प्रकाशाची वारंवारता आणि उत्सर्जकाच्या सामग्री दोन्ही अवलंबून असते. योग्य उत्तर 'वारंवारता आणि उत्सर्जकाच्या सामग्री दोन्ही' आहे. इतर निवडा अयोग्य आहेत कारण तीव्रता महामान गतिशक्तीला निश्चित करत नाही आणि सामग्रीच एकटी गतिशक्तीला निश्चित करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes that intensity is the determining factor",
+        "Incorrectly assumes that frequency alone is the determining factor",
+        "Misunderstands the role of the emitter material",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The maximum kinetic energy of photoelectrons depends on both the frequency of the incident light and the work function of the material, which is related to the emitter's properties. The author's reasoning aligns with the photoelectric equation, E_k = hf - φ.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 7,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.4"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 8,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.4"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 9,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes that the photoelectric current increases with the intensity of incident light. Which of the following best explains this observation?",
+      "choices": [
+        "The number of photons incident per second increases with intensity",
+        "The frequency of incident light increases with intensity",
+        "The maximum kinetic energy of photoelectrons increases with intensity",
+        "The stopping potential increases with intensity"
+      ],
+      "answerIndex": 0,
+      "solution": "The photoelectric current increases with intensity because more photons are incident per second, leading to more electrons being emitted. The frequency of light and the maximum kinetic energy of photoelectrons depend on the light's frequency, not its intensity. The stopping potential is also independent of intensity and depends on the energy of individual photons.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि प्रकाश विद्युत धारा आपतित प्रकाश की तीव्रता के साथ बढ़ती है। निम्नलिखित में से कौन सबसे अच्छा इस अवलोकन की व्याख्या करता है?",
+          "choices": [
+            "प्रति सेकंड आपतित फोटॉन की संख्या तीव्रता के साथ बढ़ती है",
+            "आपतित प्रकाश की आवृत्ति तीव्रता के साथ बढ़ती है",
+            "फोटोइलेक्ट्रॉन की अधिकतम गतिज ऊर्जा तीव्रता के साथ बढ़ती है",
+            "स्टॉपिंग वोल्टेज तीव्रता के साथ बढ़ता है"
+          ],
+          "solution": "प्रकाश विद्युत धारा तीव्रता के साथ बढ़ती है क्योंकि प्रति सेकंड अधिक फोटॉन आपतित होते हैं, जिसके कारण अधिक इलेक्ट्रॉन उत्सर्जित होते हैं। प्रकाश की आवृत्ति और फोटोइलेक्ट्रॉन की अधिकतम गतिज ऊर्जा प्रकाश की आवृत्ति पर निर्भर करती है, न कि इसकी तीव्रता पर। स्टॉपिंग वोल्टेज भी तीव्रता पर निर्भर नहीं करता और फोटॉन की ऊर्जा पर निर्भर करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने अवलोकन केले की प्रकाशविद्युत विद्युतप्रवाह प्रतिबिंबित प्रकाशाच्या तीव्रतेसह वाढतो. खालीलपैकी कोणते सर्वात चांगले या अवलोकनाचे विवरण देते?",
+          "choices": [
+            "प्रति सेकंद प्रतिबिंबित फोटॉनची संख्या तीव्रतेसह वाढते",
+            "प्रतिबिंबित प्रकाशाची वर्तुळवृत्ती तीव्रतेसह वाढते",
+            "प्रकाशविद्युत इलेक्ट्रॉनच्या अधिकतम गतिज ऊर्जेमध्ये तीव्रतेसह वाढ होते",
+            "स्टॉपिंग पोटेन्शियल तीव्रतेसह वाढते"
+          ],
+          "solution": "प्रकाशविद्युत विद्युतप्रवाह तीव्रतेसह वाढतो कारण प्रति सेकंद अधिक फोटॉन प्रतिबिंबित होतात, ज्यामुळे अधिक इलेक्ट्रॉन उत्सर्जित होतात. प्रकाशाच्या वर्तुळवृत्ती आणि प्रकाशविद्युत इलेक्ट्रॉनच्या अधिकतम गतिज ऊर्जेमध्ये तीव्रतेचा फारसा प्रभाव नसतो. स्टॉपिंग पोटेन्शियल देखील तीव्रतेवर अवलंबून नसते आणि विशिष्ट फोटॉनच्या ऊर्जेवर अवलंबून असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the effect of intensity on the number of photons with the effect on frequency",
+        "misunderstands the relationship between intensity and kinetic energy",
+        "confuses the effect of intensity on stopping potential with its effect on current"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the number of photons per second increases with intensity, leading to more photoelectrons and higher current. The other options reflect common misconceptions about the photoelectric effect.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 10,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.4"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 11,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.5"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 12,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.6"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an experiment, the stopping potential for a given metal is found to increase when the frequency of the incident light is increased. What does this indicate about the photoelectric effect?",
+      "choices": [
+        "The intensity of the light is increasing",
+        "The work function of the metal is increasing",
+        "The frequency of the incident light is above the threshold frequency",
+        "The photoelectric current is decreasing"
+      ],
+      "answerIndex": 2,
+      "solution": "The stopping potential increasing with frequency indicates that the incident light's frequency is above the threshold frequency, as higher frequencies provide more energy to eject electrons. The intensity of light affects current, not stopping potential. The work function is a property of the metal and does not change with frequency. A decreasing photoelectric current would not explain the increase in stopping potential.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रयोग में, दिए गए धातु के लिए अवरोधी विभव बढ़ जाता है जब आपतित प्रकाश की आवृत्ति बढ़ जाती है। फोटोइलेक्ट्रिक प्रभाव के बारे में यह क्या संकेत देता है?",
+          "choices": [
+            "प्रकाश की तीव्रता बढ़ रही है",
+            "धातु के कार्य-फलन बढ़ रहा है",
+            "आपतित प्रकाश की आवृत्ति ऊर्ध्व सीमा आवृत्ति से ऊपर है",
+            "फोटोइलेक्ट्रिक धारा घट रही है"
+          ],
+          "solution": "आवृत्ति के साथ अवरोधी विभव बढ़ना इंगित करता है कि आपतित प्रकाश की आवृत्ति ऊर्ध्व सीमा आवृत्ति से ऊपर है, क्योंकि उच्च आवृत्तियाँ इलेक्ट्रॉनों को उत्सर्जित करने में अधिक ऊर्जा प्रदान करती हैं। प्रकाश की तीव्रता धारा को प्रभावित करती है, लेकिन अवरोधी विभव को नहीं। कार्य-फलन धातु का गुण है और आवृत्ति के साथ नहीं बदलता। फोटोइलेक्ट्रिक धारा के घटने से अवरोधी विभव के बढ़ने की व्याख्या नहीं हो सकती।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रयोगात, दिलेल्या धातूसाठी अवरोधन विद्युत विभाग वाढतो जेव्हा अवलंबित प्रकाशाची विद्युत विभाग वाढतो. हे प्रकाश विद्युत प्रभावाबद्दल काय सूचित करते?",
+          "choices": [
+            "प्रकाशाची तीव्रता वाढत आहे",
+            "धातूचा कार्य क्षमता वाढत आहे",
+            "अवलंबित प्रकाशाची विद्युत विभाग पार्श्व विद्युत विभागापेक्षा जास्त आहे",
+            "प्रकाश विद्युत विद्युत प्रवाह कमी होत आहे"
+          ],
+          "solution": "विद्युत विभागाची वाढ विद्युत विभागाच्या वाढीसह दर्शवते की अवलंबित प्रकाशाची विद्युत विभाग पार्श्व विद्युत विभागापेक्षा जास्त आहे, कारण उच्च विद्युत विभाग इलेक्ट्रॉन बाहेर काढण्यासाठी अधिक ऊर्जा प्रदान करतो. प्रकाशाची तीव्रता विद्युत प्रवाहावर परिणाम करते, परंतु अवरोधन विद्युत विभागावर परिणाम करत नाही. कार्य क्षमता धातूच्या गुणधर्माची आहे आणि विद्युत विभागासह बदलत नाही. प्रकाश विद्युत विद्युत प्रवाह कमी होणे अवरोधन विद्युत विभागाच्या वाढीचे स्पष्टीकरण देणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses stopping potential with intensity",
+        "Misunderstands the role of work function",
+        null,
+        "Incorrectly assumes no relationship between frequency and stopping potential"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the stopping potential increases with frequency above the threshold, which is consistent with the photoelectric equation. The other options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 19,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 20,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 21,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "According to the de Broglie hypothesis, what determines the wavelength of a matter wave associated with a moving particle?",
+      "choices": [
+        "The charge of the particle",
+        "The mass and velocity of the particle",
+        "The frequency of the particle",
+        "The intensity of the particle"
+      ],
+      "answerIndex": 1,
+      "solution": "According to the de Broglie hypothesis, the wavelength of a matter wave is determined by the momentum of the particle, which is directly related to its mass and velocity. Charge, frequency, and intensity do not influence the wavelength in this context. The correct option reflects the fundamental relationship between a particle's momentum and its associated wavelength.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "डी ब्रॉग्ली परिकल्पना के अनुसार, गतिमान कण से संबंधित एक कण तरंग की तरंगदैर्घ्य किसके द्वारा निर्धारित होती है?",
+          "choices": [
+            "कण का आवेश",
+            "कण का द्रव्यमान एवं वेग",
+            "कण की आवृत्ति",
+            "कण की तीव्रता"
+          ],
+          "solution": "डी ब्रॉग्ली परिकल्पना के अनुसार, एक कण तरंग की तरंगदैर्घ्य कण के संवेग द्वारा निर्धारित होती है, जो इसके द्रव्यमान एवं वेग से सीधे संबंधित होता है। आवेश, आवृत्ति एवं तीव्रता इस संदर्भ में तरंगदैर्घ्य को प्रभावित नहीं करते। सही विकल्प कण के संवेग एवं इसके संबंधित तरंगदैर्घ्य के मूलभूत संबंध को प्रतिबिंबित करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "डी ब्रॉग्ली अभिप्रायानुसार, गतिमान कणाशी जोडलेल्या द्रव्य तरंगाच्या तरंगलांबीला काय निश्चित करते?",
+          "choices": [
+            "कणाचा आवेश",
+            "कणाचा द्रव्यमान आणि वेग",
+            "कणाची विद्युतीय विकल्प",
+            "कणाची तीव्रता"
+          ],
+          "solution": "डी ब्रॉग्ली अभिप्रायानुसार, द्रव्य तरंगाच्या तरंगलांबीला कणाच्या संवेगाचे निश्चित करते, जे कणाच्या द्रव्यमान आणि वेगाशी सीधा संबंधित आहे. आवेश, विद्युतीय विकल्प आणि तीव्रता हे या संदर्भात तरंगलांबीला प्रभावित करत नाहीत. योग्य पर्याय हा कणाच्या संवेग आणि त्याशी जोडलेल्या तरंगलांबीमधील मूलभूत संबंध दर्शवतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses charge with wavelength determination",
+        null,
+        "Misunderstands the de Broglie relation",
+        "Incorrectly assumes frequency affects wavelength"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the de Broglie wavelength depends on the momentum, which is mass times velocity. The author's reasoning is accurate and matches the standard physics explanation.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 19,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 20,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "LOUIS VICTOR DE BROGLIE (1892 – 1987)"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph203.pdf",
+          "ordinal": 21,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Dual Nature of Radiation",
+            "11.8",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T12:34:52.479Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

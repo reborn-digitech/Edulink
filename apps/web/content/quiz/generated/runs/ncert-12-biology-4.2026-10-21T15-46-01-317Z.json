@@ -1,0 +1,824 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T15:46:01.317Z",
+  "finishedAt": "2026-10-21T15:56:09.506Z",
+  "seconds": 608,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo104.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 4 — Principles of Inheritance and Variation",
+    "edition": "Reprint 2026-27",
+    "chunks": 32,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEB 2015 — question paper]\n52. Study the following pedigree. The transmission of the trait indicates:\na) X-linked inheritance.\nb) Autosomal dominance.\nc) Autosomal recessive type.\nd) Mitochondrial inheritance.",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n14. Assertion: When white eyed, yellow bodied Drosophila females were hybridized with 1\nred eyed, brown-bodied males; and F1 progeny was intercrossed, F2 ratio deviated\nfrom 9 : 3 : 3 : 1.\nReason: When two genes in a dihybrid are on the same chromosome, the\nproportion of parental gene combinations is much higher than the non-parental type.",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n6. C. Hardy-Weinberg principle says that phenotype frequencies in a population 1\nare stable and are constant from generation to generation.",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n29. and 30 are case based questions. Each question has subparts with internal choice in one\nsubpart.\n29 Study the Pedigree chart given below and answer the questions that follow: 4\n(a) On the basis of the inheritance pattern exhibited in this pedigree chart, what\nconclusion can you draw about the pattern of inheritance?\n(b) If the female is homozygous for the affected trait in this pedigree chart, then\nwhat percentage of her sons will be affected ?\n(c) Give the genotype of offsprings 1,2,3 and 4 in III generation.\nOR\n(c) In this type of inheritance pattern, out of male and female children which one\nhas less probability of receiving the trait from the parents. Give a reason."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 237722,
+      "in": 45,
+      "out": 41,
+      "rejects": 4,
+      "promptTokens": 49365,
+      "completionTokens": 13777
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 296501,
+      "in": 41,
+      "out": 35,
+      "rejects": 6,
+      "promptTokens": 23936,
+      "completionTokens": 8301
+    },
+    "solver": {
+      "calls": 219,
+      "ms": 94207,
+      "in": 35,
+      "out": 31,
+      "rejects": 4,
+      "promptTokens": 36515,
+      "completionTokens": 1993
+    },
+    "form": {
+      "calls": 18,
+      "ms": 107360,
+      "in": 31,
+      "out": 9,
+      "rejects": 22,
+      "promptTokens": 14110,
+      "completionTokens": 2813
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4037,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 401386,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 23668,
+      "completionTokens": 12334
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the process by which characters are passed on from parents to offspring called?",
+      "ms": {
+        "draft": 3972,
+        "critique": 6118,
+        "solver": 1458,
+        "form": 4122
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a character that Mendel studied in his pea plant experiments?",
+      "ms": {
+        "draft": 3972,
+        "critique": 7094,
+        "solver": 1849,
+        "form": 3276
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the significance of Mendel's use of statistical analysis in his experiments?",
+      "ms": {
+        "draft": 3972,
+        "critique": 5283,
+        "solver": 1344,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Mendel had observed a different ratio in his experiments, such as 1:1 instead of 3:1, what could this suggest about the inheritance pattern?",
+      "ms": {
+        "draft": 3972,
+        "critique": 7510,
+        "solver": 1677
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the F generation in Mendel's experiment with pea plants?",
+      "ms": {
+        "draft": 3983,
+        "critique": 5968,
+        "solver": 1259,
+        "form": 3213
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In Mendel's experiment, the genotype of a tall plant that is heterozygous for the height trait is represented as:",
+      "ms": {
+        "draft": 3983,
+        "critique": 5985,
+        "solver": 1633,
+        "form": 3453
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred from the passage about the inheritance of traits in the F generation?",
+      "ms": {
+        "draft": 3983,
+        "critique": 6146,
+        "solver": 1522,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the experiment described in the passage, why did the F generation show only the dominant trait?",
+      "ms": {
+        "draft": 3983,
+        "critique": 6635,
+        "solver": 1461,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a monohybrid cross, what does the law of dominance explain?",
+      "ms": {
+        "draft": 5241,
+        "critique": 6166
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tall plant from the F generation is crossed with a dwarf plant, what will be the phenotypic ratio of the offspring?",
+      "ms": {
+        "draft": 5241,
+        "critique": 6477,
+        "solver": 12473,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a test cross, a tall plant is crossed with a dwarf plant, and the offspring are half tall and half dwarf. What is the genotype of the tall plant?",
+      "ms": {
+        "draft": 5241,
+        "critique": 7791,
+        "solver": 12467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a cross between a red-flowered plant (RR) and a white-flowered plant (rr), the F generation is pink (Rr). If the F plants are self-pollinated, what will be the phenotypic ratio of the F generation?",
+      "ms": {
+        "draft": 5241,
+        "critique": 7230,
+        "solver": 1184,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the case of co-dominance, what is the relationship between the alleles I^A and I^B in human blood groups?",
+      "ms": {
+        "draft": 4589,
+        "critique": 5691,
+        "solver": 1878,
+        "form": 3160
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has blood group AB, what are the possible genotypes of their parents?",
+      "ms": {
+        "draft": 4589,
+        "critique": 6914,
+        "solver": 1372,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the case of incomplete dominance, what is the expected ratio of phenotypes in the F2 generation if the F1 generation is heterozygous for the trait?",
+      "ms": {
+        "draft": 4589,
+        "critique": 7186,
+        "solver": 1636
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of sex determination is observed in humans?",
+      "ms": {
+        "draft": 7051,
+        "critique": 7210
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two genes are on the same chromosome, what happens to the proportion of parental gene combinations in the offspring?",
+      "ms": {
+        "draft": 4608,
+        "critique": 6503,
+        "solver": 9742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a point mutation?",
+      "ms": {
+        "draft": 4114,
+        "critique": 6703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a dihybrid cross, if the two genes are linked, what would be the expected phenotypic ratio?",
+      "ms": {
+        "draft": 4114,
+        "critique": 6048,
+        "solver": 1170,
+        "form": 4223
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a family, a father has a recessive genetic disorder, and the mother is a carrier. What is the probability that their child will have the disorder?",
+      "ms": {
+        "draft": 4114,
+        "critique": 7652
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the set of chromosomes that are the same in both males and females?",
+      "ms": {
+        "draft": 4114,
+        "critique": 6427
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A pedigree chart shows that a trait is passed only from mother to children, but not from father to children. What is the most likely mode of inheritance?",
+      "ms": {
+        "draft": 4114,
+        "critique": 5132,
+        "solver": 929,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of an individual with Down's syndrome?",
+      "ms": {
+        "draft": 9247,
+        "critique": 6569,
+        "solver": 1401,
+        "form": 2244
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has Thalassemia, which of the following is most likely to be true about their hemoglobin?",
+      "ms": {
+        "draft": 9247,
+        "critique": 5770,
+        "solver": 1358
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of an autosomal recessive disorder?",
+      "ms": {
+        "draft": 9247,
+        "critique": 6780,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the inheritance of Thalassemia?",
+      "ms": {
+        "draft": 9247,
+        "critique": 7680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a woman with Thalassemia and a man without the condition have children, what is the most likely outcome for their offspring?",
+      "ms": {
+        "draft": 9247,
+        "critique": 8350,
+        "solver": 1213,
+        "form": 3817
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A woman who is a carrier for haemophilia and a man who is not affected have a daughter. What is the probability that the daughter will be a carrier?",
+      "ms": {
+        "draft": 7315,
+        "critique": 6688,
+        "solver": 1457,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a carrier female for colour blindness has a child with a normal male, what is the probability that their son will be colour blind?",
+      "ms": {
+        "draft": 7315,
+        "critique": 7128,
+        "solver": 1587,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A woman who is a carrier for sickle-cell anaemia and a man who is not a carrier have a child. What is the probability that the child will have sickle-cell anaemia?",
+      "ms": {
+        "draft": 7315,
+        "critique": 7306,
+        "solver": 1952,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which type of sex determination do males produce two different types of gametes?",
+      "ms": {
+        "draft": 5126,
+        "critique": 6373,
+        "solver": 1376
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the physical association of genes on a chromosome?",
+      "ms": {
+        "draft": 53676,
+        "critique": 6208,
+        "solver": 5694,
+        "form": 1109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the chromosomal theory of inheritance explain?",
+      "ms": {
+        "draft": 4608,
+        "critique": 6092,
+        "solver": 1662,
+        "form": 0,
+        "translation": 53565
+      },
+      "outcome": "kept",
+      "flag": "level 1 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 1,
+      "stem": "What did Morgan observe about the F ratio in his dihybrid crosses with Drosophila?",
+      "ms": {
+        "draft": 4850,
+        "critique": 5600,
+        "solver": 9685,
+        "form": 0,
+        "translation": 46293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a true-breeding line of pea plants is self-pollinated for several generations and still shows the same trait, what does this indicate?",
+      "ms": {
+        "draft": 3972,
+        "critique": 6419,
+        "solver": 13477,
+        "form": 3381,
+        "translation": 52793
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a female has blood group O and a male has blood group A, what is the possible genotype of the male?",
+      "ms": {
+        "draft": 4114,
+        "critique": 6504,
+        "solver": 10380,
+        "form": 0,
+        "translation": 28666
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a monohybrid cross between a red-flowered plant (RR) and a white-flowered plant (rr), the F generation is pink (Rr). What does this illustrate?",
+      "ms": {
+        "draft": 5241,
+        "critique": 4884,
+        "solver": 2285,
+        "form": 0,
+        "translation": 54504
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant with yellow seeds is crossed with a plant with green seeds and all the offspring have yellow seeds, what can be concluded about the trait?",
+      "ms": {
+        "draft": 3972,
+        "critique": 5232,
+        "solver": 1659,
+        "form": 3631,
+        "translation": 47610
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A cross between a tall plant and a dwarf plant produces all tall offspring. If the F generation is self-pollinated, what would be the expected phenotypic ratio in the F generation?",
+      "ms": {
+        "draft": 3983,
+        "critique": 6085,
+        "solver": 1421,
+        "form": 4459,
+        "translation": 47940
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a cross between two heterozygous tall plants (Tt), what is the probability of obtaining a homozygous tall plant in the F generation?",
+      "ms": {
+        "draft": 3983,
+        "critique": 6624,
+        "solver": 1461,
+        "form": 0,
+        "translation": 29788
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a cross between a white-eyed, yellow-bodied Drosophila female and a red-eyed, brown-bodied male, the F2 generation shows a deviation from the 9:3:3:1 ratio. What could be the reason for this deviation?",
+      "ms": {
+        "draft": 5126,
+        "critique": 6366,
+        "solver": 1174,
+        "form": 3595,
+        "translation": 35981
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If a plant with genotype Rr (pink flowers) is crossed with a plant with genotype rr (white flowers), what will be the phenotypic ratio of the offspring?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the role of the allele i in the ABO blood group system?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a dihybrid cross between two heterozygous parents (RrYy x RrYy), what is the expected phenotypic ratio in the F2 generation?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the process by which characters are passed on from parents to offspring called?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"uses a term not directly defined in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a character that Mendel studied in his pea plant experiments?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"invents a trait not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the significance of Mendel's use of statistical analysis in his experiments?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Mendel had observed a different ratio in his experiments, such as 1:1 instead of 3:1, what could this suggest about the inheritance pattern?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the F generation in Mendel's experiment with pea plants?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not here, but this is the only one that ma…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In Mendel's experiment, the genotype of a tall plant that is heterozygous for the height trait is represented as:",
+      "reason": "options 0 and 1 are the same (\"TT\"); options 0 and 2 are the same (\"TT\"); options 1 and 2 are the same (\"tt\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What can be inferred from the passage about the inheritance of traits in the F generation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The recessive trait is always expressed in the F generation.\" / \"The dominant trait is always expressed in the F generation.\"); distractor 3's reason is not a one-line misconception (\"Thinks that traits blend in the F generation, which the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the experiment described in the passage, why did the F generation show only the dominant trait?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In a monohybrid cross, what does the law of dominance explain?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a tall plant from the F generation is crossed with a dwarf plant, what will be the phenotypic ratio of the offspring?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a test cross, a tall plant is crossed with a dwarf plant, and the offspring are half tall and half dwarf. What is the genotype of the tall plant?",
+      "reason": "options 0 and 1 are the same (\"TT\"); options 0 and 2 are the same (\"TT\"); options 1 and 2 are the same (\"Tt\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a cross between a red-flowered plant (RR) and a white-flowered plant (rr), the F generation is pink (Rr). If the F plants are self-pollinated, what will be the phenotypic ratio of the F generation?",
+      "reason": "options 0 and 3 say the same thing (\"1:2:1\" / \"2:1:1\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the case of co-dominance, what is the relationship between the alleles I^A and I^B in human blood groups?",
+      "reason": "options 0 and 1 say the same thing (\"I^A is dominant over I^B\" / \"I^B is dominant over I^A\"); the key is far longer than every distractor (52 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has blood group AB, what are the possible genotypes of their parents?",
+      "reason": "options 0 and 1 say the same thing (\"I^A I^A and I^B I^B\" / \"I^A i and I^B i\"); options 0 and 2 say the same thing (\"I^A I^A and I^B I^B\" / \"I^A I^A and I^B i\"); options 0 and 3 say the same thing (\"I^A I^A and I^B I^B\" / \"I^A i and I^B I^B\"); options 1 and 2 say the same thing (\"I^A i and I^B i\" / \"I^A I^A and I^B i\"); options 1 and 3 say the same thing (\"I^A i and I^B i\" / \"I^A i and I^B I^B\"); options 2 and 3 say the same thing (\"I^A I^A and I^B i\" / \"I^A i and I^B I^B\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the case of incomplete dominance, what is the expected ratio of phenotypes in the F2 generation if the F1 generation is heterozygous for the trait?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of sex determination is observed in humans?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two genes are on the same chromosome, what happens to the proportion of parental gene combinations in the offspring?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This is incorrect because the proportion of parental combina…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a sex-linked recessive disorder?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a point mutation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a dihybrid cross, if the two genes are linked, what would be the expected phenotypic ratio?",
+      "reason": "the key is far longer than every distractor (35 vs 7 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a family, a father has a recessive genetic disorder, and the mother is a carrier. What is the probability that their child will have the disorder?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term for the set of chromosomes that are the same in both males and females?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A pedigree chart shows that a trait is passed only from mother to children, but not from father to children. What is the most likely mode of inheritance?",
+      "reason": "figure: figure spec refused: spec.arrows.1.to.1: Number must be less than or equal to 62.5"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of an individual with Down's syndrome?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"describes Klinefelter's syndrome, not Down's syndrome, which…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person has Thalassemia, which of the following is most likely to be true about their hemoglobin?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of an autosomal recessive disorder?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"confuses chromosomal disorders with autosomal recessive diso…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the inheritance of Thalassemia?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a woman with Thalassemia and a man without the condition have children, what is the most likely outcome for their offspring?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"confuses X-linked inheritance with autosomal recessive inher…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A woman who is a carrier for haemophilia and a man who is not affected have a daughter. What is the probability that the daughter will be a carrier?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.positive: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a carrier female for colour blindness has a child with a normal male, what is the probability that their son will be colour blind?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'arrows'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A woman who is a carrier for sickle-cell anaemia and a man who is not a carrier have a child. What is the probability that the child will have sickle-cell anaemia?",
+      "reason": "figure: figure spec refused: spec.segments.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In which type of sex determination do males produce two different types of gametes?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the physical association of genes on a chromosome?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

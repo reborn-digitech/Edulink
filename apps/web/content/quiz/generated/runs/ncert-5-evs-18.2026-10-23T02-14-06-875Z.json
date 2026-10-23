@@ -1,0 +1,319 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T02:14:06.875Z",
+  "finishedAt": "2026-10-23T02:18:50.180Z",
+  "seconds": 283,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap118.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 18 — No Place for Us?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 46949,
+      "in": 12,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 11621,
+      "completionTokens": 2430
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 114502,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7517,
+      "completionTokens": 3136
+    },
+    "solver": {
+      "calls": 107,
+      "ms": 73928,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 23825,
+      "completionTokens": 1345
+    },
+    "form": {
+      "calls": 6,
+      "ms": 12045,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 1373,
+      "completionTokens": 338
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3046,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 118008,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6440,
+      "completionTokens": 3248
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, what did Jatrya's family have to pay money for in Sinduri?",
+      "ms": {
+        "draft": 4488,
+        "critique": 6236,
+        "solver": 2467
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was one problem Jatrya faced in Sinduri that is not mentioned in the passage?",
+      "ms": {
+        "draft": 4488,
+        "critique": 7246,
+        "solver": 18834
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Jatrya and his family move to Mumbai?",
+      "ms": {
+        "draft": 4488,
+        "critique": 5496,
+        "solver": 18985,
+        "form": 3008
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason why people from Khedi were not welcomed in Sinduri?",
+      "ms": {
+        "draft": 4488,
+        "critique": 9927,
+        "solver": 12058
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main problem faced by Jatrya in Sinduri village?",
+      "ms": {
+        "draft": 3451,
+        "critique": 5887,
+        "solver": 3112
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason for Jatrya's family moving to Mumbai?",
+      "ms": {
+        "draft": 3451,
+        "critique": 8441,
+        "solver": 1527
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Jatrya feel that Sinduri was not like his dream village?",
+      "ms": {
+        "draft": 3451,
+        "critique": 5887,
+        "solver": 17460
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where did Jatrya's family live before coming to Mumbai?",
+      "ms": {
+        "draft": 3799,
+        "critique": 7270,
+        "solver": 1526,
+        "form": 2625
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Jatrya feel alone in the city?",
+      "ms": {
+        "draft": 3799,
+        "critique": 6425,
+        "solver": 1512,
+        "form": 1921
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What kind of work did Sidya do in the city?",
+      "ms": {
+        "draft": 3799,
+        "critique": 6654,
+        "solver": 1680,
+        "form": 1823,
+        "translation": 39194
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a dam is built in a village?",
+      "ms": {
+        "draft": 3451,
+        "critique": 5198,
+        "solver": 17056,
+        "form": 3058,
+        "translation": 35547
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the people of Khedi not want to move from their village?",
+      "ms": {
+        "draft": 3799,
+        "critique": 5628,
+        "solver": 7143,
+        "form": 952,
+        "translation": 38569
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What was Jatrya's family doing in Mumbai?\",\n      \"options\": "
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what did Jatrya's family have to pay money for in Sinduri?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What was one problem Jatrya faced in Sinduri that is not mentioned in the passage?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Jatrya and his family move to Mumbai?",
+      "reason": "options 2 and 3 are the same (\"To get free electricity and water from the new village\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason why people from Khedi were not welcomed in Sinduri?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What was the main problem faced by Jatrya in Sinduri village?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What was the main reason for Jatrya's family moving to Mumbai?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Jatrya feel that Sinduri was not like his dream village?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Where did Jatrya's family live before coming to Mumbai?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"confuses the village name with another mentioned in the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Jatrya feel alone in the city?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"refers to something not mentioned in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

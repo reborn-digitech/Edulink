@@ -1,0 +1,721 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-21T18:33:48.385Z",
+  "finishedAt": "2026-10-21T18:42:57.344Z",
+  "seconds": 549,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy107.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 7 — Transport and Communication",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2025-26]\n16. 1\nColumn A (Mode of Column B (Description)\nTransport)\na. Airways 1. Suitable for heavy goods over land\nbut limited to connected regions.\nb. Roadways 2. Capable of carrying large volumes\nof heavy goods at a lower cost.\nc. Railways 3. Flexible setup and rapid delivery for\nhigh-value, low-volume goods.\nd. Waterways 4. Widely accessible and easy to use\nfor short-distance trade and delivery.\nA. a-3, b-4, c-1, d-2\nB. a-2, b-3, c-4, d-1\nC. a-1, b-2, c-3, d-4\nD. a-4, b-1, c-2, d-3\nUDAN (Ude Desh ka Aam Nagrik) is a first-of-its kind scheme globally,",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n10. Consider the following statements and choose the correct answer 1\nwith the help of given options.\nStatement I: In recent years- ropeways, cableways and pipelines were\ndeveloped as a means of transport.\nStatement II: They were developed to cater to the demands of transporting\nspecific goods under special circumstances.\nA. Only statement I is correct\nB. Only statement II is correct\nC. Both the statements are correct, and statement II correctly explains\nstatement I\nD. Both the statements are true but not related with each other",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n25. A. Assess the factors that contributed to the development of large-scale industries 5\nall over the world.\nOR\nB. Access to transportation and communication facilities are essential for the\ndevelopment of industries.’ Justify the statement with suitable example.",
+      "[CBSE Class XII Geography, sample question paper, 2025-26]\n5. activity? 1\nA. Transporting coal from mines to factories via railways\nB. A lawyer drafting contracts for corporate clients\nC. A salesperson working at a local supermarket\nD. A scientist developing genetically modified crops in a research\nlab\nMatch the following policies with the pillar of human development they"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 125246,
+      "in": 38,
+      "out": 37,
+      "rejects": 1,
+      "promptTokens": 41860,
+      "completionTokens": 7943
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 276159,
+      "in": 37,
+      "out": 32,
+      "rejects": 5,
+      "promptTokens": 20903,
+      "completionTokens": 8325
+    },
+    "solver": {
+      "calls": 238,
+      "ms": 103727,
+      "in": 32,
+      "out": 28,
+      "rejects": 4,
+      "promptTokens": 45080,
+      "completionTokens": 2574
+    },
+    "form": {
+      "calls": 17,
+      "ms": 45989,
+      "in": 28,
+      "out": 13,
+      "rejects": 15,
+      "promptTokens": 6144,
+      "completionTokens": 1492
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 703,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 531580,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 31994,
+      "completionTokens": 17459
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a mode of transport that is best suited for transporting high-value, light, and perishable goods?",
+      "ms": {
+        "draft": 3115,
+        "critique": 4407,
+        "solver": 11177,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region is located in a hilly area with steep slopes, which mode of transport would be most suitable for transporting goods?",
+      "ms": {
+        "draft": 3115,
+        "critique": 6872,
+        "solver": 10639
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about railway networks in different regions?",
+      "ms": {
+        "draft": 3217,
+        "critique": 5883,
+        "solver": 1479,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a key feature of the Trans-Canadian Highway?",
+      "ms": {
+        "draft": 3217,
+        "critique": 5319,
+        "solver": 933,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor that determines the development of a railway network in a country?",
+      "ms": {
+        "draft": 3469,
+        "critique": 7312
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the main purpose of trans-continental railways?",
+      "ms": {
+        "draft": 3469,
+        "critique": 7990
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why highways in Russia are not as important as railways?",
+      "ms": {
+        "draft": 3217,
+        "critique": 5517,
+        "solver": 13815
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be a reason for the limited development of railway networks in some countries?",
+      "ms": {
+        "draft": 3469,
+        "critique": 6308
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason why the Suez Canal is important for trade between Europe and Asia?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4868,
+        "solver": 1273,
+        "form": 3309
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a factor that affects the development of inland waterways?",
+      "ms": {
+        "draft": 3517,
+        "critique": 4891,
+        "solver": 1265,
+        "form": 3351
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a new canal is constructed in Nicaragua, how might it affect the traffic in the Panama Canal?",
+      "ms": {
+        "draft": 3517,
+        "critique": 5354,
+        "solver": 1516,
+        "form": 2289
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the world’s most heavily used waterway according to the passage?",
+      "ms": {
+        "draft": 4772,
+        "critique": 3814,
+        "solver": 824
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which country has the highest density of railway network?",
+      "ms": {
+        "draft": 3467,
+        "critique": 4001
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a mode of transport mentioned in the passage?",
+      "ms": {
+        "draft": 2538,
+        "critique": 5589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a modern communication system mentioned in the passage?",
+      "ms": {
+        "draft": 2538,
+        "critique": 6075,
+        "solver": 10466,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which country has the highest density of railway network?",
+      "ms": {
+        "draft": 2538,
+        "critique": 6219,
+        "solver": 13690
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason given in the passage for the development of ropeways, cableways, and pipelines as means of transport?",
+      "ms": {
+        "draft": 2538,
+        "critique": 7235,
+        "solver": 13303,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the role of the Internet as mentioned in the passage?",
+      "ms": {
+        "draft": 2538,
+        "critique": 5780,
+        "solver": 15159,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements is true about satellite communication?",
+      "ms": {
+        "draft": 2538,
+        "critique": 5298,
+        "solver": 14244,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the Rhine Waterway?",
+      "ms": {
+        "draft": 12799,
+        "critique": 5454,
+        "solver": 1081,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country wants to transport large volumes of heavy goods at a lower cost, which mode of transport would be most suitable?",
+      "ms": {
+        "draft": 12799,
+        "critique": 6170,
+        "solver": 1256,
+        "form": 3200
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason why air transport is preferred for long-distance travel?",
+      "ms": {
+        "draft": 12799,
+        "critique": 5798,
+        "solver": 1241,
+        "form": 3099
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following canals reduces the distance between Liverpool and Colombo compared to the Cape of Good Hope route?",
+      "ms": {
+        "draft": 4159,
+        "critique": 6050,
+        "solver": 1210,
+        "form": 3522
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a major source of transport where rivers are wide, deep, and free of silt?",
+      "ms": {
+        "draft": 4159,
+        "critique": 5210,
+        "solver": 892,
+        "form": 2163
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a major sea route that connects the highly industrialised Western European region with West Africa, South Africa, South-east Asia, and Australia and New Zealand?",
+      "ms": {
+        "draft": 4159,
+        "critique": 5467,
+        "solver": 1516,
+        "form": 3056
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the longest trans-continental railway in the world?",
+      "ms": {
+        "draft": 48047,
+        "critique": 5005,
+        "solver": 752,
+        "form": 1484,
+        "translation": 30465
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a major sea route that connects the highly industrialised Western European region with West Africa, South Africa, South-east Asia, and Australia and New Zealand?",
+      "ms": {
+        "draft": 3517,
+        "critique": 5382,
+        "solver": 1179,
+        "form": 4342,
+        "translation": 47630
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of road transport?",
+      "ms": {
+        "draft": 3115,
+        "critique": 5184,
+        "solver": 1519,
+        "form": 0,
+        "translation": 48203
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a waterway used for transporting goods?",
+      "ms": {
+        "draft": 12799,
+        "critique": 8110,
+        "solver": 9960,
+        "form": 2807,
+        "translation": 32328
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for traffic congestion in cities?",
+      "ms": {
+        "draft": 3217,
+        "critique": 5508,
+        "solver": 1156,
+        "form": 2431,
+        "translation": 39864
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is most likely to be affected by the development of highways?",
+      "ms": {
+        "draft": 3217,
+        "critique": 5764,
+        "solver": 1189,
+        "form": 2424,
+        "translation": 45579
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information given, which of the following statements about transport is correct?",
+      "ms": {
+        "draft": 3115,
+        "critique": 4427,
+        "solver": 1799,
+        "form": 1,
+        "translation": 56499
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the use of pipelines is becoming more common in modern transport systems?",
+      "ms": {
+        "draft": 3115,
+        "critique": 6072,
+        "solver": 1232,
+        "form": 0,
+        "translation": 46115
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a country wants to improve connectivity between remote border areas and major cities, which of the following would be the most suitable transport mode?",
+      "ms": {
+        "draft": 3217,
+        "critique": 6200,
+        "solver": 1120,
+        "form": 2488,
+        "translation": 38450
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A new railway line is proposed to connect a mineral-rich region in the north with a port city in the south. Which of the following best explains the likely reason for this development?",
+      "ms": {
+        "draft": 3469,
+        "critique": 5870,
+        "solver": 13015,
+        "form": 2465,
+        "translation": 44793
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the context of modern transport, which of the following statements best explains the role of transport in promoting trade and economic development?",
+      "ms": {
+        "draft": 3115,
+        "critique": 5511,
+        "solver": 1230,
+        "form": 0,
+        "translation": 55279
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Trans-Siberian Railway considered one of the most important rail routes in Asia?",
+      "ms": {
+        "draft": 3469,
+        "critique": 6664,
+        "solver": 10483,
+        "form": 3293,
+        "translation": 42892
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a mode of transport that is best suited for transporting high-value, light, and perishable goods?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a region is located in a hilly area with steep slopes, which mode of transport would be most suitable for transporting goods?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about railway networks in different regions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a key feature of the Trans-Canadian Highway?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor that determines the development of a railway network in a country?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following best describes the main purpose of trans-continental railways?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best explains why highways in Russia are not as important as railways?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is most likely to be a reason for the limited development of railway networks in some countries?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a reason why the Suez Canal is important for trade between Europe and Asia?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that the Suez Canal does not use locks, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a factor that affects the development of inland waterways?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage, which mentions the depth of the c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a new canal is constructed in Nicaragua, how might it affect the traffic in the Panama Canal?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes that the new canal would increase traffic in the Pan…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that the Panama Canal would become obsol…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that the new canal would have no impact,…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the world’s most heavily used waterway according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which country has the highest density of railway network?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a mode of transport that is used to move people and goods across large distances quickly?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a mode of transport mentioned in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a modern communication system mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "According to the passage, which country has the highest density of railway network?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason given in the passage for the development of ropeways, cableways, and pipelines as means of transport?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Student confuses the main idea of the passage about communic…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the role of the Internet as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes the Internet is primarily used for weather forecast…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements is true about satellite communication?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the Rhine Waterway?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes the passage says only coal is transported on the Rh…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country wants to transport large volumes of heavy goods at a lower cost, which mode of transport would be most suitable?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no misconception here, but the option is not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a reason why air transport is preferred for long-distance travel?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the passage's emphasis on speed with other factors…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following canals reduces the distance between Liverpool and Colombo compared to the Cape of Good Hope route?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misidentifies a canal that is not mentioned in the passage a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a major source of transport where rivers are wide, deep, and free of silt?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a major sea route that connects the highly industrialised Western European region with West Africa, South Africa, South-east Asia, and Australia and New Zealand?",
+      "reason": "near-duplicate of batch item \"Which of the following is a major sea route that c…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

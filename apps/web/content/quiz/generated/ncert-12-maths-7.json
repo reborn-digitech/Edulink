@@ -1,0 +1,884 @@
+{
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 7 — Probability",
+  "name": "Probability",
+  "slug": "maths-12-probability",
+  "summary": "This chapter introduces the concept of probability, including conditional probability, Bayes' theorem, and probability distributions.",
+  "position": 7,
+  "source": "generated against NCERT Mathematics, Class 12, chapter 7 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 7 - संभाव्यता।",
+      "summary": "इस अध्याय में संभाव्यता की अवधारणा, शर्ती संभाव्यता, बेयस प्रमेय और संभाव्यता वितरण शामिल हैं।"
+    },
+    "mr": {
+      "name": "अध्याय 7 - संभाव्यता.",
+      "summary": "हा अध्याय संभाव्यता, शर्ती संभाव्यता, बेयसचा सिद्धांत आणि संभाव्यता वितरण यांच्या संकल्पना समाविष्ट करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics Part-II",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-21T11:51:02.708Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the condition for a set of events to form a partition of a sample space?",
+      "choices": [
+        "They must be mutually exclusive and exhaustive",
+        "They must be independent and exhaustive",
+        "They must be mutually exclusive and dependent",
+        "They must be independent and dependent"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that the events must be mutually exclusive and exhaustive. A partition of a sample space requires that the events are pairwise disjoint (mutually exclusive) and their union covers the entire sample space (exhaustive). The other options are incorrect because independence is not a requirement for a partition, and dependent events do not form a partition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी घटना के समुच्चय के एक प्रतिदर्श अंतराल के विभाजन बनाने की शर्त क्या है?",
+          "choices": [
+            "वे आपस में अपवर्जी होने चाहिए और उदाहरण होने चाहिए",
+            "वे स्वतंत्र और उदाहरण होने चाहिए",
+            "वे आपस में अपवर्जी और आश्रित होने चाहिए",
+            "वे स्वतंत्र और आश्रित होने चाहिए"
+          ],
+          "solution": "सही उत्तर यह है कि घटनाएं आपस में अपवर्जी और उदाहरण होनी चाहिए। एक प्रतिदर्श अंतराल के विभाजन के लिए आवश्यक है कि घटनाएं जोड़े जाएं (आपस में अपवर्जी) और उनका संयोजन पूरे प्रतिदर्श अंतराल को कवर करे (उदाहरण)। अन्य विकल्प गलत हैं क्योंकि विभाजन के लिए स्वतंत्रता आवश्यक नहीं है, और आश्रित घटनाएं विभाजन नहीं बनाती हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नमुना अवकाशाच्या विभागाचे रचना करण्यासाठी घटनांचा समूह कोणत्या अटींचा पालन करावा लागतो?",
+          "choices": [
+            "त्यांनी परस्पर-अपवर्जक आणि अंतर्गत असावे",
+            "त्यांनी स्वतंत्र आणि अंतर्गत असावे",
+            "त्यांनी परस्पर-अपवर्जक आणि आश्रित असावे",
+            "त्यांनी स्वतंत्र आणि आश्रित असावे"
+          ],
+          "solution": "योग्य उत्तर असे आहे की घटनांनी परस्पर-अपवर्जक आणि अंतर्गत असाव्यात. नमुना अवकाशाच्या विभागासाठी आवश्यक असते की घटना जोड्याने विस्थापित (परस्पर-अपवर्जक) असतील आणि त्यांचा संयोजन पूर्ण नमुना अवकाशाचा अंतर्गत असतो. इतर विकल्प अयोग्य आहेत कारण विभागासाठी स्वतंत्रता आवश्यक नाही आणि आश्रित घटना विभाग तयार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks. The meaning, options, and solution all align correctly with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses mutual exclusivity with independence",
+        "Confuses independence with exhaustiveness",
+        "Confuses mutual exclusivity with dependency\",\"Confuses independence with dependency\"]},{"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0. The solution correctly identifies that a partition requires mutual exclusivity and exhaustiveness. The reasoning for the wrong options aligns with common misconceptions about independence and dependency in probability.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term for a real-valued function whose domain is the sample space of a random experiment?",
+      "choices": [
+        "Random event",
+        "Sample space",
+        "Random variable",
+        "Probability distribution"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Random variable' because it is defined as a real-valued function whose domain is the sample space of a random experiment. 'Random event' refers to a subset of the sample space, not a function. 'Sample space' is the set of all possible outcomes, not a function. 'Probability distribution' describes the likelihood of different outcomes, not the function itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक यादृच्छिक प्रयोग के संभाव्य अंत के क्षेत्र के क्षेत्र के एक वास्तविक-मान फलन के लिए क्या शब्द है?",
+          "choices": [
+            "यादृच्छिक घटना",
+            "संभाव्य अंत",
+            "यादृच्छिक चर",
+            "संभाव्यता वितरण"
+          ],
+          "solution": "सही उत्तर 'यादृच्छिक चर' है क्योंकि इसे एक वास्तविक-मान फलन के रूप में परिभाषित किया गया है जिसका क्षेत्र एक यादृच्छिक प्रयोग के संभाव्य अंत के क्षेत्र है। 'यादृच्छिक घटना' संभाव्य अंत के उपसमुच्चय को संदर्भित करता है, एक फलन नहीं। 'संभाव्य अंत' सभी संभावित परिणामों के समुच्चय है, एक फलन नहीं। 'संभाव्यता वितरण' विभिन्न परिणामों की संभाव्यता का वर्णन करता है, फलन के रूप में नहीं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक वास्तविक-मूल्य फलनाचे नाव काय आहे ज्याचे डोमेन एका यादृच्छिक प्रयोगाच्या नमुना अंतरालात असते?",
+          "choices": [
+            "यादृच्छिक घटना",
+            "नमुना अंतराल",
+            "यादृच्छिक चल",
+            "संभाव्यता वितरण"
+          ],
+          "solution": "सही उत्तर 'यादृच्छिक चल' आहे कारण ते एक वास्तविक-मूल्य फलन आहे ज्याचे डोमेन एका यादृच्छिक प्रयोगाच्या नमुना अंतरालात असते. 'यादृच्छिक घटना' हा नमुना अंतरालाचा उपसमूह आहे, फलन नाही. 'नमुना अंतराल' हा सर्व संभाव्य निकालांचा समूह आहे, फलन नाही. 'संभाव्यता वितरण' हा विविध निकालांच्या संभाव्यतेचे वर्णन करते, फलनाचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology from textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the concept of a random event with a random variable.",
+        "Refers to the entire set of possible outcomes, not the function.",
+        null,
+        "Describes the probability distribution, not the function itself."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the correct answer is clearly 'Random variable'. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If P(B | A) = 1, then which of the following is true?",
+      "choices": [
+        "A ⊂ B",
+        "B ⊂ A",
+        "B = φ",
+        "A = φ"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is A ⊂ B. If the probability of B given A is 1, it means that whenever A occurs, B must also occur. This implies that A is a subset of B. The other options are incorrect because they do not align with the definition of conditional probability when it equals 1.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि P(B | A) = 1, तो निम्नलिखित में से कौन सा सत्य है?",
+          "choices": [
+            "A ⊂ B",
+            "B ⊂ A",
+            "B = φ",
+            "A = φ"
+          ],
+          "solution": "सही उत्तर A ⊂ B है। यदि B के A द्वारा प्रायिकता 1 है, तो इसका अर्थ है कि जब भी A होता है, B भी होता है। इसका अर्थ है कि A, B का उपसमुच्चय है। अन्य विकल्प गलत हैं क्योंकि जब प्रायिकता 1 के बराबर होती है तो वे परिभाषा के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर P(B | A) = 1 असेल, तर खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "A ⊂ B",
+            "B ⊂ A",
+            "B = φ",
+            "A = φ"
+          ],
+          "solution": "बरोबर उत्तर A ⊂ B आहे. जर A च्या दिलेल्या बाबतीत B ची संभाव्यता 1 असेल, तर असे अर्थ असतो की A असल्यास B नक्कीच असतो. हे A च्या B च्या उपसमुच्चय असल्याचा अर्थ आहे. इतर विकल्प चूक आहेत कारण ते 1 च्या बरोबरीने शर्ती संभाव्यतेच्या व्याख्येशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the direction of subset relation",
+        "assumes B is empty when it is not",
+        "assumes A is empty when it is not"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. P(B | A) = 1 implies that A is a subset of B, as whenever A occurs, B must also occur. The other options are invalid under this condition.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 23,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A bag contains 4 red balls and 6 blue balls. Two balls are drawn without replacement. What is the probability that the second ball is blue, given that the first ball was red?",
+      "choices": [
+        "3/5",
+        "2/5",
+        "4/5",
+        "1/5"
+      ],
+      "answerIndex": 0,
+      "solution": "After drawing one red ball, there are 3 red balls and 6 blue balls left. The total is 9 balls. The probability of drawing a blue ball is 6/9 = 3/5. The option '2/5' assumes only 4 blue balls are left. The option '4/5' assumes all remaining balls are red. The option '1/5' assumes only 1 blue ball is left.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बैग में 4 लाल गेंदें और 6 नीली गेंदें हैं। दो गेंदें बिना प्रतिस्थापन के निकाली जाती हैं। यह संभावना क्या है कि दूसरी गेंद नीली है, जबकि पहली गेंद लाल है?",
+          "choices": [
+            "3/5",
+            "2/5",
+            "4/5",
+            "1/5"
+          ],
+          "solution": "एक लाल गेंद निकालने के बाद, 3 लाल गेंदें और 6 नीली गेंदें बच जाती हैं। कुल 9 गेंदें हैं। नीली गेंद निकालने की संभावना 6/9 = 3/5 है। विकल्प '2/5' मानता है कि केवल 4 नीली गेंदें बच गई हैं। विकल्प '4/5' मानता है कि सभी बची गेंदें लाल हैं। विकल्प '1/5' मानता है कि केवल 1 नीली गेंद बच गई है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1). All distractors are still incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बॅगमध्ये 4 लाल गोले आणि 6 नील गोले आहेत. दोन गोले बदलाशिवाय घेतल्या जातात. जर पहिला गोला लाल असेल, तर दुसरा गोला नील असण्याची असंभाव्यता किती आहे?",
+          "choices": [
+            "3/5",
+            "2/5",
+            "4/5",
+            "1/5"
+          ],
+          "solution": "एक लाल गोला घेतल्यानंतर, 3 लाल आणि 6 नील गोले उरतात. एकूण 9 गोले आहेत. नील गोला घेण्याची असंभाव्यता 6/9 = 3/5 आहे. विकल्प '2/5' च्या असंभाव्यतेमध्ये केवळ 4 नील गोले उरल्याचा अंदाज आहे. विकल्प '4/5' च्या असंभाव्यतेमध्ये सर्व उरलेले गोले लाल असल्याचा अंदाज आहे. विकल्प '1/5' च्या असंभाव्यतेमध्ये केवळ 1 नील गोला उरल्याचा अंदाज आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assumes only 4 blue balls are left",
+        "assumes all remaining balls are red",
+        "assumes only 1 blue ball is left"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. After removing one red ball, 3 red and 6 blue remain, making the probability of drawing a blue ball 6/9 = 3/5. The distractors reflect common misconceptions about the number of balls remaining.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A die is thrown three times. What is the probability of getting a 4 on the third throw given that 6 is on the first and 5 is on the second?",
+      "choices": [
+        "1/3",
+        "1/6",
+        "1/2",
+        "1/4"
+      ],
+      "answerIndex": 1,
+      "solution": "The probability of getting a 4 on the third throw given that 6 is on the first and 5 is on the second is calculated using the formula P(A|B) = P(A∩B)/P(B). Here, A is the event of getting 4 on the third throw, and B is the event of getting 6 on the first and 5 on the second. The sample space has 216 outcomes. P(B) is 1/36, and P(A∩B) is 1/216. So, P(A|B) = (1/216)/(1/36) = 1/6. The option 1/3 is incorrect because it assumes the third throw is independent. The option 1/2 is incorrect because it assumes the third throw has only two outcomes. The option 1/4 is incorrect because it assumes the third throw has four outcomes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पासा तीन बार फेंका जाता है। पहले और दूसरे फेंक में 6 और 5 होने पर तीसरे फेंक में 4 प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/3",
+            "1/6",
+            "1/2",
+            "1/4"
+          ],
+          "solution": "पहले और दूसरे फेंक में 6 और 5 होने पर तीसरे फेंक में 4 प्राप्त करने की प्रायिकता की गणना सूत्र P(A|B) = P(A∩B)/P(B) के द्वारा की जाती है। यहां, A तीसरे फेंक में 4 प्राप्त करने के घटना है, और B पहले फेंक में 6 और दूसरे फेंक में 5 होने के घटना है। समायोजित अंतराल में 216 परिणाम हैं। P(B) 1/36 है, और P(A∩B) 1/216 है। इसलिए, P(A|B) = (1/216)/(1/36) = 1/6। विकल्प 1/3 गलत है क्योंकि यह तीसरे फेंक के स्वतंत्र होने की धारणा करता है। विकल्प 1/2 गलत है क्योंकि यह तीसरे फेंक में केवल दो परिणाम होने की धारणा करता है। विकल्प 1/4 गलत है क्योंकि यह तीसरे फेंक में चार परिणाम होने की धारणा करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for probability concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका छाननीच्या तीन वेळा फेकल्या जातात. पहिल्या फेकीवर 6 आणि दुसऱ्या फेकीवर 5 असल्याचे ज्ञात असल्यास तिसऱ्या फेकीवर 4 मिळण्याची शक्यता किती?",
+          "choices": [
+            "1/3",
+            "1/6",
+            "1/2",
+            "1/4"
+          ],
+          "solution": "पहिल्या फेकीवर 6 आणि दुसऱ्या फेकीवर 5 असल्याचे ज्ञात असल्यास तिसऱ्या फेकीवर 4 मिळण्याची शक्यता ही सूत्र P(A|B) = P(A∩B)/P(B) वापरून गणली जाते. येथे, A हा तिसऱ्या फेकीवर 4 मिळण्याचा घटना आहे आणि B हा पहिल्या फेकीवर 6 आणि दुसऱ्या फेकीवर 5 मिळण्याचा घटना आहे. नमुना अवकाशात 216 निकाल आहेत. P(B) हा 1/36 आहे, आणि P(A∩B) हा 1/216 आहे. म्हणून, P(A|B) = (1/216)/(1/36) = 1/6. 1/3 निवड चुकीची आहे कारण ती तिसऱ्या फेकीला स्वतंत्र असल्याचे मानते. 1/2 निवड चुकीची आहे कारण ती तिसऱ्या फेकीला केवळ दोन निकाल असल्याचे मानते. 1/4 निवड चुकीची आहे कारण ती तिसऱ्या फेकीला चार निकाल असल्याचे मानते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the number of outcomes for the third throw",
+        null,
+        "assumes independence of events",
+        "misinterprets the sample space"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution correctly applies conditional probability. The correct answer is 1/6, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a class of 30 students, 12 play cricket, 10 play football, and 5 play both. What is the probability that a student plays cricket, given that they play football?",
+      "choices": [
+        "1/3",
+        "3/5",
+        "2/5",
+        "1/2"
+      ],
+      "answerIndex": 1,
+      "solution": "The number of students who play football is 10. The number of students who play both cricket and football is 5. So, the conditional probability is 5/10 = 3/5. The option '1/3' assumes only 5 students play cricket. The option '2/5' assumes 10 students play cricket. The option '1/2' assumes 15 students play both games.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "30 छात्रों की एक कक्षा में, 12 क्रिकेट खेलते हैं, 10 फुटबॉल खेलते हैं, और 5 दोनों खेलते हैं। क्या संभावना है कि एक छात्र क्रिकेट खेलता है, यदि वह फुटबॉल खेलता है?",
+          "choices": [
+            "1/3",
+            "3/5",
+            "2/5",
+            "1/2"
+          ],
+          "solution": "फुटबॉल खेलने वाले छात्रों की संख्या 10 है। क्रिकेट और फुटबॉल दोनों खेलने वाले छात्रों की संख्या 5 है। अतः, सशर्त संभावना 5/10 = 3/5 है। विकल्प '1/3' केवल 5 छात्र क्रिकेट खेलते हैं के मानकर लेता है। विकल्प '2/5' 10 छात्र क्रिकेट खेलते हैं के मानकर लेता है। विकल्प '1/2' 15 छात्र दोनों खेलते हैं के मानकर लेता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "30 विद्यार्थींच्या वर्गात 12 विद्यार्थी क्रिकेट खेळतात, 10 विद्यार्थी फुटबॉल खेळतात आणि 5 विद्यार्थी दोन्ही खेळ खेळतात. एका विद्यार्थी क्रिकेट खेळतो, जर तो फुटबॉल खेळत असेल, तर त्याची शक्यता किती असेल?",
+          "choices": [
+            "1/3",
+            "3/5",
+            "2/5",
+            "1/2"
+          ],
+          "solution": "फुटबॉल खेळणारे विद्यार्थी 10 आहेत. क्रिकेट आणि फुटबॉल दोन्ही खेळणारे विद्यार्थी 5 आहेत. म्हणून, शर्ती शक्यता 5/10 = 3/5 आहे. '1/3' असे असे असे की केवळ 5 विद्यार्थी क्रिकेट खेळतात. '2/5' असे असे की 10 विद्यार्थी क्रिकेट खेळतात. '1/2' असे असे की 15 विद्यार्थी दोन्ही खेळ खेळतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution explanation is clear and matches the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes only 5 students play cricket",
+        null,
+        "assumes 10 students play cricket",
+        "assumes 15 students play both games"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the definition of conditional probability. The key is correct, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A bag contains 5 white balls and 3 black balls. Two balls are drawn at random without replacement. What is the probability that both are white, given that at least one is white?",
+      "choices": [
+        "2/3",
+        "1/2",
+        "5/7",
+        "5/8"
+      ],
+      "answerIndex": 2,
+      "solution": "The total number of ways to draw 2 balls from 8 is 28. The number of ways to draw 2 white balls is 10. The number of ways to draw 1 white and 1 black ball is 15. The number of favorable outcomes for at least one white ball is 25. The probability is 10/25 = 5/7. The option '2/3' assumes only 10 outcomes are favorable. The option '1/2' assumes 14 outcomes are favorable. The option '5/8' assumes 25 outcomes are possible.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक थैले में 5 सफेद गेंदें और 3 काली गेंदें हैं। दो गेंदें बिना प्रतिस्थापन के यादृच्छिक रूप से निकाली जाती हैं। दोनों गेंदें सफेद होने की प्रायिकता क्या है, यदि यह दिया गया है कि कम से कम एक सफेद है?",
+          "choices": [
+            "2/3",
+            "1/2",
+            "5/7",
+            "5/8"
+          ],
+          "solution": "8 गेंदों में से 2 गेंदों को निकालने के कुल तरीके 28 हैं। 2 सफेद गेंदों को निकालने के तरीके 10 हैं। 1 सफेद और 1 काली गेंद को निकालने के तरीके 15 हैं। कम से कम एक सफेद गेंद के लिए अनुकूल परिणामों की संख्या 25 है। प्रायिकता 10/25 = 5/7 है। विकल्प '2/3' केवल 10 परिणामों को अनुकूल मानता है। विकल्प '1/2' 14 परिणामों को अनुकूल मानता है। विकल्प '5/8' 25 परिणामों को संभावित मानता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बॅगमध्ये 5 श्वेत गोले आणि 3 काळ्या गोले आहेत. दोन गोले अनुक्रमे बदलत न राहता घेतल्या जातात. दोन्ही श्वेत असतील याची शक्यता काय असेल, जर अनिवार्यपणे कमीत कमी एक श्वेत असेल?",
+          "choices": [
+            "2/3",
+            "1/2",
+            "5/7",
+            "5/8"
+          ],
+          "solution": "8 मधून 2 गोले घेण्याच्या एकूण विधी 28 आहेत. 2 श्वेत गोले घेण्याच्या विधी 10 आहेत. 1 श्वेत आणि 1 काळा गोला घेण्याच्या विधी 15 आहेत. कमीत कमी एक श्वेत गोला असल्याच्या निर्देशांतर्गत अनुकूल निकालांची संख्या 25 आहे. शक्यता 10/25 = 5/7 आहे. '2/3' अपवादांच्या 10 निकालांचा अंदाज घेतो. '1/2' 14 निकालांचा अंदाज घेतो. '5/8' 25 निकालांचा अंदाज घेतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology common in Marathi-medium math textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes only 10 outcomes are favorable",
+        "assumes 14 outcomes are favorable",
+        null,
+        "assumes 25 outcomes are possible"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the conditional probability by considering the reduced sample space of 'at least one white ball' and arrives at the correct answer of 5/7, which corresponds to option 2.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A patient has a 40% chance of having a heart attack. A meditation and yoga course reduces the risk by 30%, and a drug reduces it by 25%. The patient chooses either option with equal probability. If the patient suffers a heart attack, what is the probability that they chose the meditation and yoga course?",
+      "choices": [
+        "0.428",
+        "0.452",
+        "0.524",
+        "0.572"
+      ],
+      "answerIndex": 0,
+      "solution": "The patient has a 40% chance of having a heart attack. Choosing meditation reduces the risk to 40% * (1 - 30%) = 28%, and choosing the drug reduces it to 40% * (1 - 25%) = 30%. Since both options are equally likely, the total probability of a heart attack is (28% + 30%) / 2 = 29%. The probability that the patient chose meditation and yoga given they had a heart attack is 28% / 29% = 0.428. The other options incorrectly add the probabilities without considering the equal choice probability, or miscalculate the reduced risk.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रोगी के हृदयाघात के 40% संभावना है। मेडिटेशन और योग कोर्स हृदयाघात के जोखिम को 30% तक कम कर देता है, और दवा इसे 25% तक कम कर देती है। रोगी दोनों विकल्पों में से किसी एक का समान संभावना के साथ चयन करता है। यदि रोगी हृदयाघात से ग्रस्त हो जाता है, तो क्या संभावना है कि उसने मेडिटेशन और योग कोर्स चुना हो?",
+          "choices": [
+            "0.428",
+            "0.452",
+            "0.524",
+            "0.572"
+          ],
+          "solution": "रोगी के हृदयाघात के 40% संभावना है। मेडिटेशन चुनने से जोखिम 40% * (1 - 30%) = 28% तक कम हो जाता है, और दवा चुनने से इसे 40% * (1 - 25%) = 30% तक कम कर दिया जाता है। दोनों विकल्प समान रूप से संभाव्य हैं, इसलिए हृदयाघात की कुल संभावना (28% + 30%) / 2 = 29% है। हृदयाघात के बाद रोगी ने मेडिटेशन और योग कोर्स चुने की संभावना 28% / 29% = 0.428 है। अन्य विकल्प बराबर चयन संभावना के बिना संभावनाओं को जोड़ देते हैं, या जोखिम के कम होने की गणना गलत कर देते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका रुग्णाला हृदयाघात होण्याची 40% शक्यता आहे. योग आणि मेडिटेशनचा कोर्स 30% ने धोका कमी करतो, आणि औषध 25% ने कमी करते. रुग्णाने दोन्ही पर्यायांपैकी एक बरोबर संभाव्यतेने निवडला. जर रुग्णाला हृदयाघात झाला असेल, तर त्याने मेडिटेशन आणि योग कोर्स निवडला असेल याची संभाव्यता किती असेल?",
+          "choices": [
+            "0.428",
+            "0.452",
+            "0.524",
+            "0.572"
+          ],
+          "solution": "रुग्णाला हृदयाघात होण्याची 40% शक्यता आहे. मेडिटेशन ने धोका 40% * (1 - 30%) = 28% पर्यंत कमी केला, आणि औषध 40% * (1 - 25%) = 30% पर्यंत कमी केला. दोन्ही पर्याय बरोबर संभाव्यतेने निवडले गेले असल्याने, हृदयाघात होण्याची एकूण संभाव्यता (28% + 30%) / 2 = 29% आहे. जर रुग्णाला हृदयाघात झाला असेल तर त्याने मेडिटेशन आणि योग कोर्स निवडला असेल याची संभाव्यता 28% / 29% = 0.428 आहे. इतर विकल्प बरोबर संभाव्यतेचा विचार करण्यात अयशस्वी ठरतात, किंवा घटलेल्या धोक्याची चुकीची गणना करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical and mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly adds the reduced probabilities without dividing by 2",
+        "incorrectly calculates the reduced risk as 30% instead of 28%",
+        "confuses the total probability with the individual probabilities of each option without considering the equal choice probability"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies Bayes' theorem, calculates the reduced probabilities, and accounts for the equal likelihood of choosing either option. The reasoning is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 23,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A die is thrown three times. Events A and B are defined as follows: A : 4 on the third throw, B : 6 on the first and 5 on the second throw. What is the probability of A given that B has already occurred?",
+      "choices": [
+        "1/6",
+        "1/36",
+        "1/4",
+        "1/2"
+      ],
+      "answerIndex": 0,
+      "solution": "The sample space for three dice rolls has 216 outcomes. Event B (6 on the first and 5 on the second) has 6 outcomes (since the third die can be 1-6). Event A ∩ B (4 on the third throw) has 1 outcome (6,5,4). So P(A|B) = P(A ∩ B)/P(B) = (1/216)/(6/216) = 1/6. The other options represent incorrect calculations: 1/36 is the probability of B, 1/4 is the probability of A, and 1/2 is a random guess.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पासा तीन बार फेंका जाता है। घटनाएं A और B निम्नलिखित रूप से परिभाषित की गई हैं: A : तीसरे फेंक में 4, B : पहले फेंक में 6 और दूसरे फेंक में 5। B के पहले हो जाने के बाद A की प्रायिकता क्या है?",
+          "choices": [
+            "1/6",
+            "1/36",
+            "1/4",
+            "1/2"
+          ],
+          "solution": "तीन पासा फेंकों के लिए नमूना स्थान में 216 परिणाम हैं। घटना B (पहले फेंक में 6 और दूसरे फेंक में 5) के 6 परिणाम हैं (क्योंकि तीसरा पासा 1-6 हो सकता है)। घटना A ∩ B (तीसरे फेंक में 4) के 1 परिणाम हैं (6,5,4)। इसलिए P(A|B) = P(A ∩ B)/P(B) = (1/216)/(6/216) = 1/6। अन्य विकल्प गलत गणनाओं का प्रतिनिधित्व करते हैं: 1/36 B की प्रायिकता है, 1/4 A की प्रायिकता है और 1/2 एक यादृच्छिक अनुमान है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 1). All distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका छडीचा तीन वेळा फेकला गेला. घटना A आणि B खालीलप्रमाणे वर्णन केली गेली आहे: A : तिसरा फेकलेला छडीवर 4, B : पहिल्या फेकलेला छडीवर 6 आणि दुसरा फेकलेला छडीवर 5. B च्या आधी घडलेल्या घटनेच्या आधारे A ची असंभाव्यता किती आहे?",
+          "choices": [
+            "1/6",
+            "1/36",
+            "1/4",
+            "1/2"
+          ],
+          "solution": "तीन छडी फेकल्याचा नमुना अंक 216 असतात. घटना B (पहिल्या फेकलेला छडीवर 6 आणि दुसरा फेकलेला छडीवर 5) चे 6 अंक असतात (कारण तिसरा छडी 1-6 असू शकतो). घटना A ∩ B (तिसरा फेकलेला छडीवर 4) चे 1 अंक असतात (6,5,4). म्हणून P(A|B) = P(A ∩ B)/P(B) = (1/216)/(6/216) = 1/6. इतर विकल्प चुकीच्या गणना दर्शवतात: 1/36 ही B ची असंभाव्यता आहे, 1/4 ही A ची असंभाव्यता आहे आणि 1/2 हा अनुमान आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses P(B) with P(A|B) directly",
+        "Misunderstands the size of the sample space",
+        "Mistakenly assumes independence between events A and B without considering the condition B is already true"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the mathematical definition of conditional probability. The reasoning for the distractors reflects common misconceptions among students.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh207.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-21T11:51:02.708Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}
