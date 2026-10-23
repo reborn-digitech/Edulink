@@ -88,7 +88,7 @@ function Topics() {
                   key={topic.id}
                   icon="books"
                   title={topic.name}
-                  caption={[t("appadmin.classN", { n: topic.classLevel }), topic.chapter, topic.questionCount === 1 ? t("appadmin.questionCountOne") : t("appadmin.questionCountMany", { count: topic.questionCount })].join(" · ")}
+                  caption={[t("appadmin.classN", { n: topic.classLevel }), topic.questionCount === 1 ? t("appadmin.questionCountOne") : t("appadmin.questionCountMany", { count: topic.questionCount })].join(" · ")}
                   onPress={() => open(topic.id)}
                 />
               ))}

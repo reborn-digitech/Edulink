@@ -48,8 +48,8 @@ describe("the question bank", () => {
     await screen.findByText("ZZ Fractions");
     expect(screen.getByText("Maths")).toBeTruthy();
     expect(screen.getByText("Science")).toBeTruthy();
-    expect(screen.getByText("Class 6 · Chapter 1 · 2 questions")).toBeTruthy();
-    expect(screen.getByText("Class 7 · Chapter 3 · 1 question")).toBeTruthy();
+    expect(screen.getByText("Class 6 · 2 questions")).toBeTruthy();
+    expect(screen.getByText("Class 7 · 1 question")).toBeTruthy();
     expect(calls().some((c) => c.line === `GET ${BANK_PATH}`)).toBe(true);
     await fireEvent.press(screen.getByRole("button", { name: /^ZZ Fractions,/ }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/question-bank", params: { topicId: "t1" } });

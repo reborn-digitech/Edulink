@@ -36,10 +36,19 @@ export function StaffWebsite() {
   const t = useT();
   const role = useRole();
   const router = useRouter();
-  const office = role === null || role === "ADMIN" || role === "PRINCIPAL";
+  // The office alone asks the server (23 Oct 2026): while the role is still unknown nothing is asked and the screen
+  // waits, so another role's visit never sends the summary request (the test caught it firing once in that moment).
+  const office = role === "ADMIN" || role === "PRINCIPAL";
   const query = useQuery({ queryKey: WEBSITE_SUMMARY_KEY, enabled: office, queryFn: async () => siteSummarySchema.parse(unwrap(await api().get(WEBSITE_SUMMARY_PATH))) });
   const d = query.data;
   const edit = <Button label={t("siteThree.phoneEdit")} onPress={() => openWeb(d?.editPath ?? "/admin/website")} />;
+  if (role === null) {
+    return (
+      <Screen title={t("modules.websiteName")}>
+        <Loading />
+      </Screen>
+    );
+  }
   if (!office) {
     return (
       <Screen title={t("modules.websiteName")}>
