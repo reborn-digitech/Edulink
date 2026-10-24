@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-24T07:22:52.628Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 643 WARN · 309 INFO
+Run: 2026-10-24T08:55:23.346Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 643 WARN · 302 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -652,7 +652,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-staff | ZZ Northgate School | 12 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (309)
+## INFO (302)
 
 | check | school | detail |
 |---|---|---|
@@ -691,14 +691,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | register-csv | Sunrise Public School | grade 8: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 3: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 4: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 5: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 6: 2 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 7: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 8: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | no register to export |
 | staff-csv | Saraswati Arts and Science College | 2 staff have no leave entitlement on their record — the desk sees no balance for them |
 | staff-csv | Saraswati College of Agriculture | 2 staff have no leave entitlement on their record — the desk sees no balance for them |
 | staff-csv | Saraswati College of Education | 2 staff have no leave entitlement on their record — the desk sees no balance for them |
@@ -802,7 +795,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | progress-report | Saraswati Vidya Mandir | the report prints no school logo (School.logoPath is blank) |
 | progress-report | Saraswati Vocational College | no pupil with marks |
 | progress-report | Sunrise Public School | the report prints no school logo (School.logoPath is blank) |
-| progress-report | ZZ Northgate School | the report prints no school logo (School.logoPath is blank) |
+| progress-report | ZZ Northgate School | no pupil with marks |
 | year-archive | Saraswati Arts and Science College | 2025–26: 8 on roll, 0 leavers, 0 badges archived |
 | year-archive | Saraswati College of Agriculture | 2025–26: 6 on roll, 0 leavers, 0 badges archived |
 | year-archive | Saraswati College of Education | 2025–26: 6 on roll, 0 leavers, 0 badges archived |
