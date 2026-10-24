@@ -4,7 +4,9 @@ import { ClinicalDeskScreen, ClinicalLogbookScreen } from "@/screens/college/cli
 import { DUTY_SCREENS } from "@/screens/college/duties";
 import { ToastProvider } from "@/components";
 import { HIDDEN_SCREENS, menuFor } from "@/lib/nav";
+import { onlineManager } from "@tanstack/react-query";
 import { __setOutboxStore, listQueued, memoryOutbox } from "@/lib/outbox";
+import { __setReplayFetch, __stopOutboxRunner } from "@/lib/outbox-runner";
 import { json, me, mountStaff, offline, refused } from "./staff-harness";
 
 const mockPush = jest.fn();
@@ -124,8 +126,19 @@ const logbook = {
 };
 
 describe("the student's logbook", () => {
-  beforeEach(() => __setOutboxStore(memoryOutbox()));
-  afterEach(() => __setOutboxStore(null));
+  // The screen starts the outbox runner (QA-15): no replay leaves the suite for a real network.
+  beforeEach(() => {
+    __stopOutboxRunner();
+    __setOutboxStore(memoryOutbox());
+    __setReplayFetch((async () => {
+      throw new TypeError("Network request failed");
+    }) as unknown as typeof fetch);
+  });
+  afterEach(() => {
+    __stopOutboxRunner();
+    __setReplayFetch(null);
+    __setOutboxStore(null);
+  });
 
   it("lists the postings and the entries by state, sends a new entry with a client id, and hands a draft in", async () => {
     const { calls } = await mountStaff(<ClinicalLogbookScreen />, "STUDENT", { "GET /api/v1/family/clinical": () => json(logbook), "POST /api/v1/family/clinical/logbook": () => json({ id: id("entry9") }), [`POST /api/v1/family/clinical/logbook/${id("entry3")}/submit`]: () => json({ id: id("entry3") }) }, { me: meAs("STUDENT") });
@@ -175,6 +188,34 @@ describe("the student's logbook", () => {
     await fireEvent.press(await screen.findByRole("button", { name: "New entry" }));
     await fireEvent.press(screen.getByRole("button", { name: "Save the entry" }));
     expect(await screen.findByText("ZZ the note names a patient")).toBeTruthy();
+  });
+
+  // QA-15 (QA campaign of 24 Oct 2026, E2E-B2): the entry saved offline sat on the device with no badge and no row,
+  // and went only when another screen started the runner or a later entry was saved online, arriving after it.
+  it("shows an entry saved offline as waiting, with the badge, and sends it by itself when the network returns", async () => {
+    const replay = jest.fn(async (): Promise<Response> => {
+      throw new TypeError("Network request failed");
+    });
+    __setReplayFetch(replay as unknown as typeof fetch);
+    const { calls } = await mountStaff(<ClinicalLogbookScreen />, "STUDENT", { "GET /api/v1/family/clinical": () => json(logbook), "POST /api/v1/family/clinical/logbook": offline }, { me: meAs("STUDENT") });
+    await fireEvent.press(await screen.findByRole("button", { name: "New entry" }));
+    await userEvent.setup().type(screen.getByLabelText("Note"), "ZZ Observed a ward round.");
+    await fireEvent.press(screen.getByRole("button", { name: "Save the entry" }));
+    expect(await screen.findByText("1 waiting to send")).toBeTruthy();
+    expect(await screen.findByText("Case × 1 · Waiting to send")).toBeTruthy();
+    expect(screen.getByText("ZZ Observed a ward round.")).toBeTruthy();
+    const before = gets(calls, "/api/v1/family/clinical");
+    // The network returns: the screen's runner sends the row, the badge and the waiting row go, and the list is read again.
+    replay.mockImplementation(async () => new Response(JSON.stringify({ id: id("entry9") }), { status: 200, headers: { "content-type": "application/json" } }));
+    onlineManager.setOnline(false);
+    onlineManager.setOnline(true);
+    await waitFor(async () => expect((await listQueued("clinical-logbook")).length).toBe(0));
+    const [url, init] = replay.mock.calls[0] as unknown as [string, RequestInit];
+    expect(new URL(url).pathname).toBe("/api/v1/family/clinical/logbook");
+    expect(JSON.parse(String(init.body))).toMatchObject({ note: "ZZ Observed a ward round.", kind: "CASE", count: 1 });
+    await waitFor(() => expect(screen.queryByText("1 waiting to send")).toBeNull());
+    expect(screen.queryByText("Case × 1 · Waiting to send")).toBeNull();
+    await waitFor(() => expect(gets(calls, "/api/v1/family/clinical")).toBeGreaterThan(before));
   });
 
   it("says so at a college with no clinical stream and when the module is off, asking nothing", async () => {

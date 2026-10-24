@@ -6,6 +6,12 @@ import { verifyEmailByToken, resendVerification } from "@/lib/passwords";
 import { generateToken, hashToken } from "@/lib/crypto";
 import { EMAIL_VERIFY_TTL_HOURS } from "@/lib/constants";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
+import * as React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { translator } from "@/lib/i18n/dictionary";
+
+// The verify page is called as a function below (QA-13); its JSX needs React in scope.
+(globalThis as { React?: typeof React }).React = React;
 
 /**
  * The two links that had nowhere to land.
@@ -339,5 +345,57 @@ describe("asking for a fresh link", () => {
     expect(result.ok).toBe(true);
     // Reported as fine, but no second email — there is nothing to confirm.
     expect(await db.outboundEmail.count({ where: { to: email } })).toBe(0);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+
+describe("QA-13: opening the link spends nothing; the person's press does", () => {
+  /** The token row and the account, as the database holds them. */
+  const state = async (token: string) => ({
+    consumed: (await db.authToken.findUniqueOrThrow({ where: { tokenHash: hashToken(token) }, select: { consumedAt: true } })).consumedAt !== null,
+    verified: (await db.user.findUniqueOrThrow({ where: { id: userId }, select: { emailVerifiedAt: true } })).emailVerifiedAt !== null,
+  });
+
+  it("⚠ a GET of /verify (a mail scanner's prefetch, a preview) leaves the token unspent and the address unconfirmed", async () => {
+    const token = await mintVerify(userId, email);
+    const { default: VerifyPage } = await import("@/app/verify/page");
+    await VerifyPage({ searchParams: Promise.resolve({ token }) });
+    const html = renderToStaticMarkup(await VerifyPage({ searchParams: Promise.resolve({ token }) }));
+    expect(await state(token)).toEqual({ consumed: false, verified: false });
+    // What the person sees instead: the address and one button inside a form that posts the token back.
+    const t = translator("en");
+    expect(html).toContain(t("verify.confirmTitle"));
+    expect(html).toContain(t("verify.confirmButton"));
+    expect(html).toMatch(/<form[^>]*>[\s\S]*name="token"[\s\S]*<\/form>/);
+    expect(html).not.toContain(t("verify.confirmed"));
+  });
+
+  it("the confirm button's POST spends it once and confirms the address; the page then says so", async () => {
+    const token = await mintVerify(userId, email);
+    const { confirmEmail } = await import("@/app/verify/actions");
+    const form = new FormData();
+    form.set("token", token);
+    // The action answers with a redirect back to the page, marked done.
+    await expect(confirmEmail(form)).rejects.toMatchObject({ digest: expect.stringContaining("/verify?token=") });
+    expect(await state(token)).toEqual({ consumed: true, verified: true });
+    const { inspectVerifyToken } = await import("@/lib/passwords");
+    expect(await inspectVerifyToken(token)).toMatchObject({ state: "USED", email });
+    // A second press is the used link, not a second confirmation.
+    await expect(confirmEmail(form)).rejects.toMatchObject({ digest: expect.stringContaining("/verify?token=") });
+    expect(await db.auditLog.count({ where: { actorUserId: userId, action: "auth.email.verified" } })).toBe(1);
+  });
+
+  it("the read-only look says what a press would find, for each of the outcomes", async () => {
+    const { inspectVerifyToken } = await import("@/lib/passwords");
+    const live = await mintVerify(userId, email);
+    expect(await inspectVerifyToken(live)).toEqual({ state: "READY", email });
+    expect(await inspectVerifyToken(await mintVerify(userId, email, { expired: true }))).toMatchObject({ state: "EXPIRED", email });
+    expect(await inspectVerifyToken("not-a-token")).toEqual({ state: "UNKNOWN", email: null });
+    expect(await inspectVerifyToken(undefined)).toEqual({ state: "UNKNOWN", email: null });
+    expect(await inspectVerifyToken(await mintMagic(userId, email))).toEqual({ state: "UNKNOWN", email: null });
+    await db.user.update({ where: { id: userId }, data: { email: address("moved") } });
+    expect(await inspectVerifyToken(live)).toEqual({ state: "STALE", email: null });
+    expect(await state(live)).toEqual({ consumed: false, verified: false });
   });
 });

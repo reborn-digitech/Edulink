@@ -167,8 +167,19 @@ async function issueReceipt(tx: Tx, schoolId: string, payment: { id: string; stu
 
 /** Marks an INITIATED or CLAIMED payment PAID: allocates, numbers, and returns the receipt. Idempotent on an already-PAID row. */
 async function settle(tx: Tx, schoolId: string, paymentId: string, extra: { reference?: string | null; gatewayPaymentId?: string | null; gatewayMethod?: string | null; confirmedByUserId?: string | null; paidAt?: Date }): Promise<{ receiptId: string; serial: string; already: boolean }> {
+  // ⚠ LOCK THE PAYMENT FIRST, READ IT SECOND (QA-06). The checkout's confirm
+  // and the gateway's webhook arrive within milliseconds of each other, and
+  // each used to read the row before any lock: the loser read INITIATED,
+  // waited on the winner's update, then allocated the same money again —
+  // "Nothing is due to pay." thrown at the guardian who had just paid, or,
+  // with another demand still open, that demand paid a second time from one
+  // payment and a second receipt attempted. Under the row lock the loser
+  // reads what the winner committed and is answered "already". The payment
+  // row is taken before the demands (openDemands), the order every path here
+  // keeps, so the two locks never deadlock.
+  await tx.$queryRaw`SELECT "id" FROM "FeePayment" WHERE "id" = ${paymentId} AND "schoolId" = ${schoolId} FOR UPDATE`;
   const p = await tx.feePayment.findFirstOrThrow({ where: { id: paymentId, schoolId }, include: { receipt: { select: { id: true, serial: true } } } });
-  if (p.status === "PAID" && p.receipt) return { receiptId: p.receipt.id, serial: p.receipt.serial, already: true };
+  if ((p.status === "PAID" || p.status === "REFUNDED") && p.receipt) return { receiptId: p.receipt.id, serial: p.receipt.serial, already: true };
   // A FAILED online order is settled by a signed capture too: the gateway
   // sends payment.failed for a first attempt and payment.captured for the
   // retry on the SAME order, and the money is real whichever arrived first.
@@ -669,8 +680,11 @@ export async function confirmClaim(ctx: ActiveContext, paymentId: string, fromSt
     const settled = await settle(tx, caller.schoolId, p.id, { confirmedByUserId: caller.userId, reference });
     return { ...settled, studentMembershipId: p.studentMembershipId, amountPaise: p.amountPaise, fromStatement: unclaimed };
   });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.claimConfirm", targetType: "FeePayment", targetId: paymentId, meta: { serial: result.serial, ...(result.fromStatement ? { fromStatement: true } : {}) } });
-  await tellFamilyReceived(caller.schoolId, result.studentMembershipId, paymentId, result.amountPaise, result.serial, result.receiptId);
+  // Two confirms of one claim at once: the second waits on the payment's lock in settle() and finds it PAID; it is not audited or told twice.
+  if (!result.already) {
+    await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.claimConfirm", targetType: "FeePayment", targetId: paymentId, meta: { serial: result.serial, ...(result.fromStatement ? { fromStatement: true } : {}) } });
+    await tellFamilyReceived(caller.schoolId, result.studentMembershipId, paymentId, result.amountPaise, result.serial, result.receiptId);
+  }
   return { receiptId: result.receiptId, serial: result.serial };
 }
 

@@ -7,7 +7,8 @@ import { Text } from "./text";
 import { Button } from "./button";
 import { Icon } from "./icon";
 import { Bone, useBack } from "./chrome";
-import { isNotFound } from "@/lib/query";
+import { isNotFound, planLockOf } from "@/lib/query";
+import { PlanLock } from "./plan-lock";
 
 /**
  * The four states every screen has, from one set: the web's EmptyState and
@@ -69,9 +70,20 @@ export function Empty({ title, body, action, icon = "tray" }: { title: string; b
  * An error with what can be done about it. Pass the query's `error` and a
  * refusal that asking again cannot change (403, 404, 410: not found, not
  * yours, gone) offers the way back instead of "Try again" (A3-states-15);
- * a network failure or a 5xx keeps the retry.
+ * a network failure or a 5xx keeps the retry. A 402 PLAN_REQUIRED (in `error`,
+ * or in `planFrom` for a screen that says its own message) draws the plan card
+ * in its place (QA-18).
  */
-export function Failed({ message, error, onRetry }: { message?: string; error?: unknown; onRetry?: () => void }) {
+export function Failed({ message, error, onRetry, planFrom }: { message?: string; error?: unknown; onRetry?: () => void; planFrom?: unknown }) {
+  // `planFrom`: the error a plan lock may come from, on a screen that keeps its own retry rule (it passes a message, not `error`).
+  const source = error ?? planFrom;
+  const lock = planLockOf(source);
+  // A door behind a plan this person does not hold (402 PLAN_REQUIRED): the plan card, as the web shows, not an error (QA-18).
+  if (lock) return <PlanLock {...lock} message={source instanceof Error ? source.message : undefined} />;
+  return <FailedCard message={message} error={error} onRetry={onRetry} />;
+}
+
+function FailedCard({ message, error, onRetry }: { message?: string; error?: unknown; onRetry?: () => void }) {
   const t = useTheme();
   const tr = useT();
   const back = useBack();

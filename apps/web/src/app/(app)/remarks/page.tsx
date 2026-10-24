@@ -15,10 +15,9 @@ import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { relativeTime } from "@/lib/dates";
 import { ROLE_META } from "@/lib/constants";
 import { cn } from "@/lib/cn";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -46,6 +45,8 @@ export default async function RemarksPage({
 }: {
   searchParams: Promise<{ q?: string; unread?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const session = await requireUser();
   const { q: rawQ, unread } = await searchParams;

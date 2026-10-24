@@ -7,11 +7,10 @@ import { listReports, listAudit, openReportCount } from "@/lib/safety";
 import { EmptyState } from "@/components/ui/states";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { relativeTime } from "@/lib/dates";
 import { accessHistory } from "@/lib/superuser";
 import { ReportCard } from "./report-card";
 import { AuditTable } from "./audit-table";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -31,6 +30,8 @@ export default async function SafetyPage({
 }: {
   searchParams: Promise<{ tab?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const tr = await getT();
   await requireRole("ADMIN");
   const session = (await getSession())!;

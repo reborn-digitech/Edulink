@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
-import { relativeTime } from "@/lib/dates";
+import { relativeTime as relativeTimeIn } from "@/lib/dates";
 import { decideRequest } from "./actions";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import type { PendingRequest } from "@/lib/mentoring";
 
 /**
@@ -22,6 +22,9 @@ import type { PendingRequest } from "@/lib/mentoring";
  */
 export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
   const t = useT();
+  // "2 hours ago" in the reader's language (QA-20).
+  const locale = useLocale();
+  const relativeTime = (at: Date) => relativeTimeIn(at, new Date(), locale);
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();

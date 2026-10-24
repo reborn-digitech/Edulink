@@ -611,6 +611,22 @@ const rupees = (paise: number) => Math.round(paise / 100);
 const line = (lines: PayslipLine[], code: SalaryComponentCode) => lines.find((l) => l.code === code);
 
 /**
+ * One member's money columns on the ECR, in whole rupees.
+ *
+ * ⚠ THE DIFFERENCE IS TAKEN AFTER ROUNDING (QA-08, QA campaign of 24 October 2026). EPS on a ₹15,000 wage is
+ * ₹1,249.50 and the employer's difference ₹550.50; each was rounded on its own, to ₹1,250 and ₹551, so the two
+ * employer columns added to ₹1,801 on a ₹1,800 share and the return remitted ₹1 a member more than its total.
+ * EPFO checks that the difference equals the employer's share less EPS: EPS is rounded first and the difference
+ * is what is left of the rounded share, so the columns always add up.
+ */
+export function ecrShares(ee: PayslipLine, er: PayslipLine | undefined): { epfWage: number; epsWage: number; ee: number; eps: number; diff: number } {
+  const epfWagePaise = ee.basePaise ?? 0;
+  const erRupees = rupees(er?.paise ?? 0);
+  const eps = rupees(er?.epsPaise ?? 0);
+  return { epfWage: rupees(epfWagePaise), epsWage: rupees(er?.epsBasePaise ?? Math.min(epfWagePaise, 1_500_000)), ee: rupees(ee.paise), eps, diff: erRupees - eps };
+}
+
+/**
  * One file from a LOCKED run, cut afresh from the frozen slips every time
  * (the same bytes; the row keeps its SHA-256). The bank advice and the TDS
  * summary open the sealed numbers INTO THE FILE and nowhere else, and are
@@ -649,13 +665,11 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
       const er = line(ls, "PF_EMPLOYER");
       const uan = salaries.get(s.membershipId)?.pfUan;
       if (!ee || !uan) continue;
-      const epfWage = ee.basePaise ?? 0;
-      const epsWage = er?.epsBasePaise ?? Math.min(epfWage, 1_500_000);
-      const eps = er?.epsPaise ?? 0;
-      const diff = (er?.paise ?? 0) - eps;
+      const c = ecrShares(ee, er);
       const ncp = Math.round((s.lopOverrideHalfDays ?? s.lopHalfDays) / 2);
-      out.push([uan, s.staffName.toUpperCase().replace(/#~#/g, " "), rupees(s.grossPaise), rupees(epfWage), rupees(epsWage), rupees(epsWage), rupees(ee.paise), rupees(eps), rupees(diff), ncp, 0].join("#~#"));
-      totalPaise += ee.paise + (er?.paise ?? 0);
+      out.push([uan, s.staffName.toUpperCase().replace(/#~#/g, " "), rupees(s.grossPaise), c.epfWage, c.epsWage, c.epsWage, c.ee, c.eps, c.diff, ncp, 0].join("#~#"));
+      // What the lines remit, in the rupees they print.
+      totalPaise += (c.ee + c.eps + c.diff) * 100;
     }
     content = out.length ? out.join("\n") + "\n" : "";
     rows = out.length;

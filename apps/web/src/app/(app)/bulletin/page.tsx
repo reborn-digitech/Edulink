@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PostCard } from "./post-card";
+import { pageOpener } from "@/lib/page-links";
 import { BulkReview } from "./bulk-review";
 import { FeedFilters } from "./feed-filters";
 import { isModuleRole, POST_CATEGORIES, type PostCategory, type PostStatus } from "@/lib/constants";
@@ -71,6 +72,10 @@ export default async function BulletinPage({
 
 
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
+  // A post's author and its "On the global feed" pill are doors only for a reader whose gate opens them:
+  // an alumnus or a college desk reads people's profiles nowhere, and is not sent to choose a context (QA-19).
+  const opens = await pageOpener(session);
+  const cardLinks = { profiles: opens("/people/x"), globalFeed: opens("/bulletin/global") };
   const showPending = filter === "pending" && isStaff;
   const showMine = filter === "mine";
 
@@ -229,7 +234,7 @@ export default async function BulletinPage({
         <ul className="space-y-3">
           {posts.map((post) => (
             <li key={post.id}>
-              <PostCard post={post} viewerRole={session.role} />
+              <PostCard post={post} viewerRole={session.role} links={cardLinks} />
             </li>
           ))}
         </ul>

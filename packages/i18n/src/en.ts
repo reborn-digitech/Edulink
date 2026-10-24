@@ -1981,6 +1981,9 @@ export const en = {
     refuseFeeSettled: "This request is closed; a fee cannot be set on it.",
     refuseFeePaid: "Something is already paid on this fee, so it cannot be changed.",
     refuseNoFeeHead: "Add a fee head of the kind Other before setting a fee on a paper.",
+    // fix-mediums-A (QA-12): an ask declined or taken back is not answered by a paper issued from it.
+    refuseClosed: "This request was declined or taken back. Issue the paper without it if it is still wanted.",
+    // end fix-mediums-A
     feeLabel: "Certificate copy: {kind}",
     feeDue: "Fee {amount}: pay it on the Fees page, or at the office.",
     feePaidLine: "Fee {amount} paid",
@@ -2284,6 +2287,9 @@ export const en = {
     applyHere: "Apply for a place",
     apply: "Apply",
     noOpenCycle: "This school is not taking applications through Shalaghar right now.",
+    // fix-mediums-B (QA-17): a school may have several admission cycles open at once; the family picks one.
+    chooseCycle: "Admission round",
+    // end fix-mediums-B
     seatsLeft: "{remaining} of {seats} seats left",
     closesOn: "Closes {date}",
     documentsAsked: "You will be asked for: {names}",
@@ -4048,6 +4054,11 @@ export const en = {
     resendSent: "Sent. Check that inbox — the new link lasts 48 hours.",
     resendCta: "Send me a new link",
     resendFailed: "That did not send.",
+    // fix-mediums-A (QA-13): opening the link shows a button; only the press confirms the address.
+    confirmTitle: "Confirm your email address",
+    confirmBody: "Press the button to confirm {email} for your account. If you did not make an account, close this page and nothing happens.",
+    confirmButton: "Confirm my address",
+    // end fix-mediums-A
   },
   offline: {
     retry: "Try again",
@@ -9470,6 +9481,9 @@ export const en = {
     noSuchStaff: "That person is not on this school's staff.",
     substituteAway: "That person is away too.",
     clash: "That person already has a lesson in that period.",
+    // fix-mediums-C (QA-16): somebody else was named for the lesson after the caller's board was drawn.
+    changedMeanwhile: "{name} was named for this lesson meanwhile. The board shows who covers it now.",
+    // end fix-mediums-C
     weekTitle: "Teaching week",
     weekIntro: "The days the school teaches on. Registers, staff attendance, leave and the timetable all follow it.",
     weekSave: "Save the week",
@@ -15913,6 +15927,9 @@ export const en = {
       noEntries: "No entry yet",
       noEntriesBody: "Add the first below.",
       state: { DRAFT: "Draft", SUBMITTED: "Handed in", SIGNED: "Signed", RETURNED: "Returned" },
+      // fix-mediums-B (QA-15): an entry saved offline, on the device until the network returns.
+      queuedState: "Waiting to send",
+      // end fix-mediums-B
       logKind: { CASE: "Case", PROCEDURE: "Procedure", SKILL: "Skill", DISPENSING: "Dispensing" },
       signedLine: "Signed by {name} on {day}",
       returnedLine: "Returned: {remark}",

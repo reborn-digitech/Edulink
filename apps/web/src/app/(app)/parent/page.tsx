@@ -19,7 +19,7 @@ import { formatTimeRange } from "@/lib/school-day";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, currentStreakFor, todayAttendanceFor } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, isWithin, todayKey, weekdayOfKey } from "@/lib/dates";
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
 import { pupilRecordFor } from "@/lib/pupil-records";
@@ -41,7 +41,7 @@ import { PARENT_WELCOME_COOKIE } from "@/lib/parent-welcome";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { ownWorkScope, workLabel } from "@/lib/grading";
-import { getT, getLocale } from "@/lib/i18n/server";
+import { getT, getLocale, getRelativeTime } from "@/lib/i18n/server";
 import { periodLabel } from "@/lib/coded-defaults";
 import { PersonLink } from "@/components/person-link";
 import { PAGE_TITLE } from "@/components/ui/page-header";
@@ -59,6 +59,8 @@ export default async function ParentDashboard({
 }: {
   searchParams: Promise<{ child?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const session = await requireParent();
   const t = await getT();
   const locale = await getLocale();

@@ -136,11 +136,24 @@ describe("applying from a school's profile", () => {
     expect(screen.getByText("ZZ Admissions 2026-27 · 2026-27")).toBeTruthy();
     expect(screen.getByText("Grade 1 · 3 of 5 seats left")).toBeTruthy();
     expect(screen.getByText(/^Closes .*2026$/)).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: "Apply" }));
-    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/apply", params: { schoolId: ID, school: "ZZ Hillside" } });
+    await fireEvent.press(screen.getByRole("button", { name: "Apply: ZZ Admissions 2026-27" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/apply", params: { schoolId: ID, school: "ZZ Hillside", cycleId: CYCLE } });
     expect(screen.getByText("Your applications here")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: /^ZZ Kabir/ }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/my-application", params: { id: APP } });
+  });
+
+  // QA-17 (24 Oct 2026): a mid-year round beside next year's admissions; only the newest was offered.
+  it("every open cycle is shown, each with its own door to the form", async () => {
+    const MID = { ...OPEN, cycleId: "czz000000000000000cycle2", name: "ZZ Mid-year transfers", grades: [{ grade: "5", seats: 2, remaining: 2 }], closesAt: null };
+    await mountStaff(<SchoolProfile />, "PARENT", { [`GET ${PATH}`]: () => json(PROFILE), [ADMISSIONS]: () => json({ open: MID, cycles: [MID, OPEN], mine: [] }) });
+    expect(await screen.findByText("ZZ Mid-year transfers · 2026-27")).toBeTruthy();
+    expect(screen.getByText("ZZ Admissions 2026-27 · 2026-27")).toBeTruthy();
+    expect(screen.getByText("Grade 5 · 2 of 2 seats left")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Apply: ZZ Admissions 2026-27" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/apply", params: { schoolId: ID, school: "ZZ Hillside", cycleId: CYCLE } });
+    await fireEvent.press(screen.getByRole("button", { name: "Apply: ZZ Mid-year transfers" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/apply", params: { schoolId: ID, school: "ZZ Hillside", cycleId: MID.cycleId } });
   });
 
   it("with no open cycle there is no door, and the office is never asked", async () => {

@@ -3,14 +3,14 @@ import Link from "next/link";
 import { CaretRightIcon, ClipboardTextIcon, PlusIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { dateKeyInZone, relativeTime } from "@/lib/dates";
+import { dateKeyInZone } from "@/lib/dates";
 import { admissionDaysByClass, rollOn } from "@/lib/exams";
 import { formatMilli } from "@/lib/validation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { currentAcademicYear } from "@/lib/academic-year";
 import { TabBar } from "@/components/ui/tabs";
 import { DataToolbar } from "@/components/ui/data-toolbar";
@@ -26,6 +26,8 @@ export default async function AssignmentsPage({
 }: {
   searchParams: Promise<{ years?: string; classId?: string; state?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { years, classId: rawClassId, state: rawState } = await searchParams;

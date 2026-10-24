@@ -3,12 +3,13 @@ import { notFound } from "next/navigation";
 import { LockKeyIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
 import { getConversation, markConversationRead } from "@/lib/conversations";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { Avatar } from "@/components/ui/avatar";
 import { PersonLink } from "@/components/person-link";
+import { pageOpener } from "@/lib/page-links";
 import { Badge } from "@/components/ui/badge";
 import { ConversationReplyBox } from "./reply-box";
-import { formatInZone, relativeTime } from "@/lib/dates";
+import { formatInZone } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/cn";
 import { ROLE_META } from "@/lib/constants";
@@ -21,8 +22,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ConversationPage({ params }: { params: Promise<{ conversationId: string }> }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const session = await requireUser();
+  // Names are doors to profiles only where the reader's gate opens /people (QA-19).
+  const profiles = (await pageOpener(session))("/people/x");
   const { conversationId } = await params;
 
   let conversation;
@@ -52,14 +57,14 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
       <BackLink href="/remarks" label={t("remarks.all")} className="mb-4" />
 
       <header className="flex items-center gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
-        <PersonLink membershipId={other?.membershipId} name={names} className="shrink-0 rounded-full">
+        <PersonLink linked={profiles} membershipId={other?.membershipId} name={names} className="shrink-0 rounded-full">
           <Avatar avatarKey={other?.avatarKey} name={names} size="md" />
         </PersonLink>
         <div className="min-w-0 flex-1">
           {/* The avatar beside the title is why this is not a PageHeader; the title has its look (A3-states-9). */}
           <h1 className={PAGE_TITLE}>
 
-            <PersonLink membershipId={other?.membershipId} name={names} />
+            <PersonLink linked={profiles} membershipId={other?.membershipId} name={names} />
             {other?.role && (
               <Badge tone="neutral" size="sm">
                 {t(ROLE_META[other.role].labelKey)}
@@ -86,7 +91,7 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
               <Avatar avatarKey={message.authorAvatar} name={message.authorName} size="sm" />
               <div className={cn("min-w-0 max-w-[85%]", message.mine && "text-right")}>
                 <p className="text-xs text-fg-muted">
-                  <PersonLink
+                  <PersonLink linked={profiles}
                     membershipId={message.mine ? null : message.authorMembershipId}
                     name={message.mine ? t("convo.you") : message.authorName}
                     className="font-semibold text-fg"

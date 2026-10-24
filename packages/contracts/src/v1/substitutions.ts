@@ -74,6 +74,12 @@ export const substitutionAssignSchema = z.object({
   slotId: cuid,
   substituteMembershipId: cuid,
   note: z.string().trim().max(200).optional(),
+  /**
+   * Who the caller's board showed on the lesson (null: uncovered). When somebody
+   * else has been named since, the press is refused 409 naming who covers
+   * (QA-16). Left out, the press replaces whoever is there and releases them.
+   */
+  replacing: cuid.nullable().optional(),
 });
 export const substitutionAssignedSchema = z.object({ changed: z.boolean() });
 

@@ -71458,6 +71458,14 @@
                   "note": {
                     "type": "string",
                     "maxLength": 200
+                  },
+                  "replacing": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/slotId"
+                      }
+                    ],
+                    "nullable": true
                   }
                 },
                 "required": [
@@ -93660,7 +93668,7 @@
     },
     "/api/v1/shared/schools/{schoolId}/admissions": {
       "get": {
-        "summary": "What a family sees on a school's page: the open cycle with its grades, seats left, documents and notice, and the reader's own applications there",
+        "summary": "What a family sees on a school's page: every open cycle (cycles; open is the first) with its grades, seats left, documents and notice, and the reader's own applications there",
         "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
         "security": [
           {
@@ -93762,6 +93770,12 @@
                       ],
                       "additionalProperties": false,
                       "nullable": true
+                    },
+                    "cycles": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/open"
+                      }
                     },
                     "mine": {
                       "type": "array",

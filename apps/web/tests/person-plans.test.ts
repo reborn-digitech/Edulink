@@ -250,6 +250,8 @@ describe("the gate and the envelope", () => {
     expect(res.headers.get("x-edulink-code")).toBe("PLAN_REQUIRED");
     const body = apiErrorSchema.parse(await res.json());
     expect(body).toMatchObject({ code: "PLAN_REQUIRED", plan: "TEACHER", error: t("plans.refuseTeacher") });
+    // The feature too, so the phone's plan card names what is locked as the web's does (QA-18).
+    expect(body.feature).toBe("ASSISTANT");
   });
 });
 

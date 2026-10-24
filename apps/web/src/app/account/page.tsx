@@ -23,7 +23,7 @@ import { db } from "@/lib/db";
 import { getSession, listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
 import { readJson } from "@/lib/json";
 import { formatPhone } from "@/lib/phone";
-import { formatInZone, relativeTime } from "@/lib/dates";
+import { formatInZone } from "@/lib/dates";
 import { HANDLE_DOMAIN, toDisplayLoginName } from "@/lib/login-name";
 import { hasRecord } from "@/lib/student-record";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -41,7 +41,7 @@ import { TotpCard } from "./totp-card";
 import { twoFactorStatus } from "@/lib/two-factor";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { switchContext } from "@/app/switch/actions";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -54,6 +54,8 @@ export default async function AccountPage({
 }: {
   searchParams: Promise<{ tab?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const { tab: rawTab } = await searchParams;
   const tab = rawTab === "prefs" || rawTab === "devices" ? rawTab : "profile";
   const session = await requireUser();

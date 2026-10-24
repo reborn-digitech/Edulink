@@ -91,9 +91,11 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
     setError(null);
     if (!who) return setError(t("common.checkTheForm"));
     startTransition(async () => {
-      const result = await assignSubstituteAction({ dateKey, slotId: lesson.slotId, substituteMembershipId: who, note: note.trim() || undefined });
+      // What this board showed on the lesson, so a cover named by somebody else meanwhile is not overwritten unseen (QA-16).
+      const result = await assignSubstituteAction({ dateKey, slotId: lesson.slotId, substituteMembershipId: who, note: note.trim() || undefined, replacing: lesson.substitute?.membershipId ?? null });
       if (!result.ok) {
         setError(actionError(t, result, "common.tryAgain"));
+        if (result.stale) router.refresh();
         return;
       }
       if (result.changed) {

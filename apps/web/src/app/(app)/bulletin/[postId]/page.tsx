@@ -12,9 +12,10 @@ import { SlipAnswers, SlipReport } from "./slip";
 import { slipForReader, slipReport } from "@/lib/permission-slips";
 import { ReachReport } from "./reach-report";
 import { readJsonArray, type MediaItem } from "@/lib/json";
-import { formatDateKey, relativeTime } from "@/lib/dates";
+import { formatDateKey } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
 import { PersonLink } from "@/components/person-link";
+import { pageOpener } from "@/lib/page-links";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
 import { CommentReview } from "../comment-review";
@@ -51,9 +52,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PostPage({ params, searchParams }: { params: Promise<{ postId: string }>; searchParams: Promise<{ ok?: string; error?: string }> }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const locale = await getLocale();
   const session = await requireUser();
+  // Names are doors to profiles only where the reader's gate opens /people (QA-19).
+  const profiles = (await pageOpener(session))("/people/x");
   const { postId } = await params;
   const sp = await searchParams;
 
@@ -134,7 +139,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
 
       <article className="rounded-[var(--radius-lg)] border border-border bg-surface p-5">
         <header className="flex items-start gap-3">
-          <PersonLink membershipId={post.membershipByUser.get(post.author.id)} name={post.author.preferredName ?? post.author.name} className="shrink-0 rounded-full">
+          <PersonLink linked={profiles} membershipId={post.membershipByUser.get(post.author.id)} name={post.author.preferredName ?? post.author.name} className="shrink-0 rounded-full">
             <Avatar
               avatarKey={post.author.avatarKey}
               name={post.author.name}
@@ -143,7 +148,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
           </PersonLink>
           <div className="min-w-0 flex-1">
             <p className="flex flex-wrap items-center gap-x-2 text-sm">
-              <PersonLink
+              <PersonLink linked={profiles}
                 membershipId={post.membershipByUser.get(post.author.id)}
                 name={post.author.preferredName ?? post.author.name}
                 className="font-semibold text-fg"
@@ -283,7 +288,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
                     held ? "border-warn/40 bg-warn-soft/40" : "border-border bg-surface"
                   }`}
                 >
-                  <PersonLink membershipId={post.membershipByUser.get(entry.author.id)} name={entry.author.preferredName ?? entry.author.name} className="shrink-0 rounded-full">
+                  <PersonLink linked={profiles} membershipId={post.membershipByUser.get(entry.author.id)} name={entry.author.preferredName ?? entry.author.name} className="shrink-0 rounded-full">
                     <Avatar
                       avatarKey={entry.author.avatarKey}
                       name={entry.author.name}
@@ -292,7 +297,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
                   </PersonLink>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-fg-muted">
-                      <PersonLink
+                      <PersonLink linked={profiles}
                         membershipId={post.membershipByUser.get(entry.author.id)}
                         name={mine ? t("common.you") : (entry.author.preferredName ?? entry.author.name)}
                         className="font-semibold text-fg"

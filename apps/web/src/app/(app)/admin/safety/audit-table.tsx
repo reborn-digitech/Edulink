@@ -4,9 +4,9 @@ import { useMemo, useState } from "react";
 import { MagnifyingGlassIcon, WarningIcon } from "@phosphor-icons/react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/cn";
-import { relativeTime } from "@/lib/dates";
+import { relativeTime as relativeTimeIn } from "@/lib/dates";
 import { actionKey, isSensitiveAction, type AuditEntry } from "@/lib/safety-labels";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import { fieldClass } from "@/components/ui/field-class";
 
 /**
@@ -19,6 +19,9 @@ import { fieldClass } from "@/components/ui/field-class";
  */
 export function AuditTable({ rows }: { rows: AuditEntry[] }) {
   const t = useT();
+  // "2 hours ago" in the reader's language (QA-20).
+  const locale = useLocale();
+  const relativeTime = (at: Date) => relativeTimeIn(at, new Date(), locale);
   const [query, setQuery] = useState("");
   const [sensitiveOnly, setSensitiveOnly] = useState(false);
 

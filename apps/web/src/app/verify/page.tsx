@@ -3,9 +3,10 @@ import Link from "next/link";
 import { CheckCircleIcon, WarningCircleIcon, ClockCountdownIcon } from "@phosphor-icons/react/ssr";
 import { Wordmark } from "@/components/brand";
 import { Button } from "@/components/ui/button";
-import { verifyEmailByToken } from "@/lib/passwords";
+import { inspectVerifyToken } from "@/lib/passwords";
 import { getSession } from "@/lib/session";
 import { ResendButton } from "./resend-button";
+import { confirmEmail } from "./actions";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -32,15 +33,27 @@ export async function generateMetadata(): Promise<Metadata> {
  * expired, with a way to get another; and a link that names an address the
  * account has since moved away from, which is the one nobody would guess and the
  * one that only became possible when addresses became changeable.
+ *
+ * ⚠ A GET SHOWS A BUTTON; THE BUTTON'S POST SPENDS THE TOKEN (QA-13, QA campaign
+ * of 24 October 2026). This page used to spend the token while it rendered, and
+ * a GET is what a mail scanner, a messaging app's preview and a prefetch do: an
+ * account squatted under somebody's address was marked verified the moment their
+ * mail provider looked at the link, and SSO then links to a verified account
+ * without reclaiming it. Now the render only reads the token
+ * (`inspectVerifyToken`), and a live one is answered with "Confirm my address",
+ * a form whose server action (`confirmEmail`) spends it and comes back here
+ * marked done — the pattern the magic link took in assessment item 22.
  */
 export default async function VerifyPage({
   searchParams,
 }: {
-  searchParams: Promise<{ token?: string }>;
+  searchParams: Promise<{ token?: string; done?: string }>;
 }) {
   const t = await getT();
-  const { token } = await searchParams;
-  const result = await verifyEmailByToken(token);
+  const { token, done } = await searchParams;
+  const look = await inspectVerifyToken(token);
+  // A spent link straight after this page's own button is the confirmation itself; any other spent link was used before.
+  const confirmedNow = look.state === "USED" && done === "1";
 
   // Where to send them next. Somebody already signed in has somewhere to be;
   // somebody who opened this on a different device does not, and gets the door.
@@ -54,20 +67,33 @@ export default async function VerifyPage({
           <Wordmark />
         </Link>
 
-        {result.ok && (
+        {look.state === "READY" && (
+          <>
+            <h1 className="text-2xl font-bold tracking-tight text-fg">{t("verify.confirmTitle")}</h1>
+            <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("verify.confirmBody", { email: look.email ?? "" })}</p>
+            <form action={confirmEmail} className="mt-5">
+              <input type="hidden" name="token" value={token ?? ""} />
+              <Button type="submit" className="w-full">
+                {t("verify.confirmButton")}
+              </Button>
+            </form>
+          </>
+        )}
+
+        {confirmedNow && (
           <>
             <CheckCircleIcon weight="duotone" className="size-9 text-ok" />
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">{t("verify.confirmed")}</h1>
             <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-              {t("verify.confirmedBody", { email: result.email ?? "" })}
+              {t("verify.confirmedBody", { email: look.email ?? "" })}
             </p>
           </>
         )}
 
-        {!result.ok && result.reason === "USED" && (
+        {look.state === "USED" && !confirmedNow && (
           <>
-            {/* Not an error. Somebody pressed back, or their mail client
-                prefetched the link before they clicked it. Saying "invalid"
+            {/* Not an error. Somebody pressed back, or opened the link again
+                after confirming. Saying "invalid"
                 here would worry a person whose address is perfectly fine. */}
             <CheckCircleIcon weight="duotone" className="size-9 text-ok" />
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">{t("verify.alreadyConfirmed")}</h1>
@@ -75,13 +101,13 @@ export default async function VerifyPage({
           </>
         )}
 
-        {!result.ok && result.reason === "EXPIRED" && (
+        {look.state === "EXPIRED" && (
           <>
             <ClockCountdownIcon weight="duotone" className="size-9 text-warn" />
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">{t("verify.expired")}</h1>
             <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-              {result.email
-                ? t("verify.expiredBodyWithEmail", { email: result.email })
+              {look.email
+                ? t("verify.expiredBodyWithEmail", { email: look.email })
                 : t("verify.expiredBodyNoEmail")}
             </p>
             {/* The TOKEN goes back, never the user id — see the note on the
@@ -91,7 +117,7 @@ export default async function VerifyPage({
           </>
         )}
 
-        {!result.ok && result.reason === "STALE" && (
+        {look.state === "STALE" && (
           <>
             <WarningCircleIcon weight="duotone" className="size-9 text-warn" />
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">
@@ -101,7 +127,7 @@ export default async function VerifyPage({
           </>
         )}
 
-        {!result.ok && result.reason === "UNKNOWN" && (
+        {look.state === "UNKNOWN" && (
           <>
             <WarningCircleIcon weight="duotone" className="size-9 text-danger" />
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">

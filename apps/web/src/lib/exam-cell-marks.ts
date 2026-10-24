@@ -137,6 +137,14 @@ export async function enterMarks(ctx: ActiveContext, sessionId: string, input: {
   });
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
+    // Two people keying the same sheet at once is the double-entry design's normal case (QA-10): the
+    // session row is taken first, as runResults and publishRun take it, so the second waits, reads the
+    // first's version-1 rows and becomes entry two instead of colliding on the version-1 unique key.
+    // The status and the publication are read again under the lock (a run or a publish may have landed).
+    await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${s.id} FOR UPDATE`;
+    const locked = await tx.examSession.findUnique({ where: { id: s.id }, select: { status: true } });
+    if (locked?.status !== "CONDUCT" && locked?.status !== "ASSESSMENT") throw new RuleRefusal("examCell.refuseMarksNow", 409);
+    if ((await tx.resultRun.count({ where: { sessionId: s.id, status: { in: ["PUBLISHED", "SUPERSEDED"] } } })) > 0) throw new RuleRefusal("examCell.refusePublishedUseCorrection", 409);
     for (const e of parsed) {
       const rows = await tx.examMark.findMany({ where: { sessionId: s.id, courseId: course.id, studentMembershipId: e.studentMembershipId }, orderBy: { version: "asc" } });
       const v1 = rows[0];
@@ -207,6 +215,8 @@ export async function importMarks(ctx: ActiveContext, sessionId: string, textIn:
   let unchanged = 0;
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
+    // The same session lock as enterMarks (QA-10), so an import and a first entry never both write version 1.
+    await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${s.id} FOR UPDATE`;
     for (const r of file.rows) {
       const key = `${r.prn || r.seatNo}/${r.courseCode}`;
       const form = (r.prn ? byKey.get(`P:${r.prn.toUpperCase()}`) : undefined) ?? (r.seatNo ? byKey.get(`S:${r.seatNo.toUpperCase()}`) : undefined);

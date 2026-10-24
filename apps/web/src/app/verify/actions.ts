@@ -1,6 +1,7 @@
 "use server";
 
-import { resendVerification } from "@/lib/passwords";
+import { redirect } from "next/navigation";
+import { resendVerification, verifyEmailByToken } from "@/lib/passwords";
 import { getT } from "@/lib/i18n/server";
 import { refusalText } from "@/lib/i18n/refusal";
 
@@ -23,4 +24,20 @@ export async function resend(token: string): Promise<{ ok: boolean; error?: stri
       retryAfterSeconds: result.retryAfterSeconds,
     }),
   };
+}
+
+/**
+ * The confirm button: the only thing that spends the link (QA-13). A GET of
+ * `/verify` shows the button and writes nothing, so a mail scanner or a
+ * preview that fetches the link confirms nobody; the person's press posts the
+ * token here. A server action is a POST that Next.js accepts only from this
+ * site's own pages. Whatever the press found, the page says it: the answer is a
+ * redirect back to the same link, marked done, and the page reads the token's
+ * state afresh (a spent link then reads as confirmed).
+ */
+export async function confirmEmail(form: FormData): Promise<never> {
+  const raw = form.get("token");
+  const token = typeof raw === "string" ? raw.trim() : "";
+  if (token) await verifyEmailByToken(token);
+  redirect(`/verify?token=${encodeURIComponent(token)}&done=1`);
 }

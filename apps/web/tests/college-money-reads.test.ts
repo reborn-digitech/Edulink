@@ -206,12 +206,35 @@ describe("the mess bill", () => {
     expect(bill.dueDate.toISOString().slice(0, 10)).toBe("2027-01-10");
   });
 
-  // KNOWN GAP (unit.md U-4): "raised once" is decided by the demand's LABEL, and the label is written in the language
-  // of whoever presses the button (getT), so the same month billed again by a desk working in Hindi does not find
-  // the English label and bills every boarder a second time. Written as the behaviour wanted and marked `fails`.
-  it.fails("⚠ a month already billed is not billed again by a desk working in another language", async () => {
+  // U-4, QA-07 (fixed): "raised once" was decided by the demand's LABEL, written in the language of whoever pressed
+  // the button, so a desk working in Hindi billed every boarder of an English-billed month again. Now the charge's
+  // key (FeeDemand.raisedKey) decides, and the label is in the institution's own language whoever presses.
+  it("⚠ a month already billed is not billed again by a desk working in another language, and the label stays the school's", async () => {
     __setCookie("edulink_locale", "hi");
     expect(await billMess(accounts(), { month: "2026-10" })).toEqual({ billed: 0, already: 1, skipped: 1 });
+    expect(await billMess(accounts(), { month: "2026-11" })).toEqual({ billed: 1, already: 0, skipped: 1 });
+    const nov = await db.feeDemand.findFirstOrThrow({ where: { schoolId: school.college, studentMembershipId: member.adult, raisedKey: "MESS:2026-11" } });
+    expect(nov.label).toBe(t("collegeOffice.messLabel", { month: "2026-11" }));
+  });
+
+  it("⚠ a month billed before the key existed (its label in any language) is not billed again", async () => {
+    // A Marathi-labelled bill from before the migration: no key, the label in the language it was pressed in.
+    await db.feeDemand.create({ data: { schoolId: school.college!, studentMembershipId: member.adult!, academicYearId: ids.year!, label: translator("mr")("collegeOffice.messLabel", { month: "2027-01" }), dueDate: new Date("2027-02-10T00:00:00Z"), grossPaise: 3_500_00, netPaise: 3_500_00, status: "OPEN" } });
+    expect(await billMess(accounts(), { month: "2027-01", hostelId: ids.hostelPaid })).toEqual({ billed: 0, already: 1, skipped: 0 });
+  });
+
+  it("⚠ two presses of one month at the same moment bill each boarder once", async () => {
+    const both = await Promise.all([billMess(accounts(), { month: "2027-02", hostelId: ids.hostelPaid }), billMess(accounts(), { month: "2027-02", hostelId: ids.hostelPaid })]);
+    expect(both.map((r) => r.billed).sort()).toEqual([0, 1]);
+    expect(await db.feeDemand.count({ where: { schoolId: school.college, raisedKey: "MESS:2027-02" } })).toBe(1);
+  });
+
+  it("a cancelled month gives its key up: billed again, it is a new demand", async () => {
+    const dec = await db.feeDemand.findFirstOrThrow({ where: { schoolId: school.college, studentMembershipId: member.adult, raisedKey: "MESS:2026-12" } });
+    await db.feeDemand.update({ where: { id: dec.id }, data: { status: "CANCELLED" } });
+    expect(await billMess(accounts(), { month: "2026-12", hostelId: ids.hostelPaid })).toEqual({ billed: 1, already: 0, skipped: 0 });
+    expect((await db.feeDemand.findUniqueOrThrow({ where: { id: dec.id } })).raisedKey).toBeNull();
+    expect(await db.feeDemand.count({ where: { schoolId: school.college, studentMembershipId: member.adult, raisedKey: "MESS:2026-12", status: "OPEN" } })).toBe(1);
   });
 });
 
@@ -226,10 +249,11 @@ describe("the route fee", () => {
     expect(await raiseRouteFees(accounts(), { termLabel: "Term 0", dueDateKey: "2026-09-01" })).toEqual({ raised: 2, already: 0 });
   });
 
-  // KNOWN GAP (unit.md U-4), the same as the mess bill's: the label that makes it "once" is in the presser's language.
-  it.fails("⚠ a term already raised is not raised again by a desk working in Marathi", async () => {
+  // U-4, QA-07 (fixed), the same as the mess bill's: the key, not the presser's language, makes it "once".
+  it("⚠ a term already raised is not raised again by a desk working in Marathi, nor by the same term typed in other case", async () => {
     __setCookie("edulink_locale", "mr");
     expect(await raiseRouteFees(accounts(), { termLabel: "Term 1", dueDateKey: "2026-10-15" })).toEqual({ raised: 0, already: 1 });
+    expect(await raiseRouteFees(accounts(), { termLabel: "term  1", dueDateKey: "2026-10-15" })).toEqual({ raised: 0, already: 1 });
   });
 });
 

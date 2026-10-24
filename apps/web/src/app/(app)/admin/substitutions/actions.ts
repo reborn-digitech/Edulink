@@ -5,6 +5,7 @@ import { substitutionAssignSchema, substitutionClearSchema } from "@edulink/cont
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { assignSubstitute, clearSubstitution } from "@/lib/substitutions";
+import { RuleRefusal } from "@/lib/rule-refusal";
 
 /**
  * The office's two writes on the substitution board — name who covers a
@@ -14,10 +15,12 @@ import { assignSubstitute, clearSubstitution } from "@/lib/substitutions";
  * language. Only async functions and types may be exported from a
  * "use server" file — see tests/use-server-exports.test.ts.
  */
-export type SubstitutionActionResult = { ok: boolean; changed?: boolean; errorKey?: TranslationKey; errorVars?: Record<string, string | number> };
+export type SubstitutionActionResult = { ok: boolean; changed?: boolean; errorKey?: TranslationKey; errorVars?: Record<string, string | number>; stale?: boolean };
 
 function failure(error: unknown): SubstitutionActionResult {
   if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
+  // Somebody else named for the lesson since the board was drawn (QA-16): said with their name.
+  if (error instanceof RuleRefusal) return { ok: false, errorKey: error.key, errorVars: error.vars, stale: error.key === "substitutions.changedMeanwhile" };
   console.error("[substitutions]", error);
   return { ok: false, errorKey: "common.tryAgain" };
 }

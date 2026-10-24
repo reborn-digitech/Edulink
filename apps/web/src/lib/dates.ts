@@ -315,14 +315,19 @@ export function formatUtcTime(instant: Date): string {
   return formatInZone(instant, "UTC", { timeStyle: "short" });
 }
 
-/** "in 3 days", "2 hours ago" — for due dates and activity feeds. */
 /**
- * "in 5 days", "3 hours ago". A PHRASE, not a date — so unlike every formatter
- * above it takes the reader's locale: a Hindi screen reading "देय in 5 days"
- * is two languages in one breath. `Intl.RelativeTimeFormat` speaks hi and mr
- * natively; callers that do not pass a locale keep the English they had.
+ * "in 5 days", "3 hours ago" — for due dates and activity feeds. A PHRASE, not
+ * a date — so unlike every formatter above it takes the reader's locale: a
+ * Hindi screen reading "देय in 5 days" is two languages in one breath.
+ * `Intl.RelativeTimeFormat` speaks hi and mr natively.
+ *
+ * THE LOCALE IS REQUIRED (QA-20, 24 Oct 2026). It defaulted to English, and
+ * about thirty pages never passed one, so notifications, messages, the feed and
+ * the homes said "2 hours ago" under Hindi sentences. A server component takes
+ * the request's bound copy (`getRelativeTime()` in lib/i18n/server.ts), a client
+ * component passes `useLocale()`, and English is asked for by name (a job's log).
  */
-export function relativeTime(target: Date, now: Date = new Date(), locale: string = LOCALE): string {
+export function relativeTime(target: Date, now: Date, locale: string): string {
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   const diffMs = target.getTime() - now.getTime();
   const units: [Intl.RelativeTimeFormatUnit, number][] = [

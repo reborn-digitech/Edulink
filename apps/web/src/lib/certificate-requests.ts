@@ -140,9 +140,35 @@ export async function cancelRequest(ctx: ActiveContext, requestId: string): Prom
   const who = await asker(ctx, ctx.role === "PARENT" ? row.studentMembershipId : undefined);
   if (ctx.role !== "PARENT" && row.studentMembershipId !== who.studentMembershipId) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
   if (row.status !== "PENDING") return (await view([row]))[0]!;
-  const updated = await db.certificateRequest.update({ where: { id: requestId }, data: { status: "CANCELLED", decidedAt: new Date(), decidedByUserId: ctx.user.id }, include: INCLUDE });
-  await audit({ schoolId: row.schoolId, actorUserId: ctx.user.id, action: "certificate.requestCancel", targetType: "CertificateRequest", targetId: requestId, meta: { kind: row.kind } });
-  return (await view([updated]))[0]!;
+  const closed = await closeRequest(row.schoolId, requestId, { status: "CANCELLED", decidedAt: new Date(), decidedByUserId: ctx.user.id });
+  if (closed.closed) await audit({ schoolId: row.schoolId, actorUserId: ctx.user.id, action: "certificate.requestCancel", targetType: "CertificateRequest", targetId: requestId, meta: { kind: row.kind, ...closed.fee } });
+  return (await view([await db.certificateRequest.findUniqueOrThrow({ where: { id: requestId }, include: INCLUDE })]))[0]!;
+}
+
+/**
+ * ⚠ A CLOSED ASK TAKES ITS FEE WITH IT (QA-11, QA campaign of 24 October 2026). The office may set a fee on an ask
+ * (setRequestFee: a demand on the pupil's ledger); a decline or the family taking the ask back used to leave that
+ * demand OPEN, owed on the pupil's ledger and the guardian's fees page for a paper nobody would issue. Now the ask
+ * is closed and its fee cancelled in one transaction: the ask's row is locked and moved from PENDING only (a second
+ * press, or an Issue at the same moment, finds it moved), then the fee's demand is locked and CANCELLED while nothing
+ * is paid on it. A fee with money on it is left as it stands, as setRequestFee leaves a paid fee: the money is real,
+ * and giving it back is the office's refund or reversal on the pupil's fees page; the audit row says how much.
+ */
+async function closeRequest(schoolId: string, requestId: string, data: { status: "CANCELLED" | "DECLINED"; decidedAt: Date; decidedByUserId: string; declineReason?: string }): Promise<{ closed: boolean; fee: { feeCancelled?: true; feeKeptPaidPaise?: number } }> {
+  return db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.$queryRaw`SELECT "id" FROM "CertificateRequest" WHERE "id" = ${requestId} AND "schoolId" = ${schoolId} FOR UPDATE`;
+    const moved = await tx.certificateRequest.updateMany({ where: { id: requestId, schoolId, status: "PENDING" }, data });
+    if (moved.count === 0) return { closed: false, fee: {} };
+    const row = await tx.certificateRequest.findUniqueOrThrow({ where: { id: requestId }, select: { feeDemandId: true } });
+    if (!row.feeDemandId) return { closed: true, fee: {} };
+    // The demand's own lock: a payment posted at this moment (which locks the pupil's open demands) goes first or waits.
+    await tx.$queryRaw`SELECT "id" FROM "FeeDemand" WHERE "id" = ${row.feeDemandId} AND "schoolId" = ${schoolId} FOR UPDATE`;
+    const cancelled = await tx.feeDemand.updateMany({ where: { id: row.feeDemandId, schoolId, status: "OPEN", paidPaise: 0 }, data: { status: "CANCELLED" } });
+    if (cancelled.count === 1) return { closed: true, fee: { feeCancelled: true } };
+    const kept = await tx.feeDemand.findUnique({ where: { id: row.feeDemandId }, select: { paidPaise: true } });
+    return { closed: true, fee: kept && kept.paidPaise > 0 ? { feeKeptPaidPaise: kept.paidPaise } : {} };
+  });
 }
 
 /** The office's queue: pending first, newest first within a status. */
@@ -170,10 +196,12 @@ export async function declineRequest(ctx: ActiveContext, requestId: string, reas
   const row = await db.certificateRequest.findFirst({ where: { id: requestId, schoolId: caller.schoolId }, include: INCLUDE });
   if (!row) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
   if (row.status !== "PENDING") return (await view([row]))[0]!;
-  const updated = await db.certificateRequest.update({ where: { id: requestId }, data: { status: "DECLINED", declineReason: reason.trim(), decidedAt: new Date(), decidedByUserId: ctx.user.id }, include: INCLUDE });
-  await audit({ schoolId: caller.schoolId, actorUserId: ctx.user.id, action: "certificate.requestDecline", targetType: "CertificateRequest", targetId: requestId, meta: { kind: row.kind } });
-  await tellFamily(row.schoolId, row.studentMembershipId, row.requestedByUserId, { titleKey: "certificateRequests.notifDeclined", titleVars: { kind: row.kind }, body: reason.trim(), url: "/student/certificates" });
-  return (await view([updated]))[0]!;
+  const closed = await closeRequest(caller.schoolId, requestId, { status: "DECLINED", declineReason: reason.trim(), decidedAt: new Date(), decidedByUserId: ctx.user.id });
+  if (closed.closed) {
+    await audit({ schoolId: caller.schoolId, actorUserId: ctx.user.id, action: "certificate.requestDecline", targetType: "CertificateRequest", targetId: requestId, meta: { kind: row.kind, ...closed.fee } });
+    await tellFamily(row.schoolId, row.studentMembershipId, row.requestedByUserId, { titleKey: "certificateRequests.notifDeclined", titleVars: { kind: row.kind }, body: reason.trim(), url: "/student/certificates" });
+  }
+  return (await view([await db.certificateRequest.findUniqueOrThrow({ where: { id: requestId }, include: INCLUDE })]))[0]!;
 }
 
 /**
@@ -206,6 +234,11 @@ export async function setRequestFee(ctx: ActiveContext, requestId: string, amoun
   const lines = JSON.stringify([{ headId: head.id, code: head.code, name: head.name, grossPaise: amountPaise, concessionPaise: 0 }]);
   const updated = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    // A decline or a cancel at this moment closes the ask under the same lock (QA-11): a fee is never set on a closed one.
+    await tx.$queryRaw`SELECT "id" FROM "CertificateRequest" WHERE "id" = ${row.id} AND "schoolId" = ${caller.schoolId} FOR UPDATE`;
+    const now = await tx.certificateRequest.findUniqueOrThrow({ where: { id: row.id }, select: { status: true, feeDemandId: true } });
+    if (now.status === "DECLINED" || now.status === "CANCELLED") throw new RuleRefusal("certificateRequests.refuseFeeSettled", 409);
+    if (now.feeDemandId !== row.feeDemandId) throw new RuleRefusal("certificateRequests.refuseFeePaid", 409);
     const demand = existing
       ? await tx.feeDemand.update({ where: { id: existing.id }, data: { grossPaise: amountPaise, netPaise: amountPaise, linesJson: lines }, select: { id: true } })
       : await tx.feeDemand.create({ data: { schoolId: caller.schoolId, studentMembershipId: row.studentMembershipId, academicYearId: year.id, instalmentId: null, label, dueDate: new Date(`${todayKey(school.timezone)}T00:00:00.000Z`), grossPaise: amountPaise, concessionPaise: 0, netPaise: amountPaise, linesJson: lines, status: "OPEN" }, select: { id: true } });
@@ -215,11 +248,27 @@ export async function setRequestFee(ctx: ActiveContext, requestId: string, amoun
   return (await view([updated]))[0]!;
 }
 
-/** Called by issueCertificate: the ask is answered by the paper. A request already settled is left as it stands. */
-export async function markRequestIssued(schoolId: string, requestId: string, certificateId: string): Promise<void> {
-  const row = await db.certificateRequest.findFirst({ where: { id: requestId, schoolId }, select: { id: true, status: true } });
-  if (!row || row.status !== "PENDING") return;
-  await db.certificateRequest.update({ where: { id: requestId }, data: { status: "ISSUED", certificateId, decidedAt: new Date() } });
+/**
+ * ⚠ ONE ASK, ONE PAPER (QA-12, QA campaign of 24 October 2026). The office and the head pressing Issue on the same
+ * ask at once made two numbered papers, both real at the public check, the ask pointing at the second and the first
+ * orphaned: the ask was marked answered after the paper existed, by a read and a write of their own. Now
+ * issueCertificate claims the ask inside the paper's own transaction, before a number is taken: the ask's row is
+ * locked and read again, a PENDING ask goes on, an ask already ISSUED answers the press with that paper and makes
+ * none, an ask declined or taken back is refused, and an ask of another pupil is not found. `answerRequest` then
+ * points the ask at the paper in the same transaction, so the two never part.
+ */
+export async function claimRequestForIssue(tx: typeof db, schoolId: string, requestId: string, studentMembershipId: string): Promise<{ issuedCertificateId: string | null }> {
+  await tx.$queryRaw`SELECT "id" FROM "CertificateRequest" WHERE "id" = ${requestId} AND "schoolId" = ${schoolId} FOR UPDATE`;
+  const row = await tx.certificateRequest.findFirst({ where: { id: requestId, schoolId }, select: { status: true, certificateId: true, studentMembershipId: true } });
+  if (!row || row.studentMembershipId !== studentMembershipId) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
+  if (row.status === "ISSUED" && row.certificateId) return { issuedCertificateId: row.certificateId };
+  if (row.status !== "PENDING") throw new RuleRefusal("certificateRequests.refuseClosed", 409);
+  return { issuedCertificateId: null };
+}
+
+/** The ask answered by the paper, in the issue's transaction, after claimRequestForIssue. */
+export async function answerRequest(tx: typeof db, schoolId: string, requestId: string, certificateId: string): Promise<void> {
+  await tx.certificateRequest.updateMany({ where: { id: requestId, schoolId, status: "PENDING" }, data: { status: "ISSUED", certificateId, decidedAt: new Date() } });
 }
 
 /** The purpose a request carries, for an issue that names the request but not the purpose. */

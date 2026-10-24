@@ -122,7 +122,7 @@ function LessonCard({ dateKey, lesson }: { dateKey: string; lesson: Substitution
   const reload = () => void qc.invalidateQueries({ queryKey: BOARD_KEY });
   const assign = useMutation({
     mutationFn: async (input: { substituteMembershipId: string; name: string; note?: string }) => ({
-      ...substitutionAssignedSchema.parse(unwrap(await api().post(PATH, { dateKey, slotId: lesson.slotId, substituteMembershipId: input.substituteMembershipId, ...(input.note ? { note: input.note } : {}) }))),
+      ...substitutionAssignedSchema.parse(unwrap(await api().post(PATH, { dateKey, slotId: lesson.slotId, substituteMembershipId: input.substituteMembershipId, ...(input.note ? { note: input.note } : {}), replacing: lesson.substitute?.membershipId ?? null }))),
       name: input.name,
     }),
     onSuccess: (r) => {
@@ -132,7 +132,11 @@ function LessonCard({ dateKey, lesson }: { dateKey: string; lesson: Substitution
       setNote("");
       reload();
     },
-    onError: (e) => toast.show(e.message, "danger"),
+    // Somebody else named meanwhile is a 409 naming them (QA-16): said, and the board drawn again to show who.
+    onError: (e) => {
+      toast.show(e.message, "danger");
+      reload();
+    },
   });
   const clear = useMutation({
     mutationFn: async () => substitutionAssignedSchema.parse(unwrap(await api().post(`${PATH}/clear`, { dateKey, slotId: lesson.slotId }))),

@@ -17,8 +17,7 @@ import { AccessError } from "@/lib/access-error";
 import { isModuleOn } from "@/lib/modules";
 import { offeringWork } from "@/lib/college-homework";
 import { formatMilli } from "@/lib/validation";
-import { relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { setWorkAction } from "../../actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,6 +26,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** One offering's homework (R-48): set a piece of work, and the list with its hand-ins and marks against the registered students. */
 export default async function OfferingWorkPage({ params, searchParams }: { params: Promise<{ offeringId: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const ctx = await requireRole("FACULTY", "HOD");
   const t = await getT();
   if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;

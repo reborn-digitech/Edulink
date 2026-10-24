@@ -43,6 +43,7 @@ export function SchoolProfile() {
     enabled: Boolean(schoolId) && role === "PARENT",
     queryFn: async () => schoolAdmissionsSchema.parse(unwrap(await api().get(`/api/v1/shared/schools/${schoolId}/admissions`))),
   });
+  const openCycles = admissions.data ? (admissions.data.cycles ?? (admissions.data.open ? [admissions.data.open] : [])) : [];
   const ask = useMutation({
     mutationFn: async (body: { schoolId: string; kind: "ADMISSION"; body: string }) => {
       const result = await api().post("/api/v1/shared/enquiries", body);
@@ -139,22 +140,27 @@ export function SchoolProfile() {
               ))}
             </Card>
           ) : null}
-          {role === "PARENT" && admissions.data?.open ? (
+          {/* Every open cycle (QA-17: a mid-year round beside next year's); a server before 24 Oct 2026 sends `open` alone. */}
+          {role === "PARENT" && openCycles.length > 0 ? (
             <Card title={t("admissions.applyHere")}>
-              <Text variant="sm" tone="muted">
-                {t("admissions.applyIntro", { cycle: admissions.data.open.name, year: admissions.data.open.academicYearName })}
-              </Text>
-              {admissions.data.open.grades.map((g) => (
-                <Text key={g.grade} variant="sm">
-                  {`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}
-                </Text>
+              {openCycles.map((cycle) => (
+                <View key={cycle.cycleId} style={{ gap: th.space[1] }}>
+                  <Text variant="sm" tone="muted">
+                    {t("admissions.applyIntro", { cycle: cycle.name, year: cycle.academicYearName })}
+                  </Text>
+                  {cycle.grades.map((g) => (
+                    <Text key={g.grade} variant="sm">
+                      {`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}
+                    </Text>
+                  ))}
+                  {cycle.closesAt ? (
+                    <Text variant="sm" tone="warn">
+                      {t("admissions.closesOn", { date: formatDateKey(cycle.closesAt, locale) })}
+                    </Text>
+                  ) : null}
+                  <Button label={t("admissions.apply")} accessibilityLabel={`${t("admissions.apply")}: ${cycle.name}`} onPress={() => router.push({ pathname: "/(app)/apply", params: { schoolId: d.schoolId, school: d.name, cycleId: cycle.cycleId } } as never)} />
+                </View>
               ))}
-              {admissions.data.open.closesAt ? (
-                <Text variant="sm" tone="warn">
-                  {t("admissions.closesOn", { date: formatDateKey(admissions.data.open.closesAt, locale) })}
-                </Text>
-              ) : null}
-              <Button label={t("admissions.apply")} onPress={() => router.push({ pathname: "/(app)/apply", params: { schoolId: d.schoolId, school: d.name } } as never)} />
             </Card>
           ) : null}
           {role === "PARENT" && admissions.data && admissions.data.mine.length > 0 ? (

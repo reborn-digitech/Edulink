@@ -16,14 +16,17 @@ export function PersonLink({
   name,
   className,
   children,
+  linked = true,
 }: {
   membershipId: string | null | undefined;
+  /** False for a reader whose gate does not open /people (an alumnus, a college desk; lib/page-links.ts): the name is text, never a way to "Where would you like to go?" (QA-19). */
+  linked?: boolean;
   name: string;
   className?: string;
   /** Something other than the name to wrap — an avatar, a card. */
   children?: React.ReactNode;
 }) {
-  if (!membershipId) {
+  if (!membershipId || !linked) {
     return <span className={className}>{children ?? name}</span>;
   }
   return (

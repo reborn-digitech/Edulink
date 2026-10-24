@@ -125,7 +125,7 @@ export function FamilySessions() {
         </Note>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {paying ? (
         <PayWatch
           flow={paying}
@@ -348,7 +348,7 @@ function PayWatch({ flow, onDone, onClose }: { flow: { checkout: GigCheckout; st
       <Text variant="xs" tone="muted">
         {t("gigs.payeeNote")}
       </Text>
-      {status.isError ? <Failed message={status.error.message} onRetry={() => void status.refetch()} /> : null}
+      {status.isError ? <Failed message={status.error.message} planFrom={status.error} onRetry={() => void status.refetch()} /> : null}
       <Button label={settled || timedOut ? t("common.back") : t("common.cancel")} variant="secondary" onPress={onClose} />
     </Card>
   );

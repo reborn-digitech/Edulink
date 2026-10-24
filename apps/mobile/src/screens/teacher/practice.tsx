@@ -47,7 +47,7 @@ export function TeacherPractice() {
   return (
     <Screen title={t("practice.teacherTitle")} description={t("practice.teacherIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && d.classes.length === 0 ? (
         <Empty title={t("practice.teacherTitle")} body={t("teacher.noClassesYet")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
       ) : null}
@@ -100,7 +100,7 @@ export function TeacherPractice() {
 
           <SetChapter classId={classId} topics={d.topicOptions} note={note} onDone={setNote} />
 
-          {archive.isError ? <Failed message={archive.error.message} onRetry={() => (confirming ? archive.mutate(confirming) : archive.reset())} /> : null}
+          {archive.isError ? <Failed message={archive.error.message} planFrom={archive.error} onRetry={() => (confirming ? archive.mutate(confirming) : archive.reset())} /> : null}
           {d.assignments.length === 0 ? (
             <Empty title={t("practice.assignmentsTitle")} body={t("practice.assignmentsEmpty")} action={<Button label={t("worksheets.title")} variant="secondary" onPress={() => router.push("/(app)/worksheets" as never)} />} />
           ) : (
@@ -193,7 +193,7 @@ function SetChapter({ classId, topics, note, onDone }: { classId: string; topics
           <Field label={t("practice.fieldNote")} value={text} onChangeText={setText} error={errors.note} />
           <Field label={t("practice.fieldDue")} value={due} onChangeText={setDue} placeholder="YYYY-MM-DD" autoCapitalize="none" error={errors.dueDate} />
           {errors.topicSlug ? <Failed message={t("common.checkTheForm")} /> : null}
-          {set.isError ? <Failed message={set.error.message} onRetry={submit} /> : null}
+          {set.isError ? <Failed message={set.error.message} planFrom={set.error} onRetry={submit} /> : null}
           {note ? <Notice text={note} /> : null}
           <Button label={t("practice.setSubmit")} onPress={submit} busy={set.isPending} />
         </>

@@ -19,7 +19,7 @@ import { ESI_RATES, PF_RATES } from "@edulink/contracts";
 import { createSession, getSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { computeSlip, lopHalfDaysFor, professionalTax, slipDigest, totalsOf, financialYearOf, monthsOfFinancialYear, type SlipInput } from "@/lib/payroll-rules";
-import { askAdvance, decideAdvance, draftRun, editSlip, lockRun, listSalaries, myPayslips, payrollExport, payrollSummary, payslipDocument, runView, saveSalary, saveStructure, shareRun, myStatement, savePayrollSettings } from "@/lib/payroll";
+import { askAdvance, decideAdvance, draftRun, ecrShares, editSlip, lockRun, listSalaries, myPayslips, payrollExport, payrollSummary, payslipDocument, runView, saveSalary, saveStructure, shareRun, myStatement, savePayrollSettings } from "@/lib/payroll";
 import { renderPayslipPdf } from "@/lib/payslip-pdf";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { AccessError } from "@/lib/access-error";
@@ -130,6 +130,22 @@ describe("the statutory arithmetic, against the coded rates", () => {
     expect(line(full, "PF_EMPLOYEE")!.paise).toBe(360_000);
     // The pension share stays on the ceiling whatever the school contributes on.
     expect(line(full, "PF_EMPLOYER")!.epsPaise).toBe(124_950);
+  });
+
+  it("QA-08: the ECR's employer columns add up to the employer's share: EPS rounded first, the difference what is left", () => {
+    // ₹15,000 EPF wages: EE ₹1,800, EPS ₹1,249.50 → ₹1,250, the difference ₹550 (it was ₹551, the columns adding to ₹1,801).
+    const s = computeSlip(slip({}));
+    expect(ecrShares(line(s, "PF_EMPLOYEE")!, line(s, "PF_EMPLOYER"))).toEqual({ epfWage: 15_000, epsWage: 15_000, ee: 1_800, eps: 1_250, diff: 550 });
+    // On the whole basic: the employer pays ₹3,600, the pension stays ₹1,250 on the ceiling, the difference ₹2,350.
+    const full = computeSlip(slip({ basicPaise: 3_000_000, settings: { ...settings, pfOnFullBasic: true } }));
+    expect(ecrShares(line(full, "PF_EMPLOYEE")!, line(full, "PF_EMPLOYER"))).toMatchObject({ ee: 3_600, eps: 1_250, diff: 2_350 });
+    // Every wage from ₹100 to ₹15,000 a rupee at a time: EPS + difference is always the employer's rounded share.
+    for (let wage = 10_000; wage <= 1_500_000; wage += 100) {
+      const w = computeSlip(slip({ basicPaise: wage }));
+      const er = line(w, "PF_EMPLOYER")!;
+      const c = ecrShares(line(w, "PF_EMPLOYEE")!, er);
+      if (c.eps + c.diff !== Math.round(er.paise / 100)) throw new Error(`wage ${wage / 100}: ${c.eps} + ${c.diff} ≠ ${Math.round(er.paise / 100)}`);
+    }
   });
 
   it("ESI is 0.75 % and 3.25 % of the gross, each rounded up to the rupee, while the gross is within ₹21,000", () => {
@@ -326,6 +342,8 @@ describe("a month's run", () => {
     expect(Number(f[6])).toBe(Math.round(epf * 0.12));
     expect(Number(f[7]) + Number(f[8])).toBe(Number(f[6]));
     expect(f[9]).toBe("4"); // 3.5 NCP days, rounded
+    // The return's total is what its lines remit (QA-08).
+    expect(ecr.totalPaise).toBe((Number(f[6]) + Number(f[7]) + Number(f[8])) * 100);
     const bank = await payrollExport(ctx, MONTH, "BANK_ADVICE");
     expect(bank.content).toContain(ACCOUNT);
     expect(bank.rows).toBe(1); // the other is paid in cash

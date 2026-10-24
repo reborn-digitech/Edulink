@@ -19,7 +19,7 @@ import { pupilRecordFor } from "@/lib/pupil-records";
 import { CompleteRecordCard } from "@/components/certificates/complete-record-card";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, currentStreakFor, todayAttendanceFor } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, isWithin, todayKey, weekdayOfKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { cn } from "@/lib/cn";
@@ -29,7 +29,7 @@ import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
 import { welcomeFor } from "@/lib/student-welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
-import { getT, getLocale } from "@/lib/i18n/server";
+import { getT, getLocale, getRelativeTime } from "@/lib/i18n/server";
 import { periodLabel } from "@/lib/coded-defaults";
 import { PersonLink } from "@/components/person-link";
 import { PAGE_TITLE } from "@/components/ui/page-header";
@@ -40,6 +40,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function StudentHome() {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const ctx = await requireRole("STUDENT");
   const t = await getT();
   const locale = await getLocale();

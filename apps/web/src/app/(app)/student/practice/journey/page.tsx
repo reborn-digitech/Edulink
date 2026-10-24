@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { MedalIcon, FlameIcon, SparkleIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { journey } from "@/lib/practice-insights";
-import { relativeTime } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,6 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
  * past and nobody else — the copy says so out loud.
  */
 export default async function JourneyPage() {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const ctx = await requireRole("STUDENT");
   const t = await getT();
   const data = await journey(ctx);

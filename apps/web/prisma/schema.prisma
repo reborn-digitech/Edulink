@@ -4536,6 +4536,12 @@ model FeeDemand {
   lastReminderKey     String?
   /// When CARRIED: the opening-balance demand in the next year.
   carriedToDemandId   String?
+  /// THE IDENTITY OF A CHARGE RAISED ONCE (QA-07, QA campaign of 24 October 2026): language-free,
+  /// "MESS:2026-10" or "ROUTE:<academicYearId>:<routeId>:<term>". The label is a sentence in the
+  /// institution's language and was once the key, so a month billed in Hindi after English was billed
+  /// twice. Unique per student, so two presses at once raise one; a CANCELLED charge gives its key up
+  /// when the same charge is raised again. Null for everything else. One writer: college-fees.ts raiseOnce.
+  raisedKey           String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -4547,6 +4553,7 @@ model FeeDemand {
   allocations FeeAllocation[]
 
   @@unique([studentMembershipId, instalmentId])
+  @@unique([studentMembershipId, raisedKey])
   @@index([schoolId, status, dueDate])
   @@index([schoolId, studentMembershipId])
   @@index([instalmentId])

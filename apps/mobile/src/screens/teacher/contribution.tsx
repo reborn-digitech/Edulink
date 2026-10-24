@@ -54,6 +54,7 @@ export function TeacherContribution() {
       {failed ? (
         <Failed
           message={failed.message}
+          planFrom={failed}
           onRetry={() => {
             void topics.refetch();
             void mine.refetch();

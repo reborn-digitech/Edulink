@@ -47,10 +47,10 @@ export async function apiFailure(error: unknown, where: string): Promise<NextRes
     recordError(kindOfStatus(404));
     return envelope({ error: t(error.key), code: "FEATURE_OFF" }, 404, { "x-edulink-code": "FEATURE_OFF" });
   }
-  // A feature that is on, behind a plan this person does not hold (16 Oct 2026; person-plans.ts): 402, said as PLAN_REQUIRED with the plan.
+  // A feature that is on, behind a plan this person does not hold (16 Oct 2026; person-plans.ts): 402, said as PLAN_REQUIRED with the plan and the feature (the phone draws its plan card from both, QA-18).
   if (error instanceof PlanRequiredError) {
     recordError(kindOfStatus(403));
-    return envelope({ error: t(error.key), code: "PLAN_REQUIRED", plan: error.plan }, 402, { "x-edulink-code": "PLAN_REQUIRED" });
+    return envelope({ error: t(error.key), code: "PLAN_REQUIRED", plan: error.plan, feature: error.feature }, 402, { "x-edulink-code": "PLAN_REQUIRED" });
   }
   if (error instanceof AccessError) {
     const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;

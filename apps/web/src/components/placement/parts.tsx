@@ -96,13 +96,19 @@ const TABS = [
   ["analytics", "/placement/analytics", "placement.tabAnalytics"],
 ] as const;
 
-export function CellFrame({ t, on, college, current, title, description, ok, error, children, back }: { t: Translate; on: boolean; college: boolean; current: (typeof TABS)[number][0] | null; title: string; description?: string; ok?: string; error?: string; children: ReactNode; back?: { href: string; label: string } }) {
+/**
+ * `opens` (QA-19, 24 Oct 2026): which tabs the reader's gate opens (lib/page-links.ts). The IQAC reads the
+ * analytics and nothing else of the cell, and its tabs led to "Where would you like to go?"; a tab the reader
+ * may not open is left out, and a strip of one tab is not drawn. Left out, every tab is drawn.
+ */
+export function CellFrame({ t, on, college, current, title, description, ok, error, children, back, opens }: { t: Translate; on: boolean; college: boolean; current: (typeof TABS)[number][0] | null; title: string; description?: string; ok?: string; error?: string; children: ReactNode; back?: { href: string; label: string }; opens?: (href: string) => boolean }) {
+  const tabs = TABS.filter(([, href]) => !opens || opens(href));
   return (
     <div className="space-y-5">
       <PageHeader title={title} description={on ? description : undefined} back={back} />
       {on ? (
         <>
-          <TabBar ariaLabel={t("placement.cellNav")} current={current ?? ""} tabs={TABS.map(([key, href, label]) => ({ key, href, label: t(label) }))} />
+          {tabs.length > 1 && <TabBar ariaLabel={t("placement.cellNav")} current={current ?? ""} tabs={tabs.map(([key, href, label]) => ({ key, href, label: t(label) }))} />}
           <Flash ok={ok} error={error} />
           {children}
         </>

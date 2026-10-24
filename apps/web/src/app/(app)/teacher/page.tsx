@@ -13,7 +13,7 @@ import { formatPaise } from "@edulink/i18n";
 import { owedForQuestionsPaise, questionGigOpen } from "@/lib/question-gig";
 import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
+import { formatDateKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import { marksTodoFor } from "@/lib/exams";
 import { EXAM_KIND_KEY } from "@/lib/constants";
 import { teacherWeek } from "@/lib/timetable";
@@ -24,7 +24,7 @@ import { formatTimeRange } from "@/lib/school-day";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { getT, getLocale } from "@/lib/i18n/server";
+import { getT, getLocale, getRelativeTime } from "@/lib/i18n/server";
 import { periodLabel } from "@/lib/coded-defaults";
 import { PageHeader } from "@/components/ui/page-header";
 import { CoverAnswer } from "./cover-answer";
@@ -35,6 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function TeacherHome() {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const locale = await getLocale();
   const ctx = await requireRole("TEACHER", "ADMIN");

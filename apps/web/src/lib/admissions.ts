@@ -334,31 +334,47 @@ export async function cancelSlot(ctx: ActiveContext, slotId: string): Promise<{ 
 /* -------------------------------------------------------------------------- */
 
 /**
- * The open cycle on a school's page, for any signed-in reader, and the
+ * The open cycles on a school's page, for any signed-in reader, and the
  * reader's own applications there. A school that has not published its
  * profile is not taking applications through the platform, whatever its
- * cycle says: the directory is the door.
+ * cycles say: the directory is the door.
+ *
+ * EVERY cycle that is OPEN and within its dates is offered (QA-17, 24 October
+ * 2026): a mid-year transfer cycle beside next year's admissions is the
+ * ordinary case, and only the newest used to be shown or take applications.
+ * `open` is the first of them, kept for a phone build that reads one.
  */
 export async function schoolAdmissions(ctx: ActiveContext, schoolId: string) {
   const school = await db.school.findFirst({ where: { id: schoolId, removedAt: null, profilePublishedAt: { not: null } }, select: { id: true } });
-  if (!school) return { open: null, mine: [] as ApplicationRow[] };
-  const [open, mine] = await Promise.all([
-    forSchool(schoolId, () => openCycleOf(schoolId)),
+  if (!school) return { open: null, cycles: [] as OpenCycle[], mine: [] as ApplicationRow[] };
+  const [cycles, mine] = await Promise.all([
+    forSchool(schoolId, () => openCyclesOf(schoolId)),
     ctx.role === "PARENT" ? familyApplications(ctx, schoolId) : Promise.resolve({ items: [] as ApplicationRow[] }),
   ]);
-  return { open, mine: mine.items };
+  return { open: cycles[0] ?? null, cycles, mine: mine.items };
 }
 
-async function openCycleOf(schoolId: string) {
+/** Open, and within its dates by the school's own calendar day. */
+function openTodayWhere(schoolId: string, today: Date) {
+  return { schoolId, status: "OPEN", OR: [{ opensAt: null }, { opensAt: { lte: today } }], AND: [{ OR: [{ closesAt: null }, { closesAt: { gte: today } }] }] };
+}
+
+async function schoolToday(schoolId: string): Promise<Date> {
   const { timezone } = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
-  const today = new Date(`${todayKey(timezone)}T00:00:00Z`);
-  const cycle = await db.admissionCycle.findFirst({
-    where: { schoolId, status: "OPEN", OR: [{ opensAt: null }, { opensAt: { lte: today } }], AND: [{ OR: [{ closesAt: null }, { closesAt: { gte: today } }] }] },
-    orderBy: { createdAt: "desc" },
+  return new Date(`${todayKey(timezone)}T00:00:00Z`);
+}
+
+type OpenCycle = Awaited<ReturnType<typeof openCyclesOf>>[number];
+
+/** Every cycle taking applications today, the earliest academic year first (this year's mid-year round before next year's). */
+async function openCyclesOf(schoolId: string) {
+  const today = await schoolToday(schoolId);
+  const cycles = await db.admissionCycle.findMany({
+    where: openTodayWhere(schoolId, today),
+    orderBy: [{ academicYear: { startDate: "asc" } }, { createdAt: "asc" }],
     include: { academicYear: { select: { name: true } }, applications: { where: { status: "ADMITTED" }, select: { gradeApplied: true } } },
   });
-  if (!cycle) return null;
-  return {
+  return cycles.map((cycle) => ({
     cycleId: cycle.id,
     name: cycle.name,
     academicYearName: cycle.academicYear.name,
@@ -367,7 +383,7 @@ async function openCycleOf(schoolId: string) {
     testRequired: cycle.testRequired,
     notice: cycle.notice,
     closesAt: dateKeyOf(cycle.closesAt),
-  };
+  }));
 }
 
 /* -------------------------------------------------------------------------- */
@@ -450,8 +466,9 @@ export async function apply(ctx: ActiveContext, input: ApplicationSave & { schoo
   if (!school) throw new AccessError("admissions.notFound", "NOT_FOUND");
   const { id, created } = await forSchool(school.id, async () => {
     const cycle = await openCycleForApplying(school.id, input.cycleId);
-    const openNow = await openCycleOf(school.id);
-    if (!openNow || openNow.cycleId !== cycle.id) throw new AccessError("admissions.refuseClosed");
+    // Any cycle open by its status and dates takes applications, not only the newest (QA-17).
+    const openNow = await db.admissionCycle.count({ where: { id: cycle.id, ...openTodayWhere(school.id, await schoolToday(school.id)) } });
+    if (openNow === 0) throw new AccessError("admissions.refuseClosed");
     if (!parseGrades(cycle.gradesJson).some((g) => g.grade === input.gradeApplied)) throw new AccessError("admissions.refuseGrade");
     checkBirthdate(input.childBirthdate ? parseDateOnly(input.childBirthdate) : null, input.gradeApplied, cycle.academicYear.startDate);
     const twin = await db.application.findFirst({ where: { cycleId: cycle.id, applicantUserId: caller.user.id, childName: { equals: input.childName, mode: "insensitive" }, status: { not: "WITHDRAWN" } }, select: { id: true } });

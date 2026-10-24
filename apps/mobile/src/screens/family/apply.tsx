@@ -24,9 +24,11 @@ type Relation = "PARENT" | "GUARDIAN" | "OTHER";
  * are attached.
  */
 export function Apply() {
-  const params = useLocalSearchParams<{ schoolId?: string; school?: string }>();
+  const params = useLocalSearchParams<{ schoolId?: string; school?: string; cycleId?: string }>();
   const schoolId = param(params.schoolId);
   const schoolName = param(params.school);
+  // Several cycles may be open at once (QA-17); the school page's Apply names one, else the first, and the chips change it.
+  const [cycleId, setCycleId] = useState(param(params.cycleId) ?? "");
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
@@ -49,7 +51,8 @@ export function Apply() {
     enabled: Boolean(schoolId),
     queryFn: async () => schoolAdmissionsSchema.parse(unwrap(await api().get(`/api/v1/shared/schools/${schoolId}/admissions`))),
   });
-  const open = query.data?.open ?? null;
+  const cycles = query.data ? (query.data.cycles ?? (query.data.open ? [query.data.open] : [])) : [];
+  const open = cycles.find((c) => c.cycleId === cycleId) ?? cycles[0] ?? null;
   const apply = useMutation({
     mutationFn: async () =>
       applicationSchema.parse(
@@ -105,6 +108,18 @@ export function Apply() {
           <Empty icon="buildings" title={t("admissions.noOpenCycle")} action={<Button label={t("admissions.findSchools")} variant="secondary" onPress={() => router.push("/(app)/explore" as never)} />} />
         ) : (
           <>
+            {cycles.length > 1 ? (
+              <Chips
+                label={t("admissions.chooseCycle")}
+                value={open.cycleId}
+                options={cycles.map((c) => ({ value: c.cycleId, label: t("admissions.applyIntro", { cycle: c.name, year: c.academicYearName }) }))}
+                onChange={(next) => {
+                  setCycleId(next);
+                  setGrade("");
+                }}
+                disabled={apply.isPending}
+              />
+            ) : null}
             <Card title={open.name}>
               {open.grades.map((g) => (
                 <Text key={g.grade} variant="sm">

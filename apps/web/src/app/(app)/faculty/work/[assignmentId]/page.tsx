@@ -16,8 +16,7 @@ import { isModuleOn } from "@/lib/modules";
 import { getGradebook } from "@/lib/grading";
 import { offeringWorkGradebook } from "@/lib/college-homework";
 import { formatMilli } from "@/lib/validation";
-import { relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { Gradebook } from "../../../teacher/assignments/[assignmentId]/gradebook";
 import { postInternalAction, publishWorkAction, saveFacultyGrades } from "../actions";
 import { mayUse } from "@/lib/platform-features";
@@ -32,6 +31,8 @@ export async function generateMetadata(): Promise<Metadata> {
  * with its photographs), and post the marks into an internal component.
  */
 export default async function FacultyWorkItemPage({ params, searchParams }: { params: Promise<{ assignmentId: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const ctx = await requireRole("FACULTY", "HOD");
   const t = await getT();
   if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;

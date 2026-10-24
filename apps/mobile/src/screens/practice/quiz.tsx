@@ -123,7 +123,7 @@ function TopicQuiz({ slug, assignmentId }: { slug?: string; assignmentId?: strin
     return (
       <Screen title={t("feature.practice")} refreshing={began.isRefetching} onRefresh={() => void began.refetch()}>
         {began.isPending ? <Loading /> : null}
-        {began.isError ? <Failed message={failText(began.error, t)} onRetry={() => void began.refetch()} /> : null}
+        {began.isError ? <Failed message={failText(began.error, t)} planFrom={began.error} onRetry={() => void began.refetch()} /> : null}
       </Screen>
     );
   }
@@ -540,7 +540,7 @@ function RevisionQuiz() {
       }}
     >
       {queue.isPending ? <Loading /> : null}
-      {queue.isError ? <Failed message={failText(queue.error, t)} onRetry={() => void queue.refetch()} /> : null}
+      {queue.isError ? <Failed message={failText(queue.error, t)} planFrom={queue.error} onRetry={() => void queue.refetch()} /> : null}
       <OutboxBadge tag="practice:revision" />
       {queue.data && items.length === 0 ? (
         <Empty icon="clockCounterClockwise" title={t("practice.revisionTitle")} body={t("practice.revisionEmpty")} action={<Button label={t("practice.allPractice")} variant="secondary" onPress={() => router.back()} />} />
@@ -620,7 +620,7 @@ function RevisionQuestion({ item, position, total, onNext }: { item: PracticeRev
       </View>
       <Bar now={position - 1} max={total} label={t("practice.questionsAnswered")} />
       {served.isPending ? <Loading /> : null}
-      {served.isError ? <Failed message={failText(served.error, t)} onRetry={() => void served.refetch()} /> : null}
+      {served.isError ? <Failed message={failText(served.error, t)} planFrom={served.error} onRetry={() => void served.refetch()} /> : null}
       {served.data ? (
         <>
           {/* figures (10 Oct 2026): a re-served question keeps its figure. */}

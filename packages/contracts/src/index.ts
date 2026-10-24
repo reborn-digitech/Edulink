@@ -33,6 +33,10 @@ export const apiErrorSchema = z.object({
   /** With PLAN_REQUIRED: the plan that opens the door (v1/person-plans.ts PERSON_PLANS). */
   plan: z.enum(["STUDENT", "TEACHER", "EXPERT"]).optional(),
   // end plans
+  // fix-mediums-C (QA-18, 24 Oct 2026)
+  /** With PLAN_REQUIRED: the feature the door belongs to, so the phone's plan card names it as the web's does (v1/platform-features.ts PLATFORM_FEATURES). */
+  feature: z.enum(["ASSISTANT", "QUESTION_BANK", "QUESTION_GIG", "EXPERT_SESSIONS", "TEACHER_SESSIONS", "JOB_BOARD", "TEXT_MESSAGING"]).optional(),
+  // end fix-mediums-C
 });
 export type ApiError = z.infer<typeof apiErrorSchema>;
 

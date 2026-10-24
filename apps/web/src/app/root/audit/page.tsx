@@ -6,8 +6,8 @@ import { actionKey } from "@/lib/safety-labels";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
-import { formatInZone, relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { formatInZone } from "@/lib/dates";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { fieldClass } from "@/components/ui/field-class";
 
@@ -47,6 +47,8 @@ export default async function ServerAuditPage({
 }: {
   searchParams: Promise<{ action?: string; q?: string; from?: string; to?: string; live?: string; page?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const session = await requireSuperuser();
   const params = await searchParams;

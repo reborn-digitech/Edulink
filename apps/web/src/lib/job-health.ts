@@ -239,7 +239,7 @@ export function composeHealthDigest(
 
   const jobLine = (s: JobStatus): string =>
     s.overdue
-      ? `${s.name}: overdue (last success ${s.lastSuccessAt ? relativeTime(s.lastSuccessAt) : "never"})`
+      ? `${s.name}: overdue (last success ${s.lastSuccessAt ? relativeTime(s.lastSuccessAt, new Date(), "en") : "never"})`
       : `${s.name}: last run failed${s.lastRun?.error ? ` — ${s.lastRun.error}` : ""}`;
   const schoolLine = (school: AttentionSchool): string => {
     const bits = school.jobs.flatMap((j) =>

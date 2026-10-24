@@ -90,7 +90,7 @@ export function TeacherWorksheets() {
       }}
     >
       {topics.isPending ? <Loading /> : null}
-      {topics.isError ? <Failed message={topics.error.message} onRetry={() => void topics.refetch()} /> : null}
+      {topics.isError ? <Failed message={topics.error.message} planFrom={topics.error} onRetry={() => void topics.refetch()} /> : null}
       {d && all.length === 0 ? (
         <Empty icon="printer" title={t("worksheets.title")} body={t("worksheets.noChapters")} action={<Button label={t("practice.teacherTitle")} variant="secondary" onPress={() => router.push("/(app)/practice" as never)} />} />
       ) : null}
@@ -109,7 +109,7 @@ export function TeacherWorksheets() {
       ) : null}
 
       {paper && sheet.isPending && sheet.isFetching ? <Loading /> : null}
-      {paper && sheet.isError ? <Failed message={sheet.error.message} onRetry={() => void sheet.refetch()} /> : null}
+      {paper && sheet.isError ? <Failed message={sheet.error.message} planFrom={sheet.error} onRetry={() => void sheet.refetch()} /> : null}
       {s && paper ? (
         <>
           <Card title={heading}>

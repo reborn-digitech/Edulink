@@ -212,18 +212,23 @@ export const admitSchema = z.object({
 export const admittedSchema = z.object({ studentMembershipId: z.string(), studentCode: z.string(), className: z.string().nullable(), feePlan: z.boolean(), guardianLinked: z.boolean(), firstSignInCode: z.string().nullable(), /** Set when the applicant had an account but was not linked: the seat went to an existing pupil. */ noteKey: z.string().optional() });
 
 /** GET /api/v1/shared/schools/{schoolId}/admissions — what a family sees on the school's page: the open cycle, its grades, documents and notice. */
+/** One cycle taking applications today, as a family sees it. */
+export const openAdmissionCycleSchema = z.object({
+  cycleId: z.string(),
+  name: z.string(),
+  academicYearName: z.string(),
+  grades: z.array(z.object({ grade: z.string(), seats: count, remaining: count })),
+  documents: z.array(cycleDocumentSchema),
+  testRequired: z.boolean(),
+  notice: z.string(),
+  closesAt: dateKey.nullable(),
+});
+export type OpenAdmissionCycle = z.infer<typeof openAdmissionCycleSchema>;
+
 export const schoolAdmissionsSchema = z.object({
-  open: z
-    .object({
-      cycleId: z.string(),
-      name: z.string(),
-      academicYearName: z.string(),
-      grades: z.array(z.object({ grade: z.string(), seats: count, remaining: count })),
-      documents: z.array(cycleDocumentSchema),
-      testRequired: z.boolean(),
-      notice: z.string(),
-      closesAt: dateKey.nullable(),
-    })
-    .nullable(),
+  /** The first of `cycles`, kept for a phone build that reads one cycle. */
+  open: openAdmissionCycleSchema.nullable(),
+  /** Every cycle open by its status and dates, the earliest academic year first (QA-17). Absent from a server before 24 October 2026. */
+  cycles: z.array(openAdmissionCycleSchema).optional(),
   mine: z.array(applicationRowSchema),
 });

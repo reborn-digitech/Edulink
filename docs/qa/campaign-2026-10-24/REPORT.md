@@ -56,21 +56,21 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 | [QA-03](#qa-03) | High | E2E | Both | Two guardians can pay the same demand online; the second is charged and then refused. **Fixed, commit c00f98ee:** a checkout locks the pupil's open demands and refuses another guardian's order while one younger than half an hour names the same demand (the same guardian gets theirs back); a capture that arrives with nothing due is recorded UNALLOCATED, audited, office and family told, and refunded from the pupil's fees page | E2E-A1 (layer 5A) |
 | [QA-04](#qa-04) | High | E2E | Both | Two admits at once make two pupils from one application. **Fixed, commit c00f98ee:** the admit transaction locks the cycle and the application and reads both again under the lock; the second press is answered with the admission as it stands, and a grade's last seat goes once | E2E-A3 (layer 5A) |
 | [QA-05](#qa-05) | High | E2E | Both | College exam results are computed and published with missing internal marks counted as zero. **Fixed, commit c00f98ee:** the run (and a grace to pass) is refused 409 while a sitting student's internal is missing on a course whose scheme has an internal part, naming the courses; the marks sheet's swapped key (QA-09) is fixed with it | E2E-B1 (layer 5B) |
-| [QA-06](#qa-06) | Medium | Functional | Both | A guardian who has just paid online is told "Nothing is due to pay" when the gateway's webhook settles the same payment at the same moment | F-1 (layer 6) |
-| [QA-07](#qa-07) | Medium | Unit | Web | College accounts: the mess bill and the route fee are billed twice when pressed in another language | U-4 (layer 2) |
-| [QA-08](#qa-08) | Medium | BDD | Web | The PF return (ECR) splits the employer's share with ₹1 too much on every line | BDD-1 (layer 3) |
+| [QA-06](#qa-06) | Medium | Functional | Both | A guardian who has just paid online is told "Nothing is due to pay" when the gateway's webhook settles the same payment at the same moment. **Fixed, <commit pending>:** `settle` locks the payment row first and reads it again under the lock, so the confirm and the webhook (either order) and a double tap end PAID once with one receipt, the loser told `already` | F-1 (layer 6) |
+| [QA-07](#qa-07) | Medium | Unit | Web | College accounts: the mess bill and the route fee are billed twice when pressed in another language. **Fixed, <commit pending>:** "once" is a language-free key (`FeeDemand.raisedKey`, unique per student, migration `20261024190000_fee_demand_raised_key`), the label written in the school's language; two presses at once bill once | U-4 (layer 2) |
+| [QA-08](#qa-08) | Medium | BDD | Web | The PF return (ECR) splits the employer's share with ₹1 too much on every line. **Fixed, <commit pending>:** EPS is rounded first and the difference is the rounded share less it (`ecrShares`); `totalPaise` is what the lines remit | BDD-1 (layer 3) |
 | [QA-09](#qa-09) | Medium | E2E | Both | The exam marks sheet shows a locked internal mark as missing. **Fixed, commit c00f98ee:** `marksSheet` looks the lock up under `<student>\|<course>`, the key `internalsFor` writes (with QA-05) | E2E-B5 (layer 5B) |
-| [QA-10](#qa-10) | Medium | E2E | Web | Two people's first mark entries at the same moment answer 500 and lose one entry | E2E-B4 (layer 5B) |
-| [QA-11](#qa-11) | Medium | E2E | Both | A declined certificate ask leaves its fee owed | E2E-A5 (layer 5A) |
-| [QA-12](#qa-12) | Medium | E2E | Both | One certificate ask is issued twice when the office and the head press Issue together | E2E-A4 (layer 5A) |
-| [QA-13](#qa-13) | Medium | Security | Web | The email-verification token is spent on a GET, so a mail scanner verifies a squatted account | SEC-3 (layer 7) |
-| [QA-14](#qa-14) | Medium | E2E | Both | A student accepts two offers at once and holds both | E2E-B3 (layer 5B) |
-| [QA-15](#qa-15) | Medium | E2E | Mobile | A clinical logbook entry saved offline is not sent when the network returns | E2E-B2 (layer 5B) |
-| [QA-16](#qa-16) | Medium | E2E | Both | Two teachers are told to cover one lesson | E2E-A7 (layer 5A) |
-| [QA-17](#qa-17) | Medium | E2E | Both | Only the newest open admission cycle takes applications | E2E-A6 (layer 5A) |
-| [QA-18](#qa-18) | Medium | UI-UX | Mobile | A plan-locked screen on the phone is a red error with a Try again that can only fail | UI-15 (layer 4) |
-| [QA-19](#qa-19) | Medium | UI-UX | Web | Links lead limited roles to pages they may not open | UI-01 (layer 4) |
-| [QA-20](#qa-20) | Medium | UI-UX | Web | Relative times stay English in Hindi and Marathi | UI-02 (layer 4) |
+| [QA-10](#qa-10) | Medium | E2E | Web | Two people's first mark entries at the same moment answer 500 and lose one entry. **Fixed, <commit pending>:** `enterMarks` takes the session row first, so the second becomes entry two and both land | E2E-B4 (layer 5B) |
+| [QA-11](#qa-11) | Medium | E2E | Both | A declined certificate ask leaves its fee owed. **Fixed, <commit pending>:** a decline or a cancel closes the ask under its lock and cancels its fee's demand while nothing is paid on it; a paid fee is left for the office's refund, the amount in the audit row | E2E-A5 (layer 5A) |
+| [QA-12](#qa-12) | Medium | E2E | Both | One certificate ask is issued twice when the office and the head press Issue together. **Fixed, <commit pending>:** the issue claims the ask under its row lock inside the paper's transaction; the second press is answered with the paper already issued, a closed ask is refused 409 | E2E-A4 (layer 5A) |
+| [QA-13](#qa-13) | Medium | Security | Web | The email-verification token is spent on a GET, so a mail scanner verifies a squatted account. **Fixed, <commit pending>:** `/verify` reads the token without spending it and shows "Confirm my address", whose POST (a server action) spends it | SEC-3 (layer 7) |
+| [QA-14](#qa-14) | Medium | E2E | Both | A student accepts two offers at once and holds both. **Fixed, <commit pending>:** `answerOffer` locks the student's membership and reads the earlier acceptances again under it; the second accept is refused `placement.refuseOneOffer` | E2E-B3 (layer 5B) |
+| [QA-15](#qa-15) | Medium | E2E | Mobile | A clinical logbook entry saved offline is not sent when the network returns. **Fixed, <commit pending>:** the runner starts at the signed-in app's root and on the logbook screen, which shows the badge and the entry waiting | E2E-B2 (layer 5B) |
+| [QA-16](#qa-16) | Medium | E2E | Both | Two teachers are told to cover one lesson. **Fixed, <commit pending>:** `assignSubstitute` decides under the slot's row lock and the substitute's day lock; a board that says whom it saw is refused 409 naming who covers, a caller that does not replaces and releases, and a double-booking race is one cover and one clash | E2E-A7 (layer 5A) |
+| [QA-17](#qa-17) | Medium | E2E | Both | Only the newest open admission cycle takes applications. **Fixed, <commit pending>:** every cycle open by its status and dates is listed (`cycles`) on web and phone and takes applications | E2E-A6 (layer 5A) |
+| [QA-18](#qa-18) | Medium | UI-UX | Mobile | A plan-locked screen on the phone is a red error with a Try again that can only fail. **Fixed, <commit pending>:** a 402 PLAN_REQUIRED (now naming the feature too) draws the plan card in `Failed`'s place on every plan-gated screen, with the plan, what it includes, its price and Subscribe | UI-15 (layer 4) |
+| [QA-19](#qa-19) | Medium | UI-UX | Web | Links lead limited roles to pages they may not open. **Fixed, <commit pending>:** the feeds, the placement tabs, the people list and the names on posts and conversations draw a link only where the gate's own page rule opens it (`pageOpener`) | UI-01 (layer 4) |
+| [QA-20](#qa-20) | Medium | UI-UX | Web | Relative times stay English in Hindi and Marathi. **Fixed, <commit pending>:** `relativeTime` takes the locale as a required argument; every page binds the reader's (`getRelativeTime`, `useLocale`) | UI-02 (layer 4) |
 | [QA-21](#qa-21) | Low | Security | Both | Accepting a school invitation bypasses TOTP | SEC-4 (layer 7) |
 | [QA-22](#qa-22) | Low | Security | Both | TOTP guessing has no per-account ceiling | SEC-5 (layer 7) |
 | [QA-23](#qa-23) | Low | Security | Both | Turning TOTP on needs only a session, no password | SEC-6 (layer 7) |
@@ -82,7 +82,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 | [QA-29](#qa-29) | Low | E2E | Both | A double press of Publish tells every student and guardian twice | E2E-B6 (layer 5B) |
 | [QA-30](#qa-30) | Low | E2E | Web | Accepting one recruiter requirement twice at once makes two drives | E2E-B7 (layer 5B) |
 | [QA-31](#qa-31) | Low | E2E | Both | Applying to a drive from two devices at once answers 500 | E2E-B8 (layer 5B) |
-| [QA-32](#qa-32) | Low | E2E | Both | Accepting and declining one offer at once stamps both | E2E-B9 (layer 5B) |
+| [QA-32](#qa-32) | Low | E2E | Both | Accepting and declining one offer at once stamps both. **Fixed, <commit pending>, with QA-14:** the answer is a conditional update while unanswered; the loser is refused `placement.refuseOfferAnswered` | E2E-B9 (layer 5B) |
 | [QA-33](#qa-33) | Low | E2E | Web | Two recruiters offering at once each see their own package; the last write is kept | E2E-B10 (layer 5B) |
 | [QA-34](#qa-34) | Low | E2E | Both | An IQAC sign-off and a return at the same moment both stand | E2E-B13 (layer 5B) |
 | [QA-35](#qa-35) | Low | E2E | Mobile | The same logbook clientId sent twice at once answers 500 | E2E-B14 (layer 5B) |
@@ -250,6 +250,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Medium · **Platform:** Both
 - **Feature:** Fees online checkout
 - **From:** F-1 (layer 6)
+- **Status:** Fixed, <commit pending>. `settle` (`fees-payments.ts`) takes the FeePayment row `FOR UPDATE` before reading it, so the loser of the confirm and the webhook reads what the winner committed and is answered `already` with the winner's receipt; PAID or REFUNDED with a receipt is `already`. Before, the loser also re-allocated the same money to another open demand of the pupil and failed on the receipt's unique key (a 500 to the webhook, a throw to the confirm); the report's own single-demand case was already answered `already` through QA-03's hold. A second confirm of one UPI claim is no longer audited or told twice. Test: `apps/web/tests/fees-settle-race.test.ts`.
 
 **Steps**
 
@@ -271,6 +272,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Unit · **Severity:** Medium · **Platform:** Web
 - **Feature:** College fees: mess and transport billing
 - **From:** U-4 (layer 2)
+- **Status:** Fixed, <commit pending>. `raiseOnce` (`college-fees.ts`) decides on `FeeDemand.raisedKey` ("MESS:2026-10", "ROUTE:<year>:<route>:<term>", the term compared without case or extra spaces), unique per student, inside a `$tenantTransaction`; a clash is "already"; a CANCELLED charge gives its key up; a charge raised before the key is still found by its label in any of the three languages. The label is written in `School.locale`. Migration `20261024190000_fee_demand_raised_key`. Test: `apps/web/tests/college-money-reads.test.ts` (the two `it.fails` now pass, with the legacy, race and cancel cases).
 
 **Steps**
 
@@ -292,6 +294,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** BDD · **Severity:** Medium · **Platform:** Web
 - **Feature:** Payroll statutory exports
 - **From:** BDD-1 (layer 3)
+- **Status:** Fixed, <commit pending>. `ecrShares` (`payroll.ts`) rounds the employer's share and EPS to rupees and takes the difference from them: ₹15,000 gives 1800, 1250, 550; `totalPaise` is the lines' own rupees. Test: `apps/web/tests/payroll.test.ts` (the ₹15,000 line, the full-basic line and every wage from ₹100 to ₹15,000).
 
 **Steps**
 
@@ -333,6 +336,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Web
 - **Feature:** College exam cell: double entry of marks
 - **From:** E2E-B4 (layer 5B)
+- **Status:** Fixed, <commit pending>. `enterMarks` (`exam-cell-marks.ts`) takes the ExamSession row `FOR UPDATE` inside its transaction, as `runResults` and `publishRun` do, and reads the status and the publication again under it; the second of two first entries waits, finds the first's version-1 rows and writes entry two, so both people's marks land and the agreed ones stand. `importMarks` takes the same lock. Test: `apps/web/tests/exam-cell-marks-race.test.ts` (three courses, two entrants at once).
 
 **Steps**
 
@@ -353,6 +357,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Both
 - **Feature:** Certificate requests
 - **From:** E2E-A5 (layer 5A)
+- **Status:** Fixed, <commit pending>. `closeRequest` (`certificate-requests.ts`) locks the ask, moves it from PENDING only, then locks its fee's demand and CANCELS it while it is OPEN with nothing paid; a fee with money on it is left as it stands (as `setRequestFee` leaves a paid fee) for the office to refund or reverse, the audit row carrying `feeKeptPaidPaise`. `setRequestFee` re-reads the ask under the same lock, so a fee is never set on an ask closed at that moment. Test: `apps/web/tests/certificate-request-close.test.ts`.
 
 **Steps**
 
@@ -374,6 +379,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Both
 - **Feature:** Certificates
 - **From:** E2E-A4 (layer 5A)
+- **Status:** Fixed, <commit pending>. `issueCertificate` claims the ask first inside its transaction (`claimRequestForIssue`: the row locked and read again; ISSUED answers with that paper and makes none, DECLINED or CANCELLED is `certificateRequests.refuseClosed` 409, another pupil's ask 404) and points the ask at the paper in the same transaction (`answerRequest`); `markRequestIssued` is gone. Test: `apps/web/tests/certificate-request-close.test.ts`.
 
 **Steps**
 
@@ -394,6 +400,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** Medium · **Platform:** Web
 - **Feature:** Email verification and account squatting
 - **From:** SEC-3 (layer 7)
+- **Status:** Fixed, <commit pending>. `/verify` reads the token with `inspectVerifyToken` (`passwords.ts`, nothing written) and shows "Confirm my address" for a live one; the form's server action `confirmEmail` spends it through `verifyEmailByToken` and returns to the page marked done. Test: `apps/web/tests/verify-links.test.ts` (a GET leaves the token unspent, the press spends it once); live, two GETs of a real link on :3000 spent nothing.
 
 **Steps**
 
@@ -415,6 +422,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Both
 - **Feature:** Placement offers
 - **From:** E2E-B3 (layer 5B)
+- **Status:** Fixed, <commit pending>. `answerOffer` (`placement.ts`) runs in one `$tenantTransaction` bound to the student's college and every college holding one of their offers (a pooled drive's host, ids read back from the rows): the student's Membership row is taken `FOR UPDATE`, the earlier acceptances are read again under it, and the offer is answered by a conditional update that matches only while it is unanswered (QA-32 with it); an earlier acceptance is declined in the same transaction when the new one is a dream exception. Test: `apps/web/tests/placement-offer-race.test.ts` (three students, a home and a pooled offer, an accept and a decline at once).
 
 **Steps**
 
@@ -435,6 +443,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Mobile
 - **Feature:** Clinical logbook; the phone's offline queue
 - **From:** E2E-B2 (layer 5B)
+- **Status:** Fixed, <commit pending>. The signed-in app's root (`apps/mobile/src/app/(app)/_layout.tsx`) starts the outbox runner once, so no screen can leave a row on the device; the logbook screen also calls `useOutboxRunner()`, shows `<OutboxBadge tag="clinical-logbook" />`, lists each waiting entry as "Waiting to send" (`duties.clinical.queuedState`) and reads the logbook again when a flush sends one. Test: `apps/mobile/test/screens/clinical.test.tsx` ("shows an entry saved offline as waiting…").
 
 **Steps**
 
@@ -456,6 +465,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Both
 - **Feature:** Substitutions
 - **From:** E2E-A7 (layer 5A)
+- **Status:** Fixed, <commit pending>. `assignSubstitute` (`substitutions.ts`) reads who covers and the clash inside a `$tenantTransaction` holding the TimetableSlot row `FOR UPDATE` and an advisory lock on the substitute's day; the contract's optional `replacing` (the person the caller's board showed, null for uncovered; the web board and the phone send it) refuses a press that finds somebody else named meanwhile, 409 `substitutions.changedMeanwhile` naming them, with nothing written or sent; a caller without it replaces, and the replaced teacher is released and told (`replaced: true`); one teacher named for two lessons of one period by two people is one cover and one `substitutions.clash`. Notices, audit and the live word go after the commit. Test: `apps/web/tests/substitutions-assign-race.test.ts`.
 
 **Steps**
 
@@ -476,6 +486,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Both
 - **Feature:** Admissions cycles
 - **From:** E2E-A6 (layer 5A)
+- **Status:** Fixed, <commit pending>. `schoolAdmissions` returns `cycles`, every cycle OPEN and within its dates, the earliest academic year first (`open` stays, the first of them, for an older phone build), and `apply` takes any cycle open by its status and dates. The school's page and the apply page on the web, and the school profile and apply screen on the phone, list each cycle with its own Apply (`?cycle=` / `cycleId`) and let the family pick the round (`admissions.chooseCycle`). Opening a second cycle stays allowed. Tests: `apps/web/tests/admissions-open-cycles.test.ts`; `apps/mobile/test/screens/family-apply.test.tsx`, `community-school-profile.test.tsx`.
 
 **Steps**
 
@@ -496,6 +507,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Medium · **Platform:** Mobile
 - **Feature:** Person plans on the phone
 - **From:** UI-15 (layer 4)
+- **Status:** Fixed, <commit pending>. The 402 envelope names the feature beside the plan (`apiErrorSchema.feature`); the phone's `ApiRefused` keeps both and `Failed` draws `PlanLock` (`apps/mobile/src/components/plan-lock.tsx`: "<feature> needs a plan", the plan, why, who it is for, what it includes, the monthly and yearly price from the person's own offer, Subscribe opening the web's plan page) in place of the error; the plan-gated screens (expert home, availability, mentoring, experts, vacancies, practice, worksheets, contributions, sessions) hand their query's error to `Failed` as `planFrom`, each keeping its own retry for every other failure. Test: `apps/mobile/test/screens/plan-lock.test.tsx`.
 
 **Steps**
 
@@ -516,6 +528,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Medium · **Platform:** Web
 - **Feature:** Global feed, placement analytics, people links
 - **From:** UI-01 (layer 4)
+- **Status:** Fixed, <commit pending>. `pageOpener` (`apps/web/src/lib/page-links.ts`) answers by the gate's own `modulePagePermitted`; the global feed leaves out "Our school's feed", "Upcoming birthdays" and the Comment door (the count stays as text) for a reader they would refuse, the placement strip draws only the tabs the reader opens (none for the IQAC), and a person's name or picture on the people list, a post (`PostCard`), a post's page, the birthdays and a conversation (`PersonLink linked`) is text for a reader who reads no profiles; "On the global feed" likewise. Tests: `apps/web/tests/page-links.test.ts`; a live walk of ten limited roles' pages, before and after.
 
 **Steps**
 
@@ -538,6 +551,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Medium · **Platform:** Web
 - **Feature:** Notifications, messages, feed, homes, office lists
 - **From:** UI-02 (layer 4)
+- **Status:** Fixed, <commit pending>. `relativeTime(target, now, locale)` (`dates.ts`) has no default; 22 server files take the request's bound copy (`getRelativeTime()`), four client components `useLocale()`, the job health line asks for English by name. Test: `apps/web/tests/relative-time-locale.test.ts` (the phrase in hi and mr, and a source scan: 27 files called it without a locale before, none after).
 
 **Steps**
 
@@ -774,6 +788,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Both
 - **Feature:** Placement offers
 - **From:** E2E-B9 (layer 5B)
+- **Status:** Fixed, <commit pending>, with QA-14 (the conditional update in `answerOffer`). Test: `apps/web/tests/placement-offer-race.test.ts`.
 
 **Steps**
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeftIcon, CaretRightIcon, PaperPlaneTiltIcon, UserCircleIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
+import { pageOpener } from "@/lib/page-links";
 import { conversationSchools, peopleToMessage, type Person } from "@/lib/conversations";
 import { db } from "@/lib/db";
 import { Avatar } from "@/components/ui/avatar";
@@ -43,6 +44,9 @@ export default async function PeoplePage({
 }) {
   const t = await getT();
   const session = await requireUser();
+  // A person's name and picture open their profile only for a reader whose gate opens /people: an alumnus and
+  // the college desks write to people from here but read no profiles, so the name stays text (QA-19).
+  const profiles = (await pageOpener(session))("/people/x");
   const { q, school: requestedSchool, error, role: rawRole } = await searchParams;
   const roleFilter = rawRole === "staff" || rawRole === "pupils" || rawRole === "parents" ? rawRole : null;
   const canWriteAboutPupil = session.role === "TEACHER" || session.role === "STUDENT" || session.role === "PARENT";
@@ -155,7 +159,7 @@ export default async function PeoplePage({
                     <form action={openConversationAction} className="flex items-center gap-3 p-3.5">
                       <input type="hidden" name="schoolId" value={schoolId} />
                       <input type="hidden" name="userId" value={person.userId} />
-                      {person.membershipId ? (
+                      {person.membershipId && profiles ? (
                         <Link href={`/people/${person.membershipId}`} className="shrink-0" aria-label={t("person.viewProfile")}>
                           <Avatar avatarKey={person.avatarKey} name={person.name} size="md" />
                         </Link>
@@ -163,7 +167,7 @@ export default async function PeoplePage({
                         <Avatar avatarKey={person.avatarKey} name={person.name} size="md" />
                       )}
                       <span className="min-w-0 flex-1">
-                        {person.membershipId ? (
+                        {person.membershipId && profiles ? (
                           <Link href={`/people/${person.membershipId}`} className="block truncate font-semibold text-fg hover:underline">
                             {person.name}
                           </Link>

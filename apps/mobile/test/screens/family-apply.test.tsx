@@ -100,6 +100,25 @@ describe("applying to a school", () => {
     expect(mockRouter.replace).toHaveBeenCalledWith({ pathname: "/(app)/my-application", params: { id: A1 } });
   });
 
+  // QA-17 (24 Oct 2026): several cycles open at once; the one the school page's Apply named is chosen, and the chips change it.
+  it("with two open cycles, opens on the one named and sends the application to the one chosen", async () => {
+    const MID = { ...OPEN, cycleId: "czz000000000000000cycle9", name: "ZZ Mid-year transfers", grades: [{ grade: "5", seats: 2, remaining: 2 }], testRequired: false, notice: "" };
+    mockRouter.params = { schoolId: SCHOOL, school: "ZZ Hillside", cycleId: MID.cycleId };
+    const { calls } = await mountStaff(compose(), "PARENT", { [SCHOOL_PATH]: () => json({ open: OPEN, cycles: [OPEN, MID], mine: [] }), [APPLY]: () => json(application()) });
+    expect(await screen.findByText("Grade 5 · 2 of 2 seats left")).toBeTruthy();
+    expect(screen.queryByText("Grade 1 · 3 of 5 seats left")).toBeNull();
+    expect(screen.getByRole("radio", { name: "ZZ Admissions 2026-27 · 2026-27" })).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText("Child's name"), "ZZ Kabir");
+    await fireEvent.press(screen.getByRole("radio", { name: "5 · 2 of 2 seats left" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Send the application" }));
+    await waitFor(() => expect(calls().some((c) => c.line === APPLY)).toBe(true));
+    expect(calls().find((c) => c.line === APPLY)!.body).toMatchObject({ cycleId: MID.cycleId, gradeApplied: "5" });
+    // The other round, by its chip: its grades, and the grade chosen for the first is cleared.
+    await fireEvent.press(screen.getByRole("radio", { name: "ZZ Admissions 2026-27 · 2026-27" }));
+    expect(await screen.findByText("Grade 1 · 3 of 5 seats left")).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "1 · 3 of 5 seats left" })).not.toBeChecked();
+  });
+
   it("without a school named, the title is the plain one", async () => {
     mockRouter.params = { schoolId: SCHOOL };
     await mountStaff(compose(), "PARENT", { [SCHOOL_PATH]: () => json({ open: OPEN, mine: [] }) });

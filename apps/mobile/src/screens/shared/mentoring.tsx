@@ -54,7 +54,7 @@ export function Mentoring() {
   return (
     <Screen title={t("feature.mentoring")} description={t("mentoring.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
           {isStaff ? <Button label={t("mentoring.setUp")} variant="secondary" onPress={setUp} /> : null}

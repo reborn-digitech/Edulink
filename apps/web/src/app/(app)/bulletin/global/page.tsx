@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowLeftIcon, ChatCircleIcon, GlobeIcon, EyeSlashIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, requireParent, requireUser } from "@/lib/tenancy";
 import { listGlobalFeed } from "@/lib/global-feed";
-import { relativeTime } from "@/lib/dates";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
@@ -13,8 +12,9 @@ import { PostMedia } from "../media";
 import { ReactionRow } from "../reactions";
 import { CATEGORY_KEYS } from "../categories";
 import { COLLEGE_ROLES, POST_CATEGORIES, type PostCategory } from "@/lib/constants";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { pageOpener } from "@/lib/page-links";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -35,6 +35,8 @@ export default async function GlobalFeedPage({
 }: {
   searchParams: Promise<{ category?: string; q?: string; tag?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   /* A parent's session deliberately carries NO active school, so requireRole's
    * school demand bounced every guardian to a switcher that had no school to
@@ -50,6 +52,9 @@ export default async function GlobalFeedPage({
         // gate (role-gate.ts) lets a limited role reach this page only where its NAV names the feed.
         await requireRole("ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS", ...COLLEGE_ROLES);
   const isAdmin = ctx.role === "ADMIN";
+  // A driver, the library desk or a warden reads this feed and nothing else of the bulletin: the school's
+  // feed, the birthdays and a post's own page are not theirs, so those links are left out (QA-19).
+  const opens = await pageOpener(ctx);
 
   const { category: rawCategory, q: rawQ, tag: rawTag } = await searchParams;
   const category = POST_CATEGORIES.includes(rawCategory as PostCategory)
@@ -62,17 +67,19 @@ export default async function GlobalFeedPage({
 
   return (
     <div className="space-y-5">
-      <Link
-        href="/bulletin"
-        className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("bulletin.ourBulletin")}
-      </Link>
+      {opens("/bulletin") && (
+        <Link
+          href="/bulletin"
+          className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
+        >
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("bulletin.ourBulletin")}
+        </Link>
+      )}
 
       <PageHeader title={t("bulletin.globalFeed")} description={t("bulletin.globalIntro")} />
 
-      <FeedFilters basePath="/bulletin/global" category={category} q={q} tag={tag} />
+      <FeedFilters basePath="/bulletin/global" category={category} q={q} tag={tag} upcoming={opens("/bulletin/celebrations")} />
 
       {posts.length === 0 ? (
         <EmptyState
@@ -146,17 +153,25 @@ export default async function GlobalFeedPage({
                       reactions={post.reactions}
                       myReactions={post.myReactions}
                     />
-                    <Link
-                      href={`/bulletin/${post.id}`}
-                      className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
-                    >
-                      <ChatCircleIcon className="size-4" aria-hidden="true" />
-                      {post.commentCount > 0
-                        ? post.commentCount === 1
-                          ? t("bulletin.commentsOne")
-                          : t("bulletin.commentsMany", { count: post.commentCount })
-                        : t("bulletin.comment")}
-                    </Link>
+                    {opens(`/bulletin/${post.id}`) ? (
+                      <Link
+                        href={`/bulletin/${post.id}`}
+                        className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
+                      >
+                        <ChatCircleIcon className="size-4" aria-hidden="true" />
+                        {post.commentCount > 0
+                          ? post.commentCount === 1
+                            ? t("bulletin.commentsOne")
+                            : t("bulletin.commentsMany", { count: post.commentCount })
+                          : t("bulletin.comment")}
+                      </Link>
+                    ) : post.commentCount > 0 ? (
+                      // The post's own page is not this reader's: the count is said, not offered as a door.
+                      <span className="inline-flex min-h-10 items-center gap-1.5 px-3 text-sm text-fg-muted">
+                        <ChatCircleIcon className="size-4" aria-hidden="true" />
+                        {post.commentCount === 1 ? t("bulletin.commentsOne") : t("bulletin.commentsMany", { count: post.commentCount })}
+                      </span>
+                    ) : null}
                   </div>
 
                   {isAdmin && (

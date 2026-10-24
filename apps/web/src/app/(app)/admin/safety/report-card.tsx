@@ -8,17 +8,20 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { relativeTime } from "@/lib/dates";
+import { relativeTime as relativeTimeIn } from "@/lib/dates";
 import { reasonKey, type ReportGroup } from "@/lib/safety-labels";
 import { dismiss, takeDown } from "./actions";
 import { actionError } from "@/lib/action-error";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import { fieldClass } from "@/components/ui/field-class";
 
 const URGENT = new Set(["UNSAFE", "BULLYING"]);
 
 export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?: boolean }) {
   const t = useT();
+  // "2 hours ago" in the reader's language (QA-20).
+  const locale = useLocale();
+  const relativeTime = (at: Date) => relativeTimeIn(at, new Date(), locale);
   /* No wording for a reason we do not know falls back to the stored value —
      a debugging aid, not prose, and the same in every language. */
   const reasonText = (reason: string) => {

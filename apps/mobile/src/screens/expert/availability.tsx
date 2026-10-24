@@ -107,7 +107,7 @@ export function ExpertAvailability() {
     <Screen title={t("expert.availability")} description={t("expert.availabilityBody")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {error ? <Failed message={error} onRetry={confirming ? () => withdraw.mutate(confirming) : submit} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Card title={t("expert.offerTime")}>

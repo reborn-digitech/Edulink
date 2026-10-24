@@ -9,7 +9,7 @@ import { AccessError, assertGuardianAccess } from "./tenancy";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { lockTcRegister, registerMax, stayAttendance } from "./school-record";
-import { markRequestIssued, requestPurpose } from "./certificate-requests";
+import { answerRequest, claimRequestForIssue, requestPurpose } from "./certificate-requests";
 import { ageInYears, dateKeyInZone, todayKey } from "./dates";
 import { allAppointmentPresets, allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, isStaffKind, parseLayout, parseRows, placeholderFitsKind, placeholderKeys, PLACEHOLDER_KEYS, staffDataFor, STAFF_CERTIFICATE_KINDS, wordsFor, type PupilFacts, type StaffFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
@@ -268,8 +268,13 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
   // Issued from an ask: the ask's purpose stands unless the office wrote one.
   const purpose = input.purpose?.trim() || (input.requestId ? await requestPurpose(caller.schoolId, input.requestId) : null);
   const facts = await factsFor(caller.schoolId, input.studentMembershipId, { dateKey, serial: "", purpose, remark: input.remark?.trim() || null }, input.leftOn);
-  const issued = await db.$tenantTransaction(async (raw) => {
+  const outcome = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    // Issued from an ask: the ask is claimed first, under its own lock, so two presses make one paper (QA-12).
+    if (input.requestId) {
+      const claim = await claimRequestForIssue(tx, caller.schoolId, input.requestId, input.studentMembershipId);
+      if (claim.issuedCertificateId) return { already: true as const, id: claim.issuedCertificateId };
+    }
     // The year's row is the lock: two issues at once take numbers in turn.
     await tx.$queryRaw`SELECT "id" FROM "AcademicYear" WHERE "id" = ${year.id} FOR UPDATE`;
     const { serial, number, academicYearId } = await (async () => {
@@ -298,7 +303,7 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
     const outro = fill(template.outro, data);
     const missing = [...new Set([...intro.missing, ...rows.missing, ...outro.missing])];
     const title = fill(template.title, data).text;
-    return tx.issuedCertificate.create({
+    const created = await tx.issuedCertificate.create({
       data: {
         schoolId: caller.schoolId,
         templateId: template.id,
@@ -323,10 +328,14 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
       },
       select: { id: true, serial: true, title: true },
     });
+    if (input.requestId) await answerRequest(tx, caller.schoolId, input.requestId, created.id);
+    return { already: false as const, ...created };
   });
+  // The other press made the paper a moment ago: answered with it, and nothing is audited, signed or told twice.
+  if (outcome.already) return certificateView(ctx, outcome.id);
+  const issued = outcome;
 
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.issue", targetType: "IssuedCertificate", targetId: issued.id, meta: { kind: template.kind, locale, serial: issued.serial, templateId: template.id, requestId: input.requestId ?? null } });
-  if (input.requestId) await markRequestIssued(caller.schoolId, input.requestId, issued.id);
   // The issuer's own signature on the lines that are theirs, a wait on the lines that are somebody else's, and the seal.
   await signOnIssue(ctx, { kind: "CERTIFICATE", id: issued.id, schoolId: caller.schoolId, title: issued.title, studentName: facts.name }, parseLayout(template.layoutJson, words));
   // An adult at a college: the paper is theirs, and their guardian is neither told nor shown it (mayRead; campaign S-2).

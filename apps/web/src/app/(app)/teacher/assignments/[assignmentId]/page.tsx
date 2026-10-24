@@ -8,8 +8,7 @@ import { Gradebook } from "./gradebook";
 import { PublishBar } from "./publish-bar";
 import { AttachmentList } from "@/components/attachment-list";
 import { formatMilli } from "@/lib/validation";
-import { relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { AssignmentAssistantSwitch } from "@/components/assistant/assignment-switch";
@@ -25,6 +24,8 @@ export default async function AssignmentPage({
 }: {
   params: Promise<{ assignmentId: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { assignmentId } = await params;

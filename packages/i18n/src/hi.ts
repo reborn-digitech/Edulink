@@ -1841,6 +1841,9 @@ export const hi: Dictionary = {
     refuseFeeSettled: "यह अनुरोध बंद है; इस पर शुल्क तय नहीं किया जा सकता।",
     refuseFeePaid: "इस शुल्क पर कुछ भुगतान हो चुका है, इसलिए इसे बदला नहीं जा सकता।",
     refuseNoFeeHead: "किसी प्रमाणपत्र पर शुल्क तय करने से पहले 'अन्य' प्रकार का शुल्क मद जोड़ें।",
+    // fix-mediums-A (QA-12): an ask declined or taken back is not answered by a paper issued from it.
+    refuseClosed: "यह अनुरोध अस्वीकार किया गया या वापस ले लिया गया है। प्रमाणपत्र अब भी चाहिए तो उसे अनुरोध के बिना जारी करें।",
+    // end fix-mediums-A
     feeLabel: "प्रमाणपत्र की प्रति: {kind}",
     feeDue: "शुल्क {amount}: इसे शुल्क पृष्ठ पर या कार्यालय में भरें।",
     feePaidLine: "शुल्क {amount} भरा गया",
@@ -2143,6 +2146,9 @@ export const hi: Dictionary = {
     applyHere: "सीट के लिए आवेदन करें",
     apply: "आवेदन करें",
     noOpenCycle: "यह विद्यालय अभी शालाघर से आवेदन नहीं ले रहा।",
+    // fix-mediums-B (QA-17): a school may have several admission cycles open at once; the family picks one.
+    chooseCycle: "प्रवेश का दौर",
+    // end fix-mediums-B
     seatsLeft: "{seats} में से {remaining} सीटें शेष",
     closesOn: "बंद {date}",
     documentsAsked: "आपसे माँगे जाएँगे: {names}",
@@ -3840,6 +3846,11 @@ export const hi: Dictionary = {
     resendSent: "भेज दिया। उस इनबॉक्स को देखिए — नया लिंक 48 घंटे चलेगा।",
     resendCta: "मुझे नया लिंक भेजिए",
     resendFailed: "यह भेजा नहीं जा सका।",
+    // fix-mediums-A (QA-13): opening the link shows a button; only the press confirms the address.
+    confirmTitle: "अपना ईमेल पता पक्का करें",
+    confirmBody: "अपने खाते के लिए {email} पक्का करने हेतु बटन दबाएँ। अगर आपने कोई खाता नहीं बनाया है, तो यह पृष्ठ बंद कर दें; कुछ नहीं होगा।",
+    confirmButton: "मेरा पता पक्का करें",
+    // end fix-mediums-A
   },
   offline: {
     retry: "फिर कोशिश करें",
@@ -9020,6 +9031,9 @@ export const hi: Dictionary = {
     noSuchStaff: "वह व्यक्ति इस स्कूल के स्टाफ़ में नहीं है।",
     substituteAway: "वह व्यक्ति भी अनुपस्थित है।",
     clash: "उस व्यक्ति की उस पीरियड में पहले से एक कक्षा है।",
+    // fix-mediums-C (QA-16): somebody else was named for the lesson after the caller's board was drawn.
+    changedMeanwhile: "इस बीच यह कक्षा {name} को सौंपी जा चुकी है। बोर्ड पर अब दिखता है कि इसे कौन ले रहा है।",
+    // end fix-mediums-C
     weekTitle: "शिक्षण सप्ताह",
     weekIntro: "जिन दिनों स्कूल में पढ़ाई होती है। रजिस्टर, स्टाफ़ उपस्थिति, छुट्टी और समय-सारणी सब इसी के अनुसार चलते हैं।",
     weekSave: "सप्ताह सहेजें",
@@ -15445,6 +15459,9 @@ export const hi: Dictionary = {
       noEntries: "अभी कोई प्रविष्टि नहीं",
       noEntriesBody: "नीचे पहली प्रविष्टि जोड़ें।",
       state: { DRAFT: "मसौदा", SUBMITTED: "सौंपी गई", SIGNED: "हस्ताक्षरित", RETURNED: "लौटाई गई" },
+      // fix-mediums-B (QA-15): an entry saved offline, on the device until the network returns.
+      queuedState: "भेजी जानी बाकी",
+      // end fix-mediums-B
       logKind: { CASE: "केस", PROCEDURE: "प्रक्रिया", SKILL: "कौशल", DISPENSING: "दवा वितरण" },
       signedLine: "{name} द्वारा {day} को हस्ताक्षरित",
       returnedLine: "लौटाई गई: {remark}",

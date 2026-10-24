@@ -12,7 +12,8 @@ import { assignPlansAs, createStructure, dateToDay, dayToDate, publishStructure,
 import { collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, officeUserIds, standingOf, yearKeyOf } from "./college-office";
 import { assertGuardianAccess } from "./tenancy";
 import { forSchool } from "./tenant-context";
-import { getT } from "./i18n/server";
+import { translator } from "./i18n/dictionary";
+import { LOCALES, normaliseLocale } from "./i18n/locales";
 import type { ActiveContext } from "./session";
 
 /**
@@ -353,12 +354,50 @@ async function headOfKind(schoolId: string, kind: "MESS" | "TRANSPORT") {
   return head;
 }
 
-/** One demand for an extra charge (instalment-less, like a library fine), unless the same label already stands for the student. */
-async function raiseOnce(schoolId: string, academicYearId: string, studentMembershipId: string, label: string, dueKey: string, head: { id: string; code: string; name: string }, paise: number): Promise<boolean> {
-  const exists = await db.feeDemand.findFirst({ where: { schoolId, studentMembershipId, academicYearId, instalmentId: null, label, status: { not: "CANCELLED" } }, select: { id: true } });
-  if (exists) return false;
-  await db.feeDemand.create({ data: { schoolId, studentMembershipId, academicYearId, instalmentId: null, label, dueDate: dayToDate(dueKey), grossPaise: paise, concessionPaise: 0, netPaise: paise, linesJson: writeJson([{ headId: head.id, code: head.code, name: head.name, grossPaise: paise, concessionPaise: 0 }]), status: "OPEN" } });
-  return true;
+/**
+ * A charge raised once: its language-free key, and its label in the institution's own language.
+ *
+ * ⚠ "ONCE" IS THE KEY, NEVER THE LABEL (QA-07, QA campaign of 24 October 2026). The label is a sentence,
+ * and it used to be written in the language of whoever pressed the button and also be what "already raised"
+ * looked for: a month billed by a desk in English and again by one in Hindi found no Hindi label and billed
+ * every boarder twice. The key ("MESS:2026-10", "ROUTE:<year>:<route>:<term>") is the charge's identity and
+ * `FeeDemand.raisedKey` is unique per student; the label is written in the school's language (School.locale),
+ * whoever presses. `legacyLabels` are the label in every language, for a charge raised before the key existed.
+ */
+type OnceCharge = { key: string; label: string; legacyLabels: string[] };
+
+async function chargeNamer(schoolId: string) {
+  const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { locale: true } });
+  const own = translator(normaliseLocale(school.locale));
+  const every = LOCALES.map((l) => translator(l.code));
+  return (key: string, labelKey: "collegeOffice.messLabel" | "collegeOffice.routeFeeLabel", vars: Record<string, string>): OnceCharge => ({ key, label: own(labelKey, vars), legacyLabels: [...new Set(every.map((t) => t(labelKey, vars)))] });
+}
+
+const isUniqueClash = (e: unknown) => typeof e === "object" && e !== null && (e as { code?: string }).code === "P2002";
+
+/**
+ * One demand for an extra charge (instalment-less, like a library fine), unless the same charge already stands
+ * for the student. Two presses at once meet at the unique key and the second is "already". A CANCELLED charge
+ * gives its key up, so the same charge raised again after a cancellation is a new demand, as before.
+ */
+async function raiseOnce(schoolId: string, academicYearId: string, studentMembershipId: string, charge: OnceCharge, dueKey: string, head: { id: string; code: string; name: string }, paise: number): Promise<boolean> {
+  try {
+    return await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      const keyed = await tx.feeDemand.findUnique({ where: { studentMembershipId_raisedKey: { studentMembershipId, raisedKey: charge.key } }, select: { id: true, status: true } });
+      if (keyed && keyed.status !== "CANCELLED") return false;
+      // Raised before the key existed: the label in whichever language it was pressed in.
+      const legacy = await tx.feeDemand.findFirst({ where: { schoolId, studentMembershipId, academicYearId, instalmentId: null, raisedKey: null, label: { in: charge.legacyLabels }, status: { not: "CANCELLED" } }, select: { id: true } });
+      if (legacy) return false;
+      if (keyed) await tx.feeDemand.update({ where: { id: keyed.id }, data: { raisedKey: null } });
+      await tx.feeDemand.create({ data: { schoolId, studentMembershipId, academicYearId, instalmentId: null, label: charge.label, raisedKey: charge.key, dueDate: dayToDate(dueKey), grossPaise: paise, concessionPaise: 0, netPaise: paise, linesJson: writeJson([{ headId: head.id, code: head.code, name: head.name, grossPaise: paise, concessionPaise: 0 }]), status: "OPEN" } });
+      return true;
+    });
+  } catch (e) {
+    // The other press raised it a moment ago.
+    if (isUniqueClash(e)) return false;
+    throw e;
+  }
 }
 
 /**
@@ -373,7 +412,7 @@ export async function billMess(ctx: ActiveContext, input: { month: string; hoste
   const year = await currentAcademicYear(d.schoolId);
   if (!year) throw new AccessError("fees.refuseNoYear");
   const head = await headOfKind(d.schoolId, "MESS");
-  const t = await getT();
+  const charge = (await chargeNamer(d.schoolId))(`MESS:${input.month}`, "collegeOffice.messLabel", { month: input.month });
   const first = `${input.month}-01`;
   const [y, mo] = input.month.split("-").map(Number) as [number, number];
   const last = new Date(Date.UTC(y, mo, 0)).toISOString().slice(0, 10);
@@ -390,7 +429,7 @@ export async function billMess(ctx: ActiveContext, input: { month: string; hoste
       continue;
     }
     for (const b of [...new Set(boarders.map((x) => x.membershipId))]) {
-      if (await raiseOnce(d.schoolId, year.id, b, t("collegeOffice.messLabel", { month: input.month }), due, head, h.messMonthlyPaise)) billed += 1;
+      if (await raiseOnce(d.schoolId, year.id, b, charge, due, head, h.messMonthlyPaise)) billed += 1;
       else already += 1;
     }
   }
@@ -401,21 +440,24 @@ export async function billMess(ctx: ActiveContext, input: { month: string; hoste
 /**
  * A TERM'S ROUTE FEE for each student riding a route that charges one (a
  * campus shuttle on a loop has no roster and charges nobody), under the
- * TRANSPORT head. Raised once per student, route and term label.
+ * TRANSPORT head. Raised once per student, route and term (the term's name
+ * compared without case or extra spaces).
  */
 export async function raiseRouteFees(ctx: ActiveContext, input: { termLabel: string; dueDateKey: string }): Promise<{ raised: number; already: number }> {
   const d = await collegeDesk(ctx, MONEY_WRITE, "TRANSPORT");
   const year = await currentAcademicYear(d.schoolId);
   if (!year) throw new AccessError("fees.refuseNoYear");
   const head = await headOfKind(d.schoolId, "TRANSPORT");
-  const t = await getT();
+  const name = await chargeNamer(d.schoolId);
+  const term = input.termLabel.trim().replace(/\s+/g, " ");
   const routes = await db.transportRoute.findMany({ where: { schoolId: d.schoolId, active: true, kind: "FIXED", feePerTermPaise: { gt: 0 } }, select: { id: true, name: true, feePerTermPaise: true } });
   let raised = 0;
   let already = 0;
   for (const r of routes) {
     const riders = await db.transportAllotment.findMany({ where: { schoolId: d.schoolId, routeId: r.id, OR: [{ toDateKey: null }, { toDateKey: { gte: input.dueDateKey } }], student: { role: "STUDENT", leftAt: null } }, select: { studentMembershipId: true } });
     for (const rider of [...new Set(riders.map((x) => x.studentMembershipId))]) {
-      if (await raiseOnce(d.schoolId, year.id, rider, t("collegeOffice.routeFeeLabel", { term: input.termLabel.trim(), route: r.name }), input.dueDateKey, head, r.feePerTermPaise)) raised += 1;
+      const charge = name(`ROUTE:${year.id}:${r.id}:${term.toLowerCase()}`, "collegeOffice.routeFeeLabel", { term, route: r.name });
+      if (await raiseOnce(d.schoolId, year.id, rider, charge, input.dueDateKey, head, r.feePerTermPaise)) raised += 1;
       else already += 1;
     }
   }

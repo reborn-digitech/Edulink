@@ -95,7 +95,7 @@ export function Experts() {
       />
       {d && d.specialisms.length > 1 ? <Chips label={t("expert.specialismFilter")} value={specialism} options={[{ value: "", label: t("expert.allSpecialisms") }, ...d.specialisms.map((s) => ({ value: s, label: s }))]} onChange={setSpecialism} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.experts.length === 0 ? (
           narrowed ? (

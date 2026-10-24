@@ -1,4 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
+import type { FeatureCode, PlanCode } from "@edulink/contracts";
 
 /**
  * Server state lives in React Query. Five minutes fresh: a register or a
@@ -45,20 +46,34 @@ export function makeQueryClient(): QueryClient {
   });
 }
 
+/** What a 402 PLAN_REQUIRED names: the plan that opens the door and the feature it belongs to (QA-18). */
+export type PlanLockInfo = { plan: PlanCode; feature?: FeatureCode };
+
 /** Thrown by query functions so screens can show the envelope's sentence. */
 export class ApiRefused extends Error {
   constructor(
     public readonly status: number,
     message: string,
     public readonly code?: string,
+    /** With PLAN_REQUIRED: the plan and the feature, so `Failed` draws the plan card in place of an error (QA-18). */
+    public readonly planLock?: PlanLockInfo,
   ) {
     super(message);
     this.name = "ApiRefused";
   }
 }
 
+/**
+ * A door whose feature is on but needs a plan this person does not hold: the plan and feature it names, or null.
+ * Asking again cannot change it, so the screen shows what the plan is and how to subscribe (QA-18), as the web's
+ * featurePageLock does, rather than a red error with a retry.
+ */
+export function planLockOf(error: unknown): PlanLockInfo | null {
+  return error instanceof ApiRefused && error.code === "PLAN_REQUIRED" && error.planLock ? error.planLock : null;
+}
+
 /** Unwraps an ApiResult into data or an ApiRefused, for use inside queryFn/mutationFn. */
-export function unwrap<T>(result: { ok: true; data: T } | { ok: false; status: number; error: string; code?: string }): T {
+export function unwrap<T>(result: { ok: true; data: T } | { ok: false; status: number; error: string; code?: string; plan?: PlanCode; feature?: FeatureCode }): T {
   if (result.ok) return result.data;
-  throw new ApiRefused(result.status, result.error, result.code);
+  throw new ApiRefused(result.status, result.error, result.code, result.code === "PLAN_REQUIRED" && result.plan ? { plan: result.plan, ...(result.feature ? { feature: result.feature } : {}) } : undefined);
 }

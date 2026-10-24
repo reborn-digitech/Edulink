@@ -1837,6 +1837,9 @@ export const mr: Dictionary = {
     refuseFeeSettled: "ही विनंती बंद आहे; तिच्यावर शुल्क ठरवता येत नाही.",
     refuseFeePaid: "या शुल्कावर काही रक्कम आधीच भरली आहे, म्हणून ते बदलता येत नाही.",
     refuseNoFeeHead: "एखाद्या दाखल्यावर शुल्क ठरवण्यापूर्वी 'इतर' प्रकारचा शुल्क मथळा जोडा.",
+    // fix-mediums-A (QA-12): an ask declined or taken back is not answered by a paper issued from it.
+    refuseClosed: "ही विनंती नाकारली गेली किंवा मागे घेतली गेली आहे. दाखला अजूनही हवा असल्यास तो विनंतीशिवाय द्या.",
+    // end fix-mediums-A
     feeLabel: "दाखल्याची प्रत: {kind}",
     feeDue: "शुल्क {amount}: ते शुल्क पानावर किंवा कार्यालयात भरा.",
     feePaidLine: "शुल्क {amount} भरले",
@@ -2139,6 +2142,9 @@ export const mr: Dictionary = {
     applyHere: "जागेसाठी अर्ज करा",
     apply: "अर्ज करा",
     noOpenCycle: "ही शाळा सध्या शाळाघरावरून अर्ज घेत नाही.",
+    // fix-mediums-B (QA-17): a school may have several admission cycles open at once; the family picks one.
+    chooseCycle: "प्रवेशाची फेरी",
+    // end fix-mediums-B
     seatsLeft: "{seats} पैकी {remaining} जागा उरल्या",
     closesOn: "बंद {date}",
     documentsAsked: "तुम्हाला मागितली जातील: {names}",
@@ -3836,6 +3842,11 @@ export const mr: Dictionary = {
     resendSent: "पाठवले. तो इनबॉक्स पाहा — नवा दुवा 48 तास चालेल.",
     resendCta: "मला नवा दुवा पाठवा",
     resendFailed: "हे पाठवता आले नाही.",
+    // fix-mediums-A (QA-13): opening the link shows a button; only the press confirms the address.
+    confirmTitle: "तुमचा ईमेल पत्ता निश्चित करा",
+    confirmBody: "तुमच्या खात्यासाठी {email} निश्चित करण्यासाठी बटण दाबा. तुम्ही खाते उघडले नसल्यास हे पान बंद करा; काहीही होणार नाही.",
+    confirmButton: "माझा पत्ता निश्चित करा",
+    // end fix-mediums-A
   },
   offline: {
     retry: "पुन्हा प्रयत्न करा",
@@ -9014,6 +9025,9 @@ export const mr: Dictionary = {
     noSuchStaff: "ती व्यक्ती या शाळेच्या कर्मचाऱ्यांत नाही.",
     substituteAway: "ती व्यक्तीही गैरहजर आहे.",
     clash: "त्या व्यक्तीचा त्या तासिकेत आधीच एक तास आहे.",
+    // fix-mediums-C (QA-16): somebody else was named for the lesson after the caller's board was drawn.
+    changedMeanwhile: "दरम्यान हा तास {name} यांच्याकडे दिला गेला आहे. तो आता कोण घेत आहे हे फलकावर दिसते.",
+    // end fix-mediums-C
     weekTitle: "शिकवण्याचा आठवडा",
     weekIntro: "शाळा ज्या दिवशी भरते ते दिवस. हजेरी, कर्मचारी हजेरी, रजा आणि वेळापत्रक सगळे याप्रमाणे चालते.",
     weekSave: "आठवडा जतन करा",
@@ -15439,6 +15453,9 @@ export const mr: Dictionary = {
       noEntries: "अजून कोणतीही नोंद नाही",
       noEntriesBody: "खाली पहिली नोंद जोडा.",
       state: { DRAFT: "मसुदा", SUBMITTED: "सादर केलेली", SIGNED: "स्वाक्षरी झालेली", RETURNED: "परत केलेली" },
+      // fix-mediums-B (QA-15): an entry saved offline, on the device until the network returns.
+      queuedState: "पाठवायची बाकी",
+      // end fix-mediums-B
       logKind: { CASE: "केस", PROCEDURE: "प्रक्रिया", SKILL: "कौशल्य", DISPENSING: "औषधवाटप" },
       signedLine: "{name} यांनी {day} रोजी स्वाक्षरी केली",
       returnedLine: "परत केलेली: {remark}",

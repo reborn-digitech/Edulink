@@ -2,6 +2,7 @@ import { substitutionAssignSchema, substitutionAssignedSchema, substitutionBoard
 import { requireApiRole } from "@/lib/tenancy";
 import { assignSubstitute, substitutionBoard } from "@/lib/substitutions";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 /** GET /api/v1/office/substitutions?date= — the board for a day. */
 export async function GET(request: Request) {
@@ -15,7 +16,7 @@ export async function GET(request: Request) {
   }
 }
 
-/** POST /api/v1/office/substitutions — name who takes a lesson on a day. */
+/** POST /api/v1/office/substitutions — name who takes a lesson on a day; somebody else named since the caller's board was drawn is a 409 naming them (QA-16). */
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
@@ -23,6 +24,6 @@ export async function POST(request: Request) {
     if (!parsed.success) return apiInvalid(parsed);
     return ok(substitutionAssignedSchema.parse(await assignSubstitute(ctx, parsed.data)));
   } catch (error) {
-    return apiFailure(error, "api/v1/office/substitutions");
+    return moduleFailure(error, "api/v1/office/substitutions");
   }
 }

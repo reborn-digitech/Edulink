@@ -117,7 +117,7 @@ export function ExpertHome() {
         </Card>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>

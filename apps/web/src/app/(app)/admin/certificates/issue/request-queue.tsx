@@ -102,7 +102,7 @@ export function RequestQueue({ items, excludeId }: { items: CertificateRequestVi
               {item.purpose ? ` — ${item.purpose}` : ""}
             </p>
             <p className="mt-0.5 text-xs text-fg-muted">
-              {[item.requestedByName, t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null, item.feePaise ? t(item.feePaid ? "certificateRequests.feePaidLine" : "certificateRequests.feeDue", { amount: formatPaise(item.feePaise) }) : null]
+              {[item.requestedByName, t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null, item.feePaise && (item.feePaid || (item.status !== "DECLINED" && item.status !== "CANCELLED")) ? t(item.feePaid ? "certificateRequests.feePaidLine" : "certificateRequests.feeDue", { amount: formatPaise(item.feePaise) }) : null]
                 .filter(Boolean)
                 .join(" · ")}
             </p>

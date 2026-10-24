@@ -8,6 +8,7 @@ import { ROLE_META, type Role } from "@/lib/constants";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PersonLink } from "@/components/person-link";
+import { pageOpener } from "@/lib/page-links";
 import { EmptyState } from "@/components/ui/states";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
@@ -30,6 +31,8 @@ const CELEBRATIONS_TAG = "celebrations";
  */
 export default async function CelebrationsPage() {
   const session = await requireUser();
+  // Names are doors to profiles only where the reader's gate opens /people (QA-19).
+  const profiles = (await pageOpener(session))("/people/x");
   const t = await getT();
   const locale = await getLocale();
   // The month, and — when it is empty — the next half-year, labelled as
@@ -109,7 +112,7 @@ export default async function CelebrationsPage() {
                           )}
                         </span>
                         <span className="min-w-0">
-                          <PersonLink membershipId={item.membershipId} name={item.name} className="block truncate font-medium text-fg" />
+                          <PersonLink linked={profiles} membershipId={item.membershipId} name={item.name} className="block truncate font-medium text-fg" />
                           <span className="block truncate text-xs text-fg-muted">
                             {item.kind === "BIRTHDAY"
                               ? t("celebrations.birthday")

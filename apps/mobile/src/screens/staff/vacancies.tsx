@@ -82,7 +82,7 @@ function Board({ onDesk }: { onDesk?: () => void }) {
       <Field label={t("common.searchLabel")} placeholder={t("vacancies.searchPlaceholder")} value={q} onChangeText={setQ} autoCapitalize="none" returnKeyType="search" />
       <Chips label={t("vacancies.typeFilter")} value={type} options={[{ value: "" as TypeFilter, label: t("vacancies.filterAll") }, ...TYPES.map((k) => ({ value: k as TypeFilter, label: t(EMPLOYMENT_TYPE[k]) }))]} onChange={setType} />
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         postings.length === 0 ? (
           narrowed ? (
@@ -168,7 +168,7 @@ function Desk({ onBoard }: { onBoard: () => void }) {
       <DeskTabs tab="desk" onTab={() => onBoard()} />
       {notice ? <Notice text={notice.text} tone={notice.tone} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>

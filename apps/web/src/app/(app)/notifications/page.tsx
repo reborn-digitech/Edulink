@@ -3,14 +3,13 @@ import Link from "next/link";
 import { BellIcon, GearIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { relativeTime } from "@/lib/dates";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { NotificationList, type NotificationItem } from "./list";
 import { BulkActions } from "./bulk-actions";
 import { NOTIFICATION_KINDS, NOTIFICATION_KIND_KEY, type NotificationKind } from "@/lib/constants";
-import { getLocale, getT } from "@/lib/i18n/server";
+import { getLocale, getT, getRelativeTime } from "@/lib/i18n/server";
 import { localiseVars } from "@/lib/notice-dates";
 import { effectiveThresholds } from "@/lib/notification-housekeeping";
 import { DataToolbar } from "@/components/ui/data-toolbar";
@@ -34,6 +33,8 @@ export default async function NotificationsPage({
 }: {
   searchParams: Promise<{ filter?: string; kind?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const locale = await getLocale();
   const session = await requireUser();

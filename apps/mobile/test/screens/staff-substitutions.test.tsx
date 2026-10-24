@@ -141,7 +141,7 @@ describe("the substitution board", () => {
     await fireEvent.changeText(screen.getAllByLabelText("Note for the substitute")[0]!, "Take the reader");
     await fireEvent.press(screen.getByRole("button", { name: "Assign: English · ZZ 5B" }));
     expect(await screen.findByText("ZZ Dev will cover English for ZZ 5B.")).toBeTruthy();
-    expect(calls().find((c) => c.line === `POST ${PATH}`)?.body).toEqual({ dateKey: "2026-09-17", slotId: ENGLISH, substituteMembershipId: DEV, note: "Take the reader" });
+    expect(calls().find((c) => c.line === `POST ${PATH}`)?.body).toEqual({ dateKey: "2026-09-17", slotId: ENGLISH, substituteMembershipId: DEV, note: "Take the reader", replacing: null });
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBe(2));
   });
 
@@ -151,7 +151,18 @@ describe("the substitution board", () => {
     await fireEvent.press(screen.getAllByRole("radio", { name: "ZZ Dev" })[1]!);
     await fireEvent.press(screen.getByRole("button", { name: "Assign: Science · ZZ 6A" }));
     expect(await screen.findByText("Already assigned to that person.")).toBeTruthy();
-    expect(calls().find((c) => c.line === `POST ${PATH}`)?.body).toEqual({ dateKey: "2026-09-17", slotId: SCIENCE, substituteMembershipId: DEV });
+    expect(calls().find((c) => c.line === `POST ${PATH}`)?.body).toEqual({ dateKey: "2026-09-17", slotId: SCIENCE, substituteMembershipId: DEV, replacing: null });
+  });
+
+  it("a change of substitute says who the board showed, and somebody named meanwhile (409) is said by name and the board read again (QA-16)", async () => {
+    const { calls } = await mountStaff(compose(), "ADMIN", { ...answers(), [`POST ${PATH}`]: () => json({ error: "ZZ Esha was named for this lesson meanwhile. The board shows who covers it now.", code: "CONFLICT" }, 409) });
+    await screen.findByText("Maths · ZZ 5A");
+    await fireEvent.press(screen.getByRole("button", { name: "Change: Maths · ZZ 5A" }));
+    await fireEvent.press(screen.getAllByRole("radio", { name: "ZZ Dev" })[0]!);
+    await fireEvent.press(screen.getByRole("button", { name: "Assign: Maths · ZZ 5A" }));
+    expect(await screen.findByText("ZZ Esha was named for this lesson meanwhile. The board shows who covers it now.")).toBeTruthy();
+    expect(calls().find((c) => c.line === `POST ${PATH}`)?.body).toEqual({ dateKey: "2026-09-17", slotId: MATHS, substituteMembershipId: DEV, replacing: CHITRA });
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBe(2));
   });
 
   it("Clear posts the lesson and says the cover is gone; Change opens the picker and Cancel folds it", async () => {

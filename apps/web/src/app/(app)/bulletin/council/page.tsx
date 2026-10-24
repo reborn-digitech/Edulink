@@ -11,8 +11,7 @@ import { ModuleFlash } from "@/components/module-flash";
 import { requireRole } from "@/lib/tenancy";
 import { councilView } from "@/lib/council-notices";
 import { listFeed } from "@/lib/bulletin";
-import { relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { postCouncilNoticeAction, saveCouncilAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,6 +24,8 @@ export async function generateMetadata(): Promise<Metadata> {
  * and the office naming the council and its members by student code.
  */
 export default async function CouncilPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const ctx = await requireRole("STUDENT", "ADMIN", "PRINCIPAL");
   const t = await getT();
   const sp = await searchParams;

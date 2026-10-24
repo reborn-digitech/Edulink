@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { InviteRowActions } from "./row-actions";
-import { isPast, relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { isPast } from "@/lib/dates";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { DataToolbar } from "@/components/ui/data-toolbar";
@@ -32,6 +32,8 @@ export default async function InvitesPage({
 }: {
   searchParams: Promise<{ status?: string; q?: string; role?: string; expired?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const ctx = await requireRole("ADMIN");
   const { status, q: rawQ, role: rawRole, expired } = await searchParams;
   const t = await getT();

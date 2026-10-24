@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -19,12 +19,12 @@ import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text, u
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
-import { newClientId } from "@/lib/outbox";
+import { listQueued, newClientId, onQueueEvent } from "@/lib/outbox";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { formatDate } from "@/lib/dates";
 import { Chips, Notice } from "../staff/shared";
-import { postOrQueue, todayKey } from "../teacher/support";
+import { OutboxBadge, postOrQueue, todayKey, useOutboxRunner } from "../teacher/support";
 
 /**
  * THE CLINICAL DESK ON THE PHONE (R-56, the clinical half; 10 Oct 2026).
@@ -182,6 +182,40 @@ export function ClinicalDeskScreen() {
 /* ------------------------------------------------------------- the student */
 
 type Draft = { id: string | null; clientId: string; postingId: string; on: string; kind: LogbookKind; count: string; note: string };
+const LOGBOOK_TAG = "clinical-logbook";
+
+/** An entry saved offline, read back from the outbox: what the student wrote, waiting for the network (QA-15). */
+type QueuedEntry = { rowId: string; clientId: string; postingId: string; on: string; kind: string; count: number; note: string };
+
+/** The logbook's rows waiting in the outbox, live: refreshed whenever something is queued or a flush ends. */
+function useQueuedEntries(): QueuedEntry[] {
+  const [rows, setRows] = useState<QueuedEntry[]>([]);
+  useEffect(() => {
+    let alive = true;
+    const refresh = () => {
+      void listQueued(LOGBOOK_TAG).then((items) => {
+        if (!alive) return;
+        setRows(
+          items.flatMap((item) => {
+            try {
+              const b = JSON.parse(item.body) as Partial<Record<keyof QueuedEntry, unknown>>;
+              return [{ rowId: item.id, clientId: String(b.clientId ?? ""), postingId: String(b.postingId ?? ""), on: String(b.on ?? ""), kind: String(b.kind ?? "CASE"), count: Number(b.count) || 1, note: String(b.note ?? "") }];
+            } catch {
+              return [];
+            }
+          }),
+        );
+      });
+    };
+    refresh();
+    const stop = onQueueEvent(refresh);
+    return () => {
+      alive = false;
+      stop();
+    };
+  }, []);
+  return rows;
+}
 const fresh = (postingId: string, today: string): Draft => ({ id: null, clientId: newClientId(), postingId, on: today, kind: "CASE", count: "1", note: "" });
 
 function EntryRow({ e, onCorrect, onSubmitted }: { e: LogbookEntry; onCorrect: (e: LogbookEntry) => void; onSubmitted: () => unknown }) {
@@ -218,6 +252,9 @@ export function ClinicalLogbookScreen() {
   const t = useT();
   const th = useTheme();
   const toast = useToast();
+  // An entry saved offline goes when the network returns, from this screen too (QA-15), and is shown waiting meanwhile.
+  useOutboxRunner();
+  const queued = useQueuedEntries();
   const session = useSession();
   const me = session.status === "signed-in" ? session.me : null;
   const on = (me?.modules ?? []).includes("ACADEMICS");
@@ -226,8 +263,11 @@ export function ClinicalLogbookScreen() {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const mine = useQuery({ queryKey: ["family", "clinical"], enabled: on && offeredHere, queryFn: async () => familyClinicalSchema.parse(unwrap(await api().get("/api/v1/family/clinical"))) });
+  // When the outbox sends what waited, the server's list has it: read it again, so the entry moves from waiting to the logbook.
+  const refetchMine = mine.refetch;
+  useEffect(() => onQueueEvent((e) => void (e.type === "flushed" && e.sent > 0 ? refetchMine() : undefined)), [refetchMine]);
   const save = useMutation({
-    mutationFn: async (x: Draft) => postOrQueue({ url: "/api/v1/family/clinical/logbook", tag: "clinical-logbook", body: { ...(x.id ? { id: x.id } : {}), clientId: x.clientId, postingId: x.postingId, on: x.on, kind: x.kind, count: Number(x.count) || 1, note: x.note.trim() } }),
+    mutationFn: async (x: Draft) => postOrQueue({ url: "/api/v1/family/clinical/logbook", tag: LOGBOOK_TAG, body: { ...(x.id ? { id: x.id } : {}), clientId: x.clientId, postingId: x.postingId, on: x.on, kind: x.kind, count: Number(x.count) || 1, note: x.note.trim() } }),
     onSuccess: (outcome) => {
       if (outcome.kind === "refused") {
         setNotice({ tone: "danger", text: outcome.message });
@@ -259,6 +299,7 @@ export function ClinicalLogbookScreen() {
           <Text variant="sm" tone="muted">
             {t("duties.clinical.mySummary", d.summary)}
           </Text>
+          <OutboxBadge tag={LOGBOOK_TAG} />
           <Card title={t("duties.clinical.myPostingsTitle")}>
             {d.postings.length === 0 ? <Text tone="muted">{t("duties.clinical.noMyPostingsBody")}</Text> : null}
             {d.postings.map((p) => (
@@ -280,7 +321,23 @@ export function ClinicalLogbookScreen() {
                 </View>
               </View>
             ) : null}
-            {d.entries.length === 0 && !draft ? <Text tone="muted">{t(open.length > 0 ? "duties.clinical.noEntriesBody" : "duties.clinical.noMyPostingsBody")}</Text> : null}
+            {queued.map((q) => {
+              const p = d.postings.find((x) => x.id === q.postingId);
+              return (
+                <View key={q.rowId} accessibilityLiveRegion="polite" style={{ gap: th.space[1], paddingVertical: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
+                  <Text bold>{p ? `${formatDate(q.on)} · ${p.siteName} › ${p.departmentName}` : formatDate(q.on)}</Text>
+                  <Text variant="sm" tone="warn">
+                    {`${t("duties.clinical.entryLine", { kind: t(KIND_KEY(q.kind)), count: q.count })} · ${t("duties.clinical.queuedState")}`}
+                  </Text>
+                  {q.note ? (
+                    <Text variant="sm" tone="muted">
+                      {q.note}
+                    </Text>
+                  ) : null}
+                </View>
+              );
+            })}
+            {d.entries.length === 0 && queued.length === 0 && !draft ? <Text tone="muted">{t(open.length > 0 ? "duties.clinical.noEntriesBody" : "duties.clinical.noMyPostingsBody")}</Text> : null}
             {d.entries.map((e) => (
               <EntryRow key={e.id} e={e} onCorrect={(x) => setDraft({ id: x.id, clientId: x.clientId, postingId: x.postingId, on: x.on, kind: x.kind, count: String(x.count), note: x.note })} onSubmitted={() => mine.refetch()} />
             ))}

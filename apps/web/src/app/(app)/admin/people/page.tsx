@@ -11,9 +11,9 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
 import { DirectoryMenu } from "./directory-menu";
-import { relativeTime, formatDate, formatDateKey } from "@/lib/dates";
+import { formatDate, formatDateKey } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { isDeliverableEmail } from "@/lib/login-name";
 import { TabBar } from "@/components/ui/tabs";
 import { isCollegeRole, ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
@@ -43,6 +43,8 @@ export default async function DirectoryPage({
     status?: string;
   }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const ctx = await requireRole("ADMIN");
   const params = await searchParams;
   const t = await getT();

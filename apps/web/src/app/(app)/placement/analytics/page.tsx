@@ -7,6 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { BAND_KEY, CellFrame, LINK, SECTOR_KEY, TABLE, TD, TH, cellContext, lpa } from "@/components/placement/parts";
+import { pageOpener } from "@/lib/page-links";
 import { publishSeasonAction, saveSettingsAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ActionForm } from "@/components/ui/action-form";
@@ -34,7 +35,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
   const back = "/placement/analytics";
   const ex = (kind: string) => `/api/v1/placement/analytics/export?kind=${kind}&batchYear=${top.batchYear}`;
   return (
-    <CellFrame t={t} on college={college} current={ctx.role === "IQAC" ? null : "analytics"} title={t("placement.tabAnalytics")} description={t("placement.analyticsIntro")} ok={ok} error={error}>
+    <CellFrame t={t} on college={college} current={ctx.role === "IQAC" ? null : "analytics"} title={t("placement.tabAnalytics")} description={t("placement.analyticsIntro")} ok={ok} error={error} opens={await pageOpener(ctx)}>
       <Card>
         <CardHeader icon={<ChartBarIcon weight="duotone" className="size-5" />} title={t("placement.yearsTitle")} description={t("placement.yearsIntro")} />
         <CardBody className="p-0">

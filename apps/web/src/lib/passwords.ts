@@ -998,6 +998,39 @@ export type VerifyResult =
   | { ok: false; reason: "STALE" };
 
 /**
+ * WHAT A PRESS OF THE CONFIRM BUTTON WOULD FIND, WITHOUT PRESSING IT (QA-13,
+ * QA campaign of 24 October 2026). `/verify` used to spend the token while the
+ * page rendered for a GET, and a GET is what everything that is not the person
+ * does: the mail provider's link scanner, a messaging app's preview, a
+ * prefetch. An attacker who registered under somebody else's address had the
+ * squatted account marked verified the moment the victim's mail scanner looked
+ * at the link, and a verified account is one SSO then links to without
+ * reclaiming. The page now reads the token with this — nothing is written —
+ * and shows a button whose POST spends it (`verifyEmailByToken`), the pattern
+ * the magic link took in assessment item 22.
+ *
+ * READY: live, unspent, for the address the account still holds. The other
+ * states are `verifyEmailByToken`'s own refusals, told in advance; STALE says
+ * no address, as the refusal it previews says none.
+ */
+export type VerifyLook = { state: "READY" | "USED" | "EXPIRED"; email: string | null } | { state: "STALE" | "UNKNOWN"; email: null };
+
+export async function inspectVerifyToken(rawToken: string | undefined): Promise<VerifyLook> {
+  const token = rawToken?.trim();
+  if (!token) return { state: "UNKNOWN", email: null };
+  const row = await db.authToken.findUnique({ where: { tokenHash: hashToken(token) }, select: { userId: true, email: true, purpose: true, expiresAt: true, consumedAt: true } });
+  // As claimToken: a token minted for another job is unknown here, and so is one with no address to prove.
+  if (!row || row.purpose !== "EMAIL_VERIFY" || !row.userId) return { state: "UNKNOWN", email: null };
+  if (row.consumedAt) return { state: "USED", email: row.email };
+  if (row.expiresAt.getTime() <= Date.now()) return { state: "EXPIRED", email: row.email };
+  if (!row.email) return { state: "UNKNOWN", email: null };
+  const user = await db.user.findUnique({ where: { id: row.userId }, select: { email: true } });
+  if (!user) return { state: "UNKNOWN", email: null };
+  if (user.email !== row.email) return { state: "STALE", email: null };
+  return { state: "READY", email: row.email };
+}
+
+/**
  * Redeems the link registration has been emailing since day one.
  *
  * ⚠ THE ROUTE IT POINTED AT DID NOT EXIST. `register/actions.ts` has always

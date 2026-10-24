@@ -3,12 +3,13 @@ import { notFound } from "next/navigation";
 import { LockKeyIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
 import { getThread, markThreadRead } from "@/lib/remarks";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { Avatar } from "@/components/ui/avatar";
 import { PersonLink } from "@/components/person-link";
+import { pageOpener } from "@/lib/page-links";
 import { ReplyBox } from "./reply-box";
 import { ThreadLive } from "./thread-live";
-import { formatInZone, relativeTime } from "@/lib/dates";
+import { formatInZone } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/cn";
 import { BackLink, PAGE_TITLE } from "@/components/ui/page-header";
@@ -19,8 +20,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ThreadPage({ params }: { params: Promise<{ threadId: string }> }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const session = await requireUser();
+  // Names are doors to profiles only where the reader's gate opens /people (QA-19).
+  const profiles = (await pageOpener(session))("/people/x");
   const { threadId } = await params;
 
   let thread;
@@ -54,7 +59,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
       <BackLink href="/remarks" label={t("remarks.all")} className="mb-4" />
 
       <header className="flex items-start gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
-        <PersonLink membershipId={thread.student.membershipId} name={thread.student.fullName} className="shrink-0 rounded-full">
+        <PersonLink linked={profiles} membershipId={thread.student.membershipId} name={thread.student.fullName} className="shrink-0 rounded-full">
           <Avatar avatarKey={thread.student.avatarKey} name={thread.student.fullName} size="md" />
         </PersonLink>
         <div className="min-w-0 flex-1">
@@ -65,9 +70,9 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
               a family. The child is in the room now, so it is a conversation
               BETWEEN people rather than one about somebody. */}
           <p className="text-sm text-fg-muted">
-            <PersonLink membershipId={thread.student.membershipId} name={thread.student.fullName} className="text-fg" />
+            <PersonLink linked={profiles} membershipId={thread.student.membershipId} name={thread.student.fullName} className="text-fg" />
             {" · "}
-            <PersonLink membershipId={thread.teacher.membershipId} name={thread.teacher.name} className="text-fg" />
+            <PersonLink linked={profiles} membershipId={thread.teacher.membershipId} name={thread.teacher.name} className="text-fg" />
             {" · "}
             {t("remarks.guardiansWord")}
           </p>
@@ -91,7 +96,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
             <Avatar avatarKey={message.authorAvatar} name={message.authorName} size="sm" />
             <div className={cn("min-w-0 max-w-[85%]", message.mine && "text-right")}>
               <p className="text-xs text-fg-muted">
-                <PersonLink
+                <PersonLink linked={profiles}
                   membershipId={message.mine ? null : message.authorMembershipId}
                   name={message.mine ? t("convo.you") : message.authorName}
                   className="font-semibold text-fg"

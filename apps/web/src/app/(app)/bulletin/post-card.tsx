@@ -16,10 +16,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { relativeTime } from "@/lib/dates";
+import { relativeTime as relativeTimeIn } from "@/lib/dates";
 import { acknowledge, pin, review, report } from "./actions";
 import { publish as publishGlobal } from "./global/actions";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { ROLE_META, type PostCategory, type ReactionKind, type Role } from "@/lib/constants";
 import { CATEGORY_KEYS } from "./categories";
@@ -78,10 +78,17 @@ const REPORT_REASONS = [
   { value: "OTHER", labelKey: "bulletin.reasonOther" },
 ] as const satisfies readonly { value: string; labelKey: TranslationKey }[];
 
-export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | null }) {
+/**
+ * `links` says which of the card's doors outside the feed the reader's gate opens (QA-19): a person's profile and
+ * the global feed. Left out, both are drawn, as they always were for the roles that open them.
+ */
+export function PostCard({ post, viewerRole, links = { profiles: true, globalFeed: true } }: { post: Post; viewerRole: Role | null; links?: { profiles: boolean; globalFeed: boolean } }) {
   const router = useRouter();
   const { toast } = useToast();
   const t = useT();
+  // "2 hours ago" in the reader's language (QA-20).
+  const locale = useLocale();
+  const relativeTime = (at: Date) => relativeTimeIn(at, new Date(), locale);
   const [pending, startTransition] = useTransition();
   const [rejecting, setRejecting] = useState(false);
   const [reason, setReason] = useState("");
@@ -137,7 +144,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
             profile, where the "Message" button lives. A post from somebody
             who has since left, or on the global feed, stays plain text. */}
         <header className="flex items-start gap-3">
-          {post.authorMembershipId ? (
+          {post.authorMembershipId && links.profiles ? (
             <Link href={`/people/${post.authorMembershipId}`} className="shrink-0 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label={post.authorName}>
               <Avatar avatarKey={post.authorAvatar} name={post.authorName} size="sm" />
             </Link>
@@ -146,7 +153,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           )}
           <div className="min-w-0 flex-1">
             <p className="flex flex-wrap items-center gap-x-2 text-sm">
-              {post.authorMembershipId ? (
+              {post.authorMembershipId && links.profiles ? (
                 <Link href={`/people/${post.authorMembershipId}`} className="font-semibold text-fg hover:underline">
                   {post.authorName}
                 </Link>
@@ -389,16 +396,24 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                 <GlobeIcon weight="regular" className="size-4" />
               </button>
             )}
-            {post.scope === "GLOBAL" && (
-              // The pill stays small; the link around it is the 44 px target (A3-states-11).
-              <Link href="/bulletin/global" title={t("bulletin.onGlobalFeed")} className="inline-flex min-h-11 items-center">
-                <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent-strong">
-                  <GlobeIcon weight="fill" className="size-3" />
-                  {t("bulletin.onGlobalFeed")}
+            {post.scope === "GLOBAL" &&
+              (links.globalFeed ? (
+                // The pill stays small; the link around it is the 44 px target (A3-states-11).
+                <Link href="/bulletin/global" title={t("bulletin.onGlobalFeed")} className="inline-flex min-h-11 items-center">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent-strong">
+                    <GlobeIcon weight="fill" className="size-3" />
+                    {t("bulletin.onGlobalFeed")}
+                  </span>
+                </Link>
+              ) : (
+                // A reader whose gate does not open the global feed (an alumnus) is told, not sent to choose (QA-19).
+                <span className="inline-flex min-h-11 items-center">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent-strong">
+                    <GlobeIcon weight="fill" className="size-3" />
+                    {t("bulletin.onGlobalFeed")}
+                  </span>
                 </span>
-              </Link>
-
-            )}
+              ))}
             {viewerRole === "ADMIN" && (
               <button
                 type="button"

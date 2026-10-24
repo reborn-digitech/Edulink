@@ -5,7 +5,7 @@ import { BooksIcon, CalendarCheckIcon, ChartBarIcon, ChatCircleDotsIcon, FileTex
 import { requireRole, assertClassAccess, AccessError } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getAttendanceSummary } from "@/lib/attendance";
-import { addDaysToKey, relativeTime, todayKey } from "@/lib/dates";
+import { addDaysToKey, todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -16,7 +16,7 @@ import { healthFlagsFor } from "@/lib/health";
 import { openIncidentCounts } from "@/lib/incidents";
 import { ClassCode } from "./class-code";
 import { GradeWeights } from "./weights";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -34,6 +34,8 @@ export default async function ClassDetailPage({
   params: Promise<{ classId: string }>;
   searchParams: Promise<{ filter?: string }>;
 }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { classId } = await params;

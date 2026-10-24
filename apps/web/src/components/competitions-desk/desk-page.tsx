@@ -13,8 +13,7 @@ import { EmptyState } from "@/components/ui/states";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
 import { TabBar } from "@/components/ui/tabs";
-import { relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { CompetitionControls } from "@/app/appadmin/competition-controls";
 import { CrawlCard } from "./crawl-card";
 import { SuggestionCard } from "./suggestion-card";
@@ -66,6 +65,8 @@ export async function CompetitionsDeskPage({ base, searchParams, top }: { base: 
 }
 
 async function PlatformList({ session, status: rawStatus }: { session: Awaited<ReturnType<typeof requireAppAdmin>>; status: string | undefined }) {
+  // The reader's language, not English under a Hindi or Marathi page (QA-20).
+  const relativeTime = await getRelativeTime();
   const t = await getT();
   const allCompetitions = await listPlatformCompetitions(session);
   const statuses = [...new Set(allCompetitions.map((c) => c.status))];

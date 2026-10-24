@@ -158,7 +158,7 @@ function AskForMentor() {
   return (
     <Screen title={t("mentoring.askTitle")} description={t("mentoring.askDescription")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Note tone="accent">
@@ -255,7 +255,7 @@ function StaffSetUp({ role }: { role: "ADMIN" | "TEACHER" | "PRINCIPAL" }) {
   return (
     <Screen title={t("mentoring.setUp")} description={pairs ? t("mentoring.guardianFirst") : t("mentoring.decisionFirst")} refreshing={options.isRefetching || page.isRefetching} onRefresh={refetch}>
       {loading ? <Loading /> : null}
-      {failed ? <Failed message={failed.message} onRetry={refetch} /> : null}
+      {failed ? <Failed message={failed.message} planFrom={failed} onRetry={refetch} /> : null}
       {!loading && !failed ? (
         <>
           {reviews && page.data ? <RequestQueue requests={page.data.requests} showEmpty={!pairs} /> : null}

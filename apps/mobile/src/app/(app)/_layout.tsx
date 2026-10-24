@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useWindowDimensions } from "react-native";
 import { Stack, Tabs } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
@@ -14,6 +15,7 @@ import { type } from "@edulink/tokens";
 import { consolesFor } from "@/screens/shared/console-home";
 import { ViduraHost, viduraAccess } from "@/screens/shared/vidura";
 import { WEB_HOME } from "@/lib/links";
+import { startOutboxRunner } from "@/lib/outbox-runner";
 
 /**
  * The shell: a bottom tab bar per role mirroring the web NAV's primaries, and
@@ -35,6 +37,13 @@ export default function AppLayout() {
   const t = useT();
   const th = useTheme();
   const badges = useBadges(Boolean(role));
+  // The outbox drains from here, once for the whole app (QA-15, 24 Oct 2026): a screen that queued a write
+  // and forgot to start the runner (the clinical logbook) held the row until some other screen started it.
+  // Idempotent: the screens that call useOutboxRunner() themselves change nothing.
+  const signedIn = session.status === "signed-in";
+  useEffect(() => {
+    if (signedIn) startOutboxRunner();
+  }, [signedIn]);
   // Five labels share the width. At 320 px a tab is 64 px and "Assignments"
   // ended in an ellipsis (measured by e2e/ux.spec.ts), so the label steps
   // down on narrow screens — to 10 below 340 px, which is the size iOS's own

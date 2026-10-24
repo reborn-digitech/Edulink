@@ -21,6 +21,7 @@ export async function FeedFilters({
   q,
   tag,
   extra = {},
+  upcoming = true,
 }: {
   basePath: string;
   category?: PostCategory;
@@ -28,6 +29,8 @@ export async function FeedFilters({
   /** The active tag filter, so the celebrations chip can show as pressed. */
   tag?: string;
   extra?: Record<string, string>;
+  /** Whether "Upcoming birthdays" is drawn: false for a reader whose gate does not open /bulletin/celebrations (QA-19). */
+  upcoming?: boolean;
 }) {
   const t = await getT();
 
@@ -115,13 +118,14 @@ export async function FeedFilters({
         >
           🎂 {t("celebrations.chip")}
         </Link>
-        <Link
-          href="/bulletin/celebrations"
-          className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-dashed border-border px-3 text-xs font-medium text-fg-muted hover:text-fg"
-
-        >
-          {t("celebrations.upcomingLink")}
-        </Link>
+        {upcoming && (
+          <Link
+            href="/bulletin/celebrations"
+            className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-dashed border-border px-3 text-xs font-medium text-fg-muted hover:text-fg"
+          >
+            {t("celebrations.upcomingLink")}
+          </Link>
+        )}
       </nav>
     </div>
   );

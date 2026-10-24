@@ -100,7 +100,7 @@ export function ProviderSessions() {
         </Note>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && (!d.enabled || !d.duty) ? <Empty title={t("nav.guidance")} body={t("gigs.guidanceOff")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} /> : null}
       {d && d.enabled && d.duty ? (
         <>

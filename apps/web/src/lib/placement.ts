@@ -28,7 +28,7 @@ import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn, institutionKindOf, isModuleOn } from "./modules";
 import { isCollegeKind } from "./institution";
-import { forPlacementDirectory, forSchool } from "./tenant-context";
+import { forPlacementDirectory, forSchool, forTenant } from "./tenant-context";
 import { readJson, writeJson } from "./json";
 import { todayKey } from "./dates";
 import { EMPTY_RECORD, placementRecords } from "./placement-record";
@@ -949,12 +949,32 @@ export async function answerOffer(ctx: ActiveContext, offerId: string, accept: b
   if (!o) throw new AccessError("placement.noSuchOffer", "NOT_FOUND");
   if (o.acceptedAt || o.declinedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
   const now = new Date();
-  if (accept) {
-    const earlier = await db.offer.findMany({ where: { studentMembershipId: me.membershipId, acceptedAt: { not: null }, declinedAt: null, id: { not: offerId } }, select: { id: true, schoolId: true } });
-    if (earlier.length > 0 && !o.dreamException) throw new RuleRefusal("placement.refuseOneOffer", 409);
-    for (const e of earlier) await forSchool(e.schoolId, () => db.offer.update({ where: { id: e.id }, data: { declinedAt: now } }));
-  }
-  const row = await forSchool(o.schoolId, () => db.offer.update({ where: { id: offerId }, data: accept ? { acceptedAt: now } : { declinedAt: now }, select: OFFER_SELECT }));
+  // One answer per student at a time (QA-14, QA-32). Two accepts fired together each read "no earlier
+  // acceptance" outside any lock and both stood; an accept and a decline together stamped both. Now the
+  // student's membership row is taken first, the earlier acceptances are read again under it, and the
+  // offer is answered by a conditional update that matches only while it is unanswered: the second of two
+  // accepts is refused placement.refuseOneOffer, the loser of an accept and a decline refuseOfferAnswered.
+  // An offer may sit at a pooled drive's host college, so the transaction is bound to the student's own
+  // college and every college holding one of the student's offers (ids read back from the rows).
+  const offerSchools = await db.offer.findMany({ where: { studentMembershipId: me.membershipId }, select: { schoolId: true }, distinct: ["schoolId"] });
+  const schoolIds = [...new Set([me.schoolId, o.schoolId, ...offerSchools.map((x) => x.schoolId)])];
+  await forTenant({ schoolIds, userId: me.userId, joinCode: null, isSuperuser: false }, () =>
+    db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      await tx.$queryRaw`SELECT "id" FROM "Membership" WHERE "id" = ${me.membershipId} FOR UPDATE`;
+      let earlier: { id: string; schoolId: string }[] = [];
+      if (accept) {
+        earlier = await tx.offer.findMany({ where: { studentMembershipId: me.membershipId, acceptedAt: { not: null }, declinedAt: null, id: { not: offerId } }, select: { id: true, schoolId: true } });
+        if (earlier.length > 0 && !o.dreamException) throw new RuleRefusal("placement.refuseOneOffer", 409);
+        // An offer made at a college this transaction is not bound to (made since the read above): answer again.
+        if (earlier.some((e) => !schoolIds.includes(e.schoolId))) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
+      }
+      const answered = await tx.offer.updateMany({ where: { id: offerId, studentMembershipId: me.membershipId, acceptedAt: null, declinedAt: null }, data: accept ? { acceptedAt: now } : { declinedAt: now } });
+      if (answered.count !== 1) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
+      if (earlier.length > 0) await tx.offer.updateMany({ where: { id: { in: earlier.map((e) => e.id) }, declinedAt: null }, data: { declinedAt: now } });
+    }),
+  );
+  const row = await forSchool(o.schoolId, () => db.offer.findUniqueOrThrow({ where: { id: offerId }, select: OFFER_SELECT }));
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: accept ? "placement.offer.accept" : "placement.offer.decline", targetType: "Offer", targetId: offerId, meta: { driveId: o.driveId } });
   return (await offerViews([row]))[0]!;
 }

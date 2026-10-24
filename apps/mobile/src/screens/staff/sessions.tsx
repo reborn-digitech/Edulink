@@ -57,7 +57,7 @@ export function OfficeSessions() {
         </Note>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed message={query.error.message} planFrom={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <SwitchRow label={t("gigs.guidanceSwitch")} value={d.guidanceOn} disabled={!d.canSwitch || act.isPending} onChange={(on) => act.mutate({ path: "/api/v1/gigs/school/guidance", body: { on }, done: on ? t("gigs.guidanceOnNote") : t("gigs.guidanceOffNote") })} />

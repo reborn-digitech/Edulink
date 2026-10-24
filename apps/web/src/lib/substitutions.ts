@@ -3,6 +3,7 @@ import type { z } from "zod";
 import type { substitutionAssignSchema, substitutionBoardSchema, substitutionClearSchema, substitutionLessonSchema, myCoversSchema, schoolWeekSchema, coverAnsweredSchema } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
+import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { channel, publish } from "./realtime";
@@ -31,6 +32,7 @@ import type { Role } from "./constants";
 const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
 type Office = ActiveContext & { schoolId: string; membershipId: string; role: Role };
 type Staff = ActiveContext & { schoolId: string; membershipId: string; role: Role };
+type Tx = typeof db;
 
 function office(ctx: ActiveContext): Office {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !OFFICE.includes(ctx.role)) throw new AccessError("access.notAllowed");
@@ -203,7 +205,26 @@ async function lessonOn(caller: Office, dateKey: string, slotId: string) {
   return { slot: { ...slot, teacherMembershipId: slot.teacherMembershipId }, away };
 }
 
-/** The office names who takes the lesson. The same person again changes nothing; a clash is refused. */
+/**
+ * The office names who takes the lesson. The same person again changes
+ * nothing; a clash is refused.
+ *
+ * TWO PRESSES AT ONCE (QA-16, 24 Oct 2026). The office and the head naming
+ * two people for one lesson together were both answered `changed`, both
+ * teachers were told to cover it and one row was kept: who stood in was read
+ * before the write and never again. Now the decision is made inside one
+ * transaction with the slot's row locked, and the substitute's day held by an
+ * advisory lock, so `existing` and the clash are read under the locks:
+ * - a caller that says what it saw (`replacing`: the person on the lesson as
+ *   its board showed it, null for an uncovered lesson) and finds somebody else
+ *   named meanwhile is refused 409 with that person's name, and nothing is
+ *   written or sent;
+ * - a caller that says nothing replaces whoever is there, and that person is
+ *   released and told (the audit says `replaced`);
+ * - one person named for two lessons of one period by two people at once is
+ *   one cover and one clash.
+ * The notices, the audit and the live word go after the commit.
+ */
 export async function assignSubstitute(ctx: ActiveContext, input: z.infer<typeof substitutionAssignSchema>): Promise<{ changed: boolean }> {
   const caller = office(ctx);
   const { slot, away } = await lessonOn(caller, input.dateKey, input.slotId);
@@ -214,36 +235,56 @@ export async function assignSubstitute(ctx: ActiveContext, input: z.infer<typeof
   });
   if (!sub) throw new AccessError("substitutions.noSuchStaff", "NOT_FOUND");
   if (away.has(sub.id)) throw new AccessError("substitutions.substituteAway");
-
-  const existing = await db.substitution.findUnique({ where: { slotId_dateKey: { slotId: slot.id, dateKey: input.dateKey } }, select: { id: true, substituteMembershipId: true, note: true, declinedAt: true } });
   const note = input.note?.trim() || null;
-  if (existing && existing.substituteMembershipId === sub.id && (existing.note ?? null) === note) return { changed: false };
-  const samePerson = Boolean(existing && existing.substituteMembershipId === sub.id);
 
-  // A clash: their own lesson in that period, or another cover that period that day.
-  const [ownClash, coverClash] = await Promise.all([
-    db.timetableSlot.findFirst({ where: { schoolId: caller.schoolId, weekday: slot.weekday, periodId: slot.periodId, teacherMembershipId: sub.id, class: { archivedAt: null } }, select: { id: true } }),
-    db.substitution.findFirst({ where: { schoolId: caller.schoolId, dateKey: input.dateKey, substituteMembershipId: sub.id, slotId: { not: slot.id }, slot: { periodId: slot.periodId } }, select: { id: true } }),
-  ]);
-  if (ownClash || coverClash) throw new AccessError("substitutions.clash");
+  const outcome = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    // One lesson's cover is decided one press at a time; then one person's day, for the clash.
+    await tx.$queryRaw`SELECT "id" FROM "TimetableSlot" WHERE "id" = ${slot.id} FOR UPDATE`;
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`substitute:${caller.schoolId}:${input.dateKey}:${sub.id}`}))`;
+    const existing = await tx.substitution.findUnique({
+      where: { slotId_dateKey: { slotId: slot.id, dateKey: input.dateKey } },
+      select: { id: true, substituteMembershipId: true, note: true, declinedAt: true, substitute: { select: { userId: true, user: { select: { name: true, preferredName: true } } } } },
+    });
+    if (existing && existing.substituteMembershipId === sub.id && (existing.note ?? null) === note) return { changed: false as const };
+    // Somebody else was named after the caller's board was drawn: theirs stands, and the caller is told who.
+    if (input.replacing !== undefined && existing && existing.substituteMembershipId !== sub.id && existing.substituteMembershipId !== input.replacing) {
+      throw new RuleRefusal("substitutions.changedMeanwhile", 409, { name: nameOf(existing.substitute.user) });
+    }
+    const samePerson = Boolean(existing && existing.substituteMembershipId === sub.id);
 
-  const previous = existing && existing.substituteMembershipId !== sub.id ? await db.membership.findUnique({ where: { id: existing.substituteMembershipId }, select: { userId: true } }) : null;
-  await db.substitution.upsert({
-    where: { slotId_dateKey: { slotId: slot.id, dateKey: input.dateKey } },
-    create: { schoolId: caller.schoolId, dateKey: input.dateKey, slotId: slot.id, absentMembershipId: slot.teacherMembershipId, substituteMembershipId: sub.id, note, createdByUserId: caller.user.id },
-    // Someone else named: their answer is theirs to give; the same person with a new note keeps the answer they gave.
-    update: { absentMembershipId: slot.teacherMembershipId, substituteMembershipId: sub.id, note, createdByUserId: caller.user.id, ...(samePerson ? {} : { acknowledgedAt: null, declinedAt: null, declineReason: null }) },
+    // A clash: their own lesson in that period, or another cover that period that day.
+    const [ownClash, coverClash] = await Promise.all([
+      tx.timetableSlot.findFirst({ where: { schoolId: caller.schoolId, weekday: slot.weekday, periodId: slot.periodId, teacherMembershipId: sub.id, class: { archivedAt: null } }, select: { id: true } }),
+      tx.substitution.findFirst({ where: { schoolId: caller.schoolId, dateKey: input.dateKey, substituteMembershipId: sub.id, slotId: { not: slot.id }, slot: { periodId: slot.periodId } }, select: { id: true } }),
+    ]);
+    if (ownClash || coverClash) throw new AccessError("substitutions.clash");
+
+    await tx.substitution.upsert({
+      where: { slotId_dateKey: { slotId: slot.id, dateKey: input.dateKey } },
+      create: { schoolId: caller.schoolId, dateKey: input.dateKey, slotId: slot.id, absentMembershipId: slot.teacherMembershipId, substituteMembershipId: sub.id, note, createdByUserId: caller.user.id },
+      // Someone else named: their answer is theirs to give; the same person with a new note keeps the answer they gave.
+      update: { absentMembershipId: slot.teacherMembershipId, substituteMembershipId: sub.id, note, createdByUserId: caller.user.id, ...(samePerson ? {} : { acknowledgedAt: null, declinedAt: null, declineReason: null }) },
+    });
+    const absent = await tx.membership.findUnique({ where: { id: slot.teacherMembershipId }, select: { user: { select: { name: true, preferredName: true } } } });
+    return {
+      changed: true as const,
+      samePerson,
+      previous: existing && !samePerson ? { membershipId: existing.substituteMembershipId, userId: existing.substitute.userId } : null,
+      absentName: absent ? nameOf(absent.user) : "",
+    };
   });
-  const absent = await db.membership.findUnique({ where: { id: slot.teacherMembershipId }, select: { user: { select: { name: true, preferredName: true } } } });
-  const vars = { subject: slot.subject, className: slot.class.name, period: slot.period.name, date: input.dateKey, name: absent ? nameOf(absent.user) : "" };
-  if (!existing || existing.substituteMembershipId !== sub.id) {
+  if (!outcome.changed) return { changed: false };
+
+  const vars = { subject: slot.subject, className: slot.class.name, period: slot.period.name, date: input.dateKey, name: outcome.absentName };
+  if (!outcome.samePerson) {
     await notify({ userId: sub.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "notifTitle.coverAssigned", titleVars: vars, bodyKey: "notifTitle.coverAssignedBody", bodyVars: vars, url: "/teacher", meta: { slotId: slot.id, dateKey: input.dateKey } });
   }
-  if (previous) {
-    await notify({ userId: previous.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "notifTitle.coverReleased", titleVars: vars, bodyKey: "notifTitle.coverReleasedBody", bodyVars: vars, url: "/teacher", meta: { slotId: slot.id, dateKey: input.dateKey } });
+  if (outcome.previous) {
+    await notify({ userId: outcome.previous.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "notifTitle.coverReleased", titleVars: vars, bodyKey: "notifTitle.coverReleasedBody", bodyVars: vars, url: "/teacher", meta: { slotId: slot.id, dateKey: input.dateKey } });
   }
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.assign", targetType: "TimetableSlot", targetId: slot.id, meta: { dateKey: input.dateKey, substituteMembershipId: sub.id, replaced: Boolean(previous) } });
-  boardChanged(caller.schoolId, input.dateKey, slot.id, [sub.id, existing?.substituteMembershipId]);
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.assign", targetType: "TimetableSlot", targetId: slot.id, meta: { dateKey: input.dateKey, substituteMembershipId: sub.id, replaced: Boolean(outcome.previous) } });
+  boardChanged(caller.schoolId, input.dateKey, slot.id, [sub.id, outcome.previous?.membershipId]);
   return { changed: true };
 }
 

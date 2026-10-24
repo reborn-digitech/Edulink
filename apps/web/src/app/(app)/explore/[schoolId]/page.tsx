@@ -195,29 +195,35 @@ export default async function SchoolProfilePage({
         </section>
       )}
 
-      {/* The admissions door: the open cycle, what it asks for, and the reader's own applications here. See admissions.ts. */}
-      {admissions.open && (
+      {/* The admissions door: every open cycle (QA-17: a mid-year round beside next year's), what each asks for, and the reader's own applications here. See admissions.ts. */}
+      {admissions.cycles.length > 0 && (
         <Card data-testid="admissions-card">
           <CardBody className="space-y-3 py-4">
             <h2 className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-fg-muted">
               <DoorOpenIcon weight="duotone" className="size-4" aria-hidden="true" />
               {t("admissions.applyHere")}
             </h2>
-            <p className="text-sm font-medium text-fg">{t("admissions.applyIntro", { cycle: admissions.open.name, year: admissions.open.academicYearName })}</p>
-            <ul className="space-y-1 text-sm text-fg-muted">
-              {admissions.open.grades.map((g) => (
-                <li key={g.grade}>{`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}</li>
-              ))}
-              {admissions.open.closesAt && <li>{t("admissions.closesOn", { date: formatDateKey(admissions.open.closesAt, undefined, locale) })}</li>}
-              {admissions.open.documents.length > 0 && <li>{t("admissions.documentsAsked", { names: admissions.open.documents.map((d) => d.name).join(", ") })}</li>}
-              {admissions.open.testRequired && <li>{t("admissions.testAsked")}</li>}
-            </ul>
-            {admissions.open.notice && <p className="whitespace-pre-wrap text-sm text-fg">{admissions.open.notice}</p>}
-            {ctx.role === "PARENT" && (
-              <Button asChild size="sm">
-                <Link href={`/explore/${school.schoolId}/apply`}>{t("admissions.apply")}</Link>
-              </Button>
-            )}
+            {admissions.cycles.map((cycle, i) => (
+              <div key={cycle.cycleId} data-testid="admissions-cycle" className={i > 0 ? "space-y-3 border-t border-border pt-3" : "space-y-3"}>
+                <p className="text-sm font-medium text-fg">{t("admissions.applyIntro", { cycle: cycle.name, year: cycle.academicYearName })}</p>
+                <ul className="space-y-1 text-sm text-fg-muted">
+                  {cycle.grades.map((g) => (
+                    <li key={g.grade}>{`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}</li>
+                  ))}
+                  {cycle.closesAt && <li>{t("admissions.closesOn", { date: formatDateKey(cycle.closesAt, undefined, locale) })}</li>}
+                  {cycle.documents.length > 0 && <li>{t("admissions.documentsAsked", { names: cycle.documents.map((d) => d.name).join(", ") })}</li>}
+                  {cycle.testRequired && <li>{t("admissions.testAsked")}</li>}
+                </ul>
+                {cycle.notice && <p className="whitespace-pre-wrap text-sm text-fg">{cycle.notice}</p>}
+                {ctx.role === "PARENT" && (
+                  <Button asChild size="sm">
+                    <Link href={`/explore/${school.schoolId}/apply?cycle=${encodeURIComponent(cycle.cycleId)}`} aria-label={admissions.cycles.length > 1 ? `${t("admissions.apply")}: ${cycle.name}` : undefined}>
+                      {t("admissions.apply")}
+                    </Link>
+                  </Button>
+                )}
+              </div>
+            ))}
             {admissions.mine.length > 0 && (
               <div className="space-y-1 border-t border-border pt-3">
                 <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">{t("admissions.yourApplicationsHere")}</p>
