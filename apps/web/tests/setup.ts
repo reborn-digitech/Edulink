@@ -62,8 +62,18 @@ const setupDb = new PrismaClient();
  * in the middle of asserting on, in another worker, and fail it for a reason
  * that has nothing to do with the code. Its buckets are prefixed `zz-test:`
  * and it cleans up after itself.
+ *
+ * AND login-limits.test.ts's own buckets, for the same reason across PROCESSES (QA campaign of 24 October 2026,
+ * docs/qa/campaign-2026-10-24/unit.md): a second vitest process on the same database — a single file run beside
+ * the full suite, another session's battery — runs this setup and wiped `login:+919876511001` while that suite was
+ * counting its ten failures, so its eleventh sign-in passed (seen in a full run, reproduced 1 run in 4 with a
+ * concurrent process, 0 in 3 alone). Those buckets are keyed on that suite's own test identities, which it clears
+ * before and after each test itself. The shared `login-global` bucket is still wiped, as before.
  */
-await setupDb.rateLimit.deleteMany({ where: { NOT: { bucket: { startsWith: "zz-test:" } } } });
+const SUITE_OWNED_BUCKETS = ["login:+919876511001", "login:zzlimits.h4nd@edulink.local", "login-addr:203.0.113.77"];
+await setupDb.rateLimit.deleteMany({
+  where: { NOT: [{ bucket: { startsWith: "zz-test:" } }, { bucket: { in: SUITE_OWNED_BUCKETS } }, { bucket: { contains: "@zzloginlimits.test" } }] },
+});
 await setupDb.$disconnect();
 
 /**

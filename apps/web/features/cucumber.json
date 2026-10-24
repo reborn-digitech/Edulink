@@ -1,0 +1,10 @@
+{
+  "default": {
+    "paths": ["features/**/*.feature"],
+    "requireModule": ["tsx/cjs"],
+    "require": ["features/steps/**/*.ts"],
+    "format": ["progress", "summary"],
+    "formatOptions": { "snippetInterface": "async-await" },
+    "strict": true
+  }
+}

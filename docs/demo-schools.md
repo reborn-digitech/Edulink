@@ -91,8 +91,8 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 
 | Email | Name | Look at |
 |---|---|---|
-| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmv1unbkw02sbgntwnmjeua65 at Sunrise, /expert/bookings/cmv1unbl002sjgntw32ky5cq1 at Saraswati), /expert/availability (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
-| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmv1unbl202stgntwxtai118g — a careers talk booked by Saraswati |
+| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmvlvb94107vwgp3wdtweoaug at Sunrise, /expert/bookings/cmvlvb94607w4gp3wjvtdsr9v at Saraswati), /expert/availability (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
+| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmvlvb94807wegp3waah62rat — a careers talk booked by Saraswati |
 
 ## Workflows seeded, and where to see each
 
@@ -454,3 +454,15 @@ Ishaan Pawar sat grade 5 at Sunrise Public School in 2025–26 and is in grade 6
 
 What the walk found is in the script's report (`npm run demo:transfer` prints it) and in docs/audit-2026-10-05/08-remaining-risks.md under the transfer gaps.
 <!-- demo-transfer:end -->
+
+<!-- demo-accounts:begin -->
+## Three more demo accounts (demo:accounts)
+
+Built by `npm run demo:accounts` (from `apps/web`; idempotent; after `demo:schools`, `demo:college` and `zz:fixtures`). The password is the shared `Relay-Demo-2026`.
+
+| Account | Name | Role | Home | What to look at |
+|---|---|---|---|---|
+| demo.expert01@demo.relay.test | Dr Kavita Ranade | EXPERT, through the public application (application cmvlvoint0002gp6c0tqmwygv, approved by the operator, invitation accepted, published and identity-checked) | /expert | /expert/availability (2 open slots), /expert/profile; the operator's /root/experts (the approved application) |
+| demo.recruiter01@demo.relay.test | Rhea Fernandes | RECRUITER, Sahyadri Data Labs Pvt Ltd (invited by recruiter.sahyadri@demo.relay.test and accepted; no membership) | /recruiter | Saraswati Arts and Science College: OPEN; Saraswati Arts and Science College: CLOSED |
+| demo.parent.two@demo.relay.test | Rohini Jadhav | PARENT of Nakul Jadhav (Sunrise Public School, grade 6) and Hrishikesh Pawar (Saraswati Vidya Mandir, grade 5) | /parent | the child switcher across two schools: `?child=cmubsk1i70045gnnd0cbs2cpb` and `?child=cmubsk3sf05tpgnndty15cuso`; /parent/fees at each school |
+<!-- demo-accounts:end -->

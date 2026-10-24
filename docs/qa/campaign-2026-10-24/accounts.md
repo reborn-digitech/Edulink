@@ -2,31 +2,49 @@
 
 Rules: no account is created through the sign-up flow; nothing is typed into a password box by a tester. Demo accounts share the password docs/demo-schools.md records (set by the owner); ZZ accounts have unknowable password hashes and are used through minted sessions only (`npm run zz:token -- ROLE [email] --tag=qa-<layer>`). The operator and app-admin accounts' password is the one the owner set on 11 October (in the coordinator's memory, not here).
 
-## Existing, to confirm (layer 1 marks each "verified web / verified phone")
+**Completed by layer 1 on 24 October 2026** (report: [layer-1.md](layer-1.md); every account, one line each: [layer-1-accounts.csv](layer-1-accounts.csv)). Every account on `@demo.relay.test` and `@zz.test` in the dev database was walked, not a sample: 615 accounts, 621 (account, role, school) contexts.
+
+How each was verified, per context:
+1. **Signed in.** Demo: the login door, `POST /api/v1/auth/login` with the shared password (no form, nothing typed), signed out with `POST /api/v1/auth/logout` after its contexts. ZZ: a session minted by `npm run zz:token -- ROLE email --tag=qa-layer1`, purged at the end (170 purged); three ZZ experts by a session minted directly (userAgent `zz-walk`, deleted), because `zz:token EXPERT` ignores the email (finding L1-05).
+2. **Context.** `GET /api/v1/me` answers 200 for that person; a person with several contexts was switched with `POST /api/v1/me/context` (3 switches, each 200).
+3. **Web home on :3000.** The role's home (`ROLE_HOME`; `/root` for the operator, `/appadmin` for the app admin) fetched with the session cookie: status and the first `<h1>`.
+4. **Phone home on :8081.** The phone's web target opened in headless Chromium at 390×844 with the session token in `localStorage` (`edulink.session.token`): the first heading once the screen settled. One account per row, school and role (220 phone renders); the other accounts of a row share that screen and were checked on the web and the API only.
+5. **Reach.** One door the catalog's `access` lets the role read answered **200**, and one it does not answered **403** (doors below the table).
+
+"Verified" below means every step above passed for every account of the row.
+
+## Existing, confirmed
 | Account | Role | School or scope | Sign-in | Verified |
 |---|---|---|---|---|
-| zz.operator@zz.test | OPERATOR | platform | password or minted | |
-| zz.appadmin@zz.test | APPADMIN | platform | password or minted | |
-| sunrise.admin@demo.relay.test | ADMIN | Sunrise Public School | password | |
-| sunrise.principal@demo.relay.test | PRINCIPAL | Sunrise | password | |
-| sunrise.teacher1@demo.relay.test | TEACHER (form, grade 5) | Sunrise | password | |
-| sunrise.subject1@demo.relay.test | TEACHER (subject only) | Sunrise | password | |
-| sunrise.spare1@demo.relay.test | TEACHER (unattached) | Sunrise | password | |
-| sunrise.pupil01@demo.relay.test … pupil48 | STUDENT (grades 5–10) | Sunrise | password | |
-| sunrise.parent01@demo.relay.test … (the guardians the roster lists) | PARENT | Sunrise | password | |
-| sunrise.pupil49@demo.relay.test | ALUMNUS | Sunrise | password | |
-| sunrise.driver01 / librarian / warden @demo.relay.test | DRIVER / LIBRARIAN / WARDEN | Sunrise | password | |
-| svm.* (the same set) | all of the above | Saraswati Vidya Mandir | password | |
-| <prefix>.registrar / principal / hod.<dept> / faculty1–4 / exams / iqac / tpo / accounts / librarian / warden / driver / parent / alumni01 / recruiter / studentNN @demo.relay.test, prefixes sac sit sim slc sce scp ssa sca svc sih | the college roles | the ten demo colleges | password | |
-| zz.* at ZZ Northgate, ZZ Southbank, ZZ Vidya, ZZ Shastri, ZZ Dhanvantari | every school and college role, zz.expert1, zz.recruiter | the ZZ fixtures | minted | |
+| zz.operator@zz.test | OPERATOR | platform | minted | **verified web / verified phone.** Web /root 200, h1 "Dashboard"; phone "Server administration"; operator/overview 200, family/student/overview 403 |
+| zz.appadmin@zz.test | APPADMIN | platform | minted | **verified web / verified phone.** Web /appadmin 200, h1 "Competitions"; phone "Content administration"; appadmin/competitions 200, operator/overview 403 |
+| sunrise.admin@demo.relay.test | ADMIN | Sunrise Public School | password (login door) | **verified web / verified phone.** /admin 200, h1 "Sunrise Public School"; phone "Overview"; admin/overview 200, operator/overview 403 |
+| sunrise.principal@demo.relay.test | PRINCIPAL | Sunrise | password | **verified web / verified phone.** /principal 200, h1 "Dashboard"; phone "Dashboard"; staff/principal/overview 200, admin/overview 403 |
+| sunrise.teacher1@demo.relay.test | TEACHER (form, grade 5) | Sunrise | password | **verified web / verified phone.** /teacher 200, h1 "Today"; phone "Today"; staff/today 200, admin/overview 403. teacher2–6 likewise (5 of 5) |
+| sunrise.subject1@demo.relay.test | TEACHER (subject only) | Sunrise | password | **verified web / verified phone.** As teacher1; subject2 likewise |
+| sunrise.spare1@demo.relay.test | TEACHER (unattached) | Sunrise | password | **verified web / verified phone.** As teacher1 |
+| sunrise.pupil01@demo.relay.test … pupil48 | STUDENT (grades 5–10) | Sunrise | password | **verified 48 of 48** (47 `sunrise.pupilNN` and aarav.deshmukh, who sits in pupil09's seat). /student 200, h1 "Hi <name> 👋"; phone (pupil01, and Aarav) "Hi <name> 👋"; family/student/overview 200, family/children 403 |
+| sunrise.parent01@demo.relay.test … (the guardians the roster lists) | PARENT | Sunrise | password | **verified 29 of 29**, and sunita.deshmukh (both schools). /parent 200, h1 the first child's name; phone "Overview"; family/children 200, family/student/overview 403 |
+| sunrise.pupil49@demo.relay.test | ALUMNUS | Sunrise | password | **verified web / verified phone.** /alumni 200, h1 "Alumni"; phone "Alumni"; alumni/home 200, family/student/overview 403 |
+| sunrise.driver01 / librarian / warden @demo.relay.test | DRIVER / LIBRARIAN / WARDEN | Sunrise | password | **verified web / verified phone, all three.** /driver "Today's trips", /library "Library", /hostel "Hostel" on both; transport/today, library/overdue, hostel/boarders 200; staff/today or admin/overview 403 |
+| svm.* (the same set) | all of the above | Saraswati Vidya Mandir | password | **verified, every account:** admin, principal, teacher1–6, subject1–2, spare1, 47 `svm.pupilNN` + anaya.deshmukh, 29 `svm.parentNN`, pupil49 (alumnus). Same headings in English (the school's locale is mr; the accounts' own language is en). Saraswati has no driver, librarian or warden (only Sunrise turns those modules on), so none was walked |
+| <prefix>.registrar / principal / hod.<dept> / faculty1–4 / exams / iqac / tpo / accounts / librarian / warden / driver / parent / alumni01 / recruiter / studentNN @demo.relay.test, prefixes sac sit sim slc sce scp ssa sca svc sih | the college roles | the ten demo colleges | password | **verified, every account at every college** (registrar 10, principal 10, HOD 20, faculty 39, exams 10, IQAC 10, TPO 9, accounts 10, librarian 9, warden 9, driver 9, parent 10, alumnus 10, recruiter 9 incl. recruiter.sahyadri for sac, students 86). Headings: registrar "<college name>" / phone "Overview"; HOD "Department of …"; faculty "Good to see you, …"; "Exam cell", "IQAC desk", "Placement", "Accounts", "Library", "Hostel", "Today's trips", "Alumni"; students "Hi <name> 👋"; recruiter "Recruiting for <company>". The principal's /principal answers 200 and moves the browser on to /principal/college ("The college"), see L1-01; phone "Dashboard". Not every prefix has every role: sac (the first demo college) has no librarian, warden or driver and three faculty; svc has no TPO and no recruiter (vocational preset); the table's role list is the union |
+| zz.* at ZZ Northgate, ZZ Southbank, ZZ Vidya, ZZ Shastri, ZZ Dhanvantari | every school and college role, zz.expert1, zz.recruiter | the ZZ fixtures | minted | **verified, every ZZ account with a context: 162 of 162 accounts, 167 contexts** — Northgate 65, Southbank 18, Vidya 14, Shastri 6, Dhanvantari 8, Banyan 16 (also ZZ, not in the original table), 33 ZZ parents, 4 experts, 1 recruiter (zz.recruiter01), operator, app admin. zz.expert4 is an unpublished expert: the web holds it on /expert/pending ("Your profile is being reviewed") and its profile door answers 403, as designed (L1-04 for the phone). Five ZZ accounts hold no context by design and were not signed in: zz.claimant01 and zz.joiner01 (a waiting guardian claim and join request), zz.nba.exit01 / grad01 / late01 (NBA batch rows with no live membership) |
 
-## Missing, to add through the fixture scripts in layer 1 (never the UI)
-| Account | Role | Why |
-|---|---|---|
-| demo.expert01@demo.relay.test | EXPERT with an approved application and a published profile | expert journeys: application → approval → availability → a booked seat |
-| demo.recruiter01@demo.relay.test | RECRUITER at a demo college | placement journeys |
-| demo.parent.two@demo.relay.test | PARENT with one child at Sunrise and one at Saraswati | the cross-school family cases |
+Also on `@demo.relay.test` and walked, though not rows of the table: vikram.sethi (EXPERT, verified: "Bookings" on both), ishaan.pawar (STUDENT at Saraswati and ALUMNUS at Sunrise, the demo:transfer pupil, both contexts verified), prakash.pawar (his parent, verified; see L1-02 and L1-03).
+
+The reach doors (from `src/lib/api-catalog`): ADMIN admin/overview vs operator/overview · PRINCIPAL staff/principal/overview vs admin/overview · TEACHER staff/today vs admin/overview · STUDENT family/student/overview vs family/children · PARENT family/children vs family/student/overview · EXPERT shared/expert/profile vs admin/overview · DRIVER transport/today vs staff/today · LIBRARIAN library/overdue vs admin/overview · WARDEN hostel/boarders vs admin/overview · ALUMNUS alumni/home vs family/student/overview · FACULTY academics/faculty-home vs academics/hod-home · HOD academics/hod-home vs admin/overview · EXAM_CONTROLLER exam-cell vs admin/overview · IQAC iqac/overview vs admin/overview · TPO placement/summary vs admin/overview · ACCOUNTS fees/overview vs admin/overview · RECRUITER recruiter/drives vs admin/overview · OPERATOR operator/overview vs family/student/overview · APPADMIN appadmin/competitions vs operator/overview (all under /api/v1).
+
+## Added in layer 1, through the fixture scripts (never the UI)
+`npm run demo:accounts` (new, `apps/web/scripts/demo-accounts.ts`; idempotent: the second run added nothing; the roster section is written to docs/demo-schools.md between `demo-accounts` markers). Shared demo password.
+
+| Account | Role | How it was made | Verified |
+|---|---|---|---|
+| demo.expert01@demo.relay.test (Dr Kavita Ranade) | EXPERT with an approved application and a published profile | The application flow's own functions: `submitExpertApplication` (the public form's, with a PDF document) → `decideExpertApplication` APPROVE as zz.operator (account without a password, unpublished profile, invitation mailed to the dev mailbox) → the invitation's token read from that mail and accepted as `/expert/invite/[token]` does for an approved applicant (password set, address proved, `acceptExpertInvite`) → `setExpertStanding` published + identity checked (kycStatus VERIFIED) → two open slots next week by `addSlot` as the expert | **verified web / verified phone.** Login door 200; /expert 200, h1 "Bookings"; phone "Bookings"; shared/expert/profile 200, admin/overview 403 |
+| demo.recruiter01@demo.relay.test (Rhea Fernandes) | RECRUITER at a demo college | Recruiter profile for Sahyadri Data Labs Pvt Ltd; invited by recruiter.sahyadri and accepted, the two writes of `placement-recruiter.ts` (addColleague, answerInvitation) in its order, with their audit rows (the library itself does not load under tsx, L1-06). Reaches Saraswati Arts and Science College's OPEN drive (and last season's CLOSED one, which the policy hides) | **verified web / verified phone.** Login door 200; /recruiter 200, h1 "Recruiting for Sahyadri Data Labs Pvt Ltd" on both; recruiter/drives 200, admin/overview 403 |
+| demo.parent.two@demo.relay.test (Rohini Jadhav) | PARENT with one child at Sunrise and one at Saraswati | Guardian (PARENT, consent given) of Nakul Jadhav (sunrise.pupil14, grade 6) and Hrishikesh Pawar (svm.pupil07, grade 5), two pupils the seed left without a guardian | **verified web / verified phone.** Login door 200; /parent 200, h1 "Nakul Jadhav"; phone "Overview" then "Nakul Jadhav"; family/children 200, family/student/overview 403 |
 
 ## Notes
-- Features are OFF on the dev database (assistant, question bank, question gig, expert sessions, teacher sessions, job board, texts) and the three plans inactive: a layer that needs one switches it on as zz.operator through the operator's door at the start and off at the end, and says so; `npm run sweep -- --features=on --plans=on` shows the pattern.
+- Features are OFF on the dev database (assistant, question bank, question gig, expert sessions, teacher sessions, job board, texts) and the three plans inactive: a layer that needs one switches it on as zz.operator through the operator's door at the start and off at the end, and says so; `npm run sweep -- --features=on --plans=on` shows the pattern. Layer 1 switched nothing.
 - The payment gateway in development is the devbox transport; no real money, no real card.
+- The phone's first heading is read once the heading list holds steady for a second; on a slow first paint that can be the screen's title over a skeleton ("Today" for svc.student01 and zz.cstudent.s1). svc.student01 was reopened with a 30-second wait and showed "Hi Kshitija Mohite 👋" with its cards; zz.cstudent.s1 was not reopened.

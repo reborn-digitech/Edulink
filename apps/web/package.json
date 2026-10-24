@@ -36,6 +36,7 @@
     "secret:seal": "tsx --tsconfig scripts/tsconfig.json scripts/seal-secret.ts",
     "api:docs": "tsx --tsconfig scripts/tsconfig.json scripts/gen-openapi.ts",
     "load:check": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/load-check.ts",
+    "bdd": "TSX_TSCONFIG_PATH=scripts/tsconfig.json cucumber-js --config features/cucumber.json",
     "e2e": "playwright test",
     "e2e:update": "playwright test --update-snapshots",
     "quiz:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-quiz.ts",
@@ -67,6 +68,7 @@
     "demo:schools": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-schools.ts",
     "demo:college": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college.ts",
     "demo:college-engineering": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college-engineering.ts",
+    "demo:accounts": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-accounts.ts",
     "demo:transfer": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-transfer.ts",
     "demo:college-stream": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college-stream.ts",
     "demo:college-check": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college-check.ts",
@@ -105,6 +107,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",
+    "@cucumber/cucumber": "11.3.0",
     "@edulink/tokens": "workspace:*",
     "@playwright/test": "1.58.2",
     "@serwist/next": "^9.5.12",
