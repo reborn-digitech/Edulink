@@ -46,7 +46,8 @@ export const POLL_EVERY_MS = 2_000;
 export const POLL_FOR_MS = 60_000;
 
 /**
- * Asks after one payment every two seconds until it is PAID or FAILED, or a
+ * Asks after one payment every two seconds until it is PAID, FAILED or
+ * UNALLOCATED (captured with nothing due, QA-03), or a
  * minute has passed. `signal` stops it when the component goes away.
  */
 export async function pollPayment(paymentId: string, signal: AbortSignal, onTick?: (status: PaymentStatus) => void): Promise<PaymentStatus | null> {
@@ -55,7 +56,7 @@ export async function pollPayment(paymentId: string, signal: AbortSignal, onTick
     try {
       const status = await feesApi<PaymentStatus>(`/api/v1/fees/family/payments/${encodeURIComponent(paymentId)}`);
       onTick?.(status);
-      if (status.status === "PAID" || status.status === "FAILED") return status;
+      if (status.status === "PAID" || status.status === "FAILED" || status.status === "UNALLOCATED") return status;
     } catch {
       // A blip between polls is not a failed payment; the next tick asks again.
     }

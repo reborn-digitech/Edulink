@@ -83,7 +83,10 @@ export async function marksSheet(ctx: ActiveContext, sessionId: string, courseId
     const first = marks.first.get(k);
     const both = Boolean(first?.entry1ByUserId && first?.entry2ByUserId);
     if (latest && !latest.matched && both) mismatches += 1;
-    const locked = internals.get(k);
+    // ⚠ THE LOCK'S OWN KEY (QA-09, 24 Oct 2026): `internalsFor` keys a lock `<student>|<course>`, the reverse of the
+    // marks' key above. Looked up under `k`, every locked internal read null and unlocked, so the sheet disagreed with
+    // the run and the controller could not see which courses had no internals (how QA-05 went unseen).
+    const locked = internals.get(`${f.studentMembershipId}|${course.id}`);
     return {
       studentMembershipId: f.studentMembershipId,
       name: f.student.user.name,
@@ -330,6 +333,8 @@ export async function proposeGrace(ctx: ActiveContext, sessionId: string, input:
   if (!latest || !latest.matched || latest.absent) throw new RuleRefusal("examCell.refuseNoMark", 409);
   if (input.rule === "TO_PASS") {
     const internal = latest.internalMilli ?? (await internalsFor(cell.schoolId, [course.id])).get(`${input.studentMembershipId}|${course.id}`) ?? null;
+    // Whether grace makes a course pass cannot be judged on an internal taken as nought (QA-05).
+    if (internal === null && course.rules.internalMax > 0) throw new RuleRefusal("examCell.refuseInternalsMissing", 409, { count: 1, courses: course.code });
     const base = { internalMilli: internal, externalMilli: latest.externalMilli, absent: false };
     const without = courseOutcome({ ...base, graceMilli: latest.graceMilli }, course.rules, course.table);
     const withGrace = courseOutcome({ ...base, graceMilli: latest.graceMilli + graceMilli }, course.rules, course.table);
@@ -428,6 +433,26 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
   let pending = 0;
   for (const f of forms) for (const c of formCourses(f.coursesJson)) if (!marks.latest.get(`${c.courseId}|${f.studentMembershipId}`)?.matched) pending += 1;
   if (pending > 0) throw new RuleRefusal("examCell.refuseMarksPending", 409, { count: pending });
+  // ⚠ NO RESULT WITH A MISSING INTERNAL (QA-05, QA campaign of 24 October 2026). A course whose scheme has an internal
+  // part needs each sitting student's internal: the university's imported figure or the HOD's lock. A missing one was
+  // taken as nought, so at sac five of five students went ATKT, a 53/60 external was graded F, and publishing opened
+  // nine backlogs and told the families. Refused like an unmatched external, naming the courses; not needed where the
+  // scheme has no internal part, or where the result is AB or cancelled for malpractice whatever the internal is.
+  const missingIn = new Set<string>();
+  let missing = 0;
+  for (const f of forms) {
+    for (const c of formCourses(f.coursesJson)) {
+      const course = courses.get(c.courseId);
+      if (!course || course.rules.internalMax === 0) continue;
+      const m = marks.latest.get(`${c.courseId}|${f.studentMembershipId}`)!;
+      if (m.absent || m.externalMilli === null) continue;
+      if (malpractice.some((x) => x.studentMembershipId === f.studentMembershipId && (x.decision === "CANCEL_SESSION" || x.schedule.courseId === c.courseId))) continue;
+      if (m.internalMilli !== null || internals.has(`${f.studentMembershipId}|${c.courseId}`)) continue;
+      missing += 1;
+      missingIn.add(course.code);
+    }
+  }
+  if (missing > 0) throw new RuleRefusal("examCell.refuseInternalsMissing", 409, { count: missing, courses: [...missingIn].sort().join(", ") });
   const computedCourses: ComputedCourse[] = [];
   const computedTerms: ComputedTerm[] = [];
   for (const f of forms) {

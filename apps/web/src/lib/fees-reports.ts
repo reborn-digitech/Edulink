@@ -106,7 +106,7 @@ export async function feeOverview(ctx: ActiveContext): Promise<FeeOverview> {
     db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
     // "This month" starts at the school's local midnight on the 1st, not UTC's.
     db.feePayment.groupBy({ by: ["method"], where: { schoolId, status: { in: ["PAID", "REFUNDED"] }, paidAt: { gte: zonedStartOfDay(`${today.slice(0, 7)}-01`, school.timezone) } }, _count: { _all: true }, _sum: { amountPaise: true } }),
-    db.feePayment.findMany({ where: { schoolId, status: { in: ["PAID", "CLAIMED", "REVERSED", "REFUNDED"] } }, orderBy: { updatedAt: "desc" }, take: 8, include: { student: { select: { user: { select: { name: true, preferredName: true } } } }, receipt: { select: { id: true, serial: true } } } }),
+    db.feePayment.findMany({ where: { schoolId, status: { in: ["PAID", "CLAIMED", "REVERSED", "REFUNDED", "UNALLOCATED"] } }, orderBy: { updatedAt: "desc" }, take: 8, include: { student: { select: { user: { select: { name: true, preferredName: true } } } }, receipt: { select: { id: true, serial: true } } } }),
     db.feePayment.findMany({ where: { schoolId, method: "UPI", status: "CLAIMED" }, select: { claimedAt: true } }),
     db.feePayment.count({ where: { schoolId, method: "ONLINE", status: "INITIATED" } }),
   ]);

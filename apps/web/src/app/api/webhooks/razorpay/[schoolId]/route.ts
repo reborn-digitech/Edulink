@@ -5,7 +5,7 @@ import { forSchool } from "@/lib/tenant-context";
 import { gatewayAccountFor } from "@/lib/fees";
 import { failOnlinePayment, markRefundDone, markRefundFailed, settleOnlinePayment } from "@/lib/fees-payments";
 import { verifyWebhookSignature } from "@/lib/gateway";
-import { writeJson } from "@/lib/json";
+import { claimableWhere, handleEventOnce, type EventLedger } from "@/lib/webhook-events";
 import { createHash } from "node:crypto";
 
 /**
@@ -26,15 +26,26 @@ import { createHash } from "node:crypto";
  * delivery processed as new; the body's own `id` when the gateway sends one,
  * else the event kind and the entity it names, is what the signature
  * actually vouches for. Every delivery is stored once by that id; a
- * redelivery answers "already" and settles nothing twice. Every settlement
+ * redelivery of an event already HANDLED answers "already" and settles
+ * nothing twice. Every settlement
  * goes through settleOnlinePayment, the one door the checkout's confirm and
  * the reconcile job use too, so whichever arrives first wins and the rest
  * are told so.
  *
- * ALWAYS 200 AFTER A GOOD SIGNATURE, even for an unknown order or a mismatch
- * — those are recorded for the office, and a non-2xx would only make the
- * gateway retry the same thing. 401 for a bad signature and 404 for a school
- * with no gateway are the two answers that mean "stop sending".
+ * 200 AFTER A GOOD SIGNATURE WHEN THE WORK IS DONE, even for an unknown
+ * order or a mismatch — those are recorded for the office, and a non-2xx
+ * would only make the gateway retry the same thing. 401 for a bad signature
+ * and 404 for a school with no gateway are the two answers that mean "stop
+ * sending".
+ *
+ * ⚠ HANDLED MEANS DONE (QA-02, QA campaign of 24 October 2026). The row used
+ * to be written first and its mere existence taken as "seen": a settlement
+ * that threw left it behind with `processedAt` null, the delivery went out as
+ * a bodiless error, and the gateway's retry was answered "already" — the
+ * capture never recorded. Now the row is claimed, the work runs, and only
+ * then is `processedAt` set; a throw answers 500 with a body and leaves the
+ * row for the retry, and a second delivery while the first is still working
+ * is answered 409. See src/lib/webhook-events.ts.
  */
 type WebhookBody = { event?: string; id?: string; created_at?: number; payload?: Record<string, { entity?: Record<string, unknown> }> };
 
@@ -76,27 +87,36 @@ export async function POST(request: Request, { params }: { params: Promise<{ sch
   const eventId = signedEventId(event, kind, raw);
   if (!eventId) return NextResponse.json({ code: "NO_EVENT_ID" }, { status: 400 });
 
-  return forSchool(schoolId, async () => {
-    const seen = await db.gatewayEvent.findUnique({ where: { schoolId_provider_eventId: { schoolId, provider: "RAZORPAY", eventId } }, select: { id: true } });
-    if (seen) return NextResponse.json({ ok: true, outcome: "already" });
-    const row = await db.gatewayEvent.create({ data: { schoolId, provider: "RAZORPAY", eventId, kind, payloadJson: raw.slice(0, 20_000) }, select: { id: true } });
+  // QA-02 (24 Oct 2026): handled means processedAt set, and only after the work; a throw is a 500 the gateway retries.
+  const key = { schoolId_provider_eventId: { schoolId, provider: "RAZORPAY", eventId } };
+  const ledger: EventLedger = {
+    find: () => db.gatewayEvent.findUnique({ where: key, select: { id: true, processedAt: true, outcome: true } }),
+    create: () => db.gatewayEvent.create({ data: { schoolId, provider: "RAZORPAY", eventId, kind, payloadJson: raw.slice(0, 20_000), outcome: "processing" }, select: { id: true, processedAt: true, outcome: true } }),
+    claim: async (id, staleBefore, now) => (await db.gatewayEvent.updateMany({ where: { ...claimableWhere(id, staleBefore), schoolId }, data: { outcome: "processing", receivedAt: now } })).count,
+    finish: async (id, outcome) => void (await db.gatewayEvent.updateMany({ where: { id, schoolId, processedAt: null }, data: { processedAt: new Date(), outcome } })),
+    release: async (id) => void (await db.gatewayEvent.updateMany({ where: { id, schoolId, processedAt: null }, data: { outcome: "error" } })),
+  };
 
-    let outcome = "ignored";
-    const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; method?: string; error_description?: string } | undefined;
-    const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
-    if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
-      outcome = (await settleOnlinePayment(schoolId, { orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount, gatewayMethod: payment.method ?? null })).outcome;
-    } else if (kind === "payment.failed" && payment?.order_id) {
-      await failOnlinePayment(schoolId, payment.order_id, payment.error_description ?? "failed at the gateway");
-      outcome = "failed";
-    } else if (kind === "refund.processed" && refund?.id) {
-      await markRefundDone(schoolId, refund.id);
-      outcome = "refund-done";
-    } else if (kind === "refund.failed" && refund?.id) {
-      // The money never left: what the refund reopened is put back, and the office and the family are told.
-      outcome = await markRefundFailed(schoolId, refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway");
-    }
-    await db.gatewayEvent.update({ where: { id: row.id }, data: { processedAt: new Date(), outcome } });
-    return NextResponse.json({ ok: true, outcome, meta: writeJson({ kind }) });
-  });
+  return forSchool(schoolId, () =>
+    handleEventOnce(ledger, kind, "webhooks/razorpay/school", async () => {
+      const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; method?: string; error_description?: string } | undefined;
+      const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
+      if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
+        return (await settleOnlinePayment(schoolId, { orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount, gatewayMethod: payment.method ?? null })).outcome;
+      }
+      if (kind === "payment.failed" && payment?.order_id) {
+        await failOnlinePayment(schoolId, payment.order_id, payment.error_description ?? "failed at the gateway");
+        return "failed";
+      }
+      if (kind === "refund.processed" && refund?.id) {
+        await markRefundDone(schoolId, refund.id);
+        return "refund-done";
+      }
+      if (kind === "refund.failed" && refund?.id) {
+        // The money never left: what the refund reopened is put back, and the office and the family are told.
+        return markRefundFailed(schoolId, refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway");
+      }
+      return "ignored";
+    }),
+  );
 }

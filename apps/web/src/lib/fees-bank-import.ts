@@ -188,7 +188,7 @@ export async function previewBankImport(ctx: ActiveContext, csv: string): Promis
         if (known.amountPaise !== amountPaise) return { ...base, outcome: "unmatched", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: "fees.matchAmountDiffers" };
         return { ...base, outcome: "claim", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: null };
       }
-      if (known.status === "PAID" || known.status === "REVERSED" || known.status === "REFUNDED") return { ...base, outcome: "already", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: null };
+      if (known.status === "PAID" || known.status === "REVERSED" || known.status === "REFUNDED" || known.status === "UNALLOCATED") return { ...base, outcome: "already", paymentId: known.id, studentMembershipId: known.studentMembershipId, pupilName: nameOf(known.student.user), problemKey: null };
     }
 
     const narration = squash(`${description} ${rawRef}`);

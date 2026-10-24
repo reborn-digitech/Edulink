@@ -83,7 +83,7 @@ export function PaymentsTable({ studentMembershipId, payments, timezone, office 
     <ul className="divide-y divide-border">
       {payments.map((p) => {
         const canReverse = office && p.status === "PAID";
-        const canRefund = office && (p.status === "PAID" || p.status === "REFUNDED") && p.refundedPaise < p.amountPaise;
+        const canRefund = office && (p.status === "PAID" || p.status === "REFUNDED" || p.status === "UNALLOCATED") && p.refundedPaise < p.amountPaise;
         const editing = open?.paymentId === p.id ? open : null;
         return (
           <li key={p.id} className="space-y-2 py-3" data-testid="fee-payment-row" data-payment-id={p.id} data-status={p.status}>

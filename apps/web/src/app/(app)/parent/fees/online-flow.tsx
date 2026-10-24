@@ -50,6 +50,8 @@ type Phase =
   | { kind: "failed"; reason: string | null }
   | { kind: "cancelled" }
   | { kind: "unconfirmed" }
+  // Captured, but the dues were paid meanwhile: held for the office to refund (QA-03).
+  | { kind: "unallocated" }
   | { kind: "error"; message: string };
 
 export function OnlineFlow({ studentMembershipId, demandIds, resumePaymentId = null, onClose }: { studentMembershipId: string; demandIds: string[]; resumePaymentId?: string | null; onClose: () => void }) {
@@ -80,6 +82,9 @@ export function OnlineFlow({ studentMembershipId, demandIds, resumePaymentId = n
       } else if (status?.status === "FAILED") {
         setPhase({ kind: "failed", reason: status.failedReason });
         router.refresh();
+      } else if (status?.status === "UNALLOCATED") {
+        setPhase({ kind: "unallocated" });
+        router.refresh();
       } else {
         setPhase({ kind: "unconfirmed" });
       }
@@ -94,7 +99,7 @@ export function OnlineFlow({ studentMembershipId, demandIds, resumePaymentId = n
           // usual ending says so.
           const status = await feesApi<PaymentStatus>(`/api/v1/fees/family/payments/${encodeURIComponent(resumePaymentId)}`);
           if (!status.checkout) {
-            finish(status.status === "PAID" || status.status === "FAILED" ? status : null);
+            finish(status.status === "PAID" || status.status === "FAILED" || status.status === "UNALLOCATED" ? status : null);
             return;
           }
           order = status.checkout;
@@ -222,6 +227,12 @@ export function OnlineFlow({ studentMembershipId, demandIds, resumePaymentId = n
       )}
       {phase.kind === "cancelled" && <p className="text-sm text-fg-muted">{t("fees.onlineCancelled")}</p>}
       {phase.kind === "unconfirmed" && <p className="text-sm text-fg-muted">{t("fees.onlineNotYet")}</p>}
+      {phase.kind === "unallocated" && (
+        <p className="flex items-center gap-2 text-sm text-warn" data-testid="fees-online-unallocated">
+          <WarningIcon weight="fill" className="size-4 shrink-0" />
+          {t("fees.onlineUnallocated")}
+        </p>
+      )}
       {phase.kind === "error" && (
         <p className="flex items-center gap-2 text-sm text-danger">
           <WarningIcon weight="fill" className="size-4 shrink-0" />

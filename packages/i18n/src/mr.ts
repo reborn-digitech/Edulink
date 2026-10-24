@@ -6470,6 +6470,9 @@ export const mr: Dictionary = {
     feesHeadRetire: "फी शीर्षक काढून टाकले",
     feesHeadRestore: "फी शीर्षक परत आणले",
     feesOnlineSettled: "ऑनलाइन फी पेमेंट निपटले आणि पावती दिली गेली",
+    // fix-highs-B
+    feesOnlineUnallocated: "काहीही थकबाकी नसताना एक ऑनलाइन फी पेमेंट आले आणि परताव्यासाठी राखून ठेवले",
+    // end fix-highs-B
     feesRefund: "फी पेमेंट परत केले",
     feesRemindNow: "थकबाकीदार कुटुंबांना फीची आठवण पाठवली",
     feesReverse: "फी पेमेंट उलटवले",
@@ -7987,6 +7990,10 @@ export const mr: Dictionary = {
     newMessageFromSchool: "तुमच्या शाळेकडून नवा संदेश",
     appProblem: "{name} ने ॲपमधील एक समस्या नोंदवली",
     feeReceived: "{name} साठी पैसे मिळाले",
+    // fix-highs-B
+    feeUnallocated: "{name} साठी पेमेंट आले, पण काहीही थकबाकी नव्हती",
+    feeUnallocatedOffice: "काहीही थकबाकी नसताना ऑनलाइन पेमेंट आले: ते परत करा",
+    // end fix-highs-B
     feeDueSoon: "{name} ची फी लवकरच देय आहे",
     feeDueToday: "{name} ची फी आज देय आहे",
     feeOverdue: "{name} ची फी थकीत आहे",
@@ -8049,6 +8056,10 @@ export const mr: Dictionary = {
     coverCancelledFromTo: "{from} ते {to} चे कव्हर रद्द झाले.",
     appProblem: "संदर्भ {reference}. {name} ने जे लिहिले आहे ते सुरक्षा केंद्राच्या ऑडिट नोंदीत आहे.",
     feeReceived: "{amount} मिळाले — पावती {serial}.",
+    // fix-highs-B
+    feeUnallocated: "ही थकबाकी आधीच भरलेली असताना {amount} आले. शाळेच्या कार्यालयाला कळवले आहे आणि ते परत केले जाईल.",
+    feeUnallocatedOffice: "थकबाकी आधीच भरलेली असताना {name} साठी {amount} आले. विद्यार्थ्याच्या फी पानावरून ते परत करा.",
+    // end fix-highs-B
     feeDueSoon: "{amount} {date} रोजी देय ({label}).",
     feeDueToday: "{amount} आज देय ({label}).",
     feeOverdue: "{amount} {date} पासून थकीत ({label}).",
@@ -8409,6 +8420,9 @@ export const mr: Dictionary = {
     refusePercent: "0 आणि 100 मधील टक्केवारी.",
     refuseCollegeConcession: "महाविद्यालयात सवलत लेखा विभागातून दिली जाते, जिथे कार्यालयाच्या मर्यादेपेक्षा जास्त सवलत प्राचार्यांच्या मंजुरीची वाट पाहते.",
     refuseDemandsChanged: "तुम्ही पाहत असताना थकबाकी बदलली. पान पुन्हा लोड करून पुन्हा प्रयत्न करा.",
+    // fix-highs-B
+    refuseCheckoutInProgress: "या थकबाकीसाठी दुसरे पेमेंट आधीच सुरू आहे. काही मिनिटे थांबून पान पुन्हा लोड करा; पेमेंट झाले असल्यास त्याची पावती पेमेंटखाली दिसेल.",
+    // end fix-highs-B
     refuseOverpayment: "हे देय रकमेपेक्षा जास्त आहे. जेवढे देय आहे तेवढे भरा, किंवा आणखी हप्ते निवडा.",
     refuseNothingDue: "काहीही देय नाही.",
     refuseNotSettleable: "हे पेमेंट निपटाऱ्याच्या प्रतीक्षेत नाही.",
@@ -8441,6 +8455,9 @@ export const mr: Dictionary = {
     payStatusFailed: "अयशस्वी",
     payStatusReversed: "उलटवले",
     payStatusRefunded: "परत केले",
+    // fix-highs-B
+    payStatusUnallocated: "काही थकबाकी नव्हती — परताव्यासाठी",
+    // end fix-highs-B
     methodOnline: "ऑनलाइन",
     methodUpi: "UPI",
     methodCash: "रोख",
@@ -8710,6 +8727,9 @@ export const mr: Dictionary = {
     onlineTitle: "ऑनलाइन भरा",
     onlineOpening: "शाळेचे पेमेंट पान उघडत आहे…",
     onlineDone: "भरले. पावती {serial}.",
+    // fix-highs-B
+    onlineUnallocated: "तुमचे पेमेंट मिळाले, पण ही थकबाकी आधीच भरलेली होती. शाळेच्या कार्यालयाला कळवले आहे आणि ते परत केले जाईल.",
+    // end fix-highs-B
     onlineChecking: "शाळेच्या गेटवेकडे तपासत आहे…",
     onlineNotYet: "अजून खात्री झालेली नाही — याला एक मिनिट लागू शकतो. तुमची पावती पेमेंटखाली दिसेल.",
     onlineCancelled: "पेमेंट पूर्ण झाले नाही.",
@@ -13424,6 +13444,9 @@ export const mr: Dictionary = {
     refuseRerunReason: "कारण सांगा: निकाल प्रसिद्ध झाला आहे, म्हणून ही नवी गणना आहे.",
     refuseNoForms: "गणनेसाठी मंजूर अर्ज नाहीत.",
     refuseMarksPending: "{count} गुण अद्याप जुळलेले नाहीत.",
+    // fix-highs-B
+    refuseInternalsMissing: "{courses} मध्ये {count} अंतर्गत गुण नाहीत. आधी विभागप्रमुख ते कुलूपबंद करतात: सुटलेला गुण शून्य धरून निकाल कधीही काढला जात नाही.",
+    // end fix-highs-B
     refuseRunSuperseded: "ती गणना बदलली गेली आहे; नवी काढा.",
     refuseImportAutonomous: "स्वायत्त महाविद्यालय आपले गुण दोनदा नोंदवते; निकाल फाइल ज्या महाविद्यालयाची परीक्षा विद्यापीठ घेते त्यासाठी आहे.",
     refuseRepublishPrincipal: "आधीच प्रसिद्ध झालेला निकाल फक्त प्राचार्यांच्या संमतीने बदलतो: सुधारलेला रन तेच प्रसिद्ध करतात.",
@@ -19337,4 +19360,10 @@ export const mr: Dictionary = {
     cardOpen: "ती वाचा",
     cardCounts: "मंजूर: {hiApproved} हिंदी, {mrApproved} मराठी. नाकारलेली: {hiRejected} हिंदी, {mrRejected} मराठी.",
   },
+  // fix-highs-A (24 Oct 2026, QA-01): the expert invitation goes to an address only, and its link never sets a password on an account that already exists.
+  expertInviteClaim: {
+    accountExists: "या ईमेलचे खाते आधीपासून आहे. आधी त्यात लॉग इन करा, मग हा दुवा पुन्हा उघडा. लॉग इन करता येत नसेल तर लॉग इन पानावरून तुमचा पासवर्ड रीसेट करा.",
+    needAddress: "तज्ज्ञाचा ईमेल पत्ता द्या. निमंत्रण त्याच पत्त्यावर पाठवले जाते.",
+  },
+  // end fix-highs-A
 };

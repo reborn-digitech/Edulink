@@ -198,7 +198,10 @@ payment opens its own gateway account, enters its keys on
 `https://app.example/api/webhooks/razorpay/<schoolId>` in its gateway
 dashboard for `payment.captured`, `payment.failed` and `refund.processed`.
 The route checks the signature with that school's own webhook secret before
-it reads a byte; a redelivery answers "already". Two jobs join the registry:
+it reads a byte; a redelivery of an event already handled answers "already",
+a delivery whose settlement fails is answered 500 with a body and left to the
+gateway's retry, and one that arrives while another is still working on the
+same event is answered 409 (QA-02, 24 October 2026). Two jobs join the registry:
 `fees:remind` at 09:00 `TZ` and `fees:reconcile` hourly, the second asking
 each school's gateway about orders the webhook never reported and closing
 day-old ones nobody paid. `/root/jobs` shows both.

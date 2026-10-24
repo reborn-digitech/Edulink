@@ -38,15 +38,16 @@ export const parentInviteBodySchema = z.object({
 export const parentInvitedSchema = z.object({ inviteId: id });
 
 /**
- * POST /api/v1/staff/experts/invite — invite an expert. The web's library
- * takes a link with no name or address; the door asks for at least one of
- * them, so an empty body is refused and never mints an invitation.
+ * POST /api/v1/staff/experts/invite — invite an expert BY ADDRESS. The
+ * invitation's link goes to that mailbox and nowhere else (QA-01, 24 Oct
+ * 2026): the door once answered the link itself, so any staff member could
+ * hold a working link to somebody else's address, and the invite page's
+ * reclaim of an unproved address rests on "whoever opens the link controls
+ * the mailbox". An address is therefore required; a name alone is refused.
  */
-export const expertInviteBodySchema = z
-  .object({ email: z.string().trim().email().max(254).optional(), name: z.string().trim().min(1).max(120).optional() })
-  .refine((body) => Boolean(body.email || body.name), { message: "email or name", path: ["email"] });
-/** The link is the one copy of the invitation's token, as the web shows it once. */
-export const expertInvitedSchema = z.object({ link: z.string(), expiresAt: z.string().datetime() });
+export const expertInviteBodySchema = z.object({ email: z.string().trim().email().max(254), name: z.string().trim().min(1).max(120).optional() });
+/** The invitation's id, whether its mail went, and when it lapses. Never the token or the link. */
+export const expertInvitedSchema = z.object({ inviteId: id, sent: z.boolean(), expiresAt: z.string().datetime() });
 
 /** POST /api/v1/admin/timetable/periods/suggested — a first school day for a school that has none. */
 export const suggestedDayAppliedSchema = z.object({ created: count });

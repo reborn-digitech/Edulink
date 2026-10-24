@@ -286,7 +286,8 @@ export type FeeMethod = (typeof FEE_METHODS)[number];
 /** What the office may record itself. ONLINE only ever arrives through the gateway. */
 export const COUNTER_METHODS = ["CASH", "CHEQUE", "BANK", "UPI"] as const;
 
-export const FEE_PAYMENT_STATUSES = ["INITIATED", "CLAIMED", "PAID", "FAILED", "REVERSED", "REFUNDED"] as const;
+/** UNALLOCATED: an online capture that arrived with nothing due, held for the office to refund (QA-03, 24 Oct 2026). */
+export const FEE_PAYMENT_STATUSES = ["INITIATED", "CLAIMED", "PAID", "FAILED", "REVERSED", "REFUNDED", "UNALLOCATED"] as const;
 export type FeePaymentStatus = (typeof FEE_PAYMENT_STATUSES)[number];
 
 export const FEE_DEMAND_STATUSES = ["OPEN", "PART", "PAID", "WAIVED", "CANCELLED", "CARRIED"] as const;

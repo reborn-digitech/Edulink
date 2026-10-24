@@ -47,7 +47,13 @@ export function hashToken(token: string): string {
 /* Invitations                                                                 */
 /* -------------------------------------------------------------------------- */
 
-export type ExpertInviteResult = { token: string; expiresAt: Date };
+export type ExpertInviteResult = { id: string; token: string; expiresAt: Date };
+
+/**
+ * What a school's invitation answers its sender (QA-01, 24 Oct 2026): the row and whether the mail went, NEVER
+ * the token. The link exists in the invited mailbox alone, which is what the invite page's acceptance relies on.
+ */
+export type SchoolExpertInviteResult = { inviteId: string; sent: boolean; expiresAt: Date };
 
 /**
  * Creates an expert invitation and returns the ONE copy of its token.
@@ -67,7 +73,8 @@ export async function createExpertInvite(input: {
   const token = randomBytes(32).toString("base64url");
   const expiresAt = new Date(Date.now() + INVITE_TTL_DAYS * 86_400_000);
 
-  await db.expertInvite.create({
+  const row = await db.expertInvite.create({
+    select: { id: true },
     data: {
       schoolId: input.schoolId,
       tokenHash: hashToken(token),
@@ -83,41 +90,67 @@ export async function createExpertInvite(input: {
     actorUserId: input.actorUserId,
     action: "expert.invite",
     targetType: "ExpertInvite",
+    targetId: row.id,
     meta: { email: input.email ?? null, byOwner: input.schoolId === null },
   });
 
-  return { token, expiresAt };
+  return { id: row.id, token, expiresAt };
 }
 
-/** From a school. Admin or teacher, because either may need an expert. */
+/**
+ * From a school. Admin or teacher, because either may need an expert.
+ *
+ * ⚠ BY ADDRESS, AND THE LINK GOES TO THE MAILBOX ONLY (QA-01, 24 Oct 2026). This used to return the token so a
+ * screen could show a copyable link, and the API door answered it too. That handed any staff member at any school
+ * a working link to SOMEBODY ELSE'S address, and the invite page reclaimed an unproved account under that address
+ * for whoever opened it — a password set on a stranger's account, their sessions revoked, their memberships kept.
+ * Now an address is required, the link is mailed to it, and the caller learns the row's id and whether the mail
+ * went: the token never leaves this function except inside the mail.
+ */
 export async function inviteExpert(
   session: ActiveContext,
   input: { email?: string; name?: string },
-): Promise<ExpertInviteResult> {
+): Promise<SchoolExpertInviteResult> {
   if ((session.role !== "ADMIN" && session.role !== "TEACHER") || !session.schoolId) {
     throw new AccessError("access.onlyATeacherOrAnAdminCan2");
   }
+  const to = input.email?.trim().toLowerCase() ?? "";
+  if (!to.includes("@")) throw new AccessError("expertInviteClaim.needAddress");
   const created = await createExpertInvite({
     schoolId: session.schoolId,
     invitedByMembershipId: session.membershipId,
     actorUserId: session.user.id,
-    email: input.email,
+    email: to,
     name: input.name,
   });
-  // The link stays the artefact on screen; an address given also gets it
-  // sent — best-effort, because the copyable link is the reliable half.
-  const to = input.email?.trim();
-  if (to) {
-    const app = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-    const school = await db.school.findUnique({ where: { id: session.schoolId }, select: { name: true, locale: true } });
-    await sendExpertInvite(
-      to,
-      `${app}/expert/invite/${created.token}`,
-      school?.name ?? null,
-      await localeForAddress(to, school?.locale),
-    ).catch((error) => console.error("[expert-invite] email failed", error));
-  }
-  return created;
+  const app = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const school = await db.school.findUnique({ where: { id: session.schoolId }, select: { name: true, locale: true } });
+  // Best effort still, but now said: a mail that did not go is `sent: false`, and the sender invites again.
+  const sent = await sendExpertInvite(
+    to,
+    `${app}/expert/invite/${created.token}`,
+    school?.name ?? null,
+    await localeForAddress(to, school?.locale),
+  ).then(
+    () => true,
+    (error) => {
+      console.error("[expert-invite] email failed", error);
+      return false;
+    },
+  );
+  return { inviteId: created.id, sent, expiresAt: created.expiresAt };
+}
+
+/**
+ * QA-01 (24 Oct 2026): is `userId` the account the operator's approval of an application made FOR THIS
+ * invitation? The one existing account the invite page may finish (set the first password, mark the address
+ * proved): it was created in the same transaction as the invitation, with no password and the address unproved,
+ * and the link was mailed to that address by the same approval. Any other existing account — however unproved —
+ * is attached only by its signed-in owner.
+ */
+export async function inviteMadeAccount(inviteId: string, userId: string): Promise<boolean> {
+  const made = await db.expertApplication.findFirst({ where: { inviteId, createdUserId: userId, status: "APPROVED" }, select: { id: true } });
+  return made !== null;
 }
 
 export type InviteState =

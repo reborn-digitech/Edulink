@@ -51,15 +51,15 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 
 | ID | Severity | Type | Platform | Finding | From |
 |---|---|---|---|---|---|
-| [QA-01](#qa-01) | High | Security | Both | A staff expert-invite link takes over any unverified account | SEC-1 (layer 7) |
-| [QA-02](#qa-02) | High | E2E, Security | Both | Payment webhooks mark an event handled before the settlement, so a failed settlement is never retried | E2E-A2 (layer 5A, High) and SEC-2 (layer 7, Medium) |
-| [QA-03](#qa-03) | High | E2E | Both | Two guardians can pay the same demand online; the second is charged and then refused | E2E-A1 (layer 5A) |
-| [QA-04](#qa-04) | High | E2E | Both | Two admits at once make two pupils from one application | E2E-A3 (layer 5A) |
-| [QA-05](#qa-05) | High | E2E | Both | College exam results are computed and published with missing internal marks counted as zero | E2E-B1 (layer 5B) |
+| [QA-01](#qa-01) | High | Security | Both | A staff expert-invite link takes over any unverified account. **Fixed, <commit pending>:** the invite door answers the invitation id and `sent`, never the link (an address is required), and the invite page sets a password only on the account the operator's approval made for that invitation | SEC-1 (layer 7) |
+| [QA-02](#qa-02) | High | E2E, Security | Both | Payment webhooks mark an event handled before the settlement, so a failed settlement is never retried. **Fixed, <commit pending>:** all three doors count an event handled only once `processedAt` is set after the work; a throw answers 500 with a body and the row stays re-processable, a concurrent delivery 409 (src/lib/webhook-events.ts) | E2E-A2 (layer 5A, High) and SEC-2 (layer 7, Medium) |
+| [QA-03](#qa-03) | High | E2E | Both | Two guardians can pay the same demand online; the second is charged and then refused. **Fixed, <commit pending>:** a checkout locks the pupil's open demands and refuses another guardian's order while one younger than half an hour names the same demand (the same guardian gets theirs back); a capture that arrives with nothing due is recorded UNALLOCATED, audited, office and family told, and refunded from the pupil's fees page | E2E-A1 (layer 5A) |
+| [QA-04](#qa-04) | High | E2E | Both | Two admits at once make two pupils from one application. **Fixed, <commit pending>:** the admit transaction locks the cycle and the application and reads both again under the lock; the second press is answered with the admission as it stands, and a grade's last seat goes once | E2E-A3 (layer 5A) |
+| [QA-05](#qa-05) | High | E2E | Both | College exam results are computed and published with missing internal marks counted as zero. **Fixed, <commit pending>:** the run (and a grace to pass) is refused 409 while a sitting student's internal is missing on a course whose scheme has an internal part, naming the courses; the marks sheet's swapped key (QA-09) is fixed with it | E2E-B1 (layer 5B) |
 | [QA-06](#qa-06) | Medium | Functional | Both | A guardian who has just paid online is told "Nothing is due to pay" when the gateway's webhook settles the same payment at the same moment | F-1 (layer 6) |
 | [QA-07](#qa-07) | Medium | Unit | Web | College accounts: the mess bill and the route fee are billed twice when pressed in another language | U-4 (layer 2) |
 | [QA-08](#qa-08) | Medium | BDD | Web | The PF return (ECR) splits the employer's share with ₹1 too much on every line | BDD-1 (layer 3) |
-| [QA-09](#qa-09) | Medium | E2E | Both | The exam marks sheet shows a locked internal mark as missing | E2E-B5 (layer 5B) |
+| [QA-09](#qa-09) | Medium | E2E | Both | The exam marks sheet shows a locked internal mark as missing. **Fixed, <commit pending>:** `marksSheet` looks the lock up under `<student>\|<course>`, the key `internalsFor` writes (with QA-05) | E2E-B5 (layer 5B) |
 | [QA-10](#qa-10) | Medium | E2E | Web | Two people's first mark entries at the same moment answer 500 and lose one entry | E2E-B4 (layer 5B) |
 | [QA-11](#qa-11) | Medium | E2E | Both | A declined certificate ask leaves its fee owed | E2E-A5 (layer 5A) |
 | [QA-12](#qa-12) | Medium | E2E | Both | One certificate ask is issued twice when the office and the head press Issue together | E2E-A4 (layer 5A) |
@@ -137,6 +137,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** High · **Platform:** Both
 - **Feature:** Expert invitations (behind EXPERT_SESSIONS); sign-in
 - **From:** SEC-1 (layer 7)
+- **Status:** Fixed, <commit pending>. `inviteExpert` requires an address, mails the link and returns `{ inviteId, sent, expiresAt }`; the door and its contract carry no link. The invite page refuses any existing account unless its signed-in owner accepts, or it is the passwordless, unproved account the operator's approval created for this invitation (`inviteMadeAccount`); an unproved holder resets the password first. Test: `apps/web/tests/expert-invite-takeover.test.ts`.
 
 **Steps**
 
@@ -159,6 +160,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E, Security · **Severity:** High · **Platform:** Both
 - **Feature:** Fees online payments (school gateway); pass orders and seat payments (company gateway)
 - **From:** E2E-A2 (layer 5A, High) and SEC-2 (layer 7, Medium)
+- **Status:** Fixed, <commit pending>. The school, passes and seats webhooks go through `handleEventOnce` (`apps/web/src/lib/webhook-events.ts`): the row is claimed (insert or conditional update), the work runs, `processedAt` is set only after it; a throw answers `500 {"ok":false,"code":"NOT_PROCESSED","retry":true}` and leaves the row for the retry; a second delivery during the work is 409; a stale claim (5 minutes) or a row the old doors left is processed again. "Nothing due" itself became a recorded outcome under QA-03. Test: `apps/web/tests/webhook-retry.test.ts`.
 
 **Steps**
 
@@ -181,6 +183,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** High · **Platform:** Both
 - **Feature:** Fees online checkout
 - **From:** E2E-A1 (layer 5A)
+- **Status:** Fixed, <commit pending>. `startOnlineCheckout` takes the pupil's open demands `FOR UPDATE` (in `openDemands`' order) and, under that lock, refuses with `fees.refuseCheckoutInProgress` while an INITIATED online order younger than 30 minutes names any of the same demands, handing the same guardian their own order back when the dues are exactly the same; past 30 minutes the order is taken as abandoned. `settleOnlinePayment` no longer throws "Nothing is due to pay" at a captured payment: it is marked `UNALLOCATED` with the gateway payment id (no allocation, no receipt, kept out of the collected PAID/REFUNDED figures), audited as `fees.onlineUnallocated`, the office (urgent) and the family told, the confirm answering `unallocated`; the office refunds it through `requestRefund`. Web and phone show the state. Test: `apps/web/tests/fees-checkout-race.test.ts`.
 
 **Steps**
 
@@ -202,6 +205,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** High · **Platform:** Both
 - **Feature:** Admissions
 - **From:** E2E-A3 (layer 5A)
+- **Status:** Fixed, <commit pending>. Inside `admit`'s transaction the cycle row and then the application row are locked and read again: ADMITTED is answered with that admission (`asAdmitted`), anything else but ACCEPTED is refused, and the seats are counted under the cycle's lock before any account is made. Test: `apps/web/tests/admissions-admit-race.test.ts`.
 
 **Steps**
 
@@ -222,6 +226,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** High · **Platform:** Both
 - **Feature:** College exam cell: results
 - **From:** E2E-B1 (layer 5B)
+- **Status:** Fixed, <commit pending>. `runResults` refuses with `examCell.refuseInternalsMissing` (409, the count and the course codes) while a student who sat a course whose scheme has an internal part has neither an imported internal nor the HOD's lock; an AB, a paper cancelled for malpractice and an external-only scheme need none. `proposeGrace` refuses a grace to pass on a missing internal. Test: `apps/web/tests/exam-cell-internals-missing.test.ts`.
 
 **Steps**
 
@@ -307,6 +312,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Medium · **Platform:** Both
 - **Feature:** College exam cell: marks sheet
 - **From:** E2E-B5 (layer 5B)
+- **Status:** Fixed, <commit pending>, with QA-05: `marksSheet` reads the lock under `${studentMembershipId}|${courseId}`. Test: `apps/web/tests/exam-cell-internals-missing.test.ts`.
 
 **Steps**
 

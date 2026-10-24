@@ -28,6 +28,7 @@ export const FEE_PAYMENT_STATUS_KEY: Record<string, TranslationKey> = {
   FAILED: "fees.payStatusFailed",
   REVERSED: "fees.payStatusReversed",
   REFUNDED: "fees.payStatusRefunded",
+  UNALLOCATED: "fees.payStatusUnallocated",
 };
 
 export type BadgeTone = "neutral" | "accent" | "ok" | "warn" | "danger" | "info" | "outline";
@@ -43,6 +44,7 @@ export function paymentTone(status: string): BadgeTone {
     case "PAID":
       return "ok";
     case "CLAIMED":
+    case "UNALLOCATED":
       return "warn";
     case "FAILED":
     case "REVERSED":

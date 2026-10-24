@@ -4,7 +4,7 @@ import { readBounded, WEBHOOK_BODY_LIMIT } from "@/lib/api-v1";
 import { db } from "@/lib/db";
 import { verifySessionsWebhook, webhookSecret } from "@/lib/gig-gateway";
 import { markPassFailed, markPassPaid, markPassRefundFailed } from "@/lib/pass-orders";
-import { writeJson } from "@/lib/json";
+import { claimableWhere, handleEventOnce, type EventLedger } from "@/lib/webhook-events";
 
 /**
  * POST /api/webhooks/razorpay/platform — the COMPANY'S gateway telling us what happened to a PASS's order (17 October
@@ -19,8 +19,13 @@ import { writeJson } from "@/lib/json";
  * "RAZORPAY_PASS" — not the sessions webhook's "RAZORPAY", so when the company points both URLs at the same events
  * each door hears each event once. A capture goes through markPassPaid, the one door the checkout's confirm and the
  * devbox page use too, idempotent on the order and the gateway's payment id; an order that is not a pass (a seat) is
- * answered "ignored". After a good signature the answer is 200 whatever happened, since a non-2xx only makes the
- * gateway send it again. 404 when this server has no gateway, 401 for a bad signature.
+ * answered "ignored". After a good signature the answer is 200 once the work is done whatever it found, since a
+ * non-2xx only makes the gateway send it again. 404 when this server has no gateway, 401 for a bad signature.
+ *
+ * ⚠ HANDLED MEANS DONE (QA-02, QA campaign of 24 October 2026; SEC-2). The row's existence used to count as "seen",
+ * so a settlement that threw after the row was written was answered "already" on the retry and the capture never
+ * recorded. An event is handled only once `processedAt` is set after its work; a throw answers 500 with a body and
+ * leaves it for the retry; a second delivery while the first works is 409. See src/lib/webhook-events.ts.
  */
 type WebhookBody = { event?: string; id?: string; created_at?: number; payload?: Record<string, { entity?: Record<string, unknown> }> };
 
@@ -52,21 +57,29 @@ export async function POST(request: Request) {
   const eventId = signedEventId(event, kind, raw);
   if (!eventId) return NextResponse.json({ code: "NO_EVENT_ID" }, { status: 400 });
 
-  const seen = await db.gigGatewayEvent.findUnique({ where: { provider_eventId: { provider: PROVIDER, eventId } }, select: { id: true } });
-  if (seen) return NextResponse.json({ ok: true, outcome: "already" });
-  const row = await db.gigGatewayEvent.create({ data: { provider: PROVIDER, eventId, kind, payloadJson: raw.slice(0, 20_000) }, select: { id: true } });
+  // QA-02 (24 Oct 2026): handled means processedAt set, and only after the work; a throw is a 500 the gateway retries.
+  const key = { provider_eventId: { provider: PROVIDER, eventId } };
+  const ledger: EventLedger = {
+    find: () => db.gigGatewayEvent.findUnique({ where: key, select: { id: true, processedAt: true, outcome: true } }),
+    create: () => db.gigGatewayEvent.create({ data: { provider: PROVIDER, eventId, kind, payloadJson: raw.slice(0, 20_000), outcome: "processing" }, select: { id: true, processedAt: true, outcome: true } }),
+    claim: async (id, staleBefore, now) => (await db.gigGatewayEvent.updateMany({ where: claimableWhere(id, staleBefore), data: { outcome: "processing", receivedAt: now } })).count,
+    finish: async (id, outcome) => void (await db.gigGatewayEvent.updateMany({ where: { id, processedAt: null }, data: { processedAt: new Date(), outcome } })),
+    release: async (id) => void (await db.gigGatewayEvent.updateMany({ where: { id, processedAt: null }, data: { outcome: "error" } })),
+  };
 
-  let outcome = "ignored";
-  const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; error_description?: string } | undefined;
-  const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
-  if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
-    const result = await markPassPaid({ orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount });
-    outcome = result.outcome === "unknown-order" ? "ignored" : result.outcome;
-  } else if (kind === "payment.failed" && payment?.order_id) {
-    outcome = (await markPassFailed(payment.order_id, payment.error_description ?? "failed at the gateway")) ? "failed" : "ignored";
-  } else if (kind === "refund.failed" && refund?.id) {
-    outcome = (await markPassRefundFailed(refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway")) ? "refund-failed" : "ignored";
-  }
-  await db.gigGatewayEvent.update({ where: { id: row.id }, data: { processedAt: new Date(), outcome } });
-  return NextResponse.json({ ok: true, outcome, meta: writeJson({ kind }) });
+  return handleEventOnce(ledger, kind, "webhooks/razorpay/platform", async () => {
+    const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; error_description?: string } | undefined;
+    const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
+    if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
+      const result = await markPassPaid({ orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount });
+      return result.outcome === "unknown-order" ? "ignored" : result.outcome;
+    }
+    if (kind === "payment.failed" && payment?.order_id) {
+      return (await markPassFailed(payment.order_id, payment.error_description ?? "failed at the gateway")) ? "failed" : "ignored";
+    }
+    if (kind === "refund.failed" && refund?.id) {
+      return (await markPassRefundFailed(refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway")) ? "refund-failed" : "ignored";
+    }
+    return "ignored";
+  });
 }

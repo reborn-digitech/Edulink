@@ -287,16 +287,20 @@ describe("one invitation", () => {
     expect((await parentsPost(json({ email, relation: "PARENT" }), params({ membershipId: members.STUDENT }))).status).toBe(422);
   });
 
-  it("a teacher invites an expert by name and is answered the link; an empty body is 422 and mints nothing", async () => {
+  it("a teacher invites an expert by address and is answered the invitation's id, never the link; a body without an address is 422 and mints nothing", async () => {
     await signInAs("TEACHER");
     expect((await expertInvitePost(json({}))).status).toBe(422);
     expect((await expertInvitePost(json({ email: "not an address" }))).status).toBe(422);
+    expect((await expertInvitePost(json({ name: "ZZ OW name only" }))).status).toBe(422);
     expect(await db.expertInvite.count({ where: { schoolId } })).toBe(0);
     const res = await expertInvitePost(json({ name: "ZZ OW Expert", email: `zz-ow-expert-${STAMP}@test.invalid` }));
     expect(res.status).toBe(201);
     const body = await res.json();
-    expect(body.link).toMatch(/\/expert\/invite\/[A-Za-z0-9_-]{20,}$/);
+    // QA-01 (24 Oct 2026): the link lives in the invited mailbox alone.
+    expect(body).not.toHaveProperty("link");
+    expect(body).toMatchObject({ sent: true, inviteId: expect.any(String) });
     expect(new Date(body.expiresAt).getTime()).toBeGreaterThan(Date.now());
+    expect((await db.outboundEmail.findFirstOrThrow({ where: { to: `zz-ow-expert-${STAMP}@test.invalid` } })).text).toMatch(/\/expert\/invite\/[A-Za-z0-9_-]{20,}/);
     expect(await db.expertInvite.findFirstOrThrow({ where: { schoolId }, select: { name: true, invitedByMembershipId: true } })).toEqual({ name: "ZZ OW Expert", invitedByMembershipId: members.TEACHER });
     expect(await audits("expert.invite")).toBe(1);
   });

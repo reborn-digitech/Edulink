@@ -6474,6 +6474,9 @@ export const hi: Dictionary = {
     feesHeadRetire: "फ़ीस मद हटाई",
     feesHeadRestore: "फ़ीस मद वापस लाई",
     feesOnlineSettled: "ऑनलाइन फ़ीस भुगतान निपटा और रसीद जारी हुई",
+    // fix-highs-B
+    feesOnlineUnallocated: "कोई बकाया न होने पर एक ऑनलाइन फ़ीस भुगतान आया और धनवापसी के लिए रोका गया",
+    // end fix-highs-B
     feesRefund: "फ़ीस भुगतान रिफ़ंड किया",
     feesRemindNow: "बकायेदार परिवारों को फ़ीस की याद दिलाई",
     feesReverse: "फ़ीस भुगतान उलटा",
@@ -7993,6 +7996,10 @@ export const hi: Dictionary = {
     newMessageFromSchool: "आपके स्कूल से नया संदेश",
     appProblem: "{name} ने ऐप में एक समस्या बताई",
     feeReceived: "{name} के लिए भुगतान मिला",
+    // fix-highs-B
+    feeUnallocated: "{name} के लिए भुगतान आया, पर कुछ बकाया नहीं था",
+    feeUnallocatedOffice: "कोई बकाया न होने पर ऑनलाइन भुगतान आया: इसे लौटाएँ",
+    // end fix-highs-B
     feeDueSoon: "{name} की फ़ीस जल्द देय है",
     feeDueToday: "{name} की फ़ीस आज देय है",
     feeOverdue: "{name} की फ़ीस बकाया है",
@@ -8055,6 +8062,10 @@ export const hi: Dictionary = {
     coverCancelledFromTo: "{from} से {to} तक का कवर रद्द हुआ।",
     appProblem: "संदर्भ {reference}। {name} ने जो लिखा है, वह सुरक्षा केंद्र के ऑडिट लॉग में है।",
     feeReceived: "{amount} मिले — रसीद {serial}।",
+    // fix-highs-B
+    feeUnallocated: "{amount} तब आए जब यह बकाया पहले ही चुकाया जा चुका था। स्कूल कार्यालय को बता दिया गया है और वह इसे लौटाएगा।",
+    feeUnallocatedOffice: "{name} के लिए {amount} तब आए जब बकाया पहले ही चुकाया जा चुका था। विद्यार्थी के फ़ीस पेज से इसे लौटाएँ।",
+    // end fix-highs-B
     feeDueSoon: "{amount} {date} को देय ({label})।",
     feeDueToday: "{amount} आज देय ({label})।",
     feeOverdue: "{amount} {date} से बकाया ({label})।",
@@ -8415,6 +8426,9 @@ export const hi: Dictionary = {
     refusePercent: "0 और 100 के बीच का प्रतिशत।",
     refuseCollegeConcession: "महाविद्यालय में रियायत लेखा विभाग से दी जाती है, जहाँ कार्यालय की सीमा से अधिक रियायत प्राचार्य की स्वीकृति की प्रतीक्षा करती है।",
     refuseDemandsChanged: "आपके देखते-देखते बकाया बदल गया। पेज फिर से लोड करके दोबारा कोशिश करें।",
+    // fix-highs-B
+    refuseCheckoutInProgress: "इन बकाया के लिए एक और भुगतान पहले से चल रहा है। कुछ मिनट रुककर पेज फिर से लोड करें; भुगतान हो गया हो तो उसकी रसीद भुगतान के नीचे दिखेगी।",
+    // end fix-highs-B
     refuseOverpayment: "यह देय राशि से ज़्यादा है। जितना देय है उतना भरें, या और किस्तें चुनें।",
     refuseNothingDue: "कुछ भी देय नहीं है।",
     refuseNotSettleable: "यह भुगतान निपटान की प्रतीक्षा में नहीं है।",
@@ -8447,6 +8461,9 @@ export const hi: Dictionary = {
     payStatusFailed: "विफल",
     payStatusReversed: "उलटा गया",
     payStatusRefunded: "रिफ़ंड हुआ",
+    // fix-highs-B
+    payStatusUnallocated: "कुछ बकाया नहीं था — लौटाने हेतु",
+    // end fix-highs-B
     methodOnline: "ऑनलाइन",
     methodUpi: "UPI",
     methodCash: "नक़द",
@@ -8716,6 +8733,9 @@ export const hi: Dictionary = {
     onlineTitle: "ऑनलाइन भुगतान करें",
     onlineOpening: "स्कूल का भुगतान पेज खुल रहा है…",
     onlineDone: "भुगतान हुआ। रसीद {serial}।",
+    // fix-highs-B
+    onlineUnallocated: "आपका भुगतान मिल गया, पर यह बकाया पहले ही चुकाया जा चुका था। स्कूल कार्यालय को बता दिया गया है और वह इसे लौटाएगा।",
+    // end fix-highs-B
     onlineChecking: "स्कूल के गेटवे से जाँच हो रही है…",
     onlineNotYet: "अभी पुष्टि नहीं हुई — इसमें एक मिनट लग सकता है। आपकी रसीद भुगतान के नीचे दिखेगी।",
     onlineCancelled: "भुगतान पूरा नहीं हुआ।",
@@ -13430,6 +13450,9 @@ export const hi: Dictionary = {
     refuseRerunReason: "कारण बताएँ: परिणाम प्रकाशित है, इसलिए यह नई गणना है।",
     refuseNoForms: "गणना हेतु कोई स्वीकृत फ़ॉर्म नहीं।",
     refuseMarksPending: "{count} अंक अभी सहमत नहीं हैं।",
+    // fix-highs-B
+    refuseInternalsMissing: "{count} आंतरिक अंक नहीं हैं, {courses} में। पहले विभागाध्यक्ष इन्हें बंद करें: किसी छूटे अंक को शून्य मानकर परिणाम कभी नहीं निकाला जाता।",
+    // end fix-highs-B
     refuseRunSuperseded: "वह गणना प्रतिस्थापित हो चुकी है; नई निकालें।",
     refuseImportAutonomous: "स्वायत्त महाविद्यालय अपने अंक दो बार दर्ज करता है; परिणाम फ़ाइल उस महाविद्यालय के लिए है जिसकी परीक्षा विश्वविद्यालय लेता है।",
     refuseRepublishPrincipal: "पहले से प्रकाशित परिणाम केवल प्राचार्य के साथ बदला जाता है: सुधारा गया रन वही प्रकाशित करते हैं।",
@@ -19343,4 +19366,10 @@ export const hi: Dictionary = {
     cardOpen: "उन्हें पढ़ें",
     cardCounts: "स्वीकृत: {hiApproved} हिंदी, {mrApproved} मराठी। अस्वीकृत: {hiRejected} हिंदी, {mrRejected} मराठी।",
   },
+  // fix-highs-A (24 Oct 2026, QA-01): the expert invitation goes to an address only, and its link never sets a password on an account that already exists.
+  expertInviteClaim: {
+    accountExists: "इस ईमेल से पहले से एक खाता है। पहले उसमें लॉग इन कीजिए, फिर यह लिंक दोबारा खोलिए। अगर लॉग इन नहीं हो पा रहा है, तो लॉग इन पेज से अपना पासवर्ड रीसेट कीजिए।",
+    needAddress: "विशेषज्ञ का ईमेल पता दीजिए। निमंत्रण उसी पते पर भेजा जाता है।",
+  },
+  // end fix-highs-A
 };

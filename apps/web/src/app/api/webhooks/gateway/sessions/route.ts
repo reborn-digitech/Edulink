@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { verifySessionsWebhook, webhookSecret } from "@/lib/gig-gateway";
 import { markOrderFailed, markRouteProduct, markSeatRefundFailed, markTransferFailed, markTransferProcessed } from "@/lib/gig-payments";
 import { settleSeatPayment } from "@/lib/gig-sessions";
-import { writeJson } from "@/lib/json";
+import { claimableWhere, handleEventOnce, type EventLedger } from "@/lib/webhook-events";
 
 /**
  * POST /api/webhooks/gateway/sessions — the COMPANY'S gateway telling us what
@@ -26,12 +26,19 @@ import { writeJson } from "@/lib/json";
  * body, read under the 64 KB cap, before a byte of it is believed; the event
  * is stored once by the id the SIGNED BODY states (its own `id`, else the
  * kind plus the entity it names plus the gateway's `created_at`, else a
- * digest of the body), never a header, so a redelivery answers "already" and
+ * digest of the body), never a header, so a redelivery of a handled event answers "already" and
  * settles nothing twice; every capture goes through settleSeatPayment, the
  * one door the checkout's confirm and the devbox page use too; and after a
- * good signature the answer is 200 even for an unknown order, since a
- * non-2xx would only make the gateway retry the same thing. 404 when this
- * server has no gateway, 401 for a bad signature.
+ * good signature the answer is 200 once the work is done, even for an
+ * unknown order, since a non-2xx would only make the gateway retry the same
+ * thing. 404 when this server has no gateway, 401 for a bad signature.
+ *
+ * ⚠ HANDLED MEANS DONE (QA-02, QA campaign of 24 October 2026; SEC-2). The
+ * row's existence used to count as "seen", so a settlement that threw after
+ * the row was written was answered "already" on the retry and the capture
+ * never recorded. An event is handled only once `processedAt` is set after
+ * its work; a throw answers 500 with a body and leaves it for the retry; a
+ * second delivery while the first works is 409. See src/lib/webhook-events.ts.
  */
 type WebhookBody = { event?: string; id?: string; account_id?: string; created_at?: number; payload?: Record<string, { entity?: Record<string, unknown>; data?: unknown }> };
 
@@ -61,30 +68,42 @@ export async function POST(request: Request) {
   const eventId = signedEventId(event, kind, raw);
   if (!eventId) return NextResponse.json({ code: "NO_EVENT_ID" }, { status: 400 });
 
-  const seen = await db.gigGatewayEvent.findUnique({ where: { provider_eventId: { provider: "RAZORPAY", eventId } }, select: { id: true } });
-  if (seen) return NextResponse.json({ ok: true, outcome: "already" });
-  const row = await db.gigGatewayEvent.create({ data: { provider: "RAZORPAY", eventId, kind, payloadJson: raw.slice(0, 20_000) }, select: { id: true } });
+  // QA-02 (24 Oct 2026): handled means processedAt set, and only after the work; a throw is a 500 the gateway retries.
+  const key = { provider_eventId: { provider: "RAZORPAY", eventId } };
+  const ledger: EventLedger = {
+    find: () => db.gigGatewayEvent.findUnique({ where: key, select: { id: true, processedAt: true, outcome: true } }),
+    create: () => db.gigGatewayEvent.create({ data: { provider: "RAZORPAY", eventId, kind, payloadJson: raw.slice(0, 20_000), outcome: "processing" }, select: { id: true, processedAt: true, outcome: true } }),
+    claim: async (id, staleBefore, now) => (await db.gigGatewayEvent.updateMany({ where: claimableWhere(id, staleBefore), data: { outcome: "processing", receivedAt: now } })).count,
+    finish: async (id, outcome) => void (await db.gigGatewayEvent.updateMany({ where: { id, processedAt: null }, data: { processedAt: new Date(), outcome } })),
+    release: async (id) => void (await db.gigGatewayEvent.updateMany({ where: { id, processedAt: null }, data: { outcome: "error" } })),
+  };
 
-  let outcome = "ignored";
-  const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; error_description?: string } | undefined;
-  const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
-  const transfer = event.payload?.transfer?.entity as { id?: string; source?: string; error?: { description?: string } } | undefined;
-  const product = event.payload?.merchant_product as { entity?: { id?: string; merchant_id?: string; activation_status?: string }; data?: { requirements?: { field_reference?: string; reason_code?: string }[] } } | undefined;
-  const isSource = (s: string | undefined): s is string => Boolean(s && (s.startsWith("pay_") || s.startsWith("order_")));
-  if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
-    outcome = (await settleSeatPayment({ orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount })).outcome;
-  } else if (kind === "payment.failed" && payment?.order_id) {
-    outcome = (await markOrderFailed(payment.order_id, payment.error_description ?? "failed at the gateway")) ? "failed" : "ignored";
-  } else if (kind === "transfer.processed" && transfer?.id && isSource(transfer.source)) {
-    outcome = (await markTransferProcessed({ transferId: transfer.id, source: transfer.source })) ? "transfer-known" : "ignored";
-  } else if ((kind === "transfer.failed" || kind === "transfers.failed") && isSource(transfer?.source)) {
-    outcome = (await markTransferFailed({ source: transfer.source, reason: transfer.error?.description ?? "the transfer failed at the gateway" })) ? "transfer-failed" : "ignored";
-  } else if (kind.startsWith("product.route.") && product?.entity?.id) {
-    const accountId = product.entity.merchant_id ?? event.account_id;
-    if (accountId) outcome = (await markRouteProduct({ accountId, productId: product.entity.id, status: product.entity.activation_status ?? kind.slice("product.route.".length), requirements: Array.isArray(product.data?.requirements) ? product.data.requirements : [] })) ? "route-status" : "ignored";
-  } else if (kind === "refund.failed" && refund?.id) {
-    outcome = (await markSeatRefundFailed(refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway")) ? "refund-failed" : "ignored";
-  }
-  await db.gigGatewayEvent.update({ where: { id: row.id }, data: { processedAt: new Date(), outcome } });
-  return NextResponse.json({ ok: true, outcome, meta: writeJson({ kind }) });
+  return handleEventOnce(ledger, kind, "webhooks/gateway/sessions", async () => {
+    const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; error_description?: string } | undefined;
+    const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
+    const transfer = event.payload?.transfer?.entity as { id?: string; source?: string; error?: { description?: string } } | undefined;
+    const product = event.payload?.merchant_product as { entity?: { id?: string; merchant_id?: string; activation_status?: string }; data?: { requirements?: { field_reference?: string; reason_code?: string }[] } } | undefined;
+    const isSource = (s: string | undefined): s is string => Boolean(s && (s.startsWith("pay_") || s.startsWith("order_")));
+    if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
+      return (await settleSeatPayment({ orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount })).outcome;
+    }
+    if (kind === "payment.failed" && payment?.order_id) {
+      return (await markOrderFailed(payment.order_id, payment.error_description ?? "failed at the gateway")) ? "failed" : "ignored";
+    }
+    if (kind === "transfer.processed" && transfer?.id && isSource(transfer.source)) {
+      return (await markTransferProcessed({ transferId: transfer.id, source: transfer.source })) ? "transfer-known" : "ignored";
+    }
+    if ((kind === "transfer.failed" || kind === "transfers.failed") && isSource(transfer?.source)) {
+      return (await markTransferFailed({ source: transfer.source, reason: transfer.error?.description ?? "the transfer failed at the gateway" })) ? "transfer-failed" : "ignored";
+    }
+    if (kind.startsWith("product.route.") && product?.entity?.id) {
+      const accountId = product.entity.merchant_id ?? event.account_id;
+      if (!accountId) return "ignored";
+      return (await markRouteProduct({ accountId, productId: product.entity.id, status: product.entity.activation_status ?? kind.slice("product.route.".length), requirements: Array.isArray(product.data?.requirements) ? product.data.requirements : [] })) ? "route-status" : "ignored";
+    }
+    if (kind === "refund.failed" && refund?.id) {
+      return (await markSeatRefundFailed(refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway")) ? "refund-failed" : "ignored";
+    }
+    return "ignored";
+  });
 }

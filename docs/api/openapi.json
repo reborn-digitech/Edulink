@@ -61686,7 +61686,8 @@
                         "already",
                         "unknown-order",
                         "amount-mismatch",
-                        "not-settleable"
+                        "not-settleable",
+                        "unallocated"
                       ]
                     },
                     "receiptId": {
@@ -209162,7 +209163,7 @@
     },
     "/api/v1/staff/experts/invite": {
       "post": {
-        "summary": "Invite an outside expert by name or address; answers the invitation link, shown once, and mails it to an address given",
+        "summary": "Invite an outside expert by email address; the invitation link is mailed to that address only, and the answer is the invitation id and whether the mail went (never the link)",
         "description": "Roles: ADMIN, TEACHER.",
         "security": [
           {
@@ -209185,8 +209186,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "link": {
-                      "type": "string"
+                    "inviteId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "sent": {
+                      "type": "boolean"
                     },
                     "expiresAt": {
                       "type": "string",
@@ -209194,7 +209200,8 @@
                     }
                   },
                   "required": [
-                    "link",
+                    "inviteId",
+                    "sent",
                     "expiresAt"
                   ],
                   "additionalProperties": false
@@ -209271,6 +209278,9 @@
                     "maxLength": 120
                   }
                 },
+                "required": [
+                  "email"
+                ],
                 "additionalProperties": false
               }
             }

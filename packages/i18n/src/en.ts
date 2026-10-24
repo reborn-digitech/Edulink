@@ -6854,6 +6854,9 @@ export const en = {
     feesHeadRetire: "Retired a fee head",
     feesHeadRestore: "Brought a fee head back",
     feesOnlineSettled: "An online fee payment was settled and its receipt issued",
+    // fix-highs-B
+    feesOnlineUnallocated: "An online fee payment arrived with nothing due and was held for a refund",
+    // end fix-highs-B
     feesRefund: "Refunded a fee payment",
     feesRemindNow: "Sent fee reminders to overdue families",
     feesReverse: "Reversed a fee payment",
@@ -8427,6 +8430,10 @@ export const en = {
     newMessageFromSchool: "New message from your school",
     appProblem: "{name} reported a problem with the app",
     feeReceived: "Payment received for {name}",
+    // fix-highs-B
+    feeUnallocated: "A payment for {name} arrived with nothing due",
+    feeUnallocatedOffice: "An online payment arrived with nothing due: refund it",
+    // end fix-highs-B
     feeDueSoon: "Fees due soon for {name}",
     feeDueToday: "Fees due today for {name}",
     feeOverdue: "Fees overdue for {name}",
@@ -8491,6 +8498,10 @@ export const en = {
     coverCancelledFromTo: "The cover from {from} to {to} was cancelled.",
     appProblem: "Reference {reference}. What {name} wrote is in the Safety centre's audit log.",
     feeReceived: "{amount} received — receipt {serial}.",
+    // fix-highs-B
+    feeUnallocated: "{amount} arrived after these dues had already been paid. The school office has been told and will refund it.",
+    feeUnallocatedOffice: "{amount} for {name} arrived after the dues were already paid. Refund it from the pupil's fees page.",
+    // end fix-highs-B
     feeDueSoon: "{amount} due on {date} ({label}).",
     feeDueToday: "{amount} due today ({label}).",
     feeOverdue: "{amount} overdue since {date} ({label}).",
@@ -8852,6 +8863,9 @@ export const en = {
     refusePercent: "A percentage between 0 and 100.",
     refuseCollegeConcession: "At a college a concession is granted from Accounts, where one above the office's limit waits for the principal.",
     refuseDemandsChanged: "The dues changed while you were looking. Reload and try again.",
+    // fix-highs-B
+    refuseCheckoutInProgress: "Another payment for these dues is already in progress. Wait a few minutes and reload; if it went through, its receipt will appear under Payments.",
+    // end fix-highs-B
     refuseOverpayment: "That is more than is due. Enter what is due, or choose more instalments.",
     refuseNothingDue: "Nothing is due to pay.",
     refuseNotSettleable: "This payment is not waiting to be settled.",
@@ -8885,6 +8899,9 @@ export const en = {
     payStatusFailed: "Failed",
     payStatusReversed: "Reversed",
     payStatusRefunded: "Refunded",
+    // fix-highs-B
+    payStatusUnallocated: "Nothing was due — for refund",
+    // end fix-highs-B
     methodOnline: "Online",
     methodUpi: "UPI",
     methodCash: "Cash",
@@ -9164,6 +9181,9 @@ export const en = {
     onlineTitle: "Pay online",
     onlineOpening: "Opening the school's payment page…",
     onlineDone: "Paid. Receipt {serial}.",
+    // fix-highs-B
+    onlineUnallocated: "Your payment arrived, but these dues had already been paid. The school office has been told and will refund it.",
+    // end fix-highs-B
     onlineChecking: "Checking with the school's gateway…",
     onlineNotYet: "Not confirmed yet — this can take a minute. Your receipt will appear under Payments.",
     onlineCancelled: "The payment was not completed.",
@@ -13898,6 +13918,9 @@ export const en = {
     refuseRerunReason: "Say why: the result is published, so this is a new run.",
     refuseNoForms: "No approved forms to compute.",
     refuseMarksPending: "{count} marks are not agreed yet.",
+    // fix-highs-B
+    refuseInternalsMissing: "{count} internal marks are missing, in {courses}. The HOD locks them first: a result is never computed with a missing mark counted as nought.",
+    // end fix-highs-B
     refuseRunSuperseded: "That run was superseded; compute a new one.",
     refuseImportAutonomous: "An autonomous college enters its own marks twice; a result file is for a college whose university examines it.",
     refuseRepublishPrincipal: "A result already published is changed only with the principal: they publish the corrected run.",
@@ -19816,4 +19839,10 @@ export const en = {
     cardOpen: "Read them",
     cardCounts: "Approved: {hiApproved} Hindi, {mrApproved} Marathi. Rejected: {hiRejected} Hindi, {mrRejected} Marathi.",
   },
+  // fix-highs-A (24 Oct 2026, QA-01): the expert invitation goes to an address only, and its link never sets a password on an account that already exists.
+  expertInviteClaim: {
+    accountExists: "There is already an account with this email. Log in to it first, then open this link again. If you cannot log in, reset your password from the login page.",
+    needAddress: "Give the expert's email address. The invitation is sent there.",
+  },
+  // end fix-highs-A
 } as const;

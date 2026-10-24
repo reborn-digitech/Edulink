@@ -34,7 +34,8 @@ type Flow = { kind: "online"; paymentId: string; devbox: boolean; startedAt: num
 /** How often and how long the phone asks after a started payment; a test shortens both. */
 export const POLL = { intervalMs: 2000, maxMs: 60_000 };
 
-const SETTLED = new Set(["PAID", "FAILED", "REVERSED", "REFUNDED"]);
+/** UNALLOCATED: captured after the dues were paid another way, held for the office to refund (QA-03). */
+const SETTLED = new Set(["PAID", "FAILED", "REVERSED", "REFUNDED", "UNALLOCATED"]);
 
 export function FamilyFees() {
   // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
@@ -276,7 +277,7 @@ function OnlineWatch({ flow, onDone, onClose }: { flow: Extract<Flow, { kind: "o
   // The parent's refetch, once: it invalidates the family query, which re-renders this card.
   const told = useRef(false);
   useEffect(() => {
-    if (s?.status === "PAID" && !told.current) {
+    if ((s?.status === "PAID" || s?.status === "UNALLOCATED") && !told.current) {
       told.current = true;
       onDone();
     }
@@ -289,6 +290,12 @@ function OnlineWatch({ flow, onDone, onClose }: { flow: Extract<Flow, { kind: "o
             {t("fees.onlineDone", { serial: s.serial ?? "" })}
           </Text>
           {s.receiptId ? <Button variant="ghost" label={`${t("fees.receiptOpen")} · ${t("fees.phoneOpensWeb")}`} onPress={() => openWeb(receiptPath(s.receiptId!))} /> : null}
+        </Note>
+      ) : s?.status === "UNALLOCATED" ? (
+        <Note tone="warn">
+          <Text variant="sm" bold tone="warn" accessibilityLiveRegion="polite">
+            {t("fees.onlineUnallocated")}
+          </Text>
         </Note>
       ) : s && settled ? (
         <Note tone="danger">

@@ -24,7 +24,8 @@ export const feeHeadKindSchema = z.enum(["TUITION", "TRANSPORT", "EXAM", "ACTIVI
 export const feeMethodSchema = z.enum(["ONLINE", "UPI", "CASH", "CHEQUE", "BANK"]);
 export const feeCounterMethodSchema = z.enum(["CASH", "CHEQUE", "BANK", "UPI"]);
 export const feeDemandStatusSchema = z.enum(["OPEN", "PART", "PAID", "WAIVED", "CANCELLED", "CARRIED"]);
-export const feePaymentStatusSchema = z.enum(["INITIATED", "CLAIMED", "PAID", "FAILED", "REVERSED", "REFUNDED"]);
+/** UNALLOCATED: an online capture that arrived with nothing due, held for the office to refund (QA-03, 24 Oct 2026). */
+export const feePaymentStatusSchema = z.enum(["INITIATED", "CLAIMED", "PAID", "FAILED", "REVERSED", "REFUNDED", "UNALLOCATED"]);
 export const feeConcessionKindSchema = z.enum(["PERCENT", "AMOUNT"]);
 
 /* ---------------------------------------------------------------------- */
@@ -422,7 +423,8 @@ const checkoutShape = {
 };
 export const familyCheckoutSchema = z.object(checkoutShape);
 export const familyCheckoutConfirmBodySchema = z.object({ paymentId: id, gatewayPaymentId: trimmed(4, 80), signature: trimmed(16, 200) });
-export const familyCheckoutConfirmSchema = z.object({ outcome: z.enum(["settled", "already", "unknown-order", "amount-mismatch", "not-settleable"]), receiptId: z.string().nullable() });
+/** "unallocated": the capture arrived with nothing due and is held for the office to refund (QA-03). */
+export const familyCheckoutConfirmSchema = z.object({ outcome: z.enum(["settled", "already", "unknown-order", "amount-mismatch", "not-settleable", "unallocated"]), receiptId: z.string().nullable() });
 export const familyUpiStartSchema = z.object({
   paymentId: z.string(),
   link: z.string(),

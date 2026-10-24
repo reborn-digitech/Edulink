@@ -23,6 +23,7 @@ export const PAY_STATUS_KEY: Record<string, TranslationKey> = {
   FAILED: "fees.payStatusFailed",
   REVERSED: "fees.payStatusReversed",
   REFUNDED: "fees.payStatusRefunded",
+  UNALLOCATED: "fees.payStatusUnallocated",
 };
 
 export const PAY_STATUS_TONE: Record<string, "neutral" | "ok" | "warn" | "danger" | "info"> = {
@@ -32,6 +33,7 @@ export const PAY_STATUS_TONE: Record<string, "neutral" | "ok" | "warn" | "danger
   FAILED: "danger",
   REVERSED: "danger",
   REFUNDED: "info",
+  UNALLOCATED: "warn",
 };
 
 export const DEMAND_STATUS_KEY: Record<string, TranslationKey> = {

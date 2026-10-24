@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { AccessError } from "@/lib/tenancy";
 import { hashPassword, passwordProblems } from "@/lib/crypto";
 import { createSession, getSession, revokeAllAccess } from "@/lib/session";
-import { acceptExpertInvite, readExpertInvite } from "@/lib/experts";
+import { acceptExpertInvite, inviteMadeAccount, readExpertInvite } from "@/lib/experts";
 import { audit } from "@/lib/audit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { getLocale, getT } from "@/lib/i18n/server";
@@ -69,25 +69,45 @@ export async function acceptInvite(
      * attaching an expert profile to somebody else's account would be an
      * account takeover by whoever holds the link — with TWO exceptions. The
      * SIGNED-IN owner of that very account may attach the profile to
-     * themselves: "log in first, then open this link" used to be a promise
-     * with no path behind it. And an account under the invited address that
-     * NEVER PROVED IT — a sign-up waiting on a verification mail nobody
-     * opened — is reclaimed by the person who can open this one: the old
-     * password goes with every session and token, the typed one is set, and
-     * the address is marked verified. See the school invitation's note.
+     * themselves, and nothing about the account changes. And the account the
+     * operator's approval of an application made FOR THIS INVITATION (no
+     * password, the address unproved, created in the same transaction as the
+     * invitation whose mail this link came in) is finished here: the typed
+     * password is set and the address marked proved.
+     *
+     * ⚠ NO OTHER RECLAIM (QA-01, 24 Oct 2026). This used to reclaim ANY
+     * account under the invited address that had never proved it — the old
+     * password gone with every session and token, the typed one set — on the
+     * argument that "opening a link we emailed to this address proves it".
+     * The staff door broke the argument by answering the link to its caller,
+     * so a teacher anywhere could take over any unproved parent, pupil or
+     * admin. The door no longer answers the link, and this no longer trusts
+     * that it never will: an unproved holder who cannot sign in resets the
+     * password from the login page (the reset mail proves the mailbox), signs
+     * in, and opens this link again.
      */
-    const taken = await db.user.findUnique({ where: { email }, select: { id: true, emailVerifiedAt: true, disabledAt: true } });
+    const taken = await db.user.findUnique({ where: { email }, select: { id: true, emailVerifiedAt: true, disabledAt: true, passwordHash: true } });
     const session = await getSession();
-    const reclaims = taken !== null && taken.emailVerifiedAt === null && addressed === email && !taken.disabledAt;
-    if (taken && session?.user.id !== taken.id && !reclaims) {
-      return { ok: false, errorKey: "expert.emailTaken" };
+    const owner = taken !== null && session?.user.id === taken.id;
+    const reclaims =
+      taken !== null &&
+      !owner &&
+      addressed === email &&
+      taken.emailVerifiedAt === null &&
+      taken.passwordHash === null &&
+      !taken.disabledAt &&
+      (await inviteMadeAccount(state.inviteId, taken.id));
+    if (taken && !owner && !reclaims) {
+      return { ok: false, errorKey: "expertInviteClaim.accountExists" };
     }
 
     if (taken && reclaims) {
-      await db.user.update({
-        where: { id: taken.id },
+      // Conditional, so the first password set is the only one: a second submit of the form finds it set and is refused.
+      const finished = await db.user.updateMany({
+        where: { id: taken.id, passwordHash: null, emailVerifiedAt: null },
         data: { passwordHash: await hashPassword(input.password), emailVerifiedAt: new Date() },
       });
+      if (finished.count === 0) return { ok: false, errorKey: "expertInviteClaim.accountExists" };
       await revokeAllAccess(taken.id, { tokens: true });
     }
 

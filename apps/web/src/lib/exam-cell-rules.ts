@@ -101,8 +101,12 @@ export type CourseMarks = {
  * One course's outcome under the rules: the total (internal + external +
  * grace) out of the course's maximum, the grade, and whether it passed —
  * each head at its own minimum and the total at the course's. Absent from
- * the external paper is ABSENT, never a grade. A missing internal counts as
- * nought (a course with no internal part has an internal maximum of nought).
+ * the external paper is ABSENT, never a grade. A missing internal is nought
+ * here only where it cannot matter: a course with no internal part (an
+ * internal maximum of nought) or an AB. Where the scheme has an internal part
+ * the callers refuse first (QA-05, 24 Oct 2026: `runResults` and `proposeGrace`
+ * answer examCell.refuseInternalsMissing), so no result is computed on an
+ * internal taken as nought.
  */
 export function courseOutcome(m: CourseMarks, rules: ExamRules, table: readonly GradeRow[]): { totalMilli: number; maxMilli: number; grade: string; pointsTenths: number; passed: boolean; absent: boolean } {
   const maxMilli = (rules.internalMax + rules.externalMax) * 1000;

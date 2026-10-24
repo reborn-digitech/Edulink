@@ -323,18 +323,71 @@ async function familyIntent(parentUserId: string, input: { studentMembershipId: 
   return { link, schoolId, amountPaise, demandIds: demands.map((d) => d.id) };
 }
 
-/** Creates the order at the SCHOOL'S gateway and an INITIATED payment for it. */
+/**
+ * How long an INITIATED online order holds its demands against another
+ * checkout: the half hour after which the reconcile job asks the gateway
+ * about it anyway. Past it the order is taken as abandoned; were it paid
+ * after all, its money is held UNALLOCATED for a refund (holdUnallocated).
+ */
+const CHECKOUT_HOLD_MS = FEE_ORDER_RECONCILE_AFTER_MS;
+
+/**
+ * Creates the order at the SCHOOL'S gateway and an INITIATED payment for it.
+ *
+ * ⚠ ONE OPEN ORDER PER DEMAND AT A TIME (QA-03, QA campaign of 24 October
+ * 2026). Two guardians of one child each opened a checkout for the same
+ * ₹7,500 and both got an order; both paid, the second was refused "nothing
+ * is due" after the money was taken, and the payment sat INITIATED with no
+ * trace. Now the pupil's open demands are locked (in the order `openDemands`
+ * takes them, so the two never deadlock) while this looks for an INITIATED
+ * online order younger than the hold that names any of the same demands, and
+ * the new row is written under the same lock: two presses at one moment make
+ * one order. The same guardian asking again for exactly the same dues is
+ * handed the order they already have; anyone else, or another set of dues
+ * overlapping it, is told a payment is in progress.
+ */
 export async function startOnlineCheckout(ctx: ActiveContext, input: { studentMembershipId: string; demandIds: string[] }): Promise<CheckoutStart> {
   if (ctx.role !== "PARENT") throw new AccessError("fees.refuseFamily");
   const { link, schoolId, amountPaise, demandIds } = await familyIntent(ctx.user.id, input);
   const account = readFeesGatewayTransport() === "off" ? null : await forSchool(schoolId, () => gatewayAccountFor(schoolId));
   if (!account) throw new AccessError("fees.refuseNoGateway");
+  const view = (paymentId: string, orderId: string): CheckoutStart => ({
+    paymentId,
+    orderId,
+    keyId: account.keyId,
+    amountPaise,
+    currency: "INR",
+    schoolName: link.student.school.name,
+    pupilName: link.student.user.preferredName ?? link.student.user.name,
+    payerName: ctx.user.name,
+    payerEmail: ctx.user.email ?? null,
+    transport: readFeesGatewayTransport(),
+  });
   // The row first, so the order's receipt field carries our id; the order
   // id is written back once the gateway answers. A failed call leaves a
   // FAILED row that says why, never an order nobody can find.
-  const payment = await forSchool(schoolId, () =>
-    db.feePayment.create({ data: { schoolId, studentMembershipId: input.studentMembershipId, amountPaise, method: "ONLINE", status: "INITIATED", payerUserId: ctx.user.id, intentJson: writeJson(demandIds) }, select: { id: true } }),
+  const claim = await forSchool(schoolId, () =>
+    db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      await tx.$queryRaw`SELECT "id" FROM "FeeDemand" WHERE "schoolId" = ${schoolId} AND "studentMembershipId" = ${input.studentMembershipId} AND "status" IN ('OPEN', 'PART') ORDER BY "id" FOR UPDATE`;
+      const open = await tx.feePayment.findMany({
+        where: { schoolId, studentMembershipId: input.studentMembershipId, method: "ONLINE", status: "INITIATED", createdAt: { gte: new Date(Date.now() - CHECKOUT_HOLD_MS) } },
+        select: { id: true, payerUserId: true, amountPaise: true, intentJson: true, gatewayOrderId: true },
+      });
+      const wanted = new Set(demandIds);
+      const holding = open.filter((p) => readJson<string[]>(p.intentJson, []).some((d) => wanted.has(d)));
+      const same = (p: (typeof holding)[number]) => {
+        const named = readJson<string[]>(p.intentJson, []);
+        return p.payerUserId === ctx.user.id && p.gatewayOrderId !== null && p.amountPaise === amountPaise && named.length === wanted.size && named.every((d) => wanted.has(d));
+      };
+      if (holding.length === 1 && same(holding[0]!)) return { kind: "reuse" as const, id: holding[0]!.id, orderId: holding[0]!.gatewayOrderId! };
+      if (holding.length > 0) throw new AccessError("fees.refuseCheckoutInProgress");
+      const created = await tx.feePayment.create({ data: { schoolId, studentMembershipId: input.studentMembershipId, amountPaise, method: "ONLINE", status: "INITIATED", payerUserId: ctx.user.id, intentJson: writeJson(demandIds) }, select: { id: true } });
+      return { kind: "created" as const, id: created.id };
+    }),
   );
+  if (claim.kind === "reuse") return view(claim.id, claim.orderId);
+  const payment = { id: claim.id };
   let orderId: string;
   try {
     const order = await createOrder(account, { amountPaise, receipt: payment.id, notes: { edulink_payment: payment.id, school: link.student.school.name.slice(0, 60) } });
@@ -346,21 +399,63 @@ export async function startOnlineCheckout(ctx: ActiveContext, input: { studentMe
   }
   await forSchool(schoolId, () => db.feePayment.update({ where: { id: payment.id }, data: { gatewayOrderId: orderId } }));
   await audit({ schoolId, actorUserId: ctx.user.id, action: "fees.checkoutStart", targetType: "FeePayment", targetId: payment.id, meta: { amountPaise, orderId } });
-  return {
-    paymentId: payment.id,
-    orderId,
-    keyId: account.keyId,
-    amountPaise,
-    currency: "INR",
-    schoolName: link.student.school.name,
-    pupilName: link.student.user.preferredName ?? link.student.user.name,
-    payerName: ctx.user.name,
-    payerEmail: ctx.user.email ?? null,
-    transport: readFeesGatewayTransport(),
-  };
+  return view(payment.id, orderId);
 }
 
-export type SettleOutcome = "settled" | "already" | "unknown-order" | "amount-mismatch" | "not-settleable";
+export type SettleOutcome = "settled" | "already" | "unknown-order" | "amount-mismatch" | "not-settleable" | "unallocated";
+
+/**
+ * ⚠ MONEY THAT ARRIVES WITH NOTHING DUE IS RECORDED, NEVER LOST (QA-03).
+ *
+ * A capture the gateway vouches for is real money in the school's account,
+ * whatever the ledger says is owed by the time it lands: an order left open
+ * past the hold and paid after the office took cash for the same term, a
+ * second guardian's older order. `allocate` refuses to keep money as credit,
+ * and the capture used to end there, thrown as "Nothing is due to pay" to the
+ * person who had just paid, the payment left INITIATED with no gateway id, no
+ * receipt and no audit row. Now the payment is marked UNALLOCATED with the
+ * gateway's payment id and the day it arrived: no allocation and no receipt
+ * (nothing was settled), audited, the office told to refund it and the family
+ * told it will be. The office refunds it through `requestRefund`, which takes
+ * an UNALLOCATED payment and leaves it UNALLOCATED (its refund rows say the
+ * money went back), so it never counts among the PAID and REFUNDED payments
+ * the collection figures and the register add up. Money that covers only part
+ * of what it was for (less was due by then) is held whole the same way.
+ * Once only: a second delivery of the same capture, or the checkout's confirm
+ * racing the webhook, finds it moved and is answered "already".
+ */
+async function holdUnallocated(schoolId: string, p: { id: string; studentMembershipId: string; amountPaise: number }, input: { gatewayPaymentId: string; gatewayMethod?: string | null }): Promise<{ outcome: SettleOutcome; paymentId: string }> {
+  const held = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    await tx.$queryRaw`SELECT "id" FROM "FeePayment" WHERE "id" = ${p.id} FOR UPDATE`;
+    const moved = await tx.feePayment.updateMany({
+      where: { id: p.id, schoolId, status: { in: ["INITIATED", "FAILED"] } },
+      data: { status: "UNALLOCATED", paidAt: new Date(), gatewayPaymentId: input.gatewayPaymentId, gatewayMethod: input.gatewayMethod ?? null, reference: input.gatewayPaymentId, failedReason: null },
+    });
+    return moved.count === 1;
+  });
+  if (!held) return { outcome: "already", paymentId: p.id };
+  await audit({ schoolId, action: "fees.onlineUnallocated", targetType: "FeePayment", targetId: p.id, meta: { amountPaise: p.amountPaise, gatewayPaymentId: input.gatewayPaymentId } });
+  const [office, pupil] = await Promise.all([
+    db.membership.findMany({ where: { schoolId, role: { in: ["ADMIN", "ACCOUNTS"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } }),
+    db.membership.findUnique({ where: { id: p.studentMembershipId }, select: { user: { select: { name: true, preferredName: true } } } }),
+  ]);
+  const name = pupil ? (pupil.user.preferredName ?? pupil.user.name) : "";
+  await Promise.all(
+    office.map((o) => notify({ userId: o.userId, schoolId, kind: "FEES", titleKey: "notifTitle.feeUnallocatedOffice", bodyKey: "notifBody.feeUnallocatedOffice", bodyVars: { amount: rupees(p.amountPaise), name }, url: `/admin/fees/pupils/${p.studentMembershipId}`, urgent: true, meta: { paymentId: p.id } }).catch(() => undefined)),
+  );
+  await notifyGuardians(p.studentMembershipId, (childName) => ({
+    schoolId,
+    kind: "FEES",
+    titleKey: "notifTitle.feeUnallocated",
+    titleVars: { name: childName },
+    bodyKey: "notifBody.feeUnallocated",
+    bodyVars: { amount: rupees(p.amountPaise) },
+    url: "/parent/fees",
+    meta: { paymentId: p.id },
+  }), "MONEY").catch(() => undefined);
+  return { outcome: "unallocated", paymentId: p.id };
+}
 
 /**
  * The one door every online settlement comes through — the webhook, the
@@ -374,7 +469,7 @@ export async function settleOnlinePayment(schoolId: string, input: { orderId: st
   return forSchool(schoolId, async () => {
     const p = await db.feePayment.findFirst({ where: { schoolId, gatewayOrderId: input.orderId }, select: { id: true, amountPaise: true, status: true, studentMembershipId: true } });
     if (!p) return { outcome: "unknown-order", paymentId: null };
-    if (p.status === "PAID" || p.status === "REFUNDED") return { outcome: "already", paymentId: p.id };
+    if (p.status === "PAID" || p.status === "REFUNDED" || p.status === "UNALLOCATED") return { outcome: "already", paymentId: p.id };
     // FAILED stays settleable: a signed capture after a failed attempt on the
     // same order is the gateway saying the retry went through. See settle().
     if (p.status !== "INITIATED" && p.status !== "FAILED") return { outcome: "not-settleable", paymentId: p.id };
@@ -382,7 +477,16 @@ export async function settleOnlinePayment(schoolId: string, input: { orderId: st
       await audit({ schoolId, action: "fees.amountMismatch", targetType: "FeePayment", targetId: p.id, meta: { expected: p.amountPaise, got: input.amountPaise, gatewayPaymentId: input.gatewayPaymentId } });
       return { outcome: "amount-mismatch", paymentId: p.id };
     }
-    const settled = await db.$tenantTransaction(async (raw) => settle(raw as Tx, schoolId, p.id, { gatewayPaymentId: input.gatewayPaymentId, gatewayMethod: input.gatewayMethod ?? null, reference: input.gatewayPaymentId }));
+    let settled: Awaited<ReturnType<typeof settle>>;
+    try {
+      settled = await db.$tenantTransaction(async (raw) => settle(raw as Tx, schoolId, p.id, { gatewayPaymentId: input.gatewayPaymentId, gatewayMethod: input.gatewayMethod ?? null, reference: input.gatewayPaymentId }));
+    } catch (error) {
+      // Captured, and nothing (or less than all of it) is owed any more: held for a refund, not thrown at the payer (QA-03).
+      if (error instanceof AccessError && (error.key === "fees.refuseNothingDue" || error.key === "fees.refuseOverpayment")) return holdUnallocated(schoolId, p, input);
+      // The same capture held a moment ago by the other door (the confirm racing the webhook).
+      if (error instanceof AccessError && error.key === "fees.refuseNotSettleable" && (await db.feePayment.findUnique({ where: { id: p.id }, select: { status: true } }))?.status === "UNALLOCATED") return { outcome: "already", paymentId: p.id };
+      throw error;
+    }
     if (settled.already) return { outcome: "already", paymentId: p.id };
     await audit({ schoolId, action: "fees.onlineSettled", targetType: "FeePayment", targetId: p.id, meta: { amountPaise: input.amountPaise, serial: settled.serial, gatewayPaymentId: input.gatewayPaymentId } });
     await tellFamilyReceived(schoolId, p.studentMembershipId, p.id, p.amountPaise, settled.serial, settled.receiptId);
@@ -640,7 +744,8 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
   if (!Number.isInteger(input.amountPaise) || input.amountPaise < 100) throw new AccessError("fees.refuseAmount");
   const p = await db.feePayment.findFirst({ where: { id: input.paymentId, schoolId: caller.schoolId }, include: { refunds: { where: { status: { not: "FAILED" } }, select: { amountPaise: true } }, allocations: { select: { demandId: true } } } });
   if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
-  if (p.status !== "PAID" && p.status !== "REFUNDED") throw new AccessError("fees.refuseNotPaid");
+  // UNALLOCATED: captured with nothing due (QA-03), refunded from here like any other; it holds no allocation to reopen.
+  if (p.status !== "PAID" && p.status !== "REFUNDED" && p.status !== "UNALLOCATED") throw new AccessError("fees.refuseNotPaid");
   if (p.refunds.reduce((a, r) => a + r.amountPaise, 0) + input.amountPaise > p.amountPaise) throw new AccessError("fees.refuseRefundTooMuch");
   const account = p.method === "ONLINE" ? await gatewayAccountFor(caller.schoolId) : null;
   if (p.method === "ONLINE" && (!account || !p.gatewayPaymentId)) throw new AccessError("fees.refuseNoGateway");
@@ -688,7 +793,9 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
     }
     const created = await tx.feeRefund.create({ data: { schoolId: caller.schoolId, paymentId: p.id, amountPaise: input.amountPaise, reason: why, status, gatewayRefundId, cutsJson: JSON.stringify(cuts), requestedByUserId: caller.userId, settledAt: status === "DONE" ? new Date() : null }, select: { id: true } });
     const total = refundedSoFar + input.amountPaise;
-    if (total >= p.amountPaise) await tx.feePayment.update({ where: { id: p.id }, data: { status: "REFUNDED" } });
+    // An UNALLOCATED payment keeps its status: it settled nothing and has no receipt, so it never joins the collected
+    // PAID/REFUNDED figures; its refund rows say it went back.
+    if (total >= p.amountPaise && p.status !== "UNALLOCATED") await tx.feePayment.update({ where: { id: p.id }, data: { status: "REFUNDED" } });
     await recomputeDemands(
       tx,
       allocations.map((a) => a.demandId),
@@ -886,7 +993,7 @@ export async function familyFees(ctx: ActiveContext, childId?: string): Promise<
   const today = todayKey(school.timezone);
   const [demands, payments] = await Promise.all([
     year ? db.feeDemand.findMany({ where: { schoolId, studentMembershipId: link.studentMembershipId, academicYearId: year.id, status: { in: ["OPEN", "PART", "PAID"] } }, orderBy: [{ dueDate: "asc" }] }) : [],
-    db.feePayment.findMany({ where: { schoolId, studentMembershipId: link.studentMembershipId, status: { in: ["INITIATED", "CLAIMED", "PAID", "REVERSED", "REFUNDED", "FAILED"] } }, orderBy: { createdAt: "desc" }, take: 40, include: { receipt: { select: { id: true, serial: true } } } }),
+    db.feePayment.findMany({ where: { schoolId, studentMembershipId: link.studentMembershipId, status: { in: ["INITIATED", "CLAIMED", "PAID", "REVERSED", "REFUNDED", "FAILED", "UNALLOCATED"] } }, orderBy: { createdAt: "desc" }, take: 40, include: { receipt: { select: { id: true, serial: true } } } }),
   ]);
   const rows = demands.map((d) => toDemandRow(d, today));
   return {

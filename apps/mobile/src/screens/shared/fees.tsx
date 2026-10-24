@@ -14,6 +14,8 @@ const PAY_STATUS: Record<string, TranslationKey> = {
   FAILED: "fees.payStatusFailed",
   REVERSED: "fees.payStatusReversed",
   REFUNDED: "fees.payStatusRefunded",
+  // Captured with nothing due, held for the office to refund (QA-03).
+  UNALLOCATED: "fees.payStatusUnallocated",
 };
 const DEMAND_STATUS: Record<string, TranslationKey> = {
   OPEN: "fees.statusOpen",
@@ -25,7 +27,7 @@ const DEMAND_STATUS: Record<string, TranslationKey> = {
 };
 
 export type Tone = "muted" | "ok" | "warn" | "danger" | "accent";
-export const PAY_TONE: Record<string, Tone> = { INITIATED: "muted", CLAIMED: "warn", PAID: "ok", FAILED: "danger", REVERSED: "danger", REFUNDED: "accent" };
+export const PAY_TONE: Record<string, Tone> = { INITIATED: "muted", CLAIMED: "warn", PAID: "ok", FAILED: "danger", REVERSED: "danger", REFUNDED: "accent", UNALLOCATED: "warn" };
 
 export function methodLabel(t: Translate, method: string): string {
   const key = METHOD[method];

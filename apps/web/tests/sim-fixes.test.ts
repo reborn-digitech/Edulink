@@ -111,7 +111,10 @@ describe("⚠ an expert invitation that finishes what it starts", () => {
 
   it("accepts atomically: user, profile and consumed invite in one call — and only once", async () => {
     const invited = await inviteExpert(admin, { email: "asha@simfix.test", name: `${TAG} Second` });
-    const token = (invited as { token: string }).token;
+    // QA-01 (24 Oct 2026): the token is never returned to the inviter; the mailbox holds it.
+    expect(invited).not.toHaveProperty("token");
+    const mailed = await db.outboundEmail.findFirstOrThrow({ where: { to: "asha@simfix.test" }, orderBy: { createdAt: "desc" } });
+    const token = /\/expert\/invite\/([A-Za-z0-9_-]+)/.exec(mailed.text)![1]!;
 
     const accepted = await acceptExpertInvite(token, {
       create: { email: "asha@simfix.test", name: `${TAG} Second`, passwordHash: "x", prefs: "{}" },

@@ -932,6 +932,9 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "operator.quizTopic.rename": "audit.operatorQuizTopicRename",
   "operator.quizTopic.merge": "audit.operatorQuizTopicMerge",
   "operator.quizTopic.renumber": "audit.operatorQuizTopicRenumber",
+  // fix-highs-B (24 Oct 2026, QA-03): an online capture that arrived with nothing due, held for a refund (src/lib/fees-payments.ts).
+  "fees.onlineUnallocated": "audit.feesOnlineUnallocated",
+  // end fix-highs-B
 };
 
 export function actionKey(action: string): TranslationKey | null {

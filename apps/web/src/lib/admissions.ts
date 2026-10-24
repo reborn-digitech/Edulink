@@ -873,6 +873,12 @@ export type Admitted = {
   noteKey?: "admissions.guardianNotLinked";
 };
 
+/** An admission already made, answered as it stands: the second press of Admit, and a replay. */
+async function asAdmitted(membershipId: string): Promise<Admitted> {
+  const m = await db.membership.findUniqueOrThrow({ where: { id: membershipId }, select: { id: true, studentCode: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 }, feePlans: { select: { id: true }, take: 1 }, guardianships: { where: { status: "ACTIVE" }, select: { id: true }, take: 1 } } });
+  return { studentMembershipId: m.id, studentCode: m.studentCode ?? "", className: m.enrollments[0]?.class.name ?? null, feePlan: m.feePlans.length > 0, guardianLinked: m.guardianships.length > 0, firstSignInCode: null };
+}
+
 /**
  * The seat. From an ACCEPTED application: the pupil's account, membership,
  * enrolment, guardianship for the applicant, pupil record and fee plan in
@@ -882,10 +888,7 @@ export type Admitted = {
  */
 export async function admit(ctx: ActiveContext, applicationId: string, input: { classId?: string | null; feeStructureId?: string | null; admissionNumber?: string; admittedOn?: string }): Promise<Admitted> {
   const { caller, a } = await officeApplication(ctx, applicationId);
-  if (a.status === "ADMITTED" && a.admittedMembershipId) {
-    const m = await db.membership.findUniqueOrThrow({ where: { id: a.admittedMembershipId }, select: { id: true, studentCode: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 }, feePlans: { select: { id: true }, take: 1 }, guardianships: { where: { status: "ACTIVE" }, select: { id: true }, take: 1 } } });
-    return { studentMembershipId: m.id, studentCode: m.studentCode ?? "", className: m.enrollments[0]?.class.name ?? null, feePlan: m.feePlans.length > 0, guardianLinked: m.guardianships.length > 0, firstSignInCode: null };
-  }
+  if (a.status === "ADMITTED" && a.admittedMembershipId) return asAdmitted(a.admittedMembershipId);
   if (a.status !== "ACCEPTED") throw new AccessError("admissions.refuseNotAccepted");
   const seats = parseGrades(a.cycle.gradesJson).find((g) => g.grade === a.gradeApplied)?.seats ?? 0;
   const taken = await db.application.count({ where: { cycleId: a.cycle.id, gradeApplied: a.gradeApplied, status: "ADMITTED" } });
@@ -949,6 +952,19 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   const guardianLinked = Boolean(applicantUser) && (!existingUserId || priorGuardian !== null);
   const minted = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    // ⚠ LOCK, THEN READ AGAIN (QA-04, QA campaign of 24 October 2026). The office and the head pressing Admit on one
+    // application at the same moment each passed the status check and the seat count above, read before this
+    // transaction, and each made a pupil: two accounts, two memberships, two enrolments, the guardian linked to both, a
+    // seat count of one of one. Now the cycle is locked first (every admit of the cycle queues here, so two different
+    // applications cannot both take a grade's last seat) and then the application, and both are read again under the
+    // lock: the second press finds the application ADMITTED and is answered with that admission as it stands, before
+    // anything is created.
+    await tx.$queryRaw`SELECT "id" FROM "AdmissionCycle" WHERE "id" = ${a.cycle.id} FOR UPDATE`;
+    await tx.$queryRaw`SELECT "id" FROM "Application" WHERE "id" = ${applicationId} FOR UPDATE`;
+    const now = await tx.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true, admittedMembershipId: true } });
+    if (now.status === "ADMITTED" && now.admittedMembershipId) return { kind: "already" as const, membershipId: now.admittedMembershipId, feePlan: false };
+    if (now.status !== "ACCEPTED") throw new AccessError("admissions.refuseNotAccepted");
+    if ((await tx.application.count({ where: { cycleId: a.cycle.id, gradeApplied: a.gradeApplied, status: "ADMITTED" } })) >= seats) throw new AccessError("admissions.refuseSeatsFull", "FORBIDDEN", { grade: a.gradeApplied, seats });
     const user = existingUserId
       ? { id: existingUserId }
       : await tx.user.create({ data: { name: a.childName, preferredName: null, email: `${handle}@${HANDLE_DOMAIN}`, passwordHash: null, birthdate, isMinor: age === null ? true : age < 18, penNumber: a.penNumber, prefs: writeJson({ theme: "system", locale }) }, select: { id: true } });
@@ -984,8 +1000,9 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
       feePlan = true;
     }
     await tx.application.update({ where: { id: applicationId }, data: { status: "ADMITTED", admittedMembershipId: membership.id, admittedAt: new Date(), feeStructureId: structure?.id ?? null } });
-    return { membershipId: membership.id, feePlan };
+    return { kind: "minted" as const, membershipId: membership.id, feePlan };
   });
+  if (minted.kind === "already") return asAdmitted(minted.membershipId);
 
   // The existing guardians of a linked account — at whichever school they
   // guard the child — hear that a school has admitted the child on the PEN.
