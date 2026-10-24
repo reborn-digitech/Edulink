@@ -16,7 +16,8 @@ import { PrismaClient } from "@prisma/client";
 import { hashPassword, hashToken } from "@/lib/crypto";
 import { __resetCookies, __setCookie, __setHeaders, cookies } from "../tests/stubs/next-headers";
 import { base32Decode, base32Encode, generateRecoveryCodes, hashRecoveryCode, hotp, matchRecoveryCode, otpauthUri, stepOf, totpCode, verifyTotp } from "@/lib/totp";
-import { TWO_FACTOR_COOKIE } from "@/lib/two-factor";
+import { TOTP_PER_ACCOUNT, TWO_FACTOR_COOKIE, totpAccountBucket } from "@/lib/two-factor";
+import { requestPasswordReset, resetPassword } from "@/lib/passwords";
 import { SESSION_COOKIE } from "@/lib/constants";
 import { POST as loginPost } from "@/app/api/v1/auth/login/route";
 import { POST as totpPost } from "@/app/api/v1/auth/totp/route";
@@ -103,6 +104,8 @@ let adminId = "";
 let teacherId = "";
 let adminEmail = "";
 let teacherEmail = "";
+// QA-23: an office account with no password (a sign-in link or SSO only).
+let linkOnlyId = "";
 
 const json = (path: string, body: unknown, token?: string) =>
   new Request(`http://localhost${path}`, {
@@ -117,9 +120,9 @@ function asBearer(token: string | null) {
 }
 
 /** A bearer session for `userId` without going through the sign-in doors — the account endpoints need one. */
-async function bearerFor(userId: string): Promise<string> {
+async function bearerFor(userId: string, signedInMinutesAgo = 0): Promise<string> {
   const token = `zz-totp-${userId}-${Math.random().toString(36).slice(2)}-${"x".repeat(24)}`;
-  await db.session.create({ data: { userId, tokenHash: hashToken(token), activeSchoolId: schoolId, activeRole: userId === adminId ? "ADMIN" : "TEACHER", expiresAt: new Date(Date.now() + 3_600_000) } });
+  await db.session.create({ data: { userId, tokenHash: hashToken(token), activeSchoolId: schoolId, activeRole: userId === teacherId ? "TEACHER" : "ADMIN", createdAt: new Date(Date.now() - signedInMinutesAgo * 60_000), expiresAt: new Date(Date.now() + 3_600_000) } });
   return token;
 }
 
@@ -144,16 +147,20 @@ beforeAll(async () => {
   teacherId = (await db.user.create({ data: { name: "ZZ TOTP Teacher", email: teacherEmail, passwordHash: hash, emailVerifiedAt: new Date() }, select: { id: true } })).id;
   await db.membership.create({ data: { userId: adminId, schoolId, role: "ADMIN", status: "ACTIVE" } });
   await db.membership.create({ data: { userId: teacherId, schoolId, role: "TEACHER", status: "ACTIVE" } });
+  linkOnlyId = (await db.user.create({ data: { name: "ZZ TOTP Link-only Admin", email: `zz-totp-linkonly-${STAMP}@test.invalid`, emailVerifiedAt: new Date() }, select: { id: true } })).id;
+  await db.membership.create({ data: { userId: linkOnlyId, schoolId, role: "ADMIN", status: "ACTIVE" } });
 });
 
 afterAll(async () => {
   __resetCookies();
   __setHeaders({});
-  await db.rateLimit.deleteMany({ where: { OR: [{ bucket: { in: [adminEmail, teacherEmail].map((e) => `login:${e}`) } }, { bucket: { startsWith: `totp-enrol:${adminId}` } }, { bucket: { startsWith: `totp-off:${adminId}` } }] } });
-  await db.auditLog.deleteMany({ where: { actorUserId: { in: [adminId, teacherId] } } });
-  await db.session.deleteMany({ where: { userId: { in: [adminId, teacherId] } } });
+  await db.rateLimit.deleteMany({ where: { OR: [{ bucket: { in: [adminEmail, teacherEmail].map((e) => `login:${e}`) } }, { bucket: { startsWith: `totp-enrol:${adminId}` } }, { bucket: { startsWith: `totp-off:${adminId}` } }, { bucket: totpAccountBucket(adminId) }, { bucket: { contains: `zz-totp-admin-${STAMP}` } }] } });
+  await db.auditLog.deleteMany({ where: { actorUserId: { in: [adminId, teacherId, linkOnlyId] } } });
+  await db.session.deleteMany({ where: { userId: { in: [adminId, teacherId, linkOnlyId] } } });
+  await db.authToken.deleteMany({ where: { userId: { in: [adminId, teacherId, linkOnlyId] } } });
+  await db.outboundEmail.deleteMany({ where: { to: { in: [adminEmail, teacherEmail] } } });
   await db.school.deleteMany({ where: { id: schoolId } });
-  await db.user.deleteMany({ where: { id: { in: [adminId, teacherId] } } });
+  await db.user.deleteMany({ where: { id: { in: [adminId, teacherId, linkOnlyId] } } });
   await db.$disconnect();
 });
 
@@ -170,15 +177,44 @@ describe("enrolment", () => {
 
     asBearer(await bearerFor(teacherId));
     expect(await (await statusGet()).json()).toMatchObject({ eligible: false, enabled: false });
-    const refused = await startPost();
+    const refused = await startPost(json("/api/v1/account/totp/start", { password: PASSWORD }));
     expect(refused.status).toBe(403);
     expect(await refused.json()).toMatchObject({ code: "FORBIDDEN" });
     expect((await db.user.findUniqueOrThrow({ where: { id: teacherId }, select: { totpPendingEnc: true } })).totpPendingEnc).toBeNull();
   });
 
-  it("start hands the secret and the URI over once and seals it pending; a wrong code is refused; the right one turns it on with eight recovery codes", async () => {
+  // QA-23 (24 Oct 2026): a session alone used to start it, so a stolen one could put its own authenticator on the account.
+  it("⚠ a session alone does not start it: no password is a 422 on the field, a wrong one a 422 audited, and nothing is pending", async () => {
     asBearer(await bearerFor(adminId));
-    const started = await startPost();
+    const bare = await startPost(new Request("http://localhost/api/v1/account/totp/start", { method: "POST" }));
+    expect(bare.status).toBe(422);
+    expect(await bare.json()).toMatchObject({ code: "BAD_REQUEST", issues: { password: "Type your password to turn on two-step sign-in." } });
+    const wrong = await startPost(json("/api/v1/account/totp/start", { password: "not-the-password-at-all" }));
+    expect(wrong.status).toBe(422);
+    expect(await wrong.json()).toMatchObject({ issues: { password: "That password is not right." } });
+    expect(await db.auditLog.count({ where: { actorUserId: adminId, action: "auth.totp.enrolRefused" } })).toBe(1);
+    expect((await db.user.findUniqueOrThrow({ where: { id: adminId }, select: { totpPendingEnc: true } })).totpPendingEnc).toBeNull();
+    expect(await (await statusGet()).json()).toMatchObject({ hasPassword: true });
+  });
+
+  it("⚠ an account with no password needs a sign-in made in the last ten minutes", async () => {
+    asBearer(await bearerFor(linkOnlyId, 30));
+    expect(await (await statusGet()).json()).toMatchObject({ eligible: true, hasPassword: false });
+    const stale = await startPost(json("/api/v1/account/totp/start", {}));
+    expect(stale.status).toBe(403);
+    expect(await stale.json()).toMatchObject({ error: "Sign out and sign in again, then turn on two-step sign-in within ten minutes." });
+    asBearer(await bearerFor(linkOnlyId, 2));
+    const fresh = await startPost(json("/api/v1/account/totp/start", {}));
+    expect(fresh.status).toBe(200);
+    await db.user.update({ where: { id: linkOnlyId }, data: { totpPendingEnc: null } });
+  });
+
+  it("start hands the secret and the URI over once and seals it pending; a wrong code is refused; the right one turns it on with eight recovery codes and signs every other session out", async () => {
+    // Another device of the admin's, signed in before two-step sign-in was on (QA-23).
+    const otherDevice = await bearerFor(adminId);
+    const doing = await bearerFor(adminId);
+    asBearer(doing);
+    const started = await startPost(json("/api/v1/account/totp/start", { password: PASSWORD }));
     expect(started.status).toBe(200);
     const body = (await started.json()) as { secret: string; uri: string; account: string };
     secret = body.secret;
@@ -201,8 +237,12 @@ describe("enrolment", () => {
 
     const right = await confirmPost(json("/api/v1/account/totp/confirm", { code: totpCode(secret) }));
     expect(right.status).toBe(200);
-    recoveryCodes = ((await right.json()) as { recoveryCodes: string[] }).recoveryCodes;
+    const confirmed = (await right.json()) as { recoveryCodes: string[]; signedOut: number };
+    recoveryCodes = confirmed.recoveryCodes;
     expect(recoveryCodes).toHaveLength(8);
+    expect(confirmed.signedOut).toBeGreaterThanOrEqual(1);
+    expect((await db.session.findUniqueOrThrow({ where: { tokenHash: hashToken(otherDevice) }, select: { revokedAt: true } })).revokedAt, "the other device is signed out").not.toBeNull();
+    expect((await db.session.findUniqueOrThrow({ where: { tokenHash: hashToken(doing) }, select: { revokedAt: true } })).revokedAt, "the session turning it on stays").toBeNull();
     const after = await db.user.findUniqueOrThrow({ where: { id: adminId }, select: { totpPendingEnc: true, totpSecretEnc: true, totpEnabledAt: true, totpRecoveryHashes: true } });
     expect(after.totpPendingEnc).toBeNull();
     expect(after.totpSecretEnc).toMatch(/^v2\./);
@@ -212,7 +252,7 @@ describe("enrolment", () => {
     expect(await (await statusGet()).json()).toMatchObject({ enabled: true, recoveryLeft: 8 });
     expect(await db.auditLog.count({ where: { actorUserId: adminId, action: "auth.totp.enrolled" } })).toBe(1);
 
-    const again = await startPost();
+    const again = await startPost(json("/api/v1/account/totp/start", { password: PASSWORD }));
     expect(again.status).toBe(409);
   });
 });
@@ -299,6 +339,8 @@ describe("the second step of a sign-in", () => {
     expect(right.status).toBe(401);
     expect(await db.session.count({ where: { userId: adminId, userAgent: "Test phone" } })).toBe(1);
     expect(await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "totp:" } } })).toBeTruthy();
+    // The account's own count (QA-22) is the next block's to fill.
+    await db.rateLimit.deleteMany({ where: { bucket: totpAccountBucket(adminId) } });
   });
 
   it("a garbage challenge and an expired one are refused alike", async () => {
@@ -337,6 +379,56 @@ describe("the second step of a sign-in", () => {
     const stale = await completeTwoFactor({ code: codeAt(secret, 1) });
     expect(stale).toMatchObject({ ok: false, redirectTo: "/login?step=expired" });
     __resetCookies();
+  });
+});
+
+// QA-22 (24 Oct 2026): the limits were per challenge and per address, and a fresh challenge comes with every right
+// password, so somebody holding the password and rotating addresses had about fifty guesses a quarter-hour.
+describe("the account's own ceiling on wrong codes", () => {
+  async function challengeFor(): Promise<string> {
+    await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "login:zz-totp" } } });
+    const res = await loginPost(json("/api/v1/auth/login", { identifier: adminEmail, password: PASSWORD }));
+    return ((await res.json()) as { challenge: string }).challenge;
+  }
+  const guess = (challenge: string, code: string, address: string) =>
+    totpPost(new Request("http://localhost/api/v1/auth/totp", { method: "POST", headers: { "content-type": "application/json", "x-forwarded-for": address }, body: JSON.stringify({ challenge, code }) }));
+
+  it("⚠ the tenth wrong code in an hour, across challenges and addresses, locks the second step: audited, every open challenge spent, the holder told", async () => {
+    await db.rateLimit.deleteMany({ where: { bucket: totpAccountBucket(adminId) } });
+    __resetCookies();
+    __setHeaders({});
+    const statuses: number[] = [];
+    let challenge = "";
+    for (let i = 1; i <= TOTP_PER_ACCOUNT.limit; i++) {
+      if ((i - 1) % 5 === 0) challenge = await challengeFor();
+      statuses.push((await guess(challenge, "111111", `203.0.113.${i}`)).status);
+    }
+    expect(statuses.slice(0, 9).every((s) => s === 401)).toBe(true);
+    expect(statuses[9], "the tenth wrong code").toBe(429);
+    expect(await db.auditLog.count({ where: { actorUserId: adminId, action: "auth.totp.locked" } })).toBe(1);
+    expect(await db.twoFactorChallenge.count({ where: { userId: adminId, usedAt: null } })).toBe(0);
+    const notice = await db.outboundEmail.findFirstOrThrow({ where: { to: adminEmail, purpose: "ACCOUNT_SECURITY" }, select: { subject: true, text: true } });
+    expect(notice.subject).toBe("Too many wrong sign-in codes on your account");
+    expect(notice.text).toContain("10 wrong codes");
+
+    // Locked: even the right code, on a fresh challenge from yet another address, is not tried.
+    await db.user.update({ where: { id: adminId }, data: { totpLastStep: stepOf(Date.now()) - 2 } });
+    const locked = await guess(await challengeFor(), codeAt(secret, 0), "198.51.100.7");
+    expect(locked.status).toBe(429);
+    expect(Number(locked.headers.get("retry-after"))).toBeGreaterThan(60);
+    expect(((await locked.json()) as { code: string }).code).toBe("RATE_LIMITED");
+    expect(await db.auditLog.count({ where: { actorUserId: adminId, action: "auth.totp.locked" } }), "locked once, not again").toBe(1);
+  });
+
+  it("⚠ a password reset lifts it: the owner proved the mailbox, and the password the guesser held is gone", async () => {
+    await requestPasswordReset(adminEmail);
+    const sent = await db.outboundEmail.findFirstOrThrow({ where: { to: adminEmail, purpose: "PASSWORD_RESET" }, orderBy: { createdAt: "desc" }, select: { text: true } });
+    const code = sent.text.split("\n")[0]!.trim();
+    expect(code).toMatch(/^\d{6}$/);
+    expect(await resetPassword(adminEmail, code, `${PASSWORD}-New`)).toMatchObject({ ok: true });
+    expect(await db.rateLimit.count({ where: { bucket: totpAccountBucket(adminId) } })).toBe(0);
+    // Back to the suite's password, for the block below.
+    await db.user.update({ where: { id: adminId }, data: { passwordHash: await hashPassword(PASSWORD) } });
   });
 });
 

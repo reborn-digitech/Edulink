@@ -16,6 +16,7 @@ import { consolesFor } from "@/screens/shared/console-home";
 import { ViduraHost, viduraAccess } from "@/screens/shared/vidura";
 import { WEB_HOME } from "@/lib/links";
 import { startOutboxRunner } from "@/lib/outbox-runner";
+import { useTabBarLandmark } from "@/lib/web-landmarks";
 
 /**
  * The shell: a bottom tab bar per role mirroring the web NAV's primaries, and
@@ -44,6 +45,8 @@ export default function AppLayout() {
   useEffect(() => {
     if (signedIn) startOutboxRunner();
   }, [signedIn]);
+  // The bar is the app's navigation landmark on the web target (QA-67).
+  useTabBarLandmark(t("shell.mainNav"));
   // Five labels share the width. At 320 px a tab is 64 px and "Assignments"
   // ended in an ellipsis (measured by e2e/ux.spec.ts), so the label steps
   // down on narrow screens — to 10 below 340 px, which is the size iOS's own

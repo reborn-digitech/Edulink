@@ -15,8 +15,44 @@ import { ROLE_HOME, type Role } from "@/lib/constants";
 import { consumeByCaller, retryHintKey, INVITE_ACCEPTS } from "@/lib/rate-limit";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { syncGradeLevel } from "@/lib/grade-level";
+import { cookies } from "next/headers";
+import { twoFactorChallengeFor, twoFactorCookieOptions, TWO_FACTOR_COOKIE } from "@/lib/two-factor";
 
-export type AcceptState = { ok: boolean; errors: FieldErrors; redirectTo?: string };
+/** `twoFactor`: the invitation is accepted and the authenticator's code is asked next, at redirectTo (QA-21). */
+export type AcceptState = { ok: boolean; errors: FieldErrors; redirectTo?: string; twoFactor?: boolean };
+
+/**
+ * A reclaimed account keeps nothing of whoever set it up before the mailbox
+ * was proved — their second step included (QA-21, 24 Oct 2026): it would
+ * otherwise stand between the address's real owner and the account, asking
+ * for a code from somebody else's phone.
+ */
+const CLEAR_SECOND_STEP = { totpSecretEnc: null, totpPendingEnc: null, totpEnabledAt: null, totpRecoveryHashes: [], totpLastStep: null };
+
+/**
+ * THE SECOND STEP STANDS HERE TOO (QA-21, 24 Oct 2026). The holder's password
+ * (or the reclaim) proves who is accepting, exactly as the login's first step
+ * does — and an account with two-step sign-in on was then handed a session on
+ * that alone, where the login, a sign-in link and SSO all stop for the code.
+ * So the session is minted only after it: the invitation is accepted (that is
+ * the owner's to do, and the password proved the owner), the account's last
+ * context is pointed at the school or the family it just joined, and the
+ * challenge rides the same five-minute cookie to /login/code, whose action
+ * mints the session there. A person who arrived signed in as the holder
+ * already passed the step for that session and is not asked again.
+ */
+async function sessionOrSecondStep(userId: string, context: { schoolId: string | null; role: Role }, alreadySignedIn: boolean): Promise<AcceptState> {
+  if (!alreadySignedIn) {
+    const challenge = await twoFactorChallengeFor(userId, "invite");
+    if (challenge) {
+      await db.user.update({ where: { id: userId }, data: { lastRole: context.role, lastSchoolId: context.schoolId } });
+      (await cookies()).set(TWO_FACTOR_COOKIE, challenge, twoFactorCookieOptions());
+      return { ok: true, errors: {}, redirectTo: "/login/code", twoFactor: true };
+    }
+  }
+  await createSession(userId, { schoolId: context.schoolId, role: context.role });
+  return { ok: true, errors: {}, redirectTo: ROLE_HOME[context.role] };
+}
 
 /**
  * Accepts an invitation and creates (or links) the account.
@@ -120,6 +156,8 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
    */
   const reclaims = holder !== null && holder.emailVerifiedAt === null;
   const keepsExistingPassword = Boolean(holder?.passwordHash) && !reclaims;
+  // Whoever arrived signed in as the holder passed that session's second step already (QA-21).
+  let signedInAsHolder = false;
 
   if (keepsExistingPassword) {
     /**
@@ -133,7 +171,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
      * changes; the field is a proof, not a choice.
      */
     const current = await getSession();
-    const signedInAsHolder = current !== null && current.user.id === holder!.id;
+    signedInAsHolder = current !== null && current.user.id === holder!.id;
     if (!signedInAsHolder) {
       if (!password) {
         const words = t("invite.enterYourPassword");
@@ -207,7 +245,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
           } else if (!user.emailVerifiedAt) {
             // The reclaim, re-decided inside the transaction. See above.
             if (!passwordHash) throw new Error("NEEDS_PASSWORD");
-            await tx.user.update({ where: { id: user.id }, data: { passwordHash, emailVerifiedAt: new Date() } });
+            await tx.user.update({ where: { id: user.id }, data: { passwordHash, emailVerifiedAt: new Date(), ...CLEAR_SECOND_STEP } });
             await revokeAllAccess(user.id, { tokens: true, client: tx });
           } else if (!user.passwordHash && passwordHash) {
             await tx.user.update({ where: { id: user.id }, data: { passwordHash, emailVerifiedAt: new Date() } });
@@ -266,8 +304,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
       actorUserId: userId,
     }).catch((error) => console.error("[acceptInvite parent] standin sync failed", error));
 
-    await createSession(userId, { schoolId: null, role: "PARENT" });
-    return { ok: true, errors: {}, redirectTo: ROLE_HOME.PARENT };
+    return sessionOrSecondStep(userId, { schoolId: null, role: "PARENT" }, signedInAsHolder);
   }
 
   try {
@@ -316,7 +353,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
         if (!passwordHash) throw new Error("NEEDS_PASSWORD");
         await tx.user.update({
           where: { id: user.id },
-          data: { passwordHash, emailVerifiedAt: new Date(), ...(birthDate ? { birthdate: birthDate } : {}), ...(bio ? { bio } : {}) },
+          data: { passwordHash, emailVerifiedAt: new Date(), ...CLEAR_SECOND_STEP, ...(birthDate ? { birthdate: birthDate } : {}), ...(bio ? { bio } : {}) },
         });
         await revokeAllAccess(user.id, { tokens: true, client: tx });
       } else {
@@ -451,7 +488,5 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     }
   }
 
-  await createSession(userId, { schoolId: invite.schoolId, role });
-
-  return { ok: true, errors: {}, redirectTo: ROLE_HOME[role] };
+  return sessionOrSecondStep(userId, { schoolId: invite.schoolId, role }, signedInAsHolder);
 }

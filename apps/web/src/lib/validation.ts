@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { INSTITUTION_KINDS, STREAMS } from "@edulink/contracts";
+import { INSTITUTION_KINDS, STREAMS, clockHHMM } from "@edulink/contracts";
 import {
   ATTENDANCE_STATUSES,
   GUARDIAN_RELATIONS,
@@ -373,8 +373,9 @@ export const prefsSchema = z.object({
     .default({ push: true, email: true, sms: true, whatsapp: true }),
   quietHours: z
     .object({
-      start: z.string().regex(/^\d{1,2}:\d{2}$/, "refusal.useHHMM"),
-      end: z.string().regex(/^\d{1,2}:\d{2}$/, "refusal.useHHMM"),
+      // A clock time that exists, 0:00 to 23:59, as the phone's door checks it (QA-55).
+      start: clockHHMM,
+      end: clockHHMM,
     })
     .nullable()
     .default(null),

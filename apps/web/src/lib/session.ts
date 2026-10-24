@@ -4,7 +4,7 @@ import { cache } from "react";
 import { db } from "./db";
 import { clientAddress } from "./rate-limit";
 import { generateToken, hashToken } from "./crypto";
-import { isOutsideRole, SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
+import { isOutsideRole, SESSION_ABSOLUTE_MAX_DAYS, SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
 import { forOwnSchools } from "./tenant-context";
 import { readJson } from "./json";
 import { bearerToken } from "./bearer";
@@ -74,8 +74,9 @@ export type ActiveContext = {
  * fortnight used to be immortal — read past the midpoint, pushed out another
  * thirty days, indefinitely. It now ends this many days after it was CREATED,
  * however busy it has been; the person signs in again, once, every six months.
+ * Kept in constants.ts so the tenant resolver applies the same end (QA-26).
  */
-export const SESSION_ABSOLUTE_MAX_DAYS = 180;
+export { SESSION_ABSOLUTE_MAX_DAYS };
 
 /**
  * Whoever runs the server signs in more often than a parent does. An

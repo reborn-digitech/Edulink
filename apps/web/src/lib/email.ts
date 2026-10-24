@@ -542,6 +542,27 @@ export async function sendStandingNotice(input: { to: string; subject: string; l
   });
 }
 
+/**
+ * A NOTICE ABOUT THE ACCOUNT ITSELF, told to the address on it (fix-lows-A, 24 Oct 2026): the second step locked
+ * after too many wrong codes (two-factor.ts), and a sign-up attempted with an address that already has an account
+ * (recruiters.ts, register/actions.ts), which is told to the holder here rather than to whoever typed it on the
+ * form. The caller translates the lines into the holder's language; a path for the button is the app's own.
+ */
+export async function sendAccountNotice(input: { to: string; purpose: string; subject: string; lines: string[]; cta?: { label: string; path: string } | null; locale: Locale }) {
+  await sendEmail({
+    to: input.to,
+    purpose: input.purpose,
+    subject: input.subject,
+    text: `${input.lines.join("\n\n")}${input.cta ? `\n\n${input.cta.label}: ${APP}${input.cta.path}` : ""}`,
+    html: layout(
+      input.locale,
+      input.subject,
+      input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       "),
+      input.cta ? { label: input.cta.label, url: `${APP}${input.cta.path}` } : undefined,
+    ),
+  });
+}
+
 // website-two (16 Oct 2026)
 /**
  * THE OFFICE'S REPLY TO AN ENQUIRY FROM THE SCHOOL'S WEBSITE (src/lib/site-inbox.ts): the enquirer has no account, so

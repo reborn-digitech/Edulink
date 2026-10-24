@@ -133,7 +133,7 @@ export function GetPaidCard() {
   const canLink = Boolean(payout && route && payout.transport !== "off" && payout.status !== "SUSPENDED" && route.readyToLink && !form);
   const failed = save.error ?? link.error;
   return (
-    <Card title={t("gigs.getPaidTitle")} action={payout ? <Pill label={t(PAYOUT_STATUS[payout.status].label)} tone={PAYOUT_STATUS[payout.status].tone} /> : undefined}>
+    <Card title={t("gigs.getPaidTitle")} action={payout ? <Pill label={t(payout.status === "NONE" && payout.route.linked ? "qaInterface.payoutLinkedNotReady" : PAYOUT_STATUS[payout.status].label)} tone={PAYOUT_STATUS[payout.status].tone} /> : undefined}>
       <Text variant="sm" tone="muted">
         {t("gigs.getPaidBody")}
       </Text>
@@ -191,7 +191,8 @@ export function GetPaidCard() {
           ) : null}
           {payout.payeeName ? (
             <View style={{ gap: th.space[1], padding: th.space[3], borderWidth: 1, borderColor: th.border, borderRadius: th.radius.md }}>
-              <Pill label={t(ROUTE_STATUS[route.status].label)} tone={ROUTE_STATUS[route.status].tone} />
+              {/* One linked state (QA-62): ACTIVATED reads "ready to be paid" only when the payout is. */}
+              <Pill label={t(route.status === "ACTIVATED" && payout?.status !== "ACTIVE" ? "qaInterface.routeLinkedOnly" : ROUTE_STATUS[route.status].label)} tone={ROUTE_STATUS[route.status].tone} />
               {route.needsResend ? (
                 <Text variant="sm" tone="warn">
                   {t("gigs.routeNeedsResend")}

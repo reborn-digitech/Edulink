@@ -37,11 +37,11 @@ async function asAdmin() {
   await createSession(ids.admin, { schoolId: ids.school, role: "ADMIN" });
 }
 /** An ACCEPTED application, as the office's admit step finds one. */
-async function accepted(input: { childName: string; childBirthdate: string | null; applicantUserId?: string | null; penNumber?: string | null }): Promise<string> {
+async function accepted(input: { childName: string; childBirthdate: string | null; applicantUserId?: string | null; penNumber?: string | null; cycleId?: string }): Promise<string> {
   serial += 1;
   return (
     await db.application.create({
-      data: { schoolId: ids.school, cycleId: ids.cycle, number: serial, serial: `ZZT-${SUFFIX}-${serial}`, applicantUserId: input.applicantUserId ?? null, applicantName: "ZZ Transfer Family", childName: input.childName, childBirthdate: input.childBirthdate ? day(input.childBirthdate) : null, gradeApplied: "6", penNumber: input.penNumber ?? null, status: "ACCEPTED", relation: "PARENT" },
+      data: { schoolId: ids.school, cycleId: input.cycleId ?? ids.cycle, number: serial, serial: `ZZT-${SUFFIX}-${serial}`, applicantUserId: input.applicantUserId ?? null, applicantName: "ZZ Transfer Family", childName: input.childName, childBirthdate: input.childBirthdate ? day(input.childBirthdate) : null, gradeApplied: "6", penNumber: input.penNumber ?? null, status: "ACCEPTED", relation: "PARENT" },
       select: { id: true },
     })
   ).id;
@@ -151,5 +151,31 @@ describe("R-67 and R-68: a known pupil's own guardian, and the admission date", 
     const ok = await admit(app, { classId: ids.klass, admittedOn: YEAR_START });
     expect(ok.status).toBe(200);
     expect((await db.membership.findUniqueOrThrow({ where: { id: ok.body.studentMembershipId as string }, select: { joinedAt: true } })).joinedAt.toISOString().slice(0, 10)).toBe(YEAR_START);
+  });
+});
+
+describe("QA-43: a seat in next year's cycle, given before the year begins", () => {
+  it("admits ahead, dated the year's first day, with no class yet; any other date or a class now is refused with a sentence", async () => {
+    const nextStart = addDaysToKey(TODAY, 60);
+    const nextYear = (await db.academicYear.create({ data: { schoolId: ids.school, name: "ZZ Transfer next year", startDate: day(nextStart), endDate: day(addDaysToKey(nextStart, 330)), isCurrent: false }, select: { id: true } })).id;
+    const nextCycle = (await db.admissionCycle.create({ data: { schoolId: ids.school, academicYearId: nextYear, name: "ZZ Transfer next cycle", gradesJson: JSON.stringify([{ grade: "6", seats: 2 }]), testRequired: false, status: "OPEN" }, select: { id: true } })).id;
+    const app = await accepted({ childName: "ZZ Transfer Ahead", childBirthdate: "2015-06-06", cycleId: nextCycle });
+    // Before the fix: 403 "The admission date must be between the start of the academic year and today.", with or without the year's first day.
+    const today = await admit(app, { admittedOn: TODAY });
+    expect(today.status).toBe(403);
+    expect(today.body.error).toContain(nextStart);
+    const withClass = await admit(app, { classId: ids.klass });
+    expect(withClass.status).toBe(403);
+    expect((await db.application.findUniqueOrThrow({ where: { id: app }, select: { status: true } })).status).toBe("ACCEPTED");
+    const ok = await admit(app, {});
+    expect(ok.status).toBe(200);
+    expect(ok.body.className).toBeNull();
+    const m = await db.membership.findUniqueOrThrow({ where: { id: ok.body.studentMembershipId as string }, select: { joinedAt: true, enrollments: { select: { id: true } } } });
+    expect(m.joinedAt.toISOString().slice(0, 10)).toBe(nextStart);
+    expect(m.enrollments).toHaveLength(0);
+    expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: ok.body.studentMembershipId as string }, select: { admissionDate: true } })).admissionDate?.toISOString().slice(0, 10)).toBe(nextStart);
+    // The year's first day named outright is the same admission.
+    const app2 = await accepted({ childName: "ZZ Transfer Ahead Two", childBirthdate: "2015-07-07", cycleId: nextCycle });
+    expect((await admit(app2, { admittedOn: nextStart })).status).toBe(200);
   });
 });

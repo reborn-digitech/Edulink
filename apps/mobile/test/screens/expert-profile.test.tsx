@@ -1,7 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { expertProfileSchema, expertSaveProfileSchema } from "@edulink/contracts";
 import { ExpertProfile } from "@/screens/expert/profile";
-import { gated, json, mountStaff, refused } from "./staff-harness";
+import { gated, json, me, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -44,6 +44,13 @@ describe("the expert's profile", () => {
     expect(await screen.findByRole("image", { name: "ZZ Head" })).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Change my look" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/avatar");
+  });
+
+  it("with expert sessions switched off, draws no calendar feed and asks its door nothing (QA-61)", async () => {
+    const { calls } = await mountStaff(<ExpertProfile />, "EXPERT", { ...QUIET, [`GET ${PATH}`]: () => json(PROFILE) }, { me: { ...me("EXPERT"), features: [] } });
+    await screen.findByText("Listed");
+    expect(screen.queryByText("Subscribe in your calendar")).toBeNull();
+    expect(calls().some((c) => c.line.startsWith("GET /api/v1/expert/calendar/token"))).toBe(false);
   });
 
   it("not listed yet reads as such, and nothing yet hides the impact card", async () => {

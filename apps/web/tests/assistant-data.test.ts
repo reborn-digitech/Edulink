@@ -502,6 +502,38 @@ describe("the rows a question picks", () => {
   });
 });
 
+describe("a door's block the question names (QA-51)", () => {
+  // A college student's academics door as it answers: registration, today and the week come before attendance.
+  const course = (i: number) => ({ offeringId: `o${i}`, courseCode: `PHY30${i}`, courseName: `Physics paper ${i}` });
+  const raw = {
+    registration: {
+      programme: { name: "BSc Physics", schemeName: "SPPU NEP 2024", semester: 5, yearOfStudy: 3, divisionName: "TY BSc Physics A", rollNumber: 2 },
+      term: { name: "Odd term", academicYear: "2026–27", startsOn: "2026-08-05", endsOn: "2026-12-20", registrationOpensOn: "2026-07-22", registrationClosesOn: "2026-11-20", registrationOpen: true },
+      offerings: [1, 2, 3, 4, 5, 6].map((i) => ({ ...course(i), kind: "CORE", credits: 4, divisionName: "TY BSc Physics A", chosen: true, required: true })),
+    },
+    today: [1, 2, 3].map((i) => ({ ...course(i), weekday: 6, kind: "LECTURE", roomName: `Room 10${i}`, startTime: "09:00", endTime: "09:50" })),
+    week: { termName: "Odd term", periods: [1, 2, 3, 4, 5].map((i) => ({ name: `Lecture ${i}`, startTime: `0${8 + i}:00`, endTime: `0${8 + i}:50` })), cells: [1, 2, 3, 4, 5, 6].flatMap((d) => [1, 2, 3, 4].map((i) => ({ ...course(i), weekday: d, kind: "LECTURE", divisionName: "TY BSc Physics A", roomName: `Room 10${i}`, startTime: "09:00", endTime: "09:50" }))) },
+    attendance: [87.5, 91.7, 91.7, 80, 66.7, 75].map((percent, i) => ({ ...course(i + 1), held: 24, attended: Math.round((percent * 24) / 100), percent, threshold: 75, remaining: 20, canMiss: 4, condoned: false, eligible: percent >= 75 })),
+    condonations: [],
+    marks: [],
+    mentor: { groupName: "TY Physics mentees" },
+  };
+
+  it("puts the attendance first and every course's line in, within the door's share of the data", () => {
+    for (const question of ["What is my attendance percentage in each course this term?", "मेरी हर विषय में उपस्थिति कितनी है?"]) {
+      const s = summariseDoor(raw, { door: "/api/v1/academics/mine", hints: hintsOf(question, NOW), question, firstNumber: 1, maxChars: 2_500 });
+      expect(s.text.split("\n")[0], question).toMatch(/^attendance: 6 rows/);
+      for (const percent of ["87.5", "91.7", "80", "66.7", "75"]) expect(s.text, question).toContain(`percent: ${percent}`);
+      expect(s.text.length).toBeLessThanOrEqual(2_500);
+    }
+  });
+
+  it("leaves the door's own order where the question names no block", () => {
+    const s = summariseDoor(raw, { door: "/api/v1/academics/mine", hints: none, question: "What do I have today?", firstNumber: 1, maxChars: 2_500 });
+    expect(s.text.split("\n")[0]).toMatch(/^registration\./);
+  });
+});
+
 describe("a note telling the answer what to carry is an instruction, in the three languages", () => {
   it("is caught in a question, a post or a pasted homework, and an ordinary question is not", async () => {
     const { detectInjection } = await import("@/lib/assistant/refusals");

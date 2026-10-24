@@ -13,7 +13,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole, useSessionIfAny } from "@/lib/session";
-import { ChildSwitcher, childQuery, formatMilli, Note, param, Pill, relativeTime, SectionTitle, Tabs, useAuthHeaders } from "./shared";
+import { ChildSwitcher, childQuery, firstChild, formatMilli, Note, param, Pill, relativeTime, SectionTitle, Tabs, useAuthHeaders } from "./shared";
 import { featuresOf } from "@/lib/nav";
 
 type Tab = "todo" | "handed" | "marked";
@@ -55,7 +55,7 @@ function ChildAssignments() {
   const elsewhere = d ? ([{ key: "todo", label: t("assignments.tabDue"), count: d.todo.length }, { key: "handed", label: t("assignments.tabHanded"), count: d.handedIn.length }, { key: "marked", label: t("assignments.tabMarked"), count: d.marked.length }] as const).find((x) => x.key !== tab && x.count > 0) ?? null : null;
   return (
     <Screen title={t("nav.assignments")} description={d ? `${t("assignments.forChild", { name })} · ${t("diary.intro")}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? d.children[0]?.studentMembershipId ?? null} onSelect={setChildId} /> : null}
+      {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? firstChild(d.children)?.studentMembershipId ?? null} onSelect={setChildId} /> : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
@@ -78,7 +78,7 @@ function ChildAssignments() {
                 elsewhere ? (
                   <Button label={elsewhere.label} variant="secondary" onPress={() => setTab(elsewhere.key)} />
                 ) : (
-                  <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push({ pathname: "/(app)", params: { child: childId ?? d.children[0]?.studentMembershipId ?? "" } } as never)} />
+                  <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push({ pathname: "/(app)", params: { child: childId ?? firstChild(d.children)?.studentMembershipId ?? "" } } as never)} />
                 )
               }
             />

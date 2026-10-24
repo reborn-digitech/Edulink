@@ -121,8 +121,12 @@ export function CondonationBadge({ t, c }: { t: Translate; c: Pick<Condonation, 
   return <Badge tone={tone}>{t(CONDONATION_KEY[c.status]!)}</Badge>;
 }
 
-/** The week as a list per day (a grid is too wide for a phone; the web's narrow screens read this too). */
-export function WeekList({ t, locale, weekdays, cells, linkFor, streams = [] }: { t: Translate; locale: string; weekdays: number[]; cells: TimetableCell[]; linkFor?: (c: TimetableCell) => string; streams?: readonly StreamCode[] }) {
+/**
+ * The week as a list per day (a grid is too wide for a phone; the web's narrow screens read this too). `heading` is
+ * the days' level: h3 under a card's title, h2 straight under the page's h1 (QA-68: heading-order on /timetable).
+ */
+export function WeekList({ t, locale, weekdays, cells, linkFor, streams = [], heading = "h3" }: { t: Translate; locale: string; weekdays: number[]; cells: TimetableCell[]; linkFor?: (c: TimetableCell) => string; streams?: readonly StreamCode[]; heading?: "h2" | "h3" }) {
+  const Day = heading;
   if (cells.length === 0) return <EmptyState className="border-0 bg-transparent py-4" title={t("academics.timetableNone")} description={t("academics.timetableNoneBody")} />;
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -130,9 +134,9 @@ export function WeekList({ t, locale, weekdays, cells, linkFor, streams = [] }: 
         const day = cells.filter((c) => c.weekday === d);
         return (
           <section key={d} className="rounded-[var(--radius-md)] border border-border p-3">
-            <h3 className="mb-2 text-sm font-semibold text-fg">
+            <Day className="mb-2 text-sm font-semibold text-fg">
               <abbr title={weekdayName(d, locale)} className="no-underline">{weekdayShortName(d, locale)}</abbr>
-            </h3>
+            </Day>
             {day.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("academics.noLectures")}</p>
             ) : (

@@ -6,7 +6,8 @@
  */
 import { MENU, menuFor } from "@/lib/nav";
 
-const webOf = (role: keyof typeof MENU) => MENU[role].filter((i) => i.web).map((i) => [i.web, i.module ?? null]);
+/** The web pages a role's More opens there; my appointment letters are every member of staff's (QA-66), left out here. */
+const webOf = (role: keyof typeof MENU) => MENU[role].filter((i) => i.web && i.web !== "/account/letters").map((i) => [i.web, i.module ?? null]);
 
 describe("the desks' own pages in More", () => {
   // The parity batch (10 Oct 2026, R-4): every page the three desks once opened on the web is a screen of the phone's own.
@@ -36,6 +37,8 @@ describe("the desks' own pages in More", () => {
     const shown = (modules: string[]) => menuFor("ACCOUNTS", modules).flatMap((g) => g.items).filter((i) => i.screen && i.screen !== "/(app)/assistant").map((i) => i.screen);
     expect(webOf("ACCOUNTS")).toEqual([]);
     expect(shown(["SCHOLARSHIPS", "PAYROLL", "INVENTORY"])).toEqual(["/(app)/accounts-lookup", "/(app)/fee-structures", "/(app)/scholarship-claims", "/(app)/no-dues", "/(app)/concessions", "/(app)/account", "/(app)/leave", "/(app)/my-attendance", "/(app)/payslips", "/(app)/fees", "/(app)/payroll", "/(app)/inventory"]);
+    // My appointment letters open on the web, signed in (QA-66).
+    expect(menuFor("ACCOUNTS", []).flatMap((g) => g.items).some((i) => i.web === "/account/letters")).toBe(true);
     expect(shown([])).toEqual(["/(app)/accounts-lookup", "/(app)/fee-structures", "/(app)/no-dues", "/(app)/concessions", "/(app)/account", "/(app)/leave", "/(app)/my-attendance", "/(app)/fees"]);
   });
 
@@ -57,7 +60,7 @@ describe("the desks' own pages in More", () => {
   });
 
   it("what still opens the web for the office and the head: the library desk, the campus settings, the committees and the accreditation file", () => {
-    expect(webOf("ADMIN")).toEqual([["/library", "LIBRARY"], ["/admin/college-campus", "ACADEMICS"], ["/admin/committees", "IQAC"]]);
-    expect(webOf("PRINCIPAL")).toEqual([["/library/reports", "LIBRARY"], ["/principal/accreditation", "IQAC"], ["/admin/committees", "IQAC"]]);
+    expect(webOf("ADMIN")).toEqual([["/library", "LIBRARY"], ["/admin/college-campus", "ACADEMICS"], ["/admin/committees", "IQAC"], ["/bulletin/council", null]]);
+    expect(webOf("PRINCIPAL")).toEqual([["/library/reports", "LIBRARY"], ["/principal/accreditation", "IQAC"], ["/admin/committees", "IQAC"], ["/bulletin/council", null]]);
   });
 });

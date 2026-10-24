@@ -41,6 +41,7 @@ import { ENDPOINTS } from "@/lib/api-catalog";
 import { JOBS } from "@/lib/jobs";
 import { actionKey } from "@/lib/safety-labels";
 import { AccessError, ModuleOffError } from "@/lib/access-error";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import { createSession, getSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { checkDns, dnsRecordsFor, servedHosts, storedDomainFor, type DnsResolver } from "@/lib/site-dns";
@@ -75,7 +76,8 @@ async function refusedWith(promise: Promise<unknown>, key: string) {
     () => null,
     (e: unknown) => e,
   );
-  expect(error).toBeInstanceOf(AccessError);
+  // A refusal of what was sent is a RuleRefusal (422/409, QA-54); one of who asks stays an AccessError.
+  expect(error instanceof AccessError || error instanceof RuleRefusal).toBe(true);
   expect((error as AccessError).key).toBe(key);
 }
 
@@ -305,6 +307,10 @@ describe("the office's domain (the library)", () => {
   it("refuses a domain, or its www/bare counterpart, another school holds", async () => {
     const other = await as(ids.otherAdmin, "ADMIN", ids.other);
     await refusedWith(saveSiteDomain(other, `www.zz-domains-${STAMP}.test`), "siteDomains.refuseTaken");
+    // Through the door: 409, the state of the name is in the way (QA-54; it was 403 FORBIDDEN).
+    const taken = await domainPost(new Request("http://localhost/api/v1/admin/site/domain", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ domain: `www.zz-domains-${STAMP}.test` }) }));
+    expect(taken.status).toBe(409);
+    expect(await taken.json()).toMatchObject({ code: "CONFLICT" });
     await db.schoolSiteDomain.updateMany({ where: { schoolId: ids.school }, data: { status: "LIVE" } });
     await refusedWith(saveSiteDomain(other, `zz-domains-${STAMP}.test`), "siteDomains.refuseTaken");
     await db.schoolSiteDomain.updateMany({ where: { schoolId: ids.school }, data: { status: "PENDING_DNS" } });
@@ -445,7 +451,11 @@ describe("the doors", () => {
     expect((await domainPost(json(undefined))).status).toBe(422);
     expect((await verifyPost(json(undefined))).status).toBe(422);
     expect((await domainDelete(json(undefined, "DELETE"))).status).toBe(422);
-    expect((await domainPost(json({ domain: "https://x.in" }))).status).toBe(403);
+    // QA-54: refused input is 422 naming the field, not 403 FORBIDDEN; a domain another school holds is 409.
+    const notDomain = await domainPost(json({ domain: "localhost" }));
+    expect(notDomain.status).toBe(422);
+    expect(await notDomain.json()).toMatchObject({ code: "BAD_REQUEST", issues: { domain: expect.any(String) } });
+    expect((await domainPost(json({ domain: "https://x.in" }))).status).toBe(422);
     expect((await domainDelete(json({ domain: D("other") }, "DELETE"))).status).toBe(404);
     const gone = await domainDelete(json({ domain: `www.zz-domains-${STAMP}.test` }, "DELETE"));
     expect(gone.status).toBe(200);

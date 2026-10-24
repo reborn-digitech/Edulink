@@ -117,6 +117,7 @@ export default async function AdminDashboard({
   // The gap between a drawn timetable and a staffed one — the office's cue to
   // hire, shown only when there is a hole and there are classes to have one.
   const staffing = classCount > 0 ? await unstaffedLessons(ctx.schoolId) : { slots: 0, classes: 0 };
+  const jobBoard = staffing.slots > 0 && (await mayUse("JOB_BOARD", ctx));
 
   return (
     <div className="space-y-6">
@@ -124,7 +125,7 @@ export default async function AdminDashboard({
 
       <div className="flex flex-wrap items-end justify-between gap-3">
         <PageHeader title={school.name} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
-            {t("admin.schoolCode")}{" "}
+            {t(college ? "qaInterface.collegeCode" : "admin.schoolCode")}{" "}
             <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
               {school.code}
             </code></>} />
@@ -378,14 +379,15 @@ export default async function AdminDashboard({
             icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
             title={t("admin.staffingGapTitle")}
             description={
+              // The vacancy is named only while the job board is on (QA-61): the sentence and the button agree.
               staffing.classes === 1
-                ? t("admin.staffingGapBodyOne", { slots: staffing.slots })
-                : t("admin.staffingGapBody", { slots: staffing.slots, classes: staffing.classes })
+                ? t(jobBoard ? "admin.staffingGapBodyOne" : "qaInterface.staffingGapBodyOneNoBoard", { slots: staffing.slots })
+                : t(jobBoard ? "admin.staffingGapBody" : "qaInterface.staffingGapBodyNoBoard", { slots: staffing.slots, classes: staffing.classes })
             }
           />
           <CardBody className="flex flex-wrap gap-2 pt-0">
             {/* The job board (15 Oct 2026): offered only while the operator has it on. */}
-            {(await mayUse("JOB_BOARD", ctx)) && (
+            {jobBoard && (
               <Button asChild size="sm">
                 <Link href="/admin/vacancies/new">{t("admin.staffingPostVacancy")}</Link>
               </Button>

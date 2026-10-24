@@ -96,7 +96,7 @@ export default async function ScholarshipsPage({ searchParams }: { searchParams:
           {claims.items.length === 0 ? (
             <EmptyState title={t("collegeOffice.claimsEmpty")} description={t("collegeOffice.claimsEmptyBody")} action={<Button asChild size="sm"><a href="#new-claim">{t("collegeOffice.claimNew")}</a></Button>} />
           ) : (
-            <Table head={[t("collegeOffice.colName"), t("collegeOffice.colScheme"), t("collegeOffice.colPortalId"), t("collegeOffice.colExpected"), t("collegeOffice.colSanctioned"), t("collegeOffice.colDisbursed"), t("collegeOffice.colStatus"), ""]} testId="scholarship-claims">
+            <Table head={[t("collegeOffice.colName"), t("collegeOffice.colScheme"), t("collegeOffice.colPortalId"), t("collegeOffice.colExpected"), t("collegeOffice.colSanctioned"), t("collegeOffice.colDisbursed"), t("collegeOffice.colStatus"), { srOnly: t("qaInterface.colActions") }]} testId="scholarship-claims">
               {claims.items.map((c) => (
                 <tr key={c.id} className="align-top">
                   <td className="py-2 pr-3">{c.studentName}</td>

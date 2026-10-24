@@ -227,6 +227,16 @@ describe("after the capture: the payment, its transfers, the release and the ref
     expect(down.message).toBe("gateway unreachable: fetch failed");
     expect(down.status).toBeNull();
   });
+
+  it("an empty 200 is a GigGatewayError coded EMPTY_ANSWER, never a TypeError on a missing id (QA-38)", async () => {
+    live();
+    for (const body of ["", "not json", "null", "[]"]) {
+      answer = () => new Response(body, { status: 200 });
+      const error = (await createPassOrderAtGateway({ amountPaise: 100, receipt: "r" }).catch((e: unknown) => e)) as GigGatewayError;
+      expect(error).toBeInstanceOf(GigGatewayError);
+      expect(error).toMatchObject({ status: 200, code: "EMPTY_ANSWER" });
+    }
+  });
 });
 
 describe("the expert's linked account, in four steps", () => {

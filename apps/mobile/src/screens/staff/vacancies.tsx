@@ -12,6 +12,7 @@ import { useRole, useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Pill, relativeTime } from "../family/shared";
 import { Chips, Notice } from "./shared";
+import { useCollege } from "@/lib/institution";
 
 type EmploymentType = "FULL_TIME" | "PART_TIME" | "TEMPORARY";
 type TypeFilter = "" | EmploymentType;
@@ -48,12 +49,14 @@ export function Vacancies() {
 
 function DeskTabs({ tab, onTab }: { tab: "desk" | "board"; onTab: (next: "desk" | "board") => void }) {
   const t = useT();
+  // A college's postings are the college's (QA-69).
+  const college = useCollege();
   return (
     <Chips
       label={t("nav.vacancies")}
       value={tab}
       options={[
-        { value: "desk", label: t("vacancies.ourDeskTitle") },
+        { value: "desk", label: t(college ? "qaInterface.collegeDeskTitle" : "vacancies.ourDeskTitle") },
         { value: "board", label: t("vacancies.title") },
       ]}
       onChange={onTab}
@@ -123,6 +126,7 @@ function Board({ onDesk }: { onDesk?: () => void }) {
 
 function Desk({ onBoard }: { onBoard: () => void }) {
   const t = useT();
+  const college = useCollege();
   const th = useTheme();
   const qc = useQueryClient();
   const session = useSession();
@@ -164,7 +168,7 @@ function Desk({ onBoard }: { onBoard: () => void }) {
   const me = session.status === "signed-in" ? session.me : null;
   const contactId = me?.active.membershipId ?? "";
   return (
-    <Screen title={t("vacancies.ourDeskTitle")} description={t("vacancies.ourDeskIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+    <Screen title={t(college ? "qaInterface.collegeDeskTitle" : "vacancies.ourDeskTitle")} description={t(college ? "qaInterface.collegeDeskIntro" : "vacancies.ourDeskIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       <DeskTabs tab="desk" onTab={() => onBoard()} />
       {notice ? <Notice text={notice.text} tone={notice.tone} /> : null}
       {query.isPending ? <Loading /> : null}
@@ -192,7 +196,7 @@ function Desk({ onBoard }: { onBoard: () => void }) {
               <Empty title={t("vacancies.emptyTitle")} body={t("vacancies.emptyOwnBody")} action={canPost ? <Button label={t("vacancies.postCta")} variant="secondary" onPress={() => titleRef.current?.focus()} /> : undefined} />
             )
           ) : (
-            <Card title={t("vacancies.ourDeskTitle")}>
+            <Card title={t(college ? "qaInterface.collegeDeskTitle" : "vacancies.ourDeskTitle")}>
               {d.postings.map((p) => (
                 <PostingRow key={p.id} posting={p} locale={locale} busy={close.isPending && close.variables === p.id} onClose={canPost ? () => close.mutate(p.id) : null} />
               ))}

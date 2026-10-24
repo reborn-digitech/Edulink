@@ -178,7 +178,9 @@ describe("reach", () => {
     expect(res.status).toBe(200);
     const out = await res.json();
     expect(out.reminded).toBe(2); // parents A and B; parent C acknowledged; pupil C has no guardian
-    expect(out.texted).toBe(2);
+    // QA-41: texted counts texts handed to the sender. Parent B has no number, so B's text is skipped; it was 2 before.
+    expect(out.texted).toBe(1);
+    expect(await db.outboundMessage.count({ where: { purpose: `circular-remind:${postId}`, status: { in: ["QUEUED", "SENT", "DELIVERED"] } } })).toBe(1);
     expect(await db.notification.count({ where: { url: `/bulletin/${postId}` } })).toBe(before + 2);
     expect(await db.outboundMessage.count({ where: { purpose: `circular-remind:${postId}`, userId: parentAUserId } })).toBe(1);
     expect(await db.outboundMessage.count({ where: { purpose: `circular-remind:${postId}`, userId: parentCUserId } })).toBe(0);

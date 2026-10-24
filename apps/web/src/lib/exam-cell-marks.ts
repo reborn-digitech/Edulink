@@ -575,9 +575,16 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
   // Bank with the term's course credits: the credit push carries both.
   const internshipTenths = new Map(await Promise.all(termRows.map(async (r) => [`${r.studentMembershipId}|${r.termId}`, (await internshipCreditsForTerm(r.studentMembershipId, r.termId)) * 10] as const)));
   const now = new Date();
-  await db.$tenantTransaction(async (raw) => {
+  // A double press of Publish (QA-29): both presses read DRAFT above, the second waited on the session lock and then
+  // re-ran the publication, so every student and guardian was told twice. The run's status is read again under the
+  // lock: one already published is answered as it stands, with no notice and no audit row; one superseded meanwhile
+  // is refused as before.
+  const published = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${s.id} FOR UPDATE`;
+    const current = await tx.resultRun.findUnique({ where: { id: run.id }, select: { status: true } });
+    if (current?.status === "PUBLISHED") return false;
+    if (current?.status !== "DRAFT") throw new RuleRefusal("examCell.refuseRunSuperseded", 409);
     await tx.resultRun.updateMany({ where: { sessionId: s.id, status: "PUBLISHED" }, data: { status: "SUPERSEDED" } });
     await tx.resultRun.update({ where: { id: run.id }, data: { status: "PUBLISHED", publishedAt: now, publishedByUserId: cell.userId } });
     await tx.examSession.update({ where: { id: s.id }, data: { status: "PUBLISHED" } });
@@ -603,7 +610,9 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
       if (!had) await tx.creditPush.create({ data: { schoolId: s.schoolId, studentMembershipId: r.studentMembershipId, termId: r.termId, runId: run.id, creditsTenths, apaarId } });
       else if (had.creditsTenths !== creditsTenths || had.runId !== run.id) await tx.creditPush.update({ where: { id: had.id }, data: { runId: run.id, creditsTenths, apaarId, ...(had.creditsTenths !== creditsTenths ? { status: "PENDING", pushedAt: null, abcRef: null, error: null } : {}) } });
     }
+    return true;
   });
+  if (!published) return { ok: true, id: run.id, count: null };
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.result.publish", targetType: "ResultRun", targetId: run.id, meta: { number: run.number } });
   const people = await db.membership.findMany({ where: { id: { in: termRows.map((r) => r.studentMembershipId) } }, select: { userId: true } });
   await Promise.all(people.map((p) => notify({ userId: p.userId, schoolId: cell.schoolId, kind: "GRADE", titleKey: "examCell.notifyResult", titleVars: { session: s.name }, bodyKey: "examCell.notifyResultBody", url: "/student/exams" })));

@@ -1,37 +1,38 @@
 "use server";
 
-import { writeDefaultModules } from "@/lib/modules";
-import { selfReadAgeDefault } from "@/lib/self-read";
-import { checkStreams, streamsToStore } from "@/lib/streams";
-import { randomUUID } from "node:crypto";
-import { db } from "@/lib/db";
-import { hashPassword, passwordProblems, generateToken, hashToken } from "@/lib/crypto";
-import { schoolCode, slugify } from "@/lib/codes";
-import { createSession } from "@/lib/session";
+import { checkStreams } from "@/lib/streams";
+import { passwordProblems } from "@/lib/crypto";
 import { registerSchoolSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
-import { sendVerifyEmail } from "@/lib/email";
-import { audit } from "@/lib/audit";
-import { forSchool } from "@/lib/tenant-context";
-import { EMAIL_VERIFY_TTL_HOURS } from "@/lib/constants";
-import { writeJson } from "@/lib/json";
-import { normaliseLocation } from "@/lib/places";
 import { getT, getLocale } from "@/lib/i18n/server";
-import { consumeByCaller, retryHintKey, SIGNUPS, EMAIL_CHECKS } from "@/lib/rate-limit";
+import { consumeByCaller, retryHintKey, SIGNUPS } from "@/lib/rate-limit";
+import { afterResponse } from "@/lib/after-response";
+import { completeSchoolRegistration } from "@/lib/school-signup";
 
 export type RegisterState = {
   ok: boolean;
   errors: FieldErrors;
-  /** Set on success so the client can celebrate before redirecting. */
-  schoolCode?: string;
+  /**
+   * Set on success: the one sentence a form in order is answered with,
+   * whether or not the founder's address already had an account (QA-25).
+   */
+  sent?: string;
 };
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-
 /**
- * Creates a school and its first admin.
+ * Registers a school and its first admin.
  *
- * Everything happens in one transaction: a half-created school with no admin
- * would be unrecoverable from the UI — nobody could log in to finish it. (§10)
+ * ⚠ THE SAME ANSWER WHETHER OR NOT THE ADDRESS IS TAKEN (QA-25, 24 Oct 2026).
+ * This used to refuse a taken address with "an account already uses this
+ * email", and the wizard asked the server on every blur whether an address
+ * was free — so a signed-out caller could learn whether any parent's, pupil's
+ * or teacher's address had an account. Now the refusals here are about the
+ * form alone (the fields, the streams, the password's quality, the limit), a
+ * form in order is answered "a message is on its way" and NO SESSION, and the
+ * rest runs after the response (src/lib/school-signup.ts): a free address gets
+ * its school, its admin account and the confirmation link, and the founder
+ * signs in with the password they chose; the holder of a taken address is told
+ * by email that somebody tried, and nothing is made. The time the answer takes
+ * says nothing either, since the lookup and the transaction come after it.
  */
 export async function registerSchool(input: unknown): Promise<RegisterState> {
   const parsed = registerSchoolSchema.safeParse(input);
@@ -68,16 +69,6 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
     return { ok: false, errors: { "admin.password": (await getT())(problems[0]!) } };
   }
 
-  const t = await getT();
-
-  const existing = await db.user.findUnique({ where: { email: admin.email }, select: { id: true } });
-  if (existing) {
-    return { ok: false, errors: { "admin.email": t("register.emailTakenLong") } };
-  }
-
-  const passwordHash = await hashPassword(admin.password);
-  const verifyToken = generateToken();
-
   /**
    * ⚠ THE LANGUAGE THEY REGISTERED IN, not "en".
    *
@@ -89,160 +80,11 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
    * an account exists, which is exactly what it is for.
    */
   const locale = await getLocale();
+  const t = await getT();
 
-  let created: { schoolId: string; userId: string; code: string } | undefined;
-
-  /**
-   * THE ONE FLOW THAT CREATES ITS OWN TENANT, which makes it the awkward one.
-   *
-   * Two things follow from row-level security and neither is optional. The write
-   * needs `app.school_ids` to contain the school it is inserting — so the id is
-   * minted HERE rather than by the database, and bound before the transaction
-   * opens. And the old collision pre-checks (`findUnique` on code and slug)
-   * cannot work at all: they ask about OTHER schools, which the policies
-   * correctly hide, so they saw nothing, reported no clash, and left the unique
-   * index to fail the insert.
-   *
-   * So collisions are handled the way they should have been anyway — by trying,
-   * and reacting to the constraint. That is race-free, which a pre-check never
-   * was: two schools registering the same name in the same second both saw no
-   * clash.
-   */
-  const baseSlug = slugify(school.name);
-  // The directory groups on the exact string, so the country and state are
-  // saved in one shape whatever the wizard was handed. See lib/places.ts.
-  const location = normaliseLocation(school);
-
-  for (let attempt = 0; attempt < 6; attempt++) {
-    const schoolId = randomUUID();
-    const code = schoolCode(school.name);
-    const slug = attempt === 0 ? baseSlug : `${baseSlug}-${attempt + 1}`;
-
-    try {
-      created = await forSchool(schoolId, () =>
-        db.$tenantTransaction(async (rawTx) => {
-          const tx = rawTx as typeof db;
-      const createdSchool = await tx.school.create({
-        data: {
-          id: schoolId,
-          name: school.name,
-          slug,
-          code,
-          contactEmail: school.contactEmail,
-          contactPhone: school.contactPhone || null,
-          website: school.website || null,
-          addressLine: school.addressLine || null,
-          city: school.city || null,
-          region: location.region,
-          postalCode: school.postalCode || null,
-          country: location.country,
-          gradeLow: school.gradeLow || null,
-          gradeHigh: school.gradeHigh || null,
-          // The words become the directory profile's draft; publishing stays
-          // a deliberate later act behind the checklist's directory step.
-          profileAbout: school.about || "",
-          timezone: school.timezone,
-          brandPrimary: school.brandPrimary || null,
-          onboardingState: writeJson({ createdSchool: true }),
-          kind,
-          streamsJson: streamsToStore(kind, streams),
-          // A college's adults read their own health card and incidents from 18 (DS-5, self-read.ts); a school starts at never.
-          selfReadAge: selfReadAgeDefault(kind),
-        },
-      });
-
-      const createdUser = await tx.user.create({
-        data: {
-          email: admin.email,
-          name: admin.name,
-          passwordHash,
-          prefs: writeJson({ theme: "system", locale }),
-        },
-      });
-
-      await tx.membership.create({
-        data: {
-          userId: createdUser.id,
-          schoolId: createdSchool.id,
-          role: "ADMIN",
-          status: "ACTIVE",
-        },
-      });
-      // Every school starts with ALUMNI on (3 Oct 2026), a college with ACADEMICS too (4 Oct) and its streams' preset (5 Oct); the rest wait for the admin.
-      await writeDefaultModules(createdSchool.id, tx, kind, streams);
-
-      await tx.authToken.create({
-        data: {
-          userId: createdUser.id,
-          email: admin.email,
-          purpose: "EMAIL_VERIFY",
-          tokenHash: hashToken(verifyToken),
-          expiresAt: new Date(Date.now() + EMAIL_VERIFY_TTL_HOURS * 3_600_000),
-        },
-      });
-
-          return { schoolId: createdSchool.id, userId: createdUser.id, code };
-        }),
-      );
-      break;
-    } catch (error) {
-      // A taken slug or code is worth another go with a different one; anything
-      // else is ours and should not be retried five more times.
-      const taken =
-        typeof error === "object" &&
-        error !== null &&
-        (error as { code?: string }).code === "P2002";
-      if (taken && attempt < 5) continue;
-
-      console.error("[register] transaction failed", error);
-      return { ok: false, errors: { _form: t("register.couldNotCreate") } };
-    }
-  }
-
-  if (!created) {
-    return { ok: false, errors: { _form: t("register.couldNotCreate") } };
-  }
-
-  // Outside the transaction: an email provider hiccup must not roll back a
-  // successfully created school. The admin can re-request verification.
-  await sendVerifyEmail(
-    admin.email,
-    `${APP_URL}/verify?token=${verifyToken}`,
-    school.name,
-    // The language the form was filled in, which the new account was just given.
-    locale,
-  ).catch((error) => console.error("[register] verification email failed", error));
-
-  await audit({
-    schoolId: created.schoolId,
-    actorUserId: created.userId,
-    action: "school.create",
-    targetType: "School",
-    targetId: created.schoolId,
-    meta: { name: school.name, code: created.code, kind, streams: JSON.parse(streamsToStore(kind, streams)) },
+  afterResponse("register")(async () => {
+    await completeSchoolRegistration(parsed.data, locale);
   });
 
-  await createSession(created.userId, { schoolId: created.schoolId, role: "ADMIN" });
-
-  return { ok: true, errors: {}, schoolCode: created.code };
-}
-
-/**
- * Server-side availability check used by the wizard's live validation.
- *
- * ⚠ A YES/NO ABOUT WHETHER AN ADDRESS HAS AN ACCOUNT is an enumeration
- * oracle when it is free to call. At the limit it answers "available" —
- * the same shape as any other answer, so a script cannot tell a refusal
- * from a free address — and the submit itself still refuses a taken one.
- */
-export async function checkEmailAvailable(email: string): Promise<boolean> {
-  const normalized = email.trim().toLowerCase();
-  if (!normalized.includes("@")) return true;
-  const gate = await consumeByCaller("email-check", EMAIL_CHECKS);
-  if (!gate.allowed) return true;
-  const existing = await db.user.findUnique({
-    where: { email: normalized },
-    select: { id: true },
-  });
-  return !existing;
+  return { ok: true, errors: {}, sent: t("accountGuard.signupSent", { email: admin.email }) };
 }

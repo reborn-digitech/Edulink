@@ -252,6 +252,24 @@ describe("the operator's queue", () => {
     expect(await decideExpertApplication(operator(), id.meeraApp!, { decision: "REFUSE", reason: "DUPLICATE" })).toEqual({ ok: false, errorKey: "expertApply.alreadyDecided" });
   });
 
+  it("QA-37: two approvals pressed at once make one account and both read as done; a later refusal is still refused", async () => {
+    __setHeaders({ "x-forwarded-for": `${ADDRESS}-race` });
+    const made = await submitExpertApplication(body({ email: mail("twice"), name: "ZZ Twice Pressed" }), PDF(), "en");
+    expect(made.ok).toBe(true);
+    if (!made.ok) return;
+    const both = await Promise.all([decideExpertApplication(operator(), made.id, { decision: "APPROVE" }), decideExpertApplication(operator(), made.id, { decision: "APPROVE" })]);
+    // Before the fix the loser answered { ok: false, errorKey: "expertApply.addressIsExpert" }, telling the operator to refuse what they had just approved.
+    expect(both.every((r) => r.ok && r.status === "APPROVED")).toBe(true);
+    expect(both.filter((r) => r.ok && r.already).length).toBe(1);
+    const user = await db.user.findUniqueOrThrow({ where: { email: mail("twice") }, select: { id: true } });
+    for (const r of both) if (r.ok) expect(r.userId).toBe(user.id);
+    expect(await db.expertInvite.count({ where: { email: mail("twice") } })).toBe(1);
+    expect(await db.auditLog.count({ where: { action: "operator.expertApplication.approve", targetId: made.id } })).toBe(1);
+    // A press after the fact: the same decision is answered as it stands; the other decision is refused.
+    expect(await decideExpertApplication(operator(), made.id, { decision: "APPROVE" })).toMatchObject({ ok: true, status: "APPROVED", already: true, userId: user.id });
+    expect(await decideExpertApplication(operator(), made.id, { decision: "REFUSE", reason: "DUPLICATE" })).toEqual({ ok: false, errorKey: "expertApply.alreadyDecided" });
+  });
+
   it("an address that already has an account gets no second one: the invitation, and the profile from the application at acceptance", async () => {
     __setHeaders({ "x-forwarded-for": `${ADDRESS}-c` });
     const made = await submitExpertApplication(body({ email: mail("teacher"), name: "ZZ Teacher Applicant", headline: "ZZ physics teacher and olympiad coach", specialisms: ["OLYMPIADS", "SCIENCE"], offering: "BOTH" }), PDF(), "en");

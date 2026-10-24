@@ -21,9 +21,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
  */
 
 const cookieJar = new Map<string, string>();
+const headerJar = new Map<string, string>();
 
 vi.mock("next/headers", () => ({
-  headers: async () => new Headers(),
+  headers: async () => new Headers([...headerJar.entries()]),
   cookies: async () => ({
     get: (name: string) =>
       cookieJar.has(name) ? { name, value: cookieJar.get(name)! } : undefined,
@@ -43,6 +44,8 @@ type SessionRow = {
   activeRole: string | null;
   revokedAt: Date | null;
   expiresAt: Date;
+  createdAt: Date;
+  user?: { isSuperuser: boolean; disabledAt: Date | null } | null;
 };
 
 const HOUR = 3_600_000;
@@ -103,11 +106,16 @@ const live = (over: Partial<SessionRow> = {}): SessionRow => ({
   activeRole: "TEACHER",
   revokedAt: null,
   expiresAt: new Date(Date.now() + HOUR),
+  createdAt: new Date(Date.now() - HOUR),
+  user: { isSuperuser: false, disabledAt: null },
   ...over,
 });
 
 describe("resolveRequestTenant", () => {
-  beforeEach(() => cookieJar.clear());
+  beforeEach(() => {
+    cookieJar.clear();
+    headerJar.clear();
+  });
 
   it("⚠ resolves a tenant with no React render scope anywhere in sight", async () => {
     signIn("tok");
@@ -181,6 +189,39 @@ describe("resolveRequestTenant", () => {
       memberships: [{ userId: "u1", schoolId: "school-a" }],
     });
     expect((await resolveRequestTenant(client)).schoolIds).toEqual([]);
+  });
+
+  // QA-26 (24 Oct 2026): the three refusals getSession makes, made here too, so
+  // the database and the application never disagree about who is signed in.
+  it("⚠ refuses a session past its six-month absolute end, however far it slid", async () => {
+    signIn("tok");
+    const { client } = fakeClient({
+      sessions: { [hashToken("tok")]: live({ createdAt: new Date(Date.now() - 181 * 24 * HOUR), expiresAt: new Date(Date.now() + 20 * 24 * HOUR) }) },
+      memberships: [{ userId: "u1", schoolId: "school-a" }],
+    });
+    expect(await resolveRequestTenant(client)).toEqual({ schoolIds: [], userId: null, joinCode: null, isSuperuser: false });
+  });
+
+  it("⚠ refuses the session of a person the operator disabled", async () => {
+    signIn("tok");
+    const { client } = fakeClient({
+      sessions: { [hashToken("tok")]: live({ user: { isSuperuser: true, disabledAt: new Date() } }) },
+      memberships: [{ userId: "u1", schoolId: "school-a" }],
+    });
+    expect(await resolveRequestTenant(client)).toEqual({ schoolIds: [], userId: null, joinCode: null, isSuperuser: false });
+  });
+
+  it("⚠ refuses an outbox replay queued by somebody else (X-Edulink-Owner)", async () => {
+    signIn("tok");
+    headerJar.set("x-edulink-owner", "u2");
+    const { client } = fakeClient({
+      sessions: { [hashToken("tok")]: live() },
+      memberships: [{ userId: "u1", schoolId: "school-a" }],
+    });
+    expect(await resolveRequestTenant(client)).toEqual({ schoolIds: [], userId: null, joinCode: null, isSuperuser: false });
+    // The holder's own replay is theirs.
+    headerJar.set("x-edulink-owner", "u1");
+    expect((await resolveRequestTenant(client)).schoolIds).toEqual(["school-a"]);
   });
 
   it("⚠ treats the school on the session as a claim and checks it", async () => {

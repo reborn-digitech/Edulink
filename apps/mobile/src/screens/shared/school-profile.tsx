@@ -100,7 +100,8 @@ export function SchoolProfile() {
                 {t("explore.grades", { low: d.gradeLow, high: d.gradeHigh })}
               </Text>
             ) : null}
-            {d.website ? <Row icon="globe" title={t("explore.websiteLabel")} caption={d.website} onPress={() => void Linking.openURL(d.website!)} /> : null}
+            {/* Opened only when it is an http(s) address, whatever an older row holds (QA-27). */}
+            {d.website && /^https?:\/\//i.test(d.website.trim()) ? <Row icon="globe" title={t("explore.websiteLabel")} caption={d.website} onPress={() => void Linking.openURL(d.website!.trim())} /> : null}
           </Card>
           {d.achievements.length > 0 ? (
             <Card title={t("explore.achievementsTitle")}>

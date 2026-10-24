@@ -88,6 +88,7 @@ import { seedCompetitionSources } from "./competitions-crawl/sources"; // compet
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
+import { removeHarnessExam } from "../e2e/harness-exam"; // fix-lows-D (QA-73)
 
 /** A fictitious eleven-digit PEN for seed data, deterministic per membership so re-runs agree. The government issues real ones; the app never generates any. */
 export function fakePen(membershipId: string): string {
@@ -1187,26 +1188,60 @@ export async function buildIncidents(school: { id: string }, adminUserId: string
  */
 export async function buildCircular(school: { id: string; name: string }, adminUserId: string, opts: { locale?: string } = {}) {
   const title = `${TAG.prefix}Annual day: consent and costumes`;
-  let post = await db.post.findFirst({ where: { schoolId: school.id, title }, select: { id: true } });
+  // fix-lows-D (QA-71): one timeline, in order. The reach report counts the roster as it stood at delivery
+  // (circulars.ts familyGroups: enrolledAt <= deliveredAt), so the post is written after the school's last
+  // enrolment and delivered after it is written; the push rows, texts, reads and the acknowledgement follow the
+  // delivery. Nothing is dated ahead of the clock: when the last enrolment is seconds old the build waits.
+  const timeline = await circularTimeline(school.id);
+  let post = await db.post.findFirst({ where: { schoolId: school.id, title }, select: { id: true, createdAt: true, deliveredAt: true } });
   if (!post) {
     post = await db.post.create({
-      data: { schoolId: school.id, authorUserId: adminUserId, scope: "SCHOOL", category: "EVENTS", title, body: "Annual day is on the 30th. Every pupil needs a signed consent slip and a white kurta by the 25th. Please acknowledge so the class teacher knows you have seen this.", audience: "PARENTS", requiresAck: true, status: "APPROVED", reviewedAt: new Date(), deliveryQueuedAt: new Date(Date.now() - 86_400_000), deliveredAt: new Date(Date.now() - 86_400_000 + 60_000) },
-      select: { id: true },
+      data: { schoolId: school.id, authorUserId: adminUserId, scope: "SCHOOL", category: "EVENTS", title, body: "Annual day is on the 30th. Every pupil needs a signed consent slip and a white kurta by the 25th. Please acknowledge so the class teacher knows you have seen this.", audience: "PARENTS", requiresAck: true, status: "APPROVED", createdAt: timeline.createdAt, reviewedAt: timeline.createdAt, deliveryQueuedAt: timeline.createdAt, deliveredAt: timeline.deliveredAt },
+      select: { id: true, createdAt: true, deliveredAt: true },
     });
     const guardians = await db.guardianship.findMany({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true, parent: { select: { phone: true } } }, distinct: ["parentUserId"] });
     for (const g of guardians) {
-      await db.notification.create({ data: { userId: g.parentUserId, schoolId: school.id, kind: "POST", title: `A notice from ${school.name} asks for your acknowledgement`, body: title, url: `/bulletin/${post.id}`, createdAt: new Date(Date.now() - 86_400_000 + 60_000) } });
+      await db.notification.create({ data: { userId: g.parentUserId, schoolId: school.id, kind: "POST", title: `A notice from ${school.name} asks for your acknowledgement`, body: title, url: `/bulletin/${post.id}`, createdAt: timeline.deliveredAt } });
       if (g.parent.phone) {
-        await db.outboundMessage.create({ data: { schoolId: school.id, userId: g.parentUserId, to: g.parent.phone, channel: "WHATSAPP", templateKey: "circular", locale: opts.locale ?? "en", varsJson: JSON.stringify({ notice: title }), body: `Notice from ${school.name}: ${title} - EduLink`, status: "SENT", providerSid: `devbox_fixture_circular_${post.id}_${g.parentUserId}`, providerStatus: "sent", purpose: `circular:${post.id}`, sentAt: new Date() } });
+        await db.outboundMessage.create({ data: { schoolId: school.id, userId: g.parentUserId, to: g.parent.phone, channel: "WHATSAPP", templateKey: "circular", locale: opts.locale ?? "en", varsJson: JSON.stringify({ notice: title }), body: `Notice from ${school.name}: ${title} - EduLink`, status: "SENT", providerSid: `devbox_fixture_circular_${post.id}_${g.parentUserId}`, providerStatus: "sent", purpose: `circular:${post.id}`, createdAt: timeline.deliveredAt, sentAt: timeline.deliveredAt } });
       }
     }
     const [g1, g2] = guardians;
-    if (g1) await db.postRead.create({ data: { postId: post.id, schoolId: school.id, userId: g1.parentUserId } });
-    if (g1) await db.postAck.create({ data: { postId: post.id, schoolId: school.id, userId: g1.parentUserId } });
-    if (g2) await db.postRead.create({ data: { postId: post.id, schoolId: school.id, userId: g2.parentUserId } });
+    if (g1) await db.postRead.create({ data: { postId: post.id, schoolId: school.id, userId: g1.parentUserId, createdAt: timeline.readAt } });
+    if (g1) await db.postAck.create({ data: { postId: post.id, schoolId: school.id, userId: g1.parentUserId, createdAt: timeline.readAt } });
+    if (g2) await db.postRead.create({ data: { postId: post.id, schoolId: school.id, userId: g2.parentUserId, createdAt: timeline.readAt } });
+  } else if (!post.deliveredAt || post.deliveredAt < post.createdAt || post.createdAt < timeline.lastEnrolledAt) {
+    // A post an earlier build wrote (delivered a day before it was written, before the roster's enrolments): moved
+    // onto the timeline with everything the fixture wrote about it, later and never earlier, so no row runs backwards.
+    await realignCircular(school.id, post.id, timeline);
   }
   return { postId: post.id };
 }
+
+// fix-lows-D (QA-71)
+type CircularTimeline = { lastEnrolledAt: Date; createdAt: Date; deliveredAt: Date; readAt: Date };
+
+/** The fixture circular's dates: written after the last ACTIVE enrolment (or a day ago), delivered a minute later, read a minute after that, none of it ahead of now. */
+async function circularTimeline(schoolId: string, now: () => number = Date.now): Promise<CircularTimeline> {
+  const last = await db.enrollment.aggregate({ where: { schoolId, status: "ACTIVE" }, _max: { enrolledAt: true } });
+  const lastEnrolledAt = last._max.enrolledAt ?? new Date(0);
+  const dayAgo = now() - 86_400_000;
+  const created = Math.max(lastEnrolledAt.getTime() + 1_000, dayAgo);
+  // A minute apart when the day allows it; a second apart when the roster is newer than that.
+  const step = created + 2 * 60_000 <= now() ? 60_000 : 1_000;
+  const readAt = created + 2 * step;
+  while (now() <= readAt) await new Promise((resolve) => setTimeout(resolve, 200));
+  return { lastEnrolledAt, createdAt: new Date(created), deliveredAt: new Date(created + step), readAt: new Date(readAt) };
+}
+
+async function realignCircular(schoolId: string, postId: string, t: CircularTimeline): Promise<void> {
+  await db.post.update({ where: { id: postId }, data: { createdAt: t.createdAt, reviewedAt: t.createdAt, deliveryQueuedAt: t.createdAt, deliveredAt: t.deliveredAt } });
+  await db.notification.updateMany({ where: { schoolId, url: `/bulletin/${postId}`, createdAt: { lt: t.deliveredAt } }, data: { createdAt: t.deliveredAt } });
+  await db.outboundMessage.updateMany({ where: { schoolId, purpose: `circular:${postId}`, providerSid: { startsWith: "devbox_fixture_circular_" } }, data: { createdAt: t.deliveredAt, sentAt: t.deliveredAt } });
+  await db.postRead.updateMany({ where: { postId, createdAt: { lt: t.readAt } }, data: { createdAt: t.readAt } });
+  await db.postAck.updateMany({ where: { postId, createdAt: { lt: t.readAt } }, data: { createdAt: t.readAt } });
+}
+// end fix-lows-D (QA-71)
 
 /**
  * The staff register for ZZ Northgate: the last five working days marked by
@@ -1551,11 +1586,15 @@ export async function buildCertificates(school: { id: string; name: string; code
     const rows = fillRows(JSON.parse(t.rowsJson), data);
     const outro = fill(t.outro, data);
     const code = `${opts.codePrefix ?? "ZZ"}${String(issued + 1).padStart(2, "0")}${pupil.studentMembershipId.slice(-6).toUpperCase().replace(/[^A-Z0-9]/g, "X")}`;
+    const issuedNow = Date.now(); // fix-lows-D (QA-72)
     const cert = await db.issuedCertificate.create({
       data: {
         schoolId: school.id, templateId: t.id, studentMembershipId: pupil.studentMembershipId, academicYearId: year.id, kind: t.kind, locale, serial, number: spec.number, title: t.title,
         intro: intro.text, rowsJson: JSON.stringify(rows.rows), outro: outro.text, layoutJson: t.layoutJson, dataJson: JSON.stringify({ ...data, missing: [...new Set([...intro.missing, ...rows.missing, ...outro.missing])] }),
-        purpose: spec.purpose, code, issuedByUserId: adminUserId, revokedAt: spec.revoked ? new Date() : null, revokedReason: spec.revoked ? "Issued to the wrong pupil." : null,
+        // fix-lows-D (QA-72): both dates from one clock reading, a revoked paper issued a minute before it was revoked
+        // (the database's default for issuedAt was read after revokedAt and came out a millisecond later).
+        purpose: spec.purpose, code, issuedByUserId: adminUserId, issuedAt: new Date(spec.revoked ? issuedNow - 60_000 : issuedNow), revokedAt: spec.revoked ? new Date(issuedNow) : null, revokedReason: spec.revoked ? "Issued to the wrong pupil." : null,
+        // end fix-lows-D
       },
       select: { id: true },
     });
@@ -2757,11 +2796,17 @@ async function main() {
     }
     const socialPost = await db.post.findFirst({ where: { schoolId, scope: "SCHOOL", status: "APPROVED", audience: "ALL" }, orderBy: { createdAt: "asc" }, select: { id: true } });
     if (socialPost) {
-      const sent = { schoolId, postId: socialPost.id, network: "FACEBOOK", status: "SENT", remoteId: "100000000000001_9000000000001", remoteUrl: "https://example.org/zz-northgate-facebook-post", error: null, attempts: 1, queuedByUserId: northgate.admin.id, sentAt: new Date() };
+      // fix-lows-D (QA-72): created and sent at one clock reading (sentAt was read before the database's default
+      // for createdAt and came out a millisecond earlier); a copy an earlier build wrote that way is put right.
+      const sentNow = new Date();
+      const sent = { schoolId, postId: socialPost.id, network: "FACEBOOK", status: "SENT", remoteId: "100000000000001_9000000000001", remoteUrl: "https://example.org/zz-northgate-facebook-post", error: null, attempts: 1, queuedByUserId: northgate.admin.id, createdAt: sentNow, sentAt: sentNow };
+      const priorSent = await db.socialPost.findUnique({ where: { id: "zz-social-sent-northgate" }, select: { createdAt: true, sentAt: true } });
+      const sentFix = priorSent && (!priorSent.sentAt || priorSent.sentAt < priorSent.createdAt) ? { sentAt: priorSent.createdAt } : {};
+      // end fix-lows-D
       const failed = { schoolId, postId: socialPost.id, network: "INSTAGRAM", status: "FAILED", error: JSON.stringify({ code: "MEDIA", detail: "ZZ fixture: the picture could not be fetched" }), attempts: 3, queuedByUserId: northgate.admin.id };
       // A copy of this post for the same network under another id (a test, a hand) gives way to the fixture's.
       await db.socialPost.deleteMany({ where: { schoolId, postId: socialPost.id, NOT: { id: { in: ["zz-social-sent-northgate", "zz-social-failed-northgate"] } } } });
-      await db.socialPost.upsert({ where: { id: "zz-social-sent-northgate" }, create: { id: "zz-social-sent-northgate", ...sent }, update: { postId: socialPost.id, status: "SENT", error: null } });
+      await db.socialPost.upsert({ where: { id: "zz-social-sent-northgate" }, create: { id: "zz-social-sent-northgate", ...sent }, update: { postId: socialPost.id, status: "SENT", error: null, ...sentFix } });
       await db.socialPost.upsert({ where: { id: "zz-social-failed-northgate" }, create: { id: "zz-social-failed-northgate", ...failed }, update: { postId: socialPost.id, status: "FAILED", error: failed.error, attempts: 3 } });
     }
     console.log(`  Facebook and Instagram: ZZ Northgate's fixture Page ${socialConnected}; ${socialPost ? "one copy SENT to Facebook and one FAILED for Instagram on its first school-wide post" : "NO school-wide post to hang the copies on"} — /admin/settings/social, /bulletin/${socialPost?.id ?? "…"}`);
@@ -2785,6 +2830,13 @@ async function main() {
   const seats = await buildSeats(db, { domain: DOMAIN, northgateId: northgate.school.id });
   console.log(`  Seats: ${seats.expertSeat ? "a priced one-to-one by zz.expert1 with zz.pupil01's paid seat" : "no priced one-to-one (no published zz.expert1 or no guardian)"}; ${seats.teacherSlot ? "a priced guidance slot by zz.teacher1" : "no zz.teacher1"} — /sessions, /teacher/guidance`);
   // end seats
+  // fix-lows-D (QA-73): the Playwright harness's own exam ("ZZ E2E Unit Test", e2e/global-setup.ts) is not the fixture's;
+  // left behind by a run, it sat on zz.teacher1's home. Removed here (ZZ Northgate's id only) as the run's teardown does.
+  {
+    const harness = await removeHarnessExam(db, northgate.school.id);
+    console.log(`  Playwright harness exam: ${harness.series ? `removed (${harness.series} series, ${harness.sittings} sitting(s))` : "none left behind"}`);
+  }
+  // end fix-lows-D
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },

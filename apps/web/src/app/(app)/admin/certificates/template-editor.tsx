@@ -471,7 +471,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
         </fieldset>
       </form>
 
-      <aside className="min-w-0 lg:sticky lg:top-20">
+      <aside aria-label={t("certificates.preview")} className="min-w-0 lg:sticky lg:top-20">
         <TemplatePreview palette={palette} locale={draft.locale} title={draft.title} intro={draft.intro} rows={draft.rows} outro={draft.outro} layout={draft.layout} />
       </aside>
     </div>

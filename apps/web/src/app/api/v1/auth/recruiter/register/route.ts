@@ -1,24 +1,26 @@
 import { NextResponse } from "next/server";
-import { recruiterRegisterSchema, sessionResponseSchema } from "@edulink/contracts";
+import { recruiterRegisterSchema, signupSentSchema } from "@edulink/contracts";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { registerRecruiter } from "@/lib/recruiters";
-import { createApiSession } from "@/lib/session";
-import { audit } from "@/lib/audit";
-import { clientAddress } from "@/lib/rate-limit";
+import { afterResponse } from "@/lib/after-response";
 import { getLocale, getT } from "@/lib/i18n/server";
 
 /**
  * POST /api/v1/auth/recruiter/register — a recruiter's own account from the
- * phone (4 Oct 2026), the web's /register/recruiter: the account and its
- * profile in one transaction, then a bearer session with the RECRUITER role
- * and no school. 422 with the field for a refusal of the form, 429 with
- * Retry-After at the sign-up limit.
+ * phone (4 Oct 2026), the web's /register/recruiter. 422 with the field for a
+ * refusal of the form, 429 with Retry-After at the sign-up limit.
+ *
+ * A form in order is answered 202 {sent: true} and NO SESSION, the same
+ * whether or not the address already had an account (QA-25, 24 Oct 2026): the
+ * account is made (or the holder of a taken address told by email) after the
+ * response, and a new recruiter signs in with the password once the
+ * confirmation link is opened.
  */
 export async function POST(request: Request) {
   try {
     const parsed = recruiterRegisterSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    const made = await registerRecruiter(parsed.data, await getLocale());
+    const made = await registerRecruiter(parsed.data, await getLocale(), { defer: afterResponse("recruiter-register") });
     const t = await getT();
     if (!made.ok) {
       if (made.retryAfterSeconds) {
@@ -32,22 +34,7 @@ export async function POST(request: Request) {
         { status: 422, headers: { "Cache-Control": "no-store" } },
       );
     }
-    const session = await createApiSession(made.userId, {
-      schoolId: null,
-      role: "RECRUITER",
-      userAgent: parsed.data.device?.trim() || request.headers.get("user-agent"),
-      ip: clientAddress(request.headers),
-    });
-    await audit({ schoolId: null, actorUserId: made.userId, action: "auth.login", meta: { via: "recruiter-register", role: "RECRUITER", api: true } });
-    return ok(
-      sessionResponseSchema.parse({
-        token: session.token,
-        expiresAt: session.expiresAt.toISOString(),
-        sessionId: session.sessionId,
-        context: { schoolId: null, role: "RECRUITER" },
-      }),
-      201,
-    );
+    return ok(signupSentSchema.parse({ sent: true }), 202);
   } catch (error) {
     return apiFailure(error, "api/v1/auth/recruiter/register");
   }

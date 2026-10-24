@@ -51,6 +51,28 @@ export const PURPOSE_KEY: Record<string, TranslationKey> = {
   test: "messaging.purposeTest",
 };
 
+/**
+ * A purpose that names its thing after a colon ("circular:<postId>", "circular-remind:<postId>", "incident:<id>"),
+ * read by its prefix (QA-63, QA campaign of 24 October 2026): the log printed "circular:cmuvc2m6e004…". Never the raw
+ * value: a purpose with no word is "Other". The href is the page of the thing named, where there is one to open.
+ */
+const PREFIX_KEY: Record<string, TranslationKey> = {
+  circular: "messaging.purposeCircular",
+  "circular-remind": "qaInterface.purposeCircularRemind",
+  incident: "qaInterface.purposeIncident",
+};
+export function purposeWords(t: Translate, purpose: string | null | undefined): { label: string; href: string | null } {
+  if (!purpose) return { label: "—", href: null };
+  const whole = PURPOSE_KEY[purpose];
+  if (whole) return { label: t(whole), href: null };
+  const at = purpose.indexOf(":");
+  const prefix = at > 0 ? purpose.slice(0, at) : purpose;
+  const id = at > 0 ? purpose.slice(at + 1) : "";
+  const key = PREFIX_KEY[prefix] ?? PURPOSE_KEY[prefix];
+  const href = /^c[a-z0-9]{20,30}$/.test(id) ? (prefix === "circular" || prefix === "circular-remind" ? `/bulletin/${id}` : prefix === "incident" ? `/incidents/${id}` : null) : null;
+  return { label: t(key ?? "qaInterface.purposeOther"), href };
+}
+
 export const CHANNEL_KEY: Record<string, TranslationKey> = {
   SMS: "messaging.channelSms",
   WHATSAPP: "messaging.channelWhatsapp",

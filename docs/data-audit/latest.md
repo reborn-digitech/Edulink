@@ -1,17 +1,13 @@
 # Data-flow audit — latest run
 
-Run: 2026-10-24T13:36:07.072Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 6 WARN · 191 INFO
+Run: 2026-10-24T16:02:33.003Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 2 WARN · 191 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
-## WARN (6)
+## WARN (2)
 
 | check | school | detail |
 |---|---|---|
-| fee-payment | Sunrise Public School | payment cmvlzha9h000sgpgjvwelyiml is REVERSED yet still holds 750000 in allocations |
-| fee-payment | Sunrise Public School | payment cmvlzh2lu000fgpgjghw9mu29 is REVERSED yet still holds 500000 in allocations |
-| fee-payment | Sunrise Public School | payment cmvlzho65001sgpgjbc1vswez is REVERSED yet still holds 750000 in allocations |
-| fee-payment | Sunrise Public School | payment cmvlzlu9v0044gpgjy014ns04 is REVERSED yet still holds 1250000 in allocations |
 | usage-sample | Saraswati Vidya Mandir | 2026-10 pupils: stored 48 vs recomputed 49 (computed 2026-10-01T02:02:15.579Z) |
 | usage-sample | Sunrise Public School | 2026-10 messages: stored 0 vs recomputed 7 (computed 2026-10-01T02:02:15.579Z) |
 
@@ -142,9 +138,9 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | academics-internal-lock | Saraswati School of Architecture | 1 locked offerings checked |
 | academics-internal-lock | Saraswati Vocational College | 1 locked offerings checked |
 | academics-internal-lock | ZZ Vidya College | 1 locked offerings checked |
+| college-prn | Saraswati Law College | 8 seats checked against their records |
 | college-prn | ZZ Shastri Autonomous College | 4 seats checked against their records |
 | college-prn | ZZ Vidya College | 3 seats checked against their records |
-| college-prn | Saraswati Law College | 8 seats checked against their records |
 | college-prn | Saraswati Institute of Management | 8 seats checked against their records |
 | college-prn | Saraswati School of Architecture | 8 seats checked against their records |
 | college-prn | Saraswati College of Education | 8 seats checked against their records |

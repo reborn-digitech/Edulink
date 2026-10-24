@@ -164,6 +164,9 @@ const FLAT: Record<string, string> = {
   "/accounts": "/(app)/accounts",
   "/exam-cell": "/(app)/exam-cell",
   "/placement": "/(app)/placement-cell",
+  // A student's placement notices (QA-70: an invitation, a round's result, an offer) carry the web's /student/placement:
+  // the student's own placement screen.
+  "/student/placement": "/(app)/placement",
   "/iqac": "/(app)/iqac-desk",
 };
 

@@ -15,6 +15,7 @@ import { Notice } from "../staff/shared";
 import { ChildSwitcher, childQuery, formatInstant } from "../family/shared";
 import { BACKLOG_KEY, CLASS_KEY, CREDIT_KEY, DOC_KIND_KEY, FORM_STATUS_KEY, RESULT_KEY, REVAL_KIND_KEY, REVAL_OUTCOME_KEY, marks } from "./words";
 import { formatDate } from "@/lib/dates";
+import { demandStatusLabel } from "../shared/fees";
 
 /**
  * A college student's exams on the phone (module EXAMS, 4 Oct 2026) — the
@@ -83,7 +84,7 @@ export function CollegeExamsScreen() {
           {f.courses.map((c) => (
             <Row key={c.courseId} title={`${c.code} ${c.name}`} caption={c.kind === "BACKLOG" ? t("examCell.kindBACKLOG") : undefined} />
           ))}
-          {f.status !== "DRAFT" ? <Text>{t("examCell.feeLine", { fee: money(f.feePaise + f.lateFeePaise) })}</Text> : null}
+          {f.status !== "DRAFT" ? <Text>{[t("examCell.feeLine", { fee: money(f.feePaise + f.lateFeePaise) }), f.demandStatus ? demandStatusLabel(t, f.demandStatus) : null].filter(Boolean).join(" · ")}</Text> : null}
           {f.eligibilityNote ? <Text tone="danger">{f.eligibilityNote}</Text> : null}
           {f.noDuesLines.some((l) => !l.cleared) ? <Text tone="danger">{t("examCell.noDuesPending", { desks: f.noDuesLines.filter((l) => !l.cleared).map((l) => l.desk).join(", ") })}</Text> : null}
           {f.refusalReason ? <Text tone="danger">{f.refusalReason}</Text> : null}

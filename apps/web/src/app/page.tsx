@@ -16,10 +16,10 @@ import { InstallButton } from "@/components/install-button";
 import { LanguageSwitch } from "@/components/language-switch";
 import { EMAIL_SLOT, WithEmail } from "@/components/with-email";
 import { getSession } from "@/lib/session";
-import { ROLE_HOME } from "@/lib/constants";
 import { company, companyHasDetails, type Company } from "@/lib/company";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { homeFor } from "@/lib/role-home";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -45,7 +45,7 @@ const COLLEGE_MODULES = ["academics", "exams", "iqac", "placement"] as const;
  */
 export default async function CompanySite() {
   const session = await getSession();
-  if (session?.role) redirect(ROLE_HOME[session.role]);
+  if (session?.role) redirect(await homeFor(session.role, session.schoolId));
   if (session) redirect("/switch");
 
   const t = await getT();

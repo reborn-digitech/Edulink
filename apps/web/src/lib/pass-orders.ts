@@ -523,6 +523,10 @@ export async function passInvoiceView(ctx: ActiveContext, orderId: string, now: 
     const company = await seller();
     await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
+      // The order's row first (QA-36): reads arriving together wait here, and each then sees what the first wrote,
+      // rather than all checking invoiceId before the series lock and the losers failing on passOrderId's unique key.
+      // A late invoice carries the date it is issued (issuedAt = this read), as a tax invoice must; never backdated.
+      await tx.$queryRaw`SELECT "id" FROM "PassOrder" WHERE "id" = ${o.id} FOR UPDATE`;
       const fresh = await tx.passOrder.findUniqueOrThrow({ where: { id: o.id }, select: { invoiceId: true } });
       if (!fresh.invoiceId) await writePassInvoice(tx, company, o, window, now);
     });
@@ -599,10 +603,18 @@ export async function operatorPassOrdersOf(ctx: ActiveContext, userId: string, n
  * second click refunds nothing), then the gateway asked; a gateway that refuses puts both back and says so.
  * Audited "operator.pass.refund"; the payer and the holder are told.
  */
-export async function refundPassOrder(ctx: ActiveContext, id: string, now: Date = new Date()): Promise<PassResult<{ order: OperatorPassOrder; revoked: number }>> {
+export async function refundPassOrder(ctx: ActiveContext, id: string, now: Date = new Date()): Promise<PassResult<{ order: OperatorPassOrder; revoked: number; already?: boolean }>> {
   assertOperator(ctx);
   const o = await db.passOrder.findUnique({ where: { id }, select: ORDER_SELECT });
   if (!o) throw new AccessError("passes.noSuchOrder", "NOT_FOUND");
+  // A pass already refunded (the other half of a double press, or a press on a stale list) is answered as it stands,
+  // `already`, rather than "only a paid pass can be refunded" (QA-37).
+  const asRefunded = async () => {
+    const after = await db.passOrder.findUniqueOrThrow({ where: { id }, select: ORDER_SELECT });
+    if (after.status !== "REFUNDED") return null;
+    return { ok: true as const, order: (await operatorViews([after], now))[0]!, revoked: 0, already: true };
+  };
+  if (o.status === "REFUNDED") return (await asRefunded()) ?? { ok: false, errorKey: "passes.refuseNotRefundable" };
   if (o.status !== "PAID" || !o.gatewayPaymentId) return { ok: false, errorKey: "passes.refuseNotRefundable" };
   if (!refundableAt(o, now)) return { ok: false, errorKey: "passes.refuseRefundLate", vars: { days: PASS_REFUND_DAYS } };
   const claimed = await db.$tenantTransaction(async (raw) => {
@@ -611,7 +623,7 @@ export async function refundPassOrder(ctx: ActiveContext, id: string, now: Date 
     if (count === 0) return null;
     return { revoked: await revokePassEntitlements(id, ctx.user.id, now, tx) };
   });
-  if (!claimed) return { ok: false, errorKey: "passes.refuseNotRefundable" };
+  if (!claimed) return (await asRefunded()) ?? { ok: false, errorKey: "passes.refuseNotRefundable" };
   try {
     const refund = await refundSeat(o.gatewayPaymentId, o.totalPaise, { shalaghar_pass_order: o.id }, false);
     await db.passOrder.update({ where: { id }, data: { gatewayRefundId: refund.refundId } });

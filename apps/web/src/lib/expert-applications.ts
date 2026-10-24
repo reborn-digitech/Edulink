@@ -325,8 +325,19 @@ export function profileFromApplication(row: { headline: string; bio: string; spe
 
 export type DecideInput = { decision: "APPROVE" | "REFUSE"; reason?: ExpertApplicationRefusal; note?: string };
 export type DecideResult =
-  | { ok: true; status: "APPROVED" | "REFUSED"; userId: string | null; inviteSent: boolean }
+  | { ok: true; status: "APPROVED" | "REFUSED"; userId: string | null; inviteSent: boolean; already?: boolean }
   | { ok: false; errorKey: TranslationKey };
+
+/**
+ * A press that finds the application already decided (QA-37): the same decision is answered as it stands, `already`,
+ * so the losing half of a double press reads as done rather than as a failure; the other decision is refused.
+ */
+async function asDecided(applicationId: string, decision: DecideInput["decision"]): Promise<DecideResult> {
+  const now = await db.expertApplication.findUnique({ where: { id: applicationId }, select: { status: true, createdUserId: true } });
+  const wanted = decision === "APPROVE" ? "APPROVED" : "REFUSED";
+  if (now?.status !== wanted) return { ok: false, errorKey: "expertApply.alreadyDecided" };
+  return { ok: true, status: wanted, userId: wanted === "APPROVED" ? now.createdUserId : null, inviteSent: false, already: true };
+}
 
 /** Thrown inside the approval's transaction when somebody decided the row first: the whole approval rolls back. */
 class DecidedMeanwhile extends Error {}
@@ -336,7 +347,7 @@ export async function decideExpertApplication(ctx: ActiveContext, applicationId:
   assertOperator(ctx);
   const app = await db.expertApplication.findUnique({ where: { id: applicationId } });
   if (!app) return { ok: false, errorKey: "expertApply.noSuchApplication" };
-  if (app.status !== "PENDING") return { ok: false, errorKey: "expertApply.alreadyDecided" };
+  if (app.status !== "PENDING") return asDecided(app.id, input.decision);
   const lang: Locale = normaliseLocale(app.locale);
 
   if (input.decision === "REFUSE") {
@@ -348,7 +359,7 @@ export async function decideExpertApplication(ctx: ActiveContext, applicationId:
       where: { id: app.id, status: "PENDING" },
       data: { status: "REFUSED", refusalCode: reason, refusalNote: note, decidedAt: now, decidedByUserId: ctx.user.id },
     });
-    if (done.count === 0) return { ok: false, errorKey: "expertApply.alreadyDecided" };
+    if (done.count === 0) return asDecided(app.id, input.decision);
     const t = translator(lang);
     const lines = [t("expertApply.mailRefusedLine", { name: app.name }), t(`expertApply.mailReason${reason}`)];
     if (note) lines.push(t("expertApply.mailRefusedNote", { note }));
@@ -362,7 +373,11 @@ export async function decideExpertApplication(ctx: ActiveContext, applicationId:
 
   // APPROVE.
   const existing = await db.user.findUnique({ where: { email: app.email }, select: { id: true, expertProfile: { select: { id: true } } } });
-  if (existing?.expertProfile) return { ok: false, errorKey: "expertApply.addressIsExpert" };
+  if (existing?.expertProfile) {
+    // An expert account under this address may be the one an approval of this very application just made.
+    const meanwhile = await asDecided(app.id, input.decision);
+    return meanwhile.ok ? meanwhile : { ok: false, errorKey: "expertApply.addressIsExpert" };
+  }
 
   const token = randomBytes(32).toString("base64url");
   const tokenHash = createHash("sha256").update(token).digest("hex");
@@ -394,9 +409,13 @@ export async function decideExpertApplication(ctx: ActiveContext, applicationId:
       return madeUserId;
     });
   } catch (error) {
-    if (error instanceof DecidedMeanwhile) return { ok: false, errorKey: "expertApply.alreadyDecided" };
-    // The same address made an account between the read above and the write: refuse rather than merge.
-    if ((error as { code?: string }).code === "P2002") return { ok: false, errorKey: "expertApply.addressIsExpert" };
+    if (error instanceof DecidedMeanwhile) return asDecided(app.id, input.decision);
+    // The same address made an account between the read above and the write: either the other half of a double
+    // press approving this application (answered as done, QA-37), or somebody else's account (refused, not merged).
+    if ((error as { code?: string }).code === "P2002") {
+      const meanwhile = await asDecided(app.id, input.decision);
+      return meanwhile.ok ? meanwhile : { ok: false, errorKey: "expertApply.addressIsExpert" };
+    }
     throw error;
   }
 

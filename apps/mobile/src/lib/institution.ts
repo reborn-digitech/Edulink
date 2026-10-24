@@ -1,4 +1,5 @@
-import type { Me } from "@edulink/contracts";
+import { isCollegeKind, type Me } from "@edulink/contracts";
+import { useSessionIfAny } from "./session";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 
 type Context = Me["contexts"][number];
@@ -14,4 +15,13 @@ export function contextPlace(c: Pick<Context, "schoolName" | "institutionKind">,
   if (!c.schoolName) return null;
   if (!c.institutionKind || c.institutionKind === "SCHOOL") return c.schoolName;
   return `${c.schoolName} · ${t(`institution.kind.${c.institutionKind}` as TranslationKey)}`;
+}
+
+/**
+ * Whether the person's active place is a college (QA-69, QA campaign of 24 October 2026): a screen says "college"
+ * and "students" there, where it said "school" and "pupils" everywhere. False before /me has answered.
+ */
+export function useCollege(): boolean {
+  const session = useSessionIfAny();
+  return session?.status === "signed-in" ? isCollegeKind(session.me.institutionKind) : false;
 }

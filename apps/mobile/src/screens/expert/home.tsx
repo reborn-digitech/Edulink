@@ -20,6 +20,13 @@ import { formatInstant, Note, Pill } from "../family/shared";
  * way the web shows them. While the profile is still under review (the
  * web's /expert/pending), that is said here too, because an empty list
  * with no reason looks like a broken app.
+ *
+ * The standing is read whatever the platform's switches say (QA-53, QA
+ * campaign of 24 October 2026): with expert sessions off, the screen said
+ * only "not open yet, fill in your profile" to an expert whose profile the
+ * save door refuses until it is listed. Under review, the note is the whole
+ * screen, with the web's door (set up your account meanwhile), and the
+ * bookings, which refuse an expert not yet listed, are not asked for.
  */
 const STATUS_KEY: Record<string, TranslationKey> = { CONFIRMED: "expert.statusConfirmed", CANCELLED: "expert.statusCancelled", COMPLETED: "expert.statusCompleted" };
 const STATUS_TONE: Record<string, "accent" | "danger" | "muted"> = { CONFIRMED: "accent", CANCELLED: "danger", COMPLETED: "muted" };
@@ -32,19 +39,22 @@ export function ExpertHome() {
   const session = useSession();
   // Expert sessions switched off on the platform (15 Oct 2026; /me's `features`): one sentence, and the profile.
   const sessionsOn = featuresOf(session.status === "signed-in" ? session.me : null).includes("EXPERT_SESSIONS");
-  const query = useQuery({
-    enabled: sessionsOn,
-    queryKey: ["expert", "bookings"],
-    queryFn: async () => expertBookingsSchema.parse(unwrap(await api().get("/api/v1/shared/expert/bookings"))),
-  });
-  // Standing is a second, quieter question: a refusal here changes nothing on the screen.
+  // Standing first, on its own (QA-53): `published: false` is "being reviewed", whatever the switches say.
   const profile = useQuery({
     queryKey: ["expert", "profile"],
     queryFn: async () => expertProfileSchema.parse(unwrap(await api().get("/api/v1/shared/expert/profile"))),
   });
+  const underReview = profile.data ? !profile.data.profile.published : false;
+  // The switches are read from /me: nothing is asked for before it has answered.
+  const signedIn = session.status === "signed-in";
+  const query = useQuery({
+    enabled: signedIn && sessionsOn && !underReview,
+    queryKey: ["expert", "bookings"],
+    queryFn: async () => expertBookingsSchema.parse(unwrap(await api().get("/api/v1/shared/expert/bookings"))),
+  });
   // Decision 0004's free duty, from the one function that gates a price (the web's freeDutyRemaining).
   const duty = useQuery({
-    enabled: sessionsOn,
+    enabled: signedIn && sessionsOn && !underReview,
     queryKey: ["expert", "free-duty"],
     queryFn: async () => expertFreeDutySchema.parse(unwrap(await api().get("/api/v1/expert/free-duty"))),
   });
@@ -77,6 +87,21 @@ export function ExpertHome() {
       }
     />
   );
+  if (underReview) {
+    return (
+      <Screen title={t("expert.bookings")} refreshing={profile.isRefetching} onRefresh={() => void profile.refetch()}>
+        <Note tone="warn">
+          <Text variant="sm" bold>
+            {t("expert.underReview")}
+          </Text>
+          <Text variant="xs" tone="muted">
+            {t("expert.underReviewBody")}
+          </Text>
+          <Button label={t("expert.pendingCta")} variant="secondary" onPress={() => router.push("/(app)/account" as never)} />
+        </Note>
+      </Screen>
+    );
+  }
   if (!sessionsOn) {
     return (
       <Screen title={t("expert.bookings")}>
@@ -86,17 +111,6 @@ export function ExpertHome() {
   }
   return (
     <Screen title={t("expert.bookings")} description={t("expert.bookingsBody")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {profile.data && !profile.data.profile.published ? (
-        <Note tone="warn">
-          <Text variant="sm" bold>
-            {t("expert.underReview")}
-          </Text>
-          <Text variant="xs" tone="muted">
-            {t("expert.underReviewBody")}
-          </Text>
-          <Button label={t("nav.profile")} variant="secondary" onPress={() => router.push("/(app)/profile" as never)} />
-        </Note>
-      ) : null}
       {duty.data ? (
         <Card title={t("gigs.freeDutyTitle")}>
           <Text variant="xs" tone="subtle">

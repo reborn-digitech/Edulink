@@ -6,6 +6,7 @@ import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { removeSiteDomain, saveSiteDomain, verifySiteDomain } from "@/lib/site-domains";
 import { consume } from "@/lib/rate-limit";
+import { RuleRefusal } from "@/lib/rule-refusal";
 
 /**
  * The website flow's sixth screen (website-builder B, 15 Oct 2026): save, verify and remove the school's own
@@ -15,7 +16,7 @@ type Result = { ok: true } | { ok: false; error: string };
 
 async function refusal(error: unknown, where: string): Promise<Result> {
   const t = await getT();
-  if (error instanceof AccessError) return { ok: false, error: t(error.key, error.vars) };
+  if (error instanceof AccessError || error instanceof RuleRefusal) return { ok: false, error: t(error.key, error.vars) };
   console.error(`[${where}]`, error);
   return { ok: false, error: t("common.tryAgain") };
 }

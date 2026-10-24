@@ -30,7 +30,8 @@ export async function DutyCards({ ctx, t }: { ctx: Pick<ActiveContext, "role" | 
                 <p className="text-xs leading-relaxed text-fg-muted">{t(`duties.${duty}.what`)}</p>
                 {open ? (
                   <Link href={page.href} className="mt-1 inline-block text-xs font-semibold text-accent-strong hover:underline">
-                    {t("duties.open")}
+                    {/* The link names its desk (QA-62): seven "Open" links read alike in a screen reader's list. */}
+                    {t("qaInterface.openDuty", { name: t(`duties.${duty}.name`) })}
                   </Link>
                 ) : (
                   <p className="mt-1 text-xs text-fg-subtle">{t(page ? "duties.moduleOff" : "duties.pageComing")}</p>

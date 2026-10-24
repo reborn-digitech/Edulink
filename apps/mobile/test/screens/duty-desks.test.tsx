@@ -366,13 +366,13 @@ describe("the desks in More and on the duty card", () => {
     expect(DUTY_SCREENS.STUDIO_COORDINATOR).toEqual({ screen: "/(app)/studios", module: "ACADEMICS" });
     await mountStaff(<DutyCard />, "FACULTY", {}, { me: meAs("FACULTY", { duties: ["LAB_INCHARGE"] }) });
     expect(await screen.findByText("Looks after a laboratory, its equipment and its stock.")).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: "Open" }));
+    await fireEvent.press(screen.getByRole("button", { name: /^Open / }));
     expect(mockPush).toHaveBeenCalledWith("/(app)/lab-desk");
     // An HOD holding the studio duty opens the studios and juries screen from the card (R-56, the studio half, 10 Oct 2026).
     mockPush.mockClear();
     await mountStaff(<DutyCard />, "HOD", {}, { me: meAs("HOD", { duties: ["STUDIO_COORDINATOR"] }) });
     expect(await screen.findByText("Runs the design studios and their juries.")).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: "Open" }));
+    await fireEvent.press(screen.getByRole("button", { name: /^Open / }));
     expect(mockPush).toHaveBeenCalledWith("/(app)/studios");
   });
 });

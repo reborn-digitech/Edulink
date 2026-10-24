@@ -63,8 +63,12 @@ describe("two-step sign-in on the account screen", () => {
       },
     });
     expect(await screen.findByText("Two-step sign-in is off.")).toBeTruthy();
+    // The password first (QA-23): the button waits for it.
+    expect(screen.getByRole("button", { name: "Turn on" }).props.accessibilityState?.disabled).toBe(true);
+    await fireEvent.changeText(screen.getByLabelText("Your password"), "zz head password");
     await fireEvent.press(screen.getByRole("button", { name: "Turn on" }));
     expect(await screen.findByText("GEZD GNBV GY3T QOJQ GEZD GNBV GY3T QOJQ")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/account/totp/start")?.body).toEqual({ password: "zz head password" });
     expect(screen.getByText("This phone cannot scan itself: copy the key or the link into the authenticator app.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Open in the authenticator app" }));
     expect(open).toHaveBeenCalledWith(URI);
@@ -120,7 +124,29 @@ describe("two-step sign-in on the account screen", () => {
     await screen.findAllByText("head@zz.test");
     expect(screen.queryByText("Two-step sign-in")).toBeNull();
     gate.open(() => json(off));
+    await fireEvent.changeText(await screen.findByLabelText("Your password"), "zz head password");
     await fireEvent.press(await screen.findByRole("button", { name: "Turn on" }));
     expect(await screen.findByText("ZZ Two-step sign-in is for the office.")).toBeTruthy();
+  });
+
+  // QA-23 (24 Oct 2026): a session alone no longer turns it on.
+  it("a wrong password is refused under the password field, and nothing is shown to scan", async () => {
+    await mount({ "POST /api/v1/account/totp/start": () => json({ error: "That password is not right.", code: "BAD_REQUEST", issues: { password: "That password is not right." } }, 422) });
+    await fireEvent.changeText(await screen.findByLabelText("Your password"), "not it");
+    await fireEvent.press(screen.getByRole("button", { name: "Turn on" }));
+    expect(await screen.findByText("That password is not right.")).toBeTruthy();
+    expect(screen.queryByText("GEZD GNBV GY3T QOJQ GEZD GNBV GY3T QOJQ")).toBeNull();
+  });
+
+  it("an account with no password is told to sign in afresh, and starts with no password in the body", async () => {
+    const { calls } = await mount({
+      [STATUS]: () => json({ ...off, hasPassword: false }),
+      "POST /api/v1/account/totp/start": () => json({ secret: SECRET, uri: URI, account: "head@zz.test" }),
+    });
+    expect(await screen.findByText("To turn it on, sign out and sign in again, then come back here within ten minutes.")).toBeTruthy();
+    expect(screen.queryByLabelText("Your password")).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Turn on" }));
+    expect(await screen.findByText("GEZD GNBV GY3T QOJQ GEZD GNBV GY3T QOJQ")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/account/totp/start")?.body).toEqual({});
   });
 });

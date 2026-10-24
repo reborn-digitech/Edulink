@@ -10,7 +10,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ id
     const ctx = await requireApiOperator();
     const result = await refundPassOrder(ctx, (await params).id);
     if (!result.ok) return refused(result.errorKey, result.vars);
-    return ok(operatorPassRefundSchema.parse({ order: result.order, revoked: result.revoked }));
+    return ok(operatorPassRefundSchema.parse({ order: result.order, revoked: result.revoked, ...(result.already ? { already: true } : {}) }));
   } catch (error) {
     return apiFailure(error, "api/v1/operator/pass-orders/[id]/refund");
   }

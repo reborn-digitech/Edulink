@@ -18,6 +18,7 @@ import { normalisePhone } from "@/lib/phone";
 import { PHONE_VERIFY_REQUESTS } from "@/lib/rate-limit";
 import { GET as accountGet } from "@/app/api/v1/account/route";
 import { POST as prefsPost } from "@/app/api/v1/account/prefs/route";
+import { ENDPOINTS } from "@/lib/api-catalog";
 import { POST as localePost } from "@/app/api/v1/account/locale/route";
 import { POST as avatarPost } from "@/app/api/v1/account/avatar/route";
 import { POST as signOutPost } from "@/app/api/v1/account/devices/sign-out/route";
@@ -192,6 +193,23 @@ describe("preferences", () => {
     const res = await prefsPost(json({}));
     expect(res.status).toBe(422);
     expect(await res.json()).toMatchObject({ code: "BAD_REQUEST" });
+  });
+
+  it("QA-55/56: a clock time that does not exist is refused naming the field, and the channels are required as the summary says", async () => {
+    await asAdmin();
+    // Before QA-55 "25:99" was saved: 200 {"ok":true}.
+    for (const start of ["25:99", "24:00", "7:60"]) {
+      const res = await prefsPost(json({ channels: { push: true, email: true }, quietHours: { start, end: "06:00" } }));
+      expect(res.status, start).toBe(422);
+      expect(((await res.json()) as Envelope).issues?.["quietHours.start"]).toBeTruthy();
+    }
+    expect((await prefsPost(json({ channels: { push: true, email: true }, quietHours: { start: "7:30", end: "23:59" } }))).status).toBe(200);
+    // QA-56: quiet hours alone are refused for want of the channels, which the catalog's summary now says.
+    const alone = await prefsPost(json({ quietHours: { start: "22:00", end: "06:00" } }));
+    expect(alone.status).toBe(422);
+    expect(((await alone.json()) as Envelope).issues?.channels).toBeTruthy();
+    expect(ENDPOINTS.find((e) => e.method === "POST" && e.path === "/api/v1/account/prefs")?.summary).toMatch(/channels and the quiet hours are required/);
+    await prefsPost(json({ channels: { push: true, email: true }, quietHours: null }));
   });
 
   it("quiet hours that start and end at the same minute are the lib's refusal, against quietHours.end", async () => {

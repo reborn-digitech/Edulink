@@ -542,7 +542,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false, de
         </fieldset>
       </form>
 
-      <aside className="min-w-0 lg:sticky lg:top-20">
+      <aside aria-label={t("reportCardConfig.previewTitle")} className="min-w-0 lg:sticky lg:top-20">
         <RulesPreview schoolName={schoolName} locale={schoolLocale} bands={liveBands} areas={areas.map((a) => a.name.trim()).filter(Boolean)} coScale={coScale.map((g) => g.label.trim()).filter(Boolean)} layout={layout} labels={defaultLabels} />
       </aside>
     </div>

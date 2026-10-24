@@ -116,6 +116,19 @@ describe("a college student's exams on the phone", () => {
     expect(await screen.findByText("Asked; the exam cell decides it.")).toBeTruthy();
   });
 
+  it("says on each form's fee line whether the fee is due, paid or waived (QA-42)", async () => {
+    const form = mine().forms[0]!;
+    const forms = [
+      { ...form, id: ID(11), sessionName: "ZZ Winter 2026", status: "APPROVED", feePaise: 30000, demandStatus: "WAIVED" },
+      { ...form, id: ID(12), sessionName: "ZZ Spring 2027", status: "SUBMITTED", feePaise: 30000, demandStatus: "OPEN" },
+      { ...form, id: ID(13), sessionName: "ZZ Summer 2027", status: "SUBMITTED", feePaise: 30000, demandStatus: "PAID" },
+    ];
+    await mountStaff(<CollegeExamsScreen />, "STUDENT", { "GET /api/v1/exam-cell/mine": () => json(mine({ forms })) }, { me: atCollege("STUDENT", ["EXAMS"]) });
+    expect(await screen.findByText("Fee ₹300.00 · Waived")).toBeTruthy();
+    expect(screen.getByText("Fee ₹300.00 · Due")).toBeTruthy();
+    expect(screen.getByText("Fee ₹300.00 · Paid")).toBeTruthy();
+  });
+
   it("says when a PDF is refused", async () => {
     await mountStaff(<CollegeExamsScreen />, "STUDENT", {
       "GET /api/v1/exam-cell/mine": () => json(mine()),

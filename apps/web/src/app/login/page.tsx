@@ -7,8 +7,8 @@ import { WhoSignsIn } from "./who-signs-in";
 import { LanguageSwitch } from "@/components/language-switch";
 import { getSession } from "@/lib/session";
 import { enabledProviders, type SsoProviderId } from "@/lib/sso";
-import { ROLE_HOME } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { homeFor } from "@/lib/role-home";
 
 /** Brand names are proper nouns; the sentence around them translates. */
 const SSO_BRAND: Record<SsoProviderId, string> = {
@@ -28,7 +28,7 @@ export default async function LoginPage({
   searchParams: Promise<{ next?: string; expired?: string; reset?: string; link?: string; sso?: string; step?: string }>;
 }) {
   const session = await getSession();
-  if (session?.role) redirect(ROLE_HOME[session.role]);
+  if (session?.role) redirect(await homeFor(session.role, session.schoolId));
 
   const { expired, reset, link, sso, step } = await searchParams;
   const t = await getT();

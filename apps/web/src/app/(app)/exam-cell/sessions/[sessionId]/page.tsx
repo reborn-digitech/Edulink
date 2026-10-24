@@ -16,6 +16,7 @@ import { CellOff, FORM_STATUS_KEY, Hidden, Labelled, SessionFrame, localInput, m
 import { decideFormAction, generateFormsAction, sessionStatusAction, submitFormAction, updateSessionAction } from "../../actions";
 import { fieldClass } from "@/components/ui/field-class";
 import { ActionForm } from "@/components/ui/action-form";
+import { FEE_DEMAND_STATUS_KEY } from "@/app/(app)/parent/fees/labels";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -86,7 +87,7 @@ export default async function SessionFormsPage({ params, searchParams }: { param
                   <p className="text-xs text-fg-muted">
                     {f.courses.map((c) => `${c.code}${c.kind === "BACKLOG" ? ` (${t("examCell.backlogShort")})` : ""}`).join(", ")}
                     {f.status !== "DRAFT" ? ` · ${t("examCell.feeLine", { fee: money(f.feePaise + f.lateFeePaise, locale) })}` : ""}
-                    {f.demandStatus ? ` · ${t("examCell.demandStatus", { status: f.demandStatus })}` : ""}
+                    {f.demandStatus ? ` · ${t("examCell.demandStatus", { status: FEE_DEMAND_STATUS_KEY[f.demandStatus] ? t(FEE_DEMAND_STATUS_KEY[f.demandStatus]!) : f.demandStatus })}` : ""}
                     {f.refusalReason ? ` · ${f.refusalReason}` : ""}
                     {f.waiverReason ? ` · ${t("examCell.waived", { reason: f.waiverReason })}` : ""}
                   </p>

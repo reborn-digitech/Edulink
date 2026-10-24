@@ -47,7 +47,10 @@ export function NotCollege({ t }: { t: Translate }) {
 }
 
 /** A plain, scrollable table; the header row is the column names. */
-export function Table({ head, children, testId }: { head: string[]; children: ReactNode; testId?: string }) {
+/** A column's heading: its words, or words for a screen reader alone over a column of buttons (QA-68: an empty <th>). */
+export type TableHead = string | { srOnly: string };
+
+export function Table({ head, children, testId }: { head: TableHead[]; children: ReactNode; testId?: string }) {
   return (
     <TableScroll data-testid={testId}>
       <table className="w-full text-left text-sm">
@@ -55,7 +58,7 @@ export function Table({ head, children, testId }: { head: string[]; children: Re
           <tr className="border-b border-border text-xs uppercase tracking-wide text-fg-muted">
             {head.map((h, i) => (
               <th key={i} scope="col" className="py-2 pr-3 font-medium">
-                {h}
+                {typeof h === "string" ? h : <span className="sr-only">{h.srOnly}</span>}
               </th>
             ))}
           </tr>

@@ -22,6 +22,7 @@ import { gateRequest } from "@/lib/role-gate";
 import { ModuleOffError } from "@/lib/access-error";
 import { AccessError } from "@/lib/tenancy";
 import { addDaysToKey, todayKey } from "@/lib/dates";
+import { translator } from "@/lib/i18n/dictionary";
 import { gateIn, listLeave, messSheet } from "@/lib/hostel";
 import { listIncidents } from "@/lib/incidents";
 import { GET as hostelsGet, POST as hostelsPost } from "@/app/api/v1/hostel/hostels/route";
@@ -189,6 +190,13 @@ describe("leave", () => {
     const approved = await body<{ status: string; consentByName: string }>(await decidePost(json("/x", { approve: true, note: "ZZ back by Sunday" }), params("leaveId", leave.id)));
     expect(approved).toMatchObject({ status: "APPROVED", consentByName: "ZZ Hos Parent" });
     expect(await db.notification.count({ where: { userId: ids.parent, titleKey: "hostel.notifLeaveApproved" } })).toBe(1);
+    // Not out before the leave begins (QA-45): it starts in an hour, past the quarter-hour's grace. Before the fix: 200.
+    const tooEarly = await outPost(json("/x", {}), params("leaveId", leave.id));
+    expect(tooEarly.status).toBe(403);
+    expect((await body<{ error: string }>(tooEarly)).error).toBe(translator("en")("hostel.refuseOutEarly"));
+    expect((await db.hostelLeave.findUniqueOrThrow({ where: { id: leave.id } })).outAt).toBeNull();
+    // Ten minutes before the start is within the grace.
+    await db.hostelLeave.update({ where: { id: leave.id }, data: { fromAt: new Date(Date.now() + 10 * 60_000) } });
     // Out at the gate, and back after the leave ended: late, told to the wardens, the office and the family.
     expect((await body(await outPost(json("/x", {}), params("leaveId", leave.id)))).outAt).not.toBeNull();
     const warden = (await getSession())!;

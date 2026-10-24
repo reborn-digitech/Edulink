@@ -324,8 +324,20 @@ describe("the operator's refund", () => {
     expect((await rowsOf(paid.order.id)).every((row) => row.revokedAt !== null)).toBe(true);
     expect((await db.passOrder.findUniqueOrThrow({ where: { id: paid.order.id } })).gatewayRefundId).toMatch(/^rfnd_devbox/);
     expect(await db.auditLog.count({ where: { action: "operator.pass.refund", targetId: paid.order.id } })).toBe(1);
-    expect(await refundPassOrder(operator(), paid.order.id)).toEqual({ ok: false, errorKey: "passes.refuseNotRefundable" });
+    // A second press is answered with the refund as it stands (QA-37), nothing refunded or told twice.
+    expect(await refundPassOrder(operator(), paid.order.id)).toMatchObject({ ok: true, already: true, revoked: 0, order: { status: "REFUNDED" } });
+    expect(await db.auditLog.count({ where: { action: "operator.pass.refund", targetId: paid.order.id } })).toBe(1);
     expect(await db.notification.count({ where: { userId: id.teacher, titleKey: "passes.notifRefunded" } })).toBe(1);
+  });
+
+  it("QA-37: two refunds pressed at once refund once, and the loser reads as already refunded", async () => {
+    const paid = await paidPass(teacher(), { plan: "TEACHER", period: "MONTH" });
+    const both = await Promise.all([refundPassOrder(operator(), paid.order.id), refundPassOrder(operator(), paid.order.id)]);
+    // Before the fix the loser answered { ok: false, errorKey: "passes.refuseNotRefundable" } ("Only a paid pass can be refunded").
+    expect(both.every((r) => r.ok)).toBe(true);
+    expect(both.filter((r) => r.ok && r.already).length).toBe(1);
+    expect(await db.auditLog.count({ where: { action: "operator.pass.refund", targetId: paid.order.id } })).toBe(1);
+    expect((await rowsOf(paid.order.id)).every((row) => row.revokedAt !== null)).toBe(true);
   });
 
   it("puts a pass back when the gateway says the refund failed: PAID again, its rows open again", async () => {

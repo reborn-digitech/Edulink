@@ -2,7 +2,8 @@
 
 import { redirect } from "next/navigation";
 import { getSession, setActiveContext } from "@/lib/session";
-import { ROLE_HOME, ROLES, type Role } from "@/lib/constants";
+import { ROLES, type Role } from "@/lib/constants";
+import { homeFor } from "@/lib/role-home";
 
 /**
  * Switches the active role/school on the current session.
@@ -31,5 +32,6 @@ export async function switchContext(formData: FormData): Promise<void> {
   // Back to the picker rather than a dead end or a misleading error page.
   if (!ok) redirect("/switch");
 
-  redirect(ROLE_HOME[role]);
+  // A college's head to the college's dashboard at once (QA-57).
+  redirect(await homeFor(role, role === "PARENT" ? null : schoolId));
 }

@@ -26,7 +26,7 @@ export default async function PublicFacultyPage({ params }: { params: Promise<{ 
   const { slug } = await params;
   const list = await publicFaculty(slug);
   return (
-    <div className="min-h-safe bg-bg px-4 py-10 sm:px-8">
+    <main id="main" className="min-h-safe bg-bg px-4 py-10 sm:px-8">
       <div className="mx-auto w-full max-w-3xl space-y-6">
         <Link href="/" className="inline-block" aria-label={t("common.homeLink")}>
           <Wordmark />
@@ -40,6 +40,6 @@ export default async function PublicFacultyPage({ params }: { params: Promise<{ 
           <FacultyProfileCard key={p.id} p={p} t={t} photoFileId={p.photoFileId ?? null} footer={t("collegeDesks.publicAsOf", { date: formatDateKey(p.publishedAt.slice(0, 10), { day: "numeric", month: "short", year: "numeric" }, locale) })} />
         ))}
       </div>
-    </div>
+    </main>
   );
 }

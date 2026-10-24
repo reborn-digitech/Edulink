@@ -1,7 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { expertBookingsSchema, expertProfileSchema } from "@edulink/contracts";
 import { ExpertHome } from "@/screens/expert/home";
-import { gated, json, mountStaff, refused } from "./staff-harness";
+import { gated, json, me, mountStaff, refused } from "./staff-harness";
 
 /** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -56,9 +56,25 @@ describe("the expert's bookings", () => {
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/availability");
   });
 
-  it("while the profile is still under review, says so over the list, with a door to the profile", async () => {
-    await mountStaff(<ExpertHome />, "EXPERT", { [PATH]: () => json({ bookings: [] }), "GET /api/v1/shared/expert/profile": () => json(PROFILE) });
+  it("while the profile is still under review, says so as the whole screen, with the web's door to the account and no list the bookings door refuses (QA-53)", async () => {
+    await mountStaff(<ExpertHome />, "EXPERT", { [PATH]: refused("ZZ Not an expert", 403), "GET /api/v1/shared/expert/profile": () => json(PROFILE) });
     expect(await screen.findByText("Your profile is being reviewed")).toBeTruthy();
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Profile" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Set up your account meanwhile" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/account");
+  });
+
+  it("with expert sessions switched off, an expert under review is still told so, not offered a profile to fill in (QA-53)", async () => {
+    const { calls } = await mountStaff(<ExpertHome />, "EXPERT", { "GET /api/v1/shared/expert/profile": () => json(PROFILE) }, { me: { ...me("EXPERT"), features: [] } });
+    expect(await screen.findByText("Your profile is being reviewed")).toBeTruthy();
+    expect(screen.queryByText(/^Sessions with schools are not open yet/)).toBeNull();
+    expect(calls().some((c) => c.line.startsWith("GET /api/v1/shared/expert/bookings"))).toBe(false);
+  });
+
+  it("with expert sessions switched off, a listed expert reads that sessions are not open, with the profile", async () => {
+    await mountStaff(<ExpertHome />, "EXPERT", { "GET /api/v1/shared/expert/profile": () => json({ ...PROFILE, profile: { ...PROFILE.profile, published: true } }) }, { me: { ...me("EXPERT"), features: [] } });
+    expect(await screen.findByText(/^Sessions with schools are not open yet/)).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Profile" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/profile");
   });

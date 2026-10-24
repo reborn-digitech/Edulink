@@ -42,9 +42,10 @@ export async function ChildLeftPanel({ child }: { child: LeftChild }) {
           <GraduationCapIcon weight="duotone" className="size-8" />
         </div>
         <div>
-          <p className="text-lg font-bold text-fg">
+          {/* The page's one heading (QA-58): the panel stands in for the whole overview. */}
+          <h1 className="text-lg font-bold text-fg">
             {t("parent.childLeftTitle", { name: child.name, school: child.schoolName, date: formatDate(child.leftAt) })}
-          </p>
+          </h1>
           <p className="mx-auto mt-1.5 max-w-md text-sm leading-relaxed text-fg-muted">{t("parent.childLeftBody", { name: child.name })}</p>
         </div>
         <div className="flex flex-col justify-center gap-2 sm:flex-row">

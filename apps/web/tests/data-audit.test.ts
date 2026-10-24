@@ -280,13 +280,19 @@ d("STORED copies against their source rows", () => {
 
   it("fee-payment: a paid payment is fully allocated (less settled refunds), has a receipt, and receipt serials do not collide", async () => {
     for (const s of schools) {
-      const payments = await db.feePayment.findMany({ where: { schoolId: s.id }, select: { id: true, status: true, method: true, amountPaise: true, allocations: { select: { amountPaise: true } }, refunds: { select: { amountPaise: true, status: true } }, receipt: { select: { id: true } } } });
+      const payments = await db.feePayment.findMany({ where: { schoolId: s.id }, select: { id: true, status: true, method: true, amountPaise: true, reversedAt: true, allocations: { select: { amountPaise: true } }, refunds: { select: { amountPaise: true, status: true } }, receipt: { select: { id: true } } } });
       for (const p of payments) {
         const alloc = sum(p.allocations.map((a) => a.amountPaise));
         const refunded = sum(p.refunds.filter((r) => r.status === "DONE").map((r) => r.amountPaise));
         if (p.status === "PAID" || p.status === "REFUNDED") {
           if (alloc + refunded !== p.amountPaise) note("fee-payment", "FAIL", s.name, `payment ${p.id} ${p.status}: allocations ${alloc} + refunds ${refunded} ≠ amount ${p.amountPaise}`);
           if (!p.receipt) note("fee-payment", "WARN", s.name, `payment ${p.id} (${p.method}) is ${p.status} with no receipt`);
+        } else if (p.status === "REVERSED") {
+          // A reversal keeps its allocation rows by design (reversePayment: the trail stays, the demands are recomputed
+          // from PAID payments only), so they are not drift (QA-40). Drift is a reversal with no stamp, or one holding
+          // more than the payment was.
+          if (!p.reversedAt) note("fee-payment", "WARN", s.name, `payment ${p.id} is REVERSED with no reversedAt`);
+          if (alloc > p.amountPaise) note("fee-payment", "FAIL", s.name, `payment ${p.id} REVERSED: allocations ${alloc} exceed amount ${p.amountPaise}`);
         } else if (alloc > 0) note("fee-payment", "WARN", s.name, `payment ${p.id} is ${p.status} yet still holds ${alloc} in allocations`);
       }
       const years = await db.academicYear.findMany({ where: { schoolId: s.id }, select: { id: true, name: true, feeReceiptNext: true, feeReceipts: { select: { number: true, serial: true } } } });

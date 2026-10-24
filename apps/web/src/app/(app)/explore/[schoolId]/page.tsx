@@ -16,6 +16,7 @@ import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
 import { EnquireForm } from "../enquire-form";
 import { PageHeader } from "@/components/ui/page-header";
 import { mayUse } from "@/lib/platform-features";
+import { websiteHref } from "@/lib/website-address";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -103,9 +104,10 @@ export default async function SchoolProfilePage({
             {school.gradeLow && school.gradeHigh && (
               <span>{t("explore.grades", { low: school.gradeLow, high: school.gradeHigh })}</span>
             )}
-            {school.website && (
+            {/* A link only for an http(s) address, whatever an older row holds (QA-27). */}
+            {websiteHref(school.website) && (
               <a
-                href={school.website}
+                href={websiteHref(school.website)!}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="inline-flex items-center gap-1 font-medium text-accent hover:underline"

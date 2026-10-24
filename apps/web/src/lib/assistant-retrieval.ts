@@ -18,6 +18,7 @@
 import { Prisma, type PrismaClient } from "@prisma/client";
 import type { AssistantEndpoint } from "./assistant-env";
 import { asQuery, embedTexts, vectorLiteral } from "./assistant-model";
+import { readableQuotes } from "./assistant/readable-quotes";
 
 export type RetrievalContext = {
   db: Pick<PrismaClient, "$queryRaw">;
@@ -350,7 +351,8 @@ export async function searchHelp(q: HelpQuery, ctx: RetrievalContext): Promise<H
     entryId: r.id,
     kind: r.kind,
     title: r.title,
-    text: r.text,
+    // A guide paragraph's quoted screen sentences without their placeholders (QA-64).
+    text: r.kind === "doc" && r.sourceFile.startsWith("docs/guide/") ? readableQuotes(r.text) : r.text,
     pagePath: r.pagePath,
     door: r.door,
     module: r.module,
@@ -380,7 +382,8 @@ export async function guideSection(hit: Pick<HelpHit, "kind" | "title" | "source
      ORDER BY h."id"
      LIMIT 40`;
   if (rows.length < 2) return null;
-  return { key: `${hit.sourceFile}|${hit.language}|${hit.title}`, text: rows.map((r) => r.text.trim()).join("\n") };
+  const words = hit.sourceFile.startsWith("docs/guide/") ? readableQuotes : (text: string) => text;
+  return { key: `${hit.sourceFile}|${hit.language}|${hit.title}`, text: words(rows.map((r) => r.text.trim()).join("\n")) };
 }
 
 /**
@@ -403,7 +406,8 @@ export async function helpForPage(q: { page: string; language: Language; role: s
     entryId: r.id,
     kind: r.kind,
     title: r.title,
-    text: r.text,
+    // A guide paragraph's quoted screen sentences without their placeholders (QA-64).
+    text: r.kind === "doc" && r.sourceFile.startsWith("docs/guide/") ? readableQuotes(r.text) : r.text,
     pagePath: r.pagePath,
     door: r.door,
     module: r.module,

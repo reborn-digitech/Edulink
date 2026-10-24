@@ -2122,6 +2122,10 @@ export const en = {
     rowMoved: "{name}: now row {position} of {count}",
   },
   admissions: {
+    // fix-lows-B2 (QA-43: a seat given before its year begins).
+    refuseAheadDate: "The year of this seat begins on {date}. An admission given before then is dated that day.",
+    refuseAheadClass: "The year of this seat has not begun. Admit without a class now, and place the pupil in a class when the year begins.",
+    // end fix-lows-B2
     title: "Admissions",
     metaTitle: "Admissions",
     intro: "Open a cycle for the year — the grades you take, the seats in each, the documents you ask for, whether there is an entrance test — and every family that applies moves through it here: documents, a test sitting, an offer, and the seat.",
@@ -7145,6 +7149,10 @@ export const en = {
     authTotpDisabled: "Turned two-step sign-in off",
     authTotpPassed: "Passed the two-step sign-in code",
     authTotpFailed: "Failed two-step sign-in code",
+    // fix-lows-A (24 Oct 2026, QA-22, QA-23): the second step locked after too many wrong codes; turning it on refused.
+    authTotpLocked: "Two-step sign-in locked after too many wrong codes",
+    authTotpEnrolRefused: "Turning on two-step sign-in refused: wrong password",
+    // end fix-lows-A
     absenceNote: "A family said a child will be away",
     absenceNoteDelete: "A family took back an absence note",
     familyExport: "Downloaded a person's data",
@@ -10866,6 +10874,9 @@ export const en = {
     // college-office:end
   },
   hostel: {
+    // fix-lows-B2 (QA-45: not out before the leave begins).
+    refuseOutEarly: "This leave has not begun. The boarder may go out from a quarter of an hour before it starts.",
+    // end fix-lows-B2
     refuseNotWarden: "Choose a warden of this school.",
     refuseNameTaken: "The school already has a hostel with that name.",
     refuseNoHostel: "That hostel was not found.",
@@ -11263,6 +11274,9 @@ export const en = {
     homeGlobalFeed: "Read every school's shared posts",
   },
   transport: {
+    // fix-lows-B2 (QA-46: each run's stop times go forward).
+    refuseStopOrder: "The stop times must run forward: in the morning from the first stop to the last, in the evening from the last stop back to the first.",
+    // end fix-lows-B2
     // The bus roster export column headings (4 Oct 2026).
     colBus: "Bus",
     colRoute: "Route",
@@ -15170,6 +15184,9 @@ export const en = {
     refuseNotRecruiter: "That address is not a recruiter's account.",
     refuseNotThroughLastRound: "A candidate did not pass round {round}.",
     refuseOfferAnswered: "This offer has been answered.",
+    // fix-lows-B1 (QA-33): two recorders of one offer at once; the loser is told what stands.
+    refuseOfferChangedMeanwhile: "An offer of ₹{offer} lakh was recorded for this candidate a moment ago. Read the drive again, then change it if you need to.",
+    // end fix-lows-B1
     refuseOfferRejected: "This candidate did not get through a round.",
     refuseOneOffer: "One offer each: a second needs the dream flag and a package at least the college's dream ratio of the first.",
     refusePackageRange: "The highest package is below the lowest.",
@@ -15963,6 +15980,9 @@ export const en = {
       refusePosting: "Choose one of your own postings.",
       refuseDay: "The day must be one of the posting's, and not in the future.",
       refuseIdentifier: "The note carries what looks like a name, a number or an address; a logbook names no patient.",
+      // fix-lows-B1 (QA-49): the supervisor's remark names no patient either.
+      refuseRemarkIdentifier: "The remark carries what looks like a patient's name or number; a logbook names no patient.",
+      // end fix-lows-B1
       refuseNotEditable: "Only a draft or a returned entry can be corrected.",
       refuseSigned: "A signed entry cannot be handed in again.",
     },
@@ -18459,6 +18479,10 @@ export const en = {
   // ---- end college-content ----
   // expert-registration (15 Oct 2026): an expert applies from the login page, the operator approves or refuses.
   expertApply: {
+    // fix-lows-B2 (QA-37: the losing half of a double press reads as done).
+    alreadyApproved: "This application was already approved, and the invitation went then. Nothing was sent again.",
+    alreadyRefused: "This application was already refused, and the applicant was told then. Nothing was sent again.",
+    // end fix-lows-B2
     loginPrefix: "Want to mentor pupils as an expert?",
     loginLink: "Apply here.",
     footerLink: "Become an expert",
@@ -19430,6 +19454,9 @@ export const en = {
   // end seats
   // plans-pay (17 Oct 2026): passes bought through the company's gateway, the checkout, the orders, the invoice and the operator's refund (src/lib/pass-orders.ts).
   passes: {
+    // fix-lows-B2 (QA-37: a second refund press reads as done).
+    refundAlready: "This pass was already refunded. Nothing was refunded again.",
+    // end fix-lows-B2
     refuseNotAsked: "This plan is not asked for at the moment: everything it includes is open, and there is nothing to buy.",
     refuseNotOnSale: "This plan cannot be bought here yet.",
     refuseAskGuardian: "A plan for a pupil under eighteen is bought by a guardian. Ask yours from the Plans page.",
@@ -19862,4 +19889,58 @@ export const en = {
     needAddress: "Give the expert's email address. The invitation is sent there.",
   },
   // end fix-highs-A
+  // fix-lows-A (24 Oct 2026, QA-21 to QA-25): turning two-step sign-in on asks the password, the second step locks after
+  // too many wrong codes, and a sign-up says the same whether or not the address already has an account.
+  accountGuard: {
+    totpPasswordLabel: "Your password",
+    totpPasswordHint: "Type the password you sign in with to turn on two-step sign-in.",
+    totpFreshSignInHint: "To turn it on, sign out and sign in again, then come back here within ten minutes.",
+    totpPasswordNeeded: "Type your password to turn on two-step sign-in.",
+    totpWrongPassword: "That password is not right.",
+    totpSignInAgain: "Sign out and sign in again, then turn on two-step sign-in within ten minutes.",
+    totpLockedSubject: "Too many wrong sign-in codes on your account",
+    totpLockedBody: "Someone signed in with your password and then entered {count} wrong codes from the authenticator app. Two-step sign-in on your account is locked for an hour.",
+    totpLockedAction: "If this was not you, someone else knows your password. Reset it from the login page now.",
+    resetCta: "Reset my password",
+    signupTakenSubject: "Someone tried to make an account with your email",
+    signupTakenSchool: "Someone used this email address to register a new school on Shalaghar. This address already has an account, so nothing was made.",
+    signupTakenRecruiter: "Someone used this email address to sign up as a recruiter on Shalaghar. This address already has an account, so nothing was made.",
+    signupTakenIfYou: "If it was you, sign in with your account. If you have forgotten the password, reset it from the login page.",
+    signupTakenIfNotYou: "If it was not you, you do not need to do anything.",
+    signInCta: "Sign in",
+    signupSent: "We have sent a message to {email}. Open it to carry on: a new account is confirmed from its link, and then you sign in with your password.",
+    signupSentPlain: "We have sent a message to that address. Open it to carry on.",
+    signupSentTitle: "Check your email",
+    goToSignIn: "Go to sign in",
+  },
+  // end fix-lows-A
+  // fix-lows-C (24 Oct 2026, QA-42 to QA-70, interface and copy): sentences for the Low findings' pages and screens.
+  qaInterface: {
+    colActions: "Actions",
+    colSelect: "Select",
+    payoutLinkedNotReady: "Not ready to be paid yet",
+    routeLinkedOnly: "Linked with Razorpay",
+    staffingGapBodyNoBoard: "{slots} lessons across {classes} classes have no teacher yet. Assign a teacher from the timetable.",
+    staffingGapBodyOneNoBoard: "{slots} lessons in one class have no teacher yet. Assign a teacher from the timetable.",
+    collegeCode: "College code",
+    ourCollegeFeed: "Our college’s feed",
+    collegeDeskTitle: "Your college’s postings",
+    collegeDeskIntro: "What your college has put on the board, and the enquiries each post has drawn.",
+    admitStudents: "Admit students from a list",
+    textsOff: "Texts by SMS and WhatsApp are not switched on yet. Your choice is kept for when they are.",
+    streakStartsNextDay: "Starts on the next school day",
+    streakStartNextDayHint: "Turn up on the next school day to start one",
+    loadUnderRange: "Under {min}–{max} h",
+    loadWithinRange: "Within {min}–{max} h",
+    loadOverRange: "Over {min}–{max} h",
+    openDuty: "Open {name}",
+    reachNoFamilies: "No family is linked to this circular’s audience, so there was nobody to tell.",
+    purposeCircularRemind: "Notice reminder",
+    purposeIncident: "Incident",
+    purposeOther: "Other",
+    operatorMenu: "Menu",
+    officeOnlyTitle: "This page is the office’s",
+    officeOnlyBody: "Only the school office and the head open it. Your own pages are on your home and under More.",
+  },
+  // end fix-lows-C
 } as const;

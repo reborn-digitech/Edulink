@@ -186,6 +186,32 @@ describe("as the operator", () => {
     expect((await schoolPatch(send("PATCH", "/schools/nope", { city: "x" }), params({ schoolId: "nope" }))).status).toBe(404);
   });
 
+  // QA-27 (24 Oct 2026): the operator's correction kept a javascript: website and a contact email that was not one.
+  it("refuses a website that is not http(s) and a contact email that is not one, as the office's form does; nothing is stored", async () => {
+    const before = await db.school.findUniqueOrThrow({ where: { id: targetSchoolId }, select: { website: true, contactEmail: true } });
+    for (const website of ["javascript:alert(1)", "data:text/html,hi", "ftp://example.org", "example.org"]) {
+      const res = await schoolPatch(send("PATCH", `/schools/${targetSchoolId}`, { website }), params({ schoolId: targetSchoolId }));
+      expect(res.status, website).toBe(422);
+      expect(await res.json()).toMatchObject({ code: "BAD_REQUEST", error: "Start with http:// or https://" });
+    }
+    const email = await schoolPatch(send("PATCH", `/schools/${targetSchoolId}`, { contactEmail: "not an email" }), params({ schoolId: targetSchoolId }));
+    expect(email.status).toBe(422);
+    expect(await email.json()).toMatchObject({ error: "Enter a valid contact email for the school." });
+    expect(await db.school.findUniqueOrThrow({ where: { id: targetSchoolId }, select: { website: true, contactEmail: true } })).toEqual(before);
+
+    // An http(s) address and an empty one (which clears it) are taken.
+    const good = await schoolPatch(send("PATCH", `/schools/${targetSchoolId}`, { website: " https://zz-v1ow.test ", contactEmail: "office@zz-v1ow.test" }), params({ schoolId: targetSchoolId }));
+    expect(good.status).toBe(200);
+    expect(await db.school.findUniqueOrThrow({ where: { id: targetSchoolId }, select: { website: true, contactEmail: true } })).toEqual({ website: "https://zz-v1ow.test", contactEmail: "office@zz-v1ow.test" });
+    expect((await schoolPatch(send("PATCH", `/schools/${targetSchoolId}`, { website: "" }), params({ schoolId: targetSchoolId }))).status).toBe(200);
+    expect((await db.school.findUniqueOrThrow({ where: { id: targetSchoolId }, select: { website: true } })).website).toBeNull();
+
+    // Making a school by hand follows the same rule.
+    const made = await schoolsPost(send("POST", "/schools", { name: `${CREATED_NAME} JS`, contactEmail: "x@test.invalid", website: "javascript:alert(1)", timezone: "Asia/Kolkata" }));
+    expect(made.status).toBe(422);
+    expect(await db.school.count({ where: { name: `${CREATED_NAME} JS` } })).toBe(0);
+  });
+
   it("invites a principal, refuses the same email twice and a malformed one, and revokes it once", async () => {
     const email = `zz-v1ow-head-${STAMP}@test.invalid`;
     const school = params({ schoolId: targetSchoolId });

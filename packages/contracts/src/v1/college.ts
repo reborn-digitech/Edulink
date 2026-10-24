@@ -42,6 +42,14 @@ export const recruiterRegisterSchema = z.object({
 export type RecruiterRegister = z.infer<typeof recruiterRegisterSchema>;
 
 /**
+ * POST /api/v1/auth/recruiter/register's answer (24 Oct 2026, QA-25): 202, the same whether or not the address
+ * already had an account, and no session. A new address gets the confirmation link and signs in with its password;
+ * the holder of a taken one is told by email. `sent` is always true; the sentence is the phone's own.
+ */
+export const signupSentSchema = z.object({ sent: z.literal(true) });
+export type SignupSent = z.infer<typeof signupSentSchema>;
+
+/**
  * NAAC's grades as the council awards them (the revised accreditation
  * framework's seven-point scale), and NIRF's ranking categories a college
  * can file under. Coded, never free text: the IQAC desk and the filings read

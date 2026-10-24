@@ -80,7 +80,9 @@ export async function renderFamily(ui: ReactElement, me: object, answers: Record
   mockRouter.push.mockClear();
   __setKeyStore(memoryStore({ [KEYS.token]: "t" }));
   const fetch = fakeApi({ "/api/v1/me": () => me, ...answers });
-  const qc = new QueryClient({ defaultOptions: { queries: { retry: false }, mutations: { retry: false } } });
+  // gcTime Infinity, as staff-harness and teacher-support have it (QA-77): React Query's default five-minute
+  // garbage-collection timer outlives the test, so one file run on its own (in band, no worker to kill) never exited.
+  const qc = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: Infinity }, mutations: { retry: false, gcTime: Infinity } } });
   const wrap = (node: ReactNode) => (
     <QueryClientProvider client={qc}>
       <SessionProvider>{node}</SessionProvider>

@@ -9,7 +9,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { ChildSwitcher, childQuery, Chips, levelName, Note, param, subjectName } from "./shared";
+import { ChildSwitcher, childQuery, firstChild, Chips, levelName, Note, param, subjectName } from "./shared";
 
 /** "Class 8", or "College" for the placement bank at class 13 and above (integration, 11 Oct 2026). */
 function classLevelLabel(t: ReturnType<typeof useT>, classLevel: number): string {
@@ -106,7 +106,7 @@ function ChildPractice() {
   };
   return (
     <Screen title={d ? t("practice.parentPracticeTitle", { name }) : t("nav.practice")} description={d ? t("practice.parentPracticeIntro", { name }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? d.children[0]?.studentMembershipId ?? null} onSelect={(id) => { setChildId(id); setBoardChosen(null); }} /> : null}
+      {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? firstChild(d.children)?.studentMembershipId ?? null} onSelect={(id) => { setChildId(id); setBoardChosen(null); }} /> : null}
       {d ? (
         <Note tone="accent">
           <Text variant="sm">{t("practice.childPlaysOwn")}</Text>
@@ -116,7 +116,7 @@ function ChildPractice() {
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.topics.length === 0 ? (
-          <Empty title={t("feature.practice")} body={t("practice.parentPracticeEmpty", { name })} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/assignments", params: { child: childId ?? d.children[0]?.studentMembershipId ?? "" } } as never)} />} />
+          <Empty title={t("feature.practice")} body={t("practice.parentPracticeEmpty", { name })} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/assignments", params: { child: childId ?? firstChild(d.children)?.studentMembershipId ?? "" } } as never)} />} />
         ) : (
           <>
             <Note tone="accent">

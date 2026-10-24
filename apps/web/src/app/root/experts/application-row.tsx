@@ -39,7 +39,8 @@ export function ApplicationRow({ entry }: { entry: OperatorExpertApplication }) 
         setError(actionError(t, result, "common.tryAgain"));
         return;
       }
-      toast({ tone: result.inviteSent === false ? "warn" : "ok", title: result.inviteSent === false ? t("expertApply.approvedMailFailed") : t("expertApply.approved", { email: entry.email }) });
+      if (result.already) toast({ tone: "ok", title: t("expertApply.alreadyApproved") });
+      else toast({ tone: result.inviteSent === false ? "warn" : "ok", title: result.inviteSent === false ? t("expertApply.approvedMailFailed") : t("expertApply.approved", { email: entry.email }) });
       router.refresh();
     });
   }
@@ -56,7 +57,7 @@ export function ApplicationRow({ entry }: { entry: OperatorExpertApplication }) 
         setError(actionError(t, result, "common.tryAgain"));
         return;
       }
-      toast({ tone: "ok", title: t("expertApply.refused") });
+      toast({ tone: "ok", title: t(result.already ? "expertApply.alreadyRefused" : "expertApply.refused") });
       router.refresh();
     });
   }

@@ -11,6 +11,7 @@ import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { adminClassesPath, principalClassesPath } from "./classes";
 import { Chips, DEFAULT_SPAN, pct } from "./shared";
+import { useCollege } from "@/lib/institution";
 
 /**
  * One class, for the head or the office. There is no single-class endpoint
@@ -22,6 +23,8 @@ import { Chips, DEFAULT_SPAN, pct } from "./shared";
  * charge of it, and archiving it, after a confirm.
  */
 export function StaffClassDetail({ classId: classIdProp }: { classId?: string } = {}) {
+  // A college admits students (QA-69).
+  const college = useCollege();
   const params = useLocalSearchParams<{ classId?: string }>();
   const classId = classIdProp ?? (typeof params.classId === "string" ? params.classId : "");
   const role = useRole();
@@ -87,7 +90,7 @@ export function StaffClassDetail({ classId: classIdProp }: { classId?: string } 
             body={t("principal.nobodyOnRollBody")}
             action={
               role === "ADMIN" ? (
-                <Button label={t("intake.fromPeople")} variant="secondary" onPress={() => router.push("/(app)/intake" as never)} />
+                <Button label={t(college ? "qaInterface.admitStudents" : "intake.fromPeople")} variant="secondary" onPress={() => router.push("/(app)/intake" as never)} />
               ) : (
                 <Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />
               )

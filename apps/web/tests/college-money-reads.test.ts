@@ -288,10 +288,18 @@ describe("the reconciliation sheet and the ageing", () => {
     expect(sheet.filename).toBe("scholarship-obc_post_matric-2026-27.csv");
     const rows = sheet.csv.trim().split(/\r?\n/);
     expect(rows).toHaveLength(3);
-    // Rows are in the claims' creation order; two made in the same millisecond have no tie-break, so find each by its own.
     const adultRow = rows.find((r) => r.includes("ZZMAHADBT1"))!;
     const minorRow = rows.find((r) => r.includes("LAPSED"))!;
     expect(rows.slice(1).map((r) => r.split(",")[0]).sort()).toEqual(["1", "2"]);
+    // QA-39: two claims made in the same millisecond come out in id order, the same serials on every download.
+    const stamp = new Date("2026-09-01T04:30:00.000Z");
+    await db.scholarshipClaim.updateMany({ where: { id: { in: [ids.claimAdult!, ids.claimMinor!] } }, data: { createdAt: stamp } });
+    const [first] = [ids.claimAdult!, ids.claimMinor!].sort();
+    for (let read = 0; read < 3; read += 1) {
+      const again = (await reconciliationSheet(principal(), "OBC_POST_MATRIC", "2026-27", t)).csv.trim().split(/\r?\n/);
+      expect(again[1]!.startsWith("1,")).toBe(true);
+      expect(again[1]!.includes("ZZMAHADBT1")).toBe(first === ids.claimAdult);
+    }
     expect(adultRow).toContain(",43500.00,40000.00,2026-09-01,25000.00,2026-10-01,ZZUTR1,SANCTIONED,");
     // The difference: sanctioned 40,000 less disbursed 25,000.
     expect(adultRow.endsWith(",15000.00")).toBe(true);

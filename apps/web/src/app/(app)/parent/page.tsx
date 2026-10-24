@@ -374,7 +374,7 @@ export default async function ParentDashboard({
           value={streak}
           tone={streak >= 5 ? "ok" : "neutral"}
           icon={<FireIcon weight="duotone" className="size-5" />}
-          hint={streak === 0 ? t("parent.streakStart") : streak === 1 ? t("parent.streakDaysOne") : t("parent.streakDays", { count: streak })}
+          hint={streak === 0 ? t("qaInterface.streakStartsNextDay") : streak === 1 ? t("parent.streakDaysOne") : t("parent.streakDays", { count: streak })}
         />
       </div>
 

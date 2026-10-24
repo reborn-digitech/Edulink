@@ -5,11 +5,11 @@ import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/brand";
 import { LanguageSwitch } from "@/components/language-switch";
 import { getSession } from "@/lib/session";
-import { ROLE_HOME } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 import { TWO_FACTOR_COOKIE } from "@/lib/two-factor";
 import { CodeForm } from "./form";
 import { WhoSignsIn } from "../who-signs-in";
+import { homeFor } from "@/lib/role-home";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function LoginCodePage() {
   const session = await getSession();
-  if (session?.role) redirect(ROLE_HOME[session.role]);
+  if (session?.role) redirect(await homeFor(session.role, session.schoolId));
   const jar = await cookies();
   if (!jar.get(TWO_FACTOR_COOKIE)?.value) redirect("/login?step=expired");
   const t = await getT();

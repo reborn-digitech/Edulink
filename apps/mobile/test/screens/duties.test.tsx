@@ -64,8 +64,9 @@ describe("the duty card", () => {
     expect(screen.getByText("Clinical coordinator")).toBeTruthy();
     expect(screen.getByText("Arranges students' clinical postings and their rotations.")).toBeTruthy();
     expect(screen.getByText("Anti-ragging squad")).toBeTruthy();
-    const opens = screen.getAllByRole("button", { name: "Open" });
-    expect(opens).toHaveLength(2);
+    // Each button names its desk to a screen reader (QA-62), the word on it still "Open".
+    const opens = [screen.getByRole("button", { name: "Open Clinical coordinator" }), screen.getByRole("button", { name: "Open Anti-ragging squad" })];
+    expect(screen.getAllByText("Open")).toHaveLength(2);
     await userEvent.setup().press(opens[0]!);
     expect(mockPush).toHaveBeenCalledWith("/(app)/clinical-desk");
     await userEvent.setup().press(opens[1]!);
@@ -78,7 +79,7 @@ describe("the duty card", () => {
     expect(screen.queryByText("My duties")).toBeNull();
     await mountStaff(<DutyCard />, "HOD", {}, { me: meAs("HOD", { duties: ["ANTI_RAGGING_SQUAD"], modules: ["ACADEMICS"] }) });
     expect(await screen.findByText("The college has switched this part off.")).toBeTruthy();
-    expect(screen.queryByRole("button", { name: "Open" })).toBeNull();
+    expect(screen.queryByRole("button", { name: /^Open/ })).toBeNull();
   });
 });
 

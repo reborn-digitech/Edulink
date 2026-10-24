@@ -90,7 +90,7 @@ export default async function StudentScholarshipsPage({ searchParams }: { search
       <Card>
         <CardHeader title={t("collegeOffice.schemesTitle")} description={t("collegeOffice.schemesIntro")} />
         <CardBody>
-          <Table head={[t("collegeOffice.colScheme"), t("collegeOffice.colIncome"), t("collegeOffice.colCovers"), ""]}>
+          <Table head={[t("collegeOffice.colScheme"), t("collegeOffice.colIncome"), t("collegeOffice.colCovers"), { srOnly: t("qaInterface.colActions") }]}>
             {s.schemes.filter((x) => x.scheme !== "OTHER").map((x) => (
               <tr key={x.scheme}>
                 <td className="py-2 pr-3">{t(SCHEME_KEY(x.scheme))}</td>

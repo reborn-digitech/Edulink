@@ -24,6 +24,8 @@ import { normaliseLocation } from "./places";
 import type { ActiveContext } from "./session";
 import { kycViews } from "./expert-kyc";
 import { isValidTimeZone } from "./dates";
+import { emailSchema } from "./validation";
+import { isWebsiteAddress } from "./website-address";
 import type { ExpertKyc } from "@edulink/contracts";
 
 /**
@@ -211,6 +213,8 @@ export async function createSchool(
   const name = details.name.trim();
   if (name.length < 2) return { ok: false, errorKey: "root.giveSchoolName" };
   if (!details.contactEmail.trim()) return { ok: false, errorKey: "root.contactEmailRequired" };
+  const contactProblem = checkSchoolContact(details);
+  if (contactProblem) return { ok: false, errorKey: contactProblem };
 
   const rangeProblem = checkGradeRange(details.gradeLow, details.gradeHigh);
   if (rangeProblem) return { ok: false, errorKey: rangeProblem };
@@ -239,7 +243,7 @@ export async function createSchool(
           code,
           contactEmail: details.contactEmail.trim(),
           contactPhone: details.contactPhone || null,
-          website: details.website || null,
+          website: details.website?.trim() || null,
           addressLine: details.addressLine || null,
           city: details.city || null,
           region: location.region,
@@ -298,6 +302,8 @@ export async function updateSchool(
   if (details.name !== undefined && details.name.trim().length < 2) {
     return { ok: false, errorKey: "root.giveSchoolName" };
   }
+  const contactProblem = checkSchoolContact(details);
+  if (contactProblem) return { ok: false, errorKey: contactProblem };
   const rangeProblem = checkGradeRange(details.gradeLow, details.gradeHigh);
   if (rangeProblem) return { ok: false, errorKey: rangeProblem };
   if (details.timezone !== undefined && !isValidTimeZone(details.timezone)) return { ok: false, errorKey: "refusal.timezoneUnknown" };
@@ -325,7 +331,7 @@ export async function updateSchool(
       ...(details.name !== undefined ? { name: details.name.trim() } : {}),
       ...(details.contactEmail !== undefined ? { contactEmail: details.contactEmail.trim() } : {}),
       ...(details.contactPhone !== undefined ? { contactPhone: details.contactPhone || null } : {}),
-      ...(details.website !== undefined ? { website: details.website || null } : {}),
+      ...(details.website !== undefined ? { website: details.website?.trim() || null } : {}),
       ...(details.addressLine !== undefined ? { addressLine: details.addressLine || null } : {}),
       ...(details.city !== undefined ? { city: details.city || null } : {}),
       ...(location ? { region: location.region, country: location.country } : {}),
@@ -1058,6 +1064,19 @@ export function gradeToNumber(grade: string | null | undefined): number | null {
   if (!trimmed) return null;
   const asNumber = Number(trimmed);
   return Number.isInteger(asNumber) ? asNumber : null;
+}
+
+/**
+ * THE OFFICE'S RULE FOR THE TWO WAYS A SCHOOL IS REACHED, on the operator's
+ * hand too (QA-27, 24 Oct 2026): the contact email is an email (it is where the
+ * platform writes to the school) and the website, when given, starts with
+ * http:// or https:// (it is drawn as a link for families). Only the fields a
+ * correction sends are checked; an empty website clears it.
+ */
+export function checkSchoolContact(details: { contactEmail?: string; website?: string | null }): TranslationKey | null {
+  if (details.contactEmail !== undefined && !emailSchema.safeParse(details.contactEmail).success) return "register.enterContactEmail";
+  if (details.website && details.website.trim() !== "" && !isWebsiteAddress(details.website)) return "refusal.startWithHttp";
+  return null;
 }
 
 export function checkGradeRange(

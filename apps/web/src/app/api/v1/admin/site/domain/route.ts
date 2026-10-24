@@ -2,6 +2,7 @@ import { siteDomainConfirmBodySchema, siteDomainRemovedSchema, siteDomainSaveBod
 import { requireApiRole } from "@/lib/tenancy";
 import { removeSiteDomain, saveSiteDomain, siteDomainView } from "@/lib/site-domains";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 /**
  * The school's own domain for its public website (the WEBSITE module, website-builder B, 15 Oct 2026); the office
@@ -26,7 +27,8 @@ export async function POST(request: Request) {
     if (!parsed.success) return apiInvalid(parsed);
     return ok(siteDomainViewSchema.parse(await saveSiteDomain(ctx, parsed.data.domain)));
   } catch (error) {
-    return apiFailure(error, "api/v1/admin/site/domain");
+    // Not a domain: 422 naming `domain`; another school's: 409 (QA-54).
+    return moduleFailure(error, "api/v1/admin/site/domain");
   }
 }
 

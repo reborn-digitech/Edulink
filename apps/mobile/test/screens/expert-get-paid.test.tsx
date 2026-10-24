@@ -26,6 +26,20 @@ describe("the expert's Get paid card with Razorpay Route", () => {
     expect(call[0]?.body).toBeUndefined();
   });
 
+  it("linked with Razorpay while the papers wait: says not ready yet and linked, never 'Not linked yet' over 'ready to be paid' (QA-62)", async () => {
+    await mountCard({ [GET]: () => json(PAYOUT({ ...SAVED_PAYEE, kycVerified: false }, { status: "ACTIVATED", linked: true, readyToLink: false, locked: true }, { kycVerified: false, payoutActive: false })) });
+    expect(await screen.findByText("Not ready to be paid yet")).toBeTruthy();
+    expect(screen.getByText("Linked with Razorpay")).toBeTruthy();
+    expect(screen.queryByText("Not linked yet")).toBeNull();
+    expect(screen.queryByText("Linked with Razorpay: ready to be paid")).toBeNull();
+  });
+
+  it("linked and ready reads ready (QA-62)", async () => {
+    await mountCard({ [GET]: () => json(PAYOUT({ ...SAVED_PAYEE, status: "ACTIVE" }, { status: "ACTIVATED", linked: true, readyToLink: true, locked: true })) });
+    expect(await screen.findByText("Ready to be paid")).toBeTruthy();
+    expect(screen.getByText("Linked with Razorpay: ready to be paid")).toBeTruthy();
+  });
+
   it("new bank details to send, what Razorpay asks about and its last answer are said; the button sends them again", async () => {
     await mountCard({ [GET]: () => json(PAYOUT(SAVED_PAYEE, { status: "NEEDS_CLARIFICATION", linked: true, needsResend: true, readyToLink: true, locked: true, requirements: [{ field: "settlements.ifsc_code", reason: "invalid" }], error: "ZZ IFSC not recognised" })) });
     expect(await screen.findByText("Razorpay needs more from you")).toBeTruthy();

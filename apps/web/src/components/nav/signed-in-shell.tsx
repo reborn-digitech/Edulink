@@ -15,7 +15,7 @@ import { NAV } from "@/lib/nav";
 import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
 import { myDuties } from "@/lib/duties";
 import { streamsOf } from "@/lib/streams";
-import { hiddenByFeature, hiddenByKind } from "@/lib/nav";
+import { hiddenByFeature, hiddenByKind, PHONE_BAR } from "@/lib/nav";
 import { accessTo, featuresFor } from "@/lib/platform-features";
 import { ASSISTANT_NOT_FOR } from "@/lib/nav";
 import { institutionKindsForFamily } from "@/lib/family-child";
@@ -135,6 +135,17 @@ export async function SignedInShell({
   if (role === "STUDENT" || role === "PARENT") {
     if (!(await anyOpenReviews(session))) hiddenHrefs.push("/reviews");
   }
+  /**
+   * The bottom bar at a phone's width (QA-65): the phone app's tabs. A tab is hidden with the menu entry of its page,
+   * and by its own module and feature (a tab may name a page no menu entry names, the faculty's mentoring).
+   */
+  const hiddenBar: string[] = [];
+  {
+    const bar = PHONE_BAR[role];
+    const modulesOn = bar.some((item) => item.module) ? (role === "PARENT" ? await enabledModulesForFamily(session.user.id) : await enabledModules(session.schoolId)) : [];
+    const featureOff = bar.some((item) => item.feature) ? hiddenByFeature(bar, await featuresFor(session)) : [];
+    for (const item of bar) if (hiddenHrefs.includes(item.href) || (item.module && !modulesOn.includes(item.module)) || featureOff.includes(item.href)) hiddenBar.push(item.href);
+  }
 
   /**
    * VIDURA'S ROUND BUTTON (pass 1, 17 Oct 2026; docs/plans/vidura.md): drawn where this person may use it — the
@@ -198,6 +209,7 @@ export async function SignedInShell({
       }}
       unreadCount={unreadCount}
       hiddenHrefs={hiddenHrefs}
+      hiddenBar={hiddenBar}
       badges={badges}
       vidura={vidura}
     >

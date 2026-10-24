@@ -48,7 +48,7 @@ export default async function ConcessionsPage({ searchParams }: { searchParams: 
           {pending.items.length === 0 ? (
             <p className="text-sm text-fg-muted">{t("collegeOffice.pendingNone")}</p>
           ) : (
-            <Table head={[t("collegeOffice.colName"), t("collegeOffice.colWorth"), t("collegeOffice.colReason"), t("collegeOffice.colAuthority"), t("collegeOffice.colBy"), ""]} testId="pending-concessions">
+            <Table head={[t("collegeOffice.colName"), t("collegeOffice.colWorth"), t("collegeOffice.colReason"), t("collegeOffice.colAuthority"), t("collegeOffice.colBy"), { srOnly: t("qaInterface.colActions") }]} testId="pending-concessions">
               {pending.items.map((c) => (
                 <tr key={c.id}>
                   <td className="py-2 pr-3">{c.studentName}</td>

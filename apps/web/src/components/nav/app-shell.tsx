@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChatsCircleIcon, CommandIcon, DotsThreeOutlineIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
 import { OutboxBadge } from "./outbox-badge";
-import { ASSISTANT_HREF, NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
+import { ASSISTANT_HREF, NAV, NAV_GROUP_KEY, PHONE_BAR, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { CommandPalette } from "./command-palette";
 import { ViduraDrawer, useDesk } from "@/components/assistant/drawer";
@@ -53,6 +53,7 @@ export function AppShell({
   children,
   unreadCount = 0,
   hiddenHrefs = [],
+  hiddenBar = [],
   badges = {},
   vidura = null,
 }: {
@@ -71,6 +72,8 @@ export function AppShell({
   /** Nav entries that exist for the role but not for this person right now —
    * e.g. Feedback, which appears only while a review round is open. */
   hiddenHrefs?: string[];
+  /** The phone-width bar's tabs (PHONE_BAR) not for this person right now, by href (signed-in-shell.tsx). */
+  hiddenBar?: string[];
 }) {
   const pathname = usePathname();
   const t = useT();
@@ -130,6 +133,17 @@ export function AppShell({
     group,
     items: items.filter((i) => !i.primary && (i.group ?? "school") === group),
   })).filter((g) => g.items.length > 0);
+  /*
+   * AT A PHONE'S WIDTH, THE PHONE APP'S BAR (QA-65): its tabs in its order, then More, whose sheet holds every entry
+   * not on the bar (a primary that is not a tab under "Day to day"). The desk's rail above keeps the primaries.
+   */
+  const barItems = PHONE_BAR[user.role].filter((item) => !hiddenBar.includes(item.href));
+  const onBar = (item: NavItem) => barItems.some((b) => b.href === item.href);
+  const sheet = GROUPS.map((group) => ({
+    group,
+    items: items.filter((i) => !onBar(i) && (i.group ?? (i.primary ? "daily" : "school")) === group),
+  })).filter((g) => g.items.length > 0);
+  const moreActive = !barItems.some((item) => isActive(pathname, item));
   // Only on the pages it belongs to (QuickAction.on), and never on the page it opens.
   const primary = PRIMARY_ACTION[user.role];
   // …and not while its page is hidden (an expert's "Offer time" while expert sessions are off, 15 Oct 2026).
@@ -160,7 +174,7 @@ export function AppShell({
       {/* print:hidden on every piece of chrome: the sheet is the page's content,
           not the app around it. Found the hard way — the first printed progress
           report carried the side rail, the bottom tabs and the FAB. */}
-      <aside data-chrome className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-surface lg:flex print:hidden">
+      <aside data-chrome aria-label={t("shell.mainNav")} className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-surface lg:flex print:hidden">
         <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
           <Logo size={28} />
           <div className="min-w-0">
@@ -272,17 +286,6 @@ export function AppShell({
           </span>
         </Link>
         <div className="flex items-center gap-1">
-          {secondary.length > 0 && (
-            <button
-              type="button"
-              onClick={() => setMoreOpen(true)}
-              aria-label={t("nav.more")}
-              aria-expanded={moreOpen}
-              className="tap grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted"
-            >
-              <DotsThreeOutlineIcon className="size-5" aria-hidden="true" />
-            </button>
-          )}
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
@@ -363,7 +366,7 @@ export function AppShell({
         className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 pb-safe backdrop-blur-md lg:hidden print:hidden"
       >
         <ul className="flex">
-          {primaryItems.map((item) => {
+          {barItems.map((item) => {
             const active = isActive(pathname, item);
             return (
               <li key={item.href} className="flex-1">
@@ -393,6 +396,23 @@ export function AppShell({
               </li>
             );
           })}
+          {sheet.length > 0 && (
+            <li className="flex-1">
+              <button
+                type="button"
+                onClick={() => setMoreOpen(true)}
+                aria-expanded={moreOpen}
+                className={cn(
+                  "flex min-h-[3.5rem] w-full flex-col items-center justify-center gap-0.5 px-1 py-1.5",
+                  "transition-colors duration-[var(--dur-fast)]",
+                  moreActive ? "text-accent-strong" : "text-fg-muted",
+                )}
+              >
+                <DotsThreeOutlineIcon className="size-6" weight={moreActive ? "fill" : "regular"} aria-hidden="true" />
+                <span className="text-[0.6875rem] font-medium leading-none">{t("nav.more")}</span>
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
 
@@ -406,7 +426,7 @@ export function AppShell({
             className="absolute inset-0 bg-black/40"
           />
           <div data-chrome className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-[var(--radius-xl)] bg-surface p-4 pb-safe shadow-xl animate-in-up">
-            {secondary.map(({ group, items: list }) => (
+            {sheet.map(({ group, items: list }) => (
               <div key={group} className="mb-4">
                 <p className="px-2 pb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-fg-subtle">
                   {t(NAV_GROUP_KEY[group])}

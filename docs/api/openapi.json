@@ -17206,8 +17206,7 @@
                     "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
                   },
                   "to": {
-                    "type": "string",
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    "$ref": "#/properties/from"
                   },
                   "kind": {
                     "type": "string",
@@ -23986,7 +23985,7 @@
     },
     "/api/v1/family/export": {
       "get": {
-        "summary": "A person's own data as one JSON document to keep (DPDP s.11): the pupil's own, or one child of a guardian's (?student=; the first child when omitted) — profile, record, attendance, marks, report cards, work, messages, consents, sessions, and for a guardian the health card, incidents and fees",
+        "summary": "A person's own data as one JSON document to keep (DPDP s.11): the pupil's own, or one child of a guardian's (?student=; the first child when omitted) — profile, record, attendance, marks, report cards, work, messages, consents, sessions, and for a guardian the health card, incidents and fees. Answered with the document itself as a JSON attachment, not an envelope",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -24005,17 +24004,82 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "ok": {
-                      "type": "boolean",
+                    "format": {
+                      "type": "string",
                       "enum": [
-                        true
+                        "relay-person-export"
                       ]
+                    },
+                    "version": {
+                      "type": "number",
+                      "enum": [
+                        1
+                      ]
+                    },
+                    "exportedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "exportedBy": {
+                      "type": "object",
+                      "properties": {
+                        "userId": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string",
+                          "enum": [
+                            "STUDENT",
+                            "PARENT"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "userId",
+                        "role"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "subject": {
+                      "type": "object",
+                      "properties": {
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "schoolId": {
+                          "type": "string"
+                        },
+                        "schoolName": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "studentMembershipId",
+                        "name",
+                        "schoolId",
+                        "schoolName"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "sections": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": [
-                    "ok"
+                    "format",
+                    "version",
+                    "exportedAt",
+                    "exportedBy",
+                    "subject",
+                    "sections"
                   ],
-                  "additionalProperties": false
+                  "additionalProperties": true
                 }
               }
             }
@@ -42119,6 +42183,9 @@
                     },
                     "inviteSent": {
                       "type": "boolean"
+                    },
+                    "already": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -43457,6 +43524,9 @@
                     "revoked": {
                       "type": "integer",
                       "minimum": 0
+                    },
+                    "already": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -51827,7 +51897,7 @@
     },
     "/api/v1/account/prefs": {
       "post": {
-        "summary": "Save preferences; a key left out stays as it was",
+        "summary": "Save preferences: the channels and the quiet hours are required every time (quiet hours null turns them off); a theme, contrast, font or motion left out stays as it was",
         "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
         "security": [
           {
@@ -51946,7 +52016,7 @@
                     "properties": {
                       "start": {
                         "type": "string",
-                        "pattern": "^\\d{1,2}:\\d{2}$"
+                        "pattern": "^([01]?\\d|2[0-3]):[0-5]\\d$"
                       },
                       "end": {
                         "$ref": "#/properties/quietHours/properties/start"
@@ -53551,6 +53621,10 @@
                     },
                     "available": {
                       "type": "boolean"
+                    },
+                    "hasPassword": {
+                      "type": "boolean",
+                      "default": true
                     }
                   },
                   "required": [
@@ -53610,7 +53684,7 @@
     },
     "/api/v1/account/totp/start": {
       "post": {
-        "summary": "Start two-step sign-in: a fresh secret and its otpauth:// link for the app; nothing guards the sign-in until confirmed. By the account: an active ADMIN or PRINCIPAL membership at any school, or the operator, whatever the session's role (403 otherwise)",
+        "summary": "Start two-step sign-in: a fresh secret and its otpauth:// link for the app; nothing guards the sign-in until confirmed. By the account: an active ADMIN or PRINCIPAL membership at any school, or the operator, whatever the session's role (403 otherwise). The body carries the account's password (422 on `password` when missing or wrong, 429 past the per-person limit); an account with no password is 403 unless its session was signed in within ten minutes",
         "description": "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.",
         "security": [
           {
@@ -53686,12 +53760,29 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "maxLength": 256
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
         }
       }
     },
     "/api/v1/account/totp/confirm": {
       "post": {
-        "summary": "One right code from the app turns two-step sign-in on and answers the eight recovery codes, this once",
+        "summary": "One right code from the app turns two-step sign-in on and answers the eight recovery codes, this once; every other session of the account is signed out (signedOut says how many)",
         "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
         "security": [
           {
@@ -53727,6 +53818,11 @@
                       },
                       "minItems": 8,
                       "maxItems": 8
+                    },
+                    "signedOut": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "default": 0
                     }
                   },
                   "required": [
@@ -107217,6 +107313,11 @@
                     },
                     "duplicates": {
                       "type": "integer"
+                    },
+                    "rejected": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "default": 0
                     }
                   },
                   "required": [
@@ -129056,7 +129157,7 @@
     },
     "/api/v1/hostel/leave/{leaveId}/out": {
       "post": {
-        "summary": "The gate: out on approved leave.",
+        "summary": "The gate: out on approved leave, from a quarter of an hour before it begins (refused earlier)",
         "description": "Roles: WARDEN, ADMIN. Only while the school has HOSTEL switched on.",
         "security": [
           {
@@ -132596,7 +132697,7 @@
     },
     "/api/v1/auth/recruiter/register": {
       "post": {
-        "summary": "A recruiter's own account (never invited): the account and the company, then a bearer session with no school; 429 at the sign-up limit",
+        "summary": "A recruiter's own account (never invited): a form in order is 202 {sent: true} and no session, the same whether or not the address already has an account; the account and the company are made after the response with a confirmation link mailed (the holder of a taken address is told by email instead), and the recruiter signs in with the password; 422 with the field for the form, 429 at the sign-up limit",
         "description": "No session needed.",
         "security": [],
         "x-access": "anyone",
@@ -132608,59 +132709,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "token": {
-                      "type": "string"
-                    },
-                    "expiresAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "sessionId": {
-                      "type": "string"
-                    },
-                    "context": {
-                      "type": "object",
-                      "properties": {
-                        "schoolId": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "role": {
-                          "type": "string",
-                          "enum": [
-                            "ADMIN",
-                            "PRINCIPAL",
-                            "TEACHER",
-                            "STUDENT",
-                            "PARENT",
-                            "EXPERT",
-                            "DRIVER",
-                            "LIBRARIAN",
-                            "WARDEN",
-                            "ALUMNUS",
-                            "FACULTY",
-                            "HOD",
-                            "EXAM_CONTROLLER",
-                            "IQAC",
-                            "TPO",
-                            "ACCOUNTS",
-                            "RECRUITER"
-                          ],
-                          "nullable": true
-                        }
-                      },
-                      "required": [
-                        "schoolId",
-                        "role"
-                      ],
-                      "additionalProperties": false
+                    "sent": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
                     }
                   },
                   "required": [
-                    "token",
-                    "expiresAt",
-                    "sessionId",
-                    "context"
+                    "sent"
                   ],
                   "additionalProperties": false
                 }
@@ -148720,7 +148777,7 @@
     },
     "/api/v1/placement/drives/{driveId}/offers": {
       "post": {
-        "summary": "An offer with its letter (an upload ticket), by the host's TPO or the bound recruiter; the one-offer rule and the dream exception",
+        "summary": "An offer with its letter (an upload ticket), by the host's TPO or the bound recruiter; the one-offer rule and the dream exception; one offer per drive and candidate, corrected until answered, 409 when another recorder made or changed it meanwhile",
         "description": "Roles: TPO, RECRUITER. Only while the school has PLACEMENT switched on.",
         "security": [
           {
@@ -152144,7 +152201,7 @@
     },
     "/api/v1/student/placement/drives/{driveId}/apply": {
       "post": {
-        "summary": "Apply to an OPEN drive; applying IS the consent to share the profile and the record with its company for this drive; refused 409 naming every failed condition",
+        "summary": "Apply to an OPEN drive; applying IS the consent to share the profile and the record with its company for this drive; refused 409 naming every failed condition, and 409 once applied",
         "description": "Roles: STUDENT. Only while the school has PLACEMENT switched on.",
         "security": [
           {

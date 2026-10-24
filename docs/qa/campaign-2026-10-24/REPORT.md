@@ -71,63 +71,63 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 | [QA-18](#qa-18) | Medium | UI-UX | Mobile | A plan-locked screen on the phone is a red error with a Try again that can only fail. **Fixed, commit ac639f3d:** a 402 PLAN_REQUIRED (now naming the feature too) draws the plan card in `Failed`'s place on every plan-gated screen, with the plan, what it includes, its price and Subscribe | UI-15 (layer 4) |
 | [QA-19](#qa-19) | Medium | UI-UX | Web | Links lead limited roles to pages they may not open. **Fixed, commit ac639f3d:** the feeds, the placement tabs, the people list and the names on posts and conversations draw a link only where the gate's own page rule opens it (`pageOpener`) | UI-01 (layer 4) |
 | [QA-20](#qa-20) | Medium | UI-UX | Web | Relative times stay English in Hindi and Marathi. **Fixed, commit ac639f3d:** `relativeTime` takes the locale as a required argument; every page binds the reader's (`getRelativeTime`, `useLocale`) | UI-02 (layer 4) |
-| [QA-21](#qa-21) | Low | Security | Both | Accepting a school invitation bypasses TOTP | SEC-4 (layer 7) |
-| [QA-22](#qa-22) | Low | Security | Both | TOTP guessing has no per-account ceiling | SEC-5 (layer 7) |
-| [QA-23](#qa-23) | Low | Security | Both | Turning TOTP on needs only a session, no password | SEC-6 (layer 7) |
-| [QA-24](#qa-24) | Low | Security | Web | A password-reset request is slower for registered accounts | SEC-7 (layer 7) |
-| [QA-25](#qa-25) | Low | Security | Both | Public sign-up reveals which email addresses have an account | SEC-8 (layer 7) |
-| [QA-26](#qa-26) | Low | Security | Web | The tenant resolver skips three checks getSession makes | SEC-9 (layer 7) |
-| [QA-27](#qa-27) | Low | Functional, Security | Web | The operator's school edit stores a javascript: website and a contact email that is not one | F-2 (layer 6) |
-| [QA-28](#qa-28) | Low | Unit | Web | SSO: a provider's keys endpoint being down is a 500, not "sign-in failed" | U-2 (layer 2) |
-| [QA-29](#qa-29) | Low | E2E | Both | A double press of Publish tells every student and guardian twice | E2E-B6 (layer 5B) |
-| [QA-30](#qa-30) | Low | E2E | Web | Accepting one recruiter requirement twice at once makes two drives | E2E-B7 (layer 5B) |
-| [QA-31](#qa-31) | Low | E2E | Both | Applying to a drive from two devices at once answers 500 | E2E-B8 (layer 5B) |
+| [QA-21](#qa-21) | Low | Security | Both | Accepting a school invitation bypasses TOTP. **Fixed, <commit pending>:** the invitation is accepted and, for an account with two-step sign-in on, the code is asked at `/login/code` before any session (landing in the school joined); a reclaimed account loses the squatter's second step | SEC-4 (layer 7) |
+| [QA-22](#qa-22) | Low | Security | Both | TOTP guessing has no per-account ceiling. **Fixed, <commit pending>:** ten wrong codes an hour per account lock its second step for the hour, across challenges and addresses; audited `auth.totp.locked`, open challenges spent, the holder told by email; a password reset lifts it | SEC-5 (layer 7) |
+| [QA-23](#qa-23) | Low | Security | Both | Turning TOTP on needs only a session, no password. **Fixed, <commit pending>:** starting asks the password (422 on the field, a wrong one audited), an account with none a sign-in made in the last ten minutes; confirming signs every other session out; web and phone ask for it | SEC-6 (layer 7) |
+| [QA-24](#qa-24) | Low | Security | Web | A password-reset request is slower for registered accounts. **Fixed, <commit pending>:** the lookup, the code and the send run after the answer (`afterResponse`), whatever the address | SEC-7 (layer 7) |
+| [QA-25](#qa-25) | Low | Security | Both | Public sign-up reveals which email addresses have an account. **Fixed, <commit pending>:** the school's and the recruiter's sign-ups answer one sentence (the door 202 `{sent: true}`) and no session whether or not the address is taken; the account is made after the answer, the holder of a taken address told by email; the wizard's live address check is gone | SEC-8 (layer 7) |
+| [QA-26](#qa-26) | Low | Security | Web | The tenant resolver skips three checks getSession makes. **Fixed, <commit pending>:** `resolveRequestTenant` refuses a session past its 180-day end, a disabled person and an outbox replay of somebody else, as `getSession` does | SEC-9 (layer 7) |
+| [QA-27](#qa-27) | Low | Functional, Security | Web | The operator's school edit stores a javascript: website and a contact email that is not one. **Fixed, <commit pending>:** creating and correcting a school refuse a website that is not http(s) and a contact email that is not one, 422 with the office's sentences; the families' page and the phone draw the website as a link only when it is http(s) | F-2 (layer 6) |
+| [QA-28](#qa-28) | Low | Unit | Web | SSO: a provider's keys endpoint being down is a 500, not "sign-in failed". **Fixed, <commit pending>:** `completeSso` catches a keys endpoint that is down or answers garbage and answers `reason: "token"`, logged; the callback sends the person to `/login?sso=failed` | U-2 (layer 2) |
+| [QA-29](#qa-29) | Low | E2E | Both | A double press of Publish tells every student and guardian twice. **Fixed, <commit pending>:** `publishRun` reads the run's status again under the session lock; a run already published is answered as it stands, with no notice or audit row | E2E-B6 (layer 5B) |
+| [QA-30](#qa-30) | Low | E2E | Web | Accepting one recruiter requirement twice at once makes two drives. **Fixed, <commit pending>:** one drive per requirement at a college (unique key `Drive_schoolId_requirementId_key`, migration `20261024200000_drive_requirement_unique`); the losing press is answered with the winner's drive | E2E-B7 (layer 5B) |
+| [QA-31](#qa-31) | Low | E2E | Both | Applying to a drive from two devices at once answers 500. **Fixed, <commit pending>:** the losing device is told `placement.refuseApplied` (409); a re-apply reopens only a withdrawn application | E2E-B8 (layer 5B) |
 | [QA-32](#qa-32) | Low | E2E | Both | Accepting and declining one offer at once stamps both. **Fixed, commit ac639f3d, with QA-14:** the answer is a conditional update while unanswered; the loser is refused `placement.refuseOfferAnswered` | E2E-B9 (layer 5B) |
-| [QA-33](#qa-33) | Low | E2E | Web | Two recruiters offering at once each see their own package; the last write is kept | E2E-B10 (layer 5B) |
-| [QA-34](#qa-34) | Low | E2E | Both | An IQAC sign-off and a return at the same moment both stand | E2E-B13 (layer 5B) |
-| [QA-35](#qa-35) | Low | E2E | Mobile | The same logbook clientId sent twice at once answers 500 | E2E-B14 (layer 5B) |
-| [QA-36](#qa-36) | Low | Unit | Web | Concurrent first reads of a late pass invoice fail | U-1 (layer 2) |
-| [QA-37](#qa-37) | Low | UI-UX | Web | A losing double press reads as a failure (expert approval, pass refund) | E2E-B16 (layer 5B) |
-| [QA-38](#qa-38) | Low | Unit | Web | An empty 200 from either gateway is a TypeError, not a gateway error | U-3 (layer 2) |
-| [QA-39](#qa-39) | Low | Unit | Web | The scholarship reconciliation sheet's order has no tie-break | U-5 (layer 2) |
-| [QA-40](#qa-40) | Low | Functional | Web | Every counter reversal is reported as drift by data:audit | E2E-A14 (layer 5A) |
-| [QA-41](#qa-41) | Low | Functional | Web | A circular reminder says "texted 3" when no text went | E2E-A9 (layer 5A) |
-| [QA-42](#qa-42) | Low | UI-UX | Both | A student's exam form never says whether its fee is paid or waived | E2E-B19 (layer 5B) |
-| [QA-43](#qa-43) | Low | Functional | Both | A seat in next year's cycle cannot be given before the year begins | E2E-A8 (layer 5A) |
-| [QA-44](#qa-44) | Low | Functional | Both | A library renewal is refused for a reader whose reservation is already satisfied | E2E-A10 (layer 5A) |
-| [QA-45](#qa-45) | Low | Functional | Both | The hostel gate lets a boarder out before the leave begins | E2E-A11 (layer 5A) |
-| [QA-46](#qa-46) | Low | Functional | Both | A route's evening stop times may run backwards | E2E-A12 (layer 5A) |
-| [QA-47](#qa-47) | Low | Functional | Mobile | Trip positions outside the window are reported as duplicates | E2E-A13 (layer 5A) |
-| [QA-48](#qa-48) | Low | E2E | Web | The placement "joined" answer names nobody | E2E-B11 (layer 5B) |
-| [QA-49](#qa-49) | Low | E2E | Both | A patient's name passes the logbook's "names no patient" check | E2E-B15 (layer 5B) |
-| [QA-50](#qa-50) | Low | Functional | Both | Demo experts' times are hidden from demo families, yet bookable by id | E2E-B17 (layer 5B) |
-| [QA-51](#qa-51) | Low | Functional | Both | Vidura answers "I am not sure" to a college student's attendance question | E2E-B18 (layer 5B) |
-| [QA-52](#qa-52) | Low | Functional | Web | A transferred pupil's guardian lands on the school the child left | L1-02 (layer 1) |
-| [QA-53](#qa-53) | Low | Functional | Mobile | An expert under review is not told so on the phone while expert sessions are off | L1-04 (layer 1) |
-| [QA-54](#qa-54) | Low | BDD, Functional | Both | Refused input is answered 403 FORBIDDEN instead of 422 | BDD-2 (layer 3) and F-3 item 4 (layer 6) |
-| [QA-55](#qa-55) | Low | Functional | Both | Dates and times that are not real are kept or silently ignored | F-3 items 1–3 (layer 6) |
-| [QA-56](#qa-56) | Low | Functional | Both | Two doors are described otherwise than they behave | F-4 (layer 6) |
-| [QA-57](#qa-57) | Low | UI-UX | Web | A college head's home navigates twice on every sign-in | L1-01 (layer 1) |
-| [QA-58](#qa-58) | Low | UI-UX | Web | The departed child's page has no heading | L1-03 (layer 1) |
-| [QA-59](#qa-59) | Low | UI-UX | Web | Touch targets under 44 px on two pages the axe gate never opens | UI-03 (layer 4) |
-| [QA-60](#qa-60) | Low | UI-UX | Web | The expert's profile fails hydration on every load | UI-04 (layer 4) |
-| [QA-61](#qa-61) | Low | UI-UX | Both | Words and links for features that are switched off | UI-05 (layer 4) |
-| [QA-62](#qa-62) | Low | UI-UX | Web | Confusing or unfinished copy on homes and the circulars page | UI-06 (layer 4) |
-| [QA-63](#qa-63) | Low | UI-UX | Web | An internal key is printed in the office's texts log | UI-07 (layer 4) |
-| [QA-64](#qa-64) | Low | UI-UX | Web | Template braces in the guide Vidura answers from | UI-08 (layer 4) |
-| [QA-65](#qa-65) | Low | UI-UX | Both | Navigation differs between the web at phone width and the phone app | UI-09 (layer 4) |
-| [QA-66](#qa-66) | Low | UI-UX | Mobile | Screens the phone does not have, unrecorded as deliberate | UI-10 (layer 4) |
-| [QA-67](#qa-67) | Low | UI-UX | Mobile | The phone's web target has no landmarks | UI-11 (layer 4) |
-| [QA-68](#qa-68) | Low | UI-UX | Web | Moderate and minor axe results on the web | UI-12 (layer 4) |
-| [QA-69](#qa-69) | Low | UI-UX | Both | A college is called a school | UI-14 (layer 4) |
-| [QA-70](#qa-70) | Low | UI-UX, E2E | Mobile | Phone paths open the office's screen for other roles; placement notices open nothing | E2E-A15 (layer 5A) and E2E-B12 (layer 5B) |
-| [QA-71](#qa-71) | Low | BDD | Both | The fixture circular's reach report counts nobody, although a guardian acknowledged it | BDD-3 (layer 3) |
-| [QA-72](#qa-72) | Low | BDD | Both | Two fixture timestamps run backwards (revoked before issued, sent before created) | BDD-4 (layer 3) |
-| [QA-73](#qa-73) | Low | UI-UX | Web | The e2e harness's exam shows on the fixture teacher's home | UI-13 (layer 4) |
-| [QA-74](#qa-74) | Low | Functional | Both | `zz:token EXPERT <email>` mints a session for another expert | L1-05 (layer 1) |
-| [QA-75](#qa-75) | Low | Functional | Web | The placement library cannot be loaded by a script | L1-06 (layer 1) |
-| [QA-76](#qa-76) | Low | Unit | Web | Stale code and comments met on the way (no behaviour wrong) | U-6 (layer 2) |
-| [QA-77](#qa-77) | Low | Unit | Mobile | A single phone test file does not exit | U-7 (layer 2) |
+| [QA-33](#qa-33) | Low | E2E | Web | Two recruiters offering at once each see their own package; the last write is kept. **Fixed, <commit pending>:** one offer per drive and candidate, which the company corrects until it is answered: a fresh offer is created only and an edit changes only the offer read; the loser is refused `placement.refuseOfferChangedMeanwhile` (409) with the package that stands, the student told once, an edit's audit row naming the package it replaced | E2E-B10 (layer 5B) |
+| [QA-34](#qa-34) | Low | E2E | Both | An IQAC sign-off and a return at the same moment both stand. **Fixed, <commit pending>:** the decision is a conditional update while the filing waits; the loser is refused `iqac.refuseNotAwaiting` (409); a return clears any sign-off | E2E-B13 (layer 5B) |
+| [QA-35](#qa-35) | Low | E2E | Mobile | The same logbook clientId sent twice at once answers 500. **Fixed, <commit pending>:** the loser of the unique key answers the one entry the winner wrote | E2E-B14 (layer 5B) |
+| [QA-36](#qa-36) | Low | Unit | Web | Concurrent first reads of a late pass invoice fail. **Fixed, <commit pending>:** the late invoice's read takes the order's row `FOR UPDATE` before reading `invoiceId`, so reads arriving together all answer the one invoice; it carries the date it is issued | U-1 (layer 2) |
+| [QA-37](#qa-37) | Low | UI-UX | Web | A losing double press reads as a failure (expert approval, pass refund). **Fixed, <commit pending>:** a press that finds the application already decided the same way, or the pass already refunded, is answered as done with `already: true` ("already approved", "already refunded"); the opposite decision is still refused | E2E-B16 (layer 5B) |
+| [QA-38](#qa-38) | Low | Unit | Web | An empty 200 from either gateway is a TypeError, not a gateway error. **Fixed, <commit pending>:** both adapters' `call` refuse a 2xx whose body is not a JSON object with a `GatewayError` / `GigGatewayError` coded `EMPTY_ANSWER` | U-3 (layer 2) |
+| [QA-39](#qa-39) | Low | Unit | Web | The scholarship reconciliation sheet's order has no tie-break. **Fixed, <commit pending>:** the reconciliation sheet orders by `createdAt` and then `id` | U-5 (layer 2) |
+| [QA-40](#qa-40) | Low | Functional | Web | Every counter reversal is reported as drift by data:audit. **Fixed, <commit pending>:** the fee-payment check treats a REVERSED payment's allocations as kept by design; drift is a reversal with no `reversedAt` or holding more than the payment | E2E-A14 (layer 5A) |
+| [QA-41](#qa-41) | Low | Functional | Web | A circular reminder says "texted 3" when no text went. **Fixed, <commit pending>:** `texted` counts the round's texts queued, sent or delivered, not the guardians tried | E2E-A9 (layer 5A) |
+| [QA-42](#qa-42) | Low | UI-UX | Both | A student's exam form never says whether its fee is paid or waived. **Fixed, <commit pending>:** `myExams` reads each form's fee demand, so the student's and the guardian's form says the fee is due, paid or waived (web and phone); the cell's pages say the state in words, not the code | E2E-B19 (layer 5B) |
+| [QA-43](#qa-43) | Low | Functional | Both | A seat in next year's cycle cannot be given before the year begins. **Fixed, <commit pending>:** a seat in a cycle whose year has not begun is admitted now, dated the year's first day and with no class until the year begins (the owner's decision as the brief gives it) | E2E-A8 (layer 5A) |
+| [QA-44](#qa-44) | Low | Functional | Both | A library renewal is refused for a reader whose reservation is already satisfied. **Fixed, <commit pending>:** only reservations still waiting (no copy held) stop a renewal, on the desk and in `canRenew` | E2E-A10 (layer 5A) |
+| [QA-45](#qa-45) | Low | Functional | Both | The hostel gate lets a boarder out before the leave begins. **Fixed, <commit pending>:** the gate refuses a boarder more than a quarter of an hour before the leave begins (`hostel.refuseOutEarly`) | E2E-A11 (layer 5A) |
+| [QA-46](#qa-46) | Low | Functional | Both | A route's evening stop times may run backwards. **Fixed, <commit pending>:** each run's stop times must go forward along its own order: the morning ascending, the evening descending along the stop list (`transport.refuseStopOrder`) | E2E-A12 (layer 5A) |
+| [QA-47](#qa-47) | Low | Functional | Mobile | Trip positions outside the window are reported as duplicates. **Fixed, <commit pending>:** positions outside the trip's window are counted as `rejected`, a new field of the answer, not as duplicates | E2E-A13 (layer 5A) |
+| [QA-48](#qa-48) | Low | E2E | Web | The placement "joined" answer names nobody. **Fixed, <commit pending>:** the name comes off the application, as the offer's answer does | E2E-B11 (layer 5B) |
+| [QA-49](#qa-49) | Low | E2E | Both | A patient's name passes the logbook's "names no patient" check. **Fixed, <commit pending>:** a name introduced by a patient word or an honorific (English and Devanagari) and an IP, UHID, MRN or registration number are refused, in the note and in the supervisor's remark; a bare capitalised name with no such word is still not found | E2E-B15 (layer 5B) |
+| [QA-50](#qa-50) | Low | Functional | Both | Demo experts' times are hidden from demo families, yet bookable by id. **Fixed, <commit pending>:** `bookSeat` applies `openFor`'s fixture rule, so a time the list does not show a pupil is not bookable by its id (404). **Left for the owner:** whether demo schools should read the demo experts at all | E2E-B17 (layer 5B) |
+| [QA-51](#qa-51) | Low | Functional | Both | Vidura answers "I am not sure" to a college student's attendance question. **Fixed, <commit pending>:** the door was chosen; its summary was cut before its attendance block. A block the question names now comes first in the door's data, its list whole (`namedBlocks`, English stems and the Hindi and Marathi words for attendance); two eval cases | E2E-B18 (layer 5B) |
+| [QA-52](#qa-52) | Low | Functional | Web | A transferred pupil's guardian lands on the school the child left. **Fixed, <commit pending>:** with no child asked for, the family pages and doors open on the child still enrolled (`pickChild`); the phone's switcher marks the same child | L1-02 (layer 1) |
+| [QA-53](#qa-53) | Low | Functional | Mobile | An expert under review is not told so on the phone while expert sessions are off. **Fixed, <commit pending>:** the profile door answers an expert under review their own standing; the phone reads it first, whatever the switches, and says so with the account door, asking nothing of the doors that refuse | L1-04 (layer 1) |
+| [QA-54](#qa-54) | Low | BDD, Functional | Both | Refused input is answered 403 FORBIDDEN instead of 422. **Fixed, <commit pending>:** the domain door answers a name that is not a domain 422 naming `domain` and a taken one 409; the closure door's rules are 422 | BDD-2 (layer 3) and F-3 item 4 (layer 6) |
+| [QA-55](#qa-55) | Low | Functional | Both | Dates and times that are not real are kept or silently ignored. **Fixed, <commit pending>:** a shared `realDateKey` and `clockHHMM` (packages/contracts `v1/calendar-keys.ts`) refuse unreal days and times, and the export and decision windows refuse `from` after `to`, each 422 naming the field | F-3 items 1–3 (layer 6) |
+| [QA-56](#qa-56) | Low | Functional | Both | Two doors are described otherwise than they behave. **Fixed, <commit pending>:** the two catalog entries say what the doors do: family/export answers the document (`familyExportDocumentSchema`), account/prefs requires `channels` and `quietHours` | F-4 (layer 6) |
+| [QA-57](#qa-57) | Low | UI-UX | Web | A college head's home navigates twice on every sign-in. **Fixed, <commit pending>:** sign-in, the switcher, `/` and `/login` send a college's head to `/principal/college` (`homeFor`); `/principal` itself redirects a college before its loading boundary (a 307, not a streamed redirect) | L1-01 (layer 1) |
+| [QA-58](#qa-58) | Low | UI-UX | Web | The departed child's page has no heading. **Fixed, <commit pending>:** the departed child's panel title is the page's `<h1>` | L1-03 (layer 1) |
+| [QA-59](#qa-59) | Low | UI-UX | Web | Touch targets under 44 px on two pages the axe gate never opens. **Fixed, <commit pending>:** the conversation buttons are 44 px and each answer radio sits in a 44 px label; both pages are now in the axe gate | UI-03 (layer 4) |
+| [QA-60](#qa-60) | Low | UI-UX | Web | The expert's profile fails hydration on every load. **Fixed, <commit pending>:** the calendar card reads the origin after hydration (`useSyncExternalStore`), so the first render is the server's | UI-04 (layer 4) |
+| [QA-61](#qa-61) | Low | UI-UX | Both | Words and links for features that are switched off. **Fixed, <commit pending>:** the earnings link and the calendar feed are drawn only while expert sessions are on (web and phone); the staffing card names a vacancy only with the job board on (web and phone); with texts off the SMS and WhatsApp switches are shut with a line saying so (web and phone), and the phone asks the assistant's door only while it is on | UI-05 (layer 4) |
+| [QA-62](#qa-62) | Low | UI-UX | Web | Confusing or unfinished copy on homes and the circulars page. **Fixed, <commit pending>:** "Starts on the next school day", "Turn up on the next school day…", "Within 12–16 h", each duty link names its desk, one title for the circulars page with a line where nobody is linked to tell, and one linked state on the Get paid card (web and phone) | UI-06 (layer 4) |
+| [QA-63](#qa-63) | Low | UI-UX | Web | An internal key is printed in the office's texts log. **Fixed, <commit pending>:** a purpose is read by its prefix (`circular:`, `circular-remind:`, `incident:`), linked to the thing it names, and never printed raw | UI-07 (layer 4) |
+| [QA-64](#qa-64) | Low | UI-UX | Web | Template braces in the guide Vidura answers from. **Fixed, <commit pending>:** a placeholder in the guide's running text is read as "…" wherever the guide is used: retrieval, the renderings' review page and new renderings (`readableQuotes`); paths in backticks keep theirs | UI-08 (layer 4) |
+| [QA-65](#qa-65) | Low | UI-UX | Both | Navigation differs between the web at phone width and the phone app. **Fixed, <commit pending>:** below `lg` the web's bottom bar is the phone's tabs in the phone's order, then More (`PHONE_BAR`, tested against the phone's `TABS`); the operator's links sit behind a Menu below `md` | UI-09 (layer 4) |
+| [QA-66](#qa-66) | Low | UI-UX | Mobile | Screens the phone does not have, unrecorded as deliberate. **Fixed, <commit pending>:** appointment letters and council notices open on the web from the phone's More; every other gap is in the parity table with its reason (`tests/nav-phone-bar.test.ts`) | UI-10 (layer 4) |
+| [QA-67](#qa-67) | Low | UI-UX | Mobile | The phone's web target has no landmarks. **Fixed, <commit pending>:** the tab bar is named a navigation landmark on the web target (`useTabBarLandmark`); every screen's body was already a `main` | UI-11 (layer 4) |
+| [QA-68](#qa-68) | Low | UI-UX | Web | Moderate and minor axe results on the web. **Fixed, <commit pending>:** action columns have screen-reader headings, the duplicate landmarks are named apart, the timetable's and the contribution's headings are in order, and the health card, the public faculty page and the 404 have `main#main`; the axe gate now fails on these five rules for the pages named | UI-12 (layer 4) |
+| [QA-69](#qa-69) | Low | UI-UX | Both | A college is called a school. **Fixed, <commit pending>:** "College code", "Our college's feed", "Your college's postings" and "Admit students from a list" at a college, web and phone | UI-14 (layer 4) |
+| [QA-70](#qa-70) | Low | UI-UX, E2E | Mobile | Phone paths open the office's screen for other roles; placement notices open nothing. **Fixed, <commit pending>:** an office path opened by another role goes to that person's own screen (applications, covers) or says it is the office's with the way home; `/student/placement` opens the student's placement screen and a notice with no screen opens the web | E2E-A15 (layer 5A) and E2E-B12 (layer 5B) |
+| [QA-71](#qa-71) | Low | BDD | Both | The fixture circular's reach report counts nobody, although a guardian acknowledged it. **Fixed, commit pending:** the fixture writes the circular after the school's last enrolment, delivers it after that and dates every push, text, read and acknowledgement after the delivery; an existing row is moved onto that timeline | BDD-3 (layer 3) |
+| [QA-72](#qa-72) | Low | BDD | Both | Two fixture timestamps run backwards (revoked before issued, sent before created). **Fixed, commit pending:** both columns of each pair come from one clock reading (a revoked paper issued a minute before it is revoked); the existing SENT copy is put right | BDD-4 (layer 3) |
+| [QA-73](#qa-73) | Low | UI-UX | Web | The e2e harness's exam shows on the fixture teacher's home. **Fixed, commit pending:** a Playwright global teardown removes the harness's exam (and its sessions) at ZZ Northgate after the run, and `zz:fixtures` removes one a stopped run left | UI-13 (layer 4) |
+| [QA-74](#qa-74) | Low | Functional | Both | `zz:token EXPERT <email>` mints a session for another expert. **Fixed, commit pending:** the EXPERT branch checks the address is a fixture's and finds that person's profile; unnamed, it takes zz.expert1 by address | L1-05 (layer 1) |
+| [QA-75](#qa-75) | Low | Functional | Web | The placement library cannot be loaded by a script. **Fixed, commit pending:** `recruiterResume` imports the PDF renderer when it draws a resume, so the library loads under tsx | L1-06 (layer 1) |
+| [QA-76](#qa-76) | Low | Unit | Web | Stale code and comments met on the way (no behaviour wrong). **Fixed, commit pending:** the text cap is one rule (`messageCapOf`, message-cap.ts) that messaging and subscriptions read, and the unused `effectiveMessageCap` is gone; the gateway, role-gate and tenant-tx comments say what the code does; the staff-attendance suite pins its clock instead of skipping on the 1st | U-6 (layer 2) |
+| [QA-77](#qa-77) | Low | Unit | Mobile | A single phone test file does not exit. **Fixed, commit pending:** the family screens' test QueryClient had React Query's five-minute garbage-collection timer; it now has `gcTime: Infinity` like the other harnesses, and a guard test holds every harness to it | U-7 (layer 2) |
 
 ### High
 
@@ -574,6 +574,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** Low · **Platform:** Both
 - **Feature:** School invitations; two-factor sign-in
 - **From:** SEC-4 (layer 7)
+- **Status:** Fixed, <commit pending>. `acceptInvite` mints the session through `sessionOrSecondStep`: unless the person arrived signed in as the holder, `twoFactorChallengeFor(userId, "invite")` is asked first, the account's last context pointed at the invitation's school (or the family), and the challenge rides the five-minute cookie to `/login/code`; a reclaim of a never-verified account clears its second step with its password. Test: `apps/web/tests/fix-lows-security.test.ts` (QA-21 block).
 
 **Steps**
 
@@ -594,6 +595,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** Low · **Platform:** Both
 - **Feature:** Two-factor sign-in
 - **From:** SEC-5 (layer 7)
+- **Status:** Fixed, <commit pending>. `verifyTwoFactor` peeks the account's bucket (`totp-user:<id>`, `TOTP_PER_ACCOUNT` 10 an hour) before trying any code and charges it on each failure; the tenth locks: every open challenge spent, `auth.totp.locked` audited, the holder mailed (`sendAccountNotice`); `resetPassword` clears the bucket. Test: `apps/web/tests/totp.test.ts` ("the account's own ceiling on wrong codes").
 
 **Steps**
 
@@ -614,6 +616,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** Low · **Platform:** Both
 - **Feature:** Account security settings
 - **From:** SEC-6 (layer 7)
+- **Status:** Fixed, <commit pending>. `startTwoFactor(userId, { password, sessionId })` proves the holder (`proveHolder`: the password under the per-person limit, `auth.totp.enrolRefused` on a wrong one; with no password, a session created within `ENROL_FRESH_SIGN_IN_MS`); `confirmTwoFactor` revokes every other session (`signedOut` on the answer). Contract `totpStartSchema`, `hasPassword` on the status; the web card and the phone card draw the password field. Tests: `apps/web/tests/totp.test.ts` (enrolment block), `apps/mobile/test/screens/account-two-step.test.tsx`.
 
 **Steps**
 
@@ -633,6 +636,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** Low · **Platform:** Web
 - **Feature:** Password reset
 - **From:** SEC-7 (layer 7)
+- **Status:** Fixed, <commit pending>. `requestPasswordReset(identifier, { defer })` answers from the input alone after its limit and hands `sendResetIfAnybody` to the caller's `defer`; the login action passes `afterResponse` (`apps/web/src/lib/after-response.ts`, shared with the magic link). Test: `apps/web/tests/fix-lows-security.test.ts` (QA-24 block).
 
 **Steps**
 
@@ -652,6 +656,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** Low · **Platform:** Both
 - **Feature:** Recruiter and school sign-up
 - **From:** SEC-8 (layer 7)
+- **Status:** Fixed, <commit pending>. `registerSchool` and `registerRecruiter` refuse only on the form (fields, streams, password quality, the limit) and defer the rest (`completeSchoolRegistration` in `apps/web/src/lib/school-signup.ts`, `completeRecruiterRegistration`): a free address gets its account and the confirmation link, a taken one's holder `tellHolderOfSignup` (three a day per address); `checkEmailAvailable` is removed; the web wizard, the web recruiter form and the phone screen show the sentence and the way to sign in. A new founder or recruiter now signs in with the password instead of landing signed in. Tests: `apps/web/tests/fix-lows-security.test.ts` (QA-25 block), `college-foundation.test.ts`, the phone's `college-foundation.test.tsx`.
 
 **Steps**
 
@@ -671,6 +676,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Security · **Severity:** Low · **Platform:** Web
 - **Feature:** Tenant fence (hardening)
 - **From:** SEC-9 (layer 7)
+- **Status:** Fixed, <commit pending>. `tenant-request.ts` reads `createdAt` and `user.disabledAt` with the session and the `x-edulink-owner` header, and answers no tenant for each of the three; `SESSION_ABSOLUTE_MAX_DAYS` moved to `constants.ts` so both read one number. Test: `apps/web/tests/tenant-request.test.ts`.
 
 **Steps**
 
@@ -690,6 +696,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional, Security · **Severity:** Low · **Platform:** Web
 - **Feature:** Operator: school details
 - **From:** F-2 (layer 6)
+- **Status:** Fixed, <commit pending>. `checkSchoolContact` in `superuser.ts` (the office's rule: `emailSchema`, and `isWebsiteAddress` from `apps/web/src/lib/website-address.ts`) runs in `createSchool` and `updateSchool`; `websiteHref` guards `/explore/[schoolId]` and the phone's school profile opens only an http(s) address. http:// is accepted as the office's form accepts it (the brief said https only; a school the office saved with http:// would otherwise refuse every operator correction). Test: `apps/web/tests/api-v1-operator-writes.test.ts`.
 
 **Steps**
 
@@ -710,6 +717,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Unit · **Severity:** Low · **Platform:** Web
 - **Feature:** SSO sign-in
 - **From:** U-2 (layer 2)
+- **Status:** Fixed, <commit pending>. `completeSso` (`sso.ts`) wraps `verifyIdToken` in try/catch: a keys endpoint that is down (503) or answers garbage is `{ ok: false, reason: "token" }`, logged as `[sso] <provider>: the ID token could not be verified`, and the callback route sends the person to `/login?sso=failed` instead of answering 500. Test: the `it.fails` in `apps/web/tests/sso-callback.test.ts` is now an ordinary passing test.
 
 **Steps**
 
@@ -730,6 +738,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Both
 - **Feature:** College exam results
 - **From:** E2E-B6 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1). Test: `apps/web/tests/exam-cell-publish-race.test.ts`.
 
 **Steps**
 
@@ -749,6 +758,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Web
 - **Feature:** Placement requirements
 - **From:** E2E-B7 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1), with the company link written ON CONFLICT DO NOTHING (two drives of a company new to the college at once failed on its key). Test: `apps/web/tests/placement-lows-race.test.ts`.
 
 **Steps**
 
@@ -769,6 +779,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Both
 - **Feature:** Placement applications
 - **From:** E2E-B8 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1). Test: `apps/web/tests/placement-lows-race.test.ts`.
 
 **Steps**
 
@@ -809,6 +820,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Web
 - **Feature:** Placement offers
 - **From:** E2E-B10 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1); decided by the placement rule (one offer row per drive and candidate, `Offer_driveId_studentMembershipId_key`): the second recorder is refused rather than kept as a second offer. Test: `apps/web/tests/placement-lows-race.test.ts`.
 
 **Steps**
 
@@ -828,6 +840,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Both
 - **Feature:** IQAC filings (AQAR)
 - **From:** E2E-B13 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1). Test: `apps/web/tests/iqac-signoff-race.test.ts`.
 
 **Steps**
 
@@ -848,6 +861,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Mobile
 - **Feature:** Clinical logbook; offline replay
 - **From:** E2E-B14 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1). Test: `apps/web/tests/clinical.test.ts`.
 
 **Steps**
 
@@ -867,6 +881,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Unit · **Severity:** Low · **Platform:** Web
 - **Feature:** Pass invoices
 - **From:** U-1 (layer 2)
+- **Status:** Fixed, <commit pending>. `passInvoiceView` (`pass-orders.ts`) takes the PassOrder row `FOR UPDATE` inside its transaction before reading `invoiceId` again, so concurrent first reads queue there and each sees the invoice the first wrote: three reads together answer three times with one number (before: one answer and two `Unique constraint failed on the fields: (passOrderId)`). Decided here: a late invoice carries the date it is issued, never the payment's (a tax invoice is not backdated). Test: `apps/web/tests/pass-orders-refusals.test.ts` now requires all three reads to answer.
 
 **Steps**
 
@@ -888,6 +903,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Operator desks: expert applications, pass refunds
 - **From:** E2E-B16 (layer 5B)
+- **Status:** Fixed, <commit pending>. `decideExpertApplication` answers a press that finds the application decided the same way (before the read, on the conditional update, on the expert account the other press made, or on the P2002 of its user) with `{ ok: true, status, already: true }`, the opposite decision still `expertApply.alreadyDecided`; `refundPassOrder` answers a pass already REFUNDED (before or at the claim) with the order as it stands, `revoked: 0, already: true`. The contracts carry an optional `already`; the operator's desk toasts `expertApply.alreadyApproved` / `alreadyRefused` / `passes.refundAlready` (en, hi, mr). Before: 200 and 422 "This email address already has an expert account. Refuse the application as a duplicate.", and 200 and 422 "Only a paid pass can be refunded.". Tests: two presses at once in `apps/web/tests/expert-applications.test.ts` and `apps/web/tests/passes.test.ts`.
 
 **Steps**
 
@@ -908,6 +924,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Unit · **Severity:** Low · **Platform:** Web
 - **Feature:** Fees and sessions gateways
 - **From:** U-3 (layer 2)
+- **Status:** Fixed, <commit pending>. Both adapters' `call` (`gateway.ts`, `gig-gateway.ts`) refuse a 2xx whose body is empty, not JSON, `null`, an array or a bare value with a `GatewayError` / `GigGatewayError` carrying the status and the new `code: "EMPTY_ANSWER"`, which every caller already handles as a gateway failure; before, `createOrder` threw a bare TypeError reading `id` of null. Tests: `apps/web/tests/gateway-live-transport.test.ts` and `gig-gateway-live-transport.test.ts`, five bodies each.
 
 **Steps**
 
@@ -927,6 +944,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Unit · **Severity:** Low · **Platform:** Web
 - **Feature:** Scholarships
 - **From:** U-5 (layer 2)
+- **Status:** Fixed, <commit pending>. `reconciliationSheet` (`scholarships.ts`) orders by `[{ createdAt }, { id }]`, so two claims made in one millisecond keep their serial numbers on every download. Test: `apps/web/tests/college-money-reads.test.ts` stamps both claims with one instant and reads the sheet three times.
 
 **Steps**
 
@@ -946,6 +964,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Web
 - **Feature:** Fees ledger; data audit
 - **From:** E2E-A14 (layer 5A)
+- **Status:** Fixed, <commit pending>. The `fee-payment` check in `apps/web/tests/data-audit.test.ts` (the check, not the ledger: `reversePayment` keeps the allocation rows on purpose and the demands are recomputed from PAID payments) no longer warns on a REVERSED payment's allocations; it warns on a REVERSED payment with no `reversedAt` and fails one whose allocations exceed its amount. `npm run data:audit`: 70 passed, 0 FAIL, 2 WARN (the two `usage-sample` ones) where every later layer saw 6.
 
 **Steps**
 
@@ -966,6 +985,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Web
 - **Feature:** Circular reach
 - **From:** E2E-A9 (layer 5A)
+- **Status:** Fixed, <commit pending>. `remindCircular` (`circulars.ts`) answers `texted` as the OutboundMessage rows of this round (`circular-remind:<post>`) that are QUEUED, SENT or DELIVERED, the reach report's own reading; a text skipped (texts off, no proved number, a cap) or failed is not counted, and the audit row carries the number. Test: `apps/web/tests/api-v1-circulars.test.ts` (a guardian with no number: `texted` 1 where it said 2).
 
 **Steps**
 
@@ -986,6 +1006,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Both
 - **Feature:** College exam forms
 - **From:** E2E-B19 (layer 5B)
+- **Status:** Fixed, <commit pending>. `myExams` (`exam-cell-after.ts`) reads the forms' FeeDemand statuses as `sessionView` does; the web (`components/exam-cell/mine.tsx`) and the phone (`screens/exams/mine.tsx`) add Due, Part paid, Paid or Waived to the fee line; the cell's session and after pages say the status in words (`FEE_DEMAND_STATUS_KEY`). Tests: `apps/web/tests/exam-cell-after-fixes.test.ts` (QA-42 block), `apps/mobile/test/screens/college-exams.test.tsx`.
 
 **Steps**
 
@@ -1006,6 +1027,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Admissions (owner decision)
 - **From:** E2E-A8 (layer 5A)
+- **Status:** Fixed, <commit pending>. Built as the brief gives the owner's decision: `admit` (`admissions.ts`) takes an application whose cycle's year starts after today on the school's clock, defaults the admission date to the year's first day and refuses any other (`admissions.refuseAheadDate`, naming the day) and a class now (`admissions.refuseAheadClass`: the school's classes run this year, so the pupil would sit in this year's registers and be promoted at this year's close); the membership is ACTIVE with `joinedAt` and the record's admission date on that day, the fee plan on the cycle's structure as before. The current year's rule is unchanged. Test: `apps/web/tests/admit-transfer.test.ts`.
 
 **Steps**
 
@@ -1026,6 +1048,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Library loans
 - **From:** E2E-A10 (layer 5A)
+- **Status:** Fixed, <commit pending>. `renewLoan` and the loan view's `canRenew` (`library.ts`) count only reservations still waiting for a copy (`readyAt` or `readyCopyId` null); one already ready, with a copy held for its reader, no longer stops another reader's renewal, and a reader still waiting does. Test: `apps/web/tests/library.test.ts` (before: 403 "Someone is waiting for this book").
 
 **Steps**
 
@@ -1047,6 +1070,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Hostel leave and gate
 - **From:** E2E-A11 (layer 5A)
+- **Status:** Fixed, <commit pending>. `gateOut` (`hostel.ts`) refuses a boarder going out more than fifteen minutes before the leave's `fromAt` (`hostel.refuseOutEarly`, en, hi, mr) and stamps `outAt` with the same clock; the late-return check is unchanged. Going out after the leave's end is left as it was (the brief asked for the start). Test: `apps/web/tests/hostel.test.ts` (an hour early: 403, ten minutes early: 200).
 
 **Steps**
 
@@ -1067,6 +1091,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Transport routes
 - **From:** E2E-A12 (layer 5A)
+- **Status:** Fixed, <commit pending>. `checkStopTimes` (`transport.ts`) refuses a route whose morning times fall along the stop list, or whose evening times rise along it (the evening runs last stop to first), with `transport.refuseStopOrder` (en, hi, mr); two stops may share a minute and a one-way route reads only its own times. The fixtures' and demo routes already obey it. Test: `apps/web/tests/transport.test.ts`.
 
 **Steps**
 
@@ -1087,6 +1112,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Mobile
 - **Feature:** Transport live trips
 - **From:** E2E-A13 (layer 5A)
+- **Status:** Fixed, <commit pending>. `recordPositions` (`transport.ts`) answers `{ accepted, duplicates, rejected }`: `duplicates` are instants already stored, `rejected` the positions outside [start − slack, now + slack]; `tripPositionsResultSchema` gains `rejected` (default 0 for an older reader; the phone does not parse this answer). Test: `apps/web/tests/transport.test.ts` (a week ago and tomorrow: `rejected: 1`, before `duplicates: 1`).
 
 **Steps**
 
@@ -1106,6 +1132,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Web
 - **Feature:** Placement offers
 - **From:** E2E-B11 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1). Test: `apps/web/tests/placement-lows-race.test.ts` (as the app role).
 
 **Steps**
 
@@ -1125,6 +1152,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** E2E · **Severity:** Low · **Platform:** Both
 - **Feature:** Clinical logbook (owner decision)
 - **From:** E2E-B15 (layer 5B)
+- **Status:** Fixed, <commit pending> (fix-lows B1): names introduced by a patient word or an honorific and hospital numbers are refused in the note and the remark; a bed or ward number stays allowed as before, and a capitalised name with nothing before it is the stated limit. Test: `apps/web/tests/clinical.test.ts`.
 
 **Steps**
 
@@ -1144,6 +1172,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Expert sessions (owner decision)
 - **From:** E2E-B17 (layer 5B)
+- **Status:** Fixed, <commit pending> (the booking); the rest left for the owner. `bookSeat` (`gig-sessions.ts`) refuses a test-fixture provider's time unless the pupil's school is a fixture school, the rule `openFor` lists by. Left for the owner: whether the two demo schools should read the demo experts (they are not fixture schools, and every `@demo.relay.test` account carries the flag). Test: `apps/web/tests/gig-sessions.test.ts` (QA-50).
 
 **Steps**
 
@@ -1165,6 +1194,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Vidura, My records
 - **From:** E2E-B18 (layer 5B)
+- **Status:** Fixed, <commit pending>. The router already ranked the student's academics door first (0.813 on the live embeddings); its answer is registration, today and the week before attendance, and the door's share of the data (2,500 characters) cut before attendance. `summariseDoor` puts a top-level block the question names first, its list whole up to ten rows (`namedBlocks`, `assistant/summary.ts`). Tests: `apps/web/tests/assistant-data.test.ts` (QA-51 block); eval cases cs-11 and cs-12 in `content/assistant-eval/metrics.json` (not run: the model servers are the coordinator's).
 
 **Steps**
 
@@ -1184,6 +1214,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Web
 - **Feature:** Family home
 - **From:** L1-02 (layer 1)
+- **Status:** Fixed, <commit pending>. `pickChild` (`family-child.ts`) prefers a readable child with no `leftAt`, as `fees-family.ts` and `agenda.ts` already did; every family page and `selectChild` go through it. The phone's switcher and four family screens default to the same child (`firstChild`). Tests: `apps/web/tests/family-transferred-child.test.ts`, `apps/mobile/test/screens/family-first-child.test.tsx`; live, prakash.pawar's `/parent` opens Saraswati.
 
 **Steps**
 
@@ -1204,6 +1235,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Mobile
 - **Feature:** Expert home (parity)
 - **From:** L1-04 (layer 1)
+- **Status:** Fixed, <commit pending>. `GET /api/v1/shared/expert/profile` is read by the role (`requireApiExpertRole`), so an expert under review reads `published: false`; saving stays the listed expert's. The phone's home (`screens/expert/home.tsx`) shows the review note as the whole screen with "Set up your account meanwhile", and asks the bookings and duty doors only for a listed expert. Tests: `apps/web/tests/api-v1-shared.test.ts`, `apps/mobile/test/screens/expert-home.test.tsx`.
 
 **Steps**
 
@@ -1224,6 +1256,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** BDD, Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Website domains; calendar closures
 - **From:** BDD-2 (layer 3) and F-3 item 4 (layer 6)
+- **Status:** Fixed, <commit pending>. `saveSiteDomain` throws `RuleRefusal` (422 with `issues.domain` for what is not a domain, 409 CONFLICT for a domain another school holds) and the door answers through `moduleFailure`, the web action showing the same sentence; `POST /api/v1/admin/calendar/closures` runs the library through `underRules` as the correction door already did, and the contract refuses an end before the start and a day that does not exist naming the field (QA-55). Tests: `apps/web/tests/site-domains.test.ts`, `apps/web/tests/api-v1-admin.test.ts`; live under a minted session: `localhost` 422 with `issues.domain`, `2027-02-30` and a backwards closure 422.
 
 **Steps**
 
@@ -1244,6 +1277,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Account preferences, fees exports, the head's decision log
 - **From:** F-3 items 1–3 (layer 6)
+- **Status:** Fixed, <commit pending>. New `packages/contracts/src/v1/calendar-keys.ts`: `realDateKey` (the pattern and the calendar: 2027-02-30 and 2026-13-01 refused, 2028-02-29 kept) and `clockHHMM` (0:00 to 23:59). The quiet hours (`accountPrefsSchema` and the web's `prefsSchema`), the fees collection export (`fromKey ≤ toKey`, on `toKey`), the decision log (`from ≤ to`, on `to`) and the calendar closure (`startDateKey ≤ endDateKey`, on `endDateKey`) use them. Tests: `api-v1-account`, `api-v1-fees`, `decision-log`, `api-v1-admin`; live under minted sessions: `25:99` 422 on `quietHours.start`, `from=2026-13-01` 422, the backwards export 422 on `toKey`.
 
 **Steps**
 
@@ -1265,6 +1299,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** API catalog contract
 - **From:** F-4 (layer 6)
+- **Status:** Fixed, <commit pending>. The catalog now describes the doors as they behave: `GET /api/v1/family/export` answers `familyExportDocumentSchema` (the document's fixed head, then one key per section, as a JSON attachment) and says so in its summary; `POST /api/v1/account/prefs` says the channels and the quiet hours are required every time and only the appearance keys stay as they were when left out (the contract's comment too). `npm run api:docs` regenerated (1,231 endpoints). Tests: `apps/web/tests/family-export.test.ts` parses the body with the schema; `api-v1-account.test.ts` holds the summary and the 422 on `channels`.
 
 **Steps**
 
@@ -1285,6 +1320,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** College principal's home
 - **From:** L1-01 (layer 1)
+- **Status:** Fixed, <commit pending>. `homeFor` (`src/lib/role-home.ts`) is used by `resolveContext`, the switcher's action, `/`, `/login` and `/login/code`; `principal/layout.tsx` redirects `GET /principal` for a college before the section's loading boundary. Live: `/principal` for zz.cprincipal answered a 200 stream holding NEXT_REDIRECT before, a 307 after. Test: `apps/web/tests/role-home.test.ts`.
 
 **Steps**
 
@@ -1305,6 +1341,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Family home (accessibility)
 - **From:** L1-03 (layer 1)
+- **Status:** Fixed, <commit pending>. `parent/child-left.tsx` draws the title as `<h1>`. Test: `apps/web/tests/family-transferred-child.test.ts` (QA-58); live on `/parent?child=<the Sunrise membership>`.
 
 **Steps**
 
@@ -1324,6 +1361,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Start a conversation; question editor
 - **From:** UI-03 (layer 4)
+- **Status:** Fixed, <commit pending>. `size-11` on the conversation button (`remarks/people/page.tsx`); each radio in a 44 px label (`appadmin/bank/question-form.tsx`). Both pages, with the QA-68 pages, are in a new block of `apps/web/e2e/axe.spec.ts` (15 of 15 passed).
 
 **Steps**
 
@@ -1344,6 +1382,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Expert profile (calendar feed)
 - **From:** UI-04 (layer 4)
+- **Status:** Fixed, <commit pending>. `calendar-card.tsx` reads `window.location.origin` through `useSyncExternalStore` with a null server snapshot. Test: `apps/web/tests/expert-calendar-hydration.test.ts` (failed before: the browser's first render was absolute).
 
 **Steps**
 
@@ -1363,6 +1402,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Both
 - **Feature:** Platform feature switches
 - **From:** UI-05 (layer 4)
+- **Status:** Fixed, <commit pending>. Web: `expert/profile/page.tsx` reads `featureOn("EXPERT_SESSIONS")` for the earnings link (`GetPaidCard earnings`) and the calendar card; `admin/page.tsx` uses `qaInterface.staffingGapBody*NoBoard` without the job board; `AppearanceForm textsOn` (parent settings and /account). Phone: the expert profile's calendar card, the admin home's staffing sentence, and the family settings' text switches and assistant card follow `/me`'s features. Tests: `apps/web/tests/qa-interface-cards.test.ts`, `apps/mobile/test/screens/{family-settings,expert-profile,admin-home}.test.tsx`.
 
 **Steps**
 
@@ -1384,6 +1424,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Homes; circulars
 - **From:** UI-06 (layer 4)
+- **Status:** Fixed, <commit pending>. New sentences in `qaInterface` (en, hi, mr): the parent's streak hint, the student's, the faculty's load range, each duty card's link (web text; phone accessible name), the circulars page's one title and its empty-reach line, and the Get paid card's linked-but-not-ready state (web and phone). The old keys are left in the dictionary unused. Tests: `apps/web/tests/qa-interface-cards.test.ts`, `apps/mobile/test/screens/{duties,expert-get-paid,admin-home}.test.tsx`.
 
 **Steps**
 
@@ -1407,6 +1448,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** SMS and WhatsApp log
 - **From:** UI-07 (layer 4)
+- **Status:** Fixed, <commit pending>. `purposeWords` (`admin/messaging/labels.ts`). Live: `/admin/messaging` for zz.admin shows "Notice" linked to `/bulletin/<id>`, no raw purpose. Test: `apps/web/tests/qa-interface-cards.test.ts` (QA-63).
 
 **Steps**
 
@@ -1426,6 +1468,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Vidura's guide (review queue)
 - **From:** UI-08 (layer 4)
+- **Status:** Fixed, <commit pending>. `readableQuotes` (`assistant/readable-quotes.ts`) in `searchHelp`, `helpForPage` and `guideSection` for the guide's rows, the renderings' view and `guideUnits`; the guide files and the renderings' keys are unchanged. Test: `apps/web/tests/qa-interface-cards.test.ts` (QA-64, every guide file).
 
 **Steps**
 
@@ -1445,6 +1488,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Both
 - **Feature:** Bottom bar
 - **From:** UI-09 (layer 4)
+- **Status:** Fixed, <commit pending>. `PHONE_BAR` (`src/lib/nav.ts`), drawn by `app-shell.tsx` with More last (the top bar's More moved there; the sheet holds every entry not on the bar), hidden tabs from `signed-in-shell.tsx`; the desk's rail keeps `primary`. `root/layout.tsx` puts the operator's links behind a Menu below `md`. Test: `apps/web/tests/nav-phone-bar.test.ts`. The Linux and darwin screenshot baselines of the bottom bar need rewriting.
 
 **Steps**
 
@@ -1464,6 +1508,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Mobile
 - **Feature:** Web and phone parity
 - **From:** UI-10 (layer 4)
+- **Status:** Fixed, <commit pending>. The phone's More opens the web for my appointment letters (every staff role) and the council notices (office, head, student); the parity table (`WEB_ONLY` in `apps/web/tests/nav-phone-bar.test.ts`) names every other gap with its reason and fails on a new one. Not built natively: the reading-room register, the peer-team visit file, the Tally export, punch devices, admission refunds.
 
 **Steps**
 
@@ -1483,6 +1528,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Mobile
 - **Feature:** Every phone screen (web target)
 - **From:** UI-11 (layer 4)
+- **Status:** Fixed, <commit pending>. `useTabBarLandmark` (`apps/mobile/src/lib/web-landmarks.ts`) in `(app)/_layout.tsx`. Live on :8081 (teacher, parent, college student, admin, expert): no axe result, where `region` ×5 stood before. Test: `apps/mobile/test/lib/web-landmarks.test.ts`.
 
 **Steps**
 
@@ -1502,6 +1548,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Several office and platform pages
 - **From:** UI-12 (layer 4)
+- **Status:** Fixed, <commit pending>. `TableHead` with `srOnly` (`college-office/parts.tsx`) and seven pages, `/admin/exams`, `/root`, the exam cell's result table; `DataToolbar label`; the colleges' health sections and the preview asides named; `WeekList heading` and `QuestionRead level`; `main#main` on `health/cards`, `public/faculty` and the root 404. The axe gate's new block fails on the five rules for these pages (15 of 15 passed). Untested: the root 404's `main#main` is not served by the running dev server yet.
 
 **Steps**
 
@@ -1521,6 +1568,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Both
 - **Feature:** College office, staff feed, job board
 - **From:** UI-14 (layer 4)
+- **Status:** Fixed, <commit pending>. Keys `qaInterface.collegeCode`, `ourCollegeFeed`, `collegeDeskTitle`, `collegeDeskIntro`, `admitStudents` by institution kind on the web (admin home, global feed, vacancies, people) and the phone (`useCollege`: admin home, feed, vacancies, people, class, pupil records). Test: `apps/mobile/test/screens/admin-home.test.tsx`.
 
 **Steps**
 
@@ -1542,6 +1590,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX, E2E · **Severity:** Low · **Platform:** Mobile
 - **Feature:** Phone deep links and notices
 - **From:** E2E-A15 (layer 5A) and E2E-B12 (layer 5B)
+- **Status:** Fixed, <commit pending>. `OfficeOnly` (`apps/mobile/src/components/office-only.tsx`) on `/circulars`, `/applications` (a guardian to `/my-applications`) and `/substitutions` (a teacher to `/my-covers`); `links.ts` maps `/student/placement` to `/(app)/placement`; a tapped push with no screen opens the web (`deep-links.tsx`). Live on :8081 as above. Tests: `apps/mobile/test/components/office-only.test.tsx`, `apps/mobile/test/lib/links.test.ts`.
 
 **Steps**
 
@@ -1563,6 +1612,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** BDD · **Severity:** Low · **Platform:** Both
 - **Feature:** Circulars (fixture)
 - **From:** BDD-3 (layer 3)
+- **Status:** Fixed, commit pending. `buildCircular` (`scripts/zz-fixtures.ts`) dates the post one second after the school's last ACTIVE enrolment (or a day ago, whichever is later), delivers it a minute later and dates the push rows, the devbox texts, the two reads and the acknowledgement after the delivery, never ahead of the clock; a post an earlier build wrote is moved onto that timeline with its rows (forward only). Live after `zz:fixtures`: the reach answers `total 25, told 25, seen 3, acked 2` where it answered all zeros. The demo schools' two circulars carry the same old dates until the next `demo:schools`. Test: the BDD scenarios in `features/circulars/circulars-and-feed.feature` ("counts the guardian who acknowledged" failed before, passes after).
 
 **Steps**
 
@@ -1583,6 +1633,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** BDD · **Severity:** Low · **Platform:** Both
 - **Feature:** Certificates; social posting (fixtures)
 - **From:** BDD-4 (layer 3)
+- **Status:** Fixed, commit pending. The certificate fixture sets `issuedAt` itself from the same clock reading as `revokedAt` (a revoked paper issued a minute earlier); the SENT social copy sets `createdAt` and `sentAt` together, and the existing copy whose `sentAt` was a millisecond early is given its `createdAt`. After `zz:fixtures`: no `IssuedCertificate` with `revokedAt < issuedAt` and no `SocialPost` with `sentAt < createdAt` in the database. Test: the two BDD scenarios in `features/certificates/certificates.feature` and `features/social/facebook-posting.feature` (failed before, pass after).
 
 **Steps**
 
@@ -1603,6 +1654,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** UI-UX · **Severity:** Low · **Platform:** Web
 - **Feature:** Teacher home (fixture)
 - **From:** UI-13 (layer 4)
+- **Status:** Fixed, commit pending. `e2e/harness-exam.ts` names the harness's exam and removes it at one school (its sittings with any marks, then the series and its papers); `e2e/global-teardown.ts` (now `globalTeardown` in `playwright.config.ts`) runs it for ZZ Northgate and removes the run's `e2e` sessions; `zz:fixtures` runs it too (it removed the one left from 4 October: 1 series, 1 sitting). Test: `apps/web/tests/e2e-harness-exam.test.ts`.
 
 **Steps**
 
@@ -1622,6 +1674,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Both
 - **Feature:** Test tooling
 - **From:** L1-05 (layer 1)
+- **Status:** Fixed, commit pending. The EXPERT branch of `scripts/zz-token.ts` calls `assertFixtureEmail(email)` and looks the profile up by that address; with no address it takes the first ZZ expert by address (zz.expert1), not whichever row came first. Live: zz.expert2 and zz.expert4 minted zz.expert3's session before; after, each of zz.expert1–4 reads its own `/api/v1/me`, and a non-fixture address is refused. Test: `apps/web/tests/zz-token-email.test.ts`.
 
 **Steps**
 
@@ -1641,6 +1694,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Functional · **Severity:** Low · **Platform:** Web
 - **Feature:** Test tooling (placement)
 - **From:** L1-06 (layer 1)
+- **Status:** Fixed, commit pending. `recruiterResume` (`src/lib/placement-recruiter.ts`) imports `./placement-pdf` with a dynamic import, so the rest of the library loads without @react-pdf. Reproduced before (`ERR_PACKAGE_PATH_NOT_EXPORTED` from a temporary script); after, it loads under `tsx --tsconfig scripts/tsconfig.json`. `scripts/demo-accounts.ts` still repeats the two writes; it could now call the library. Test: `apps/web/tests/placement-recruiter-loads.test.ts`.
 
 **Steps**
 
@@ -1660,6 +1714,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Unit · **Severity:** Low · **Platform:** Web
 - **Feature:** Messaging caps; gateway docs; test pointers
 - **From:** U-6 (layer 2)
+- **Status:** Fixed, commit pending. `src/lib/message-cap.ts` (`messageCapOf`, no imports) is the one rule for the text cap, read by `messagingSettings` and the operator's sum in `subscriptions.ts`; `effectiveMessageCap`, called by nothing, is removed and the plans.ts header points at the new module. The `gig-gateway-env.ts` header now describes Route, the eleven allowed calls and the events each company webhook hears; `role-gate.ts` names `tests/modules.test.ts`; `tenant-tx.ts` says db.ts sets the tenant itself and `withTenantOn` serves `rls:verify`. `tests/api-v1-staff-attendance.test.ts` fakes Date at the run's moment, moved a day on when it is the 1st in the school's zone, and the three `skipIf(firstOfMonth)` are plain tests (run as on 1 November too: 6 of 6).
 
 **Steps**
 
@@ -1679,6 +1734,7 @@ Layer 1 verified every account, not a sample. On `@demo.relay.test`: 448 account
 - **Type:** Unit · **Severity:** Low · **Platform:** Mobile
 - **Feature:** Test tooling (phone)
 - **From:** U-7 (layer 2)
+- **Status:** Fixed, commit pending. The cause was `renderFamily`'s QueryClient (`apps/mobile/test/screens/family-helpers.tsx`): without `gcTime: Infinity` React Query sets a five-minute garbage-collection timer, which keeps an in-band (single-file) run alive; a full run's workers are killed, so it exited. `--detectOpenHandles` named nothing. Now `gcTime: Infinity` for queries and mutations, as `staff-harness.tsx` and `teacher-support.tsx` had. `npx jest --ci test/screens/family-agenda.test.tsx` exits in about 8 s (before: still running after 120 s); eight other single files from each harness exit too. Test: `apps/mobile/test/harness-open-handles.test.ts` (fails on the old helper).
 
 **Steps**
 

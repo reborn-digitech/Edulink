@@ -118,6 +118,36 @@ describe("the duty and the note rule", () => {
     expect(noteCarriesIdentifier("UHID 2026004123 on the surgical side.")).toBe(true);
     expect(noteCarriesIdentifier("Case 004123 seen in OPD.")).toBe(true);
   });
+
+  // QA-49 (QA campaign of 24 October 2026, E2E-B15): the report's own note passed.
+  it("refuses a name the note introduces as a patient's, and a hospital's number for one, and keeps clinical words", () => {
+    for (const named of [
+      "Patient Ramesh Gaikwad, bed 4: dressing changed.",
+      "Pt. Sunita had a dressing change.",
+      "pt Ramesh ambulated twice.",
+      "Name: Kavita, post-op day 2.",
+      "Mrs Patil's IV line resited.",
+      "Assisted Dr Joshi with Mr. Kale's suturing.",
+      "Shri Gaikwad counselled on diet.",
+      "Baby of Sunita weighed at 2.4 kg.",
+      "श्रीमती सुनीता गायकवाड यांचे ड्रेसिंग केले.",
+      "सौ. पाटील यांना इंजेक्शन दिले.",
+      "IP no 4521 admitted with fever.",
+      "UHID 4521 on the surgical side.",
+      "Reg. no. 77 seen in OPD.",
+    ]) expect(noteCarriesIdentifier(named), named).toBe(true);
+    for (const clinical of [
+      "Patient education given on diabetic foot care.",
+      "Patient History taken and vitals charted.",
+      "Patients seen: 4. Two dressings.",
+      "PT INR 1.2, MR grade 2 noted on echo.",
+      "Cr 1.2 mg/dl; IPD 3 rounds with the unit.",
+      "Bed 12, 3 patients seen, BP 120/80.",
+      "Named the parts of the stethoscope for the juniors.",
+      "Ryle's tube inserted under supervision.",
+      "रुग्णाचे ड्रेसिंग केले; श्रीखंड नाही.",
+    ]) expect(noteCarriesIdentifier(clinical), clinical).toBe(false);
+  });
 });
 
 describe("sites, departments and postings", () => {
@@ -135,7 +165,8 @@ describe("sites, departments and postings", () => {
     ids.medical = (await saveClinicalDepartment(coord, { siteId: ids.site!, name: "ZZ Medical ward", beds: 40 })).id;
     ids.surgical = (await saveClinicalDepartment(admin, { siteId: ids.site!, name: "ZZ Surgical ward", beds: 30 })).id;
     await expect(saveClinicalDepartment(coord, { siteId: ids.site!, name: "ZZ Medical ward", beds: null })).rejects.toMatchObject({ key: "duties.clinical.refuseDuplicateDepartment", status: 409 });
-    await expect(saveClinicalDepartment(coord, { siteId: ids.phc!.replace(/.$/, "x"), name: "ZZ OPD", beds: null })).rejects.toMatchObject({ key: "duties.clinical.refuseSite", status: 422 });
+    // Another id than the PHC's: replacing its last character with "x" was the same id when it already ended in "x" (one run in 36 created the department and failed here and in the desk counts below).
+    await expect(saveClinicalDepartment(coord, { siteId: ids.phc!.slice(0, -1) + (ids.phc!.endsWith("x") ? "y" : "x"), name: "ZZ OPD", beds: null })).rejects.toMatchObject({ key: "duties.clinical.refuseSite", status: 422 });
   });
 
   it("post a division or a batch under a teacher, never overlapping, by the coordinator alone", async () => {
@@ -203,6 +234,19 @@ describe("the student's logbook", () => {
     await submitLogbookEntry(s2, ids.e2!);
     ids.e3 = (await saveLogbookEntry(s2, { ...base, clientId: `zz-cl-${STAMP}-3`, kind: "SKILL", count: 1, note: "ZZ A bed bath." })).id;
   });
+
+  // QA-35 (QA campaign of 24 October 2026, E2E-B14): the outbox's replay racing the first send answered 200 and 500.
+  it("answers the one entry when the same clientId arrives twice at the same moment", async () => {
+    const s3 = await as("s3", "STUDENT", ids.H!);
+    const entry = { clientId: `zz-cl-${STAMP}-race`, postingId: ids.p1!, on: addDaysToKey(TODAY, -2), kind: "SKILL" as const, count: 1, note: "ZZ Oral care for two." };
+    const results = await Promise.allSettled([saveLogbookEntry(s3, entry), saveLogbookEntry(s3, entry)]);
+    expect(results.map((r) => (r.status === "rejected" ? String(r.reason) : "ok"))).toEqual(["ok", "ok"]);
+    const rows = await db.logbookEntry.findMany({ where: { studentMembershipId: ids.s3M, clientId: entry.clientId }, select: { id: true } });
+    expect(rows).toHaveLength(1);
+    expect(results.map((r) => (r as PromiseFulfilledResult<{ id: string }>).value.id)).toEqual([rows[0]!.id, rows[0]!.id]);
+    expect(await db.auditLog.count({ where: { action: "clinical.logbook.save", targetId: rows[0]!.id } })).toBe(1);
+    await db.logbookEntry.delete({ where: { id: rows[0]!.id } });
+  });
 });
 
 describe("sign and return", () => {
@@ -233,6 +277,14 @@ describe("sign and return", () => {
     expect((await myClinical(s1)).entries[0]).toMatchObject({ state: "SIGNED", signedByName: "ZZ CL super", remark: "ZZ Good charting." });
     const told = await db.notification.findMany({ where: { userId: { in: [ids.s1!, ids.s2!] }, url: "/student/clinical" }, select: { userId: true } });
     expect(told.map((n) => n.userId).sort()).toEqual([ids.s1, ids.s2].sort());
+  });
+
+  // QA-49: the supervisor's remark is the logbook's too, and names no patient either.
+  it("refuses a sign-off or a return whose remark names a patient, and changes nothing", async () => {
+    const supervisor = await as("super", "FACULTY", ids.H!);
+    await expect(returnLogbookEntry(supervisor, ids.e2!, { remark: "Say which dressing Mrs Gaikwad had." })).rejects.toMatchObject({ key: "duties.clinical.refuseRemarkIdentifier", status: 422, field: "remark" });
+    await expect(signLogbookEntry(supervisor, ids.e2!, { remark: "Good care of IP no 4521." })).rejects.toMatchObject({ key: "duties.clinical.refuseRemarkIdentifier", status: 422 });
+    expect((await db.logbookEntry.findUniqueOrThrow({ where: { id: ids.e2 }, select: { state: true } })).state).toBe("SUBMITTED");
   });
 });
 

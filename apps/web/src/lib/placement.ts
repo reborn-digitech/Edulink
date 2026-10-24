@@ -101,6 +101,8 @@ async function zoneOf(schoolId: string): Promise<string> {
 }
 
 export const nameOf = (u: { name: string; preferredName: string | null }) => u.preferredName ?? u.name;
+/** A unique key's clash (Prisma's P2002): the loser of two writes of one row at once. */
+const isUniqueClash = (e: unknown) => typeof e === "object" && e !== null && (e as { code?: string }).code === "P2002";
 
 /* -------------------------------------------------------------------------- */
 /* Settings                                                                    */
@@ -542,32 +544,45 @@ export async function openDrive(ctx: ActiveContext, input: DriveSave): Promise<D
   if (!company) throw new RuleRefusal("placement.refuseUnknownCompany", 422, undefined, "companyId");
   await checkDriveInput(cell, input, settings);
   const year = new Date().getUTCFullYear();
-  const d = await db.$tenantTransaction(async (raw) => {
-    const tx = raw as Tx;
-    const drive = await tx.drive.create({
-      data: {
-        schoolId: cell.schoolId,
-        companyId: input.companyId,
-        requirementId: input.requirementId,
-        kind: input.kind,
-        title: input.title,
-        jd: input.jd,
-        packageMinRupees: input.packageMinRupees,
-        packageMaxRupees: input.packageMaxRupees,
-        bond: input.bond,
-        rounds: writeJson(input.rounds),
-        schedule: writeJson(input.schedule),
-        venues: input.venues,
-        eligibilityRule: writeJson(input.rule),
-        poolSchoolIds: writeJson(input.poolSchoolIds),
-        createdByUserId: cell.userId,
-      },
-      select: { id: true },
+  // One drive per requirement at a college (QA-30): two presses of Accept at once made two DRAFT drives of one
+  // requirement. The unique key Drive_schoolId_requirementId_key now holds it, and the losing press is answered
+  // with the drive the winner made, as a press after it is (acceptRequirement's "made" branch).
+  let d: { id: string };
+  try {
+    d = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      const drive = await tx.drive.create({
+        data: {
+          schoolId: cell.schoolId,
+          companyId: input.companyId,
+          requirementId: input.requirementId,
+          kind: input.kind,
+          title: input.title,
+          jd: input.jd,
+          packageMinRupees: input.packageMinRupees,
+          packageMaxRupees: input.packageMaxRupees,
+          bond: input.bond,
+          rounds: writeJson(input.rounds),
+          schedule: writeJson(input.schedule),
+          venues: input.venues,
+          eligibilityRule: writeJson(input.rule),
+          poolSchoolIds: writeJson(input.poolSchoolIds),
+          createdByUserId: cell.userId,
+        },
+        select: { id: true },
+      });
+      // ON CONFLICT DO NOTHING: two drives of a company new to the college opened at once both found no link and the
+      // second upsert's insert failed on the key (seen beside QA-30).
+      await tx.companyTenantLink.createMany({ data: [{ schoolId: cell.schoolId, companyId: input.companyId, firstVisitYear: year }], skipDuplicates: true });
+      await tx.companyTenantLink.updateMany({ where: { schoolId: cell.schoolId, companyId: input.companyId, firstVisitYear: null }, data: { firstVisitYear: year } });
+      return drive;
     });
-    await tx.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId: cell.schoolId, companyId: input.companyId } }, update: {}, create: { schoolId: cell.schoolId, companyId: input.companyId, firstVisitYear: year } });
-    await tx.companyTenantLink.updateMany({ where: { schoolId: cell.schoolId, companyId: input.companyId, firstVisitYear: null }, data: { firstVisitYear: year } });
-    return drive;
-  });
+  } catch (error) {
+    if (!input.requirementId || !isUniqueClash(error)) throw error;
+    const made = await db.drive.findFirst({ where: { schoolId: cell.schoolId, requirementId: input.requirementId }, select: { id: true } });
+    if (!made) throw error;
+    return driveView(ctx, made.id);
+  }
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "placement.drive.open", targetType: "Drive", targetId: d.id, meta: { kind: input.kind, companyId: input.companyId, pooled: input.poolSchoolIds.length } });
   return driveView(ctx, d.id);
 }
@@ -736,6 +751,9 @@ export async function spendTicket(userId: string, fileId: string | null | undefi
   return fileId;
 }
 
+/** Thrown inside recordOffer's transaction when the offer it read has changed: rolls the write back. */
+class OfferChangedMeanwhile extends Error {}
+
 /**
  * An offer to a candidate who reached the end (or whom the company selects).
  * THE ONE-OFFER RULE: a candidate who has accepted another offer receives
@@ -767,25 +785,43 @@ export async function recordOffer(actor: DriveActor, input: { studentMembershipI
     if (!profile?.dreamFlag || input.packageRupees < Math.ceil(accepted * settings.dreamRatio)) throw new RuleRefusal("placement.refuseOneOffer", 409);
     dream = true;
   }
+  const key = { driveId_studentMembershipId: { driveId: d.id, studentMembershipId: input.studentMembershipId } };
+  const existing = await db.offer.findUnique({ where: key, select: { id: true, acceptedAt: true, packageRupees: true, updatedAt: true } });
+  if (existing?.acceptedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
   // From the phone, an upload ticket of the actor's, spent here; from the web page, a file its own action has just stored.
   const letterFileId = opts.storedFileId ?? (await spendTicket(actor.userId, input.letterFileId, "letterFileId"));
-  const existing = await db.offer.findUnique({ where: { driveId_studentMembershipId: { driveId: d.id, studentMembershipId: input.studentMembershipId } }, select: { id: true, acceptedAt: true } });
-  if (existing?.acceptedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
-  const offer = await forSchool(d.schoolId, () =>
-    db.$tenantTransaction(async (raw) => {
-      const tx = raw as Tx;
-      const o = await tx.offer.upsert({
-        where: { driveId_studentMembershipId: { driveId: d.id, studentMembershipId: input.studentMembershipId } },
-        update: { packageRupees: input.packageRupees, ...(letterFileId ? { letterFileId } : {}), dreamException: dream, declinedAt: null, byUserId: actor.userId },
-        create: { schoolId: d.schoolId, driveId: d.id, studentMembershipId: input.studentMembershipId, packageRupees: input.packageRupees, letterFileId, dreamException: dream, byUserId: actor.userId },
-        select: OFFER_SELECT,
-      });
-      if (ORDER.get("OFFERS")! > ORDER.get(d.status as DriveStatus)!) await tx.drive.updateMany({ where: { id: d.id, status: d.status }, data: { status: "OFFERS" } });
-      return o;
-    }),
-  );
+  // ONE OFFER PER DRIVE AND CANDIDATE, WHICH THE COMPANY MAY CORRECT UNTIL IT IS ANSWERED (QA-33). Two recruiters of
+  // one company offering at once each saw their own package recorded while the last write was kept, and the student
+  // was told twice: the write was an upsert. Now a fresh offer is created only (the unique key refuses the second),
+  // and an edit changes only the offer this recorder read (its updatedAt) while it is unanswered; the loser of either
+  // race is refused placement.refuseOfferChangedMeanwhile with the package that stands, and nothing is told.
+  let offer: OfferRow;
+  try {
+    offer = await forSchool(d.schoolId, () =>
+      db.$tenantTransaction(async (raw) => {
+        const tx = raw as Tx;
+        let o: OfferRow;
+        if (!existing) {
+          o = await tx.offer.create({ data: { schoolId: d.schoolId, driveId: d.id, studentMembershipId: input.studentMembershipId, packageRupees: input.packageRupees, letterFileId, dreamException: dream, byUserId: actor.userId }, select: OFFER_SELECT });
+        } else {
+          const changed = await tx.offer.updateMany({ where: { id: existing.id, updatedAt: existing.updatedAt, acceptedAt: null }, data: { packageRupees: input.packageRupees, ...(letterFileId ? { letterFileId } : {}), dreamException: dream, declinedAt: null, byUserId: actor.userId } });
+          if (changed.count !== 1) throw new OfferChangedMeanwhile();
+          o = await tx.offer.findUniqueOrThrow({ where: { id: existing.id }, select: OFFER_SELECT });
+        }
+        if (ORDER.get("OFFERS")! > ORDER.get(d.status as DriveStatus)!) await tx.drive.updateMany({ where: { id: d.id, status: d.status }, data: { status: "OFFERS" } });
+        return o;
+      }),
+    );
+  } catch (error) {
+    if (!(error instanceof OfferChangedMeanwhile) && !isUniqueClash(error)) throw error;
+    // The phone's letter goes back to its ticket, so the recorder can send it again with the corrected figure.
+    if (!opts.storedFileId && letterFileId) await db.uploadTicket.updateMany({ where: { fileId: letterFileId, userId: actor.userId }, data: { consumedAt: null } });
+    const stands = await forSchool(d.schoolId, () => db.offer.findUnique({ where: key, select: { packageRupees: true, acceptedAt: true } }));
+    if (stands?.acceptedAt) throw new RuleRefusal("placement.refuseOfferAnswered", 409);
+    throw new RuleRefusal("placement.refuseOfferChangedMeanwhile", 409, { offer: lakhOf(stands?.packageRupees ?? 0) }, "packageRupees");
+  }
   await forSchool(app.schoolId, () => notify({ userId: app.studentUserId, schoolId: app.schoolId, kind: "SYSTEM", titleKey: "placement.notifOffer", titleVars: { company: d.company.name, title: d.title }, url: "/student/placement" })).catch((error) => console.error("[placement] offer notice failed", error));
-  await forSchool(d.schoolId, () => audit({ schoolId: d.schoolId, actorUserId: actor.userId, action: "placement.offer", targetType: "Offer", targetId: offer.id, meta: { driveId: d.id, packageRupees: input.packageRupees, dream, letter: Boolean(letterFileId), via: actor.via, ...(high ? { confirmedHigh: true, drivePackageMaxRupees: d.packageMaxRupees } : {}) } }));
+  await forSchool(d.schoolId, () => audit({ schoolId: d.schoolId, actorUserId: actor.userId, action: "placement.offer", targetType: "Offer", targetId: offer.id, meta: { driveId: d.id, packageRupees: input.packageRupees, ...(existing ? { previousPackageRupees: existing.packageRupees } : {}), dream, letter: Boolean(letterFileId), via: actor.via, ...(high ? { confirmedHigh: true, drivePackageMaxRupees: d.packageMaxRupees } : {}) } }));
   // The name off the application, as applicationViews reads it: a recruiter (or a pooled drive's host) cannot read
   // the student's membership, and the toast read "Offer recorded for ; they are told" (A3-journeys-18).
   const student = await db.user.findUnique({ where: { id: app.studentUserId }, select: { name: true, preferredName: true } });
@@ -800,7 +836,17 @@ export async function recordJoined(actor: DriveActor, offerId: string, joinedOn:
   const at = new Date(`${joinedOn}T00:00:00Z`);
   const row = await forSchool(d.schoolId, () => db.offer.update({ where: { id: offerId }, data: { joinedAt: at }, select: OFFER_SELECT }));
   await forSchool(d.schoolId, () => audit({ schoolId: d.schoolId, actorUserId: actor.userId, action: "placement.offer.joined", targetType: "Offer", targetId: offerId, meta: { joinedOn, via: actor.via } }));
-  return (await offerViews([row]))[0]!;
+  // The name off the application, as recordOffer reads it: a recruiter cannot read the membership, and the answer
+  // carried studentName "" (QA-48).
+  return (await offerViews([row], await applicantNames(d.id, [row.studentMembershipId])))[0]!;
+}
+
+/** Applicants' names off their applications (studentUserId), for a reader who may not read the memberships: a recruiter, a pooled drive's host. */
+async function applicantNames(driveId: string, studentMembershipIds: readonly string[]): Promise<Map<string, string>> {
+  const apps = await db.driveApplication.findMany({ where: { driveId, studentMembershipId: { in: [...studentMembershipIds] } }, select: { studentMembershipId: true, studentUserId: true } });
+  const users = await db.user.findMany({ where: { id: { in: apps.map((a) => a.studentUserId) } }, select: { id: true, name: true, preferredName: true } });
+  const userOf = new Map(users.map((u) => [u.id, u]));
+  return new Map(apps.map((a) => [a.studentMembershipId, userOf.has(a.studentUserId) ? nameOf(userOf.get(a.studentUserId)!) : ""]));
 }
 
 /** The offer a cell may act on: one of its own drives'. */
@@ -913,9 +959,21 @@ export async function applyToDrive(ctx: ActiveContext, driveId: string): Promise
   const who = await db.membership.findUniqueOrThrow({ where: { id: me.membershipId }, select: { user: { select: { birthdate: true, isMinor: true } }, school: { select: { timezone: true } } } });
   const minor = isMinorToday(who.user, who.school.timezone, now);
   const consentAt = minor ? null : now;
-  const app = existing
-    ? await db.driveApplication.update({ where: { id: existing.id }, data: { withdrawnAt: null, consentAt, appliedAt: now, recordJson: writeJson(sharedRecord(row.record)) }, select: { id: true } })
-    : await db.driveApplication.create({ data: { schoolId: me.schoolId, driveId, studentMembershipId: me.membershipId, studentUserId: me.userId, schoolName: school.name, consentAt, recordJson: writeJson(sharedRecord(row.record)) }, select: { id: true } });
+  // Two devices at once (QA-31): both read "not applied"; the second create hit the unique key and answered 500. The
+  // loser is now told it has applied, and applying again after a withdrawal reopens the row only while it is withdrawn.
+  let app: { id: string };
+  if (existing) {
+    const reopened = await db.driveApplication.updateMany({ where: { id: existing.id, withdrawnAt: { not: null } }, data: { withdrawnAt: null, consentAt, appliedAt: now, recordJson: writeJson(sharedRecord(row.record)) } });
+    if (reopened.count !== 1) throw new RuleRefusal("placement.refuseApplied", 409);
+    app = { id: existing.id };
+  } else {
+    try {
+      app = await db.driveApplication.create({ data: { schoolId: me.schoolId, driveId, studentMembershipId: me.membershipId, studentUserId: me.userId, schoolName: school.name, consentAt, recordJson: writeJson(sharedRecord(row.record)) }, select: { id: true } });
+    } catch (error) {
+      if (isUniqueClash(error)) throw new RuleRefusal("placement.refuseApplied", 409);
+      throw error;
+    }
+  }
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "placement.apply", targetType: "DriveApplication", targetId: app.id, meta: { driveId, consent: !minor, guardianConsent: minor ? "pending" : null } });
   if (minor) {
     await notifyGuardians(me.membershipId, (name) => ({ schoolId: me.schoolId, kind: "SYSTEM", titleKey: "placement.notifGuardianConsentAsk", titleVars: { name, drive: d.title }, url: `/parent/placement?child=${me.membershipId}` })).catch((error) => console.error("[placement] consent notice failed", error));

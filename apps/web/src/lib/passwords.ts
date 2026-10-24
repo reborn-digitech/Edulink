@@ -15,6 +15,8 @@ import {
   verifyPassword,
 } from "./crypto";
 import { readJson } from "./json";
+import type { Defer } from "./after-response";
+import { totpAccountBucket } from "./two-factor";
 import { isDeliverableEmail, toLoginEmail } from "./login-name";
 import { identifierKind, normalisePhone, phoneHint } from "./phone";
 import { sendResetCode as sendResetSms, sendPhoneCode, sendPhoneChangedNotice } from "./sms";
@@ -283,7 +285,7 @@ export type ResetRequest = {
  * the guessing surface for no benefit, and somebody who asks twice is going to
  * use the second message.
  */
-export async function requestPasswordReset(rawIdentifier: string): Promise<ResetRequest> {
+export async function requestPasswordReset(rawIdentifier: string, opts: { defer?: Defer } = {}): Promise<ResetRequest> {
   const raw = rawIdentifier.trim();
   const kind = identifierKind(raw);
   const channel: "EMAIL" | "PHONE" = kind === "PHONE" ? "PHONE" : "EMAIL";
@@ -320,9 +322,28 @@ export async function requestPasswordReset(rawIdentifier: string): Promise<Reset
     };
   }
 
+  /**
+   * ⚠ EVERYTHING THAT DEPENDS ON THE ACCOUNT HAPPENS AFTER THE ANSWER (QA-24,
+   * 24 Oct 2026). The code was written and the mail or text awaited before
+   * this returned, and only when the account existed — so with a real mail
+   * server the time the form took to say "if it is registered, a code is on
+   * its way" said whether it was registered. The caller hands a `defer` (the
+   * login action passes `afterResponse`), and the lookup, the token and the
+   * send all run once the response has gone. Without one (a test, a script)
+   * the work is awaited here, so what it did can be looked at.
+   */
+  const work = () => sendResetIfAnybody(raw, channel);
+  if (opts.defer) opts.defer(work);
+  else await work();
+
+  return { ok: true, hint, channel };
+}
+
+/** The account-dependent half of `requestPasswordReset`: silent whatever it finds. */
+async function sendResetIfAnybody(raw: string, channel: "EMAIL" | "PHONE"): Promise<void> {
   const account = await findAccount(raw);
 
-  // Everything below is conditional; everything returned is not.
+  // Everything below is conditional; nothing of it reaches the caller.
   if (account && !account.disabled) {
     /**
      * WHERE THE CODE WOULD GO, and a handle is not an address.
@@ -388,8 +409,6 @@ export async function requestPasswordReset(rawIdentifier: string): Promise<Reset
       });
     }
   }
-
-  return { ok: true, hint, channel };
 }
 
 /**
@@ -535,6 +554,10 @@ export async function resetPassword(
    * still live, still a way in, and belongs to a password that no longer exists.
    */
   await revokeAllAccess(account.userId, { tokens: true });
+  // A second step locked by somebody guessing codes with the old password is
+  // the owner's again (QA-22): the reset proved the mailbox or the number, and
+  // the password the guesser held is gone.
+  await db.rateLimit.deleteMany({ where: { bucket: totpAccountBucket(account.userId) } });
 
   await audit({ actorUserId: account.userId, action: "auth.reset.completed" });
 

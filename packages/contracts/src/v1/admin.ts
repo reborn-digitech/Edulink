@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * admin: request and response schemas for the /api/v1/admin endpoints — the
@@ -568,13 +569,16 @@ export const adminCalendarSchema = z.object({
 });
 export type AdminCalendar = z.infer<typeof adminCalendarSchema>;
 
-export const closureCreateBodySchema = z.object({
-  name: trimmed(1, 120),
-  startDateKey: dateKey,
-  endDateKey: dateKey,
-  kind: holidayKindSchema,
-  note: z.string().trim().max(500).optional(),
-});
+/** Days that exist, the end not before the start, each refused naming its field (QA-54, QA-55). */
+export const closureCreateBodySchema = z
+  .object({
+    name: trimmed(1, 120),
+    startDateKey: realDateKey,
+    endDateKey: realDateKey,
+    kind: holidayKindSchema,
+    note: z.string().trim().max(500).optional(),
+  })
+  .refine((b) => b.startDateKey <= b.endDateKey, { path: ["endDateKey"], message: "date" });
 export const createdIdSchema = z.object({ id });
 
 /* ---------------------------------------------------------------------- */

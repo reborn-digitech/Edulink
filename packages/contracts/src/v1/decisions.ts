@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * The head's decision log: the audit rows of the decisions a principal makes
@@ -18,13 +19,16 @@ export const decisionKindSchema = z.enum(DECISION_KINDS);
 export type DecisionKind = z.infer<typeof decisionKindSchema>;
 
 /** GET /api/v1/principal/decisions?from=&to=&kind=&cursor=&limit= — dates are YYYY-MM-DD, inclusive, in the school's day. */
-export const decisionsQuerySchema = z.object({
-  from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date").optional(),
-  to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date").optional(),
-  kind: decisionKindSchema.optional(),
-  cursor: z.string().min(1).max(200).optional(),
-  limit: z.coerce.number().int().min(1).max(100).default(30),
-});
+/** Days that exist, `from` not after `to` (QA-55: "2026-13-01" passed the pattern and the filter was dropped). */
+export const decisionsQuerySchema = z
+  .object({
+    from: realDateKey.optional(),
+    to: realDateKey.optional(),
+    kind: decisionKindSchema.optional(),
+    cursor: z.string().min(1).max(200).optional(),
+    limit: z.coerce.number().int().min(1).max(100).default(30),
+  })
+  .refine((q) => !q.from || !q.to || q.from <= q.to, { path: ["to"], message: "date" });
 export type DecisionsQuery = z.infer<typeof decisionsQuerySchema>;
 
 export const decisionEntrySchema = z.object({

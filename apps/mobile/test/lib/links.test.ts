@@ -88,6 +88,11 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/account/items")).toEqual({ pathname: "/(app)/my-items" });
     expect(screenFor("/admin/transport")).toEqual({ pathname: "/(app)/office-transport" });
   });
+  it("a student's placement notices open the student's placement screen; a guardian's consent ask has no screen and opens the web (QA-70)", () => {
+    expect(screenFor("/student/placement")).toEqual({ pathname: "/(app)/placement" });
+    expect(screenFor("/parent/placement?child=c1")).toBeNull();
+  });
+
   it("anything else opens the web", () => {
     expect(screenFor("/certificate/r1")).toBeNull();
     expect(screenFor("/teacher/worksheets/print")).toBeNull();

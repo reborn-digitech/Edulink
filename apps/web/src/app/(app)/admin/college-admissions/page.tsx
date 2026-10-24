@@ -64,7 +64,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
           {rounds.length === 0 ? (
             <EmptyState title={t("collegeOffice.roundsEmpty")} description={t("collegeOffice.roundsEmptyBody")} action={write ? <Button asChild size="sm"><a href="#new-round">{t("collegeOffice.roundNew")}</a></Button> : <Button asChild size="sm" variant="secondary"><Link href="/admin">{t("collegeOffice.goHome")}</Link></Button>} />
           ) : (
-            <Table head={[t("collegeOffice.colRound"), t("collegeOffice.colIntake"), t("collegeOffice.colAllotments"), t("collegeOffice.colApplications"), t("collegeOffice.colAdmitted"), ""]} testId="admission-rounds">
+            <Table head={[t("collegeOffice.colRound"), t("collegeOffice.colIntake"), t("collegeOffice.colAllotments"), t("collegeOffice.colApplications"), t("collegeOffice.colAdmitted"), { srOnly: t("qaInterface.colActions") }]} testId="admission-rounds">
               {rounds.map((r) => (
                 <tr key={r.id} className={r.id === round?.id ? "bg-accent-soft/40" : undefined}>
                   <td className="py-2 pr-3">
@@ -141,7 +141,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
             {write && allotments.length > 0 ? (
               <div>
                 <h3 className="mb-2 text-sm font-semibold">{t("collegeOffice.allotmentsWaiting")}</h3>
-                <Table head={[t("collegeOffice.colCetId"), t("collegeOffice.colName"), t("collegeOffice.colCategory"), t("collegeOffice.colMerit"), ""]}>
+                <Table head={[t("collegeOffice.colCetId"), t("collegeOffice.colName"), t("collegeOffice.colCategory"), t("collegeOffice.colMerit"), { srOnly: t("qaInterface.colActions") }]}>
                   {allotments.map((r) => (
                     <tr key={r.id}>
                       <td className="py-2 pr-3">{r.cetApplicationId}</td>

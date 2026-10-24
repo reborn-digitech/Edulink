@@ -67,7 +67,7 @@ export default async function MyTimetablePage({
         ) : (
           <Card data-testid="my-college-week">
             <CardBody>
-              <WeekList t={t} locale={locale} weekdays={week.weekdays} cells={week.cells} streams={streams} linkFor={(c) => `/student/academics/${c.offeringId}`} />
+              <WeekList t={t} locale={locale} weekdays={week.weekdays} cells={week.cells} streams={streams} linkFor={(c) => `/student/academics/${c.offeringId}`} heading="h2" />
             </CardBody>
           </Card>
         )}

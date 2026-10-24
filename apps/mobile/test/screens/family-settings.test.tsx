@@ -39,6 +39,21 @@ describe("a guardian's settings", () => {
     expect(screen.getByRole("switch", { name: "Text messages (SMS)" })).toBeChecked();
   });
 
+  it("with texts and the assistant switched off on the platform, the text switches are kept but shut with a line saying so, and the assistant is not asked for (QA-61)", async () => {
+    const { fetch } = await renderFamily(<ParentSettings />, { ...ME_PARENT, features: [] }, { [PATH]: () => SETTINGS });
+    expect(await screen.findByRole("switch", { name: "Text messages (SMS)" })).toBeDisabled();
+    expect(screen.getByRole("switch", { name: "WhatsApp" })).toBeDisabled();
+    expect(screen.getByRole("switch", { name: "Email" })).not.toBeDisabled();
+    expect(screen.getByText("Texts by SMS and WhatsApp are not switched on yet. Your choice is kept for when they are.")).toBeTruthy();
+    expect(calls(fetch, "/api/v1/family/assistant")).toHaveLength(0);
+  });
+
+  it("with texts on, nothing is said of them being off", async () => {
+    await renderFamily(<ParentSettings />, { ...ME_PARENT, features: ["TEXT_MESSAGING"] }, { [PATH]: () => SETTINGS });
+    expect(await screen.findByRole("switch", { name: "WhatsApp" })).not.toBeDisabled();
+    expect(screen.queryByText(/not switched on yet/)).toBeNull();
+  });
+
   it("a quiet hour that is not a time is refused before it is sent", async () => {
     await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: () => ({ ...SETTINGS, quietHours: { start: "21:00", end: "07:00" } }) });
     await fireEvent.changeText(await screen.findByLabelText("From"), "9pm");

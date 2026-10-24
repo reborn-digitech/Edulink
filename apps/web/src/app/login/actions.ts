@@ -1,6 +1,5 @@
 "use server";
 
-import { after } from "next/server";
 import { db } from "@/lib/db";
 import { generateToken, hashToken } from "@/lib/crypto";
 import { signInWithPassword } from "@/lib/auth-login";
@@ -24,6 +23,7 @@ import { MAGIC_LINK_TTL_MINUTES } from "@/lib/constants";
 import { refusalText } from "@/lib/i18n/refusal";
 import { cookies } from "next/headers";
 import { twoFactorChallengeFor, twoFactorCookieOptions, TWO_FACTOR_COOKIE } from "@/lib/two-factor";
+import { afterResponse } from "@/lib/after-response";
 
 /** "in about 5 minutes", in the reader's language. See `retryHintKey`. */
 function hint(t: Translate, seconds: number): string {
@@ -143,7 +143,7 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
    * for a member.
    */
   const userId = user && !user.disabledAt ? user.id : null;
-  afterResponse(async () => {
+  afterResponse("requestMagicLink")(async () => {
     if (!userId) return;
     const token = generateToken();
     await db.authToken.create({
@@ -159,21 +159,6 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
   });
 
   return { ok: true, errors: {} };
-}
-
-/**
- * Runs `task` once the response has gone out. Next's `after` does exactly
- * that inside a request; outside one — a test calling the action directly —
- * it throws, and the task runs detached instead so the caller's timing is
- * still not the mailer's.
- */
-function afterResponse(task: () => Promise<void>): void {
-  const run = () => task().catch((error) => console.error("[requestMagicLink] deferred send failed", error));
-  try {
-    after(run);
-  } catch {
-    void run();
-  }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -199,7 +184,8 @@ export async function requestReset(input: unknown): Promise<ResetRequestState> {
   const parsed = resetRequestSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
-  const result = await requestPasswordReset(parsed.data.identifier);
+  // The code is written and sent after the response, whether or not there is anybody to send it to (QA-24).
+  const result = await requestPasswordReset(parsed.data.identifier, { defer: afterResponse("requestReset") });
   if (!result.ok) {
     // The lib mints a KEY; this boundary turns it into the reader's words.
     return {

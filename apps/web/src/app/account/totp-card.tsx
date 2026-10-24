@@ -17,7 +17,7 @@ import { confirmTotp, disableTotp, startTotp, type TotpStartState } from "./totp
  * codes are shown this once. On: how many recovery codes are left, and a
  * code box that turns it off.
  */
-export function TotpCard({ enabled, recoveryLeft, available }: { enabled: boolean; recoveryLeft: number; available: boolean }) {
+export function TotpCard({ enabled, recoveryLeft, available, hasPassword = true }: { enabled: boolean; recoveryLeft: number; available: boolean; hasPassword?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -28,15 +28,22 @@ export function TotpCard({ enabled, recoveryLeft, available }: { enabled: boolea
   const [error, setError] = useState<string | null>(null);
   const [offCode, setOffCode] = useState("");
   const [turningOff, setTurningOff] = useState(false);
+  // Turning it on asks for the password first (QA-23); an account with none was asked to have signed in just now.
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState<string | null>(null);
 
-  function start() {
+  function start(event?: React.FormEvent) {
+    event?.preventDefault();
     setError(null);
+    setPasswordError(null);
     startTransition(async () => {
-      const result = await startTotp();
+      const result = await startTotp(hasPassword ? password : undefined);
       if (!result.ok) {
-        setError(result.error);
+        if (result.field === "password") setPasswordError(result.error);
+        else setError(result.error);
         return;
       }
+      setPassword("");
       setStarted(result);
     });
   }
@@ -164,12 +171,29 @@ export function TotpCard({ enabled, recoveryLeft, available }: { enabled: boolea
 
         {/* ---- off, not started ---- */}
         {!enabled && !started && !recoveryCodes && (
-          <div className="flex flex-wrap items-center gap-3">
+          <form onSubmit={start} className="space-y-3" noValidate>
             <p className="text-sm text-fg-muted">{available ? t("totp.off") : t("totp.unavailable")}</p>
-            <Button type="button" size="sm" className="ml-auto" loading={pending} disabled={!available} onClick={start}>
-              {t("totp.turnOn")}
-            </Button>
-          </div>
+            {available && hasPassword && (
+              <TextField
+                label={t("accountGuard.totpPasswordLabel")}
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setPasswordError(null);
+                }}
+                error={passwordError ?? undefined}
+                hint={t("accountGuard.totpPasswordHint")}
+              />
+            )}
+            {available && !hasPassword && <p className="text-xs text-fg-muted">{t("accountGuard.totpFreshSignInHint")}</p>}
+            <div className="flex justify-end">
+              <Button type="submit" size="sm" loading={pending} disabled={!available || (hasPassword && password.length === 0)}>
+                {t("totp.turnOn")}
+              </Button>
+            </div>
+          </form>
         )}
 
         {/* ---- scanning ---- */}

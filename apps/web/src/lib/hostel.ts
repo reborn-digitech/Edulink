@@ -512,12 +512,18 @@ export async function decideLeave(ctx: ActiveContext, leaveId: string, approve: 
 }
 
 /** The gate: out on approved leave. Pressing twice is the same. */
-export async function gateOut(ctx: ActiveContext, leaveId: string): Promise<HostelLeaveRow> {
+/** How early before a leave's start the gate lets the boarder out (QA-45). */
+export const GATE_OUT_EARLY_MS = 15 * 60_000;
+
+export async function gateOut(ctx: ActiveContext, leaveId: string, now: Date = new Date()): Promise<HostelLeaveRow> {
   const staff = await staffOf(ctx, WRITERS);
   const l = await leaveAt(staff.schoolId, leaveId);
   if (l.status !== "APPROVED") throw new AccessError("hostel.refuseNotApproved");
+  // Not out before the leave begins (QA-45), as a return is checked against its end: the approval is for that window.
+  // A quarter of an hour early is let through, for a bus or a parent at the gate a little before the hour.
+  if (!l.outAt && now.getTime() < l.fromAt.getTime() - GATE_OUT_EARLY_MS) throw new AccessError("hostel.refuseOutEarly");
   if (!l.outAt) {
-    await db.hostelLeave.updateMany({ where: { id: l.id, outAt: null }, data: { outAt: new Date(), outByUserId: staff.userId } });
+    await db.hostelLeave.updateMany({ where: { id: l.id, outAt: null }, data: { outAt: now, outByUserId: staff.userId } });
     await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.leave.out", targetType: "HostelLeave", targetId: l.id });
   }
   return leaveRow(l.id);

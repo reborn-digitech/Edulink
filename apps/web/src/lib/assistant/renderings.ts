@@ -8,6 +8,7 @@ import { assertAppAdmin } from "../app-admin";
 import { assertSuperuser } from "../superuser";
 import type { ActiveContext } from "../session";
 import { checkGuideRendering } from "./guide-render";
+import { readableQuotes } from "./readable-quotes";
 
 /**
  * THE SPEAKER'S REVIEW OF THE GUIDE'S HINDI AND MARATHI (docs/plans/vidura.md, the coordinator's recommendation;
@@ -45,10 +46,11 @@ function view(r: Row, names: Map<string, string>): ViduraRendering {
     id: r.id,
     kind: r.kind === "HEADING" ? "HEADING" : "PARAGRAPH",
     language: r.language === "mr" ? "mr" : "hi",
-    sourceText: r.sourceText,
+    // The quoted screen sentences as a person reads them, without placeholders (QA-64).
+    sourceText: readableQuotes(r.sourceText),
     sourceFile: r.sourceFile,
-    text: r.text,
-    modelText: r.modelText,
+    text: readableQuotes(r.text),
+    modelText: readableQuotes(r.modelText),
     status: r.status === "APPROVED" || r.status === "REJECTED" ? r.status : "UNREVIEWED",
     edited: r.edited,
     reviewedAt: r.reviewedAt?.toISOString() ?? null,

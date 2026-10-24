@@ -10,7 +10,6 @@ import { forPlacementDirectory, forSchool, forUser } from "./tenant-context";
 import { readJson, writeJson } from "./json";
 import { toCsvValue } from "./csv";
 import { applicationViews, companyViews, eligibilityAt, nameOf, placementColleges, poolIdsOf, readRounds, readSchedule, requirementViews, type DriveActor } from "./placement";
-import { renderResumePdf } from "./placement-pdf";
 import { normaliseLocale } from "./i18n/locales";
 import type { ActiveContext } from "./session";
 
@@ -287,6 +286,9 @@ export async function recruiterResume(ctx: ActiveContext, driveId: string, stude
   if (!app) throw new AccessError("placement.noSuchApplication", "NOT_FOUND");
   const profile = await db.placementProfile.findUnique({ where: { studentMembershipId }, select: { certifications: true, projects: true } });
   const mark = watermarkFor(me, d.company.name, d.title, new Date());
+  // Loaded here, not at the top (QA-75): @react-pdf cannot be resolved under tsx, so a script that imports this
+  // library (demo:accounts' addColleague and answerInvitation) would fail to load for the sake of one door.
+  const { renderResumePdf } = await import("./placement-pdf");
   const pdf = await renderResumePdf({
     locale: normaliseLocale(ctx.user.prefs.locale),
     name: app.studentName,

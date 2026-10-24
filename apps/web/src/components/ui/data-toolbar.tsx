@@ -62,6 +62,7 @@ export function DataToolbar({
   extra = {},
   labels,
   className,
+  label,
 }: {
   search?: { key?: string; value: string; placeholder: string; label: string };
   sort?: ToolbarSort;
@@ -70,6 +71,8 @@ export function DataToolbar({
   extra?: Record<string, string>;
   labels: { clearAll: string; clearSearch: string; activeFilters: string };
   className?: string;
+  /** The search landmark's name where a page holds two toolbars, so the two landmarks differ (QA-68). */
+  label?: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -132,7 +135,7 @@ export function DataToolbar({
   const selectFacets = facets.filter((f) => (f.as ?? (f.options.length <= 5 ? "chips" : "select")) === "select");
 
   return (
-    <div className={cn("space-y-2.5", className)} role="search">
+    <div className={cn("space-y-2.5", className)} role="search" aria-label={label}>
       {(search || sort || selectFacets.length > 0) && (
         <div className="flex flex-wrap items-center gap-2">
           {search && (

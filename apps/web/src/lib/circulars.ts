@@ -293,8 +293,11 @@ export async function remindCircular(session: ActiveContext, postId: string): Pr
   });
   if (claimed.count === 0) return { reminded: 0, texted: 0, remindedAt: reach.remindedAt ? new Date(reach.remindedAt) : remindedAt };
   const { pushed } = await tell(post, `circular-remind:${postId}`, [...guardianIds], [...otherIds].filter((id) => !guardianIds.has(id)));
-  await audit({ schoolId: post.schoolId, actorUserId: session.user.id, action: "circular.remind", targetType: "Post", targetId: postId, meta: { reminded: pushed, families: reach.totals.total - reach.totals.acked } });
-  return { reminded: pushed, texted: guardianIds.size, remindedAt };
+  // `texted` is the texts this round handed to the sender (queued, sent or delivered), not the guardians it tried: a
+  // text skipped (texts off, no proved number, a cap) or failed is not one (QA-41), as the reach report counts them.
+  const texted = await db.outboundMessage.count({ where: { schoolId: post.schoolId!, purpose: `circular-remind:${postId}`, createdAt: { gte: new Date(remindedAt.getTime() - 60_000) }, status: { in: ["QUEUED", "SENT", "DELIVERED"] } } });
+  await audit({ schoolId: post.schoolId, actorUserId: session.user.id, action: "circular.remind", targetType: "Post", targetId: postId, meta: { reminded: pushed, texted, families: reach.totals.total - reach.totals.acked } });
+  return { reminded: pushed, texted, remindedAt };
 }
 
 /** The office's list: every circular of the school with its reach, newest first. */

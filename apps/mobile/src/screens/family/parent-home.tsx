@@ -156,7 +156,7 @@ function ChildDay({ data }: { data: Overview }) {
         {[
           !attendance || attendance.total === 0 ? t("parent.noRecordsYet") : t("parent.lastFourWeeks"),
           data.scoredCount === 0 ? t("parent.nothingGradedYet") : data.scoredCount === 1 ? t("parent.acrossPiecesOne") : t("parent.acrossPieces", { count: data.scoredCount }),
-          streak === 0 ? t("parent.streakStart") : streak === 1 ? t("parent.streakDaysOne") : t("parent.streakDays", { count: streak }),
+          streak === 0 ? t("qaInterface.streakStartsNextDay") : streak === 1 ? t("parent.streakDaysOne") : t("parent.streakDays", { count: streak }),
         ].join(" · ")}
       </Text>
 

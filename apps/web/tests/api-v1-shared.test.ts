@@ -688,11 +688,15 @@ describe("the year archive and the vacancies board", () => {
 });
 
 describe("the expert's own pages", () => {
-  it("bookings, availability and profile are the published expert's alone", async () => {
+  it("bookings, availability and saving the profile are the published expert's alone; one under review reads their own standing (QA-53)", async () => {
     await asTeacher();
     for (const res of await Promise.all([bookingsGet(), availabilityGet(), profileGet()])) expect(res.status).toBe(403);
     await as(pendingExpertUserId, { role: "EXPERT" });
-    for (const res of await Promise.all([bookingsGet(), availabilityGet(), profileGet()])) expect(res.status).toBe(403);
+    for (const res of await Promise.all([bookingsGet(), availabilityGet()])) expect(res.status).toBe(403);
+    const standing = await profileGet();
+    expect(standing.status).toBe(200);
+    expect(await standing.json()).toMatchObject({ profile: { published: false } });
+    expect((await profilePost(json("/x", { headline: "ZZ Under review", bio: "", specialisms: [], timezone: "UTC", offering: "BOTH" }))).status).toBe(403);
     await asExpert();
     const bookings = await bookingsGet();
     expect(bookings.status).toBe(200);

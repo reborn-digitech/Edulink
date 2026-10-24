@@ -171,7 +171,7 @@ function CollegeCard({ college, t, money }: { college: OperatorCollegeRow; t: Tr
           )}
         </dl>
 
-        <section aria-label={t("operatorCollege.healthTitle")} className="space-y-2">
+        <section aria-label={[t("operatorCollege.healthTitle"), college.name].join(" · ")} className="space-y-2">
           <h3 className="flex items-center gap-1.5 text-sm font-semibold text-fg">
             <HeartbeatIcon weight="duotone" className="size-4" />
             {t("operatorCollege.healthTitle")}

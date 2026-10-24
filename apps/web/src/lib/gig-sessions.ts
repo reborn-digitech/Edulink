@@ -692,9 +692,11 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
   const c = await child(ctx, input.studentMembershipId);
   const purpose = input.purpose.trim().slice(0, 500);
   if (purpose.length < 10) return { ok: false, errorKey: "gigs.needPurpose" };
-  const slot = await db.gigSlot.findUnique({ where: { id: input.slotId }, select: { id: true, kind: true, title: true, startsAt: true, cancelledAt: true, pricePaise: true, providerKind: true, providerUserId: true, teacherSchoolId: true, provider: { select: { name: true, expertProfile: { select: { publishedAt: true, disabledAt: true } } } } } });
-  // A closed expert's times are no one's to book (G4-28, risks batch 5 Oct 2026).
-  const open = slot && !slot.cancelledAt && slot.providerUserId !== c.userId && (slot.providerKind === "TEACHER" || slot.providerKind === "ALUMNUS" ? slot.teacherSchoolId === c.schoolId : Boolean(slot.provider.expertProfile?.publishedAt && !slot.provider.expertProfile.disabledAt));
+  const slot = await db.gigSlot.findUnique({ where: { id: input.slotId }, select: { id: true, kind: true, title: true, startsAt: true, cancelledAt: true, pricePaise: true, providerKind: true, providerUserId: true, teacherSchoolId: true, provider: { select: { name: true, isTestFixture: true, expertProfile: { select: { publishedAt: true, disabledAt: true } } } } } });
+  // A closed expert's times are no one's to book (G4-28, risks batch 5 Oct 2026); nor is a time the open list does not
+  // show this pupil (QA-50): a test-fixture provider's, unless the pupil's school is a fixture school, as openFor reads it.
+  const shown = slot && (!slot.provider.isTestFixture || (await readerIsFixture(c.schoolId)));
+  const open = slot && shown && !slot.cancelledAt && slot.providerUserId !== c.userId && (slot.providerKind === "TEACHER" || slot.providerKind === "ALUMNUS" ? slot.teacherSchoolId === c.schoolId : Boolean(slot.provider.expertProfile?.publishedAt && !slot.provider.expertProfile.disabledAt));
   if (!slot || !open) throw new AccessError("gigs.noSuchSlot", "NOT_FOUND");
   // A time of a kind the platform has off is not here (15 Oct 2026).
   await assertKindOn(slot.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", ctx);

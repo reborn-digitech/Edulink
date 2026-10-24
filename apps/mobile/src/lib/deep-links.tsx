@@ -4,10 +4,10 @@ import * as Linking from "expo-linking";
 import * as Notifications from "expo-notifications";
 import { useRouter } from "expo-router";
 import type { SessionResponse } from "@edulink/contracts";
-import { api } from "./api";
+import { api, API_BASE } from "./api";
 import { isTwoFactor } from "./two-factor";
 import { useSession } from "./session";
-import { screenFor } from "./links";
+import { screenFor, webPathUrl } from "./links";
 import { takeVerifier } from "./sso-handoff";
 
 /**
@@ -69,6 +69,12 @@ export function useDeepLinks() {
         if (typeof url === "string") {
           const target = screenFor(url);
           if (target) router.push({ pathname: target.pathname as never, params: target.params });
+          // A notice for a page the phone has not (a guardian's placement consent, QA-70) opens it on the web, signed in,
+          // as a notice opened from the list does, rather than nothing.
+          else {
+            const web = webPathUrl(url, API_BASE);
+            if (web) void Linking.openURL(web);
+          }
         }
       });
     }

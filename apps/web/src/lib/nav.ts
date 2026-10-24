@@ -689,6 +689,82 @@ export const NAV: Record<Role, NavItem[]> = {
 };
 
 /**
+ * THE BOTTOM BAR AT A PHONE'S WIDTH IS THE PHONE APP'S (QA-65, QA campaign of 24 October 2026). The web drew the
+ * first five `primary` entries there and the phone app its own four tabs and More, so one person found Today,
+ * Attendance, Classes, Assignments and Exams on one and Today, Attendance, Classes, Messages and More on the other.
+ * Below `lg` the web now draws these, in this order, with More after them (the sheet holds every other entry); the
+ * desk's rail keeps `primary`. Each list is the phone's TABS (apps/mobile/src/lib/nav.ts) with the web page each tab
+ * is, the same words, icons, module and feature; tests/nav-phone-bar.test.ts holds the two lists against each other.
+ * An entry is hidden as the shell hides a menu entry: by the NAV entry of the same href, or by its own module and
+ * feature (signed-in-shell.tsx).
+ */
+const MESSAGES_TAB: NavItem = { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true };
+const COLLEGE_DESK_TABS: NavItem[] = [
+  { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
+  { href: "/remarks", labelKey: "nav.messages", icon: "envelope", prefix: true },
+];
+export const PHONE_BAR: Record<Role, NavItem[]> = {
+  TEACHER: [
+    { href: "/teacher", labelKey: "nav.today", icon: "house" },
+    { href: "/teacher/attendance", labelKey: "nav.register", icon: "checks", prefix: true, also: ["/attendance/history"] },
+    { href: "/teacher/classes", labelKey: "nav.classes", icon: "chalkboard", prefix: true },
+    MESSAGES_TAB,
+  ],
+  PARENT: [
+    { href: "/parent", labelKey: "nav.overview", icon: "house" },
+    { href: "/parent/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true },
+    { href: "/parent/assignments", labelKey: "nav.assignments", icon: "clipboard", prefix: true },
+    MESSAGES_TAB,
+  ],
+  STUDENT: [
+    { href: "/student", labelKey: "nav.today", icon: "house" },
+    { href: "/student/assignments", labelKey: "nav.assignments", icon: "clipboard", prefix: true },
+    { href: "/student/practice", labelKey: "nav.practice", icon: "brain", prefix: true, feature: "QUESTION_BANK" },
+    MESSAGES_TAB,
+  ],
+  ADMIN: [
+    { href: "/admin", labelKey: "nav.overview", icon: "house" },
+    { href: "/admin/people", labelKey: "nav.people", icon: "users", prefix: true, also: ["/admin/invites", "/admin/intake"] },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, also: ["/principal/staff"] },
+    MESSAGES_TAB,
+  ],
+  PRINCIPAL: [
+    { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", also: ["/attendance/history", "/principal/college"] },
+    { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", prefix: true },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, also: ["/principal/staff"] },
+    MESSAGES_TAB,
+  ],
+  EXPERT: [
+    { href: "/expert", labelKey: "nav.bookings", icon: "house" },
+    { href: "/expert/availability", labelKey: "nav.availability", icon: "calendar", prefix: true, feature: "EXPERT_SESSIONS" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, feature: "EXPERT_SESSIONS" },
+    { href: "/expert/sessions", labelKey: "nav.sessions", icon: "users", prefix: true, feature: "EXPERT_SESSIONS" },
+  ],
+  DRIVER: [{ href: "/driver", labelKey: "modules.transportName", icon: "bus", prefix: true }],
+  LIBRARIAN: [{ href: "/library", labelKey: "modules.libraryName", icon: "bookOpen" }],
+  WARDEN: [{ href: "/hostel", labelKey: "modules.hostelName", icon: "bed" }],
+  ALUMNUS: [
+    { href: "/alumni", labelKey: "modules.alumniName", icon: "graduationCap" },
+    { ...MESSAGES_TAB, module: "ALUMNI" },
+  ],
+  FACULTY: [
+    { href: "/faculty", labelKey: "role.faculty", icon: "chalkboard" },
+    { href: "/faculty/mentoring", labelKey: "academics.mentoringTitle", icon: "chat", prefix: true, module: "ACADEMICS" },
+    ...COLLEGE_DESK_TABS,
+  ],
+  HOD: [
+    { href: "/hod", labelKey: "mobile.tabDepartment", icon: "users" },
+    { href: "/faculty", labelKey: "academics.myTeaching", icon: "chalkboard", module: "ACADEMICS" },
+    ...COLLEGE_DESK_TABS,
+  ],
+  EXAM_CONTROLLER: [{ href: "/exam-cell", labelKey: "mobile.tabExamCell", icon: "clipboard" }, ...COLLEGE_DESK_TABS],
+  IQAC: [{ href: "/iqac", labelKey: "role.iqac", icon: "medal" }, ...COLLEGE_DESK_TABS],
+  TPO: [{ href: "/placement", labelKey: "mobile.tabPlacement", icon: "chartLine" }, ...COLLEGE_DESK_TABS],
+  ACCOUNTS: [{ href: "/accounts", labelKey: "role.accounts", icon: "receipt" }, ...COLLEGE_DESK_TABS],
+  RECRUITER: [{ href: "/recruiter", labelKey: "role.recruiter", icon: "handshake", prefix: true }],
+};
+
+/**
  * The assistant, Vidura (pass 1, 17 Oct 2026; docs/plans/vidura.md): NO MENU ENTRY. Its one entry point is the round
  * button at the bottom right of every page (components/nav/app-shell.tsx), drawn by the shell where the person may use
  * it; the Phase C entry under "Day to day" and the /assistant page's place in the menus are gone. /assistant itself now

@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
-import { audienceLabel, broadcastHref, BROADCAST_STATUS_KEY, CHANNEL_KEY, PURPOSE_KEY, SKIP_KEY, STATUS_KEY, STATUS_TONE, TRANSPORT_KEY, word } from "./labels";
+import { audienceLabel, broadcastHref, BROADCAST_STATUS_KEY, CHANNEL_KEY, purposeWords, SKIP_KEY, STATUS_KEY, STATUS_TONE, TRANSPORT_KEY, word } from "./labels";
 import { SettingsForm } from "./settings-form";
 import { TemplatesList } from "./templates-list";
 import { TestButton } from "./test-button";
@@ -178,7 +178,17 @@ export default async function MessagingPage() {
                     <span className="min-w-0 flex-1">
                       <span className="block truncate font-medium text-fg">{m.name ?? m.to}</span>
                       <span className="block text-xs text-fg-muted">
-                        {word(t, PURPOSE_KEY, m.purpose)} · {word(t, CHANNEL_KEY, m.channel)} · {when(m.createdAt)}
+                        {(() => {
+                          const purpose = purposeWords(t, m.purpose);
+                          return purpose.href ? (
+                            <Link href={purpose.href} className="underline underline-offset-2 hover:text-fg">
+                              {purpose.label}
+                            </Link>
+                          ) : (
+                            purpose.label
+                          );
+                        })()}{" "}
+                        · {word(t, CHANNEL_KEY, m.channel)} · {when(m.createdAt)}
                         {m.skipReason && <> · {word(t, SKIP_KEY, m.skipReason)}</>}
                         {m.error && <> · {m.error}</>}
                       </span>

@@ -12,7 +12,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
  * the `code` field so the phone can put it under the box; the rest are 409s
  * for a step taken out of order (already on, nothing pending, not on).
  */
-export type TotpRefusal = "ineligible" | "unavailable" | "alreadyOn" | "nothingPending" | "notOn" | "wrongCode" | "rate";
+export type TotpRefusal = "ineligible" | "unavailable" | "alreadyOn" | "nothingPending" | "notOn" | "wrongCode" | "rate" | "passwordNeeded" | "wrongPassword" | "signInAgain";
 
 const KEYS: Record<Exclude<TotpRefusal, "rate">, { key: TranslationKey; status: number; code: "FORBIDDEN" | "CONFLICT" | "BAD_REQUEST"; field?: string }> = {
   ineligible: { key: "totp.ineligible", status: 403, code: "FORBIDDEN" },
@@ -21,6 +21,10 @@ const KEYS: Record<Exclude<TotpRefusal, "rate">, { key: TranslationKey; status: 
   nothingPending: { key: "totp.nothingPending", status: 409, code: "CONFLICT" },
   notOn: { key: "totp.notOn", status: 409, code: "CONFLICT" },
   wrongCode: { key: "totp.wrongCode", status: 422, code: "BAD_REQUEST", field: "code" },
+  // Turning it on is proved by the password, or a fresh sign-in for an account with none (QA-23, 24 Oct 2026).
+  passwordNeeded: { key: "accountGuard.totpPasswordNeeded", status: 422, code: "BAD_REQUEST", field: "password" },
+  wrongPassword: { key: "accountGuard.totpWrongPassword", status: 422, code: "BAD_REQUEST", field: "password" },
+  signInAgain: { key: "accountGuard.totpSignInAgain", status: 403, code: "FORBIDDEN" },
 };
 
 export async function totpRefusal(reason: TotpRefusal, retryAfterSeconds?: number): Promise<NextResponse> {

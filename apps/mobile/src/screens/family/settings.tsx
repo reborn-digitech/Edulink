@@ -10,7 +10,8 @@ import { bytesApi, shareBytes } from "@/lib/download";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { useRole } from "@/lib/session";
+import { useRole, useSession } from "@/lib/session";
+import { featuresOf } from "@/lib/nav";
 import { Note, Pill } from "./shared";
 import { must, Refusal } from "../staff/shared";
 import { FamilyAssistantCard } from "../shared/assistant";
@@ -27,6 +28,12 @@ const HHMM = /^\d{1,2}:\d{2}$/;
 export function ParentSettings() {
   const t = useT();
   const role = useRole();
+  // The platform's switches (QA-61): texts and the assistant are drawn only as they stand, and nothing of a feature
+  // that is off is asked for (its door is a 404).
+  const session = useSession();
+  const features = featuresOf(session.status === "signed-in" ? session.me : null);
+  const textsOn = features.includes("TEXT_MESSAGING");
+  const assistantOn = features.includes("ASSISTANT");
   const router = useRouter();
   const query = useQuery({
     queryKey: ["family", "settings"],
@@ -50,7 +57,7 @@ export function ParentSettings() {
           <Empty title={t("parent.linkToYourChild")} body={t("parent.linkNeedCode")} action={<Button label={t("parent.linkToMyChild")} onPress={() => router.push("/(app)/link-child" as never)} />} />
         ) : (
           <>
-            <NotificationsForm key={`${d.channels.push}:${d.channels.email}:${d.channels.sms ?? true}:${d.channels.whatsapp ?? true}:${d.quietHours?.start ?? ""}:${d.quietHours?.end ?? ""}`} initial={d} />
+            <NotificationsForm key={`${d.channels.push}:${d.channels.email}:${d.channels.sms ?? true}:${d.channels.whatsapp ?? true}:${d.quietHours?.start ?? ""}:${d.quietHours?.end ?? ""}`} initial={d} textsOn={textsOn} />
             <Card title={t("parent.whoYouHearAbout")} action={<Button label={t("parent.linkAnotherShort")} variant="secondary" onPress={() => router.push("/(app)/link-child" as never)} />}>
               <Text variant="xs" tone="muted">
                 {d.children.length === 1 ? t("parent.oneChildLinked") : t("parent.childrenLinked", { count: d.children.length })}
@@ -63,7 +70,7 @@ export function ParentSettings() {
               </Text>
             </Card>
             {/* The assistant, per child (Phase C, 10 Oct 2026): the web's card on /parent/settings. */}
-            <FamilyAssistantCard />
+            {assistantOn ? <FamilyAssistantCard /> : null}
             <MyDataCard body={t("exports.childDataBody")} items={d.children.map((child) => ({ id: child.studentMembershipId, label: t("exports.downloadFor", { name: child.name }), path: `/api/v1/family/export?student=${encodeURIComponent(child.studentMembershipId)}`, fileName: `relay-export-${child.name}.json` }))} />
             <Card title={t("parent.yourAccount")} action={<Button label={t("parent.open")} variant="secondary" onPress={() => router.push("/(app)/more" as never)} />}>
               <Text variant="xs" tone="muted">
@@ -78,7 +85,7 @@ export function ParentSettings() {
 }
 
 /** The web's AppearanceForm, notifications section: four channels (push, email, and the texts — SMS and WhatsApp — the school may send, on unless the guardian says otherwise), quiet hours, one save. Remounted (by key) when the server's copy changes. */
-function NotificationsForm({ initial }: { initial: Settings }) {
+function NotificationsForm({ initial, textsOn }: { initial: Settings; textsOn: boolean }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
@@ -125,8 +132,14 @@ function NotificationsForm({ initial }: { initial: Settings }) {
       ) : null}
       {toggle(t("prefs.push"), t("prefs.pushHint"), push, (next) => { setPush(next); setSaved(false); })}
       {toggle(t("prefs.email"), t("prefs.emailHint"), email, (next) => { setEmail(next); setSaved(false); })}
-      {toggle(t("prefs.sms"), t("prefs.smsHint"), sms, (next) => { setSms(next); setSaved(false); })}
-      {toggle(t("prefs.whatsapp"), t("prefs.whatsappHint"), whatsapp, (next) => { setWhatsapp(next); setSaved(false); })}
+      {/* Texts switched off on the platform (QA-61): the choice is shown as kept, not offered as working. */}
+      <SwitchRow label={t("prefs.sms")} hint={t("prefs.smsHint")} value={sms} disabled={!textsOn} onChange={(next) => { setSms(next); setSaved(false); }} />
+      <SwitchRow label={t("prefs.whatsapp")} hint={t("prefs.whatsappHint")} value={whatsapp} disabled={!textsOn} onChange={(next) => { setWhatsapp(next); setSaved(false); }} />
+      {!textsOn ? (
+        <Text variant="xs" tone="muted">
+          {t("qaInterface.textsOff")}
+        </Text>
+      ) : null}
       <View style={{ gap: th.space[2], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
         <Text variant="base" bold>
           {t("prefs.quietHours")}

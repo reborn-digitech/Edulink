@@ -1,10 +1,13 @@
 import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
-import { generateToken, hashToken } from "./crypto";
+import { generateToken, hashToken, verifyPassword } from "./crypto";
 import { open, seal, sealingAvailable } from "./secret-box";
-import { consume } from "./rate-limit";
-import { toDisplayLoginName } from "./login-name";
+import { consume, peek } from "./rate-limit";
+import { isDeliverableEmail, toDisplayLoginName } from "./login-name";
+import { revokeAllAccess } from "./session";
+import { localeForUser, sendAccountNotice } from "./email";
+import { translator } from "./i18n/dictionary";
 import {
   generateRecoveryCodes,
   generateSecret,
@@ -56,6 +59,31 @@ export const TOTP_PER_ADDRESS = { limit: 30, windowMs: 15 * 60_000 };
 /** Codes tried while turning it on or off, per person. */
 export const TOTP_SETTINGS_ATTEMPTS = { limit: 10, windowMs: 15 * 60_000 };
 
+/**
+ * WRONG CODES AGAINST ONE ACCOUNT, whatever the challenge or the address
+ * (QA-22, 24 Oct 2026). The two limits above are per challenge and per
+ * address, and a fresh challenge comes with every right password: somebody
+ * who holds the password and rotates addresses had about fifty guesses a
+ * quarter-hour. Counted on failures only; the tenth in an hour locks the
+ * second step of this account until the hour is out (every open challenge
+ * is spent, the audit log says so, and the holder is told by email, since
+ * whoever is guessing already has the password). A password reset lifts it
+ * (passwords.ts), because the reset is the owner proving the mailbox.
+ */
+export const TOTP_PER_ACCOUNT = { limit: 10, windowMs: 60 * 60_000 };
+export function totpAccountBucket(userId: string): string {
+  return `totp-user:${userId}`;
+}
+
+/**
+ * HOW TURNING IT ON IS PROVED (QA-23, 24 Oct 2026). A session alone used to
+ * be enough, so a stolen session could put its own authenticator on the
+ * account and lock the owner out (turning it off needs a code; a reset does
+ * not clear it). Now the password is asked; an account with no password (a
+ * sign-in link or SSO only) needs a sign-in made in the last ten minutes.
+ */
+export const ENROL_FRESH_SIGN_IN_MS = 10 * 60_000;
+
 export function twoFactorCookieOptions() {
   return {
     httpOnly: true,
@@ -93,11 +121,13 @@ export type TwoFactorStatus = {
   enabledAt: Date | null;
   recoveryLeft: number;
   available: boolean;
+  /** Whether turning it on asks for the password (an account with none needs a fresh sign-in instead; QA-23). */
+  hasPassword: boolean;
 };
 
 export async function twoFactorStatus(userId: string): Promise<TwoFactorStatus> {
   const [user, eligible] = await Promise.all([
-    db.user.findUniqueOrThrow({ where: { id: userId }, select: { totpEnabledAt: true, totpRecoveryHashes: true } }),
+    db.user.findUniqueOrThrow({ where: { id: userId }, select: { totpEnabledAt: true, totpRecoveryHashes: true, passwordHash: true } }),
     twoFactorEligible(userId),
   ]);
   return {
@@ -106,6 +136,7 @@ export async function twoFactorStatus(userId: string): Promise<TwoFactorStatus> 
     enabledAt: user.totpEnabledAt,
     recoveryLeft: user.totpEnabledAt ? user.totpRecoveryHashes.length : 0,
     available: sealingAvailable(),
+    hasPassword: user.passwordHash !== null,
   };
 }
 
@@ -121,33 +152,71 @@ export async function twoFactorRequired(userId: string): Promise<boolean> {
 
 export type StartResult =
   | { ok: true; secret: string; uri: string; account: string }
-  | { ok: false; reason: "ineligible" | "unavailable" | "alreadyOn" };
+  | { ok: false; reason: "ineligible" | "unavailable" | "alreadyOn" | "passwordNeeded" | "wrongPassword" | "signInAgain" }
+  | { ok: false; reason: "rate"; retryAfterSeconds: number };
+
+/** What the person turning it on shows for it: the password they sign in with, and the session they are using. */
+export type StartProof = { password?: string | null; sessionId: string | null };
 
 /**
  * A fresh secret, sealed into the pending slot and handed back once for the
  * app to scan. Nothing guards the sign-in until a code confirms it; starting
- * again simply replaces the pending secret.
+ * again simply replaces the pending secret. The password is asked first, or
+ * a fresh sign-in for an account with none (QA-23).
  */
-export async function startTwoFactor(userId: string): Promise<StartResult> {
+export async function startTwoFactor(userId: string, proof: StartProof): Promise<StartResult> {
   if (!(await twoFactorEligible(userId))) return { ok: false, reason: "ineligible" };
   if (!sealingAvailable()) return { ok: false, reason: "unavailable" };
   const user = await db.user.findUniqueOrThrow({
     where: { id: userId },
-    select: { totpEnabledAt: true, email: true, phone: true, name: true },
+    select: { totpEnabledAt: true, email: true, phone: true, name: true, passwordHash: true },
   });
   if (user.totpEnabledAt) return { ok: false, reason: "alreadyOn" };
+  const proved = await proveHolder(userId, user.passwordHash, proof);
+  if (proved) return proved;
   const secret = generateSecret();
   await db.user.update({ where: { id: userId }, data: { totpPendingEnc: seal(secret, bound(userId)) } });
   const account = user.email ? toDisplayLoginName(user.email) : (user.phone ?? user.name);
   return { ok: true, secret, uri: otpauthUri(TOTP_ISSUER, account, secret), account };
 }
 
+/**
+ * Null when the person has shown they are the account's holder; otherwise the
+ * refusal. A wrong password is charged against the same per-person limit as
+ * the codes and written to the audit log; it says nothing the login form would
+ * not, since the caller is already signed in as this person.
+ */
+async function proveHolder(userId: string, passwordHash: string | null, proof: StartProof): Promise<Extract<StartResult, { ok: false }> | null> {
+  if (passwordHash) {
+    if (!proof.password) return { ok: false, reason: "passwordNeeded" };
+    const gate = await consume(`totp-enrol:${userId}`, TOTP_SETTINGS_ATTEMPTS.limit, TOTP_SETTINGS_ATTEMPTS.windowMs);
+    if (!gate.allowed) return { ok: false, reason: "rate", retryAfterSeconds: gate.retryAfterSeconds };
+    if (!(await verifyPassword(passwordHash, proof.password))) {
+      await audit({ actorUserId: userId, action: "auth.totp.enrolRefused", meta: { why: "password" } });
+      return { ok: false, reason: "wrongPassword" };
+    }
+    return null;
+  }
+  const session = proof.sessionId
+    ? await db.session.findUnique({ where: { id: proof.sessionId }, select: { userId: true, createdAt: true, revokedAt: true } })
+    : null;
+  if (!session || session.userId !== userId || session.revokedAt || Date.now() - session.createdAt.getTime() > ENROL_FRESH_SIGN_IN_MS) {
+    return { ok: false, reason: "signInAgain" };
+  }
+  return null;
+}
+
 export type ConfirmResult =
-  | { ok: true; recoveryCodes: string[] }
+  | { ok: true; recoveryCodes: string[]; signedOut: number }
   | { ok: false; reason: "nothingPending" | "wrongCode" | "unavailable" | "alreadyOn" | "rate"; retryAfterSeconds?: number };
 
-/** One right code from the app moves the pending secret into place and mints the recovery codes, shown once. */
-export async function confirmTwoFactor(userId: string, code: string): Promise<ConfirmResult> {
+/**
+ * One right code from the app moves the pending secret into place and mints
+ * the recovery codes, shown once. Every OTHER session of the account is
+ * signed out as it turns on (QA-23): whoever else held one did not pass the
+ * step that now guards the account. `keepSessionId` is the session doing it.
+ */
+export async function confirmTwoFactor(userId: string, code: string, opts: { keepSessionId: string | null }): Promise<ConfirmResult> {
   if (!sealingAvailable()) return { ok: false, reason: "unavailable" };
   const gate = await consume(`totp-enrol:${userId}`, TOTP_SETTINGS_ATTEMPTS.limit, TOTP_SETTINGS_ATTEMPTS.windowMs);
   if (!gate.allowed) return { ok: false, reason: "rate", retryAfterSeconds: gate.retryAfterSeconds };
@@ -171,8 +240,9 @@ export async function confirmTwoFactor(userId: string, code: string): Promise<Co
     },
   });
   if (turned.count !== 1) return { ok: false, reason: "alreadyOn" };
-  await audit({ actorUserId: userId, action: "auth.totp.enrolled" });
-  return { ok: true, recoveryCodes };
+  const signedOut = opts.keepSessionId ? await revokeAllAccess(userId, { keepSessionId: opts.keepSessionId }) : await revokeAllAccess(userId);
+  await audit({ actorUserId: userId, action: "auth.totp.enrolled", meta: { otherSessionsSignedOut: signedOut } });
+  return { ok: true, recoveryCodes, signedOut };
 }
 
 export type DisableResult = { ok: true } | { ok: false; reason: "notOn" | "wrongCode" | "unavailable" | "rate"; retryAfterSeconds?: number };
@@ -258,9 +328,22 @@ export async function verifyTwoFactor(rawChallenge: string, code: string, opts: 
   if (!user || user.disabledAt || !user.totpEnabledAt || !user.totpSecretEnc) return { ok: false, reason: "dead" };
   if (!sealingAvailable()) return { ok: false, reason: "dead" };
 
+  // The account's own ceiling (QA-22): while it is reached no code is even
+  // tried, the right one included, so a lucky guess cannot land in the lock.
+  const locked = await peek(totpAccountBucket(user.id), TOTP_PER_ACCOUNT.limit);
+  if (!locked.allowed) return { ok: false, reason: "rate", retryAfterSeconds: locked.retryAfterSeconds };
+
   const check = await checkCode(user.id, code, user);
   if (!check.ok) {
     await audit({ actorUserId: user.id, action: "auth.totp.failed", meta: { via: row.via, attempt: row.attempts } });
+    const strike = await consume(totpAccountBucket(user.id), TOTP_PER_ACCOUNT.limit, TOTP_PER_ACCOUNT.windowMs);
+    if (!strike.allowed || strike.remaining === 0) {
+      // `remaining` 0 and allowed is the failure that reached the ceiling: it,
+      // and only it, locks and tells. A burst past it is answered the same way.
+      if (strike.allowed) await lockSecondStep(user.id, row.via);
+      const until = await peek(totpAccountBucket(user.id), TOTP_PER_ACCOUNT.limit);
+      return { ok: false, reason: "rate", retryAfterSeconds: until.allowed ? Math.ceil(TOTP_PER_ACCOUNT.windowMs / 1000) : until.retryAfterSeconds };
+    }
     const attemptsLeft = CHALLENGE_MAX_ATTEMPTS - row.attempts;
     return attemptsLeft > 0 ? { ok: false, reason: "wrong", attemptsLeft } : { ok: false, reason: "dead" };
   }
@@ -270,6 +353,34 @@ export async function verifyTwoFactor(rawChallenge: string, code: string, opts: 
   if (spent.count !== 1) return { ok: false, reason: "dead" };
   await audit({ actorUserId: user.id, action: "auth.totp.passed", meta: { via: row.via, recovery: check.recovery } });
   return { ok: true, userId: user.id, lastRole: user.lastRole, lastSchoolId: user.lastSchoolId, via: row.via, recovery: check.recovery };
+}
+
+/**
+ * The account's second step is locked (QA-22): every open challenge is spent,
+ * the audit log records it, and the holder is told by email in their own
+ * language — the guesser already has the password, so the message says to
+ * change it. A pupil's handle or an account with no address is told nothing.
+ */
+async function lockSecondStep(userId: string, via: string): Promise<void> {
+  await db.twoFactorChallenge.updateMany({ where: { userId, usedAt: null }, data: { usedAt: new Date() } });
+  await audit({ actorUserId: userId, action: "auth.totp.locked", meta: { via, failures: TOTP_PER_ACCOUNT.limit, minutes: TOTP_PER_ACCOUNT.windowMs / 60_000 } });
+  try {
+    const holder = await db.user.findUnique({ where: { id: userId }, select: { email: true } });
+    if (!holder?.email || !isDeliverableEmail(holder.email)) return;
+    const locale = await localeForUser(userId);
+    const t = translator(locale);
+    await sendAccountNotice({
+      to: holder.email,
+      purpose: "ACCOUNT_SECURITY",
+      subject: t("accountGuard.totpLockedSubject"),
+      lines: [t("accountGuard.totpLockedBody", { count: TOTP_PER_ACCOUNT.limit }), t("accountGuard.totpLockedAction")],
+      cta: { label: t("accountGuard.resetCta"), path: "/login" },
+      locale,
+    });
+  } catch (error) {
+    // The lock stands whether or not the mail went; the audit row is the record.
+    console.error("[two-factor] lock notice failed", error);
+  }
 }
 
 /* -------------------------------------------------------------------------- */

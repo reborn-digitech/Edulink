@@ -326,7 +326,9 @@ function arrayLines(rows: unknown[], path: string, out: Line[], opts: WalkOpts, 
   const ranked = objs
     .map((row, i) => ({ row, i, score: rowScore(row, opts.hints, opts.words) }))
     .sort((a, b) => b.score - a.score || (when ? at(b.row).localeCompare(at(a.row)) : 0) || a.i - b.i);
-  for (const { row } of ranked.slice(0, opts.rowsPerArray)) {
+  // A list the question names by its block (QA-51: "my attendance in each course") shows every row up to NAMED_ROWS.
+  const shown = opts.named?.has(path.split(".")[0]!) ? Math.max(opts.rowsPerArray, NAMED_ROWS) : opts.rowsPerArray;
+  for (const { row } of ranked.slice(0, shown)) {
     const link = rule?.link(row) ?? undefined;
     out.push({ text: `  - ${compactRow(row)}`, row: true, link });
     // A row with a list of its own the question is about (a report card's subjects): its lines too, one level down.
@@ -342,7 +344,38 @@ function arrayLines(rows: unknown[], path: string, out: Line[], opts: WalkOpts, 
   }
 }
 
-type WalkOpts = { door: string; hints: QuestionHints; words: string[]; rowsPerArray: number };
+type WalkOpts = { door: string; hints: QuestionHints; words: string[]; rowsPerArray: number; /** The door's top-level blocks the question names (namedBlocks). */ named?: ReadonlySet<string> };
+
+/** How many rows of a list the question names by its block are shown, whatever the other lists are cut to. */
+export const NAMED_ROWS = 10;
+
+/**
+ * Hindi and Marathi words for a door's block, beside the English stems the question's own words are matched by
+ * (rowWords): "मेरी उपस्थिति" names a door's `attendance` as "my attendance" does.
+ */
+const BLOCK_WORDS: Record<string, readonly string[]> = {
+  attendance: ["उपस्थिति", "उपस्थिती", "हाजिरी", "हाज़िरी", "हजेरी"],
+  marks: ["अंक", "गुण"],
+};
+
+/**
+ * THE BLOCKS OF A DOOR THE QUESTION NAMES (QA-51, QA campaign of 24 October 2026). A door that answers several things
+ * at once (a college student's academics: registration, today, the week, attendance, condonations, marks, mentor) was
+ * summed up in its own order and cut at the door's share of the data, so "what is my attendance in each course" never
+ * reached the attendance block and was answered "I am not sure". A top-level block whose key the question's words
+ * name (an English stem of four letters, or BLOCK_WORDS) is put first and its list shown whole (NAMED_ROWS). Pure.
+ */
+export function namedBlocks(data: unknown, question: string, words: string[]): string[] {
+  if (!isObj(data)) return [];
+  const q = question.toLowerCase();
+  const stems = words.filter((w) => /^[a-z]{4}$/.test(w));
+  return Object.keys(data).filter((k) => {
+    const v = data[k];
+    if (SKIP_KEY.test(k) || !(Array.isArray(v) || isObj(v))) return false;
+    const key = k.toLowerCase();
+    return stems.some((w) => key.startsWith(w)) || (BLOCK_WORDS[k] ?? []).some((w) => q.includes(w));
+  });
+}
 
 function walk(value: unknown, path: string, out: Line[], opts: WalkOpts, depth: number): void {
   if (Array.isArray(value)) return arrayLines(value, path || "rows", out, opts, depth);
@@ -380,10 +413,12 @@ export function summariseDoor(raw: unknown, opts: { door: string; hints: Questio
   const paiseFields = PAISE_FIELDS[opts.door];
   const data = paiseFields ? withPaiseNames(unwrapDoor(raw), paiseFields) : unwrapDoor(raw);
   const words = rowWords(opts.question);
+  const named = namedBlocks(data, opts.question, words);
+  const ordered = named.length && isObj(data) ? Object.fromEntries([...named.map((k) => [k, data[k]] as const), ...Object.entries(data).filter(([k]) => !named.includes(k))]) : data;
   let lines: Line[] = [];
   for (const rowsPerArray of [5, 3, 1, 0]) {
     lines = [];
-    walk(data, "", lines, { door: opts.door, hints: opts.hints, words, rowsPerArray }, 0);
+    walk(ordered, "", lines, { door: opts.door, hints: opts.hints, words, rowsPerArray, named: new Set(named) }, 0);
     if (lines.reduce((s, l) => s + l.text.length + 1, 0) <= max) break;
   }
   const links: RowLink[] = [];

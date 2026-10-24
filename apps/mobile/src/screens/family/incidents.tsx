@@ -10,7 +10,7 @@ import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { IncidentBadges, IncidentNotes, IncidentRecord } from "../shared/incidents";
 import { Refusal } from "../staff/shared";
-import { ChildLeftBanner, ChildSwitcher, childQuery, param } from "./shared";
+import { ChildLeftBanner, ChildSwitcher, childQuery, firstChild, param } from "./shared";
 
 const PATH = "/api/v1/family/incidents";
 
@@ -85,7 +85,7 @@ export function FamilyIncidents() {
   const pupils = children.data?.children ?? [];
   const first = d?.incidents[0];
   const selectedId = first?.studentMembershipId ?? childId;
-  const selected = pupils.find((c) => c.studentMembershipId === selectedId) ?? (childId ? undefined : pupils[0]);
+  const selected = pupils.find((c) => c.studentMembershipId === selectedId) ?? (childId ? undefined : firstChild(pupils));
   const name = d?.childName ?? selected?.name ?? "";
   return (
     <Screen title={name ? t("incidents.forChild", { name }) : t("incidents.title")} description={first?.className ?? undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>

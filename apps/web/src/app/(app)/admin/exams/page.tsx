@@ -216,7 +216,7 @@ export default async function AdminExamsPage({
                         <th className="py-2 pr-3 font-medium">{t("exams.colDay")}</th>
                         <th className="py-2 pr-3 font-medium">{t("exams.colTime")}</th>
                         <th className="py-2 pr-3 text-right font-medium">{t("exams.colMaxMarks")}</th>
-                        <th className="py-2" />
+                        <th className="py-2"><span className="sr-only">{t("qaInterface.colActions")}</span></th>
                       </tr>
                     </thead>
                     <tbody>

@@ -211,7 +211,8 @@ export async function updateClaim(ctx: ActiveContext, claimId: string, u: Update
  */
 export async function reconciliationSheet(ctx: ActiveContext, scheme: ScholarshipScheme, academicYear: string, t: Translate): Promise<{ filename: string; csv: string }> {
   const d = await desk(ctx, MONEY_READ);
-  const rows = await db.scholarshipClaim.findMany({ where: { schoolId: d.schoolId, scheme, academicYear }, orderBy: { createdAt: "asc" }, include: { student: { select: { user: { select: { name: true, preferredName: true } }, pupilRecord: { select: { prn: true, admissionCategory: true } } } } } });
+  // Ordered by creation and then id (QA-39), so two claims made in one millisecond keep their serials on every download.
+  const rows = await db.scholarshipClaim.findMany({ where: { schoolId: d.schoolId, scheme, academicYear }, orderBy: [{ createdAt: "asc" }, { id: "asc" }], include: { student: { select: { user: { select: { name: true, preferredName: true } }, pupilRecord: { select: { prn: true, admissionCategory: true } } } } } });
   const H = (k: string) => t(`collegeOffice.recon${k}` as TranslationKey);
   const headers = [H("Serial"), H("Name"), H("Prn"), H("Category"), H("PortalId"), H("Applied"), H("Expected"), H("Sanctioned"), H("SanctionedOn"), H("Disbursed"), H("DisbursedOn"), H("Reference"), H("Status"), H("Difference")];
   const out = rows.map((r, i) => ({

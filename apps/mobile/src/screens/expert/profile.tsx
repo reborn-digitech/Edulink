@@ -14,6 +14,7 @@ import { PickError, pickAndUpload, type Picked } from "@/lib/pick-file";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
+import { featuresOf } from "@/lib/nav";
 import { useTheme } from "@/lib/theme";
 import { formatInstant, Pill } from "../family/shared";
 import { Chips } from "../staff/shared";
@@ -43,6 +44,8 @@ export function ExpertProfile() {
   const router = useRouter();
   const session = useSession();
   const me = session.status === "signed-in" ? session.me.user : null;
+  // The calendar feed is of sessions (QA-61): while expert sessions are off its door is a 404, so it is not drawn.
+  const sessionsOn = featuresOf(session.status === "signed-in" ? session.me : null).includes("EXPERT_SESSIONS");
   const query = useQuery({
     queryKey: ["expert", "profile"],
     queryFn: async () => expertProfileSchema.parse(unwrap(await api().get("/api/v1/shared/expert/profile"))),
@@ -113,7 +116,7 @@ export function ExpertProfile() {
           </Card>
 
           <KycCard />
-          <CalendarCard />
+          {sessionsOn ? <CalendarCard /> : null}
 
           {/* The form owns its words from the first answer on: a pull-to-refresh must not wipe what is being typed. */}
           <ProfileForm profile={p} />

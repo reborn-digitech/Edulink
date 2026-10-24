@@ -93,6 +93,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
               { key: "subject", label: t("quizReview.subjectFacet"), value: pick.subject ?? "", as: "select", options: [all, ...pickSubjects.map((s) => ({ value: s, label: subjectLabel(s) }))] },
             ]}
             extra={keep(["board", "level", "state"])}
+            label={t("bankDesk.chaptersTitle")}
             labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
           />
           <BankChapterGroups data={chapters} base={base} t={t} />
@@ -115,6 +116,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
             { key: "state", label: t("quizReview.stateFacet"), value: query.state ?? "", options: [all, ...QUIZ_BANK_STATES.map((st) => ({ value: st, label: t(`quizReview.state${st}`) }))] },
           ]}
           extra={keep(["board", "grade", "subject", "topic"])}
+          label={t("bankDesk.walkTitle")}
           labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
         />
         {/* Keyed by the filters: a new filter is a fresh desk on the new queue's first item. */}

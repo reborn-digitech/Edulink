@@ -88,7 +88,7 @@ export async function setExpertAccessAction(profileId: string, input: { disabled
 export async function decideExpertApplicationAction(
   applicationId: string,
   input: { decision: "APPROVE" | "REFUSE"; reason?: ExpertApplicationRefusal; note?: string },
-): Promise<Result & { inviteSent?: boolean }> {
+): Promise<Result & { inviteSent?: boolean; already?: boolean }> {
   try {
     const session = await requireSuperuser();
     const parsed = operatorExpertApplicationDecideBodySchema.safeParse(input);
@@ -96,7 +96,7 @@ export async function decideExpertApplicationAction(
     const result = await decideExpertApplication(session, applicationId, parsed.data);
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/root/experts");
-    return { ok: true, inviteSent: result.inviteSent };
+    return { ok: true, inviteSent: result.inviteSent, already: result.already === true };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[root-experts-application]", error);

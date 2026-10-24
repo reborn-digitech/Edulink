@@ -11,6 +11,7 @@ import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { StaffRoster } from "./staff";
 import { Chips, formatDateKey, roleLabel } from "./shared";
+import { useCollege } from "@/lib/institution";
 
 type PeopleRole = "" | "TEACHER" | "STUDENT" | "ADMIN" | "PRINCIPAL";
 type Status = "ACTIVE" | "SUSPENDED" | "LEFT";
@@ -45,6 +46,8 @@ export function People() {
 
 function Directory() {
   const t = useT();
+  // A college admits students (QA-69).
+  const college = useCollege();
   const th = useTheme();
   const router = useRouter();
   const [typed, setTyped] = useState("");
@@ -71,7 +74,7 @@ function Directory() {
     <Screen title={t("nav.people")} description={d ? d.roleCounts.map((r) => t("people.countOfRole", { count: r.count, role: roleLabel(t, r.role, r.count !== 1) })).join(" · ") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
         <Button label={t("people.invitePeople")} icon={<Icon name="userPlus" size={20} color={th.accentFg} />} onPress={invite} style={{ flexGrow: 1 }} />
-        <Button label={t("intake.fromPeople")} variant="secondary" onPress={() => router.push("/(app)/intake" as never)} style={{ flexGrow: 1 }} />
+        <Button label={t(college ? "qaInterface.admitStudents" : "intake.fromPeople")} variant="secondary" onPress={() => router.push("/(app)/intake" as never)} style={{ flexGrow: 1 }} />
       </View>
       <Field label={t("people.searchLabel")} placeholder={t("people.searchPlaceholder")} value={typed} onChangeText={setTyped} onSubmitEditing={() => { setQ(typed.trim()); setPage(1); }} returnKeyType="search" autoCapitalize="none" />
       <Chips

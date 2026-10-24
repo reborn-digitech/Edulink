@@ -2,7 +2,10 @@
 
 Two suites, both against a running server (`BASE`, default `http://localhost:3000`),
 signed in as each role through sessions minted in the database by `global-setup.ts`
-on the ZZ fixture (`npm run zz:fixtures` first).
+on the ZZ fixture (`npm run zz:fixtures` first). `global-teardown.ts` removes those
+sessions and the harness's own exam ("ZZ E2E Unit Test", `harness-exam.ts`) after the
+run, so the fixture teacher's home is the same whether or not the suite has run (QA-73);
+`npm run zz:fixtures` removes one a stopped run left behind.
 
 - `axe.spec.ts` — every navigation entry per role, phone width, light and dark:
   zero serious or critical axe-core violations.

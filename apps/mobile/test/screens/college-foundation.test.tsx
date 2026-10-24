@@ -126,15 +126,16 @@ describe("inviting at a college (4 Oct 2026)", () => {
   });
 });
 
-// Last: the session it accepts stays with the provider, so nothing is mounted after it.
 describe("the recruiter's own sign-up (4 Oct 2026)", () => {
-  it("registers from the phone: the four fields, the server's refusal under its field, then a session", async () => {
+  // QA-25 (24 Oct 2026): a form in order is 202 {sent: true} and no session, the same whether or not the address had an account.
+  it("registers from the phone: the four fields, the server's refusal under its field, then the one sentence and the way to sign in", async () => {
     let tries = 0;
+    mockRouter.back.mockClear();
     const { calls } = await mountStaff(<RecruiterRegister />, "RECRUITER", {
       "POST /api/v1/auth/recruiter/register": () => {
         tries += 1;
-        if (tries === 1) return json({ error: "That email already has an account. Sign in with it instead.", code: "BAD_REQUEST", issues: { email: "That email already has an account. Sign in with it instead." } }, 422);
-        return json({ token: "tok-".padEnd(40, "x"), expiresAt: "2026-12-01T00:00:00.000Z", sessionId: "s9", context: { schoolId: null, role: "RECRUITER" } }, 201);
+        if (tries === 1) return json({ error: "Use a longer password.", code: "BAD_REQUEST", issues: { password: "Use a longer password." } }, 422);
+        return json({ sent: true }, 202);
       },
     });
     await fireEvent.changeText(await screen.findByLabelText("Your name"), "ZZ Nikhil Rao");
@@ -142,9 +143,12 @@ describe("the recruiter's own sign-up (4 Oct 2026)", () => {
     await fireEvent.changeText(screen.getByLabelText("Work email"), "zz.recruiter@zz.test");
     await fireEvent.changeText(screen.getByLabelText("Password"), "a long zz password");
     await fireEvent.press(screen.getByRole("button", { name: "Create my recruiter account" }));
-    expect(await screen.findByText("That email already has an account. Sign in with it instead.")).toBeTruthy();
+    expect(await screen.findByText("Use a longer password.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Create my recruiter account" }));
     await waitFor(() => expect(tries).toBe(2));
     expect(calls().find((c) => c.line === "POST /api/v1/auth/recruiter/register")?.body).toMatchObject({ name: "ZZ Nikhil Rao", companyName: "ZZ Zeta Analytics", email: "zz.recruiter@zz.test", device: "Shalaghar app" });
+    expect(await screen.findByText("We have sent a message to zz.recruiter@zz.test. Open it to carry on: a new account is confirmed from its link, and then you sign in with your password.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Go to sign in" }));
+    expect(mockRouter.back).toHaveBeenCalled();
   });
 });

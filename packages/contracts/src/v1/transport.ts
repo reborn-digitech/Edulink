@@ -323,7 +323,13 @@ export const tripPositionsSchema = z.object({
   lowBattery: z.boolean().optional(),
 });
 export type TripPositions = z.infer<typeof tripPositionsSchema>;
-export const tripPositionsResultSchema = z.object({ accepted: z.number().int(), duplicates: z.number().int() });
+export const tripPositionsResultSchema = z.object({
+  accepted: z.number().int(),
+  /** Positions at an instant already stored for the trip. */
+  duplicates: z.number().int(),
+  /** Positions outside the trip's window (before its start, or ahead of now), dropped and not stored (QA-47). */
+  rejected: z.number().int().nonnegative().default(0),
+});
 
 /** POST /api/v1/transport/trips/{tripId}/boardings — tick a pupil on or off the bus (or untick) on a LIVE trip. */
 export const tripBoardingSchema = z

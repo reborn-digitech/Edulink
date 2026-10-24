@@ -80,7 +80,7 @@ export default async function ApplicationPage({ params, searchParams }: { params
       <Card>
         <CardHeader icon={<FileTextIcon weight="duotone" className="size-5" />} title={t("collegeOffice.scrutinyTitle")} description={a.scrutinyComplete ? t("collegeOffice.scrutinyComplete") : t("collegeOffice.scrutinyIntro")} />
         <CardBody>
-          <Table head={[t("collegeOffice.colDocument"), t("collegeOffice.colFile"), t("collegeOffice.colStatus"), ""]} testId="scrutiny">
+          <Table head={[t("collegeOffice.colDocument"), t("collegeOffice.colFile"), t("collegeOffice.colStatus"), { srOnly: t("qaInterface.colActions") }]} testId="scrutiny">
             {a.documents.map((d) => (
               <tr key={d.doc} className="align-top">
                 <td className="py-2 pr-3">{t(DOC_KEY(d.doc))}</td>

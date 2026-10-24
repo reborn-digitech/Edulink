@@ -44,7 +44,7 @@ export default async function ContributionPage({ params }: { params: Promise<{ c
       ) : (
         <>
           <p className="text-sm text-fg-muted">{t("gigs.settledNote")}</p>
-          <QuestionRead en={c.en} hi={c.hi} mr={c.mr} answerIndex={c.answerIndex} labels={{ en: t("gigs.english"), hi: t("gigs.hindi"), mr: t("gigs.marathi"), correct: t("gigs.correctOption"), solution: t("appadmin.solutionLabel") }} />
+          <QuestionRead en={c.en} hi={c.hi} mr={c.mr} answerIndex={c.answerIndex} labels={{ en: t("gigs.english"), hi: t("gigs.hindi"), mr: t("gigs.marathi"), correct: t("gigs.correctOption"), solution: t("appadmin.solutionLabel") }} level={2} />
         </>
       )}
     </div>

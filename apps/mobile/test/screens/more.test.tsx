@@ -37,7 +37,9 @@ describe("the More sheet", () => {
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/invites");
     await fireEvent.press(screen.getByRole("button", { name: "Directory" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/directory-profile");
-    expect(screen.queryByText("Open on the web")).toBeNull();
+    // The office's More still opens two read-only pages on the web (QA-66: council notices, my appointment letters),
+    // and neither of these two.
+    expect(screen.getAllByText("Open on the web")).toHaveLength(2);
     expect(open).not.toHaveBeenCalled();
     open.mockRestore();
   });

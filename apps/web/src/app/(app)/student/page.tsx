@@ -166,7 +166,7 @@ export default async function StudentHome() {
           icon={<FireIcon weight="duotone" className="size-5" />}
           hint={
             streak === 0
-              ? t("student.streakStartHint")
+              ? t("qaInterface.streakStartNextDayHint")
               : streak >= 5
                 ? t("student.onARoll")
                 : streak === 1

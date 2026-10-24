@@ -8,7 +8,12 @@
  * Postgres to be worth anything (`npm run rls:verify`), so it must be importable
  * without dragging a SQLite client along with it.
  *
- * `db.ts` re-exports the bound version, which is what application code uses.
+ * Application code does not call this: `db.ts` sets the tenant itself, per
+ * query and inside `$tenantTransaction`, from the request's tenant context
+ * (tenant-context.ts), with the same `set_config(..., true)` inside one
+ * transaction. `withTenantOn` is used by `scripts/verify-rls-app.ts`, which is
+ * what `npm run rls:verify` runs, so vitest reaching none of it is expected.
+ * (QA-76: this said db.ts re-exported the bound version; it never did.)
  */
 
 /**

@@ -14,7 +14,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
  * the rules live once. The QR is drawn here, on the server, as one SVG path.
  */
 
-export type TotpStartState = { ok: true; secret: string; uri: string; account: string; qr: { d: string; viewBox: string } } | { ok: false; error: string };
+export type TotpStartState = { ok: true; secret: string; uri: string; account: string; qr: { d: string; viewBox: string } } | { ok: false; error: string; field?: "password" };
 export type TotpConfirmState = { ok: true; recoveryCodes: string[] } | { ok: false; error: string };
 export type TotpDisableState = { ok: true } | { ok: false; error: string };
 
@@ -25,6 +25,10 @@ const REASON_KEYS: Record<string, TranslationKey> = {
   nothingPending: "totp.nothingPending",
   notOn: "totp.notOn",
   wrongCode: "totp.wrongCode",
+  // QA-23 (24 Oct 2026): turning it on is proved by the password, or a fresh sign-in for an account with none.
+  passwordNeeded: "accountGuard.totpPasswordNeeded",
+  wrongPassword: "accountGuard.totpWrongPassword",
+  signInAgain: "accountGuard.totpSignInAgain",
 };
 
 async function sentence(reason: string, retryAfterSeconds?: number): Promise<string> {
@@ -36,16 +40,19 @@ async function sentence(reason: string, retryAfterSeconds?: number): Promise<str
   return t(REASON_KEYS[reason] ?? "account.didNotWork");
 }
 
-export async function startTotp(): Promise<TotpStartState> {
+export async function startTotp(password?: string): Promise<TotpStartState> {
   const session = await requireApiUser();
-  const result = await startTwoFactor(session.user.id);
-  if (!result.ok) return { ok: false, error: await sentence(result.reason) };
+  const result = await startTwoFactor(session.user.id, { password: typeof password === "string" ? password : null, sessionId: session.sessionId });
+  if (!result.ok) {
+    const error = await sentence(result.reason, result.reason === "rate" ? result.retryAfterSeconds : undefined);
+    return result.reason === "passwordNeeded" || result.reason === "wrongPassword" ? { ok: false, error, field: "password" } : { ok: false, error };
+  }
   return { ok: true, secret: result.secret, uri: result.uri, account: result.account, qr: qrSvgPath(encodeQr(result.uri)) };
 }
 
 export async function confirmTotp(code: string): Promise<TotpConfirmState> {
   const session = await requireApiUser();
-  const result = await confirmTwoFactor(session.user.id, code ?? "");
+  const result = await confirmTwoFactor(session.user.id, code ?? "", { keepSessionId: session.sessionId });
   if (!result.ok) return { ok: false, error: await sentence(result.reason, result.retryAfterSeconds) };
   revalidatePath("/account");
   return { ok: true, recoveryCodes: result.recoveryCodes };

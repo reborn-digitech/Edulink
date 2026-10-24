@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { ArrowsClockwiseIcon, CalendarPlusIcon, CopyIcon } from "@phosphor-icons/react";
 import { expertCalendarTokenSchema } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
@@ -13,14 +13,22 @@ import { useT } from "@/lib/i18n";
  * made on first press and rotated by the same door. Shown absolute, because
  * what the person pastes into Google Calendar or Apple Calendar must stand on
  * its own; the server returns it relative and the page knows its own origin.
+ *
+ * The origin is read after hydration (QA-60, QA campaign of 24 October 2026): the server drew the relative address
+ * and the client the absolute one in the same render, so React threw the tree away on every load. The first render
+ * on both sides is the server's; the address becomes absolute on the client's next.
  */
+const noSubscribe = () => () => {};
+const clientOrigin = () => window.location.origin;
+const serverOrigin = () => null;
 export function CalendarCard({ initialUrl }: { initialUrl: string | null }) {
   const t = useT();
   const { toast } = useToast();
   const [url, setUrl] = useState(initialUrl);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const absolute = url ? (typeof window === "undefined" ? url : new URL(url, window.location.origin).toString()) : null;
+  const origin = useSyncExternalStore(noSubscribe, clientOrigin, serverOrigin);
+  const absolute = url ? (origin ? new URL(url, origin).toString() : url) : null;
 
   async function rotate() {
     setBusy(true);

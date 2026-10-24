@@ -366,12 +366,20 @@ export async function completeSso(
   const tokens = (await tokenResponse.json().catch(() => null)) as { id_token?: string } | null;
   if (!tokens?.id_token) return { ok: false, reason: "exchange" };
 
-  const claims = await verifyIdToken(tokens.id_token, {
-    jwksUrl: cfg.jwksUrl,
-    issuer: cfg.issuer,
-    audience: cfg.clientId,
-    nonce: saved.n,
-  });
+  // The provider's keys endpoint being down (or answering garbage) is a failed sign-in like any other, not a
+  // 500: the person goes back to /login with "failed" and can try again or use the password (QA-28).
+  let claims: Awaited<ReturnType<typeof verifyIdToken>>;
+  try {
+    claims = await verifyIdToken(tokens.id_token, {
+      jwksUrl: cfg.jwksUrl,
+      issuer: cfg.issuer,
+      audience: cfg.clientId,
+      nonce: saved.n,
+    });
+  } catch (error) {
+    console.error(`[sso] ${id}: the ID token could not be verified`, error instanceof Error ? error.message : error);
+    return { ok: false, reason: "token" };
+  }
   if (!claims || typeof claims.sub !== "string" || !claims.sub) {
     return { ok: false, reason: "token" };
   }

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { localeSchema } from "../locale";
 import { roleSchema } from "./auth";
+import { clockHHMM } from "./calendar-keys";
 
 /**
  * account: request and response shapes for the phone's remaining screens —
@@ -10,7 +11,8 @@ import { roleSchema } from "./auth";
  */
 
 const iso = z.string().datetime();
-const hhmm = z.string().regex(/^\d{1,2}:\d{2}$/, "refusal.useHHMM");
+/** A clock time that exists: "25:99" was saved as quiet hours that never begin (QA-55). */
+const hhmm = clockHHMM;
 
 /* -------------------------------------------------------------------------- */
 /* The account page                                                            */
@@ -46,7 +48,9 @@ export type AccountOverview = z.infer<typeof accountOverviewSchema>;
 
 /**
  * POST /api/v1/account/prefs — the notification section, and appearance if
- * the caller shows it. What is left out is left as it was.
+ * the caller shows it. `channels` and `quietHours` are required every time
+ * (quietHours null turns them off); the appearance keys are optional, and one
+ * left out is left as it was (QA-56: the summary said every key was).
  */
 export const accountPrefsSchema = z.object({
   channels: z.object({ push: z.boolean(), email: z.boolean(), sms: z.boolean().optional(), whatsapp: z.boolean().optional() }),

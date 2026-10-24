@@ -104,7 +104,8 @@ export function AcceptForm({
       toast({
         tone: "ok",
         title: hasAccount ? t("invite.addedToAccount") : t("invite.welcomeAboard"),
-        description: hasAccount ? t("invite.signInAsAlways") : undefined,
+        // Two-step sign-in on: the code from the app is asked next (QA-21).
+        description: result.twoFactor ? t("totp.stepBody") : hasAccount ? t("invite.signInAsAlways") : undefined,
       });
       router.push(result.redirectTo ?? "/");
       router.refresh();

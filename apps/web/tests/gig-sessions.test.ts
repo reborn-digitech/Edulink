@@ -149,6 +149,36 @@ describe("sessions and workshops", () => {
     await cancelSlot(teacher(), byTeacher, "ZZ test tidy");
   });
 
+  it("a test-fixture expert's time hidden from a real school's pupil is not bookable by its id either; a fixture school's pupil sees and books it (QA-50)", async () => {
+    await db.user.update({ where: { id: id.expert! }, data: { isTestFixture: true } });
+    try {
+      const slotId = await offer(expert(), "WORKSHOP", 320);
+      expect((await mine(p1(), "p1")).open.map((s) => s.id)).not.toContain(slotId);
+      expect((await mine(g1(), "p1")).open.map((s) => s.id)).not.toContain(slotId);
+      await expect(bookSeat(p1(), { slotId, purpose: "ZZ A workshop I was never shown" })).rejects.toMatchObject({ code: "NOT_FOUND" });
+      await expect(bookSeat(g1(), { slotId, studentMembershipId: member.p1, purpose: "ZZ A workshop I was never shown" })).rejects.toMatchObject({ code: "NOT_FOUND" });
+      expect(await db.gigBooking.count({ where: { slotId } })).toBe(0);
+      // A pupil of a fixture school of their own (made here, so no other test's allowance or notices move).
+      const fixtureSchool = await db.school.create({ data: { name: `ZZ Session Fixture ${STAMP}`, slug: `zz-sess-f-${STAMP}`, code: `ZZSf${String(STAMP).slice(-6)}`, contactEmail: `zz-sess-f-${STAMP}@test.invalid`, isTestFixture: true }, select: { id: true } });
+      try {
+        await db.academicYear.create({ data: { schoolId: fixtureSchool.id, name: "2026–27", startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: true } });
+        id.f = (await db.user.create({ data: { name: `ZZ f ${STAMP}`, email: `zz-sess-f-${STAMP}@test.invalid`, isMinor: false }, select: { id: true } })).id;
+        member.f = (await db.membership.create({ data: { userId: id.f, schoolId: fixtureSchool.id, role: "STUDENT", status: "ACTIVE" }, select: { id: true } })).id;
+        const f = ctx("f", "STUDENT", fixtureSchool.id);
+        expect((await mine(f, "f")).open.map((s) => s.id)).toContain(slotId);
+        expect(await bookSeat(f, { slotId, purpose: "ZZ A fixture workshop for f" })).toMatchObject({ ok: true, status: "CONFIRMED" });
+        await cancelSlot(expert(), slotId, "ZZ test tidy");
+      } finally {
+        await db.notification.deleteMany({ where: { schoolId: fixtureSchool.id } });
+        await db.auditLog.deleteMany({ where: { schoolId: fixtureSchool.id } }).catch(() => {});
+        await db.gigBooking.deleteMany({ where: { schoolId: fixtureSchool.id } });
+        await db.school.delete({ where: { id: fixtureSchool.id } });
+      }
+    } finally {
+      await db.user.update({ where: { id: id.expert! }, data: { isTestFixture: false } });
+    }
+  });
+
   it("a pupil's own ask waits for a guardian, holds the seat, and shows the link only once it is confirmed", async () => {
     const slotId = await offer(expert(), "ONE_TO_ONE", 400);
     expect(await bookSeat(p1(), { slotId, purpose: "short" })).toMatchObject({ ok: false, errorKey: "gigs.needPurpose" });

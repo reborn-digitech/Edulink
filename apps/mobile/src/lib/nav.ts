@@ -171,10 +171,19 @@ const OWN_STAFF_ENTRIES: MenuItem[] = [
   { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
 ];
 
+/**
+ * Read-only pages the web has and the phone opens there, signed in (QA-66, QA campaign of 24 October 2026): my
+ * appointment letters, and the student council's notices. A letter is a PDF the web already serves; the parity table
+ * (test/lib/parity.test.ts) records them as web pages on purpose.
+ */
+const MY_LETTERS: MenuItem = { labelKey: "appointmentLetters.mineTitle", icon: "receipt", group: "running", web: "/account/letters" };
+const COUNCIL_NOTICES: MenuItem = { labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school", web: "/bulletin/council" };
+
 const COLLEGE_STAFF_MENU: MenuItem[] = [
   { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
   ...OWN_STAFF_ENTRIES,
+  MY_LETTERS,
 ];
 
 export const MENU_GROUP_KEY: Record<MenuGroup, TranslationKey> = { daily: "nav.groupDaily", school: "nav.groupSchool", running: "nav.groupRunning" };
@@ -213,6 +222,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
     // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
     { labelKey: "inventory.myTitle", icon: "archive", group: "running", screen: "/(app)/my-items", module: "INVENTORY" },
+    MY_LETTERS,
   ],
   STUDENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -256,6 +266,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "softSkills.studentTitle", icon: "graduationCap", group: "school", screen: "/(app)/soft-skills", module: "PLACEMENT" },
     // A health-sciences or pharmacy student's clinical logbook (R-56, the clinical half; 10 Oct 2026); no guardian screen.
     { labelKey: "duties.clinical.myTitle", icon: "firstAid", group: "daily", screen: "/(app)/clinical-logbook", module: "ACADEMICS", streams: CLINICAL_STREAMS },
+    COUNCIL_NOTICES,
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -364,6 +375,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "iqac.navCommittees", icon: "users", group: "running", web: "/admin/committees", module: "IQAC" },
     { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", screen: "/(app)/faculty-records", module: "IQAC" },
     { labelKey: "streamRecords.title", icon: "clipboard", group: "running", screen: "/(app)/stream-records", module: "ACADEMICS" },
+    COUNCIL_NOTICES,
+    MY_LETTERS,
   ],
   PRINCIPAL: [
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
@@ -426,6 +439,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "iqac.navCommittees", icon: "users", group: "running", web: "/admin/committees", module: "IQAC" },
     { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", screen: "/(app)/faculty-records", module: "IQAC" },
     { labelKey: "streamRecords.title", icon: "clipboard", group: "running", screen: "/(app)/stream-records", module: "ACADEMICS" },
+    COUNCIL_NOTICES,
+    MY_LETTERS,
   ],
   EXPERT: [
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },

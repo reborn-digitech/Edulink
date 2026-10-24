@@ -932,8 +932,17 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   // membership, the record and the re-dated instalments (the boy joined on 15 June; the record said 6 October). The
   // office may now say the day: not before the cycle's year began, not after today on the school's clock; today otherwise.
   const today = todayKey(timezone);
-  const admittedOn = input.admittedOn ?? today;
-  if (!isDateKey(admittedOn) || admittedOn > today || admittedOn < a.cycle.academicYear.startDate.toISOString().slice(0, 10)) throw new AccessError("familyGaps.refuseAdmittedOn");
+  const yearStart = a.cycle.academicYear.startDate.toISOString().slice(0, 10);
+  // AHEAD OF THE YEAR (QA-43, the owner's decision of 24 October 2026): a seat in a cycle whose year has not begun may be
+  // given now, as schools do in the spring. The admission is dated the year's first day (nothing else; a date the year
+  // has not reached cannot be a day the pupil joined), and no class is given yet: the school's classes run this year, so
+  // a pupil placed in one now would sit in this year's registers and be promoted at this year's close.
+  const ahead = yearStart > today;
+  const admittedOn = input.admittedOn ?? (ahead ? yearStart : today);
+  if (ahead) {
+    if (admittedOn !== yearStart) throw new AccessError("admissions.refuseAheadDate", "FORBIDDEN", { date: yearStart });
+    if (klass) throw new AccessError("admissions.refuseAheadClass");
+  } else if (!isDateKey(admittedOn) || admittedOn > today || admittedOn < yearStart) throw new AccessError("familyGaps.refuseAdmittedOn");
   const todayIso = new Date(`${admittedOn}T00:00:00Z`);
 
   // A PEN with the date of birth names an account already on Shalaghar: the seat

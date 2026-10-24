@@ -163,13 +163,13 @@ describe("the tax invoice", () => {
     // Still blank: nothing can be issued, and the read says there is no invoice yet.
     await expect(passInvoiceView(teacher(), orderId)).rejects.toMatchObject({ code: "NOT_FOUND", key: "passes.noSuchInvoice" });
     setPassSaleForTests({ company: COMPANY, prices: PRICES });
-    // KNOWN GAP (unit.md U-1): reads arriving together race — each checks `invoiceId` before the series lock, so all
-    // but one fail on the unique passOrderId and that reader gets an error (a 500 at the door). The invoice itself is
-    // still issued once with no number lost, which is what this holds; the refused reads are counted, not required.
+    // QA-36 (unit.md U-1): reads arriving together used to race (each checked `invoiceId` before the series lock, so
+    // all but one failed on the unique passOrderId, a 500 at the door). The read now takes the order's row first:
+    // every reader answers the one invoice.
     const settled = await Promise.allSettled([passInvoiceView(teacher(), orderId), passInvoiceView(teacher(), orderId), passInvoiceView(operator(), orderId)]);
+    expect(settled.map((s) => s.status)).toEqual(["fulfilled", "fulfilled", "fulfilled"]);
     const views = settled.flatMap((s) => (s.status === "fulfilled" ? [s.value] : []));
-    for (const s of settled) if (s.status === "rejected") expect(String((s.reason as Error).message)).toMatch(/Unique constraint failed on the fields: \(`passOrderId`\)/);
-    expect(views.length).toBeGreaterThanOrEqual(1);
+    expect(views).toHaveLength(3);
     expect(new Set(views.map((v) => v.number)).size).toBe(1);
     // A read after the race always answers, with the same number.
     expect((await passInvoiceView(teacher(), orderId)).number).toBe(views[0]!.number);

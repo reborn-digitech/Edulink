@@ -93,14 +93,21 @@ export async function familyChildren(parentUserId: string): Promise<FamilyChild[
 /**
  * The child a page is about: the one asked for when it is this guardian's
  * (whatever it lets them see — the page then says "not shared"), else the
- * first the guardian may read, else the first there is. Null with no child.
+ * first the guardian may read who is still enrolled, else the first the
+ * guardian may read, else the first there is. Null with no child.
+ *
+ * Still enrolled first (QA-52, QA campaign of 24 October 2026): a pupil who
+ * moved schools is two guardianships, the first claimed at the school they
+ * left, so every sign-in opened on "… left Sunrise Public School" while the
+ * child's current school was a chip away. The departed one stays in the
+ * switcher; fees-family.ts and agenda.ts already chose this way.
  */
-export function pickChild<T extends { studentMembershipId: string; readable: boolean }>(children: readonly T[], requestedId?: string | null): T | null {
+export function pickChild<T extends { studentMembershipId: string; readable: boolean; leftAt?: Date | string | null }>(children: readonly T[], requestedId?: string | null): T | null {
   if (requestedId) {
     const asked = children.find((c) => c.studentMembershipId === requestedId);
     if (asked) return asked;
   }
-  return children.find((c) => c.readable) ?? children[0] ?? null;
+  return children.find((c) => c.readable && !c.leftAt) ?? children.find((c) => c.readable) ?? children[0] ?? null;
 }
 
 export type ChildLink = Awaited<ReturnType<typeof assertGuardianAccess>>;

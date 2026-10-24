@@ -61,7 +61,7 @@ export default async function HealthCardPrintPage({ params }: { params: Promise<
   ];
 
   return (
-    <div className="min-h-safe bg-bg px-4 py-6 print:bg-white print:p-0">
+    <main id="main" className="min-h-safe bg-bg px-4 py-6 print:bg-white print:p-0">
       <div className="mx-auto mb-4 flex max-w-[210mm] items-center justify-between gap-3 print:hidden">
         <Link href={backHref} className="text-sm font-medium text-fg-muted underline underline-offset-2 hover:text-fg">
           ← {t("health.openCard")}
@@ -134,6 +134,6 @@ export default async function HealthCardPrintPage({ params }: { params: Promise<
           </p>
         )}
       </article>
-    </div>
+    </main>
   );
 }

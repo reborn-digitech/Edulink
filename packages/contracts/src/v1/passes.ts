@@ -141,4 +141,9 @@ export const operatorPassOrdersSchema = z.object({
 export type OperatorPassOrders = z.infer<typeof operatorPassOrdersSchema>;
 
 /** POST /api/v1/operator/pass-orders/{id}/refund — the whole total back, the pass's entitlements revoked. Audited. */
-export const operatorPassRefundSchema = z.object({ order: operatorPassOrderSchema, revoked: z.number().int().nonnegative() });
+export const operatorPassRefundSchema = z.object({
+  order: operatorPassOrderSchema,
+  revoked: z.number().int().nonnegative(),
+  /** The pass was refunded already (a second press): answered as it stands, nothing refunded or revoked again (QA-37). */
+  already: z.boolean().optional(),
+});

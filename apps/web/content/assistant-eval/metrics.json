@@ -2194,6 +2194,36 @@
    }
   },
   {
+   "id": "cs-11",
+   "group": "COLLEGE_STUDENT",
+   "role": "STUDENT",
+   "tenant": "saraswati-college",
+   "email": "sac.student01@demo.relay.test",
+   "language": "en",
+   "question": "What is my attendance percentage in each course this term?",
+   "truth": {
+    "door": "/api/v1/academics/mine",
+    "path": "attendance[].percent",
+    "first": true
+   },
+   "note": "QA-51 (QA campaign of 24 October 2026): answered \"I am not sure\" when the door's summary was cut before its attendance block; the block the question names now comes first"
+  },
+  {
+   "id": "cs-12",
+   "group": "COLLEGE_STUDENT",
+   "role": "STUDENT",
+   "tenant": "saraswati-college",
+   "email": "sac.student01@demo.relay.test",
+   "language": "hi",
+   "question": "इस सत्र में हर विषय में मेरी उपस्थिति कितने प्रतिशत है?",
+   "truth": {
+    "door": "/api/v1/academics/mine",
+    "path": "attendance[].percent",
+    "first": true
+   },
+   "note": "QA-51 in Hindi: the block is named by उपस्थिति"
+  },
+  {
    "id": "cp-01",
    "group": "COLLEGE_PARENT",
    "role": "PARENT",

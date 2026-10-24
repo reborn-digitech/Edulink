@@ -2,6 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { forUser } from "./tenant-context";
 import { ROLE_HOME, type Role } from "./constants";
+import { homeFor } from "./role-home";
 
 /**
  * Picks the role/school to open a session with.
@@ -29,7 +30,10 @@ export async function resolveContext(
   // link, SSO, the phone's sign-in) on purpose: a call site that has to remember
   // is a call site that eventually forgets, and forgetting here means everyone
   // lands on "Join your school" holding a perfectly good password.
-  return forUser(userId, () => resolveContextForUser(userId, preferredRole, preferredSchoolId));
+  const context = await forUser(userId, () => resolveContextForUser(userId, preferredRole, preferredSchoolId));
+  // A college's head lands on the college's dashboard, not on the school's that would send them on (QA-57).
+  if (context.role && context.redirectTo === ROLE_HOME[context.role]) return { ...context, redirectTo: await homeFor(context.role, context.schoolId) };
+  return context;
 }
 
 async function resolveContextForUser(

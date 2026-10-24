@@ -39,80 +39,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               {t("root.serverBadge")}
             </span>
           </Link>
-          <div className="flex flex-wrap items-center gap-1">
-            {/* The one other place in here. A trail written and never read is
-                not a trail, and until this link existed there was no page at
-                all that could show an operator what they had done. */}
-            {/*
-              The marketplace queue. An expert profile is invisible to every
-              school until somebody here publishes it, and until this page
-              existed nothing in the application could — only the seed wrote
-              that column, so a finished feature stood behind a door with no
-              handle.
-            */}
-            {/* The colleges beside the schools (4 Oct 2026): their health, the regulators' calendar, the recruiters. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/colleges">{t("operatorCollege.nav")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/experts">{t("root.experts")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/content-team">{t("root.contentTeam")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/gigs">{t("gigs.operatorNav")}</Link>
-            </Button>
-            {/* review-queue (10 Oct 2026): the operator stamps the generated bank too. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/quiz-review">{t("quizReview.nav")}</Link>
-            </Button>
-            {/* Vidura pass 2 (17 Oct 2026): the guide's Hindi and Marathi renderings, for the operator to approve, correct or reject. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/vidura-review">{t("viduraReview.nav")}</Link>
-            </Button>
-            {/* Vidura pass 3 (18 Oct 2026): standard answers, the unanswered report and the evaluation runs. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/vidura-answers">{t("viduraOps.nav")}</Link>
-            </Button>
-            {/* competitions-crawler (12 Oct 2026): the platform's competitions, those suggested from the web, and the crawler's sources. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/competitions">{t("appadmin.competitions")}</Link>
-            </Button>
-            {/* The global feed's take-down (4 Oct 2026): the operator is the actor above a school, and its desk is the moderation page. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/appadmin/moderation">{t("root.globalFeedModeration")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/audit">{t("root.serverLog")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/jobs">{t("root.jobs")}</Link>
-            </Button>
-            {/* website-builder B (15 Oct 2026): every published school website and school domain, read only. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/sites">{t("siteDomains.opNav")}</Link>
-            </Button>
-            {/* end website-builder B */}
-            {/* feature-switches (15 Oct 2026): the platform's features, each off until the operator switches it on. */}
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/features">{t("platformFeatures.nav")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/plans">{t("root.plans")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/partners">{t("root.partners")}</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/root/metrics">{t("root.metrics")}</Link>
-            </Button>
-            <form action="/api/auth/logout" method="post">
-              <Button type="submit" variant="ghost" size="sm">
-                {t("shell.signOut")}
-              </Button>
-            </form>
-          </div>
+          <nav aria-label={t("shell.mainNav")} className="hidden flex-wrap items-center gap-1 md:flex">
+            <OperatorLinks />
+          </nav>
+          <details className="w-full md:hidden">
+            <summary className="tap inline-flex cursor-pointer items-center rounded-[var(--radius-md)] px-3 text-sm font-medium text-fg hover:bg-surface-muted">{t("qaInterface.operatorMenu")}</summary>
+            <nav aria-label={t("shell.mainNav")} className="mt-1 grid grid-cols-2 gap-1 pb-2">
+              <OperatorLinks />
+            </nav>
+          </details>
         </div>
       </header>
 
@@ -120,5 +55,89 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {children}
       </main>
     </div>
+  );
+}
+
+/**
+ * The operator's places (QA-65, QA campaign of 24 October 2026): at a desk's width a row of links under the wordmark;
+ * at a phone's, about twenty links wrapped across the top of every page, so below `md` they sit behind a Menu button.
+ */
+async function OperatorLinks() {
+  const t = await getT();
+  return (
+    <>
+            {/* The one other place in here. A trail written and never read is
+          not a trail, and until this link existed there was no page at
+          all that could show an operator what they had done. */}
+      {/*
+        The marketplace queue. An expert profile is invisible to every
+        school until somebody here publishes it, and until this page
+        existed nothing in the application could — only the seed wrote
+        that column, so a finished feature stood behind a door with no
+        handle.
+      */}
+      {/* The colleges beside the schools (4 Oct 2026): their health, the regulators' calendar, the recruiters. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/colleges">{t("operatorCollege.nav")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/experts">{t("root.experts")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/content-team">{t("root.contentTeam")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/gigs">{t("gigs.operatorNav")}</Link>
+      </Button>
+      {/* review-queue (10 Oct 2026): the operator stamps the generated bank too. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/quiz-review">{t("quizReview.nav")}</Link>
+      </Button>
+      {/* Vidura pass 2 (17 Oct 2026): the guide's Hindi and Marathi renderings, for the operator to approve, correct or reject. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/vidura-review">{t("viduraReview.nav")}</Link>
+      </Button>
+      {/* Vidura pass 3 (18 Oct 2026): standard answers, the unanswered report and the evaluation runs. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/vidura-answers">{t("viduraOps.nav")}</Link>
+      </Button>
+      {/* competitions-crawler (12 Oct 2026): the platform's competitions, those suggested from the web, and the crawler's sources. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/competitions">{t("appadmin.competitions")}</Link>
+      </Button>
+      {/* The global feed's take-down (4 Oct 2026): the operator is the actor above a school, and its desk is the moderation page. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/appadmin/moderation">{t("root.globalFeedModeration")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/audit">{t("root.serverLog")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/jobs">{t("root.jobs")}</Link>
+      </Button>
+      {/* website-builder B (15 Oct 2026): every published school website and school domain, read only. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/sites">{t("siteDomains.opNav")}</Link>
+      </Button>
+      {/* end website-builder B */}
+      {/* feature-switches (15 Oct 2026): the platform's features, each off until the operator switches it on. */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/features">{t("platformFeatures.nav")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/plans">{t("root.plans")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/partners">{t("root.partners")}</Link>
+      </Button>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/metrics">{t("root.metrics")}</Link>
+      </Button>
+      <form action="/api/auth/logout" method="post">
+        <Button type="submit" variant="ghost" size="sm">
+          {t("shell.signOut")}
+        </Button>
+      </form>
+    </>
   );
 }

@@ -10,6 +10,7 @@ import { normaliseLocale } from "@edulink/i18n";
 import { translator, type TranslationKey } from "./i18n/dictionary";
 import { readMessageTemplateIds, readTwilioConfig, readWhatsappFrom, readWhatsappTransport } from "./env";
 import { formatPhone } from "./phone";
+import { messageCapOf } from "./message-cap";
 import { todayKey, zonedStartOfDay } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { notify } from "./notify";
@@ -83,8 +84,8 @@ function eventsFrom(json: string): Record<MessageEvent, boolean> {
 
 export async function messagingSettings(schoolId: string): Promise<MessagingSettings> {
   const s = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { msgSmsEnabled: true, msgWhatsappEnabled: true, msgMonthlyCap: true, msgEventsJson: true, textOfficePhones: true, plan: { select: { messageCap: true } } } });
-  // The cap is the PLAN'S when the school is on a plan that states one (src/lib/plans.ts), else the school's own dial.
-  return { smsEnabled: s.msgSmsEnabled, whatsappEnabled: s.msgWhatsappEnabled, monthlyCap: s.plan?.messageCap ?? s.msgMonthlyCap, events: eventsFrom(s.msgEventsJson), textOfficePhones: s.textOfficePhones };
+  // The cap is the PLAN'S when the school is on a plan that states one, else the school's own dial (message-cap.ts).
+  return { smsEnabled: s.msgSmsEnabled, whatsappEnabled: s.msgWhatsappEnabled, monthlyCap: messageCapOf(s), events: eventsFrom(s.msgEventsJson), textOfficePhones: s.textOfficePhones };
 }
 
 function office(ctx: ActiveContext): { schoolId: string; userId: string } {

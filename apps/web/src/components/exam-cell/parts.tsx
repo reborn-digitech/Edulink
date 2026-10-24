@@ -134,7 +134,7 @@ export function TermResultCard({ result, t, title, actions, note }: { result: Te
               <th className="px-3 py-2 font-medium">{t("examCell.colTotal")}</th>
               <th className="px-3 py-2 font-medium">{t("examCell.colGrade")}</th>
               <th className="px-3 py-2 font-medium">{t("examCell.colResult")}</th>
-              {actions ? <th className="px-3 py-2" /> : null}
+              {actions ? <th className="px-3 py-2"><span className="sr-only">{t("qaInterface.colActions")}</span></th> : null}
             </tr>
           </thead>
           <tbody className="divide-y divide-border">

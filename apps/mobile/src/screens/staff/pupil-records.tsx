@@ -11,6 +11,7 @@ import { useTheme } from "@/lib/theme";
 import { Pill, Tabs } from "../family/shared";
 import { fieldList, useOfficeRecordChanges } from "../shared/pupil-record";
 import { formatDateKey } from "./shared";
+import { useCollege } from "@/lib/institution";
 
 const PATH = "/api/v1/office/pupil-records";
 type Filter = "all" | "missing";
@@ -30,6 +31,8 @@ const PEN_RE = /^\d{11}$/;
  */
 export function PupilRecords() {
   const t = useT();
+  // A college admits students (QA-69).
+  const college = useCollege();
   const th = useTheme();
   const toast = useToast();
   const router = useRouter();
@@ -125,7 +128,7 @@ export function PupilRecords() {
           />
           {d.incomplete > 0 ? <Button label={t("pupilRecord.askFamilies")} variant="secondary" busy={ask.isPending} onPress={() => ask.mutate(undefined)} /> : null}
           {d.total === 0 ? (
-            <Empty icon="users" title={t("pupilRecord.noPupils")} body={t("pupilRecord.noPupilsBody")} action={<Button label={t("action.admitPupils")} variant="secondary" onPress={() => router.push("/(app)/intake" as never)} />} />
+            <Empty icon="users" title={t("pupilRecord.noPupils")} body={t("pupilRecord.noPupilsBody")} action={<Button label={t(college ? "qaInterface.admitStudents" : "action.admitPupils")} variant="secondary" onPress={() => router.push("/(app)/intake" as never)} />} />
           ) : d.rows.length === 0 ? (
             <Empty icon="checkCircle" title={t("pupilRecord.complete")} body={t("pupilRecord.officeIntro")} action={<Button label={t("pupilRecord.allPupils")} variant="secondary" onPress={() => setFilter("all")} />} />
           ) : (

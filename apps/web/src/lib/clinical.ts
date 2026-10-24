@@ -72,13 +72,43 @@ async function todayAt(schoolId: string): Promise<string> {
 }
 
 /**
+ * A NAME, BY THE WORDS THAT INTRODUCE ONE (QA-49, 24 Oct 2026). "Patient Ramesh Gaikwad, bed 4: dressing changed"
+ * passed, though the refusal promises "what looks like a name". A name the app has never seen cannot be told from a
+ * word, so the check reads the words a note names a patient with: a patient word ("patient", "pt", "name") or an
+ * honorific (Mr, Mrs, Ms, Miss, Shri, Smt, Kumari, Master, "Baby of") followed by a capitalised word that is not a
+ * clinical word ("Patient education given" stays), and the Devanagari honorifics (श्री, श्रीमती, सौ., कु.) before a
+ * word. A capitalised name with no such word before it ("Ramesh Gaikwad dressed") is still not found: the honest
+ * limit, stated in docs/qa's register; the supervisor's sign-off is the second line.
+ */
+const NAME_CUE = /(?<![\p{L}\p{N}])(patient's|patient|pt|named|name|mrs|mr|ms|miss|shree|shri|sri|smt|kumari|kum|master|baby\s+of)(?![\p{L}\p{N}])\.?\s*[:\-–]?\s*(\p{L}+)/giu;
+/** Capitalised words that follow "Patient" in a clinical note without naming anyone. */
+const NOT_A_PATIENT_NAME = new Set(["education", "history", "counselling", "counseling", "care", "safety", "positioning", "assessment", "admission", "admitted", "discharge", "discharged", "transfer", "transferred", "monitoring", "teaching", "records", "record", "handover", "file", "chart", "satisfaction", "examination", "complained", "complains", "seen", "reviewed", "shifted", "stable", "afebrile", "conscious", "ambulatory"]);
+const DEVANAGARI_HONORIFIC = /(?<![\p{L}\p{M}])(?:(?:श्रीमती|श्री)\s+|(?:सौ|कु)\.\s*)[\u0900-\u097F]{2,}/u;
+/** A hospital's number for the patient: a UHID or MRN with digits, or an IP, IPD, OPD, registration, case or file number written as one. Bed and ward numbers stay: a bed names nobody. */
+const HOSPITAL_NUMBER = /(?<![\p{L}\p{N}])(?:uhid|mrn)\s*(?:no\.?|number|#)?\s*[:\-.]?\s*\d/iu;
+const NUMBERED_RECORD = /(?<![\p{L}\p{N}])(?:ipd?|opd|reg|registration|hospital|case|file)\.?\s*(?:no\.?|number|#)\s*[:\-.]?\s*\d/iu;
+
+function namesSomeone(note: string): boolean {
+  for (const m of note.matchAll(NAME_CUE)) {
+    const [cue, word] = [m[1]!, m[2]!];
+    // In capitals the short cues are clinical abbreviations: PT INR (prothrombin time), MR (mitral regurgitation), MS.
+    if (cue.length === 2 && cue === cue.toUpperCase()) continue;
+    if (/^\p{Lu}/u.test(word) && !NOT_A_PATIENT_NAME.has(word.toLowerCase())) return true;
+  }
+  return DEVANAGARI_HONORIFIC.test(note);
+}
+
+/**
  * A logbook note must name no patient: the assistant's stripping finds e-mails,
  * phone numbers, links, platform ids and codes with digits and capitals (an
- * MRN "MRN/2026/0041"); a bare run of six digits or more is a hospital number.
- * Pure: tests/clinical.test.ts.
+ * MRN "MRN/2026/0041"); a bare run of six digits or more is a hospital number,
+ * and so is an IP, UHID or registration number however short; a name is found
+ * by the words that introduce one (namesSomeone). The supervisor's remark is
+ * held to the same rule. Pure: tests/clinical.test.ts.
  */
 export function noteCarriesIdentifier(note: string): boolean {
   if (/\d{6,}/.test(note)) return true;
+  if (HOSPITAL_NUMBER.test(note) || NUMBERED_RECORD.test(note) || namesSomeone(note)) return true;
   const { replacements } = stripIdentifiers(note);
   return replacements.some((r) => r.kind === "EMAIL" || r.kind === "PHONE" || r.kind === "LINK" || r.kind === "ID" || r.kind === "CODE");
 }
@@ -394,6 +424,7 @@ async function signer(ctx: ActiveContext, entryId: string) {
 
 /** The supervisor's signature on a handed-in entry: final. */
 export async function signLogbookEntry(ctx: ActiveContext, entryId: string, input: { remark: string }, now: Date = new Date()): Promise<{ id: string }> {
+  if (noteCarriesIdentifier(input.remark)) throw new RuleRefusal("duties.clinical.refuseRemarkIdentifier", 422, undefined, "remark");
   const c = await signer(ctx, entryId);
   await db.logbookEntry.update({ where: { id: c.entry.id }, data: { state: "SIGNED", signedAt: now, signedByMembershipId: c.membershipId, remark: input.remark.trim() } });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "duties.clinical.sign", targetType: "LogbookEntry", targetId: c.entry.id, meta: { postingId: c.entry.posting.id } });
@@ -403,6 +434,7 @@ export async function signLogbookEntry(ctx: ActiveContext, entryId: string, inpu
 
 /** A handed-in entry sent back with a reason: the student corrects it and hands it in again. */
 export async function returnLogbookEntry(ctx: ActiveContext, entryId: string, input: { remark: string }): Promise<{ id: string }> {
+  if (noteCarriesIdentifier(input.remark)) throw new RuleRefusal("duties.clinical.refuseRemarkIdentifier", 422, undefined, "remark");
   const c = await signer(ctx, entryId);
   await db.logbookEntry.update({ where: { id: c.entry.id }, data: { state: "RETURNED", signedAt: null, signedByMembershipId: c.membershipId, remark: input.remark.trim() } });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "duties.clinical.return", targetType: "LogbookEntry", targetId: c.entry.id, meta: { postingId: c.entry.posting.id } });
@@ -494,7 +526,19 @@ export async function saveLogbookEntry(ctx: ActiveContext, input: LogbookEntrySa
     if (!mine) throw new AccessError("access.entryNotFound", "NOT_FOUND");
     if (mine.state !== "DRAFT" && mine.state !== "RETURNED") throw new RuleRefusal("duties.clinical.refuseNotEditable", 409);
     await db.logbookEntry.update({ where: { id: mine.id }, data });
-  } else id = (await db.logbookEntry.create({ data: { schoolId: c.schoolId, studentMembershipId: c.membershipId, clientId: input.clientId, ...data }, select: { id: true } })).id;
+  } else {
+    // The outbox's replay racing the first send (QA-35): both found no row by the clientId and the second create hit
+    // the unique key, a 500 the phone kept as a retry. The door is idempotent by clientId, so the loser answers the
+    // one entry the winner wrote (and the winner alone audits it).
+    try {
+      id = (await db.logbookEntry.create({ data: { schoolId: c.schoolId, studentMembershipId: c.membershipId, clientId: input.clientId, ...data }, select: { id: true } })).id;
+    } catch (error) {
+      if (typeof error !== "object" || error === null || (error as { code?: string }).code !== "P2002") throw error;
+      const seen = await db.logbookEntry.findUnique({ where: { studentMembershipId_clientId: { studentMembershipId: c.membershipId, clientId: input.clientId } }, select: { id: true } });
+      if (!seen) throw error;
+      return seen;
+    }
+  }
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "clinical.logbook.save", targetType: "LogbookEntry", targetId: id, meta: { kind: input.kind, count: input.count, edit: Boolean(input.id) } });
   return { id };
 }

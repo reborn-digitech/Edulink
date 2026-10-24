@@ -9,7 +9,7 @@ import {
   ArrowRightIcon,
   BuildingsIcon,
   CheckCircleIcon,
-  CopyIcon,
+  EnvelopeSimpleIcon,
   ShieldCheckIcon,
   UserCircleIcon,
 } from "@phosphor-icons/react";
@@ -21,7 +21,7 @@ import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
 import { INDIA } from "@/lib/places";
 import { cn } from "@/lib/cn";
-import { registerSchool, checkEmailAvailable } from "./actions";
+import { registerSchool } from "./actions";
 import { passwordStrength } from "@/lib/password-strength";
 import { useT } from "@/lib/i18n";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
@@ -98,8 +98,8 @@ export function RegisterWizard() {
   const [password, setPassword] = useState("");
   const [accepted, setAccepted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [emailTaken, setEmailTaken] = useState(false);
-  const [done, setDone] = useState<{ code: string } | null>(null);
+  // The one answer a form in order gets, whether or not the address had an account (QA-25).
+  const [done, setDone] = useState<{ sent: string } | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   /* ---- draft persistence ----------------------------------------------------
@@ -193,8 +193,6 @@ export function RegisterWizard() {
       if (draft.adminName.trim().length < 2) next.adminName = t("register.enterFullName");
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(draft.adminEmail.trim())) {
         next.adminEmail = t("register.enterValidEmail");
-      } else if (emailTaken) {
-        next.adminEmail = t("register.emailTaken");
       }
       if (strength.problemKeys.length > 0) next.password = t(strength.problemKeys[0]!);
     }
@@ -278,12 +276,12 @@ export function RegisterWizard() {
       } catch {
         /* nothing to clean up */
       }
-      setDone({ code: result.schoolCode! });
+      setDone({ sent: result.sent ?? t("accountGuard.signupSentPlain") });
     });
   }
 
   if (done) {
-    return <SuccessPanel t={t} code={done.code} onContinue={() => router.push("/admin?welcome=1")} />;
+    return <SuccessPanel t={t} sent={done.sent} onContinue={() => router.push("/login")} />;
   }
 
   const StepIcon = STEPS[step]!.icon;
@@ -513,22 +511,8 @@ export function RegisterWizard() {
               placeholder={t("register.yourEmailPlaceholder")}
               value={draft.adminEmail}
               error={errors.adminEmail}
-              onChange={(e) => {
-                set("adminEmail", e.target.value);
-                setEmailTaken(false);
-              }}
-              onBlur={async () => {
-                const email = draft.adminEmail.trim().toLowerCase();
-                if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return;
-                const available = await checkEmailAvailable(email);
-                setEmailTaken(!available);
-                if (!available) {
-                  setErrors((e) => ({
-                    ...e,
-                    adminEmail: t("register.emailTaken"),
-                  }));
-                }
-              }}
+              // No "is this address free?" on blur (QA-25): the answer said whether anybody's address had an account.
+              onChange={(e) => set("adminEmail", e.target.value)}
               hint={t("register.yourEmailHint")}
             />
 
@@ -661,55 +645,32 @@ function StrengthMeter({ strength }: { strength: ReturnType<typeof passwordStren
   );
 }
 
+/**
+ * What a form in order is answered with (QA-25, 24 Oct 2026): one sentence,
+ * the same whether the school was made or the address already had an
+ * account, and the way to the sign-in page. The school's join code is on the
+ * admin's dashboard once they sign in.
+ */
 function SuccessPanel({
   t,
-  code,
+  sent,
   onContinue,
 }: {
   t: Translate;
-  code: string;
+  sent: string;
   onContinue: () => void;
 }) {
-  const { toast } = useToast();
-
   return (
-    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-8 text-center shadow-sm">
-      <div className="mx-auto mb-5 grid size-20 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
-        <CheckCircleIcon weight="fill" className="size-12" />
+    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-8 text-center shadow-sm" role="status">
+      <div className="mx-auto mb-5 grid size-20 place-items-center rounded-full bg-accent-soft text-accent">
+        <EnvelopeSimpleIcon weight="duotone" className="size-12" />
       </div>
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("register.readyTitle")}</h1>
-      <p className="mx-auto mt-2 max-w-md text-fg-muted">{t("register.readyBody")}</p>
-
-      <div className="mx-auto mt-6 flex max-w-xs items-center gap-2">
-        <code className="flex-1 rounded-[var(--radius-md)] border-2 border-dashed border-accent bg-accent-soft px-4 py-3.5 text-xl font-bold tracking-[0.15em] text-accent-strong">
-          {code}
-        </code>
-        <Button
-          variant="secondary"
-          size="icon"
-          aria-label={t("register.copyCode")}
-          onClick={async () => {
-            try {
-              await navigator.clipboard.writeText(code);
-              toast({ tone: "ok", title: t("register.codeCopied") });
-            } catch {
-              // Clipboard is permission-gated and blocked in some contexts;
-              // the code is visible on screen either way.
-              toast({
-                tone: "warn",
-                title: t("register.couldNotCopy"),
-                description: t("register.couldNotCopyBody"),
-              });
-            }
-          }}
-        >
-          <CopyIcon weight="bold" className="size-5" />
-        </Button>
-      </div>
+      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("accountGuard.signupSentTitle")}</h1>
+      <p className="mx-auto mt-2 max-w-md text-fg-muted">{sent}</p>
 
       <Button className="mt-8" size="lg" onClick={onContinue} iconRight={<ArrowRightIcon weight="bold" />}>
-        {t("landing.goToDashboard")}
+        {t("accountGuard.goToSignIn")}
       </Button>
     </div>
   );

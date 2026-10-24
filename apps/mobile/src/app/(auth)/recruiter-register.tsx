@@ -1,24 +1,25 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
-import type { SessionResponse } from "@edulink/contracts";
-import { Button, Field, Screen } from "@/components";
+import type { SignupSent } from "@edulink/contracts";
+import { Button, Field, Screen, Text } from "@/components";
 import { api, errorText } from "@/lib/api";
-import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 
 /**
  * A recruiter's own account (4 Oct 2026), the web's /register/recruiter:
- * never invited, a member of no college. The account and the company are made
- * in one call, which answers with a session, so the recruiter is signed in to
- * their home at once. A refusal names its field; a rate limit says when.
+ * never invited, a member of no college. A refusal names its field; a rate
+ * limit says when. A form in order is answered 202 with no session, the same
+ * whether or not the address already had an account (QA-25, 24 Oct 2026):
+ * the screen says a message is on its way and sends the person to sign in,
+ * which a new recruiter does with the password once the link is opened.
  */
 export default function RecruiterRegister() {
   const t = useT();
   const th = useTheme();
   const router = useRouter();
-  const session = useSession();
+  const [sent, setSent] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", companyName: "", email: "", password: "" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<{ text: string; field?: string } | null>(null);
@@ -27,14 +28,27 @@ export default function RecruiterRegister() {
   async function submit() {
     setBusy(true);
     setError(null);
-    const res = await api().post<SessionResponse>("/api/v1/auth/recruiter/register", { ...form, email: form.email.trim(), device: "Shalaghar app" });
+    const res = await api().post<SignupSent>("/api/v1/auth/recruiter/register", { ...form, email: form.email.trim(), device: "Shalaghar app" });
     setBusy(false);
     if (!res.ok) {
       const field = res.issues ? Object.keys(res.issues)[0] : undefined;
       setError({ text: res.status === 429 && res.retryAfterSeconds ? `${res.error} (${res.retryAfterSeconds}s)` : errorText(res, t("common.tryAgain")), field });
       return;
     }
-    await session.accept(res.data);
+    setSent(t("accountGuard.signupSent", { email: form.email.trim().toLowerCase() }));
+  }
+
+  if (sent) {
+    return (
+      <Screen title={t("recruiter.registerTitle")}>
+        <View style={{ gap: th.space[3] }}>
+          <Text variant="sm" accessibilityLiveRegion="polite">
+            {sent}
+          </Text>
+          <Button label={t("accountGuard.goToSignIn")} onPress={() => router.back()} />
+        </View>
+      </Screen>
+    );
   }
 
   const fieldError = (field: string) => (error && (error.field === field || (!error.field && field === "password")) ? error.text : null);

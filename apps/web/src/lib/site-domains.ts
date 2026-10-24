@@ -4,6 +4,7 @@ import type { SiteCertError, SiteCertStatus, SiteDnsError, SiteDomain, SiteDomai
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./access-error";
+import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn } from "./modules";
 import { publishedSiteFor } from "./site-publish";
 import { forgetSiteHosts } from "./site-hosts";
@@ -218,7 +219,8 @@ export async function saveSiteDomain(ctx: ActiveContext, typed: string): Promise
   const me = office(ctx);
   await assertModuleOn(me.schoolId, "WEBSITE");
   const checked = checkTypedDomain(typed);
-  if (!checked.ok) throw new AccessError(checked.key);
+  // What was typed cannot be a domain: 422 naming the field, not 403 (QA-54); a domain another school holds is 409.
+  if (!checked.ok) throw new RuleRefusal(checked.key, 422, undefined, "domain");
   const domain = checked.domain;
   const existing = await currentRow(me.schoolId);
   if (existing?.domain === domain) return viewFor(me.schoolId);
@@ -228,7 +230,7 @@ export async function saveSiteDomain(ctx: ActiveContext, typed: string): Promise
   // below with the same words.
   const counterpart = counterpartOf(domain);
   const clash = await db.schoolSiteDomain.findFirst({ where: { domain: { in: [domain, ...(counterpart ? [counterpart] : [])] }, NOT: { schoolId: me.schoolId } }, select: { id: true } });
-  if (clash) throw new AccessError("siteDomains.refuseTaken");
+  if (clash) throw new RuleRefusal("siteDomains.refuseTaken", 409);
 
   try {
     await db.$tenantTransaction(async (raw: unknown) => {
@@ -237,7 +239,7 @@ export async function saveSiteDomain(ctx: ActiveContext, typed: string): Promise
       await tx.schoolSiteDomain.create({ data: { schoolId: me.schoolId, domain, createdByUserId: me.userId } });
     });
   } catch (error) {
-    if ((error as { code?: string }).code === "P2002") throw new AccessError("siteDomains.refuseTaken");
+    if ((error as { code?: string }).code === "P2002") throw new RuleRefusal("siteDomains.refuseTaken", 409);
     throw error;
   }
   if (existing) await dropCertificates(existing);

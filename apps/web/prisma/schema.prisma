@@ -9300,6 +9300,8 @@ model Drive {
   /// Its pre-placement talk (R-2, 5 Oct 2026; lib/placement-talks.ts).
   talk         PlacementTalk?
 
+  /// One drive per recruiter requirement at a college (QA-30, 24 Oct 2026); drives with no requirement are not held by it (nulls are distinct).
+  @@unique([schoolId, requirementId])
   @@index([schoolId, status])
   @@index([companyId, status])
 }

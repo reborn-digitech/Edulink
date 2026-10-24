@@ -4,7 +4,7 @@
  * clock — once and never on a closed day, an approved leave shows itself,
  * and the register is the office's alone.
  */
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
@@ -21,6 +21,15 @@ import { todayKey, zonedStartOfDay } from "@/lib/dates";
 const db = new PrismaClient();
 const STAMP = Date.now();
 const TZ = "Asia/Kolkata";
+/**
+ * THE SUITE'S CLOCK IS PINNED (QA-76). On the first of a month yesterday is last month, and three tests that mark
+ * yesterday and then add the month up used to skip themselves that day (seen 1 Oct 2026), holding nothing twelve
+ * days a year. The register, the month's file and the check-in read `new Date()`, so the suite fakes Date (only Date:
+ * Prisma's timers stay real) at this moment, moved on a day when it is the first in the school's zone. Forward, never
+ * back: rows the database dates itself (a membership's joinedAt, a session's createdAt) then stay in the past.
+ */
+const REAL_NOW = Date.now();
+const SUITE_NOW = todayKey(TZ, new Date(REAL_NOW)).endsWith("-01") ? REAL_NOW + 86_400_000 : REAL_NOW;
 let schoolId = "";
 let adminUserId = "";
 let principalUserId = "";
@@ -29,7 +38,7 @@ let teacher2UserId = "";
 let parentUserId = "";
 let teacherMembershipId = "";
 let teacher2MembershipId = "";
-const today = todayKey(TZ);
+const today = todayKey(TZ, new Date(SUITE_NOW));
 
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
@@ -48,15 +57,8 @@ async function as(who: "ADMIN" | "PRINCIPAL" | "TEACHER" | "TEACHER2" | "PARENT"
 function yesterdayWorking(): string {
   return todayKey(TZ, new Date(Date.now() - 86_400_000));
 }
-/**
- * ON THE FIRST OF A MONTH yesterday is last month, and the three tests that
- * mark yesterday and then add the month up cannot: the register and the
- * month's file read the real clock, which nothing here pins. They are
- * skipped that day and say so, rather than fail once a month (seen 1 Oct 2026).
- */
-const firstOfMonth = today.endsWith("-01");
-
 beforeAll(async () => {
+  vi.useFakeTimers({ toFake: ["Date"], now: SUITE_NOW });
   const suffix = String(STAMP).slice(-6);
   schoolId = (await db.school.create({ data: { name: `ZZ Staff Att School ${STAMP}`, slug: `zz-satt-${STAMP}`, code: `ZM${suffix}`, contactEmail: `zz-satt-${STAMP}@test.invalid`, timezone: TZ, teachingDays: "0,1,2,3,4,5,6" }, select: { id: true } })).id;
   const mk = (who: string) => db.user.create({ data: { name: `ZZ Satt ${who}`, email: `zz-satt-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid` }, select: { id: true } });
@@ -76,6 +78,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  vi.useRealTimers();
   __resetCookies();
   await db.session.deleteMany({ where: { userId: { in: [adminUserId, principalUserId, teacherUserId, teacher2UserId, parentUserId] } } });
   await db.school.deleteMany({ where: { id: schoolId } });
@@ -112,7 +115,7 @@ describe("the register", () => {
     expect((await registerGet(get("/api/v1/office/staff-attendance?date=2999-01-01"))).status).toBe(403);
   });
 
-  it.skipIf(firstOfMonth)("the office marks a past day and today; a person left out stays as they were; a pupil id is ignored; the month adds up", async () => {
+  it("the office marks a past day and today; a person left out stays as they were; a pupil id is ignored; the month adds up", async () => {
     await as("PRINCIPAL");
     const y = yesterdayWorking();
     const marked = await markPost(json("/x", { date: y, entries: [{ membershipId: teacherMembershipId, status: "LATE", note: "Bus" }, { membershipId: teacher2MembershipId, status: "PRESENT" }] }));
@@ -134,7 +137,7 @@ describe("the register", () => {
     expect(JSON.stringify(audits[0]!.meta)).not.toContain("Bus");
   });
 
-  it.skipIf(firstOfMonth)("a teacher checks in — present or late by the school's clock — a second tap a no-op, never on a closed day; the office sees the check-in; the month is theirs", async () => {
+  it("a teacher checks in — present or late by the school's clock — a second tap a no-op, never on a closed day; the office sees the check-in; the month is theirs", async () => {
     // The head marks the register and does not set the clock it is marked against.
     await as("PRINCIPAL");
     expect((await settingsPost(json("/x", { checkInMinute: 540, lateGraceMinutes: 5 }))).status).toBe(403);
@@ -191,7 +194,7 @@ describe("the register", () => {
 });
 
 describe("the month's file and the days it counts", () => {
-  it.skipIf(firstOfMonth)("a closing holiday has no column, a teacher who left mid-month keeps a row to their last day, and every count equals its cells and adds up to workingDays", async () => {
+  it("a closing holiday has no column, a teacher who left mid-month keeps a row to their last day, and every count equals its cells and adds up to workingDays", async () => {
     await as("ADMIN");
     const thisMonth = today.slice(0, 7);
     // The past days of this month — every one open, on the seven-day week above.

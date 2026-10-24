@@ -355,7 +355,12 @@ export async function signOffFiling(ctx: ActiveContext, filingId: string, input:
   if (!f) throw new AccessError("iqac.refuseNoItem", "NOT_FOUND");
   if (f.status !== "AWAITING_SIGNOFF") throw new RuleRefusal("iqac.refuseNotAwaiting", 409);
   if (input.decision === "RETURN" && !input.note) throw new RuleRefusal("iqac.refuseReturnNote", 422, undefined, "note");
-  await db.collegeFiling.update({ where: { id: f.id }, data: input.decision === "SIGN" ? { status: "SIGNED_OFF", signedOffAt: new Date(), signedOffByUserId: desk.userId, principalNote: input.note } : { status: "RETURNED", principalNote: input.note } });
+  // One decision (QA-34): a SIGN and a RETURN sent at once both read AWAITING_SIGNOFF and both wrote, leaving a RETURNED
+  // filing with signedOffAt set, two decisions in the log and the IQAC told both. The decision is now a conditional
+  // update that matches only while the filing waits (the row's lock serialises the two); the loser is refused as not
+  // waiting, and a return clears any sign-off.
+  const decided = await db.collegeFiling.updateMany({ where: { id: f.id, schoolId: desk.schoolId, status: "AWAITING_SIGNOFF" }, data: input.decision === "SIGN" ? { status: "SIGNED_OFF", signedOffAt: new Date(), signedOffByUserId: desk.userId, principalNote: input.note } : { status: "RETURNED", signedOffAt: null, signedOffByUserId: null, principalNote: input.note } });
+  if (decided.count !== 1) throw new RuleRefusal("iqac.refuseNotAwaiting", 409);
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: input.decision === "SIGN" ? "iqac.filing.signoff" : "iqac.filing.return", targetType: "CollegeFiling", targetId: f.id, meta: { kind: f.kind } });
   if (f.generatedByUserId) await notify({ userId: f.generatedByUserId, schoolId: desk.schoolId, kind: "SYSTEM", titleKey: input.decision === "SIGN" ? "iqac.notifySignedTitle" : "iqac.notifyReturnedTitle", bodyKey: "iqac.notifySignedBody", bodyVars: { kind: f.kind }, url: "/iqac/documents" });
   return listFilings(ctx);

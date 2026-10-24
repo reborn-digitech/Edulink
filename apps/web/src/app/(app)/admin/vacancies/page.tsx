@@ -12,6 +12,8 @@ import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
 import { CloseButton } from "./close-button";
 import { PageHeader } from "@/components/ui/page-header";
+import { institutionKindOf } from "@/lib/modules";
+import { isCollegeKind } from "@/lib/institution";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -27,6 +29,8 @@ export default async function AdminVacanciesPage({
   const t = await getT();
   const relative = await getRelativeTime();
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  // A college's postings are the college's (QA-69).
+  const college = isCollegeKind(await institutionKindOf(ctx.schoolId));
   // The head reads the desk and its enquiries; posting and closing are the admin's.
   const canPost = ctx.role === "ADMIN";
   const { status: rawStatus } = await searchParams;
@@ -44,7 +48,7 @@ export default async function AdminVacanciesPage({
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <PageHeader title={t("vacancies.ourDeskTitle")} description={t("vacancies.ourDeskIntro")} />
+        <PageHeader title={t(college ? "qaInterface.collegeDeskTitle" : "vacancies.ourDeskTitle")} description={t(college ? "qaInterface.collegeDeskIntro" : "vacancies.ourDeskIntro")} />
         <div className="flex gap-2">
           <Button asChild variant="secondary" size="sm">
             <Link href="/vacancies">{t("vacancies.title")}</Link>

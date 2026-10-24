@@ -43,6 +43,7 @@ import { ROLE_META, type Role } from "@/lib/constants";
 import { switchContext } from "@/app/switch/actions";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
+import { featureOn } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -158,7 +159,7 @@ export default async function AccountPage({
       </Card>
 
       {/* ---------- two-step sign-in ---------- */}
-      {twoFactor.eligible && <TotpCard enabled={twoFactor.enabled} recoveryLeft={twoFactor.recoveryLeft} available={twoFactor.available} />}
+      {twoFactor.eligible && <TotpCard enabled={twoFactor.enabled} recoveryLeft={twoFactor.recoveryLeft} available={twoFactor.available} hasPassword={twoFactor.hasPassword} />}
 
       {/* ---------- roles ---------- */}
       <Card>
@@ -361,7 +362,7 @@ export default async function AccountPage({
           />
           <CardBody className="space-y-4">
             <PushToggle />
-            <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} />
+            <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} textsOn={await featureOn("TEXT_MESSAGING")} />
           </CardBody>
           <CardHeader
             id="language"

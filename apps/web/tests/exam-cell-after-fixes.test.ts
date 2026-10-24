@@ -109,6 +109,22 @@ describe("a revaluation's fee (A3-journeys-10)", () => {
   });
 });
 
+describe("the exam form's fee on the student's page (QA-42)", () => {
+  it("says whether the form's fee is open, paid or waived, read as the app role", async () => {
+    const form = await db.examForm.findFirstOrThrow({ where: { schoolId: id.college!, studentMembershipId: id.Student! }, select: { id: true } });
+    const before = await myExams(await as("Student", "STUDENT"));
+    expect(before.forms[0]!.demandStatus).toBeNull();
+    for (const status of ["OPEN", "PAID", "WAIVED"]) {
+      const demand = await db.feeDemand.create({ data: { schoolId: id.college!, studentMembershipId: id.Student!, academicYearId: id.year!, label: `ZZ exam form fee ${status}`, dueDate: new Date(), grossPaise: 30000, netPaise: 30000, paidPaise: status === "PAID" ? 30000 : 0, status }, select: { id: true } });
+      await db.examForm.update({ where: { id: form.id }, data: { feePaise: 30000, feeDemandId: demand.id } });
+      const mine = await myExams(await as("Student", "STUDENT"));
+      expect(mine.forms[0]!.demandStatus).toBe(status);
+      await db.examForm.update({ where: { id: form.id }, data: { feePaise: 0, feeDemandId: null } });
+      await db.feeDemand.delete({ where: { id: demand.id } });
+    }
+  });
+});
+
 describe("a corrected run after a revaluation changes the marks (A3-journeys-11)", () => {
   const rowFor = async (role: "EXAM_CONTROLLER" | "STUDENT") => {
     if (role === "STUDENT") {

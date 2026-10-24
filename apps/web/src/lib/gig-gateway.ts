@@ -55,6 +55,8 @@ export class GigGatewayError extends Error {
   constructor(
     message: string,
     readonly status: number | null = null,
+    /** "EMPTY_ANSWER": a 2xx whose body is not a JSON object (QA-38); null for every other failure. */
+    readonly code: "EMPTY_ANSWER" | null = null,
   ) {
     super(message);
     this.name = "GigGatewayError";
@@ -116,6 +118,11 @@ async function call<T>(account: PlatformAccount, method: "GET" | "POST" | "PATCH
   if (!response.ok) {
     const description = (json as { error?: { description?: string } } | null)?.error?.description;
     throw new GigGatewayError(description ? `gateway: ${description}` : `gateway answered ${response.status}`, response.status);
+  }
+  // A success whose body is empty, not JSON or not an object is the gateway's fault, not an answer: refused here as a
+  // GigGatewayError the callers already handle, never handed on to fail later as a TypeError on a missing id (QA-38).
+  if (json === null || typeof json !== "object" || Array.isArray(json)) {
+    throw new GigGatewayError(`gateway answered ${response.status} with no JSON object`, response.status, "EMPTY_ANSWER");
   }
   return json as T;
 }

@@ -131,14 +131,17 @@ export function QuestionForm({
         <p className="text-xs text-fg-muted">{t("appadmin.choicesHint")}</p>
         {choices.map((choice, index) => (
           <div key={index} className="flex items-center gap-3">
-            <input
-              type="radio"
-              name="answer"
-              aria-label={t("appadmin.correctOne", { n: index + 1 })}
-              checked={answerIndex === index}
-              onChange={() => setAnswerIndex(index)}
-              className="size-4 shrink-0 accent-[var(--accent)]"
-            />
+            {/* The radio inside its own 44 px label: the label is the target (QA-59). */}
+            <label className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-[var(--radius-md)] hover:bg-surface-muted">
+              <input
+                type="radio"
+                name="answer"
+                aria-label={t("appadmin.correctOne", { n: index + 1 })}
+                checked={answerIndex === index}
+                onChange={() => setAnswerIndex(index)}
+                className="size-5 accent-[var(--accent)]"
+              />
+            </label>
             <TextField
               label={t("appadmin.choiceN", { n: index + 1 })}
               className="flex-1"

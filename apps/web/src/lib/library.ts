@@ -21,6 +21,7 @@ import {
   type LibraryTitleSave,
   type LibraryTitleView,
 } from "@edulink/contracts";
+import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
 import { assertModuleOn } from "./modules";
@@ -274,9 +275,15 @@ const LOAN_INCLUDE = {
 } as const;
 type LoanRow = { id: string; copyId: string; issuedAt: Date; dueOn: string; returnedAt: Date | null; renewedCount: number; copy: { id: string; accession: string; titleId: string; title: { id: string; title: string; author: string } }; member: { kind: string; membership: PersonRow } };
 
+/**
+ * A reservation still WAITING for a copy (QA-44): one already ready has a copy held on the shelf for its reader, so
+ * nobody is kept waiting by a renewal. "Ready" is readyAt and readyCopyId both set, as everywhere in this file.
+ */
+const STILL_WAITING: Prisma.LibraryReservationWhereInput = { OR: [{ readyAt: null }, { readyCopyId: null }] };
+
 async function loanOf(i: LoanRow, today: string, s: Settings): Promise<LibraryLoan> {
   const overdueDays = i.returnedAt ? 0 : Math.max(0, daysBetween(i.dueOn, today));
-  const queue = i.returnedAt ? 0 : await db.libraryReservation.count({ where: { titleId: i.copy.titleId, fulfilledAt: null, cancelledAt: null, member: { membershipId: { not: i.member.membership.id } } } });
+  const queue = i.returnedAt ? 0 : await db.libraryReservation.count({ where: { titleId: i.copy.titleId, fulfilledAt: null, cancelledAt: null, ...STILL_WAITING, member: { membershipId: { not: i.member.membership.id } } } });
   return {
     id: i.id,
     copyId: i.copyId,
@@ -857,7 +864,7 @@ export async function renewLoan(ctx: ActiveContext, issueId: string): Promise<Li
   const today = todayKey(desk.timeZone);
   if (daysBetween(i.dueOn, today) > 0) throw new AccessError("library.refuseRenewOverdue");
   if (i.renewedCount >= s.maxRenewals) throw new AccessError("library.refuseRenewLimit", "FORBIDDEN", { count: s.maxRenewals });
-  const waiting = await db.libraryReservation.count({ where: { titleId: i.copy.titleId, memberId: { not: i.memberId }, fulfilledAt: null, cancelledAt: null } });
+  const waiting = await db.libraryReservation.count({ where: { titleId: i.copy.titleId, memberId: { not: i.memberId }, fulfilledAt: null, cancelledAt: null, ...STILL_WAITING } });
   if (waiting > 0) throw new AccessError("library.refuseRenewQueue");
   const dueOn = addDaysToKey(today, loanDaysOf(s, i.member.kind));
   const updated = await db.libraryIssue.updateMany({ where: { id: i.id, returnedAt: null, renewedCount: i.renewedCount }, data: { dueOn, renewedCount: { increment: 1 }, remindedOn: null } });

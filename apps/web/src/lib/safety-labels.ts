@@ -935,6 +935,10 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   // fix-highs-B (24 Oct 2026, QA-03): an online capture that arrived with nothing due, held for a refund (src/lib/fees-payments.ts).
   "fees.onlineUnallocated": "audit.feesOnlineUnallocated",
   // end fix-highs-B
+  // fix-lows-A (24 Oct 2026, QA-22, QA-23): the second step locked after too many wrong codes (two-factor.ts); turning it on refused for a wrong password.
+  "auth.totp.locked": "audit.authTotpLocked",
+  "auth.totp.enrolRefused": "audit.authTotpEnrolRefused",
+  // end fix-lows-A
 };
 
 export function actionKey(action: string): TranslationKey | null {

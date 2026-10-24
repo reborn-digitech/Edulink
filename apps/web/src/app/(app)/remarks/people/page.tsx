@@ -187,7 +187,7 @@ export default async function PeoplePage({
                       <button
                         type="submit"
                         aria-label={t("convo.startWith", { name: person.name })}
-                        className="inline-flex size-10 shrink-0 items-center justify-center gap-1.5 rounded-full bg-accent text-sm font-semibold text-accent-fg hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent sm:w-auto sm:px-3.5"
+                        className="inline-flex size-11 shrink-0 items-center justify-center gap-1.5 rounded-full bg-accent text-sm font-semibold text-accent-fg hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent sm:w-auto sm:px-3.5"
                       >
                         <PaperPlaneTiltIcon weight="bold" className="size-4" />
                         <span className="hidden sm:inline">{t("convo.message")}</span>

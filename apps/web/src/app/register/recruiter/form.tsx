@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
-import { BriefcaseIcon } from "@phosphor-icons/react";
+import Link from "next/link";
+import { BriefcaseIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useT } from "@/lib/i18n";
@@ -11,8 +11,9 @@ import { registerRecruiterAction } from "./actions";
 /** The recruiter's sign-up: four fields, one button; the account is theirs and no college's (4 Oct 2026). */
 export function RecruiterRegisterForm() {
   const t = useT();
-  const router = useRouter();
   const [pending, startTransition] = useTransition();
+  // The one answer a form in order gets, whether or not the address had an account (QA-25).
+  const [sent, setSent] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", email: "", password: "", companyName: "" });
   const [error, setError] = useState<{ text: string; field?: string } | null>(null);
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, [key]: e.target.value }));
@@ -26,8 +27,22 @@ export function RecruiterRegisterForm() {
         setError({ text: result.error ?? t("common.checkTheForm"), field: result.field });
         return;
       }
-      router.push("/recruiter");
+      setSent(result.sent ?? t("accountGuard.signupSentPlain"));
     });
+  }
+
+  if (sent) {
+    return (
+      <div role="status" className="space-y-4 rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-4">
+        <p className="flex items-start gap-2 text-sm font-medium text-fg">
+          <EnvelopeSimpleIcon weight="duotone" className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden />
+          {sent}
+        </p>
+        <Link href="/login" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent hover:underline">
+          {t("accountGuard.goToSignIn")}
+        </Link>
+      </div>
+    );
   }
 
   const fieldError = (field: string) => (error?.field === field ? error.text : undefined);

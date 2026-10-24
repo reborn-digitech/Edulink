@@ -5,12 +5,20 @@
  * naming a platform key there, which is why these names are read here, in a
  * module env.ts calls into but does not spell them out in.
  *
- * The company collects (the second amendment to decision 0004): a seat's
- * fee is paid into this account, the commission and its GST are fixed at
- * capture, and the expert is paid later from the company's own bank. So the
- * account needs no Route and no linked accounts — the adapter
- * (gig-gateway.ts) makes three calls, an order, a payment read and a refund,
- * and the webhook hears payment.captured, payment.failed and refund.failed.
+ * Razorpay Route (the third amendment to decision 0004, 2 October 2026): an
+ * expert's seat is an order carrying a transfer of the expert's net to the
+ * expert's own linked account, on hold until the session is delivered; the
+ * commission and its GST stay here. So the account must have Route enabled.
+ * The adapter (gig-gateway.ts) may make exactly the eleven calls in its
+ * ALLOWED_CALLS: the order, the payment read, the payment's transfers (read
+ * and made), the hold released, the refund, and the four that build and read
+ * a linked account (account, stakeholder, Route product, its bank). A pass
+ * (decision 0006) and a teacher's seat are plain orders on the same account
+ * with no transfer. The sessions webhook hears payment.captured,
+ * payment.failed, refund.failed, transfer.processed, transfer.failed and the
+ * Route product's review events; the passes webhook the first three.
+ * (QA-76: this paragraph described the company-collects form of 2 October,
+ * three calls and no Route, which the code no longer is.)
  *
  *   GATEWAY_PLATFORM_KEY_ID          the company's key id (rzp_live_… / rzp_test_…)
  *   GATEWAY_PLATFORM_SECRET_ENC      its secret, SEALED under FEES_SECRET_KEY by

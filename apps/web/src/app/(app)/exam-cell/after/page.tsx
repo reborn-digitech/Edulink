@@ -14,6 +14,7 @@ import { BACKLOG_STATUS_KEY, CREDIT_STATUS_KEY, CellOff, DOC_KIND_KEY, Flash, Hi
 import { convocationAction, decideRevaluationAction, issueDocumentAction, pushCreditsAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
 import { ActionForm } from "@/components/ui/action-form";
+import { FEE_DEMAND_STATUS_KEY } from "@/app/(app)/parent/fees/labels";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -50,7 +51,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
               </p>
               <p className="text-fg-muted">
                 {t("examCell.askedOn", { date: day(r.askedAt, locale) })} · {money(r.feePaise, locale)}
-                {r.demandStatus ? ` · ${t("examCell.demandStatus", { status: r.demandStatus })}` : ""}
+                {r.demandStatus ? ` · ${t("examCell.demandStatus", { status: FEE_DEMAND_STATUS_KEY[r.demandStatus] ? t(FEE_DEMAND_STATUS_KEY[r.demandStatus]!) : r.demandStatus })}` : ""}
                 {r.outcome ? ` · ${t(REVAL_OUTCOME_KEY[r.outcome]!)}` : ""}
                 {r.outcome === "CHANGED" ? ` · ${marks(r.oldExternalMilli)} → ${marks(r.newExternalMilli)}` : ""}
               </p>

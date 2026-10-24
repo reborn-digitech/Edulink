@@ -53,7 +53,7 @@ export default async function NoDuesPage({ searchParams }: { searchParams: Promi
         <Card>
           <CardHeader title={t("collegeOffice.noDuesOf", { name: one.studentName, event: t(EVENT_KEY(event)) })} description={one.completed ? t("collegeOffice.noDuesComplete") : t("collegeOffice.noDuesOpen")} />
           <CardBody>
-            <Table head={[t("collegeOffice.colDesk"), t("collegeOffice.colOwed"), t("collegeOffice.colOut"), t("collegeOffice.colStatus"), ""]} testId="no-dues-lines">
+            <Table head={[t("collegeOffice.colDesk"), t("collegeOffice.colOwed"), t("collegeOffice.colOut"), t("collegeOffice.colStatus"), { srOnly: t("qaInterface.colActions") }]} testId="no-dues-lines">
               {one.lines.map((l) => (
                 <tr key={l.desk}>
                   <td className="py-2 pr-3">{t(DESK_KEY(l.desk))}</td>

@@ -12,6 +12,8 @@
 import { createHash } from "node:crypto";
 import type { ChatMessage } from "../assistant-model";
 import { guideRenderMessages } from "./prompt";
+import { readableQuotes } from "./readable-quotes";
+export { readableQuotes };
 
 export type RenderLanguage = "hi" | "mr";
 export const RENDER_LANGUAGES: readonly RenderLanguage[] = ["hi", "mr"];
@@ -44,7 +46,8 @@ export function guideUnits(rows: readonly { kind: string; language: string; sour
     const key = sourceKeyOf(kind, t);
     if (seen.has(key)) return;
     seen.add(key);
-    out.push({ kind, text: t, sourceFile, key });
+    // Rendered without the quoted sentences' placeholders (QA-64); the key stays the English row's own.
+    out.push({ kind, text: readableQuotes(t), sourceFile, key });
   };
   for (const r of rows) {
     if (!isGuideRow(r)) continue;

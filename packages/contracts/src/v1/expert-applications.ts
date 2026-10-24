@@ -132,4 +132,6 @@ export const operatorExpertApplicationDecidedSchema = z.object({
   userId: z.string().nullable(),
   /** Whether the invitation's email went (approval only; a mail failure leaves the decision standing). */
   inviteSent: z.boolean(),
+  /** The application was already decided this way (a second press): answered as it stands, nothing sent again (QA-37). */
+  already: z.boolean().optional(),
 });

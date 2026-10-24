@@ -12,6 +12,7 @@ import { KycCard } from "./kyc-card";
 import { CalendarCard } from "./calendar-card";
 import { GetPaidCard } from "./get-paid-card";
 import { getT } from "@/lib/i18n/server";
+import { featureOn } from "@/lib/platform-features";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -35,6 +36,9 @@ export default async function ExpertProfilePage() {
   const t = await getT();
   const session = await requireExpert();
 
+  // Expert sessions switched off (QA-61): no link to the earnings page and no calendar feed, both of which are the
+  // app's 404 while the switch is off.
+  const sessionsOn = await featureOn("EXPERT_SESSIONS");
   let profile, impact, kyc, calendar, payout;
   try {
     profile = await getOwnProfile(session);
@@ -139,9 +143,9 @@ export default async function ExpertProfilePage() {
 
       <KycCard initial={kyc} />
 
-      <GetPaidCard initial={payout} />
+      <GetPaidCard initial={payout} earnings={sessionsOn} />
 
-      <CalendarCard initialUrl={calendar.url} />
+      {sessionsOn && <CalendarCard initialUrl={calendar.url} />}
 
       <Card>
         <CardHeader

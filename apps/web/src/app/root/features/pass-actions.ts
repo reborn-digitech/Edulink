@@ -21,7 +21,7 @@ export async function refundPassAction(id: string): Promise<Result> {
     const result = await refundPassOrder(session, id);
     revalidatePath("/root/features");
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
-    return { ok: true, message: t("passes.refundDone") };
+    return { ok: true, message: t(result.already ? "passes.refundAlready" : "passes.refundDone") };
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: t(error.key, error.vars) };
     console.error("[root/features pass refund]", error);

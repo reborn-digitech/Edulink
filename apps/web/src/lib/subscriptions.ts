@@ -17,6 +17,7 @@ import { audit } from "./audit";
 import { assertSuperuser, createSchool, inviteAdmin, sendAdminInviteMail, type AdminInviteMail, type SchoolDetails } from "./superuser";
 import { assignPlan, monthKeyFor } from "./plans";
 import { addDaysToKey, todayKey } from "./dates";
+import { messageCapOf } from "./message-cap";
 import { notify } from "./notify";
 import { translator } from "./i18n/dictionary";
 import { sendHealthDigestEmail } from "./email";
@@ -512,7 +513,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
     messages += sample?.messages ?? 0;
     storageMb += sample?.storageMb ?? 0;
     pupils += sample?.pupils ?? 0;
-    messageCap += s.plan?.messageCap ?? s.msgMonthlyCap;
+    messageCap += messageCapOf(s);
     if (s.plan?.storageCapMb !== null && s.plan?.storageCapMb !== undefined) {
       storageCapMb += s.plan.storageCapMb;
       anyStorageCap = true;

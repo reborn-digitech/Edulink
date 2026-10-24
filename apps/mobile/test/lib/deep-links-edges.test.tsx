@@ -19,7 +19,9 @@ const mockPush = jest.fn();
 jest.mock("expo-router", () => ({ useRouter: () => ({ push: mockPush, replace: jest.fn() }) }));
 
 let mockInitialUrl: string | null = null;
+const mockOpenURL = jest.fn(async (_url: string) => true);
 jest.mock("expo-linking", () => ({
+  openURL: (url: string) => mockOpenURL(url),
   getInitialURL: async () => mockInitialUrl,
   addEventListener: () => ({ remove: () => {} }),
   parse: (url: string) => {
@@ -93,7 +95,7 @@ describe("an SSO link at its edges", () => {
 });
 
 describe("a tapped notification", () => {
-  it("opens the screen its URL maps to, and nothing for a URL with no screen or no URL at all", async () => {
+  it("opens the screen its URL maps to, the web for a page the phone has not (QA-70), and nothing with no URL at all", async () => {
     const store = memoryStore({ [KEYS.token]: "tok" });
     __setKeyStore(store);
     fakeApi(store, () => new Response("{}", { status: 404 }));
@@ -104,9 +106,14 @@ describe("a tapped notification", () => {
     await act(async () => tap(response({ url: "/remarks/c/room9" })));
     expect(mockPush).toHaveBeenCalledWith({ pathname: "/(app)/messages/room", params: { conversationId: "room9" } });
     mockPush.mockClear();
-    await act(async () => tap(response({ url: "/zz/a/page/the/app/does/not/have" })));
+    mockOpenURL.mockClear();
+    await act(async () => tap(response({ url: "/parent/placement?child=c1" })));
+    expect(mockOpenURL).toHaveBeenCalledTimes(1);
+    expect(mockOpenURL.mock.calls[0]![0]).toMatch(/\/parent\/placement\?child=c1$/);
+    await act(async () => tap(response({ url: "//evil.example/x" })));
     await act(async () => tap(response({ url: 42 })));
     await act(async () => tap(response(undefined)));
     expect(mockPush).not.toHaveBeenCalled();
+    expect(mockOpenURL).toHaveBeenCalledTimes(1);
   });
 });

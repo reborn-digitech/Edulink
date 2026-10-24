@@ -14,6 +14,8 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "./e2e",
   globalSetup: "./e2e/global-setup.ts",
+  // The harness's exam and its sessions, removed after the run (QA-73).
+  globalTeardown: "./e2e/global-teardown.ts",
   fullyParallel: false,
   /**
    * ONE WORKER. With two, a file ran beside another, and two of the files

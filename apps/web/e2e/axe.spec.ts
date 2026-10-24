@@ -211,3 +211,76 @@ test.describe("homes in Marathi at 390 px", () => {
     });
   }
 });
+
+/**
+ * PAGES NO MENU ENTRY LEADS TO, AND THE SOFTER RULES (QA-59 and QA-68, QA campaign of 24 October 2026). The walk found
+ * 40 px conversation buttons on /remarks/people and 16 px radios on the question editor, neither a menu page, so
+ * this gate never measured them; and moderate results it only printed: action columns with no heading, two landmarks
+ * of one name, headings out of order, content outside a landmark. These pages are held to the 44 px rule and to none
+ * of those five rules, light, at a phone's width (and the report cards' editor at a desk's, where its preview stands
+ * beside the rail). A page whose row the database does not hold (a fresh CI database) is skipped and said so.
+ */
+const SOFT_RULES = ["empty-table-header", "landmark-unique", "heading-order", "region", "landmark-one-main"];
+type Gated = { actor: string; label: string; href: () => Promise<string | null>; width?: number };
+const at = (href: string) => async () => href;
+const GATED: Gated[] = [
+  { actor: "TEACHER", label: "/remarks/people", href: at("/remarks/people") },
+  {
+    actor: "APPADMIN",
+    label: "/appadmin/bank/<topic>/<question>",
+    href: async () => {
+      const q = await db.quizQuestion.findFirst({ select: { id: true, topicId: true }, orderBy: { id: "asc" } });
+      return q ? `/appadmin/bank/${q.topicId}/${q.id}` : null;
+    },
+  },
+  {
+    actor: "APPADMIN",
+    label: "/appadmin/contributions/<id>",
+    href: async () => {
+      const c = await db.questionContribution.findFirst({ select: { id: true }, orderBy: { id: "asc" } });
+      return c ? `/appadmin/contributions/${c.id}` : null;
+    },
+  },
+  {
+    actor: "PARENT",
+    label: "/health/cards/<child>",
+    href: async () => {
+      const user = await userOf(all.PARENT!.cookie);
+      const child = user ? await db.guardianship.findFirst({ where: { parentUserId: user.id, status: "ACTIVE" }, select: { studentMembershipId: true }, orderBy: { createdAt: "asc" } }) : null;
+      return child ? `/health/cards/${child.studentMembershipId}` : null;
+    },
+  },
+  { actor: "FACULTY", label: "/public/faculty/zz-vidya-college", href: at("/public/faculty/zz-vidya-college") },
+  { actor: "ADMIN", label: "/admin/exams", href: at("/admin/exams") },
+  { actor: "COLLEGE_ADMIN", label: "/admin/college-admissions", href: at("/admin/college-admissions") },
+  { actor: "ACCOUNTS", label: "/accounts/scholarships", href: at("/accounts/scholarships") },
+  { actor: "COLLEGE_STUDENT", label: "/student/scholarships", href: at("/student/scholarships") },
+  { actor: "COLLEGE_STUDENT", label: "/timetable", href: at("/timetable") },
+  { actor: "OPERATOR", label: "/root", href: at("/root") },
+  { actor: "OPERATOR", label: "/root/colleges", href: at("/root/colleges") },
+  { actor: "OPERATOR", label: "/root/quiz-review", href: at("/root/quiz-review") },
+  { actor: "APPADMIN", label: "/appadmin/quiz-review", href: at("/appadmin/quiz-review") },
+  { actor: "ADMIN", label: "/admin/report-cards at 1280 px", href: at("/admin/report-cards"), width: 1280 },
+];
+
+test.describe("pages behind a row, and the softer rules (QA-59, QA-68)", () => {
+  for (const g of GATED) {
+    test(`${g.actor} · ${g.label}`, async ({ browser, baseURL }) => {
+      const actor = all[g.actor];
+      test.skip(!actor, `no ${g.actor} session`);
+      const href = await g.href();
+      test.skip(!href, `${g.label}: no row to open on this database`);
+      const context = await contextFor(browser, actor!.cookie, { viewport: g.width ? { width: g.width, height: 900 } : VIEWPORTS.iphone, theme: "light", locale: "en" }, baseURL!);
+      const page = await context.newPage();
+      const response = await page.goto(href!, { waitUntil: "networkidle" });
+      expect(response?.status(), `${href} answered ${response?.status()}`).toBeLessThan(400);
+      expect(new URL(page.url()).pathname).not.toBe("/login");
+      const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "best-practice"]).analyze();
+      const found = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical" || SOFT_RULES.includes(v.id));
+      expect(found.map((v) => `${v.id} (${v.impact}) — ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
+      expect(await overflow(page), `${href} scrolls sideways`).toBeLessThanOrEqual(0);
+      if (!g.width) expect(await smallTargets(page), `${href}: interactive elements under 44px`).toEqual([]);
+      await context.close();
+    });
+  }
+});

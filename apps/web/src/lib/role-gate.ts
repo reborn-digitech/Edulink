@@ -95,8 +95,9 @@ export function endpointFor(method: string, path: string, catalog: readonly Endp
 
 /**
  * The top-level segments of app/(app): the school's working surface, where a
- * module role reaches only its own pages. tests/role-gate.test.ts holds this
- * list to the directory. Pages outside it — the account, the role chooser,
+ * module role reaches only its own pages. tests/modules.test.ts ("names every
+ * top-level segment of app/(app) in APP_SEGMENTS") holds this list to the
+ * directory. Pages outside it — the account, the role chooser,
  * a pupil's record, sign-in — are the person's own and are not gated here.
  */
 export const APP_SEGMENTS = [

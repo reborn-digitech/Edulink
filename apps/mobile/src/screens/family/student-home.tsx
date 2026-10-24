@@ -82,7 +82,7 @@ export function StudentHome() {
           <Text variant="xs" tone="muted">
             {[
               d.todayStatus ? t("student.registerTaken") : t("student.registerNotTakenYet"),
-              streak === 0 ? t("student.streakStartHint") : streak >= 5 ? t("student.onARoll") : streak === 1 ? t("student.streakDaysOne") : t("student.streakDaysMany", { count: streak }),
+              streak === 0 ? t("qaInterface.streakStartNextDayHint") : streak >= 5 ? t("student.onARoll") : streak === 1 ? t("student.streakDaysOne") : t("student.streakDaysMany", { count: streak }),
               t("student.lastFourWeeks"),
             ].join(" · ")}
           </Text>

@@ -4,7 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { adminOverviewSchema, type AdminOverview } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Icon, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
-import { QUICK } from "@/lib/nav";
+import { featuresOf, QUICK } from "@/lib/nav";
+import { useSession } from "@/lib/session";
 import { api } from "@/lib/api";
 import { screenFor, type ScreenTarget } from "@/lib/links";
 import { unwrap } from "@/lib/query";
@@ -17,6 +18,7 @@ import { OfficePenChangesCard, OfficeRecordChangesCard } from "../shared/pupil-r
 import { formatDateKey, pct } from "./shared";
 import { StreamTilesCard } from "../college/stream-tiles";
 import { CelebrationsCard } from "../shared/celebrations";
+import { useCollege } from "@/lib/institution";
 
 /**
  * Where a checklist step's page lives in the app. The steps carry the web's
@@ -35,13 +37,15 @@ export function stepTarget(href: string): ScreenTarget {
  */
 export function AdminHome() {
   const t = useT();
+  // A college's code is the college's (QA-69).
+  const college = useCollege();
   const query = useQuery({
     queryKey: ["admin", "overview"],
     queryFn: async () => adminOverviewSchema.parse(unwrap(await api().get("/api/v1/admin/overview"))),
   });
   const d = query.data;
   return (
-    <Screen title={t("nav.overview")} description={d ? `${d.school.name} · ${t("admin.schoolCode")} ${d.school.code}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+    <Screen title={t("nav.overview")} description={d ? `${d.school.name} · ${t(college ? "qaInterface.collegeCode" : "admin.schoolCode")} ${d.school.code}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {/* At a college: its streams, the tiles they bring with the year's figures, and what is not built yet (5 Oct 2026). */}
       <StreamTilesCard role="ADMIN" />
       {query.isPending ? <Loading /> : null}
@@ -53,6 +57,9 @@ export function AdminHome() {
 
 function Overview({ d }: { d: AdminOverview }) {
   const t = useT();
+  // The staffing gap names a vacancy only while the job board is on (QA-61).
+  const session = useSession();
+  const jobBoard = featuresOf(session.status === "signed-in" ? session.me : null).includes("JOB_BOARD");
   const th = useTheme();
   const router = useRouter();
   const { locale } = useLocale();
@@ -134,7 +141,7 @@ function Overview({ d }: { d: AdminOverview }) {
       {d.staffingGap.slots > 0 ? (
         <Card title={t("admin.staffingGapTitle")}>
           <Text variant="sm" tone="muted">
-            {d.staffingGap.classes === 1 ? t("admin.staffingGapBodyOne", { slots: d.staffingGap.slots }) : t("admin.staffingGapBody", { slots: d.staffingGap.slots, classes: d.staffingGap.classes })}
+            {d.staffingGap.classes === 1 ? t(jobBoard ? "admin.staffingGapBodyOne" : "qaInterface.staffingGapBodyOneNoBoard", { slots: d.staffingGap.slots }) : t(jobBoard ? "admin.staffingGapBody" : "qaInterface.staffingGapBodyNoBoard", { slots: d.staffingGap.slots, classes: d.staffingGap.classes })}
           </Text>
           <Button label={t("admin.staffingOpenTimetable")} variant="secondary" onPress={() => router.push("/(app)/timetable-editor" as never)} />
         </Card>

@@ -277,6 +277,27 @@ describe("lending", () => {
     expect(view.title).toMatchObject({ available: 1, waiting: 0 });
   });
 
+  it("QA-44: a reservation already ready, with a copy held for its reader, does not stop another reader's renewal", async () => {
+    const titleId = await newTitle("ZZ Two Copies", ["ZLW-1", "ZLW-2"]);
+    await as("LIBRARIAN");
+    const loan = await body<{ id: string }>(await issuePost(json("/api/v1/library/issues", { accession: "ZLW-1", membershipId: ids.p3 })));
+    await as("PARENT");
+    const held = await body<{ id: string; ready: boolean }>(await reservePost(json("/api/v1/library/reservations", { titleId, childId: ids.p1 })));
+    expect(held.ready).toBe(true);
+    await as("LIBRARIAN");
+    // Before the fix: 403 "Someone is waiting for this book, so it cannot be renewed."
+    const renewed = await renewPost(json("/api/v1/library/renewals", { issueId: loan.id }));
+    expect(renewed.status).toBe(200);
+    expect(await body<{ renewedCount: number; canRenew: boolean }>(renewed)).toMatchObject({ renewedCount: 1 });
+    // A reader still waiting (no copy left to hold) does stop it.
+    await as("PUPIL2");
+    const waiting = await body<{ ready: boolean }>(await reservePost(json("/api/v1/library/reservations", { titleId })));
+    expect(waiting.ready).toBe(false);
+    await as("LIBRARIAN");
+    await db.libraryIssue.update({ where: { id: loan.id }, data: { renewedCount: 0 } });
+    expect((await renewPost(json("/api/v1/library/renewals", { issueId: loan.id }))).status).toBe(403);
+  });
+
   it("renews within the school's limit, and never a late loan", async () => {
     await newTitle("ZZ Renewable", ["ZLR-1"]);
     await as("LIBRARIAN");

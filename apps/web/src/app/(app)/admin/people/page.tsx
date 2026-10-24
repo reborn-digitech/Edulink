@@ -181,7 +181,7 @@ export default async function DirectoryPage({
               .join(" · ") || t("people.nobodyYet")} />
         <div className="flex flex-wrap gap-2">
           <Button asChild variant="secondary" icon={<UserPlusIcon weight="bold" />}>
-            <Link href="/admin/intake">{t("intake.fromPeople")}</Link>
+            <Link href="/admin/intake">{t(isCollegeKind(kindRow?.kind) ? "qaInterface.admitStudents" : "intake.fromPeople")}</Link>
           </Button>
           <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
             <a href={exportHref}>{t("people.exportCsv")}</a>

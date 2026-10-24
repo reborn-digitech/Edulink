@@ -217,6 +217,15 @@ function checkStopTimes(input: TransportRouteInput) {
     if (dirs.includes("MORNING") && s.morningMinute === null) throw new AccessError("transport.refuseStopTimes");
     if (dirs.includes("EVENING") && s.eveningMinute === null) throw new AccessError("transport.refuseStopTimes");
   }
+  // Each run's times go forward along its own order (QA-46): the morning from the first stop to the last, the evening
+  // back from the last to the first, so along the list the evening's times fall. Two stops may share a minute. An
+  // evening written in the morning's order made the driver's phone say "First stop at 12:24" over 12:24, 12:14, 12:04.
+  for (let i = 1; i < input.stops.length; i += 1) {
+    const before = input.stops[i - 1]!;
+    const here = input.stops[i]!;
+    if (dirs.includes("MORNING") && before.morningMinute !== null && here.morningMinute !== null && here.morningMinute < before.morningMinute) throw new AccessError("transport.refuseStopOrder");
+    if (dirs.includes("EVENING") && before.eveningMinute !== null && here.eveningMinute !== null && here.eveningMinute > before.eveningMinute) throw new AccessError("transport.refuseStopOrder");
+  }
 }
 
 /**
@@ -783,13 +792,13 @@ const lastPublished = new Map<string, number>();
 /**
  * A batch of the bus's positions from the driver's phone, live or from its
  * outbox. Only a LIVE trip takes them (refused before the start and after
- * the end); positions outside the trip's time are dropped; one already
+ * the end); positions outside the trip's time are dropped and counted as rejected; one already
  * stored (the same instant) is not stored twice. A low battery flags the
  * trip for the office. Then the families whose stop comes next are told,
  * and the bus's place goes out on the school's and the riders' channels —
  * at most once in fifteen seconds per trip.
  */
-export async function recordPositions(ctx: ActiveContext, tripId: string, body: TripPositions): Promise<{ accepted: number; duplicates: number }> {
+export async function recordPositions(ctx: ActiveContext, tripId: string, body: TripPositions): Promise<{ accepted: number; duplicates: number; rejected: number }> {
   const d = await driverOf(ctx);
   const trip = await driversTrip(d, tripId);
   if (trip.status === "ENDED") throw new AccessError("transport.refuseEnded");
@@ -818,7 +827,9 @@ export async function recordPositions(ctx: ActiveContext, tripId: string, body: 
       publish([channel.school(d.schoolId), ...riders.map((r) => channel.student(r.studentMembershipId))], { type: "transport.position", tripId: trip.id, lat: newest.lat, lng: newest.lng, at: newest.at.toISOString() });
     }
   }
-  return { accepted: created.count, duplicates: body.positions.length - created.count };
+  // A position outside the window is `rejected`, not a duplicate (QA-47): neither is stored, and the phone's outbox may
+  // drop both, but the office's and the driver's counts say which it was.
+  return { accepted: created.count, duplicates: fresh.length - created.count, rejected: body.positions.length - fresh.length };
 }
 
 /**

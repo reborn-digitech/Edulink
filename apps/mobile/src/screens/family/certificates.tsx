@@ -11,7 +11,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, must, Refusal } from "../staff/shared";
-import { CERTIFICATE_KIND, certificateRequestStatus, ChildSwitcher, childQuery, Confirm, formatDateKey, Pill, type CertificateKind } from "./shared";
+import { CERTIFICATE_KIND, certificateRequestStatus, ChildSwitcher, childQuery, firstChild, Confirm, formatDateKey, Pill, type CertificateKind } from "./shared";
 
 const REQUESTS = "/api/v1/family/certificate-requests";
 
@@ -60,7 +60,7 @@ export function FamilyCertificates() {
   });
   const pupils = children.data?.children ?? [];
   // The child the ask is for: the one chosen, else the first the server knows.
-  const selectedChild = guardian ? (childId ?? pupils[0]?.studentMembershipId ?? null) : null;
+  const selectedChild = guardian ? (childId ?? firstChild(pupils)?.studentMembershipId ?? null) : null;
   const requestsKey = ["family", "certificate-requests", guardian ? selectedChild : "me"];
   const requests = useQuery({
     queryKey: requestsKey,

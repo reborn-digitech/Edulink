@@ -219,7 +219,12 @@ export async function myExams(ctx: ActiveContext, childId?: string): Promise<MyE
     cgpaOf(who.schoolId, sid),
   ]);
   const courseIds = [...forms.flatMap((f) => formCourses(f.coursesJson).map((c) => c.courseId)), ...openBacklogs.map((b) => b.courseId), ...standing.rows.map((r) => r.courseId)];
-  const courses = await coursesOf(who.schoolId, courseIds);
+  // The fee line says open, paid or waived (QA-42), read from the forms' demands as the cell's session page reads them.
+  const formDemands = forms.map((f) => f.feeDemandId).filter((x): x is string => Boolean(x));
+  const [courses, demandStatus] = await Promise.all([
+    coursesOf(who.schoolId, courseIds),
+    formDemands.length ? db.feeDemand.findMany({ where: { schoolId: who.schoolId, id: { in: formDemands } }, select: { id: true, status: true } }).then((ds) => new Map(ds.map((d) => [d.id, d.status]))) : Promise.resolve(new Map<string, string>()),
+  ]);
   const name = (await db.membership.findUnique({ where: { id: sid }, select: { studentCode: true, user: { select: { name: true } } } })) ?? { studentCode: null, user: { name: who.name } };
   const results = await Promise.all(
     standing.terms.map(async (term) => {
@@ -256,7 +261,7 @@ export async function myExams(ctx: ActiveContext, childId?: string): Promise<MyE
         noDuesLines: snap.noDues ?? [],
         feePaise: f.feePaise,
         lateFeePaise: f.lateFeePaise,
-        demandStatus: null,
+        demandStatus: f.feeDemandId ? (demandStatus.get(f.feeDemandId) ?? null) : null,
         opensAt: f.session.formOpensAt?.toISOString() ?? null,
         closesAt: f.session.formClosesAt?.toISOString() ?? null,
         windowOpen: open,

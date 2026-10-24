@@ -9,7 +9,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
 import { LINK, NUM, TD, TH } from "@/components/module-flash";
 import { ModuleFlash } from "@/components/module-flash";
-import { LOAD_KEY, clock, lectureKindLabel } from "@/components/academics/parts";
+import { clock, lectureKindLabel } from "@/components/academics/parts";
 import { streamsOf } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
@@ -54,7 +54,7 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("academics.statToday")} value={home.today.lectures.length} />
         <StatTile label={t("academics.statOfferings")} value={home.offerings.length} />
-        <StatTile label={t("academics.statLoad")} value={t("academics.hoursWeek", { n: home.hours })} hint={t(LOAD_KEY[state]!)} tone={state === "WITHIN" ? "ok" : "warn"} />
+        <StatTile label={t("academics.statLoad")} value={t("academics.hoursWeek", { n: home.hours })} hint={t(state === "UNDER" ? "qaInterface.loadUnderRange" : state === "OVER" ? "qaInterface.loadOverRange" : "qaInterface.loadWithinRange", { min: home.settings.loadMinHours, max: home.settings.loadMaxHours })} tone={state === "WITHIN" ? "ok" : "warn"} />
         <StatTile label={t("academics.statToModerate")} value={home.toModerate.length} tone={home.toModerate.length ? "warn" : "neutral"} />
       </div>
       <Card>

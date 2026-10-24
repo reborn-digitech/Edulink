@@ -120,6 +120,15 @@ describe("the head's decision log", () => {
     expect(body.total).toBe(2);
     expect(body.own).toBe(true);
     expect((await get("?kind=nope")).status).toBe(422);
+    // QA-55: a day that does not exist, or a window that runs backwards, is refused naming the field; it was a 200 with
+    // every decision, the impossible date passing the pattern and the filter dropped.
+    const unreal = await get("?from=2026-13-01");
+    expect(unreal.status).toBe(422);
+    expect(((await unreal.json()) as { issues?: Record<string, string> }).issues?.from).toBeTruthy();
+    const backwards = await get("?from=2026-10-24&to=2026-04-01");
+    expect(backwards.status).toBe(422);
+    expect(((await backwards.json()) as { issues?: Record<string, string> }).issues?.to).toBeTruthy();
+    expect((await get("?from=2024-02-29&to=2028-02-29")).status).toBe(200);
 
     __resetCookies();
     await createSession(users.Admin!, { schoolId, role: "ADMIN" });

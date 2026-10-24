@@ -187,7 +187,7 @@ export default async function RootPage({
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">
-                      <th className="py-1 pr-2" />
+                      <th className="py-1 pr-2"><span className="sr-only">{t("qaInterface.colSelect")}</span></th>
                       <th className="py-1 pr-3">{t("root.colSchool")}</th>
                       <th className="py-1 pr-3">{t("root.colState")}</th>
                       <th className="py-1 pr-3">{t("root.colPlan")}</th>
@@ -196,7 +196,7 @@ export default async function RootPage({
                       <th className="py-1 pr-3">{t("root.colPartner")}</th>
                       <th className="py-1 pr-3">{t("root.colContact")}</th>
                       <th className="py-1 pr-3">{t("root.colLastActivity")}</th>
-                      <th className="py-1" />
+                      <th className="py-1"><span className="sr-only">{t("qaInterface.colActions")}</span></th>
                     </tr>
                   </thead>
                   <tbody>

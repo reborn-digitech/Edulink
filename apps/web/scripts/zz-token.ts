@@ -5,6 +5,7 @@
  *   npm run zz:token -- TEACHER        prints the token, nothing else
  *   npm run zz:token -- FACULTY        a college role: at ZZ Vidya College (4 Oct 2026)
  *   npm run zz:token -- ALUMNUS zz.alumni02@zz.test   that person in that role
+ *   npm run zz:token -- EXPERT zz.expert2@zz.test     an outside account by address too (EXPERT, RECRUITER, PARENT)
  *
  * Sessions carry userAgent "zz-token", expire in an hour, and the API sweep's
  * cleanup does not touch them.
@@ -97,7 +98,10 @@ async function main() {
     userId = (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true } })).parentUserId;
     schoolId = null;
   } else if (role === "EXPERT") {
-    userId = (await db.expertProfile.findFirstOrThrow({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } })).userId;
+    // A named expert is that ZZ or demo person (QA-74: the email was ignored and any ZZ expert came back); unnamed,
+    // the first ZZ expert by address, zz.expert1, the one the plans fixture grants and the sweep walks.
+    if (email) assertFixtureEmail(email);
+    userId = (await db.expertProfile.findFirstOrThrow({ where: { user: email ? { email } : { email: { endsWith: "@zz.test" } } }, select: { userId: true }, orderBy: { user: { email: "asc" } } })).userId;
     schoolId = null;
   } else if (role === "OPERATOR" || role === "APPADMIN") {
     // The server operator and the content team: the ZZ fixture's flagged

@@ -40,8 +40,20 @@ export const totpStatusSchema = z.object({
   recoveryLeft: z.number().int().min(0),
   /** The server has no key to seal the secret with; enrolment would be refused. */
   available: z.boolean(),
+  /**
+   * Turning it on asks for the account's password (24 Oct 2026, QA-23); an account with none (a sign-in link or
+   * SSO only) is asked to have signed in within the last ten minutes instead. Absent from older servers.
+   */
+  hasPassword: z.boolean().default(true),
 });
 export type TotpStatus = z.infer<typeof totpStatusSchema>;
+
+/**
+ * POST /api/v1/account/totp/start — the password, which a session alone no longer stands in for (QA-23). Left out
+ * by an account with no password, which needs a fresh sign-in instead; left out by one with a password, a 422.
+ */
+export const totpStartSchema = z.object({ password: z.string().max(256).optional() });
+export type TotpStart = z.infer<typeof totpStartSchema>;
 
 /** POST /api/v1/account/totp/start */
 export const totpStartedSchema = z.object({
@@ -56,8 +68,8 @@ export type TotpStarted = z.infer<typeof totpStartedSchema>;
 
 export const totpConfirmSchema = z.object({ code: totpCodeSchema });
 
-/** POST /api/v1/account/totp/confirm: the eight recovery codes, shown once. */
-export const totpConfirmedSchema = z.object({ recoveryCodes: z.array(z.string()).length(8) });
+/** POST /api/v1/account/totp/confirm: the eight recovery codes, shown once; every other session of the account is signed out (QA-23). */
+export const totpConfirmedSchema = z.object({ recoveryCodes: z.array(z.string()).length(8), signedOut: z.number().int().min(0).default(0) });
 export type TotpConfirmed = z.infer<typeof totpConfirmedSchema>;
 
 export const totpDisableSchema = z.object({ code: totpCodeSchema });

@@ -493,6 +493,12 @@ export const ROLE_HOME: Record<Role, string> = {
 /* -------------------------------------------------------------------------- */
 
 export const SESSION_TTL_DAYS = 30;
+/**
+ * A session may slide, but not forever: it ends this many days after it was
+ * CREATED, however busy it has been. Read by `getSession` (session.ts) and by
+ * the tenant resolver (tenant-request.ts), which must agree (QA-26).
+ */
+export const SESSION_ABSOLUTE_MAX_DAYS = 180;
 export const MAGIC_LINK_TTL_MINUTES = 20;
 export const INVITE_TTL_DAYS = 14;
 export const EMAIL_VERIFY_TTL_HOURS = 48;

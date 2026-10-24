@@ -77,6 +77,9 @@ afterAll(async () => {
   await db.session.deleteMany({ where: { user: { email: { contains: `-${STAMP}@test.invalid` } } } });
   await db.school.deleteMany({ where: { id: { in: [ids.college, ids.autonomous, ids.school] } } });
   await db.user.deleteMany({ where: { email: { contains: `-${STAMP}@test.invalid` } } });
+  // The second sign-up's notice to the holder (QA-25) and its per-address count.
+  await db.outboundEmail.deleteMany({ where: { to: { contains: `-${STAMP}@test.invalid` } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "signup-notice:", contains: `-${STAMP}@test.invalid` } } });
   await db.$disconnect();
 });
 
@@ -187,12 +190,14 @@ describe("the modules by kind, and the autonomous switch", () => {
 
 describe("the recruiter", () => {
   const email = `zz-col-recruiter-${STAMP}@test.invalid`;
-  it("registers itself, lands on its own home with no school, and is refused a second account on the same address", async () => {
-    const made = await registerRecruiter({ name: "ZZ Col Recruiter", email, password: "a long enough zz password 1", companyName: "ZZ Col Company" }, "en");
-    expect(made).toMatchObject({ ok: true });
-    if (!made.ok) return;
+  it("registers itself, lands on its own home with no school, and a second sign-up on the same address makes nothing", async () => {
+    // A form in order is answered {ok: true} whether or not the address is taken (QA-25, 24 Oct 2026); with no `defer`
+    // the lib makes the account inline, so the test can read it.
+    expect(await registerRecruiter({ name: "ZZ Col Recruiter", email, password: "a long enough zz password 1", companyName: "ZZ Col Company" }, "en")).toEqual({ ok: true });
+    const made = { userId: (await db.user.findUniqueOrThrow({ where: { email }, select: { id: true } })).id };
     expect(await resolveContext(made.userId)).toEqual({ role: "RECRUITER", schoolId: null, redirectTo: "/recruiter" });
-    expect(await registerRecruiter({ name: "ZZ Col Recruiter", email, password: "a long enough zz password 1", companyName: "ZZ Col Company" }, "en")).toMatchObject({ ok: false, errorKey: "recruiter.refuseEmailTaken" });
+    expect(await registerRecruiter({ name: "ZZ Col Recruiter", email, password: "a long enough zz password 1", companyName: "ZZ Col Company" }, "en")).toEqual({ ok: true });
+    expect(await db.recruiterProfile.count({ where: { user: { email } } })).toBe(1);
     const audited = await db.auditLog.findFirst({ where: { actorUserId: made.userId, action: "recruiter.register" }, select: { id: true } });
     expect(audited).not.toBeNull();
     expect(actionKey("recruiter.register")).toBe("audit.recruiterRegister");

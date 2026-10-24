@@ -313,3 +313,6 @@ export * from "./v1/person-plans";
 // plans-pay (17 Oct 2026): passes bought through the company's gateway, their orders and invoices (decision 0006).
 export * from "./v1/passes";
 // end plans-pay
+// fix-lows-B2 (24 Oct 2026, QA-55): a day and a clock time that exist, checked against the calendar and the clock.
+export * from "./v1/calendar-keys";
+// end fix-lows-B2

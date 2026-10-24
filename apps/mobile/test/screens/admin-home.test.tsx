@@ -1,6 +1,6 @@
 import { fireEvent, screen } from "@testing-library/react-native";
 import { AdminHome } from "@/screens/staff/admin-home";
-import { gated, json, mountStaff, refused } from "./staff-harness";
+import { gated, json, me, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -30,6 +30,12 @@ const OVERVIEW = {
 beforeEach(() => mockRouter.push.mockClear());
 
 describe("the admin's overview", () => {
+  it("at a college says the college's code; with the job board off the staffing gap names no vacancy (QA-61, QA-69)", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW) }, { me: { ...me("ADMIN"), institutionKind: "COLLEGE", features: [] } });
+    expect(await screen.findByText("ZZ School · College code ZZ-1234")).toBeTruthy();
+    expect(screen.getByText("5 lessons across 2 classes have no teacher yet. Assign a teacher from the timetable.")).toBeTruthy();
+  });
+
   it("loads, then shows the school, the checklist, the counts and the staffing gap", async () => {
     const gate = gated();
     await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": gate.answer });

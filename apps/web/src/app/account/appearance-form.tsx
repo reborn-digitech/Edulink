@@ -29,6 +29,7 @@ export function AppearanceForm({
   prefs,
   section,
   phone,
+  textsOn = true,
 }: {
   prefs: UserPrefs;
   section: "appearance" | "notifications";
@@ -39,6 +40,11 @@ export function AppearanceForm({
    * does not know, and then nothing is said.
    */
   phone?: string | null;
+  /**
+   * Whether the operator has texts on (TEXT_MESSAGING; QA-61): off, the SMS and WhatsApp boxes are shown as they are
+   * kept but cannot be changed, with a line saying texts are not on, instead of describing texts that never go.
+   */
+  textsOn?: boolean;
 }) {
   const router = useRouter();
   const t = useT();
@@ -140,15 +146,18 @@ export function AppearanceForm({
             label={t("prefs.sms")}
             description={t("prefs.smsHint")}
             checked={draft.channels.sms !== false}
+            disabled={!textsOn}
             onChange={(e) => update({ channels: { ...draft.channels, sms: e.target.checked } })}
           />
           <CheckboxField
             label={t("prefs.whatsapp")}
             description={t("prefs.whatsappHint")}
             checked={draft.channels.whatsapp !== false}
+            disabled={!textsOn}
             onChange={(e) => update({ channels: { ...draft.channels, whatsapp: e.target.checked } })}
           />
-          {phone !== undefined && (
+          {!textsOn && <p className="px-1 text-xs leading-relaxed text-fg-muted">{t("qaInterface.textsOff")}</p>}
+          {textsOn && phone !== undefined && (
             <p className={cn("px-1 text-xs leading-relaxed", phone ? "text-fg-muted" : "text-warn")}>
               {phone ? t("messaging.phoneOn", { phone }) : t("messaging.phoneOff")}{" "}
               <Link href="/account" className="font-medium text-accent-strong underline decoration-accent-strong/40 hover:decoration-accent-strong">

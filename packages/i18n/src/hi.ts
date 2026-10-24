@@ -1982,6 +1982,10 @@ export const hi: Dictionary = {
     rowMoved: "{name}: अब {count} में से पंक्ति {position}",
   },
   admissions: {
+    // fix-lows-B2 (QA-43: a seat given before its year begins).
+    refuseAheadDate: "इस सीट का वर्ष {date} को शुरू होता है। उससे पहले दिया गया प्रवेश उसी दिन की तारीख़ का होता है।",
+    refuseAheadClass: "इस सीट का वर्ष अभी शुरू नहीं हुआ है। अभी बिना कक्षा के प्रवेश दें, और वर्ष शुरू होने पर विद्यार्थी को कक्षा में रखें।",
+    // end fix-lows-B2
     title: "प्रवेश",
     metaTitle: "प्रवेश",
     intro: "वर्ष के लिए एक प्रवेश चक्र खोलें — कौन-सी कक्षाएँ, हर एक में कितनी सीटें, कौन-से दस्तावेज़, प्रवेश परीक्षा है या नहीं — और आवेदन करने वाला हर परिवार यहीं आगे बढ़ता है: दस्तावेज़, परीक्षा की बैठक, प्रस्ताव और सीट।",
@@ -6765,6 +6769,10 @@ export const hi: Dictionary = {
     authTotpDisabled: "दो-चरण साइन-इन बंद किया",
     authTotpPassed: "दो-चरण साइन-इन का कोड सही दिया",
     authTotpFailed: "दो-चरण साइन-इन का कोड गलत दिया",
+    // fix-lows-A (24 Oct 2026, QA-22, QA-23): the second step locked after too many wrong codes; turning it on refused.
+    authTotpLocked: "बहुत से गलत कोड के बाद दो-चरण साइन-इन रोका गया",
+    authTotpEnrolRefused: "दो-चरण साइन-इन चालू करना अस्वीकार: गलत पासवर्ड",
+    // end fix-lows-A
     absenceNote: "परिवार ने बताया कि बच्चा अनुपस्थित रहेगा",
     absenceNoteDelete: "परिवार ने अनुपस्थिति की सूचना वापस ली",
     familyExport: "किसी व्यक्ति का डेटा डाउनलोड किया",
@@ -10399,6 +10407,9 @@ export const hi: Dictionary = {
     // college-office:end
   },
   hostel: {
+    // fix-lows-B2 (QA-45: not out before the leave begins).
+    refuseOutEarly: "यह छुट्टी अभी शुरू नहीं हुई है। छात्रावासी इसके शुरू होने से पंद्रह मिनट पहले से बाहर जा सकता है।",
+    // end fix-lows-B2
     refuseNotWarden: "इस स्कूल का कोई वार्डन चुनें।",
     refuseNameTaken: "स्कूल में इस नाम का छात्रावास पहले से है।",
     refuseNoHostel: "वह छात्रावास नहीं मिला।",
@@ -10796,6 +10807,9 @@ export const hi: Dictionary = {
     homeGlobalFeed: "सभी स्कूलों की साझा पोस्ट पढ़ें",
   },
   transport: {
+    // fix-lows-B2 (QA-46: each run's stop times go forward).
+    refuseStopOrder: "स्टॉप के समय आगे की ओर चलने चाहिए: सुबह पहले स्टॉप से आख़िरी तक, शाम को आख़िरी स्टॉप से वापस पहले तक।",
+    // end fix-lows-B2
     // The bus roster export column headings (4 Oct 2026).
     colBus: "बस",
     colRoute: "मार्ग",
@@ -14702,6 +14716,9 @@ export const hi: Dictionary = {
     refuseNotRecruiter: "यह पता किसी भर्तीकर्ता का खाता नहीं है।",
     refuseNotThroughLastRound: "एक उम्मीदवार चरण {round} पार नहीं कर सका।",
     refuseOfferAnswered: "इस ऑफ़र का उत्तर दिया जा चुका है।",
+    // fix-lows-B1 (QA-33): two recorders of one offer at once; the loser is told what stands.
+    refuseOfferChangedMeanwhile: "इस उम्मीदवार के लिए अभी-अभी ₹{offer} लाख का ऑफ़र दर्ज हुआ है। ड्राइव फिर से देखें, फिर ज़रूरत हो तो उसे बदलें।",
+    // end fix-lows-B1
     refuseOfferRejected: "यह उम्मीदवार किसी चरण में आगे नहीं बढ़ा।",
     refuseOneOffer: "एक ऑफ़र प्रति विद्यार्थी: दूसरे के लिए ड्रीम अनुमति और पहले के ड्रीम अनुपात जितना पैकेज चाहिए।",
     refusePackageRange: "अधिकतम पैकेज न्यूनतम से कम है।",
@@ -15495,6 +15512,9 @@ export const hi: Dictionary = {
       refusePosting: "अपनी पोस्टिंग में से एक चुनें।",
       refuseDay: "दिन पोस्टिंग का कोई दिन होना चाहिए, और भविष्य का नहीं।",
       refuseIdentifier: "टिप्पणी में कुछ ऐसा है जो नाम, नंबर या पते जैसा लगता है; लॉगबुक में किसी रोगी का नाम नहीं होता।",
+      // fix-lows-B1 (QA-49): the supervisor's remark names no patient either.
+      refuseRemarkIdentifier: "टिप्पणी में कुछ ऐसा है जो किसी रोगी के नाम या नंबर जैसा लगता है; लॉगबुक में किसी रोगी का नाम नहीं होता।",
+      // end fix-lows-B1
       refuseNotEditable: "केवल मसौदा या लौटाई गई प्रविष्टि सुधारी जा सकती है।",
       refuseSigned: "हस्ताक्षरित प्रविष्टि दोबारा नहीं सौंपी जा सकती।",
     },
@@ -17988,6 +18008,10 @@ export const hi: Dictionary = {
   // ---- end college-content ----
   // expert-registration (15 Oct 2026): an expert applies from the login page, the operator approves or refuses.
   expertApply: {
+    // fix-lows-B2 (QA-37: the losing half of a double press reads as done).
+    alreadyApproved: "यह आवेदन पहले ही स्वीकृत हो चुका है, और निमंत्रण तभी भेजा गया था। दोबारा कुछ नहीं भेजा गया।",
+    alreadyRefused: "यह आवेदन पहले ही अस्वीकार हो चुका है, और आवेदक को तभी बता दिया गया था। दोबारा कुछ नहीं भेजा गया।",
+    // end fix-lows-B2
     loginPrefix: "क्या आप विशेषज्ञ के रूप में विद्यार्थियों का मार्गदर्शन करना चाहते हैं?",
     loginLink: "यहाँ आवेदन करें।",
     footerLink: "विशेषज्ञ बनें",
@@ -18957,6 +18981,9 @@ export const hi: Dictionary = {
   // end seats
   // plans-pay (17 Oct 2026): passes bought through the company's gateway, the checkout, the orders, the invoice and the operator's refund (src/lib/pass-orders.ts).
   passes: {
+    // fix-lows-B2 (QA-37: a second refund press reads as done).
+    refundAlready: "इस पास का पैसा पहले ही लौटाया जा चुका है। दोबारा कुछ नहीं लौटाया गया।",
+    // end fix-lows-B2
     refuseNotAsked: "अभी यह योजना माँगी नहीं जा रही है: इसमें शामिल सब कुछ खुला है, और खरीदने को कुछ नहीं है।",
     refuseNotOnSale: "यह योजना अभी यहाँ से खरीदी नहीं जा सकती।",
     refuseAskGuardian: "अठारह वर्ष से कम के विद्यार्थी की योजना अभिभावक खरीदते हैं। योजनाएँ पन्ने से अपने अभिभावक से कहें।",
@@ -19389,4 +19416,58 @@ export const hi: Dictionary = {
     needAddress: "विशेषज्ञ का ईमेल पता दीजिए। निमंत्रण उसी पते पर भेजा जाता है।",
   },
   // end fix-highs-A
+  // fix-lows-A (24 Oct 2026, QA-21 to QA-25): turning two-step sign-in on asks the password, the second step locks after
+  // too many wrong codes, and a sign-up says the same whether or not the address already has an account.
+  accountGuard: {
+    totpPasswordLabel: "आपका पासवर्ड",
+    totpPasswordHint: "दो-चरण साइन-इन चालू करने के लिए वह पासवर्ड लिखें जिससे आप साइन इन करते हैं।",
+    totpFreshSignInHint: "इसे चालू करने के लिए साइन आउट करके फिर से साइन इन करें, फिर दस मिनट के भीतर यहाँ लौटें।",
+    totpPasswordNeeded: "दो-चरण साइन-इन चालू करने के लिए अपना पासवर्ड लिखें।",
+    totpWrongPassword: "यह पासवर्ड सही नहीं है।",
+    totpSignInAgain: "साइन आउट करके फिर से साइन इन करें, फिर दस मिनट के भीतर दो-चरण साइन-इन चालू करें।",
+    totpLockedSubject: "आपके खाते पर बहुत से गलत साइन-इन कोड",
+    totpLockedBody: "किसी ने आपके पासवर्ड से साइन इन किया और फिर ऑथेंटिकेटर ऐप के {count} गलत कोड डाले। आपके खाते का दो-चरण साइन-इन एक घंटे के लिए रोक दिया गया है।",
+    totpLockedAction: "अगर यह आप नहीं थे, तो आपका पासवर्ड किसी और को पता है। अभी लॉगिन पेज से इसे रीसेट करें।",
+    resetCta: "मेरा पासवर्ड रीसेट करें",
+    signupTakenSubject: "किसी ने आपके ईमेल से खाता बनाने की कोशिश की",
+    signupTakenSchool: "किसी ने इस ईमेल पते से शालाघर पर नया स्कूल पंजीकृत करने की कोशिश की। इस पते पर पहले से एक खाता है, इसलिए कुछ नहीं बनाया गया।",
+    signupTakenRecruiter: "किसी ने इस ईमेल पते से शालाघर पर भर्तीकर्ता के रूप में साइन अप करने की कोशिश की। इस पते पर पहले से एक खाता है, इसलिए कुछ नहीं बनाया गया।",
+    signupTakenIfYou: "अगर यह आप थे, तो अपने खाते से साइन इन करें। पासवर्ड भूल गए हों तो लॉगिन पेज से उसे रीसेट करें।",
+    signupTakenIfNotYou: "अगर यह आप नहीं थे, तो आपको कुछ करने की ज़रूरत नहीं है।",
+    signInCta: "साइन इन करें",
+    signupSent: "हमने {email} पर एक संदेश भेजा है। आगे बढ़ने के लिए उसे खोलें: नया खाता उसके लिंक से पक्का होता है, फिर आप अपने पासवर्ड से साइन इन करते हैं।",
+    signupSentPlain: "हमने उस पते पर एक संदेश भेजा है। आगे बढ़ने के लिए उसे खोलें।",
+    signupSentTitle: "अपना ईमेल देखें",
+    goToSignIn: "साइन इन पर जाएँ",
+  },
+  // end fix-lows-A
+  // fix-lows-C (24 Oct 2026, QA-42 to QA-70, interface and copy): sentences for the Low findings' pages and screens.
+  qaInterface: {
+    colActions: "कार्रवाई",
+    colSelect: "चुनें",
+    payoutLinkedNotReady: "अभी भुगतान के लिए तैयार नहीं",
+    routeLinkedOnly: "Razorpay से जुड़ा",
+    staffingGapBodyNoBoard: "{classes} कक्षाओं के {slots} पाठों में अभी कोई शिक्षक नहीं है। समय-सारणी से शिक्षक नियुक्त करें।",
+    staffingGapBodyOneNoBoard: "एक कक्षा के {slots} पाठों में अभी कोई शिक्षक नहीं है। समय-सारणी से शिक्षक नियुक्त करें।",
+    collegeCode: "महाविद्यालय कोड",
+    ourCollegeFeed: "हमारे महाविद्यालय की फ़ीड",
+    collegeDeskTitle: "आपके महाविद्यालय की रिक्तियाँ",
+    collegeDeskIntro: "आपके महाविद्यालय ने बोर्ड पर जो डाला है, और हर रिक्ति पर आई पूछताछ।",
+    admitStudents: "सूची से विद्यार्थियों को प्रवेश दें",
+    textsOff: "SMS और WhatsApp से संदेश अभी चालू नहीं हैं। आपकी पसंद तब के लिए रखी गई है जब वे चालू होंगे।",
+    streakStartsNextDay: "अगले स्कूल दिन से शुरू",
+    streakStartNextDayHint: "अगले स्कूल दिन आओ और सिलसिला शुरू करो",
+    loadUnderRange: "{min}–{max} घंटे से कम",
+    loadWithinRange: "{min}–{max} घंटे की सीमा में",
+    loadOverRange: "{min}–{max} घंटे से अधिक",
+    openDuty: "{name} खोलें",
+    reachNoFamilies: "इस परिपत्र के पाठकों से कोई परिवार जुड़ा नहीं है, इसलिए बताने के लिए कोई नहीं था।",
+    purposeCircularRemind: "सूचना की याद",
+    purposeIncident: "घटना",
+    purposeOther: "अन्य",
+    operatorMenu: "मेनू",
+    officeOnlyTitle: "यह पन्ना कार्यालय का है",
+    officeOnlyBody: "इसे केवल स्कूल कार्यालय और प्रधानाचार्य खोलते हैं। आपके अपने पन्ने आपके होम पर और ‘और’ में हैं।",
+  },
+  // end fix-lows-C
 };

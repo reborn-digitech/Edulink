@@ -668,3 +668,21 @@ export const familyExploreSchema = z.object({
   countries: z.array(z.string()),
   regionsByCountry: z.record(z.array(z.string())),
 });
+
+/**
+ * GET /api/v1/family/export — the document itself, sent as a JSON attachment (no envelope): its fixed head, then one
+ * key per name in `sections` (profile, record, attendance, marks, reportCards, assignments, remarks, conversations,
+ * consents, sessions; for a guardian also health, incidents and fees), each the shape its own page reads, or
+ * `{ unavailable: true }` where that page refuses the reader today. QA-56: the catalog said `{ ok: true }`.
+ */
+export const familyExportDocumentSchema = z
+  .object({
+    format: z.literal("relay-person-export"),
+    version: z.literal(1),
+    exportedAt: iso,
+    exportedBy: z.object({ userId: z.string(), role: z.enum(["STUDENT", "PARENT"]) }),
+    subject: z.object({ studentMembershipId: z.string(), name: z.string(), schoolId: z.string(), schoolName: z.string() }),
+    sections: z.array(z.string()),
+  })
+  .passthrough();
+export type FamilyExportDocument = z.infer<typeof familyExportDocumentSchema>;

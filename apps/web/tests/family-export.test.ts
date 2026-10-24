@@ -16,6 +16,8 @@ import { consume } from "@/lib/rate-limit";
 import { PERSON_EXPORT_BUDGET } from "@/lib/person-export";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { GET as exportGet } from "@/app/api/v1/family/export/route";
+import { familyExportDocumentSchema } from "@edulink/contracts";
+import { ENDPOINTS } from "@/lib/api-catalog";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -99,6 +101,9 @@ describe("a guardian's export", () => {
     expect(res.headers.get("content-disposition")).toMatch(/^attachment; filename="relay-export-Asha-\d{4}-\d{2}-\d{2}\.json"$/);
     expect(res.headers.get("cache-control")).toContain("no-store");
     const doc = (await res.json()) as Record<string, unknown> & { sections: string[] };
+    // QA-56: the body is the document the catalog now describes, not `{ ok: true }`.
+    expect(familyExportDocumentSchema.safeParse(doc).success).toBe(true);
+    expect(ENDPOINTS.find((e) => e.method === "GET" && e.path === "/api/v1/family/export")?.response).toBe(familyExportDocumentSchema);
     expect(doc).toMatchObject({ format: "relay-person-export", version: 1, exportedBy: { userId: parentUserId, role: "PARENT" }, subject: { studentMembershipId: ashaId, name: "Asha", schoolId } });
     expect(doc.sections).toEqual(["profile", "record", "memberships", "attendance", "marks", "reportCards", "assignments", "remarks", "conversations", "consents", "sessions", "health", "incidents", "fees"]);
     expect(doc.attendance).toEqual([{ dateKey: "2026-09-01", status: "LATE" }]);

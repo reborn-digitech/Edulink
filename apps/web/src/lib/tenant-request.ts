@@ -2,7 +2,7 @@ import { cache } from "react";
 import { cookies, headers } from "next/headers";
 import { hashToken } from "./crypto";
 import { bearerToken } from "./bearer";
-import { SESSION_COOKIE } from "./constants";
+import { SESSION_ABSOLUTE_MAX_DAYS, SESSION_COOKIE } from "./constants";
 import { NO_TENANT, type RequestTenant } from "./tenant-context";
 
 /**
@@ -42,10 +42,11 @@ export type SessionReadableClient = {
       activeRole: string | null;
       revokedAt: Date | null;
       expiresAt: Date;
+      createdAt: Date;
       // Read through the session's own relation rather than a second query.
       // User carries no policy, so this needs no tenant to succeed — the same
       // reason the session lookup itself works here.
-      user: { isSuperuser: boolean } | null;
+      user: { isSuperuser: boolean; disabledAt: Date | null } | null;
     } | null>;
   };
   guardianship: {
@@ -73,6 +74,7 @@ type MembershipReadableTx = {
 export const resolveRequestTenant = cache(
   async (client: SessionReadableClient): Promise<RequestTenant> => {
     let token: string | undefined;
+    let owner: string | null = null;
     try {
       token = (await cookies()).get(SESSION_COOKIE)?.value;
       // The phone sends the same session token as a bearer instead of a
@@ -80,7 +82,10 @@ export const resolveRequestTenant = cache(
       // handler's getSession saw the person, the row-level policy did not,
       // and a school's own admin got "school is required, got null" from
       // their own memberships.
-      if (!token) token = bearerToken(await headers()) ?? undefined;
+      const hdrs = await headers();
+      if (!token) token = bearerToken(hdrs) ?? undefined;
+      // An outbox replay names the person who queued it; see below.
+      owner = hdrs.get("x-edulink-owner");
     } catch {
       // No request scope at all: a script, a unit test, a build-time render.
       // Nothing to scope to, and every policied read will correctly return
@@ -98,7 +103,8 @@ export const resolveRequestTenant = cache(
         activeRole: true,
         revokedAt: true,
         expiresAt: true,
-        user: { select: { isSuperuser: true } },
+        createdAt: true,
+        user: { select: { isSuperuser: true, disabledAt: true } },
       },
     });
 
@@ -107,6 +113,14 @@ export const resolveRequestTenant = cache(
     if (!session) return NO_TENANT;
     if (session.revokedAt) return NO_TENANT;
     if (session.expiresAt.getTime() < Date.now()) return NO_TENANT;
+    // THE SAME THREE REFUSALS `getSession` MAKES (session.ts readSession), so the
+    // two can never disagree about who is signed in (QA-26, 24 Oct 2026): a
+    // session past its six-month absolute end, a person the operator disabled,
+    // and an outbox replay queued by somebody other than the session's holder
+    // (X-Edulink-Owner) are each nobody to the database as well.
+    if (session.createdAt.getTime() + SESSION_ABSOLUTE_MAX_DAYS * 86_400_000 < Date.now()) return NO_TENANT;
+    if (session.user?.disabledAt) return NO_TENANT;
+    if (owner && owner !== session.userId) return NO_TENANT;
 
     // ORTHOGONAL TO THE SCHOOL SET, and every branch below carries it unchanged.
     // Somebody who runs the server may also teach somewhere, so this is not an

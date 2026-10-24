@@ -32,12 +32,12 @@ export function TwoStepCard() {
       <Text variant="xs" tone="muted">
         {t("totp.description")}
       </Text>
-      {d.enabled ? <On recoveryLeft={d.recoveryLeft} /> : <Off available={d.available} />}
+      {d.enabled ? <On recoveryLeft={d.recoveryLeft} /> : <Off available={d.available} hasPassword={d.hasPassword} />}
     </Card>
   );
 }
 
-function Off({ available }: { available: boolean }) {
+function Off({ available, hasPassword }: { available: boolean; hasPassword: boolean }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
@@ -46,17 +46,28 @@ function Off({ available }: { available: boolean }) {
   const [code, setCode] = useState("");
   const [recoveryCodes, setRecoveryCodes] = useState<string[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // Turning it on asks for the password first (QA-23, 24 Oct 2026); an account with none was asked to have signed in just now.
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState<string | null>(null);
   const start = useMutation({
     mutationFn: async () => {
-      const result = await api().post("/api/v1/account/totp/start");
-      if (!result.ok) throw new Error(errorText(result, t("account.didNotWork")));
+      const result = await api().post("/api/v1/account/totp/start", hasPassword ? { password } : {});
+      if (!result.ok) {
+        if (result.issues?.password) throw Object.assign(new Error(result.issues.password), { field: "password" });
+        throw new Error(errorText(result, t("account.didNotWork")));
+      }
       return totpStartedSchema.parse(result.data);
     },
     onSuccess: (data) => {
       setError(null);
+      setPasswordError(null);
+      setPassword("");
       setStarted(data);
     },
-    onError: (e) => setError(e.message),
+    onError: (e) => {
+      if ((e as { field?: string }).field === "password") setPasswordError(e.message);
+      else setError(e.message);
+    },
   });
   const confirm = useMutation({
     mutationFn: async () => {
@@ -170,12 +181,32 @@ function Off({ available }: { available: boolean }) {
   return (
     <View style={{ gap: th.space[3] }}>
       <Row title={available ? t("totp.off") : t("totp.unavailable")} />
+      {available && hasPassword ? (
+        <Field
+          label={t("accountGuard.totpPasswordLabel")}
+          value={password}
+          onChangeText={(next) => {
+            setPassword(next);
+            setPasswordError(null);
+          }}
+          secureTextEntry
+          textContentType="password"
+          autoComplete="current-password"
+          hint={t("accountGuard.totpPasswordHint")}
+          error={passwordError}
+        />
+      ) : null}
+      {available && !hasPassword ? (
+        <Text variant="xs" tone="muted">
+          {t("accountGuard.totpFreshSignInHint")}
+        </Text>
+      ) : null}
       {error ? (
         <Text variant="sm" tone="danger">
           {error}
         </Text>
       ) : null}
-      <Button label={t("totp.turnOn")} busy={start.isPending} disabled={!available} onPress={() => start.mutate()} />
+      <Button label={t("totp.turnOn")} busy={start.isPending} disabled={!available || (hasPassword && password.length === 0)} onPress={() => start.mutate()} />
     </View>
   );
 }

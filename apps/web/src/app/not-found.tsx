@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function NotFound() {
   const t = await getT();
   return (
-    <main className="grid min-h-dvh place-items-center bg-bg p-6">
+    <main id="main" className="grid min-h-dvh place-items-center bg-bg p-6">
       <div className="w-full max-w-sm text-center">
         <CompassIcon weight="duotone" className="mx-auto size-14 text-accent" />
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-fg">{t("notFound.title")}</h1>

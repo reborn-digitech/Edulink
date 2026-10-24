@@ -14,7 +14,8 @@ import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return { title: t("circulars.metaTitle"), robots: { index: false, follow: false } };
+  // One name for the page in the tab and on it (QA-62).
+  return { title: t("circulars.title"), robots: { index: false, follow: false } };
 }
 
 const AUDIENCE_KEY: Record<string, TranslationKey> = {
@@ -90,6 +91,8 @@ export default async function AdminCircularsPage() {
                         {t(AUDIENCE_KEY[r.audience] ?? "circulars.audienceAll")}
                         {!r.deliveredAt && <> · {t("circulars.notDelivered")}</>}
                       </span>
+                      {/* Nobody to tell is said, not left as "0 / 0" (QA-62). */}
+                      {r.total === 0 && <span className="mt-0.5 block text-xs text-fg-muted">{t("qaInterface.reachNoFamilies")}</span>}
                     </td>
                     <td className="px-4 py-3 text-fg-muted">{r.className ?? "—"}</td>
                     <td className="whitespace-nowrap px-4 py-3 tabular-nums">{`${r.told} / ${r.total}`}</td>

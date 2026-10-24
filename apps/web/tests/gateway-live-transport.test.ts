@@ -128,10 +128,14 @@ describe("what a refusal or an outage becomes", () => {
     expect(error.status).toBeNull();
   });
 
-  it("an empty 200 body never becomes an order without an id", async () => {
-    answer = () => new Response("", { status: 200 });
-    // It rejects (today with a TypeError rather than a GatewayError — reported in the campaign's unit.md, U-3).
-    await expect(createOrder(ACCOUNT, { amountPaise: 100, receipt: "r" })).rejects.toThrow();
+  it("an empty 200 body never becomes an order without an id: a GatewayError coded EMPTY_ANSWER (QA-38)", async () => {
+    // Before QA-38 this rejected with a bare TypeError (reading `id` of null), which no caller handles as a gateway failure.
+    for (const body of ["", "not json", "null", "[]", "\"ok\""]) {
+      answer = () => new Response(body, { status: 200 });
+      const error = (await createOrder(ACCOUNT, { amountPaise: 100, receipt: "r" }).catch((e: unknown) => e)) as GatewayError;
+      expect(error).toBeInstanceOf(GatewayError);
+      expect(error).toMatchObject({ status: 200, code: "EMPTY_ANSWER" });
+    }
   });
 });
 

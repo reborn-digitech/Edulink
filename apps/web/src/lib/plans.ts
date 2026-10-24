@@ -23,9 +23,10 @@ import type { ActiveContext } from "./session";
  * own. The price on a plan is a number the operator records so the page can
  * say what a school is on; nothing here collects it (decision 0003).
  *
- * THE CAP THAT ALREADY EXISTED keeps working: messaging.ts reads the
- * school's monthly text cap through `effectiveMessageCap`, which is the
- * plan's when the school has a plan and the school's own value otherwise.
+ * THE CAP THAT ALREADY EXISTED keeps working: the school's monthly text
+ * cap is the plan's when the school has a plan that states one and the
+ * school's own value otherwise, one rule in message-cap.ts (`messageCapOf`)
+ * that messaging.ts and subscriptions.ts both read.
  * Nothing else is enforced by a cap here — the operator's usage page flags a
  * school over its plan; it does not refuse the school its sixtieth pupil.
  */
@@ -197,17 +198,6 @@ export async function assignPlan(session: ActiveContext, schoolId: string, planI
     console.error("[plans] school.plan notification failed", error instanceof Error ? error.message : error);
   }
   return { ok: true };
-}
-
-/**
- * The monthly text cap in force: the plan's when the school is on a plan
- * that states one, else the school's own setting. Read by messaging.ts
- * before every text, so a school put on a smaller plan is held to it the
- * same night.
- */
-export async function effectiveMessageCap(schoolId: string, client: Pick<typeof db, "school"> = db): Promise<number> {
-  const s = await client.school.findUniqueOrThrow({ where: { id: schoolId }, select: { msgMonthlyCap: true, plan: { select: { messageCap: true } } } });
-  return s.plan?.messageCap ?? s.msgMonthlyCap;
 }
 
 /* -------------------------------------------------------------------------- */

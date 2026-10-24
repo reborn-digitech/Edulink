@@ -180,11 +180,20 @@ export function useAuthHeaders(): Record<string, string> | null {
 /* ------------------------------------------------------------------------- */
 
 /** The web's ChildSwitcher: a horizontal rail, shown only with more than one child. */
+/**
+ * The child a screen opens on when none is chosen: the first still enrolled, else the first (QA-52, QA campaign of
+ * 24 October 2026). A pupil who moved schools is two children here, the school they left first; the server's family
+ * doors pick the same way (pickChild), so the switcher and the screen agree.
+ */
+export function firstChild<T extends { studentMembershipId: string; leftAt?: string | null }>(pupils: readonly T[]): T | undefined {
+  return pupils.find((c) => !c.leftAt) ?? pupils[0];
+}
+
 export function ChildSwitcher({ pupils, selectedId, onSelect }: { pupils: FamilyChild[]; selectedId: string | null; onSelect: (studentMembershipId: string) => void }) {
   const th = useTheme();
   const t = useT();
   if (pupils.length < 2) return null;
-  const active = selectedId ?? pupils[0]?.studentMembershipId;
+  const active = selectedId ?? firstChild(pupils)?.studentMembershipId;
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} accessibilityLabel={t("parent.chooseChild")} contentContainerStyle={{ gap: th.space[2] }}>
       {pupils.map((child) => {

@@ -16,7 +16,7 @@ import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { UnlinkChild } from "./unlink-child";
 import { FamilyAssistantCard } from "@/components/assistant/family-card";
-import { mayUse } from "@/lib/platform-features";
+import { featureOn, mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -64,7 +64,7 @@ export default async function ParentSettingsPage() {
         />
         <CardBody className="space-y-4">
           <PushToggle />
-          <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} />
+          <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} textsOn={await featureOn("TEXT_MESSAGING")} />
         </CardBody>
       </Card>
 

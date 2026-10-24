@@ -15,6 +15,8 @@ import { COLLEGE_ROLES, POST_CATEGORIES, type PostCategory } from "@/lib/constan
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { pageOpener } from "@/lib/page-links";
+import { institutionKindOf } from "@/lib/modules";
+import { isCollegeKind } from "@/lib/institution";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -55,6 +57,8 @@ export default async function GlobalFeedPage({
   // A driver, the library desk or a warden reads this feed and nothing else of the bulletin: the school's
   // feed, the birthdays and a post's own page are not theirs, so those links are left out (QA-19).
   const opens = await pageOpener(ctx);
+  // A college's feed is the college's (QA-69).
+  const college = isCollegeKind(await institutionKindOf(ctx.schoolId));
 
   const { category: rawCategory, q: rawQ, tag: rawTag } = await searchParams;
   const category = POST_CATEGORIES.includes(rawCategory as PostCategory)
@@ -73,7 +77,7 @@ export default async function GlobalFeedPage({
           className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
         >
           <ArrowLeftIcon weight="bold" className="size-4" />
-          {t("bulletin.ourBulletin")}
+          {t(college ? "qaInterface.ourCollegeFeed" : "bulletin.ourBulletin")}
         </Link>
       )}
 

@@ -15,6 +15,7 @@ import { useRole } from "@/lib/session";
 import { Chips, Note, Pill, relativeTime, useAuthHeaders } from "./shared";
 import { HeldComments } from "./comment-review";
 import { authorTag } from "@/screens/alumni/tag";
+import { useCollege } from "@/lib/institution";
 
 type Feed = z.infer<typeof bulletinFeedSchema>;
 type Post = Feed["items"][number];
@@ -92,6 +93,8 @@ export function FamilyBulletin() {
   const headers = useAuthHeaders();
   const first = feed.data?.pages[0];
   const posts = feed.data?.pages.flatMap((page) => page.items) ?? [];
+  // A college's feed is the college's (QA-69).
+  const college = useCollege();
   const globalPosts = global.data?.pages.flatMap((page) => page.items) ?? [];
   const active = scope === "school" ? feed : global;
   // Who may write: the web's /bulletin/new takes a pupil (read by a teacher first) and the school's staff.
@@ -99,7 +102,7 @@ export function FamilyBulletin() {
   const newPostLabel = role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.newPost");
   const compose = () => router.push("/(app)/post-new" as never);
   const open = (postId: string) => router.push({ pathname: "/(app)/post", params: { postId } } as never);
-  const ourFeed = <Button label={t("bulletin.ourBulletin")} variant="secondary" onPress={() => setScope("school")} />;
+  const ourFeed = <Button label={t(college ? "qaInterface.ourCollegeFeed" : "bulletin.ourBulletin")} variant="secondary" onPress={() => setScope("school")} />;
   return (
     <Screen title={scope === "school" ? t("bulletin.title") : t("bulletin.globalFeed")} description={scope === "school" ? (first?.schoolName ?? undefined) : t("bulletin.globalIntro")} refreshing={active.isRefetching && !active.isFetchingNextPage} onRefresh={() => void active.refetch()}>
       {/* Every school's shared posts are not a module role's to read: an alumnus reads their old school's feed. */}
@@ -109,7 +112,7 @@ export function FamilyBulletin() {
           value={scope}
           onChange={setScope}
           options={[
-            { value: "school", label: t("bulletin.ourBulletin") },
+            { value: "school", label: t(college ? "qaInterface.ourCollegeFeed" : "bulletin.ourBulletin") },
             { value: "global", label: t("bulletin.globalFeed") },
           ]}
         />

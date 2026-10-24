@@ -490,7 +490,15 @@ describe("as the admin", () => {
     const added = await closuresPost(json(`${P}/calendar/closures`, { name: "ZZ Founders' Day", startDateKey: "2030-01-06", endDateKey: "2030-01-06", kind: "EVENT" }));
     expect(added.status).toBe(201);
     const { id } = await added.json();
-    expect((await closuresPost(json(`${P}/calendar/closures`, { name: "ZZ Backwards", startDateKey: "2030-01-06", endDateKey: "2030-01-05", kind: "EVENT" }))).status).toBe(403);
+    // QA-54/55: refused input is 422 naming the field, not 403 FORBIDDEN: an end before the start, a day that does not exist.
+    const backwards = await closuresPost(json(`${P}/calendar/closures`, { name: "ZZ Backwards", startDateKey: "2030-01-06", endDateKey: "2030-01-05", kind: "EVENT" }));
+    expect(backwards.status).toBe(422);
+    expect(((await backwards.json()) as { issues?: Record<string, string> }).issues?.endDateKey).toBeTruthy();
+    const unreal = await closuresPost(json(`${P}/calendar/closures`, { name: "ZZ Unreal", startDateKey: "2027-02-30", endDateKey: "2027-02-30", kind: "EVENT" }));
+    expect(unreal.status).toBe(422);
+    expect(((await unreal.json()) as { issues?: Record<string, string> }).issues?.startDateKey).toBeTruthy();
+    // A rule only the library knows (a span longer than it allows) is a 422 in words too, through underRules.
+    expect((await closuresPost(json(`${P}/calendar/closures`, { name: "ZZ Too long", startDateKey: "2030-01-06", endDateKey: "2031-06-06", kind: "HOLIDAY" }))).status).toBe(422);
     expect((await closuresPost(json(`${P}/calendar/closures`, { name: "ZZ", startDateKey: "2030-01-06", endDateKey: "2030-01-06", kind: "PARTY" }))).status).toBe(422);
 
     const res = await calendarGet(get(`${P}/calendar`));

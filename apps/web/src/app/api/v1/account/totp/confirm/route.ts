@@ -4,15 +4,18 @@ import { requireApiSession } from "@/lib/api-reads/shared";
 import { totpRefusal } from "@/lib/api-two-factor";
 import { confirmTwoFactor } from "@/lib/two-factor";
 
-/** POST /api/v1/account/totp/confirm — one right code turns it on and answers the eight recovery codes, this once. */
+/**
+ * POST /api/v1/account/totp/confirm — one right code turns it on and answers the eight recovery codes, this once;
+ * every other session of the account is signed out as it does (QA-23), and `signedOut` says how many.
+ */
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiSession();
     const parsed = totpConfirmSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    const result = await confirmTwoFactor(ctx.user.id, parsed.data.code);
+    const result = await confirmTwoFactor(ctx.user.id, parsed.data.code, { keepSessionId: ctx.sessionId });
     if (!result.ok) return totpRefusal(result.reason, result.retryAfterSeconds);
-    return ok(totpConfirmedSchema.parse({ recoveryCodes: result.recoveryCodes }));
+    return ok(totpConfirmedSchema.parse({ recoveryCodes: result.recoveryCodes, signedOut: result.signedOut }));
   } catch (error) {
     return apiFailure(error, "api/v1/account/totp/confirm");
   }

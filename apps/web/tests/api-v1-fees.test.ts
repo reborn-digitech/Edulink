@@ -186,6 +186,11 @@ describe("the office", () => {
     expect(csv.rows).toBe(1);
     expect(csv.filename).toMatch(/^fees-collections-/);
     expect((await exportCollectionsGet(get("/api/v1/fees/export/collections?fromKey=bad"))).status).toBe(422);
+    // QA-55: a backwards window, and a day that does not exist, are refused naming the field (a backwards window was a 200 with an empty sheet).
+    const backwards = await exportCollectionsGet(get("/api/v1/fees/export/collections?fromKey=2026-10-24&toKey=2026-04-01"));
+    expect(backwards.status).toBe(422);
+    expect(((await backwards.json()) as { issues?: Record<string, string> }).issues?.toKey).toBeTruthy();
+    expect((await exportCollectionsGet(get("/api/v1/fees/export/collections?fromKey=2026-02-30&toKey=2026-03-01"))).status).toBe(422);
     expect(await (await remindPost(json("/api/v1/fees/remind", {}))).json()).toEqual({ families: 1, demands: 1 });
   });
 });

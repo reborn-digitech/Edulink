@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * fees: the school's ledger of what it asked its families for and what
@@ -345,7 +346,10 @@ export const feeRemindResultSchema = z.object({ families: z.number().int(), dema
 export const feeCarryForwardBodySchema = z.object({ fromYearId: id, toYearId: id });
 export const feeCarryForwardResultSchema = z.object({ pupils: z.number().int(), carriedPaise: paise });
 
-export const feeExportQuerySchema = z.object({ fromKey: dateKey, toKey: dateKey });
+/** Two days that exist, the first not after the second (QA-55: a backwards window answered an empty sheet). */
+export const feeExportQuerySchema = z
+  .object({ fromKey: realDateKey, toKey: realDateKey })
+  .refine((q) => q.fromKey <= q.toKey, { path: ["toKey"], message: "date" });
 
 /* ---------------------------------------------------------------------- */
 /* A receipt                                                               */

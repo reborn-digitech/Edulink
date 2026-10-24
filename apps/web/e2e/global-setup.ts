@@ -3,12 +3,13 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
+import { HARNESS_EXAM_NAME } from "./harness-exam";
 
 /**
  * Sessions for one actor per role on ZZ Northgate, written to e2e/.sessions.json.
  * Minted, not signed in: the login form is exercised by its own suite, and
  * no password is typed here. Every session carries userAgent "e2e" and a
- * one-hour expiry; `teardown` below removes them.
+ * one-hour expiry; global-teardown.ts removes them after the run.
  */
 export type Actor = {
   role: string;
@@ -59,7 +60,8 @@ export default async function globalSetup() {
   // A lead teacher of a class with pupils, and an exam slot for that grade —
   // made here if the fixture has none (a fresh CI database has none), ZZ-named
   // and find-or-create so a second run reuses it. One actor who can open both
-  // the register and the marks sheet.
+  // the register and the marks sheet. global-teardown.ts removes it after the
+  // run (QA-73), so the fixture teacher's home does not carry it afterwards.
   const lead = await db.classTeacher.findFirstOrThrow({
     where: { schoolId: school.id, role: "LEAD", class: { archivedAt: null, gradeLevel: { not: null }, enrollments: { some: { status: "ACTIVE" } } } },
     include: { teacher: { select: { userId: true, user: { select: { email: true } } } }, class: { select: { id: true, gradeLevel: true } } },
@@ -67,8 +69,8 @@ export default async function globalSetup() {
   });
   const gradeLevel = lead.class.gradeLevel!;
   const series =
-    (await db.examSeries.findFirst({ where: { schoolId: school.id, name: "ZZ E2E Unit Test", gradeLevel }, select: { id: true } })) ??
-    (await db.examSeries.create({ data: { schoolId: school.id, name: "ZZ E2E Unit Test", gradeLevel }, select: { id: true } }));
+    (await db.examSeries.findFirst({ where: { schoolId: school.id, name: HARNESS_EXAM_NAME, gradeLevel }, select: { id: true } })) ??
+    (await db.examSeries.create({ data: { schoolId: school.id, name: HARNESS_EXAM_NAME, gradeLevel }, select: { id: true } }));
   const slot =
     (await db.examSlot.findFirst({ where: { seriesId: series.id }, select: { id: true } })) ??
     (await db.examSlot.create({ data: { schoolId: school.id, seriesId: series.id, subject: "Mathematics", dateKey: "2026-09-01", pointsMilli: 50_000 }, select: { id: true } }));

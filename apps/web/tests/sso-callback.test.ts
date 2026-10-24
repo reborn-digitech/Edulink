@@ -185,11 +185,9 @@ describe("Microsoft's issuer", () => {
 });
 
 describe("an outage at the provider's keys", () => {
-  // KNOWN GAP (unit.md U-2): fetchJwks throws on a keys endpoint that is down or refuses, and completeSso does not
-  // catch it, so the callback route (src/app/api/sso/[provider]/callback/route.ts) answers 500 instead of sending
-  // the person back to /login with "failed". Written as the behaviour wanted and marked `fails`: when the library
-  // catches it, this test turns red and the marker comes off.
-  it.fails("should answer 'token' rather than throw when the keys cannot be read", async () => {
+  // QA-28 (unit.md U-2): a keys endpoint that is down or refuses used to throw out of completeSso, so the callback
+  // route answered 500; completeSso now answers "token" and the route sends the person to /login with "failed".
+  it("answers 'token' rather than throw when the keys cannot be read", async () => {
     vi.stubEnv("SSO_MICROSOFT_CLIENT_ID", "zz-qa-ms-client");
     vi.stubEnv("SSO_MICROSOFT_CLIENT_SECRET", "zz-qa-ms-secret");
     vi.stubEnv("SSO_MICROSOFT_TENANT", "zz-qa-keys-down");

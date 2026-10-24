@@ -48,7 +48,8 @@ const ROUTE_TONE: Record<Route["status"], "neutral" | "info" | "warn" | "ok" | "
  * Razorpay's and the fields are shut; a new bank account can be saved and
  * sent again. The badge says where Razorpay's review stands.
  */
-export function GetPaidCard({ initial }: { initial: ExpertPayout }) {
+/** `earnings`: the earnings page is there to link to (QA-61: it is the app's 404 while expert sessions are switched off). */
+export function GetPaidCard({ initial, earnings = true }: { initial: ExpertPayout; earnings?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -124,12 +125,17 @@ export function GetPaidCard({ initial }: { initial: ExpertPayout }) {
     }
   }
 
+  // ONE LINKED STATE (QA-62): Razorpay's ACTIVATED is "ready to be paid" only when the payout is; linked with the
+  // papers still to be checked, the header says not ready yet and the route says linked, not "Not linked yet" over
+  // "Linked with Razorpay: ready to be paid".
+  const routeKey: TranslationKey = route.status === "ACTIVATED" && payout.status !== "ACTIVE" ? "qaInterface.routeLinkedOnly" : ROUTE_KEY[route.status];
+  const statusKey: TranslationKey = payout.status === "NONE" && route.linked ? "qaInterface.payoutLinkedNotReady" : STATUS_KEY[payout.status];
   const linkLabel: TranslationKey = !route.linked ? "gigs.routeLink" : route.needsResend ? "gigs.routeResend" : "gigs.routeCheck";
   const canLink = payout.transport !== "off" && payout.status !== "SUSPENDED" && route.readyToLink && !editing;
 
   return (
     <Card data-testid="expert-get-paid">
-      <CardHeader icon={<WalletIcon weight="duotone" className="size-5" />} title={t("gigs.getPaidTitle")} description={t("gigs.getPaidBody")} action={<Badge tone={STATUS_TONE[payout.status]}>{t(STATUS_KEY[payout.status])}</Badge>} />
+      <CardHeader icon={<WalletIcon weight="duotone" className="size-5" />} title={t("gigs.getPaidTitle")} description={t("gigs.getPaidBody")} action={<Badge tone={STATUS_TONE[payout.status]}>{t(statusKey)}</Badge>} />
       <CardBody className="space-y-3">
         {payout.note && <p className="text-sm text-fg-muted">{t("gigs.payoutNote", { note: payout.note })}</p>}
         {!state.gate.kycVerified && <p className="text-sm text-fg-muted">{t("gigs.payoutNeedKyc")}</p>}
@@ -155,7 +161,7 @@ export function GetPaidCard({ initial }: { initial: ExpertPayout }) {
         )}
         {payout.payeeName && (
           <div className="space-y-1 rounded-[var(--radius-md)] border border-border p-3" data-testid="route-status">
-            <Badge tone={ROUTE_TONE[route.status]}>{t(ROUTE_KEY[route.status])}</Badge>
+            <Badge tone={ROUTE_TONE[route.status]}>{t(routeKey)}</Badge>
             {route.needsResend && <p className="text-sm text-warn">{t("gigs.routeNeedsResend")}</p>}
             {route.requirements.map((r) => (
               <p key={`${r.field}-${r.reason}`} className="text-xs text-fg-muted">
@@ -218,9 +224,11 @@ export function GetPaidCard({ initial }: { initial: ExpertPayout }) {
               {t("common.edit")}
             </Button>
           )}
-          <Button asChild variant="ghost">
-            <Link href="/expert/earnings">{t("gigs.earningsTitle")}</Link>
-          </Button>
+          {earnings && (
+            <Button asChild variant="ghost">
+              <Link href="/expert/earnings">{t("gigs.earningsTitle")}</Link>
+            </Button>
+          )}
         </div>
       </CardBody>
     </Card>

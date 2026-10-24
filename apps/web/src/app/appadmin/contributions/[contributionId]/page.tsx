@@ -49,7 +49,7 @@ export default async function ReviewContributionPage({ params }: { params: Promi
           </p>
         )}
       </div>
-      <QuestionRead en={c.en} hi={c.hi} mr={c.mr} answerIndex={c.answerIndex} labels={{ en: t("gigs.english"), hi: t("gigs.hindi"), mr: t("gigs.marathi"), correct: t("gigs.correctOption"), solution: t("appadmin.solutionLabel") }} />
+      <QuestionRead en={c.en} hi={c.hi} mr={c.mr} answerIndex={c.answerIndex} labels={{ en: t("gigs.english"), hi: t("gigs.hindi"), mr: t("gigs.marathi"), correct: t("gigs.correctOption"), solution: t("appadmin.solutionLabel") }} level={2} />
       {c.reviewNote && (
         <div className="rounded-[var(--radius-md)] border border-border bg-surface px-4 py-3">
           <p className="text-xs font-medium text-fg-muted">{t("gigs.noteLabel")}</p>

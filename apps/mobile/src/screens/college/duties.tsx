@@ -57,7 +57,7 @@ export function DutyCard() {
             icon="shield"
             title={t(`duties.${duty}.name` as TranslationKey)}
             caption={open ? t(`duties.${duty}.what` as TranslationKey) : t(page ? "duties.moduleOff" : "duties.pageComing")}
-            right={open ? <Button label={t("duties.open")} variant="secondary" onPress={() => router.push(page.screen as never)} /> : undefined}
+            right={open ? <Button label={t("duties.open")} accessibilityLabel={t("qaInterface.openDuty", { name: t(`duties.${duty}.name` as TranslationKey) })} variant="secondary" onPress={() => router.push(page.screen as never)} /> : undefined}
           />
         );
       })}

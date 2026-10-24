@@ -140,6 +140,16 @@ describe("the office sets transport up", () => {
   it("makes a route, a bus, an assignment and seats; the head may read but not write", async () => {
     const admin = await as(ids.admin, "ADMIN", ids.school);
     await expect(saveRoute(admin, null, { name: "ZZ T Route", direction: "BOTH", active: true, note: "", stops: STOPS.map((s) => ({ ...s, morningMinute: null })) })).rejects.toThrow("transport.refuseStopTimes");
+    // QA-46: each run's times go forward along its own order. The evening written in the morning's order (it was accepted
+    // before the fix, and the driver read "First stop" at the latest time) and a morning running backwards are refused.
+    const forwardEvening = STOPS.map((s, i) => ({ ...s, eveningMinute: 720 + 10 * i }));
+    await expect(saveRoute(admin, null, { name: "ZZ T Route", direction: "BOTH", active: true, note: "", stops: forwardEvening })).rejects.toThrow("transport.refuseStopOrder");
+    await expect(saveRoute(admin, null, { name: "ZZ T Route", direction: "EVENING", active: true, note: "", stops: forwardEvening })).rejects.toThrow("transport.refuseStopOrder");
+    await expect(saveRoute(admin, null, { name: "ZZ T Route", direction: "MORNING", active: true, note: "", stops: STOPS.map((s, i) => ({ ...s, morningMinute: 30 - 5 * i })) })).rejects.toThrow("transport.refuseStopOrder");
+    // A morning-only route does not read the evening's times, and two stops may share a minute.
+    const morningOnly = await saveRoute(admin, null, { name: "ZZ T Morning only", direction: "MORNING", active: true, note: "", stops: forwardEvening.map((s) => ({ ...s, morningMinute: 0 })) });
+    await db.transportStop.deleteMany({ where: { routeId: morningOnly.id } });
+    await db.transportRoute.delete({ where: { id: morningOnly.id } });
     ids.route = (await saveRoute(admin, null, { name: "ZZ T Route", direction: "BOTH", active: true, note: "", stops: STOPS })).id;
     const route = await db.transportStop.findMany({ where: { routeId: ids.route }, orderBy: { order: "asc" }, select: { id: true } });
     ids.stops = route.map((s) => s.id);
@@ -236,11 +246,13 @@ describe("a driver's trip", () => {
     const driver = await as(ids.driver, "DRIVER", ids.school);
     const now = Date.now();
     const batch = { positions: [0, 1, 2].map((k) => ({ at: new Date(now - (3 - k) * 12_000).toISOString(), lat: STOPS[0]!.lat + k * 0.00002, lng: STOPS[0]!.lng, speed: 5, accuracy: 10 })), lowBattery: true };
-    await expect(recordPositions(driver, tripId, batch)).resolves.toEqual({ accepted: 3, duplicates: 0 });
+    await expect(recordPositions(driver, tripId, batch)).resolves.toEqual({ accepted: 3, duplicates: 0, rejected: 0 });
     // The same batch again, from the phone's outbox: nothing new.
-    await expect(recordPositions(driver, tripId, batch)).resolves.toEqual({ accepted: 0, duplicates: 3 });
+    await expect(recordPositions(driver, tripId, batch)).resolves.toEqual({ accepted: 0, duplicates: 3, rejected: 0 });
     // A position from last week is not this trip's.
-    await expect(recordPositions(driver, tripId, { positions: [{ at: new Date(now - 7 * 86_400_000).toISOString(), lat: 18.5, lng: 73.8 }] })).resolves.toEqual({ accepted: 0, duplicates: 1 });
+    // Outside the window: rejected, not a duplicate (QA-47; before the fix `{ accepted: 0, duplicates: 1 }`), a week ago or tomorrow.
+    await expect(recordPositions(driver, tripId, { positions: [{ at: new Date(now - 7 * 86_400_000).toISOString(), lat: 18.5, lng: 73.8 }] })).resolves.toEqual({ accepted: 0, duplicates: 0, rejected: 1 });
+    await expect(recordPositions(driver, tripId, { positions: [{ at: new Date(now + 86_400_000).toISOString(), lat: 18.5, lng: 73.8 }] })).resolves.toEqual({ accepted: 0, duplicates: 0, rejected: 1 });
     expect(await db.notification.count({ where: { userId: ids.parent2, titleKey: "transport.notifNearTitle" } })).toBe(1);
     expect(await db.notification.count({ where: { userId: ids.parent2b, titleKey: "transport.notifNearTitle" } })).toBe(0);
     // Past the first stop again: nobody is told twice.

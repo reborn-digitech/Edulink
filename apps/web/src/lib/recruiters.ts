@@ -8,6 +8,8 @@ import { sendVerifyEmail } from "./email";
 import { writeJson } from "./json";
 import { normaliseLocale } from "./i18n/locales";
 import { consumeByCaller, SIGNUPS } from "./rate-limit";
+import { tellHolderOfSignup } from "./signup-notice";
+import type { Defer } from "./after-response";
 import { EMAIL_VERIFY_TTL_HOURS } from "./constants";
 import { getSession, type ActiveContext } from "./session";
 import { AccessError } from "./access-error";
@@ -31,21 +33,37 @@ import type { TranslationKey } from "./i18n/dictionary";
  * session's own user id, never on an id from a form.
  */
 
+/**
+ * `ok: true` says only that the form was in order and a message is on its way
+ * to the address — never whether an account was made (QA-25).
+ */
 export type RecruiterRegistration =
-  | { ok: true; userId: string }
+  | { ok: true }
   | { ok: false; errorKey: TranslationKey; field?: "name" | "email" | "password" | "companyName"; retryAfterSeconds?: number };
+
+/** What the deferred half did: an account made, or the holder of a taken address told. Never shown to the caller. */
+export type RecruiterRegistrationOutcome = { outcome: "created"; userId: string } | { outcome: "taken" };
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 /**
- * Makes a recruiter's account and profile in one transaction, and sends the
- * address a confirmation link. Rate-limited as every sign-up is (the
- * register bucket), refused for an address that already has an account —
- * attaching a recruiter profile to somebody else's account would be a takeover
- * — and for a password the shared rules refuse. Does not sign in: the caller
- * does (a cookie on the web, a bearer token on the phone).
+ * A recruiter's sign-up: the form checked, then the account made — or, for an
+ * address that already has one, its holder told — after the answer.
+ *
+ * ⚠ THE SAME ANSWER WHETHER OR NOT THE ADDRESS IS TAKEN (QA-25, 24 Oct 2026).
+ * A taken address used to answer 422 "That email already has an account", so a
+ * signed-out caller could test any parent's, pupil's or teacher's address
+ * twenty times an hour — the oracle the login and the sign-in link were built
+ * not to be. Now every refusal here is about the form alone (the name, the
+ * company, the shape of the address, the password's quality, the limit), and
+ * a form in order is answered "a message is on its way" without a session:
+ * a new address gets the confirmation link and signs in with its password, and
+ * the holder of a taken one is told by email that somebody tried (attaching a
+ * recruiter profile to their account would be a takeover, so nothing else
+ * happens). The lookup, the account and the mail run after the response
+ * (`defer`, the route's `afterResponse`), so its timing says nothing either.
  */
-export async function registerRecruiter(input: RecruiterRegister, locale: string): Promise<RecruiterRegistration> {
+export async function registerRecruiter(input: RecruiterRegister, locale: string, opts: { defer?: Defer } = {}): Promise<RecruiterRegistration> {
   const gate = await consumeByCaller("register", SIGNUPS);
   if (!gate.allowed) return { ok: false, errorKey: "recruiter.refuseTooMany", retryAfterSeconds: gate.retryAfterSeconds };
 
@@ -58,8 +76,30 @@ export async function registerRecruiter(input: RecruiterRegister, locale: string
   const problems = passwordProblems(input.password, [name, email, companyName]);
   if (problems.length > 0) return { ok: false, errorKey: problems[0]!, field: "password" };
 
+  const work = async () => {
+    await completeRecruiterRegistration({ name, email, companyName, password: input.password }, locale);
+  };
+  if (opts.defer) opts.defer(work);
+  else await work();
+  return { ok: true };
+}
+
+/**
+ * The half of a recruiter's sign-up that depends on the address, run after
+ * the answer: the account and its profile in one transaction with the
+ * confirmation link mailed, or, for an address with an account already, its
+ * holder told (two presses at once land on the unique index and are told too).
+ */
+export async function completeRecruiterRegistration(
+  input: { name: string; email: string; companyName: string; password: string },
+  locale: string,
+): Promise<RecruiterRegistrationOutcome> {
+  const { name, email, companyName } = input;
   const taken = await db.user.findUnique({ where: { email }, select: { id: true } });
-  if (taken) return { ok: false, errorKey: "recruiter.refuseEmailTaken", field: "email" };
+  if (taken) {
+    await tellHolderOfSignup(email, "RECRUITER");
+    return { outcome: "taken" };
+  }
 
   const passwordHash = await hashPassword(input.password);
   const verifyToken = generateToken();
@@ -81,15 +121,18 @@ export async function registerRecruiter(input: RecruiterRegister, locale: string
       return user.id;
     });
   } catch (error) {
-    // Two presses at once, or the same address in the same second: the unique index decides.
-    if ((error as { code?: string }).code === "P2002") return { ok: false, errorKey: "recruiter.refuseEmailTaken", field: "email" };
+    // Two presses at once, or the same address in the same second: the unique index decides, and the holder is told.
+    if ((error as { code?: string }).code === "P2002") {
+      await tellHolderOfSignup(email, "RECRUITER");
+      return { outcome: "taken" };
+    }
     throw error;
   }
 
   // Outside the transaction: a mail provider's hiccup must not undo an account; the link can be asked for again.
   await sendVerifyEmail(email, `${APP_URL}/verify?token=${verifyToken}`, companyName, normaliseLocale(locale)).catch((error) => console.error("[recruiters] verification email failed", error));
   await audit({ schoolId: null, actorUserId: userId, action: "recruiter.register", targetType: "User", targetId: userId, meta: { companyName } });
-  return { ok: true, userId };
+  return { outcome: "created", userId };
 }
 
 export type RecruiterView = { name: string; companyName: string; createdAt: Date; emailVerified: boolean };
