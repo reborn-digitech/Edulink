@@ -12,6 +12,10 @@ export const FILE_HEADINGS = {
   BANK_ADVICE: ["Sr No", "Beneficiary Name", "Account Number", "IFSC", "Amount", "Narration"],
   PT: ["Name", "Gross (INR)", "Professional tax (INR)", "State"],
   TDS_SUMMARY: ["Name", "PAN", "Gross (INR)", "TDS (INR)"],
+  /** owner-batch-item2b: one credit a line for the school's own UPI app or its bank's UPI bulk upload; the slip ref comes back on the UTR sheet. */
+  UPI_ADVICE: ["Beneficiary Name", "VPA", "Amount", "Slip Ref"],
+  /** owner-batch-item2b: the sheet the office sends back with what the bank or the UPI app paid (Amount optional). */
+  UTR_SHEET: ["Slip Ref", "UTR", "Date", "Amount"],
   STOCK: ["Item code", "Item", "Unit", "Location", "On hand"],
   /** The last but one is completed with the date the values are worked out to. */
   FIXED_ASSETS: ["Tag number", "Asset", "Category", "Location", "Custodian", "Status", "Condition", "Purchase date", "Vendor", "Warranty until", "Cost (INR)", "Method", "Rate (%)", "Accumulated depreciation (INR)", "Book value on", "Disposed on"],

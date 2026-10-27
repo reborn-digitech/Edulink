@@ -39,7 +39,17 @@ export const STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN", "FACULTY", "HOD"] a
  * (4 Oct 2026) work there too: the register, records, leave and payroll are
  * theirs as well.
  */
-export const SCHOOL_STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const;
+export const SCHOOL_STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "SUPPORT"] as const;
+/**
+ * owner-batch-item2a (27 Oct 2026): the staff who sign in to do their work —
+ * every staff role but SUPPORT. A support worker (cleaner, cook, guard, peon)
+ * is on the staff register, the staff list and the payroll with everybody
+ * else, but the self-service doors beyond their own payslips (check-in, my
+ * attendance, my items, my leave, advances) are not theirs: the owner's
+ * decision is that one who is given a login sees their payslips and profile
+ * and nothing else.
+ */
+export const SIGNED_IN_STAFF_ROLES = SCHOOL_STAFF_ROLES.filter((r): r is Exclude<(typeof SCHOOL_STAFF_ROLES)[number], "SUPPORT"> => r !== "SUPPORT");
 const COUNTED_KINDS = ["CASUAL", "SICK"];
 
 export type StaffRecordView = {

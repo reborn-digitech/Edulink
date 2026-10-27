@@ -10,7 +10,10 @@ import { join } from "node:path";
 import { NAV, PHONE_BAR } from "@/lib/nav";
 import { TABS } from "../../mobile/src/lib/nav";
 
-const pageExists = (href: string) => existsSync(join(process.cwd(), "src", "app", "(app)", ...href.split("/").filter(Boolean), "page.tsx"));
+// A page under the signed-in shell, or one of the person's own under /account (owner-batch-item2a: a support worker's only tab is /account/payslips).
+const pageExists = (href: string) =>
+  existsSync(join(process.cwd(), "src", "app", "(app)", ...href.split("/").filter(Boolean), "page.tsx")) ||
+  (href.startsWith("/account") && existsSync(join(process.cwd(), "src", "app", ...href.split("/").filter(Boolean), "page.tsx")));
 
 describe("the bottom bar at a phone's width is the phone app's (QA-65)", () => {
   it("has the phone's tabs for every role, in order: words, icons, modules and features", () => {
@@ -101,6 +104,43 @@ describe("the parity table: what the phone does not carry is said (QA-66)", () =
       const unplaced = (NAV[role as keyof typeof NAV] ?? []).filter((item) => !bar.has(item.href) && !webs.has(item.href) && !words.has(item.labelKey) && !opensScreen(item.href)).map((item) => item.href);
       expect(unplaced.sort(), role).toEqual(Object.keys(WEB_ONLY[role] ?? {}).sort());
       for (const why of Object.values(WEB_ONLY[role] ?? {})) expect(why.length, role).toBeGreaterThan(20);
+    }
+  });
+});
+
+/**
+ * owner-batch-item2b (27 Oct 2026): WHAT A PLACED PAGE DOES THAT THE PHONE DOES NOT. The table above is about menu
+ * entries; these are actions inside a page the phone does carry (its payroll screen is the office's read-only
+ * summary), each with why it is the web's alone. The test holds the phone to it: no phone source calls the door.
+ */
+const WEB_ONLY_ACTIONS: { door: string; why: string }[] = [
+  {
+    door: "/api/v1/admin/payroll/runs/{month}/payments",
+    why: "recording, voiding and the UTR sheet are done beside the run's slips and the bank's statement on the web; the phone has no run screen, and its payroll summary and payslips show the paid state",
+  },
+];
+
+describe("the actions the phone does not carry inside a page it has (owner-batch-item2b)", () => {
+  it("names each with a reason, and no phone source calls its door", async () => {
+    const { readdirSync, readFileSync, statSync } = await import("node:fs");
+    const files: string[] = [];
+    const walk = (dir: string) => {
+      for (const name of readdirSync(dir)) {
+        const p = join(dir, name);
+        if (statSync(p).isDirectory()) walk(p);
+        else if (/\.tsx?$/.test(name)) files.push(p);
+      }
+    };
+    walk(join(process.cwd(), "..", "mobile", "src"));
+    expect(files.length).toBeGreaterThan(50);
+    for (const { door, why } of WEB_ONLY_ACTIONS) {
+      expect(why.length).toBeGreaterThan(20);
+      const stem = door.replace(/\{[^}]+\}/g, "").replace(/\/+/g, "/").split("/").filter(Boolean).slice(-1)[0]!;
+      const callers = files.filter((f) => {
+        const src = readFileSync(f, "utf8");
+        return src.includes("admin/payroll/runs") && src.includes(`/${stem}`);
+      });
+      expect(callers, door).toEqual([]);
     }
   });
 });

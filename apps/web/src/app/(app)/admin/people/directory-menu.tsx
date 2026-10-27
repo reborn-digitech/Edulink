@@ -52,6 +52,7 @@ export function DirectoryMenu({
   membershipId,
   name,
   isStudent,
+  isSupport = false,
   isTeacher,
   subjects,
   birthdate,
@@ -66,6 +67,8 @@ export function DirectoryMenu({
   membershipId: string;
   name: string;
   isStudent: boolean;
+  /** owner-batch-item2a: a support worker, who may be given a first sign-in as a pupil on a handle may. */
+  isSupport?: boolean;
   /** Teacher rows, and the head's, also carry the subjects editor. */
   isTeacher?: boolean;
   subjects?: string[];
@@ -213,7 +216,7 @@ export function DirectoryMenu({
                 </MenuItem>
               )}
 
-              {isStudent && handleOnly && !hasLeft && !suspended && (
+              {(isStudent || isSupport) && handleOnly && !hasLeft && !suspended && (
                 <MenuItem icon={<KeyIcon className="size-4" />} onClick={() => show("firstSignin")}>
                   {t("people.firstSigninAction")}
                 </MenuItem>

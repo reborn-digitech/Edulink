@@ -47,6 +47,8 @@ export const ROLE_POLICY: Record<Role, RolePolicy> = {
   ACCOUNTS: HELP_ONLY,
   EXPERT: { help: false, tutor: false, assessed: false, gradeScoped: false, data: false },
   RECRUITER: { help: false, tutor: false, assessed: false, gradeScoped: false, data: false },
+  // owner-batch-item2a: support staff read their payslips and profile and nothing else; the assistant is not theirs.
+  SUPPORT: { help: false, tutor: false, assessed: false, gradeScoped: false, data: false },
 };
 
 export function policyFor(role: Role | null | undefined): RolePolicy {

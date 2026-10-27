@@ -261,6 +261,18 @@ const GATED: Gated[] = [
   { actor: "OPERATOR", label: "/root/quiz-review", href: at("/root/quiz-review") },
   { actor: "APPADMIN", label: "/appadmin/quiz-review", href: at("/appadmin/quiz-review") },
   { actor: "ADMIN", label: "/admin/report-cards at 1280 px", href: at("/admin/report-cards"), width: 1280 },
+  // owner-batch-item2a (27 Oct 2026): the office's form for a support worker with no login, reached from the people page.
+  { actor: "ADMIN", label: "/admin/people/support", href: at("/admin/people/support") },
+  // owner-batch-item2b (27 Oct 2026): a locked run's payment forms, and the pay-from-your-app page of an unpaid UPI slip (skipped where the database holds none).
+  { actor: "ADMIN", label: "/admin/payroll/runs/<locked month>", href: at("/admin/payroll/runs/2026-08") },
+  {
+    actor: "ADMIN",
+    label: "/admin/payroll/runs/<month>/pay/<unpaid UPI slip>",
+    href: async () => {
+      const slip = await db.payslip.findFirst({ where: { paymentMode: "UPI", netPaise: { gt: 0 }, run: { status: "LOCKED", school: { name: "ZZ Northgate School" } }, payments: { none: { voidedAt: null } } }, select: { membershipId: true, run: { select: { month: true } } } });
+      return slip ? `/admin/payroll/runs/${slip.run.month}/pay/${slip.membershipId}` : null;
+    },
+  },
 ];
 
 test.describe("pages behind a row, and the softer rules (QA-59, QA-68)", () => {

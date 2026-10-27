@@ -256,8 +256,8 @@ export default async function AccountPage({
         </Card>
       )}
 
-      {/* plans (16 Oct 2026): the person's own plan, active until a day, or none. */}
-      <Card data-testid="your-plan">
+      {/* plans (16 Oct 2026): the person's own plan, active until a day, or none. Not for support staff (owner-batch-item2a: payslips and profile only). */}
+      {live.role !== "SUPPORT" && <Card data-testid="your-plan">
         <CardHeader
           icon={<CertificateIcon weight="duotone" className="size-5" />}
           title={t("plans.yourPlanTitle")}
@@ -268,7 +268,7 @@ export default async function AccountPage({
             </Button>
           }
         />
-      </Card>
+      </Card>}
 
       {live.role && (LEAVE_APPLICANT_ROLES as readonly string[]).includes(live.role) && live.role !== "TEACHER" && live.role !== "PRINCIPAL" && (
         <Card>
@@ -298,7 +298,7 @@ export default async function AccountPage({
           />
         </Card>
       )}
-      {staffModules.includes("INVENTORY") && (
+      {staffModules.includes("INVENTORY") && live.role !== "SUPPORT" && (
         <Card>
           <CardHeader
             icon={<PackageIcon weight="duotone" className="size-5" />}

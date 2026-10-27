@@ -20,6 +20,8 @@ import { platformFeatureSchema } from "./platform-features";
 export const roleSchema = z.enum([
   "ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS",
   "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "RECRUITER",
+  // owner-batch-item2a: support staff (27 Oct 2026) — a cleaner, cook, guard or peon on the payroll, usually with no login.
+  "SUPPORT",
 ]);
 export type RoleCode = z.infer<typeof roleSchema>;
 

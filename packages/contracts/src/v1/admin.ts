@@ -15,9 +15,9 @@ const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date");
 const id = z.string().min(1).max(64);
 const trimmed = (min: number, max: number) => z.string().trim().min(min).max(max);
 
-const schoolRoleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"]);
-/** Staff for the staff register, leave and the staff list: the module roles that work at the school, not the alumnus, and a college's six staff roles. */
-const staffRoleSchema = z.enum(["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"]);
+const schoolRoleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "SUPPORT"]);
+/** Staff for the staff register, leave and the staff list: the module roles that work at the school, not the alumnus, a college's six staff roles, and support staff (owner-batch-item2a). */
+const staffRoleSchema = z.enum(["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "SUPPORT"]);
 const examKindSchema = z.enum(["UNIT_TEST", "MID_TERM", "FINAL"]);
 const holidayKindSchema = z.enum(["HOLIDAY", "EXAM", "EVENT"]);
 const periodKindSchema = z.enum(["LESSON", "BREAK"]);

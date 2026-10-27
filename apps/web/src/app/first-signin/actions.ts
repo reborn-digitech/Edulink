@@ -4,6 +4,7 @@ import { z } from "zod";
 import { getT } from "@/lib/i18n/server";
 import { createSession } from "@/lib/session";
 import { redeemFirstSignIn } from "@/lib/first-signin";
+import { ROLE_HOME } from "@/lib/constants";
 import { consumeByCaller, retryHintKey, LOGIN_ATTEMPTS } from "@/lib/rate-limit";
 import { fieldErrors, passwordSchema, type FieldErrors } from "@/lib/validation";
 import { refusalText } from "@/lib/i18n/refusal";
@@ -42,6 +43,8 @@ export async function completeFirstSignIn(input: unknown): Promise<FirstSignInSt
     return { ok: false, errors: { _form: refusalText(t, { errorKey: result.errorKey }) } };
   }
 
-  await createSession(result.userId, { schoolId: result.schoolId, role: "STUDENT" });
+  await createSession(result.userId, { schoolId: result.schoolId, role: result.role });
+  // A support worker (owner-batch-item2a) lands on their own payslips; a pupil on the welcome that shows their handle.
+  if (result.role === "SUPPORT") return { ok: true, errors: {}, redirectTo: ROLE_HOME.SUPPORT };
   return { ok: true, errors: {}, redirectTo: `/student?welcome=1&handle=${encodeURIComponent(handle.trim().toLowerCase())}` };
 }

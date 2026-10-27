@@ -417,9 +417,15 @@ export async function link(parentUserId: string, studentMembershipId: string, st
 /* -------------------------------------------------------------------------- */
 
 async function teardown() {
+  // owner-batch-item2a: a support worker has no address for the domain match below; their accounts go by their ZZ membership.
+  const supportUsers = (await db.membership.findMany({ where: { role: "SUPPORT", school: { slug: { startsWith: "zz-" } }, user: { email: null } }, select: { userId: true } })).map((m) => m.userId);
+  // end owner-batch-item2a
   // Schools first: Membership, Class, Enrollment and ClassTeacher all cascade
   // from School, so this clears the school-owned side in one statement.
   const schools = await db.school.deleteMany({ where: { slug: { startsWith: "zz-" } } });
+  // owner-batch-item2a: the support workers' accounts, once their memberships went with the schools (they hold nothing else).
+  if (supportUsers.length) await db.user.deleteMany({ where: { id: { in: supportUsers }, email: null, memberships: { none: {} } } });
+  // end owner-batch-item2a
   // Users next: ExpertProfile, Guardianship and any surviving Membership all
   // cascade from User. Matching on the domain is what makes this exact.
   // plans-pay (17 Oct 2026): pass orders and invoices have no foreign key to User either; before the entitlements.
@@ -630,6 +636,37 @@ export async function switchModulesOn(school: { id: string }, modules: readonly 
  * the open ALUMNUS one, exactly as recordDeparture leaves them. `tag` keeps
  * the demo schools' names apart from Northgate's.
  */
+// owner-batch-item2a (27 Oct 2026): SUPPORT STAFF WITHOUT A LOGIN.
+/** The month the fixture support worker's salary starts: after ZZ_PAYROLL_MONTH, so the fixture's locked run is unchanged. */
+export const SUPPORT_SALARY_FROM = "2026-09-01";
+/**
+ * ZZ Sunita Kamble, a cleaner at Northgate added as the office adds one (src/lib/support-staff.ts): an account with
+ * no email, phone, password or handle, an ACTIVE SUPPORT membership, a staff record with the job, the joining day
+ * and a contact phone, and a cash salary on the school's structure from SUPPORT_SALARY_FROM. Made once; a rerun
+ * finds her by name and changes nothing.
+ */
+export async function buildSupportStaff(school: { id: string }): Promise<{ membershipId: string; name: string; designation: string; made: boolean }> {
+  const name = "ZZ Sunita Kamble";
+  const designation = "Cleaner";
+  const found = await db.membership.findFirst({ where: { schoolId: school.id, role: "SUPPORT", user: { name } }, select: { id: true } });
+  let membershipId = found?.id ?? null;
+  if (!membershipId) {
+    const user = await db.user.create({ data: { name, email: null, phone: null, passwordHash: null, isTestFixture: true }, select: { id: true } });
+    membershipId = (await db.membership.create({ data: { userId: user.id, schoolId: school.id, role: "SUPPORT", status: "ACTIVE" }, select: { id: true } })).id;
+    await db.staffRecord.create({ data: { schoolId: school.id, membershipId, designation, joinedOn: new Date("2024-06-10T00:00:00.000Z"), contactPhone: "+919800000001", gender: "F" } });
+  }
+  const structure = await db.salaryStructure.findFirst({ where: { schoolId: school.id, archivedAt: null }, orderBy: { createdAt: "asc" }, select: { id: true } });
+  if (structure) {
+    await db.staffSalary.upsert({
+      where: { membershipId_effectiveFromKey: { membershipId, effectiveFromKey: SUPPORT_SALARY_FROM } },
+      create: { schoolId: school.id, membershipId, effectiveFromKey: SUPPORT_SALARY_FROM, structureId: structure.id, basicPaise: 1_000_000, pfUan: "100900800799", esiNumber: "3100900899", paymentMode: "CASH" },
+      update: {},
+    });
+  }
+  return { membershipId, name, designation, made: !found };
+}
+// end owner-batch-item2a
+
 export async function buildModuleRoles(
   ctx: Ctx,
   school: { id: string; name: string },
@@ -2660,6 +2697,10 @@ async function main() {
   // Inventory and payroll (3 Oct 2026): the stores, the asset register and one locked payroll month at Northgate (zz-fixtures-inventory-payroll.ts).
   const stores = await buildInventory(db, northgate.school, northgate.admin.id);
   const payroll = await buildPayroll(db, northgate.school, northgate.admin.id);
+  // owner-batch-item2a (27 Oct 2026): a support worker with no login at Northgate, on the payroll from September.
+  const support = await buildSupportStaff(northgate.school);
+  console.log(`  Support staff: ${support.name} (${support.designation}) at Northgate, no sign-in, ${support.made ? "added" : "already there"}; salary from ${SUPPORT_SALARY_FROM}`);
+  // end owner-batch-item2a
   // The college foundation (4 Oct 2026): ZZ Vidya College with every module and a person in every college role, ZZ Shastri Autonomous College, and a recruiter.
   const colleges = await buildColleges(db, ctx.passwordHash);
   // The same locked payroll month at ZZ Vidya College (6 Oct 2026): the ACCOUNTS actor lives there, and the API sweep's

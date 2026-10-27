@@ -62,7 +62,7 @@ async function purge() {
 async function main() {
   if (flags.includes("--purge")) return purge();
   const role = words[0];
-  if (!role) throw new Error("usage: zz-token [--tag=<name>] <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|DRIVER|LIBRARIAN|WARDEN|ALUMNUS|FACULTY|HOD|EXAM_CONTROLLER|IQAC|TPO|ACCOUNTS|RECRUITER|OPERATOR|APPADMIN> [email] | --purge [--tag=<name> | <token>… | --all]");
+  if (!role) throw new Error("usage: zz-token [--tag=<name>] <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|DRIVER|LIBRARIAN|WARDEN|ALUMNUS|FACULTY|HOD|EXAM_CONTROLLER|IQAC|TPO|ACCOUNTS|RECRUITER|SUPPORT|OPERATOR|APPADMIN> [email] | --purge [--tag=<name> | <token>… | --all]");
   // A second argument names the ZZ person: their membership in that role, wherever it is.
   const email = words[1];
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
@@ -86,7 +86,8 @@ async function main() {
     schoolId = null;
   } else if (role === "ADMIN" || role === "PRINCIPAL") {
     userId = (await db.user.findUniqueOrThrow({ where: { email: role === "ADMIN" ? "zz.admin@zz.test" : "zz.principal@zz.test" } })).id;
-  } else if (role === "TEACHER" || role === "STUDENT" || role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS") {
+  } else if (role === "TEACHER" || role === "STUDENT" || role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS" || role === "SUPPORT") {
+    // SUPPORT (owner-batch-item2a): ZZ Sunita Kamble, the support worker with no login (zz-fixtures.ts buildSupportStaff); a minted session is how a test acts as one who was given a sign-in.
     // The module roles (3 Oct 2026) are Northgate memberships like a teacher's: zz.driver01, zz.librarian, zz.warden, zz.alumni01 (zz-fixtures.ts buildModuleRoles).
     userId = (await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null }, select: { userId: true } })).userId;
   } else if (role === "PARENT" && email) {

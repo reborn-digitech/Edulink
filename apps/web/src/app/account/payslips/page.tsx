@@ -51,6 +51,11 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
     const [y, mm] = m.split("-").map(Number) as [number, number];
     return new Intl.DateTimeFormat(locale === "en" ? "en-IN" : `${locale}-IN`, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(y, mm - 1, 1)));
   };
+  // The day the school recorded paying a slip (owner-batch-item2b), in the reader's language.
+  const day = (key: string) => {
+    const [y, mm, d] = key.split("-").map(Number) as [number, number, number];
+    return new Intl.DateTimeFormat(locale === "en" ? "en-IN" : `${locale}-IN`, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(y, mm - 1, d)));
+  };
   const waiting = mine.advances.some((a) => a.status === "REQUESTED");
   return (
     <div className="space-y-6">
@@ -70,6 +75,7 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
                   <th scope="col" className={`${TH} text-right`}>{t("payroll.colGross")}</th>
                   <th scope="col" className={`${TH} text-right`}>{t("payroll.colDeductions")}</th>
                   <th scope="col" className={`${TH} text-right`}>{t("payroll.colNet")}</th>
+                  <th scope="col" className={TH}>{t("salaryPay.colPaid")}</th>
                   <th scope="col" className={TH}><span className="sr-only">{t("payroll.slipPdf")}</span></th>
                 </tr>
               </thead>
@@ -80,6 +86,16 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
                     <td className={NUM}>{money(s.grossPaise)}</td>
                     <td className={NUM}>{money(s.deductionsPaise)}</td>
                     <td className={`${NUM} font-semibold`}>{money(s.netPaise)}</td>
+                    <td className={`${TD} text-xs`}>
+                      {s.payment ? (
+                        <>
+                          {t("salaryPay.myPaid", { date: day(s.payment.paidOn), mode: t(`payroll.mode${s.payment.mode}` as TranslationKey) })}
+                          {s.payment.reference ? <span className="block text-fg-muted">{t("salaryPay.myPaidRef", { reference: s.payment.reference })}</span> : null}
+                        </>
+                      ) : (
+                        <span className="text-fg-muted">{t("salaryPay.myUnpaid")}</span>
+                      )}
+                    </td>
                     <td className={TD}>
                       <a className={`${LINK} inline-flex items-center gap-1`} href={`/api/v1/account/payslips/${s.month}/pdf`} target="_blank" rel="noreferrer">
                         <FilePdfIcon className="size-4" aria-hidden="true" />
@@ -134,7 +150,8 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
               ))}
             </ul>
           ) : null}
-          {waiting ? (
+          {/* owner-batch-item2a: support staff do not ask (askAdvance refuses them); the office records an advance for them. */}
+          {ctx.role === "SUPPORT" ? null : waiting ? (
             <p className="text-sm text-fg-muted">{t("payroll.advanceWaitingYou")}</p>
           ) : (
             <form action={askAdvanceAction} className="grid gap-3 sm:grid-cols-3">

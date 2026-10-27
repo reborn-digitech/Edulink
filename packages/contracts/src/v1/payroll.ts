@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * HR and payroll (module PAYROLL, the owner's decision of 3 October 2026):
@@ -71,18 +72,27 @@ export const SALARY_FORMULAS = ["FIXED", "PERCENT_OF_BASIC", "PERCENT_OF_GROSS"]
 export const salaryFormulaSchema = z.enum(SALARY_FORMULAS);
 export type SalaryFormula = z.infer<typeof salaryFormulaSchema>;
 
-export const PAYMENT_MODES = ["BANK", "CASH", "CHEQUE"] as const;
+/** UPI joined on 27 October 2026 (owner-batch-item2b): to the member of staff's own UPI id (VPA), sealed like the bank account. */
+export const PAYMENT_MODES = ["BANK", "CASH", "CHEQUE", "UPI"] as const;
 export const paymentModeSchema = z.enum(PAYMENT_MODES);
 export type PaymentMode = z.infer<typeof paymentModeSchema>;
 
-export const PAYROLL_RUN_STATUSES = ["DRAFT", "LOCKED"] as const;
+/**
+ * DRAFT while the office reviews, LOCKED once frozen, PAID once every slip with
+ * money due carries a recorded payment (owner-batch-item2b, 27 October 2026).
+ * PAID is LOCKED and more: nothing in the slips changes; voiding a payment
+ * takes the run back to LOCKED. Neither move is typed: it follows the payments.
+ */
+export const PAYROLL_RUN_STATUSES = ["DRAFT", "LOCKED", "PAID"] as const;
+/** The states whose slips are frozen: every reader of "the locked runs" means these. */
+export const PAYROLL_FROZEN_STATUSES = ["LOCKED", "PAID"] as const;
 export type PayrollRunStatus = (typeof PAYROLL_RUN_STATUSES)[number];
 
-export const PAYROLL_EXPORT_KINDS = ["PF_ECR", "ESI", "BANK_ADVICE", "PT", "TDS_SUMMARY"] as const;
+export const PAYROLL_EXPORT_KINDS = ["PF_ECR", "ESI", "BANK_ADVICE", "PT", "TDS_SUMMARY", "UPI_ADVICE"] as const;
 export const payrollExportKindSchema = z.enum(PAYROLL_EXPORT_KINDS);
 export type PayrollExportKind = z.infer<typeof payrollExportKindSchema>;
 /** The URL segment of each file, as the routes name them. */
-export const PAYROLL_EXPORT_SLUG: Record<PayrollExportKind, string> = { PF_ECR: "pf-ecr", ESI: "esi", BANK_ADVICE: "bank-advice", PT: "pt", TDS_SUMMARY: "tds" };
+export const PAYROLL_EXPORT_SLUG: Record<PayrollExportKind, string> = { PF_ECR: "pf-ecr", ESI: "esi", BANK_ADVICE: "bank-advice", PT: "pt", TDS_SUMMARY: "tds", UPI_ADVICE: "upi-advice" };
 
 export const ADVANCE_STATUSES = ["REQUESTED", "RECORDED", "DECLINED", "CANCELLED"] as const;
 export type AdvanceStatus = (typeof ADVANCE_STATUSES)[number];
@@ -221,6 +231,8 @@ export const staffSalarySchema = z.object({
       bankLast4: z.string().nullable(),
       bankIfsc: z.string().nullable(),
       bankName: z.string().nullable(),
+      /** The UPI id masked ("ra•••@okaxis"); the sealed id itself is never answered. */
+      upiMasked: z.string().nullable(),
       paymentMode: paymentModeSchema,
       /** A full month's gross with no day lost, for the list. */
       monthlyGrossPaise: count,
@@ -243,6 +255,8 @@ export const staffSalarySaveSchema = z.object({
   bankAccount: z.string().trim().regex(/^(\d{6,20})?$/, "account").default(""),
   bankIfsc: z.string().trim().toUpperCase().regex(/^([A-Z]{4}0[A-Z0-9]{6})?$/, "ifsc").default(""),
   bankName: z.string().trim().max(80).default(""),
+  /** The member of staff's own UPI id, `local@handle`; sealed on arrival, a blank keeps the sealed one. */
+  upiId: z.string().trim().toLowerCase().regex(/^([a-z0-9][a-z0-9._-]{1,63}@[a-z][a-z0-9]{1,31})?$/, "vpa").default(""),
   paymentMode: paymentModeSchema.default("BANK"),
 });
 export type StaffSalarySave = z.infer<typeof staffSalarySaveSchema>;
@@ -267,6 +281,63 @@ export const payslipLineSchema = z.object({
 });
 export type PayslipLine = z.infer<typeof payslipLineSchema>;
 
+/* --------------------------------------- salary payments (owner-batch-item2b) */
+
+/**
+ * THE SCHOOL'S RECORD OF HOW ONE SLIP WAS PAID (27 October 2026). The platform
+ * pays nobody (decisions 0003 and 0004): the school pays from its own bank, its
+ * own UPI app, a cheque or cash, and records it here afterwards — one live
+ * payment per slip, for the slip's whole net (a partial is refused); a mistake
+ * is voided with a reason and recorded again. `reference` is the UTR for a bank
+ * transfer or UPI, the cheque's number, and null for cash.
+ */
+export const salaryPaymentSchema = z.object({
+  id: z.string(),
+  mode: paymentModeSchema,
+  amountPaise: count,
+  paidOn: dateKey,
+  reference: z.string().nullable(),
+  note: z.string(),
+  recordedByName: z.string(),
+  createdAt: iso,
+});
+export type SalaryPaymentView = z.infer<typeof salaryPaymentSchema>;
+
+/** A UTR as banks and UPI apps print it: 12 to 22 letters and digits. */
+export const UTR_PATTERN = /^[A-Z0-9]{12,22}$/;
+/** A cheque's number: the six digits printed on its MICR line. */
+export const CHEQUE_NUMBER_PATTERN = /^\d{6}$/;
+
+/** POST /api/v1/admin/payroll/runs/{month}/payments/{membershipId} — the school records how it paid one slip of a LOCKED run. */
+export const salaryPaymentRecordSchema = z.object({
+  /** The slip's whole net, in paise: anything else is refused (no partial payments). */
+  amountPaise: paise.refine((n) => n > 0, "amount"),
+  mode: paymentModeSchema,
+  paidOn: realDateKey,
+  /** The UTR (BANK, UPI) or the cheque's number (CHEQUE); ignored for CASH. */
+  reference: z.string().trim().toUpperCase().max(22).default(""),
+  note: z.string().trim().max(300).default(""),
+});
+export type SalaryPaymentRecord = z.infer<typeof salaryPaymentRecordSchema>;
+/** POST /api/v1/admin/payroll/runs/{month}/payments/{membershipId}/void — a recorded payment set aside, with why; the slip is unpaid again. */
+export const salaryPaymentVoidSchema = z.object({ reason: z.string().trim().min(1).max(300) });
+
+/** Why one line of a UTR sheet was refused. */
+export const UTR_SHEET_REFUSALS = ["UNKNOWN_REF", "DUPLICATE_LINE", "NOTHING_DUE", "AMOUNT", "DATE", "REFERENCE", "MODE", "PAID_OTHERWISE", "UTR_TAKEN"] as const;
+export type UtrSheetRefusal = (typeof UTR_SHEET_REFUSALS)[number];
+/** POST /api/v1/admin/payroll/runs/{month}/payments/sheet — the bank's or the UPI app's sheet of UTRs: slip_ref, utr, date (YYYY-MM-DD or DD-MM-YYYY), and an optional amount. */
+export const utrSheetSchema = z.object({ csv: z.string().min(1).max(200_000) });
+export const utrSheetAnswerSchema = z.object({
+  /** True when every line was recorded or already stood; false when any line was refused, and then NOTHING was recorded. */
+  accepted: z.boolean(),
+  recorded: count,
+  already: count,
+  refused: count,
+  lines: z.array(z.object({ line: count, slipRef: z.string(), outcome: z.enum(["RECORDED", "ALREADY", "REFUSED"]), reason: z.enum(UTR_SHEET_REFUSALS).nullable() })),
+  status: z.enum(PAYROLL_RUN_STATUSES),
+});
+export type UtrSheetAnswer = z.infer<typeof utrSheetAnswerSchema>;
+
 export const payslipSchema = z.object({
   membershipId: z.string(),
   name: z.string(),
@@ -287,7 +358,13 @@ export const payslipSchema = z.object({
   notes: z.string(),
   paymentMode: paymentModeSchema,
   bankLast4: z.string().nullable(),
-  /** Codes of what the office should look at before locking: NEGATIVE_NET, NO_BANK, NO_UAN, NO_ESI_NUMBER. */
+  /** The UPI id masked, for a slip paid by UPI; never the id itself. */
+  upiMasked: z.string().nullable(),
+  /** The slip's reference on the advices and the UTR sheet: "SAL-202608-003", by the run's order of names. */
+  slipRef: z.string(),
+  /** How the school paid it, once recorded; null while unpaid (and always in a DRAFT run). */
+  payment: salaryPaymentSchema.nullable(),
+  /** Codes of what the office should look at before locking: NEGATIVE_NET, NO_BANK, NO_UPI, NO_UAN, NO_ESI_NUMBER. */
   warnings: z.array(z.string()),
 });
 export type PayslipView = z.infer<typeof payslipSchema>;
@@ -302,6 +379,10 @@ export const payrollRunSchema = z.object({
   createdAt: iso,
   lockedAt: iso.nullable(),
   lockedByName: z.string().nullable(),
+  /** When the last slip was recorded paid; null unless PAID. */
+  paidAt: iso.nullable(),
+  /** Slips with money due, and how many of them carry a recorded payment (null for the head before the run is shared). */
+  payments: z.object({ due: count, paid: count, paidPaise: count }).nullable(),
   sharedWithPrincipal: z.boolean(),
   totals: payrollTotalsSchema,
   /** Null for the head unless the office shared the run's slips. */
@@ -312,6 +393,9 @@ export const payrollRunSchema = z.object({
   canEdit: z.boolean(),
 });
 export type PayrollRunView = z.infer<typeof payrollRunSchema>;
+/** What a payment door answers (owner-batch-item2b): the slip with its payment as it now stands, and the run's state (PAID once the last is in). */
+export const salaryPaymentAnswerSchema = z.object({ slip: payslipSchema, status: z.enum(PAYROLL_RUN_STATUSES) });
+export type SalaryPaymentAnswer = z.infer<typeof salaryPaymentAnswerSchema>;
 
 /** POST /api/v1/admin/payroll/runs — draft the month's run, or draw a DRAFT afresh from the register; a LOCKED month is refused. */
 export const payrollRunDraftSchema = z.object({ month: monthKey });
@@ -330,7 +414,7 @@ export const payrollRunLockSchema = z.object({ confirm: z.literal(true) });
 /** POST /api/v1/admin/payroll/runs/{month}/share — whether the head reads the run's slips. */
 export const payrollRunShareSchema = z.object({ shared: z.boolean() });
 
-/** GET /api/v1/admin/payroll/runs/{month}/export/{kind} — one statutory or bank file, cut from a LOCKED run. Audited. */
+/** GET /api/v1/admin/payroll/runs/{month}/export/{kind} — one statutory, bank or UPI file, cut from a LOCKED (or PAID) run. Audited. */
 export const payrollExportFileSchema = z.object({ kind: payrollExportKindSchema, filename: z.string(), mime: z.string(), content: z.string(), rows: count, totalPaise: count });
 export type PayrollExportFile = z.infer<typeof payrollExportFileSchema>;
 
@@ -391,7 +475,7 @@ export const myPayslipsSchema = z.object({
   structure: z
     .object({ name: z.string(), effectiveFrom: dateKey, basicPaise: count, monthlyGrossPaise: count, components: z.array(z.object({ code: salaryComponentCodeSchema, kind: z.enum(SALARY_COMPONENT_KINDS), label: z.string(), monthlyPaise: count })) })
     .nullable(),
-  slips: z.array(z.object({ month: monthKey, grossPaise: count, deductionsPaise: count, netPaise: z.number().int(), lockedAt: iso })),
+  slips: z.array(z.object({ month: monthKey, grossPaise: count, deductionsPaise: count, netPaise: z.number().int(), lockedAt: iso, payment: salaryPaymentSchema.omit({ id: true, recordedByName: true, note: true, createdAt: true }).nullable() })),
   advances: z.array(staffAdvanceSchema),
   /** Financial years ("2026-27") the person has a locked slip in, newest first. */
   years: z.array(z.string()),

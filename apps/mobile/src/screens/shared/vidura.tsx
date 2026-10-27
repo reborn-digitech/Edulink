@@ -11,6 +11,7 @@ import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { formatDateTime } from "@/lib/dates";
 import { webPageFor } from "@/lib/links";
+import { ASSISTANT_NOT_FOR } from "@/lib/nav";
 import { Conversation, Offline, isOffline } from "./assistant";
 
 /**
@@ -24,7 +25,8 @@ import { Conversation, Offline, isOffline } from "./assistant";
 export type ViduraAccess = "open" | "plan" | null;
 
 export function viduraAccess(me: Pick<Me, "active" | "modules" | "features" | "locked"> | null): ViduraAccess {
-  if (!me?.active.role || me.active.role === "EXPERT" || me.active.role === "RECRUITER") return null;
+  // The roles the assistant is not for (lib/nav.ts): the expert, the recruiter, and support staff (owner-batch-item2a).
+  if (!me?.active.role || ASSISTANT_NOT_FOR.includes(me.active.role)) return null;
   // An older server that sends no `features` predates the switches: the module alone decides, as before.
   const on = (me.features ?? ["ASSISTANT"]).includes("ASSISTANT") && (me.modules ?? []).includes("ASSISTANT");
   if (!on) return null;

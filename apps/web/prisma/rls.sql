@@ -3578,6 +3578,15 @@ CREATE POLICY "SocialPost_tenant_isolation" ON "SocialPost"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SalaryPayment
+ALTER TABLE "SalaryPayment" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SalaryPayment" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SalaryPayment_tenant_isolation" ON "SalaryPayment";
+DROP POLICY IF EXISTS "SalaryPayment_readable" ON "SalaryPayment";
+CREATE POLICY "SalaryPayment_tenant_isolation" ON "SalaryPayment"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

@@ -173,6 +173,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "student.admit": "audit.studentAdmit",
   "term.create": "audit.termCreate",
   "staff.record.set": "audit.staffRecordSet",
+  "staff.support.add": "audit.staffSupportAdd", // owner-batch-item2a
   "student.leave.schedule": "audit.studentLeaveSchedule",
   "student.leave.unschedule": "audit.studentLeaveUnschedule",
   "term.delete": "audit.termDelete",
@@ -512,6 +513,10 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "payroll.advance.record": "audit.payrollAdvanceRecord",
   "payroll.advance.decline": "audit.payrollAdvanceDecline",
   "payroll.advance.ask": "audit.payrollAdvanceAsk",
+  // owner-batch-item2b (27 Oct 2026): the school's record of how it paid each slip.
+  "payroll.paymentRecorded": "salaryPay.auditRecorded",
+  "payroll.paymentVoided": "salaryPay.auditVoided",
+  "payroll.upiIntentShown": "salaryPay.auditIntent",
   // The library and hostel modules (3 Oct 2026).
   "library.settings": "audit.librarySettings",
   "library.title.create": "audit.libraryTitleCreate",

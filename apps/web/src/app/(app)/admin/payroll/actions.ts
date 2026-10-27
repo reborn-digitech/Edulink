@@ -2,6 +2,10 @@
 
 import {
   SALARY_COMPONENT_CODES,
+  salaryPaymentRecordSchema,
+  salaryPaymentVoidSchema,
+  utrSheetSchema,
+  type UtrSheetAnswer,
   advanceDecideSchema,
   advanceRecordSchema,
   payrollSettingsSaveSchema,
@@ -13,6 +17,11 @@ import { requireApiUser } from "@/lib/tenancy";
 import { decideAdvance, draftRun, editSlip, lockRun, recordAdvance, savePayrollSettings, saveSalary, saveStructure, shareRun } from "@/lib/payroll";
 import { field, runAction, rupeesField } from "@/lib/module-actions";
 import { RuleRefusal } from "@/lib/rule-refusal";
+import { answerForm } from "@/lib/form-action";
+import type { FormState } from "@/lib/form-state";
+import { getT } from "@/lib/i18n/server";
+import { sheetDate } from "@/lib/salary-payment-rules";
+import { importUtrSheet, recordPaymentLines, recordSalaryPayment, voidSalaryPayment, type PaymentLine } from "@/lib/salary-payments";
 
 /**
  * The payroll pages' writes. Who may make each is the library's to decide
@@ -84,6 +93,7 @@ export async function saveSalaryAction(form: FormData): Promise<void> {
         bankAccount: field(form, "bankAccount").replace(/\s/g, ""),
         bankIfsc: field(form, "bankIfsc"),
         bankName: field(form, "bankName"),
+        upiId: field(form, "upiId"),
         paymentMode: field(form, "paymentMode") || "BANK",
       }),
     );
@@ -156,4 +166,100 @@ export async function decideAdvanceAction(form: FormData): Promise<void> {
     await decideAdvance(ctx, input);
     return input.decision === "RECORD" ? "payroll.advanceRecorded" : "payroll.advanceDeclined";
   });
+}
+
+/* ---------------------------------------- salary payments (owner-batch-item2b) */
+
+/**
+ * The payment forms answer in place through <ActionForm> (lib/form-action.ts answerForm): a refusal says why
+ * beside the box it is about and keeps what was typed; done, a toast and the run refreshed. Never ?error=.
+ */
+const runPath = (month: string) => `/admin/payroll/runs/${encodeURIComponent(month)}`;
+const payPath = (month: string, membershipId: string) => `${runPath(month)}/pay/${encodeURIComponent(membershipId)}`;
+
+/** One slip recorded paid: from the run page's form, or from the pay-from-your-app page with the UTR its app showed. */
+export async function recordPaymentAction(previous: FormState, form: FormData): Promise<FormState> {
+  const month = field(form, "month");
+  const membershipId = field(form, "membershipId");
+  return answerForm(
+    previous,
+    form,
+    async () => {
+      const ctx = await requireApiUser();
+      const input = salaryPaymentRecordSchema.parse({ amountPaise: Number(field(form, "amountPaise")), mode: field(form, "mode"), paidOn: field(form, "paidOn"), reference: field(form, "reference"), note: field(form, "note") });
+      await recordSalaryPayment(ctx, month, membershipId, input, field(form, "back") === "pay" ? "upi-app" : "form");
+      return "salaryPay.recorded";
+    },
+    { revalidate: [runPath(month), payPath(month, membershipId), "/admin/payroll"] },
+  );
+}
+
+export async function voidPaymentAction(previous: FormState, form: FormData): Promise<FormState> {
+  const month = field(form, "month");
+  return answerForm(
+    previous,
+    form,
+    async () => {
+      const ctx = await requireApiUser();
+      await voidSalaryPayment(ctx, month, field(form, "membershipId"), salaryPaymentVoidSchema.parse({ reason: field(form, "reason") }).reason);
+      return "salaryPay.voided";
+    },
+    { revalidate: [runPath(month), "/admin/payroll"] },
+  );
+}
+
+/**
+ * A batch of lines (the sheet, or the bank slips' form): all recorded or none. Refused, the sentence names each
+ * refused line and why (the first twenty), in the reader's language, beside the button.
+ */
+async function linesAnswer(answer: UtrSheetAnswer): Promise<"salaryPay.recordedMany"> {
+  if (answer.accepted) return "salaryPay.recordedMany";
+  const t = await getT();
+  const refused = answer.lines.filter((l) => l.outcome === "REFUSED" && l.reason);
+  const lines = refused
+    .slice(0, 20)
+    .map((l) => t("salaryPay.sheetLine", { line: l.line, ref: l.slipRef || "—", reason: t(`salaryPay.reason${l.reason!}`) }))
+    .join("; ");
+  throw new RuleRefusal("salaryPay.refuseSheet", 422, { count: answer.refused, lines: refused.length > 20 ? `${lines}; …` : lines });
+}
+
+/** The UTR sheet, uploaded as a file or pasted. */
+export async function utrSheetAction(previous: FormState, form: FormData): Promise<FormState> {
+  const month = field(form, "month");
+  return answerForm(
+    previous,
+    form,
+    async () => {
+      const ctx = await requireApiUser();
+      const file = form.get("file");
+      let csv = String(form.get("csv") ?? "");
+      if (file instanceof File && file.size > 0) {
+        if (file.size > 200_000) throw new RuleRefusal("salaryPay.refuseSheetLong", 422, { max: 2000 }, "file");
+        csv = await file.text();
+      }
+      return linesAnswer(await importUtrSheet(ctx, month, utrSheetSchema.parse({ csv }).csv));
+    },
+    { revalidate: [runPath(month), "/admin/payroll"] },
+  );
+}
+
+/** "Record the bank slips as paid": one date, a UTR per slip from the bank's sheet; a blank row stays unpaid. */
+export async function bankBatchAction(previous: FormState, form: FormData): Promise<FormState> {
+  const month = field(form, "month");
+  return answerForm(
+    previous,
+    form,
+    async () => {
+      const ctx = await requireApiUser();
+      const paidOn = field(form, "paidOn");
+      const lines: PaymentLine[] = [];
+      for (let i = 0; i < 2_000 && form.has(`ref:${i}`); i++) {
+        const reference = field(form, `utr:${i}`);
+        if (reference) lines.push({ line: i + 1, slipRef: field(form, `ref:${i}`), reference, dateKey: sheetDate(paidOn), amountPaise: null });
+      }
+      if (!lines.length) throw new RuleRefusal("salaryPay.refuseNothing", 422);
+      return linesAnswer(await recordPaymentLines(ctx, month, lines, "bank-batch"));
+    },
+    { revalidate: [runPath(month), "/admin/payroll"] },
+  );
 }

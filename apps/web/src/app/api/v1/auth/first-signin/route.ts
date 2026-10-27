@@ -28,7 +28,8 @@ export async function POST(request: Request) {
     if (!result.ok) {
       return NextResponse.json({ error: refusalText(t, { errorKey: result.errorKey }), code: "UNAUTHORIZED" }, { status: 401, headers: { "Cache-Control": "no-store" } });
     }
-    return issueApiSession(request, result.userId, { lastRole: "STUDENT", lastSchoolId: result.schoolId }, "first-signin", parsed.data.device);
+    // A pupil, or a support worker the office gave a code (owner-batch-item2a).
+    return issueApiSession(request, result.userId, { lastRole: result.role, lastSchoolId: result.schoolId }, "first-signin", parsed.data.device);
   } catch (error) {
     return apiFailure(error, "api/v1/auth/first-signin");
   }

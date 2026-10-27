@@ -219,7 +219,7 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
   if (kind === "AISHE") {
     const programmes = await programmeTable(schoolId, year);
     const faculty = await facultyTable(schoolId, asOf);
-    const nonTeaching = await db.membership.count({ where: { schoolId, role: { in: ["ADMIN", "ACCOUNTS", "LIBRARIAN", "WARDEN", "DRIVER", "EXAM_CONTROLLER", "TPO"] }, status: "ACTIVE", leftAt: null } });
+    const nonTeaching = await db.membership.count({ where: { schoolId, role: { in: ["ADMIN", "ACCOUNTS", "LIBRARIAN", "WARDEN", "DRIVER", "EXAM_CONTROLLER", "TPO", "SUPPORT"] }, status: "ACTIVE", leftAt: null } });
     const yl = yearLabel(year);
     const claims = await db.scholarshipClaim.groupBy({ by: ["scheme"], where: { schoolId, academicYear: yl, status: { in: ["SANCTIONED", "DISBURSED"] } }, _count: { _all: true } });
     const rows: (string | number)[][] = [

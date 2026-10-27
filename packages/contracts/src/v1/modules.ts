@@ -110,8 +110,15 @@ export type CollegeRoleCode = (typeof COLLEGE_ROLES)[number];
  * no school of its own, which reaches a college only through a placement
  * drive. A "signed-in" door opens to none of these unless it names them in
  * `limitedRoles`.
+ *
+ * owner-batch-item2a (27 Oct 2026): SUPPORT, the school's support staff — a
+ * cleaner, cook, guard, peon, gardener or ayah, one role with a designation
+ * on the staff record. Usually on the payroll with no login at all; one who
+ * is given a login reads their own payslips and profile and nothing else. It
+ * hangs on no module (MODULE_OF_ROLE): the payslip doors carry PAYROLL
+ * themselves.
  */
-export const LIMITED_ROLES = [...MODULE_ROLES, ...COLLEGE_ROLES, "RECRUITER"] as const;
+export const LIMITED_ROLES = [...MODULE_ROLES, ...COLLEGE_ROLES, "RECRUITER", "SUPPORT"] as const;
 export type LimitedRoleCode = (typeof LIMITED_ROLES)[number];
 export function isLimitedRoleCode(role: string | null | undefined): role is LimitedRoleCode {
   return role !== null && role !== undefined && (LIMITED_ROLES as readonly string[]).includes(role);

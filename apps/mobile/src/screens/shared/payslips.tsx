@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { formatPaise, type TranslationKey } from "@edulink/i18n";
-import { myPayslipsSchema } from "@edulink/contracts";
+import { myPayslipsSchema, type MyPayslips as MyPayslipsView } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -34,8 +34,9 @@ const CODE_KEY: Record<string, TranslationKey> = {
 
 /**
  * My own payslips — the web's /account/payslips: each locked month with its
- * PDF (in my language) handed to the share sheet, the salary structure I am
- * paid on (mine, never anyone else's) and my advances. Any member of staff.
+ * PDF (in my language) handed to the share sheet and how the school recorded
+ * paying it, the salary structure I am paid on (mine, never anyone else's)
+ * and my advances. Any member of staff.
  */
 export function MyPayslips() {
   const t = useT();
@@ -46,6 +47,9 @@ export function MyPayslips() {
   const [busy, setBusy] = useState<string | null>(null);
   const [pdfError, setPdfError] = useState<string | null>(null);
   const money = (p: number) => formatPaise(p, locale, { always: true });
+  // How the school recorded paying each slip (owner-batch-item2b): the day, the mode and the reference, or not yet.
+  const paidLine = (p: MyPayslipsView["slips"][number]["payment"]) =>
+    p ? [t("salaryPay.myPaid", { date: formatDate(p.paidOn), mode: t(`payroll.mode${p.mode}` as TranslationKey) }), p.reference ? t("salaryPay.myPaidRef", { reference: p.reference }) : null].filter(Boolean).join(" · ") : t("salaryPay.myUnpaid");
   const home = <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />;
   const download = async (month: string) => {
     setBusy(month);
@@ -71,7 +75,7 @@ export function MyPayslips() {
                 <Row
                   key={s.month}
                   title={monthLabel(s.month, locale)}
-                  caption={`${t("payroll.colNet")} ${money(s.netPaise)} · ${t("payroll.colGross")} ${money(s.grossPaise)}`}
+                  caption={[`${t("payroll.colNet")} ${money(s.netPaise)} · ${t("payroll.colGross")} ${money(s.grossPaise)}`, paidLine(s.payment)].join("\n")}
                   right={<Button variant="secondary" label={t("payroll.slipPdf")} accessibilityLabel={`${t("payroll.slipPdf")}: ${monthLabel(s.month, locale)}`} busy={busy === s.month} onPress={() => void download(s.month)} />}
                 />
               ))

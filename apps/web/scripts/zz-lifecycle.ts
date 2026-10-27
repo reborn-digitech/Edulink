@@ -2342,7 +2342,7 @@ async function invariants(S: SchoolWorld | null, C: CollegeWorld, y: number): Pr
   add("fee ledgers: net = gross − concession, paid = receipts allocated, the ledger functions agree with the rows", ledgerFail, `${demands.length} demands, ${pays.length} payments`);
 
   // 5. Payroll: every locked run's digest still matches its slips, and the digest taken at the lock.
-  const runs = await dbx.payrollRun.findMany({ where: { schoolId: { in: schoolIdsMine }, status: "LOCKED" }, select: { id: true, month: true, lockDigest: true, slips: true } });
+  const runs = await dbx.payrollRun.findMany({ where: { schoolId: { in: schoolIdsMine }, status: { in: ["LOCKED", "PAID"] } }, select: { id: true, month: true, lockDigest: true, slips: true } });
   const payFail: string[] = [];
   for (const r of runs) {
     const digest = L.payrollRules.slipDigest(r.slips);

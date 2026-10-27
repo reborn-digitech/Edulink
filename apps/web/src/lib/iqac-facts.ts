@@ -76,7 +76,7 @@ const yearEnd = (y: number) => new Date(Date.UTC(y + 1, 4, 31, 23, 59, 59));
 const keyIn = (key: string, from: string, to: string) => key >= from && key <= to;
 
 const TEACHER_ROLES = ["FACULTY", "HOD"];
-const STAFF_ROLES = ["ADMIN", "PRINCIPAL", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "LIBRARIAN", "WARDEN", "DRIVER", "TEACHER"];
+const STAFF_ROLES = ["ADMIN", "PRINCIPAL", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "LIBRARIAN", "WARDEN", "DRIVER", "TEACHER", "SUPPORT"]; // SUPPORT: owner-batch-item2a
 
 export async function gatherFacts(schoolId: string, windowFrom: string, windowTo: string, entered: Entered, now = new Date()): Promise<GatheredFacts> {
   const years = academicYears(windowFrom, windowTo);

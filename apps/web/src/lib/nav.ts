@@ -724,6 +724,12 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/recruiter", labelKey: "role.recruiter", icon: "handshake", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
   ],
+  // owner-batch-item2a (27 Oct 2026): support staff, given a login, read their own payslips (their home) and their profile, nothing else.
+  SUPPORT: [
+    // Their home (ROLE_HOME), and like everyone's own pages under the account menu, not the rail.
+    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "me" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
+  ],
 };
 
 /**
@@ -800,6 +806,7 @@ export const PHONE_BAR: Record<Role, NavItem[]> = {
   TPO: [{ href: "/placement", labelKey: "mobile.tabPlacement", icon: "chartLine" }, ...COLLEGE_DESK_TABS],
   ACCOUNTS: [{ href: "/accounts", labelKey: "role.accounts", icon: "receipt" }, ...COLLEGE_DESK_TABS],
   RECRUITER: [{ href: "/recruiter", labelKey: "role.recruiter", icon: "handshake", prefix: true }],
+  SUPPORT: [{ href: "/account/payslips", labelKey: "supportStaff.tabPayslips", icon: "receipt", prefix: true }], // owner-batch-item2a
 };
 
 /**
@@ -811,7 +818,7 @@ export const PHONE_BAR: Record<Role, NavItem[]> = {
  */
 export const ASSISTANT_HREF = "/assistant";
 /** Not for the outside accounts: an expert and a recruiter belong to no school, and the assistant's doors refuse them (Phase B). */
-export const ASSISTANT_NOT_FOR: readonly Role[] = ["EXPERT", "RECRUITER"];
+export const ASSISTANT_NOT_FOR: readonly Role[] = ["EXPERT", "RECRUITER", "SUPPORT"]; // SUPPORT: owner-batch-item2a, payslips and profile only
 
 /** The one action each role does most. Becomes the floating action button. */
 export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
@@ -844,6 +851,7 @@ export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
   TPO: null,
   ACCOUNTS: null,
   RECRUITER: null,
+  SUPPORT: null,
   EXPERT: {
     href: "/expert/availability",
     labelKey: "action.offerTime",
@@ -903,6 +911,7 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   TPO: [],
   ACCOUNTS: [],
   RECRUITER: [],
+  SUPPORT: [],
 };
 
 export function isActive(pathname: string, item: NavItem): boolean {

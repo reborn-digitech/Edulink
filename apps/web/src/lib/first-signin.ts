@@ -71,18 +71,58 @@ export type IssuedFirstSignIn = {
 
 export type IssueResult = { ok: true; issued: IssuedFirstSignIn } | { ok: false; errorKey: TranslationKey };
 
-/** Issues (or re-issues) a pupil's first sign-in code. Admin only. */
+/**
+ * owner-batch-item2a (27 Oct 2026): THE ROLES A FIRST SIGN-IN IS FOR. A pupil,
+ * and a support worker (a cleaner, cook, guard or peon) the office added with
+ * no login (support-staff.ts). The worker's account has no handle until the
+ * office first issues a code: one is minted then, from the name and four
+ * random letters, so the same account and the same membership gain a login
+ * and nobody is given a second one. Signed in, a support worker reads their
+ * own payslips and profile and nothing else (role-gate.ts).
+ */
+export const FIRST_SIGNIN_ROLES = ["STUDENT", "SUPPORT"] as const;
+export type FirstSignInRole = (typeof FIRST_SIGNIN_ROLES)[number];
+
+/** A login handle for a support worker: the name's letters and four random ones, as a pupil's is the name and four of the code. */
+function supportHandle(name: string): string {
+  const base = name.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 12) || "staff";
+  let tail = "";
+  for (let i = 0; i < 4; i++) tail += ALPHABET[randomInt(ALPHABET.length)];
+  return `${base}.${tail.toLowerCase()}`;
+}
+
+/** Gives a support worker's account with no address a handle, once; a second press finds the first one's. */
+async function ensureSupportHandle(userId: string, name: string): Promise<string | null> {
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const email = `${supportHandle(name)}@${HANDLE_DOMAIN}`;
+    try {
+      const set = await db.user.updateMany({ where: { id: userId, email: null }, data: { email } });
+      if (set.count === 1) return email;
+      return (await db.user.findUnique({ where: { id: userId }, select: { email: true } }))?.email ?? null;
+    } catch (error) {
+      // Another account holds that handle: draw again.
+      if ((error as { code?: string }).code !== "P2002") throw error;
+    }
+  }
+  return null;
+}
+
+/** Issues (or re-issues) a pupil's, or a support worker's, first sign-in code. Admin only. */
 export async function issueFirstSignIn(ctx: ActiveContext, studentMembershipId: string): Promise<IssueResult> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.onlyAnAdminCanIssueASignIn");
   const schoolId = ctx.schoolId;
 
   const pupil = await db.membership.findFirst({
-    where: { id: studentMembershipId, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
-    select: { id: true, user: { select: { id: true, email: true, disabledAt: true, passwordHash: true, emailVerifiedAt: true } } },
+    where: { id: studentMembershipId, schoolId, role: { in: [...FIRST_SIGNIN_ROLES] }, status: "ACTIVE", leftAt: null },
+    select: { id: true, role: true, user: { select: { id: true, name: true, email: true, disabledAt: true, passwordHash: true, emailVerifiedAt: true } } },
   });
   if (!pupil) return { ok: false, errorKey: "refusal.notPupilsHere" };
   if (pupil.user.disabledAt) return { ok: false, errorKey: "refusal.accountDisabled" };
   if (isDeliverableEmail(pupil.user.email)) return { ok: false, errorKey: "firstSignin.hasAddressUseForgot" };
+  // A support worker's account was made with no handle at all (owner-batch-item2a): its first code gives it one.
+  if (pupil.role === "SUPPORT" && !pupil.user.email && !pupil.user.passwordHash && !pupil.user.emailVerifiedAt) {
+    pupil.user.email = await ensureSupportHandle(pupil.user.id, pupil.user.name);
+  }
   const handle = handleOf(pupil.user.email);
   if (!handle) return { ok: false, errorKey: "firstSignin.noHandle" };
 
@@ -97,14 +137,14 @@ export async function issueFirstSignIn(ctx: ActiveContext, studentMembershipId: 
    * one with no address asks the school that issued the account.
    */
   const account = pupil.user;
-  if (account.passwordHash || account.emailVerifiedAt) return { ok: false, errorKey: "firstSignin.notEligible" };
+  if (account.passwordHash || account.emailVerifiedAt) return { ok: false, errorKey: pupil.role === "SUPPORT" ? "supportStaff.alreadySignsIn" : "firstSignin.notEligible" };
   const elsewhere = await forUser(account.id, async () => {
     const membership = await db.membership.findFirst({ where: { userId: account.id, schoolId: { not: schoolId } }, select: { id: true } });
     if (membership) return true;
     const guards = await db.guardianship.findFirst({ where: { parentUserId: account.id, studentSchoolId: { not: schoolId } }, select: { id: true } });
     return Boolean(guards);
   });
-  if (elsewhere) return { ok: false, errorKey: "firstSignin.notEligible" };
+  if (elsewhere) return { ok: false, errorKey: pupil.role === "SUPPORT" ? "supportStaff.alreadySignsIn" : "firstSignin.notEligible" };
 
   const code = mintCode();
   const expiresAt = new Date(Date.now() + FIRST_SIGNIN_TTL_DAYS * 86_400_000);
@@ -137,7 +177,7 @@ export async function issueFirstSignIn(ctx: ActiveContext, studentMembershipId: 
 }
 
 export type RedeemResult =
-  | { ok: true; userId: string; schoolId: string }
+  | { ok: true; userId: string; schoolId: string; role: FirstSignInRole }
   | { ok: false; errorKey: TranslationKey };
 
 /**
@@ -202,8 +242,10 @@ export async function redeemFirstSignIn(rawHandle: string, rawCode: string, newP
   const schoolId = meta.schoolId;
   const membership = await forSchool(schoolId, () =>
     db.membership.findFirst({
-      where: { userId: user.id, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
-      select: { schoolId: true },
+      // A pupil, or a support worker the office gave a code (owner-batch-item2a).
+      where: { userId: user.id, schoolId, role: { in: [...FIRST_SIGNIN_ROLES] }, status: "ACTIVE", leftAt: null },
+      select: { schoolId: true, role: true },
+      orderBy: { role: "asc" },
     }),
   );
   if (!membership) return generic;
@@ -213,5 +255,5 @@ export async function redeemFirstSignIn(rawHandle: string, rawCode: string, newP
 
   await audit({ schoolId: membership.schoolId, actorUserId: user.id, action: "auth.firstSignin.completed" });
 
-  return { ok: true, userId: user.id, schoolId: membership.schoolId };
+  return { ok: true, userId: user.id, schoolId: membership.schoolId, role: membership.role as FirstSignInRole };
 }

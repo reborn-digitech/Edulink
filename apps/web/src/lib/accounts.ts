@@ -96,7 +96,7 @@ async function incomeExpense(schoolId: string, year: Year) {
     db.feePayment.aggregate({ where: { schoolId, status: "PAID", paidAt: { gte: year.startDate, lte: new Date(`${r.to}T23:59:59Z`) } }, _sum: { amountPaise: true } }),
     db.scholarshipClaim.aggregate({ where: { schoolId, status: "DISBURSED", academicYear: yearKeyOf(year.startDate) }, _sum: { disbursedPaise: true } }),
     db.purchaseRecord.findMany({ where: { schoolId, dateKey: { gte: r.from, lte: r.to } }, select: { totalPaise: true, location: true } }),
-    db.payrollRun.findMany({ where: { schoolId, status: "LOCKED", month: { gte: r.fromMonth, lte: r.toMonth } }, select: { grossPaise: true, employerPaise: true } }),
+    db.payrollRun.findMany({ where: { schoolId, status: { in: ["LOCKED", "PAID"] }, month: { gte: r.fromMonth, lte: r.toMonth } }, select: { grossPaise: true, employerPaise: true } }),
     db.feeDemand.aggregate({ where: { schoolId, academicYearId: year.id, status: { notIn: ["CANCELLED", "CARRIED"] } }, _sum: { netPaise: true } }),
   ]);
   return {

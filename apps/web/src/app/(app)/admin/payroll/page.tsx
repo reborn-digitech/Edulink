@@ -34,7 +34,7 @@ export default async function PayrollOverview({ searchParams }: { searchParams: 
   if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const params = await searchParams;
   const s = await payrollSummary(ctx);
-  const latest = s.runs.find((r) => r.status === "LOCKED");
+  const latest = s.runs.find((r) => r.status !== "DRAFT");
   const peak = Math.max(1, ...s.costByMonth.map((m) => m.grossPaise + m.employerPaise));
   return (
     <div className="space-y-6">
@@ -76,7 +76,7 @@ export default async function PayrollOverview({ searchParams }: { searchParams: 
                       <th scope="row" className={`${TD} text-left`}>
                         <Link className={LINK} href={`/admin/payroll/runs/${r.month}`}>{monthName(r.month, locale)}</Link>
                       </th>
-                      <td className={TD}><Badge tone={r.status === "LOCKED" ? "ok" : "warn"} size="sm">{t(`payroll.status${r.status}`)}</Badge></td>
+                      <td className={TD}><Badge tone={r.status === "DRAFT" ? "warn" : "ok"} size="sm">{t(`payroll.status${r.status}`)}</Badge></td>
                       <td className={NUM}>{r.headcount}</td>
                       <td className={NUM}>{formatPaise(r.grossPaise, locale)}</td>
                       <td className={NUM}>{formatPaise(r.netPaise, locale)}</td>

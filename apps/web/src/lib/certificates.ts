@@ -563,7 +563,8 @@ export type { CertificateLayout, CertificateRow };
  * and that member of staff read it. They are told, and keep their letters at
  * /account/letters.
  */
-const STAFF_ROLES: readonly Role[] = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"];
+// SUPPORT (owner-batch-item2a): the office may issue a support worker's appointment letter too, and print it for them.
+const STAFF_ROLES: readonly Role[] = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "SUPPORT"];
 
 async function staffFactsFor(schoolId: string, membershipId: string, issue: StaffFacts["issue"]): Promise<StaffFacts> {
   const [member, school, year] = await Promise.all([

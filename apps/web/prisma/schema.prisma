@@ -2750,6 +2750,10 @@ model StaffRecord {
   /// with its rank word stripped ("TGT Mathematics"), which a designation
   /// like "Senior teacher" does not survive.
   appointedSubject          String?
+  // owner-batch-item2a (27 Oct 2026): the number the office rings a member of staff on, as E.164 — the record's,
+  // not the account's sign-in phone (User.phone is unique and proved by its owner). Written when the office adds a
+  // support worker with no login (src/lib/support-staff.ts); a support worker's account has no phone of its own.
+  contactPhone              String?
   updatedAt                 DateTime  @updatedAt
   createdAt                 DateTime  @default(now())
 
@@ -7396,7 +7400,11 @@ model StaffSalary {
   bankLast4         String?
   bankIfsc          String?
   bankName          String?
-  /// BANK | CASH | CHEQUE
+  /// owner-batch-item2b: the member of staff's own UPI id (VPA), SEALED like the bank account (bound to the school
+  /// and membership), opened only into the UPI advice and the pay-from-your-app link; the masked form beside it.
+  upiSealed         String?
+  upiMasked         String?
+  /// BANK | CASH | CHEQUE | UPI
   paymentMode       String   @default("BANK")
   updatedByUserId   String?
   createdAt         DateTime @default(now())
@@ -7429,12 +7437,15 @@ model PayrollRun {
   createdByUserId     String?
   lockedByUserId      String?
   lockedAt            DateTime?
+  /// owner-batch-item2b: when the run became PAID (the last slip recorded paid); cleared when a void takes it back to LOCKED.
+  paidAt              DateTime?
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
 
-  school  School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  slips   Payslip[]
-  exports PayrollExport[]
+  school   School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  slips    Payslip[]
+  exports  PayrollExport[]
+  payments SalaryPayment[]
 
   @@unique([schoolId, month])
 }
@@ -7471,6 +7482,7 @@ model Payslip {
   school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   run        PayrollRun @relation(fields: [runId], references: [id], onDelete: Cascade)
   membership Membership @relation("PayslipOf", fields: [membershipId], references: [id], onDelete: Cascade)
+  payments   SalaryPayment[]
 
   @@unique([runId, membershipId])
   @@index([schoolId])
@@ -11541,3 +11553,42 @@ model PassInvoice {
   @@index([payerUserId, issuedAt])
 }
 // end plans-pay
+
+// owner-batch-item2b (27 Oct 2026): how each salary slip was paid, recorded by the school.
+/// THE SCHOOL'S RECORD OF ONE SALARY PAYMENT (src/lib/salary-payments.ts). The platform pays nobody (decisions 0003
+/// and 0004): the school pays from its own bank, its own UPI app, a cheque or cash, and records it here afterwards.
+/// One LIVE payment per slip: `liveSlipId` is the slip's id while the row stands and NULL once voided, unique, so two
+/// presses of "Record" can never leave two (Postgres keeps NULLs distinct). A partial payment is refused; a mistake
+/// is voided with a reason and recorded again. `liveUtr` is the UTR of a live BANK or UPI payment, unique per school:
+/// one transfer pays one slip. The run is PAID while every slip with money due has a live payment (data:audit
+/// "payroll-paid"), moved by a conditional update under the run's row lock.
+model SalaryPayment {
+  id                     String    @id @default(cuid())
+  schoolId               String
+  runId                  String
+  payslipId              String
+  liveSlipId             String?   @unique
+  /// BANK | CASH | CHEQUE | UPI
+  mode                   String
+  amountPaise            Int
+  /// YYYY-MM-DD, the school's day the money left.
+  paidOnKey              String
+  /// The UTR (BANK, UPI), the cheque's number (CHEQUE); null for cash.
+  reference              String?
+  liveUtr                String?
+  note                   String    @default("")
+  recordedByMembershipId String
+  createdAt              DateTime  @default(now())
+  voidedAt               DateTime?
+  voidedByMembershipId   String?
+  voidReason             String?
+
+  run  PayrollRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  slip Payslip    @relation(fields: [payslipId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, liveUtr])
+  @@index([schoolId])
+  @@index([runId])
+  @@index([payslipId])
+}
+// end owner-batch-item2b

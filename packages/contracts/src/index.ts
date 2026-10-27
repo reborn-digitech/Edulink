@@ -316,3 +316,6 @@ export * from "./v1/passes";
 // fix-lows-B2 (24 Oct 2026, QA-55): a day and a clock time that exist, checked against the calendar and the clock.
 export * from "./v1/calendar-keys";
 // end fix-lows-B2
+// owner-batch-item2a (27 Oct 2026): support staff without a login, added by the office and paid on the payroll.
+export * from "./v1/support-staff";
+// end owner-batch-item2a

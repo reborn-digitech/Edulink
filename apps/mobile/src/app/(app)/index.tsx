@@ -17,6 +17,7 @@ import { AccountsHomeScreen } from "@/screens/college-office/accounts-home";
 import { TpoHome } from "@/screens/placement/tpo";
 import { RecruiterPlacementHome } from "@/screens/placement/recruiter";
 import { ExamCellHome } from "@/screens/exams/controller-home";
+import { MyPayslips } from "@/screens/shared/payslips";
 
 /** The home tab: each role's "today", "overview", "dashboard" or "bookings" — the same page the web opens first. */
 export default function Home() {
@@ -45,5 +46,7 @@ export default function Home() {
   // The accounts desk at a glance (the college office, 4 Oct 2026).
   if (role === "ACCOUNTS") return <AccountsHomeScreen />;
   if (role === "RECRUITER") return <RecruiterPlacementHome />;
+  // owner-batch-item2a (27 Oct 2026): support staff, given a login, open on their own payslips.
+  if (role === "SUPPORT") return <MyPayslips />;
   return null;
 }

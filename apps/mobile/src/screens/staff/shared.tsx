@@ -58,7 +58,8 @@ export function leaveKindLabel(t: (key: TranslationKey) => string, kind: string)
 export function roleLabel(t: (key: TranslationKey) => string, role: string, plural = false): string {
   // EXAM_CONTROLLER is role.examController: the code's words, joined in camel case.
   const r = role.toLowerCase().replace(/_([a-z])/g, (_, c: string) => c.toUpperCase());
-  if (!["admin", "principal", "teacher", "student", "parent", "expert", "driver", "librarian", "warden", "alumnus", "faculty", "hod", "examController", "iqac", "tpo", "accounts", "recruiter"].includes(r)) return role;
+  // "support": owner-batch-item2a (27 Oct 2026), support staff.
+  if (!["admin", "principal", "teacher", "student", "parent", "expert", "driver", "librarian", "warden", "alumnus", "faculty", "hod", "examController", "iqac", "tpo", "accounts", "recruiter", "support"].includes(r)) return role;
   return t(`role.${r}${plural ? "Plural" : ""}` as TranslationKey);
 }
 

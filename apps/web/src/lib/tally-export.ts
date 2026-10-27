@@ -1,6 +1,6 @@
 import "server-only";
 import { createHash } from "node:crypto";
-import { TALLY_LEDGERS, TALLY_MAX_DAYS, type PayslipLine, type TallyFormat, type TallyLine, type TallyVoucher } from "@edulink/contracts";
+import { PAYROLL_FROZEN_STATUSES, TALLY_LEDGERS, TALLY_MAX_DAYS, type PayslipLine, type TallyFormat, type TallyLine, type TallyVoucher } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./access-error";
@@ -33,6 +33,12 @@ import type { ActiveContext } from "./session";
  *     advance recovered, other) and the employer's PF and ESI credited, and
  *     "Salaries payable" credited with the net. Every voucher sums to zero or
  *     the export is refused.
+ *   - A PAID month (owner-batch-item2b, 27 October 2026) adds a Payment voucher
+ *     per payment mode and day the school recorded: "Salaries payable"
+ *     debited, "Cash" (cash) or "Bank" (a bank transfer, a cheque, or UPI from
+ *     the school's own account) credited, the narration naming the mode and
+ *     how many slips. Only once PAID, so the file never shows half a month
+ *     settled; a LOCKED month stays the journal alone.
  *
  * WHO: the office (ADMIN) and the college's ACCOUNTS desk; payroll needs the
  * PAYROLL module on. Every file cut is audited with its count, total and the
@@ -136,13 +142,16 @@ const DEDUCTION_LEDGER: Record<string, string> = {
   ESI_EMPLOYER: TALLY_LEDGERS.esiPayable,
 };
 
-/** A locked payroll month as one Journal voucher. Refused for a run not locked (its figures may still move). */
+/** How a salary payment voucher's narration names its mode. */
+const PAID_BY: Record<string, string> = { BANK: "bank transfer", UPI: "UPI", CHEQUE: "cheque", CASH: "cash" };
+
+/** A locked payroll month as one Journal voucher, and once PAID the payments as Payment vouchers. Refused for a run not locked (its figures may still move). */
 export async function tallyPayroll(ctx: ActiveContext, month: string, format: TallyFormat): Promise<TallyFile> {
   const caller = desk(ctx);
   await assertModuleOn(caller.schoolId, "PAYROLL");
   const run = await db.payrollRun.findUnique({ where: { schoolId_month: { schoolId: caller.schoolId, month } }, select: { id: true, status: true, lockedAt: true, slips: { select: { linesJson: true, grossPaise: true, employerPaise: true, netPaise: true } } } });
   if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  if (run.status !== "LOCKED") throw new RuleRefusal("tally.refuseNotLocked", 409, { month });
+  if (!(PAYROLL_FROZEN_STATUSES as readonly string[]).includes(run.status)) throw new RuleRefusal("tally.refuseNotLocked", 409, { month });
   const lines: TallyLine[] = [];
   for (const s of run.slips) {
     lines.push({ ledger: TALLY_LEDGERS.salaries, paise: s.grossPaise });
@@ -156,13 +165,30 @@ export async function tallyPayroll(ctx: ActiveContext, month: string, format: Ta
   // The last day of the month: when the salary is booked.
   const last = addDaysToKey(`${addDaysToKey(`${month}-28`, 4).slice(0, 7)}-01`, -1);
   const vouchers: TallyVoucher[] = run.slips.length ? [{ type: "Journal", number: `PAYROLL-${month}`, dateKey: last, narration: `Salaries for ${month}, ${run.slips.length} payslips (locked run)`, lines: merge(lines) }] : [];
-  return finish(caller, "PAYROLL", month, vouchers, 0, format, { month, payslips: run.slips.length });
+  let payments = 0;
+  if (run.status === "PAID") {
+    // The school's own record of how it paid (salary-payments.ts): one Payment voucher per mode and day.
+    const paid = await db.salaryPayment.findMany({ where: { schoolId: caller.schoolId, runId: run.id, voidedAt: null }, orderBy: [{ paidOnKey: "asc" }, { mode: "asc" }], select: { mode: true, paidOnKey: true, amountPaise: true } });
+    const groups = new Map<string, { mode: string; day: string; paise: number; count: number }>();
+    for (const p of paid) {
+      const k = `${p.paidOnKey}|${p.mode}`;
+      const g = groups.get(k) ?? { mode: p.mode, day: p.paidOnKey, paise: 0, count: 0 };
+      g.paise += p.amountPaise;
+      g.count += 1;
+      groups.set(k, g);
+    }
+    for (const g of groups.values()) {
+      vouchers.push({ type: "Payment", number: `SALPAY-${month}-${g.day.replace(/-/g, "")}-${g.mode}`, dateKey: g.day, narration: `Salaries for ${month} paid by ${PAID_BY[g.mode] ?? g.mode}, ${g.count} payslip${g.count === 1 ? "" : "s"}`, lines: merge([{ ledger: TALLY_LEDGERS.salariesPayable, paise: g.paise }, { ledger: ledgerOfMethod(g.mode), paise: -g.paise }]) });
+    }
+    payments = paid.length;
+  }
+  return finish(caller, "PAYROLL", month, vouchers, 0, format, { month, payslips: run.slips.length, payments });
 }
 
 /** What the export page offers: the locked payroll months (when PAYROLL is on) and the school's today. */
 export async function tallyChoices(ctx: ActiveContext): Promise<{ payrollOn: boolean; lockedMonths: string[]; today: string }> {
   const caller = desk(ctx);
   const [on, school] = await Promise.all([isModuleOn(caller.schoolId, "PAYROLL"), db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } })]);
-  const runs = on ? await db.payrollRun.findMany({ where: { schoolId: caller.schoolId, status: "LOCKED" }, orderBy: { month: "desc" }, take: 24, select: { month: true } }) : [];
+  const runs = on ? await db.payrollRun.findMany({ where: { schoolId: caller.schoolId, status: { in: [...PAYROLL_FROZEN_STATUSES] } }, orderBy: { month: "desc" }, take: 24, select: { month: true } }) : [];
   return { payrollOn: on, lockedMonths: runs.map((r) => r.month), today: dateKeyInZone(new Date(), school.timezone) };
 }

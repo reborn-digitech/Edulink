@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DownloadSimpleIcon, UserPlusIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { BroomIcon, DownloadSimpleIcon, UserPlusIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import type { Prisma } from "@prisma/client";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -183,6 +183,10 @@ export default async function DirectoryPage({
           <Button asChild variant="secondary" icon={<UserPlusIcon weight="bold" />}>
             <Link href="/admin/intake">{t(isCollegeKind(kindRow?.kind) ? "qaInterface.admitStudents" : "intake.fromPeople")}</Link>
           </Button>
+          {/* owner-batch-item2a (27 Oct 2026): a cleaner, cook, guard or peon, put on the books with no login. */}
+          <Button asChild variant="secondary" icon={<BroomIcon weight="bold" />}>
+            <Link href="/admin/people/support">{t("supportStaff.addButton")}</Link>
+          </Button>
           <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
             <a href={exportHref}>{t("people.exportCsv")}</a>
           </Button>
@@ -289,7 +293,8 @@ export default async function DirectoryPage({
                             how the office tells two teachers apart. */}
                         {role !== "STUDENT" && (
                           <p className="truncate text-xs text-fg-muted">
-                            {member.title ?? member.user.email ?? t("people.noEmail")}
+                            {/* A support worker added by the office has no address and no sign-in (owner-batch-item2a). */}
+                            {member.title ?? member.user.email ?? (role === "SUPPORT" ? t("supportStaff.noSignIn") : t("people.noEmail"))}
                           </p>
                         )}
                         {classNames.length > 0 && (
@@ -387,6 +392,7 @@ export default async function DirectoryPage({
                           membershipId={member.id}
                           name={displayName}
                           isStudent={role === "STUDENT"}
+                          isSupport={role === "SUPPORT"}
                           isTeacher={role === "TEACHER" || role === "PRINCIPAL"}
                           subjects={subjects}
                           birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}

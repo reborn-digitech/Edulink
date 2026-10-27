@@ -114,6 +114,22 @@ export const APP_SEGMENTS = [
 const MODULE_ROLE_PAGES = ["/notifications", "/assistant"];
 
 /**
+ * owner-batch-item2a (27 Oct 2026): SUPPORT STAFF. The owner's decision is that
+ * a support worker who is ever given a login sees their own payslips and
+ * profile and nothing else. The /api/v1 side is the catalog's (only the three
+ * payslip doors and the person's own doors name SUPPORT); the pages under
+ * /account are outside APP_SEGMENTS and so open to every limited role, and a
+ * support worker would otherwise reach my items, my letters, my attendance
+ * and my leave there. On those it is served as if it had no school; joining
+ * two accounts of their own (/account/merge) stays theirs.
+ */
+const SUPPORT_ACCOUNT_PAGES = ["/account/payslips", "/account/merge"];
+export function supportPagePermitted(path: string): boolean {
+  if (!path.startsWith("/account/")) return true;
+  return SUPPORT_ACCOUNT_PAGES.some((p) => path === p || path.startsWith(`${p}/`));
+}
+
+/**
  * The person's own doors: who I am, my account, my devices, my notices, my
  * sign-out. A module role keeps these while its module is off.
  */
@@ -208,6 +224,7 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
     if (routesOf(catalog).some((r) => r.e.feature && !r.e.path.startsWith("/api/v1/"))) await assertDoorFeature(endpointFor(method, path, catalog), ctx);
     return "pass";
   }
+  if (ctx.role === "SUPPORT" && !supportPagePermitted(path)) return "no-context";
   if (isLimitedRole(ctx.role)) {
     const on = await enabledModules(ctx.schoolId);
     if (!modulePagePermitted(ctx.role, path, on, ctx.duties ?? [])) return ownPageModuleOff(ctx.role, path, on) ? "not-found" : "no-context";

@@ -995,7 +995,7 @@ d("modules: inventory and payroll (3 October 2026)", () => {
         const sum = (k: "grossPaise" | "deductionsPaise" | "employerPaise" | "netPaise") => slips.reduce((a, x) => a + x[k], 0);
         if (r.headcount !== slips.length) note("payroll-run", "FAIL", s.name, `${r.month}: headcount ${r.headcount}, ${slips.length} slips`);
         for (const k of ["grossPaise", "deductionsPaise", "employerPaise", "netPaise"] as const) if (r[k] !== sum(k)) note("payroll-run", "FAIL", s.name, `${r.month}: stored ${k} ${r[k]}, slips add to ${sum(k)}`);
-        if (r.status === "LOCKED") {
+        if (r.status === "LOCKED" || r.status === "PAID") {
           if (!r.lockDigest) note("payroll-run", "FAIL", s.name, `${r.month} is locked with no digest`);
           else if (slipDigest(slips) !== r.lockDigest) note("payroll-run", "FAIL", s.name, `${r.month} changed after it was locked`);
         }
@@ -1003,6 +1003,32 @@ d("modules: inventory and payroll (3 October 2026)", () => {
       if (runs.length) note("payroll-run", "INFO", s.name, `${runs.length} runs (${runs.filter((r) => r.status === "LOCKED").length} locked) checked`);
     }
     expect(failsOf("payroll-run")).toEqual([]);
+  });
+
+  it("payroll-paid: a run is PAID exactly when every slip with money due has one live payment for its whole net (owner-batch-item2b)", async () => {
+    for (const s of schools) {
+      const runs = await db.payrollRun.findMany({ where: { schoolId: s.id, status: { in: ["LOCKED", "PAID"] } }, select: { id: true, month: true, status: true, paidAt: true } });
+      let payments = 0;
+      for (const r of runs) {
+        const [slips, live] = await Promise.all([db.payslip.findMany({ where: { runId: r.id }, select: { id: true, staffName: true, netPaise: true } }), db.salaryPayment.findMany({ where: { runId: r.id, voidedAt: null }, select: { payslipId: true, amountPaise: true, liveSlipId: true } })]);
+        payments += live.length;
+        const bySlip = new Map<string, number>();
+        for (const p of live) bySlip.set(p.payslipId, (bySlip.get(p.payslipId) ?? 0) + 1);
+        for (const sl of slips) {
+          const n = bySlip.get(sl.id) ?? 0;
+          if (n > 1) note("payroll-paid", "FAIL", s.name, `${r.month} ${sl.staffName}: ${n} live payments`);
+          const p = live.find((x) => x.payslipId === sl.id);
+          if (p && p.amountPaise !== sl.netPaise) note("payroll-paid", "FAIL", s.name, `${r.month} ${sl.staffName}: paid ${p.amountPaise}, net ${sl.netPaise}`);
+          if (p && p.liveSlipId !== sl.id) note("payroll-paid", "FAIL", s.name, `${r.month} ${sl.staffName}: a live payment without its liveSlipId`);
+        }
+        const due = slips.filter((x) => x.netPaise > 0);
+        const allPaid = due.length > 0 && due.every((x) => bySlip.has(x.id));
+        if (allPaid !== (r.status === "PAID")) note("payroll-paid", "FAIL", s.name, `${r.month} is ${r.status} with ${due.filter((x) => bySlip.has(x.id)).length} of ${due.length} slips paid`);
+        if ((r.status === "PAID") !== Boolean(r.paidAt)) note("payroll-paid", "FAIL", s.name, `${r.month} is ${r.status} with paidAt ${r.paidAt ? "set" : "empty"}`);
+      }
+      if (runs.length) note("payroll-paid", "INFO", s.name, `${runs.length} frozen runs, ${payments} live payments checked`);
+    }
+    expect(failsOf("payroll-paid")).toEqual([]);
   });
 });
 

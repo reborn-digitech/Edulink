@@ -40,6 +40,8 @@ const PAY = {
   runs: [
     { month: "2026-09", status: "DRAFT", lockedAt: null, headcount: 3, grossPaise: 9_000_000, deductionsPaise: 900_000, employerPaise: 500_000, netPaise: 8_100_000 },
     { month: "2026-08", status: "LOCKED", lockedAt: at, headcount: 3, grossPaise: 8_800_000, deductionsPaise: 880_000, employerPaise: 480_000, netPaise: 7_920_000 },
+    // owner-batch-item2b: a run whose every slip the school recorded paid.
+    { month: "2026-07", status: "PAID", lockedAt: at, headcount: 3, grossPaise: 8_800_000, deductionsPaise: 880_000, employerPaise: 480_000, netPaise: 7_920_000 },
   ],
   costByMonth: [{ month: "2026-08", grossPaise: 8_800_000, employerPaise: 480_000, netPaise: 7_920_000, headcount: 3 }],
   costByDepartment: [{ department: "TEACHER", grossPaise: 6_000_000, employerPaise: 300_000, headcount: 2 }],
@@ -51,7 +53,10 @@ const PAY = {
 const MY = {
   name: "ZZ Teacher",
   structure: { name: "ZZ Teaching staff", effectiveFrom: "2026-04-01", basicPaise: 1_500_000, monthlyGrossPaise: 2_250_000, components: [{ code: "BASIC", kind: "EARNING", label: "", monthlyPaise: 1_500_000 }, { code: "PF_EMPLOYEE", kind: "DEDUCTION", label: "", monthlyPaise: 0 }] },
-  slips: [{ month: "2026-08", grossPaise: 2_250_000, deductionsPaise: 200_000, netPaise: 2_050_000, lockedAt: at }],
+  slips: [
+    { month: "2026-08", grossPaise: 2_250_000, deductionsPaise: 200_000, netPaise: 2_050_000, lockedAt: at, payment: { mode: "UPI", amountPaise: 2_050_000, paidOn: "2026-09-01", reference: "AXI123456789012" } },
+    { month: "2026-07", grossPaise: 2_250_000, deductionsPaise: 200_000, netPaise: 2_050_000, lockedAt: at, payment: null },
+  ],
   advances: [{ id: "a1", membershipId: "m1", name: "ZZ Teacher", amountPaise: 500_000, reason: "ZZ wedding", status: "RECORDED", monthlyRecoveryPaise: 200_000, recoveredPaise: 200_000, outstandingPaise: 300_000, decisionNote: null, createdAt: at, decidedAt: at }],
   years: ["2026-27"],
 };
@@ -98,6 +103,7 @@ describe("the payroll summary on the phone, read-only", () => {
     expect(screen.getByText("1 advance asks waiting")).toBeTruthy();
     expect(screen.getByText(/^September 2026 · Draft$/)).toBeTruthy();
     expect(screen.getByText(/^August 2026 · Locked$/)).toBeTruthy();
+    expect(screen.getByText(/^July 2026 · Paid$/)).toBeTruthy();
     expect(screen.getByText("People 3 · Gross ₹90,000 · Net ₹81,000 · Employer's share ₹5,000")).toBeTruthy();
     expect(screen.getByText("Teaching")).toBeTruthy();
   });
@@ -127,7 +133,9 @@ describe("my payslips on the phone", () => {
       [PDF]: () => (refuse ? json({ error: "ZZ Not yet.", code: "NOT_FOUND" }, 404) : new Response(PDF_BYTES, { status: 200, headers: { "content-type": "application/pdf" } })),
     });
     expect(await screen.findByText("August 2026")).toBeTruthy();
-    expect(screen.getByText("Net ₹20,500.00 · Gross ₹22,500.00")).toBeTruthy();
+    // How the school recorded paying each slip (owner-batch-item2b): the day, the mode and the UTR, or not yet.
+    expect(screen.getByText("Net ₹20,500.00 · Gross ₹22,500.00\nPaid on 01/09/2026 by UPI · Reference AXI123456789012")).toBeTruthy();
+    expect(screen.getByText("Net ₹20,500.00 · Gross ₹22,500.00\nNot yet recorded paid")).toBeTruthy();
     expect(screen.getByText("ZZ Teaching staff, from 01/04/2026.")).toBeTruthy();
     expect(screen.getByText("Provident fund")).toBeTruthy();
     expect(screen.getByText("By the rules")).toBeTruthy();

@@ -4,6 +4,9 @@ import { createHash } from "node:crypto";
 import {
   COMPONENT_KIND,
   PAYROLL_EXPORT_SLUG,
+  PAYROLL_FROZEN_STATUSES,
+  type PayrollRunStatus,
+  type SalaryPaymentView,
   type AdvanceStatus,
   type MyPayslips,
   type PaymentMode,
@@ -39,6 +42,7 @@ import { closedDayKeys, listHolidays } from "./holidays";
 import { dateKeyInZone, isTeachingDay, parseTeachingDays } from "./dates";
 import { SCHOOL_STAFF_ROLES } from "./staff-records";
 import { RuleRefusal } from "./rule-refusal";
+import { maskVpa, slipRefsOf, VPA_PATTERN } from "./salary-payment-rules";
 import {
   computeSlip,
   dayKeysOf,
@@ -75,7 +79,15 @@ import type { Role } from "./constants";
  * uploads to its own bank; the ECR and the ESI file go to the portals by
  * the school's own hand. The bank account and the PAN are sealed
  * (secret-box) and opened only into those files — each cut audited, the
- * numbers never in an answer, a page or the log.
+ * numbers never in an answer, a page or the log. The UPI id (owner-batch-
+ * item2b, 27 October 2026) is sealed the same way and opened only into the
+ * UPI advice and the pay-from-your-app link (salary-payments.ts).
+ *
+ * PAID. Once locked the school pays, outside the app, and records how each
+ * slip was paid (salary-payments.ts, the SalaryPayment table); when the last
+ * slip with money due is recorded the run is PAID, and a void takes it back
+ * to LOCKED. PAID is frozen exactly as LOCKED is: every reader of "the
+ * locked runs" reads PAYROLL_FROZEN_STATUSES.
  *
  * WHO. The admin writes everything. The head reads the summary (cost by
  * month and department, headcount) and a run's totals, and a run's slips
@@ -83,13 +95,16 @@ import type { Role } from "./constants";
  * own slips, statement and structure — never anyone else's.
  */
 
-type Office = ActiveContext & { schoolId: string; membershipId: string; role: Role };
+export type Office = ActiveContext & { schoolId: string; membershipId: string; role: Role };
 type Tx = typeof db;
+/** LOCKED or PAID: a run whose slips are frozen. */
+const FROZEN = [...PAYROLL_FROZEN_STATUSES] as string[];
+export const isFrozen = (status: string) => FROZEN.includes(status);
 
 /** The office, and at a college the accounts desk: who writes here. */
 const keeps = (role: string | null) => role === "ADMIN" || role === "ACCOUNTS";
 
-async function office(ctx: ActiveContext, write: boolean): Promise<Office> {
+export async function office(ctx: ActiveContext, write: boolean): Promise<Office> {
   // At a college the ACCOUNTS desk keeps this with the office (4 Oct 2026); the principal reads.
   const roles: Role[] = write ? ["ADMIN", "ACCOUNTS"] : ["ADMIN", "PRINCIPAL", "ACCOUNTS"];
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
@@ -109,6 +124,8 @@ function assertMonth(month: string): void {
 }
 const nameOf = (u: { name: string; preferredName: string | null }) => u.preferredName ?? u.name;
 const bankBound = (schoolId: string, membershipId: string) => `payroll:${schoolId}:${membershipId}:bank`;
+/** What a sealed UPI id belongs to: it opens only on its own school's and person's row. */
+export const upiBound = (schoolId: string, membershipId: string) => `payroll:${schoolId}:${membershipId}:upi`;
 
 /* --------------------------------------------------------------- settings */
 
@@ -188,14 +205,14 @@ export async function saveStructure(ctx: ActiveContext, input: SalaryStructureSa
 
 /* --------------------------------------------------------------- salaries */
 
-const SALARY_SELECT = { id: true, membershipId: true, structureId: true, effectiveFromKey: true, basicPaise: true, overridesJson: true, pfUan: true, esiNumber: true, panSealed: true, panLast4: true, bankAccountSealed: true, bankLast4: true, bankIfsc: true, bankName: true, paymentMode: true, structure: { select: { name: true, components: { orderBy: { position: "asc" as const }, select: { code: true, label: true, formula: true, value: true } } } } } as const;
-type SalaryRow = { id: string; membershipId: string; structureId: string; effectiveFromKey: string; basicPaise: number; overridesJson: string; pfUan: string | null; esiNumber: string | null; panSealed: string | null; panLast4: string | null; bankAccountSealed: string | null; bankLast4: string | null; bankIfsc: string | null; bankName: string | null; paymentMode: string; structure: { name: string; components: { code: string; label: string; formula: string; value: number }[] } };
+const SALARY_SELECT = { id: true, membershipId: true, structureId: true, effectiveFromKey: true, basicPaise: true, overridesJson: true, pfUan: true, esiNumber: true, panSealed: true, panLast4: true, bankAccountSealed: true, bankLast4: true, bankIfsc: true, bankName: true, upiSealed: true, upiMasked: true, paymentMode: true, structure: { select: { name: true, components: { orderBy: { position: "asc" as const }, select: { code: true, label: true, formula: true, value: true } } } } } as const;
+type SalaryRow = { id: string; membershipId: string; structureId: string; effectiveFromKey: string; basicPaise: number; overridesJson: string; pfUan: string | null; esiNumber: string | null; panSealed: string | null; panLast4: string | null; bankAccountSealed: string | null; bankLast4: string | null; bankIfsc: string | null; bankName: string | null; upiSealed: string | null; upiMasked: string | null; paymentMode: string; structure: { name: string; components: { code: string; label: string; formula: string; value: number }[] } };
 
 const componentsOf = (s: SalaryRow): ComponentInput[] => s.structure.components.map((c) => ({ code: c.code as SalaryComponentCode, label: c.label, formula: c.formula as SalaryFormula, value: c.value }));
 const overridesOf = (s: SalaryRow) => readJson<Partial<Record<SalaryComponentCode, number>>>(s.overridesJson, {});
 
 /** The salary in force on the month's last day for each person: a revision dated inside the month pays the month. */
-async function salariesFor(schoolId: string, membershipIds: string[], month: string): Promise<Map<string, SalaryRow>> {
+export async function salariesFor(schoolId: string, membershipIds: string[], month: string): Promise<Map<string, SalaryRow>> {
   if (!membershipIds.length) return new Map();
   const last = `${month}-${String(daysInMonthOf(month)).padStart(2, "0")}`;
   const rows = await db.staffSalary.findMany({ where: { schoolId, membershipId: { in: membershipIds }, effectiveFromKey: { lte: last } }, orderBy: { effectiveFromKey: "desc" }, select: SALARY_SELECT });
@@ -227,6 +244,7 @@ function salaryView(s: SalaryRow | undefined): StaffSalaryView["salary"] {
     bankLast4: s.bankLast4,
     bankIfsc: s.bankIfsc,
     bankName: s.bankName,
+    upiMasked: s.upiMasked,
     paymentMode: s.paymentMode as PaymentMode,
     monthlyGrossPaise: monthlyGross(s.basicPaise, componentsOf(s), overridesOf(s)),
   };
@@ -254,19 +272,23 @@ export async function listSalaries(ctx: ActiveContext): Promise<{ staff: StaffSa
  * office never sees it again to type it back); the numbers are sealed
  * before they reach the row, and only their last four are kept beside.
  */
-export async function saveSalary(ctx: ActiveContext, input: StaffSalarySave): Promise<StaffSalaryView> {
+export async function saveSalary(ctx: ActiveContext, input: Omit<StaffSalarySave, "upiId"> & { upiId?: string }): Promise<StaffSalaryView> {
   const caller = await office(ctx, true);
   const member = await db.membership.findFirst({ where: { id: input.membershipId, schoolId: caller.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE" }, select: { id: true, role: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true } } } });
   if (!member) throw new RuleRefusal("payroll.refuseNotStaff", 422, undefined, "membershipId");
   const structure = await db.salaryStructure.findFirst({ where: { id: input.structureId, schoolId: caller.schoolId, archivedAt: null }, select: { id: true } });
   if (!structure) throw new RuleRefusal("payroll.refuseUnknownStructure", 422, undefined, "structureId");
-  if ((input.pan || input.bankAccount) && !sealingAvailable()) throw new RuleRefusal("payroll.refuseNoSealing", 409);
+  if (input.upiId) input = { ...input, upiId: input.upiId.trim().toLowerCase() };
+  if (input.upiId && !VPA_PATTERN.test(input.upiId)) throw new RuleRefusal("salaryPay.refuseVpa", 422, undefined, "upiId");
+  if ((input.pan || input.bankAccount || input.upiId) && !sealingAvailable()) throw new RuleRefusal("payroll.refuseNoSealing", 409);
   if (input.paymentMode === "BANK" && input.bankAccount && !input.bankIfsc) throw new RuleRefusal("payroll.refuseNoIfsc", 422, undefined, "bankIfsc");
   // What the latest revision holds sealed, carried into a new one when the form left it blank.
-  const previous = await db.staffSalary.findFirst({ where: { membershipId: member.id }, orderBy: { effectiveFromKey: "desc" }, select: { panSealed: true, panLast4: true, bankAccountSealed: true, bankLast4: true, bankIfsc: true, bankName: true } });
+  const previous = await db.staffSalary.findFirst({ where: { membershipId: member.id }, orderBy: { effectiveFromKey: "desc" }, select: { panSealed: true, panLast4: true, bankAccountSealed: true, bankLast4: true, bankIfsc: true, bankName: true, upiSealed: true, upiMasked: true } });
   // A new PAN is written below by the one writer (G4-14), to every revision and the faculty record; a blank keeps the held copy.
   const pan = { panSealed: previous?.panSealed ?? null, panLast4: previous?.panLast4 ?? null };
   const bank = input.bankAccount ? { bankAccountSealed: seal(input.bankAccount, bankBound(caller.schoolId, member.id)), bankLast4: input.bankAccount.slice(-4) } : { bankAccountSealed: previous?.bankAccountSealed ?? null, bankLast4: previous?.bankLast4 ?? null };
+  // The UPI id sealed as the bank account is (owner-batch-item2b); only its mask is kept in the clear.
+  const upi = input.upiId ? { upiSealed: seal(input.upiId, upiBound(caller.schoolId, member.id)), upiMasked: maskVpa(input.upiId) } : { upiSealed: previous?.upiSealed ?? null, upiMasked: previous?.upiMasked ?? null };
   const data = {
     structureId: structure.id,
     basicPaise: input.basicPaise,
@@ -275,6 +297,7 @@ export async function saveSalary(ctx: ActiveContext, input: StaffSalarySave): Pr
     esiNumber: input.esiNumber || null,
     ...pan,
     ...bank,
+    ...upi,
     bankIfsc: input.bankIfsc || previous?.bankIfsc || null,
     bankName: input.bankName || previous?.bankName || null,
     paymentMode: input.paymentMode,
@@ -286,13 +309,13 @@ export async function saveSalary(ctx: ActiveContext, input: StaffSalarySave): Pr
     row = await db.staffSalary.findUniqueOrThrow({ where: { id: row.id }, select: SALARY_SELECT });
   }
   // What changed, never the numbers: the log is read by the whole office.
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.salary.save", targetType: "Membership", targetId: member.id, meta: { effectiveFrom: input.effectiveFrom, structureId: structure.id, panChanged: Boolean(input.pan), bankChanged: Boolean(input.bankAccount), mode: input.paymentMode } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.salary.save", targetType: "Membership", targetId: member.id, meta: { effectiveFrom: input.effectiveFrom, structureId: structure.id, panChanged: Boolean(input.pan), bankChanged: Boolean(input.bankAccount), upiChanged: Boolean(input.upiId), mode: input.paymentMode } });
   return { membershipId: member.id, name: nameOf(member.user), role: member.role, designation: member.staffRecord?.designation ?? null, salary: salaryView(row) };
 }
 
 /* -------------------------------------------------------------- the run */
 
-async function zoneOf(schoolId: string): Promise<string> {
+export async function zoneOf(schoolId: string): Promise<string> {
   const s = await db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } });
   return s?.timezone ?? "Asia/Kolkata";
 }
@@ -301,7 +324,7 @@ async function zoneOf(schoolId: string): Promise<string> {
 async function recoveredByAdvance(schoolId: string, membershipIds: string[]): Promise<Map<string, number>> {
   const out = new Map<string, number>();
   if (!membershipIds.length) return out;
-  const slips = await db.payslip.findMany({ where: { schoolId, membershipId: { in: membershipIds }, run: { status: "LOCKED" } }, select: { linesJson: true } });
+  const slips = await db.payslip.findMany({ where: { schoolId, membershipId: { in: membershipIds }, run: { status: { in: FROZEN } } }, select: { linesJson: true } });
   for (const s of slips) for (const l of readJsonArray<PayslipLine>(s.linesJson)) if (l.code === "ADVANCE" && l.advanceId) out.set(l.advanceId, (out.get(l.advanceId) ?? 0) + l.paise);
   return out;
 }
@@ -386,7 +409,7 @@ async function instalmentsFor(schoolId: string, membershipIds: string[], month: 
   return out;
 }
 
-async function lockRunRow(tx: Tx, schoolId: string, month: string): Promise<{ id: string; status: string } | null> {
+export async function lockRunRow(tx: Tx, schoolId: string, month: string): Promise<{ id: string; status: string } | null> {
   const [row] = await tx.$queryRaw<{ id: string; status: string }[]>`SELECT "id", "status" FROM "PayrollRun" WHERE "schoolId" = ${schoolId} AND "month" = ${month} FOR UPDATE`;
   return row ?? null;
 }
@@ -400,7 +423,7 @@ async function writeTotals(tx: Tx, runId: string): Promise<void> {
 /**
  * Makes the month's DRAFT run, or draws an existing DRAFT afresh from the
  * register, the leave and today's salaries — keeping what the office set by
- * hand on each slip. A LOCKED month is refused; a month that has not begun
+ * hand on each slip. A LOCKED or PAID month is refused; a month that has not begun
  * is refused too (there is no register to read).
  */
 export async function draftRun(ctx: ActiveContext, month: string): Promise<PayrollRunView> {
@@ -423,7 +446,7 @@ export async function draftRun(ctx: ActiveContext, month: string): Promise<Payro
       const tx = raw as Tx;
       await tx.payrollRun.upsert({ where: { schoolId_month: { schoolId: caller.schoolId, month } }, create: { schoolId: caller.schoolId, month, createdByUserId: caller.user.id }, update: {}, select: { id: true } });
       const run = (await lockRunRow(tx, caller.schoolId, month))!;
-      if (run.status === "LOCKED") throw new RuleRefusal("payroll.refuseLocked", 409, { month });
+      if (isFrozen(run.status)) throw new RuleRefusal("payroll.refuseLocked", 409, { month });
       const existing = await tx.payslip.findMany({ where: { runId: run.id }, select: { membershipId: true, arrearsPaise: true, tdsOverridePaise: true, lopOverrideHalfDays: true, notes: true } });
       const carry = new Map(existing.map((e) => [e.membershipId, e]));
       const keep = new Set(people.map((p) => p.membershipId));
@@ -455,15 +478,19 @@ export async function draftRun(ctx: ActiveContext, month: string): Promise<Payro
   return runView(ctx, month);
 }
 
-const SLIP_SELECT = { membershipId: true, staffName: true, department: true, designation: true, daysInMonth: true, lopHalfDays: true, lopOverrideHalfDays: true, linesJson: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true, arrearsPaise: true, tdsOverridePaise: true, notes: true, paymentMode: true, bankLast4: true } as const;
-type SlipRow = { membershipId: string; staffName: string; department: string; designation: string | null; daysInMonth: number; lopHalfDays: number; lopOverrideHalfDays: number | null; linesJson: string; grossPaise: number; deductionsPaise: number; employerPaise: number; netPaise: number; arrearsPaise: number; tdsOverridePaise: number | null; notes: string; paymentMode: string; bankLast4: string | null };
+const SLIP_SELECT = { id: true, membershipId: true, staffName: true, department: true, designation: true, daysInMonth: true, lopHalfDays: true, lopOverrideHalfDays: true, linesJson: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true, arrearsPaise: true, tdsOverridePaise: true, notes: true, paymentMode: true, bankLast4: true } as const;
+type SlipRow = { id: string; membershipId: string; staffName: string; department: string; designation: string | null; daysInMonth: number; lopHalfDays: number; lopOverrideHalfDays: number | null; linesJson: string; grossPaise: number; deductionsPaise: number; employerPaise: number; netPaise: number; arrearsPaise: number; tdsOverridePaise: number | null; notes: string; paymentMode: string; bankLast4: string | null };
 
-function slipView(s: SlipRow, salary: SalaryRow | undefined): PayslipView {
+/** What slipView needs beside the slip: its reference in the run and its live payment (owner-batch-item2b). */
+type SlipExtras = { slipRef: string; payment: SalaryPaymentView | null };
+
+function slipView(s: SlipRow, salary: SalaryRow | undefined, extras: SlipExtras): PayslipView {
   const lines = readJsonArray<PayslipLine>(s.linesJson);
   const lop = s.lopOverrideHalfDays ?? s.lopHalfDays;
   const warnings: string[] = [];
   if (s.netPaise < 0) warnings.push("NEGATIVE_NET");
   if (s.paymentMode === "BANK" && !(salary?.bankAccountSealed && salary.bankIfsc)) warnings.push("NO_BANK");
+  if (s.paymentMode === "UPI" && !salary?.upiSealed) warnings.push("NO_UPI");
   if (lines.some((l) => l.code === "PF_EMPLOYEE") && !salary?.pfUan) warnings.push("NO_UAN");
   if (lines.some((l) => l.code === "ESI_EMPLOYEE") && !salary?.esiNumber) warnings.push("NO_ESI_NUMBER");
   return {
@@ -485,12 +512,35 @@ function slipView(s: SlipRow, salary: SalaryRow | undefined): PayslipView {
     notes: s.notes,
     paymentMode: s.paymentMode as PaymentMode,
     bankLast4: s.bankLast4,
+    upiMasked: s.paymentMode === "UPI" ? (salary?.upiMasked ?? null) : null,
+    slipRef: extras.slipRef,
+    payment: extras.payment,
     warnings,
   };
 }
 
-async function runRow(schoolId: string, month: string) {
-  return db.payrollRun.findUnique({ where: { schoolId_month: { schoolId, month } }, select: { id: true, month: true, status: true, createdAt: true, lockedAt: true, lockedByUserId: true, sharedWithPrincipal: true, headcount: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true } });
+/**
+ * The live payment of each slip of a run, as the run page and the person's
+ * own page show it (who recorded it, by name). Never the UPI id: a payment
+ * row holds none.
+ */
+export async function livePayments(schoolId: string, runIds: string[]): Promise<Map<string, SalaryPaymentView>> {
+  const out = new Map<string, SalaryPaymentView>();
+  if (!runIds.length) return out;
+  const rows = await db.salaryPayment.findMany({ where: { schoolId, runId: { in: runIds }, voidedAt: null }, select: { id: true, payslipId: true, mode: true, amountPaise: true, paidOnKey: true, reference: true, note: true, recordedByMembershipId: true, createdAt: true } });
+  const who = new Map((await db.membership.findMany({ where: { id: { in: [...new Set(rows.map((r) => r.recordedByMembershipId))] } }, select: { id: true, user: { select: { name: true, preferredName: true } } } })).map((m) => [m.id, nameOf(m.user)]));
+  for (const r of rows) out.set(r.payslipId, { id: r.id, mode: r.mode as PaymentMode, amountPaise: r.amountPaise, paidOn: r.paidOnKey, reference: r.reference, note: r.note, recordedByName: who.get(r.recordedByMembershipId) ?? "", createdAt: r.createdAt.toISOString() });
+  return out;
+}
+
+/** Each slip of a run with its reference and payment, for slipView. */
+async function extrasFor(schoolId: string, runId: string, month: string): Promise<{ refs: Map<string, string>; payments: Map<string, SalaryPaymentView> }> {
+  const [all, payments] = await Promise.all([db.payslip.findMany({ where: { runId }, select: { membershipId: true, staffName: true } }), livePayments(schoolId, [runId])]);
+  return { refs: slipRefsOf(month, all), payments };
+}
+
+export async function runRow(schoolId: string, month: string) {
+  return db.payrollRun.findUnique({ where: { schoolId_month: { schoolId, month } }, select: { id: true, month: true, status: true, createdAt: true, lockedAt: true, lockedByUserId: true, paidAt: true, sharedWithPrincipal: true, headcount: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true } });
 }
 
 export async function runView(ctx: ActiveContext, month: string): Promise<PayrollRunView> {
@@ -507,6 +557,9 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
     keeps(caller.role) ? rollFor(caller.schoolId, monthStart) : Promise.resolve([]),
   ]);
   const salaries = mayReadSlips ? await salariesFor(caller.schoolId, slips.map((s) => s.membershipId), month) : new Map<string, SalaryRow>();
+  const refs = slipRefsOf(month, slips);
+  const payments = mayReadSlips && isFrozen(run.status) ? await livePayments(caller.schoolId, [run.id]) : new Map<string, SalaryPaymentView>();
+  const due = slips.filter((s) => s.netPaise > 0);
   const exporters = new Map((await db.user.findMany({ where: { id: { in: [...new Set(exports.map((e) => e.createdByUserId).filter((x): x is string => Boolean(x)))] } }, select: { id: true, name: true, preferredName: true } })).map((u) => [u.id, nameOf(u)]));
   const inRun = new Set(slips.map((s) => s.membershipId));
   const withSalary = keeps(caller.role) ? await salariesFor(caller.schoolId, roll.map((r) => r.id), month) : new Map<string, SalaryRow>();
@@ -516,13 +569,23 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
     createdAt: run.createdAt.toISOString(),
     lockedAt: run.lockedAt?.toISOString() ?? null,
     lockedByName: lockedBy ? nameOf(lockedBy) : null,
+    paidAt: run.paidAt?.toISOString() ?? null,
+    payments: mayReadSlips ? { due: due.length, paid: due.filter((s) => payments.has(s.id)).length, paidPaise: [...payments.values()].reduce((a, p) => a + p.amountPaise, 0) } : null,
     sharedWithPrincipal: run.sharedWithPrincipal,
     totals: { headcount: run.headcount, grossPaise: run.grossPaise, deductionsPaise: run.deductionsPaise, employerPaise: run.employerPaise, netPaise: run.netPaise },
-    slips: mayReadSlips ? slips.map((s) => slipView(s, salaries.get(s.membershipId))) : null,
+    slips: mayReadSlips ? slips.map((s) => slipView(s, salaries.get(s.membershipId), { slipRef: refs.get(s.membershipId) ?? "", payment: payments.get(s.id) ?? null })) : null,
     exports: exports.map((e) => ({ kind: e.kind as PayrollExportKind, fileName: e.fileName, rows: e.rows, totalPaise: e.totalPaise, createdAt: e.createdAt.toISOString(), byName: e.createdByUserId ? (exporters.get(e.createdByUserId) ?? "") : "" })),
     missingSalary: keeps(caller.role) && run.status === "DRAFT" ? roll.filter((r) => !withSalary.has(r.id) && !inRun.has(r.id)).map((r) => ({ membershipId: r.id, name: nameOf(r.user) })) : [],
     canEdit: keeps(caller.role) && run.status === "DRAFT",
   };
+}
+
+/** One slip as the run page shows it, with its reference and live payment: what a payment door answers (owner-batch-item2b). */
+export async function slipViewOf(schoolId: string, month: string, membershipId: string): Promise<PayslipView> {
+  const row = await db.payslip.findFirst({ where: { membershipId, run: { schoolId, month } }, select: { ...SLIP_SELECT, runId: true } });
+  if (!row) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+  const [salary, extras] = await Promise.all([salariesFor(schoolId, [membershipId], month).then((m) => m.get(membershipId)), extrasFor(schoolId, row.runId, month)]);
+  return slipView(row, salary, { slipRef: extras.refs.get(membershipId) ?? "", payment: extras.payments.get(row.id) ?? null });
 }
 
 /** The office's review of one slip in a DRAFT run: the figures are worked out again with what it set. */
@@ -541,7 +604,7 @@ export async function editSlip(ctx: ActiveContext, month: string, membershipId: 
     const tx = raw as Tx;
     const run = await lockRunRow(tx, caller.schoolId, month);
     if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-    if (run.status === "LOCKED") throw new RuleRefusal("payroll.refuseLocked", 409, { month });
+    if (isFrozen(run.status)) throw new RuleRefusal("payroll.refuseLocked", 409, { month });
     const slip = await tx.payslip.findUnique({ where: { runId_membershipId: { runId: run.id, membershipId } }, select: { arrearsPaise: true, tdsOverridePaise: true, lopOverrideHalfDays: true, notes: true } });
     if (!slip) throw new AccessError("access.entryNotFound", "NOT_FOUND");
     const carry: SlipCarry = {
@@ -559,8 +622,9 @@ export async function editSlip(ctx: ActiveContext, month: string, membershipId: 
     await writeTotals(tx, run.id);
   });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.slip.edit", targetType: "Membership", targetId: membershipId, meta: { month, fields: Object.keys(edit) } });
-  const row = await db.payslip.findFirstOrThrow({ where: { membershipId, run: { schoolId: caller.schoolId, month } }, select: SLIP_SELECT });
-  return slipView(row, salary);
+  const row = await db.payslip.findFirstOrThrow({ where: { membershipId, run: { schoolId: caller.schoolId, month } }, select: { ...SLIP_SELECT, runId: true } });
+  const extras = await extrasFor(caller.schoolId, row.runId, month);
+  return slipView(row, salary, { slipRef: extras.refs.get(membershipId) ?? "", payment: null });
 }
 
 /**
@@ -575,7 +639,7 @@ export async function lockRun(ctx: ActiveContext, month: string): Promise<Payrol
     const tx = raw as Tx;
     const run = await lockRunRow(tx, caller.schoolId, month);
     if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-    if (run.status === "LOCKED") throw new RuleRefusal("payroll.refuseLocked", 409, { month });
+    if (isFrozen(run.status)) throw new RuleRefusal("payroll.refuseLocked", 409, { month });
     const slips = await tx.payslip.findMany({ where: { runId: run.id }, select: { ...SLIP_SELECT, membership: { select: { userId: true } } } });
     if (!slips.length) throw new RuleRefusal("payroll.refuseEmptyRun", 409);
     const negative = slips.find((s) => s.netPaise < 0);
@@ -644,7 +708,7 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
   assertMonth(month);
   const run = await runRow(caller.schoolId, month);
   if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  if (run.status !== "LOCKED") throw new RuleRefusal("payroll.refuseNotLocked", 409, { month });
+  if (!isFrozen(run.status)) throw new RuleRefusal("payroll.refuseNotLocked", 409, { month });
   const [slips, settings, school] = await Promise.all([
     db.payslip.findMany({ where: { runId: run.id }, orderBy: { staffName: "asc" }, select: SLIP_SELECT }),
     settingsOf(caller.schoolId),
@@ -708,6 +772,18 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
     }
     content = toCsv(out, [...FILE_HEADINGS.PT]);
     rows = out.length;
+  } else if (kind === "UPI_ADVICE") {
+    // owner-batch-item2b: one credit a line for the school's UPI app or its bank's UPI bulk upload — the sealed id opened into the file alone.
+    const refs = slipRefsOf(month, slips);
+    const out = [] as Record<string, unknown>[];
+    for (const s of slips) {
+      const sal = salaries.get(s.membershipId);
+      if (s.paymentMode !== "UPI" || s.netPaise <= 0 || !sal?.upiSealed) continue;
+      out.push(rowOf(FILE_HEADINGS.UPI_ADVICE, [s.staffName, open(sal.upiSealed, upiBound(caller.schoolId, s.membershipId)), (s.netPaise / 100).toFixed(2), refs.get(s.membershipId) ?? ""]));
+      totalPaise += s.netPaise;
+    }
+    content = toCsv(out, [...FILE_HEADINGS.UPI_ADVICE]);
+    rows = out.length;
   } else {
     const out = [] as Record<string, unknown>[];
     for (const s of slips) {
@@ -724,7 +800,7 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
   const filename = `${school.code}-${PAYROLL_EXPORT_SLUG[kind]}-${month}.${ext}`;
   const sha256 = createHash("sha256").update(content).digest("hex");
   await db.payrollExport.create({ data: { schoolId: caller.schoolId, runId: run.id, kind, fileName: filename, sha256, rows, totalPaise, createdByUserId: caller.user.id } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: kind === "BANK_ADVICE" || kind === "TDS_SUMMARY" ? "payroll.export.sealed" : "payroll.export", targetType: "PayrollRun", targetId: month, meta: { month, kind, rows, totalPaise, sha256: sha256.slice(0, 12) } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: kind === "BANK_ADVICE" || kind === "TDS_SUMMARY" || kind === "UPI_ADVICE" ? "payroll.export.sealed" : "payroll.export", targetType: "PayrollRun", targetId: month, meta: { month, kind, rows, totalPaise, sha256: sha256.slice(0, 12) } });
   return { kind, filename, mime, content, rows, totalPaise };
 }
 
@@ -765,11 +841,11 @@ export async function payslipDocument(ctx: ActiveContext, month: string, members
   const run = await runRow(schoolId, month);
   if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   // The staff member reads a slip once it is locked; the office reads a draft too.
-  if (membershipId === "self" && run.status !== "LOCKED") throw new AccessError("access.entryNotFound", "NOT_FOUND");
+  if (membershipId === "self" && !isFrozen(run.status)) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   if (membershipId !== "self" && ctx.role === "PRINCIPAL" && !run.sharedWithPrincipal) throw new AccessError("payroll.refuseNotShared");
   const slip = await db.payslip.findUnique({ where: { runId_membershipId: { runId: run.id, membershipId: who } }, select: { ...SLIP_SELECT, membership: { select: { user: { select: { prefs: true } } } } } });
   if (!slip) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  const [salary, settings, school] = await Promise.all([salariesFor(schoolId, [who], month).then((m) => m.get(who)), settingsOf(schoolId), db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true } })]);
+  const [salary, settings, school, extras] = await Promise.all([salariesFor(schoolId, [who], month).then((m) => m.get(who)), settingsOf(schoolId), db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true } }), extrasFor(schoolId, run.id, month)]);
   const prefs = readJson<{ locale?: string }>(slip.membership.user.prefs, {});
   return {
     locale: normaliseLocale(prefs.locale),
@@ -778,7 +854,7 @@ export async function payslipDocument(ctx: ActiveContext, month: string, members
     pfEstablishmentCode: settings.pfEstablishmentCode,
     esiEmployerCode: settings.esiEmployerCode,
     month,
-    slip: slipView(slip, salary),
+    slip: slipView(slip, salary, { slipRef: extras.refs.get(who) ?? "", payment: extras.payments.get(slip.id) ?? null }),
     pfUan: salary?.pfUan ?? null,
     esiNumber: salary?.esiNumber ?? null,
     panLast4: salary?.panLast4 ?? null,
@@ -792,7 +868,7 @@ export async function payslipDocument(ctx: ActiveContext, month: string, members
 async function statement(schoolId: string, membershipId: string, year: string | undefined): Promise<PayrollStatement> {
   const member = await db.membership.findFirst({ where: { id: membershipId, schoolId }, select: { id: true, user: { select: { name: true, preferredName: true } } } });
   if (!member) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  const slips = await db.payslip.findMany({ where: { schoolId, membershipId, run: { status: "LOCKED" } }, select: { linesJson: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true, run: { select: { month: true } } } });
+  const slips = await db.payslip.findMany({ where: { schoolId, membershipId, run: { status: { in: FROZEN } } }, select: { linesJson: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true, run: { select: { month: true } } } });
   const fy = year && /^\d{4}-\d{2}$/.test(year) ? year : slips.length ? financialYearOf(slips.map((s) => s.run.month).sort().at(-1)!) : financialYearOf(new Date().toISOString().slice(0, 7));
   const months = new Set(monthsOfFinancialYear(fy));
   const inYear = slips.filter((s) => months.has(s.run.month)).sort((a, b) => a.run.month.localeCompare(b.run.month));
@@ -839,7 +915,7 @@ export async function payrollSummary(ctx: ActiveContext): Promise<PayrollSummary
     db.staffAdvance.count({ where: { schoolId: caller.schoolId, status: "REQUESTED" } }),
   ]);
   const salaries = await salariesFor(caller.schoolId, roll.map((r) => r.id), "9999-12");
-  const locked = runs.filter((r) => r.status === "LOCKED");
+  const locked = runs.filter((r) => isFrozen(r.status));
   const latest = locked[0] ?? null;
   const byDept = latest ? await db.payslip.groupBy({ by: ["department"], where: { runId: latest.id }, _sum: { grossPaise: true, employerPaise: true }, _count: { _all: true } }) : [];
   return {
@@ -847,7 +923,7 @@ export async function payrollSummary(ctx: ActiveContext): Promise<PayrollSummary
     staffCount: roll.length,
     withSalary: salaries.size,
     structures,
-    runs: runs.map((r) => ({ month: r.month, status: r.status as "DRAFT" | "LOCKED", lockedAt: r.lockedAt?.toISOString() ?? null, headcount: r.headcount, grossPaise: r.grossPaise, deductionsPaise: r.deductionsPaise, employerPaise: r.employerPaise, netPaise: r.netPaise })),
+    runs: runs.map((r) => ({ month: r.month, status: r.status as PayrollRunStatus, lockedAt: r.lockedAt?.toISOString() ?? null, headcount: r.headcount, grossPaise: r.grossPaise, deductionsPaise: r.deductionsPaise, employerPaise: r.employerPaise, netPaise: r.netPaise })),
     costByMonth: locked.slice(0, 12).reverse().map((r) => ({ month: r.month, grossPaise: r.grossPaise, employerPaise: r.employerPaise, netPaise: r.netPaise, headcount: r.headcount })),
     costByDepartment: byDept.map((d) => ({ department: d.department, grossPaise: d._sum.grossPaise ?? 0, employerPaise: d._sum.employerPaise ?? 0, headcount: d._count._all })).sort((a, b) => b.grossPaise - a.grossPaise),
     latestLockedMonth: latest?.month ?? null,
@@ -923,6 +999,8 @@ export async function decideAdvance(ctx: ActiveContext, input: { advanceId: stri
 /** A member of staff asks for an advance. One waiting ask at a time. */
 export async function askAdvance(ctx: ActiveContext, input: { amountPaise: number; reason: string }): Promise<StaffAdvanceView> {
   const caller = await staffMember(ctx);
+  // owner-batch-item2a: a support worker reads their own slips and nothing else; the office records an advance for them.
+  if (caller.role === "SUPPORT") throw new AccessError("access.wrongRoleForThisAction");
   const waiting = await db.staffAdvance.count({ where: { membershipId: caller.membershipId, status: "REQUESTED" } });
   if (waiting > 0) throw new RuleRefusal("payroll.refuseAdvanceWaiting", 409);
   const row = await db.staffAdvance.create({ data: { schoolId: caller.schoolId, membershipId: caller.membershipId, amountPaise: input.amountPaise, reason: input.reason }, select: ADVANCE_SELECT });
@@ -944,11 +1022,13 @@ export async function myPayslips(ctx: ActiveContext): Promise<MyPayslips> {
   const thisMonth = dateKeyInZone(new Date(), tz).slice(0, 7);
   const [salary, slips, advances, me] = await Promise.all([
     salariesFor(caller.schoolId, [caller.membershipId], thisMonth).then((m) => m.get(caller.membershipId)),
-    db.payslip.findMany({ where: { schoolId: caller.schoolId, membershipId: caller.membershipId, run: { status: "LOCKED" } }, select: { grossPaise: true, deductionsPaise: true, netPaise: true, run: { select: { month: true, lockedAt: true } } } }),
+    db.payslip.findMany({ where: { schoolId: caller.schoolId, membershipId: caller.membershipId, run: { status: { in: FROZEN } } }, select: { id: true, runId: true, grossPaise: true, deductionsPaise: true, netPaise: true, run: { select: { month: true, lockedAt: true } } } }),
     db.staffAdvance.findMany({ where: { membershipId: caller.membershipId }, orderBy: { createdAt: "desc" }, take: 20, select: ADVANCE_SELECT }),
     db.membership.findUniqueOrThrow({ where: { id: caller.membershipId }, select: { user: { select: { name: true, preferredName: true } } } }),
   ]);
   const sorted = slips.sort((a, b) => b.run.month.localeCompare(a.run.month));
+  // How each of my slips was paid, as the school recorded it (owner-batch-item2b): the date, the mode and the reference.
+  const paid = await livePayments(caller.schoolId, [...new Set(sorted.map((s) => s.runId))]);
   const basic = salary ? (overridesOf(salary).BASIC ?? salary.basicPaise) : 0;
   return {
     name: nameOf(me.user),
@@ -966,7 +1046,10 @@ export async function myPayslips(ctx: ActiveContext): Promise<MyPayslips> {
           }),
         }
       : null,
-    slips: sorted.map((s) => ({ month: s.run.month, grossPaise: s.grossPaise, deductionsPaise: s.deductionsPaise, netPaise: s.netPaise, lockedAt: (s.run.lockedAt ?? new Date(0)).toISOString() })),
+    slips: sorted.map((s) => {
+      const p = paid.get(s.id);
+      return { month: s.run.month, grossPaise: s.grossPaise, deductionsPaise: s.deductionsPaise, netPaise: s.netPaise, lockedAt: (s.run.lockedAt ?? new Date(0)).toISOString(), payment: p ? { mode: p.mode, amountPaise: p.amountPaise, paidOn: p.paidOn, reference: p.reference } : null };
+    }),
     advances: await advanceViews(caller.schoolId, advances),
     years: [...new Set(sorted.map((s) => financialYearOf(s.run.month)))],
   };

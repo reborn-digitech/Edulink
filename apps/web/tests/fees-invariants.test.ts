@@ -66,6 +66,37 @@ describe("invariant 2 — the adapter may make four calls, and no call moves mon
   });
 });
 
+/**
+ * SALARIES ARE PAID BY THE SCHOOL, NEVER THROUGH THE PLATFORM (owner-batch-item2b, 27 October 2026; decision 0004
+ * line 45, "the platform pays nobody"). The school pays its staff from its own bank, its own UPI app, a cheque or
+ * cash, and records it afterwards (salary-payments.ts). The pay-from-your-app link is a standard upi:// intent the
+ * SCHOOL's app opens. None of these files may reach the gateway adapter, and none names a payout or a transfer call.
+ */
+describe("salary payments are the school's record of a transfer it made itself", () => {
+  const PAYROLL_SOURCES = ["src/lib/payroll.ts", "src/lib/salary-payments.ts", "src/lib/salary-payment-rules.ts"].map((p) => [p, read(p)] as const);
+
+  it("payroll.ts and the salary-payment files never import the gateway adapter", () => {
+    for (const [path, src] of PAYROLL_SOURCES) {
+      expect(src, path).not.toMatch(/from\s+["'](?:\.\/|@\/lib\/)gateway["']/);
+      expect(src, path).not.toMatch(/import\(\s*["'](?:\.\/|@\/lib\/)gateway["']\s*\)/);
+      expect(src, path).not.toMatch(/\bfetch\(/);
+    }
+  });
+
+  it("no salary-payment source names a payout, transfer, fund account or contact call", () => {
+    for (const [path, src] of PAYROLL_SOURCES) {
+      const code = src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+      expect(code, path).not.toMatch(/\b(transfer_id|linked_account|on_hold|payout|split_settlement|route_transfer|fund_account|contacts?\b\s*:|\/v1\/(?:payouts|transfers|contacts|fund_accounts))/i);
+    }
+  });
+
+  it("the payment table is the school's, named as a record and not an account, and holds no fee or share column", () => {
+    const body = model("SalaryPayment").replace(/\/\/\/.*$/gm, "").replace(/\/\/.*$/gm, "");
+    expect(body).toMatch(/^\s*schoolId\s+String\s*$/m);
+    expect(body).not.toMatch(/^\s*\w*(platform|commission|markup|share|convenience|surcharge|split)\w*\s+(Int|Float|Decimal|String)/im);
+  });
+});
+
 describe("invariant 3 — the amount a family pays is the sum of its dues, nothing added", () => {
   it("the checkout amount is computed on the server from the demands, and the order is refused if the gateway reports another amount", () => {
     const payments = read("src/lib/fees-payments.ts");

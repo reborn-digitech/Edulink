@@ -148,6 +148,7 @@ export function familyFor(role: string | null | undefined): RoleFamily {
     case "PRINCIPAL":
       return "admin";
     case "DRIVER":
+    case "SUPPORT": // owner-batch-item2a: support staff share the driver's colour
       return "driver";
     case "LIBRARIAN":
       return "librarian";

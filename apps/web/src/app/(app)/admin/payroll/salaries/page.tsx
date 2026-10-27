@@ -24,8 +24,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * Each member of staff's salary: the structure, the basic, the statutory
- * numbers and how they are paid. The PAN and the bank account are sealed on
- * arrival and shown as their last four only; a blank field keeps what is
+ * numbers and how they are paid. The PAN, the bank account and the UPI id
+ * are sealed on arrival and shown as their last four (the UPI id masked) only; a blank field keeps what is
  * sealed. A revision is a new salary from its own date.
  */
 export default async function PayrollSalaries({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
@@ -67,6 +67,7 @@ export default async function PayrollSalaries({ searchParams }: { searchParams: 
                           <span className="text-fg-muted">
                             {s.structureName} · {t("payroll.grossPerMonth", { amount: formatPaise(s.monthlyGrossPaise, locale) })}
                             {s.bankLast4 ? ` · ${t("payroll.bankEnding", { last4: s.bankLast4 })}` : ""}
+                            {s.upiMasked ? ` · ${t("salaryPay.upiEnding", { masked: s.upiMasked })}` : ""}
                           </span>
                         ) : (
                           <Badge tone="warn" size="sm">{t("payroll.noSalary")}</Badge>
@@ -92,6 +93,7 @@ export default async function PayrollSalaries({ searchParams }: { searchParams: 
                         <TextField label={t("payroll.fieldBankAccount")} name="bankAccount" inputMode="numeric" maxLength={20} autoComplete="off" placeholder={s?.bankLast4 ? t("payroll.keepsEnding", { last4: s.bankLast4 }) : ""} />
                         <TextField label={t("payroll.fieldIfsc")} name="bankIfsc" maxLength={11} defaultValue={s?.bankIfsc ?? ""} />
                         <TextField label={t("payroll.fieldBankName")} name="bankName" maxLength={80} defaultValue={s?.bankName ?? ""} />
+                        <TextField label={t("salaryPay.fieldUpiId")} name="upiId" maxLength={96} autoComplete="off" inputMode="email" placeholder={s?.upiMasked ? t("salaryPay.keepsUpi", { masked: s.upiMasked }) : ""} hint={t("salaryPay.fieldUpiIdHint")} />
                         <div className="flex flex-wrap items-center gap-3 sm:col-span-3">
                           <Button type="submit" size="sm">{t("payroll.saveSalary")}</Button>
                           {s ? <Link className={LINK} href={`/admin/payroll/statement/${p.membershipId}`}>{t("payroll.statement")}</Link> : null}

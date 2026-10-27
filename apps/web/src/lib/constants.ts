@@ -23,6 +23,8 @@ export const ROLES = [
   "ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS",
   // The college's seven (4 Oct 2026): six staff Memberships, and the recruiter — an outside account like EXPERT.
   "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "RECRUITER",
+  // owner-batch-item2a: support staff (27 Oct 2026), a Membership like a driver's, usually with no login.
+  "SUPPORT",
 ] as const;
 export type Role = (typeof ROLES)[number];
 
@@ -38,6 +40,7 @@ export type Role = (typeof ROLES)[number];
 export const SCHOOL_ROLES = [
   "ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS",
   "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS",
+  "SUPPORT", // owner-batch-item2a
 ] as const;
 export type SchoolRole = (typeof SCHOOL_ROLES)[number];
 
@@ -80,8 +83,14 @@ export function isCollegeRole(role: string | null | undefined): role is CollegeR
  * reaches a college only through a placement drive). role-gate.ts refuses
  * such a role every /api/v1 door that does not name it, and every school page
  * outside its own home and NAV.
+ *
+ * owner-batch-item2a (27 Oct 2026): and SUPPORT, the school's support staff
+ * (cleaner, cook, guard, peon…: one role, the job in StaffRecord.designation).
+ * The office adds one with no login (src/lib/support-staff.ts) so they can be
+ * paid; one who later signs in reads only their own payslips and profile
+ * (SUPPORT_PAGES in role-gate.ts).
  */
-export const LIMITED_ROLES = [...MODULE_ROLES, ...COLLEGE_ROLES, "RECRUITER"] as const;
+export const LIMITED_ROLES = [...MODULE_ROLES, ...COLLEGE_ROLES, "RECRUITER", "SUPPORT"] as const;
 export type LimitedRole = (typeof LIMITED_ROLES)[number];
 export function isLimitedRole(role: string | null | undefined): role is LimitedRole {
   return role !== null && role !== undefined && (LIMITED_ROLES as readonly string[]).includes(role);
@@ -463,6 +472,8 @@ export const ROLE_META: Record<
   TPO: { labelKey: "role.tpo", pluralKey: "role.tpoPlural", accent: "tpo" },
   ACCOUNTS: { labelKey: "role.accounts", pluralKey: "role.accountsPlural", accent: "accounts" },
   RECRUITER: { labelKey: "role.recruiter", pluralKey: "role.recruiterPlural", accent: "recruiter" },
+  // owner-batch-item2a: the driver's colour, the other staff who keep the school running.
+  SUPPORT: { labelKey: "role.support", pluralKey: "role.supportPlural", accent: "driver" },
 };
 
 /** Where each role lands after login. */
@@ -486,6 +497,8 @@ export const ROLE_HOME: Record<Role, string> = {
   TPO: "/placement",
   ACCOUNTS: "/accounts",
   RECRUITER: "/recruiter",
+  // owner-batch-item2a: support staff have no desk; one with a login lands on their own payslips.
+  SUPPORT: "/account/payslips",
 };
 
 /* -------------------------------------------------------------------------- */

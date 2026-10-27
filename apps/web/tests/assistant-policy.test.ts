@@ -22,8 +22,9 @@ describe("the role policy", () => {
     for (const role of ROLES) expect(ROLE_POLICY[role].tutor, role).toBe(["STUDENT", "TEACHER", "FACULTY", "HOD"].includes(role));
   });
 
-  it("gives platform help to every role that belongs to a school, an alumnus too, and none to the expert or the recruiter", () => {
-    for (const role of ROLES) expect(ROLE_POLICY[role].help, role).toBe(role !== "EXPERT" && role !== "RECRUITER");
+  it("gives platform help to every role that belongs to a school, an alumnus too, and none to the expert, the recruiter or support staff", () => {
+    // SUPPORT (owner-batch-item2a): a support worker given a login reads their payslips and profile, nothing else.
+    for (const role of ROLES) expect(ROLE_POLICY[role].help, role).toBe(role !== "EXPERT" && role !== "RECRUITER" && role !== "SUPPORT");
     expect(policyFor(null)).toMatchObject({ help: false, tutor: false });
   });
 

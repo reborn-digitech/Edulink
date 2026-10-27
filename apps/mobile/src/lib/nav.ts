@@ -140,6 +140,8 @@ export const TABS: Record<RoleCode, Tab[]> = {
   ],
   // An outside account like the expert: its home, and its account in More.
   RECRUITER: [{ name: "index", labelKey: "role.recruiter", icon: "handshake" }],
+  // owner-batch-item2a (27 Oct 2026): support staff, given a login, read their own payslips (the home tab) and their account.
+  SUPPORT: [{ name: "index", labelKey: "supportStaff.tabPayslips", icon: "receipt" }],
 };
 
 /** Every screen name any role has a tab for; the tab layout declares them all and hides the rest per role. */
@@ -644,6 +646,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
   ],
   RECRUITER: [{ labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" }],
+  SUPPORT: [{ labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" }], // owner-batch-item2a
 };
 
 /**
@@ -652,7 +655,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
  * sheet; the Phase C entry under More is gone. The route /(app)/assistant stays only to open the sheet for an old link.
  */
 /** Not for the outside accounts (an expert, a recruiter): they belong to no school, and the doors refuse them. */
-export const ASSISTANT_NOT_FOR: readonly RoleCode[] = ["EXPERT", "RECRUITER"];
+export const ASSISTANT_NOT_FOR: readonly RoleCode[] = ["EXPERT", "RECRUITER", "SUPPORT"]; // SUPPORT: owner-batch-item2a
 
 /**
  * Every route under (app) that is not a tab: the Tabs navigator lists every

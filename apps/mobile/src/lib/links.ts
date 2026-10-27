@@ -264,6 +264,7 @@ export const WEB_HOME: Record<string, string> = {
   ADMIN: "/admin", PRINCIPAL: "/principal", TEACHER: "/teacher", STUDENT: "/student", PARENT: "/parent", EXPERT: "/expert",
   DRIVER: "/driver", LIBRARIAN: "/library", WARDEN: "/hostel", ALUMNUS: "/alumni", FACULTY: "/faculty", HOD: "/hod",
   EXAM_CONTROLLER: "/exam-cell", IQAC: "/iqac", TPO: "/placement", ACCOUNTS: "/accounts", RECRUITER: "/recruiter",
+  SUPPORT: "/account/payslips", // owner-batch-item2a
 };
 
 export function webPageFor(pathname: string | null | undefined, home: string): string | null {

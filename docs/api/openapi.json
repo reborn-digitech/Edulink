@@ -122,7 +122,8 @@
                                 "IQAC",
                                 "TPO",
                                 "ACCOUNTS",
-                                "RECRUITER"
+                                "RECRUITER",
+                                "SUPPORT"
                               ],
                               "nullable": true
                             }
@@ -387,7 +388,8 @@
                                 "IQAC",
                                 "TPO",
                                 "ACCOUNTS",
-                                "RECRUITER"
+                                "RECRUITER",
+                                "SUPPORT"
                               ],
                               "nullable": true
                             }
@@ -551,7 +553,8 @@
                             "IQAC",
                             "TPO",
                             "ACCOUNTS",
-                            "RECRUITER"
+                            "RECRUITER",
+                            "SUPPORT"
                           ],
                           "nullable": true
                         }
@@ -706,7 +709,8 @@
                                 "IQAC",
                                 "TPO",
                                 "ACCOUNTS",
-                                "RECRUITER"
+                                "RECRUITER",
+                                "SUPPORT"
                               ],
                               "nullable": true
                             }
@@ -875,7 +879,8 @@
                             "IQAC",
                             "TPO",
                             "ACCOUNTS",
-                            "RECRUITER"
+                            "RECRUITER",
+                            "SUPPORT"
                           ],
                           "nullable": true
                         }
@@ -975,7 +980,7 @@
     "/api/v1/auth/logout": {
       "post": {
         "summary": "Revoke this session",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -993,7 +998,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -1064,7 +1070,7 @@
     "/api/v1/me": {
       "get": {
         "summary": "Who I am, where I belong, what is active",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -1082,7 +1088,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -1170,7 +1177,8 @@
                             "IQAC",
                             "TPO",
                             "ACCOUNTS",
-                            "RECRUITER"
+                            "RECRUITER",
+                            "SUPPORT"
                           ],
                           "nullable": true
                         },
@@ -1370,7 +1378,7 @@
     "/api/v1/me/context": {
       "post": {
         "summary": "Switch the active school and role",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -1388,7 +1396,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -1476,7 +1485,8 @@
                             "IQAC",
                             "TPO",
                             "ACCOUNTS",
-                            "RECRUITER"
+                            "RECRUITER",
+                            "SUPPORT"
                           ],
                           "nullable": true
                         },
@@ -1702,7 +1712,8 @@
                       "IQAC",
                       "TPO",
                       "ACCOUNTS",
-                      "RECRUITER"
+                      "RECRUITER",
+                      "SUPPORT"
                     ]
                   }
                 },
@@ -1720,7 +1731,7 @@
     "/api/v1/me/sessions": {
       "get": {
         "summary": "My signed-in devices",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -1738,7 +1749,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -1837,7 +1849,7 @@
     "/api/v1/me/sessions/{sessionId}": {
       "delete": {
         "summary": "Sign a device out",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -1855,7 +1867,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -1936,7 +1949,7 @@
     "/api/v1/me/devices": {
       "post": {
         "summary": "Register this device for push",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -1954,7 +1967,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -2055,7 +2069,7 @@
       },
       "delete": {
         "summary": "Stop push to this device",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -2073,7 +2087,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -2165,7 +2180,7 @@
     "/api/v1/events": {
       "get": {
         "summary": "Live events for this session (server-sent events)",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -2183,7 +2198,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -2254,7 +2270,7 @@
     "/api/v1/files/{fileId}/link": {
       "post": {
         "summary": "A five-minute link that opens one file outside the app (a PDF in the phone's browser), for someone allowed to read it",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -3195,7 +3211,8 @@
                             "EXAM_CONTROLLER",
                             "IQAC",
                             "TPO",
-                            "ACCOUNTS"
+                            "ACCOUNTS",
+                            "SUPPORT"
                           ],
                           "nullable": true
                         },
@@ -3318,7 +3335,8 @@
                       "EXAM_CONTROLLER",
                       "IQAC",
                       "TPO",
-                      "ACCOUNTS"
+                      "ACCOUNTS",
+                      "SUPPORT"
                     ]
                   },
                   "status": {
@@ -3546,7 +3564,8 @@
                       "EXAM_CONTROLLER",
                       "IQAC",
                       "TPO",
-                      "ACCOUNTS"
+                      "ACCOUNTS",
+                      "SUPPORT"
                     ]
                   },
                   "q": {
@@ -5354,6 +5373,294 @@
                 },
                 "required": [
                   "csv"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/people/support": {
+      "post": {
+        "summary": "Add a support worker (cleaner, cook, guard, peon…) with no login: an account nobody signs in as, an ACTIVE SUPPORT membership and a staff record with the job, the joining day and a contact phone, and the salary when one is given (payroll on); the same worker pressed twice within ten minutes answers the first",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "membershipId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "SUPPORT"
+                      ]
+                    },
+                    "designation": {
+                      "type": "string"
+                    },
+                    "joinedOnKey": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "salary": {
+                      "type": "object",
+                      "properties": {
+                        "membershipId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "designation": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "salary": {
+                          "type": "object",
+                          "properties": {
+                            "structureId": {
+                              "type": "string"
+                            },
+                            "structureName": {
+                              "type": "string"
+                            },
+                            "effectiveFrom": {
+                              "type": "string",
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                            },
+                            "basicPaise": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 2000000000
+                            },
+                            "overrides": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "integer",
+                                "minimum": 0
+                              }
+                            },
+                            "pfUan": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "esiNumber": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "panLast4": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "bankLast4": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "bankIfsc": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "bankName": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "upiMasked": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "paymentMode": {
+                              "type": "string",
+                              "enum": [
+                                "BANK",
+                                "CASH",
+                                "CHEQUE",
+                                "UPI"
+                              ]
+                            },
+                            "monthlyGrossPaise": {
+                              "type": "integer",
+                              "minimum": 0
+                            }
+                          },
+                          "required": [
+                            "structureId",
+                            "structureName",
+                            "effectiveFrom",
+                            "basicPaise",
+                            "overrides",
+                            "pfUan",
+                            "esiNumber",
+                            "panLast4",
+                            "bankLast4",
+                            "bankIfsc",
+                            "bankName",
+                            "upiMasked",
+                            "paymentMode",
+                            "monthlyGrossPaise"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "membershipId",
+                        "name",
+                        "role",
+                        "designation",
+                        "salary"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "duplicate": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "membershipId",
+                    "name",
+                    "role",
+                    "designation",
+                    "joinedOnKey",
+                    "phone",
+                    "salary",
+                    "duplicate"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 120
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 24,
+                    "default": ""
+                  },
+                  "designation": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 80
+                  },
+                  "joinedOnKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "salary": {
+                    "type": "object",
+                    "properties": {
+                      "structureId": {
+                        "type": "string",
+                        "pattern": "^c[a-z0-9]{20,}$"
+                      },
+                      "basicPaise": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2000000000
+                      },
+                      "paymentMode": {
+                        "type": "string",
+                        "enum": [
+                          "BANK",
+                          "CASH",
+                          "CHEQUE",
+                          "UPI"
+                        ],
+                        "default": "CASH"
+                      },
+                      "effectiveFrom": {
+                        "$ref": "#/properties/joinedOnKey"
+                      }
+                    },
+                    "required": [
+                      "structureId",
+                      "basicPaise"
+                    ],
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "default": null
+                  }
+                },
+                "required": [
+                  "name",
+                  "designation",
+                  "joinedOnKey"
                 ],
                 "additionalProperties": false
               }
@@ -11005,7 +11312,8 @@
                       "EXAM_CONTROLLER",
                       "IQAC",
                       "TPO",
-                      "ACCOUNTS"
+                      "ACCOUNTS",
+                      "SUPPORT"
                     ]
                   },
                   "subject": {
@@ -26115,7 +26423,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ],
                             "nullable": true
                           },
@@ -26794,7 +27103,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ]
                           },
                           "dateKey": {
@@ -27088,7 +27398,8 @@
                             "IQAC",
                             "TPO",
                             "ACCOUNTS",
-                            "RECRUITER"
+                            "RECRUITER",
+                            "SUPPORT"
                           ],
                           "nullable": true
                         },
@@ -28432,7 +28743,7 @@
     "/api/v1/shared/inbox": {
       "get": {
         "summary": "My messages: conversations and remark threads in one list, each with the other side's role, the last message, whether it is unread and whether the last word was mine",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -28450,7 +28761,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -28509,7 +28821,8 @@
                                     "IQAC",
                                     "TPO",
                                     "ACCOUNTS",
-                                    "RECRUITER"
+                                    "RECRUITER",
+                                    "SUPPORT"
                                   ],
                                   "nullable": true
                                 }
@@ -28744,7 +29057,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ],
                             "nullable": true
                           }
@@ -28994,7 +29308,7 @@
     "/api/v1/shared/threads/{threadId}": {
       "get": {
         "summary": "A remark thread about a pupil; opening it marks it read",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -29189,7 +29503,7 @@
     "/api/v1/shared/threads/{threadId}/reply": {
       "post": {
         "summary": "Reply in a remark thread",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -29381,7 +29695,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ]
                           },
                           "detail": {
@@ -29457,7 +29772,7 @@
     "/api/v1/shared/notifications": {
       "get": {
         "summary": "My notifications, newest first, cursor paged",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -29475,7 +29790,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -29595,7 +29911,7 @@
     "/api/v1/shared/notifications/{notificationId}/read": {
       "post": {
         "summary": "Mark one of my notifications read",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -29613,7 +29929,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -29694,7 +30011,7 @@
     "/api/v1/shared/notifications/read-all": {
       "post": {
         "summary": "Mark all my notifications read",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -29712,7 +30029,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -29781,7 +30099,7 @@
     "/api/v1/shared/competitions": {
       "get": {
         "summary": "The school's and the platform's competitions",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -30043,7 +30361,7 @@
     "/api/v1/shared/competitions/{competitionId}": {
       "get": {
         "summary": "One competition, my entry, and the schools' board",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -30560,7 +30878,7 @@
     "/api/v1/shared/enquiries": {
       "get": {
         "summary": "Enquiries I opened, and my school's inbox",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -30683,7 +31001,7 @@
       },
       "post": {
         "summary": "Ask a school about admission or a vacancy",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -30795,7 +31113,7 @@
     "/api/v1/shared/enquiries/{enquiryId}": {
       "get": {
         "summary": "One enquiry thread",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -30947,7 +31265,7 @@
     "/api/v1/shared/enquiries/{enquiryId}/reply": {
       "post": {
         "summary": "Reply in an enquiry thread",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -31051,7 +31369,7 @@
     "/api/v1/shared/mentoring": {
       "get": {
         "summary": "My mentorships, and the requests waiting on the office",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -31228,7 +31546,7 @@
     "/api/v1/shared/mentoring/{threadId}": {
       "get": {
         "summary": "One mentorship and its messages",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -31398,7 +31716,7 @@
     "/api/v1/shared/mentoring/{threadId}/messages": {
       "post": {
         "summary": "The mentor or the pupil writes",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -33519,7 +33837,7 @@
     "/api/v1/uploads": {
       "post": {
         "summary": "Upload one file (multipart `file`); read it back via /api/files/{fileId}",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -33736,7 +34054,7 @@
     "/api/v1/app/report": {
       "post": {
         "summary": "Report a problem from the app, or the app's own crash report; answers a reference the person can quote",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -33885,7 +34203,7 @@
     "/api/v1/search": {
       "get": {
         "summary": "One search across the people, posts, messages, papers and pages the caller may already see; `q` two to eighty characters",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -45297,7 +45615,7 @@
     "/api/v1/community/mentoring/options": {
       "get": {
         "summary": "What mentoring set-up offers me: pairing lists (staff), the mentors I may ask (a pupil)",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -46630,7 +46948,7 @@
     "/api/v1/community/link-child": {
       "get": {
         "summary": "The children this account is already linked to, and its claims still waiting or declined",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -46760,7 +47078,7 @@
       },
       "post": {
         "summary": "Ask to be linked to a child by student code and date of birth (rate-limited per caller and per code); the claim waits for the office or a guardian the child already has",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -51729,7 +52047,7 @@
     "/api/v1/account": {
       "get": {
         "summary": "My account: names, how I sign in, my preferences",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -51747,7 +52065,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -51949,7 +52268,7 @@
     "/api/v1/account/prefs": {
       "post": {
         "summary": "Save preferences: the channels and the quiet hours are required every time (quiet hours null turns them off); a theme, contrast, font or motion left out stays as it was",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -51967,7 +52286,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52124,7 +52444,7 @@
     "/api/v1/account/locale": {
       "post": {
         "summary": "Change my language (prefs.locale)",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52142,7 +52462,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52239,7 +52560,7 @@
     "/api/v1/account/avatar": {
       "post": {
         "summary": "Set my avatar to one of the preset drawings",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52257,7 +52578,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52349,7 +52671,7 @@
     "/api/v1/account/devices/sign-out": {
       "post": {
         "summary": "Sign one of my other devices out (this one is a 403)",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52367,7 +52689,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52459,7 +52782,7 @@
     "/api/v1/account/devices/sign-out-others": {
       "post": {
         "summary": "Sign every other device out",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52477,7 +52800,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52568,7 +52892,7 @@
     "/api/v1/account/mobile/code": {
       "post": {
         "summary": "Text a code to a new mobile number; nothing is saved yet (429 with Retry-After at the limit)",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52586,7 +52910,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52682,7 +53007,7 @@
     "/api/v1/account/mobile/confirm": {
       "post": {
         "summary": "The code that came back puts the number on the account",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52700,7 +53025,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52792,7 +53118,7 @@
     "/api/v1/account/mobile": {
       "delete": {
         "summary": "Take my mobile number off the account",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52810,7 +53136,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -52903,7 +53230,7 @@
     "/api/v1/account/email/code": {
       "post": {
         "summary": "Email a code to a new address; nothing changes yet (429 with Retry-After at the limit)",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -52921,7 +53248,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -53016,7 +53344,7 @@
     "/api/v1/account/email/confirm": {
       "post": {
         "summary": "The code that came back moves the address; the old one is told",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -53034,7 +53362,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -53171,7 +53500,8 @@
                         "IQAC",
                         "TPO",
                         "ACCOUNTS",
-                        "RECRUITER"
+                        "RECRUITER",
+                        "SUPPORT"
                       ]
                     },
                     "classes": {
@@ -53627,7 +53957,7 @@
     "/api/v1/account/totp": {
       "get": {
         "summary": "Two-step sign-in: whether it is on for me, and whether I may turn it on",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -53645,7 +53975,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -53834,7 +54165,7 @@
     "/api/v1/account/totp/confirm": {
       "post": {
         "summary": "One right code from the app turns two-step sign-in on and answers the eight recovery codes, this once; every other session of the account is signed out (signedOut says how many)",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -53852,7 +54183,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -53951,7 +54283,7 @@
     "/api/v1/account/totp/disable": {
       "post": {
         "summary": "A code from the app, or a recovery code, turns two-step sign-in off",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -53969,7 +54301,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -55922,7 +56255,7 @@
     "/api/v1/join/lookup": {
       "post": {
         "summary": "What a school or class code is: the school's name, and the class's for a class code (422 with the sentence on `code`; 429 with Retry-After once the caller has guessed too often)",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -56028,7 +56361,7 @@
     "/api/v1/join": {
       "post": {
         "summary": "Ask to join the school (and class) a code names, as a pupil on this account; the request waits for the office or the class's teacher and nothing of the school opens until then",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -56134,7 +56467,7 @@
     "/api/v1/join/requests": {
       "get": {
         "summary": "My own requests to join: waiting, not accepted (with what the school said), or expired after thirty days, newest first",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -67652,7 +67985,7 @@
     "/api/v1/shared/bulletin/{postId}/ack": {
       "post": {
         "summary": "The one tap a circular asks for: seen and understood (idempotent)",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -93816,7 +94149,7 @@
     "/api/v1/shared/schools/{schoolId}/admissions": {
       "get": {
         "summary": "What a family sees on a school's page: every open cycle (cycles; open is the first) with its grades, seats left, documents and notice, and the reader's own applications there",
-        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).",
+        "description": "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; RECRUITER; and SUPPORT, the support staff).",
         "security": [
           {
             "bearer": []
@@ -108264,7 +108597,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ]
                           },
                           "detail": {
@@ -108477,7 +108811,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ]
                           },
                           "detail": {
@@ -114537,7 +114872,8 @@
                             "type": "string",
                             "enum": [
                               "DRAFT",
-                              "LOCKED"
+                              "LOCKED",
+                              "PAID"
                             ]
                           },
                           "lockedAt": {
@@ -115361,12 +115697,17 @@
                                 "type": "string",
                                 "nullable": true
                               },
+                              "upiMasked": {
+                                "type": "string",
+                                "nullable": true
+                              },
                               "paymentMode": {
                                 "type": "string",
                                 "enum": [
                                   "BANK",
                                   "CASH",
-                                  "CHEQUE"
+                                  "CHEQUE",
+                                  "UPI"
                                 ]
                               },
                               "monthlyGrossPaise": {
@@ -115386,6 +115727,7 @@
                               "bankLast4",
                               "bankIfsc",
                               "bankName",
+                              "upiMasked",
                               "paymentMode",
                               "monthlyGrossPaise"
                             ],
@@ -115565,12 +115907,17 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "upiMasked": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "paymentMode": {
                           "type": "string",
                           "enum": [
                             "BANK",
                             "CASH",
-                            "CHEQUE"
+                            "CHEQUE",
+                            "UPI"
                           ]
                         },
                         "monthlyGrossPaise": {
@@ -115590,6 +115937,7 @@
                         "bankLast4",
                         "bankIfsc",
                         "bankName",
+                        "upiMasked",
                         "paymentMode",
                         "monthlyGrossPaise"
                       ],
@@ -115770,12 +116118,18 @@
                     "maxLength": 80,
                     "default": ""
                   },
+                  "upiId": {
+                    "type": "string",
+                    "pattern": "^([a-z0-9][a-z0-9._-]{1,63}@[a-z][a-z0-9]{1,31})?$",
+                    "default": ""
+                  },
                   "paymentMode": {
                     "type": "string",
                     "enum": [
                       "BANK",
                       "CASH",
-                      "CHEQUE"
+                      "CHEQUE",
+                      "UPI"
                     ],
                     "default": "BANK"
                   }
@@ -115823,7 +116177,8 @@
                       "type": "string",
                       "enum": [
                         "DRAFT",
-                        "LOCKED"
+                        "LOCKED",
+                        "PAID"
                       ]
                     },
                     "createdAt": {
@@ -115842,6 +116197,36 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "paidAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "payments": {
+                      "type": "object",
+                      "properties": {
+                        "due": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "paid": {
+                          "$ref": "#/properties/payments/properties/due"
+                        },
+                        "paidPaise": {
+                          "$ref": "#/properties/payments/properties/due"
+                        }
+                      },
+                      "required": [
+                        "due",
+                        "paid",
+                        "paidPaise"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "sharedWithPrincipal": {
                       "type": "boolean"
                     },
@@ -115849,17 +116234,16 @@
                       "type": "object",
                       "properties": {
                         "headcount": {
-                          "type": "integer",
-                          "minimum": 0
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "grossPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "deductionsPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "employerPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "netPaise": {
                           "type": "integer"
@@ -115893,7 +116277,7 @@
                             "nullable": true
                           },
                           "daysInMonth": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "lopDays": {
                             "type": "number",
@@ -115949,22 +116333,22 @@
                                   "type": "string"
                                 },
                                 "paise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "fullPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "advanceId": {
                                   "type": "string"
                                 },
                                 "basePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsBasePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 }
                               },
                               "required": [
@@ -115978,24 +116362,24 @@
                             }
                           },
                           "grossPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "deductionsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "employerPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "netPaise": {
                             "type": "integer"
                           },
                           "arrearsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "tdsOverridePaise": {
                             "allOf": [
                               {
-                                "$ref": "#/properties/totals/properties/headcount"
+                                "$ref": "#/properties/payments/properties/due"
                               }
                             ],
                             "nullable": true
@@ -116013,11 +116397,62 @@
                             "enum": [
                               "BANK",
                               "CASH",
-                              "CHEQUE"
+                              "CHEQUE",
+                              "UPI"
                             ]
                           },
                           "bankLast4": {
                             "type": "string",
+                            "nullable": true
+                          },
+                          "upiMasked": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "slipRef": {
+                            "type": "string"
+                          },
+                          "payment": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "mode": {
+                                "$ref": "#/properties/slips/items/properties/paymentMode"
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/payments/properties/due"
+                              },
+                              "paidOn": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "note": {
+                                "type": "string"
+                              },
+                              "recordedByName": {
+                                "type": "string"
+                              },
+                              "createdAt": {
+                                "$ref": "#/properties/createdAt"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "mode",
+                              "amountPaise",
+                              "paidOn",
+                              "reference",
+                              "note",
+                              "recordedByName",
+                              "createdAt"
+                            ],
+                            "additionalProperties": false,
                             "nullable": true
                           },
                           "warnings": {
@@ -116046,6 +116481,9 @@
                           "notes",
                           "paymentMode",
                           "bankLast4",
+                          "upiMasked",
+                          "slipRef",
+                          "payment",
                           "warnings"
                         ],
                         "additionalProperties": false
@@ -116064,17 +116502,18 @@
                               "ESI",
                               "BANK_ADVICE",
                               "PT",
-                              "TDS_SUMMARY"
+                              "TDS_SUMMARY",
+                              "UPI_ADVICE"
                             ]
                           },
                           "fileName": {
                             "type": "string"
                           },
                           "rows": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "totalPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "createdAt": {
                             "$ref": "#/properties/createdAt"
@@ -116123,6 +116562,8 @@
                     "createdAt",
                     "lockedAt",
                     "lockedByName",
+                    "paidAt",
+                    "payments",
                     "sharedWithPrincipal",
                     "totals",
                     "slips",
@@ -116229,7 +116670,8 @@
                       "type": "string",
                       "enum": [
                         "DRAFT",
-                        "LOCKED"
+                        "LOCKED",
+                        "PAID"
                       ]
                     },
                     "createdAt": {
@@ -116248,6 +116690,36 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "paidAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "payments": {
+                      "type": "object",
+                      "properties": {
+                        "due": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "paid": {
+                          "$ref": "#/properties/payments/properties/due"
+                        },
+                        "paidPaise": {
+                          "$ref": "#/properties/payments/properties/due"
+                        }
+                      },
+                      "required": [
+                        "due",
+                        "paid",
+                        "paidPaise"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "sharedWithPrincipal": {
                       "type": "boolean"
                     },
@@ -116255,17 +116727,16 @@
                       "type": "object",
                       "properties": {
                         "headcount": {
-                          "type": "integer",
-                          "minimum": 0
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "grossPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "deductionsPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "employerPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "netPaise": {
                           "type": "integer"
@@ -116299,7 +116770,7 @@
                             "nullable": true
                           },
                           "daysInMonth": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "lopDays": {
                             "type": "number",
@@ -116355,22 +116826,22 @@
                                   "type": "string"
                                 },
                                 "paise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "fullPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "advanceId": {
                                   "type": "string"
                                 },
                                 "basePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsBasePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 }
                               },
                               "required": [
@@ -116384,24 +116855,24 @@
                             }
                           },
                           "grossPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "deductionsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "employerPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "netPaise": {
                             "type": "integer"
                           },
                           "arrearsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "tdsOverridePaise": {
                             "allOf": [
                               {
-                                "$ref": "#/properties/totals/properties/headcount"
+                                "$ref": "#/properties/payments/properties/due"
                               }
                             ],
                             "nullable": true
@@ -116419,11 +116890,62 @@
                             "enum": [
                               "BANK",
                               "CASH",
-                              "CHEQUE"
+                              "CHEQUE",
+                              "UPI"
                             ]
                           },
                           "bankLast4": {
                             "type": "string",
+                            "nullable": true
+                          },
+                          "upiMasked": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "slipRef": {
+                            "type": "string"
+                          },
+                          "payment": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "mode": {
+                                "$ref": "#/properties/slips/items/properties/paymentMode"
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/payments/properties/due"
+                              },
+                              "paidOn": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "note": {
+                                "type": "string"
+                              },
+                              "recordedByName": {
+                                "type": "string"
+                              },
+                              "createdAt": {
+                                "$ref": "#/properties/createdAt"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "mode",
+                              "amountPaise",
+                              "paidOn",
+                              "reference",
+                              "note",
+                              "recordedByName",
+                              "createdAt"
+                            ],
+                            "additionalProperties": false,
                             "nullable": true
                           },
                           "warnings": {
@@ -116452,6 +116974,9 @@
                           "notes",
                           "paymentMode",
                           "bankLast4",
+                          "upiMasked",
+                          "slipRef",
+                          "payment",
                           "warnings"
                         ],
                         "additionalProperties": false
@@ -116470,17 +116995,18 @@
                               "ESI",
                               "BANK_ADVICE",
                               "PT",
-                              "TDS_SUMMARY"
+                              "TDS_SUMMARY",
+                              "UPI_ADVICE"
                             ]
                           },
                           "fileName": {
                             "type": "string"
                           },
                           "rows": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "totalPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "createdAt": {
                             "$ref": "#/properties/createdAt"
@@ -116529,6 +117055,8 @@
                     "createdAt",
                     "lockedAt",
                     "lockedByName",
+                    "paidAt",
+                    "payments",
                     "sharedWithPrincipal",
                     "totals",
                     "slips",
@@ -116751,11 +117279,63 @@
                       "enum": [
                         "BANK",
                         "CASH",
-                        "CHEQUE"
+                        "CHEQUE",
+                        "UPI"
                       ]
                     },
                     "bankLast4": {
                       "type": "string",
+                      "nullable": true
+                    },
+                    "upiMasked": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "slipRef": {
+                      "type": "string"
+                    },
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "mode": {
+                          "$ref": "#/properties/paymentMode"
+                        },
+                        "amountPaise": {
+                          "$ref": "#/properties/daysInMonth"
+                        },
+                        "paidOn": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                        },
+                        "reference": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "note": {
+                          "type": "string"
+                        },
+                        "recordedByName": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "mode",
+                        "amountPaise",
+                        "paidOn",
+                        "reference",
+                        "note",
+                        "recordedByName",
+                        "createdAt"
+                      ],
+                      "additionalProperties": false,
                       "nullable": true
                     },
                     "warnings": {
@@ -116784,6 +117364,9 @@
                     "notes",
                     "paymentMode",
                     "bankLast4",
+                    "upiMasked",
+                    "slipRef",
+                    "payment",
                     "warnings"
                   ],
                   "additionalProperties": false
@@ -116917,7 +117500,8 @@
                       "type": "string",
                       "enum": [
                         "DRAFT",
-                        "LOCKED"
+                        "LOCKED",
+                        "PAID"
                       ]
                     },
                     "createdAt": {
@@ -116936,6 +117520,36 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "paidAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "payments": {
+                      "type": "object",
+                      "properties": {
+                        "due": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "paid": {
+                          "$ref": "#/properties/payments/properties/due"
+                        },
+                        "paidPaise": {
+                          "$ref": "#/properties/payments/properties/due"
+                        }
+                      },
+                      "required": [
+                        "due",
+                        "paid",
+                        "paidPaise"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "sharedWithPrincipal": {
                       "type": "boolean"
                     },
@@ -116943,17 +117557,16 @@
                       "type": "object",
                       "properties": {
                         "headcount": {
-                          "type": "integer",
-                          "minimum": 0
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "grossPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "deductionsPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "employerPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "netPaise": {
                           "type": "integer"
@@ -116987,7 +117600,7 @@
                             "nullable": true
                           },
                           "daysInMonth": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "lopDays": {
                             "type": "number",
@@ -117043,22 +117656,22 @@
                                   "type": "string"
                                 },
                                 "paise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "fullPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "advanceId": {
                                   "type": "string"
                                 },
                                 "basePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsBasePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 }
                               },
                               "required": [
@@ -117072,24 +117685,24 @@
                             }
                           },
                           "grossPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "deductionsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "employerPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "netPaise": {
                             "type": "integer"
                           },
                           "arrearsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "tdsOverridePaise": {
                             "allOf": [
                               {
-                                "$ref": "#/properties/totals/properties/headcount"
+                                "$ref": "#/properties/payments/properties/due"
                               }
                             ],
                             "nullable": true
@@ -117107,11 +117720,62 @@
                             "enum": [
                               "BANK",
                               "CASH",
-                              "CHEQUE"
+                              "CHEQUE",
+                              "UPI"
                             ]
                           },
                           "bankLast4": {
                             "type": "string",
+                            "nullable": true
+                          },
+                          "upiMasked": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "slipRef": {
+                            "type": "string"
+                          },
+                          "payment": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "mode": {
+                                "$ref": "#/properties/slips/items/properties/paymentMode"
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/payments/properties/due"
+                              },
+                              "paidOn": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "note": {
+                                "type": "string"
+                              },
+                              "recordedByName": {
+                                "type": "string"
+                              },
+                              "createdAt": {
+                                "$ref": "#/properties/createdAt"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "mode",
+                              "amountPaise",
+                              "paidOn",
+                              "reference",
+                              "note",
+                              "recordedByName",
+                              "createdAt"
+                            ],
+                            "additionalProperties": false,
                             "nullable": true
                           },
                           "warnings": {
@@ -117140,6 +117804,9 @@
                           "notes",
                           "paymentMode",
                           "bankLast4",
+                          "upiMasked",
+                          "slipRef",
+                          "payment",
                           "warnings"
                         ],
                         "additionalProperties": false
@@ -117158,17 +117825,18 @@
                               "ESI",
                               "BANK_ADVICE",
                               "PT",
-                              "TDS_SUMMARY"
+                              "TDS_SUMMARY",
+                              "UPI_ADVICE"
                             ]
                           },
                           "fileName": {
                             "type": "string"
                           },
                           "rows": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "totalPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "createdAt": {
                             "$ref": "#/properties/createdAt"
@@ -117217,6 +117885,8 @@
                     "createdAt",
                     "lockedAt",
                     "lockedByName",
+                    "paidAt",
+                    "payments",
                     "sharedWithPrincipal",
                     "totals",
                     "slips",
@@ -117334,7 +118004,8 @@
                       "type": "string",
                       "enum": [
                         "DRAFT",
-                        "LOCKED"
+                        "LOCKED",
+                        "PAID"
                       ]
                     },
                     "createdAt": {
@@ -117353,6 +118024,36 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "paidAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "payments": {
+                      "type": "object",
+                      "properties": {
+                        "due": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "paid": {
+                          "$ref": "#/properties/payments/properties/due"
+                        },
+                        "paidPaise": {
+                          "$ref": "#/properties/payments/properties/due"
+                        }
+                      },
+                      "required": [
+                        "due",
+                        "paid",
+                        "paidPaise"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "sharedWithPrincipal": {
                       "type": "boolean"
                     },
@@ -117360,17 +118061,16 @@
                       "type": "object",
                       "properties": {
                         "headcount": {
-                          "type": "integer",
-                          "minimum": 0
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "grossPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "deductionsPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "employerPaise": {
-                          "$ref": "#/properties/totals/properties/headcount"
+                          "$ref": "#/properties/payments/properties/due"
                         },
                         "netPaise": {
                           "type": "integer"
@@ -117404,7 +118104,7 @@
                             "nullable": true
                           },
                           "daysInMonth": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "lopDays": {
                             "type": "number",
@@ -117460,22 +118160,22 @@
                                   "type": "string"
                                 },
                                 "paise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "fullPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "advanceId": {
                                   "type": "string"
                                 },
                                 "basePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsBasePaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 },
                                 "epsPaise": {
-                                  "$ref": "#/properties/totals/properties/headcount"
+                                  "$ref": "#/properties/payments/properties/due"
                                 }
                               },
                               "required": [
@@ -117489,24 +118189,24 @@
                             }
                           },
                           "grossPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "deductionsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "employerPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "netPaise": {
                             "type": "integer"
                           },
                           "arrearsPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "tdsOverridePaise": {
                             "allOf": [
                               {
-                                "$ref": "#/properties/totals/properties/headcount"
+                                "$ref": "#/properties/payments/properties/due"
                               }
                             ],
                             "nullable": true
@@ -117524,11 +118224,62 @@
                             "enum": [
                               "BANK",
                               "CASH",
-                              "CHEQUE"
+                              "CHEQUE",
+                              "UPI"
                             ]
                           },
                           "bankLast4": {
                             "type": "string",
+                            "nullable": true
+                          },
+                          "upiMasked": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "slipRef": {
+                            "type": "string"
+                          },
+                          "payment": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "mode": {
+                                "$ref": "#/properties/slips/items/properties/paymentMode"
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/payments/properties/due"
+                              },
+                              "paidOn": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "note": {
+                                "type": "string"
+                              },
+                              "recordedByName": {
+                                "type": "string"
+                              },
+                              "createdAt": {
+                                "$ref": "#/properties/createdAt"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "mode",
+                              "amountPaise",
+                              "paidOn",
+                              "reference",
+                              "note",
+                              "recordedByName",
+                              "createdAt"
+                            ],
+                            "additionalProperties": false,
                             "nullable": true
                           },
                           "warnings": {
@@ -117557,6 +118308,9 @@
                           "notes",
                           "paymentMode",
                           "bankLast4",
+                          "upiMasked",
+                          "slipRef",
+                          "payment",
                           "warnings"
                         ],
                         "additionalProperties": false
@@ -117575,17 +118329,18 @@
                               "ESI",
                               "BANK_ADVICE",
                               "PT",
-                              "TDS_SUMMARY"
+                              "TDS_SUMMARY",
+                              "UPI_ADVICE"
                             ]
                           },
                           "fileName": {
                             "type": "string"
                           },
                           "rows": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "totalPaise": {
-                            "$ref": "#/properties/totals/properties/headcount"
+                            "$ref": "#/properties/payments/properties/due"
                           },
                           "createdAt": {
                             "$ref": "#/properties/createdAt"
@@ -117634,6 +118389,8 @@
                     "createdAt",
                     "lockedAt",
                     "lockedByName",
+                    "paidAt",
+                    "payments",
                     "sharedWithPrincipal",
                     "totals",
                     "slips",
@@ -117720,7 +118477,7 @@
     },
     "/api/v1/admin/payroll/runs/{month}/export/{kind}": {
       "get": {
-        "summary": "A file cut from a LOCKED run — pf-ecr (EPFO ECR text), esi, bank-advice (the sealed accounts opened into the file alone), pt, tds — with its SHA-256 kept; audited",
+        "summary": "A file cut from a LOCKED or PAID run — pf-ecr (EPFO ECR text), esi, bank-advice (the sealed accounts opened into the file alone), upi-advice (name, the sealed UPI id opened into the file alone, amount, slip ref), pt, tds — with its SHA-256 kept; audited",
         "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
@@ -117747,7 +118504,8 @@
                         "ESI",
                         "BANK_ADVICE",
                         "PT",
-                        "TDS_SUMMARY"
+                        "TDS_SUMMARY",
+                        "UPI_ADVICE"
                       ]
                     },
                     "filename": {
@@ -117832,6 +118590,910 @@
           },
           {
             "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/payroll/runs/{month}/payments/{membershipId}": {
+      "post": {
+        "summary": "Record how the school paid one slip of a LOCKED run (bank, UPI, cheque or cash; the slip's whole net, a partial refused 422; the UTR or cheque number; the day): one live payment per slip, the same press twice answered with the first and a different one 409; the last slip paid makes the run PAID; audited",
+        "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "ACCOUNTS"
+        ],
+        "x-module": "PAYROLL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "slip": {
+                      "type": "object",
+                      "properties": {
+                        "membershipId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "department": {
+                          "type": "string"
+                        },
+                        "designation": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "daysInMonth": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "lopDays": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "paidDays": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "lines": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "BASIC",
+                                      "HRA",
+                                      "DA",
+                                      "CONVEYANCE",
+                                      "SPECIAL",
+                                      "OTHER_EARNING",
+                                      "PF_EMPLOYEE",
+                                      "PF_EMPLOYER",
+                                      "ESI_EMPLOYEE",
+                                      "ESI_EMPLOYER",
+                                      "PT",
+                                      "TDS",
+                                      "ADVANCE",
+                                      "OTHER_DEDUCTION"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "ARREARS"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "EARNING",
+                                  "DEDUCTION",
+                                  "EMPLOYER_CONTRIBUTION"
+                                ]
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "paise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "fullPaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "advanceId": {
+                                "type": "string"
+                              },
+                              "basePaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "epsBasePaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "epsPaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "kind",
+                              "label",
+                              "paise",
+                              "fullPaise"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "grossPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "deductionsPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "employerPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "netPaise": {
+                          "type": "integer"
+                        },
+                        "arrearsPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "tdsOverridePaise": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/slip/properties/daysInMonth"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "lopOverrideDays": {
+                          "type": "number",
+                          "minimum": 0,
+                          "nullable": true
+                        },
+                        "notes": {
+                          "type": "string"
+                        },
+                        "paymentMode": {
+                          "type": "string",
+                          "enum": [
+                            "BANK",
+                            "CASH",
+                            "CHEQUE",
+                            "UPI"
+                          ]
+                        },
+                        "bankLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "upiMasked": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "slipRef": {
+                          "type": "string"
+                        },
+                        "payment": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "mode": {
+                              "$ref": "#/properties/slip/properties/paymentMode"
+                            },
+                            "amountPaise": {
+                              "$ref": "#/properties/slip/properties/daysInMonth"
+                            },
+                            "paidOn": {
+                              "type": "string",
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                            },
+                            "reference": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "note": {
+                              "type": "string"
+                            },
+                            "recordedByName": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "mode",
+                            "amountPaise",
+                            "paidOn",
+                            "reference",
+                            "note",
+                            "recordedByName",
+                            "createdAt"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "warnings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "membershipId",
+                        "name",
+                        "department",
+                        "designation",
+                        "daysInMonth",
+                        "lopDays",
+                        "paidDays",
+                        "lines",
+                        "grossPaise",
+                        "deductionsPaise",
+                        "employerPaise",
+                        "netPaise",
+                        "arrearsPaise",
+                        "tdsOverridePaise",
+                        "lopOverrideDays",
+                        "notes",
+                        "paymentMode",
+                        "bankLast4",
+                        "upiMasked",
+                        "slipRef",
+                        "payment",
+                        "warnings"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "DRAFT",
+                        "LOCKED",
+                        "PAID"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "slip",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amountPaise": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000000000
+                  },
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "BANK",
+                      "CASH",
+                      "CHEQUE",
+                      "UPI"
+                    ]
+                  },
+                  "paidOn": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "reference": {
+                    "type": "string",
+                    "maxLength": 22,
+                    "default": ""
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "amountPaise",
+                  "mode",
+                  "paidOn"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "month",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/payroll/runs/{month}/payments/{membershipId}/void": {
+      "post": {
+        "summary": "Set a recorded payment aside with a reason (kept on the row, not in the log): the slip is unpaid again and a PAID run LOCKED; 409 when nothing is recorded; audited",
+        "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "ACCOUNTS"
+        ],
+        "x-module": "PAYROLL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "slip": {
+                      "type": "object",
+                      "properties": {
+                        "membershipId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "department": {
+                          "type": "string"
+                        },
+                        "designation": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "daysInMonth": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "lopDays": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "paidDays": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "lines": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "BASIC",
+                                      "HRA",
+                                      "DA",
+                                      "CONVEYANCE",
+                                      "SPECIAL",
+                                      "OTHER_EARNING",
+                                      "PF_EMPLOYEE",
+                                      "PF_EMPLOYER",
+                                      "ESI_EMPLOYEE",
+                                      "ESI_EMPLOYER",
+                                      "PT",
+                                      "TDS",
+                                      "ADVANCE",
+                                      "OTHER_DEDUCTION"
+                                    ]
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "ARREARS"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "EARNING",
+                                  "DEDUCTION",
+                                  "EMPLOYER_CONTRIBUTION"
+                                ]
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "paise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "fullPaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "advanceId": {
+                                "type": "string"
+                              },
+                              "basePaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "epsBasePaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              },
+                              "epsPaise": {
+                                "$ref": "#/properties/slip/properties/daysInMonth"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "kind",
+                              "label",
+                              "paise",
+                              "fullPaise"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "grossPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "deductionsPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "employerPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "netPaise": {
+                          "type": "integer"
+                        },
+                        "arrearsPaise": {
+                          "$ref": "#/properties/slip/properties/daysInMonth"
+                        },
+                        "tdsOverridePaise": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/slip/properties/daysInMonth"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "lopOverrideDays": {
+                          "type": "number",
+                          "minimum": 0,
+                          "nullable": true
+                        },
+                        "notes": {
+                          "type": "string"
+                        },
+                        "paymentMode": {
+                          "type": "string",
+                          "enum": [
+                            "BANK",
+                            "CASH",
+                            "CHEQUE",
+                            "UPI"
+                          ]
+                        },
+                        "bankLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "upiMasked": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "slipRef": {
+                          "type": "string"
+                        },
+                        "payment": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "mode": {
+                              "$ref": "#/properties/slip/properties/paymentMode"
+                            },
+                            "amountPaise": {
+                              "$ref": "#/properties/slip/properties/daysInMonth"
+                            },
+                            "paidOn": {
+                              "type": "string",
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                            },
+                            "reference": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "note": {
+                              "type": "string"
+                            },
+                            "recordedByName": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "mode",
+                            "amountPaise",
+                            "paidOn",
+                            "reference",
+                            "note",
+                            "recordedByName",
+                            "createdAt"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "warnings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "membershipId",
+                        "name",
+                        "department",
+                        "designation",
+                        "daysInMonth",
+                        "lopDays",
+                        "paidDays",
+                        "lines",
+                        "grossPaise",
+                        "deductionsPaise",
+                        "employerPaise",
+                        "netPaise",
+                        "arrearsPaise",
+                        "tdsOverridePaise",
+                        "lopOverrideDays",
+                        "notes",
+                        "paymentMode",
+                        "bankLast4",
+                        "upiMasked",
+                        "slipRef",
+                        "payment",
+                        "warnings"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "DRAFT",
+                        "LOCKED",
+                        "PAID"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "slip",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "month",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/payroll/runs/{month}/payments/sheet": {
+      "post": {
+        "summary": "The UTR sheet as CSV (Slip Ref, UTR, Date, optional Amount) from the bank or the UPI app: every line checked (unknown ref, wrong amount, bad date or UTR, a UTR already used, a slip paid otherwise), all recorded or none, each line's outcome answered",
+        "description": "Roles: ADMIN, ACCOUNTS. Only while the school has PAYROLL switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "ACCOUNTS"
+        ],
+        "x-module": "PAYROLL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accepted": {
+                      "type": "boolean"
+                    },
+                    "recorded": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "already": {
+                      "$ref": "#/properties/recorded"
+                    },
+                    "refused": {
+                      "$ref": "#/properties/recorded"
+                    },
+                    "lines": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "line": {
+                            "$ref": "#/properties/recorded"
+                          },
+                          "slipRef": {
+                            "type": "string"
+                          },
+                          "outcome": {
+                            "type": "string",
+                            "enum": [
+                              "RECORDED",
+                              "ALREADY",
+                              "REFUSED"
+                            ]
+                          },
+                          "reason": {
+                            "type": "string",
+                            "enum": [
+                              "UNKNOWN_REF",
+                              "DUPLICATE_LINE",
+                              "NOTHING_DUE",
+                              "AMOUNT",
+                              "DATE",
+                              "REFERENCE",
+                              "MODE",
+                              "PAID_OTHERWISE",
+                              "UTR_TAKEN"
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "line",
+                          "slipRef",
+                          "outcome",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "DRAFT",
+                        "LOCKED",
+                        "PAID"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "accepted",
+                    "recorded",
+                    "already",
+                    "refused",
+                    "lines",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "csv": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200000
+                  }
+                },
+                "required": [
+                  "csv"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "month",
             "in": "path",
             "required": true,
             "schema": {
@@ -118648,8 +120310,8 @@
     },
     "/api/v1/account/payslips": {
       "get": {
-        "summary": "My locked payslips, the structure I am paid on (not anyone else's), my advances and the years I have a statement for",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has PAYROLL switched on.",
+        "summary": "My locked payslips (each with how the school recorded paying it: the day, the mode and the reference), the structure I am paid on (not anyone else's), my advances and the years I have a statement for",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, SUPPORT. Only while the school has PAYROLL switched on.",
         "security": [
           {
             "bearer": []
@@ -118667,7 +120329,8 @@
           "EXAM_CONTROLLER",
           "IQAC",
           "TPO",
-          "ACCOUNTS"
+          "ACCOUNTS",
+          "SUPPORT"
         ],
         "x-module": "PAYROLL",
         "responses": {
@@ -118778,6 +120441,38 @@
                           "lockedAt": {
                             "type": "string",
                             "format": "date-time"
+                          },
+                          "payment": {
+                            "type": "object",
+                            "properties": {
+                              "mode": {
+                                "type": "string",
+                                "enum": [
+                                  "BANK",
+                                  "CASH",
+                                  "CHEQUE",
+                                  "UPI"
+                                ]
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/structure/properties/basicPaise"
+                              },
+                              "paidOn": {
+                                "$ref": "#/properties/structure/properties/effectiveFrom"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "mode",
+                              "amountPaise",
+                              "paidOn",
+                              "reference"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -118785,7 +120480,8 @@
                           "grossPaise",
                           "deductionsPaise",
                           "netPaise",
-                          "lockedAt"
+                          "lockedAt",
+                          "payment"
                         ],
                         "additionalProperties": false
                       }
@@ -118931,7 +120627,7 @@
     "/api/v1/account/payslips/statement": {
       "get": {
         "summary": "My yearly earnings statement (?year=2026-27)",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has PAYROLL switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, SUPPORT. Only while the school has PAYROLL switched on.",
         "security": [
           {
             "bearer": []
@@ -118949,7 +120645,8 @@
           "EXAM_CONTROLLER",
           "IQAC",
           "TPO",
-          "ACCOUNTS"
+          "ACCOUNTS",
+          "SUPPORT"
         ],
         "x-module": "PAYROLL",
         "responses": {
@@ -119126,7 +120823,7 @@
     "/api/v1/account/payslips/{month}/pdf": {
       "get": {
         "summary": "My payslip for a locked month as a PDF (application/pdf), in my language",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has PAYROLL switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, SUPPORT. Only while the school has PAYROLL switched on.",
         "security": [
           {
             "bearer": []
@@ -119144,7 +120841,8 @@
           "EXAM_CONTROLLER",
           "IQAC",
           "TPO",
-          "ACCOUNTS"
+          "ACCOUNTS",
+          "SUPPORT"
         ],
         "x-module": "PAYROLL",
         "responses": {
@@ -180815,7 +182513,8 @@
                                           "IQAC",
                                           "TPO",
                                           "ACCOUNTS",
-                                          "RECRUITER"
+                                          "RECRUITER",
+                                          "SUPPORT"
                                         ]
                                       }
                                     },
@@ -181380,7 +183079,8 @@
                                     "IQAC",
                                     "TPO",
                                     "ACCOUNTS",
-                                    "RECRUITER"
+                                    "RECRUITER",
+                                    "SUPPORT"
                                   ]
                                 }
                               },
@@ -181919,7 +183619,8 @@
                                     "IQAC",
                                     "TPO",
                                     "ACCOUNTS",
-                                    "RECRUITER"
+                                    "RECRUITER",
+                                    "SUPPORT"
                                   ]
                                 }
                               },
@@ -224686,7 +226387,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ]
                           },
                           "language": {
@@ -225092,7 +226794,8 @@
                         "IQAC",
                         "TPO",
                         "ACCOUNTS",
-                        "RECRUITER"
+                        "RECRUITER",
+                        "SUPPORT"
                       ]
                     },
                     "language": {
@@ -225528,7 +227231,8 @@
                             "IQAC",
                             "TPO",
                             "ACCOUNTS",
-                            "RECRUITER"
+                            "RECRUITER",
+                            "SUPPORT"
                           ]
                         },
                         "language": {
@@ -226150,7 +227854,8 @@
                               "IQAC",
                               "TPO",
                               "ACCOUNTS",
-                              "RECRUITER"
+                              "RECRUITER",
+                              "SUPPORT"
                             ]
                           },
                           "questions": {
@@ -245205,7 +246910,7 @@
     "/api/v1/account/pass": {
       "get": {
         "summary": "The plans I hold and until when, and each pass I may buy — for myself by my role, or a guardian for each child — with its monthly and yearly price, the GST on it and the total, and whether I may pay, must ask a guardian, or it is not on sale",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -245223,7 +246928,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -246048,7 +247754,7 @@
     "/api/v1/account/pass/orders": {
       "get": {
         "summary": "The passes I paid for or hold, newest first: plan, period, for whom, the figures, the state, the window it opened and the invoice number",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -246066,7 +247772,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -246255,7 +247962,7 @@
     "/api/v1/account/pass/orders/{id}": {
       "get": {
         "summary": "One of my pass orders, with the gateway checkout while it waits for me to pay; the web's payment panel polls it",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -246273,7 +247980,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
@@ -246537,7 +248245,7 @@
     "/api/v1/account/pass/orders/{id}/invoice": {
       "get": {
         "summary": "A paid pass's GST tax invoice as a PDF (application/pdf) in the payer's language: the payer's own, the operator's any; anybody else's is not found",
-        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER.",
+        "description": "Any signed-in session but a limited role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, RECRUITER, SUPPORT.",
         "security": [
           {
             "bearer": []
@@ -246555,7 +248263,8 @@
           "IQAC",
           "TPO",
           "ACCOUNTS",
-          "RECRUITER"
+          "RECRUITER",
+          "SUPPORT"
         ],
         "responses": {
           "200": {
