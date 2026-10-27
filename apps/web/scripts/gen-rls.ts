@@ -151,6 +151,11 @@ const NO_SCHOOL_POLICY = new Set([
   // the bank belongs to no school and neither do its reviewers, exactly like QuizQuestion.
   "QuizReviewStamp",
   // ---- end review-queue ----
+  // ---- bank-duplicates-incremental (27 Oct 2026) ----
+  // The bank's own duplicates report (src/lib/bank-tools.ts findDuplicates): one row per rule,
+  // read and written by the content team's door alone; the bank belongs to no school.
+  "BankDuplicateReport",
+  // ---- end bank-duplicates-incremental ----
   // ---- quiz-publish-jobs (11 Oct 2026) ----
   // One run of the quiz bank generator started from the bank desk by the content team or the operator
   // (src/lib/quiz-jobs.ts): the bank it fills belongs to no school, and neither do the people who start it.

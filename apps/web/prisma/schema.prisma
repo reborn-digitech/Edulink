@@ -11592,3 +11592,24 @@ model SalaryPayment {
   @@index([payslipId])
 }
 // end owner-batch-item2b
+
+// ---- bank-duplicates-incremental (27 Oct 2026) ----
+/// The bank duplicates report, kept between calls and across restarts so the finder
+/// never walks the whole bank twice: one row per rule ("t" trigram, "e" exact). The
+/// bank belongs to no school and so does its report. Written by findDuplicates alone
+/// (src/lib/bank-tools.ts); the next call probes only the questions added or edited
+/// since `seenUpdatedAt` and drops pairs whose question is gone.
+model BankDuplicateReport {
+  /// "t" (trigram similarity) or "e" (exact normalised stem).
+  mode             String    @id
+  /// The bank as this report saw it: the count of questions and the newest updatedAt.
+  bankCount        Int
+  bankMaxUpdatedAt DateTime?
+  /// The newest updatedAt among the questions the report has looked at.
+  seenUpdatedAt    DateTime?
+  computedAt       DateTime
+  /// Every pair at or above the rule's threshold, JSON [{ aId, bId, similarity }], aId < bId; the answer takes the top 200.
+  pairs            String
+  updatedAt        DateTime  @updatedAt
+}
+// ---- end bank-duplicates-incremental ----

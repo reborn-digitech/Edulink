@@ -252,7 +252,7 @@ export type DuplicatesReport = {
 
 export const DUPLICATE_THRESHOLD = 0.8;
 const DUPLICATE_LIMIT = 200;
-/** The trigram pass over 7,000 questions is five seconds of database time (one index probe per row); the transaction gets room for a bank several times that size. */
+/** A full trigram pass is one index probe per question (16 s over 15,875 on the dev box); the transaction gets room for a bank several times that size, and the pass runs once. */
 const DUPLICATE_TIMEOUT_MS = 120_000;
 
 /** The normalising expression, spelt once: bank-csv.ts normaliseStem in SQL, and the expression the trigram index is built on. */
@@ -269,13 +269,85 @@ export async function trigramAvailable(): Promise<boolean> {
   return trigramKnown;
 }
 
-/** The last report of each rule, kept while the bank is as it was: the count of questions and the newest edit name a bank. */
-const lastReport = new Map<"t" | "e", { key: string; report: DuplicatesReport }>();
+type RawPair = { aId: string; bId: string; similarity: number };
 
-/** For tests: forget what was learnt about the extension and the last report. */
+/** What the finder knows of one rule's report: the stored row, hydrated once per process. */
+type KeptReport = {
+  key: string;
+  seenUpdatedAt: Date | null;
+  raw: RawPair[];
+  report: DuplicatesReport;
+};
+
+/** The report of each rule, kept while the bank is as it was: the count of questions and the newest edit name a bank. */
+const lastReport = new Map<"t" | "e", KeptReport>();
+
+/** Every pair the finder keeps per rule: well above the hundreds a bank of 16,000 questions holds at 0.8; beyond it the lowest similarities are let go. */
+const PAIR_CAP = 5_000;
+/** More changed questions than this and the full pass is cheaper than probing them one by one. */
+const FULL_PASS_ABOVE = 2_000;
+/** A question committed just after a pass may carry an updatedAt a little older than the pass saw: probe that margin again. */
+const SEEN_MARGIN_MS = 60_000;
+
+let lastPass: { full: boolean; probed: number; loaded: boolean } = { full: false, probed: 0, loaded: false };
+
+/** For tests: forget what was learnt about the extension and the reports held in memory (the stored rows stay). */
 export function __resetDuplicates(): void {
   trigramKnown = null;
   lastReport.clear();
+  lastPass = { full: false, probed: 0, loaded: false };
+}
+
+/** For tests: how the last findDuplicates call got its answer — a full pass, how many questions it probed, whether it loaded the stored row. */
+export function __lastDuplicatesPass(): { full: boolean; probed: number; loaded: boolean } {
+  return { ...lastPass };
+}
+
+/** The ids the pass must keep apart from the SQL text: a question id is a cuid, letters and digits only. */
+function assertPlainIds(ids: string[]): void {
+  for (const id of ids) if (!/^[a-z0-9]+$/i.test(id)) throw new Error(`bank duplicates: not a question id: ${id}`);
+}
+
+/**
+ * The pairs at or above the rule's threshold. With `onlyIds` the left side is those
+ * questions alone against the whole bank (both ways round, put in id order and made
+ * unique here); without it the whole bank against itself, each pair once.
+ */
+async function pairsFor(trigram: boolean, onlyIds: string[] | null): Promise<RawPair[]> {
+  const select = `a."id" AS "aId", b."id" AS "bId"`;
+  const joinOn = onlyIds ? `a."id" <> b."id"` : `a."id" < b."id"`;
+  const only = onlyIds ? ` AND a."id" IN (${onlyIds.map((id) => `'${id}'`).join(",")})` : "";
+  if (onlyIds) {
+    if (onlyIds.length === 0) return [];
+    assertPlainIds(onlyIds);
+  }
+  const from = `FROM "QuizQuestion" a JOIN "QuizQuestion" b ON ${joinOn}${only}`;
+  const rows = trigram
+    ? await db.$tenantTransaction(
+        async (client) => {
+          const tx = client as Prisma.TransactionClient;
+          await tx.$executeRaw`
+            SELECT set_config('pg_trgm.similarity_threshold', ${String(DUPLICATE_THRESHOLD)}, true)`;
+          return tx.$queryRaw<RawPair[]>(
+            Prisma.raw(
+              `SELECT ${select}, similarity(${NORM('a."stem"')}, ${NORM('b."stem"')})::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} % ${NORM('b."stem"')} ORDER BY 3 DESC, 1, 2 LIMIT ${PAIR_CAP}`,
+            ),
+          );
+        },
+        { timeout: DUPLICATE_TIMEOUT_MS, maxWait: 10_000 },
+      )
+    : await db.$queryRaw<RawPair[]>(Prisma.raw(`SELECT ${select}, 1::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} = ${NORM('b."stem"')} ORDER BY 1, 2 LIMIT ${PAIR_CAP}`));
+  if (!onlyIds) return rows;
+  const seen = new Map<string, RawPair>();
+  for (const r of rows) {
+    const [aId, bId] = r.aId < r.bId ? [r.aId, r.bId] : [r.bId, r.aId];
+    if (!seen.has(`${aId}|${bId}`)) seen.set(`${aId}|${bId}`, { aId, bId, similarity: r.similarity });
+  }
+  return [...seen.values()];
+}
+
+function orderPairs(pairs: RawPair[]): RawPair[] {
+  return pairs.sort((x, y) => y.similarity - x.similarity || (x.aId < y.aId ? -1 : x.aId > y.aId ? 1 : x.bId < y.bId ? -1 : x.bId > y.bId ? 1 : 0)).slice(0, PAIR_CAP);
 }
 
 /**
@@ -287,12 +359,16 @@ export function __resetDuplicates(): void {
  * Across chapters as well as within one: the same question in Class 6 and
  * Class 7 is the usual finding.
  *
- * SECONDS, NOT MILLISECONDS: the index is probed once per question (0.7 ms
- * each on the dev box, 4.8 s over 6,954 questions; a GiST index was twice
- * as slow), so the report is computed once and kept in memory until a
- * question is added, edited or removed, and the route budgets the call.
- * The transaction is $tenantTransaction with its timeout raised for the
- * pass; the tables have no policy, so the tenant it binds is beside the point.
+ * ONCE OVER THE WHOLE BANK, THEN ONLY WHAT CHANGED: a full pass probes the
+ * index once per question (about a millisecond each, 16 s over 15,875
+ * questions on the dev box, and growing with the bank), so the report is
+ * stored (BankDuplicateReport, one row per rule) and the next call probes only
+ * the questions added or edited since the stored pass — a handful of
+ * milliseconds while the generator adds thirty an hour — and drops pairs whose
+ * question is gone. An unchanged bank (same count, same newest edit) answers
+ * the report held in memory without touching the bank. The transaction is
+ * $tenantTransaction with its timeout raised for the pass; the tables have no
+ * policy, so the tenant it binds is beside the point.
  */
 export async function findDuplicates(session: ActiveContext, opts: { trigram?: boolean } = {}): Promise<DuplicatesReport> {
   assertAppAdmin(session);
@@ -300,34 +376,71 @@ export async function findDuplicates(session: ActiveContext, opts: { trigram?: b
   const shape = await db.quizQuestion.aggregate({ _count: { _all: true }, _max: { updatedAt: true } });
   const mode = trigram ? "t" : "e";
   const key = `${shape._count._all}|${shape._max.updatedAt?.getTime() ?? 0}`;
-  const kept = lastReport.get(mode);
-  if (kept?.key === key) return kept.report;
+  let kept = lastReport.get(mode);
+  let loaded = false;
+  if (!kept) {
+    const row = await db.bankDuplicateReport.findUnique({ where: { mode } });
+    if (row) {
+      const raw = JSON.parse(row.pairs) as RawPair[];
+      kept = { key: `${row.bankCount}|${row.bankMaxUpdatedAt?.getTime() ?? 0}`, seenUpdatedAt: row.seenUpdatedAt, raw, report: await hydrate(trigram, raw, row.computedAt) };
+      lastReport.set(mode, kept);
+      loaded = true;
+    }
+  }
+  if (kept?.key === key) {
+    lastPass = { full: false, probed: 0, loaded };
+    return kept.report;
+  }
 
-  const select = `a."id" AS "aId", b."id" AS "bId"`;
-  const from = `FROM "QuizQuestion" a JOIN "QuizQuestion" b ON a."id" < b."id"`;
-  type Pair = { aId: string; bId: string; similarity: number };
-  const raw = trigram
-    ? await db.$tenantTransaction(
-        async (client) => {
-          const tx = client as Prisma.TransactionClient;
-          await tx.$executeRaw`
-            SELECT set_config('pg_trgm.similarity_threshold', ${String(DUPLICATE_THRESHOLD)}, true)`;
-          return tx.$queryRaw<Pair[]>(
-            Prisma.raw(
-              `SELECT ${select}, similarity(${NORM('a."stem"')}, ${NORM('b."stem"')})::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} % ${NORM('b."stem"')} ORDER BY 3 DESC, 1, 2 LIMIT ${DUPLICATE_LIMIT}`,
-            ),
-          );
-        },
-        { timeout: DUPLICATE_TIMEOUT_MS, maxWait: 10_000 },
-      )
-    : await db.$queryRaw<Pair[]>(Prisma.raw(`SELECT ${select}, 1::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} = ${NORM('b."stem"')} ORDER BY 1, 2 LIMIT ${DUPLICATE_LIMIT}`));
-  const ids = [...new Set(raw.flatMap((r) => [r.aId, r.bId]))];
+  let raw: RawPair[];
+  let full = false;
+  let probed = 0;
+  const changed = kept
+    ? await db.quizQuestion.findMany({
+        where: kept.seenUpdatedAt ? { updatedAt: { gt: new Date(kept.seenUpdatedAt.getTime() - SEEN_MARGIN_MS) } } : {},
+        select: { id: true },
+      })
+    : null;
+  if (!kept || !changed || changed.length > FULL_PASS_ABOVE) {
+    raw = await pairsFor(trigram, null);
+    full = true;
+  } else {
+    const changedIds = changed.map((c) => c.id);
+    const changedSet = new Set(changedIds);
+    const survivors = kept.raw.filter((p) => !changedSet.has(p.aId) && !changedSet.has(p.bId));
+    // A question that is gone takes its pairs with it.
+    const ids = [...new Set(survivors.flatMap((p) => [p.aId, p.bId]))];
+    const present = new Set((ids.length ? await db.quizQuestion.findMany({ where: { id: { in: ids } }, select: { id: true } }) : []).map((q) => q.id));
+    const stillThere = survivors.filter((p) => present.has(p.aId) && present.has(p.bId));
+    const added = await pairsFor(trigram, changedIds);
+    probed = changedIds.length;
+    const merged = new Map<string, RawPair>();
+    for (const p of [...stillThere, ...added]) merged.set(`${p.aId}|${p.bId}`, p);
+    raw = [...merged.values()];
+  }
+  raw = orderPairs(raw);
+  const computedAt = new Date();
+  await db.bankDuplicateReport.upsert({
+    where: { mode },
+    create: { mode, bankCount: shape._count._all, bankMaxUpdatedAt: shape._max.updatedAt, seenUpdatedAt: shape._max.updatedAt, computedAt, pairs: JSON.stringify(raw) },
+    update: { bankCount: shape._count._all, bankMaxUpdatedAt: shape._max.updatedAt, seenUpdatedAt: shape._max.updatedAt, computedAt, pairs: JSON.stringify(raw) },
+  });
+  const report = await hydrate(trigram, raw, computedAt);
+  lastReport.set(mode, { key, seenUpdatedAt: shape._max.updatedAt, raw, report });
+  lastPass = { full, probed, loaded };
+  return report;
+}
+
+/** The answer's top pairs with their questions named; a pair whose question is gone is left out. */
+async function hydrate(trigram: boolean, raw: RawPair[], computedAt: Date): Promise<DuplicatesReport> {
+  const top = raw.slice(0, DUPLICATE_LIMIT);
+  const ids = [...new Set(top.flatMap((r) => [r.aId, r.bId]))];
   const questions = ids.length
     ? await db.quizQuestion.findMany({ where: { id: { in: ids } }, select: { id: true, stem: true, topic: { select: { id: true, name: true, classLevel: true } } } })
     : [];
   const byId = new Map(questions.map((q) => [q.id, { id: q.id, topicId: q.topic.id, topicName: q.topic.name, classLevel: q.topic.classLevel, stem: q.stem }]));
   const pairs: DuplicatePair[] = [];
-  for (const r of raw) {
+  for (const r of top) {
     const a = byId.get(r.aId);
     const b = byId.get(r.bId);
     if (!a || !b) continue;
@@ -335,9 +448,7 @@ export async function findDuplicates(session: ActiveContext, opts: { trigram?: b
     const exact = normaliseStem(a.stem) === normaliseStem(b.stem);
     pairs.push({ similarity: exact ? 1 : Math.round(r.similarity * 1000) / 1000, a, b });
   }
-  const report = { trigram, threshold: trigram ? DUPLICATE_THRESHOLD : 1, pairs, computedAt: new Date() };
-  lastReport.set(mode, { key, report });
-  return report;
+  return { trigram, threshold: trigram ? DUPLICATE_THRESHOLD : 1, pairs, computedAt };
 }
 
 /* -------------------------------------------------------------------------- */

@@ -3,7 +3,7 @@ import { requireApiAppAdmin } from "@/lib/tenancy";
 import { findDuplicates } from "@/lib/bank-tools";
 import { apiFailure, budget, ok } from "@/lib/api-v1";
 
-/** Twelve an hour a person: the trigram pass is seconds of database time over the whole bank. */
+/** Twelve an hour a person: the first pass walks the whole bank (seconds of database time); each call after it probes only what changed and answers from the stored report. */
 const DUPLICATES_BUDGET = { limit: 12, windowMs: 60 * 60 * 1000 };
 
 /** GET /api/v1/appadmin/bank/duplicates — near-duplicate stems across the bank; `trigram` says which rule ran. */

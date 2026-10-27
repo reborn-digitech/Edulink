@@ -15,7 +15,7 @@ import { AccessError } from "@/lib/tenancy";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { bankToCsv, normaliseStem, parseBankCsv } from "@/lib/bank-csv";
-import { commitBankImport, exportBank, findDuplicates, previewBankImport, questionStats, rebuildQuestionStats, statsFor, trigramAvailable } from "@/lib/bank-tools";
+import { __lastDuplicatesPass, __resetDuplicates, commitBankImport, exportBank, findDuplicates, previewBankImport, questionStats, rebuildQuestionStats, statsFor, trigramAvailable } from "@/lib/bank-tools";
 import { startAttempt, submitAnswer, ANSWER_SECONDS_CAP } from "@/lib/quiz";
 import { POST as importPost } from "@/app/api/v1/appadmin/bank/import/route";
 import { GET as exportGet } from "@/app/api/v1/appadmin/bank/export/route";
@@ -174,7 +174,40 @@ describe("import, export, duplicates", () => {
       expect((await findDuplicates(curator(), { trigram: false })).pairs.some((p) => [p.a.stem, p.b.stem].some((s) => s.endsWith("city of France?")))).toBe(false);
       // Unchanged bank: the same report, not a second pass.
       expect((await findDuplicates(curator())).computedAt).toBe(near.computedAt);
+      expect(__lastDuplicatesPass()).toMatchObject({ full: false, probed: 0 });
     }
+  }, 60_000);
+
+  it("the report grows with the bank, not from it: only the questions that changed are probed, a deleted question takes its pairs away, and a fresh process starts from the stored row", async () => {
+    const trigram = await trigramAvailable();
+    const before = await findDuplicates(curator());
+    const mine = (r: Awaited<ReturnType<typeof findDuplicates>>) => r.pairs.filter((p) => p.a.topicId === topicId && p.b.topicId === topicId);
+    // One more exact copy: one question probed, the pair found, the rest of the report kept.
+    const copy = await db.quizQuestion.create({ data: { topicId, difficulty: 2, stem: `${STEM_A} `, choices: JSON.stringify(["Paris", "Madrid"]), answerIndex: 0, solution: "Paris.", source: "ZZ test", licence: "test" } });
+    const after = await findDuplicates(curator());
+    // The copy, and whatever else this test wrote in the last minute (the margin): a handful, never the bank.
+    const pass = __lastDuplicatesPass();
+    expect(pass.full).toBe(false);
+    expect(pass.probed).toBeGreaterThanOrEqual(1);
+    expect(pass.probed).toBeLessThan(50);
+    expect(after.computedAt).not.toBe(before.computedAt);
+    expect(mine(after).filter((p) => p.a.id === copy.id || p.b.id === copy.id).length).toBeGreaterThanOrEqual(2);
+    expect(after.pairs.length).toBeGreaterThanOrEqual(before.pairs.length);
+    // Gone: its pairs go with it, without a full pass.
+    await db.quizQuestion.delete({ where: { id: copy.id } });
+    const gone = await findDuplicates(curator());
+    expect(__lastDuplicatesPass().full).toBe(false);
+    expect(__lastDuplicatesPass().probed).toBeLessThan(50);
+    expect(gone.pairs.some((p) => p.a.id === copy.id || p.b.id === copy.id)).toBe(false);
+    expect(mine(gone).map((p) => [p.a.stem, p.b.stem].sort())).toEqual(mine(before).map((p) => [p.a.stem, p.b.stem].sort()));
+    // A fresh process: the stored row, not a pass over the bank.
+    __resetDuplicates();
+    const fresh = await findDuplicates(curator());
+    expect(__lastDuplicatesPass()).toMatchObject({ full: false, probed: 0, loaded: true });
+    expect(fresh.pairs.map((p) => [p.a.id, p.b.id])).toEqual(gone.pairs.map((p) => [p.a.id, p.b.id]));
+    expect(fresh.trigram).toBe(trigram);
+    const row = await db.bankDuplicateReport.findUniqueOrThrow({ where: { mode: trigram ? "t" : "e" } });
+    expect(row.bankCount).toBe(await db.quizQuestion.count());
   }, 60_000);
 });
 

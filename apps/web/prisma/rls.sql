@@ -3648,6 +3648,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   AssistantEvalJob
 --   AssistantGapStem
 --   AuthToken
+--   BankDuplicateReport
 --   CachedAnswer
 --   CommissionPartner
 --   Company
