@@ -1,3 +1,4 @@
+import { useEffect, useState, type ReactNode } from "react";
 import { Pressable, View } from "react-native";
 import { usePathname, useRouter } from "expo-router";
 import { isLimitedRoleCode, type RoleCode } from "@edulink/contracts";
@@ -7,7 +8,8 @@ import { Avatar } from "@/components/avatar";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { menuFor, MENU_GROUP_KEY, type MenuItem, featuresOf } from "@/lib/nav";
+import { menuFor, MENU_GROUP_KEY, MENU_GROUPS_CLOSED_BY_DEFAULT, ME_MENU_GROUP, menuOpenKey, type MenuGroup, type MenuItem, featuresOf } from "@/lib/nav";
+import { keyStore } from "@/lib/storage";
 import { contextPlace } from "@/lib/institution";
 import { LanguageRow } from "@/components/language-row";
 import { openWeb } from "@/screens/family/shared";
@@ -16,8 +18,11 @@ import { useSaveLocaleToAccount } from "@/lib/account-locale";
 
 /**
  * More: everything the web's rail and More sheet list for this role that
- * the bar does not carry — grouped the web's way (Day to day, School life,
- * Running things) — then where the person belongs (the account page's
+ * the bar does not carry — the person's own pages first ("Me": my letters,
+ * payslips, items, profile, the web's account menu), then grouped the web's
+ * way (the office's and the head's seven, every other role's Day to day,
+ * School life, Running things), each group opening and closing and the
+ * choice kept on the phone (27 Oct 2026, item 3) — then where the person belongs (the account page's
  * "Where you belong"), the language, notifications, a way to report a
  * problem, and sign out. An entry the phone has no screen for opens the
  * same page on the web and says so on its row, so nobody taps into a
@@ -34,6 +39,8 @@ export function More() {
   // The language goes to the account too (B-24, campaign 2026-10-04): the server answers in prefs.locale,
   // so a refusal read after switching here came back in the old language. Then every screen reads afresh.
   const saveLocale = useSaveLocaleToAccount();
+  const role0 = session.status === "signed-in" ? session.me.active.role : null;
+  const [remembered, remember] = useRememberedSections(role0);
   if (session.status !== "signed-in") return null;
   const { me } = session;
   const role = me.active.role;
@@ -63,13 +70,21 @@ export function More() {
         <Icon name="caretRight" size={18} color={th.fgSubtle} weight="bold" />
       </Pressable>
       {role
-        ? menuFor(role, me.modules ?? [], me.duties ?? [], me.streams ?? [], featuresOf(me)).map(({ group, items }) => (
-            <Card key={group} title={t(MENU_GROUP_KEY[group])}>
-              {items.map((item) => (
-                <MenuRow key={item.labelKey} item={item} />
-              ))}
-            </Card>
-          ))
+        ? menuFor(role, me.modules ?? [], me.duties ?? [], me.streams ?? [], featuresOf(me)).map(({ group, items }) =>
+            group === ME_MENU_GROUP ? (
+              <Card key={group} title={t(MENU_GROUP_KEY[group])}>
+                {items.map((item) => (
+                  <MenuRow key={item.labelKey} item={item} />
+                ))}
+              </Card>
+            ) : (
+              <MenuSection key={group} group={group} open={sectionOpen(group, remembered)} onToggle={(open) => remember(group, open)}>
+                {items.map((item) => (
+                  <MenuRow key={item.labelKey} item={item} />
+                ))}
+              </MenuSection>
+            ),
+          )
         : null}
       {me.user.isSuperuser || me.user.isAppAdmin ? (
         <Card title={t("root.serverBadge")}>
@@ -144,5 +159,72 @@ function MenuRow({ item }: { item: MenuItem }) {
       </View>
       <Icon name="caretRight" size={18} color={th.fgSubtle} weight="bold" />
     </Pressable>
+  );
+}
+
+/** Whether a section is open: as the person left it, else open unless closed by default (Setup). */
+function sectionOpen(group: MenuGroup, remembered: Partial<Record<string, boolean>>): boolean {
+  const kept = remembered[group];
+  return typeof kept === "boolean" ? kept : !MENU_GROUPS_CLOSED_BY_DEFAULT.includes(group);
+}
+
+/** The sections this person opened or closed for this role, kept on the phone (lib/storage.ts), and a setter. */
+function useRememberedSections(role: RoleCode | null | undefined): [Partial<Record<string, boolean>>, (group: MenuGroup, open: boolean) => void] {
+  const [remembered, setRemembered] = useState<{ role: string | null; groups: Partial<Record<string, boolean>> }>({ role: null, groups: {} });
+  useEffect(() => {
+    if (!role) return;
+    let live = true;
+    void keyStore()
+      .get(menuOpenKey(role))
+      .then((raw) => {
+        if (!live) return;
+        let groups: Partial<Record<string, boolean>> = {};
+        try {
+          const value: unknown = raw ? JSON.parse(raw) : {};
+          if (value && typeof value === "object" && !Array.isArray(value)) groups = Object.fromEntries(Object.entries(value).filter(([, v]) => typeof v === "boolean"));
+        } catch {
+          /* a bad value reads as nothing kept */
+        }
+        setRemembered({ role, groups });
+      })
+      .catch(() => undefined);
+    return () => {
+      live = false;
+    };
+  }, [role]);
+  const groups = remembered.role === role ? remembered.groups : {};
+  const remember = (group: MenuGroup, open: boolean) => {
+    if (!role) return;
+    const next = { ...groups, [group]: open };
+    setRemembered({ role, groups: next });
+    void keyStore().set(menuOpenKey(role), JSON.stringify(next)).catch(() => undefined);
+  };
+  return [groups, remember];
+}
+
+/**
+ * One group of More: its name as a button (expanded or collapsed, said to a screen reader) with a chevron, then its
+ * entries while open. The header is a full-width target of the theme's tap height.
+ */
+function MenuSection({ group, open, onToggle, children }: { group: MenuGroup; open: boolean; onToggle: (open: boolean) => void; children: ReactNode }) {
+  const t = useT();
+  const th = useTheme();
+  const label = t(MENU_GROUP_KEY[group]);
+  return (
+    <Card>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={label}
+        accessibilityState={{ expanded: open }}
+        onPress={() => onToggle(!open)}
+        style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1, minHeight: th.tap, flexDirection: "row", alignItems: "center", gap: th.space[3] })}
+      >
+        <Text variant="lg" bold accessibilityRole="header" style={{ flex: 1 }}>
+          {label}
+        </Text>
+        <Icon name={open ? "caretDown" : "caretRight"} size={18} color={th.fgSubtle} weight="bold" />
+      </Pressable>
+      {open ? children : null}
+    </Card>
   );
 }

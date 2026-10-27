@@ -3,6 +3,7 @@ import { fireEvent, screen } from "@testing-library/react-native";
 import { More } from "@/screens/shared/more";
 import { json, me, mountStaff } from "./staff-harness";
 import { __setOutboxStore, enqueue, memoryOutbox, setOutboxOwner } from "@/lib/outbox";
+import { keyStore } from "@/lib/storage";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, usePathname: () => "/more", useLocalSearchParams: () => mockRouter.params }));
@@ -35,6 +36,8 @@ describe("the More sheet", () => {
     await mountStaff(<More />, "ADMIN", {});
     await fireEvent.press(await screen.findByRole("button", { name: "Invites" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/invites");
+    // The directory listing is under Setup, which starts closed (27 Oct 2026, item 3).
+    await fireEvent.press(screen.getByRole("button", { name: "Setup" }));
     await fireEvent.press(screen.getByRole("button", { name: "Directory" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/directory-profile");
     // The office's More still opens two read-only pages on the web (QA-66: council notices, my appointment letters),
@@ -104,5 +107,44 @@ describe("the More sheet after the campaign of 4 October 2026", () => {
     expect(await screen.findByRole("button", { name: "ZZ Other School, Teacher · 1 waiting to send" })).toBeTruthy();
     // Here, at the first school, nothing waits.
     expect(screen.queryByRole("button", { name: /ZZ School, Teacher · / })).toBeNull();
+  });
+});
+
+describe("the More sheet in the office's seven groups (27 Oct 2026, item 3)", () => {
+  beforeEach(() => mockRouter.push.mockClear());
+
+  it("lists the office's pages under the seven groups, Setup closed until opened, and the person's own pages under Me", async () => {
+    await mountStaff(<More />, "ADMIN", {}, { me: { ...me("ADMIN"), modules: ["PAYROLL", "INVENTORY"] } });
+    for (const name of ["Teaching", "People and records", "Attendance and cover", "Money", "Communication", "Setup"]) expect(await screen.findByRole("button", { name })).toBeTruthy();
+    expect(screen.queryByText("Running things")).toBeNull();
+    // Me: my payslips, my items and my letters, not among the school's work.
+    expect(screen.getByRole("header", { name: "Me" })).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "My payslips" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/payslips");
+    // Setup starts closed: its name says so, and its pages are not drawn until it opens.
+    const setup = screen.getByRole("button", { name: "Setup" });
+    expect(setup.props.accessibilityState).toEqual({ expanded: false });
+    expect(screen.queryByRole("button", { name: "Settings" })).toBeNull();
+    await fireEvent.press(setup);
+    expect(screen.getByRole("button", { name: "Setup" }).props.accessibilityState).toEqual({ expanded: true });
+    await fireEvent.press(screen.getByRole("button", { name: "Settings" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/settings");
+  });
+
+  it("closes an open group on a press and keeps the choice for the role", async () => {
+    await mountStaff(<More />, "ADMIN", {});
+    const money = await screen.findByRole("button", { name: "Money" });
+    expect(screen.getByRole("button", { name: "Fees" })).toBeTruthy();
+    await fireEvent.press(money);
+    expect(screen.queryByRole("button", { name: "Fees" })).toBeNull();
+    expect(JSON.parse((await keyStore().get("edulink.more.groups.ADMIN")) ?? "{}")).toMatchObject({ money: false });
+  });
+
+  it("keeps the three groups for a teacher, with the profile under Me", async () => {
+    await mountStaff(<More />, "TEACHER", {});
+    expect(await screen.findByRole("header", { name: "Me" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Me" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Day to day" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Teaching" })).toBeNull();
   });
 });

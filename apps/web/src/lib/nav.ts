@@ -16,7 +16,31 @@ import { DUTY_STREAMS, type DutyCode, type FeatureCode, type InstitutionKind, ty
  * error rather than a nav item labelled "nav.pracitce".
  */
 
-export type NavGroup = "daily" | "school" | "running";
+/**
+ * WHERE AN ENTRY SITS (the owner's decision of 27 October 2026, item 3). The office and the head read their menu in
+ * SEVEN groups named for the work — Teaching, People and records, Attendance and cover, Money, Communication, Modules
+ * and Setup — each collapsible in the rail and the More sheet (components/nav/nav-groups.tsx). Every other role keeps
+ * the three it had (Day to day, School life, Running things). `me` is a person's own pages — my letters, my payslips,
+ * my items, my profile, my account — which sit under the account menu (the avatar), never in the rail.
+ */
+export type NavGroup = "daily" | "school" | "running" | "teaching" | "people" | "attendance" | "money" | "communication" | "modules" | "setup" | "me";
+
+/** The office's and the head's seven groups, in the rail's order. */
+export const OFFICE_GROUPS = ["teaching", "people", "attendance", "money", "communication", "modules", "setup"] as const satisfies readonly NavGroup[];
+/** Every other role's three. */
+export const CLASSIC_GROUPS = ["daily", "school", "running"] as const satisfies readonly NavGroup[];
+/** The roles whose menu reads in the seven groups. */
+export const OFFICE_GROUP_ROLES: readonly Role[] = ["ADMIN", "PRINCIPAL"];
+/** The person's own pages: under the account menu, not in the rail. */
+export const ME_GROUP: NavGroup = "me";
+
+/** The groups a role's rail and More sheet draw, in order (`me` is never one of them). */
+export function navGroupsFor(role: Role): readonly NavGroup[] {
+  return OFFICE_GROUP_ROLES.includes(role) ? OFFICE_GROUPS : CLASSIC_GROUPS;
+}
+
+/** A group starts closed until the person opens it (and stays open while it holds the page they are on). */
+export const GROUPS_CLOSED_BY_DEFAULT: readonly NavGroup[] = ["setup"];
 
 export type NavItem = {
   href: string;
@@ -30,10 +54,13 @@ export type NavItem = {
   /** Other paths that count as "here" — a tab that lives on its own route. */
   also?: string[];
   /**
-   * Where a non-primary item sits in the rail and the More sheet. FIVE
-   * PRIMARIES PER ROLE, chosen by how often they are opened in a day;
-   * everything else is grouped so the rail reads as three short lists
-   * rather than one long one. Primaries carry no group.
+   * Where an item sits in the rail and the More sheet. FIVE PRIMARIES PER ROLE,
+   * chosen by how often they are opened in a day, stand on top of the rail
+   * whatever their group; everything else is grouped so the rail reads as short
+   * lists rather than one long one (navGroupsFor). A primary may carry a group:
+   * it is where the More sheet lists it at a phone's width when the bar does not
+   * carry it (the office's Classes under Teaching). `me` puts the entry under the
+   * account menu instead of the rail.
    */
   group?: NavGroup;
   /**
@@ -109,6 +136,14 @@ export const NAV_GROUP_KEY: Record<NavGroup, TranslationKey> = {
   daily: "nav.groupDaily",
   school: "nav.groupSchool",
   running: "nav.groupRunning",
+  teaching: "navGroup.teaching",
+  people: "navGroup.people",
+  attendance: "navGroup.attendance",
+  money: "navGroup.money",
+  communication: "navGroup.communication",
+  modules: "navGroup.modules",
+  setup: "navGroup.setup",
+  me: "navGroup.me",
 };
 
 export type QuickAction = {
@@ -134,190 +169,193 @@ export type QuickAction = {
  */
 const COLLEGE_STAFF_COMMON: NavItem[] = [
   { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
-  { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+  { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
   // My own leave (the integration builder, 4 Oct 2026): the teacher's form and balance under /account.
   { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
   // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
   { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
   // My appointment letters (risks batch 5A, 5 Oct 2026).
-  { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
+  { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "me" },
 ];
 
 export const NAV: Record<Role, NavItem[]> = {
+  // In the rail's order (27 Oct 2026, item 3): the five primaries, then Teaching, People and records, Attendance and
+  // cover, Money, Communication, Modules and Setup, each the school's pages first and a college's after; my own last.
   ADMIN: [
     { href: "/admin", labelKey: "nav.overview", icon: "house", primary: true },
     // Invites are a tab of People: one door for "who is in this school".
-    { href: "/admin/people", labelKey: "nav.people", icon: "users", primary: true, prefix: true, also: ["/admin/invites", "/admin/intake"] },
-    { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true, also: ["/admin/promotion"] },
-    { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
-    { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true, kinds: SCHOOL_KINDS },
+    { href: "/admin/people", labelKey: "nav.people", icon: "users", primary: true, group: "people", prefix: true, also: ["/admin/invites", "/admin/intake"] },
+    { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, group: "teaching", prefix: true, also: ["/admin/promotion"] },
+    { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, group: "teaching", prefix: true },
+    { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, group: "teaching", prefix: true, kinds: SCHOOL_KINDS },
+    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "teaching", kinds: SCHOOL_KINDS },
     // How a report card is worked out and printed: the office's rules, read by every card generated.
-    { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
-    { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
-    { href: "/admin/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
-    { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
-    // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
-    { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },
+    { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "teaching" },
+    // Who covers the lessons of staff who are away: the board the staff register feeds.
+    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "teaching", kinds: SCHOOL_KINDS },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "teaching" },
+    // The college's academics (4 Oct 2026): structure, offerings, timetable, registration, attendance and condonations.
+    { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "teaching", module: "ACADEMICS" },
+    // The college exam cell (4 Oct 2026): the office reads sessions, forms, results and analytics.
+    { href: "/exam-cell", labelKey: "examCell.title", icon: "exam", prefix: true, group: "teaching", module: "EXAMS" },
+    // Stream records (5 Oct 2026): lab batches, the practical record, moot courts, and the year's figures of each stream's records.
+    { href: "/admin/stream-records", labelKey: "streamRecords.title", icon: "flask", prefix: true, group: "teaching", module: "ACADEMICS" },
+    { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "people" },
+    { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "people", also: ["/certificates"] },
     // The door for next year: the cycle, its sittings and the pipeline from form to seat.
     // School-only entries (DS-4, 10 Oct 2026): a college has its own admissions, no syllabus units and no day register to cover.
-    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
-    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running", kinds: SCHOOL_KINDS },
-    { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
-    { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
-    // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
-    { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "running" },
-    // The Tally export of receipts and payroll (R-2, 5 Oct 2026): export only, money stays outside (decision 0003).
-    { href: "/admin/fees/tally", labelKey: "tally.navTitle", icon: "receipt", group: "running" },
-    // Who covers the lessons of staff who are away: the board the staff register feeds.
-    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
-    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
-    // Fees: what the school asked its families for and what arrived. The
-    // office writes; the principal reads the same pages (see fees.ts officeOrHead).
-    { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
-    // Texts to families: the office switches channels and sends notices; the
-    // principal reads the same page and the delivery reports (messaging.ts officeOrHead).
-    { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "running" },
-    { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "running" },
-    // The sick-room and incident log: the whole school's, and the record pages under /incidents.
-    { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
-    // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.
-    { href: "/admin/transport", labelKey: "transport.title", icon: "bus", prefix: true, group: "running", module: "TRANSPORT" },
+    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "people", kinds: SCHOOL_KINDS },
+    // Hidden by the shell until the school has any — see signed-in-shell.tsx.
+    { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "people" },
+    // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
+    { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "people" },
+    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "people" },
+    // The school's former pupils by batch, notes to a batch, the feed's setting (the alumni module, 3 Oct 2026).
+    { href: "/admin/alumni", labelKey: "modules.alumniName", icon: "graduationCap", prefix: true, group: "people", module: "ALUMNI" },
+    // The college office (4 Oct 2026): admissions from the CET rounds, the accounts desk, and the library, hostel and bus at a college.
+    { href: "/admin/college-admissions", labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", prefix: true, group: "people", module: "ADMISSIONS" },
+    { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "people", module: "IQAC" },
+    { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "attendance", also: ["/attendance/history"] },
+    { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "attendance" },
     // The leave queue is genuinely an admin's to work — a school whose
     // principal is the one on leave still has to approve somebody's.
-    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running", also: ["/principal/staff"] },
-    // The school across terms and years: the office reads what the head reads (lib/analytics-longitudinal.ts).
-    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "running" },
-    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "running" },
-    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "running" },
-    { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
-    // The school's former pupils by batch, notes to a batch, the feed's setting (the alumni module, 3 Oct 2026).
-    { href: "/admin/alumni", labelKey: "modules.alumniName", icon: "graduationCap", prefix: true, group: "running", module: "ALUMNI" },
-    // website-builder A (15 Oct 2026): the school's public website, built in six screens (the WEBSITE module).
-    { href: "/admin/website", labelKey: "modules.websiteName", icon: "globe", prefix: true, group: "running", module: "WEBSITE" },
-    // end website-builder A
-    // The office can now write to anyone at the school, so the inbox is theirs too.
-    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
-    // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
-    { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
-    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
-    // The student council's notices and members (risks batch 5A, 5 Oct 2026).
-    { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
-    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
-    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"], feature: "JOB_BOARD" },
-    // Hidden by the shell until the school has any — see signed-in-shell.tsx.
-    { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
-    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
-    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "attendance", also: ["/principal/staff"] },
+    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "attendance" },
+    // Fees: what the school asked its families for and what arrived. The
+    // office writes; the principal reads the same pages (see fees.ts officeOrHead).
+    { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "money" },
+    { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "money", module: "PAYROLL" },
     // Inventory and assets, and HR and payroll (3 Oct 2026): the office runs both; the head reads payroll's summary.
-    { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
-    { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
-    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
-    // My appointment letters (risks batch 5A, 5 Oct 2026).
-    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
-    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "money", module: "INVENTORY" },
+    // The Tally export of receipts and payroll (R-2, 5 Oct 2026): export only, money stays outside (decision 0003).
+    { href: "/admin/fees/tally", labelKey: "tally.navTitle", icon: "receipt", group: "money" },
+    { href: "/accounts", labelKey: "role.accounts", icon: "wallet", prefix: true, group: "money", module: "ACADEMICS" },
+    // The office can now write to anyone at the school, so the inbox is theirs too.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "communication" },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "communication" },
+    { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "communication" },
+    // Texts to families: the office switches channels and sends notices; the
+    // principal reads the same page and the delivery reports (messaging.ts officeOrHead).
+    { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "communication" },
+    // The student council's notices and members (risks batch 5A, 5 Oct 2026).
+    { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "communication" },
+    // The sick-room and incident log: the whole school's, and the record pages under /incidents.
+    { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "communication", also: ["/incidents"] },
+    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "communication" },
+    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "communication", feature: "EXPERT_SESSIONS" },
+    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "communication", also: ["/vacancies"], feature: "JOB_BOARD" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "communication", feature: "EXPERT_SESSIONS" },
+    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "communication", feature: SESSION_FEATURES },
+    // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.
+    { href: "/admin/transport", labelKey: "transport.title", icon: "bus", prefix: true, group: "modules", module: "TRANSPORT" },
     // The library desk and its rules, and the hostel at a glance (3 Oct 2026): the office lends, sets the rules and makes the houses.
-    { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
-    { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "running", module: "HOSTEL", also: ["/hostel"] },
-    // The college's academics (4 Oct 2026): structure, offerings, timetable, registration, attendance and condonations.
-    { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "running", module: "ACADEMICS" },
-    // The college office (4 Oct 2026): admissions from the CET rounds, the accounts desk, and the library, hostel and bus at a college.
-    { href: "/admin/college-admissions", labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", prefix: true, group: "running", module: "ADMISSIONS" },
-    { href: "/accounts", labelKey: "role.accounts", icon: "wallet", prefix: true, group: "running", module: "ACADEMICS" },
-    { href: "/admin/college-campus", labelKey: "collegeOffice.campusTitle", icon: "buildings", prefix: true, group: "running", module: "ACADEMICS" },
-    // The college exam cell (4 Oct 2026): the office reads sessions, forms, results and analytics.
-    { href: "/exam-cell", labelKey: "examCell.title", icon: "exam", prefix: true, group: "running", module: "EXAMS" },
-    // Placement (4 Oct 2026): the office reads the cell's pages at a college with PLACEMENT on.
-    { href: "/placement", labelKey: "placement.navCell", icon: "briefcase", prefix: true, group: "running", module: "PLACEMENT" },
-    // IQAC (4 Oct 2026): the accreditation desk, the committees and minutes, the faculty records.
-    { href: "/iqac", labelKey: "iqac.navHome", icon: "medal", prefix: true, group: "running", module: "IQAC" },
-    { href: "/admin/committees", labelKey: "iqac.navCommittees", icon: "users", prefix: true, group: "running", module: "IQAC" },
-    { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
+    { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "modules", module: "LIBRARY", also: ["/admin/library"] },
+    { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "modules", module: "HOSTEL", also: ["/hostel"] },
+    // website-builder A (15 Oct 2026): the school's public website, built in six screens (the WEBSITE module).
+    { href: "/admin/website", labelKey: "modules.websiteName", icon: "globe", prefix: true, group: "modules", module: "WEBSITE" },
+    // end website-builder A
     // The college at a glance (the integration builder, 4 Oct 2026): the head's dashboard, which the office reads too; ACADEMICS stands for "is a college".
-    { href: "/principal/college", labelKey: "collegeHub.title", icon: "chartLine", group: "running", module: "ACADEMICS" },
-    // Stream records (5 Oct 2026): lab batches, the practical record, moot courts, and the year's figures of each stream's records.
-    { href: "/admin/stream-records", labelKey: "streamRecords.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS" },
+    { href: "/principal/college", labelKey: "collegeHub.title", icon: "chartLine", group: "modules", module: "ACADEMICS" },
+    { href: "/admin/college-campus", labelKey: "collegeOffice.campusTitle", icon: "buildings", prefix: true, group: "modules", module: "ACADEMICS" },
+    // Placement (4 Oct 2026): the office reads the cell's pages at a college with PLACEMENT on.
+    { href: "/placement", labelKey: "placement.navCell", icon: "briefcase", prefix: true, group: "modules", module: "PLACEMENT" },
+    // IQAC (4 Oct 2026): the accreditation desk, the committees and minutes, the faculty records.
+    { href: "/iqac", labelKey: "iqac.navHome", icon: "medal", prefix: true, group: "modules", module: "IQAC" },
+    { href: "/admin/committees", labelKey: "iqac.navCommittees", icon: "users", prefix: true, group: "modules", module: "IQAC" },
+    { href: "/admin/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "setup" },
+    // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
+    { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "setup" },
+    // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
+    { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "setup" },
+    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "setup" },
+    // The school across terms and years: the office reads what the head reads (lib/analytics-longitudinal.ts).
+    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "setup" },
+    { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "setup" },
+    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "me", module: "PAYROLL" },
+    // My appointment letters (risks batch 5A, 5 Oct 2026).
+    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "me" },
+    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "me", module: "INVENTORY" },
   ],
   // A principal READS and DECIDES. No register, no gradebook, no class setup —
   // those belong to the teacher and the admin respectively, and handing all
   // three to one role is how "principal" quietly becomes "can do anything".
+  // In the rail's order, as the office's (27 Oct 2026, item 3).
   PRINCIPAL: [
     { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true, also: ["/attendance/history", "/principal/college"] },
-    { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
-    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true, also: ["/principal/staff"] },
-    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
-    { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true, kinds: SCHOOL_KINDS },
-    { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
-    { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
-    { href: "/admin/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
-    { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
-    // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
-    { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },
+    { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, group: "teaching", prefix: true },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, group: "attendance", prefix: true, also: ["/principal/staff"] },
+    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, group: "setup", prefix: true },
+    { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, group: "teaching", prefix: true, kinds: SCHOOL_KINDS },
+    { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "teaching" },
+    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "teaching", kinds: SCHOOL_KINDS },
+    { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "teaching" },
+    // Who covers the lessons of staff who are away: the board the staff register feeds.
+    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "teaching", kinds: SCHOOL_KINDS },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "teaching" },
+    // The college's academics, read; late registrations and forwarded condonations decided (4 Oct 2026).
+    { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "teaching", module: "ACADEMICS" },
+    // The college exam cell (4 Oct 2026): results and analytics to read, grace proposals to decide.
+    { href: "/exam-cell", labelKey: "examCell.title", icon: "exam", prefix: true, group: "teaching", module: "EXAMS" },
+    // Stream records (5 Oct 2026), read: the year's figures, batches, the practical record, moots; the duties' desks open from it.
+    { href: "/admin/stream-records", labelKey: "streamRecords.title", icon: "flask", prefix: true, group: "teaching", module: "ACADEMICS" },
+    { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "people" },
+    { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "people", also: ["/certificates"] },
     // The door for next year: the cycle, its sittings and the pipeline from form to seat.
     // School-only entries (DS-4, 10 Oct 2026), as in the office's menu.
-    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
-    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running", kinds: SCHOOL_KINDS },
-    { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
-    // The head's own decisions, as sentences, read from the audit log (lib/decision-log.ts).
-    { href: "/principal/decisions", labelKey: "decisions.title", icon: "clipboard", prefix: true, group: "running" },
-    // The school across terms and years, recomputed on read (lib/analytics-longitudinal.ts).
-    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "running" },
-    { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
-    // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
-    { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "running" },
-    // Who covers the lessons of staff who are away: the board the staff register feeds.
-    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
-    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
-    // Read-only for the head: the overview, the dues and the structures.
-    { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
-    // Read-only for the head: the counts, the notices sent and their reports.
-    { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "running" },
-    { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "running" },
-    // website-builder A (15 Oct 2026): the school's public website, built in six screens (the WEBSITE module).
-    { href: "/admin/website", labelKey: "modules.websiteName", icon: "globe", prefix: true, group: "running", module: "WEBSITE" },
-    // end website-builder A
-    // The sick-room and incident log: the whole school's, and the record pages under /incidents.
-    { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
-    // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.
-    { href: "/admin/transport", labelKey: "transport.title", icon: "bus", prefix: true, group: "running", module: "TRANSPORT" },
-    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "people", kinds: SCHOOL_KINDS },
+    { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "people" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
-    { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
-    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
-    // The student council's notices and members (risks batch 5A, 5 Oct 2026).
-    { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
-    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"], feature: "JOB_BOARD" },
-    { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
-    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
-    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "people" },
+    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "people" },
+    { href: "/admin/college-admissions", labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", prefix: true, group: "people", module: "ADMISSIONS" },
+    { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "people", module: "IQAC" },
+    { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "attendance" },
+    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "attendance" },
+    // Read-only for the head: the overview, the dues and the structures.
+    { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "money" },
     // The payroll summary (no one's slip unless the office shares a run) and the stores, read; the head's own payslips and things.
-    { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
-    { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
-    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
-    // My appointment letters (risks batch 5A, 5 Oct 2026).
-    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
-    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
-    // The library's lists and reports, and the hostel at a glance (3 Oct 2026), read.
-    { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
-    { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "running", module: "HOSTEL", also: ["/hostel"] },
-    // The college's academics, read; late registrations and forwarded condonations decided (4 Oct 2026).
-    { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "running", module: "ACADEMICS" },
+    { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "money", module: "PAYROLL" },
+    { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "money", module: "INVENTORY" },
     // The college's money and admissions, read; concessions above the office's limit approved (4 Oct 2026).
-    { href: "/accounts", labelKey: "role.accounts", icon: "wallet", prefix: true, group: "running", module: "ACADEMICS" },
-    { href: "/admin/college-admissions", labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", prefix: true, group: "running", module: "ADMISSIONS" },
-    // The college exam cell (4 Oct 2026): results and analytics to read, grace proposals to decide.
-    { href: "/exam-cell", labelKey: "examCell.title", icon: "exam", prefix: true, group: "running", module: "EXAMS" },
+    { href: "/accounts", labelKey: "role.accounts", icon: "wallet", prefix: true, group: "money", module: "ACADEMICS" },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "communication" },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "communication" },
+    { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "communication" },
+    // Read-only for the head: the counts, the notices sent and their reports.
+    { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "communication" },
+    // The student council's notices and members (risks batch 5A, 5 Oct 2026).
+    { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "communication" },
+    // The sick-room and incident log: the whole school's, and the record pages under /incidents.
+    { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "communication", also: ["/incidents"] },
+    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "communication", also: ["/vacancies"], feature: "JOB_BOARD" },
+    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "communication", feature: SESSION_FEATURES },
+    // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.
+    { href: "/admin/transport", labelKey: "transport.title", icon: "bus", prefix: true, group: "modules", module: "TRANSPORT" },
+    // The library's lists and reports, and the hostel at a glance (3 Oct 2026), read.
+    { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "modules", module: "LIBRARY", also: ["/admin/library"] },
+    { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "modules", module: "HOSTEL", also: ["/hostel"] },
+    // website-builder A (15 Oct 2026): the school's public website, built in six screens (the WEBSITE module).
+    { href: "/admin/website", labelKey: "modules.websiteName", icon: "globe", prefix: true, group: "modules", module: "WEBSITE" },
+    // end website-builder A
     // Placement (4 Oct 2026): the principal reads the cell's pages.
-    { href: "/placement", labelKey: "placement.navCell", icon: "briefcase", prefix: true, group: "running", module: "PLACEMENT" },
+    { href: "/placement", labelKey: "placement.navCell", icon: "briefcase", prefix: true, group: "modules", module: "PLACEMENT" },
     // IQAC (4 Oct 2026): the accreditation file to read and sign off, the committees, the faculty records.
-    { href: "/principal/accreditation", labelKey: "iqac.navAccreditation", icon: "medal", prefix: true, group: "running", module: "IQAC", also: ["/iqac"] },
-    { href: "/admin/committees", labelKey: "iqac.navCommittees", icon: "users", prefix: true, group: "running", module: "IQAC" },
-    { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
-    // Stream records (5 Oct 2026), read: the year's figures, batches, the practical record, moots; the duties' desks open from it.
-    { href: "/admin/stream-records", labelKey: "streamRecords.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS" },
+    { href: "/principal/accreditation", labelKey: "iqac.navAccreditation", icon: "medal", prefix: true, group: "modules", module: "IQAC", also: ["/iqac"] },
+    { href: "/admin/committees", labelKey: "iqac.navCommittees", icon: "users", prefix: true, group: "modules", module: "IQAC" },
+    { href: "/admin/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "setup" },
+    // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
+    { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "setup" },
+    // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
+    { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "setup" },
+    // The head's own decisions, as sentences, read from the audit log (lib/decision-log.ts).
+    { href: "/principal/decisions", labelKey: "decisions.title", icon: "clipboard", prefix: true, group: "setup" },
+    // The school across terms and years, recomputed on read (lib/analytics-longitudinal.ts).
+    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "setup" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
+    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "me", module: "PAYROLL" },
+    // My appointment letters (risks batch 5A, 5 Oct 2026).
+    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "me" },
+    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "me", module: "INVENTORY" },
   ],
   TEACHER: [
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
@@ -335,7 +373,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
     // The question gig (review-queue, 10 Oct 2026): since 15 Oct 2026 the QUESTION_GIG platform feature, dropped by the shell while off.
     { href: "/teacher/contributions", labelKey: "nav.contributions", icon: "books", prefix: true, group: "running", feature: "QUESTION_GIG" },
-    { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
+    { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "me" },
     // What the head has shown me of my observations, targets and appraisals (lib/appraisal.ts).
     { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
@@ -349,10 +387,10 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     // My own payslips and what the stores issued to me (3 Oct 2026), while the school has the module on.
-    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "me", module: "PAYROLL" },
     // My appointment letters (risks batch 5A, 5 Oct 2026).
-    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
-    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "me" },
+    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "me", module: "INVENTORY" },
     // My loans, dues and reservations, and the catalogue (the library module, 3 Oct 2026).
     { href: "/teacher/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
   ],
@@ -381,7 +419,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
-    { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
+    { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "me" },
     // What a student lets their guardians see (4 Oct 2026): an adult at a college decides. Under ACADEMICS, which every
     // college has on and no school is offered, so a school's pupils are not shown a page that only says "they see it all".
     { href: "/student/consent", labelKey: "consent.title", icon: "users", prefix: true, group: "running", module: "ACADEMICS" },
@@ -457,8 +495,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", primary: true, prefix: true, feature: "EXPERT_SESSIONS" },
     { href: "/expert/sessions", labelKey: "nav.sessions", icon: "calendar", primary: true, prefix: true, feature: "EXPERT_SESSIONS" },
     { href: "/expert/earnings", labelKey: "gigs.earningsTitle", icon: "chartLine", prefix: true, group: "running", feature: "EXPERT_SESSIONS" },
-    { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true, group: "running" },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true, group: "me" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
   ],
   /*
    * THE MODULE ROLES (3 Oct 2026). Each starts with its home, which says
@@ -469,7 +507,7 @@ export const NAV: Record<Role, NavItem[]> = {
    */
   DRIVER: [
     { href: "/driver", labelKey: "modules.transportName", icon: "bus", primary: true, prefix: true },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
     { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
     // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
     { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
@@ -478,7 +516,7 @@ export const NAV: Record<Role, NavItem[]> = {
   ],
   LIBRARIAN: [
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", primary: true, prefix: true },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
     { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
     // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
     { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
@@ -498,7 +536,7 @@ export const NAV: Record<Role, NavItem[]> = {
   ],
   WARDEN: [
     { href: "/hostel", labelKey: "modules.hostelName", icon: "bed", primary: true, prefix: true },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
     { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
     // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
     { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
@@ -525,7 +563,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true, module: "ALUMNI" },
     // The directory a former pupil may join (the alumni module): under their home, so the home's prefix already lets them in.
     { href: "/alumni/directory", labelKey: "alumni.directoryTitle", icon: "users", primary: true, module: "ALUMNI" },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
     // The college's alumni additions (placement, 4 Oct 2026): ACADEMICS stands for "is a college", as it does for the consent page.
     { href: "/alumni/college", labelKey: "placement.navAlumni", icon: "handshake", primary: true, module: "ACADEMICS" },
     // IQAC (4 Oct 2026): the alumni survey, under the alumnus's own home.
@@ -552,7 +590,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // IQAC (4 Oct 2026): my research items, my record, my course feedback.
     { href: "/faculty/research", labelKey: "iqac.navResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // My public page for the college's website, my own opt-in (5 Oct 2026).
-    { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "running", module: "IQAC" },
+    { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "me", module: "IQAC" },
     // What the head has shown me of my appraisals (A3-inventory-5, audit of 5 Oct 2026): the school's teacher page, no module.
     { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
@@ -598,7 +636,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // IQAC (4 Oct 2026): the department's research, activities and course feedback.
     { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // My public page for the college's website, my own opt-in (5 Oct 2026); under /faculty, which an HOD's teaching opens.
-    { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "running", module: "IQAC" },
+    { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "me", module: "IQAC" },
     // What the head has shown me of my appraisals (A3-inventory-5, audit of 5 Oct 2026): the school's teacher page, no module.
     { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
@@ -684,7 +722,7 @@ export const NAV: Record<Role, NavItem[]> = {
   // An outside account like the expert: its home, and its account. A college reaches it only through a drive (the placement module).
   RECRUITER: [
     { href: "/recruiter", labelKey: "role.recruiter", icon: "handshake", primary: true, prefix: true },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "me" },
   ],
 };
 
@@ -871,4 +909,51 @@ export function isActive(pathname: string, item: NavItem): boolean {
   const hits = (href: string) =>
     item.prefix ? pathname === href || pathname.startsWith(`${href}/`) : pathname === href;
   return hits(item.href) || (item.also ?? []).some(hits);
+}
+
+/**
+ * THE RAIL (desk) FOR A ROLE: its first five primaries on top, then each of its groups with the entries left, in the
+ * menu's order; an empty group is not drawn. The person's own pages (`me`) are not in it: they are the account menu's
+ * (personalItems). `items` are the role's entries already filtered by the shell (modules, features, duties, kinds).
+ */
+export function railFor(role: Role, items: readonly NavItem[]): { primary: NavItem[]; groups: { group: NavGroup; items: NavItem[] }[] } {
+  const primary = items.filter((i) => i.primary).slice(0, 5);
+  const order = navGroupsFor(role);
+  const rest = items.filter((i) => !i.primary && i.group !== ME_GROUP);
+  const groups = order.map((group) => ({ group, items: rest.filter((i) => (i.group ?? order[0]) === group) })).filter((g) => g.items.length > 0);
+  return { primary, groups };
+}
+
+/**
+ * THE MORE SHEET AT A PHONE'S WIDTH: every entry the bar does not carry, primaries included, under the role's groups
+ * (a primary without a group under the first). The person's own pages are the top bar's account menu's.
+ */
+export function sheetFor(role: Role, items: readonly NavItem[], onBar: (item: NavItem) => boolean): { group: NavGroup; items: NavItem[] }[] {
+  const order = navGroupsFor(role);
+  const rest = items.filter((i) => !onBar(i) && i.group !== ME_GROUP);
+  return order.map((group) => ({ group, items: rest.filter((i) => (i.group ?? order[0]) === group) })).filter((g) => g.items.length > 0);
+}
+
+/** The account page: the account menu's first line, and the avatar's link where the person has no pages of their own. */
+export const ACCOUNT_HREF = "/account";
+
+/** The person's own pages for the account menu, in the menu's order, without the account page itself (the menu's first line). */
+export function personalItems(items: readonly NavItem[]): NavItem[] {
+  return items.filter((i) => i.group === ME_GROUP && i.href !== ACCOUNT_HREF);
+}
+
+/**
+ * Where the rail remembers which groups are open: one key per role (an office manager who is also a teacher keeps
+ * two), holding { group: open } for the groups the person has opened or closed. Read and written by
+ * components/nav/nav-groups.tsx; a group not in it takes its default (GROUPS_CLOSED_BY_DEFAULT).
+ */
+export function navOpenStorageKey(role: Role): string {
+  return `edulink.nav.groups.${role}`;
+}
+
+/** Whether a group is drawn open: always while it holds the page; else as remembered; else closed only if closed by default. */
+export function groupOpen(group: NavGroup, remembered: Partial<Record<string, boolean>>, holdsPage: boolean): boolean {
+  if (holdsPage) return true;
+  const kept = remembered[group];
+  return typeof kept === "boolean" ? kept : !GROUPS_CLOSED_BY_DEFAULT.includes(group);
 }

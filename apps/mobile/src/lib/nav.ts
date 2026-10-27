@@ -147,13 +147,18 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
 
 /**
  * The rest of the web's NAV for each role — what the web's rail and More
- * sheet list under "Day to day", "School life" and "Running things". Each
- * entry is either a screen the app has (`screen`, an expo-router path) or a
- * page the phone does not carry and opens on the web, signed in there
- * (`web`). The order is the web's. A role's primaries (TABS) are not
- * repeated here: the bar already has them.
+ * sheet list under its groups: the office's and the head's seven (Teaching,
+ * People and records, Attendance and cover, Money, Communication, Modules,
+ * Setup; the owner's decision of 27 October 2026, item 3), every other role's
+ * three ("Day to day", "School life" and "Running things"), and `me`, the
+ * person's own pages, which the More screen draws in its own "Me" area under
+ * the person, as the web's account menu does. Each entry is either a screen
+ * the app has (`screen`, an expo-router path) or a page the phone does not
+ * carry and opens on the web, signed in there (`web`). The order is the web's.
+ * A role's primaries (TABS) are not repeated here: the bar already has them.
+ * The web's tests/nav-groups.test.ts holds the groups to the web's.
  */
-export type MenuGroup = "daily" | "school" | "running";
+export type MenuGroup = "daily" | "school" | "running" | "teaching" | "people" | "attendance" | "money" | "communication" | "modules" | "setup" | "me";
 /** `streams` (5 Oct 2026): hidden at a college whose recorded streams include none of them (the practical record at a law college); none recorded keeps it. */
 export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: DutyCode; streams?: readonly StreamCode[]; feature?: FeatureField } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
@@ -168,7 +173,7 @@ export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGrou
  */
 const OWN_STAFF_ENTRIES: MenuItem[] = [
   { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/my-attendance" },
-  { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
+  { labelKey: "payroll.myTitle", icon: "receipt", group: "me", screen: "/(app)/payslips", module: "PAYROLL" },
 ];
 
 /**
@@ -176,18 +181,45 @@ const OWN_STAFF_ENTRIES: MenuItem[] = [
  * appointment letters, and the student council's notices. A letter is a PDF the web already serves; the parity table
  * (test/lib/parity.test.ts) records them as web pages on purpose.
  */
-const MY_LETTERS: MenuItem = { labelKey: "appointmentLetters.mineTitle", icon: "receipt", group: "running", web: "/account/letters" };
+const MY_LETTERS: MenuItem = { labelKey: "appointmentLetters.mineTitle", icon: "receipt", group: "me", web: "/account/letters" };
 const COUNCIL_NOTICES: MenuItem = { labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school", web: "/bulletin/council" };
 
 const COLLEGE_STAFF_MENU: MenuItem[] = [
-  { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+  { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
   { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
   ...OWN_STAFF_ENTRIES,
   MY_LETTERS,
 ];
 
-export const MENU_GROUP_KEY: Record<MenuGroup, TranslationKey> = { daily: "nav.groupDaily", school: "nav.groupSchool", running: "nav.groupRunning" };
-export const MENU_GROUPS: MenuGroup[] = ["daily", "school", "running"];
+export const MENU_GROUP_KEY: Record<MenuGroup, TranslationKey> = {
+  daily: "nav.groupDaily",
+  school: "nav.groupSchool",
+  running: "nav.groupRunning",
+  teaching: "navGroup.teaching",
+  people: "navGroup.people",
+  attendance: "navGroup.attendance",
+  money: "navGroup.money",
+  communication: "navGroup.communication",
+  modules: "navGroup.modules",
+  setup: "navGroup.setup",
+  me: "navGroup.me",
+};
+/** The office's and the head's seven groups, in the web rail's order (src/lib/nav.ts OFFICE_GROUPS). */
+export const OFFICE_MENU_GROUPS: readonly MenuGroup[] = ["teaching", "people", "attendance", "money", "communication", "modules", "setup"];
+/** Every other role's three. */
+export const CLASSIC_MENU_GROUPS: readonly MenuGroup[] = ["daily", "school", "running"];
+/** The person's own pages: the More screen's "Me" area, first, under the person. */
+export const ME_MENU_GROUP: MenuGroup = "me";
+/** A More section starts closed until the person opens it (as on the web). */
+export const MENU_GROUPS_CLOSED_BY_DEFAULT: readonly MenuGroup[] = ["setup"];
+/** The More screen's collapsible groups for a role, in order (the web's navGroupsFor); `me` is not one of them. */
+export function menuGroupsFor(role: RoleCode): readonly MenuGroup[] {
+  return role === "ADMIN" || role === "PRINCIPAL" ? OFFICE_MENU_GROUPS : CLASSIC_MENU_GROUPS;
+}
+/** Where the More screen remembers which sections are open, per role (the web keeps its own in localStorage). */
+export function menuOpenKey(role: RoleCode): string {
+  return `edulink.more.groups.${role}`;
+}
 
 export const MENU: Record<RoleCode, MenuItem[]> = {
   TEACHER: [
@@ -200,7 +232,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/my-attendance" },
     { labelKey: "substitutions.myCoversTitle", icon: "arrowsClockwise", group: "running", screen: "/(app)/my-covers" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
-    { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
+    { labelKey: "nav.me", icon: "user", group: "me", screen: "/(app)/profile" },
     // What the head has shown me of my observations, targets and appraisals (the web's /teacher/appraisals).
     { labelKey: "appraisal.myTitle", icon: "clipboard", group: "running", screen: "/(app)/my-appraisals" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
@@ -211,17 +243,17 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
     { labelKey: "nav.guidance", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: "TEACHER_SESSIONS" },
     // The question gig (review-queue, 10 Oct 2026): since 15 Oct 2026 the QUESTION_GIG platform feature, from /me's `features`.
     { labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions", feature: "QUESTION_GIG" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
     // My own payslips while the school runs payroll in the app (3 Oct 2026).
-    { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
+    { labelKey: "payroll.myTitle", icon: "receipt", group: "me", screen: "/(app)/payslips", module: "PAYROLL" },
     // My loans and the catalogue (the library module, 3 Oct 2026).
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
     // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
-    { labelKey: "inventory.myTitle", icon: "archive", group: "running", screen: "/(app)/my-items", module: "INVENTORY" },
+    { labelKey: "inventory.myTitle", icon: "archive", group: "me", screen: "/(app)/my-items", module: "INVENTORY" },
     MY_LETTERS,
   ],
   STUDENT: [
@@ -240,8 +272,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "consent.title", icon: "users", group: "running", screen: "/(app)/consent", module: "ACADEMICS" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
-    { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.me", icon: "user", group: "me", screen: "/(app)/profile" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
     // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
@@ -290,7 +322,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
     // The library and the hostel (3 Oct 2026). No `module`: a parent's /me names no school, so each screen says when the child's school has it off.
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "daily", screen: "/(app)/library" },
@@ -307,153 +339,153 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "collegeOffice.moneyTitle", icon: "receipt", group: "school", screen: "/(app)/money", module: "ACADEMICS" },
   ],
   ADMIN: [
-    { labelKey: "nav.classes", icon: "chalkboard", group: "daily", screen: "/(app)/classes" },
-    { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
-    { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
-    { labelKey: "nav.syllabus", icon: "books", group: "daily", screen: "/(app)/syllabus-coverage" },
-    { labelKey: "nav.attendance", icon: "checks", group: "running", screen: "/(app)/attendance" },
-    { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
-    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "running", screen: "/(app)/substitutions" },
-    // The school across terms and years: the office reads what the head reads (the web's /principal/trends).
-    { labelKey: "trends.title", icon: "chartLine", group: "running", screen: "/(app)/trends" },
-    { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
-    { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
-    { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
-    { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
-    { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
-    { labelKey: "nav.reviews", icon: "star", group: "running", screen: "/(app)/reviews" },
-    { labelKey: "nav.safety", icon: "shield", group: "running", screen: "/(app)/safety" },
-    { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
-    { labelKey: "nav.pupilRecords", icon: "clipboard", group: "running", screen: "/(app)/pupil-records" },
-    { labelKey: "nav.certificates", icon: "fileText", group: "running", screen: "/(app)/staff-certificates" },
-    { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
-    { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
-    // Transport (3 Oct 2026): the office's routes, buses, seats and the day's trips on a map, on the web.
-    { labelKey: "transport.title", icon: "bus", group: "running", screen: "/(app)/office-transport", module: "TRANSPORT" },
-    // website-three (17 Oct 2026): the school's website at a glance, read-only; built and changed on the web.
-    { labelKey: "modules.websiteName", icon: "globe", group: "running", screen: "/(app)/website", module: "WEBSITE" },
-    // end website-three
-    { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
-    { labelKey: "nav.invites", icon: "plus", group: "running", screen: "/(app)/invites" },
-    { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
-    { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
-    { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
-    { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts", feature: "EXPERT_SESSIONS" },
-    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
-    { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
-    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
-    { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
-    { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
-    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
-    { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
-    { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
+    { labelKey: "nav.classes", icon: "chalkboard", group: "teaching", screen: "/(app)/classes" },
+    { labelKey: "nav.timetable", icon: "clock", group: "teaching", screen: "/(app)/timetable" },
+    { labelKey: "nav.exams", icon: "clipboard", group: "teaching", screen: "/(app)/exams" },
+    { labelKey: "nav.syllabus", icon: "books", group: "teaching", screen: "/(app)/syllabus-coverage" },
+    { labelKey: "nav.reportCards", icon: "clipboard", group: "teaching", screen: "/(app)/report-card-rules" },
+    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "teaching", screen: "/(app)/substitutions" },
+    { labelKey: "nav.competitions", icon: "trophy", group: "teaching", screen: "/(app)/competitions" },
+    { labelKey: "academics.title", icon: "graduationCap", group: "teaching", screen: "/(app)/office-academics", module: "ACADEMICS" },
+    { labelKey: "examCell.title", icon: "clipboard", group: "teaching", screen: "/(app)/exam-cell", module: "EXAMS" },
+    { labelKey: "streamRecords.title", icon: "clipboard", group: "teaching", screen: "/(app)/stream-records", module: "ACADEMICS" },
+    { labelKey: "nav.staff", icon: "users", group: "people", screen: "/(app)/staff" },
+    { labelKey: "nav.invites", icon: "plus", group: "people", screen: "/(app)/invites" },
+    { labelKey: "nav.pupilRecords", icon: "clipboard", group: "people", screen: "/(app)/pupil-records" },
+    { labelKey: "nav.certificates", icon: "fileText", group: "people", screen: "/(app)/staff-certificates" },
+    { labelKey: "nav.admissions", icon: "users", group: "people", screen: "/(app)/admissions" },
+    { labelKey: "nav.enquiries", icon: "envelope", group: "people", screen: "/(app)/enquiries" },
+    { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "people", screen: "/(app)/joins" },
+    { labelKey: "nav.pastYears", icon: "archive", group: "people", screen: "/(app)/archive" },
     // The alumni module (3 Oct 2026): the office's page on the web, and the directory here.
-    { labelKey: "modules.alumniName", icon: "graduationCap", group: "running", screen: "/(app)/office-alumni", module: "ALUMNI" },
-    { labelKey: "alumni.directoryTitle", icon: "users", group: "school", screen: "/(app)/alumni-directory", module: "ALUMNI" },
+    { labelKey: "modules.alumniName", icon: "graduationCap", group: "people", screen: "/(app)/office-alumni", module: "ALUMNI" },
+    { labelKey: "alumni.directoryTitle", icon: "users", group: "people", screen: "/(app)/alumni-directory", module: "ALUMNI" },
+    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "people", screen: "/(app)/office-admissions", module: "ADMISSIONS" },
+    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "people", screen: "/(app)/faculty-records", module: "IQAC" },
+    { labelKey: "nav.attendance", icon: "checks", group: "attendance", screen: "/(app)/attendance" },
+    { labelKey: "nav.staffAttendance", icon: "checks", group: "attendance", screen: "/(app)/staff-attendance" },
+    { labelKey: "nav.calendar", icon: "calendar", group: "attendance", screen: "/(app)/calendar" },
+    { labelKey: "nav.fees", icon: "receipt", group: "money", screen: "/(app)/fees" },
+    { labelKey: "payroll.title", icon: "receipt", group: "money", screen: "/(app)/payroll", module: "PAYROLL" },
     // Inventory and payroll (3 Oct 2026): the office's summaries, read-only here, and its own payslips.
-    { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
-    { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
-    { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
-    // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
-    { labelKey: "inventory.myTitle", icon: "archive", group: "running", screen: "/(app)/my-items", module: "INVENTORY" },
+    { labelKey: "inventory.title", icon: "archive", group: "money", screen: "/(app)/inventory", module: "INVENTORY" },
+    { labelKey: "role.accounts", icon: "receipt", group: "money", screen: "/(app)/accounts", module: "ACADEMICS" },
+    { labelKey: "nav.bulletin", icon: "megaphone", group: "communication", screen: "/(app)/bulletin" },
+    { labelKey: "nav.circulars", icon: "megaphone", group: "communication", screen: "/(app)/circulars" },
+    { labelKey: "nav.messaging", icon: "chats", group: "communication", screen: "/(app)/messaging" },
+    { ...COUNCIL_NOTICES, group: "communication" },
+    { labelKey: "nav.incidents", icon: "firstAid", group: "communication", screen: "/(app)/incidents" },
+    { labelKey: "nav.safety", icon: "shield", group: "communication", screen: "/(app)/safety" },
+    { labelKey: "nav.experts", icon: "briefcase", group: "communication", screen: "/(app)/experts", feature: "EXPERT_SESSIONS" },
+    { labelKey: "nav.vacancies", icon: "briefcase", group: "communication", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
+    { labelKey: "nav.mentoring", icon: "chat", group: "communication", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "communication", screen: "/(app)/sessions", feature: SESSION_FEATURES },
+    // Transport (3 Oct 2026): the office's routes, buses, seats and the day's trips on a map, on the web.
+    { labelKey: "transport.title", icon: "bus", group: "modules", screen: "/(app)/office-transport", module: "TRANSPORT" },
     // The library desk on the web; the hostel at a glance native since the parity batch (10 Oct 2026).
-    { labelKey: "modules.libraryName", icon: "bookOpen", group: "running", web: "/library", module: "LIBRARY" },
-    { labelKey: "modules.hostelName", icon: "bed", group: "running", screen: "/(app)/office-hostel", module: "HOSTEL" },
+    { labelKey: "modules.libraryName", icon: "bookOpen", group: "modules", web: "/library", module: "LIBRARY" },
+    { labelKey: "modules.hostelName", icon: "bed", group: "modules", screen: "/(app)/office-hostel", module: "HOSTEL" },
+    // website-three (17 Oct 2026): the school's website at a glance, read-only; built and changed on the web.
+    { labelKey: "modules.websiteName", icon: "globe", group: "modules", screen: "/(app)/website", module: "WEBSITE" },
+    // end website-three
     // The college's office (campaign 2026-10-04, G-4; native reads since the parity batch, 10 Oct 2026, R-4): the registrar's
     // entries the web's NAV lists, each under its module; ACADEMICS stands for "is a college". The structure, the admission
     // rounds, the accounts, exam cell, placement and IQAC homes, the faculty records and the stream records are screens;
     // the campus settings and the committees stay on the web.
-    { labelKey: "collegeHub.title", icon: "chartLine", group: "running", screen: "/(app)/college", module: "ACADEMICS" },
-    { labelKey: "academics.title", icon: "graduationCap", group: "running", screen: "/(app)/office-academics", module: "ACADEMICS" },
-    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "running", screen: "/(app)/office-admissions", module: "ADMISSIONS" },
-    { labelKey: "role.accounts", icon: "receipt", group: "running", screen: "/(app)/accounts", module: "ACADEMICS" },
-    { labelKey: "collegeOffice.campusTitle", icon: "buildings", group: "running", web: "/admin/college-campus", module: "ACADEMICS" },
-    { labelKey: "examCell.title", icon: "clipboard", group: "running", screen: "/(app)/exam-cell", module: "EXAMS" },
-    { labelKey: "placement.navCell", icon: "briefcase", group: "running", screen: "/(app)/placement-cell", module: "PLACEMENT" },
-    { labelKey: "iqac.navHome", icon: "medal", group: "running", screen: "/(app)/iqac-desk", module: "IQAC" },
-    { labelKey: "iqac.navCommittees", icon: "users", group: "running", web: "/admin/committees", module: "IQAC" },
-    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", screen: "/(app)/faculty-records", module: "IQAC" },
-    { labelKey: "streamRecords.title", icon: "clipboard", group: "running", screen: "/(app)/stream-records", module: "ACADEMICS" },
-    COUNCIL_NOTICES,
+    { labelKey: "collegeHub.title", icon: "chartLine", group: "modules", screen: "/(app)/college", module: "ACADEMICS" },
+    { labelKey: "collegeOffice.campusTitle", icon: "buildings", group: "modules", web: "/admin/college-campus", module: "ACADEMICS" },
+    { labelKey: "placement.navCell", icon: "briefcase", group: "modules", screen: "/(app)/placement-cell", module: "PLACEMENT" },
+    { labelKey: "iqac.navHome", icon: "medal", group: "modules", screen: "/(app)/iqac-desk", module: "IQAC" },
+    { labelKey: "iqac.navCommittees", icon: "users", group: "modules", web: "/admin/committees", module: "IQAC" },
+    { labelKey: "nav.signatures", icon: "pencil", group: "setup", screen: "/(app)/signatures" },
+    { labelKey: "nav.filings", icon: "fileText", group: "setup", screen: "/(app)/filings" },
+    { labelKey: "nav.reviews", icon: "star", group: "setup", screen: "/(app)/reviews" },
+    // The school across terms and years: the office reads what the head reads (the web's /principal/trends).
+    { labelKey: "trends.title", icon: "chartLine", group: "setup", screen: "/(app)/trends" },
+    { labelKey: "nav.directory", icon: "buildings", group: "setup", screen: "/(app)/directory-profile" },
+    { labelKey: "nav.settings", icon: "gear", group: "setup", screen: "/(app)/settings" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
+    { labelKey: "payroll.myTitle", icon: "receipt", group: "me", screen: "/(app)/payslips", module: "PAYROLL" },
     MY_LETTERS,
+    // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
+    { labelKey: "inventory.myTitle", icon: "archive", group: "me", screen: "/(app)/my-items", module: "INVENTORY" },
   ],
   PRINCIPAL: [
-    { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
-    { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
-    { labelKey: "nav.syllabus", icon: "books", group: "daily", screen: "/(app)/syllabus-coverage" },
-    { labelKey: "nav.attendance", icon: "checks", group: "daily", screen: "/(app)/attendance" },
-    { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
-    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "running", screen: "/(app)/substitutions" },
-    { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
-    // The head's own decisions as sentences, read from the audit log (the web's /principal/decisions).
-    { labelKey: "decisions.title", icon: "clipboard", group: "running", screen: "/(app)/decisions" },
-    // The school across terms and years, recomputed on every read (the web's /principal/trends).
-    { labelKey: "trends.title", icon: "chartLine", group: "running", screen: "/(app)/trends" },
-    { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
-    { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
-    { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
-    { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
-    { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
-    { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
-    { labelKey: "nav.pupilRecords", icon: "clipboard", group: "running", screen: "/(app)/pupil-records" },
-    { labelKey: "nav.certificates", icon: "fileText", group: "running", screen: "/(app)/staff-certificates" },
-    { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
-    { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
-    // Transport (3 Oct 2026): the head reads the day's trips on the web.
-    { labelKey: "transport.title", icon: "bus", group: "running", screen: "/(app)/office-transport", module: "TRANSPORT" },
-    // website-three (17 Oct 2026): the school's website at a glance, read-only; built and changed on the web.
-    { labelKey: "modules.websiteName", icon: "globe", group: "running", screen: "/(app)/website", module: "WEBSITE" },
-    // end website-three
-    { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
-    { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
-    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
-    { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
-    { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
-    { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
-    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
-    { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
-    { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
+    { labelKey: "nav.exams", icon: "clipboard", group: "teaching", screen: "/(app)/exams" },
+    { labelKey: "nav.timetable", icon: "clock", group: "teaching", screen: "/(app)/timetable" },
+    { labelKey: "nav.syllabus", icon: "books", group: "teaching", screen: "/(app)/syllabus-coverage" },
+    { labelKey: "nav.reportCards", icon: "clipboard", group: "teaching", screen: "/(app)/report-card-rules" },
+    { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "teaching", screen: "/(app)/substitutions" },
+    { labelKey: "nav.competitions", icon: "trophy", group: "teaching", screen: "/(app)/competitions" },
+    { labelKey: "academics.title", icon: "graduationCap", group: "teaching", screen: "/(app)/office-academics", module: "ACADEMICS" },
+    { labelKey: "examCell.title", icon: "clipboard", group: "teaching", screen: "/(app)/exam-cell", module: "EXAMS" },
+    { labelKey: "streamRecords.title", icon: "clipboard", group: "teaching", screen: "/(app)/stream-records", module: "ACADEMICS" },
+    { labelKey: "nav.staff", icon: "users", group: "people", screen: "/(app)/staff" },
+    { labelKey: "nav.pupilRecords", icon: "clipboard", group: "people", screen: "/(app)/pupil-records" },
+    { labelKey: "nav.certificates", icon: "fileText", group: "people", screen: "/(app)/staff-certificates" },
+    { labelKey: "nav.admissions", icon: "users", group: "people", screen: "/(app)/admissions" },
+    { labelKey: "nav.enquiries", icon: "envelope", group: "people", screen: "/(app)/enquiries" },
+    { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "people", screen: "/(app)/joins" },
+    { labelKey: "nav.pastYears", icon: "archive", group: "people", screen: "/(app)/archive" },
+    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "people", screen: "/(app)/office-admissions", module: "ADMISSIONS" },
+    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "people", screen: "/(app)/faculty-records", module: "IQAC" },
+    { labelKey: "nav.attendance", icon: "checks", group: "attendance", screen: "/(app)/attendance" },
+    { labelKey: "nav.staffAttendance", icon: "checks", group: "attendance", screen: "/(app)/staff-attendance" },
+    { labelKey: "nav.calendar", icon: "calendar", group: "attendance", screen: "/(app)/calendar" },
+    { labelKey: "nav.fees", icon: "receipt", group: "money", screen: "/(app)/fees" },
     // The payroll summary and the stores, read; the head's own payslips (3 Oct 2026).
-    { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
-    { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
-    { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
-    // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
-    { labelKey: "inventory.myTitle", icon: "archive", group: "running", screen: "/(app)/my-items", module: "INVENTORY" },
+    { labelKey: "payroll.title", icon: "receipt", group: "money", screen: "/(app)/payroll", module: "PAYROLL" },
+    { labelKey: "inventory.title", icon: "archive", group: "money", screen: "/(app)/inventory", module: "INVENTORY" },
+    { labelKey: "role.accounts", icon: "receipt", group: "money", screen: "/(app)/accounts", module: "ACADEMICS" },
+    { labelKey: "nav.bulletin", icon: "megaphone", group: "communication", screen: "/(app)/bulletin" },
+    { labelKey: "nav.circulars", icon: "megaphone", group: "communication", screen: "/(app)/circulars" },
+    { labelKey: "nav.messaging", icon: "chats", group: "communication", screen: "/(app)/messaging" },
+    { ...COUNCIL_NOTICES, group: "communication" },
+    { labelKey: "nav.incidents", icon: "firstAid", group: "communication", screen: "/(app)/incidents" },
+    { labelKey: "nav.vacancies", icon: "briefcase", group: "communication", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "communication", screen: "/(app)/sessions", feature: SESSION_FEATURES },
+    // Transport (3 Oct 2026): the head reads the day's trips on the web.
+    { labelKey: "transport.title", icon: "bus", group: "modules", screen: "/(app)/office-transport", module: "TRANSPORT" },
     // The library's reports on the web; the hostel at a glance native since the parity batch (10 Oct 2026).
-    { labelKey: "modules.libraryName", icon: "bookOpen", group: "running", web: "/library/reports", module: "LIBRARY" },
-    { labelKey: "modules.hostelName", icon: "bed", group: "running", screen: "/(app)/office-hostel", module: "HOSTEL" },
+    { labelKey: "modules.libraryName", icon: "bookOpen", group: "modules", web: "/library/reports", module: "LIBRARY" },
+    { labelKey: "modules.hostelName", icon: "bed", group: "modules", screen: "/(app)/office-hostel", module: "HOSTEL" },
+    // website-three (17 Oct 2026): the school's website at a glance, read-only; built and changed on the web.
+    { labelKey: "modules.websiteName", icon: "globe", group: "modules", screen: "/(app)/website", module: "WEBSITE" },
+    // end website-three
     // The college (campaign 2026-10-04, G-4; native reads since the parity batch, 10 Oct 2026, R-4): the head's entries the web's
     // NAV lists, each under its module; the accreditation file and the committees stay on the web, the filings' sign-off is
     // on the filings screen.
-    { labelKey: "collegeHub.title", icon: "chartLine", group: "running", screen: "/(app)/college", module: "ACADEMICS" },
-    { labelKey: "academics.title", icon: "graduationCap", group: "running", screen: "/(app)/office-academics", module: "ACADEMICS" },
-    { labelKey: "role.accounts", icon: "receipt", group: "running", screen: "/(app)/accounts", module: "ACADEMICS" },
-    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "running", screen: "/(app)/office-admissions", module: "ADMISSIONS" },
-    { labelKey: "examCell.title", icon: "clipboard", group: "running", screen: "/(app)/exam-cell", module: "EXAMS" },
-    { labelKey: "placement.navCell", icon: "briefcase", group: "running", screen: "/(app)/placement-cell", module: "PLACEMENT" },
-    { labelKey: "iqac.navAccreditation", icon: "medal", group: "running", web: "/principal/accreditation", module: "IQAC" },
-    { labelKey: "iqac.navDocuments", icon: "clipboard", group: "running", screen: "/(app)/iqac-filings", module: "IQAC" },
-    { labelKey: "insightsPhone.title", icon: "lightbulb", group: "running", screen: "/(app)/iqac-insights", module: "IQAC" },
-    { labelKey: "iqac.navCommittees", icon: "users", group: "running", web: "/admin/committees", module: "IQAC" },
-    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", screen: "/(app)/faculty-records", module: "IQAC" },
-    { labelKey: "streamRecords.title", icon: "clipboard", group: "running", screen: "/(app)/stream-records", module: "ACADEMICS" },
-    COUNCIL_NOTICES,
+    { labelKey: "collegeHub.title", icon: "chartLine", group: "modules", screen: "/(app)/college", module: "ACADEMICS" },
+    { labelKey: "placement.navCell", icon: "briefcase", group: "modules", screen: "/(app)/placement-cell", module: "PLACEMENT" },
+    { labelKey: "iqac.navAccreditation", icon: "medal", group: "modules", web: "/principal/accreditation", module: "IQAC" },
+    { labelKey: "iqac.navDocuments", icon: "clipboard", group: "modules", screen: "/(app)/iqac-filings", module: "IQAC" },
+    { labelKey: "insightsPhone.title", icon: "lightbulb", group: "modules", screen: "/(app)/iqac-insights", module: "IQAC" },
+    { labelKey: "iqac.navCommittees", icon: "users", group: "modules", web: "/admin/committees", module: "IQAC" },
+    { labelKey: "nav.signatures", icon: "pencil", group: "setup", screen: "/(app)/signatures" },
+    { labelKey: "nav.filings", icon: "fileText", group: "setup", screen: "/(app)/filings" },
+    { labelKey: "nav.reviews", icon: "star", group: "setup", screen: "/(app)/reviews" },
+    // The head's own decisions as sentences, read from the audit log (the web's /principal/decisions).
+    { labelKey: "decisions.title", icon: "clipboard", group: "setup", screen: "/(app)/decisions" },
+    // The school across terms and years, recomputed on every read (the web's /principal/trends).
+    { labelKey: "trends.title", icon: "chartLine", group: "setup", screen: "/(app)/trends" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
+    { labelKey: "payroll.myTitle", icon: "receipt", group: "me", screen: "/(app)/payslips", module: "PAYROLL" },
     MY_LETTERS,
+    // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
+    { labelKey: "inventory.myTitle", icon: "archive", group: "me", screen: "/(app)/my-items", module: "INVENTORY" },
   ],
   EXPERT: [
-    { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.profile", icon: "user", group: "me", screen: "/(app)/profile" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
   ],
   DRIVER: [
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
     // My own leave (4 Oct 2026): GET/POST /api/v1/staff/leave name the three module staff roles.
     { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
     ...OWN_STAFF_ENTRIES,
   ],
   LIBRARIAN: [
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
     { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
     ...OWN_STAFF_ENTRIES,
     // The desk is the home tab; the catalogue, fines and reports are the web's (the library module, 3 Oct 2026).
@@ -465,7 +497,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "daily", screen: "/(app)/no-dues", module: "ACADEMICS" },
   ],
   WARDEN: [
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
     { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
     ...OWN_STAFF_ENTRIES,
     // Roll call, leave and visitors are the home tab; rooms, the menu and incidents are the web's (the hostel module, 3 Oct 2026).
@@ -483,7 +515,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "modules.alumniRecord", icon: "fileText", group: "school", web: "/record" },
     // The directory a former pupil may join (the alumni module).
     { labelKey: "alumni.directoryTitle", icon: "users", group: "school", screen: "/(app)/alumni-directory", module: "ALUMNI" },
-    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" },
     // The IQAC module (4 Oct 2026): the alumni survey.
     { labelKey: "iqac.navAlumniSurvey", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
     // A paper asked for again — a copy of the leaving certificate, a bonafide (campaign 2026-10-04, G-6); the doors carry no module.
@@ -525,7 +557,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     // The parity batch (10 Oct 2026, R-4): the web's /faculty/supervision, /faculty/research and /faculty/profile.
     { labelKey: "placement.supervisionTitle", icon: "briefcase", group: "daily", screen: "/(app)/supervision", module: "PLACEMENT" },
     { labelKey: "iqac.navResearch", icon: "books", group: "running", screen: "/(app)/research", module: "IQAC" },
-    { labelKey: "collegeDesks.profileNav", icon: "user", group: "running", screen: "/(app)/faculty-profile", module: "IQAC" },
+    { labelKey: "collegeDesks.profileNav", icon: "user", group: "me", screen: "/(app)/faculty-profile", module: "IQAC" },
   ],
   HOD: [
     ...COLLEGE_STAFF_MENU,
@@ -562,7 +594,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "placement.hodProjectsTitle", icon: "briefcase", group: "daily", screen: "/(app)/supervision", module: "PLACEMENT" },
     { labelKey: "iqac.navDeptResearch", icon: "books", group: "running", screen: "/(app)/research", module: "IQAC" },
     { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "running", screen: "/(app)/no-dues", module: "ACADEMICS" },
-    { labelKey: "collegeDesks.profileNav", icon: "user", group: "running", screen: "/(app)/faculty-profile", module: "IQAC" },
+    { labelKey: "collegeDesks.profileNav", icon: "user", group: "me", screen: "/(app)/faculty-profile", module: "IQAC" },
   ],
   EXAM_CONTROLLER: [
     ...COLLEGE_STAFF_MENU,
@@ -611,7 +643,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
     { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
   ],
-  RECRUITER: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
+  RECRUITER: [{ labelKey: "nav.account", icon: "user", group: "me", screen: "/(app)/account" }],
 };
 
 /**
@@ -844,10 +876,13 @@ export const HIDDEN_SCREENS = [
   "student-studios",
 ] as const;
 
-/** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */
+/**
+ * The More sheet's entries for a role, grouped in the web's order with the person's own pages (`me`) first; an entry
+ * whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out.
+ */
 export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = [], streams: readonly string[] = [], features: readonly string[] = FEATURES_BEFORE_SWITCHES): { group: MenuGroup; items: MenuItem[] }[] {
   const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && (!item.streams || streams.length === 0 || item.streams.some((s) => streams.includes(s))) && featureShown(item, features));
-  return MENU_GROUPS.map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
+  return [ME_MENU_GROUP, ...menuGroupsFor(role)].map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
 }
 
 /** Whether a tab is drawn: always, unless it belongs to a module the school has off, a duty the person does not hold, or a platform feature that is off (15 Oct 2026). */

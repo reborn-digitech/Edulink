@@ -5,14 +5,15 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChatsCircleIcon, CommandIcon, DotsThreeOutlineIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
 import { OutboxBadge } from "./outbox-badge";
-import { ASSISTANT_HREF, NAV, NAV_GROUP_KEY, PHONE_BAR, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
+import { ASSISTANT_HREF, NAV, NAV_GROUP_KEY, PHONE_BAR, PRIMARY_ACTION, isActive, personalItems, railFor, sheetFor, type NavItem } from "@/lib/nav";
 import { NavIcon } from "./icons";
+import { NavGroupSection, useRememberedGroups } from "./nav-groups";
+import { AccountMenu } from "./account-menu";
 import { CommandPalette } from "./command-palette";
 import { ViduraDrawer, useDesk } from "@/components/assistant/drawer";
 import { ViduraExplainContext, type ExplainRequest } from "@/components/assistant/explain-this";
 import { DRAWER_PARAM } from "@/components/assistant/model";
 import { TypingSwitch } from "@/components/typing-switch";
-import { Avatar } from "@/components/ui/avatar";
 import { Logo } from "@/components/brand";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
@@ -124,25 +125,21 @@ export function AppShell({
     return () => window.clearTimeout(timer);
   }, [pathname, vidura]);
   const items = NAV[user.role].filter((item) => !hiddenHrefs.includes(item.href));
-  const primaryItems = items.filter((i) => i.primary).slice(0, 5);
-  /* The rest, as three short lists. FIVE PRIMARIES carry the day; the rail
-   * and the phone's More sheet read the remainder under group headings so a
-   * parent looking for Meetings is not scanning Competitions to find it. */
-  const GROUPS: NavGroup[] = ["daily", "school", "running"];
-  const secondary = GROUPS.map((group) => ({
-    group,
-    items: items.filter((i) => !i.primary && (i.group ?? "school") === group),
-  })).filter((g) => g.items.length > 0);
+  /* FIVE PRIMARIES carry the day; the rail and the phone's More sheet read the
+   * remainder under group headings so a parent looking for Meetings is not
+   * scanning Competitions to find it — the office's and the head's in seven
+   * groups that open and close (27 Oct 2026, item 3; lib/nav.ts navGroupsFor).
+   * The person's own pages are the account menu's, not the rail's. */
+  const { primary: primaryItems, groups: secondary } = railFor(user.role, items);
+  const mine = personalItems(items);
+  const [remembered, remember] = useRememberedGroups(user.role);
   /*
    * AT A PHONE'S WIDTH, THE PHONE APP'S BAR (QA-65): its tabs in its order, then More, whose sheet holds every entry
    * not on the bar (a primary that is not a tab under "Day to day"). The desk's rail above keeps the primaries.
    */
   const barItems = PHONE_BAR[user.role].filter((item) => !hiddenBar.includes(item.href));
   const onBar = (item: NavItem) => barItems.some((b) => b.href === item.href);
-  const sheet = GROUPS.map((group) => ({
-    group,
-    items: items.filter((i) => !onBar(i) && (i.group ?? (i.primary ? "daily" : "school")) === group),
-  })).filter((g) => g.items.length > 0);
+  const sheet = sheetFor(user.role, items, onBar);
   const moreActive = !barItems.some((item) => isActive(pathname, item));
   // Only on the pages it belongs to (QuickAction.on), and never on the page it opens.
   const primary = PRIMARY_ACTION[user.role];
@@ -195,14 +192,22 @@ export function AppShell({
             <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} badge={badges[item.href] ?? 0} />
           ))}
           {secondary.map(({ group, items: list }) => (
-            <div key={group} className="pt-3">
-              <p className="px-3 pb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-fg-subtle">
-                {t(NAV_GROUP_KEY[group])}
-              </p>
-              {list.map((item) => (
-                <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} badge={badges[item.href] ?? 0} />
-              ))}
-            </div>
+            <NavGroupSection
+              key={group}
+              id={`rail-group-${group}`}
+              label={t(NAV_GROUP_KEY[group])}
+              group={group}
+              remembered={remembered}
+              holdsPage={list.some((item) => isActive(pathname, item))}
+              onToggle={remember}
+              size="rail"
+            >
+              <div className="space-y-0.5">
+                {list.map((item) => (
+                  <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} badge={badges[item.href] ?? 0} />
+                ))}
+              </div>
+            </NavGroupSection>
           ))}
         </nav>
         {/* The language is changed on the account page, one tap away; a link to it here was one more thing in the menu (the owner, 2026-10-01). */}
@@ -260,18 +265,8 @@ export function AppShell({
             </kbd>
           </button>
 
-          <Link
-            href="/account"
-            className="flex items-center gap-2.5 rounded-[var(--radius-md)] p-2 transition-colors hover:bg-surface-muted"
-          >
-            <Avatar avatarKey={user.avatarKey} name={user.name} size="sm" />
-            <span className="min-w-0 flex-1">
-              <span className="block truncate text-sm font-medium text-fg">{user.name}</span>
-              {user.contextCount > 1 && (
-                <span className="block text-xs text-accent-strong">{t("shell.switchRole")}</span>
-              )}
-            </span>
-          </Link>
+          {/* The person's own pages (my letters, payslips, items, profile) open from the avatar, not the rail (item 3). */}
+          <AccountMenu place="rail" name={user.name} avatarKey={user.avatarKey} switchHint={user.contextCount > 1} items={mine} t={t} />
         </div>
       </aside>
 
@@ -311,9 +306,7 @@ export function AppShell({
               </span>
             )}
           </Link>
-          <Link href="/account" aria-label={t("shell.yourAccount")} className="tap grid place-items-center">
-            <Avatar avatarKey={user.avatarKey} name={user.name} size="sm" />
-          </Link>
+          <AccountMenu place="bar" name={user.name} avatarKey={user.avatarKey} switchHint={false} items={mine} t={t} />
         </div>
       </header>
 
@@ -427,10 +420,16 @@ export function AppShell({
           />
           <div data-chrome className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-[var(--radius-xl)] bg-surface p-4 pb-safe shadow-xl animate-in-up">
             {sheet.map(({ group, items: list }) => (
-              <div key={group} className="mb-4">
-                <p className="px-2 pb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-fg-subtle">
-                  {t(NAV_GROUP_KEY[group])}
-                </p>
+              <NavGroupSection
+                key={group}
+                id={`sheet-group-${group}`}
+                label={t(NAV_GROUP_KEY[group])}
+                group={group}
+                remembered={remembered}
+                holdsPage={list.some((item) => isActive(pathname, item))}
+                onToggle={remember}
+                size="sheet"
+              >
                 <ul className="grid grid-cols-2 gap-1">
                   {list.map((item) => (
                     <li key={item.href}>
@@ -448,7 +447,7 @@ export function AppShell({
                     </li>
                   ))}
                 </ul>
-              </div>
+              </NavGroupSection>
             ))}
           </div>
         </div>

@@ -6,6 +6,7 @@ import { BriefcaseIcon } from "phosphor-react-native/src/icons/Briefcase";
 import { BuildingsIcon } from "phosphor-react-native/src/icons/Buildings";
 import { CalendarIcon } from "phosphor-react-native/src/icons/Calendar";
 import { CameraIcon } from "phosphor-react-native/src/icons/Camera";
+import { CaretDownIcon } from "phosphor-react-native/src/icons/CaretDown";
 import { CaretRightIcon } from "phosphor-react-native/src/icons/CaretRight";
 import { ChalkboardIcon } from "phosphor-react-native/src/icons/Chalkboard";
 import { ChartLineIcon } from "phosphor-react-native/src/icons/ChartLine";
@@ -92,6 +93,8 @@ const MAP = {
   megaphone: MegaphoneIcon, palette: PaletteIcon, plus: PlusIcon, shield: ShieldIcon, dots: DotsThreeOutlineIcon, signOut: SignOutIcon,
   translate: TranslateIcon, devices: DeviceMobileIcon, check: CheckIcon, x: XIcon, warning: WarningIcon, camera: CameraIcon, paperPlane: PaperPlaneTiltIcon,
   tray: TrayIcon, caretRight: CaretRightIcon,
+  // A More section open (caretDown) or closed (caretRight), 27 Oct 2026.
+  caretDown: CaretDownIcon,
   clap: HandsClappingIcon,
   lightbulb: LightbulbIcon,
   heart: HeartIcon,

@@ -36,10 +36,11 @@ describe("the desks' own pages in More", () => {
   it("the accounts desk: its pages native, and payroll and stores only while those modules are on", () => {
     const shown = (modules: string[]) => menuFor("ACCOUNTS", modules).flatMap((g) => g.items).filter((i) => i.screen && i.screen !== "/(app)/assistant").map((i) => i.screen);
     expect(webOf("ACCOUNTS")).toEqual([]);
-    expect(shown(["SCHOLARSHIPS", "PAYROLL", "INVENTORY"])).toEqual(["/(app)/accounts-lookup", "/(app)/fee-structures", "/(app)/scholarship-claims", "/(app)/no-dues", "/(app)/concessions", "/(app)/account", "/(app)/leave", "/(app)/my-attendance", "/(app)/payslips", "/(app)/fees", "/(app)/payroll", "/(app)/inventory"]);
+    // The person's own pages first, in More's "Me" area (27 Oct 2026, item 3): the account and my payslips.
+    expect(shown(["SCHOLARSHIPS", "PAYROLL", "INVENTORY"])).toEqual(["/(app)/account", "/(app)/payslips", "/(app)/accounts-lookup", "/(app)/fee-structures", "/(app)/scholarship-claims", "/(app)/no-dues", "/(app)/concessions", "/(app)/leave", "/(app)/my-attendance", "/(app)/fees", "/(app)/payroll", "/(app)/inventory"]);
     // My appointment letters open on the web, signed in (QA-66).
     expect(menuFor("ACCOUNTS", []).flatMap((g) => g.items).some((i) => i.web === "/account/letters")).toBe(true);
-    expect(shown([])).toEqual(["/(app)/accounts-lookup", "/(app)/fee-structures", "/(app)/no-dues", "/(app)/concessions", "/(app)/account", "/(app)/leave", "/(app)/my-attendance", "/(app)/fees"]);
+    expect(shown([])).toEqual(["/(app)/account", "/(app)/accounts-lookup", "/(app)/fee-structures", "/(app)/no-dues", "/(app)/concessions", "/(app)/leave", "/(app)/my-attendance", "/(app)/fees"]);
   });
 
   it("gives the accounts desk its look-up as a screen of the phone's own", () => {
@@ -60,7 +61,8 @@ describe("the desks' own pages in More", () => {
   });
 
   it("what still opens the web for the office and the head: the library desk, the campus settings, the committees and the accreditation file", () => {
-    expect(webOf("ADMIN")).toEqual([["/library", "LIBRARY"], ["/admin/college-campus", "ACADEMICS"], ["/admin/committees", "IQAC"], ["/bulletin/council", null]]);
-    expect(webOf("PRINCIPAL")).toEqual([["/library/reports", "LIBRARY"], ["/principal/accreditation", "IQAC"], ["/admin/committees", "IQAC"], ["/bulletin/council", null]]);
+    // In the menu's order since the seven groups (27 Oct 2026, item 3): the council's notices under Communication, the rest under Modules.
+    expect(webOf("ADMIN")).toEqual([["/bulletin/council", null], ["/library", "LIBRARY"], ["/admin/college-campus", "ACADEMICS"], ["/admin/committees", "IQAC"]]);
+    expect(webOf("PRINCIPAL")).toEqual([["/bulletin/council", null], ["/library/reports", "LIBRARY"], ["/principal/accreditation", "IQAC"], ["/admin/committees", "IQAC"]]);
   });
 });

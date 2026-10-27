@@ -19943,4 +19943,28 @@ export const en = {
     officeOnlyBody: "Only the school office and the head open it. Your own pages are on your home and under More.",
   },
   // end fix-lows-C
+  // owner-batch-item3 (27 Oct 2026): the office's and the head's menu in seven groups; a person's own pages under the account menu.
+  navGroup: {
+    teaching: "Teaching",
+    people: "People and records",
+    attendance: "Attendance and cover",
+    money: "Money",
+    communication: "Communication",
+    modules: "Modules",
+    setup: "Setup",
+    me: "Me",
+  },
+  // end owner-batch-item3
+  // owner-batch-item1 (27 Oct 2026): a subject teacher sets work for every class the timetable sends them to.
+  subjectWork: {
+    formTeacher: "Form teacher",
+    subject: "Subject",
+    noSubject: "No subject",
+    subjectHint: "The subjects you take in this class on the timetable come first.",
+    newWorkSetIn: "New {subject} work set",
+    refuseNotYours: "On the timetable you take {subjects} in this class. Set work in one of those.",
+    refuseSyllabus: "You take this class for other subjects. Its own teachers record this one.",
+    notFormClass: "You take this class for {subjects} on the timetable. Its register, report cards and grade weights are its form teacher's, and here you see the work you set.",
+  },
+  // end owner-batch-item1
 } as const;

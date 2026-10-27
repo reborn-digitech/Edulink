@@ -19470,4 +19470,28 @@ export const hi: Dictionary = {
     officeOnlyBody: "इसे केवल स्कूल कार्यालय और प्रधानाचार्य खोलते हैं। आपके अपने पन्ने आपके होम पर और ‘और’ में हैं।",
   },
   // end fix-lows-C
+  // owner-batch-item3 (27 Oct 2026): the office's and the head's menu in seven groups; a person's own pages under the account menu.
+  navGroup: {
+    teaching: "शिक्षण",
+    people: "लोग और रिकॉर्ड",
+    attendance: "उपस्थिति और प्रतिस्थापन",
+    money: "पैसा",
+    communication: "संवाद",
+    modules: "मॉड्यूल",
+    setup: "सेटअप",
+    me: "मैं",
+  },
+  // end owner-batch-item3
+  // owner-batch-item1 (27 Oct 2026): a subject teacher sets work for every class the timetable sends them to.
+  subjectWork: {
+    formTeacher: "कक्षा शिक्षक",
+    subject: "विषय",
+    noSubject: "कोई विषय नहीं",
+    subjectHint: "समय-सारणी में इस कक्षा के आपके विषय पहले दिखते हैं।",
+    newWorkSetIn: "नया काम दिया गया ({subject})",
+    refuseNotYours: "समय-सारणी में आप इस कक्षा में {subjects} पढ़ाते हैं। इन्हीं में से किसी विषय में काम दें।",
+    refuseSyllabus: "आप यह कक्षा दूसरे विषयों के लिए लेते हैं। यह विषय कक्षा के अपने शिक्षक दर्ज करते हैं।",
+    notFormClass: "समय-सारणी में आप यह कक्षा {subjects} के लिए लेते हैं। इसकी हाज़िरी, रिपोर्ट कार्ड और अंकों का भार कक्षा शिक्षक के ज़िम्मे हैं, और यहाँ आपको अपना दिया हुआ काम दिखता है।",
+  },
+  // end owner-batch-item1
 };
