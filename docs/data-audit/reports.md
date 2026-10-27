@@ -1,10 +1,10 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-27T05:15:54.057Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 643 WARN · 302 INFO
+Run: 2026-10-27T06:26:40.439Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 644 WARN · 302 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
-## WARN (643)
+## WARN (644)
 
 | check | school | detail |
 |---|---|---|
@@ -437,8 +437,8 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ YASH FERNANDES has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| staff-csv | Saraswati Vidya Mandir | cmubsk3rg05rkgnnd2ezh9112 has taken 13 against 12 — the balance is negative |
-| staff-csv | Sunrise Public School | cmubsk1ev000jgnndhdz5qicq has taken 13 against 12 — the balance is negative |
+| staff-csv | Saraswati Vidya Mandir | cmubsk3rg05rkgnnd2ezh9112 has taken 14 against 12 — the balance is negative |
+| staff-csv | Sunrise Public School | cmubsk1ev000jgnndhdz5qicq has taken 14 against 12 — the balance is negative |
 | leaving-certificates | Saraswati Arts and Science College | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | leaving-certificates | Saraswati College of Agriculture | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | leaving-certificates | Saraswati College of Education | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
@@ -449,6 +449,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | leaving-certificates | Saraswati Law College | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | leaving-certificates | Saraswati School of Architecture | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | leaving-certificates | Saraswati Vocational College | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
+| leaving-certificates | Sunrise Public School | 5 pupil(s) left with no departure record — no leaving certificate exists for them |
 | leaving-certificates | ZZ Northgate School | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | inputs-pupils | Saraswati Arts and Science College | 9 of 10 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
 | inputs-pupils | Saraswati Arts and Science College | 9 of 10 pupils lack a guardian with a number they proved — feeds texts and reminders |

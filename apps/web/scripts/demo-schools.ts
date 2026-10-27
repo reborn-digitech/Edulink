@@ -38,6 +38,13 @@ import {
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
   CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal, switchModulesOn } from "./zz-fixtures";
 import { SCHOOL_MODULES } from "@edulink/contracts";
+// owner-batch-item4a: imports of Sunrise's transport, hostel and library builders (end of file)
+import { en as EN_DICT } from "@edulink/i18n/en";
+import { addDaysToKey, todayKey, weekdayOfKey, zonedStartOfDay } from "../src/lib/dates";
+// owner-batch-item4a end
+// owner-batch-item4b: Sunrise's inventory, payroll, website, alumni, review rounds and online fees (scripts/demo-schools-item4b.ts)
+import { buildSunriseItem4b, item4bRosterSection } from "./demo-schools-item4b";
+// owner-batch-item4b end
 
 setTag("");
 
@@ -916,6 +923,27 @@ async function countBlock(schoolIds: string[], sunitaId: string) {
     competitionStandings: await db.competitionStanding.count({ where: s }),
     rollNumbers: await db.enrollment.count({ where: { ...s, rollNumber: { not: null } } }),
     sunitaNotifications: await db.notification.count({ where: { userId: sunitaId } }),
+    // owner-batch-item4b
+    inventoryItems: await db.inventoryItem.count({ where: s }),
+    purchaseRecords: await db.purchaseRecord.count({ where: s }),
+    stockMovements: await db.stockMovement.count({ where: s }),
+    assets: await db.asset.count({ where: s }),
+    staffSalaries: await db.staffSalary.count({ where: s }),
+    payrollRuns: await db.payrollRun.count({ where: s }),
+    payslips: await db.payslip.count({ where: s }),
+    salaryPayments: await db.salaryPayment.count({ where: s }),
+    staffAdvances: await db.staffAdvance.count({ where: s }),
+    siteVersions: await db.schoolSiteVersion.count({ where: s }),
+    siteFiles: await db.schoolSiteFile.count({ where: s }),
+    siteDomains: await db.schoolSiteDomain.count({ where: s }),
+    siteVisits: await db.schoolSiteVisit.count({ where: s }),
+    alumniProfiles: await db.alumniProfile.count({ where: s }),
+    alumniNotes: await db.alumniNote.count({ where: s }),
+    reviewRounds: await db.reviewRound.count({ where: s }),
+    reviewResponses: await db.reviewResponse.count({ where: s }),
+    feeGatewayAccounts: await db.feeGatewayAccount.count({ where: s }),
+    familyPayments: await db.feePayment.count({ where: { ...s, method: { in: ["ONLINE", "UPI"] } } }),
+    // owner-batch-item4b end
   };
   return c;
 }
@@ -1042,8 +1070,9 @@ ${input.expert.anjali ? `| ${ANJALI_EMAIL} | Dr Anjali Rao (existing demo expert
 | A grade-9 entry in the platform's "Autumn Science Fair" with a result and the school's standing | /competitions, /admin/competitions |
 | A pupil who left in August with a transfer record (\`<school>.pupil49\`, ${sunrise.spec.leaver.name} / ${saraswati.spec.leaver.name}); a grade-8 departure scheduled for 30 April | /admin/people → departures, /admin/certificates |
 | Pupil records with coded category and religion, caste, parents' occupations, income, the previous school's TC; staff records with dates of birth and of joining service; roll numbers in every class | /admin/records, /admin/filings, /student/record |
+${/* owner-batch-item4a: Sunrise's bus, hostel and library rows */ campusRosterRows(SUNRISE_CAMPUS)}
 
-Not seeded: a review round (deliberately skipped as cheap only through the UI), online payments.
+${/* owner-batch-item4b: the review round and online payments are seeded now; this section says what and where. */ item4bRosterSection()}
 `;
 }
 
@@ -1176,6 +1205,15 @@ async function main() {
   const globalPost = await buildGlobalPost(sunrise);
   const bell = await buildSunitaNotifications(sunita, sunrise, saraswati, { sunriseSlot: "booked" });
 
+  // owner-batch-item4a: Sunrise's bus, hostel and library (owner's batch of 27 October 2026, item 4a); Saraswati stays the plain school.
+  await buildCampusModules(ctx, sunrise, SUNRISE_CAMPUS);
+  // owner-batch-item4a end
+
+  // owner-batch-item4b: Sunrise's inventory, payroll, website, alumni, review rounds and online fees, after every other builder so the payroll's roll holds all the staff.
+  const item4b = await buildSunriseItem4b(ctx, sunrise);
+  sunrise.moduleStaff?.push(...item4b.accounts);
+  // owner-batch-item4b end
+
   const counts = await countBlock([sunrise.school.id, saraswati.school.id], sunita.id);
 
   const doc = rosterMarkdown({ sunrise, saraswati, sunita, expert: { threadId: experts.threadId, bookings: experts.bookings, mentee: { name: experts.mentee.name, grade: experts.mentee.grade }, anjali: experts.anjali }, vacancies, admissionEnquiries, circulars: { sunrise: String(sunrise.counts.circular), saraswati: String(saraswati.counts.circular) }, globalPostId: globalPost.postId });
@@ -1240,6 +1278,642 @@ ${line(saraswati)}
 ${Object.entries(counts).map(([k, v]) => `     ${k.padEnd(22)} ${v}`).join("\n")}
 `);
 }
+
+// owner-batch-item4a ─────────────────────────────────────────────────────────────────────────────────────────
+/* -------------------------------------------------------------------------- */
+/* Sunrise's bus, hostel and library (owner's batch of 27 October 2026, 4a)    */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * SUNRISE'S THREE CAMPUS MODULES, WITH A WORKING WEEK IN THEM. Sunrise has had
+ * TRANSPORT, HOSTEL and LIBRARY on since 3 October, with a driver, a warden and
+ * a librarian who had nothing to do. These builders write what a week of using
+ * the modules leaves behind, in the shape the modules' own writers leave it
+ * (src/lib/transport.ts, hostel.ts, library.ts, reading-room.ts, and
+ * college-fees.ts raiseOnce for the two charges), from a spec per school
+ * (CampusSpec; demo-college-stream.ts buildCampus is the model):
+ *
+ *   transport  two routes on one bus (Route 2 runs first, then Route 1, morning
+ *              and evening), four stops each with the school gate last, the
+ *              times rising along the morning and falling along the evening
+ *              (QA-46); sunrise.driver01 drives and a new attendant,
+ *              sunrise.attendant01, rides (an attendant is a DRIVER membership);
+ *              twelve riders in all six classes; the driver's yes to the
+ *              location sentence; every trip of the last six open days ENDED
+ *              with the bus's track and the riders ticked on and off (one away
+ *              now and then), and today's trips that are already over; one OPEN
+ *              incident on Route 1; the Term 2 route fee raised for each rider
+ *              under the Transport head (raisedKey ROUTE:<year>:<route>:term 2).
+ *   hostel     a boys' house (sunrise.warden) and a girls' house (a new warden,
+ *              sunrise.warden2), two rooms each, ten boarders from grades 5 and
+ *              10, the week's mess menu, both roll calls of the last seven days
+ *              (and this morning's once it is past), one boarder out on home
+ *              leave since yesterday (consented, approved, through the gate),
+ *              one back from last weekend's, one ask waiting for the warden, a
+ *              visitor yesterday, and this month's mess bill for every boarder
+ *              under a Mess head (raisedKey MESS:<month>).
+ *   library    the lending rules (₹2 a day overdue, counter dues), forty titles
+ *              in English, Hindi, Marathi and Sanskrit (fourteen in Devanagari)
+ *              with 66 copies, fifteen loans (eight out, four overdue, three
+ *              back late with their fines: one due, one settled at the counter,
+ *              one waived), two reservations (a copy held, a place in a queue),
+ *              and the reading-room register.
+ *
+ * THE TWO CHARGES AT A SCHOOL. The product raises route and mess fees from a
+ * college's accounts desk only (raiseRouteFees and billMess go through
+ * collegeDesk, which refuses a school). The rows written here are the shape
+ * raiseOnce writes — instalment-less, keyed, labelled in the school's language
+ * — so the family's fee page and the office's dues read them as any extra
+ * demand.
+ *
+ * IDEMPOTENT. Every row is found by a stable key (a name, an email, an
+ * accession or card number, a trip's assignment-day-direction, a roll call's
+ * house-day-slot, a demand's raisedKey) before it is made. The days are the
+ * school's, counted back from today, so a run on a later day adds that day's
+ * trips and roll calls and nothing else; two runs on one day print the same
+ * counts. Rows a person made by hand (a trip a driver ended, a roll call a
+ * warden took) are found and kept.
+ */
+
+type CampusStop = { name: string; lat: number; lng: number; morning: number; evening: number };
+type CampusRoute = { name: string; note: string; feePerTermPaise: number; stops: CampusStop[]; riders: { email: string; stop: number }[] };
+type CampusLeave = { pupil: string; kind: "HOME" | "LOCAL" | "MEDICAL"; destination: string; reason: string };
+type CampusTitle = { title: string; author: string; publisher: string; year: number | null; subject: string; language: "EN" | "HI" | "MR" | "SA"; category: string; copies: number; periodical?: { frequency: string; from: string; until: string } };
+type CampusLoan = { who: string; title: number; issuedAgo: number; returnedAgo?: number; fine?: "DUE" | "SETTLED" | "WAIVED" };
+type CampusSpec = {
+  transport: {
+    driver: string;
+    driverTitle: string;
+    attendant: { email: string; name: string; title: string };
+    bus: { registration: string; capacity: number; note: string };
+    from: string;
+    routes: CampusRoute[];
+    term: { label: string; due: string };
+    incident: { route: number; pupil: string; title: string; body: string; actionTaken: string; place: string; note: string };
+  };
+  hostel: {
+    from: string;
+    messMonthlyPaise: number;
+    houses: { name: string; kind: "BOYS" | "GIRLS"; warden: { email: string; name: string; title: string }; rooms: { number: string; floor: string; beds: number; boarders: string[] }[] }[];
+    menu: Record<1 | 2 | 3 | 4 | 5 | 6 | 7, [breakfast: string, lunch: string, snacks: string, dinner: string]>;
+    out: CampusLeave;
+    returned: CampusLeave;
+    ask: CampusLeave;
+    visitor: { pupil: string; note: string };
+  };
+  library: {
+    librarian: string;
+    accessionPrefix: string;
+    titles: CampusTitle[];
+    loans: CampusLoan[];
+    reservations: { who: string; title: number; placedAgo: number; ready: boolean }[];
+    readingRoom: { who: string; openDaysAgo: number; inMinute: number; outMinute: number }[];
+    waiveReason: string;
+  };
+};
+
+const sp = (local: string) => `sunrise.${local}@${DOMAIN}`;
+
+const SUNRISE_CAMPUS: CampusSpec = {
+  transport: {
+    driver: sp("driver01"),
+    driverTitle: "Bus driver, routes 1 and 2",
+    attendant: { email: sp("attendant01"), name: "Sakharam Jadhav", title: "Bus attendant, routes 1 and 2" },
+    bus: { registration: "MH 12 SR 4521", capacity: 32, note: "The school's own bus; first aid box under the front seat." },
+    from: "2026-06-15",
+    routes: [
+      // Each route's stops in the morning's order, the school gate last: the morning's minutes rise to the gate and the
+      // evening's fall along the same list (the bus leaves the gate first in the evening), as saveRoute requires (QA-46).
+      {
+        name: "Route 1 — Aundh and Baner", note: "Aundh to the school; leaves the gate first in the evening.", feePerTermPaise: 4_500_00,
+        stops: [
+          { name: "Aundh, Parihar Chowk", lat: 18.55981, lng: 73.80771, morning: 7 * 60 + 35, evening: 15 * 60 + 5 },
+          { name: "Aundh, ITI Road corner", lat: 18.55662, lng: 73.80152, morning: 7 * 60 + 43, evening: 14 * 60 + 57 },
+          { name: "Baner, Pan Card Club Road", lat: 18.55371, lng: 73.79122, morning: 7 * 60 + 51, evening: 14 * 60 + 49 },
+          { name: "Sunrise Public School gate, Baner Road", lat: 18.55902, lng: 73.78681, morning: 8 * 60, evening: 14 * 60 + 40 },
+        ],
+        riders: [{ email: `aarav.deshmukh@${DOMAIN}`, stop: 0 }, { email: sp("pupil11"), stop: 0 }, { email: sp("pupil17"), stop: 1 }, { email: sp("pupil25"), stop: 1 }, { email: sp("pupil33"), stop: 2 }, { email: sp("pupil41"), stop: 2 }],
+      },
+      {
+        name: "Route 2 — Sus and Pashan", note: "Runs before Route 1 in the morning and after it in the evening.", feePerTermPaise: 5_200_00,
+        stops: [
+          { name: "Sus Gaon chowk", lat: 18.54463, lng: 73.75962, morning: 6 * 60 + 55, evening: 15 * 60 + 50 },
+          { name: "Sus Road, Pashan", lat: 18.53792, lng: 73.77903, morning: 7 * 60 + 5, evening: 15 * 60 + 40 },
+          { name: "Balewadi Phata", lat: 18.56261, lng: 73.78003, morning: 7 * 60 + 15, evening: 15 * 60 + 30 },
+          { name: "Sunrise Public School gate, Baner Road", lat: 18.55902, lng: 73.78681, morning: 7 * 60 + 25, evening: 15 * 60 + 20 },
+        ],
+        riders: [{ email: sp("pupil07"), stop: 0 }, { email: sp("pupil12"), stop: 0 }, { email: sp("pupil18"), stop: 1 }, { email: sp("pupil26"), stop: 1 }, { email: sp("pupil34"), stop: 2 }, { email: sp("pupil42"), stop: 2 }],
+      },
+    ],
+    term: { label: "Term 2", due: "2026-12-15" },
+    incident: {
+      route: 0, pupil: sp("pupil17"), title: "Knocked head on the bus window at the Aundh turn", place: "Bus MH 12 SR 4521, Route 1, near Aundh ITI Road",
+      body: "The bus braked at the ITI Road turn and Rhea's head knocked the side window. No cut; a small swelling above the left ear.",
+      actionTaken: "The attendant gave a cold pack on the bus; the office checked at arrival and Rhea went to class. Mother telephoned from the bus.",
+      note: "The contractor will check the left-side window latch on Saturday; until then the attendant seats the younger pupils on the right.",
+    },
+  },
+  hostel: {
+    from: "2026-06-15",
+    messMonthlyPaise: 3_200_00,
+    houses: [
+      { name: "Tilak House", kind: "BOYS", warden: { email: sp("warden"), name: "Prakash More", title: "Hostel warden, Tilak House" }, rooms: [{ number: "T-1", floor: "Ground", beds: 4, boarders: [sp("pupil01"), sp("pupil03"), sp("pupil05")] }, { number: "T-2", floor: "First", beds: 4, boarders: [sp("pupil45"), sp("pupil47")] }] },
+      { name: "Savitribai House", kind: "GIRLS", warden: { email: sp("warden2"), name: "Sunanda Gokhale", title: "Hostel warden, Savitribai House" }, rooms: [{ number: "S-1", floor: "Ground", beds: 4, boarders: [sp("pupil02"), sp("pupil04"), sp("pupil06")] }, { number: "S-2", floor: "First", beds: 4, boarders: [sp("pupil44"), sp("pupil46")] }] },
+    ],
+    menu: {
+      1: ["Poha, banana, milk", "Chapati, matki usal, rice, dal, salad", "Biscuits, milk or tea", "Chapati, aloo gobi, dal khichdi, buttermilk"],
+      2: ["Upma, sprouts, milk", "Chapati, bhindi, rice, varan, koshimbir", "Bhel", "Chapati, paneer bhurji, jeera rice, dal"],
+      3: ["Idli, sambar, milk", "Chapati, chole, rice, dal, salad", "Seasonal fruit", "Bhakri, pithla, rice, dal"],
+      4: ["Sheera, milk", "Chapati, mixed vegetable, rice, dal, curd", "Sabudana khichdi", "Chapati, rajma, rice, salad"],
+      5: ["Thalipeeth, curd, milk", "Chapati, chawli usal, rice, amti", "Biscuits, milk or tea", "Chapati, palak paneer, rice, dal"],
+      6: ["Misal pav, milk", "Puri, batata bhaji, masale bhat", "Seasonal fruit", "Chapati, cabbage, dal khichdi"],
+      7: ["Aloo paratha, curd, milk", "Chapati, paneer masala, rice, kheer", "Vada pav", "Chapati, dal fry, jeera rice, shrikhand"],
+    },
+    out: { pupil: sp("pupil05"), kind: "HOME", destination: "Home, Kothrud, Pune", reason: "A cousin's thread ceremony" },
+    returned: { pupil: sp("pupil02"), kind: "HOME", destination: "Home, Wakad, Pune", reason: "Weekend at home" },
+    ask: { pupil: sp("pupil04"), kind: "LOCAL", destination: "Dental clinic, Baner", reason: "Braces check-up" },
+    visitor: { pupil: sp("pupil45"), note: "Brought warm clothes for the term." },
+  },
+  library: {
+    librarian: sp("librarian"),
+    accessionPrefix: "SPS",
+    titles: [
+      { title: "Malgudi Days", author: "R. K. Narayan", publisher: "Indian Thought Publications", year: 1943, subject: "English literature", language: "EN", category: "FICTION", copies: 3 },
+      { title: "Swami and Friends", author: "R. K. Narayan", publisher: "Indian Thought Publications", year: 1935, subject: "English literature", language: "EN", category: "FICTION", copies: 2 },
+      { title: "The Room on the Roof", author: "Ruskin Bond", publisher: "Penguin", year: 1956, subject: "English literature", language: "EN", category: "FICTION", copies: 2 },
+      { title: "The Blue Umbrella", author: "Ruskin Bond", publisher: "Rupa", year: 1980, subject: "English literature", language: "EN", category: "CHILDREN", copies: 3 },
+      { title: "Grandma's Bag of Stories", author: "Sudha Murty", publisher: "Puffin", year: 2012, subject: "English literature", language: "EN", category: "CHILDREN", copies: 3 },
+      { title: "Wings of Fire", author: "A. P. J. Abdul Kalam, Arun Tiwari", publisher: "Universities Press", year: 1999, subject: "Biography", language: "EN", category: "NON_FICTION", copies: 3 },
+      { title: "Ignited Minds", author: "A. P. J. Abdul Kalam", publisher: "Penguin", year: 2002, subject: "General", language: "EN", category: "NON_FICTION", copies: 1 },
+      { title: "The Story of My Experiments with Truth", author: "M. K. Gandhi", publisher: "Navajivan", year: 1927, subject: "Biography", language: "EN", category: "NON_FICTION", copies: 2 },
+      { title: "The Discovery of India", author: "Jawaharlal Nehru", publisher: "", year: 1946, subject: "History", language: "EN", category: "NON_FICTION", copies: 1 },
+      { title: "Gitanjali", author: "Rabindranath Tagore", publisher: "", year: 1912, subject: "Poetry", language: "EN", category: "FICTION", copies: 1 },
+      { title: "The Jungle Book", author: "Rudyard Kipling", publisher: "", year: 1894, subject: "English literature", language: "EN", category: "CHILDREN", copies: 2 },
+      { title: "Treasure Island", author: "R. L. Stevenson", publisher: "", year: 1883, subject: "English literature", language: "EN", category: "FICTION", copies: 2 },
+      { title: "Alice's Adventures in Wonderland", author: "Lewis Carroll", publisher: "", year: 1865, subject: "English literature", language: "EN", category: "CHILDREN", copies: 1 },
+      { title: "Little Women", author: "Louisa May Alcott", publisher: "", year: 1868, subject: "English literature", language: "EN", category: "FICTION", copies: 1 },
+      { title: "The Diary of a Young Girl", author: "Anne Frank", publisher: "", year: 1947, subject: "History", language: "EN", category: "NON_FICTION", copies: 2 },
+      { title: "A Brief History of Time", author: "Stephen Hawking", publisher: "Bantam", year: 1988, subject: "Science", language: "EN", category: "NON_FICTION", copies: 1 },
+      { title: "Make: Electronics", author: "Charles Platt", publisher: "Maker Media", year: 2009, subject: "Robotics", language: "EN", category: "NON_FICTION", copies: 1 },
+      { title: "Tales from the Panchatantra", author: "Vishnu Sharma (retold)", publisher: "", year: null, subject: "Stories", language: "EN", category: "CHILDREN", copies: 2 },
+      { title: "Oxford Advanced Learner's Dictionary", author: "A. S. Hornby", publisher: "Oxford University Press", year: null, subject: "English", language: "EN", category: "REFERENCE", copies: 2 },
+      { title: "Oxford School Atlas", author: "", publisher: "Oxford University Press", year: null, subject: "Geography", language: "EN", category: "REFERENCE", copies: 2 },
+      { title: "Mathematics, Class X", author: "NCERT", publisher: "NCERT", year: null, subject: "Mathematics", language: "EN", category: "TEXTBOOK", copies: 2 },
+      { title: "Science, Class IX", author: "NCERT", publisher: "NCERT", year: null, subject: "Science", language: "EN", category: "TEXTBOOK", copies: 2 },
+      { title: "Honeydew, English for Class VIII", author: "NCERT", publisher: "NCERT", year: null, subject: "English", language: "EN", category: "TEXTBOOK", copies: 2 },
+      { title: "Our Pasts – III, History for Class VIII", author: "NCERT", publisher: "NCERT", year: null, subject: "Social Science", language: "EN", category: "TEXTBOOK", copies: 1 },
+      { title: "Contemporary India – I, Geography for Class IX", author: "NCERT", publisher: "NCERT", year: null, subject: "Social Science", language: "EN", category: "TEXTBOOK", copies: 1 },
+      { title: "Science Reporter", author: "CSIR-NIScPR", publisher: "CSIR-NIScPR", year: null, subject: "Science", language: "EN", category: "PERIODICAL", copies: 1, periodical: { frequency: "MONTHLY", from: "2026-04-01", until: "2027-03-31" } },
+      { title: "गोदान", author: "प्रेमचंद", publisher: "", year: 1936, subject: "Hindi literature", language: "HI", category: "FICTION", copies: 2 },
+      { title: "निर्मला", author: "प्रेमचंद", publisher: "", year: 1927, subject: "Hindi literature", language: "HI", category: "FICTION", copies: 1 },
+      { title: "ईदगाह और अन्य कहानियाँ", author: "प्रेमचंद", publisher: "", year: null, subject: "Hindi literature", language: "HI", category: "CHILDREN", copies: 2 },
+      { title: "मधुशाला", author: "हरिवंशराय बच्चन", publisher: "", year: 1935, subject: "Hindi poetry", language: "HI", category: "FICTION", copies: 1 },
+      { title: "रश्मिरथी", author: "रामधारी सिंह 'दिनकर'", publisher: "", year: 1952, subject: "Hindi poetry", language: "HI", category: "FICTION", copies: 1 },
+      { title: "वसंत भाग 3, कक्षा 8", author: "NCERT", publisher: "NCERT", year: null, subject: "Hindi", language: "HI", category: "TEXTBOOK", copies: 2 },
+      { title: "श्यामची आई", author: "साने गुरुजी", publisher: "", year: 1935, subject: "Marathi literature", language: "MR", category: "FICTION", copies: 2 },
+      { title: "ययाति", author: "वि. स. खांडेकर", publisher: "", year: 1959, subject: "Marathi literature", language: "MR", category: "FICTION", copies: 1 },
+      { title: "बटाट्याची चाळ", author: "पु. ल. देशपांडे", publisher: "", year: 1958, subject: "Marathi literature", language: "MR", category: "FICTION", copies: 1 },
+      { title: "व्यक्ती आणि वल्ली", author: "पु. ल. देशपांडे", publisher: "", year: 1944, subject: "Marathi literature", language: "MR", category: "FICTION", copies: 1 },
+      { title: "मृत्युंजय", author: "शिवाजी सावंत", publisher: "", year: 1967, subject: "Marathi literature", language: "MR", category: "FICTION", copies: 2 },
+      { title: "अग्निपंख", author: "ए. पी. जे. अब्दुल कलाम; अनुवाद माधुरी शानभाग", publisher: "", year: null, subject: "Biography", language: "MR", category: "NON_FICTION", copies: 1 },
+      { title: "श्रीमद्भगवद्गीता", author: "वेदव्यास", publisher: "Gita Press", year: null, subject: "Sanskrit", language: "SA", category: "GENERAL", copies: 1 },
+      { title: "रुचिरा भाग 1, कक्षा 6", author: "NCERT", publisher: "NCERT", year: null, subject: "Sanskrit", language: "SA", category: "TEXTBOOK", copies: 2 },
+    ],
+    // Titles by their place in the list above, 1-based; each loan takes the title's first copy. Pupils borrow for 14 days, staff for 30.
+    loans: [
+      { who: `aarav.deshmukh@${DOMAIN}`, title: 6, issuedAgo: 3 },
+      { who: sp("pupil11"), title: 4, issuedAgo: 6 },
+      { who: sp("pupil01"), title: 11, issuedAgo: 2 },
+      { who: sp("pupil02"), title: 5, issuedAgo: 10 },
+      { who: sp("pupil44"), title: 37, issuedAgo: 8 },
+      { who: sp("pupil33"), title: 16, issuedAgo: 12 },
+      { who: sp("teacher2"), title: 17, issuedAgo: 15 },
+      { who: sp("pupil41"), title: 27, issuedAgo: 1 },
+      // Overdue and still out.
+      { who: sp("pupil17"), title: 12, issuedAgo: 20 },
+      { who: sp("pupil25"), title: 33, issuedAgo: 17 },
+      { who: sp("pupil45"), title: 1, issuedAgo: 25 },
+      { who: sp("pupil34"), title: 15, issuedAgo: 16 },
+      // Back late, each with its overdue fine.
+      { who: sp("pupil18"), title: 2, issuedAgo: 40, returnedAgo: 21, fine: "DUE" },
+      { who: sp("pupil26"), title: 14, issuedAgo: 35, returnedAgo: 18, fine: "SETTLED" },
+      { who: sp("pupil42"), title: 7, issuedAgo: 30, returnedAgo: 12, fine: "WAIVED" },
+    ],
+    reservations: [
+      // A Brief History of Time has one copy, out: a place in the queue.
+      { who: sp("pupil12"), title: 16, placedAgo: 4, ready: false },
+      // Alice's one copy came back and is held on the shelf for the first in its queue.
+      { who: sp("pupil03"), title: 13, placedAgo: 6, ready: true },
+    ],
+    readingRoom: [
+      { who: sp("pupil44"), openDaysAgo: 2, inMinute: 15 * 60 + 5, outMinute: 16 * 60 },
+      { who: sp("pupil33"), openDaysAgo: 1, inMinute: 15 * 60, outMinute: 16 * 60 + 10 },
+      { who: sp("pupil41"), openDaysAgo: 1, inMinute: 15 * 60 + 20, outMinute: 16 * 60 + 40 },
+      { who: sp("teacher2"), openDaysAgo: 1, inMinute: 13 * 60, outMinute: 13 * 60 + 40 },
+      { who: sp("pupil34"), openDaysAgo: 0, inMinute: 8 * 60 + 30, outMinute: 9 * 60 + 10 },
+    ],
+    waiveReason: "First late return this year; the book came back in good condition.",
+  },
+};
+
+/** The school's clock: today, an instant on a day at a minute, and the open days before today. */
+async function campusClock(schoolId: string) {
+  const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
+  const tz = school.timezone;
+  const today = todayKey(tz);
+  const at = (dateKey: string, minute: number, second = 0) => new Date(zonedStartOfDay(dateKey, tz).getTime() + minute * 60_000 + second * 1000);
+  const nowMinute = (Date.now() - zonedStartOfDay(today, tz).getTime()) / 60_000;
+  const closed = await closedDays(schoolId);
+  const isOpen = (k: string) => weekdayOfKey(k) !== 0 && !closed.has(k);
+  /** The `n` most recent open days before today, oldest first. */
+  const openDaysBefore = (n: number) => {
+    const out: string[] = [];
+    for (let back = 1; out.length < n && back < n * 5; back += 1) {
+      const k = addDaysToKey(today, -back);
+      if (isOpen(k)) out.push(k);
+    }
+    return out.reverse();
+  };
+  return { tz, today, at, nowMinute, isOpen, openDaysBefore };
+}
+
+async function memberByEmail(schoolId: string, email: string, role: string) {
+  return db.membership.findFirst({ where: { schoolId, role, status: "ACTIVE", user: { email } }, select: { id: true, userId: true, user: { select: { name: true } } } });
+}
+
+/** A charge raised once, as college-fees.ts raiseOnce writes it: instalment-less, keyed, labelled in the school's language. */
+async function raiseCharge(schoolId: string, academicYearId: string, studentMembershipId: string, input: { key: string; label: string; dueKey: string; head: { id: string; code: string; name: string }; paise: number }) {
+  const keyed = await db.feeDemand.findUnique({ where: { studentMembershipId_raisedKey: { studentMembershipId, raisedKey: input.key } }, select: { id: true } });
+  if (keyed) return false;
+  await db.feeDemand.create({ data: { schoolId, studentMembershipId, academicYearId, instalmentId: null, label: input.label, raisedKey: input.key, dueDate: new Date(`${input.dueKey}T00:00:00Z`), grossPaise: input.paise, concessionPaise: 0, netPaise: input.paise, linesJson: JSON.stringify([{ headId: input.head.id, code: input.head.code, name: input.head.name, grossPaise: input.paise, concessionPaise: 0 }]), status: "OPEN" } });
+  return true;
+}
+
+/* ---- transport ---- */
+
+async function buildCampusTransport(ctx: Ctx, b: Built, spec: CampusSpec["transport"]) {
+  const s = b.school.id;
+  const clock = await campusClock(s);
+  const driver = await memberByEmail(s, spec.driver, "DRIVER");
+  if (!driver) throw new Error(`no DRIVER ${spec.driver} at ${b.school.name}`);
+  await db.membership.update({ where: { id: driver.id }, data: { title: spec.driverTitle } });
+  const attendantUser = await upsertUser(ctx, spec.attendant.email, spec.attendant.name);
+  const attendant = await upsertMembership(attendantUser.id, s, "DRIVER", { title: spec.attendant.title });
+  const adminUserId = b.admin.user.id;
+  const head = await db.feeHead.findUniqueOrThrow({ where: { schoolId_code: { schoolId: s, code: "TRN" } }, select: { id: true, code: true, name: true } });
+
+  const bus = await db.bus.upsert({ where: { schoolId_registration: { schoolId: s, registration: spec.bus.registration } }, create: { schoolId: s, ...spec.bus }, update: {}, select: { id: true } });
+  // The driver has driven a week: their yes to the location sentence (transport.ts CONSENT_TEXT_KEY) is on record.
+  await db.transportConsent.upsert({ where: { membershipId: driver.id }, create: { schoolId: s, membershipId: driver.id, textKey: "transport.consentBody", consentedAt: new Date(`${spec.from}T02:00:00Z`) }, update: {} });
+
+  let trips = 0;
+  let boardings = 0;
+  let positions = 0;
+  let charged = 0;
+  const routes: { id: string; name: string; assignmentId: string }[] = [];
+  for (const [ri, r] of spec.routes.entries()) {
+    const routeData = { direction: "BOTH", active: true, note: r.note, kind: "FIXED", feePerTermPaise: r.feePerTermPaise };
+    const route = (await db.transportRoute.findFirst({ where: { schoolId: s, name: r.name }, select: { id: true } })) ?? (await db.transportRoute.create({ data: { schoolId: s, name: r.name, ...routeData }, select: { id: true } }));
+    const stops: { id: string; spec: CampusStop }[] = [];
+    for (const [i, st] of r.stops.entries()) {
+      const data = { name: st.name, lat: st.lat, lng: st.lng, morningMinute: st.morning, eveningMinute: st.evening, radiusM: 150 };
+      const found = await db.transportStop.findFirst({ where: { routeId: route.id, order: i + 1 }, select: { id: true } });
+      stops.push({ id: (found ?? (await db.transportStop.create({ data: { schoolId: s, routeId: route.id, order: i + 1, ...data }, select: { id: true } }))).id, spec: st });
+    }
+    const assignment =
+      (await db.busAssignment.findFirst({ where: { schoolId: s, busId: bus.id, routeId: route.id, toDateKey: null }, select: { id: true } })) ??
+      (await db.busAssignment.create({ data: { schoolId: s, busId: bus.id, routeId: route.id, driverMembershipId: driver.id, attendantMembershipId: attendant.id, fromDateKey: spec.from, createdByUserId: adminUserId }, select: { id: true } }));
+    routes.push({ id: route.id, name: r.name, assignmentId: assignment.id });
+
+    // The riders' seats, from the first day of term, with the transport head named.
+    const seats: { id: string; studentMembershipId: string; stop: number }[] = [];
+    for (const rider of r.riders) {
+      const pupil = await memberByEmail(s, rider.email, "STUDENT");
+      if (!pupil) throw new Error(`no pupil ${rider.email} at ${b.school.name}`);
+      const seat =
+        (await db.transportAllotment.findFirst({ where: { schoolId: s, studentMembershipId: pupil.id, routeId: route.id }, select: { id: true } })) ??
+        (await db.transportAllotment.create({ data: { schoolId: s, studentMembershipId: pupil.id, routeId: route.id, stopId: stops[rider.stop]!.id, boards: true, alights: true, fromDateKey: spec.from, feeHeadId: head.id, createdByUserId: adminUserId }, select: { id: true } }));
+      seats.push({ id: seat.id, studentMembershipId: pupil.id, stop: rider.stop });
+      // The term's route fee, as raiseRouteFees would raise it at a college.
+      const label = EN_DICT.collegeOffice.routeFeeLabel.replace("{route}", r.name).replace("{term}", spec.term.label);
+      if (await raiseCharge(s, b.years.current.id, pupil.id, { key: `ROUTE:${b.years.current.id}:${route.id}:${spec.term.label.toLowerCase()}`, label, dueKey: spec.term.due, head, paise: r.feePerTermPaise })) charged += 1;
+    }
+
+    // The week's trips, and today's that are already over: ENDED, the bus's track every twenty seconds, the riders ticked.
+    const gate = stops.length - 1;
+    const days = clock.openDaysBefore(6);
+    const tripDays = clock.isOpen(clock.today) ? [...days, clock.today] : days;
+    for (const [di, day] of tripDays.entries()) {
+      for (const direction of ["MORNING", "EVENING"] as const) {
+        const ordered = direction === "MORNING" ? stops : [...stops].reverse();
+        const minuteOf = (st: CampusStop) => (direction === "MORNING" ? st.morning : st.evening);
+        const start = minuteOf(ordered[0]!.spec) - 2;
+        const end = minuteOf(ordered[ordered.length - 1]!.spec) + 3;
+        if (day === clock.today && clock.nowMinute < end + 5) continue;
+        const data = { status: "ENDED", startedAt: clock.at(day, start), startedByMembershipId: driver.id, startReason: null, endedAt: clock.at(day, end), endedByMembershipId: driver.id, lowBatteryAt: null, missedNotifiedAt: null };
+        const found = await db.trip.findUnique({ where: { assignmentId_dateKey_direction: { assignmentId: assignment.id, dateKey: day, direction } }, select: { id: true, status: true } });
+        // A trip made by a read (SCHEDULED) is the one that ran; one a driver ended by hand is kept as it is.
+        const trip = found ?? (await db.trip.create({ data: { schoolId: s, assignmentId: assignment.id, dateKey: day, direction, ...data }, select: { id: true, status: true } }));
+        if (found && found.status === "SCHEDULED") await db.trip.update({ where: { id: found.id }, data });
+        trips += 1;
+        if ((await db.tripPosition.count({ where: { tripId: trip.id } })) === 0) {
+          const rows: { schoolId: string; tripId: string; at: Date; lat: number; lng: number; speed: number; accuracy: number }[] = [];
+          const legs = [{ from: ordered[0]!.spec, to: ordered[0]!.spec, a: start, z: start + 2 }, ...ordered.slice(1).map((x, k) => ({ from: ordered[k]!.spec, to: x.spec, a: minuteOf(ordered[k]!.spec), z: minuteOf(x.spec) })), { from: ordered[ordered.length - 1]!.spec, to: ordered[ordered.length - 1]!.spec, a: end - 3, z: end }];
+          for (const leg of legs) {
+            const steps = Math.max(1, ((leg.z - leg.a) * 60) / 20);
+            for (let k = 0; k < steps; k += 1) {
+              const f = k / steps;
+              rows.push({ schoolId: s, tripId: trip.id, at: clock.at(day, leg.a, k * 20), lat: leg.from.lat + (leg.to.lat - leg.from.lat) * f, lng: leg.from.lng + (leg.to.lng - leg.from.lng) * f, speed: leg.from === leg.to ? 0 : 7, accuracy: 10 + (k % 5) });
+            }
+          }
+          positions += (await db.tripPosition.createMany({ data: rows, skipDuplicates: true })).count;
+        }
+        // A rider is away now and then (the same day both ways).
+        const ticks = seats
+          .filter((seat, si) => (si * 5 + di * 3 + ri) % 13 !== 0)
+          .map((seat) => {
+            const stopMinute = minuteOf(stops[seat.stop]!.spec);
+            const gateMinute = minuteOf(stops[gate]!.spec);
+            const on = direction === "MORNING" ? clock.at(day, stopMinute, 30) : clock.at(day, gateMinute, 40);
+            const off = direction === "MORNING" ? clock.at(day, gateMinute, 50) : clock.at(day, stopMinute, 20);
+            return { schoolId: s, tripId: trip.id, allotmentId: seat.id, boardedAt: on, alightedAt: off, markedByMembershipId: driver.id, nearNotifiedAt: direction === "MORNING" ? clock.at(day, stopMinute - 5) : null };
+          });
+        boardings += (await db.tripBoarding.createMany({ data: ticks, skipDuplicates: true })).count;
+      }
+    }
+  }
+
+  // One incident on Route 1, two open days ago, reported by the driver, still open with the office's note.
+  const inc = spec.incident;
+  const pupil = await memberByEmail(s, inc.pupil, "STUDENT");
+  if (pupil && !(await db.incident.findFirst({ where: { schoolId: s, studentMembershipId: pupil.id, title: inc.title }, select: { id: true } }))) {
+    const day = clock.openDaysBefore(2)[0]!;
+    const when = clock.at(day, spec.routes[inc.route]!.stops[1]!.morning + 1);
+    await db.incident.create({ data: { schoolId: s, studentMembershipId: pupil.id, reportedByMembershipId: driver.id, kind: "INJURY", severity: "MINOR", occurredAt: when, place: inc.place, title: inc.title, body: inc.body, actionTaken: inc.actionTaken, guardiansNotifiedAt: new Date(when.getTime() + 10 * 60_000), status: "OPEN", notes: { create: { schoolId: s, authorUserId: adminUserId, body: inc.note, createdAt: new Date(when.getTime() + 3 * 3_600_000) } } } });
+  }
+  return { routes, busId: bus.id, driverMembershipId: driver.id, attendantMembershipId: attendant.id, tripsWritten: trips, boardingsNew: boardings, positionsNew: positions, chargesNew: charged };
+}
+
+/* ---- hostel ---- */
+
+async function buildCampusHostel(ctx: Ctx, b: Built, spec: CampusSpec["hostel"]) {
+  const s = b.school.id;
+  const clock = await campusClock(s);
+  const adminUserId = b.admin.user.id;
+  const mess = await db.feeHead.upsert({ where: { schoolId_code: { schoolId: s, code: "MES" } }, create: { schoolId: s, code: "MES", name: "Mess", kind: "MESS", sortOrder: 4 }, update: {}, select: { id: true, code: true, name: true } });
+  const parentOf = async (studentMembershipId: string) => (await db.guardianship.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, orderBy: { createdAt: "asc" }, select: { parent: { select: { id: true, name: true } } } }))?.parent ?? null;
+
+  type Place = { allotmentId: string; membershipId: string; fromDate: string; hostelId: string };
+  const places: Place[] = [];
+  const wardens = new Map<string, string>();
+  const month = clock.today.slice(0, 7);
+  const [y, m] = month.split("-").map(Number) as [number, number];
+  const messDue = new Date(Date.UTC(y, m, 10)).toISOString().slice(0, 10);
+  let billed = 0;
+  for (const house of spec.houses) {
+    const wardenUser = await upsertUser(ctx, house.warden.email, house.warden.name);
+    const warden = await upsertMembership(wardenUser.id, s, "WARDEN", { title: house.warden.title });
+    await db.membership.update({ where: { id: warden.id }, data: { title: house.warden.title } });
+    const capacity = house.rooms.reduce((a, r) => a + r.beds, 0);
+    const hostel = await db.hostel.upsert({ where: { schoolId_name: { schoolId: s, name: house.name } }, create: { schoolId: s, name: house.name, kind: house.kind, wardenMembershipId: warden.id, capacity, messAttendance: false, messMonthlyPaise: spec.messMonthlyPaise }, update: { wardenMembershipId: warden.id }, select: { id: true } });
+    wardens.set(hostel.id, wardenUser.id);
+    for (const room of house.rooms) {
+      const row = await db.hostelRoom.upsert({ where: { hostelId_number: { hostelId: hostel.id, number: room.number } }, create: { schoolId: s, hostelId: hostel.id, number: room.number, floor: room.floor, beds: room.beds, kind: "SHARED" }, update: {}, select: { id: true } });
+      for (const [bi, email] of room.boarders.entries()) {
+        const pupil = await memberByEmail(s, email, "STUDENT");
+        if (!pupil) throw new Error(`no pupil ${email} at ${b.school.name}`);
+        const live = await db.hostelAllotment.findFirst({ where: { schoolId: s, membershipId: pupil.id, status: "ACTIVE" }, select: { id: true, fromDate: true, room: { select: { hostelId: true } } } });
+        const place = live ?? (await db.hostelAllotment.create({ data: { schoolId: s, membershipId: pupil.id, roomId: row.id, bed: bi + 1, fromDate: spec.from, status: "ACTIVE", activePupilKey: pupil.id, activeBedKey: `${row.id}:${bi + 1}`, allottedByUserId: adminUserId }, select: { id: true, fromDate: true, room: { select: { hostelId: true } } } }));
+        places.push({ allotmentId: place.id, membershipId: pupil.id, fromDate: place.fromDate, hostelId: place.room.hostelId });
+        // This month's mess bill, as billMess would raise it at a college.
+        const label = EN_DICT.collegeOffice.messLabel.replace("{month}", month);
+        if (await raiseCharge(s, b.years.current.id, pupil.id, { key: `MESS:${month}`, label, dueKey: messDue, head: mess, paise: spec.messMonthlyPaise })) billed += 1;
+      }
+    }
+    // The week's menu: a row per weekday and meal (an edit the warden made is kept).
+    for (const [weekday, meals] of Object.entries(spec.menu)) {
+      for (const [mi, meal] of (["BREAKFAST", "LUNCH", "SNACKS", "DINNER"] as const).entries()) {
+        await db.messMenu.upsert({ where: { hostelId_weekday_meal: { hostelId: hostel.id, weekday: Number(weekday), meal } }, create: { schoolId: s, hostelId: hostel.id, weekday: Number(weekday), meal, items: meals[mi]! }, update: {} });
+      }
+    }
+  }
+
+  // Leave: one out since yesterday (consented, approved, through the gate), one back from last weekend, one ask waiting.
+  const placeOf = async (email: string) => {
+    const pupil = await memberByEmail(s, email, "STUDENT");
+    const place = pupil ? places.find((p) => p.membershipId === pupil.id) : undefined;
+    if (!pupil || !place) throw new Error(`${email} is not a boarder`);
+    return { pupil, place, parent: await parentOf(pupil.id) };
+  };
+  const leave = async (l: CampusLeave, times: { fromAt: Date; toAt: Date }, state: { status: string; consentAt: Date | null; decidedAt: Date | null; outAt: Date | null; inAt: Date | null }, refresh: boolean) => {
+    const { pupil, place, parent } = await placeOf(l.pupil);
+    const warden = wardens.get(place.hostelId)!;
+    const data = {
+      ...times, status: state.status, requestedByUserId: parent?.id ?? warden, consentAt: state.consentAt, consentUserId: state.consentAt ? (parent?.id ?? null) : null,
+      decidedAt: state.decidedAt, decidedByUserId: state.decidedAt ? warden : null, decisionNote: null,
+      outAt: state.outAt, outByUserId: state.outAt ? warden : null, inAt: state.inAt, inByUserId: state.inAt ? warden : null, late: false,
+    };
+    const found = await db.hostelLeave.findFirst({ where: { schoolId: s, allotmentId: place.allotmentId, destination: l.destination, reason: l.reason }, select: { id: true, status: true, inAt: true } });
+    if (!found) return db.hostelLeave.create({ data: { schoolId: s, allotmentId: place.allotmentId, membershipId: pupil.id, kind: l.kind, destination: l.destination, reason: l.reason, ...data }, select: { id: true } });
+    // The leave that is happening now, and the ask still waiting, follow today; one the warden has since closed (back in, decided) is kept.
+    if (refresh && found.inAt === null && (found.status === "APPROVED" || found.status === "PENDING")) await db.hostelLeave.update({ where: { id: found.id }, data: { ...times, consentAt: data.consentAt, decidedAt: data.decidedAt, outAt: data.outAt } });
+    return found;
+  };
+  const yesterday = addDaysToKey(clock.today, -1);
+  const tomorrow = addDaysToKey(clock.today, 1);
+  await leave(spec.out, { fromAt: clock.at(yesterday, 17 * 60), toAt: clock.at(tomorrow, 18 * 60) }, { status: "APPROVED", consentAt: clock.at(addDaysToKey(clock.today, -2), 9 * 60), decidedAt: clock.at(addDaysToKey(clock.today, -2), 11 * 60), outAt: clock.at(yesterday, 17 * 60 + 5), inAt: null }, true);
+  // Last weekend: the Saturday at least two days back.
+  let saturday = addDaysToKey(clock.today, -2);
+  while (weekdayOfKey(saturday) !== 6) saturday = addDaysToKey(saturday, -1);
+  const sunday = addDaysToKey(saturday, 1);
+  await leave(spec.returned, { fromAt: clock.at(saturday, 16 * 60), toAt: clock.at(sunday, 18 * 60) }, { status: "APPROVED", consentAt: clock.at(addDaysToKey(saturday, -2), 20 * 60), decidedAt: clock.at(addDaysToKey(saturday, -1), 10 * 60), outAt: clock.at(saturday, 16 * 60 + 5), inAt: clock.at(sunday, 17 * 60 + 40) }, false);
+  let nextSaturday = tomorrow;
+  while (weekdayOfKey(nextSaturday) !== 6) nextSaturday = addDaysToKey(nextSaturday, 1);
+  // A guardian's own ask is their consent: it waits for the warden (PENDING).
+  await leave(spec.ask, { fromAt: clock.at(nextSaturday, 10 * 60), toAt: clock.at(nextSaturday, 16 * 60) }, { status: "PENDING", consentAt: clock.at(yesterday, 20 * 60), decidedAt: null, outAt: null, inAt: null }, true);
+
+  // The roll calls: both slots of the last seven days, and this morning's once it is past. A boarder out through the gate is ON_LEAVE.
+  const leaves = await db.hostelLeave.findMany({ where: { schoolId: s, status: "APPROVED", outAt: { not: null } }, select: { allotmentId: true, outAt: true, inAt: true } });
+  const away = (allotmentId: string, at: Date) => leaves.some((l) => l.allotmentId === allotmentId && l.outAt! <= at && (l.inAt === null || l.inAt > at));
+  let calls = 0;
+  for (let back = 7; back >= 0; back -= 1) {
+    const day = addDaysToKey(clock.today, -back);
+    for (const [slot, minute] of [["MORNING", 6 * 60 + 50], ["NIGHT", 21 * 60 + 30]] as const) {
+      if (back === 0 && (slot === "NIGHT" || clock.nowMinute < minute + 10)) continue;
+      for (const [hostelId, wardenUserId] of wardens) {
+        const takenAt = clock.at(day, minute);
+        const call = (await db.hostelRollCall.findUnique({ where: { hostelId_dateKey_slot: { hostelId, dateKey: day, slot } }, select: { id: true } })) ?? (await db.hostelRollCall.create({ data: { schoolId: s, hostelId, dateKey: day, slot, takenByUserId: wardenUserId, takenAt, clientId: `demo-roll-${hostelId}-${day}-${slot}` }, select: { id: true } }));
+        const here = places.filter((p) => p.hostelId === hostelId && p.fromDate <= day);
+        await db.hostelRollCallEntry.createMany({ data: here.map((p) => ({ schoolId: s, rollCallId: call.id, allotmentId: p.allotmentId, membershipId: p.membershipId, status: away(p.allotmentId, takenAt) ? "ON_LEAVE" : "PRESENT" })), skipDuplicates: true });
+        calls += 1;
+      }
+    }
+  }
+
+  // The visitor book: a parent yesterday afternoon, signed in and out.
+  const v = await placeOf(spec.visitor.pupil);
+  const visitorName = v.parent?.name ?? "Guardian";
+  if (!(await db.hostelVisitor.findFirst({ where: { schoolId: s, allotmentId: v.place.allotmentId, name: visitorName }, select: { id: true } }))) {
+    await db.hostelVisitor.create({ data: { schoolId: s, allotmentId: v.place.allotmentId, name: visitorName, relation: "parent", note: spec.visitor.note, inAt: clock.at(yesterday, 16 * 60 + 30), outAt: clock.at(yesterday, 17 * 60 + 45), allowedByUserId: wardens.get(v.place.hostelId)! } });
+  }
+  return { houses: spec.houses.length, boarders: places.length, rollCalls: calls, messBilledNew: billed, month };
+}
+
+/* ---- library ---- */
+
+async function buildCampusLibrary(b: Built, spec: CampusSpec["library"]) {
+  const s = b.school.id;
+  const clock = await campusClock(s);
+  const librarian = await memberByEmail(s, spec.librarian, "LIBRARIAN");
+  if (!librarian) throw new Error(`no LIBRARIAN ${spec.librarian} at ${b.school.name}`);
+  const settings = await db.librarySettings.upsert({ where: { schoolId: s }, create: { schoolId: s, pupilLimit: 2, pupilLoanDays: 14, staffLimit: 5, staffLoanDays: 30, maxRenewals: 2, finePerDayPaise: 200, fineHeadId: null, updatedByUserId: b.admin.user.id }, update: {}, select: { pupilLoanDays: true, staffLoanDays: true, finePerDayPaise: true } });
+  const rack: Record<string, string> = { FICTION: "A", CHILDREN: "B", NON_FICTION: "C", REFERENCE: "R", TEXTBOOK: "T", PERIODICAL: "P", GENERAL: "G" };
+  const shelf: Record<string, string> = { EN: "1", HI: "2", MR: "3", SA: "4" };
+  const titleIds: string[] = [];
+  const firstCopy: string[] = [];
+  let accession = 0;
+  for (const t of spec.titles) {
+    const data = { isbn: null, title: t.title, author: t.author, publisher: t.publisher, year: t.year, subject: t.subject, language: t.language, category: t.category, frequency: t.periodical?.frequency ?? null, subscriptionFrom: t.periodical?.from ?? null, subscriptionUntil: t.periodical?.until ?? null };
+    const title = (await db.libraryTitle.findFirst({ where: { schoolId: s, title: t.title, author: t.author }, select: { id: true } })) ?? (await db.libraryTitle.create({ data: { schoolId: s, ...data }, select: { id: true } }));
+    titleIds.push(title.id);
+    for (let c = 0; c < t.copies; c += 1) {
+      accession += 1;
+      const acc = `${spec.accessionPrefix}-${String(accession).padStart(4, "0")}`;
+      const copy = await db.libraryCopy.upsert({ where: { schoolId_accession: { schoolId: s, accession: acc } }, create: { schoolId: s, titleId: title.id, accession: acc, rack: `${rack[t.category] ?? "G"}${shelf[t.language] ?? "1"}` }, update: {}, select: { id: true } });
+      if (c === 0) firstCopy.push(copy.id);
+    }
+  }
+
+  // The members, carded in a fixed order (L00001…), so a second run finds every card.
+  const people = [...new Set([...spec.loans.map((l) => l.who), ...spec.reservations.map((r) => r.who), ...spec.readingRoom.map((r) => r.who)])];
+  const members = new Map<string, { memberId: string; membershipId: string; staff: boolean }>();
+  for (const [i, email] of people.entries()) {
+    const m = (await memberByEmail(s, email, "STUDENT")) ?? (await memberByEmail(s, email, "TEACHER"));
+    if (!m) throw new Error(`no pupil or teacher ${email} at ${b.school.name}`);
+    const staff = !(await memberByEmail(s, email, "STUDENT"));
+    const row = await db.libraryMember.upsert({ where: { membershipId: m.id }, create: { schoolId: s, membershipId: m.id, kind: staff ? "STAFF" : "PUPIL", cardNumber: `L${String(i + 1).padStart(5, "0")}` }, update: {}, select: { id: true } });
+    members.set(email, { memberId: row.id, membershipId: m.id, staff });
+  }
+
+  // The loans: a book out is ISSUED; one back late carries its overdue fine, due, settled at the counter or waived.
+  let fines = 0;
+  for (const l of spec.loans) {
+    const member = members.get(l.who)!;
+    const copyId = firstCopy[l.title - 1]!;
+    const issuedOn = addDaysToKey(clock.today, -l.issuedAgo);
+    const dueOn = addDaysToKey(issuedOn, member.staff ? settings.staffLoanDays : settings.pupilLoanDays);
+    let issue = await db.libraryIssue.findFirst({ where: { schoolId: s, copyId, memberId: member.memberId }, select: { id: true, dueOn: true, returnedAt: true } });
+    if (!issue) {
+      const returnedAt = l.returnedAgo === undefined ? null : clock.at(addDaysToKey(clock.today, -l.returnedAgo), 11 * 60);
+      issue = await db.libraryIssue.create({ data: { schoolId: s, copyId, memberId: member.memberId, issuedAt: clock.at(issuedOn, 11 * 60 + 15), dueOn, returnedAt, issuedByUserId: librarian.userId, returnedByUserId: returnedAt ? librarian.userId : null }, select: { id: true, dueOn: true, returnedAt: true } });
+      if (!returnedAt) await db.libraryCopy.update({ where: { id: copyId }, data: { status: "ISSUED" } });
+    }
+    if (l.fine && issue.returnedAt && l.returnedAgo !== undefined) {
+      // The return's own rule (library.ts overdueFine): whole days from the due day to the day it came back.
+      const back = addDaysToKey(clock.today, -l.returnedAgo);
+      const [dy, dm, dd] = issue.dueOn.split("-").map(Number) as [number, number, number];
+      const [ry, rm, rd] = back.split("-").map(Number) as [number, number, number];
+      const lateDays = Math.max(0, Math.round((Date.UTC(ry, rm - 1, rd) - Date.UTC(dy, dm - 1, dd)) / DAY));
+      const returnedOn = issue.returnedAt;
+      const settled = l.fine === "SETTLED" ? { settledAt: new Date(returnedOn.getTime() + DAY), settledByUserId: b.admin.user.id } : {};
+      const waived = l.fine === "WAIVED" ? { waivedAt: new Date(returnedOn.getTime() + DAY), waivedByUserId: librarian.userId, waivedReason: spec.waiveReason } : {};
+      await db.libraryFine.upsert({ where: { issueId_reason: { issueId: issue.id, reason: "OVERDUE" } }, create: { schoolId: s, issueId: issue.id, memberId: member.memberId, paise: lateDays * settings.finePerDayPaise, reason: "OVERDUE", raisedByUserId: librarian.userId, createdAt: returnedOn, ...settled, ...waived }, update: {} });
+      fines += 1;
+    }
+  }
+
+  // The queue: one place waiting behind a loan, one copy back on the shelf and held for the first in line.
+  for (const r of spec.reservations) {
+    const member = members.get(r.who)!;
+    const titleId = titleIds[r.title - 1]!;
+    if (await db.libraryReservation.findFirst({ where: { schoolId: s, titleId, memberId: member.memberId, fulfilledAt: null, cancelledAt: null }, select: { id: true } })) continue;
+    const placedAt = clock.at(addDaysToKey(clock.today, -r.placedAgo), 13 * 60);
+    const pupilUser = await db.membership.findUniqueOrThrow({ where: { id: member.membershipId }, select: { userId: true } });
+    await db.libraryReservation.create({ data: { schoolId: s, titleId, memberId: member.memberId, placedAt, placedByUserId: pupilUser.userId, readyAt: r.ready ? clock.at(addDaysToKey(clock.today, -1), 12 * 60) : null, readyCopyId: r.ready ? firstCopy[r.title - 1]! : null } });
+  }
+
+  // The reading-room register: the last open days', and this morning's once it is over.
+  let visits = 0;
+  const openDays = clock.openDaysBefore(3);
+  for (const v of spec.readingRoom) {
+    const day = v.openDaysAgo === 0 ? clock.today : openDays[openDays.length - v.openDaysAgo]!;
+    if (v.openDaysAgo === 0 && (!clock.isOpen(clock.today) || clock.nowMinute < v.outMinute + 5)) continue;
+    const member = members.get(v.who)!;
+    if (!(await db.readingRoomVisit.findFirst({ where: { schoolId: s, membershipId: member.membershipId, dayKey: day }, select: { id: true } }))) {
+      await db.readingRoomVisit.create({ data: { schoolId: s, membershipId: member.membershipId, dayKey: day, inAt: clock.at(day, v.inMinute), outAt: clock.at(day, v.outMinute), inByUserId: librarian.userId, outByUserId: librarian.userId } });
+    }
+    visits += 1;
+  }
+  return { titles: titleIds.length, copies: accession, members: members.size, loans: spec.loans.length, fines, visits };
+}
+
+/** The roster's workflow rows for the three modules (rosterMarkdown's table), from the spec. */
+function campusRosterRows(spec: CampusSpec): string {
+  const local = (email: string) => email.replace(`@${DOMAIN}`, "");
+  const riders = spec.transport.routes.map((r) => `${r.name.split(" — ")[0]}: ${r.riders.map((x) => local(x.email)).join(", ")}`).join("; ");
+  const houses = spec.hostel.houses.map((h) => `${h.name} (${h.kind === "BOYS" ? "boys" : "girls"}, ${local(h.warden.email)}): ${h.rooms.flatMap((r) => r.boarders.map(local)).join(", ")}`).join("; ");
+  const devanagari = spec.library.titles.filter((t) => t.language !== "EN").length;
+  return [
+    `| Sunrise transport: ${spec.transport.routes.length} routes with ${spec.transport.routes.reduce((a, r) => a + r.stops.length, 0)} stops on ${spec.transport.bus.registration} (${local(spec.transport.driver)} driving, ${local(spec.transport.attendant.email)} attending), 12 riders (${riders}), the last six open days' trips ended with the bus's track and the ticks, today's once over, the driver's location consent, an OPEN incident on Route 1, the ${spec.transport.term.label} route fee raised per rider | /admin/transport, /admin/transport/trips/<id>, /driver, /parent/transport (as a rider's parent), /admin/incidents, /parent/fees |`,
+    `| Sunrise hostel: ${houses}; the week's menu, both roll calls of the last seven days, one boarder out on home leave (${local(spec.hostel.out.pupil)}), one back from last weekend, one ask waiting (${local(spec.hostel.ask.pupil)}), a visitor yesterday, this month's mess bill per boarder | /admin/hostel, /hostel, /hostel/rollcall, /hostel/leave, /hostel/night, /hostel/visitors, /hostel/menu, /student/hostel, /parent/hostel, /parent/fees |`,
+    `| Sunrise library: ${spec.library.titles.length} titles (${devanagari} in Devanagari: Hindi, Marathi, Sanskrit), ${spec.library.loans.length} loans (four overdue, three back late with a fine due, settled and waived), two reservations (one copy held), the reading-room register; ${local(spec.library.librarian)} at the desk | /library, /library/catalogue, /library/overdue, /library/reservations, /library/fines, /library/reading-room, /student/library, /parent/library, /teacher/library (as ${local(spec.library.loans.find((l) => l.who.includes("teacher"))?.who ?? spec.library.librarian)}) |`,
+  ].join("\n");
+}
+
+/** The three, for one school, and the counts two runs are compared by. */
+async function buildCampusModules(ctx: Ctx, b: Built, spec: CampusSpec) {
+  const transport = await buildCampusTransport(ctx, b, spec.transport);
+  const hostel = await buildCampusHostel(ctx, b, spec.hostel);
+  const library = await buildCampusLibrary(b, spec.library);
+  const s = { schoolId: b.school.id };
+  const clock = await campusClock(b.school.id);
+  const counts = {
+    transportRoutes: await db.transportRoute.count({ where: s }),
+    transportStops: await db.transportStop.count({ where: s }),
+    buses: await db.bus.count({ where: s }),
+    busAssignments: await db.busAssignment.count({ where: s }),
+    transportSeats: await db.transportAllotment.count({ where: s }),
+    tripsBeforeToday: await db.trip.count({ where: { ...s, dateKey: { lt: clock.today } } }),
+    boardingsBeforeToday: await db.tripBoarding.count({ where: { ...s, trip: { dateKey: { lt: clock.today } } } }),
+    positionsBeforeToday: await db.tripPosition.count({ where: { ...s, trip: { dateKey: { lt: clock.today } } } }),
+    routeFeeDemands: await db.feeDemand.count({ where: { ...s, raisedKey: { startsWith: "ROUTE:" } } }),
+    hostels: await db.hostel.count({ where: s }),
+    hostelRooms: await db.hostelRoom.count({ where: s }),
+    boarders: await db.hostelAllotment.count({ where: { ...s, status: "ACTIVE" } }),
+    rollCallsBeforeToday: await db.hostelRollCall.count({ where: { ...s, dateKey: { lt: clock.today } } }),
+    rollCallEntriesBeforeToday: await db.hostelRollCallEntry.count({ where: { ...s, rollCall: { dateKey: { lt: clock.today } } } }),
+    hostelLeave: await db.hostelLeave.count({ where: s }),
+    messMenu: await db.messMenu.count({ where: s }),
+    hostelVisitors: await db.hostelVisitor.count({ where: s }),
+    messDemands: await db.feeDemand.count({ where: { ...s, raisedKey: { startsWith: "MESS:" } } }),
+    libraryTitles: await db.libraryTitle.count({ where: s }),
+    libraryCopies: await db.libraryCopy.count({ where: s }),
+    libraryMembers: await db.libraryMember.count({ where: s }),
+    libraryLoans: await db.libraryIssue.count({ where: s }),
+    libraryOut: await db.libraryIssue.count({ where: { ...s, returnedAt: null } }),
+    libraryOverdue: await db.libraryIssue.count({ where: { ...s, returnedAt: null, dueOn: { lt: clock.today } } }),
+    libraryFines: await db.libraryFine.count({ where: s }),
+    libraryReservations: await db.libraryReservation.count({ where: { ...s, fulfilledAt: null, cancelledAt: null } }),
+    readingRoomVisits: await db.readingRoomVisit.count({ where: s }),
+    incidents: await db.incident.count({ where: s }),
+  };
+  // The roster: what each module role and the two new accounts open, and whose families to sign in as.
+  const riders = spec.transport.routes.flatMap((r) => r.riders.map((x) => x.email.replace(`@${DOMAIN}`, "")));
+  const boarders = spec.hostel.houses.flatMap((h) => h.rooms.flatMap((r) => r.boarders.map((x) => x.replace(`@${DOMAIN}`, ""))));
+  const look: Record<string, string> = {
+    [spec.transport.driver]: `/driver (${spec.transport.routes.length} routes on ${spec.transport.bus.registration}: Route 2 then Route 1, morning and evening; the week's trips ended, today's still to run until their time); riders ${riders.join(", ")}`,
+    [spec.library.librarian]: `/library, /library/catalogue (${library.titles} titles, ${library.copies} copies, ${spec.library.titles.filter((t) => t.language !== "EN").length} in Devanagari), /library/overdue (four overdue), /library/reservations (one held, one queued), /library/fines (due, settled, waived), /library/reading-room`,
+    [spec.hostel.houses[0]!.warden.email]: `/hostel, /hostel/rollcall, /hostel/leave (one out, one asking), /hostel/rooms, /hostel/visitors, /hostel/menu — ${spec.hostel.houses[0]!.name}; boarders ${boarders.join(", ")}`,
+  };
+  for (const row of b.moduleStaff ?? []) if (look[row.email]) row.look = look[row.email]!;
+  b.moduleStaff?.push(
+    { email: spec.transport.attendant.email, name: spec.transport.attendant.name, role: "Driver (bus attendant)", look: "/driver (rides both routes as the attendant)" },
+    { email: spec.hostel.houses[1]!.warden.email, name: spec.hostel.houses[1]!.warden.name, role: "Warden", look: `/hostel — ${spec.hostel.houses[1]!.name}` },
+  );
+  console.log(`\n  ── ${b.school.name}: bus, hostel and library (owner-batch-item4a) ──\n     this run  ${transport.tripsWritten} trips written or found (${transport.positionsNew} new positions, ${transport.boardingsNew} new ticks), ${transport.chargesNew} route fees raised; ${hostel.rollCalls} roll calls, ${hostel.messBilledNew} mess bills raised for ${hostel.month}; ${library.loans} loans, ${library.fines} fines, ${library.visits} reading-room visits\n${Object.entries(counts).map(([k, v]) => `     ${k.padEnd(28)} ${v}`).join("\n")}`);
+  return { transport, hostel, library, counts };
+}
+// owner-batch-item4a end ─────────────────────────────────────────────────────────────────────────────────────
 
 // Only when run as a script: `demo-college.ts` imports PASSWORD and must not build the schools as a side effect of the import.
 if (process.argv[1]?.endsWith("demo-schools.ts")) {

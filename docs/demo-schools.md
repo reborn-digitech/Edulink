@@ -32,9 +32,17 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 | sunrise.subject2@demo.relay.test | Rohit Patil | Teacher · subject only | /teacher (timetable, no form class) |
 | sunrise.spare1@demo.relay.test | Anjum Qureshi | Teacher · unattached | /teacher (empty state), /vacancies (has applied to the other school), /enquiries |
 | sunrise.pupil49@demo.relay.test | Ayaan Bhatt | Alumnus (left grade 8) | /alumni, /bulletin, /remarks, /record |
-| sunrise.driver01@demo.relay.test | Ramesh Gaikwad | Driver | /driver |
-| sunrise.librarian@demo.relay.test | Shalini Apte | Librarian | /library |
-| sunrise.warden@demo.relay.test | Prakash More | Warden | /hostel |
+| sunrise.driver01@demo.relay.test | Ramesh Gaikwad | Driver | /driver (2 routes on MH 12 SR 4521: Route 2 then Route 1, morning and evening; the week's trips ended, today's still to run until their time); riders aarav.deshmukh, sunrise.pupil11, sunrise.pupil17, sunrise.pupil25, sunrise.pupil33, sunrise.pupil41, sunrise.pupil07, sunrise.pupil12, sunrise.pupil18, sunrise.pupil26, sunrise.pupil34, sunrise.pupil42 |
+| sunrise.librarian@demo.relay.test | Shalini Apte | Librarian | /library, /library/catalogue (40 titles, 66 copies, 14 in Devanagari), /library/overdue (four overdue), /library/reservations (one held, one queued), /library/fines (due, settled, waived), /library/reading-room |
+| sunrise.warden@demo.relay.test | Prakash More | Warden | /hostel, /hostel/rollcall, /hostel/leave (one out, one asking), /hostel/rooms, /hostel/visitors, /hostel/menu — Tilak House; boarders sunrise.pupil01, sunrise.pupil03, sunrise.pupil05, sunrise.pupil45, sunrise.pupil47, sunrise.pupil02, sunrise.pupil04, sunrise.pupil06, sunrise.pupil44, sunrise.pupil46 |
+| sunrise.attendant01@demo.relay.test | Sakharam Jadhav | Driver (bus attendant) | /driver (rides both routes as the attendant) |
+| sunrise.warden2@demo.relay.test | Sunanda Gokhale | Warden | /hostel — Savitribai House |
+| sunrise.support01@demo.relay.test | Sakharam Shinde | Support staff (cleaner), paid in cash | /account/payslips (the slip of last month, paid in cash), /account |
+| sunrise.alumni01@demo.relay.test | Neha Kulkarni | Alumnus (left grade 10 in 2018), listed, mentor | /alumni, /alumni/directory, /alumni/staff, /bulletin |
+| sunrise.alumni02@demo.relay.test | Rohan Deshpande | Alumnus (left grade 10 in 2019), listed | /alumni, /alumni/directory, /alumni/staff, /bulletin |
+| sunrise.alumni03@demo.relay.test | Aditi Joshi | Alumnus (left grade 10 in 2021), listed | /alumni, /alumni/directory, /alumni/staff, /bulletin |
+| sunrise.alumni04@demo.relay.test | Kunal Patil | Alumnus (left grade 10 in 2023), listed | /alumni, /alumni/directory, /alumni/staff, /bulletin |
+| sunrise.alumni05@demo.relay.test | Sana Sheikh | Alumnus (left grade 10 in 2024), listed | /alumni, /alumni/directory, /alumni/staff, /bulletin |
 
 ## Staff — Saraswati Vidya Mandir
 
@@ -91,8 +99,8 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 
 | Email | Name | Look at |
 |---|---|---|
-| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmvlvb94107vwgp3wdtweoaug at Sunrise, /expert/bookings/cmvlvb94607w4gp3wjvtdsr9v at Saraswati), /expert/availability (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
-| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmvlvb94807wegp3waah62rat — a careers talk booked by Saraswati |
+| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmvq9uolg03m4gp4n2gw0e6cs at Sunrise, /expert/bookings/cmvq9uolo03mcgp4n7tbbj6lf at Saraswati), /expert/availability (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
+| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmvq9uolw03mmgp4nxnd67meb — a careers talk booked by Saraswati |
 
 ## Workflows seeded, and where to see each
 
@@ -130,8 +138,22 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 | A grade-9 entry in the platform's "Autumn Science Fair" with a result and the school's standing | /competitions, /admin/competitions |
 | A pupil who left in August with a transfer record (`<school>.pupil49`, Ayaan Bhatt / Siddhesh Thakare); a grade-8 departure scheduled for 30 April | /admin/people → departures, /admin/certificates |
 | Pupil records with coded category and religion, caste, parents' occupations, income, the previous school's TC; staff records with dates of birth and of joining service; roll numbers in every class | /admin/records, /admin/filings, /student/record |
+| Sunrise transport: 2 routes with 8 stops on MH 12 SR 4521 (sunrise.driver01 driving, sunrise.attendant01 attending), 12 riders (Route 1: aarav.deshmukh, sunrise.pupil11, sunrise.pupil17, sunrise.pupil25, sunrise.pupil33, sunrise.pupil41; Route 2: sunrise.pupil07, sunrise.pupil12, sunrise.pupil18, sunrise.pupil26, sunrise.pupil34, sunrise.pupil42), the last six open days' trips ended with the bus's track and the ticks, today's once over, the driver's location consent, an OPEN incident on Route 1, the Term 2 route fee raised per rider | /admin/transport, /admin/transport/trips/<id>, /driver, /parent/transport (as a rider's parent), /admin/incidents, /parent/fees |
+| Sunrise hostel: Tilak House (boys, sunrise.warden): sunrise.pupil01, sunrise.pupil03, sunrise.pupil05, sunrise.pupil45, sunrise.pupil47; Savitribai House (girls, sunrise.warden2): sunrise.pupil02, sunrise.pupil04, sunrise.pupil06, sunrise.pupil44, sunrise.pupil46; the week's menu, both roll calls of the last seven days, one boarder out on home leave (sunrise.pupil05), one back from last weekend, one ask waiting (sunrise.pupil04), a visitor yesterday, this month's mess bill per boarder | /admin/hostel, /hostel, /hostel/rollcall, /hostel/leave, /hostel/night, /hostel/visitors, /hostel/menu, /student/hostel, /parent/hostel, /parent/fees |
+| Sunrise library: 40 titles (14 in Devanagari: Hindi, Marathi, Sanskrit), 15 loans (four overdue, three back late with a fine due, settled and waived), two reservations (one copy held), the reading-room register; sunrise.librarian at the desk | /library, /library/catalogue, /library/overdue, /library/reservations, /library/fines, /library/reading-room, /student/library, /parent/library, /teacher/library (as sunrise.teacher2) |
 
-Not seeded: a review round (deliberately skipped as cheap only through the UI), online payments.
+## Sunrise's other modules (inventory, payroll, website, alumni, reviews, online payments)
+
+| Module | What is there | Where |
+|---|---|---|
+| Inventory | 25 items in six categories, two vendors, 2 purchase records with their scanned bills, 14 issues (chalk to every form teacher, the games kit to the PE teacher, robotics kits and beakers from the lab, booklets to the exam desk, cleaner to housekeeping), 5 tagged assets (projectors in grades 9 and 10, the office laptop), a half-term stock count at the main store, one waiting ask from the grade-7 teacher | /admin/inventory, /admin/inventory/items, /admin/inventory/purchases, /admin/inventory/movements, /admin/inventory/assets, /admin/inventory/requests; /account/items as a teacher |
+| Payroll | Settings, a teaching and a support structure, 17 salaries (bank for most, UPI for the driver and the warden, cash for the cleaner); 2026-09 PAID with 17 recorded payments (bank batch with UTRs, UPI with UTRs, cash), shared with the head, PF, bank and UPI files cut; 2026-10 DRAFT; a recorded advance (the PE teacher) and a waiting ask (the grade-6 teacher) | /admin/payroll, /admin/payroll/runs/2026-09, /admin/payroll/runs/2026-10, /admin/payroll/salaries, /admin/payroll/advances; /account/payslips as any member of staff |
+| Website | Published, 6 pages (home, about, academics, admissions, gallery, contact); a school post with a picture as news and hero, the teachers' photos as an album (placeholder pictures, consent ticked), a prospectus PDF, one open review link (shown once when made), three days of visits, one new enquiry; www.sunrisepublicschool.test waiting for its DNS (PENDING_DNS) | /admin/website, /admin/website/publish, /admin/website/domain, /admin/website/review; /sites/sunrise-public-school as the admin or the head; http://sunrise-public-school.localhost:3000/ in development |
+| Alumni | The feed open to alumni posts; 5 adult alumni each listed in the directory, sunrise.alumni01 a mentor; 6 alumni posts; sunrise.pupil49 (a minor, not listed) with a room with his grade-8 teacher; a note from the office | /admin/alumni; /alumni, /alumni/directory as an alumnus |
+| Reviews | A parents' round answered (160 answers) and closed by the head; a pupils' round open (64 answers so far, grades 9 and 10) | /admin/reviews; /reviews as a grade 5–10 pupil |
+| Online fees (TEST mode) | The school's gateway rzp_test_SunriseDemo2026 (TEST) on the devbox transport (no account anywhere is called) and its UPI id; online, paid (Nitya Pawar, sunrise.parent35: PAID); online, failed at the bank (Aarna Patil, sunrise.parent44: FAILED); upi, claim waiting for the office (Chirag Pawar, sunrise.parent03: CLAIMED); upi, claim confirmed by the office (Gautam Patil, sunrise.parent28: PAID) | /admin/fees/settings, /admin/fees/claims, /admin/fees; /parent/fees as each parent; /dev/payments as the operator |
+
+A school has no faculty profiles (they are a college's), so the teachers' photos are an album on the Gallery page, not the Faculty page.
 
 <!-- demo-college:begin -->
 ## Saraswati Arts and Science College (the demo college)
