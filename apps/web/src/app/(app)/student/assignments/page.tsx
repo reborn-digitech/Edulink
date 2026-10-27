@@ -126,6 +126,7 @@ export default async function StudentAssignmentsPage({
                       <span className="block truncate text-sm font-medium text-fg">{item.title}</span>
                       <span className="block text-xs text-fg-muted">
                         {item.className}
+                        {item.subject ? ` · ${item.subject}` : ""}
                         {item.category ? ` · ${item.category}` : ""}
                       </span>
                     </span>
@@ -168,6 +169,7 @@ export default async function StudentAssignmentsPage({
                     <p className="font-semibold text-fg">{item.title}</p>
                     <p className="text-xs text-fg-muted">
                       {item.className}
+                      {item.subject ? ` · ${item.subject}` : ""}
                       {item.category ? ` · ${item.category}` : ""}
                       {item.pointsMilli ? ` · ${formatMilli(item.pointsMilli)} ${t("assignments.points")}` : ""}
                     </p>

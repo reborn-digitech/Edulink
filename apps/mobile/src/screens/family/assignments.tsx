@@ -88,7 +88,7 @@ function ChildAssignments() {
                 <View key={item.id}>
                   <Row
                     title={item.title}
-                    caption={[item.className, item.category, tab !== "marked" && item.dueAt ? `${t("diary.due")} ${relativeTime(item.dueAt, locale)}` : null].filter(Boolean).join(" · ")}
+                    caption={[item.className, item.subject, item.category, tab !== "marked" && item.dueAt ? `${t("diary.due")} ${relativeTime(item.dueAt, locale)}` : null].filter(Boolean).join(" · ")}
                     right={
                       tab === "marked" ? (
                         <Text variant="sm" bold>
@@ -173,7 +173,7 @@ function PupilAssignments() {
                   <View key={item.id} style={{ gap: th.space[1] }}>
                     <Row
                       title={item.title}
-                      caption={[item.className, item.category].filter(Boolean).join(" · ")}
+                      caption={[item.className, item.subject, item.category].filter(Boolean).join(" · ")}
                       right={
                         <View style={{ alignItems: "flex-end", gap: 2 }}>
                           <Text variant="base" bold>
@@ -205,7 +205,7 @@ function WorkCard({ item }: { item: StudentWork }) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
-  const caption = [item.className, item.category, item.pointsMilli ? `${formatMilli(item.pointsMilli)} ${t("assignments.points")}` : null].filter(Boolean).join(" · ");
+  const caption = [item.className, item.subject, item.category, item.pointsMilli ? `${formatMilli(item.pointsMilli)} ${t("assignments.points")}` : null].filter(Boolean).join(" · ");
   return (
     <Card>
       <View style={{ flexDirection: "row", gap: th.space[3], alignItems: "flex-start" }}>

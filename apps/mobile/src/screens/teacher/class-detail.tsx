@@ -44,6 +44,7 @@ export function TeacherClassDetail() {
   const shareCode = (d: StaffClassDetail) => {
     void Share.share({ message: `${t("teacher.classJoinCode")} · ${d.class.name}: ${d.class.joinCode}\n${t("teacher.studentsEnterAt")} ${API_BASE}/join/student` });
   };
+  const formTeacher = data?.formTeacher !== false;
   const shown = data ? data.roster.filter((p) => (filter === "concern" ? p.percent !== null && p.percent < 90 : filter === "noguardian" ? !p.hasGuardian : true)) : [];
   return (
     <Screen
@@ -56,31 +57,47 @@ export function TeacherClassDetail() {
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
+          {/* A teacher the timetable alone sends here (owner's item 1, 27 Oct 2026): their own work, and
+              none of the register, the report cards, the join code or the weights. An older server sends
+              no formTeacher: everything shows, as before. */}
+          {formTeacher ? null : (
+            <Text variant="sm" tone="muted">
+              {t("subjectWork.notFormClass", { subjects: (data.subjects ?? []).join(", ") })}
+            </Text>
+          )}
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
-            <Stat label={t("teacher.registerToday")} value={data.today.registerTakenAt ? t("teacher.done") : t("teacher.toDo")} tone={data.today.registerTakenAt ? "ok" : "warn"} />
+            {formTeacher ? <Stat label={t("teacher.registerToday")} value={data.today.registerTakenAt ? t("teacher.done") : t("teacher.toDo")} tone={data.today.registerTakenAt ? "ok" : "warn"} /> : null}
             <Stat label={t("teacher.toMark")} value={data.toGrade} tone={data.toGrade > 0 ? "warn" : "fg"} />
             <Stat label={t("teacher.attendanceConcern")} value={data.ofConcern} tone={data.ofConcern > 0 ? "danger" : "fg"} />
             <Stat label={t("teacher.noGuardian")} value={data.withoutGuardian} tone={data.withoutGuardian > 0 ? "warn" : "fg"} />
           </View>
-          <Text variant="xs" tone="muted">
-            {data.today.registerTakenAt ? t("teacher.markedAgo", { count: data.today.recordsToday, when: relativeTime(data.today.registerTakenAt, locale) }) : t("teacher.nobodyMarkedYet")}
-          </Text>
-          <Button label={data.today.registerTakenAt ? t("teacher.editTodaysRegister") : t("teacher.takeRegister")} onPress={() => router.push({ pathname: "/(app)/attendance", params: { classId } } as never)} />
+          {formTeacher ? (
+            <>
+              <Text variant="xs" tone="muted">
+                {data.today.registerTakenAt ? t("teacher.markedAgo", { count: data.today.recordsToday, when: relativeTime(data.today.registerTakenAt, locale) }) : t("teacher.nobodyMarkedYet")}
+              </Text>
+              <Button label={data.today.registerTakenAt ? t("teacher.editTodaysRegister") : t("teacher.takeRegister")} onPress={() => router.push({ pathname: "/(app)/attendance", params: { classId } } as never)} />
+            </>
+          ) : (
+            <Button label={t("teacher.setWork")} onPress={() => router.push({ pathname: "/(app)/assignments", params: { classId, compose: "1" } } as never)} />
+          )}
           <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
-            <Button label={t("teacher.reportCards")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report-cards", params: { classId } } as never)} style={{ flexGrow: 1 }} />
+            {formTeacher ? <Button label={t("teacher.reportCards")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report-cards", params: { classId } } as never)} style={{ flexGrow: 1 }} /> : null}
             <Button label={t("exams.enterMarks")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/marks", params: { classId } } as never)} style={{ flexGrow: 1 }} />
             <Button label={t("syllabus.openSyllabus")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/syllabus", params: { classId } } as never)} style={{ flexGrow: 1 }} />
             <Button label={t("classAnalytics.open")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/class-analytics", params: { classId } } as never)} style={{ flexGrow: 1 }} />
           </View>
 
-          <Card title={t("teacher.classJoinCode")} action={<Button label={t("mobile.share")} variant="ghost" icon={<Icon name="share" size={18} color={th.accentStrong} weight="bold" />} onPress={() => shareCode(data)} />}>
-            <Text variant="3xl" bold tone="accent" selectable accessibilityLabel={`${t("teacher.classJoinCode")}: ${data.class.joinCode.split("").join(" ")}`}>
-              {data.class.joinCode}
-            </Text>
-            <Text variant="xs" tone="muted">
-              {`${t("teacher.studentsEnterAt")} ${API_BASE}/join/student`}
-            </Text>
-          </Card>
+          {formTeacher ? (
+            <Card title={t("teacher.classJoinCode")} action={<Button label={t("mobile.share")} variant="ghost" icon={<Icon name="share" size={18} color={th.accentStrong} weight="bold" />} onPress={() => shareCode(data)} />}>
+              <Text variant="3xl" bold tone="accent" selectable accessibilityLabel={`${t("teacher.classJoinCode")}: ${data.class.joinCode.split("").join(" ")}`}>
+                {data.class.joinCode}
+              </Text>
+              <Text variant="xs" tone="muted">
+                {`${t("teacher.studentsEnterAt")} ${API_BASE}/join/student`}
+              </Text>
+            </Card>
+          ) : null}
 
           <Card title={t("teacher.whoIsInClass")}>
             <Text variant="xs" tone="subtle">
@@ -124,18 +141,21 @@ export function TeacherClassDetail() {
                             </Text>
                           ) : null}
                         </View>
-                        <Pressable
-                          accessibilityRole="button"
-                          accessibilityLabel={t("health.cardOf", { name: p.name })}
-                          hitSlop={4}
-                          onPress={() => {
-                            haptics.tap();
-                            router.push({ pathname: "/(app)/pupil-health", params: { membershipId: p.membershipId } } as never);
-                          }}
-                          style={({ pressed }) => ({ width: th.tap, height: th.tap, borderRadius: th.radius.md, alignItems: "center", justifyContent: "center", backgroundColor: th.dangerSoft, opacity: pressed ? 0.7 : 1 })}
-                        >
-                          <Icon name="heart" size={20} color={th.danger} weight="bold" />
-                        </Pressable>
+                        {/* The health card is the class's own teachers' (owner's item 1, 27 Oct 2026). */}
+                        {formTeacher ? (
+                          <Pressable
+                            accessibilityRole="button"
+                            accessibilityLabel={t("health.cardOf", { name: p.name })}
+                            hitSlop={4}
+                            onPress={() => {
+                              haptics.tap();
+                              router.push({ pathname: "/(app)/pupil-health", params: { membershipId: p.membershipId } } as never);
+                            }}
+                            style={({ pressed }) => ({ width: th.tap, height: th.tap, borderRadius: th.radius.md, alignItems: "center", justifyContent: "center", backgroundColor: th.dangerSoft, opacity: pressed ? 0.7 : 1 })}
+                          >
+                            <Icon name="heart" size={20} color={th.danger} weight="bold" />
+                          </Pressable>
+                        ) : null}
                         <Pressable
                           accessibilityRole="button"
                           accessibilityLabel={t("incidents.recordFor", { name: p.name })}
@@ -185,7 +205,7 @@ export function TeacherClassDetail() {
             )}
           </Card>
 
-          <GradeWeights key={data.weights.map((w) => `${w.name}:${w.weightBps}`).join("|")} classId={classId} initial={data.weights} categoriesInUse={data.categoriesInUse} />
+          {formTeacher ? <GradeWeights key={data.weights.map((w) => `${w.name}:${w.weightBps}`).join("|")} classId={classId} initial={data.weights} categoriesInUse={data.categoriesInUse} /> : null}
         </>
       ) : null}
     </Screen>

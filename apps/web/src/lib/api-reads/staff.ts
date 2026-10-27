@@ -24,7 +24,8 @@ import type {
 import { db } from "@/lib/db";
 import type { ActiveContext } from "@/lib/session";
 import type { Role } from "@/lib/constants";
-import { AccessError, assertClassAccess, teacherClassIds } from "@/lib/tenancy";
+import { AccessError, assertClassAccess, formClassIds, teachesClass } from "@/lib/tenancy";
+import { classReach, offeredSubjects, workInReach } from "@/lib/teaching-reach";
 import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import { myCovers } from "@/lib/substitutions";
 import { closedOn, schoolDayOn } from "@/lib/holidays";
@@ -70,12 +71,6 @@ async function schoolZone(schoolId: string): Promise<{ timezone: string; name: s
   return db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true, name: true } });
 }
 
-/** The classes a page's list is built on: a teacher's own, or every living class for the office. */
-async function classIdsFor(ctx: Staff): Promise<string[]> {
-  return ctx.role === "ADMIN"
-    ? (await db.class.findMany({ where: { schoolId: ctx.schoolId, archivedAt: null }, select: { id: true } })).map((c) => c.id)
-    : teacherClassIds(ctx.schoolId, ctx.membershipId);
-}
 
 /* ------------------------------------------------------------------------- */
 /* /teacher                                                                   */
@@ -86,7 +81,9 @@ export async function staffToday(ctx: Staff, now: Date = new Date()): Promise<St
   const dateKey = todayKey(school.timezone, now);
 
   const marksTodo = await marksTodoFor(ctx, dateKey);
-  const classIds = await teacherClassIds(ctx.schoolId, ctx.membershipId);
+  // Form classes only: the block below is registers left and the form class's work. A class the
+  // timetable sends this teacher to is in their lessons above and on Classes (owner's item 1).
+  const classIds = await formClassIds(ctx.schoolId, ctx.membershipId);
 
   const week = await teacherWeek(ctx, ctx.membershipId, { weekOf: dateKey, todayKey: dateKey });
   const weekday = weekdayOfKey(dateKey);
@@ -227,7 +224,9 @@ export async function registerFor(ctx: Staff, classId: string, date?: string): P
 /* ------------------------------------------------------------------------- */
 
 export async function staffClasses(ctx: Staff): Promise<StaffClasses> {
-  const classIds = await classIdsFor(ctx);
+  // A teacher's form classes and the classes the timetable sends them to (owner's item 1, 27 Oct 2026).
+  const reach = await classReach(ctx);
+  const classIds = [...reach.keys()];
   if (classIds.length === 0) return { classes: [], students: 0 };
   const school = await schoolZone(ctx.schoolId);
   const dateKey = todayKey(school.timezone);
@@ -240,12 +239,15 @@ export async function staffClasses(ctx: Staff): Promise<StaffClasses> {
         subject: true,
         room: true,
         color: true,
-        _count: { select: { enrollments: { where: { status: "ACTIVE" } }, assignments: true } },
+        _count: { select: { enrollments: { where: { status: "ACTIVE" } } } },
       },
       orderBy: { name: "asc" },
     }),
     db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } }, select: { classId: true } }),
   ]);
+  // The work counted is the work this person may open: all of a form class's, their own elsewhere.
+  const work = await db.assignment.groupBy({ by: ["classId"], where: { schoolId: ctx.schoolId, ...workInReach(ctx.membershipId, reach) }, _count: { _all: true } });
+  const workBy = new Map(work.map((w) => [w.classId, w._count._all]));
   const done = new Set(takenToday.map((s) => s.classId));
   return {
     classes: classes.map((k) => ({
@@ -255,8 +257,10 @@ export async function staffClasses(ctx: Staff): Promise<StaffClasses> {
       room: k.room,
       color: k.color,
       students: k._count.enrollments,
-      assignments: k._count.assignments,
+      assignments: workBy.get(k.id) ?? 0,
       registerTaken: done.has(k.id),
+      ...(ctx.role === "ADMIN" ? {} : { formTeacher: reach.get(k.id)?.formTeacher ?? true }),
+      subjects: reach.get(k.id)?.subjects ?? [],
     })),
     students: classes.reduce((sum, k) => sum + k._count.enrollments, 0),
   };
@@ -265,8 +269,12 @@ export async function staffClasses(ctx: Staff): Promise<StaffClasses> {
 const RANGE_DAYS = 28;
 
 export async function staffClassDetail(ctx: Staff, classId: string): Promise<StaffClassDetail> {
-  // A class in another school, or one this teacher does not teach, is a 404.
+  // A class in another school, or one this teacher does not teach (no ClassTeacher row and no lesson
+  // on the timetable), is a 404.
   const klass = await assertClassAccess(ctx, classId);
+  const teaching = (await teachesClass(ctx, classId)) ?? { formTeacher: true, subjects: [] };
+  // A teacher the timetable sends here sees the work they set, not the rest of the class's (owner's item 1).
+  const mine = teaching.formTeacher ? {} : { authorMembershipId: ctx.membershipId };
   const school = await schoolZone(ctx.schoolId);
   const today = todayKey(school.timezone);
   const from = addDaysToKey(today, -RANGE_DAYS);
@@ -285,12 +293,12 @@ export async function staffClassDetail(ctx: Staff, classId: string): Promise<Sta
     }),
     db.attendanceSession.findUnique({ where: { classId_dateKey: { classId, dateKey: today } }, select: { takenAt: true, _count: { select: { records: true } } } }),
     db.assignment.findMany({
-      where: { classId, schoolId: ctx.schoolId },
+      where: { classId, schoolId: ctx.schoolId, ...mine },
       select: { id: true, title: true, dueAt: true, publishedAt: true, _count: { select: { grades: true } } },
       orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
       take: 5,
     }),
-    db.submission.count({ where: { schoolId: ctx.schoolId, status: "SUBMITTED", assignment: { classId } } }),
+    db.submission.count({ where: { schoolId: ctx.schoolId, status: "SUBMITTED", assignment: { classId, ...mine } } }),
   ]);
 
   const roster = await Promise.all(
@@ -336,6 +344,8 @@ export async function staffClassDetail(ctx: Staff, classId: string): Promise<Sta
       .map((a) => a.category!)
       .filter((c) => c.trim().length > 0)
       .sort(),
+    formTeacher: teaching.formTeacher,
+    subjects: teaching.subjects,
   };
 }
 
@@ -355,14 +365,17 @@ export async function staffAssignments(
   ctx: Staff,
   query: { years?: "all"; classId?: string; state?: "tomark" | "draft" | "overdue" },
 ): Promise<StaffAssignments> {
-  const classIds = await classIdsFor(ctx);
+  // A teacher's form classes and the classes the timetable sends them to; in the latter, their own work
+  // only (owner's item 1, 27 Oct 2026). The office: every living class.
+  const reach = await classReach(ctx);
+  const classIds = [...reach.keys()];
   const empty = { year: null, showingAllYears: true, classOptions: [], filters: { classId: null, state: null }, total: 0, assignments: [] };
   if (classIds.length === 0) return empty;
 
   const year = await currentAcademicYear(ctx.schoolId);
   const thisYear = year ? { createdAt: { gte: year.startDate, lte: new Date(year.endDate.getTime() + 86_400_000) } } : {};
   const showAll = query.years === "all" || !year;
-  const baseWhere = { schoolId: ctx.schoolId, classId: { in: classIds } };
+  const baseWhere = { schoolId: ctx.schoolId, ...workInReach(ctx.membershipId, reach) };
   const [thisYearCount, allCount] = await Promise.all([
     db.assignment.count({ where: { ...baseWhere, ...thisYear } }),
     db.assignment.count({ where: baseWhere }),
@@ -370,7 +383,11 @@ export async function staffAssignments(
 
   const classFilter = query.classId && classIds.includes(query.classId) ? query.classId : null;
   const state = query.state ?? null;
-  const classOptions = await db.class.findMany({ where: { id: { in: classIds }, archivedAt: null }, select: { id: true, name: true }, orderBy: { name: "asc" } });
+  const classRows = await db.class.findMany({ where: { id: { in: classIds }, archivedAt: null }, select: { id: true, name: true }, orderBy: { name: "asc" } });
+  const offered = await offeredSubjects(ctx.schoolId, reach, classRows.map((k) => k.id));
+  // Each class says whether it is the person's form class or which subjects they take there, and what a new piece of work may name.
+  // `formTeacher` is a teacher's: the office reaches every class whole and is no class's form teacher.
+  const classOptions = classRows.map((k) => ({ id: k.id, name: k.name, ...(ctx.role === "ADMIN" ? {} : { formTeacher: reach.get(k.id)?.formTeacher ?? true }), subjects: offered.get(k.id) ?? [] }));
 
   const now = new Date();
   const fetched = await db.assignment.findMany({
@@ -402,6 +419,7 @@ export async function staffAssignments(
       id: a.id,
       title: a.title,
       category: a.category,
+      subject: a.subject,
       pointsMilli: a.pointsMilli,
       dueAt: iso(a.dueAt),
       publishedAt: iso(a.publishedAt),

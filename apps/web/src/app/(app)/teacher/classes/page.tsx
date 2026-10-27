@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaretRightIcon, ChalkboardTeacherIcon } from "@phosphor-icons/react/ssr";
-import { requireRole, teacherClassIds } from "@/lib/tenancy";
+import { requireRole } from "@/lib/tenancy";
+import { classReach, workInReach } from "@/lib/teaching-reach";
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
 import { Card } from "@/components/ui/card";
@@ -22,15 +23,9 @@ export default async function TeacherClassesPage() {
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
 
-  const classIds =
-    ctx.role === "ADMIN"
-      ? (
-          await db.class.findMany({
-            where: { schoolId: ctx.schoolId, archivedAt: null },
-            select: { id: true },
-          })
-        ).map((c) => c.id)
-      : await teacherClassIds(ctx.schoolId, ctx.membershipId);
+  // A teacher's form classes and the classes the timetable sends them to (owner's item 1, 27 Oct 2026).
+  const reach = await classReach(ctx);
+  const classIds = [...reach.keys()];
 
   if (classIds.length === 0) {
     return (
@@ -63,7 +58,7 @@ export default async function TeacherClassesPage() {
         subject: true,
         room: true,
         color: true,
-        _count: { select: { enrollments: { where: { status: "ACTIVE" } }, assignments: true } },
+        _count: { select: { enrollments: { where: { status: "ACTIVE" } } } },
       },
       orderBy: { name: "asc" },
     }),
@@ -72,6 +67,9 @@ export default async function TeacherClassesPage() {
       select: { classId: true },
     }),
   ]);
+  // The work counted is the work this person may open: a form class's all, their own where the timetable sends them.
+  const work = await db.assignment.groupBy({ by: ["classId"], where: { schoolId: ctx.schoolId, ...workInReach(ctx.membershipId, reach) }, _count: { _all: true } });
+  const workBy = new Map(work.map((w) => [w.classId, w._count._all]));
 
   const done = new Set(takenToday.map((s) => s.classId));
 
@@ -101,14 +99,18 @@ export default async function TeacherClassesPage() {
                     {klass.room ? ` · Room ${klass.room}` : ""}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-subtle">
-                    {klass._count.assignments} piece
-                    {klass._count.assignments === 1 ? "" : "s"} of work set
+                    {workBy.get(klass.id) ?? 0} piece
+                    {(workBy.get(klass.id) ?? 0) === 1 ? "" : "s"} of work set
+                    {ctx.role === "TEACHER" ? ` · ${reach.get(klass.id)?.formTeacher ? t("subjectWork.formTeacher") : (reach.get(klass.id)?.subjects ?? []).join(", ")}` : ""}
                   </p>
                 </div>
 
-                <Badge tone={done.has(klass.id) ? "ok" : "warn"} size="sm">
-                  {done.has(klass.id) ? t("teacher.registerDone") : t("teacher.registerToDo")}
-                </Badge>
+                {/* The register is a form class's; a class the timetable alone sends this teacher to has none for them. */}
+                {reach.get(klass.id)?.formTeacher ? (
+                  <Badge tone={done.has(klass.id) ? "ok" : "warn"} size="sm">
+                    {done.has(klass.id) ? t("teacher.registerDone") : t("teacher.registerToDo")}
+                  </Badge>
+                ) : null}
                 <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
               </Link>
             </Card>

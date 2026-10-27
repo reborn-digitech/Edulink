@@ -19,7 +19,7 @@ export const STAFF: Endpoint[] = [
   { method: "POST", path: "/api/v1/staff/classes/{classId}/weights", summary: "Save a class's grade weights", access: ["TEACHER", "ADMIN"], request: c.classWeightsSchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.classId ? `/api/v1/staff/classes/${f.classId}/weights` : null) },
   // ---- /teacher/assignments -------------------------------------------------
   { method: "GET", path: "/api/v1/staff/assignments", summary: "The assignments list", access: ["TEACHER", "ADMIN"], request: c.assignmentsQuerySchema, response: c.staffAssignmentsSchema },
-  { method: "POST", path: "/api/v1/staff/assignments", summary: "Set a new piece of work", access: ["TEACHER", "ADMIN"], request: c.newAssignmentSchema, response: c.assignmentCreatedSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/staff/assignments", summary: "Set a new piece of work to a form class or a class the timetable sends the teacher to, with the subject it is for", access: ["TEACHER", "ADMIN"], request: c.newAssignmentSchema, response: c.assignmentCreatedSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/staff/assignments/publish", summary: "Publish a draft assignment", access: ["TEACHER", "ADMIN"], request: c.publishAssignmentSchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- /teacher/exams and /exams --------------------------------------------
   { method: "GET", path: "/api/v1/staff/exams", summary: "Classes and papers I may enter marks for", access: ["TEACHER", "ADMIN"], response: c.staffExamsSchema },

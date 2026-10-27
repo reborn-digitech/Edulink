@@ -687,6 +687,7 @@ export async function parentAssignments(ctx: ActiveContext, childId?: string | n
     id: item.id,
     title: item.title,
     category: item.category,
+    subject: item.subject,
     className: item.className,
     pointsMilli: item.pointsMilli,
     dueAt: item.dueAt?.toISOString() ?? null,

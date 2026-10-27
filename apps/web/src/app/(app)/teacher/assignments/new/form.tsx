@@ -19,7 +19,8 @@ export function AssignmentForm({
   preselected,
   className,
 }: {
-  classes: { id: string; name: string; studentCount: number }[];
+  /** `formTeacher` null for the office; `subjects` what the work may name in that class (owner's item 1, 27 Oct 2026). */
+  classes: { id: string; name: string; studentCount: number; formTeacher: boolean | null; subjects: string[]; defaultSubject: string }[];
   preselected: string;
   className?: string;
 }) {
@@ -29,6 +30,7 @@ export function AssignmentForm({
   const [pending, startTransition] = useTransition();
 
   const [classId, setClassId] = useState(preselected);
+  const [subject, setSubject] = useState(classes.find((c) => c.id === preselected)?.defaultSubject ?? "");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [category, setCategory] = useState("Homework");
@@ -76,6 +78,7 @@ export function AssignmentForm({
       payload.set("title", title.trim());
       payload.set("body", body.trim());
       payload.set("category", category || "");
+      payload.set("subject", subject);
       if (pointsValue !== undefined) payload.set("points", String(pointsValue));
       payload.set("dueAt", dueAt ?? "");
       payload.set("publish", String(publish));
@@ -139,13 +142,34 @@ export function AssignmentForm({
         </p>
       )}
 
-      <SelectField label={t("teacher.classField")} required value={classId} onChange={(e) => setClassId(e.target.value)}>
+      <SelectField
+        label={t("teacher.classField")}
+        required
+        value={classId}
+        onChange={(e) => {
+          setClassId(e.target.value);
+          setSubject(classes.find((c) => c.id === e.target.value)?.defaultSubject ?? "");
+        }}
+      >
         {classes.map((klass) => (
           <option key={klass.id} value={klass.id}>
             {klass.name} ({klass.studentCount} student{klass.studentCount === 1 ? "" : "s"})
+            {klass.formTeacher === true ? ` · ${t("subjectWork.formTeacher")}` : klass.formTeacher === false ? ` · ${klass.subjects.join(", ")}` : ""}
           </option>
         ))}
       </SelectField>
+
+      {selectedClass && (selectedClass.subjects.length > 0 || selectedClass.formTeacher === false) ? (
+        <SelectField label={t("subjectWork.subject")} value={subject} error={errors.subject} hint={t("subjectWork.subjectHint")} onChange={(e) => setSubject(e.target.value)}>
+          {/* A form teacher and the office may name none; a teacher the timetable sends here names one of theirs. */}
+          {selectedClass.formTeacher !== false ? <option value="">{t("subjectWork.noSubject")}</option> : null}
+          {selectedClass.subjects.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </SelectField>
+      ) : null}
 
       <TextField
         label={t("teacher.title")}

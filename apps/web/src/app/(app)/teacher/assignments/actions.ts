@@ -40,6 +40,7 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
     title: String(formData.get("title") ?? ""),
     body: String(formData.get("body") ?? ""),
     category: String(formData.get("category") ?? ""),
+    subject: String(formData.get("subject") ?? ""),
     points: points === null || points === "" ? undefined : Number(points),
     dueAt: String(formData.get("dueAt") ?? ""),
     publish: formData.get("publish") === "true",
@@ -61,7 +62,7 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   try {
     const result = await createAssignment(
       { schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role, userId: ctx.user.id },
-      { ...parsed.data, dueAt: parsed.data.dueAt || undefined, attachments },
+      { ...parsed.data, dueAt: parsed.data.dueAt || undefined, subject: parsed.data.subject || undefined, attachments },
     );
     revalidatePath("/teacher/assignments");
     revalidatePath("/teacher");
@@ -69,8 +70,9 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   } catch (error) {
     // Nothing will reference these now, and nothing can reach them either.
     await discard(attachments.map((a) => a.fileId));
-    // A due date already past, not confirmed (A3-journeys-25): said beside the date, where the tick box is.
-    if (error instanceof RuleRefusal) return { ok: false, errors: { dueDate: (await getT())(error.key, error.vars) } };
+    // A due date already past, not confirmed (A3-journeys-25): said beside the date, where the tick box is;
+    // a subject the teacher does not take in that class (owner's item 1), beside the subject.
+    if (error instanceof RuleRefusal) return { ok: false, errors: { [error.field === "subject" ? "subject" : "dueDate"]: (await getT())(error.key, error.vars) } };
     if (error instanceof AccessError)
       return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
     console.error("[newAssignment]", error);

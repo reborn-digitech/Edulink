@@ -8,7 +8,7 @@ import { notify, notifyGuardians, notifyGuardiansOfClass } from "./notify";
 import { audit } from "./audit";
 import { RuleRefusal } from "./rule-refusal";
 import { finishedYearContaining } from "./academic-year";
-import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess } from "./tenancy";
+import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess, matchSubject, teachesClass } from "./tenancy";
 import { isTeachingRole } from "./constants";
 import type { ActiveContext } from "./session";
 
@@ -343,7 +343,9 @@ export async function saveGradeCategories(
   const klass = await assertClassAccess(
     { schoolId: session.schoolId!, membershipId: session.membershipId!, role: session.role },
     classId,
-    { write: true },
+    // The weights are the whole class's: a teacher the timetable sends for one subject sets work and
+    // grades it, and leaves the weighting to the class's own teachers (owner's item 1, 27 Oct 2026).
+    { write: true, formTeacher: true },
   );
 
   const clean = categories
@@ -427,9 +429,12 @@ export async function createAssignment(
     confirmPastDue?: boolean;
     /** Already stored by the caller — see the fileId convention in uploads.ts. */
     attachments?: Attachment[];
+    /** The subject the work is for (owner's item 1, 27 Oct 2026); see assignmentSubject. */
+    subject?: string;
   },
 ): Promise<{ assignmentId: string; notified: number }> {
   await assertClassAccess(ctx, input.classId, { write: true });
+  const subject = await assignmentSubject(ctx, input.classId, input.subject);
   // A due date already past is most often a slip of the month; it stands only when the teacher says so
   // (the web's tick box, the phone's second press, the doors' confirmPastDue), before anything is written or told.
   if (input.dueAt && new Date(input.dueAt).getTime() < Date.now() && !input.confirmPastDue) throw new RuleRefusal("teacher.refusePastDue", 422, undefined, "dueAt");
@@ -442,6 +447,7 @@ export async function createAssignment(
       title: input.title,
       body: input.body,
       category: input.category || null,
+      subject,
       pointsMilli: input.points === undefined ? null : toMilli(input.points),
       dueAt: input.dueAt ? new Date(input.dueAt) : null,
       publishedAt: input.publish ? new Date() : null,
@@ -466,7 +472,7 @@ export async function createAssignment(
           userId: enrollment.student.userId,
           schoolId: ctx.schoolId,
           kind: "ASSIGNMENT",
-          titleKey: "notifTitle.newWorkSet",
+          ...workSetTitle(subject),
           body: input.title,
           url: "/student/assignments",
         }),
@@ -476,7 +482,7 @@ export async function createAssignment(
         () => ({
           kind: "ASSIGNMENT",
           schoolId: ctx.schoolId,
-          titleKey: "notifTitle.newWorkSet",
+          ...workSetTitle(subject),
           body: input.title,
           url: "/parent/assignments",
         }),
@@ -499,10 +505,43 @@ export async function createAssignment(
     action: input.publish ? "assignment.publish" : "assignment.draft",
     targetType: "Assignment",
     targetId: assignment.id,
-    meta: { classId: input.classId, title: input.title },
+    meta: { classId: input.classId, title: input.title, subject },
   });
 
   return { assignmentId: assignment.id, notified };
+}
+
+/** "New work set", or "New English work set" when the work names its subject: the pupil's and the family's title. */
+function workSetTitle(subject: string | null): { titleKey: "notifTitle.newWorkSet" } | { titleKey: "subjectWork.newWorkSetIn"; titleVars: { subject: string } } {
+  return subject ? { titleKey: "subjectWork.newWorkSetIn", titleVars: { subject } } : { titleKey: "notifTitle.newWorkSet" };
+}
+
+/**
+ * The subject a new piece of work is stored with (owner's item 1, 27 Oct 2026).
+ *
+ * FREE TEXT MATCHED TO THE TIMETABLE, as exam marks are: a subject the class's
+ * timetable knows is stored as the timetable spells it ("english" → "English").
+ * A teacher who reaches the class only through the timetable sets work in the
+ * subjects they take there and nothing else — 422 on the field for any other
+ * — and, taking only one there, gets that one when they name none. The class's
+ * own teachers and the office may name any subject, or none.
+ */
+export async function assignmentSubject(
+  ctx: { schoolId: string; membershipId: string; role: "TEACHER" | "ADMIN" },
+  classId: string,
+  raw: string | undefined,
+): Promise<string | null> {
+  const named = raw?.trim().replace(/\s+/g, " ") || null;
+  const reach = await teachesClass(ctx, classId);
+  if (reach && !reach.formTeacher) {
+    if (!named) return reach.subjects.length === 1 ? reach.subjects[0]! : null;
+    const mine = matchSubject(reach.subjects, named);
+    if (!mine) throw new RuleRefusal("subjectWork.refuseNotYours", 422, { subjects: reach.subjects.join(", ") }, "subject");
+    return mine;
+  }
+  if (!named) return null;
+  const slots = await db.timetableSlot.findMany({ where: { schoolId: ctx.schoolId, classId }, select: { subject: true }, distinct: ["subject"] });
+  return matchSubject(slots.map((s) => s.subject), named) ?? named;
 }
 
 /** Roster for one assignment, with each student's submission and grade. */
@@ -560,6 +599,7 @@ export async function getGradebook(
       title: assignment.title,
       body: assignment.body,
       category: assignment.category,
+      subject: assignment.subject,
       pointsMilli: assignment.pointsMilli,
       dueAt: assignment.dueAt,
       publishedAt: assignment.publishedAt,
@@ -776,7 +816,7 @@ export async function publishAssignment(
         userId: enrollment.student.userId,
         schoolId: ctx.schoolId,
         kind: "ASSIGNMENT",
-        titleKey: "notifTitle.newWorkSet",
+        ...workSetTitle(assignment.subject),
         body: assignment.title,
         url: "/student/assignments",
       }),
@@ -786,7 +826,7 @@ export async function publishAssignment(
       () => ({
         kind: "ASSIGNMENT",
         schoolId: ctx.schoolId,
-        titleKey: "notifTitle.newWorkSet",
+        ...workSetTitle(assignment.subject),
         body: assignment.title,
         url: "/parent/assignments",
       }),
@@ -873,6 +913,7 @@ export async function getStudentWork(session: ActiveContext) {
     title: assignment.title,
     body: assignment.body,
     category: assignment.category,
+    subject: assignment.subject,
     className: workLabel(assignment),
     classColor: assignment.class?.color ?? null,
     pointsMilli: assignment.pointsMilli,
@@ -948,6 +989,7 @@ export async function childWork(parentUserId: string, studentMembershipId: strin
     isExam: assignment.examSlotId !== null,
     title: assignment.title,
     category: assignment.category,
+    subject: assignment.subject,
     className: workLabel(assignment),
     pointsMilli: assignment.pointsMilli,
     dueAt: assignment.dueAt,

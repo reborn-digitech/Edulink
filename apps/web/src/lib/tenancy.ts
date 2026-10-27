@@ -197,17 +197,113 @@ function refuseModuleRole(role: Role): void {
   if (isLimitedRole(role) && !isTeachingRole(role)) throw new AccessError("access.wrongRoleForThisAction");
 }
 
+/* -------------------------------------------------------------------------- */
+/* Who teaches a class                                                         */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * TWO WAYS TO TEACH A CLASS (owner's item 1, 27 Oct 2026). A ClassTeacher row
+ * (LEAD, CO or SUBJECT) makes a teacher one of the class's own: the register
+ * (with canTakeAttendance), the report cards, the weights, every piece of work
+ * set to it. A lesson on the timetable — one TimetableSlot naming them for
+ * that class — makes a TEACHER the teacher of that subject there: they set
+ * and grade their own work, move the syllabus and plan lessons in that
+ * subject, and write about the pupils they teach. Exam marks drew the same
+ * line first (exams.ts assertMayEnterMarks, examClassesFor).
+ *
+ * A college's FACULTY and HOD keep the ClassTeacher rule alone: their
+ * lectures and gates are the college's own (academics), and the timetable
+ * path is a school's.
+ */
+const classTeacherWhere = (membershipId: string) => ({ teachers: { some: { teacherMembershipId: membershipId } } });
+const lessonWhere = (membershipId: string) => ({ timetableSlots: { some: { teacherMembershipId: membershipId } } });
+
+/** A Class `where` a teaching role passes: a ClassTeacher row, or (a school's TEACHER) a lesson on the timetable. */
+export function taughtClassWhere(role: Role, membershipId: string) {
+  return role === "TEACHER" ? { OR: [classTeacherWhere(membershipId), lessonWhere(membershipId)] } : classTeacherWhere(membershipId);
+}
+
+/** How one teacher teaches one class: as one of its own (`formTeacher`), and the timetable's subjects they take there. */
+export type ClassTeaching = { formTeacher: boolean; subjects: string[] };
+
+const tidySubject = (s: string) => s.trim().replace(/\s+/g, " ");
+
+/** Distinct subjects, case-insensitively, kept as first spelt. */
+function distinctSubjects(subjects: string[]): string[] {
+  const seen = new Map<string, string>();
+  for (const raw of subjects) {
+    const s = tidySubject(raw);
+    if (s && !seen.has(s.toLowerCase())) seen.set(s.toLowerCase(), s);
+  }
+  return [...seen.values()];
+}
+
+/**
+ * Every living class a teacher teaches, either way, with how. A class held
+ * through a ClassTeacher row is `formTeacher` whatever the timetable says;
+ * `subjects` are the timetable's for this teacher in that class, in the
+ * order the week first meets them.
+ */
+export async function taughtClasses(schoolId: string, membershipId: string): Promise<Map<string, ClassTeaching>> {
+  const [rows, slots] = await Promise.all([
+    db.classTeacher.findMany({ where: { teacherMembershipId: membershipId, class: { schoolId, archivedAt: null } }, select: { classId: true } }),
+    db.timetableSlot.findMany({
+      where: { schoolId, teacherMembershipId: membershipId, class: { archivedAt: null } },
+      select: { classId: true, subject: true },
+      orderBy: [{ weekday: "asc" }, { period: { position: "asc" } }],
+    }),
+  ]);
+  const out = new Map<string, ClassTeaching>();
+  for (const row of rows) out.set(row.classId, { formTeacher: true, subjects: [] });
+  const subjectsBy = new Map<string, string[]>();
+  for (const slot of slots) subjectsBy.set(slot.classId, [...(subjectsBy.get(slot.classId) ?? []), slot.subject]);
+  for (const [classId, subjects] of subjectsBy) {
+    out.set(classId, { formTeacher: out.get(classId)?.formTeacher ?? false, subjects: distinctSubjects(subjects) });
+  }
+  return out;
+}
+
+/**
+ * How the caller teaches one class, or null when they do not. The office
+ * (and the head) reach every class whole: `formTeacher` true, no subjects of
+ * their own. A FACULTY or HOD is asked the ClassTeacher question alone.
+ */
+export async function teachesClass(
+  ctx: { schoolId: string; membershipId: string; role: Role },
+  classId: string,
+): Promise<ClassTeaching | null> {
+  if (!isTeachingRole(ctx.role)) return { formTeacher: true, subjects: [] };
+  const [row, slots] = await Promise.all([
+    db.classTeacher.findFirst({ where: { classId, schoolId: ctx.schoolId, teacherMembershipId: ctx.membershipId }, select: { id: true } }),
+    ctx.role === "TEACHER"
+      ? db.timetableSlot.findMany({ where: { classId, schoolId: ctx.schoolId, teacherMembershipId: ctx.membershipId }, select: { subject: true }, orderBy: [{ weekday: "asc" }, { period: { position: "asc" } }] })
+      : Promise.resolve([] as { subject: string }[]),
+  ]);
+  if (!row && slots.length === 0) return null;
+  return { formTeacher: Boolean(row), subjects: distinctSubjects(slots.map((s) => s.subject)) };
+}
+
+/** Whether a subject is one of a list, as the timetable compares them: case and spacing aside. Returns the list's spelling. */
+export function matchSubject(subjects: string[], subject: string): string | null {
+  const wanted = tidySubject(subject).toLowerCase();
+  return subjects.find((s) => tidySubject(s).toLowerCase() === wanted) ?? null;
+}
+
 /**
  * A class the caller may act on.
  *
- * Admins get any class in their school. Teachers get only classes they are
- * assigned to — "same school" is not sufficient for taking attendance or
+ * Admins get any class in their school. Teachers get only classes they
+ * teach — "same school" is not sufficient for taking attendance or
  * grading, and treating it as sufficient is the most tempting shortcut here.
+ * A TEACHER teaches a class through a ClassTeacher row or a lesson on the
+ * timetable (taughtClassWhere); `formTeacher: true` asks for the row alone,
+ * for what stays the class's own teachers' (the register's boundary, the
+ * grade weights, the whole-class marks sheet).
  */
 export async function assertClassAccess(
   ctx: { schoolId: string; membershipId: string; role: Role },
   classId: string,
-  opts: { write?: boolean } = {},
+  opts: { write?: boolean; formTeacher?: boolean } = {},
 ) {
   refuseModuleRole(ctx.role);
   const klass = await db.class.findFirst({
@@ -215,7 +311,9 @@ export async function assertClassAccess(
       id: classId,
       schoolId: ctx.schoolId, // <- tenant boundary, always present
       ...(isTeachingRole(ctx.role)
-        ? { teachers: { some: { teacherMembershipId: ctx.membershipId } } }
+        ? opts.formTeacher
+          ? classTeacherWhere(ctx.membershipId)
+          : taughtClassWhere(ctx.role, ctx.membershipId)
         : {}),
     },
     include: {
@@ -233,6 +331,11 @@ export async function assertClassAccess(
 export async function assertStudentAccess(
   ctx: { schoolId: string; membershipId: string; role: Role },
   studentMembershipId: string,
+  /**
+   * `formTeacher: true` asks for a class the teacher holds a ClassTeacher row for: the pupil's health card
+   * and pupil record stay with the class's own teachers and the office (owner's item 1, 27 Oct 2026).
+   */
+  opts: { formTeacher?: boolean } = {},
 ) {
   refuseModuleRole(ctx.role);
   const student = await db.membership.findFirst({
@@ -242,11 +345,12 @@ export async function assertStudentAccess(
       role: "STUDENT",
       ...(isTeachingRole(ctx.role)
         ? {
-            // Only students in a class this teacher actually teaches.
+            // Only students in a class this teacher actually teaches: a
+            // ClassTeacher row, or a lesson on the timetable (taughtClassWhere).
             enrollments: {
               some: {
                 status: "ACTIVE",
-                class: { teachers: { some: { teacherMembershipId: ctx.membershipId } } },
+                class: opts.formTeacher ? classTeacherWhere(ctx.membershipId) : taughtClassWhere(ctx.role, ctx.membershipId),
               },
             },
           }
@@ -315,7 +419,11 @@ export async function assertAssignmentAccess(
       ...(isTeachingRole(ctx.role)
         ? {
             OR: [
-              { class: { teachers: { some: { teacherMembershipId: ctx.membershipId } } } },
+              { class: classTeacherWhere(ctx.membershipId) },
+              // A TEACHER the timetable sends to the class reaches the work THEY set there, not the
+              // rest of the class's (owner's item 1, 27 Oct 2026): the form teacher's homework is not
+              // the English teacher's to mark.
+              ...(ctx.role === "TEACHER" ? [{ authorMembershipId: ctx.membershipId, class: lessonWhere(ctx.membershipId) }] : []),
               { offering: { facultyMembershipId: ctx.membershipId } },
               ...(ctx.role === "HOD" ? [{ offering: { course: { scheme: { programme: { department: { hodMembershipId: ctx.membershipId } } } } } }] : []),
             ],
@@ -421,8 +529,22 @@ export function scope(schoolId: string) {
   };
 }
 
-/** Class ids a teacher is assigned to, for list queries. */
+/**
+ * Class ids a teacher teaches, for list queries: a ClassTeacher row or a
+ * lesson on the timetable (taughtClasses). The pickers, the classes list, the
+ * assignments list and a teacher's live channels read this.
+ */
 export async function teacherClassIds(schoolId: string, membershipId: string): Promise<string[]> {
+  return [...(await taughtClasses(schoolId, membershipId)).keys()];
+}
+
+/**
+ * The classes a teacher holds a ClassTeacher row for — their form classes.
+ * What is built on registers reads this and not teacherClassIds: the Today
+ * page's form classes and "registers left", whose classes a timetable-only
+ * teacher may not mark.
+ */
+export async function formClassIds(schoolId: string, membershipId: string): Promise<string[]> {
   const rows = await db.classTeacher.findMany({
     where: { teacherMembershipId: membershipId, class: { schoolId, archivedAt: null } },
     select: { classId: true },

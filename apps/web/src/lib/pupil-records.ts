@@ -43,7 +43,8 @@ export async function recordViewer(ctx: ActiveContext, studentMembershipId: stri
     const me = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, userId: true, user: { select: { name: true, preferredName: true, birthdate: true, penNumber: true } } } });
     return { userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT", canEdit: false, family: true, studentName: me.user.preferredName ?? me.user.name, studentCode: me.studentCode, birthdateKey: me.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: me.userId, accountPen: me.user.penNumber };
   }
-  const student = await assertStudentAccess({ schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role }, studentMembershipId);
+  // The class's own teachers and the office: identity and category data is not a subject teacher's (owner's item 1, 27 Oct 2026).
+  const student = await assertStudentAccess({ schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role }, studentMembershipId, { formTeacher: true });
   const row = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, userId: true, user: { select: { birthdate: true, penNumber: true } } } });
   return { userId: ctx.user.id, schoolId: ctx.schoolId, role: ctx.role, canEdit: OFFICE.includes(ctx.role), family: false, studentName: student.user.preferredName ?? student.user.name, studentCode: row.studentCode, birthdateKey: row.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: row.userId, accountPen: row.user.penNumber };
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BooksIcon, CalendarCheckIcon, ChartBarIcon, ChatCircleDotsIcon, FileTextIcon, ClipboardTextIcon, FirstAidKitIcon, UsersThreeIcon, WarningCircleIcon } from "@phosphor-icons/react/ssr";
-import { requireRole, assertClassAccess, AccessError } from "@/lib/tenancy";
+import { requireRole, assertClassAccess, AccessError, teachesClass } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getAttendanceSummary } from "@/lib/attendance";
 import { addDaysToKey, todayKey } from "@/lib/dates";
@@ -50,6 +50,11 @@ export default async function ClassDetailPage({
     if (error instanceof AccessError) notFound();
     throw error;
   }
+  // A teacher the timetable alone sends here (owner's item 1, 27 Oct 2026): their own work in the class,
+  // and none of the register, the report cards, the join code or the weights, which stay its form teacher's.
+  const teaching = (await teachesClass(ctx, classId)) ?? { formTeacher: true, subjects: [] };
+  const formTeacher = teaching.formTeacher;
+  const mine = formTeacher ? {} : { authorMembershipId: ctx.membershipId };
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
@@ -75,7 +80,7 @@ export default async function ClassDetailPage({
       select: { takenAt: true, _count: { select: { records: true } } },
     }),
     db.assignment.findMany({
-      where: { classId, schoolId: ctx.schoolId },
+      where: { classId, schoolId: ctx.schoolId, ...mine },
       select: {
         id: true,
         title: true,
@@ -87,7 +92,7 @@ export default async function ClassDetailPage({
       take: 5,
     }),
     db.submission.count({
-      where: { schoolId: ctx.schoolId, status: "SUBMITTED", assignment: { classId } },
+      where: { schoolId: ctx.schoolId, status: "SUBMITTED", assignment: { classId, ...mine } },
     }),
   ]);
 
@@ -126,7 +131,8 @@ export default async function ClassDetailPage({
   // The one-glance health flags: an allergy, a condition or a medicine on
   // a pupil's card is a chip beside the name, and the card is on the person
   // page the name opens.
-  const healthFlags = await healthFlagsFor(ctx.schoolId, roster.map((r) => r.membershipId));
+  // The health card is the class's own teachers' (owner's item 1): no flags for a teacher the timetable alone sends here.
+  const healthFlags = formTeacher ? await healthFlagsFor(ctx.schoolId, roster.map((r) => r.membershipId)) : new Map<string, never>();
   const anyFlagged = roster.some((r) => healthFlags.has(r.membershipId));
   // An open incident is a chip too: a fall not yet followed up is something
   // the next lesson's teacher should see before the name is called.
@@ -167,27 +173,41 @@ export default async function ClassDetailPage({
           </>
         }
         actions={
-          <Button asChild>
-            <Link href={`/teacher/attendance?classId=${klass.id}`}>
-              {todaySession ? t("teacher.editTodaysRegister") : t("teacher.takeRegister")}
-            </Link>
-          </Button>
+          formTeacher ? (
+            <Button asChild>
+              <Link href={`/teacher/attendance?classId=${klass.id}`}>
+                {todaySession ? t("teacher.editTodaysRegister") : t("teacher.takeRegister")}
+              </Link>
+            </Button>
+          ) : (
+            <Button asChild>
+              <Link href={`/teacher/assignments/new?classId=${klass.id}`}>{t("teacher.setWork")}</Link>
+            </Button>
+          )
         }
       />
 
+      {!formTeacher ? (
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm text-fg-muted">
+          {t("subjectWork.notFormClass", { subjects: teaching.subjects.join(", ") })}
+        </p>
+      ) : null}
+
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <StatTile
-          label={t("teacher.registerToday")}
-          value={todaySession ? t("teacher.done") : t("teacher.toDo")}
-          tone={todaySession ? "ok" : "warn"}
-          icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          hint={
-            todaySession
-              ? t("teacher.markedAgo", { count: todaySession._count.records, when: relativeTime(todaySession.takenAt) })
-              : t("teacher.nobodyMarkedYet")
-          }
-        />
+        {formTeacher ? (
+          <StatTile
+            label={t("teacher.registerToday")}
+            value={todaySession ? t("teacher.done") : t("teacher.toDo")}
+            tone={todaySession ? "ok" : "warn"}
+            icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
+            hint={
+              todaySession
+                ? t("teacher.markedAgo", { count: todaySession._count.records, when: relativeTime(todaySession.takenAt) })
+                : t("teacher.nobodyMarkedYet")
+            }
+          />
+        ) : null}
         <StatTile
           label={t("teacher.toMark")}
           value={ungraded}
@@ -222,9 +242,11 @@ export default async function ClassDetailPage({
       {/* Report cards and the marks grid, as one row of buttons — they were
           two full-width cards that read as one control drawn twice. */}
       <div className="flex flex-wrap gap-2">
-        <Button asChild variant="secondary">
-          <Link href={`/teacher/classes/${klass.id}/report-cards`}>{t("teacher.reportCards")}</Link>
-        </Button>
+        {formTeacher ? (
+          <Button asChild variant="secondary">
+            <Link href={`/teacher/classes/${klass.id}/report-cards`}>{t("teacher.reportCards")}</Link>
+          </Button>
+        ) : null}
         <Button asChild variant="secondary">
           <Link href={`/teacher/exams?classId=${klass.id}`}>{t("exams.enterMarks")}</Link>
         </Button>
@@ -236,7 +258,7 @@ export default async function ClassDetailPage({
         </Button>
       </div>
 
-      <ClassCode joinCode={klass.joinCode} className={klass.name} />
+      {formTeacher ? <ClassCode joinCode={klass.joinCode} className={klass.name} /> : null}
 
       {/* ---------------- roster ---------------- */}
       <Card id="roster" className="scroll-mt-24">
@@ -390,11 +412,13 @@ export default async function ClassDetailPage({
         </CardBody>
       </Card>
 
-      <GradeWeights
-        classId={classId}
-        initial={weights.map((w) => ({ name: w.name, weightBps: w.weightBps }))}
-        categoriesInUse={categoriesInUse}
-      />
+      {formTeacher ? (
+        <GradeWeights
+          classId={classId}
+          initial={weights.map((w) => ({ name: w.name, weightBps: w.weightBps }))}
+          categoriesInUse={categoriesInUse}
+        />
+      ) : null}
     </div>
   );
 }

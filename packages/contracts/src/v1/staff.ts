@@ -229,6 +229,10 @@ export const staffClassesSchema = z.object({
       students: z.number().int(),
       assignments: z.number().int(),
       registerTaken: z.boolean(),
+      /** One of the class's own teachers (a ClassTeacher row, or the office); false when only the timetable sends them (owner's item 1, 27 Oct 2026). */
+      formTeacher: z.boolean().optional(),
+      /** The timetable's subjects this teacher takes in the class. */
+      subjects: z.array(z.string()).optional(),
     }),
   ),
   students: z.number().int(),
@@ -277,6 +281,14 @@ export const staffClassDetailSchema = z.object({
   ),
   weights: z.array(z.object({ id: z.string(), name: z.string(), weightBps: z.number().int(), position: z.number().int() })),
   categoriesInUse: z.array(z.string()),
+  /**
+   * False for a teacher the timetable sends to the class and no ClassTeacher row names (owner's item 1,
+   * 27 Oct 2026): the screen leaves out the register, the report cards, the join code and the weights,
+   * which stay the class's own teachers', and the recent work and "to mark" are their own work only.
+   */
+  formTeacher: z.boolean().optional(),
+  /** The timetable's subjects this teacher takes in the class. */
+  subjects: z.array(z.string()).optional(),
 });
 export type StaffClassDetail = z.infer<typeof staffClassDetailSchema>;
 
@@ -299,7 +311,13 @@ export const assignmentsQuerySchema = z.object({
 export const staffAssignmentsSchema = z.object({
   year: z.object({ name: z.string(), thisYearCount: z.number().int(), allCount: z.number().int() }).nullable(),
   showingAllYears: z.boolean(),
-  classOptions: z.array(z.object({ id: z.string(), name: z.string() })),
+  /**
+   * The classes this person may set work to: a teacher's form classes and the classes the timetable sends
+   * them to (owner's item 1, 27 Oct 2026). `formTeacher` says which; `subjects` are the subjects the work
+   * may be tagged with there — a timetable-only teacher's own, else their own first and then the rest of
+   * the class's timetable (every subject of it for the office).
+   */
+  classOptions: z.array(z.object({ id: z.string(), name: z.string(), formTeacher: z.boolean().optional(), subjects: z.array(z.string()).optional() })),
   filters: z.object({ classId: z.string().nullable(), state: z.enum(["tomark", "draft", "overdue"]).nullable() }),
   total: z.number().int(),
   assignments: z.array(
@@ -307,6 +325,7 @@ export const staffAssignmentsSchema = z.object({
       id: z.string(),
       title: z.string(),
       category: z.string().nullable(),
+      subject: z.string().nullable().optional(),
       pointsMilli: z.number().int().nullable(),
       dueAt: isoDate.nullable(),
       publishedAt: isoDate.nullable(),
@@ -325,6 +344,12 @@ export const newAssignmentSchema = z.object({
   title: z.string().trim().min(2).max(200),
   body: z.string().trim().max(20_000).default(""),
   category: z.string().trim().max(60).optional(),
+  /**
+   * The subject the work is for (owner's item 1, 27 Oct 2026), matched to the class's timetable and stored
+   * as it spells it. A teacher who takes the class only on the timetable may name only a subject they take
+   * there (422 on subject otherwise) and, taking one, gets it when they name none.
+   */
+  subject: z.string().trim().max(60).optional(),
   points: z.number().min(0).max(10_000).optional(),
   dueAt: isoDate.optional(),
   publish: z.boolean().default(true),

@@ -11,7 +11,7 @@ import {
 } from "@phosphor-icons/react/ssr";
 import { formatPaise } from "@edulink/i18n";
 import { owedForQuestionsPaise, questionGigOpen } from "@/lib/question-gig";
-import { requireRole, teacherClassIds } from "@/lib/tenancy";
+import { requireRole, formClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { formatDateKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import { marksTodoFor } from "@/lib/exams";
@@ -149,7 +149,9 @@ export default async function TeacherHome() {
     </Card>
   );
 
-  const classIds = await teacherClassIds(ctx.schoolId, ctx.membershipId);
+  // Form classes: the branch below is built on registers. A class the timetable alone sends this
+  // teacher to is in their lessons and on Classes, never in "registers left" (owner's item 1).
+  const classIds = await formClassIds(ctx.schoolId, ctx.membershipId);
 
   /**
    * EVERY TEACHER'S DAY STARTS WITH THE TIMETABLE. This block used to live

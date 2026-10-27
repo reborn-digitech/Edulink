@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaretRightIcon, ClipboardTextIcon, PlusIcon } from "@phosphor-icons/react/ssr";
-import { requireRole, teacherClassIds } from "@/lib/tenancy";
+import { requireRole } from "@/lib/tenancy";
+import { classReach, workInReach } from "@/lib/teaching-reach";
 import { db } from "@/lib/db";
 import { dateKeyInZone } from "@/lib/dates";
 import { admissionDaysByClass, rollOn } from "@/lib/exams";
@@ -32,15 +33,10 @@ export default async function AssignmentsPage({
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { years, classId: rawClassId, state: rawState } = await searchParams;
 
-  const classIds =
-    ctx.role === "ADMIN"
-      ? (
-          await db.class.findMany({
-            where: { schoolId: ctx.schoolId, archivedAt: null },
-            select: { id: true },
-          })
-        ).map((c) => c.id)
-      : await teacherClassIds(ctx.schoolId, ctx.membershipId);
+  // A teacher's form classes and the classes the timetable sends them to; in the latter, only the work
+  // they set (owner's item 1, 27 Oct 2026). The office: every living class.
+  const reach = await classReach(ctx);
+  const classIds = [...reach.keys()];
 
   if (classIds.length === 0) {
     return (
@@ -68,7 +64,7 @@ export default async function AssignmentsPage({
     ? { createdAt: { gte: year.startDate, lte: new Date(year.endDate.getTime() + 86_400_000) } }
     : {};
   const showAll = years === "all" || !year;
-  const baseWhere = { schoolId: ctx.schoolId, classId: { in: classIds } };
+  const baseWhere = { schoolId: ctx.schoolId, ...workInReach(ctx.membershipId, reach) };
   const [thisYearCount, allCount] = await Promise.all([
     db.assignment.count({ where: { ...baseWhere, ...thisYear } }),
     db.assignment.count({ where: baseWhere }),
@@ -201,6 +197,7 @@ export default async function AssignmentsPage({
                       <p className="truncate font-semibold text-fg">{assignment.title}</p>
                       <p className="truncate text-xs text-fg-muted">
                         {assignment.class.name}
+                        {assignment.subject ? ` · ${assignment.subject}` : ""}
                         {assignment.category ? ` · ${assignment.category}` : ""}
                         {assignment.pointsMilli
                           ? ` · ${formatMilli(assignment.pointsMilli)} points`

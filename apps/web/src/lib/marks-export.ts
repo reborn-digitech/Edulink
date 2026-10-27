@@ -20,7 +20,8 @@ import type { Role } from "./constants";
  * of the class (lead or co), and the office and the head for any class of the
  * school. A teacher the timetable sends to one lesson may enter that paper's
  * marks on the grid, but the sheet holds every paper, so it stays with the
- * class's teachers.
+ * class's teachers (`formTeacher`, owner's item 1 of 27 Oct 2026: the same
+ * teacher sets and grades their own work there, and still takes no sheet).
  */
 export type MarksExport = { filename: string; csv: string; rows: number };
 
@@ -65,7 +66,7 @@ async function rollOf(schoolId: string, classId: string) {
  * same arithmetic the family's exams page uses.
  */
 export async function marksExport(ctx: ExportCaller, classId: string, seriesId: string): Promise<MarksExport> {
-  const klass = await assertClassAccess(ctx, classId);
+  const klass = await assertClassAccess(ctx, classId, { formTeacher: true });
   const series = await db.examSeries.findFirst({
     where: { id: seriesId, schoolId: ctx.schoolId, archivedAt: null },
     select: { id: true, name: true, gradeLevel: true, slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }], select: { id: true, subject: true, pointsMilli: true } } },
@@ -133,7 +134,7 @@ export type HandInStatus = "submitted" | "late" | "missing" | "";
  * assignments too and keep their place, with the hand-in column blank.
  */
 export async function gradebookExport(ctx: ExportCaller, classId: string): Promise<MarksExport> {
-  const klass = await assertClassAccess(ctx, classId);
+  const klass = await assertClassAccess(ctx, classId, { formTeacher: true });
   const [roll, assignments] = await Promise.all([
     rollOf(ctx.schoolId, classId),
     db.assignment.findMany({

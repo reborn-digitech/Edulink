@@ -54,7 +54,8 @@ async function admit(ctx: ActiveContext, studentMembershipId: string): Promise<V
     return { userId: ctx.user.id, schoolId: self.schoolId, role: "STUDENT", membershipId: self.membershipId, canEdit: false, canRecordCheck: false, studentName: self.studentName };
   }
   if (!ctx.schoolId || !ctx.role || !ctx.membershipId || !READER_ROLES.includes(ctx.role)) throw new AccessError("access.notAllowed");
-  const student = await assertStudentAccess({ schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role }, studentMembershipId);
+  // The class's own teachers, not one the timetable alone sends there for a subject (owner's item 1, 27 Oct 2026).
+  const student = await assertStudentAccess({ schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role }, studentMembershipId, { formTeacher: true });
   const writer = WRITER_ROLES.includes(ctx.role);
   return { userId: ctx.user.id, schoolId: ctx.schoolId, role: ctx.role, membershipId: ctx.membershipId, canEdit: writer, canRecordCheck: writer, studentName: student.user.preferredName ?? student.user.name };
 }

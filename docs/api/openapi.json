@@ -12164,6 +12164,15 @@
                           },
                           "registerTaken": {
                             "type": "boolean"
+                          },
+                          "formTeacher": {
+                            "type": "boolean"
+                          },
+                          "subjects": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
                           }
                         },
                         "required": [
@@ -12446,6 +12455,15 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "formTeacher": {
+                      "type": "boolean"
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": [
@@ -12700,6 +12718,15 @@
                           },
                           "name": {
                             "type": "string"
+                          },
+                          "formTeacher": {
+                            "type": "boolean"
+                          },
+                          "subjects": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
                           }
                         },
                         "required": [
@@ -12747,6 +12774,10 @@
                             "type": "string"
                           },
                           "category": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "subject": {
                             "type": "string",
                             "nullable": true
                           },
@@ -12905,7 +12936,7 @@
         }
       },
       "post": {
-        "summary": "Set a new piece of work",
+        "summary": "Set a new piece of work to a form class or a class the timetable sends the teacher to, with the subject it is for",
         "description": "Roles: TEACHER, ADMIN.",
         "security": [
           {
@@ -13003,6 +13034,10 @@
                     "default": ""
                   },
                   "category": {
+                    "type": "string",
+                    "maxLength": 60
+                  },
+                  "subject": {
                     "type": "string",
                     "maxLength": 60
                   },
@@ -18785,6 +18820,10 @@
                             "type": "string",
                             "nullable": true
                           },
+                          "subject": {
+                            "type": "string",
+                            "nullable": true
+                          },
                           "className": {
                             "type": "string"
                           },
@@ -21045,6 +21084,10 @@
                             "type": "string"
                           },
                           "category": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "subject": {
                             "type": "string",
                             "nullable": true
                           },
@@ -46837,7 +46880,7 @@
     },
     "/api/v1/teaching/assignments": {
       "post": {
-        "summary": "Set a new piece of work, with handouts uploaded through /api/v1/uploads",
+        "summary": "Set a new piece of work, with handouts uploaded through /api/v1/uploads and the subject it is for",
         "description": "Roles: TEACHER, ADMIN.",
         "security": [
           {
@@ -46942,6 +46985,10 @@
                     "type": "string",
                     "maxLength": 60
                   },
+                  "subject": {
+                    "type": "string",
+                    "maxLength": 60
+                  },
                   "points": {
                     "type": "number",
                     "minimum": 0,
@@ -47029,6 +47076,10 @@
                           "type": "string"
                         },
                         "category": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "subject": {
                           "type": "string",
                           "nullable": true
                         },

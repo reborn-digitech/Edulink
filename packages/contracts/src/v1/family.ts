@@ -175,6 +175,8 @@ const studentWorkItemSchema = z.object({
   title: z.string(),
   body: z.string(),
   category: z.string().nullable(),
+  /** The subject the work is for, when the teacher named one (owner's item 1, 27 Oct 2026). */
+  subject: z.string().nullable().optional(),
   className: z.string(),
   classColor: z.string().nullable(),
   pointsMilli: z.number().int().nullable(),
@@ -418,6 +420,8 @@ const childWorkItemSchema = z.object({
   id: z.string(),
   title: z.string(),
   category: z.string().nullable(),
+  /** The subject the work is for, when the teacher named one (owner's item 1, 27 Oct 2026). */
+  subject: z.string().nullable().optional(),
   className: z.string(),
   pointsMilli: z.number().int().nullable(),
   dueAt: iso.nullable(),

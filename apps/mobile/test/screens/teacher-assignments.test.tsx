@@ -158,6 +158,40 @@ describe("the teacher's assignments", () => {
     expect(screen.getAllByRole("radio", { name: "ZZ 5A" })[0]).not.toBeChecked();
   });
 
+  it("a class the timetable sends the teacher to says their subjects and the work names one of them (owner's item 1)", async () => {
+    mockRouter.params = { classId: ID.class2, compose: "1" };
+    const { calls } = await mountStaff(<TeacherAssignments />, "TEACHER", {
+      "GET /api/v1/staff/assignments": () =>
+        json({
+          ...LIST,
+          classOptions: [
+            { id: ID.class1, name: "ZZ 5A", formTeacher: true, subjects: ["Mathematics", "English"] },
+            { id: ID.class2, name: "ZZ 6B", formTeacher: false, subjects: ["English", "Hindi"] },
+          ],
+          assignments: [{ ...LIST.assignments[0]!, subject: "Mathematics" }],
+        }),
+      "POST /api/v1/teaching/assignments": () => json({ assignmentId: A2, notified: 0, handouts: 0 }, 201),
+    });
+    expect(await screen.findByLabelText("Title")).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "ZZ 6B · English, Hindi" })).toBeChecked();
+    expect(screen.getByRole("radio", { name: "ZZ 5A · Form teacher" })).toBeTruthy();
+    expect(screen.getByText(/^ZZ 5A · Mathematics · Homework/)).toBeTruthy();
+    // Starts on the first of their subjects there, and offers no "No subject".
+    expect(screen.getByRole("radio", { name: "English" })).toBeChecked();
+    expect(screen.queryByRole("radio", { name: "No subject" })).toBeNull();
+    await fireEvent.press(screen.getByRole("radio", { name: "Hindi" }));
+    await fireEvent.changeText(screen.getByLabelText("Title"), "ZZ Hindi poem");
+    await fireEvent.press(screen.getByRole("button", { name: "Save as draft" }));
+    await screen.findByText(/^Saved as a draft/);
+    const body = teachingNewAssignmentSchema.parse(calls().find((c) => c.line === "POST /api/v1/teaching/assignments")!.body);
+    expect(body).toMatchObject({ classId: ID.class2, subject: "Hindi", publish: false });
+    // The form class offers none as well, and starts there.
+    await fireEvent.press(screen.getByRole("button", { name: "New assignment" }));
+    await fireEvent.press(screen.getByRole("radio", { name: "ZZ 5A · Form teacher" }));
+    expect(screen.getByRole("radio", { name: "No subject" })).toBeChecked();
+    expect(screen.getByRole("radio", { name: "Mathematics" })).toBeTruthy();
+  });
+
   it("no classes, nothing set, nothing matching: each has a door", async () => {
     await mountStaff(<TeacherAssignments />, "TEACHER", { "GET /api/v1/staff/assignments": () => json({ ...LIST, year: null, classOptions: [], total: 0, assignments: [] }) });
     await screen.findByText("No classes assigned yet");

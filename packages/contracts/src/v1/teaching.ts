@@ -46,6 +46,8 @@ export const teachingGradebookSchema = z.object({
     title: z.string(),
     body: z.string(),
     category: z.string().nullable(),
+    /** The subject the work is for, when it names one (owner's item 1, 27 Oct 2026). */
+    subject: z.string().nullable().optional(),
     pointsMilli: count.nullable(),
     dueAt: isoDate.nullable(),
     publishedAt: isoDate.nullable(),

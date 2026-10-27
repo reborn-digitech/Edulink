@@ -160,7 +160,9 @@ export async function assertClassAccessForRegister(
     if (klass.archivedAt && opts.write) throw new AccessError("access.thisClassIsArchived");
     return;
   }
-  await assertClassAccess(ctx, classId, opts);
+  // The register's boundary is the ClassTeacher row alone: a teacher the timetable sends to the class
+  // for one subject reaches its work and its pupils, never its register (owner's item 1, 27 Oct 2026).
+  await assertClassAccess(ctx, classId, { ...opts, formTeacher: true });
 }
 
 export async function classesIMayTake(

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/page-header";
-import { requireRole, teacherClassIds } from "@/lib/tenancy";
+import { requireRole } from "@/lib/tenancy";
+import { classReach, offeredSubjects } from "@/lib/teaching-reach";
 import { db } from "@/lib/db";
 import { AssignmentForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
@@ -20,15 +21,10 @@ export default async function NewAssignmentPage({
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { classId } = await searchParams;
 
-  const classIds =
-    ctx.role === "ADMIN"
-      ? (
-          await db.class.findMany({
-            where: { schoolId: ctx.schoolId, archivedAt: null },
-            select: { id: true },
-          })
-        ).map((c) => c.id)
-      : await teacherClassIds(ctx.schoolId, ctx.membershipId);
+  // A teacher's form classes and the classes the timetable sends them to, each with the subjects the
+  // work may name there (owner's item 1, 27 Oct 2026). The office: every living class.
+  const reach = await classReach(ctx);
+  const classIds = [...reach.keys()];
 
   const classes = await db.class.findMany({
     where: { id: { in: classIds }, schoolId: ctx.schoolId },
@@ -50,6 +46,7 @@ export default async function NewAssignmentPage({
   }
 
   const preselected = classes.some((c) => c.id === classId) ? classId : classes[0]!.id;
+  const offered = await offeredSubjects(ctx.schoolId, reach, classes.map((c) => c.id));
 
   return (
     <div className="mx-auto max-w-xl">
@@ -58,11 +55,19 @@ export default async function NewAssignmentPage({
 
       <AssignmentForm
         className="mt-7"
-        classes={classes.map((c) => ({
-          id: c.id,
-          name: c.name,
-          studentCount: c._count.enrollments,
-        }))}
+        classes={classes.map((c) => {
+          const r = reach.get(c.id);
+          return {
+            id: c.id,
+            name: c.name,
+            studentCount: c._count.enrollments,
+            // Said beside the name for a teacher; the office is nobody's form teacher.
+            formTeacher: ctx.role === "TEACHER" ? (r?.formTeacher ?? true) : null,
+            subjects: offered.get(c.id) ?? [],
+            // A timetable-only teacher names one of theirs; a form teacher starts on their own lesson there, if any.
+            defaultSubject: r && (!r.formTeacher || r.subjects.length > 0) ? (r.subjects[0] ?? "") : "",
+          };
+        })}
         preselected={preselected!}
       />
     </div>

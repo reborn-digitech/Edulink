@@ -8,7 +8,17 @@ import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { CelebrationsCard } from "../shared/celebrations";
 
-/** My classes, the web's /teacher/classes: one row per class, with today's register state. */
+/**
+ * How a teacher teaches a class, said beside it (owner's item 1, 27 Oct 2026): "Form teacher", or the
+ * subjects the timetable sends them there for. Nothing for the office, whose rows carry no formTeacher.
+ */
+export function classLabel(c: { formTeacher?: boolean; subjects?: string[] }, formTeacherWord: string): string | null {
+  if (c.formTeacher === true) return formTeacherWord;
+  if (c.formTeacher === false) return (c.subjects ?? []).join(", ") || null;
+  return null;
+}
+
+/** My classes, the web's /teacher/classes: one row per class, with today's register state (a form class's). */
 export function TeacherClasses() {
   const t = useT();
   const th = useTheme();
@@ -31,12 +41,15 @@ export function TeacherClasses() {
               <Row
                 key={c.id}
                 title={c.name}
-                caption={[c.subject, c.room, c.students === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: c.students })].filter(Boolean).join(" · ")}
+                caption={[classLabel(c, t("subjectWork.formTeacher")), c.subject, c.room, c.students === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: c.students })].filter(Boolean).join(" · ")}
                 right={
                   <>
-                    <Text variant="xs" bold tone={c.registerTaken ? "ok" : "accent"}>
-                      {c.registerTaken ? t("teacher.registerDone") : t("teacher.registerToDo")}
-                    </Text>
+                    {/* The register is a form class's; a class the timetable alone sends this teacher to has none for them. */}
+                    {c.formTeacher === false ? null : (
+                      <Text variant="xs" bold tone={c.registerTaken ? "ok" : "accent"}>
+                        {c.registerTaken ? t("teacher.registerDone") : t("teacher.registerToDo")}
+                      </Text>
+                    )}
                     <Icon name="caretRight" color={th.fgSubtle} size={16} />
                   </>
                 }

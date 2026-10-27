@@ -5,7 +5,7 @@ import { readJsonArray, writeJson } from "./json";
 import { publish, channel } from "./realtime";
 import { notify } from "./notify";
 import { audit } from "./audit";
-import { AccessError, assertRemarkAccess, assertStudentAccess } from "./tenancy";
+import { AccessError, assertRemarkAccess, assertStudentAccess, taughtClassWhere } from "./tenancy";
 import type { ActiveContext } from "./session";
 
 /**
@@ -471,7 +471,9 @@ export async function studentsForTeacher(schoolId: string, membershipId: string)
       enrollments: {
         some: {
           status: "ACTIVE",
-          class: { teachers: { some: { teacherMembershipId: membershipId } } },
+          // The pupils of the classes this teacher teaches, the timetable's included: the same line
+          // assertStudentAccess draws when the thread is opened (owner's item 1, 27 Oct 2026).
+          class: taughtClassWhere("TEACHER", membershipId),
         },
       },
     },

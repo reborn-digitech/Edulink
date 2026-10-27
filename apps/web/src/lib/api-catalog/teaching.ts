@@ -13,7 +13,7 @@ const classPath = (tail: string) => (f: { classId: string | null }) => (f.classI
 
 export const TEACHING: Endpoint[] = [
   // ---- /teacher/assignments/new, with handouts ------------------------------
-  { method: "POST", path: "/api/v1/teaching/assignments", summary: "Set a new piece of work, with handouts uploaded through /api/v1/uploads", access: ["TEACHER", "ADMIN"], request: c.teachingNewAssignmentSchema, response: c.teachingAssignmentCreatedSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/teaching/assignments", summary: "Set a new piece of work, with handouts uploaded through /api/v1/uploads and the subject it is for", access: ["TEACHER", "ADMIN"], request: c.teachingNewAssignmentSchema, response: c.teachingAssignmentCreatedSchema, emptyBodyStatus: 422 },
   // ---- /teacher/assignments/[assignmentId] ----------------------------------
   { method: "GET", path: "/api/v1/teaching/assignments/{assignmentId}", summary: "One assignment's gradebook: the roll, marks, comments and the work handed in", access: ["TEACHER", "ADMIN"], response: c.teachingGradebookSchema, sample: (f) => (f.assignmentId ? `/api/v1/teaching/assignments/${f.assignmentId}` : null) },
   { method: "POST", path: "/api/v1/teaching/assignments/{assignmentId}/grades", summary: "Save marks and comments for one assignment (replay-safe)", access: ["TEACHER", "ADMIN"], request: c.teachingGradesBodySchema, response: c.teachingGradesSavedSchema, emptyBodyStatus: 422, sample: (f) => (f.assignmentId ? `/api/v1/teaching/assignments/${f.assignmentId}/grades` : null) },

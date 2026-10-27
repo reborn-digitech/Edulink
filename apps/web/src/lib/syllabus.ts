@@ -2,7 +2,7 @@ import "server-only";
 import type { z } from "zod";
 import type { lessonPlanSaveSchema, officeSyllabusSaveSchema, officeSyllabusSchema, staffSyllabusSchema, syllabusCoverageSchema, planTemplateApplySchema, planTemplateSaveSchema, planTemplatesSchema } from "@edulink/contracts";
 import { db } from "./db";
-import { AccessError, assertClassAccess } from "./tenancy";
+import { AccessError, assertClassAccess, matchSubject, teachesClass } from "./tenancy";
 import { audit } from "./audit";
 import { currentAcademicYear } from "./academic-year";
 import { todayKey } from "./dates";
@@ -21,7 +21,9 @@ import type { Role } from "./constants";
  * should be this far through the list — because a head who is told "60 %"
  * in November needs to know whether that is fine or two chapters short.
  * Progress and lessons are the class's teachers' to write (assertClassAccess,
- * which admits the office too); the head reads the whole school.
+ * which admits the office too); a teacher the timetable sends to the class
+ * writes the subjects they take there (writesSubject, owner's item 1 of 27
+ * October 2026); the head reads the whole school.
  */
 
 const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
@@ -38,6 +40,21 @@ function staff(ctx: ActiveContext): Staff {
 }
 
 const norm = (s: string) => s.trim().replace(/\s+/g, " ");
+
+/**
+ * Whether the caller writes this subject's progress and lessons in this class
+ * (owner's item 1, 27 Oct 2026). The class's own teachers and the office write
+ * every subject; a teacher the timetable sends to the class writes the
+ * subjects they take there and reads the rest.
+ */
+async function writesSubject(caller: Staff, classId: string, subject: string): Promise<boolean> {
+  const teaching = await teachesClass({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, classId);
+  if (!teaching) return false;
+  return teaching.formTeacher || matchSubject(teaching.subjects, subject) !== null;
+}
+async function assertWritesSubject(caller: Staff, classId: string, subject: string): Promise<void> {
+  if (!(await writesSubject(caller, classId, subject))) throw new AccessError("subjectWork.refuseSyllabus");
+}
 
 /** The subjects a class teaches: its timetable's, its own, and any list its grade already has. */
 async function subjectsOf(schoolId: string, klass: { id: string; gradeLevel: string | null; subject: string | null }): Promise<string[]> {
@@ -168,7 +185,8 @@ export async function staffSyllabus(ctx: ActiveContext, query: { classId: string
     units: units.map((u) => ({ id: u.id, position: u.position, title: u.title, periodsPlanned: u.periodsPlanned, status: (u.progress[0]?.status as "NOT_STARTED" | "IN_PROGRESS" | "DONE" | undefined) ?? "NOT_STARTED", doneOn: u.progress[0]?.doneOn ?? null, byName: u.progress[0]?.by?.user.preferredName ?? u.progress[0]?.by?.user.name ?? null, lessons: u._count.lessons })),
     percent: units.length === 0 ? null : Math.round((done / units.length) * 100),
     lessons: lessons.map((l) => ({ id: l.id, subject: l.subject, unitId: l.unitId, unitTitle: l.unit?.title ?? null, dateKey: l.dateKey, topic: l.topic, notes: l.notes, homework: l.homework, status: l.status as "PLANNED" | "TAUGHT" | "SKIPPED", teacherName: l.teacher.user.preferredName ?? l.teacher.user.name, updatedAt: l.updatedAt.toISOString() })),
-    canEdit: true,
+    // A teacher the timetable sends here reads every subject and writes their own (owner's item 1).
+    canEdit: subject ? await writesSubject(caller, klass.id, subject) : true,
   };
 }
 
@@ -176,8 +194,9 @@ export async function staffSyllabus(ctx: ActiveContext, query: { classId: string
 export async function saveSyllabusProgress(ctx: ActiveContext, input: { classId: string; unitId: string; status: "NOT_STARTED" | "IN_PROGRESS" | "DONE"; doneOn?: string }): Promise<void> {
   const caller = staff(ctx);
   const klass = await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, input.classId);
-  const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true } });
+  const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true, subject: true } });
   if (!unit) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");
+  await assertWritesSubject(caller, klass.id, unit.subject);
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
   const doneOn = input.status === "DONE" ? (input.doneOn ?? todayKey(school.timezone)) : null;
   await db.syllabusProgress.upsert({
@@ -192,6 +211,7 @@ export async function saveSyllabusProgress(ctx: ActiveContext, input: { classId:
 export async function saveLessonPlan(ctx: ActiveContext, input: z.infer<typeof lessonPlanSaveSchema>): Promise<{ id: string }> {
   const caller = staff(ctx);
   const klass = await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, input.classId);
+  await assertWritesSubject(caller, klass.id, input.subject);
   if (input.unitId) {
     const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true } });
     if (!unit) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");
@@ -207,9 +227,10 @@ export async function saveLessonPlan(ctx: ActiveContext, input: z.infer<typeof l
 
 export async function setLessonStatus(ctx: ActiveContext, lessonId: string, status: "PLANNED" | "TAUGHT" | "SKIPPED"): Promise<void> {
   const caller = staff(ctx);
-  const lesson = await db.lessonPlan.findFirst({ where: { id: lessonId, schoolId: caller.schoolId }, select: { id: true, classId: true, unitId: true } });
+  const lesson = await db.lessonPlan.findFirst({ where: { id: lessonId, schoolId: caller.schoolId }, select: { id: true, classId: true, unitId: true, subject: true } });
   if (!lesson) throw new AccessError("syllabus.refuseUnknownLesson", "NOT_FOUND");
   await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, lesson.classId);
+  await assertWritesSubject(caller, lesson.classId, lesson.subject);
   await db.lessonPlan.update({ where: { id: lesson.id }, data: { status } });
   if (status === "TAUGHT" && lesson.unitId) await nudgeUnit(caller, lesson.classId, lesson.unitId);
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "syllabus.lesson", targetType: "Class", targetId: lesson.classId, meta: { lessonId: lesson.id, status } });
@@ -275,6 +296,7 @@ export async function applyPlanTemplate(ctx: ActiveContext, templateId: string, 
   const template = await db.lessonPlanTemplate.findFirst({ where: { id: templateId, schoolId: caller.schoolId } });
   if (!template) throw new AccessError("syllabus.refuseUnknownTemplate", "NOT_FOUND");
   const klass = await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, input.classId, { write: true });
+  await assertWritesSubject(caller, klass.id, template.subject);
   if (input.unitId) {
     const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true } });
     if (!unit) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");

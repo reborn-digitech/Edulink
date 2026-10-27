@@ -1652,6 +1652,10 @@ model Assignment {
   title       String
   body        String  @default("")
   category    String? // "Homework", "Quiz" ... weighting lives on the class later
+  /// THE SUBJECT THE WORK IS FOR (owner's item 1, 27 Oct 2026): free text matched to the class's
+  /// timetable as exam marks are, stored as the timetable spells it; a subject teacher who reaches the
+  /// class only through the timetable may tag only a subject they take there. Null on older work.
+  subject     String?
   pointsMilli Int? // max score, thousandths
   attachments String  @default("[]") // JSON of {fileId,name,size,mime}[]
   rubric      String? // JSON

@@ -81,6 +81,21 @@ describe("one class", () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/incident-new", params: { membershipId: ID.pupil1, name: "ZZ Asha" } });
   });
 
+  it("a class the timetable alone sends the teacher to: their subjects said, set work offered, no register, report cards, code or weights (owner's item 1)", async () => {
+    fakeApi({ [PATH]: () => json({ ...DETAIL, formTeacher: false, subjects: ["English"] }) });
+    await renderTeacher(page());
+    await screen.findByText("2 on the roll · Maths · 5 · Room 3");
+    expect(screen.getByText(/^You take this class for English on the timetable\./)).toBeTruthy();
+    expect(screen.queryByLabelText("Attendance today: To do")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Mark the attendance" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Report cards" })).toBeNull();
+    expect(screen.queryByText("ZZ-CODE")).toBeNull();
+    // The health card stays the class's own teachers' (coordinator's follow-up to decision 3).
+    expect(screen.queryByRole("button", { name: /^Health card/ })).toBeNull();
+    expect(screen.getByLabelText("To mark: 3")).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: "Set work" }).length).toBeGreaterThanOrEqual(1);
+  });
+
   it("the figures about pupils filter the roster", async () => {
     fakeApi({ [PATH]: () => json(DETAIL) });
     await renderTeacher(page());

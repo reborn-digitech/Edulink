@@ -117,6 +117,7 @@ export default async function ParentAssignmentsPage({
                     <p className="font-medium text-fg">{item.title}</p>
                     <p className="text-xs text-fg-muted">
                       {item.className}
+                      {item.subject ? ` · ${item.subject}` : ""}
                       {item.category ? ` · ${item.category}` : ""}
                       {tab !== "marked" && item.dueAt ? ` · ${t("diary.due")} ${when(item.dueAt)}` : ""}
                     </p>

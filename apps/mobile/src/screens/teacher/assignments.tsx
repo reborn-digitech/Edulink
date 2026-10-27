@@ -12,6 +12,7 @@ import { PickError, pickAndUpload, type Picked } from "@/lib/pick-file";
 import { Chips, Notice } from "../staff/shared";
 import { Pill, formatMilli } from "../family/shared";
 import { relativeTime } from "./support";
+import { classLabel } from "./classes";
 import { fileSize } from "./assignment-detail";
 
 /**
@@ -145,7 +146,7 @@ export function TeacherAssignments() {
               {d.assignments.map((a) => {
                 const roster = a.class.students;
                 const allGraded = roster > 0 && a.graded >= roster;
-                const details = [a.class.name, a.category, a.pointsMilli ? `${t("teacher.pointsAvailable")}: ${formatMilli(a.pointsMilli)}` : null].filter(Boolean).join(" · ");
+                const details = [a.class.name, a.subject, a.category, a.pointsMilli ? `${t("teacher.pointsAvailable")}: ${formatMilli(a.pointsMilli)}` : null].filter(Boolean).join(" · ");
                 const when = a.dueAt ? t("teacher.dueWhen", { when: relativeTime(a.dueAt, locale) }) : t("teacher.noDueDate");
                 return (
                   <View key={a.id} style={{ gap: th.space[1] }}>
@@ -168,11 +169,27 @@ export function TeacherAssignments() {
 }
 
 /** The web's AssignmentForm: the same fields, handouts picked and uploaded one at a time, and the same two ways out (draft, publish). */
-function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: { id: string; name: string }[]; initialClassId?: string; onDone: (sentence: string) => void; onClose: () => void }) {
+type ClassOption = { id: string; name: string; formTeacher?: boolean; subjects?: string[] };
+
+/**
+ * The subject a new piece of work starts on in a class (owner's item 1, 27 Oct 2026): a teacher the
+ * timetable alone sends there starts on the first of theirs; anyone else on none.
+ */
+export function defaultSubject(c: ClassOption | undefined): string {
+  return c && c.formTeacher === false ? (c.subjects?.[0] ?? "") : "";
+}
+
+function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: ClassOption[]; initialClassId?: string; onDone: (sentence: string) => void; onClose: () => void }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
-  const [classId, setClassId] = useState(initialClassId ?? classes[0]?.id ?? "");
+  const [classId, setClassIdState] = useState(initialClassId ?? classes[0]?.id ?? "");
+  const [subject, setSubject] = useState(defaultSubject(classes.find((c) => c.id === (initialClassId ?? classes[0]?.id))));
+  const chosen = classes.find((c) => c.id === classId);
+  const setClassId = (id: string) => {
+    setClassIdState(id);
+    setSubject(defaultSubject(classes.find((c) => c.id === id)));
+  };
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [category, setCategory] = useState("Homework");
@@ -228,6 +245,7 @@ function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: 
       title: title.trim(),
       body: body.trim(),
       category: category || undefined,
+      subject: subject || undefined,
       points: pointsValue,
       dueAt,
       publish,
@@ -242,7 +260,24 @@ function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: 
 
   return (
     <Card title={t("teacher.newAssignment")} action={<Button label={t("common.cancel")} variant="ghost" onPress={onClose} />}>
-      <Chips label={t("teacher.classField")} value={classId} options={classes.map((c) => ({ value: c.id, label: c.name }))} onChange={setClassId} />
+      <Chips label={t("teacher.classField")} value={classId} options={classes.map((c) => ({ value: c.id, label: [c.name, classLabel(c, t("subjectWork.formTeacher"))].filter(Boolean).join(" · ") }))} onChange={setClassId} />
+      {chosen && ((chosen.subjects?.length ?? 0) > 0 || chosen.formTeacher === false) ? (
+        <Chips
+          label={t("subjectWork.subject")}
+          value={subject}
+          options={[
+            // A form teacher and the office may name none; a teacher the timetable sends here names one of theirs.
+            ...(chosen.formTeacher === false ? [] : [{ value: "", label: t("subjectWork.noSubject") }]),
+            ...(chosen.subjects ?? []).map((s) => ({ value: s, label: s })),
+          ]}
+          onChange={setSubject}
+        />
+      ) : null}
+      {errors.subject ? (
+        <Text variant="xs" tone="danger">
+          {errors.subject}
+        </Text>
+      ) : null}
       <Field label={t("teacher.title")} value={title} onChangeText={setTitle} placeholder={t("teacher.titlePlaceholder")} error={errors.title} />
       <Field label={t("teacher.instructions")} hint={t("teacher.instructionsHint")} value={body} onChangeText={setBody} placeholder={t("teacher.instructionsPlaceholder")} multiline style={{ minHeight: th.space[12] * 2, textAlignVertical: "top", paddingTop: th.space[3] }} />
       <Chips label={t("teacher.category")} value={category} options={CATEGORIES.map((c) => ({ value: c, label: c }))} onChange={setCategory} />

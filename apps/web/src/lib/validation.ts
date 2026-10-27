@@ -263,6 +263,8 @@ export const assignmentSchema = z.object({
   title: trimmed(2, 200),
   body: z.string().trim().max(20_000).default(""),
   category: trimmed(0, 60).optional(),
+  /** The subject the work is for (owner's item 1, 27 Oct 2026); grading.ts assignmentSubject decides what stands. */
+  subject: trimmed(0, 60).optional(),
   points: z
     .number()
     .min(0, "refusal.pointsNegative")
