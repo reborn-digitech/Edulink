@@ -178,6 +178,7 @@ export async function hostelsView(ctx: ActiveContext): Promise<HostelsView> {
         wardenMembershipId: h.wardenMembershipId,
         wardenName: h.wardenMembershipId ? (wardenName.get(h.wardenMembershipId) ?? null) : null,
         messAttendance: h.messAttendance,
+        messMonthlyPaise: h.messMonthlyPaise,
         beds: rooms.reduce((a, r) => a + r.beds, 0),
         occupied: rooms.reduce((a, r) => a + r.occupied, 0),
         rooms,
@@ -189,7 +190,7 @@ export async function hostelsView(ctx: ActiveContext): Promise<HostelsView> {
   };
 }
 
-/** A house, made or changed by the office, with the warden in charge. */
+/** A house, made or changed by the office, with the warden in charge; its mess's monthly charge when one is sent (owner-batch-item5), kept when not. */
 export async function saveHostel(ctx: ActiveContext, input: HostelSave): Promise<HostelsView> {
   const staff = await staffOf(ctx, OFFICE);
   if (input.wardenMembershipId) {
@@ -198,14 +199,14 @@ export async function saveHostel(ctx: ActiveContext, input: HostelSave): Promise
   }
   const clash = await db.hostel.findUnique({ where: { schoolId_name: { schoolId: staff.schoolId, name: input.name } }, select: { id: true } });
   if (clash && clash.id !== input.id) throw new AccessError("hostel.refuseNameTaken");
-  const data = { name: input.name, kind: input.kind, capacity: input.capacity, wardenMembershipId: input.wardenMembershipId, messAttendance: input.messAttendance };
+  const data = { name: input.name, kind: input.kind, capacity: input.capacity, wardenMembershipId: input.wardenMembershipId, messAttendance: input.messAttendance, ...(input.messMonthlyPaise === undefined ? {} : { messMonthlyPaise: input.messMonthlyPaise }) };
   let id = input.id;
   if (id) {
     const found = await db.hostel.findFirst({ where: { id, schoolId: staff.schoolId }, select: { id: true } });
     if (!found) throw new AccessError("hostel.refuseNoHostel", "NOT_FOUND");
     await db.hostel.update({ where: { id }, data });
   } else id = (await db.hostel.create({ data: { schoolId: staff.schoolId, ...data }, select: { id: true } })).id;
-  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.save", targetType: "Hostel", targetId: id, meta: { kind: input.kind, capacity: input.capacity, warden: Boolean(input.wardenMembershipId) } });
+  await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.save", targetType: "Hostel", targetId: id, meta: { kind: input.kind, capacity: input.capacity, warden: Boolean(input.wardenMembershipId), ...(input.messMonthlyPaise === undefined ? {} : { messMonthlyPaise: input.messMonthlyPaise }) } });
   return hostelsView(ctx);
 }
 

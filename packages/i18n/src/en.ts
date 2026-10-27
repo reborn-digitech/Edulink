@@ -6840,6 +6840,8 @@ export const en = {
     studentLeaveUnschedule: "Cancelled a pupil's scheduled leaving",
     staffRecordSet: "Updated a member of staff's record",
     staffSupportAdd: "Added a support worker with no sign-in", // owner-batch-item2a
+    feesMessBill: "Billed a month's mess", // owner-batch-item5
+    feesRouteFees: "Raised a term's route fees", // owner-batch-item5
     termCreate: "Added a term to the year",
     termDelete: "Removed a term",
     authFirstSigninIssue: "Issued a pupil a first sign-in code",
@@ -20098,4 +20100,23 @@ export const en = {
     tabPayslips: "Payslips",
   },
   // end owner-batch-item2a
+  // owner-batch-item5 (27 Oct 2026): a school's route fees and mess bill, a pupil's own bus, a door for another kind of institution.
+  schoolCampus: {
+    /** A pupil's own bus page and menu entry: a word or two. */
+    myBus: "My bus",
+    myNoSeat: "You have no seat on a school bus",
+    myNoTripBody: "There is no trip today on your route, or not the way you ride.",
+    refuseNotThisKind: "That is not offered at this kind of institution.",
+    routeFeesTitle: "Route fees for a term",
+    routeFeesIntro: "Each pupil riding a route with a fee per term is charged once for the term, on their fee ledger under the Transport fee head. A route with no fee charges nobody, and pressing again charges nobody twice.",
+    termDefault: "Term 1",
+    feePerTerm: "{amount} a term",
+    noFee: "No fee",
+    routeFeeHint: "Charged on each rider's fee ledger when the office raises the term's route fees.",
+    messBillTitle: "The month's mess bill",
+    messBillIntro: "Each boarder with a bed in the month is billed once at their house's monthly mess charge, on their fee ledger under the Mess fee head, due on the tenth of the next month. A house with no charge is skipped.",
+    messBilledSkipped: "{billed} boarders billed, {already} already were, {skipped} in a house with no mess charge.",
+    messChargeHint: "Billed to each boarder's fee ledger when the office bills the month's mess. Leave it at 0 for no mess bill.",
+  },
+  // end owner-batch-item5
 } as const;

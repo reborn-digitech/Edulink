@@ -83,6 +83,19 @@ export class NotACollegeError extends ModuleOffError {
 }
 
 /**
+ * owner-batch-item5 (27 Oct 2026): A DOOR FOR ANOTHER KIND OF INSTITUTION — a catalog entry whose `kinds` leave out
+ * the session's tenant (a college's criterion table asked at a school). A NOT_FOUND refusal, which `apiFailure` answers
+ * 404 NOT_FOUND, like a feature that is off: the door is not here, and nothing claims a module is off that the school
+ * has on. Thrown by the session's gate (role-gate.ts) alone; `vars.kind` is the tenant's kind, for a log line.
+ */
+export class NotForThisKindError extends AccessError {
+  constructor(kind: string, key: TranslationKey) {
+    super(key, "NOT_FOUND", { kind });
+    this.name = "NotForThisKindError";
+  }
+}
+
+/**
  * A door, page or write of a PLATFORM FEATURE the operator has not switched on (15 Oct 2026;
  * src/lib/platform-features.ts). A NOT_FOUND refusal, so a page renders the app's 404 (the digest above)
  * and code that maps AccessError codes reads "not here"; `apiFailure` answers it 404 with the envelope

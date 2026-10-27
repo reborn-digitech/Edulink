@@ -1,12 +1,12 @@
 import "server-only";
 import { ENDPOINTS } from "./api-catalog";
-import { featuresOf, permits, type Endpoint } from "./api-catalog/types";
-import { MODULE_OF_ROLE } from "@edulink/contracts";
+import { doorForKind, featuresOf, permits, type Endpoint } from "./api-catalog/types";
+import { isCollegeKind, MODULE_OF_ROLE } from "@edulink/contracts";
 import { isLimitedRole, ROLE_HOME, type LimitedRole, type Role } from "./constants";
 import { NAV, isActive } from "./nav";
-import { AccessError, ModuleOffError } from "./access-error";
+import { AccessError, ModuleOffError, NotForThisKindError } from "./access-error";
 import { routePath } from "./route-header";
-import { assertModuleOn, enabledModules } from "./modules";
+import { assertModuleOn, enabledModules, institutionKindOf } from "./modules";
 import { assertAnyFeatureOn, assertFeatureSwitchOn } from "./platform-features";
 
 /**
@@ -46,6 +46,12 @@ import { assertAnyFeatureOn, assertFeatureSwitchOn } from "./platform-features";
  *      role must hold and the caller does not (src/lib/person-plans.ts), the
  *      door answers 402 PLAN_REQUIRED naming the plan; a door marked `planFree`
  *      asks the platform switch alone.
+ *
+ *   4. (owner-batch-item5, 27 October 2026) A door whose catalog entry names
+ *      `kinds` answers 404 NOT_FOUND, for every role, after the feature and
+ *      before anything else, at a tenant whose kind is not among them — a
+ *      college's criterion table asked at a school (NotForThisKindError). A
+ *      guardian's session names no school, so the handler decides there.
  *
  * And while a module role's OWN module is off at its school (a driver whose
  * school switched transport off), it keeps only its home, the notices and
@@ -186,6 +192,14 @@ export function ownPageModuleOff(role: Role, path: string, modulesOn: readonly s
  * FEATURE_OFF), or PlanRequiredError (402 PLAN_REQUIRED) when the feature is on and the caller's role needs a plan
  * they do not hold (16 Oct 2026); a `planFree` door asks the switch alone.
  */
+/** Rule 4 (owner-batch-item5): a door naming `kinds` at a tenant of another kind is not here. No school on the session: the handler decides. */
+async function assertDoorKind(e: Endpoint | null, schoolId: string | null): Promise<void> {
+  if (!e?.kinds || !schoolId) return;
+  const kind = (await institutionKindOf(schoolId)) ?? "SCHOOL";
+  if (doorForKind(e, kind)) return;
+  throw new NotForThisKindError(kind, e.kinds.every((k) => isCollegeKind(k)) ? "collegeOffice.refuseNotCollege" : "schoolCampus.refuseNotThisKind");
+}
+
 async function assertDoorFeature(e: Endpoint | null, ctx: { userId?: string | null; schoolId: string | null; role?: Role | null }): Promise<void> {
   if (!e?.feature || e.featureInHandler) return;
   if (e.planFree) return assertFeatureSwitchOn(featuresOf(e));
@@ -205,10 +219,12 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
   if (path === null) return isLimitedRole(ctx.role) ? "no-context" : "pass";
   if (path.startsWith("/api/v1/")) {
     // Nothing to look up for the older roles while no door names a module or a feature.
-    if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module || r.e.feature)) return "pass";
+    if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module || r.e.feature || r.e.kinds)) return "pass";
     const e = endpointFor(method, path, catalog);
     // A feature the operator has off is "not here" for everybody, whatever else the door would say.
     await assertDoorFeature(e, ctx);
+    // Rule 4: a door for other kinds of institution is not here either (owner-batch-item5).
+    await assertDoorKind(e, ctx.schoolId);
     if (isLimitedRole(ctx.role)) {
       // A door naming `duties` (5 Oct 2026) lets a FACULTY or HOD through only with one of them; its own sentence says so.
       if (!e || !permits({ access: e.access, limitedRoles: e.limitedRoles }, ctx.role)) throw new AccessError("access.wrongRoleForThisAction");

@@ -52,7 +52,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
-import { declaredStatus, featuresOf, permits } from "../src/lib/api-catalog/types";
+import { declaredStatus, doorForKind, featuresOf, permits } from "../src/lib/api-catalog/types";
 import { COLLEGE_DOORS } from "./college-doors";
 import { isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
@@ -100,7 +100,7 @@ function featureAnswer(e: Endpoint, role: Role | null): { status: 404 | 402; cod
 }
 
 /** Where each actor stands: its school's modules and whether that school is a college (a guardian: the children's schools). Filled by `actors()`. */
-type Tenant = { schoolId: string | null; modules: Set<string>; college: boolean };
+type Tenant = { schoolId: string | null; modules: Set<string>; college: boolean; kind: string | null };
 const tenantOf: Partial<Record<Role, Tenant>> = {};
 /** Each actor's duties (5 Oct 2026): a FACULTY's or HOD's from their membership, [] for the rest — a door naming `duties` expects 403 without one. */
 const dutiesOf: Partial<Record<Role, string[]>> = {};
@@ -108,13 +108,13 @@ const dutiesOf: Partial<Record<Role, string[]>> = {};
 const actorPermits = (e: Endpoint, role: Role): boolean => permits(e, role, dutiesOf[role] ?? []);
 async function tenantAt(schoolId: string): Promise<Tenant> {
   const [school, rows] = await Promise.all([db.school.findUnique({ where: { id: schoolId }, select: { kind: true } }), db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })]);
-  return { schoolId, modules: new Set(rows.map((r) => r.module)), college: isCollegeKind(school?.kind ?? "SCHOOL") };
+  return { schoolId, modules: new Set(rows.map((r) => r.module)), college: isCollegeKind(school?.kind ?? "SCHOOL"), kind: school?.kind ?? "SCHOOL" };
 }
 async function familyTenant(parentUserId: string): Promise<Tenant> {
   const children = await db.guardianship.findMany({ where: { parentUserId, status: "ACTIVE" }, select: { studentSchoolId: true } });
   const ids = [...new Set(children.map((c) => c.studentSchoolId))];
   const [schools, rows] = await Promise.all([db.school.findMany({ where: { id: { in: ids } }, select: { kind: true } }), db.schoolModule.findMany({ where: { schoolId: { in: ids } }, select: { module: true } })]);
-  return { schoolId: null, modules: new Set(rows.map((r) => r.module)), college: schools.some((s) => isCollegeKind(s.kind)) };
+  return { schoolId: null, modules: new Set(rows.map((r) => r.module)), college: schools.some((s) => isCollegeKind(s.kind)), kind: null };
 }
 
 // The college's catalog files (scripts/college-doors.ts): a door filed there is a college's, which a school answers 403 MODULE_OFF (W-17).
@@ -132,6 +132,18 @@ function moduleOff(e: Endpoint, role: Role): "must" | "may" | "no" {
   if (!t.college && COLLEGE_DOORS.has(e)) return "may";
   return "no";
 }
+
+/**
+ * A door for other kinds of institution at the actor's school (owner-batch-item5, `kinds`): the gate answers 404
+ * NOT_FOUND to every role, after the feature and before anything else (role-gate.ts rule 4). A guardian's session
+ * names no school, so its handler decides and the ordinary expectation holds.
+ */
+function kindGone(e: Endpoint, role: Role): boolean {
+  const t = tenantOf[role];
+  return Boolean(e.kinds && t?.schoolId && t.kind && !doorForKind(e, t.kind));
+}
+/** How many calls were judged by the kind gate (404 at another kind of institution). */
+let kindGated = 0;
 
 /** One call's answer: the status, the refusal's code (the x-edulink-code header, or the envelope's on a 403), and how long it took. */
 type Answer = { status: number; code: string | null; ms: number };
@@ -1078,6 +1090,18 @@ async function main() {
         }
         continue;
       }
+      // A door for other kinds of institution is not here at this actor's school (owner-batch-item5): 404, whatever the role or body.
+      if (role && kindGone(e, role)) {
+        const got = await hit(e, tokens[role], path);
+        if (got.status === 404) kindGated++;
+        results.push({ endpoint: `${e.method} ${e.path}`, role, expected: "404 (a door for another kind of institution)", got: got.status, ok: got.status === 404 });
+        if (goodBody && e.method !== "GET") {
+          const answer = await hit(e, tokens[role], path, JSON.stringify(goodBody));
+          if (answer.status === 404) kindGated++;
+          results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: "404 (a door for another kind of institution)", got: answer.status, ok: answer.status === 404 });
+        }
+        continue;
+      }
       const want = expected(e, role);
       // A permitted role at a school with the door's module off is answered by the gate (SWEEPS-4).
       const off = role && actorPermits(e, role) && e.access !== "operator" && e.access !== "app-admin" ? moduleOff(e, role) : "no";
@@ -1103,6 +1127,7 @@ async function main() {
   for (const r of failed) console.log(`✗ ${r.endpoint} as ${r.role}: expected ${JSON.stringify(r.expected)}, got ${r.got}`);
   for (const s of skipped) console.log(`· skipped (no sample): ${s}`);
   console.log(`· judged by the platform's switches and plans (${describeGateState(gate)}): ${gated.FEATURE_OFF} calls 404 FEATURE_OFF, ${gated.PLAN_REQUIRED} calls 402 PLAN_REQUIRED, as expected`);
+  console.log(`· judged by the institution's kind: ${kindGated} calls 404 at a school for a college's door, as expected`);
   console.log(`${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected, ${skipped.length} skipped.`);
   printSlowest();
   if (failed.length) process.exitCode = 1;

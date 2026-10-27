@@ -11,7 +11,9 @@ import {
   hostelVisitorCreateSchema,
   MESS_MEALS,
 } from "@edulink/contracts";
+import { parseRupees } from "@edulink/i18n";
 import { requireApiUser } from "@/lib/tenancy";
+import { billMess } from "@/lib/college-fees";
 import { answerForm } from "@/lib/form-action";
 import type { FieldMap, FormState } from "@/lib/form-state";
 import { db } from "@/lib/db";
@@ -104,11 +106,24 @@ export async function saveHostelAction(previous: FormState, formData: FormData):
         capacity: Number(str(formData, "capacity") || "0"),
         wardenMembershipId: str(formData, "wardenMembershipId") || null,
         messAttendance: formData.get("messAttendance") === "on",
+        // owner-batch-item5: the mess's monthly charge in rupees as typed (kept as it is when the form has no box for it).
+        messMonthlyPaise: formData.has("mess") ? (parseRupees(str(formData, "mess")) ?? -1) : undefined,
       }),
     );
     await saveHostel(ctx, input);
     return "hostel.saved";
-  });
+  }, { messMonthlyPaise: "mess" });
+}
+
+/**
+ * owner-batch-item5 (27 Oct 2026): the month's mess bill from the hostel's home — the office's, the same library call
+ * as POST /api/v1/admin/hostel/mess-bill: each boarder with a bed in the month billed once at their house's charge.
+ */
+export async function messBillAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx): Promise<Done> => {
+    const r = await billMess(ctx, { month: str(formData, "month") });
+    return r.skipped > 0 ? { key: "schoolCampus.messBilledSkipped", vars: { billed: r.billed, already: r.already, skipped: r.skipped } } : { key: "collegeOffice.messBilled", vars: { billed: r.billed, already: r.already } };
+  }, { "collegeOffice.refuseDates": "month" });
 }
 
 export async function saveRoomAction(previous: FormState, formData: FormData): Promise<FormState> {

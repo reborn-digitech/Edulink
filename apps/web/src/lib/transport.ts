@@ -56,7 +56,9 @@ const COLLEGE_RIDER_STAFF = ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO",
  * WHAT IS NEVER HERE. A child's location: positions are the bus's, sent only
  * between Start and End, kept RETENTION_TRIP_POSITIONS_DAYS; no allotment or
  * boarding row has a coordinate (decision 0002). A fee: an allotment may
- * name the fees module's transport head, nothing more (decision 0003). A
+ * name the fees module's transport head, and a route's fee per term is a
+ * demand the office raises on the ledger (college-fees.ts raiseRouteFees,
+ * owner-batch-item5), nothing more — no money moves (decision 0003). A
  * claim to satisfy a state's certified-tracker rule: the module's
  * description says so.
  *
@@ -188,6 +190,7 @@ export async function transportOverview(ctx: ActiveContext): Promise<TransportOv
       note: r.note,
       stops: r.stops.map((s) => ({ id: s.id, order: s.order, name: s.name, lat: s.lat, lng: s.lng, morningMinute: s.morningMinute, eveningMinute: s.eveningMinute, radiusM: s.radiusM })),
       riders: ridersOf.get(r.id) ?? 0,
+      feePerTermPaise: r.feePerTermPaise,
     })),
     buses: buses.map((b) => ({ id: b.id, registration: b.registration, capacity: b.capacity, note: b.note, active: b.active })),
     assignments: assignments.map((a) => ({
@@ -233,6 +236,8 @@ function checkStopTimes(input: TransportRouteInput) {
  * (so the pupils allotted to it stay with it) and renumbered to its place in
  * the list; a new stop is made; a stop left out is removed — refused while
  * any seat, current or past, names it, since a past trip's roster reads it.
+ * The fee per term (owner-batch-item5) is written when it is sent and kept when
+ * it is not; a college's campus loop charges nobody, whatever is sent.
  */
 export async function saveRoute(ctx: ActiveContext, routeId: string | null, input: TransportRouteInput): Promise<{ id: string }> {
   const office = await officeOf(ctx, true);
@@ -242,9 +247,10 @@ export async function saveRoute(ctx: ActiveContext, routeId: string | null, inpu
     const tx = raw as Prisma.TransactionClient;
     let rid = routeId;
     if (rid) {
-      const route = await tx.transportRoute.findFirst({ where: { id: rid, schoolId }, select: { id: true, stops: { select: { id: true } } } });
+      const route = await tx.transportRoute.findFirst({ where: { id: rid, schoolId }, select: { id: true, kind: true, stops: { select: { id: true } } } });
       if (!route) throw new AccessError("transport.notFound", "NOT_FOUND");
-      await tx.transportRoute.update({ where: { id: rid }, data: { name: input.name, direction: input.direction, active: input.active, note: input.note } });
+      const fee = input.feePerTermPaise === undefined ? {} : { feePerTermPaise: route.kind === "LOOP" ? 0 : input.feePerTermPaise };
+      await tx.transportRoute.update({ where: { id: rid }, data: { name: input.name, direction: input.direction, active: input.active, note: input.note, ...fee } });
       const kept = new Set(input.stops.map((s) => s.id).filter((x): x is string => Boolean(x)));
       for (const k of kept) if (!route.stops.some((s) => s.id === k)) throw new AccessError("transport.refuseStopNotOnRoute");
       const gone = route.stops.map((s) => s.id).filter((s) => !kept.has(s));
@@ -254,7 +260,7 @@ export async function saveRoute(ctx: ActiveContext, routeId: string | null, inpu
         await tx.transportStop.deleteMany({ where: { id: { in: gone }, routeId: rid } });
       }
     } else {
-      rid = (await tx.transportRoute.create({ data: { schoolId, name: input.name, direction: input.direction, active: input.active, note: input.note }, select: { id: true } })).id;
+      rid = (await tx.transportRoute.create({ data: { schoolId, name: input.name, direction: input.direction, active: input.active, note: input.note, feePerTermPaise: input.feePerTermPaise ?? 0 }, select: { id: true } })).id;
     }
     for (const [i, s] of input.stops.entries()) {
       const data = { name: s.name, lat: s.lat, lng: s.lng, morningMinute: s.morningMinute, eveningMinute: s.eveningMinute, radiusM: s.radiusM, order: i + 1 };
@@ -263,7 +269,7 @@ export async function saveRoute(ctx: ActiveContext, routeId: string | null, inpu
     }
     return rid;
   });
-  await audit({ schoolId, actorUserId: office.userId, action: routeId ? "transport.route.update" : "transport.route.create", targetType: "TransportRoute", targetId: id, meta: { stops: input.stops.length, direction: input.direction, active: input.active } });
+  await audit({ schoolId, actorUserId: office.userId, action: routeId ? "transport.route.update" : "transport.route.create", targetType: "TransportRoute", targetId: id, meta: { stops: input.stops.length, direction: input.direction, active: input.active, ...(input.feePerTermPaise === undefined ? {} : { feePerTermPaise: input.feePerTermPaise }) } });
   return { id };
 }
 

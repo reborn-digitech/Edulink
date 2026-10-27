@@ -20,6 +20,11 @@ import { BusMap } from "@/components/transport/bus-map";
 import { directionLabel, statusLabel, statusTone } from "@/components/transport/labels";
 import { AllotForm, AssignmentForm, BusForm, EndButton, RouteEditor, SettingsForm, TransportLive } from "./forms";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
+import { Button } from "@/components/ui/button";
+import { TextField } from "@/components/ui/field";
+import { formatPaise } from "@edulink/i18n";
+import { routeFeesAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -83,7 +88,7 @@ export default async function TransportPage({ searchParams }: { searchParams: Pr
                 title={r.name}
                 description={
                   <>
-                    {directionLabel(t, r.direction)} · {t("transport.ridersCount", { count: r.riders })} {!r.active && <Badge tone="neutral">{t("transport.archived")}</Badge>}
+                    {directionLabel(t, r.direction)} · {t("transport.ridersCount", { count: r.riders })} · {r.feePerTermPaise > 0 ? t("schoolCampus.feePerTerm", { amount: formatPaise(r.feePerTermPaise, locale) }) : t("schoolCampus.noFee")} {!r.active && <Badge tone="neutral">{t("transport.archived")}</Badge>}
                   </>
                 }
                 action={canEdit && params.edit !== r.id ? <Link className={buttonVariants({ variant: "secondary", size: "sm" })} href={`/admin/transport?tab=routes&edit=${r.id}`}>{t("transport.editRoute")}</Link> : undefined}
@@ -111,6 +116,19 @@ export default async function TransportPage({ searchParams }: { searchParams: Pr
               </CardBody>
             </Card>
           ))}
+          {canEdit && overview.routes.some((r) => r.active && r.feePerTermPaise > 0) && (
+            // owner-batch-item5: the term's route fees, raised once per rider and term on the fee ledger (raiseRouteFees).
+            <Card data-testid="transport-route-fees">
+              <CardHeader icon={<RoadHorizonIcon weight="duotone" className="size-5" />} title={t("schoolCampus.routeFeesTitle")} description={t("schoolCampus.routeFeesIntro")} />
+              <CardBody>
+                <ActionForm action={routeFeesAction} className="flex flex-wrap items-end gap-3">
+                  <TextField name="termLabel" required maxLength={40} label={t("collegeOffice.termLabel")} defaultValue={t("schoolCampus.termDefault")} />
+                  <TextField name="dueDateKey" type="date" required label={t("collegeOffice.termDue")} />
+                  <Button type="submit">{t("collegeOffice.raiseRouteFees")}</Button>
+                </ActionForm>
+              </CardBody>
+            </Card>
+          )}
           {canEdit && (
             <Card>
               <CardHeader icon={<MapPinIcon weight="duotone" className="size-5" />} title={t("transport.newRoute")} description={overview.routes.length === 0 ? t("transport.noRoutesBody") : undefined} />

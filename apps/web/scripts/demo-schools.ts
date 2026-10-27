@@ -39,9 +39,13 @@ import {
   CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal, switchModulesOn } from "./zz-fixtures";
 import { SCHOOL_MODULES } from "@edulink/contracts";
 // owner-batch-item4a: imports of Sunrise's transport, hostel and library builders (end of file)
-import { en as EN_DICT } from "@edulink/i18n/en";
 import { addDaysToKey, todayKey, weekdayOfKey, zonedStartOfDay } from "../src/lib/dates";
 // owner-batch-item4a end
+// owner-batch-item5: Sunrise's route fees and mess bill through the office's own functions, as a script actor of the admin
+import { randomBytes } from "node:crypto";
+import { billMess, raiseRouteFees } from "../src/lib/college-fees";
+import type { ActiveContext } from "../src/lib/session";
+// owner-batch-item5 end
 // owner-batch-item4b: Sunrise's inventory, payroll, website, alumni, review rounds and online fees (scripts/demo-schools-item4b.ts)
 import { buildSunriseItem4b, item4bRosterSection } from "./demo-schools-item4b";
 // owner-batch-item4b end
@@ -1303,7 +1307,8 @@ ${Object.entries(counts).map(([k, v]) => `     ${k.padEnd(22)} ${v}`).join("\n")
  *              with the bus's track and the riders ticked on and off (one away
  *              now and then), and today's trips that are already over; one OPEN
  *              incident on Route 1; the Term 2 route fee raised for each rider
- *              under the Transport head (raisedKey ROUTE:<year>:<route>:term 2).
+ *              under the Transport head (raisedKey ROUTE:<year>:<route>:term 2),
+ *              by the office's own raiseRouteFees since owner-batch-item5.
  *   hostel     a boys' house (sunrise.warden) and a girls' house (a new warden,
  *              sunrise.warden2), two rooms each, ten boarders from grades 5 and
  *              10, the week's mess menu, both roll calls of the last seven days
@@ -1311,7 +1316,8 @@ ${Object.entries(counts).map(([k, v]) => `     ${k.padEnd(22)} ${v}`).join("\n")
  *              leave since yesterday (consented, approved, through the gate),
  *              one back from last weekend's, one ask waiting for the warden, a
  *              visitor yesterday, and this month's mess bill for every boarder
- *              under a Mess head (raisedKey MESS:<month>).
+ *              under a Mess head (raisedKey MESS:<month>), by the office's own
+ *              billMess since owner-batch-item5.
  *   library    the lending rules (₹2 a day overdue, counter dues), forty titles
  *              in English, Hindi, Marathi and Sanskrit (fourteen in Devanagari)
  *              with 66 copies, fifteen loans (eight out, four overdue, three
@@ -1541,13 +1547,21 @@ async function memberByEmail(schoolId: string, email: string, role: string) {
   return db.membership.findFirst({ where: { schoolId, role, status: "ACTIVE", user: { email } }, select: { id: true, userId: true, user: { select: { name: true } } } });
 }
 
-/** A charge raised once, as college-fees.ts raiseOnce writes it: instalment-less, keyed, labelled in the school's language. */
-async function raiseCharge(schoolId: string, academicYearId: string, studentMembershipId: string, input: { key: string; label: string; dueKey: string; head: { id: string; code: string; name: string }; paise: number }) {
-  const keyed = await db.feeDemand.findUnique({ where: { studentMembershipId_raisedKey: { studentMembershipId, raisedKey: input.key } }, select: { id: true } });
-  if (keyed) return false;
-  await db.feeDemand.create({ data: { schoolId, studentMembershipId, academicYearId, instalmentId: null, label: input.label, raisedKey: input.key, dueDate: new Date(`${input.dueKey}T00:00:00Z`), grossPaise: input.paise, concessionPaise: 0, netPaise: input.paise, linesJson: JSON.stringify([{ headId: input.head.id, code: input.head.code, name: input.head.name, grossPaise: input.paise, concessionPaise: 0 }]), status: "OPEN" } });
-  return true;
+// owner-batch-item5 (27 Oct 2026): the route fees and the mess bill are raised by the office's own functions
+// (college-fees.ts raiseRouteFees and billMess, which a school's office may now call), not written here in their shape.
+// The office acts through a session made for the call (userAgent "zz-walk") and deleted after it, as item 4b's actors.
+const OFFICE_PREFS = { theme: "system", contrast: "normal", font: "default", motion: "full", locale: "en", channels: { push: false, email: false }, quietHours: null } as const;
+async function asOffice<T>(b: Built, work: (ctx: ActiveContext) => Promise<T>): Promise<T> {
+  const u = await db.user.findUniqueOrThrow({ where: { id: b.admin.user.id }, select: { id: true, name: true, email: true, isMinor: true, isSuperuser: true, isAppAdmin: true } });
+  const session = await db.session.create({ data: { userId: u.id, tokenHash: `zz-walk-${randomBytes(24).toString("hex")}`, activeSchoolId: b.school.id, activeRole: "ADMIN", userAgent: "zz-walk", expiresAt: new Date(Date.now() + 3_600_000) }, select: { id: true } });
+  try {
+    const ctx = { sessionId: session.id, membershipId: b.admin.membership.id, schoolId: b.school.id, role: "ADMIN", user: { id: u.id, name: u.name, preferredName: null, email: u.email, avatarKey: null, isMinor: u.isMinor, isSuperuser: u.isSuperuser, isAppAdmin: u.isAppAdmin, prefs: OFFICE_PREFS } } as unknown as ActiveContext;
+    return await work(ctx);
+  } finally {
+    await db.session.delete({ where: { id: session.id } }).catch(() => undefined);
+  }
 }
+// owner-batch-item5 end
 
 /* ---- transport ---- */
 
@@ -1561,6 +1575,8 @@ async function buildCampusTransport(ctx: Ctx, b: Built, spec: CampusSpec["transp
   const attendant = await upsertMembership(attendantUser.id, s, "DRIVER", { title: spec.attendant.title });
   const adminUserId = b.admin.user.id;
   const head = await db.feeHead.findUniqueOrThrow({ where: { schoolId_code: { schoolId: s, code: "TRN" } }, select: { id: true, code: true, name: true } });
+  // owner-batch-item5: the TRN head must be the office's Transport head for raiseRouteFees to charge under it.
+  if (head.id !== (await db.feeHead.findFirst({ where: { schoolId: s, kind: "TRANSPORT", retiredAt: null }, orderBy: { sortOrder: "asc" }, select: { id: true } }))?.id) throw new Error(`TRN is not ${b.school.name}'s first Transport fee head`);
 
   const bus = await db.bus.upsert({ where: { schoolId_registration: { schoolId: s, registration: spec.bus.registration } }, create: { schoolId: s, ...spec.bus }, update: {}, select: { id: true } });
   // The driver has driven a week: their yes to the location sentence (transport.ts CONSENT_TEXT_KEY) is on record.
@@ -1594,9 +1610,6 @@ async function buildCampusTransport(ctx: Ctx, b: Built, spec: CampusSpec["transp
         (await db.transportAllotment.findFirst({ where: { schoolId: s, studentMembershipId: pupil.id, routeId: route.id }, select: { id: true } })) ??
         (await db.transportAllotment.create({ data: { schoolId: s, studentMembershipId: pupil.id, routeId: route.id, stopId: stops[rider.stop]!.id, boards: true, alights: true, fromDateKey: spec.from, feeHeadId: head.id, createdByUserId: adminUserId }, select: { id: true } }));
       seats.push({ id: seat.id, studentMembershipId: pupil.id, stop: rider.stop });
-      // The term's route fee, as raiseRouteFees would raise it at a college.
-      const label = EN_DICT.collegeOffice.routeFeeLabel.replace("{route}", r.name).replace("{term}", spec.term.label);
-      if (await raiseCharge(s, b.years.current.id, pupil.id, { key: `ROUTE:${b.years.current.id}:${route.id}:${spec.term.label.toLowerCase()}`, label, dueKey: spec.term.due, head, paise: r.feePerTermPaise })) charged += 1;
     }
 
     // The week's trips, and today's that are already over: ENDED, the bus's track every twenty seconds, the riders ticked.
@@ -1643,6 +1656,12 @@ async function buildCampusTransport(ctx: Ctx, b: Built, spec: CampusSpec["transp
     }
   }
 
+  // owner-batch-item5: the term's route fee on every rider's ledger, raised by the office as a school's office raises it
+  // (raiseRouteFees: each rider of a priced route once for the term, keyed ROUTE:<year>:<route>:<term>); a second run is "already".
+  const fees = await asOffice(b, (office) => raiseRouteFees(office, { termLabel: spec.term.label, dueDateKey: spec.term.due }));
+  charged = fees.raised;
+  // end owner-batch-item5
+
   // One incident on Route 1, two open days ago, reported by the driver, still open with the office's note.
   const inc = spec.incident;
   const pupil = await memberByEmail(s, inc.pupil, "STUDENT");
@@ -1660,16 +1679,14 @@ async function buildCampusHostel(ctx: Ctx, b: Built, spec: CampusSpec["hostel"])
   const s = b.school.id;
   const clock = await campusClock(s);
   const adminUserId = b.admin.user.id;
-  const mess = await db.feeHead.upsert({ where: { schoolId_code: { schoolId: s, code: "MES" } }, create: { schoolId: s, code: "MES", name: "Mess", kind: "MESS", sortOrder: 4 }, update: {}, select: { id: true, code: true, name: true } });
+  // The Mess fee head the office's mess bill charges under (billMess takes the school's first MESS head).
+  await db.feeHead.upsert({ where: { schoolId_code: { schoolId: s, code: "MES" } }, create: { schoolId: s, code: "MES", name: "Mess", kind: "MESS", sortOrder: 4 }, update: {}, select: { id: true } });
   const parentOf = async (studentMembershipId: string) => (await db.guardianship.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, orderBy: { createdAt: "asc" }, select: { parent: { select: { id: true, name: true } } } }))?.parent ?? null;
 
   type Place = { allotmentId: string; membershipId: string; fromDate: string; hostelId: string };
   const places: Place[] = [];
   const wardens = new Map<string, string>();
   const month = clock.today.slice(0, 7);
-  const [y, m] = month.split("-").map(Number) as [number, number];
-  const messDue = new Date(Date.UTC(y, m, 10)).toISOString().slice(0, 10);
-  let billed = 0;
   for (const house of spec.houses) {
     const wardenUser = await upsertUser(ctx, house.warden.email, house.warden.name);
     const warden = await upsertMembership(wardenUser.id, s, "WARDEN", { title: house.warden.title });
@@ -1685,9 +1702,6 @@ async function buildCampusHostel(ctx: Ctx, b: Built, spec: CampusSpec["hostel"])
         const live = await db.hostelAllotment.findFirst({ where: { schoolId: s, membershipId: pupil.id, status: "ACTIVE" }, select: { id: true, fromDate: true, room: { select: { hostelId: true } } } });
         const place = live ?? (await db.hostelAllotment.create({ data: { schoolId: s, membershipId: pupil.id, roomId: row.id, bed: bi + 1, fromDate: spec.from, status: "ACTIVE", activePupilKey: pupil.id, activeBedKey: `${row.id}:${bi + 1}`, allottedByUserId: adminUserId }, select: { id: true, fromDate: true, room: { select: { hostelId: true } } } }));
         places.push({ allotmentId: place.id, membershipId: pupil.id, fromDate: place.fromDate, hostelId: place.room.hostelId });
-        // This month's mess bill, as billMess would raise it at a college.
-        const label = EN_DICT.collegeOffice.messLabel.replace("{month}", month);
-        if (await raiseCharge(s, b.years.current.id, pupil.id, { key: `MESS:${month}`, label, dueKey: messDue, head: mess, paise: spec.messMonthlyPaise })) billed += 1;
       }
     }
     // The week's menu: a row per weekday and meal (an edit the warden made is kept).
@@ -1697,6 +1711,11 @@ async function buildCampusHostel(ctx: Ctx, b: Built, spec: CampusSpec["hostel"])
       }
     }
   }
+
+  // owner-batch-item5: this month's mess bill on every boarder's ledger, by the office as a school's office bills it
+  // (billMess: each boarder with a bed in the month once, at the house's charge, keyed MESS:<month>); a second run is "already".
+  const { billed } = await asOffice(b, (office) => billMess(office, { month }));
+  // end owner-batch-item5
 
   // Leave: one out since yesterday (consented, approved, through the gate), one back from last weekend, one ask waiting.
   const placeOf = async (email: string) => {
@@ -1854,8 +1873,8 @@ function campusRosterRows(spec: CampusSpec): string {
   const houses = spec.hostel.houses.map((h) => `${h.name} (${h.kind === "BOYS" ? "boys" : "girls"}, ${local(h.warden.email)}): ${h.rooms.flatMap((r) => r.boarders.map(local)).join(", ")}`).join("; ");
   const devanagari = spec.library.titles.filter((t) => t.language !== "EN").length;
   return [
-    `| Sunrise transport: ${spec.transport.routes.length} routes with ${spec.transport.routes.reduce((a, r) => a + r.stops.length, 0)} stops on ${spec.transport.bus.registration} (${local(spec.transport.driver)} driving, ${local(spec.transport.attendant.email)} attending), 12 riders (${riders}), the last six open days' trips ended with the bus's track and the ticks, today's once over, the driver's location consent, an OPEN incident on Route 1, the ${spec.transport.term.label} route fee raised per rider | /admin/transport, /admin/transport/trips/<id>, /driver, /parent/transport (as a rider's parent), /admin/incidents, /parent/fees |`,
-    `| Sunrise hostel: ${houses}; the week's menu, both roll calls of the last seven days, one boarder out on home leave (${local(spec.hostel.out.pupil)}), one back from last weekend, one ask waiting (${local(spec.hostel.ask.pupil)}), a visitor yesterday, this month's mess bill per boarder | /admin/hostel, /hostel, /hostel/rollcall, /hostel/leave, /hostel/night, /hostel/visitors, /hostel/menu, /student/hostel, /parent/hostel, /parent/fees |`,
+    `| Sunrise transport: ${spec.transport.routes.length} routes with ${spec.transport.routes.reduce((a, r) => a + r.stops.length, 0)} stops on ${spec.transport.bus.registration} (${local(spec.transport.driver)} driving, ${local(spec.transport.attendant.email)} attending), 12 riders (${riders}), the last six open days' trips ended with the bus's track and the ticks, today's once over, the driver's location consent, an OPEN incident on Route 1, the ${spec.transport.term.label} route fee raised per rider by the office's own route fees | /admin/transport, /admin/transport/trips/<id>, /driver, /parent/transport (as a rider's parent), /student/transport (as a rider), /admin/incidents, /parent/fees |`,
+    `| Sunrise hostel: ${houses}; the week's menu, both roll calls of the last seven days, one boarder out on home leave (${local(spec.hostel.out.pupil)}), one back from last weekend, one ask waiting (${local(spec.hostel.ask.pupil)}), a visitor yesterday, this month's mess bill per boarder by the office's own mess bill | /admin/hostel, /hostel, /hostel/rollcall, /hostel/leave, /hostel/night, /hostel/visitors, /hostel/menu, /student/hostel, /parent/hostel, /parent/fees |`,
     `| Sunrise library: ${spec.library.titles.length} titles (${devanagari} in Devanagari: Hindi, Marathi, Sanskrit), ${spec.library.loans.length} loans (four overdue, three back late with a fine due, settled and waived), two reservations (one copy held), the reading-room register; ${local(spec.library.librarian)} at the desk | /library, /library/catalogue, /library/overdue, /library/reservations, /library/fines, /library/reading-room, /student/library, /parent/library, /teacher/library (as ${local(spec.library.loans.find((l) => l.who.includes("teacher"))?.who ?? spec.library.librarian)}) |`,
   ].join("\n");
 }

@@ -123,6 +123,8 @@ const FLAT: Record<string, string> = {
   "/teacher/contributions/new": "/(app)/contribution",
   // Transport (3 Oct 2026): the family's "bus is near" lands on the child's bus; the driver's home is the home.
   "/parent/transport": "/(app)/transport",
+  // owner-batch-item5: the pupil's own bus is the same screen, read as the pupil.
+  "/student/transport": "/(app)/transport",
   "/driver": "/(app)",
   // The college exam cell (G4-13, risks batch 5 Oct 2026): a form decided, grace marks granted and results published land
   // on the student's exams, a guardian's on the child's results (one screen, the role's route picks); a duty on the duties.

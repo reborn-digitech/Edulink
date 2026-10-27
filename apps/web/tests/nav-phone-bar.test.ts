@@ -118,6 +118,15 @@ const WEB_ONLY_ACTIONS: { door: string; why: string }[] = [
     door: "/api/v1/admin/payroll/runs/{month}/payments",
     why: "recording, voiding and the UTR sheet are done beside the run's slips and the bank's statement on the web; the phone has no run screen, and its payroll summary and payslips show the paid state",
   },
+  // owner-batch-item5 (27 Oct 2026): a school's term route fees and month's mess bill.
+  {
+    door: "/api/v1/admin/transport/route-fees",
+    why: "raising a term's route fees charges every rider's fee ledger at once, done at a desk beside the routes' fees and the fee pages; the phone's office transport screen reads the day and changes nothing",
+  },
+  {
+    door: "/api/v1/admin/hostel/mess-bill",
+    why: "billing the month's mess charges every boarder's fee ledger at once, done at a desk beside the houses' charges and the fee pages; the phone's office hostel screen is a read-only summary",
+  },
 ];
 
 describe("the actions the phone does not carry inside a page it has (owner-batch-item2b)", () => {
@@ -136,9 +145,11 @@ describe("the actions the phone does not carry inside a page it has (owner-batch
     for (const { door, why } of WEB_ONLY_ACTIONS) {
       expect(why.length).toBeGreaterThan(20);
       const stem = door.replace(/\{[^}]+\}/g, "").replace(/\/+/g, "/").split("/").filter(Boolean).slice(-1)[0]!;
+      // The door's fixed head (before its first parameter), without /api/v1: "admin/payroll/runs", "admin/hostel/mess-bill".
+      const head = door.split("{")[0]!.replace(/^\/api\/v1\//, "").replace(/\/$/, "");
       const callers = files.filter((f) => {
         const src = readFileSync(f, "utf8");
-        return src.includes("admin/payroll/runs") && src.includes(`/${stem}`);
+        return src.includes(head) && src.includes(`/${stem}`);
       });
       expect(callers, door).toEqual([]);
     }

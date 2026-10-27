@@ -59,6 +59,11 @@ export const transportRouteInputSchema = z.object({
   active: z.boolean().default(true),
   note: z.string().trim().max(500).default(""),
   stops: z.array(transportStopInputSchema).min(1).max(60),
+  /**
+   * owner-batch-item5 (27 Oct 2026): the route's fee per term in paise, raised on each rider's ledger by the office's
+   * "raise the term's route fees" (college-fees.ts raiseRouteFees). Left out, the fee stays as it is; 0 charges nobody.
+   */
+  feePerTermPaise: z.number().int().min(0).max(100_000_000).optional(),
 });
 export type TransportRouteInput = z.infer<typeof transportRouteInputSchema>;
 
@@ -83,6 +88,8 @@ export const transportRouteSchema = z.object({
   stops: z.array(transportStopSchema),
   /** Pupils allotted to it today. */
   riders: z.number().int(),
+  /** owner-batch-item5: the fee per term in paise (0: none); an older server's answer reads as none. */
+  feePerTermPaise: z.number().int().default(0),
 });
 export type TransportRoute = z.infer<typeof transportRouteSchema>;
 

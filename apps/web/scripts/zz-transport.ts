@@ -36,7 +36,9 @@ export async function buildTransport(db: PrismaClient, school: { id: string }): 
   const today = todayKey(tz);
   const yesterday = addDaysToKey(today, -1);
 
-  const routeData = { schoolId, name: "ZZ Route 1 — Kothrud", direction: "BOTH", active: true, note: "Fixture route: two corners and the school gate." };
+  // owner-batch-item5 (27 Oct 2026): the route charges a fee per term, so the office's "raise the term's route fees" has riders to charge.
+  const routeData = { schoolId, name: "ZZ Route 1 — Kothrud", direction: "BOTH", active: true, note: "Fixture route: two corners and the school gate.", kind: "FIXED", feePerTermPaise: 1_800_00 };
+  // end owner-batch-item5
   await db.transportRoute.upsert({ where: { id: ids.routeId }, create: { id: ids.routeId, ...routeData }, update: routeData });
   // Any stop the hand walk added goes, with the seats on it, so the three stops are the route.
   await db.transportAllotment.deleteMany({ where: { routeId: ids.routeId, id: { notIn: [...ids.allotmentIds, ids.endedAllotmentId] } } });

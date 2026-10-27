@@ -2,10 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import type { ZodTypeAny } from "zod";
-import { busAssignmentInputSchema, busInputSchema, transportAllotInputSchema, transportRouteInputSchema, transportSettingsSchema } from "@edulink/contracts";
+import { busAssignmentInputSchema, busInputSchema, routeFeesBodySchema, transportAllotInputSchema, transportRouteInputSchema, transportSettingsSchema } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { allotPupils, createAssignment, endAllotment, endAssignment, saveBus, saveRoute, setTransportSettings } from "@/lib/transport";
+import { raiseRouteFees } from "@/lib/college-fees";
+import { answerForm } from "@/lib/form-action";
+import type { FormState } from "@/lib/form-state";
 
 /**
  * The office's transport writes from /admin/transport: each one the same
@@ -84,4 +87,23 @@ export async function settingsAction(input: unknown): Promise<Result> {
     const ctx = await requireApiRole("ADMIN");
     await setTransportSettings(ctx, parse(transportSettingsSchema, input));
   });
+}
+
+/**
+ * owner-batch-item5 (27 Oct 2026): the term's route fees, raised on each rider's ledger from the routes tab — the
+ * same library call as POST /api/v1/admin/transport/route-fees, answered in place through <ActionForm> (a refusal by
+ * its box, what was typed kept). Each rider of a route with a fee per term is charged once for the term.
+ */
+export async function routeFeesAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return answerForm(
+    previous,
+    formData,
+    async () => {
+      const ctx = await requireApiRole("ADMIN");
+      const input = routeFeesBodySchema.parse({ termLabel: String(formData.get("termLabel") ?? ""), dueDateKey: String(formData.get("dueDateKey") ?? "") });
+      const r = await raiseRouteFees(ctx, input);
+      return { key: "collegeOffice.routeFeesRaised", vars: { raised: r.raised, already: r.already } };
+    },
+    { revalidate: ["/admin/transport"] },
+  );
 }

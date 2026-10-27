@@ -25,7 +25,7 @@
  * by the sweep; without one the sweep skips the endpoint and says so.
  */
 import type { ZodTypeAny } from "zod";
-import { LIMITED_ROLES, type DutyCode, type FeatureCode, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
+import { LIMITED_ROLES, type DutyCode, type FeatureCode, type InstitutionKind, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
 
 /** The /api doors outside /api/v1 that the catalog lists (api-catalog/unversioned.ts). */
 export type UnversionedPath = "/api/attendance" | "/api/practice/answer";
@@ -50,6 +50,16 @@ export type Endpoint = {
    * /api/v1/me's `modules`.
    */
   module?: SchoolModuleCode;
+  /**
+   * THE KINDS OF INSTITUTION THIS DOOR IS FOR (owner-batch-item5, 27 October 2026; the nav's `kinds`, the same
+   * words). At a tenant of any other kind the door is not here: the session's gate (src/lib/role-gate.ts) answers
+   * 404 NOT_FOUND, for every role and before the module, the role or the handler is asked — as a feature that is
+   * off does — rather than a 403 MODULE_OFF claiming a module is off that the school may well have on. A guardian's
+   * session names no school, so there the handler decides for the child's. Left out, the door is every kind's.
+   * Published as `x-kinds`; the API sweep expects the 404, the phone's contract matrix too, and the demo walk
+   * (scripts/demo-school-check.ts) walks only the doors whose kinds include the school's.
+   */
+  kinds?: readonly InstitutionKind[];
   /**
    * THE PLATFORM FEATURE THIS DOOR BELONGS TO (15 October 2026; src/lib/platform-features.ts). While the
    * operator has it off, the door answers 404 with code FEATURE_OFF, for every role, before the handler
@@ -331,6 +341,11 @@ export function permits(e: Pick<Endpoint, "access" | "limitedRoles" | "duties">,
   if (!byRole) return false;
   if (e.duties?.length && (role === "FACULTY" || role === "HOD")) return e.duties.some((d) => duties.includes(d));
   return true;
+}
+
+/** Whether a door is here at an institution of this kind (owner-batch-item5): every kind's unless it names `kinds`. */
+export function doorForKind(e: Pick<Endpoint, "kinds">, kind: string): boolean {
+  return !e.kinds || (e.kinds as readonly string[]).includes(kind);
 }
 
 /** The features a door belongs to, as a list (empty for none). */

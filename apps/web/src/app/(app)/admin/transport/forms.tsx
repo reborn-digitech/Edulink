@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { useEvents } from "@/lib/use-events";
 import { minuteLabel, parseMinute } from "@/lib/transport-geo";
+import { parseRupees } from "@edulink/i18n";
 import { allotAction, createAssignmentAction, endAllotmentAction, endAssignmentAction, saveBusAction, saveRouteAction, settingsAction } from "./actions";
 
 type Result = { ok: true; count?: number } | { ok: false; error: string };
@@ -49,8 +50,11 @@ const blankStop = (): StopDraft => ({ name: "", lat: "", lng: "", morning: "", e
 
 export function RouteEditor({ route, onDone }: { route?: TransportRoute; onDone?: () => void }) {
   const t = useT();
+  const { toast } = useToast();
   const { pending, write } = useWrite();
   const [name, setName] = useState(route?.name ?? "");
+  // owner-batch-item5: the route's fee per term, in rupees as typed; the office raises it on the riders' ledgers.
+  const [fee, setFee] = useState(route ? (route.feePerTermPaise / 100).toFixed(2) : "0");
   const [direction, setDirection] = useState<string>(route?.direction ?? "BOTH");
   const [active, setActive] = useState(route?.active ?? true);
   const [note, setNote] = useState(route?.note ?? "");
@@ -67,11 +71,17 @@ export function RouteEditor({ route, onDone }: { route?: TransportRoute; onDone?
     });
 
   function save() {
+    const feePerTermPaise = parseRupees(fee);
+    if (feePerTermPaise === null) {
+      toast({ tone: "danger", title: t("common.checkTheForm") });
+      return;
+    }
     const body = {
       name,
       direction,
       active,
       note,
+      feePerTermPaise,
       stops: stops.map(
         (s): TransportStopInput => ({
           ...(s.id ? { id: s.id } : {}),
@@ -105,6 +115,7 @@ export function RouteEditor({ route, onDone }: { route?: TransportRoute; onDone?
         </SelectField>
       </div>
       <TextAreaField label={t("transport.note")} value={note} onChange={(e) => setNote(e.target.value)} rows={2} maxLength={500} />
+      <TextField label={t("collegeOffice.routeFee")} inputMode="decimal" value={fee} onChange={(e) => setFee(e.target.value)} hint={t("schoolCampus.routeFeeHint")} data-testid="route-fee" />
       <CheckboxField label={t("transport.inUse")} checked={active} onChange={(e) => setActive(e.target.checked)} />
       <div className="space-y-2">
         <h3 className="text-sm font-semibold text-fg">{t("transport.stopsTitle")}</h3>

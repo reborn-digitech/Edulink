@@ -38,23 +38,25 @@ const OK: Answer = { ok: true };
 // The 34 answers of loadlogs/contract.log, by actor.
 const LOAD_6: Record<string, string[]> = {
   PARENT: ["/api/v1/student/ledger", "/api/v1/student/scholarships", "/api/v1/exam-cell/mine"],
-  STUDENT: ["/api/v1/academics/condonations", "/api/v1/academics/mentoring", "/api/v1/academics/registration", "/api/v1/academics/mine", "/api/v1/student/ledger", "/api/v1/student/scholarships", "/api/v1/exam-cell/mine", "/api/v1/voice", "/api/v1/library/eresources", "/api/v1/student/placement", "/api/v1/student/placement/resume"],
-  ADMIN: ["/api/v1/academics/condonations", "/api/v1/academics/mentoring", "/api/v1/academics/registration", "/api/v1/principal/college", "/api/v1/accounts/overview", "/api/v1/exam-cell", "/api/v1/iqac/overview", "/api/v1/library/eresources", "/api/v1/placement/summary"],
-  PRINCIPAL: ["/api/v1/academics/condonations", "/api/v1/academics/mentoring", "/api/v1/principal/college", "/api/v1/accounts/overview", "/api/v1/exam-cell", "/api/v1/iqac/overview", "/api/v1/library/eresources", "/api/v1/placement/summary"],
-  LIBRARIAN: ["/api/v1/library/eresources"],
+  // The e-resources (/api/v1/library/eresources) were among them until owner-batch-item5 (27 Oct 2026) opened them at a school.
+  STUDENT: ["/api/v1/academics/condonations", "/api/v1/academics/mentoring", "/api/v1/academics/registration", "/api/v1/academics/mine", "/api/v1/student/ledger", "/api/v1/student/scholarships", "/api/v1/exam-cell/mine", "/api/v1/voice", "/api/v1/student/placement", "/api/v1/student/placement/resume"],
+  ADMIN: ["/api/v1/academics/condonations", "/api/v1/academics/mentoring", "/api/v1/academics/registration", "/api/v1/principal/college", "/api/v1/accounts/overview", "/api/v1/exam-cell", "/api/v1/iqac/overview", "/api/v1/placement/summary"],
+  PRINCIPAL: ["/api/v1/academics/condonations", "/api/v1/academics/mentoring", "/api/v1/principal/college", "/api/v1/accounts/overview", "/api/v1/exam-cell", "/api/v1/iqac/overview", "/api/v1/placement/summary"],
   ALUMNUS: ["/api/v1/voice"],
 };
 
 describe("the contract matrix's module and college rules (LOAD-6)", () => {
   it("the document marks a college's doors, module or none, and not a school's", () => {
-    for (const path of ["/api/v1/student/ledger", "/api/v1/accounts/overview", "/api/v1/library/eresources", "/api/v1/academics/mine", "/api/v1/student/scholarships"]) expect({ path, college: op(path)["x-college"] }).toEqual({ path, college: true });
-    for (const path of ["/api/v1/family/overview", "/api/v1/staff/today", "/api/v1/me"]) expect({ path, college: op(path)["x-college"] }).toEqual({ path });
+    for (const path of ["/api/v1/student/ledger", "/api/v1/accounts/overview", "/api/v1/hostel/college-table", "/api/v1/academics/mine", "/api/v1/student/scholarships"]) expect({ path, college: op(path)["x-college"] }).toEqual({ path, college: true });
+    // The e-resources are a school's too since owner-batch-item5: no longer marked a college's.
+    for (const path of ["/api/v1/family/overview", "/api/v1/staff/today", "/api/v1/me", "/api/v1/library/eresources"]) expect({ path, college: op(path)["x-college"] }).toEqual({ path });
   });
 
   it("reads where an actor stands from its own /me", () => {
-    expect(northgate).toEqual({ schoolId: "s1", modules: new Set(SCHOOL_ON), college: false });
+    expect(northgate).toEqual({ schoolId: "s1", modules: new Set(SCHOOL_ON), college: false, kind: "SCHOOL" });
     expect(vidya?.college).toBe(true);
-    expect(guardian).toEqual({ schoolId: null, modules: new Set(SCHOOL_ON), college: false });
+    expect(vidya?.kind).toBe("COLLEGE");
+    expect(guardian).toEqual({ schoolId: null, modules: new Set(SCHOOL_ON), college: false, kind: null });
     // An expert or a recruiter: no school on the session and none among the contexts.
     expect(tenantFromMe({ active: { schoolId: null, role: "RECRUITER", membershipId: null }, modules: [], institutionKind: null, contexts: [] })).toBeNull();
   });
@@ -106,6 +108,36 @@ describe("the contract matrix's module and college rules (LOAD-6)", () => {
     // The squad member at Vidya: a 200 is right; the HOD without the duty: a 403 is right, a 200 wrong.
     expect(judge(allowed(op(path), "FACULTY", LIMITED, ["ANTI_RAGGING_SQUAD"]), moduleOff(op(path), "2xx", vidya), OK)).toBeNull();
     expect(judge(allowed(op(path), "HOD", LIMITED), "no", OK)).toBe("wanted 403, got 2xx");
+  });
+});
+
+describe("a door for another kind of institution (x-kinds, owner-batch-item5)", () => {
+  const NOT_HERE: Answer = { ok: false, status: 404, code: "NOT_FOUND" };
+  it("the document marks the campus doors a college keeps, and not those a school shares", () => {
+    for (const path of ["/api/v1/library/college-table", "/api/v1/library/college-settings", "/api/v1/hostel/squad-rounds", "/api/v1/hostel/college-table"]) expect({ path, kinds: op(path)["x-kinds"] }).toEqual({ path, kinds: ["COLLEGE", "AUTONOMOUS_COLLEGE"] });
+    expect(op("/api/v1/library/eresources")["x-kinds"]).toBeUndefined();
+  });
+
+  it("at a school every role is answered 404, the one the access list names and the one it does not; MODULE_OFF or a 403 there is wrong", () => {
+    for (const role of ["ADMIN", "LIBRARIAN", "STUDENT", "TEACHER"]) {
+      expect({ role, verdict: verdict("/api/v1/library/college-table", role, northgate, NOT_HERE) }).toEqual({ role, verdict: null });
+    }
+    expect(verdict("/api/v1/library/college-table", "ADMIN", northgate, MODULE_OFF)).toBe("wanted 404 (a door for another kind of institution), got 403 (MODULE_OFF)");
+    expect(verdict("/api/v1/hostel/squad-rounds", "TEACHER", northgate, { ok: false, status: 403, code: "FORBIDDEN" })).toBe("wanted 404 (a door for another kind of institution), got 403 (FORBIDDEN)");
+    expect(verdict("/api/v1/hostel/squad-rounds", "WARDEN", northgate, OK)).toBe("wanted 404 (a door for another kind of institution), got 2xx");
+  });
+
+  it("at a college the same doors answer by the access list; signed out stays 401", () => {
+    expect(verdict("/api/v1/library/college-table", "IQAC", vidya, OK)).toBeNull();
+    expect(verdict("/api/v1/library/college-table", "IQAC", vidya, NOT_HERE)).toBe("wanted 2xx, got 404 (NOT_FOUND)");
+    expect(verdict("/api/v1/library/college-table", "STUDENT", vidya, { ok: false, status: 403, code: "FORBIDDEN" })).toBeNull();
+    expect(verdict("/api/v1/library/college-table", null, null, { ok: false, status: 401, code: "UNAUTHORIZED" })).toBeNull();
+  });
+
+  it("the e-resources are a school's too: a pupil at a school with the library on must open them", () => {
+    expect(verdict("/api/v1/library/eresources", "STUDENT", northgate, OK)).toBeNull();
+    expect(verdict("/api/v1/library/eresources", "TEACHER", northgate, OK)).toBeNull();
+    expect(verdict("/api/v1/library/eresources", "STUDENT", northgate, MODULE_OFF)).toBe("wanted 2xx, got 403 (MODULE_OFF)");
   });
 });
 

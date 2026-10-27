@@ -108,6 +108,10 @@ describe("the panels answer in place (A3-journeys-27)", () => {
     ["app/(app)/exam-cell/page.tsx", ["createSessionAction"]],
     ["app/(app)/accounts/scholarships/page.tsx", ["createClaimAction", "updateClaimAction"]],
     ["components/hostel/family.tsx", ["requestLeaveAction"]],
+    // owner-batch-item5 (27 Oct 2026): a school's route fees and mess bill, and a house's mess charge.
+    ["app/(app)/admin/transport/page.tsx", ["routeFeesAction"]],
+    ["app/(app)/hostel/page.tsx", ["messBillAction"]],
+    ["app/(app)/hostel/rooms/page.tsx", ["saveHostelAction"]],
   ];
   it.each(PANELS)("%s posts through <ActionForm>, which keeps the values and puts the refusal by its box", (file, actions) => {
     const text = read(file);
@@ -124,7 +128,9 @@ describe("the panels answer in place (A3-journeys-27)", () => {
     ["app/(app)/faculty/actions.ts", ["saveComponentAction", "saveMarksAction"]],
     ["app/(app)/exam-cell/actions.ts", ["createSessionAction"]],
     ["app/(app)/accounts/actions.ts", ["createClaimAction", "updateClaimAction"]],
+    // The hostel's new mess bill (owner-batch-item5) goes through the file's own run() over answerForm, held by the sixteen's rule below.
     ["app/(app)/hostel/actions.ts", ["requestLeaveAction"]],
+    ["app/(app)/admin/transport/actions.ts", ["routeFeesAction"]],
   ];
   it.each(ACTIONS)("%s answers a FormState instead of redirecting", (file, actions) => {
     const text = read(file);

@@ -86,7 +86,9 @@ export async function buildLibraryHostel(db: PrismaClient, school: { id: string 
   await db.libraryReservation.create({ data: { id: LIBRARY_FIXTURE.cancelledReservation, schoolId: s, titleId: LIBRARY_FIXTURE.title(2), memberId: m1.id, placedAt: istAt(-3, 12), placedByUserId: librarian.userId, cancelledAt: istAt(-3, 13) } });
 
   /* ---- the hostel ---- */
-  await db.hostel.create({ data: { id: HOSTEL_FIXTURE.hostel, schoolId: s, name: "ZZ Tilak House", kind: "MIXED", wardenMembershipId: warden.id, capacity: 9, messAttendance: false } });
+  // owner-batch-item5 (27 Oct 2026): the house charges a mess bill a month, so the office's mess bill has boarders to bill.
+  await db.hostel.create({ data: { id: HOSTEL_FIXTURE.hostel, schoolId: s, name: "ZZ Tilak House", kind: "MIXED", wardenMembershipId: warden.id, capacity: 9, messAttendance: false, messMonthlyPaise: 2_500_00 } });
+  // end owner-batch-item5
   for (let i = 0; i < HOSTEL_FIXTURE_ROOMS.length; i += 1) await db.hostelRoom.create({ data: { id: HOSTEL_FIXTURE.room(i + 1), schoolId: s, hostelId: HOSTEL_FIXTURE.hostel, ...HOSTEL_FIXTURE_ROOMS[i]! } });
   const beds = [
     { n: 1, pupil: p1.id, room: 1, bed: 1 },

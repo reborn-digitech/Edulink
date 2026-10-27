@@ -31,7 +31,7 @@ function describeAccess(e: Endpoint): string {
   if (e.access === "account") return "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.";
   if (e.access === "operator") return "The server operator.";
   if (e.access === "app-admin") return "The content team.";
-  return `Roles: ${e.access.join(", ")}.${e.duties?.length ? ` A FACULTY or HOD only holding ${e.duties.join(" or ")}.` : ""}${e.module ? ` Only while the school has ${e.module} switched on.` : ""}`;
+  return `Roles: ${e.access.join(", ")}.${e.duties?.length ? ` A FACULTY or HOD only holding ${e.duties.join(" or ")}.` : ""}${e.module ? ` Only while the school has ${e.module} switched on.` : ""}${e.kinds ? ` Only at an institution of kind ${e.kinds.join(" or ")}; elsewhere 404.` : ""}`;
 }
 
 function build() {
@@ -47,6 +47,8 @@ function build() {
       // The module roles a signed-in door also opens to, and the module a door belongs to (403 MODULE_OFF while the school has it off).
       ...(e.limitedRoles?.length ? { "x-limited-roles": e.limitedRoles } : {}),
       ...(e.module ? { "x-module": e.module } : {}),
+      // The kinds of institution the door is for (owner-batch-item5): at any other kind the gate answers 404 NOT_FOUND.
+      ...(e.kinds ? { "x-kinds": [...e.kinds] } : {}),
       ...(e.feature ? { "x-feature": typeof e.feature === "string" ? e.feature : [...e.feature] } : {}),
       ...(e.featureInHandler ? { "x-feature-note": e.featureInHandler } : {}),
       // The plans the door's feature may ask for (402 PLAN_REQUIRED while on and not held), or why a plan is not asked (16 Oct 2026).

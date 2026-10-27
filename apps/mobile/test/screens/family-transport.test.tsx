@@ -86,6 +86,19 @@ describe("a child's bus for the family (transport, 3 Oct 2026)", () => {
     expect(calls(fetch, PATH)[0]!.url.search).toBe("");
   });
 
+  // owner-batch-item5 (27 Oct 2026): the pupil's own screen, reached from the STUDENT menu's "My bus", says it in the pupil's words.
+  it("calls it the pupil's own bus, and says so in the pupil's words when there is no seat or no trip", async () => {
+    await renderFamily(<FamilyTransport />, ME_STUDENT, { [PATH]: () => view({ seat: null, trip: null }) });
+    expect(await screen.findByText("You have no seat on a school bus")).toBeTruthy();
+    expect(screen.getAllByText("My bus").length).toBeGreaterThan(0);
+    expect(screen.queryByText(/has no seat on a school bus/)).toBeNull();
+  });
+
+  it("tells a pupil there is no trip today on their route, not a child's", async () => {
+    await renderFamily(<FamilyTransport />, ME_STUDENT, { [PATH]: () => view({ trip: null }) });
+    expect(await screen.findByText("There is no trip today on your route, or not the way you ride.")).toBeTruthy();
+  });
+
   it("says so when the read fails", async () => {
     await renderFamily(<FamilyTransport />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, [PATH]: refused(500, "ZZ broke") });
     expect(await screen.findByText("ZZ broke")).toBeTruthy();

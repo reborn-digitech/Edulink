@@ -7,7 +7,7 @@ import { parseCsvRecords } from "./csv";
 import { isDateKey, todayKey } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { financeTable } from "./accounts";
-import { collegeDesk, startYearOfKey, yearKeyOf } from "./college-office";
+import { campusDesk, collegeDesk, startYearOfKey, yearKeyOf } from "./college-office";
 import { liveAllotmentWhere, settleExpulsions } from "./hostel";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -39,12 +39,23 @@ import type { Role } from "./constants";
  *
  * THE ACADEMIC CALENDAR the university publishes is pasted in as the
  * calendar's own entries (Holiday rows of kind HOLIDAY, EXAM or EVENT).
+ *
+ * AT A SCHOOL TOO (owner-batch-item5, 27 Oct 2026): the e-resources (their list,
+ * an open, a link added), a publisher's ISBN list and a boarder's room change are
+ * as useful to a school with the module on, so they go through `campusDesk` and
+ * their doors carry no `kinds`. What stays a college's — the borrowing terms for
+ * faculty and the book bank, the criterion 4 and 5 tables, the anti-ragging
+ * squad, a hostel's college rules, a route as a loop, the university's calendar —
+ * still goes through `collegeDesk`, and its doors say `kinds: COLLEGE_KINDS`, so
+ * the gate answers a school 404 before any of this runs (role-gate.ts).
  */
 
 const LIBRARY_DESK: readonly Role[] = ["LIBRARIAN", "ADMIN"];
 const LIBRARY_READ: readonly Role[] = ["LIBRARIAN", "ADMIN", "PRINCIPAL", "IQAC"];
 const HOSTEL_DESK: readonly Role[] = ["WARDEN", "ADMIN"];
 const HOSTEL_READ: readonly Role[] = ["WARDEN", "ADMIN", "PRINCIPAL", "IQAC"];
+/** Who reads the e-resources and opens one: the desk's readers and every member who studies or teaches (a school's TEACHER too, owner-batch-item5). */
+const ERESOURCE_READ: readonly Role[] = [...LIBRARY_READ, "STUDENT", "TEACHER", "FACULTY", "HOD"];
 
 /** The academic year a "2026-27" key names, as a day range; the current one when none is named. */
 async function yearRange(schoolId: string, key?: string): Promise<{ key: string; from: Date; to: Date }> {
@@ -81,15 +92,15 @@ export async function saveCollegeLibrarySettings(ctx: ActiveContext, input: { fa
 type EKind = (typeof LIBRARY_ERESOURCE_KINDS)[number];
 const eView = (r: { id: string; name: string; url: string; kind: string; clicks: number; active: boolean }) => ({ id: r.id, name: r.name, url: r.url, kind: r.kind as EKind, clicks: r.clicks, active: r.active });
 
-/** The e-resources: every member of the college reads the list; the desk sees the counts too. */
+/** The e-resources: every member of the college (or school) reads the list; the desk sees the counts too. */
 export async function listEResources(ctx: ActiveContext) {
-  const d = await collegeDesk(ctx, [...LIBRARY_READ, "STUDENT", "FACULTY", "HOD"], "LIBRARY");
+  const d = await campusDesk(ctx, ERESOURCE_READ, "LIBRARY");
   const rows = await db.libraryEResource.findMany({ where: { schoolId: d.schoolId, ...(LIBRARY_READ.includes(d.role) ? {} : { active: true }) }, orderBy: { name: "asc" } });
   return { items: rows.map(eView) };
 }
 
 export async function saveEResource(ctx: ActiveContext, input: { name: string; url: string; kind: EKind }) {
-  const d = await collegeDesk(ctx, LIBRARY_DESK, "LIBRARY");
+  const d = await campusDesk(ctx, LIBRARY_DESK, "LIBRARY");
   if (!input.url.startsWith("https://")) throw new AccessError("collegeOffice.refuseUrl");
   const row = await db.libraryEResource.upsert({ where: { schoolId_name: { schoolId: d.schoolId, name: input.name.trim() } }, create: { schoolId: d.schoolId, name: input.name.trim(), url: input.url.trim(), kind: input.kind }, update: { url: input.url.trim(), kind: input.kind, active: true } });
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "library.eresource", targetType: "LibraryEResource", targetId: row.id, meta: { kind: input.kind } });
@@ -98,7 +109,7 @@ export async function saveEResource(ctx: ActiveContext, input: { name: string; u
 
 /** Opening an e-resource through the app: one more on its count, and its link back to follow. */
 export async function openEResource(ctx: ActiveContext, id: string) {
-  const d = await collegeDesk(ctx, [...LIBRARY_READ, "STUDENT", "FACULTY", "HOD"], "LIBRARY");
+  const d = await campusDesk(ctx, ERESOURCE_READ, "LIBRARY");
   const row = await db.libraryEResource.findFirst({ where: { id, schoolId: d.schoolId, active: true }, select: { id: true } });
   if (!row) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
   const updated = await db.libraryEResource.update({ where: { id: row.id }, data: { clicks: { increment: 1 } }, select: { url: true, clicks: true } });
@@ -112,7 +123,7 @@ export async function openEResource(ctx: ActiveContext, id: string) {
  * named back. Copies are added at the desk as the books arrive.
  */
 export async function importIsbnList(ctx: ActiveContext, text: string): Promise<{ added: number; already: number; invalid: string[] }> {
-  const d = await collegeDesk(ctx, LIBRARY_DESK, "LIBRARY");
+  const d = await campusDesk(ctx, LIBRARY_DESK, "LIBRARY");
   const { records } = parseCsvRecords(text.replace(/\t/g, ","));
   const invalid: string[] = [];
   const rows: { isbn: string; title: string; author: string; publisher: string; year: number | null }[] = [];
@@ -191,7 +202,7 @@ export async function saveHostelRules(ctx: ActiveContext, hostelId: string, inpu
  * decide two moves at once.
  */
 export async function changeRoom(ctx: ActiveContext, input: { allotmentId: string; roomId: string; bed: number }): Promise<{ allotmentId: string }> {
-  const d = await collegeDesk(ctx, HOSTEL_DESK, "HOSTEL");
+  const d = await campusDesk(ctx, HOSTEL_DESK, "HOSTEL");
   const { timezone } = await db.school.findUniqueOrThrow({ where: { id: d.schoolId }, select: { timezone: true } });
   const today = todayKey(timezone);
   // A place whose expulsion has taken effect is no longer live (A3-S-15): it cannot move.

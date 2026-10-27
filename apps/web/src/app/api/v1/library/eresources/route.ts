@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** GET /api/v1/library/eresources — The e-resources (N-LIST, DELNET, e-journals); the desk sees their open counts. */
 export async function GET() {
   try {
-    const ctx = await requireApiRoles("LIBRARIAN", "ADMIN", "PRINCIPAL", "IQAC", "STUDENT", "FACULTY", "HOD");
+    const ctx = await requireApiRoles("LIBRARIAN", "ADMIN", "PRINCIPAL", "IQAC", "STUDENT", "TEACHER", "FACULTY", "HOD");
     return ok(eResourcesSchema.parse(await listEResources(ctx)));
   } catch (error) {
     return apiFailure(error, "api/v1/library/eresources");

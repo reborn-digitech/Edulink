@@ -1,7 +1,8 @@
 import "server-only";
 import { db } from "./db";
 import { AccessError } from "./access-error";
-import { assertCollege, assertModuleOn } from "./modules";
+import { assertCollege, assertModuleOn, institutionKindOf } from "./modules";
+import { isCollegeKind } from "./institution";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import type { SchoolModuleCode } from "@edulink/contracts";
@@ -43,6 +44,24 @@ export async function collegeDesk(ctx: ActiveContext, roles: readonly Role[], mo
   if (module) await assertModuleOn(ctx.schoolId, module);
   return { schoolId: ctx.schoolId, userId: ctx.user.id, role: ctx.role, membershipId: ctx.membershipId, ctx };
 }
+
+/**
+ * owner-batch-item5 (27 Oct 2026): A DESK EITHER KIND OF INSTITUTION KEEPS — a month's mess bill, a term's route fees,
+ * the library's e-resources and ISBN list, a boarder's room change. At a college it is `collegeDesk` exactly as before
+ * (`roles`, then `module`). At a school (or a junior college) the caller must also be one of `schoolRoles` — the school
+ * version has no ACCOUNTS desk, so money is the office's alone there — with `module` on. The role is checked before
+ * anything is read; the person is bound as the college desk binds them. `college` says which it was, for the audit row.
+ */
+export async function campusDesk(ctx: ActiveContext, roles: readonly Role[], module: SchoolModuleCode, schoolRoles: readonly Role[] = roles): Promise<Desk & { college: boolean }> {
+  if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
+  if (isCollegeKind((await institutionKindOf(ctx.schoolId)) ?? "SCHOOL")) return { ...(await collegeDesk(ctx, roles, module)), college: true };
+  if (!schoolRoles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
+  await assertModuleOn(ctx.schoolId, module);
+  return { schoolId: ctx.schoolId, userId: ctx.user.id, role: ctx.role, membershipId: ctx.membershipId, ctx, college: false };
+}
+
+/** The school version's money writers (owner-batch-item5): the office alone, since ACCOUNTS is offered only to a college (invitableRolesFor). */
+export const SCHOOL_MONEY_WRITE: readonly Role[] = ["ADMIN"];
 
 /** "2026-27" for the academic year that starts in 2026 — the form MahaDBT and the university write. */
 export function yearKeyOf(startDate: Date): string {

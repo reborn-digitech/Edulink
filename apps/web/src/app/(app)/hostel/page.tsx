@@ -1,12 +1,16 @@
 import { isoToDisplayDate } from "@/lib/dates";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BedIcon, ClipboardTextIcon, DoorOpenIcon, UsersIcon, WarningCircleIcon } from "@phosphor-icons/react/ssr";
+import { BedIcon, ClipboardTextIcon, DoorOpenIcon, ReceiptIcon, UsersIcon, WarningCircleIcon } from "@phosphor-icons/react/ssr";
 import { getT } from "@/lib/i18n/server";
 import { hostelOverview, rollCallSheet } from "@/lib/hostel";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SLOT_KEY, WardenFrame, wardenContext } from "@/components/hostel/parts";
+import { ActionForm } from "@/components/ui/action-form";
+import { TextField } from "@/components/ui/field";
+import { todayKey } from "@/lib/dates";
+import { messBillAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -20,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * was absent at the last call and who came back late.
  */
 export default async function HostelHomePage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
-  const { ctx, t, on, canWrite } = await wardenContext();
+  const { ctx, t, on, canWrite, timeZone } = await wardenContext();
   const { ok, error } = await searchParams;
   if (!on) return <WardenFrame t={t} on={false} current="home" title={t("modules.hostelName")}>{null}</WardenFrame>;
   const o = await hostelOverview(ctx);
@@ -54,6 +58,19 @@ export default async function HostelHomePage({ searchParams }: { searchParams: P
           </Card>
         );
       })}
+      {ctx.role === "ADMIN" && o.hostels.length > 0 ? (
+        // owner-batch-item5 (27 Oct 2026): the office bills the month's mess to the boarders' fee ledgers (billMess), at a school as at a college.
+        <Card data-testid="hostel-mess-bill">
+          <CardHeader icon={<ReceiptIcon weight="duotone" className="size-5" />} title={t("schoolCampus.messBillTitle")} description={t("schoolCampus.messBillIntro")} />
+          <CardBody>
+            <ActionForm action={messBillAction} className="flex flex-wrap items-end gap-3">
+              <input type="hidden" name="back" value="/hostel" />
+              <TextField name="month" type="month" required label={t("collegeOffice.messMonth")} defaultValue={todayKey(timeZone).slice(0, 7)} />
+              <Button type="submit">{t("collegeOffice.billMess")}</Button>
+            </ActionForm>
+          </CardBody>
+        </Card>
+      ) : null}
       {o.absentees.length > 0 ? (
         <Card>
           <CardHeader icon={<WarningCircleIcon weight="duotone" className="size-5" />} title={t("hostel.absenteesTitle")} />

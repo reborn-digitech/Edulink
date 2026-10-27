@@ -5,15 +5,9 @@ import { useRouter } from "next/navigation";
 import { CheckboxField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
-import { useEvents } from "@/lib/use-events";
 import { nearAlertsAction } from "./actions";
 
-/** The family's page reads again when the child's bus moves, starts, ends or nears their stop (the child's own channel). */
-export function FamilyTransportLive() {
-  const router = useRouter();
-  useEvents(() => router.refresh(), { types: ["transport.position", "transport.trip", "transport.near"], onResume: () => router.refresh() });
-  return null;
-}
+// The page's live refresh is src/components/transport/family-live.tsx since owner-batch-item5, shared with the pupil's own page.
 
 /** "Tell me when the bus is near", for this child and this guardian. */
 export function NearAlertsSwitch({ childId, childName, on }: { childId: string; childName: string; on: boolean }) {

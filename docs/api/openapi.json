@@ -104923,6 +104923,10 @@
                           },
                           "riders": {
                             "type": "integer"
+                          },
+                          "feePerTermPaise": {
+                            "type": "integer",
+                            "default": 0
                           }
                         },
                         "required": [
@@ -105227,7 +105231,7 @@
     },
     "/api/v1/admin/transport/routes": {
       "post": {
-        "summary": "Make a route with its stops in the morning's order (name, place, the morning's and evening's times, the geofence)",
+        "summary": "Make a route with its stops in the morning's order (name, place, the morning's and evening's times, the geofence) and its fee per term",
         "description": "Roles: ADMIN. Only while the school has TRANSPORT switched on.",
         "security": [
           {
@@ -105388,6 +105392,11 @@
                     },
                     "minItems": 1,
                     "maxItems": 60
+                  },
+                  "feePerTermPaise": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100000000
                   }
                 },
                 "required": [
@@ -105403,7 +105412,7 @@
     },
     "/api/v1/admin/transport/routes/{routeId}": {
       "put": {
-        "summary": "Rewrite a route and its stops: a stop sent with its id keeps its pupils; one left out is removed, refused while a seat names it",
+        "summary": "Rewrite a route and its stops: a stop sent with its id keeps its pupils; one left out is removed, refused while a seat names it; the fee per term kept unless sent",
         "description": "Roles: ADMIN. Only while the school has TRANSPORT switched on.",
         "security": [
           {
@@ -105564,6 +105573,11 @@
                     },
                     "minItems": 1,
                     "maxItems": 60
+                  },
+                  "feePerTermPaise": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100000000
                   }
                 },
                 "required": [
@@ -105585,6 +105599,112 @@
             }
           }
         ]
+      }
+    },
+    "/api/v1/admin/transport/route-fees": {
+      "post": {
+        "summary": "Raise a term's route fee on each rider's ledger under the Transport fee head: every pupil riding a route with a fee per term, charged once for the term",
+        "description": "Roles: ADMIN. Only while the school has TRANSPORT switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "x-module": "TRANSPORT",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "raised": {
+                      "type": "integer"
+                    },
+                    "already": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "raised",
+                    "already"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "termLabel": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "dueDateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                "required": [
+                  "termLabel",
+                  "dueDateKey"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/admin/transport/buses": {
@@ -127674,6 +127794,10 @@
                           "messAttendance": {
                             "type": "boolean"
                           },
+                          "messMonthlyPaise": {
+                            "type": "integer",
+                            "default": 0
+                          },
                           "beds": {
                             "type": "integer"
                           },
@@ -127889,7 +128013,7 @@
         }
       },
       "post": {
-        "summary": "The office makes or changes a house.",
+        "summary": "The office makes or changes a house, and its mess's monthly charge (kept unless sent).",
         "description": "Roles: ADMIN. Only while the school has HOSTEL switched on.",
         "security": [
           {
@@ -127940,6 +128064,10 @@
                           },
                           "messAttendance": {
                             "type": "boolean"
+                          },
+                          "messMonthlyPaise": {
+                            "type": "integer",
+                            "default": 0
                           },
                           "beds": {
                             "type": "integer"
@@ -128195,12 +128323,126 @@
                   "messAttendance": {
                     "type": "boolean",
                     "default": false
+                  },
+                  "messMonthlyPaise": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100000000
                   }
                 },
                 "required": [
                   "name",
                   "kind",
                   "capacity"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/hostel/mess-bill": {
+      "post": {
+        "summary": "Bill a month's mess to each boarder's ledger under the Mess fee head, at their house's monthly charge, due on the tenth of the next month; a month billed twice bills nobody twice",
+        "description": "Roles: ADMIN. Only while the school has HOSTEL switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "x-module": "HOSTEL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "billed": {
+                      "type": "integer"
+                    },
+                    "already": {
+                      "type": "integer"
+                    },
+                    "skipped": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "billed",
+                    "already",
+                    "skipped"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "month": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}$"
+                  },
+                  "hostelId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "month"
                 ],
                 "additionalProperties": false
               }
@@ -128263,6 +128505,10 @@
                           },
                           "messAttendance": {
                             "type": "boolean"
+                          },
+                          "messMonthlyPaise": {
+                            "type": "integer",
+                            "default": 0
                           },
                           "beds": {
                             "type": "integer"
@@ -196177,7 +196423,7 @@
     "/api/v1/accounts/mess-bill": {
       "post": {
         "summary": "Bill a month's mess to each boarder's ledger under the MESS head; a month billed twice bills nobody twice",
-        "description": "Roles: ACCOUNTS, ADMIN. Only while the school has HOSTEL switched on.",
+        "description": "Roles: ACCOUNTS, ADMIN. Only while the school has HOSTEL switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -196188,6 +196434,10 @@
           "ADMIN"
         ],
         "x-module": "HOSTEL",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -196288,7 +196538,7 @@
     "/api/v1/accounts/route-fees": {
       "post": {
         "summary": "Raise a term's route fee on each rider's ledger under the TRANSPORT head; raised once per student, route and term",
-        "description": "Roles: ACCOUNTS, ADMIN. Only while the school has TRANSPORT switched on.",
+        "description": "Roles: ACCOUNTS, ADMIN. Only while the school has TRANSPORT switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -196299,6 +196549,10 @@
           "ADMIN"
         ],
         "x-module": "TRANSPORT",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -196524,8 +196778,8 @@
     },
     "/api/v1/library/eresources": {
       "get": {
-        "summary": "The e-resources (N-LIST, DELNET, e-journals); the desk sees their open counts",
-        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC, STUDENT, FACULTY, HOD. Only while the school has LIBRARY switched on.",
+        "summary": "The e-resources (N-LIST, DELNET, e-journals); the desk sees their open counts; at a college or a school with the library on",
+        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC, STUDENT, TEACHER, FACULTY, HOD. Only while the school has LIBRARY switched on.",
         "security": [
           {
             "bearer": []
@@ -196537,11 +196791,11 @@
           "PRINCIPAL",
           "IQAC",
           "STUDENT",
+          "TEACHER",
           "FACULTY",
           "HOD"
         ],
         "x-module": "LIBRARY",
-        "x-college": true,
         "responses": {
           "200": {
             "description": "OK",
@@ -196657,7 +196911,6 @@
           "ADMIN"
         ],
         "x-module": "LIBRARY",
-        "x-college": true,
         "responses": {
           "200": {
             "description": "OK",
@@ -196791,7 +197044,7 @@
     "/api/v1/library/eresources/{resourceId}/open": {
       "post": {
         "summary": "Open an e-resource through the app: counted, and its link returned",
-        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC, STUDENT, FACULTY, HOD. Only while the school has LIBRARY switched on.",
+        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC, STUDENT, TEACHER, FACULTY, HOD. Only while the school has LIBRARY switched on.",
         "security": [
           {
             "bearer": []
@@ -196803,11 +197056,11 @@
           "PRINCIPAL",
           "IQAC",
           "STUDENT",
+          "TEACHER",
           "FACULTY",
           "HOD"
         ],
         "x-module": "LIBRARY",
-        "x-college": true,
         "responses": {
           "200": {
             "description": "OK",
@@ -196887,7 +197140,7 @@
     },
     "/api/v1/library/isbn-import": {
       "post": {
-        "summary": "A publisher's ISBN list, pasted: titles added once by ISBN, bad check digits named",
+        "summary": "A publisher's ISBN list, pasted: titles added once by ISBN, bad check digits named; at a college or a school",
         "description": "Roles: LIBRARIAN, ADMIN. Only while the school has LIBRARY switched on.",
         "security": [
           {
@@ -196899,7 +197152,6 @@
           "ADMIN"
         ],
         "x-module": "LIBRARY",
-        "x-college": true,
         "responses": {
           "200": {
             "description": "OK",
@@ -196998,7 +197250,7 @@
     "/api/v1/library/college-table": {
       "get": {
         "summary": "The library's criterion-4 numbers for a year",
-        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC. Only while the school has LIBRARY switched on.",
+        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC. Only while the school has LIBRARY switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -197011,6 +197263,10 @@
           "IQAC"
         ],
         "x-module": "LIBRARY",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -197132,7 +197388,7 @@
     "/api/v1/library/college-settings": {
       "get": {
         "summary": "A college's borrowing terms for faculty and students, and the book bank's extra books",
-        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC. Only while the school has LIBRARY switched on.",
+        "description": "Roles: LIBRARIAN, ADMIN, PRINCIPAL, IQAC. Only while the school has LIBRARY switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -197145,6 +197401,10 @@
           "IQAC"
         ],
         "x-module": "LIBRARY",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -197236,7 +197496,7 @@
       },
       "post": {
         "summary": "Set the college's borrowing terms",
-        "description": "Roles: ADMIN. Only while the school has LIBRARY switched on.",
+        "description": "Roles: ADMIN. Only while the school has LIBRARY switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -197246,6 +197506,10 @@
           "ADMIN"
         ],
         "x-module": "LIBRARY",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -197384,7 +197648,7 @@
     "/api/v1/hostel/squad-rounds": {
       "get": {
         "summary": "The anti-ragging squad's rounds",
-        "description": "Roles: WARDEN, ADMIN, PRINCIPAL, IQAC. Only while the school has HOSTEL switched on.",
+        "description": "Roles: WARDEN, ADMIN, PRINCIPAL, IQAC. Only while the school has HOSTEL switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -197397,6 +197661,10 @@
           "IQAC"
         ],
         "x-module": "HOSTEL",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -197499,7 +197767,7 @@
       },
       "post": {
         "summary": "Log a round of the anti-ragging squad",
-        "description": "Roles: WARDEN, ADMIN. Only while the school has HOSTEL switched on.",
+        "description": "Roles: WARDEN, ADMIN. Only while the school has HOSTEL switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -197510,6 +197778,10 @@
           "ADMIN"
         ],
         "x-module": "HOSTEL",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -197642,7 +197914,7 @@
     },
     "/api/v1/hostel/room-change": {
       "post": {
-        "summary": "Move a boarder to another bed: the old one ends today and the new one starts, in one transaction",
+        "summary": "Move a boarder to another bed: the old one ends today and the new one starts, in one transaction; at a college or a school",
         "description": "Roles: WARDEN, ADMIN. Only while the school has HOSTEL switched on.",
         "security": [
           {
@@ -197654,7 +197926,6 @@
           "ADMIN"
         ],
         "x-module": "HOSTEL",
-        "x-college": true,
         "responses": {
           "200": {
             "description": "OK",
@@ -197752,7 +198023,7 @@
     "/api/v1/hostel/college-table": {
       "get": {
         "summary": "Occupancy and discipline for a year (criterion 5)",
-        "description": "Roles: WARDEN, ADMIN, PRINCIPAL, IQAC. Only while the school has HOSTEL switched on.",
+        "description": "Roles: WARDEN, ADMIN, PRINCIPAL, IQAC. Only while the school has HOSTEL switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -197765,6 +198036,10 @@
           "IQAC"
         ],
         "x-module": "HOSTEL",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -197885,7 +198160,7 @@
     "/api/v1/hostel/hostels/{hostelId}/rules": {
       "post": {
         "summary": "A college hostel's rules: the curfew, night-outs, the mess's monthly charge",
-        "description": "Roles: ADMIN. Only while the school has HOSTEL switched on.",
+        "description": "Roles: ADMIN. Only while the school has HOSTEL switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -197895,6 +198170,10 @@
           "ADMIN"
         ],
         "x-module": "HOSTEL",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -198015,7 +198294,7 @@
     "/api/v1/admin/transport/routes/{routeId}/college": {
       "post": {
         "summary": "A route at a college: fixed with a roster or a campus loop, and its fee per term",
-        "description": "Roles: ADMIN. Only while the school has TRANSPORT switched on.",
+        "description": "Roles: ADMIN. Only while the school has TRANSPORT switched on. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -198025,6 +198304,10 @@
           "ADMIN"
         ],
         "x-module": "TRANSPORT",
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
+        ],
         "x-college": true,
         "responses": {
           "200": {
@@ -198139,7 +198422,7 @@
     "/api/v1/admin/calendar/import": {
       "post": {
         "summary": "The university's academic calendar, pasted: entries added once by first day and name",
-        "description": "Roles: ADMIN.",
+        "description": "Roles: ADMIN. Only at an institution of kind COLLEGE or AUTONOMOUS_COLLEGE; elsewhere 404.",
         "security": [
           {
             "bearer": []
@@ -198147,6 +198430,10 @@
         ],
         "x-access": [
           "ADMIN"
+        ],
+        "x-kinds": [
+          "COLLEGE",
+          "AUTONOMOUS_COLLEGE"
         ],
         "x-college": true,
         "responses": {

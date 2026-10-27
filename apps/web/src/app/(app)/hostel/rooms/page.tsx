@@ -11,6 +11,7 @@ import { HOSTEL_KIND_KEY, ROOM_KIND_KEY, WardenFrame, wardenContext } from "@/co
 import { allotAction, endAllotmentAction, saveHostelAction, saveRoomAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
 import { ActionForm } from "@/components/ui/action-form";
+import { TextField } from "@/components/ui/field";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -75,6 +76,22 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
         <Card key={h.id}>
           <CardHeader icon={<HouseLineIcon weight="duotone" className="size-5" />} title={h.name} description={[t(HOSTEL_KIND_KEY[h.kind]), t("hostel.occupancy", { occupied: h.occupied, beds: h.beds }), h.wardenName ? t("hostel.wardenIs", { name: h.wardenName }) : null].filter(Boolean).join(" · ")} />
           <CardBody className="space-y-4">
+            {view.canManage ? (
+              // owner-batch-item5 (27 Oct 2026): the house's mess charge a month, which the office's mess bill raises; the house's other settings go back as they are.
+              <ActionForm action={saveHostelAction} className="flex flex-wrap items-end gap-3" data-testid="hostel-mess-charge">
+                <input type="hidden" name="back" value={back} />
+                <input type="hidden" name="id" value={h.id} />
+                <input type="hidden" name="name" value={h.name} />
+                <input type="hidden" name="kind" value={h.kind} />
+                <input type="hidden" name="capacity" value={h.capacity} />
+                <input type="hidden" name="wardenMembershipId" value={h.wardenMembershipId ?? ""} />
+                {h.messAttendance ? <input type="hidden" name="messAttendance" value="on" /> : null}
+                <TextField name="mess" inputMode="decimal" required label={t("collegeOffice.messMonthly")} hint={t("schoolCampus.messChargeHint")} defaultValue={(h.messMonthlyPaise / 100).toFixed(2)} />
+                <Button type="submit" size="sm" variant="secondary">
+                  {t("collegeOffice.save")}
+                </Button>
+              </ActionForm>
+            ) : null}
             {h.rooms.map((r) => (
               <div key={r.id} className="rounded-[var(--radius-md)] border border-border p-3">
                 <p className="text-sm font-semibold text-fg">
@@ -187,6 +204,10 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                     </option>
                   ))}
                 </select>
+              </label>
+              <label className="text-sm font-medium text-fg">
+                {t("collegeOffice.messMonthly")}
+                <input name="mess" inputMode="decimal" required defaultValue="0" className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="flex min-h-11 items-center gap-2 text-sm text-fg sm:col-span-2">
                 <input type="checkbox" name="messAttendance" className="size-4" />

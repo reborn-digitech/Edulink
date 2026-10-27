@@ -14,7 +14,9 @@ import { HOSTEL_FIXTURE, HOSTEL_FIXTURE_MENU, HOSTEL_FIXTURE_ROOMS } from "./lib
  */
 export const HOSTEL: Endpoint[] = [
   { method: "GET", path: "/api/v1/hostel/hostels", summary: "The houses, their rooms and who sleeps where.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", response: c.hostelsSchema },
-  { method: "POST", path: "/api/v1/hostel/hostels", summary: "The office makes or changes a house.", access: ["ADMIN"], module: "HOSTEL", request: c.hostelSaveSchema, response: c.hostelsSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/hostel/hostels", summary: "The office makes or changes a house, and its mess's monthly charge (kept unless sent).", access: ["ADMIN"], module: "HOSTEL", request: c.hostelSaveSchema, response: c.hostelsSchema, emptyBodyStatus: 422 },
+  // owner-batch-item5 (27 Oct 2026): a school's office bills the month's mess (a college's office may too; its accounts desk has /accounts/mess-bill).
+  { method: "POST", path: "/api/v1/admin/hostel/mess-bill", summary: "Bill a month's mess to each boarder's ledger under the Mess fee head, at their house's monthly charge, due on the tenth of the next month; a month billed twice bills nobody twice", access: ["ADMIN"], module: "HOSTEL", request: c.messBillBodySchema, response: c.messBillResultSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/hostel/rooms", summary: "A room made or changed.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelRoomSaveSchema, response: c.hostelsSchema, emptyBodyStatus: 422, sampleBody: () => ({ id: HOSTEL_FIXTURE.room(1), hostelId: HOSTEL_FIXTURE.hostel, ...HOSTEL_FIXTURE_ROOMS[0] }) },
   { method: "GET", path: "/api/v1/hostel/boarders", summary: "Every boarder with their bed.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", request: c.hostelBoardersQuerySchema, response: c.hostelBoardersSchema },
   { method: "POST", path: "/api/v1/hostel/allotments", summary: "A pupil to a bed from a day.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelAllotSchema, response: c.hostelBoarderSchema, emptyBodyStatus: 422 },

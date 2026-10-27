@@ -426,6 +426,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
     { href: "/student/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
     { href: "/student/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "school", module: "HOSTEL" },
+    // owner-batch-item5 (27 Oct 2026): the rider's own bus — the seat, today's trip, the bus on the map (the phone's transport screen).
+    { href: "/student/transport", labelKey: "schoolCampus.myBus", icon: "bus", prefix: true, group: "school", module: "TRANSPORT" },
     // My courses, lectures, attendance, internal marks and registration (the college's academics, 4 Oct 2026).
     { href: "/student/academics", labelKey: "academics.studentTitle", icon: "graduationCap", prefix: true, group: "daily", module: "ACADEMICS", also: ["/student/registration"] },
     // An architecture student's studios: the brief, the stages, their submissions and the signed jury results (R-56, the studio half, 10 Oct 2026).

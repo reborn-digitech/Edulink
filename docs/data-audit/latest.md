@@ -1,20 +1,19 @@
 # Data-flow audit — latest run
 
-Run: 2026-10-27T06:26:36.219Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 5 WARN · 204 INFO
+Run: 2026-10-27T14:13:24.646Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 205 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
-## WARN (5)
+## WARN (4)
 
 | check | school | detail |
 |---|---|---|
-| question-stat | server | 503 bucket(s) differ from the answer rows since the last bank:stats run (nightly; run `npm run job -- bank:stats` to refresh) |
 | usage-sample | Saraswati Vidya Mandir | 2026-10 pupils: stored 48 vs recomputed 49 (computed 2026-10-01T02:02:15.579Z) |
 | usage-sample | Saraswati Vidya Mandir | 2026-10 messages: stored 0 vs recomputed 30 (computed 2026-10-01T02:02:15.579Z) |
 | usage-sample | Sunrise Public School | 2026-10 messages: stored 0 vs recomputed 37 (computed 2026-10-01T02:02:15.579Z) |
 | usage-sample | Sunrise Public School | 2026-10 storageMb: stored 0 vs recomputed 1 (computed 2026-10-01T02:02:15.579Z) |
 
-## INFO (204)
+## INFO (205)
 
 | check | school | detail |
 |---|---|---|
@@ -26,10 +25,11 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | admission | Sunrise Public School | 6 of 7 applications carry no PEN — the field is optional on the form |
 | admission | ZZ Northgate School | 6 of 7 applications carry no PEN — the field is optional on the form |
 | certificate | Saraswati Vidya Mandir | CC/2026–27/0001 printed "—" for: record.conduct |
-| certificate | Sunrise Public School | CC/2026–27/0001 printed "—" for: record.conduct |
 | certificate | Sunrise Public School | TC/2025–26/0001 printed "—" for: pupil.motherName, pupil.nationality, pupil.religion, pupil.caste, pupil.category, pupil.motherTongue, pupil.placeOfBirth, pupil.previousSchool, issue.remark |
+| certificate | Sunrise Public School | CC/2026–27/0001 printed "—" for: record.conduct |
 | quiz | Saraswati Vidya Mandir | 1 attempt(s) were opened and never answered |
 | quiz | Sunrise Public School | 4 attempt(s) were opened and never answered |
+| question-stat | server | 3427 bucket(s) over 3427 (question, grade) pair(s) match the answer rows exactly |
 | filings-api | Saraswati Arts and Science College | filing identity blank: udiseCode, board, affiliationNumber, district, block, medium, managementType |
 | filings-api | Saraswati Arts and Science College | staff ready 0/1; missing gender=1, socialCategory=1, academicQualification=1, professionalQualification=1, appointmentType=1, joinedOn=1, serviceJoinedOn=1 |
 | filings-api | Saraswati College of Agriculture | filing identity blank: udiseCode, board, affiliationNumber, district, block, medium, managementType |
@@ -154,9 +154,9 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | academics-internal-lock | Saraswati School of Architecture | 1 locked offerings checked |
 | academics-internal-lock | Saraswati Vocational College | 1 locked offerings checked |
 | academics-internal-lock | ZZ Vidya College | 1 locked offerings checked |
-| college-prn | Saraswati Law College | 8 seats checked against their records |
 | college-prn | ZZ Shastri Autonomous College | 4 seats checked against their records |
 | college-prn | ZZ Vidya College | 3 seats checked against their records |
+| college-prn | Saraswati Law College | 8 seats checked against their records |
 | college-prn | Saraswati Institute of Management | 8 seats checked against their records |
 | college-prn | Saraswati School of Architecture | 8 seats checked against their records |
 | college-prn | Saraswati College of Education | 8 seats checked against their records |

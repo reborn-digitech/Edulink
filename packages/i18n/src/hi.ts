@@ -6460,6 +6460,8 @@ export const hi: Dictionary = {
     studentLeaveUnschedule: "विद्यार्थी का निर्धारित छोड़ना रद्द किया",
     staffRecordSet: "एक स्टाफ सदस्य का रिकॉर्ड अपडेट किया",
     staffSupportAdd: "बिना साइन-इन वाला एक सहायक कर्मचारी जोड़ा", // owner-batch-item2a
+    feesMessBill: "महीने का भोजनालय बिल बनाया", // owner-batch-item5
+    feesRouteFees: "सत्र का मार्ग शुल्क उठाया", // owner-batch-item5
     termCreate: "वर्ष में एक सत्र जोड़ा",
     termDelete: "एक सत्र हटाया",
     authFirstSigninIssue: "विद्यार्थी को पहला साइन-इन कोड जारी किया",
@@ -19625,4 +19627,22 @@ export const hi: Dictionary = {
     tabPayslips: "वेतन-पर्चियाँ",
   },
   // end owner-batch-item2a
+  // owner-batch-item5 (27 Oct 2026): a school's route fees and mess bill, a pupil's own bus, a door for another kind of institution.
+  schoolCampus: {
+    myBus: "मेरी बस",
+    myNoSeat: "आपकी स्कूल बस में सीट नहीं है",
+    myNoTripBody: "आज आपके मार्ग पर कोई यात्रा नहीं, या उस ओर नहीं जिधर आप जाते हैं।",
+    refuseNotThisKind: "यह इस प्रकार की संस्था में उपलब्ध नहीं है।",
+    routeFeesTitle: "सत्र का मार्ग शुल्क",
+    routeFeesIntro: "प्रति सत्र शुल्क वाले मार्ग पर चलने वाले हर विद्यार्थी पर सत्र का शुल्क एक बार, परिवहन शुल्क मद के अंतर्गत, उसके शुल्क खाते में लगता है। बिना शुल्क वाला मार्ग किसी पर शुल्क नहीं लगाता, और दोबारा दबाने पर किसी पर दो बार शुल्क नहीं लगता।",
+    termDefault: "सत्र 1",
+    feePerTerm: "{amount} प्रति सत्र",
+    noFee: "कोई शुल्क नहीं",
+    routeFeeHint: "जब कार्यालय सत्र का मार्ग शुल्क उठाता है, तब यह हर सवारी के शुल्क खाते में लगता है।",
+    messBillTitle: "महीने का भोजनालय बिल",
+    messBillIntro: "महीने में जिस छात्रावासी के पास बिस्तर है, उसका बिल उसके छात्रावास के मासिक भोजनालय शुल्क पर एक बार, भोजनालय शुल्क मद के अंतर्गत, उसके शुल्क खाते में बनता है, जो अगले महीने की दस तारीख को देय है। जिस छात्रावास का कोई शुल्क नहीं, वह छोड़ दिया जाता है।",
+    messBilledSkipped: "{billed} छात्रावासियों का बिल बना, {already} का पहले से था, {skipped} ऐसे छात्रावास में हैं जिसका भोजनालय शुल्क नहीं है।",
+    messChargeHint: "जब कार्यालय महीने का भोजनालय बिल बनाता है, तब यह हर छात्रावासी के शुल्क खाते में लगता है। भोजनालय बिल न हो तो 0 रहने दें।",
+  },
+  // end owner-batch-item5
 };

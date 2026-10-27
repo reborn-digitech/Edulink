@@ -88,6 +88,33 @@ describe("the /api/v1 catalog", () => {
     }
     expect(bare).toEqual([]);
   });
+
+  /**
+   * owner-batch-item5 (27 Oct 2026): `kinds` says a door is for some kinds of institution only, and the gate answers
+   * every other kind 404 (role-gate.ts rule 4). A door naming it names known kinds, none twice, not all of them (that
+   * is no `kinds`), and is a door of the versioned API (the gate reads `kinds` under /api/v1 alone). The college's
+   * campus doors were each decided: those a school uses too carry no `kinds`, the rest say a college's.
+   */
+  it("a door naming kinds names known institution kinds, some but not all, and the campus doors are each decided", async () => {
+    const { INSTITUTION_KINDS } = await import("@edulink/contracts");
+    const { COLLEGE_CAMPUS } = await import("@/lib/api-catalog/college-campus");
+    const kinded = ENDPOINTS.filter((e) => e.kinds);
+    expect(kinded.length).toBeGreaterThan(0);
+    for (const e of kinded) {
+      const key = `${e.method} ${e.path}`;
+      expect(e.kinds!.length, key).toBeGreaterThan(0);
+      expect(e.kinds!.length, `${key}: every kind is no kinds at all`).toBeLessThan(INSTITUTION_KINDS.length);
+      expect(new Set(e.kinds).size, key).toBe(e.kinds!.length);
+      for (const k of e.kinds!) expect((INSTITUTION_KINDS as readonly string[]).includes(k), `${key}: ${k}`).toBe(true);
+      expect(e.path.startsWith("/api/v1/"), key).toBe(true);
+    }
+    const schoolsToo = COLLEGE_CAMPUS.filter((e) => !e.kinds).map((e) => `${e.method} ${e.path}`).sort();
+    expect(schoolsToo).toEqual(["GET /api/v1/library/eresources", "POST /api/v1/hostel/room-change", "POST /api/v1/library/eresources", "POST /api/v1/library/eresources/{resourceId}/open", "POST /api/v1/library/isbn-import"]);
+    for (const e of COLLEGE_CAMPUS.filter((x) => x.kinds)) expect(e.kinds, `${e.method} ${e.path}`).toEqual(["COLLEGE", "AUTONOMOUS_COLLEGE"]);
+    // The college office's mess bill and route fees too (coordinator's decision 1): a school's office has its own doors.
+    for (const path of ["/api/v1/accounts/mess-bill", "/api/v1/accounts/route-fees"]) expect(ENDPOINTS.find((e) => e.method === "POST" && e.path === path)?.kinds, path).toEqual(["COLLEGE", "AUTONOMOUS_COLLEGE"]);
+    for (const path of ["/api/v1/admin/hostel/mess-bill", "/api/v1/admin/transport/route-fees"]) expect(ENDPOINTS.find((e) => e.method === "POST" && e.path === path)?.kinds, path).toBeUndefined();
+  });
 });
 
 /**

@@ -7,6 +7,11 @@
  * college's). The API sweep judges by this set, and `api:docs` publishes it as
  * `x-college` so the phone's contract matrix judges the same way (LOAD-6,
  * 4 Oct 2026). One list, so the two cannot drift.
+ *
+ * owner-batch-item5 (27 Oct 2026): of the campus doors (COLLEGE_CAMPUS), only those naming `kinds` are a college's;
+ * the others (the e-resources, the ISBN list, a room change) are a school's too and are judged as any school door.
+ * A door naming `kinds` is answered 404 at another kind by the gate, which the sweep and the matrix read from `kinds`
+ * (`x-kinds`) before this set.
  */
 import type { Endpoint } from "../src/lib/api-catalog";
 import { ACADEMICS } from "../src/lib/api-catalog/academics";
@@ -22,4 +27,4 @@ import { STREAM_RECORDS } from "../src/lib/api-catalog/stream-records";
 // The studio desk (R-56, the studio half, 10 Oct 2026).
 import { STUDIO_DOORS } from "../src/lib/api-catalog/studio";
 
-export const COLLEGE_DOORS: ReadonlySet<Endpoint> = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...DUTY_DOORS, ...STREAM_RECORDS, ...STUDIO_DOORS]);
+export const COLLEGE_DOORS: ReadonlySet<Endpoint> = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS.filter((e) => e.kinds), ...DUTY_DOORS, ...STREAM_RECORDS, ...STUDIO_DOORS]);

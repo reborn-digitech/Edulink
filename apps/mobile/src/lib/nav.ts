@@ -280,6 +280,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
     { labelKey: "modules.hostelName", icon: "bed", group: "school", screen: "/(app)/hostel", module: "HOSTEL" },
+    // owner-batch-item5 (27 Oct 2026): the rider's own bus, the family's transport screen read as the pupil (the web's /student/transport).
+    { labelKey: "schoolCampus.myBus", icon: "bus", group: "school", screen: "/(app)/transport", module: "TRANSPORT" },
     // My courses, lectures, attendance, internal marks and registration (the college's academics, 4 Oct 2026).
     { labelKey: "academics.studentTitle", icon: "graduationCap", group: "daily", screen: "/(app)/academics", module: "ACADEMICS" },
     { labelKey: "academics.registrationTitle", icon: "clipboard", group: "daily", screen: "/(app)/registration", module: "ACADEMICS" },

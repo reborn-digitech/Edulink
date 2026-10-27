@@ -174,6 +174,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "term.create": "audit.termCreate",
   "staff.record.set": "audit.staffRecordSet",
   "staff.support.add": "audit.staffSupportAdd", // owner-batch-item2a
+  "fees.messBill": "audit.feesMessBill", // owner-batch-item5: a school's mess bill (a college's stays college.fees.mess)
+  "fees.routeFees": "audit.feesRouteFees", // owner-batch-item5: a school's route fees (a college's stays college.fees.route)
   "student.leave.schedule": "audit.studentLeaveSchedule",
   "student.leave.unschedule": "audit.studentLeaveUnschedule",
   "term.delete": "audit.termDelete",

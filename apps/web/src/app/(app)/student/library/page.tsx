@@ -14,18 +14,20 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * The pupil's own library: their loans, dues and queue, and the catalogue. At
- * a college the e-resources follow, each opened through the app so the open
+ * a college (and at a school that keeps some, owner-batch-item5) the e-resources follow, each opened through the app so the open
  * is counted (campaign 2026-10-04, G-3; the list alone is /library/e-resources).
  */
 export default async function StudentLibraryPage({ searchParams }: { searchParams: Promise<{ q?: string; ok?: string; error?: string }> }) {
   const ctx = await requireRole("STUDENT");
   const { q = "", ok, error } = await searchParams;
   const [t, kind, on] = await Promise.all([getT(), institutionKindOf(ctx.schoolId), isModuleOn(ctx.schoolId, "LIBRARY")]);
-  const eres = on && isCollegeKind(kind ?? "SCHOOL") ? await listEResources(ctx) : null;
+  // A school's library may keep e-resources too since owner-batch-item5: shown there once it has any; a college always shows the list.
+  const eres = on ? await listEResources(ctx) : null;
+  const showEres = eres !== null && (isCollegeKind(kind ?? "SCHOOL") || eres.items.length > 0);
   return (
     <div className="space-y-5">
       <MyLibrary ctx={ctx} schoolId={ctx.schoolId} path="/student/library" q={q} ok={ok} error={error} />
-      {eres ? <EResourceList items={eres.items} t={t} /> : null}
+      {eres && showEres ? <EResourceList items={eres.items} t={t} /> : null}
     </div>
   );
 }

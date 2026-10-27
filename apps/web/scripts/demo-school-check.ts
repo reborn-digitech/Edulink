@@ -154,6 +154,7 @@ WALKS.push({
   make: async () => {
     const { NAV } = await import("../src/lib/nav");
     const { ENDPOINTS } = await import("../src/lib/api-catalog");
+    const { doorForKind } = await import("../src/lib/api-catalog/types");
     const { addDaysToKey } = await import("../src/lib/dates");
     const school = await a4School();
     const s = school.id;
@@ -234,14 +235,13 @@ WALKS.push({
         default: return path.includes("{") ? { skip: "no Sunrise sample for this path" } : path;
       }
     };
-    // A college's campus doors (api-catalog/college-campus.ts: e-resources, the college tables, the squad's rounds) carry
-    // the same modules but refuse a school (403, assertCollege); Sunrise is a school, so they are said on a SKIP line.
-    const { COLLEGE_CAMPUS } = await import("../src/lib/api-catalog/college-campus");
-    const collegeOnly = new Set(COLLEGE_CAMPUS.map((e) => `${e.method} ${e.path}`));
+    // owner-batch-item5 (27 Oct 2026): the catalog says which doors are a college's alone (`kinds`; the gate answers a
+    // school 404 there), so every module door the catalog lets a school use is walked — the e-resources among them —
+    // and only those naming other kinds are said on a SKIP line.
     const skips = new Map<string, number>();
     const doors = ENDPOINTS.filter((e) => e.method === "GET" && e.module && (A4_MODULES as readonly string[]).includes(e.module)).filter((e) => {
-      if (!collegeOnly.has(`${e.method} ${e.path}`)) return true;
-      skips.set(`${e.path}: a college's door, refused at a school`, 0);
+      if (doorForKind(e, "SCHOOL")) return true;
+      skips.set(`${e.path}: a door for ${(e.kinds ?? []).join(" or ")} alone by the catalog, not a school's`, 0);
       return false;
     });
     const walks: Walk[] = [];

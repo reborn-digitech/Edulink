@@ -1,4 +1,5 @@
 import * as c from "@edulink/contracts";
+import { COLLEGE_KINDS } from "@edulink/contracts";
 import type { Endpoint } from "./types";
 import { OFFICE_FIXTURE } from "./college-office-fixture";
 
@@ -33,7 +34,9 @@ export const ACCOUNTS_DESK: Endpoint[] = [
   { method: "GET", path: "/api/v1/accounts/reports", summary: "The auditor's schedules: collection, defaulters, receivable ageing, income and expense, the finance table, as CSV text", access: ["ACCOUNTS", "ADMIN", "PRINCIPAL"], request: c.accountsReportQuerySchema, response: c.officeCsvExportSchema, sample: "/api/v1/accounts/reports?report=collection" },
   { method: "GET", path: "/api/v1/accounts/finance-table", summary: "Three years of fees, scholarships, salaries, purchases and the library's spend (AICTE disclosure, NAAC criterion 4, NIRF)", access: ["ACCOUNTS", "ADMIN", "PRINCIPAL", "IQAC"], request: c.financeTableQuerySchema, response: c.financeTableSchema },
   { method: "POST", path: "/api/v1/accounts/leaving/{studentMembershipId}", summary: "A college student leaves: the LEAVING clearance complete, the departure and the TC's record, the alumnus opened, the caution deposit's return recorded", access: ["ADMIN"], request: c.collegeLeavingBodySchema, response: c.collegeLeavingResultSchema, emptyBodyStatus: 422, sample: (f) => (f.studentMembershipId ? `/api/v1/accounts/leaving/${f.studentMembershipId}` : null) },
-  { method: "POST", path: "/api/v1/accounts/mess-bill", summary: "Bill a month's mess to each boarder's ledger under the MESS head; a month billed twice bills nobody twice", access: ["ACCOUNTS", "ADMIN"], module: "HOSTEL", request: c.messBillBodySchema, response: c.messBillResultSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/accounts/route-fees", summary: "Raise a term's route fee on each rider's ledger under the TRANSPORT head; raised once per student, route and term", access: ["ACCOUNTS", "ADMIN"], module: "TRANSPORT", request: c.routeFeesBodySchema, response: c.routeFeesResultSchema, emptyBodyStatus: 422 },
+  // owner-batch-item5 (coordinator's decision 1, 27 Oct 2026): the college office's mess bill and route fees are a college's
+  // alone (`kinds`): a school's office uses POST /api/v1/admin/hostel/mess-bill and /api/v1/admin/transport/route-fees.
+  { method: "POST", path: "/api/v1/accounts/mess-bill", summary: "Bill a month's mess to each boarder's ledger under the MESS head; a month billed twice bills nobody twice", access: ["ACCOUNTS", "ADMIN"], kinds: COLLEGE_KINDS, module: "HOSTEL", request: c.messBillBodySchema, response: c.messBillResultSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/accounts/route-fees", summary: "Raise a term's route fee on each rider's ledger under the TRANSPORT head; raised once per student, route and term", access: ["ACCOUNTS", "ADMIN"], kinds: COLLEGE_KINDS, module: "TRANSPORT", request: c.routeFeesBodySchema, response: c.routeFeesResultSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/student/account", summary: "The student's own account: the guardian grants, two-step sign-in, the data export and the no-dues state", access: ["STUDENT"], response: c.studentAccountSchema },
 ];

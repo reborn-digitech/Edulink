@@ -54,6 +54,15 @@ const STREAM_PAGES: Record<string, string[]> = {
 };
 
 /**
+ * owner-batch-item5 (27 Oct 2026): the office's forms no menu entry opens on their own — the routes tab with each
+ * route's fee per term and the term's route fees, and the houses with their mess charge a month. (The pupil's own bus,
+ * /student/transport, is walked through its STUDENT menu entry; the mess bill is on /hostel, the admin's `also`.)
+ */
+const OFFICE_FORM_PAGES: Record<string, string[]> = {
+  ADMIN: ["/admin/transport?tab=routes", "/hostel/rooms"],
+};
+
+/**
  * The content team and the operator have no menu in NAV — their pages hang
  * off /appadmin and /root with their own layouts — so until 2026-10-01 only
  * gig-questions.spec.ts opened them and nothing measured them. The same
@@ -72,7 +81,7 @@ const walked: [role: string, hrefs: string[], prefixes: Set<string>][] = [
     const action = PRIMARY_ACTION[all[key]!.role as Role];
     return [
       key,
-      Array.from(new Set([...items.flatMap((item) => [item.href, ...(item.also ?? [])]), ...(action ? [action.href] : []), ...(STREAM_PAGES[key] ?? [])])),
+      Array.from(new Set([...items.flatMap((item) => [item.href, ...(item.also ?? [])]), ...(action ? [action.href] : []), ...(STREAM_PAGES[key] ?? []), ...(OFFICE_FORM_PAGES[key] ?? [])])),
       new Set(items.flatMap((item) => item.also ?? []).filter((href) => !items.some((item) => item.href === href))),
     ];
   }),

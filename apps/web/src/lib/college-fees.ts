@@ -9,7 +9,7 @@ import { readJson, writeJson } from "./json";
 import { todayKey } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { assignPlansAs, createStructure, dateToDay, dayToDate, publishStructure, regenerateDemands } from "./fees";
-import { collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, officeUserIds, standingOf, yearKeyOf } from "./college-office";
+import { campusDesk, collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, officeUserIds, SCHOOL_MONEY_WRITE, standingOf, yearKeyOf } from "./college-office";
 import { assertGuardianAccess } from "./tenancy";
 import { forSchool } from "./tenant-context";
 import { translator } from "./i18n/dictionary";
@@ -45,7 +45,9 @@ import type { ActiveContext } from "./session";
  *
  * MESS AND ROUTE FEES: a month's mess charge for each boarder and a term's
  * route fee for each rider, as demands under the MESS and TRANSPORT heads,
- * each raised once.
+ * each raised once. owner-batch-item5 (27 Oct 2026): a SCHOOL raises them too —
+ * its office (ADMIN; the school version has no ACCOUNTS desk) with the HOSTEL or
+ * TRANSPORT module on, through `campusDesk`; a college's path is unchanged.
  */
 
 /* -------------------------------------------------------------------------- */
@@ -407,7 +409,7 @@ async function raiseOnce(schoolId: string, academicYearId: string, studentMember
  * bills nobody twice.
  */
 export async function billMess(ctx: ActiveContext, input: { month: string; hostelId?: string }): Promise<{ billed: number; already: number; skipped: number }> {
-  const d = await collegeDesk(ctx, MONEY_WRITE, "HOSTEL");
+  const d = await campusDesk(ctx, MONEY_WRITE, "HOSTEL", SCHOOL_MONEY_WRITE);
   if (!/^\d{4}-\d{2}$/.test(input.month)) throw new AccessError("collegeOffice.refuseDates");
   const year = await currentAcademicYear(d.schoolId);
   if (!year) throw new AccessError("fees.refuseNoYear");
@@ -433,7 +435,10 @@ export async function billMess(ctx: ActiveContext, input: { month: string; hoste
       else already += 1;
     }
   }
-  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.fees.mess", targetType: "School", targetId: d.schoolId, meta: { month: input.month, billed, already } });
+  const meta = { month: input.month, billed, already };
+  // Each kind's own words in the log (the audit-labels test reads the literal actions).
+  if (d.college) await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.fees.mess", targetType: "School", targetId: d.schoolId, meta });
+  else await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "fees.messBill", targetType: "School", targetId: d.schoolId, meta });
   return { billed, already, skipped };
 }
 
@@ -444,7 +449,7 @@ export async function billMess(ctx: ActiveContext, input: { month: string; hoste
  * compared without case or extra spaces).
  */
 export async function raiseRouteFees(ctx: ActiveContext, input: { termLabel: string; dueDateKey: string }): Promise<{ raised: number; already: number }> {
-  const d = await collegeDesk(ctx, MONEY_WRITE, "TRANSPORT");
+  const d = await campusDesk(ctx, MONEY_WRITE, "TRANSPORT", SCHOOL_MONEY_WRITE);
   const year = await currentAcademicYear(d.schoolId);
   if (!year) throw new AccessError("fees.refuseNoYear");
   const head = await headOfKind(d.schoolId, "TRANSPORT");
@@ -461,7 +466,9 @@ export async function raiseRouteFees(ctx: ActiveContext, input: { termLabel: str
       else already += 1;
     }
   }
-  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.fees.route", targetType: "School", targetId: d.schoolId, meta: { term: input.termLabel, raised, already } });
+  const meta = { term: input.termLabel, raised, already };
+  if (d.college) await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.fees.route", targetType: "School", targetId: d.schoolId, meta });
+  else await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "fees.routeFees", targetType: "School", targetId: d.schoolId, meta });
   return { raised, already };
 }
 

@@ -8,7 +8,7 @@ type Params = { params: Promise<{ resourceId: string }> };
 /** POST /api/v1/library/eresources/{resourceId}/open — Open an e-resource through the app: counted, and its link returned. */
 export async function POST(_request: Request, { params }: Params) {
   try {
-    const ctx = await requireApiRoles("LIBRARIAN", "ADMIN", "PRINCIPAL", "IQAC", "STUDENT", "FACULTY", "HOD");
+    const ctx = await requireApiRoles("LIBRARIAN", "ADMIN", "PRINCIPAL", "IQAC", "STUDENT", "TEACHER", "FACULTY", "HOD");
     const { resourceId } = await params;
     return ok(eResourceOpenSchema.parse(await openEResource(ctx, resourceId)));
   } catch (error) {

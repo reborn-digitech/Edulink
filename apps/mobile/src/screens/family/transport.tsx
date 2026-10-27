@@ -23,7 +23,8 @@ const hhmmOf = (iso: string | null) => (iso ? new Date(iso).toTimeString().slice
  * minutes ago" when the feed is stale, the stops passed and the arrival
  * range at theirs, read again every fifteen seconds while the trip is live;
  * and this guardian's "tell me when the bus is near" for the child. The BUS,
- * never the child. A pupil reads their own.
+ * never the child. A pupil reads their own, in their own words (owner-batch-item5:
+ * "My bus", from the STUDENT menu's entry; the guardian's switch stays theirs).
  */
 export function FamilyTransport() {
   const t = useT();
@@ -59,12 +60,12 @@ export function FamilyTransport() {
   }
 
   return (
-    <Screen title={d ? t("transport.forChild", { name: d.childName }) : t("transport.parentTitle")} description={d?.schoolName} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+    <Screen title={role === "STUDENT" ? t("schoolCampus.myBus") : d ? t("transport.forChild", { name: d.childName }) : t("transport.parentTitle")} description={d?.schoolName} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {role === "PARENT" ? <ChildSwitcher pupils={pupils} selectedId={d?.studentMembershipId ?? childId} onSelect={setChildId} /> : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && !d.moduleOn ? <Empty icon="bus" title={t("modules.offTitle", { module: t("modules.transportName") })} body={t("modules.offBody", { module: t("modules.transportName") })} action={<Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} /> : null}
-      {d && d.moduleOn && !d.seat ? <Empty icon="bus" title={t("transport.noSeat", { name: d.childName })} body={t("transport.noSeatBody")} action={<Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} /> : null}
+      {d && d.moduleOn && !d.seat ? <Empty icon="bus" title={role === "STUDENT" ? t("schoolCampus.myNoSeat") : t("transport.noSeat", { name: d.childName })} body={t("transport.noSeatBody")} action={<Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} /> : null}
       {d?.seat ? (
         <Card title={d.seat.busRegistration ? t("transport.busNumber", { bus: d.seat.busRegistration }) : d.seat.routeName}>
           <Text tone="muted">{[d.seat.routeName, d.seat.stopName].join(" · ")}</Text>
@@ -76,7 +77,7 @@ export function FamilyTransport() {
           {alertError ? <Text tone="danger">{alertError}</Text> : null}
         </Card>
       ) : null}
-      {d?.seat && !trip ? <Empty icon="clock" title={t("transport.noTripToday")} body={t("transport.noTripTodayBody", { name: d.childName })} action={<Button label={t("transport.refresh")} variant="secondary" onPress={() => void query.refetch()} />} /> : null}
+      {d?.seat && !trip ? <Empty icon="clock" title={t("transport.noTripToday")} body={role === "STUDENT" ? t("schoolCampus.myNoTripBody") : t("transport.noTripTodayBody", { name: d.childName })} action={<Button label={t("transport.refresh")} variant="secondary" onPress={() => void query.refetch()} />} /> : null}
       {trip ? (
         <Card title={trip.status === "LIVE" ? t("transport.liveNow") : trip.status === "ENDED" ? t("transport.tripEnded") : t("transport.notStarted")}>
           <Text tone="muted" variant="sm">

@@ -13,7 +13,10 @@
  *   module or none) may answer 403 MODULE_OFF to an actor who is not at a
  *   college ("may");
  * - a door naming duties (x-duties, 5 Oct 2026) opens to a FACULTY or HOD
- *   only holding one of them — the actor's own /me `duties`.
+ *   only holding one of them — the actor's own /me `duties`;
+ * - a door naming the kinds of institution it is for (x-kinds, owner-batch-item5,
+ *   27 Oct 2026) must answer 404 NOT_FOUND at an actor's school of another kind,
+ *   for every role ("gone"): the gate's answer before the role is asked.
  *
  * Kept out of the contract test itself so the phone's ordinary battery can
  * hold these rules against the committed document without a server
@@ -22,12 +25,12 @@
 import { isCollegeKind, type Me } from "@edulink/contracts";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[];
-export type Op = { "x-access": Access; "x-limited-roles"?: string[]; "x-module"?: string; "x-college"?: boolean; "x-duties"?: string[] };
+export type Op = { "x-access": Access; "x-limited-roles"?: string[]; "x-module"?: string; "x-college"?: boolean; "x-duties"?: string[]; "x-kinds"?: string[] };
 export type Doc = { paths: Record<string, Record<string, Op>> };
 export type Want = "2xx" | 401 | 403 | "2xx-or-403";
-export type Off = "must" | "may" | "no";
-/** Where an actor stands: the active school (null for a guardian), the modules on there (a guardian: the children's schools'), and whether it is a college. */
-export type Tenant = { schoolId: string | null; modules: ReadonlySet<string>; college: boolean } | null;
+export type Off = "must" | "may" | "no" | "gone";
+/** Where an actor stands: the active school (null for a guardian), the modules on there (a guardian: the children's schools'), whether it is a college, and the active school's kind (null for a guardian). */
+export type Tenant = { schoolId: string | null; modules: ReadonlySet<string>; college: boolean; kind: string | null } | null;
 /** One answer as the app's client returns it. */
 export type Answer = { ok: boolean; status?: number; code?: string };
 
@@ -58,11 +61,16 @@ export function tenantFromMe(me: Pick<Me, "active" | "modules" | "institutionKin
   const schools = me.contexts.filter((c) => c.schoolId);
   if (!me.active.schoolId && schools.length === 0) return null;
   const college = me.active.schoolId ? isCollegeKind(me.institutionKind ?? "SCHOOL") : schools.some((c) => c.institutionKind != null && isCollegeKind(c.institutionKind));
-  return { schoolId: me.active.schoolId, modules: new Set(me.modules), college };
+  return { schoolId: me.active.schoolId, modules: new Set(me.modules), college, kind: me.active.schoolId ? (me.institutionKind ?? "SCHOOL") : null };
 }
 
-/** Whether a permitted role's answer must, or may, be the module gate's 403 MODULE_OFF; "no" for a refused role, signed out, or an operator's door. */
+/**
+ * Whether a permitted role's answer must, or may, be the module gate's 403 MODULE_OFF; "no" for a refused role, signed
+ * out, or an operator's door. "gone" — for ANY role at a school — when the door's x-kinds leave the school's kind out:
+ * the gate answers 404 before the role is asked (owner-batch-item5).
+ */
 export function moduleOff(op: Op, want: Want, tenant: Tenant): Off {
+  if (tenant?.schoolId && tenant.kind && op["x-kinds"] && !op["x-kinds"].includes(tenant.kind)) return "gone";
   if (!tenant || (want !== "2xx" && want !== "2xx-or-403")) return "no";
   const module = op["x-module"];
   if (module && !tenant.modules.has(module)) return tenant.schoolId ? "must" : "may";
@@ -72,6 +80,7 @@ export function moduleOff(op: Op, want: Want, tenant: Tenant): Off {
 
 /** Whether the answer is what `want` allows, with the module gate's answer where `off` says; null when fine, else the line the test prints. */
 export function judge(want: Want, off: Off, res: Answer): string | null {
+  if (off === "gone") return !res.ok && res.status === 404 ? null : `wanted 404 (a door for another kind of institution), got ${res.ok ? "2xx" : res.status}${res.ok ? "" : ` (${res.code})`}`;
   const isModuleOff = !res.ok && res.status === 403 && res.code === "MODULE_OFF";
   const got = res.ok || ((want === "2xx" || want === "2xx-or-403") && res.status === 422) ? "2xx" : res.status;
   const base = want === "2xx-or-403" ? got === "2xx" || got === 403 : got === want;

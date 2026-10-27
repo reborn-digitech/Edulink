@@ -44,6 +44,8 @@ export const hostelSaveSchema = z.object({
   capacity: z.number().int().min(0).max(5000),
   wardenMembershipId: cuid.nullable().default(null),
   messAttendance: z.boolean().default(false),
+  /** owner-batch-item5 (27 Oct 2026): the mess's monthly charge in paise, billed by the office's mess bill; left out, it stays as it is. */
+  messMonthlyPaise: z.number().int().min(0).max(100_000_000).optional(),
 });
 export type HostelSave = z.infer<typeof hostelSaveSchema>;
 
@@ -93,6 +95,8 @@ export const hostelRowSchema = z.object({
   wardenMembershipId: z.string().nullable(),
   wardenName: z.string().nullable(),
   messAttendance: z.boolean(),
+  /** owner-batch-item5: the mess's monthly charge in paise (0: no mess bill); an older server's answer reads as none. */
+  messMonthlyPaise: z.number().int().default(0),
   beds: z.number().int(),
   occupied: z.number().int(),
   rooms: z.array(hostelRoomRowSchema),
