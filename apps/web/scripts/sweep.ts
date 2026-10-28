@@ -2542,16 +2542,31 @@ async function main() {
       await check(zzTeacher, `/incidents/${openIncident.id}`, 200, "…and opens one on a pupil they teach");
       await check(zzTeacher, `/incidents/new?student=${openIncident.studentMembershipId}`, 200, "…and records one for a pupil they teach");
       await check(zzTeacher, "/admin/incidents", 307, "⚠ …but not the whole school's log");
-      // A pupil in none of this teacher's classes, not merely in another class.
+      // A pupil in none of this teacher's classes, not merely in another class: since 27 October 2026 (item 1 of the
+      // owner's batch) a teacher teaches a class through a ClassTeacher row OR a timetable lesson, so the pupil's class
+      // must name this teacher neither way.
       const notTaught = await db.enrollment.findFirst({
         where: {
           schoolId: northgate.id,
           status: "ACTIVE",
-          student: { enrollments: { none: { status: "ACTIVE", class: { teachers: { some: { teacher: { user: { email: zzTeaching.teacher.user.email } } } } } } } },
+          student: {
+            enrollments: {
+              none: {
+                status: "ACTIVE",
+                class: {
+                  OR: [
+                    { teachers: { some: { teacher: { user: { email: zzTeaching.teacher.user.email } } } } },
+                    { timetableSlots: { some: { teacher: { user: { email: zzTeaching.teacher.user.email } } } } },
+                  ],
+                },
+              },
+            },
+          },
         },
         select: { studentMembershipId: true },
       });
       if (notTaught) await check(zzTeacher, `/incidents/new?student=${notTaught.studentMembershipId}`, 404, "⚠ …and not for one they do not");
+      else skip("incident for a pupil not taught", "every ZZ Northgate pupil is in a class this teacher takes on the register or the timetable");
     }
   } else {
     skip("incident log", "no ZZ fixtures with an open incident (run zz:fixtures)");
@@ -2909,9 +2924,10 @@ async function main() {
       await check(lead, `/teacher/classes/${syllabusClass.id}`, 200, "…and the class page carrying the syllabus button");
       await check(lead, "/admin/syllabus", 307, "⚠ …but not the office's lists");
       await check(lead, "/admin/syllabus/coverage", 307, "⚠ …nor the coverage table");
-      // A teacher of the school with no class of grade 3 at all, not merely another class.
+      // A teacher of the school who takes this class neither on the register nor on the timetable (a timetable lesson
+      // opens the syllabus to read since 27 October 2026, item 1 of the owner's batch), not merely another class.
       const stranger = await db.membership.findFirst({
-        where: { schoolId: northgate.id, role: "TEACHER", status: "ACTIVE", user: { email: { not: leadEmail } }, classTeachers: { none: { classId: syllabusClass.id } } },
+        where: { schoolId: northgate.id, role: "TEACHER", status: "ACTIVE", user: { email: { not: leadEmail } }, classTeachers: { none: { classId: syllabusClass.id } }, timetableSlots: { none: { classId: syllabusClass.id } } },
         select: { user: { select: { email: true } } },
       });
       if (stranger?.user.email) {
