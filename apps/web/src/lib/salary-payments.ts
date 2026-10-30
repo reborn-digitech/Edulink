@@ -9,6 +9,7 @@ import {
   type UtrSheetAnswer,
   type UtrSheetRefusal,
 } from "@edulink/contracts";
+import { formatPaise } from "@edulink/i18n";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./access-error";
@@ -67,7 +68,8 @@ function referenceFor(mode: PaymentMode, raw: string): string | null {
 /** What is wrong with recording `want` on `slip`, as a refusal key with its field, or null. Shared by the form and the sheet. */
 function problemWith(slip: SlipFacts, want: Want, window: { from: string; to: string }): { key: TranslationKey; field?: string; reason: UtrSheetRefusal } | null {
   if (slip.netPaise <= 0) return { key: "salaryPay.refuseNothingDue", reason: "NOTHING_DUE" };
-  if (want.amountPaise !== slip.netPaise) return { key: "salaryPay.refusePartial", field: "amountPaise", reason: "AMOUNT" };
+  // Less or more than the net alike (QB-11: an overpayment was called a part payment).
+  if (want.amountPaise !== slip.netPaise) return { key: "teachPay.refuseAmount", field: "amountPaise", reason: "AMOUNT" };
   if (want.paidOnKey < window.from || want.paidOnKey > window.to) return { key: "salaryPay.refusePaidOn", field: "paidOn", reason: "DATE" };
   if ((want.mode === "BANK" || want.mode === "UPI") && !(want.reference && UTR_PATTERN.test(want.reference))) return { key: "salaryPay.refuseUtr", field: "reference", reason: "REFERENCE" };
   if (want.mode === "CHEQUE" && !(want.reference && CHEQUE_NUMBER_PATTERN.test(want.reference))) return { key: "salaryPay.refuseCheque", field: "reference", reason: "REFERENCE" };
@@ -138,7 +140,7 @@ export async function recordSalaryPayment(ctx: ActiveContext, month: string, mem
         throw new RuleRefusal("salaryPay.refuseAlreadyPaid", 409, { date: live.paidOnKey });
       }
       const wrong = problemWith(slip, want, dayWindow(month, today));
-      if (wrong) throw new RuleRefusal(wrong.key, wrong.reason === "NOTHING_DUE" ? 409 : 422, wrong.reason === "AMOUNT" ? { amount: (slip.netPaise / 100).toFixed(2) } : undefined, wrong.field);
+      if (wrong) throw new RuleRefusal(wrong.key, wrong.reason === "NOTHING_DUE" ? 409 : 422, wrong.reason === "AMOUNT" ? { amount: formatPaise(slip.netPaise, "en", { always: true }) } : undefined, wrong.field);
       if (isUtrMode(want.mode)) {
         const taken = await tx.salaryPayment.findFirst({ where: { schoolId: caller.schoolId, liveUtr: want.reference }, select: { id: true } });
         if (taken) throw new RuleRefusal("salaryPay.refuseUtrTaken", 409, undefined, "reference");
@@ -239,7 +241,8 @@ export async function recordPaymentLines(ctx: ActiveContext, month: string, line
       await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.paymentRecorded", targetType: "Membership", targetId: j.slip!.membershipId, meta: { month, mode: j.want!.mode, amountPaise: j.want!.amountPaise, paidOn: j.want!.paidOnKey, via, runStatus: result.status } });
     }
   }
-  const lineView = result.judged.map((j) => ({ line: j.line, slipRef: j.slipRef, outcome: j.outcome, reason: j.reason }));
+  // A line judged good on a sheet refused whole was not recorded, and is not called so (QB-08).
+  const lineView = result.judged.map((j) => ({ line: j.line, slipRef: j.slipRef, outcome: j.outcome === "RECORDED" && !result.written ? ("WOULD_RECORD" as const) : j.outcome, reason: j.reason }));
   return {
     accepted: result.written,
     recorded: result.written ? lineView.filter((j) => j.outcome === "RECORDED").length : 0,

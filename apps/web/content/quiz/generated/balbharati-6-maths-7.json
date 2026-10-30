@@ -21,144 +21,49 @@
   "board": "BALBHARATI",
   "book": "६ वी गणित इंग्रजी",
   "edition": "First Edition 2026",
-  "generatedAt": "2026-10-30T13:43:29.476Z",
+  "generatedAt": "2026-10-30T22:39:07.307Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Which of the following is the simplest form of the ratio 60:40?",
+      "stem": "What is the ratio of 2 kg to 800 grams?",
       "choices": [
-        "5:3",
-        "3:2",
-        "2:3",
-        "2:1"
-      ],
-      "answerIndex": 1,
-      "solution": "The ratio 60:40 can be simplified by dividing both numbers by their greatest common divisor, which is 20. This gives 3:2. A pupil who adds the numbers instead of dividing might choose 5:3, while one who divides incorrectly might choose 4:3 or 2:1.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन 60:40 के अनुपात का सरलतम रूप है?",
-          "choices": [
-            "5:3",
-            "3:2",
-            "2:3",
-            "2:1"
-          ],
-          "solution": "अनुपात 60:40 को अपने महत्तम सामान्य भाजक द्वारा विभाजित करके सरल किया जा सकता है, जो 20 है। इससे 3:2 प्राप्त होता है। एक छात्र जो संख्याओं को जोड़ता है बजाय विभाजित करने के 5:3 चुन सकता है, जबकि एक छात्र जो गलती से विभाजित करता है 4:3 या 2:1 चुन सकता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता गुणोत्तर 60:40 चा सर्वांत सोपा रूप आहे?",
-          "choices": [
-            "5:3",
-            "3:2",
-            "2:3",
-            "2:1"
-          ],
-          "solution": "गुणोत्तर 60:40 ला सोपे करण्यासाठी दोन्ही संख्यांना त्यांच्या महत्तम सामाईक अपवर्तक, जो 20 आहे, ने भागले जाते. हे 3:2 देते. एका विद्यार्थी जो संख्या जोडतो तो 5:3 निवडेल, तर चुकीच्या भागाकाराने एखादा विद्यार्थी 4:3 किंवा 2:1 निवडेल.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses division with addition",
-        null,
-        "student divides 60 by 40 and writes the ratio as 2:3 instead of simplifying correctly",
-        "divides incorrectly by 15 instead of 20, resulting in 4:3, which is not simplest form, but a common mistake when not simplifying fully, and a pupil who simplifies 60:40 by 30, getting 2:1, might choose this as the answer"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3:2, as 60 and 40 share a GCD of 20. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 39,
-          "pageStart": 64,
-          "pageEnd": 65,
-          "headingPath": [
-            "7. Ratio and Proportion"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 40,
-          "pageStart": 65,
-          "pageEnd": 67,
-          "headingPath": [
-            "7. Ratio and Proportion"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 41,
-          "pageStart": 67,
-          "pageEnd": 68,
-          "headingPath": [
-            "7. Ratio and Proportion"
-          ]
-        }
-      ],
-      "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T13:43:29.476Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the ratio of the proportion 5 : 7?",
-      "choices": [
-        "5:7",
-        "7:5",
-        "5:7 (reversed)",
-        "5/7"
+        "5:2",
+        "2:5",
+        "5:1",
+        "1:5"
       ],
       "answerIndex": 0,
-      "solution": "The ratio of the proportion 5 : 7 is simply 5:7. A ratio is written as a:b, where a is the first term and b is the second term. The correct option is 5:7. The other options are incorrect because they use addition and subtraction instead of the correct ratio format.",
+      "solution": "The ratio of 2 kg to 800 grams is calculated by first converting both quantities to the same unit. Since 2 kg is 2000 grams, the ratio becomes 2000:800. Simplifying this by dividing both numbers by 400 gives 5:2. The incorrect options arise from miscalculating the conversion or simplification.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "5 : 7 अनुपात का अनुपात क्या है?",
+          "stem": "2 किग्रा का 800 ग्राम से अनुपात क्या है?",
           "choices": [
-            "5:7",
-            "7:5",
-            "5:7 (उल्टा)",
-            "5/7"
+            "5:2",
+            "2:5",
+            "5:1",
+            "1:5"
           ],
-          "solution": "5 : 7 अनुपात का अनुपात सरल रूप से 5:7 है। एक अनुपात को a:b के रूप में लिखा जाता है, जहां a पहला पद है और b दूसरा पद है। सही विकल्प 5:7 है। अन्य विकल्प गलत हैं क्योंकि वे सही अनुपात के रूप में जोड़ और घटाव का उपयोग करते हैं।",
+          "solution": "2 किग्रा का 800 ग्राम से अनुपात निकाला जाता है जब दोनों राशियों को एक ही इकाई में बदल दिया जाता है। 2 किग्रा बराबर 2000 ग्राम होता है, अतः अनुपात 2000:800 हो जाता है। दोनों संख्याओं को 400 से भाग देने पर 5:2 प्राप्त होता है। गलत विकल्प इकाई के अनुपात या सरलीकरण में गलती के कारण आते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "प्रमाण 5 : 7 चे गुणोत्तर किती आहे?",
+          "stem": "2 किलोग्रॅम आणि 800 ग्रॅम चे गुणोत्तर किती आहे?",
           "choices": [
-            "5:7",
-            "7:5",
-            "5:7 (उलटलेले)",
-            "5/7"
+            "5:2",
+            "2:5",
+            "5:1",
+            "1:5"
           ],
-          "solution": "प्रमाण 5 : 7 चे गुणोत्तर साधे 5:7 आहे. गुणोत्तर a:b अशा रूपात लिहिले जाते, जेथे a पहिला पद आहे आणि b दुसरा पद आहे. योग्य विकल्प 5:7 आहे. इतर विकल्प अशा रीतीने चूक आहेत कारण ते गुणोत्तराच्या योग्य स्वरूपाऐवजी जोडणी आणि वजाबाकी वापरतात.",
+          "solution": "2 किलोग्रॅम आणि 800 ग्रॅम चे गुणोत्तर काढण्यासाठी दोन्ही परिमाणांचे एकसारखे एककात रूपांतरित करावे लागते. 2 किलोग्रॅम म्हणजे 2000 ग्रॅम असते, त्यामुळे गुणोत्तर 2000:800 असते. दोन्ही संख्यांना 400 ने भागल्यास गुणोत्तर 5:2 होते. चुकीचे उत्तरे एककाच्या चुकीच्या रूपांतरामुळे किंवा संपादनामुळे येतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and maintains the same meaning, structure, and intent. Technical terms like 'गुणोत्तर' (ratio) and 'प्रमाण' (proportion) are correctly used in the Marathi context.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for 'ratio' and 'conversion'.",
           "flag": null
         }
       },
@@ -168,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the order of the ratio, thinking the second term comes first",
-        "Confuses ratio with proportion and reverses the terms",
-        "Confuses ratio with fraction representation"
+        "confuses the order of the ratio",
+        "divides 800 by 2000 instead of 2000 by 800",
+        "does not convert the units before calculating the ratio"
       ],
       "solverAnswers": [
         0,
@@ -180,11 +85,11 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is ambiguous because 'proportion' is not a standard term in this context. However, the intended answer is 0, and the reasoning is sound. The distractors reflect common misconceptions.",
+      "critique": "The solution is correct. The question requires unit conversion, and the correct ratio is 5:2 after converting 2 kg to 2000 grams and simplifying 2000:800.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 42,
+          "ordinal": 46,
           "pageStart": 69,
           "pageEnd": 70,
           "headingPath": [
@@ -193,58 +98,58 @@
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 43,
+          "ordinal": 47,
           "pageStart": 70,
-          "pageEnd": 72,
+          "pageEnd": 70,
           "headingPath": [
             "7. Ratio and Proportion"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T13:43:29.476Z",
+      "generatedAt": "2026-10-30T22:39:07.307Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "The ratio of the distance covered by Suresh to the distance covered by Ramesh is 1700:2000. What is this ratio in its simplest form?",
+      "difficulty": 3,
+      "stem": "In a class, there are 20 boys and 15 girls. What is the ratio of the number of girls to the number of boys?",
       "choices": [
-        "17:20",
-        "20:17",
-        "17:200",
-        "17:2000"
+        "3:4",
+        "4:5",
+        "5:3",
+        "5:4"
       ],
       "answerIndex": 0,
-      "solution": "The ratio 1700:2000 can be simplified by dividing both numbers by their greatest common divisor, which is 100, resulting in 17:20. This is the simplest form of the ratio. The other options do not correctly reduce the original ratio.",
+      "solution": "The ratio of girls to boys is 15:20. Simplifying this by dividing both numbers by 5 gives 3:4. The option '4:3' is incorrect because it reverses the order. '5:3' and '5:4' are incorrect as they do not result from the division by 5.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सुरेश द्वारा तय की गई दूरी और रमेश द्वारा तय की गई दूरी का अनुपात 1700:2000 है। इस अनुपात का सरलतम रूप क्या है?",
+          "stem": "एक कक्षा में 20 लड़के और 15 लड़कियाँ हैं। लड़कियों की संख्या का लड़कों की संख्या से अनुपात क्या है?",
           "choices": [
-            "17:20",
-            "20:17",
-            "17:200",
-            "17:2000"
+            "3:4",
+            "4:5",
+            "5:3",
+            "5:4"
           ],
-          "solution": "अनुपात 1700:2000 को उनके महत्तम सामान्य भाजक द्वारा विभाजित करके सरल किया जा सकता है, जो 100 है, जिसके परिणामस्वरूप 17:20 प्राप्त होता है। यह अनुपात का सरलतम रूप है। अन्य विकल्प मूल अनुपात को सही तरीके से सरल नहीं करते हैं।",
+          "solution": "लड़कियों का लड़कों से अनुपात 15:20 है। दोनों संख्याओं को 5 से विभाजित करके इसे सरल किया जाता है जिससे 3:4 प्राप्त होता है। '4:3' गलत है क्योंकि इसमें क्रम उलट गया है। '5:3' और '5:4' गलत हैं क्योंकि ये 5 से विभाजन के परिणाम नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "सुरेश आणि रमेश द्वारे कापलेल्या अंतराचा गुणोत्तर 1700:2000 आहे. हा गुणोत्तर सर्वांत सोप्या रूपात कोणता असेल?",
+          "stem": "एका वर्गात 20 बालके आणि 15 बालिका आहेत. बालिकांच्या संख्येचे बालकांच्या संख्येशी अनुपात काय आहे?",
           "choices": [
-            "17:20",
-            "20:17",
-            "17:200",
-            "17:2000"
+            "3:4",
+            "4:5",
+            "5:3",
+            "5:4"
           ],
-          "solution": "गुणोत्तर 1700:2000 ला त्यांच्या महत्तम सामायिक अपवर्तकाने भागून सोपे केले जाऊ शकते, जो 100 आहे, ज्यामुळे 17:20 मिळते. हा मूळ गुणोत्तराचा सर्वांत सोपा रूप आहे. इतर विकल्प मूळ गुणोत्तराला योग्यरीत्या सोपे करत नाहीत.",
+          "solution": "बालिकांचे बालकांशी अनुपात 15:20 आहे. दोन्ही संख्या 5 ने भागल्याने 3:4 मिळतो. '4:3' अपयशी आहे कारण तो क्रम उलट करतो. '5:3' आणि '5:4' अपयशी आहेत कारण ते 5 ने भागल्यानंतर मिळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for 'ratio' (गुणोत्तर) and 'greatest common divisor' (महत्तम सामायिक अपवर्तक).",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
           "flag": null
         }
       },
@@ -254,9 +159,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the order of the ratio, thinking it should be Ramesh to Suresh instead of Suresh to Ramesh",
-        "Confuses the original numbers with an extra zero added to the second term",
-        "Confuses the original numbers with the simplified ratio by not dividing both terms by the same factor"
+        "Confuses the order of the ratio, thinking girls to boys is boys to girls",
+        "reverses the order of the ratio",
+        "uses incorrect common divisor"
       ],
       "solverAnswers": [
         0,
@@ -265,12 +170,12 @@
         0,
         0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The ratio 1700:2000 simplifies to 17:20 by dividing both terms by 100. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 3:4, as the ratio of 15 girls to 20 boys simplifies to 3:4. The other options represent common misconceptions such as reversing the ratio or using incorrect divisors.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 39,
+          "ordinal": 43,
           "pageStart": 64,
           "pageEnd": 65,
           "headingPath": [
@@ -279,7 +184,7 @@
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 40,
+          "ordinal": 44,
           "pageStart": 65,
           "pageEnd": 67,
           "headingPath": [
@@ -288,7 +193,7 @@
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 41,
+          "ordinal": 45,
           "pageStart": 67,
           "pageEnd": 68,
           "headingPath": [
@@ -297,49 +202,135 @@
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T13:43:29.476Z",
+      "generatedAt": "2026-10-30T22:39:07.307Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If the ratio of 5 rupees to 80 paise is calculated, what is the simplified form of this ratio?",
+      "difficulty": 3,
+      "stem": "If the cost of 10 compass boxes is ₹850, what will be the cost of 67 compass boxes?",
       "choices": [
-        "25:4",
-        "1:20",
-        "5:80",
-        "10:16"
+        "₹5250",
+        "₹5650",
+        "₹5755",
+        "₹5695"
+      ],
+      "answerIndex": 3,
+      "solution": "The cost of 10 compass boxes is ₹850, so the cost of 1 compass box is ₹85. The cost of 67 compass boxes is 67 × ₹85 = ₹5695. The option ₹5695 is correct because it is the product of 67 and 85. The other options are incorrect because they do not represent the correct multiplication of 67 and 85.",
+      "checkExpr": "67*85",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 10 कम्पास बॉक्स की कीमत ₹850 है, तो 67 कम्पास बॉक्स की कीमत क्या होगी?",
+          "choices": [
+            "₹5250",
+            "₹5650",
+            "₹5755",
+            "₹5695"
+          ],
+          "solution": "10 कम्पास बॉक्स की कीमत ₹850 है, अतः 1 कम्पास बॉक्स की कीमत ₹85 है। 67 कम्पास बॉक्स की कीमत 67 × ₹85 = ₹5695 है। ₹5695 विकल्प सही है क्योंकि यह 67 और 85 के गुणनफल के बराबर है। अन्य विकल्प गलत हैं क्योंकि वे 67 और 85 के सही गुणनफल का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 3), and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "10 कॉम्पास बॉक्सची किंमत ₹850 असल्यास, 67 कॉम्पास बॉक्सची किंमत किती असेल?",
+          "choices": [
+            "₹5250",
+            "₹5650",
+            "₹5755",
+            "₹5695"
+          ],
+          "solution": "10 कॉम्पास बॉक्सची किंमत ₹850 असल्याने, 1 कॉम्पास बॉक्सची किंमत ₹85 असेल. 67 कॉम्पास बॉक्सची किंमत 67 × ₹85 = ₹5695 असेल. ₹5695 चा विकल्प बरोबर असेल कारण तो 67 आणि 85 च्या गुणाकाराचा असेल. इतर विकल्प चुकीचे असतील कारण ते 67 आणि 85 च्या योग्य गुणाकाराचे प्रतिनिधित्व करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "multiplies 67 by 80 instead of 85",
+        "adds 850 to 67 instead of multiplying",
+        "rounds 85 to 80 and multiplies by 67",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The cost per compass box is ₹85 (850 ÷ 10), and 67 × 85 = 5695. All distractors are based on plausible errors such as incorrect multiplication or addition.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 46,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "7. Ratio and Proportion"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 47,
+          "pageStart": 70,
+          "pageEnd": 70,
+          "headingPath": [
+            "7. Ratio and Proportion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:39:07.307Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cook prepares 10 kilograms of rice every day for 100 students in a school as part of mid-day meal. But one day, due to heavy rain, only 80 students were present in the school. How many kilograms of rice should be cooked on that day?",
+      "choices": [
+        "8 kg",
+        "10 kg",
+        "12 kg",
+        "16 kg"
       ],
       "answerIndex": 0,
-      "solution": "To find the ratio of 5 rupees to 80 paise, first convert 5 rupees to paise, which is 500 paise. The ratio becomes 500:80, which simplifies to 25:4 by dividing both numbers by 20. The other options are incorrect because they either do not simplify the ratio properly or use the original values without conversion.",
+      "solution": "The cook prepares 10 kg of rice for 100 students, so the amount of rice per student is 10 kg ÷ 100 = 0.1 kg per student. For 80 students, the amount of rice needed is 0.1 kg × 80 = 8 kg. The incorrect options arise from miscalculating the rice per student or not adjusting for the number of students.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 5 रुपये के अनुपात की 80 पैसे से गणना की जाए, तो इस अनुपात का सरलीकृत रूप क्या है?",
+          "stem": "एक रसोईया प्रतिदिन 100 छात्रों के लिए मध्याह्न भोजन के हिस्से के रूप में 10 किलोग्राम चावल तैयार करता है। लेकिन एक दिन, भारी बरसात के कारण स्कूल में केवल 80 छात्र उपस्थित रहे। उस दिन कितने किलोग्राम चावल तैयार किए जाने चाहिए?",
           "choices": [
-            "25:4",
-            "1:20",
-            "5:80",
-            "10:16"
+            "8 किग्रा",
+            "10 किग्रा",
+            "12 किग्रा",
+            "16 किग्रा"
           ],
-          "solution": "5 रुपये के अनुपात की 80 पैसे से गणना करने के लिए, पहले 5 रुपये को पैसे में बदलें, जो 500 पैसे होता है। अनुपात 500:80 बन जाता है, जो 20 से विभाजित करके 25:4 तक सरल हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे अनुपात को सही तरह से सरल नहीं करते या मूल मानों का उपयोग करते हैं बिना परिवर्तन के।",
+          "solution": "रसोईया 100 छात्रों के लिए 10 किग्रा चावल तैयार करता है, इसलिए प्रति छात्र चावल की मात्रा 10 किग्रा ÷ 100 = 0.1 किग्रा प्रति छात्र है। 80 छात्रों के लिए आवश्यक चावल की मात्रा 0.1 किग्रा × 80 = 8 किग्रा है। गलत विकल्प छात्र प्रति चावल की गणना गलत करने या छात्रों की संख्या के अनुसार समायोजन न करने के कारण उत्पन्न होते हैं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (1) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "5 रुपये आणि 80 पैसे चे गुणोत्तर काढल्यास, ह्या गुणोत्तराचे सरलीकृत रूप काय असेल?",
+          "stem": "एका रसोईयाने शाळेतील 100 विद्यार्थ्यांसाठी दररोज 10 किलोग्राम चावल तयार करतो. परंतु एक दिवस भारी पाऊस झाल्यामुळे शाळेत केवळ 80 विद्यार्थी उपस्थित होते. त्या दिवशी चावल किती किलोग्राम तयार करावा लागेल?",
           "choices": [
-            "25:4",
-            "1:20",
-            "5:80",
-            "10:16"
+            "8 किलोग्राम",
+            "10 किलोग्राम",
+            "12 किलोग्राम",
+            "16 किलोग्राम"
           ],
-          "solution": "5 रुपये आणि 80 पैसे चे गुणोत्तर शोधण्यासाठी, सर्वप्रथम 5 रुपये पैसे मध्ये बदलावे लागतील, जे 500 पैसे असतील. गुणोत्तर 500:80 असते, जे 20 ने भागल्यानंतर 25:4 असते. इतर विकल्प चुकीचे आहेत कारण ते गुणोत्तर योग्यरित्या सरलीकृत करत नाहीत किंवा मूळ मूल्यांचा वापर करतात.",
+          "solution": "रसोईयाने 100 विद्यार्थ्यांसाठी 10 किलोग्राम चावल तयार करतो, म्हणून एका विद्यार्थ्यासाठी चावलाची रक्कम 10 किलोग्राम ÷ 100 = 0.1 किलोग्राम प्रति विद्यार्थी आहे. 80 विद्यार्थ्यांसाठी आवश्यक चावलाची रक्कम 0.1 किलोग्राम × 80 = 8 किलोग्राम आहे. चुकीच्या विकल्पांमध्ये विद्यार्थ्यांच्या चावलाच्या रकमेचा गणना करण्यात झालेली चूक किंवा विद्यार्थ्यांच्या संख्येच्या अनुसार समायोजन करण्यात आलेली नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for currency and ratios.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used.",
           "flag": null
         }
       },
@@ -349,9 +340,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses rupees and paise, thinking 5 rupees is 5 paise",
-        "Confuses the order of the ratio, thinking 80:500 is 4:25 instead of 25:4",
-        "Confuses the simplification, thinking 500:80 is 5:80 instead of 25:4 (not simplifying at all)"
+        "uses the same amount of rice as usual",
+        "multiplies 10 kg by 100 instead of dividing",
+        "adds 20 students to the total"
       ],
       "solverAnswers": [
         0,
@@ -360,39 +351,202 @@
         0,
         0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The ratio of 5 rupees to 80 paise is correctly converted to 500 paise to 80 paise, then simplified to 25:4. All distractors are based on plausible misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the rice per student and adjusts for the reduced number of students. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 39,
-          "pageStart": 64,
-          "pageEnd": 65,
+          "ordinal": 46,
+          "pageStart": 69,
+          "pageEnd": 70,
           "headingPath": [
             "7. Ratio and Proportion"
           ]
         },
         {
           "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 40,
-          "pageStart": 65,
-          "pageEnd": 67,
-          "headingPath": [
-            "7. Ratio and Proportion"
-          ]
-        },
-        {
-          "document": "balbharati/6/mathematics/603060004.pdf",
-          "ordinal": 41,
-          "pageStart": 67,
-          "pageEnd": 68,
+          "ordinal": 47,
+          "pageStart": 70,
+          "pageEnd": 70,
           "headingPath": [
             "7. Ratio and Proportion"
           ]
         }
       ],
       "edition": "First Edition 2026",
-      "generatedAt": "2026-10-30T13:43:29.476Z",
+      "generatedAt": "2026-10-30T22:39:07.307Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The length of a rectangular sheet is 1.20 m and the width is 48 cm. Find the ratio of the width to the length of the sheet.",
+      "choices": [
+        "2:5",
+        "1:2",
+        "4:5",
+        "5:2"
+      ],
+      "answerIndex": 0,
+      "solution": "To find the ratio of the width to the length, both measurements must be in the same unit. Converting 1.20 m to 120 cm, the ratio becomes 48 cm : 120 cm. Simplifying this by dividing both numbers by 24 gives 2:5. The incorrect options arise from not converting the units or simplifying the ratio incorrectly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयताकार शीट की लंबाई 1.20 मीटर है और चौड़ाई 48 सेमी है। शीट की चौड़ाई का लंबाई से अनुपात ज्ञात कीजिए।",
+          "choices": [
+            "2:5",
+            "1:2",
+            "4:5",
+            "5:2"
+          ],
+          "solution": "चौड़ाई का लंबाई से अनुपात ज्ञात करने के लिए, दोनों माप को एक ही इकाई में होना चाहिए। 1.20 मीटर को 120 सेमी में बदलकर, अनुपात 48 सेमी : 120 सेमी हो जाता है। दोनों संख्याओं को 24 से विभाजित करके इसका सरलीकरण करने पर 2:5 प्राप्त होता है। गलत विकल्प इकाई के रूपांतरण न करने या अनुपात के सरलीकरण के गलत तरीके के कारण बनते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आयताकृती पत्राची लांबी 1.20 मी आहे आणि रुंदी 48 सेमी आहे. पत्राच्या रुंदी आणि लांबीचे गुणोत्तर काढा.",
+          "choices": [
+            "2:5",
+            "1:2",
+            "4:5",
+            "5:2"
+          ],
+          "solution": "रुंदी आणि लांबीचे गुणोत्तर शोधण्यासाठी, दोन्ही मापने एकाच एककात असावीत. 1.20 मी ला 120 सेमी मध्ये बदलल्यास, गुणोत्तर 48 सेमी : 120 सेमी असते. दोन्ही संख्या 24 ने भागल्यास गुणोत्तर 2:5 असते. चुकीचे विकल्प एककांचे रूपांतर करण्याच्या चूकीमुळे किंवा गुणोत्तर सोपे करण्याच्या चूकीमुळे येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'ratio' (गुणोत्तर) and 'unit conversion' (एककांचे रूपांतर).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the order of the ratio",
+        "does not convert the units before calculating the ratio",
+        "divides 120 by 48 instead of 48 by 120"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The key is accurate, and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 46,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "7. Ratio and Proportion"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 47,
+          "pageStart": 70,
+          "pageEnd": 70,
+          "headingPath": [
+            "7. Ratio and Proportion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:39:07.307Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the ratio of the number of students playing hockey to the number of students playing kho-kho is 1:2, then what is the ratio of the number of students playing kho-kho to the total number of students?",
+      "choices": [
+        "1:3",
+        "2:3",
+        "3:2",
+        "2:1"
+      ],
+      "answerIndex": 1,
+      "solution": "If the ratio of hockey players to kho-kho players is 1:2, then the total number of students playing either game is 1 + 2 = 3. The ratio of kho-kho players to the total number of students is 2:3. The incorrect options arise from miscalculating the total or misunderstanding the ratio.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि हॉकी खेलने वाले छात्रों की संख्या और को-को खेलने वाले छात्रों की संख्या का अनुपात 1:2 है, तो को-को खेलने वाले छात्रों की संख्या और कुल छात्रों की संख्या का अनुपात क्या है?",
+          "choices": [
+            "1:3",
+            "2:3",
+            "3:2",
+            "2:1"
+          ],
+          "solution": "यदि हॉकी खेलने वाले छात्रों का को-को खेलने वाले छात्रों से अनुपात 1:2 है, तो किसी भी खेल के खेलने वाले छात्रों की कुल संख्या 1 + 2 = 3 होगी। को-को खेलने वाले छात्रों का कुल छात्रों की संख्या से अनुपात 2:3 होगा। गलत विकल्प या तो कुल संख्या की गलत गणना के कारण होते हैं या अनुपात के गलत समझ के कारण।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हॉकी खेळणारे विद्यार्थी संख्या आणि को-को खेळणारे विद्यार्थी संख्या यांचे गुणोत्तर 1:2 असल्यास, को-को खेळणारे विद्यार्थी संख्या आणि एकूण विद्यार्थी संख्या यांचे गुणोत्तर किती असेल?",
+          "choices": [
+            "1:3",
+            "2:3",
+            "3:2",
+            "2:1"
+          ],
+          "solution": "जर हॉकी खेळणारे विद्यार्थी आणि को-को खेळणारे विद्यार्थी यांचे गुणोत्तर 1:2 असेल, तर एकूण विद्यार्थी संख्या खेळणारे विद्यार्थी एकूण 1 + 2 = 3 असतील. को-को खेळणारे विद्यार्थी आणि एकूण विद्यार्थी यांचे गुणोत्तर 2:3 असते. चुकीचे विकल्प एकूण संख्या चुकून गणल्यामुळे किंवा गुणोत्तर चुकून घेतल्यामुळे तयार होतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for ratios and numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses the ratio of hockey players to total students",
+        null,
+        "confuses the order of the ratio",
+        "does not add the parts of the ratio correctly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the total number of students as 1 + 2 = 3 and identifies the ratio of kho-kho players to the total as 2:3. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 46,
+          "pageStart": 69,
+          "pageEnd": 70,
+          "headingPath": [
+            "7. Ratio and Proportion"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 47,
+          "pageStart": 70,
+          "pageEnd": 70,
+          "headingPath": [
+            "7. Ratio and Proportion"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T22:39:07.307Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

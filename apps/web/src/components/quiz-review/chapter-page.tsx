@@ -58,7 +58,7 @@ export async function ChapterQuestionsPage({ base, slug, searchParams, bankEdito
   return (
     <div className="space-y-5">
       <BackLink href={`${base}?${back.toString()}#chapters`} label={t("bankDesk.backToBank")} />
-      <PageHeader title={data.topic.name} description={groupHeading(data.topic, t)} />
+      <PageHeader title={data.topic.name} description={data.topic.book ? t("qbBank.chapterHeadingBook", { heading: groupHeading(data.topic, t), book: data.topic.book }) : groupHeading(data.topic, t)} />
 
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
         <nav aria-label={t("bankDesk.languageLabel")} className="flex flex-wrap items-center gap-2">

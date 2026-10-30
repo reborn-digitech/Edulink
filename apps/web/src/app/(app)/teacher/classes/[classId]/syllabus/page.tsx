@@ -105,7 +105,7 @@ export default async function ClassSyllabusPage({ params, searchParams }: { para
             <CardHeader icon={<BooksIcon weight="duotone" className="size-5" />} title={t("syllabus.chapters")} description={view.subject ?? undefined} />
             <CardBody>
               {view.units.length === 0 ? (
-                <EmptyState className="border-0 bg-transparent py-6" title={t("syllabus.noUnitsForClass")} description={t("syllabus.noUnitsForClassBody")} />
+                <EmptyState className="border-0 bg-transparent py-6" title={t("syllabus.noUnitsForClass")} description={t(view.canEdit ? "syllabus.noUnitsForClassBody" : "teachPay.noUnitsReadOnly")} />
               ) : (
                 <ol className="divide-y divide-border">
                   {view.units.map((unit) => (

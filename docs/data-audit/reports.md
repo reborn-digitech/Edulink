@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-30T22:04:24.560Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 644 WARN · 302 INFO
+Run: 2026-10-30T23:06:44.330Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 644 WARN · 302 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -718,8 +718,8 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | report-card-items | Sunrise Public School | 128 card papers checked against their grades |
 | report-card-items | ZZ Northgate School | 48 card papers checked against their grades |
 | certificates | Saraswati Vidya Mandir | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
-| certificates | Sunrise Public School | TC/2025–26/0001 (TC) went out with "—" for pupil.motherName, pupil.nationality, pupil.religion, pupil.caste, pupil.category, pupil.motherTongue, pupil.placeOfBirth, pupil.previousSchool, issue.remark |
 | certificates | Sunrise Public School | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
+| certificates | Sunrise Public School | TC/2025–26/0001 (TC) went out with "—" for pupil.motherName, pupil.nationality, pupil.religion, pupil.caste, pupil.category, pupil.motherTongue, pupil.placeOfBirth, pupil.previousSchool, issue.remark |
 | tc-register | Saraswati Arts and Science College | 0 leaving record(s) and 0 TC certificate(s) over 0 year(s) |
 | tc-register | Saraswati College of Agriculture | 0 leaving record(s) and 0 TC certificate(s) over 0 year(s) |
 | tc-register | Saraswati College of Education | 0 leaving record(s) and 0 TC certificate(s) over 0 year(s) |
@@ -810,7 +810,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | year-archive | Saraswati Vocational College | 2025–26: 6 on roll, 0 leavers, 0 badges archived |
 | year-archive | Sunrise Public School | 2025–26: 43 on roll, 1 leavers, 0 badges archived |
 | year-archive | ZZ Northgate School | no closed year |
-| retention | platform | tonight would take sessions 104, tokens 0, rateLimits 0, uploadTickets 0, outbox 3629, jobRuns 0, auditRows 0, healthReads 0, tripPositions 0, assistantConversations 0, assistantUsage 0 |
+| retention | platform | tonight would take sessions 104, tokens 0, rateLimits 0, uploadTickets 0, outbox 3671, jobRuns 0, auditRows 0, healthReads 0, tripPositions 0, assistantConversations 0, assistantUsage 0 |
 | inputs-school | Saraswati Arts and Science College | school has no UDISE code — every UDISE+ sheet's first column and file name |
 | inputs-school | Saraswati Arts and Science College | school has no board — which board sheet applies |
 | inputs-school | Saraswati Arts and Science College | school has no affiliation or index number — CBSE and MSBSHSE first column |

@@ -2,7 +2,7 @@ import "server-only";
 import type { z } from "zod";
 import type { lessonPlanSaveSchema, officeSyllabusSaveSchema, officeSyllabusSchema, staffSyllabusSchema, syllabusCoverageSchema, planTemplateApplySchema, planTemplateSaveSchema, planTemplatesSchema } from "@edulink/contracts";
 import { db } from "./db";
-import { AccessError, assertClassAccess, matchSubject, teachesClass } from "./tenancy";
+import { AccessError, assertClassAccess, matchSubject, teachesClass, type ClassTeaching } from "./tenancy";
 import { audit } from "./audit";
 import { currentAcademicYear } from "./academic-year";
 import { todayKey } from "./dates";
@@ -48,9 +48,20 @@ const norm = (s: string) => s.trim().replace(/\s+/g, " ");
  * subjects they take there and reads the rest.
  */
 async function writesSubject(caller: Staff, classId: string, subject: string): Promise<boolean> {
-  const teaching = await teachesClass({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, classId);
+  return mayWrite(await teachesClass({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, classId), subject);
+}
+function mayWrite(teaching: ClassTeaching | null, subject: string): boolean {
   if (!teaching) return false;
   return teaching.formTeacher || matchSubject(teaching.subjects, subject) !== null;
+}
+
+/**
+ * A subject as the class spells it (qb-B, QB-04 of the QA pass of 31 October 2026): "english" typed into a lesson
+ * or a read is the class's "English", case and spacing aside, as the write check already compared it. A subject
+ * the class does not have is kept as typed, tidied.
+ */
+function classSpelling(subjects: string[], typed: string): string {
+  return matchSubject(subjects, typed) ?? norm(typed);
 }
 async function assertWritesSubject(caller: Staff, classId: string, subject: string): Promise<void> {
   if (!(await writesSubject(caller, classId, subject))) throw new AccessError("subjectWork.refuseSyllabus");
@@ -169,8 +180,11 @@ export async function syllabusCoverage(ctx: ActiveContext): Promise<z.infer<type
 export async function staffSyllabus(ctx: ActiveContext, query: { classId: string; subject?: string }): Promise<z.infer<typeof staffSyllabusSchema>> {
   const caller = staff(ctx);
   const klass = await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, query.classId);
-  const subjects = await subjectsOf(caller.schoolId, klass);
-  const subject = query.subject ? norm(query.subject) : (subjects[0] ?? null);
+  const [subjects, teaching] = await Promise.all([subjectsOf(caller.schoolId, klass), teachesClass({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, klass.id)]);
+  // Asked for, in the class's spelling; else the caller's own subject here, the first the week meets (QB-05: a
+  // subject teacher opened on the class's first subject, read-only); else the class's first.
+  const own = (teaching?.subjects ?? []).map((s) => matchSubject(subjects, s)).find((s): s is string => s !== null) ?? null;
+  const subject = query.subject ? classSpelling(subjects, query.subject) : (own ?? subjects[0] ?? null);
   const [units, lessons] = await Promise.all([
     subject && klass.gradeLevel ? db.syllabusUnit.findMany({ where: { schoolId: caller.schoolId, gradeLevel: klass.gradeLevel, subject }, orderBy: { position: "asc" }, include: { progress: { where: { classId: klass.id }, include: { by: { select: { user: { select: { name: true, preferredName: true } } } } } }, _count: { select: { lessons: { where: { classId: klass.id } } } } } }) : [],
     subject ? db.lessonPlan.findMany({ where: { classId: klass.id, subject }, orderBy: [{ dateKey: "desc" }, { createdAt: "desc" }], take: 60, include: { unit: { select: { title: true } }, teacher: { select: { user: { select: { name: true, preferredName: true } } } } } }) : [],
@@ -186,7 +200,7 @@ export async function staffSyllabus(ctx: ActiveContext, query: { classId: string
     percent: units.length === 0 ? null : Math.round((done / units.length) * 100),
     lessons: lessons.map((l) => ({ id: l.id, subject: l.subject, unitId: l.unitId, unitTitle: l.unit?.title ?? null, dateKey: l.dateKey, topic: l.topic, notes: l.notes, homework: l.homework, status: l.status as "PLANNED" | "TAUGHT" | "SKIPPED", teacherName: l.teacher.user.preferredName ?? l.teacher.user.name, updatedAt: l.updatedAt.toISOString() })),
     // A teacher the timetable sends here reads every subject and writes their own (owner's item 1).
-    canEdit: subject ? await writesSubject(caller, klass.id, subject) : true,
+    canEdit: subject ? mayWrite(teaching, subject) : true,
   };
 }
 
@@ -216,8 +230,10 @@ export async function saveLessonPlan(ctx: ActiveContext, input: z.infer<typeof l
     const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true } });
     if (!unit) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");
   }
+  // Stored as the class spells it, so the lesson lists under its syllabus (QB-04); the check above already matched it so.
+  const subject = classSpelling(await subjectsOf(caller.schoolId, klass), input.subject);
   const lesson = await db.lessonPlan.create({
-    data: { schoolId: caller.schoolId, classId: klass.id, teacherMembershipId: caller.membershipId, subject: norm(input.subject), unitId: input.unitId ?? null, dateKey: input.dateKey, topic: norm(input.topic), notes: input.notes, homework: input.homework, status: input.status },
+    data: { schoolId: caller.schoolId, classId: klass.id, teacherMembershipId: caller.membershipId, subject, unitId: input.unitId ?? null, dateKey: input.dateKey, topic: norm(input.topic), notes: input.notes, homework: input.homework, status: input.status },
     select: { id: true },
   });
   if (input.status === "TAUGHT" && input.unitId) await nudgeUnit(caller, klass.id, input.unitId);

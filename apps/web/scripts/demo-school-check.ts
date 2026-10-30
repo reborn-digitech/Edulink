@@ -5,7 +5,7 @@
  *
  *   node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-school-check.ts
  *       … --facts                 the facts only (no server needed)
- *       … --part=item4a|item4b    one builder's blocks only
+ *       … --part=item4a|item4b|qb-C one builder's blocks only
  *       … --out=<file>            also write every line as JSON
  *
  * 1. THE FACTS, read from the rows (ok / GAP lines), one block per builder.
@@ -25,10 +25,12 @@
  */
 import { execFileSync } from "node:child_process";
 import { request } from "node:http";
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { PrismaClient } from "@prisma/client";
 import { en } from "@edulink/i18n/en";
 import { streamedStatus } from "./streamed-status";
+import { join } from "node:path";
+import { gatedPathsIn, markOf, strayMarksIn } from "./demo-feature-paths"; // qb-C
 
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 const BASE = process.env.BASE ?? "http://localhost:3000";
@@ -448,6 +450,41 @@ WALKS.push({
   },
 });
 // owner-batch-item4b end ─────────────────────────────────────────────────────────────────────────────────────
+
+/* ========================================================================== */
+// qb-C ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+/**
+ * THE ROSTER'S PAGES BEHIND A PLATFORM SWITCH (QB-15). docs/demo-schools.md, the part demo:schools writes (up
+ * to the first other generator's section), is read back: every path a switch closes is a fact — marked with
+ * its switches, and the switch's state now said in the detail (off: the page is 404 for every account) — and
+ * a mark on a path no switch closes is a gap too. Facts, not walks: a closed page is meant to be 404.
+ */
+FACTS.push({
+  part: "qb-C",
+  run: async () => {
+    const out: Line[] = [];
+    const check = fact("qb-C", out);
+    const whole = readFileSync(join(process.cwd(), "..", "..", "docs", "demo-schools.md"), "utf8");
+    const begin = whole.search(/<!-- [a-z-]+:begin -->/);
+    const roster = begin < 0 ? whole : whole.slice(0, begin);
+    const on = new Set((await db.platformFeature.findMany({ where: { enabled: true }, select: { code: true } })).map((r) => r.code));
+    const seen = new Map<string, { features: ReturnType<typeof gatedPathsIn>[number]["features"]; marked: boolean; times: number }>();
+    for (const g of gatedPathsIn(roster)) {
+      const prior = seen.get(g.path);
+      seen.set(g.path, { features: g.features, marked: (prior?.marked ?? true) && g.marked, times: (prior?.times ?? 0) + 1 });
+    }
+    for (const [path, g] of [...seen].sort(([a], [b]) => a.localeCompare(b))) {
+      const state = g.features.map((f) => `${f} ${on.has(f) ? "on" : "off"}`).join(", ");
+      const closed = g.features.every((f) => !on.has(f));
+      check(`roster: ${path} marked ${markOf(g.features)}`, g.marked, `${state}${closed ? " — 404 for every account until switched on" : ""}${g.times > 1 ? `; ${g.times} mentions` : ""}`);
+    }
+    check("roster: the gated paths it names", seen.size > 0, `${seen.size}`);
+    const stray = strayMarksIn(roster);
+    check("roster: no mark on a path no switch closes", stray.length === 0, stray.join("; "));
+    return out;
+  },
+});
+// qb-C end ──────────────────────────────────────────────────────────────────────────────────────────────────────
 
 /* ========================================================================== */
 /* the walk                                                                    */

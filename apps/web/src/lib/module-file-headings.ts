@@ -9,7 +9,8 @@
  */
 export const FILE_HEADINGS = {
   ESI: ["IP Number", "IP Name", "No of Days for which wages paid/payable during the month", "Total Monthly Wages", "Reason Code for Zero workings days", "Last Working Day"],
-  BANK_ADVICE: ["Sr No", "Beneficiary Name", "Account Number", "IFSC", "Amount", "Narration"],
+  /** qb-B (QB-07): the Slip Ref the UTR sheet matches by, as on the UPI advice. */
+  BANK_ADVICE: ["Sr No", "Beneficiary Name", "Account Number", "IFSC", "Amount", "Narration", "Slip Ref"],
   PT: ["Name", "Gross (INR)", "Professional tax (INR)", "State"],
   TDS_SUMMARY: ["Name", "PAN", "Gross (INR)", "TDS (INR)"],
   /** owner-batch-item2b: one credit a line for the school's own UPI app or its bank's UPI bulk upload; the slip ref comes back on the UTR sheet. */

@@ -25,6 +25,7 @@ const BOOK = teachingGradebookSchema.parse({
     title: "ZZ Fractions worksheet",
     body: "ZZ Show your working.",
     category: "Homework",
+    subject: "Maths",
     pointsMilli: 20_000,
     dueAt: "2026-09-20T10:30:00.000Z",
     publishedAt: null,
@@ -71,7 +72,8 @@ describe("one assignment's gradebook", () => {
     expect(screen.getByRole("progressbar")).toBeTruthy();
     gate.open(() => json(BOOK));
     await screen.findByText("ZZ Fractions worksheet");
-    expect(screen.getByText(/^ZZ 5A · Homework · out of 20 · due /)).toBeTruthy();
+    // qb-B (QB-03): the work's subject beside the class.
+    expect(screen.getByText(/^ZZ 5A · Maths · Homework · out of 20 · due /)).toBeTruthy();
     expect(screen.getByText("This is still a draft. Students cannot see it and nobody has been told.")).toBeTruthy();
     expect(screen.getByText("ZZ Show your working.")).toBeTruthy();
     expect(screen.getByText("ZZ sheet.pdf")).toBeTruthy();

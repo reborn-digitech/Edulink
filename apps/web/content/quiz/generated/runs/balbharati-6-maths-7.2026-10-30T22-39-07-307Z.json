@@ -1,0 +1,502 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T22:39:07.307Z",
+  "finishedAt": "2026-10-30T22:50:49.693Z",
+  "seconds": 702,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Ratio and Proportion",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. In which ratio the y-axis divides the line segment joining the points (5, – 6) and (–1, – 4)?. 1\n(a) 1 : 5 (b) 5 : 1 (c) 1 : 1 (d) 1 : 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 177929,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16958,
+      "completionTokens": 5688
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 599851,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 15642,
+      "completionTokens": 6054
+    },
+    "solver": {
+      "calls": 146,
+      "ms": 216198,
+      "in": 17,
+      "out": 8,
+      "rejects": 9,
+      "promptTokens": 29929,
+      "completionTokens": 1685
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 19779,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 665722,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14171,
+      "completionTokens": 6574
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the ratio of 5 rupees to 80 paise?",
+      "ms": {
+        "draft": 5448,
+        "critique": 12075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a factory, 320 workers are working, out of which 200 are male. What is the ratio of the number of male workers to the total number of workers?",
+      "ms": {
+        "draft": 5448,
+        "critique": 11635
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about ratios?",
+      "ms": {
+        "draft": 5448,
+        "critique": 11421,
+        "solver": 17625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the simplest form of the ratio 60:40?",
+      "ms": {
+        "draft": 5448,
+        "critique": 14188,
+        "solver": 18075
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper mixes two types of tea, one worth ₹ 60 per kg and the other worth ₹ 65 per kg. He sells the mixture at ₹ 68.20 per kg with a 10% gain. In what ratio should he mix the two types of tea?",
+      "ms": {
+        "draft": 5448,
+        "critique": 9735,
+        "solver": 2361
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The length and width of a photograph are in the ratio 3:2. If the length is increased by 20% and the width is decreased by 10%, what is the new ratio of length to width?",
+      "ms": {
+        "draft": 5448,
+        "critique": 8221
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 2 kg to 800 grams?",
+      "ms": {
+        "draft": 5109,
+        "critique": 7366,
+        "solver": 1638
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of the number of students playing hockey to the number of students playing kho-kho?",
+      "ms": {
+        "draft": 5109,
+        "critique": 9356
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Michael saves ₹13,000 out of his monthly income of ₹52,000. What is the ratio of his monthly income to his expenditure?",
+      "ms": {
+        "draft": 5109,
+        "critique": 8288
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A school purchased 35 saplings from 'Yashoda' nursery for ₹455 and the remaining 15 saplings from 'Amol' nursery for ₹240. From which nursery will the school get the saplings at a lower price per sapling?",
+      "ms": {
+        "draft": 5109,
+        "critique": 5694
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A goods train covers 240 km in 4 hours. How much distance will it cover in 7 hours?",
+      "ms": {
+        "draft": 5109,
+        "critique": 7021,
+        "solver": 15119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A school wanted to purchase 50 saplings for planting trees on the occasion of Environment Day. The school purchased 35 saplings from 'Yashoda' nursery for ₹455 and the remaining saplings from 'Amol' nursery for ₹240. From which nursery will the school get the saplings purchased at low price?",
+      "ms": {
+        "draft": 13745,
+        "critique": 11885
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Michael's monthly income of ₹52,000 out of which he saves ₹13,000 monthly. Then find the ratio of his monthly income to his expenditure.",
+      "ms": {
+        "draft": 13745,
+        "critique": 40887,
+        "solver": 12728
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a diagram, the number of shaded cells is 12 and the number of unshaded cells is 18. What is the ratio of shaded cells to unshaded cells?",
+      "ms": {
+        "draft": 5353,
+        "critique": 19104,
+        "solver": 35328
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 15 workers can complete a task in 6 days, how many days will it take 10 workers to complete the same task?",
+      "ms": {
+        "draft": 5353,
+        "critique": 53478,
+        "solver": 36127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper sells 3 kg of apples for ₹ 150. What is the cost of 5 kg of apples?",
+      "ms": {
+        "draft": 5353,
+        "critique": 55075,
+        "solver": 46835
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 500 paise to 80 paise?",
+      "ms": {
+        "draft": 5353,
+        "critique": 43214,
+        "solver": 48653
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the simplest form of the ratio 60:40?",
+      "ms": {
+        "draft": 5353,
+        "critique": 38584,
+        "solver": 29649,
+        "form": 47
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "ms": {
+        "draft": 13745,
+        "critique": 9232,
+        "solver": 6260,
+        "form": 0,
+        "translation": 107025
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a class, there are 20 boys and 15 girls. What is the ratio of the number of girls to the number of boys?",
+      "ms": {
+        "draft": 5353,
+        "critique": 30991,
+        "solver": 24852,
+        "form": 0,
+        "translation": 73528
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost of 10 compass boxes is ₹850, what will be the cost of 67 compass boxes?",
+      "ms": {
+        "draft": 5109,
+        "critique": 7498,
+        "solver": 1949,
+        "form": 1,
+        "translation": 108925
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cook prepares 10 kilograms of rice every day for 100 students in a school as part of mid-day meal. But one day, due to heavy rain, only 80 students were present in the school. How many kilograms of rice should be cooked on that day?",
+      "ms": {
+        "draft": 13745,
+        "critique": 8198,
+        "solver": 2042,
+        "form": 0,
+        "translation": 148107
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The length of a rectangular sheet is 1.20 m and the width is 48 cm. Find the ratio of the width to the length of the sheet.",
+      "ms": {
+        "draft": 13745,
+        "critique": 18497,
+        "solver": 14270,
+        "form": 0,
+        "translation": 107407
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the ratio of the number of students playing hockey to the number of students playing kho-kho is 1:2, then what is the ratio of the number of students playing kho-kho to the total number of students?",
+      "ms": {
+        "draft": 13745,
+        "critique": 26482,
+        "solver": 14903,
+        "form": 0,
+        "translation": 111095
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the ratio of 5 rupees to 80 paise?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a factory, 320 workers are working, out of which 200 are male. What is the ratio of the number of male workers to the total number of workers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about ratios?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the simplest form of the ratio 60:40?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A shopkeeper mixes two types of tea, one worth ₹ 60 per kg and the other worth ₹ 65 per kg. He sells the mixture at ₹ 68.20 per kg with a 10% gain. In what ratio should he mix the two types of tea?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The length and width of a photograph are in the ratio 3:2. If the length is increased by 20% and the width is decreased by 10%, what is the new ratio of length to width?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 2 kg to 800 grams?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of the number of students playing hockey to the number of students playing kho-kho?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Michael saves ₹13,000 out of his monthly income of ₹52,000. What is the ratio of his monthly income to his expenditure?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A school purchased 35 saplings from 'Yashoda' nursery for ₹455 and the remaining 15 saplings from 'Amol' nursery for ₹240. From which nursery will the school get the saplings at a lower price per sapling?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A goods train covers 240 km in 4 hours. How much distance will it cover in 7 hours?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A school wanted to purchase 50 saplings for planting trees on the occasion of Environment Day. The school purchased 35 saplings from 'Yashoda' nursery for ₹455 and the remaining saplings from 'Amol' nursery for ₹240. From which nursery will the school get the saplings purchased at low price?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Michael's monthly income of ₹52,000 out of which he saves ₹13,000 monthly. Then find the ratio of his monthly income to his expenditure.",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a diagram, the number of shaded cells is 12 and the number of unshaded cells is 18. What is the ratio of shaded cells to unshaded cells?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 15 workers can complete a task in 6 days, how many days will it take 10 workers to complete the same task?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A shopkeeper sells 3 kg of apples for ₹ 150. What is the cost of 5 kg of apples?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 500 paise to 80 paise?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is the simplest form of the ratio 60:40?",
+      "reason": "near-duplicate of served question cmvv1jadx003q0rgna8849qsh (cosine 0.979 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

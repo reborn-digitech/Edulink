@@ -247,7 +247,8 @@ export const staffClassDetailSchema = z.object({
     gradeLevel: z.string().nullable(),
     room: z.string().nullable(),
     color: z.string().nullable(),
-    joinCode: z.string(),
+    /** Null to a teacher the timetable alone sends to the class (qb-B, QB-02): the code is the form teacher's and the office's. */
+    joinCode: z.string().nullable(),
     archived: z.boolean(),
   }),
   today: z.object({

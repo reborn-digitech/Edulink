@@ -1,0 +1,300 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T22:05:46.520Z",
+  "finishedAt": "2026-10-30T22:10:30.530Z",
+  "seconds": 284,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Three-Dimensional Shapes",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n11. Two cubes each of volume 64 cm are joined end to end to form a solid. The surface 3 1\narea of the resultant cuboid is:\n(A) 192 cm 2 (B) 160 cm 2 (C) 96 cm 2 (D) 80 cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n18. B Volume of cube, 𝑎 = 64 ⇒ 𝑎 = 4 cm 3 1\nOn joining two cubes of side = 4 cm, we get a cuboid whose\nLength (𝑙) = 8 cm, Breadth (𝑏) = 4 cm, Height (ℎ) = 4 cm\nSurface area of resulting cuboid = 2(𝑙𝑏 + 𝑏ℎ + ℎ 𝑙)\n= 2(8 × 4 + 4 × 4 + 4 × 8)\n𝟐 =160 cm 2\n(B) 𝟏𝟔𝟎𝐜𝐦",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 65629,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9056,
+      "completionTokens": 2038
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 110799,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 7210,
+      "completionTokens": 2972
+    },
+    "solver": {
+      "calls": 95,
+      "ms": 63681,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 19266,
+      "completionTokens": 1198
+    },
+    "form": {
+      "calls": 2,
+      "ms": 5902,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 488,
+      "completionTokens": 171
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1673,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 216062,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14312,
+      "completionTokens": 6743
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Which of the following shapes has all its faces triangular?",
+      "ms": {
+        "draft": 8031,
+        "critique": 8055
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a three-dimensional shape?",
+      "ms": {
+        "draft": 11704,
+        "critique": 6886,
+        "solver": 17024
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following 3D shapes has 5 faces, 5 vertices, and 8 edges?",
+      "ms": {
+        "draft": 11704,
+        "critique": 6058,
+        "solver": 13971,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cube is placed next to a triangular prism. Which of the following statements is true about the combined shape?",
+      "ms": {
+        "draft": 11704,
+        "critique": 8292,
+        "solver": 10820
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following 3D shapes has 6 faces, 12 edges, and 8 vertices?",
+      "ms": {
+        "draft": 11704,
+        "critique": 6982,
+        "solver": 1995,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "ms": {
+        "draft": 8031,
+        "critique": 6956,
+        "solver": 1496,
+        "form": 0,
+        "translation": 26780
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a two-dimensional shape?",
+      "ms": {
+        "draft": 8031,
+        "critique": 7037,
+        "solver": 1612,
+        "form": 0,
+        "translation": 22281
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If we stack 10 rectangles of equal size on top of each other, what three-dimensional shape is formed?",
+      "ms": {
+        "draft": 8031,
+        "critique": 6609,
+        "solver": 1166,
+        "form": 2,
+        "translation": 33253
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which 3D shape is formed when carrom pieces are placed one on top of the other?",
+      "ms": {
+        "draft": 11704,
+        "critique": 6867,
+        "solver": 15505,
+        "form": 3914,
+        "translation": 63119
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which two similar shapes form an hourglass?",
+      "ms": {
+        "draft": 11704,
+        "critique": 7297,
+        "solver": 15878,
+        "form": 3528,
+        "translation": 32912
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following shapes has 6 faces, 12 edges, and 8 vertices?",
+      "ms": {
+        "draft": 8031,
+        "critique": 7434,
+        "solver": 1385,
+        "form": 0,
+        "translation": 31161
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If two cubes each of volume 64 cm³ are joined end to end, what is the surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 8031,
+        "critique": 7817,
+        "solver": 1445,
+        "form": 1,
+        "translation": 38682
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following shapes has all its faces triangular?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is not a three-dimensional shape?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following 3D shapes has 5 faces, 5 vertices, and 8 edges?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cube is placed next to a triangular prism. Which of the following statements is true about the combined shape?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following 3D shapes has 6 faces, 12 edges, and 8 vertices?",
+      "reason": "near-duplicate of batch item \"Which of the following shapes has 6 faces, 12 edge…\" (cosine 0.987 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

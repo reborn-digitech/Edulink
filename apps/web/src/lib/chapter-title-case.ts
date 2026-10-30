@@ -36,3 +36,56 @@ export function fixWordCase(word: string): string {
 export function fixTitleCase(text: string): string {
   return text.replace(/\p{L}+/gu, (word) => fixWordCase(word));
 }
+
+/* qb-A (QB-17, the QA pass of 31 October 2026): names set in capitals ("CHANGING TRADITIONS", "THE THREE ORDERS",
+ * "TOWARDS Modernisation", the corpus's "HUMAN SETTLEMENTS") are put in title case before they name a chapter. */
+
+/** Abbreviations and numerals a chapter's name prints in capitals on purpose. Compared exactly. */
+export const KNOWN_CAPITALS: ReadonlySet<string> = new Set([
+  "NCERT", "CBSE", "UNESCO", "UNICEF", "UNDP", "UNO", "UN", "USA", "USSR", "UK", "EU", "NATO", "ASEAN", "SAARC", "OPEC", "BRICS", "WTO", "IMF", "WHO",
+  "GATT", "NITI", "ISRO", "NASA", "SEBI", "RBI", "NABARD", "MSME", "GST", "GDP", "GNP", "NDP", "NNP", "AIDS", "HIV", "COVID", "LASER", "RADAR", "SONAR",
+  "HTML", "HTTP", "JSON", "ASCII", "SQL", "CSV", "ICT", "IT", "AI", "NGO", "NGOs", "DNA", "RNA", "ATP", "SI", "II", "III", "IV", "VI", "VII", "VIII",
+  "IX", "XI", "XII", "XIII", "XIV", "XV", "XVI",
+]);
+const SMALL_WORDS: ReadonlySet<string> = new Set(["a", "an", "and", "as", "at", "but", "by", "for", "from", "in", "into", "of", "on", "or", "the", "to", "with"]);
+
+/**
+ * qb-A (QB-17): a title with no word set in capitals. A run of words in capitals (letters only, separated by spaces
+ * or marks) that holds a word of four letters or more outside KNOWN_CAPITALS is put in title case: the run's first
+ * word, a word after a colon or a dash and every word but a small joining one capitalised, the rest lowered; known
+ * abbreviations keep their capitals.
+ * "THE THREE ORDERS" → "The Three Orders", "TOWARDS Modernisation" → "Towards Modernisation", "Chapter 3 — CHANGING
+ * TRADITIONS" → "Chapter 3 — Changing Traditions"; "NCERT and the UN" and "DNA" are left. Pure and client-safe.
+ */
+export function fixShoutedTitle(text: string): string {
+  const tokens = text.match(/\p{L}+|[^\p{L}]+/gu) ?? [];
+  const isWord = (t: string) => /^\p{L}/u.test(t);
+  const shouted = (t: string) => isWord(t) && t.length >= 2 && t === t.toUpperCase() && t !== t.toLowerCase();
+  const out = [...tokens];
+  let i = 0;
+  while (i < tokens.length) {
+    if (!shouted(tokens[i]!)) {
+      i++;
+      continue;
+    }
+    // The run: shouted words with only non-letters between them.
+    let j = i;
+    const words: number[] = [];
+    while (j < tokens.length && (shouted(tokens[j]!) || (!isWord(tokens[j]!) && j + 1 < tokens.length && shouted(tokens[j + 1]!)))) {
+      if (isWord(tokens[j]!)) words.push(j);
+      j++;
+    }
+    const loud = words.some((k) => tokens[k]!.length >= 4 && !KNOWN_CAPITALS.has(tokens[k]!) && !KNOWN_MIXED_CASE.has(tokens[k]!));
+    if (loud) {
+      words.forEach((k, n) => {
+        const w = tokens[k]!;
+        if (KNOWN_CAPITALS.has(w) || KNOWN_MIXED_CASE.has(w)) return;
+        const lower = w.toLowerCase();
+        const afterMark = k > 0 && /[:—–]\s*$/u.test(tokens[k - 1]!);
+        out[k] = n > 0 && !afterMark && SMALL_WORDS.has(lower) ? lower : lower.charAt(0).toUpperCase() + lower.slice(1);
+      });
+    }
+    i = Math.max(j, i + 1);
+  }
+  return out.join("");
+}

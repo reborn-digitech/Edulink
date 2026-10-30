@@ -12635,7 +12635,8 @@
                           "nullable": true
                         },
                         "joinCode": {
-                          "type": "string"
+                          "type": "string",
+                          "nullable": true
                         },
                         "archived": {
                           "type": "boolean"
@@ -41380,6 +41381,10 @@
                         "additionalProperties": false
                       }
                     },
+                    "totalPairs": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
                     "computedAt": {
                       "type": "string",
                       "format": "date-time"
@@ -41389,6 +41394,7 @@
                     "trigram",
                     "threshold",
                     "pairs",
+                    "totalPairs",
                     "computedAt"
                   ],
                   "additionalProperties": false
@@ -119545,6 +119551,7 @@
                             "type": "string",
                             "enum": [
                               "RECORDED",
+                              "WOULD_RECORD",
                               "ALREADY",
                               "REFUSED"
                             ]
@@ -233419,6 +233426,10 @@
                         "board": {
                           "type": "string",
                           "nullable": true
+                        },
+                        "book": {
+                          "type": "string",
+                          "nullable": true
                         }
                       },
                       "required": [
@@ -233428,7 +233439,8 @@
                         "chapter",
                         "subject",
                         "grade",
-                        "board"
+                        "board",
+                        "book"
                       ],
                       "additionalProperties": false
                     },

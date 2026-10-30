@@ -1,0 +1,317 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T21:15:23.321Z",
+  "finishedAt": "2026-10-30T21:21:44.220Z",
+  "seconds": 381,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Three-Dimensional Shapes",
+    "edition": "First Edition 2026",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n11. Two cubes each of volume 64 cm are joined end to end to form a solid. The surface 3 1\narea of the resultant cuboid is:\n(A) 192 cm 2 (B) 160 cm 2 (C) 96 cm 2 (D) 80 cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n18. B Volume of cube, 𝑎 = 64 ⇒ 𝑎 = 4 cm 3 1\nOn joining two cubes of side = 4 cm, we get a cuboid whose\nLength (𝑙) = 8 cm, Breadth (𝑏) = 4 cm, Height (ℎ) = 4 cm\nSurface area of resulting cuboid = 2(𝑙𝑏 + 𝑏ℎ + ℎ 𝑙)\n= 2(8 × 4 + 4 × 4 + 4 × 8)\n𝟐 =160 cm 2\n(B) 𝟏𝟔𝟎𝐜𝐦",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 114739,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8846,
+      "completionTokens": 2402
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 163421,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 7249,
+      "completionTokens": 3109
+    },
+    "solver": {
+      "calls": 73,
+      "ms": 42822,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 12877,
+      "completionTokens": 791
+    },
+    "form": {
+      "calls": 5,
+      "ms": 12401,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 1166,
+      "completionTokens": 358
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1446,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 78626,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4672,
+      "completionTokens": 2497
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If we stack 10 equal circles on top of each other, what three-dimensional shape is formed?",
+      "ms": {
+        "draft": 31733,
+        "critique": 8215
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "ms": {
+        "draft": 31733,
+        "critique": 8461
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a three-dimensional shape with two triangular faces and three rectangular faces?",
+      "ms": {
+        "draft": 31733,
+        "critique": 8991
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following three-dimensional shapes has no vertices and no edges but has a curved surface?",
+      "ms": {
+        "draft": 31733,
+        "critique": 7487
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the name of a three-dimensional shape with a square base and triangular faces meeting at a single point?",
+      "ms": {
+        "draft": 31733,
+        "critique": 8856,
+        "solver": 10954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a three-dimensional shape with two triangular faces and three rectangular faces?",
+      "ms": {
+        "draft": 10939,
+        "critique": 16627
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "ms": {
+        "draft": 10939,
+        "critique": 17463,
+        "solver": 13461,
+        "form": 2582
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which shape has a single vertex and a curved surface, but no edges or faces?",
+      "ms": {
+        "draft": 10939,
+        "critique": 8862,
+        "solver": 13970,
+        "form": 2999
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a shape has 8 faces, 18 edges, and 12 vertices, which type of prism is it?",
+      "ms": {
+        "draft": 10939,
+        "critique": 8532,
+        "solver": 1752,
+        "form": 2418
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the base of a pyramid is a pentagon and it has 5 triangular faces, how many vertices does it have?",
+      "ms": {
+        "draft": 10939,
+        "critique": 7715,
+        "solver": 8023
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If we stack 10 circles of equal radius on top of each other, which three-dimensional shape is formed?",
+      "ms": {
+        "draft": 10939,
+        "critique": 17837,
+        "solver": 12183,
+        "form": 3703,
+        "translation": 34780
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If we stack 15 equal pentagons on top of each other, what three-dimensional shape is formed?",
+      "ms": {
+        "draft": 31733,
+        "critique": 7836,
+        "solver": 12630,
+        "form": 1392,
+        "translation": 39241
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If we stack 10 equal circles on top of each other, what three-dimensional shape is formed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a three-dimensional shape with two triangular faces and three rectangular faces?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following three-dimensional shapes has no vertices and no edges but has a curved surface?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the name of a three-dimensional shape with a square base and triangular faces meeting at a single point?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the name of a three-dimensional shape with two triangular faces and three rectangular faces?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which shape has a single vertex and a curved surface, but no edges or faces?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a shape has 8 faces, 18 edges, and 12 vertices, which type of prism is it?",
+      "reason": "checkExpr is set but the key \"Hexagonal Prism\" states no number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the base of a pyramid is a pentagon and it has 5 triangular faces, how many vertices does it have?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

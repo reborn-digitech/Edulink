@@ -94,6 +94,8 @@ export const bankDuplicatesSchema = z.object({
   trigram: z.boolean(),
   threshold: z.number(),
   pairs: z.array(z.object({ similarity: z.number(), a: duplicateSideSchema, b: duplicateSideSchema })),
+  /** qb-A (QB-19): every pair the report holds; `pairs` carries the closest five hundred of them. */
+  totalPairs: z.number().int().nonnegative(),
   computedAt: iso,
 });
 export type BankDuplicates = z.infer<typeof bankDuplicatesSchema>;

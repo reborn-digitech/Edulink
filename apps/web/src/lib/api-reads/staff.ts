@@ -25,7 +25,7 @@ import { db } from "@/lib/db";
 import type { ActiveContext } from "@/lib/session";
 import type { Role } from "@/lib/constants";
 import { AccessError, assertClassAccess, formClassIds, teachesClass } from "@/lib/tenancy";
-import { classReach, offeredSubjects, workInReach } from "@/lib/teaching-reach";
+import { classReach, inGradeOrder, offeredSubjects, workInReach } from "@/lib/teaching-reach";
 import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import { myCovers } from "@/lib/substitutions";
 import { closedOn, schoolDayOn } from "@/lib/holidays";
@@ -230,12 +230,13 @@ export async function staffClasses(ctx: Staff): Promise<StaffClasses> {
   if (classIds.length === 0) return { classes: [], students: 0 };
   const school = await schoolZone(ctx.schoolId);
   const dateKey = todayKey(school.timezone);
-  const [classes, takenToday] = await Promise.all([
+  const [classRowsByName, takenToday] = await Promise.all([
     db.class.findMany({
       where: { id: { in: classIds } },
       select: {
         id: true,
         name: true,
+        gradeLevel: true,
         subject: true,
         room: true,
         color: true,
@@ -245,6 +246,7 @@ export async function staffClasses(ctx: Staff): Promise<StaffClasses> {
     }),
     db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } }, select: { classId: true } }),
   ]);
+  const classes = inGradeOrder(classRowsByName);
   // The work counted is the work this person may open: all of a form class's, their own elsewhere.
   const work = await db.assignment.groupBy({ by: ["classId"], where: { schoolId: ctx.schoolId, ...workInReach(ctx.membershipId, reach) }, _count: { _all: true } });
   const workBy = new Map(work.map((w) => [w.classId, w._count._all]));
@@ -330,7 +332,9 @@ export async function staffClassDetail(ctx: Staff, classId: string): Promise<Sta
       gradeLevel: klass.gradeLevel,
       room: klass.room,
       color: klass.color,
-      joinCode: klass.joinCode,
+      // The code lets a pupil join the class: the form teacher's and the office's to hand out, never a teacher the
+      // timetable alone sends here (qb-B, QB-02 of the QA pass of 31 October 2026; item 1's decision 2).
+      joinCode: teaching.formTeacher ? klass.joinCode : null,
       archived: klass.archivedAt !== null,
     },
     today: { dateKey: today, registerTakenAt: iso(todaySession?.takenAt), recordsToday: todaySession?._count.records ?? 0 },
@@ -383,7 +387,7 @@ export async function staffAssignments(
 
   const classFilter = query.classId && classIds.includes(query.classId) ? query.classId : null;
   const state = query.state ?? null;
-  const classRows = await db.class.findMany({ where: { id: { in: classIds }, archivedAt: null }, select: { id: true, name: true }, orderBy: { name: "asc" } });
+  const classRows = inGradeOrder(await db.class.findMany({ where: { id: { in: classIds }, archivedAt: null }, select: { id: true, name: true, gradeLevel: true }, orderBy: { name: "asc" } }));
   const offered = await offeredSubjects(ctx.schoolId, reach, classRows.map((k) => k.id));
   // Each class says whether it is the person's form class or which subjects they take there, and what a new piece of work may name.
   // `formTeacher` is a teacher's: the office reaches every class whole and is no class's form teacher.

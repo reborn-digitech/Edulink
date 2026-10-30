@@ -25,7 +25,7 @@ import { billMess, createCollegeStructure, decideConcession, grantCollegeConcess
 import { addClaimDocument, createClaim, updateClaim } from "@/lib/scholarships";
 import { clearLine } from "@/lib/no-dues";
 import { leaveCollege } from "@/lib/college-records";
-import { changeRoom, importCalendar, importIsbnList, logSquadRound, saveCollegeLibrarySettings, saveEResource, saveHostelRules, saveRouteCollege } from "@/lib/college-campus";
+import { changeRoom, importCalendar, importIsbnList, isbnImportSentence, logSquadRound, saveCollegeLibrarySettings, saveEResource, saveHostelRules, saveRouteCollege } from "@/lib/college-campus";
 
 /**
  * THE COLLEGE OFFICE'S FORMS (4 October 2026): the accounts desk, college
@@ -319,8 +319,10 @@ export async function eResourceAction(previous: FormState, formData: FormData): 
 
 export async function isbnImportAction(previous: FormState, formData: FormData): Promise<FormState> {
   return run(previous, formData, async (ctx) => {
-    const r = await importIsbnList(ctx, String(formData.get("text") ?? ""));
-    return { key: "collegeOffice.isbnImported", vars: { added: r.added, already: r.already, invalid: r.invalid.length } };
+    const text = String(formData.get("text") ?? "");
+    if (!text.trim()) throw new AccessError("campusForms.isbnEmpty");
+    // The school's catalogue form and this one say the same (qb-C, QB-11): one title or many, the failing ISBNs named.
+    return isbnImportSentence(await importIsbnList(ctx, text));
   });
 }
 

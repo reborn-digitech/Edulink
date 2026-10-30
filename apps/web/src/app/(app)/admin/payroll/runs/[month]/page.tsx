@@ -129,7 +129,7 @@ export default async function PayrollRunPage({ params, searchParams }: { params:
             {run.exports.length ? (
               <ul className="text-xs text-fg-muted">
                 {run.exports.slice(0, 10).map((e, i) => (
-                  <li key={i}>{t("payroll.exportLine", { file: e.fileName, rows: e.rows, by: e.byName, date: formatInZone(new Date(e.createdAt), "Asia/Kolkata", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, locale) })}</li>
+                  <li key={i}>{t(e.rows === 1 ? "teachPay.exportLineOne" : "payroll.exportLine", { file: e.fileName, rows: e.rows, by: e.byName, date: formatInZone(new Date(e.createdAt), "Asia/Kolkata", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, locale) })}</li>
                 ))}
               </ul>
             ) : null}

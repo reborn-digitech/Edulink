@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CaretRightIcon, ChalkboardTeacherIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { classReach, workInReach } from "@/lib/teaching-reach";
+import { classReach, inGradeOrder, workInReach } from "@/lib/teaching-reach";
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
 import { Card } from "@/components/ui/card";
@@ -49,12 +49,13 @@ export default async function TeacherClassesPage() {
   });
   const dateKey = todayKey(school.timezone);
 
-  const [classes, takenToday] = await Promise.all([
+  const [classesByName, takenToday] = await Promise.all([
     db.class.findMany({
       where: { id: { in: classIds } },
       select: {
         id: true,
         name: true,
+        gradeLevel: true,
         subject: true,
         room: true,
         color: true,
@@ -67,6 +68,8 @@ export default async function TeacherClassesPage() {
       select: { classId: true },
     }),
   ]);
+  // By grade number, then name (qb-B, QB-05): "Grade 3" before "Grade 10".
+  const classes = inGradeOrder(classesByName);
   // The work counted is the work this person may open: a form class's all, their own where the timetable sends them.
   const work = await db.assignment.groupBy({ by: ["classId"], where: { schoolId: ctx.schoolId, ...workInReach(ctx.membershipId, reach) }, _count: { _all: true } });
   const workBy = new Map(work.map((w) => [w.classId, w._count._all]));

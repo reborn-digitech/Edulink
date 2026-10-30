@@ -24,7 +24,7 @@ import { CORPUS_ROOT } from "../corpus-lib";
 import { chapterLineFor, chapterNameOf, chapterNumberOf } from "./checks";
 // owner-batch-item6 (30 Oct 2026): a chapter's name is its book's title, never a fragment of one (corpus-titles' rules).
 import { loadDictionary, titleCase, titleFragment, vocabularyOf } from "../corpus-titles";
-import { fixTitleCase } from "../../src/lib/chapter-title-case";
+import { fixShoutedTitle, fixTitleCase } from "../../src/lib/chapter-title-case";
 // owner-batch-item7 (30 Oct 2026): which documents of a class and subject are one Balbharati book (editions, parts, misfiled).
 import { chooseBooks, type BookChoice } from "../corpus-contents";
 
@@ -166,8 +166,8 @@ export function chapterTitleOf(label: string, chapterNumber: number): string {
     .replace(new RegExp(`^${chapterNumber}\\s*[.:)]\\s+`), "")
     .trim();
   if (!name) return "";
-  // A title the text layer gave in lower case ("early societies") is put in title case.
-  return fixTitleCase(/^\p{Ll}/u.test(name) ? titleCase(name, true) : name);
+  // A title the text layer gave in lower case ("early societies") is put in title case; qb-A (QB-17) one in capitals too ("HUMAN SETTLEMENTS").
+  return fixTitleCase(fixShoutedTitle(/^\p{Ll}/u.test(name) ? titleCase(name, true) : name));
 }
 
 function bookCodeOf(doc: DocRow): string | null {
@@ -261,6 +261,8 @@ export const NCERT_BOOK_TITLES: Readonly<Record<string, string>> = {
   kegy2: "Fundamentals of Physical Geography",
   kegy3: "Practical Work in Geography Part I",
   legy2: "India: People and Economy",
+  // qb-A (QB-17): the site lists "India Constitution at Work"; the book prints "Indian Constitution at Work".
+  keps2: "Indian Constitution at Work",
 };
 
 /** "Physics Part-II" → { work: "physics", part: 2 }; "Chemistry-I", "Ganita Manjari PART-II", "Themes in Indian History-III"; no mark is part 1. Pure. */

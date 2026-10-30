@@ -63,6 +63,8 @@ export async function teachingGradebook(ctx: Staff & { role: "TEACHER" | "ADMIN"
       title: a.title,
       body: a.body,
       category: a.category,
+      // The subject the work was set for (qb-B, QB-03): the contract had the field and the door never filled it.
+      subject: a.subject,
       pointsMilli: a.pointsMilli,
       dueAt: iso(a.dueAt),
       publishedAt: iso(a.publishedAt),

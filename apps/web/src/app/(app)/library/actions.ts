@@ -42,7 +42,7 @@ import {
   waiveFine,
 } from "@/lib/library";
 import { addVolume, removeVolume, savePeriodicalSubscription } from "@/lib/library-periodicals";
-import { importIsbnList, saveEResource } from "@/lib/college-campus";
+import { importIsbnList, isbnImportSentence, saveEResource } from "@/lib/college-campus";
 
 /**
  * The library's forms (module LIBRARY, 3 Oct 2026): every one posts here with
@@ -318,11 +318,11 @@ export async function isbnListAction(previous: FormState, formData: FormData): P
     formData,
     async (ctx): Promise<Done> => {
       const text = String(formData.get("text") ?? "");
-      if (!text.trim()) throw Object.assign(new FormError(), { formField: "text" });
-      const r = await importIsbnList(ctx, parsed(isbnImportBodySchema.safeParse({ text })).text);
-      if (r.invalid.length) return { key: "schoolForms.isbnImportedNamed", vars: { added: r.added, already: r.already, list: r.invalid.slice(0, 20).join(", ") } };
-      return { key: "schoolForms.isbnImported", vars: { added: r.added, already: r.already } };
+      // qb-C (QB-11): an empty paste is told what is wanted, beside the box, rather than "That is not valid."
+      if (!text.trim()) throw new AccessError("campusForms.isbnEmpty");
+      // One title or many (qb-C, QB-11): "1 title added", never "1 titles added".
+      return isbnImportSentence(await importIsbnList(ctx, parsed(isbnImportBodySchema.safeParse({ text })).text));
     },
-    { text: "text" },
+    { text: "text", "campusForms.isbnEmpty": "text" },
   );
 }

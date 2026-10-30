@@ -161,7 +161,7 @@ describe("a publisher's ISBN list on the catalogue", () => {
   it("adds each title once by ISBN and names the ISBN whose check digit fails", async () => {
     await as("librarian", "LIBRARIAN", "school", "POST /library/catalogue");
     const answer = await isbnListAction(FORM_IDLE, form({ back: "/library/catalogue", text: list }));
-    expect(answer).toMatchObject({ ok: true, message: t("schoolForms.isbnImportedNamed", { added: 1, already: 0, list: "9780306406158" }) });
+    expect(answer).toMatchObject({ ok: true, message: t("campusForms.isbnAddedOneNamed", { added: 1, already: 0, list: "9780306406158" }) /* qb-C: one title, said as one */ });
     expect(await db.libraryTitle.count({ where: { schoolId: school.school, title: { startsWith: "ZZ SHD" } } })).toBe(1);
     expect(await audits("library.isbnImport")).toBe(1);
   });
@@ -169,7 +169,7 @@ describe("a publisher's ISBN list on the catalogue", () => {
   it("the same list again adds nothing", async () => {
     await as("admin", "ADMIN", "school", "POST /library/catalogue");
     const answer = await isbnListAction(FORM_IDLE, form({ back: "/library/catalogue", text: "9780306406157, ZZ SHD Optics" }));
-    expect(answer).toMatchObject({ ok: true, message: t("schoolForms.isbnImported", { added: 0, already: 1 }) });
+    expect(answer).toMatchObject({ ok: true, message: t("campusForms.isbnAddedMany", { added: 0, already: 1 }) });
     expect(await db.libraryTitle.count({ where: { schoolId: school.school, title: { startsWith: "ZZ SHD" } } })).toBe(1);
   });
 

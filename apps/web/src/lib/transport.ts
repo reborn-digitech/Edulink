@@ -948,18 +948,35 @@ async function childOf(ctx: ActiveContext, childId?: string | null): Promise<{ s
 }
 
 /**
+ * WHICH OF THE DAY'S RUNS A FAMILY IS SHOWN (qb-C, QB-16), by the school's clock: the run that is LIVE; else the
+ * next one still waiting (SCHEDULED — readStatus has already read a run past its start and grace as MISSED, by the
+ * school's own zone), the earliest by its first stop's time; else, the day's runs all over, the one most lately
+ * due, so the evening's end (or its miss) stays on the page until tomorrow. Before, with nothing LIVE, the runs
+ * were sorted by when each started — null for both before the day began — and the evening, loaded first (its
+ * direction sorts first), was shown at 03:00 as the next bus. Pure, so tests/qb-c-campus.test.ts pins it.
+ */
+export function nextRunOf<T>(runs: readonly T[], read: (run: T) => { status: TripStatus; direction: TripDirection; scheduledMinute: number | null }): T | undefined {
+  const due = (r: T) => read(r).scheduledMinute ?? (read(r).direction === "MORNING" ? 0 : 24 * 60);
+  const live = runs.find((r) => read(r).status === "LIVE");
+  if (live) return live;
+  const waiting = runs.filter((r) => read(r).status === "SCHEDULED").sort((a, b) => due(a) - due(b));
+  if (waiting.length) return waiting[0];
+  return [...runs].sort((a, b) => due(b) - due(a))[0];
+}
+
+/**
  * A child's transport for their family: the route, the stop and its times,
  * the bus's number (the driver's name and telephone only when the school
  * says so), this guardian's alert switch, and today's trip that the child
- * rides — LIVE first, else the latest — with the bus's last position, how
+ * rides — LIVE first, else the next by the school's clock (nextRunOf) — with the bus's last position, how
  * stale it is, when it passed each stop and the arrival range at theirs.
  */
-export async function familyTransport(ctx: ActiveContext, childId?: string | null): Promise<FamilyTransport> {
+export async function familyTransport(ctx: ActiveContext, childId?: string | null, now: Date = new Date()): Promise<FamilyTransport> {
   const child = await childOf(ctx, childId);
   const base = { studentMembershipId: child.studentMembershipId, childName: child.name, schoolName: child.schoolName };
   if (!(await isModuleOn(child.schoolId, "TRANSPORT"))) return { ...base, moduleOn: false, seat: null, nearAlerts: true, trip: null };
   const { timezone } = await schoolZone(child.schoolId);
-  const today = todayKey(timezone);
+  const today = todayKey(timezone, now);
   const [seat, pref, settings] = await Promise.all([
     db.transportAllotment.findFirst({
       where: { schoolId: child.schoolId, studentMembershipId: child.studentMembershipId, ...currentWhere(today) },
@@ -972,7 +989,7 @@ export async function familyTransport(ctx: ActiveContext, childId?: string | nul
   const nearAlerts = pref?.nearAlerts ?? true;
   if (!seat) return { ...base, moduleOn: true, seat: null, nearAlerts, trip: null };
 
-  const { rows, loaded } = await readDay(child.schoolId, today, { assignment: { routeId: seat.routeId } });
+  const { rows, loaded } = await readDay(child.schoolId, today, { assignment: { routeId: seat.routeId } }, now);
   const assignment = await db.busAssignment.findFirst({
     where: { schoolId: child.schoolId, routeId: seat.routeId, ...currentWhere(today) },
     select: { bus: { select: { registration: true } }, driver: { select: { user: { select: { name: true, phone: true } } } } },
@@ -990,11 +1007,10 @@ export async function familyTransport(ctx: ActiveContext, childId?: string | nul
     driverPhone: settings.showDriverToParents ? (assignment?.driver.user.phone ?? null) : null,
   };
   const candidates = loaded.map((t, i) => ({ t, row: rows[i]! })).filter(({ t }) => ridesOn(seat, t.direction));
-  const pick = candidates.find((c) => c.row.status === "LIVE") ?? [...candidates].sort((a, b) => (b.t.startedAt?.getTime() ?? 0) - (a.t.startedAt?.getTime() ?? 0))[0];
+  const pick = nextRunOf(candidates, (c) => c.row);
   if (!pick) return { ...base, moduleOn: true, seat: seatView, nearAlerts, trip: null };
 
   const { t, row } = pick;
-  const now = new Date();
   const [positions, tick] = await Promise.all([
     db.tripPosition.findMany({ where: { tripId: t.id }, orderBy: { at: "asc" }, select: { at: true, lat: true, lng: true, speed: true, accuracy: true } }),
     db.tripBoarding.findUnique({ where: { tripId_allotmentId: { tripId: t.id, allotmentId: seat.id } }, select: { boardedAt: true, alightedAt: true } }),

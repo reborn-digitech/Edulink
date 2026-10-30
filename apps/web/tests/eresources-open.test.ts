@@ -9,6 +9,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import * as React from "react";
 import { PrismaClient } from "@prisma/client";
+import { eResourceNameKey } from "@edulink/contracts";
 import { createSession, getSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { ModuleOffError } from "@/lib/access-error";
@@ -45,7 +46,7 @@ beforeAll(async () => {
     ids[who] = (await db.user.create({ data: { name: `ZZ EResources ${who}`, email: `zz-eres-${who.toLowerCase()}-${STAMP}@test.invalid`, isMinor: false }, select: { id: true } })).id;
     await db.membership.create({ data: { userId: ids[who]!, schoolId, role, status: "ACTIVE", ...(role === "STUDENT" ? { studentCode: `ZES${who}${SUFFIX}` } : {}) } });
   }
-  const res = (schoolId: string, name: string, active = true) => db.libraryEResource.create({ data: { schoolId, name, url: `https://example.org/${name.toLowerCase()}`, kind: "NLIST", active }, select: { id: true } });
+  const res = (schoolId: string, name: string, active = true) => db.libraryEResource.create({ data: { schoolId, name, nameKey: eResourceNameKey(name), url: `https://example.org/${name.toLowerCase()}`, kind: "NLIST", active }, select: { id: true } });
   ids.nlist = (await res(ids.college, "NLIST")).id;
   ids.retired = (await res(ids.college, "Retired", false)).id;
   ids.bareRes = (await res(ids.bare, "BareNLIST")).id;

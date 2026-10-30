@@ -7877,10 +7877,14 @@ model LibraryEResource {
   clicks    Int      @default(0)
   active    Boolean  @default(true)
   createdAt DateTime @default(now())
+  /// qb-C (31 Oct 2026, QB-12): the name as the desk compares it — trimmed, spaces collapsed, lower case
+  /// (eResourceNameKey in packages/contracts v1/library.ts, its only writer; data:audit "eresource-name-key").
+  /// "ZZ DIKSHA", "zz diksha" and "ZZ  DIKSHA" are one resource, corrected rather than added again.
+  nameKey   String
 
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
-  @@unique([schoolId, name])
+  @@unique([schoolId, nameKey])
 }
 
 /// A round of the hostel's anti-ragging squad (UGC 2009): when, who walked

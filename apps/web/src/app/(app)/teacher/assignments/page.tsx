@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CaretRightIcon, ClipboardTextIcon, PlusIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { classReach, workInReach } from "@/lib/teaching-reach";
+import { classReach, inGradeOrder, workInReach } from "@/lib/teaching-reach";
 import { db } from "@/lib/db";
 import { dateKeyInZone } from "@/lib/dates";
 import { admissionDaysByClass, rollOn } from "@/lib/exams";
@@ -72,11 +72,13 @@ export default async function AssignmentsPage({
 
   const classFilter = classIds.includes(rawClassId ?? "") ? (rawClassId as string) : null;
   const state = rawState === "tomark" || rawState === "draft" || rawState === "overdue" ? rawState : null;
-  const classOptions = await db.class.findMany({
-    where: { id: { in: classIds }, archivedAt: null },
-    select: { id: true, name: true },
-    orderBy: { name: "asc" },
-  });
+  const classOptions = inGradeOrder(
+    await db.class.findMany({
+      where: { id: { in: classIds }, archivedAt: null },
+      select: { id: true, name: true, gradeLevel: true },
+      orderBy: { name: "asc" },
+    }),
+  );
 
   // "To mark" means what the Today tile means: a piece with at least one
   // hand-in that has no grade yet. Paper-marked work (grades with no

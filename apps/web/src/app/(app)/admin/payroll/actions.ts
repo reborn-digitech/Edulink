@@ -220,7 +220,8 @@ async function linesAnswer(answer: UtrSheetAnswer): Promise<"salaryPay.recordedM
     .slice(0, 20)
     .map((l) => t("salaryPay.sheetLine", { line: l.line, ref: l.slipRef || "—", reason: t(`salaryPay.reason${l.reason!}`) }))
     .join("; ");
-  throw new RuleRefusal("salaryPay.refuseSheet", 422, { count: answer.refused, lines: refused.length > 20 ? `${lines}; …` : lines });
+  // One refused line is said in the singular (qb-B, QB-11).
+  throw new RuleRefusal(answer.refused === 1 ? "teachPay.refuseSheetOne" : "salaryPay.refuseSheet", 422, { count: answer.refused, lines: refused.length > 20 ? `${lines}; …` : lines });
 }
 
 /** The UTR sheet, uploaded as a file or pasted. */

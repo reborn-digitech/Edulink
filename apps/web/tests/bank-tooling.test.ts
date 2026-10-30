@@ -15,7 +15,7 @@ import { AccessError } from "@/lib/tenancy";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { bankToCsv, normaliseStem, parseBankCsv } from "@/lib/bank-csv";
-import { __lastDuplicatesPass, __resetDuplicates, commitBankImport, exportBank, findDuplicates, previewBankImport, questionStats, rebuildQuestionStats, statsFor, trigramAvailable } from "@/lib/bank-tools";
+import { __lastDuplicatesPass, __resetDuplicates, DUPLICATE_MODES, commitBankImport, exportBank, findDuplicates, previewBankImport, questionStats, rebuildQuestionStats, statsFor, trigramAvailable } from "@/lib/bank-tools";
 import { startAttempt, submitAnswer, ANSWER_SECONDS_CAP } from "@/lib/quiz";
 import { POST as importPost } from "@/app/api/v1/appadmin/bank/import/route";
 import { GET as exportGet } from "@/app/api/v1/appadmin/bank/export/route";
@@ -170,7 +170,7 @@ describe("import, export, duplicates", () => {
       // The answer carries the highest pairs first and this one is deliberately weak, so a bank with hundreds of
       // stronger pairs may leave it out of the answer: the stored report holds every pair, and that is what is checked.
       const nearRow = await db.quizQuestion.findFirstOrThrow({ where: { topicId, stem: { endsWith: "city of France?" } }, select: { id: true } });
-      const stored = JSON.parse((await db.bankDuplicateReport.findUniqueOrThrow({ where: { mode: "t" } })).pairs) as { aId: string; bId: string; similarity: number }[];
+      const stored = JSON.parse((await db.bankDuplicateReport.findUniqueOrThrow({ where: { mode: DUPLICATE_MODES.trigram } })).pairs) as { aId: string; bId: string; similarity: number }[];
       const pair = stored.find((p) => p.aId === nearRow.id || p.bId === nearRow.id);
       expect(pair).toBeDefined();
       expect(pair!.similarity).toBeGreaterThanOrEqual(0.8);
@@ -211,8 +211,28 @@ describe("import, export, duplicates", () => {
     expect(__lastDuplicatesPass()).toMatchObject({ full: false, probed: 0, loaded: true });
     expect(fresh.pairs.map((p) => [p.a.id, p.b.id])).toEqual(gone.pairs.map((p) => [p.a.id, p.b.id]));
     expect(fresh.trigram).toBe(trigram);
-    const row = await db.bankDuplicateReport.findUniqueOrThrow({ where: { mode: trigram ? "t" : "e" } });
+    const row = await db.bankDuplicateReport.findUniqueOrThrow({ where: { mode: trigram ? DUPLICATE_MODES.trigram : DUPLICATE_MODES.exact } });
     expect(row.bankCount).toBe(await db.quizQuestion.count());
+  }, 60_000);
+
+  it("qb-A (QB-19): different maths questions are never 1.0, the same question with other spacing is, and the answer gives the total", async () => {
+    const make = (stem: string) => db.quizQuestion.create({ data: { topicId, difficulty: 2, stem, choices: JSON.stringify(["0", "3"]), answerIndex: 0, solution: "A worked solution long enough to count.", source: "ZZ test", licence: "test" }, select: { id: true } });
+    const minus = await make(`ZZ bank tools ${STAMP}: What is (−3) + 3?`);
+    const root = await make(`ZZ bank tools ${STAMP}: What is √3 × √3?`);
+    const power = await make(`ZZ bank tools ${STAMP}: What is 2⁵?`);
+    const powers = await make(`ZZ bank tools ${STAMP}: What is (2³)²?`);
+    const spaced = await make(`ZZ bank tools ${STAMP}:  what is  (−3) + 3 ?`);
+    const report = await findDuplicates(curator());
+    const between = (x: string, y: string) => report.pairs.find((p) => (p.a.id === x && p.b.id === y) || (p.a.id === y && p.b.id === x));
+    for (const [x, y] of [[minus.id, root.id], [power.id, powers.id]] as const) expect(between(x, y)?.similarity ?? 0).toBeLessThan(1);
+    expect(between(minus.id, spaced.id)?.similarity).toBe(1);
+    // The exact rule, as a server without pg_trgm runs it: the letters-and-digits match alone no longer makes a pair.
+    const exact = await findDuplicates(curator(), { trigram: false });
+    expect(exact.pairs.some((p) => [p.a.id, p.b.id].includes(root.id) && [p.a.id, p.b.id].includes(minus.id))).toBe(false);
+    expect(report.totalPairs).toBeGreaterThanOrEqual(report.pairs.length);
+    // The door's answer carries the total (the door itself is called with a session further down).
+    expect(bankDuplicatesSchema.parse({ ...report, computedAt: report.computedAt.toISOString() }).totalPairs).toBe(report.totalPairs);
+    await db.quizQuestion.deleteMany({ where: { id: { in: [minus.id, root.id, power.id, powers.id, spaced.id] } } });
   }, 60_000);
 });
 

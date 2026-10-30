@@ -23,6 +23,7 @@ import { requireAssistantConfig } from "../../src/lib/assistant-env";
 import { collegeTermOf, programmeOf, readCollegeSyllabi, studyChunks, syllabusStreamOf, tidyTitle, unitsOf } from "../../src/lib/college-syllabi";
 import { collegeSyllabusBoardOf } from "@edulink/contracts";
 import { slugify } from "./checks";
+import { loadDictionary, titleFragment, vocabularyOf } from "../corpus-titles";
 import { generatorClient } from "./model";
 import { runChapter } from "./pipeline";
 import { bankStems, styleExcerpts, type SelectedChapter, type SelectedChunk } from "./select";
@@ -72,8 +73,13 @@ export async function selectCollegeUnit(db: PrismaClient, args: { path: string; 
   const units = unitsOf(rows, tidyTitle(doc.title));
   const unit = units.find((u) => u.number === args.unit);
   if (!unit) throw new Error(`"${tidyTitle(doc.title)}" has ${units.length} unit(s); there is no unit ${args.unit}`);
+  // qb-A (QB-01): a unit headed by the document's furniture ("Notes:", "Syllabus", "Intake: 60 Duration: 4 Year") or its title page is not drafted.
+  if (unit.refusal) throw new Error(`unit ${unit.number} ("${unit.heading}") of "${tidyTitle(doc.title)}" is not drafted: its heading is ${unit.refusal}`);
   const chunks: SelectedChunk[] = studyChunks(unit).map((r) => ({ id: r.id, ordinal: r.ordinal, headingPath: r.headingPath, pageStart: r.pageStart, pageEnd: r.pageEnd, text: r.text, tokens: r.tokens, figureKeys: [] }));
   if (!chunks.length) throw new Error(`unit ${unit.number} ("${unit.name}") of "${tidyTitle(doc.title)}" is only a reading list`);
+  // qb-A (QB-01): the school chapters' fragment rule too (corpus-titles' titleFragment), judged against the unit's own words.
+  const fragment = titleFragment(unit.name, { vocab: vocabularyOf(chunks.map((c) => c.text)), bookTitle: "", dictionary: loadDictionary() });
+  if (fragment) throw new Error(`unit ${unit.number} ("${unit.name}") of "${tidyTitle(doc.title)}" is not drafted: its name is ${fragment}`);
   const programme = programmeOf(doc);
   return {
     board,
@@ -170,11 +176,11 @@ export type CollegeWork = { path: string; title: string; board: CollegeSyllabusB
 
 /**
  * The units a COLLEGE request covers, in order: the programme's documents (or the one named) in path order,
- * each one's units in the range asked for.
+ * each one's units in the range asked for, the units whose heading is refused (qb-A, QB-01) left out.
  */
 export function planCollegeUnits(
   request: Pick<QuizGenRequest, "stream" | "programme" | "document" | "unitFrom" | "unitTo">,
-  syllabi: { doc: { path: string; title: string }; stream: StreamCode; board: CollegeSyllabusBoard; programme: string; units: { number: number; name: string }[] }[],
+  syllabi: { doc: { path: string; title: string }; stream: StreamCode; board: CollegeSyllabusBoard; programme: string; units: { number: number; name: string; refusal?: string | null }[] }[],
 ): CollegeWork[] {
   const from = request.unitFrom ?? 1;
   const to = request.unitTo ?? Number.MAX_SAFE_INTEGER;
@@ -184,6 +190,8 @@ export function planCollegeUnits(
     if (request.document && s.doc.path !== request.document) continue;
     for (const u of s.units) {
       if (u.number < from || u.number > to) continue;
+      // qb-A (QB-01): a refused unit is no work (selectCollegeUnit would refuse it too).
+      if (u.refusal) continue;
       out.push({ path: s.doc.path, title: tidyTitle(s.doc.title), board: s.board, stream: s.stream, programme: s.programme, unit: u.number, unitName: u.name, fileName: `${collegeTopicSlug(s.stream, s.programme, s.doc.path, u.number)}.json` });
     }
   }

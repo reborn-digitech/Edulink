@@ -59,6 +59,7 @@ later edit causes by design, or a population gap; **INFO** is a figure worth rea
 | `GET /api/v1/office/admissions/cycles` | counts per status and admitted/applied per grade |
 | population | school tables with no rows and nullable columns never populated in the audited schools |
 | bank-source | no bank question carries the provenance tag of the product's old name ("Relay content team"), which `quiz:import` would delete on its next run; the in-app tags the importer spares, counted |
+| bank-translation-names, college-unit-names | (qb-A, 31 Oct 2026) no live Hindi or Marathi chapter name carries a class, subject or chapter label, a number in front, a run-on summary or the other language (`translatedNameFor`); no generated college unit serves questions under a name the unit rule refuses (`unitNameRefusal`: "Notes:", "Syllabus", "Intake: 60 Duration: 4 Year") |
 
 ### What the first run found and what was fixed
 

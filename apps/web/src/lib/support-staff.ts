@@ -8,7 +8,7 @@ import { normalisePhone } from "./phone";
 import { RuleRefusal } from "./rule-refusal";
 import { todayKey } from "./dates";
 import { writeJson } from "./json";
-import { saveSalary } from "./payroll";
+import { salaryViewOf, saveSalary } from "./payroll";
 import type { ActiveContext } from "./session";
 
 /**
@@ -47,7 +47,11 @@ const SAME_PRESS_MS = 10 * 60 * 1000;
 
 type Tx = typeof db;
 
-export async function addSupportStaff(ctx: ActiveContext, input: SupportStaffCreate): Promise<SupportStaffCreated> {
+/** How long a press that found the worker waits for the first press to save the salary, and how often it looks. */
+const SALARY_WAIT_MS = 5_000;
+const SALARY_LOOK_MS = 50;
+
+export async function addSupportStaff(ctx: ActiveContext, input: SupportStaffCreate, retried = false): Promise<SupportStaffCreated> {
   if (ctx.role !== "ADMIN" || !ctx.schoolId || !ctx.membershipId) throw new AccessError("access.wrongRoleForThisAction");
   const schoolId = ctx.schoolId;
   const name = input.name.trim().replace(/\s+/g, " ");
@@ -103,7 +107,18 @@ export async function addSupportStaff(ctx: ActiveContext, input: SupportStaffCre
   });
 
   if (made.duplicate) {
-    return { membershipId: made.membershipId, name, role: "SUPPORT", designation, joinedOnKey: input.joinedOnKey, phone: made.phone, salary: null, duplicate: true };
+    // The worker another press made, with the salary it saved (qb-B, QB-06: this answered `salary: null`). That press
+    // saves the salary just after its worker is made, so a press fired with it may arrive in between: it waits a
+    // moment for the salary. Should the first press's salary have been refused, its worker is gone again; this press
+    // then adds afresh once, and meets the same refusal itself.
+    let salary = await salaryViewOf(schoolId, made.membershipId);
+    for (let waited = 0; input.salary && !salary?.salary && waited < SALARY_WAIT_MS; waited += SALARY_LOOK_MS) {
+      await new Promise((resolve) => setTimeout(resolve, SALARY_LOOK_MS));
+      salary = await salaryViewOf(schoolId, made.membershipId);
+      if (!salary) break;
+    }
+    if (!salary && !retried) return addSupportStaff(ctx, input, true);
+    return { membershipId: made.membershipId, name, role: "SUPPORT", designation, joinedOnKey: input.joinedOnKey, phone: made.phone, salary: salary?.salary ? salary : null, duplicate: true };
   }
 
   let salary: SupportStaffCreated["salary"] = null;

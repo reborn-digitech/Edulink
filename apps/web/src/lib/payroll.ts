@@ -42,7 +42,7 @@ import { closedDayKeys, listHolidays } from "./holidays";
 import { dateKeyInZone, isTeachingDay, parseTeachingDays } from "./dates";
 import { SCHOOL_STAFF_ROLES } from "./staff-records";
 import { RuleRefusal } from "./rule-refusal";
-import { maskVpa, slipRefsOf, VPA_PATTERN } from "./salary-payment-rules";
+import { inSlipOrder, maskVpa, slipRefsOf, VPA_PATTERN } from "./salary-payment-rules";
 import {
   computeSlip,
   dayKeysOf,
@@ -248,6 +248,20 @@ function salaryView(s: SalaryRow | undefined): StaffSalaryView["salary"] {
     paymentMode: s.paymentMode as PaymentMode,
     monthlyGrossPaise: monthlyGross(s.basicPaise, componentsOf(s), overridesOf(s)),
   };
+}
+
+/**
+ * One member of staff's salary as the salaries page reads it — the revision in force today, or the next one when
+ * the first starts later, `salary` null when they have none; null when no such member of staff is at the school
+ * (qb-B, QB-06 of the QA pass of 31 October 2026: what a second "Add support staff" press answers with).
+ */
+export async function salaryViewOf(schoolId: string, membershipId: string): Promise<StaffSalaryView | null> {
+  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId }, select: { id: true, role: true, user: { select: { name: true, preferredName: true } }, staffRecord: { select: { designation: true } } } });
+  if (!member) return null;
+  const tz = await zoneOf(schoolId);
+  const thisMonth = dateKeyInZone(new Date(), tz).slice(0, 7);
+  const row = (await salariesFor(schoolId, [member.id], thisMonth)).get(member.id) ?? (await salariesFor(schoolId, [member.id], "9999-12")).get(member.id);
+  return { membershipId: member.id, name: nameOf(member.user), role: member.role, designation: member.staffRecord?.designation ?? null, salary: salaryView(row) };
 }
 
 export async function listSalaries(ctx: ActiveContext): Promise<{ staff: StaffSalaryView[]; structures: { id: string; name: string }[]; sealingAvailable: boolean; canEdit: boolean }> {
@@ -551,7 +565,8 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
   const mayReadSlips = keeps(caller.role) || run.sharedWithPrincipal;
   const monthStart = new Date(`${month}-01T00:00:00Z`);
   const [slips, exports, lockedBy, roll] = await Promise.all([
-    mayReadSlips ? db.payslip.findMany({ where: { runId: run.id }, orderBy: { staffName: "asc" }, select: SLIP_SELECT }) : Promise.resolve([] as SlipRow[]),
+    // In the run's one order (QB-09), the order the slip references are numbered in.
+    mayReadSlips ? db.payslip.findMany({ where: { runId: run.id }, select: SLIP_SELECT }).then(inSlipOrder) : Promise.resolve([] as SlipRow[]),
     db.payrollExport.findMany({ where: { runId: run.id }, orderBy: { createdAt: "desc" }, take: 50, select: { kind: true, fileName: true, rows: true, totalPaise: true, createdAt: true, createdByUserId: true } }),
     run.lockedByUserId ? db.user.findUnique({ where: { id: run.lockedByUserId }, select: { name: true, preferredName: true } }) : Promise.resolve(null),
     keeps(caller.role) ? rollFor(caller.schoolId, monthStart) : Promise.resolve([]),
@@ -700,7 +715,7 @@ export function ecrShares(ee: PayslipLine, er: PayslipLine | undefined): { epfWa
  *     "#~#" (UAN, name, gross, EPF/EPS/EDLI wages, EE share, EPS share, ER
  *     difference, NCP days, refunds), whole rupees, no header.
  *   ESI — the ESIC monthly contribution sheet's six columns.
- *   BANK_ADVICE — one credit a line: name, account, IFSC, amount, narration.
+ *   BANK_ADVICE — one credit a line: name, account, IFSC, amount, narration, and the slip's reference (QB-07).
  *   PT, TDS_SUMMARY — the accountant's sheets.
  */
 export async function payrollExport(ctx: ActiveContext, month: string, kind: PayrollExportKind): Promise<PayrollExportFile> {
@@ -710,7 +725,7 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
   if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   if (!isFrozen(run.status)) throw new RuleRefusal("payroll.refuseNotLocked", 409, { month });
   const [slips, settings, school] = await Promise.all([
-    db.payslip.findMany({ where: { runId: run.id }, orderBy: { staffName: "asc" }, select: SLIP_SELECT }),
+    db.payslip.findMany({ where: { runId: run.id }, select: SLIP_SELECT }).then(inSlipOrder),
     settingsOf(caller.schoolId),
     db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { code: true } }),
   ]);
@@ -753,12 +768,14 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
     content = toCsv(out, [...FILE_HEADINGS.ESI]);
     rows = out.length;
   } else if (kind === "BANK_ADVICE") {
+    // The slip's reference on each credit (qb-B, QB-07): the UTR sheet the bank's return is sent back as matches by it alone.
+    const refs = slipRefsOf(month, slips);
     const out = [] as Record<string, unknown>[];
     for (const s of slips) {
       const sal = salaries.get(s.membershipId);
       if (s.paymentMode !== "BANK" || s.netPaise <= 0 || !sal?.bankAccountSealed || !sal.bankIfsc) continue;
       const account = open(sal.bankAccountSealed, bankBound(caller.schoolId, s.membershipId));
-      out.push(rowOf(FILE_HEADINGS.BANK_ADVICE, [out.length + 1, s.staffName, account, sal.bankIfsc, (s.netPaise / 100).toFixed(2), salaryNarration(month)]));
+      out.push(rowOf(FILE_HEADINGS.BANK_ADVICE, [out.length + 1, s.staffName, account, sal.bankIfsc, (s.netPaise / 100).toFixed(2), salaryNarration(month), refs.get(s.membershipId) ?? ""]));
       totalPaise += s.netPaise;
     }
     content = toCsv(out, [...FILE_HEADINGS.BANK_ADVICE]);

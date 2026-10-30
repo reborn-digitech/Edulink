@@ -251,7 +251,7 @@ describe("recording a payment", () => {
   it("refuses a part payment, a UTR or cheque number of the wrong shape, and a day outside the month's first to today", async () => {
     const ctx = await as(ids.admin, "ADMIN");
     const base = { mode: "BANK" as const, paidOn: PAID_ON, reference: "SBIN123456789012", note: "" };
-    await expect(recordSalaryPayment(ctx, MONTH, ids.mA, { ...base, amountPaise: net[ids.mA]! - 100 })).rejects.toMatchObject({ key: "salaryPay.refusePartial", status: 422, field: "amountPaise" });
+    await expect(recordSalaryPayment(ctx, MONTH, ids.mA, { ...base, amountPaise: net[ids.mA]! - 100 })).rejects.toMatchObject({ key: "teachPay.refuseAmount", status: 422, field: "amountPaise" });
     await expect(recordSalaryPayment(ctx, MONTH, ids.mA, { ...base, amountPaise: net[ids.mA]!, reference: "12345" })).rejects.toMatchObject({ key: "salaryPay.refuseUtr", status: 422 });
     await expect(recordSalaryPayment(ctx, MONTH, ids.mA, { ...base, amountPaise: net[ids.mA]!, paidOn: "2026-08-31" })).rejects.toMatchObject({ key: "salaryPay.refusePaidOn" });
     await expect(recordSalaryPayment(ctx, MONTH, ids.mA, { ...base, amountPaise: net[ids.mA]!, paidOn: "2099-01-01" })).rejects.toMatchObject({ key: "salaryPay.refusePaidOn" });
@@ -305,7 +305,8 @@ describe("the UTR sheet and the bank slips together", () => {
     expect(answer.accepted).toBe(false);
     expect(answer.recorded).toBe(0);
     expect(answer.lines).toEqual([
-      { line: 2, slipRef: ref[ids.mA], outcome: "RECORDED", reason: null },
+      // qb-B (QB-08): good, but the sheet was refused whole, so not recorded.
+      { line: 2, slipRef: ref[ids.mA], outcome: "WOULD_RECORD", reason: null },
       { line: 3, slipRef: "SAL-202609-099", outcome: "REFUSED", reason: "UNKNOWN_REF" },
       { line: 4, slipRef: ref[ids.mB], outcome: "REFUSED", reason: "AMOUNT" },
       { line: 5, slipRef: ref[ids.mC], outcome: "REFUSED", reason: "MODE" },
@@ -328,7 +329,7 @@ describe("the UTR sheet and the bank slips together", () => {
     for (const [k, v] of Object.entries({ month: MONTH, membershipId: ids.mB, amountPaise: "100", mode: "UPI", paidOn: PAID_ON, reference: "YBL111122225555", note: "" })) part.set(k, v);
     const refused = await recordPaymentAction(FORM_IDLE, part);
     expect(refused).toMatchObject({ ok: false, field: "amountPaise", values: { reference: "YBL111122225555" } });
-    expect(refused.message).toContain("A part payment is not recorded.");
+    expect(refused.message).toContain("A different amount is not recorded.");
     expect(await db.salaryPayment.count({ where: { schoolId: ids.school, voidedAt: null } })).toBe(1);
   });
 

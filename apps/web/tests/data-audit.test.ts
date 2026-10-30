@@ -25,7 +25,7 @@ import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { bandFor, meanPercent, meanPoints, shownPercent } from "@/lib/report-card-rules";
 import { REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
 import { FILING_RECORD_FIELDS } from "@/lib/pupil-records";
-import { PUPIL_CATEGORIES } from "@edulink/contracts";
+import { PUPIL_CATEGORIES, eResourceNameKey } from "@edulink/contracts"; // eResourceNameKey: qb-C
 import { todayKey } from "@/lib/dates";
 import { HOLIDAY_KIND_META } from "@/lib/holiday-kinds";
 import { GET as recordsGet } from "@/app/api/v1/office/pupil-records/route";
@@ -45,6 +45,8 @@ import { GET as staffMonthGet } from "@/app/api/v1/office/staff-attendance/month
 import { computeUsage, loadStoredSizes, monthKeyFor } from "@/lib/plans";
 import { AUTHORED_IN_THE_APP, CONTENT_TEAM_SOURCE_BEFORE_RENAME } from "@/lib/bank-source";
 import { corpusChapters, titleVerdict } from "../scripts/topic-titles"; // owner-batch-item6
+import { translatedNameFor } from "../scripts/quiz-queue-load"; // qb-A
+import { unitNameRefusal } from "@/lib/college-syllabi"; // qb-A
 import { admittedWithoutPayment } from "./data-audit-admission-fee";
 
 const RUN = process.env.DATA_AUDIT === "1";
@@ -568,6 +570,16 @@ d("STORED copies against their source rows", () => {
     else note("question-stat", "INFO", "server", `${buckets.length} bucket(s) over ${expected.size} (question, grade) pair(s) match the answer rows exactly`);
     expect(failsOf("question-stat")).toEqual([]);
   });
+
+  // qb-C (31 Oct 2026, QB-12): LibraryEResource.nameKey is a stored copy of the name's comparison form, written by
+  // eResourceNameKey alone. Every row's key is its name's, platform-wide (a college's e-resources are not in the
+  // default school set, and the rule is the same everywhere).
+  it("eresource-name-key: every e-resource's nameKey is its name as the desk compares it", async () => {
+    const rows = await db.libraryEResource.findMany({ select: { id: true, schoolId: true, name: true, nameKey: true } });
+    for (const r of rows) if (r.nameKey !== eResourceNameKey(r.name)) note("eresource-name-key", "FAIL", r.schoolId, `e-resource ${r.id} "${r.name}" keeps the key "${r.nameKey}", not "${eResourceNameKey(r.name)}"`);
+    note("eresource-name-key", "INFO", "platform", `${rows.length} e-resource(s) checked`);
+    expect(failsOf("eresource-name-key")).toEqual([]);
+  });
 });
 
 d("ON-READ answers against a recomputation from raw rows", () => {
@@ -956,6 +968,30 @@ d("bank: the provenance tag every in-app question carries", () => {
     }
     note("bank-names", "INFO", "server", `${topics.length} live school chapters: ${counts.OK ?? 0} named as their book, ${counts.CLOSE ?? 0} agreeing in part (a slug or a corpus title cut short), ${counts.UNKNOWN ?? 0} the corpus cannot speak for, ${corpus.filter((c) => c.refusal).length} of ${corpus.length} corpus chapters with no known title`);
     expect(failsOf("bank-names")).toEqual([]);
+  });
+
+  /**
+   * qb-A (QB-01, QB-18, 31 Oct 2026): the names the QA pass found wrong. FAIL for a live Hindi or Marathi chapter name the
+   * loader's cleaner would change (a class, subject or chapter label, a number in front, a run-on summary) or that is
+   * written in the other language (scripts/quiz-queue-load.ts translatedNameFor); FAIL for a generated college unit still
+   * serving questions under a name the unit rule refuses ("Notes:", "Syllabus", "Intake: 60 Duration: 4 Year";
+   * src/lib/college-syllabi.ts unitNameRefusal). Server-wide: the bank has no schoolId.
+   */
+  it("bank-translation-names and college-unit-names: no label, number, summary or other language in a name; no college unit named after its document's furniture", async () => {
+    const rows = await db.quizTopicTranslation.findMany({ where: { language: { in: ["hi", "mr"] }, topic: { retiredAt: null, NOT: { slug: { startsWith: "zz-" } } } }, select: { language: true, name: true, topic: { select: { slug: true } } } });
+    for (const r of rows) {
+      const clean = translatedNameFor(r.language, r.name);
+      if (clean !== r.name) note("bank-translation-names", "FAIL", "server", `${r.topic.slug} ${r.language}: "${r.name}" ${clean ? `should read "${clean}"` : "is no name (a label alone, a summary, or the other language)"}`);
+    }
+    note("bank-translation-names", "INFO", "server", `${rows.length} live Hindi and Marathi chapter names read`);
+    const units = await db.quizTopic.findMany({ where: { audience: "COLLEGE", retiredAt: null, slug: { startsWith: "college-" } }, select: { slug: true, name: true, _count: { select: { questions: { where: { takenDownAt: null } } } } } });
+    for (const u of units) {
+      const refusal = unitNameRefusal(u.name);
+      if (refusal && u._count.questions > 0) note("college-unit-names", "FAIL", "server", `${u.slug}: "${u.name}" is ${refusal} and serves ${u._count.questions} question(s)`);
+    }
+    note("college-unit-names", "INFO", "server", `${units.length} generated college units read`);
+    expect(failsOf("bank-translation-names")).toEqual([]);
+    expect(failsOf("college-unit-names")).toEqual([]);
   });
 });
 

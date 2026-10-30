@@ -47,6 +47,7 @@ import { asCollegeTerm, asQuizBoard, cleanTopicStreams, collegeSyllabusBoardOf, 
 import { finishFigure, figureProblems, prepareFigure, type PreparedFigure } from "./quiz-gen/figures/attach";
 import { chapterNameOf, chapterNumberOf, newTopicSlug } from "./quiz-gen/checks";
 import { loadDictionary, titleFragment, vocabularyOf } from "./corpus-titles";
+import { unitNameRefusal } from "../src/lib/college-syllabi";
 
 export type QueueTr = { stem?: string; choices?: string[]; solution?: string; imageAlt?: string | null; critique?: string | null; flag?: string | null };
 export type QueueItem = {
@@ -170,14 +171,60 @@ export function batchNameRefusal(batch: Pick<QueueBatch, "name" | "book" | "summ
   return titleFragment(batch.name ?? "", { vocab: vocabularyOf(texts), bookTitle: batch.book ?? "", dictionary: loadDictionary() });
 }
 
-/** owner-batch-item6: a model's Hindi or Marathi chapter name as a name: no "अध्याय 4:"/"प्रकरण 4 –" label in front or behind ("रेसिंग सेकंड अध्याय 12"), no danda or full stop at the end. Pure. */
+/** The labels a model puts on a chapter's or a unit's name, in Hindi, Marathi or English. */
+const NAME_LABEL = "अध्याय|प्रकरण|पाठ|धडा|इकाई|यूनिट|युनिट|एकक|chapter|unit|lesson";
+/** A number as digits or as a word (Hindi and Marathi, one to sixteen). */
+const NAME_NUMBER = "[0-9०-९]{1,2}|एक|दो|दोन|तीन|चार|पाँच|पांच|पाच|छह|छः|सहा|सात|आठ|नौ|नऊ|दस|दहा|ग्यारह|अकरा|बारह|बारा|तेरह|तेरा|चौदह|चौदा|पंद्रह|पंधरा|सोलह|सोळा";
+const W = "[\\p{L}\\p{M}]+";
+const NAME_RULES: RegExp[] = [
+  // "गणित कक्षा 6 …", "कक्षा 7 विज्ञान: …", "गणित इयत्ता 6 …": the class (and the subject) in front.
+  new RegExp(`^(?:${W}\\s+)?(?:कक्षा|इयत्ता|class)\\s*[0-9०-९]{1,2}(?:\\s+${W}(?=\\s*[:\\-–—]))?\\s*[:\\-–—,]?\\s*`, "iu"),
+  // "अध्याय 1 - …", "अध्याय नौ: …", "इकाई 1 - …", "यूनिट 1 - …": a label and its number in front.
+  new RegExp(`^(?:${NAME_LABEL})\\s*(?:${NAME_NUMBER})(?=[\\s:.\\-–—]|$)\\s*[:.\\-–—]?\\s*`, "iu"),
+  // "चौथा अध्याय - …", "नऊवा अध्याय - …": an ordinal word and the label, then a mark.
+  new RegExp(`^${W}\\s+(?:अध्याय|प्रकरण|पाठ|धडा|इकाई)\\s*[:\\-–—]\\s*`, "u"),
+  // "5. अभाज्य समय": a number in front.
+  /^[0-9०-९]{1,2}\s*[.)]\s*/u,
+];
+
+/**
+ * owner-batch-item6: a model's Hindi or Marathi chapter name as a name: no "अध्याय 4:"/"प्रकरण 4 –" label in front or
+ * behind ("रेसिंग सेकंड अध्याय 12"), no danda or full stop at the end. qb-A (QB-18, 31 Oct 2026) widened it: the class
+ * and subject in front ("गणित कक्षा 6 अध्याय 1 - …", "कक्षा 7 विज्ञान: अध्याय 6 — …"), a number as a word ("अध्याय
+ * नौ: …"), an ordinal and the label ("चौथा अध्याय - …"), a unit's label ("इकाई 1 - …"), a number in front ("5. …"),
+ * and a summary run on after the name ("… का मापन। इस अध्याय में …": the first sentence is kept; a name still longer
+ * than eighty characters is no name, ""). Pure.
+ */
 export function cleanTranslatedName(name: string): string {
-  return name
-    .trim()
-    .replace(/^(?:अध्याय|प्रकरण|पाठ|धडा|chapter)\s*[0-9०-९]{1,2}\s*[:.\-–—]?\s*/iu, "")
+  let t = name.trim();
+  for (let pass = 0; pass < 3; pass++) for (const rule of NAME_RULES) t = t.replace(rule, "");
+  // A summary run on after the name (a danda or a full stop, then a sentence): the first sentence is the name. A name of
+  // two questions ("कितना भारी? कितना हलका?") is a name.
+  const sentence = /^(.+?)[।.]\s+(\S.{19,})$/u.exec(t);
+  if (sentence) t = sentence[1]!;
+  t = t
     .replace(/[।.]+$/u, "")
-    .replace(/\s*[-–—:]?\s*(?:अध्याय|प्रकरण|पाठ|धडा)\s*[0-9०-९]{1,2}$/u, "")
+    .replace(new RegExp(`\\s*[-–—:]?\\s*(?:अध्याय|प्रकरण|पाठ|धडा)\\s*[0-9०-९]{1,2}$`, "u"), "")
     .trim();
+  return t.length > 80 ? "" : t;
+}
+
+/** Words only Hindi writes, as a Marathi name would not ("और", "में", "के", "है"). */
+const HINDI_ONLY = /(?:^|\s)(?:और|के|की|में|है|हैं|रहे|रहा|एवं|से)(?=\s|$|[:,।.])/u;
+/** Words only Marathi writes, as a Hindi name would not ("आणि", "मध्ये", "आहे", a "…च्या" form). */
+const MARATHI_ONLY = /(?:^|\s)(?:आणि|मध्ये|आहे|आहेत)(?=\s|$|[:,।.])|च्या(?=\s|$)/u;
+
+/** qb-A (QB-18): whether a Hindi name is written in Marathi, or a Marathi name in Hindi (the model's slip). Pure. */
+export function wrongLanguageName(language: string, name: string): boolean {
+  if (language === "mr") return HINDI_ONLY.test(name);
+  if (language === "hi") return MARATHI_ONLY.test(name);
+  return false;
+}
+
+/** qb-A (QB-18): the name a topic's translation row takes from the model: cleaned, or "" when it is no name or in the other language. Pure. */
+export function translatedNameFor(language: string, name: string): string {
+  const cleaned = cleanTranslatedName(name);
+  return cleaned && !wrongLanguageName(language, cleaned) ? cleaned : "";
 }
 
 /**
@@ -239,6 +286,9 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
       if (!collegeSyllabusBoardOf(batch.syllabusBoard)) throw new Error(`${file}: syllabusBoard "${batch.syllabusBoard ?? ""}" is not one of the syllabus boards; nothing was written`);
       const topic = await db.quizTopic.findUnique({ where: { slug: batch.slug }, select: { audience: true } });
       if (topic && topic.audience !== "COLLEGE") throw new Error(`${file}: the chapter "${batch.slug}" is the school bank's and this batch is a college unit; nothing was written`);
+      // qb-A (QB-01): a college unit that would name a new topic must carry a subject's name, not a heading of its document.
+      const unitRefusal = topic ? null : unitNameRefusal(batch.name ?? "");
+      if (unitRefusal) throw new Error(`${file}: the unit's name "${batch.name}" is ${unitRefusal}; no topic is named with it; nothing was written`);
       continue;
     }
     const board = asQuizBoard(batch.board);
@@ -273,7 +323,7 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
         select: { id: true, board: true },
       });
       for (const [language, tr] of Object.entries(batch.translations ?? {})) {
-        await db.quizTopicTranslation.create({ data: { topicId: topic.id, language, name: (tr.name ? cleanTranslatedName(tr.name) : "") || batch.name, summary: tr.summary ?? "" } });
+        await db.quizTopicTranslation.create({ data: { topicId: topic.id, language, name: (tr.name ? translatedNameFor(language, tr.name) : "") || batch.name, summary: tr.summary ?? "" } });
       }
     } else if (college) {
       // college-content: the stream, programme and term follow the batch (the loader is their one writer for a generated college topic).

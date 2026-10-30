@@ -33,6 +33,7 @@
  * key and left as they stand when there.
  */
 import type { PrismaClient } from "@prisma/client";
+import { eResourceNameKey } from "@edulink/contracts";
 import { OFFICE_FIXTURE as F } from "../src/lib/api-catalog/college-office-fixture";
 import { ACADEMICS_FIXTURE as A } from "../src/lib/api-catalog/academics-fixture";
 import { collegePresetsFor } from "../src/lib/certificate-rules";
@@ -172,7 +173,7 @@ export async function buildCollegeOffice(db: PrismaClient): Promise<OfficeFixtur
 
   // The library at a college: its terms, an e-resource, and cstudent02's counter fine for a late book.
   await db.librarySettings.upsert({ where: { schoolId: s }, create: { schoolId: s, facultyLimit: 10, facultyLoanDays: 90, collegeStudentLimit: 4, collegeStudentLoanDays: 15, bookBankExtra: 2 }, update: {} });
-  await db.libraryEResource.upsert({ where: { id: F.eResource }, create: { id: F.eResource, schoolId: s, name: "ZZ N-LIST", url: "https://nlist.inflibnet.ac.in/", kind: "NLIST", clicks: 12 }, update: {} });
+  await db.libraryEResource.upsert({ where: { id: F.eResource }, create: { id: F.eResource, schoolId: s, name: "ZZ N-LIST", nameKey: eResourceNameKey("ZZ N-LIST"), url: "https://nlist.inflibnet.ac.in/", kind: "NLIST", clicks: 12 }, update: {} });
   const title = await db.libraryTitle.upsert({ where: { id: pad("zzcltitle", 1) }, create: { id: pad("zzcltitle", 1), schoolId: s, title: "ZZ Concepts of Physics", author: "ZZ H C Verma", category: "TEXTBOOK", language: "EN" }, update: {}, select: { id: true } });
   const copy = await db.libraryCopy.upsert({ where: { id: pad("zzclcopy", 1) }, create: { id: pad("zzclcopy", 1), schoolId: s, titleId: title.id, accession: "ZZV-0001" }, update: {}, select: { id: true } });
   const libMember = await db.libraryMember.upsert({ where: { membershipId: c2.id }, create: { schoolId: s, membershipId: c2.id, kind: "STUDENT_COLLEGE", cardNumber: "LZZV0002" }, update: {}, select: { id: true } });

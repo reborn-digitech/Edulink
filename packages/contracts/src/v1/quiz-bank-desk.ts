@@ -145,7 +145,8 @@ export const quizBankChapterItemSchema = z.object({
 export type QuizBankChapterItem = z.infer<typeof quizBankChapterItemSchema>;
 
 export const quizBankChapterSchema = z.object({
-  topic: z.object({ id, slug: z.string(), name: z.string(), chapter: z.string(), subject: z.string(), grade: z.number().int(), board: z.string().nullable() }),
+  /** qb-A (QB-17): `book` is the book the chapter's line names ("Chapter 5 (Contemporary World Politics) — …"), null when it names none. */
+  topic: z.object({ id, slug: z.string(), name: z.string(), chapter: z.string(), subject: z.string(), grade: z.number().int(), board: z.string().nullable(), book: z.string().nullable() }),
   language: z.enum(QUIZ_BANK_LANGUAGES),
   state: z.enum(QUIZ_BANK_STATES),
   counts: z.object({ served: count, down: count, held: count }),

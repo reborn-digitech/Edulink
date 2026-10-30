@@ -76,7 +76,7 @@ import { hash } from "@node-rs/argon2";
 import { createHash, randomBytes } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { COMPONENT_KIND, DUTY_BUILT, STATUTORY_CODES, STREAM_PRESETS, gstinCheckChar, type DutyCode, type SalaryComponentCode, type SalaryFormula } from "@edulink/contracts";
+import { COMPONENT_KIND, DUTY_BUILT, STATUTORY_CODES, STREAM_PRESETS, eResourceNameKey, gstinCheckChar, type DutyCode, type SalaryComponentCode, type SalaryFormula } from "@edulink/contracts";
 import type { ActiveContext } from "../src/lib/session";
 import { classCode, schoolCode } from "../src/lib/codes";
 import { openAlumnus } from "../src/lib/alumni-membership";
@@ -1256,7 +1256,7 @@ async function buildCommunity(spec: StreamSpec, college: College, people: People
     const office = await actor(staff.registrar.userId, s, "ADMIN", staff.registrar.id);
     await sendAlumniNote(office, { batchYear: null, title: noteTitle, body: `The alumni meet is on the last Saturday of December at the college. Write to the office if you can speak to the final years.` });
   }
-  await db.libraryEResource.upsert({ where: { schoolId_name: { schoolId: s, name: "N-LIST (INFLIBNET e-books and e-journals)" } }, create: { schoolId: s, name: "N-LIST (INFLIBNET e-books and e-journals)", url: "https://nlist.inflibnet.ac.in/", kind: "NLIST" }, update: {} });
+  await db.libraryEResource.upsert({ where: { schoolId_nameKey: { schoolId: s, nameKey: eResourceNameKey("N-LIST (INFLIBNET e-books and e-journals)") } }, create: { schoolId: s, name: "N-LIST (INFLIBNET e-books and e-journals)", nameKey: eResourceNameKey("N-LIST (INFLIBNET e-books and e-journals)"), url: "https://nlist.inflibnet.ac.in/", kind: "NLIST" }, update: {} });
   // A case before the anti-ragging committee, heard and closed (the squad's register lists that it exists, never its words).
   const text = "Seniors in the hostel asked first-years to stand outside their rooms after dinner.";
   if (dutyHolder(spec, "ANTI_RAGGING_SQUAD") && !(await db.grievance.findFirst({ where: { schoolId: s, text }, select: { id: true } }))) {

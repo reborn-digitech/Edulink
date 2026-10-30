@@ -62,7 +62,7 @@ export function AssignmentDetail() {
   const d = query.data;
   const a = d?.assignment;
   const description = a
-    ? [a.className, a.category, a.pointsMilli ? t("teacher.outOfPoints", { points: formatMilli(a.pointsMilli) }) : null, a.dueAt ? t("teacher.dueWhenLower", { when: relativeTime(a.dueAt, locale) }) : null].filter(Boolean).join(" · ")
+    ? [a.className, a.subject, a.category, a.pointsMilli ? t("teacher.outOfPoints", { points: formatMilli(a.pointsMilli) }) : null, a.dueAt ? t("teacher.dueWhenLower", { when: relativeTime(a.dueAt, locale) }) : null].filter(Boolean).join(" · ")
     : undefined;
   return (
     <Screen title={a?.title ?? t("teacher.assignments")} description={description} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>

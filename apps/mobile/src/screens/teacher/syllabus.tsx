@@ -91,7 +91,7 @@ export function TeacherSyllabus() {
 
             <Card title={t("syllabus.chapters")}>
               {d.units.length === 0 ? (
-                <Empty icon="books" title={t("syllabus.noUnitsForClass")} body={t("syllabus.noUnitsForClassBody")} action={<Button label={t("syllabus.planLesson")} variant="secondary" onPress={openPlanner} />} />
+                <Empty icon="books" title={t("syllabus.noUnitsForClass")} body={t(d.canEdit ? "syllabus.noUnitsForClassBody" : "teachPay.noUnitsReadOnly")} action={d.canEdit ? <Button label={t("syllabus.planLesson")} variant="secondary" onPress={openPlanner} /> : undefined} />
               ) : (
                 d.units.map((u) => <UnitRow key={u.id} classId={classId} unit={u} canEdit={d.canEdit} />)
               )}
@@ -103,7 +103,7 @@ export function TeacherSyllabus() {
               {d.canEdit && !applying ? <Button label={t("planTemplates.apply")} variant="ghost" onPress={() => setApplying(true)} /> : null}
               {applying ? <ApplyTemplate classId={classId} subject={current} units={d.units} onClose={() => setApplying(false)} /> : null}
               {d.lessons.length === 0 ? (
-                <Empty icon="clipboard" title={t("syllabus.noLessons")} action={<Button label={t("syllabus.planLesson")} variant="secondary" onPress={openPlanner} />} />
+                <Empty icon="clipboard" title={t("syllabus.noLessons")} action={d.canEdit ? <Button label={t("syllabus.planLesson")} variant="secondary" onPress={openPlanner} /> : undefined} />
               ) : (
                 d.lessons.map((l) => <LessonRow key={l.id} lesson={l} canEdit={d.canEdit} />)
               )}

@@ -1,7 +1,10 @@
 import "server-only";
-import { normaliseIsbn, type LIBRARY_ERESOURCE_KINDS } from "@edulink/contracts";
+import { eResourceNameKey, isbnForms, isbn13, normaliseIsbn, type LIBRARY_ERESOURCE_KINDS } from "@edulink/contracts";
+import { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError } from "./access-error";
+import { RuleRefusal } from "./rule-refusal";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { audit } from "./audit";
 import { parseCsvRecords } from "./csv";
 import { isDateKey, todayKey } from "./dates";
@@ -99,10 +102,22 @@ export async function listEResources(ctx: ActiveContext) {
   return { items: rows.map(eView) };
 }
 
+/**
+ * Add an e-resource, or correct one: the name is the key, compared in any capitals or spacing (qb-C, QB-12: the
+ * `nameKey` column, unique per school), so "zz diksha" or "ZZ  DIKSHA" corrects "ZZ DIKSHA"'s link and kind and
+ * keeps the name as it was first written. Two adds of one name at once: the unique key decides, and the loser's
+ * upsert is retried once as the correction it now is.
+ */
 export async function saveEResource(ctx: ActiveContext, input: { name: string; url: string; kind: EKind }) {
   const d = await campusDesk(ctx, LIBRARY_DESK, "LIBRARY");
   if (!input.url.startsWith("https://")) throw new AccessError("collegeOffice.refuseUrl");
-  const row = await db.libraryEResource.upsert({ where: { schoolId_name: { schoolId: d.schoolId, name: input.name.trim() } }, create: { schoolId: d.schoolId, name: input.name.trim(), url: input.url.trim(), kind: input.kind }, update: { url: input.url.trim(), kind: input.kind, active: true } });
+  const name = input.name.trim().replace(/\s+/g, " ");
+  const where = { schoolId_nameKey: { schoolId: d.schoolId, nameKey: eResourceNameKey(name) } };
+  const upsert = () => db.libraryEResource.upsert({ where, create: { schoolId: d.schoolId, name, nameKey: where.schoolId_nameKey.nameKey, url: input.url.trim(), kind: input.kind }, update: { url: input.url.trim(), kind: input.kind, active: true } });
+  const row = await upsert().catch((e: unknown) => {
+    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") return upsert();
+    throw e;
+  });
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "library.eresource", targetType: "LibraryEResource", targetId: row.id, meta: { kind: input.kind } });
   return eView(row);
 }
@@ -130,17 +145,40 @@ export async function importIsbnList(ctx: ActiveContext, text: string): Promise<
   for (const cells of records) {
     const [rawIsbn = "", title = "", author = "", publisher = "", year = ""] = cells.map((c) => c.trim());
     if (!rawIsbn) continue;
-    const isbn = normaliseIsbn(rawIsbn);
-    if (!isbn) {
+    const checked = normaliseIsbn(rawIsbn);
+    if (!checked) {
       if (/\d/.test(rawIsbn)) invalid.push(rawIsbn.slice(0, 20));
       continue;
     }
+    const isbn = isbn13(checked);
     const y = Number.parseInt(year, 10);
     rows.push({ isbn, title: (title || isbn).slice(0, 200), author: author.slice(0, 120), publisher: publisher.slice(0, 120), year: Number.isFinite(y) && y > 1400 && y < 2100 ? y : null });
   }
-  const created = rows.length ? await db.libraryTitle.createMany({ data: rows.map((r) => ({ ...r, schoolId: d.schoolId })), skipDuplicates: true }) : { count: 0 };
+  // qb-C (QB-13): a book is one title whichever ISBN the list prints. Each line is read as its ISBN-13 and a title
+  // already catalogued under either form (the desk's own add keeps an ISBN-10 as typed) is left alone; a book twice
+  // in the list is added once. What is new is stored under its ISBN-13.
+  const known = new Set((rows.length ? await db.libraryTitle.findMany({ where: { schoolId: d.schoolId, isbn: { in: [...new Set(rows.flatMap((r) => isbnForms(r.isbn)))] } }, select: { isbn: true } }) : []).map((t) => isbn13(t.isbn!)));
+  const fresh: typeof rows = [];
+  for (const r of rows) {
+    if (known.has(r.isbn)) continue;
+    known.add(r.isbn);
+    fresh.push(r);
+  }
+  const created = fresh.length ? await db.libraryTitle.createMany({ data: fresh.map((r) => ({ ...r, schoolId: d.schoolId })), skipDuplicates: true }) : { count: 0 };
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "library.isbnImport", targetType: "School", targetId: d.schoolId, meta: { added: created.count, already: rows.length - created.count, invalid: invalid.length } });
   return { added: created.count, already: rows.length - created.count, invalid };
+}
+
+/**
+ * What the desk says after an ISBN list (qb-C, QB-11): "1 title added" and "3 titles added" (a One and a Many key, as
+ * the dictionaries do for counts), the ISBNs whose check digit failed named after it. Both forms that paste a list
+ * — the school's catalogue and a college's campus page — answer with it.
+ */
+export function isbnImportSentence(r: { added: number; already: number; invalid: string[] }): { key: TranslationKey; vars: Record<string, string | number> } {
+  const one = r.added === 1;
+  const vars = { added: r.added, already: r.already };
+  if (!r.invalid.length) return { key: one ? "campusForms.isbnAddedOne" : "campusForms.isbnAddedMany", vars };
+  return { key: one ? "campusForms.isbnAddedOneNamed" : "campusForms.isbnAddedManyNamed", vars: { ...vars, list: r.invalid.slice(0, 20).join(", ") } };
 }
 
 /**
@@ -200,6 +238,14 @@ export async function saveHostelRules(ctx: ActiveContext, hostelId: string, inpu
  * up today and the new one taken from today, in one transaction, with the
  * hostel fee's demand carried over. The new bed must be free; the unique keys
  * decide two moves at once.
+ *
+ * THE REFUSALS (qb-C, QB-14; QA-54's rule): a person allowed here asking for
+ * what cannot be is a RuleRefusal about the `bed` box, not a 403 — a bed the
+ * room does not have is 422, a bed somebody holds is 409. Two moves of one
+ * place at once: the first ends the place, the second finds it ended inside
+ * its own transaction (a conditional end, not a bare update) or meets the
+ * pupil's key, and is told 409 that the boarder has just been moved — the
+ * same as a press of an old page after the move, rather than "not found".
  */
 export async function changeRoom(ctx: ActiveContext, input: { allotmentId: string; roomId: string; bed: number }): Promise<{ allotmentId: string }> {
   const d = await campusDesk(ctx, HOSTEL_DESK, "HOSTEL");
@@ -207,27 +253,49 @@ export async function changeRoom(ctx: ActiveContext, input: { allotmentId: strin
   const today = todayKey(timezone);
   // A place whose expulsion has taken effect is no longer live (A3-S-15): it cannot move.
   const a = await db.hostelAllotment.findFirst({ where: { id: input.allotmentId, schoolId: d.schoolId, ...liveAllotmentWhere(today) }, select: { id: true, membershipId: true, roomId: true, bed: true, feeDemandId: true } });
-  if (!a) throw new AccessError("hostel.refuseNoAllotment", "NOT_FOUND");
+  if (!a) {
+    if (await justMoved(d.schoolId, input.allotmentId, today)) throw justMovedRefusal();
+    throw new AccessError("hostel.refuseNoAllotment", "NOT_FOUND");
+  }
   const room = await db.hostelRoom.findFirst({ where: { id: input.roomId, schoolId: d.schoolId }, select: { id: true, beds: true } });
   if (!room) throw new AccessError("hostel.refuseNoRoom", "NOT_FOUND");
-  if (input.bed > room.beds) throw new AccessError("hostel.refuseNoSuchBed", "FORBIDDEN", { beds: room.beds });
+  if (input.bed > room.beds) throw new RuleRefusal("hostel.refuseNoSuchBed", 422, { beds: room.beds }, "bed");
   if (room.id === a.roomId && input.bed === a.bed) return { allotmentId: a.id };
   const bedKey = `${room.id}:${input.bed}`;
+  // A bed a live place holds is refused before the transaction; the unique key still decides two moves into one bed.
+  if (await db.hostelAllotment.findFirst({ where: { schoolId: d.schoolId, activeBedKey: bedKey, ...liveAllotmentWhere(today) }, select: { id: true } })) throw new RuleRefusal("hostel.refuseBedTaken", 409, undefined, "bed");
   try {
     const id = await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
       // The bed asked for may still be held by a place whose expulsion has taken effect: written ended first.
       await settleExpulsions(tx, d.schoolId, today);
-      await tx.hostelAllotment.update({ where: { id: a.id }, data: { status: "ENDED", toDate: today, activePupilKey: null, activeBedKey: null, endedByUserId: d.userId } });
+      // Ended only while still live: a move that got here first has ended it, and this one is told so.
+      const ended = await tx.hostelAllotment.updateMany({ where: { id: a.id, schoolId: d.schoolId, status: "ACTIVE" }, data: { status: "ENDED", toDate: today, activePupilKey: null, activeBedKey: null, endedByUserId: d.userId } });
+      if (ended.count !== 1) throw justMovedRefusal();
       const created = await tx.hostelAllotment.create({ data: { schoolId: d.schoolId, membershipId: a.membershipId, roomId: room.id, bed: input.bed, fromDate: today, status: "ACTIVE", activePupilKey: a.membershipId, activeBedKey: bedKey, feeDemandId: a.feeDemandId, allottedByUserId: d.userId }, select: { id: true } });
       return created.id;
     });
     await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "hostel.roomChange", targetType: "HostelAllotment", targetId: id, meta: { from: a.id, roomId: room.id, bed: input.bed } });
     return { allotmentId: id };
   } catch (error) {
-    if (error instanceof AccessError) throw error;
-    throw new AccessError("hostel.refuseBedTaken");
+    if (error instanceof AccessError || error instanceof RuleRefusal) throw error;
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") {
+      // The pupil's key: another move of this boarder holds it now. Any other key is the bed.
+      const target = JSON.stringify(error.meta?.target ?? "");
+      if (target.includes("activePupilKey")) throw justMovedRefusal();
+      throw new RuleRefusal("hostel.refuseBedTaken", 409, undefined, "bed");
+    }
+    throw error;
   }
+}
+
+const justMovedRefusal = () => new RuleRefusal("campusForms.refuseJustMoved", 409, undefined, "bed");
+
+/** A place ended today by a room change whose boarder holds a live place now: the move a second press is about has just been made. */
+async function justMoved(schoolId: string, allotmentId: string, today: string): Promise<boolean> {
+  const old = await db.hostelAllotment.findFirst({ where: { id: allotmentId, schoolId, status: "ENDED", toDate: today }, select: { membershipId: true } });
+  if (!old) return false;
+  return (await db.hostelAllotment.count({ where: { schoolId, membershipId: old.membershipId, ...liveAllotmentWhere(today), fromDate: today } })) > 0;
 }
 
 export async function listSquadRounds(ctx: ActiveContext) {

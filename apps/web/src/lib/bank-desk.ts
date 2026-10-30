@@ -393,7 +393,8 @@ export async function bankChapter(session: ActiveContext, slug: string, query: Q
   });
   const translatedName = language === "en" ? null : topic.translations.find((t) => t.language === language)?.name;
   return {
-    topic: { id: topic.id, slug: topic.slug, name: translatedName || fixTitleCase(topic.name), chapter: fixTitleCase(topic.chapter), subject: topic.subject, grade: topic.classLevel, board: topic.board },
+    // qb-A (QB-17): the book the chapter's line names, for the page's heading.
+    topic: { id: topic.id, slug: topic.slug, name: translatedName || fixTitleCase(topic.name), chapter: fixTitleCase(topic.chapter), subject: topic.subject, grade: topic.classLevel, board: topic.board, book: chapterBookOfLine(topic.chapter) },
     language,
     state,
     counts: { served, down, held },

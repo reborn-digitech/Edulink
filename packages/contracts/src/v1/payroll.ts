@@ -333,7 +333,11 @@ export const utrSheetAnswerSchema = z.object({
   recorded: count,
   already: count,
   refused: count,
-  lines: z.array(z.object({ line: count, slipRef: z.string(), outcome: z.enum(["RECORDED", "ALREADY", "REFUSED"]), reason: z.enum(UTR_SHEET_REFUSALS).nullable() })),
+  /**
+   * Each line's outcome. A line that would have been recorded on a sheet refused whole is WOULD_RECORD, never
+   * RECORDED: nothing of a refused sheet is written (qb-B, QB-08 of the QA pass of 31 October 2026).
+   */
+  lines: z.array(z.object({ line: count, slipRef: z.string(), outcome: z.enum(["RECORDED", "WOULD_RECORD", "ALREADY", "REFUSED"]), reason: z.enum(UTR_SHEET_REFUSALS).nullable() })),
   status: z.enum(PAYROLL_RUN_STATUSES),
 });
 export type UtrSheetAnswer = z.infer<typeof utrSheetAnswerSchema>;

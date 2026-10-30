@@ -20,14 +20,32 @@ export function slipRef(month: string, position: number): string {
   return `SAL-${month.replace("-", "")}-${String(position).padStart(3, "0")}`;
 }
 
+const NAME_ORDER = new Intl.Collator("en", { sensitivity: "base", numeric: true });
+const byCodePoint = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
+
 /**
- * Each slip's reference, numbered by the run's order of names (then the
- * membership's id for two people of one name). Worked out on every read from
- * the frozen slips, so it never changes once the run is locked.
+ * THE run's order of slips, for the page, the door, the files and the references alike (qb-B, QB-09 of the QA pass
+ * of 31 October 2026): the page listed by the database's collation and the references were numbered by code point,
+ * so a lower-case, accented or Devanagari name scattered the numbering (001, 005, 002…). By name as a reader sorts
+ * it — case and accents aside, numbers as numbers — then by the name's exact spelling and the membership's id, so
+ * two people of one name keep one order. It reads nothing but its two arguments, so the order of a locked run never
+ * changes.
+ */
+export function compareSlips(a: { membershipId: string; staffName: string }, b: { membershipId: string; staffName: string }): number {
+  return NAME_ORDER.compare(a.staffName, b.staffName) || byCodePoint(a.staffName, b.staffName) || byCodePoint(a.membershipId, b.membershipId);
+}
+
+/** The slips in the run's order (compareSlips); a new array. */
+export function inSlipOrder<T extends { membershipId: string; staffName: string }>(slips: readonly T[]): T[] {
+  return [...slips].sort(compareSlips);
+}
+
+/**
+ * Each slip's reference, numbered in the run's order (compareSlips) — the order the run page lists them in.
+ * Worked out on every read from the frozen slips, so it never changes once the run is locked.
  */
 export function slipRefsOf(month: string, slips: { membershipId: string; staffName: string }[]): Map<string, string> {
-  const ordered = [...slips].sort((a, b) => (a.staffName < b.staffName ? -1 : a.staffName > b.staffName ? 1 : a.membershipId < b.membershipId ? -1 : a.membershipId > b.membershipId ? 1 : 0));
-  return new Map(ordered.map((s, i) => [s.membershipId, slipRef(month, i + 1)]));
+  return new Map(inSlipOrder(slips).map((s, i) => [s.membershipId, slipRef(month, i + 1)]));
 }
 
 /** A UPI id as NPCI allows it: letters, digits, dot, hyphen and underscore, then the app's handle. */

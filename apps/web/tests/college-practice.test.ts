@@ -101,12 +101,14 @@ beforeAll(async () => {
   });
   const chunk = (ordinal: number, head: string, text: string) =>
     db.contentChunk.create({ data: { documentId: doc.id, ordinal, chapter: head, headingPath: head ? [head] : [], pageStart: ordinal + 1, pageEnd: ordinal + 1, text, language: "en", tokens: Math.round(text.length / 4), figureKeys: [] } });
-  await chunk(0, "TABLE OF CONTENT", "ZZ Contents: Rules 1, Core Subjects 3, International Law 5.");
+  await chunk(0, "TABLE OF CONTENT", "ZZ Contents: Rules 1, Constitutional Law 3, International Law 5.");
   await chunk(1, "Savitribai Phule Pune University", "ZZ Research methodology: doctrinal and non-doctrinal research, hypothesis, sampling.");
-  await chunk(2, "CORE SUBJECTS", "ZZ Constitutional law: federalism, fundamental rights, judicial review and the basic structure doctrine.");
-  await chunk(3, "CORE SUBJECTS", ["1. Seervai, H. M. Constitutional Law of India, 4th Ed., 1991.", "2. Basu, D. D. Commentary on the Constitution, Lexis 2014.", "3. Jain, M. P. Indian Constitutional Law, 8th Edition 2018.", "4. Austin, G. Working a Democratic Constitution, Oxford Press 1999."].join("\n"));
+  await chunk(2, "CONSTITUTIONAL LAW", "ZZ Constitutional law: federalism, fundamental rights, judicial review and the basic structure doctrine.");
+  await chunk(3, "CONSTITUTIONAL LAW", ["1. Seervai, H. M. Constitutional Law of India, 4th Ed., 1991.", "2. Basu, D. D. Commentary on the Constitution, Lexis 2014.", "3. Jain, M. P. Indian Constitutional Law, 8th Edition 2018.", "4. Austin, G. Working a Democratic Constitution, Oxford Press 1999."].join("\n"));
   await chunk(4, "RULES FOR EXAMINATION", "ZZ A student must secure forty per cent to pass.");
   await chunk(5, "INTERNATIONAL LAW", "ZZ International law: sources of international law, treaties, custom, state recognition, the law of the sea.");
+  // qb-A (QB-01): a heading of the document's own furniture: unit 3, never drafted.
+  await chunk(6, "Notes:", "ZZ Notes: the teacher may change the order of the modules; two internal tests a semester.");
 });
 
 afterAll(async () => {
@@ -280,24 +282,29 @@ describe("the generator's college scope", () => {
 
   it("selects a unit of a ZZ syllabus document as the pipeline reads a chapter, its reading list left out", async () => {
     const unit = await selectCollegeUnit(db, { path: DOC_PATH, unit: 1 });
-    expect(unit).toMatchObject({ stream: "LAW", programme: "LL.M.", yearOrSemester: "S2", syllabusBoard: "SPPU", classLevel: 13, subjectCode: "LAW", chapterNumber: 1, chapterLabel: "Unit 1 — Core Subjects", source: "syllabi" });
+    expect(unit).toMatchObject({ stream: "LAW", programme: "LL.M.", yearOrSemester: "S2", syllabusBoard: "SPPU", classLevel: 13, subjectCode: "LAW", chapterNumber: 1, chapterLabel: "Unit 1 — Constitutional Law", source: "syllabi" });
     expect(unit.chunks.map((x) => x.ordinal)).toEqual([1, 2]);
     expect(unit.draftNote).toMatch(/university syllabus/);
     const second = await selectCollegeUnit(db, { path: DOC_PATH, unit: 2 });
     expect(second.chapterName).toBe("International Law");
-    await expect(selectCollegeUnit(db, { path: DOC_PATH, unit: 3 })).rejects.toThrow(/no unit 3/);
+    // qb-A (QB-01): the "Notes:" unit keeps its number and is refused; there is no fourth.
+    await expect(selectCollegeUnit(db, { path: DOC_PATH, unit: 3 })).rejects.toThrow(/not drafted: its heading is a heading cut after a mark/);
+    await expect(selectCollegeUnit(db, { path: DOC_PATH, unit: 4 })).rejects.toThrow(/no unit 4/);
   });
 
   it("plans by stream, programme, document and unit range; the catalogue lists the stream and the streams without a corpus", async () => {
     const syllabi = (await readCollegeSyllabi(db)).filter((s) => s.doc.path === DOC_PATH);
     expect(syllabi).toHaveLength(1);
     const all = planCollegeUnits({ stream: "LAW", programme: "LL.M.", document: DOC_PATH }, syllabi);
-    expect(all.map((w) => [w.unit, w.unitName])).toEqual([[1, "Core Subjects"], [2, "International Law"]]);
+    expect(all.map((w) => [w.unit, w.unitName])).toEqual([[1, "Constitutional Law"], [2, "International Law"]]);
     expect(planCollegeUnits({ stream: "LAW", programme: "LL.M.", unitFrom: 2 }, syllabi).map((w) => w.unit)).toEqual([2]);
     expect(planCollegeUnits({ stream: "ENGINEERING", programme: "LL.M." }, syllabi)).toEqual([]);
     expect(all[0]!.fileName).toBe(`${collegeTopicSlug("LAW", "LL.M.", DOC_PATH, 1)}.json`);
     const catalogue = await collegeSyllabi(db);
     expect(catalogue.streams.find((s) => s.stream === "LAW")?.programmes.some((p) => p.documents.some((d) => d.path === DOC_PATH))).toBe(true);
+    // qb-A (QB-01): the card does not offer the refused unit.
+    const card = catalogue.streams.flatMap((s) => s.programmes.flatMap((p) => p.documents)).find((d) => d.path === DOC_PATH);
+    expect(card?.units.map((u) => [u.number, u.name])).toEqual([[1, "Constitutional Law"], [2, "International Law"]]);
     expect(catalogue.without).toContain("HEALTH_SCIENCES");
   });
 
@@ -363,6 +370,10 @@ describe("a college batch in the bank", () => {
     await expect(loadGeneratedBatches(db, [{ file: "x.json", batch: collegeBatch({ slug: SLUG.ncert8 }) }])).rejects.toThrow(/school bank/);
     await expect(loadGeneratedBatches(db, [{ file: "x.json", batch: collegeBatch({ slug: `${P}-nostream`, streams: [] }) }])).rejects.toThrow(/no stream/);
     expect(await db.quizTopic.count({ where: { slug: `${P}-nostream` } })).toBe(0);
+    // qb-A (QB-01): a unit named after a heading of its document names no new topic.
+    await expect(loadGeneratedBatches(db, [{ file: "x.json", batch: collegeBatch({ slug: `${P}-notes`, name: "Notes:", chapter: "Unit 3 — Notes:" }) }])).rejects.toThrow(/heading cut after a mark/);
+    await expect(loadGeneratedBatches(db, [{ file: "x.json", batch: collegeBatch({ slug: `${P}-intake`, name: "Intake: 60 Duration: 4 Year" }) }])).rejects.toThrow(/programme's facts/);
+    expect(await db.quizTopic.count({ where: { slug: { in: [`${P}-notes`, `${P}-intake`] } } })).toBe(0);
   });
 
   it("the verifier takes a college batch and refuses a school board on it, or no stream", () => {

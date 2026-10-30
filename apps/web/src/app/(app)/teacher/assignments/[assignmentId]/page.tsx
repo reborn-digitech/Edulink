@@ -52,6 +52,7 @@ export default async function AssignmentPage({
       </Link>
 
       <PageHeader title={assignment.title} description={<>{assignment.className}
+          {assignment.subject ? ` · ${assignment.subject}` : ""}
           {assignment.category ? ` · ${assignment.category}` : ""}
           {assignment.pointsMilli ? ` · ${t("teacher.outOfPoints", { points: formatMilli(assignment.pointsMilli) })}` : ""}
           {assignment.dueAt ? ` · ${t("teacher.dueWhenLower", { when: relativeTime(assignment.dueAt) })}` : ""}</>} />

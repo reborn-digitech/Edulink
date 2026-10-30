@@ -181,6 +181,15 @@ describe("a class's syllabus", () => {
     expect(screen.queryByRole("button", { name: "Taught: ZZ Place value" })).toBeNull();
   });
 
+  it("a reader who cannot edit an empty subject is not invited to plan lessons (qb-B, QB-05)", async () => {
+    fakeApi({ [PATH]: () => json({ ...SYLLABUS, canEdit: false, units: [], percent: null, lessons: [] }) });
+    await renderTeacher(page());
+    expect(await screen.findByText("No syllabus for this subject yet")).toBeTruthy();
+    expect(screen.getByText("The office writes the chapter list for the grade.")).toBeTruthy();
+    expect(screen.queryByText(/plan lessons below meanwhile/)).toBeNull();
+    expect(screen.queryByRole("button", { name: "Plan a lesson" })).toBeNull();
+  });
+
   it("a refused write is a toast", async () => {
     fakeApi({ [PATH]: () => json(SYLLABUS), [`${PATH}/progress`]: () => refusal("ZZ not your class", 403) });
     await renderTeacher(page());

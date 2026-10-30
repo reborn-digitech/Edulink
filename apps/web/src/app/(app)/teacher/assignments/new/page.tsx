@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/page-header";
 import { requireRole } from "@/lib/tenancy";
-import { classReach, offeredSubjects } from "@/lib/teaching-reach";
+import { classReach, inGradeOrder, offeredSubjects } from "@/lib/teaching-reach";
 import { db } from "@/lib/db";
 import { AssignmentForm } from "./form";
 import { EmptyState } from "@/components/ui/states";
@@ -26,11 +26,13 @@ export default async function NewAssignmentPage({
   const reach = await classReach(ctx);
   const classIds = [...reach.keys()];
 
-  const classes = await db.class.findMany({
-    where: { id: { in: classIds }, schoolId: ctx.schoolId },
-    select: { id: true, name: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } },
-    orderBy: { name: "asc" },
-  });
+  const classes = inGradeOrder(
+    await db.class.findMany({
+      where: { id: { in: classIds }, schoolId: ctx.schoolId },
+      select: { id: true, name: true, gradeLevel: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } },
+      orderBy: { name: "asc" },
+    }),
+  );
 
   const back = { href: "/teacher/assignments", label: t("teacher.allAssignments") };
   if (classes.length === 0) {

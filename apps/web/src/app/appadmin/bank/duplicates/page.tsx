@@ -33,6 +33,8 @@ export default async function DuplicatesPage() {
         title={t("bankImport.duplicatesTitle")}
         description={report.trigram ? t("bankImport.duplicatesTrigram", { threshold: Math.round(report.threshold * 100) }) : t("bankImport.duplicatesExact")}
       />
+      {/* qb-A (QB-19): how many pairs the report holds when the list carries only the closest of them. */}
+      {report.totalPairs > report.pairs.length && <p className="text-sm text-fg-muted">{t("qbBank.duplicatesShown", { shown: report.pairs.length, total: report.totalPairs })}</p>}
       {report.pairs.length === 0 ? (
         <EmptyState icon={<CopySimpleIcon weight="duotone" className="size-8" />} title={t("bankImport.noDuplicates")} description={t("bankImport.noDuplicatesBody")} />
       ) : (

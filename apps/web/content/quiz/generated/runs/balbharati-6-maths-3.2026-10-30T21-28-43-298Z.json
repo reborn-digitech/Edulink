@@ -1,0 +1,522 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T21:28:43.298Z",
+  "finishedAt": "2026-10-30T21:34:22.109Z",
+  "seconds": 339,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — In the World of Numbers",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[INMO 2005 — question paper]\nso obtained. Observe that the numbers themselves are written in ascending order. So we exhaust\nnumbers beginning with 1, then beginning with 2 and so on.\nNumbers Digits used other | n |r] (\"77 ') | Cumulative\nthan the fixed part sum\nbeginning with 1 1,0 25 — 6 6\n2 2,1,0 35 q) = 21 27\n3 3,2,1,0 45) (6) = 56 83\n4 4,32,1,0 505] (3) = 126 209\n5 54,32,1,0 6 [5 (y)= 252 461\n6 6,5,4,3,2,1,0 75 (4) = 462 923\n7 7,6,5,4,32,1,0 85 (2) = 792 1715\nfrom 800000 to 855555 | 5,4,3,2,1,0 65 (3) = 252 1967\nfrom 860000 to 863333 | 3,2,1,0 44] (H= 35 2002\nThe next three 6-digit numbers are 864000, 864100, 864110.\nHence the 2005th number in the sequence is 864110.",
+      "[RMO 2016 — question paper]\n4. How many 6-digit natural numbers containing only the digits 1,2,3 are there\nin which 3 occurs exactly twice and the number is divisible by 9?",
+      "[PRMO 2018 — question paper]\n3. Consider all 6-digit numbers of the form abccba where b is odd. Determine the number of all\nsuch 6-digit numbers that are divisible by 7.\n4, The equation 166⇥56 = 8590 is valid in some base b 10 (that is, 1, 6, 5, 8, 9, 0 are digits in base\nb in the above equation). Find the sum of all possible values of b 10 satisfying the equation."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 89846,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 19814,
+      "completionTokens": 4251
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 226301,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 12547,
+      "completionTokens": 5142
+    },
+    "solver": {
+      "calls": 137,
+      "ms": 73546,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 20880,
+      "completionTokens": 1268
+    },
+    "form": {
+      "calls": 11,
+      "ms": 39354,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 2691,
+      "completionTokens": 773
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 2105,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 174972,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9004,
+      "completionTokens": 4298
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the smallest whole number?",
+      "ms": {
+        "draft": 3365,
+        "critique": 5217
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 2 - 4 according to the passage?",
+      "ms": {
+        "draft": 3365,
+        "critique": 5632,
+        "solver": 15138,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the water level in a well rises by 2 steps during the monsoon, what is the value of this change?",
+      "ms": {
+        "draft": 3365,
+        "critique": 6965,
+        "solver": 12429,
+        "form": 3525
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shop owner recorded the following sales: ₹87,000 in June and ₹1,69,000 in July. What is the total expenditure for both months?",
+      "ms": {
+        "draft": 3365,
+        "critique": 7042,
+        "solver": 1415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of (-5) - (-3)?",
+      "ms": {
+        "draft": 12976,
+        "critique": 6996,
+        "solver": 1526
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rabbit jumps 3 units to the right from -3, where will it land?",
+      "ms": {
+        "draft": 3365,
+        "critique": 7945,
+        "solver": 13649,
+        "form": 2289
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT true according to the passage?",
+      "ms": {
+        "draft": 12976,
+        "critique": 6793
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is 3 units to the left of zero on a number line, what is its value?",
+      "ms": {
+        "draft": 12976,
+        "critique": 8319,
+        "solver": 1280,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the sum of two opposite numbers?",
+      "ms": {
+        "draft": 12976,
+        "critique": 6153,
+        "solver": 523,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of (-5) - (-3)?",
+      "ms": {
+        "draft": 3779,
+        "critique": 5329,
+        "solver": 1315
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a player rolls a '+' and a 5 on the dice, where should the marker be moved?",
+      "ms": {
+        "draft": 3779,
+        "critique": 5687,
+        "solver": 2212
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT true according to the passage?",
+      "ms": {
+        "draft": 3779,
+        "critique": 10497
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number is the smallest natural number?",
+      "ms": {
+        "draft": 4809,
+        "critique": 9986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the sum of (-63) + (-32)?",
+      "ms": {
+        "draft": 3779,
+        "critique": 8965,
+        "solver": 13574
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rabbit jumps 4 units to the right from 0 on a number line, where does it land?",
+      "ms": {
+        "draft": 4809,
+        "critique": 7624,
+        "solver": 2415,
+        "form": 4017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the result of (+4) + (-2) according to the rules given in the passage?",
+      "ms": {
+        "draft": 4809,
+        "critique": 8649,
+        "solver": 2541,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of (-3) + (+3) on a number line?",
+      "ms": {
+        "draft": 4809,
+        "critique": 8988,
+        "solver": 1255,
+        "form": 4565
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Amit went up three steps from ground level. What is the integer representing his position?",
+      "ms": {
+        "draft": 4809,
+        "critique": 8707,
+        "solver": 2207,
+        "form": 3528
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an integer?",
+      "ms": {
+        "draft": 12976,
+        "critique": 9984,
+        "solver": 1507,
+        "form": 4051
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an integer?",
+      "ms": {
+        "draft": 3779,
+        "critique": 6628,
+        "solver": 2494,
+        "form": 3120
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the set of numbers formed by zero, all positive numbers and all negative numbers called?",
+      "ms": {
+        "draft": 4809,
+        "critique": 7351,
+        "solver": 2671,
+        "form": 3763,
+        "translation": 54909
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a player rolls a '+' sign and a 5 on the dice, what happens to their marker on the number strip?",
+      "ms": {
+        "draft": 12976,
+        "critique": 8139,
+        "solver": 1298,
+        "form": 2906,
+        "translation": 47273
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the number line, which of the following is true?",
+      "ms": {
+        "draft": 3365,
+        "critique": 9443,
+        "solver": 15755,
+        "form": 4084,
+        "translation": 40239
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a twin prime number pair?",
+      "ms": {
+        "draft": 3779,
+        "critique": 10425,
+        "solver": 13085,
+        "form": 5888,
+        "translation": 27969
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the smallest whole number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of 2 - 4 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the water level in a well rises by 2 steps during the monsoon, what is the value of this change?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A shop owner recorded the following sales: ₹87,000 in June and ₹1,69,000 in July. What is the total expenditure for both months?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of (-5) - (-3)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a rabbit jumps 3 units to the right from -3, where will it land?",
+      "reason": "options 1 and 3 are the same (\"-3\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT true according to the passage?",
+      "reason": "option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number is 3 units to the left of zero on a number line, what is its value?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the sum of two opposite numbers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of (-5) - (-3)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a player rolls a '+' and a 5 on the dice, where should the marker be moved?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT true according to the passage?",
+      "reason": "option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which number is the smallest natural number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the sum of (-63) + (-32)?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a rabbit jumps 4 units to the right from 0 on a number line, where does it land?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the result of (+4) + (-2) according to the rules given in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the result of (-3) + (+3) on a number line?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Amit went up three steps from ground level. What is the integer representing his position?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an integer?",
+      "reason": "near-duplicate of served question cmvuz9k0i000z0rgntvvep3s7 (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an integer?",
+      "reason": "near-duplicate of served question cmvuz9k0i000z0rgntvvep3s7 (cosine 0.961 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

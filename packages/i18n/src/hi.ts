@@ -14187,7 +14187,6 @@ export const hi: Dictionary = {
     isbnIntro: "शीर्षक आईएसबीएन से एक बार जोड़े जाते हैं; प्रतियाँ किताबें आने पर डेस्क पर जोड़ी जाती हैं।",
     isbnLabel: "एक पंक्ति में एक पुस्तक",
     isbnHint: "आईएसबीएन, शीर्षक, लेखक, प्रकाशक, वर्ष।",
-    isbnImported: "{added} शीर्षक जोड़े, {already} पहले से सूची में थे, {invalid} आईएसबीएन सही नहीं थे।",
     hostelTitle: "महाविद्यालय छात्रावास",
     htOccupancy: "अधिभोग",
     htBeds: "{beds} में से {occupied} बिस्तर",
@@ -19569,7 +19568,6 @@ export const hi: Dictionary = {
     colPaid: "भुगतान",
     refuseNotLocked: "{month} का रन बंद होने के बाद ही भुगतान दर्ज होते हैं।",
     refuseNothingDue: "इस पर्ची पर देने को कुछ नहीं है।",
-    refusePartial: "पर्ची का पूरा शुद्ध वेतन, {amount}, दर्ज करें। आंशिक भुगतान दर्ज नहीं होता।",
     refusePaidOn: "भुगतान की तारीख महीने की पहली तारीख और आज के बीच होनी चाहिए।",
     refuseUtr: "UTR में 12 से 22 अक्षर और अंक होते हैं, जैसे बैंक या UPI ऐप दिखाता है।",
     refuseCheque: "चेक की संख्या उस पर छपे छह अंक हैं।",
@@ -19686,12 +19684,34 @@ export const hi: Dictionary = {
     eresSaved: "{name} सहेजा गया।",
     isbnHint: "हर पंक्ति में एक पुस्तक: पहले ISBN, फिर शीर्षक, लेखक, प्रकाशक और वर्ष, अल्पविराम या टैब से अलग। जो शीर्षक अपने ISBN के साथ पहले से सूची में है, वह वैसा ही रहता है।",
     isbnButton: "शीर्षक जोड़ें",
-    isbnImported: "{added} शीर्षक जोड़े गए, {already} पहले से सूची में थे।",
-    isbnImportedNamed: "{added} शीर्षक जोड़े गए, {already} पहले से सूची में थे। इन ISBN का जाँच अंक मेल नहीं खाता: {list}।",
     moveSummary: "दूसरे बिस्तर पर भेजें",
     moveBed: "नया बिस्तर",
     moveHint: "अभी वाला बिस्तर आज ख़त्म होता है और नया आज से शुरू होता है।",
     moveButton: "भेजें",
   },
   // end owner-batch-item9
+  // qb-B (31 Oct 2026): the QA pass's teaching and payroll findings (QB-05, QB-11).
+  teachPay: {
+    noUnitsReadOnly: "दफ़्तर कक्षा-स्तर की अध्याय सूची लिखता है।",
+    exportLineOne: "{file}: 1 पंक्ति, {by} द्वारा, {date}",
+    refuseAmount: "पर्ची का शुद्ध वेतन ठीक-ठीक, {amount}, दर्ज करें। कोई दूसरी राशि दर्ज नहीं होती।",
+    refuseSheetOne: "1 पंक्ति अस्वीकार हुई, इसलिए कुछ भी दर्ज नहीं हुआ। {lines}। उसे ठीक करके शीट फिर भेजें।",
+  },
+  // end qb-B
+  // qb-C (31 Oct 2026): the QA pass's campus-form findings (QB-11 ISBN copy, QB-14).
+  campusForms: {
+    isbnAddedOne: "1 शीर्षक जोड़ा गया, {already} पहले से सूची में थे।",
+    isbnAddedMany: "{added} शीर्षक जोड़े गए, {already} पहले से सूची में थे।",
+    isbnAddedOneNamed: "1 शीर्षक जोड़ा गया, {already} पहले से सूची में थे। इन ISBN का जाँच अंक मेल नहीं खाता: {list}।",
+    isbnAddedManyNamed: "{added} शीर्षक जोड़े गए, {already} पहले से सूची में थे। इन ISBN का जाँच अंक मेल नहीं खाता: {list}।",
+    isbnEmpty: "पहले सूची चिपकाएँ: हर पंक्ति में एक पुस्तक, सबसे पहले ISBN।",
+    refuseJustMoved: "इस छात्रावासी को अभी-अभी दूसरे बिस्तर पर भेजा गया है। वे अब कहाँ हैं, यह देखने के लिए पृष्ठ फिर से खोलें।",
+  },
+  // end qb-C
+  // qb-A (31 Oct 2026): the QA pass's bank findings (QB-17, QB-19).
+  qbBank: {
+    chapterHeadingBook: "{heading} · {book}",
+    duplicatesShown: "{total} जोड़ियों में से सबसे मिलती-जुलती {shown} दिखाई गई हैं।",
+  },
+  // end qb-A
 };

@@ -137,8 +137,10 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
         </CardBody>
       </Card>
 
+      {/* qb-B (QB-10): a support worker does not ask for an advance (the office records one), so the card shows only once one exists, without the invitation. */}
+      {ctx.role === "SUPPORT" && mine.advances.length === 0 ? null : (
       <Card>
-        <CardHeader icon={<HandCoinsIcon weight="duotone" className="size-5" />} title={t("payroll.myAdvances")} description={t("payroll.myAdvancesBody")} />
+        <CardHeader icon={<HandCoinsIcon weight="duotone" className="size-5" />} title={t("payroll.myAdvances")} description={ctx.role === "SUPPORT" ? undefined : t("payroll.myAdvancesBody")} />
         <CardBody className="space-y-4">
           {mine.advances.length ? (
             <ul className="divide-y divide-border text-sm">
@@ -164,6 +166,7 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
           )}
         </CardBody>
       </Card>
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { audit } from "./audit";
 import { assertAppAdmin } from "./app-admin";
-import { bankToCsv, normaliseStem, parseBankCsv, type BankCsvResult, type BankExportRow, type BankRow, type BankTranslationRow } from "./bank-csv";
+import { bankToCsv, parseBankCsv, type BankCsvResult, type BankExportRow, type BankRow, type BankTranslationRow } from "./bank-csv";
 import { parseChoices, clampLevel } from "./quiz";
 import { CONTENT_TEAM_SOURCE } from "./bank-source";
 import { SERVED_QUESTION } from "./quiz-served";
@@ -246,6 +246,8 @@ export type DuplicatesReport = {
   trigram: boolean;
   threshold: number;
   pairs: DuplicatePair[];
+  /** qb-A (QB-19): every pair the report holds; `pairs` is the closest DUPLICATE_LIMIT of them. */
+  totalPairs: number;
   /** When the pairs were worked out: the report is kept in memory until the bank changes. */
   computedAt: Date;
 };
@@ -258,6 +260,60 @@ const DUPLICATE_TIMEOUT_MS = 120_000;
 
 /** The normalising expression, spelt once: bank-csv.ts normaliseStem in SQL, and the expression the trigram index is built on. */
 const NORM = (col: string) => `lower(regexp_replace(${col}, '[^[:alnum:]]+', '', 'g'))`;
+
+/*
+ * qb-A (QB-19, the QA pass of 31 October 2026): NORM keeps letters and digits only, so "What is (−3) + 3?" and "What is
+ * √3 × √3?" both read "whatis33", and "What is 2⁵?" and "What is (2³)²?" both "whatis2": 17 different questions were
+ * scored 1.0, identical. NORM stays the index's expression and finds the CANDIDATES (the `%` walk); each candidate is
+ * then scored on its STRICT stems, which keep every digit and symbol (signs, roots, powers, brackets, a decimal point)
+ * and drop only spaces, quotes, sentence marks and a hyphen inside a word. 1.0 is given to equal strict stems alone; the rest are scored by
+ * pg_trgm's own measure over the strict stems' characters, symbols included, and kept at the threshold or above.
+ */
+
+/** A stem as the duplicates finder compares it: lower case, no spaces, quotes, sentence marks or hyphens inside a word; every digit and symbol kept. Pure. */
+export function strictStem(stem: string): string {
+  return stem
+    .toLowerCase()
+    .replace(/(?<!\d)\.|\.(?!\d)/g, "")
+    // A hyphen inside a word is spelling ("non-metals", "in-situ"); a minus sign is not one.
+    .replace(/(?<=\p{L})[-‐‑](?=\p{L})/gu, "")
+    .replace(/[\s,'"‘’“”?!:;।…]+/gu, "");
+}
+
+function trigramsOf(text: string): Set<string> {
+  const chars = [..."  " + text + " "];
+  const set = new Set<string>();
+  for (let i = 0; i + 2 < chars.length; i++) set.add(chars[i]! + chars[i + 1]! + chars[i + 2]!);
+  return set;
+}
+
+/** pg_trgm's similarity (shared trigrams over all trigrams, the string padded as one word) over every character, symbols included. Pure. */
+export function strictSimilarity(a: string, b: string): number {
+  if (a === b) return 1;
+  const x = trigramsOf(a);
+  const y = trigramsOf(b);
+  let shared = 0;
+  for (const t of x) if (y.has(t)) shared++;
+  const all = x.size + y.size - shared;
+  return all === 0 ? 0 : shared / all;
+}
+
+/**
+ * qb-A (QB-19): a candidate pair's score on its strict stems, or null when it is not a duplicate under the rule: 1 for
+ * equal strict stems, else (trigram rule) the strict similarity below 1, kept at the threshold or above. Pure.
+ */
+export function strictPairScore(aStem: string, bStem: string, trigram: boolean): number | null {
+  const a = strictStem(aStem);
+  const b = strictStem(bStem);
+  if (a === b) return 1;
+  if (!trigram) return null;
+  const score = Math.min(0.999, Math.round(strictSimilarity(a, b) * 1000) / 1000);
+  return score >= DUPLICATE_THRESHOLD ? score : null;
+}
+
+/** The stored report's row per rule; "2" since the strict score (qb-A), so a report scored the old way is not read back. */
+export const DUPLICATE_MODES = { trigram: "t2", exact: "e2" } as const;
+type DuplicateMode = (typeof DUPLICATE_MODES)[keyof typeof DUPLICATE_MODES];
 
 let trigramKnown: boolean | null = null;
 
@@ -281,7 +337,7 @@ type KeptReport = {
 };
 
 /** The report of each rule, kept while the bank is as it was: the count of questions and the newest edit name a bank. */
-const lastReport = new Map<"t" | "e", KeptReport>();
+const lastReport = new Map<DuplicateMode, KeptReport>();
 
 /** Every pair the finder keeps per rule: well above the hundreds a bank of 16,000 questions holds at 0.8; beyond it the lowest similarities are let go. */
 const PAIR_CAP = 5_000;
@@ -315,7 +371,7 @@ function assertPlainIds(ids: string[]): void {
  * unique here); without it the whole bank against itself, each pair once.
  */
 async function pairsFor(trigram: boolean, onlyIds: string[] | null): Promise<RawPair[]> {
-  const select = `a."id" AS "aId", b."id" AS "bId"`;
+  const select = `a."id" AS "aId", b."id" AS "bId", a."stem" AS "aStem", b."stem" AS "bStem"`;
   const joinOn = onlyIds ? `a."id" <> b."id"` : `a."id" < b."id"`;
   const only = onlyIds ? ` AND a."id" IN (${onlyIds.map((id) => `'${id}'`).join(",")})` : "";
   if (onlyIds) {
@@ -323,21 +379,27 @@ async function pairsFor(trigram: boolean, onlyIds: string[] | null): Promise<Raw
     assertPlainIds(onlyIds);
   }
   const from = `FROM "QuizQuestion" a JOIN "QuizQuestion" b ON ${joinOn}${only}`;
-  const rows = trigram
+  const candidates = trigram
     ? await db.$tenantTransaction(
         async (client) => {
           const tx = client as Prisma.TransactionClient;
           await tx.$executeRaw`
             SELECT set_config('pg_trgm.similarity_threshold', ${String(DUPLICATE_THRESHOLD)}, true)`;
-          return tx.$queryRaw<RawPair[]>(
+          return tx.$queryRaw<(RawPair & { aStem: string; bStem: string })[]>(
             Prisma.raw(
-              `SELECT ${select}, similarity(${NORM('a."stem"')}, ${NORM('b."stem"')})::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} % ${NORM('b."stem"')} ORDER BY 3 DESC, 1, 2 LIMIT ${PAIR_CAP}`,
+              `SELECT ${select}, similarity(${NORM('a."stem"')}, ${NORM('b."stem"')})::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} % ${NORM('b."stem"')} ORDER BY "similarity" DESC, 1, 2 LIMIT ${PAIR_CAP}`,
             ),
           );
         },
         { timeout: DUPLICATE_TIMEOUT_MS, maxWait: 10_000 },
       )
-    : await db.$queryRaw<RawPair[]>(Prisma.raw(`SELECT ${select}, 1::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} = ${NORM('b."stem"')} ORDER BY 1, 2 LIMIT ${PAIR_CAP}`));
+    : await db.$queryRaw<(RawPair & { aStem: string; bStem: string })[]>(Prisma.raw(`SELECT ${select}, 1::float8 AS "similarity" ${from} AND ${NORM('a."stem"')} = ${NORM('b."stem"')} ORDER BY 1, 2 LIMIT ${PAIR_CAP}`));
+  // qb-A (QB-19): each candidate scored on its strict stems; one that is not a duplicate under the rule is let go.
+  const rows: RawPair[] = [];
+  for (const c of candidates) {
+    const similarity = strictPairScore(c.aStem, c.bStem, trigram);
+    if (similarity !== null) rows.push({ aId: c.aId, bId: c.bId, similarity });
+  }
   if (!onlyIds) return rows;
   const seen = new Map<string, RawPair>();
   for (const r of rows) {
@@ -375,7 +437,7 @@ export async function findDuplicates(session: ActiveContext, opts: { trigram?: b
   assertAppAdmin(session);
   const trigram = opts.trigram ?? (await trigramAvailable());
   const shape = await db.quizQuestion.aggregate({ _count: { _all: true }, _max: { updatedAt: true } });
-  const mode = trigram ? "t" : "e";
+  const mode: DuplicateMode = trigram ? DUPLICATE_MODES.trigram : DUPLICATE_MODES.exact;
   const key = `${shape._count._all}|${shape._max.updatedAt?.getTime() ?? 0}`;
   let kept = lastReport.get(mode);
   let loaded = false;
@@ -445,11 +507,11 @@ async function hydrate(trigram: boolean, raw: RawPair[], computedAt: Date): Prom
     const a = byId.get(r.aId);
     const b = byId.get(r.bId);
     if (!a || !b) continue;
-    // The JS rule and the SQL rule must agree on an exact match, whichever path ran.
-    const exact = normaliseStem(a.stem) === normaliseStem(b.stem);
-    pairs.push({ similarity: exact ? 1 : Math.round(r.similarity * 1000) / 1000, a, b });
+    // qb-A (QB-19): 1.0 for equal strict stems only, whichever path ran.
+    const exact = strictStem(a.stem) === strictStem(b.stem);
+    pairs.push({ similarity: exact ? 1 : Math.min(0.999, Math.round(r.similarity * 1000) / 1000), a, b });
   }
-  return { trigram, threshold: trigram ? DUPLICATE_THRESHOLD : 1, pairs, computedAt };
+  return { trigram, threshold: trigram ? DUPLICATE_THRESHOLD : 1, pairs, totalPairs: raw.length, computedAt };
 }
 
 /* -------------------------------------------------------------------------- */

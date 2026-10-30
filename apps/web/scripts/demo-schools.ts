@@ -37,7 +37,7 @@ import {
   attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildSignatures, buildCompetitionEntry, buildDepartures, buildExams, buildUpcomingExam, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
   CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal, switchModulesOn } from "./zz-fixtures";
-import { SCHOOL_MODULES } from "@edulink/contracts";
+import { PLATFORM_FEATURES, SCHOOL_MODULES } from "@edulink/contracts";
 // owner-batch-item4a: imports of Sunrise's transport, hostel and library builders (end of file)
 import { addDaysToKey, todayKey, weekdayOfKey, zonedStartOfDay } from "../src/lib/dates";
 // owner-batch-item4a end
@@ -49,6 +49,7 @@ import type { ActiveContext } from "../src/lib/session";
 // owner-batch-item5 end
 // owner-batch-item4b: Sunrise's inventory, payroll, website, alumni, review rounds and online fees (scripts/demo-schools-item4b.ts)
 import { buildSunriseItem4b, item4bRosterSection } from "./demo-schools-item4b";
+import { featureLegend, markFeatureGated } from "./demo-feature-paths"; // qb-C
 // owner-batch-item4b end
 
 setTag("");
@@ -957,7 +958,13 @@ async function countBlock(schoolIds: string[], sunitaId: string) {
 /* the roster document                                                         */
 /* -------------------------------------------------------------------------- */
 
-function rosterMarkdown(input: { sunrise: Built; saraswati: Built; sunita: { id: string }; expert: { threadId: string; bookings: string[]; mentee: { name: string; grade: string }; anjali: { bookingId: string } | null }; vacancies: { enquiries: string[] }; admissionEnquiries: { enquiries: string[] }; circulars: Record<string, string>; globalPostId: string }): string {
+/** qb-C: each platform switch as it stands now, for the roster's legend (a missing row is off, as platform-features.ts reads it). */
+async function featureStates(): Promise<Record<string, boolean>> {
+  const rows = await db.platformFeature.findMany({ select: { code: true, enabled: true } });
+  return Object.fromEntries(PLATFORM_FEATURES.map((code) => [code, rows.some((r) => r.code === code && r.enabled)]));
+}
+
+function rosterMarkdown(input: { sunrise: Built; saraswati: Built; sunita: { id: string }; expert: { threadId: string; bookings: string[]; mentee: { name: string; grade: string }; anjali: { bookingId: string } | null }; vacancies: { enquiries: string[] }; admissionEnquiries: { enquiries: string[] }; circulars: Record<string, string>; globalPostId: string; features: Record<string, boolean> }): string {
   const { sunrise, saraswati } = input;
   const staffRows = (b: Built) => {
     const rows = [
@@ -978,7 +985,9 @@ function rosterMarkdown(input: { sunrise: Built; saraswati: Built; sunita: { id:
     }).join("\n");
   const cls = (b: Built, grade: string) => b.classes.find((c) => c.grade === grade)!;
   // A roster is not help: the marker keeps this file out of the assistant's help index (scripts/help-index.ts).
-  return `<!-- helpIndex: false -->
+  // qb-C (QB-15): every path a platform switch closes is marked "(behind X)" and the legend says how each switch
+  // stood at this run, so nobody is sent to a 404 the roster did not warn of (scripts/demo-feature-paths.ts).
+  return markFeatureGated(`<!-- helpIndex: false -->
 # Demo schools
 
 Two complete demo schools built by \`npm run demo:schools\` (apps/web). Every account below signs in with the same password:
@@ -986,6 +995,8 @@ Two complete demo schools built by \`npm run demo:schools\` (apps/web). Every ac
 **Password for every demo account: \`${PASSWORD}\`**
 
 Re-running the script is safe; it adds nothing the second time and resets every password to the one above.
+
+${featureLegend(input.features)}
 
 | | Sunrise Public School | Saraswati Vidya Mandir |
 |---|---|---|
@@ -1078,7 +1089,7 @@ ${input.expert.anjali ? `| ${ANJALI_EMAIL} | Dr Anjali Rao (existing demo expert
 ${/* owner-batch-item4a: Sunrise's bus, hostel and library rows */ campusRosterRows(SUNRISE_CAMPUS)}
 
 ${/* owner-batch-item4b: the review round and online payments are seeded now; this section says what and where. */ item4bRosterSection()}
-`;
+`);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1226,7 +1237,7 @@ async function main() {
 
   const counts = await countBlock([sunrise.school.id, saraswati.school.id], sunita.id);
 
-  const doc = rosterMarkdown({ sunrise, saraswati, sunita, expert: { threadId: experts.threadId, bookings: experts.bookings, mentee: { name: experts.mentee.name, grade: experts.mentee.grade }, anjali: experts.anjali }, vacancies, admissionEnquiries, circulars: { sunrise: String(sunrise.counts.circular), saraswati: String(saraswati.counts.circular) }, globalPostId: globalPost.postId });
+  const doc = rosterMarkdown({ sunrise, saraswati, sunita, expert: { threadId: experts.threadId, bookings: experts.bookings, mentee: { name: experts.mentee.name, grade: experts.mentee.grade }, anjali: experts.anjali }, vacancies, admissionEnquiries, circulars: { sunrise: String(sunrise.counts.circular), saraswati: String(saraswati.counts.circular) }, globalPostId: globalPost.postId, features: await featureStates() });
   const docPath = join(process.cwd(), "..", "..", "docs", "demo-schools.md");
   await mkdir(join(process.cwd(), "..", "..", "docs"), { recursive: true });
   // The other generators' sections (demo:college, demo:college-stream, demo:college-engineering, demo:transfer) are

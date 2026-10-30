@@ -7,6 +7,8 @@ Two complete demo schools built by `npm run demo:schools` (apps/web). Every acco
 
 Re-running the script is safe; it adds nothing the second time and resets every password to the one above.
 
+**Pages behind a platform switch.** A path followed by "(behind X)" belongs to a part of the platform the operator switches on at /root/features (the vacancy board, expert and teacher sessions, mentoring, the practice pages, the assistant). While X is off, that page is the app's 404 for every account below, and the workflow row that names it describes data that waits for the switch. When this roster was written: ASSISTANT off, EXPERT_SESSIONS off, JOB_BOARD off, QUESTION_BANK off, QUESTION_GIG off, TEACHER_SESSIONS off, TEXT_MESSAGING off. `npm run demo:school-check` lists every such path as a fact.
+
 | | Sunrise Public School | Saraswati Vidya Mandir |
 |---|---|---|
 | Slug / school id | `sunrise-public-school` / `cmubsk1ea0001gnndzlk0ipvb` | `saraswati-vidya-mandir` / `cmubsk3r005r2gnndrv8yhuer` |
@@ -20,7 +22,7 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 
 | Email | Name | Role | Look at |
 |---|---|---|---|
-| sunrise.admin@demo.relay.test | Meenal Joshi | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
+| sunrise.admin@demo.relay.test | Meenal Joshi | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies (behind JOB_BOARD), /enquiries; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | sunrise.principal@demo.relay.test | Dr Rajesh Kulkarni | Principal | /principal, /principal/staff, /principal/leave (one pending ask), /enquiries (the vacancy applicant) |
 | sunrise.teacher1@demo.relay.test | Priya Nair | Teacher · form, Grade 5 | /teacher, /teacher/classes/cmubsk1fn001agnndv57hga2a, /teacher/attendance?classId=cmubsk1fn001agnndv57hga2a, /bulletin |
 | sunrise.teacher2@demo.relay.test | Sameer Deshpande | Teacher · form, Grade 6 | /teacher, /teacher/classes/cmubsk1ha002xgnnddzyxcbe7, /teacher/attendance?classId=cmubsk1ha002xgnnddzyxcbe7, /bulletin |
@@ -30,7 +32,7 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 | sunrise.teacher6@demo.relay.test | Vinod Sharma | Teacher · form, Grade 10 | /teacher, /teacher/classes/cmubsk1n4009ggnndc3p4dqlj, /teacher/attendance?classId=cmubsk1n4009ggnndc3p4dqlj, /bulletin |
 | sunrise.subject1@demo.relay.test | Farida Sheikh | Teacher · subject only | /teacher (timetable, no form class) |
 | sunrise.subject2@demo.relay.test | Rohit Patil | Teacher · subject only | /teacher (timetable, no form class) |
-| sunrise.spare1@demo.relay.test | Anjum Qureshi | Teacher · unattached | /teacher (empty state), /vacancies (has applied to the other school), /enquiries |
+| sunrise.spare1@demo.relay.test | Anjum Qureshi | Teacher · unattached | /teacher (empty state), /vacancies (behind JOB_BOARD) (has applied to the other school), /enquiries |
 | sunrise.pupil49@demo.relay.test | Ayaan Bhatt | Alumnus (left grade 8) | /alumni, /bulletin, /remarks, /record |
 | sunrise.driver01@demo.relay.test | Ramesh Gaikwad | Driver | /driver (2 routes on MH 12 SR 4521: Route 2 then Route 1, morning and evening; the week's trips ended, today's still to run until their time); riders aarav.deshmukh, sunrise.pupil11, sunrise.pupil17, sunrise.pupil25, sunrise.pupil33, sunrise.pupil41, sunrise.pupil07, sunrise.pupil12, sunrise.pupil18, sunrise.pupil26, sunrise.pupil34, sunrise.pupil42 |
 | sunrise.librarian@demo.relay.test | Shalini Apte | Librarian | /library, /library/catalogue (40 titles, 66 copies, 14 in Devanagari), /library/overdue (four overdue), /library/reservations (one held, one queued), /library/fines (due, settled, waived), /library/reading-room |
@@ -48,7 +50,7 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 
 | Email | Name | Role | Look at |
 |---|---|---|---|
-| svm.admin@demo.relay.test | Sunil Wagh | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies, /enquiries; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
+| svm.admin@demo.relay.test | Sunil Wagh | Admin | /admin, /admin/people, /admin/fees, /admin/admissions, /admin/certificates, /admin/filings, /admin/messaging, /admin/vacancies (behind JOB_BOARD), /enquiries; holds the head's pages, given by the principal at /principal/staff: /principal/leave, /principal/trends, /admin/reviews, /admin/safety |
 | svm.principal@demo.relay.test | Vandana Pathak | Principal | /principal, /principal/staff, /principal/leave (one pending ask), /enquiries (the vacancy applicant) |
 | svm.teacher1@demo.relay.test | Manisha Kale | Teacher · form, Grade 5 | /teacher, /teacher/classes/cmubsk3rt05sbgnndixs2zmlc, /teacher/attendance?classId=cmubsk3rt05sbgnndixs2zmlc, /bulletin |
 | svm.teacher2@demo.relay.test | Prashant Gaikwad | Teacher · form, Grade 6 | /teacher, /teacher/classes/cmubsk3sj05tygnndpd9m9j8m, /teacher/attendance?classId=cmubsk3sj05tygnndpd9m9j8m, /bulletin |
@@ -58,12 +60,12 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 | svm.teacher6@demo.relay.test | Dattatray Pagar | Teacher · form, Grade 10 | /teacher, /teacher/classes/cmubsk3vb060hgnndbh02pgt6, /teacher/attendance?classId=cmubsk3vb060hgnndbh02pgt6, /bulletin |
 | svm.subject1@demo.relay.test | Sheetal Ahire | Teacher · subject only | /teacher (timetable, no form class) |
 | svm.subject2@demo.relay.test | Ganesh Tambe | Teacher · subject only | /teacher (timetable, no form class) |
-| svm.spare1@demo.relay.test | Rupali Chavan | Teacher · unattached | /teacher (empty state), /vacancies (has applied to the other school), /enquiries |
+| svm.spare1@demo.relay.test | Rupali Chavan | Teacher · unattached | /teacher (empty state), /vacancies (behind JOB_BOARD) (has applied to the other school), /enquiries |
 | svm.pupil49@demo.relay.test | Siddhesh Thakare | Alumnus (left grade 8) | /alumni, /bulletin, /remarks, /record |
 
 ## Pupils
 
-Every pupil is a minor with a birthdate that fits the grade. Pupil accounts open /student, /student/practice, /student/record, /student/certificates, /report-cards and /bulletin. Parent accounts open /parent with the child switcher, /parent/fees, /parent/health, /parent/meetings, /parent/practice, /parent/certificates, /parent/applications and /enquiries.
+Every pupil is a minor with a birthdate that fits the grade. Pupil accounts open /student, /student/practice (behind QUESTION_BANK), /student/record, /student/certificates, /report-cards and /bulletin. Parent accounts open /parent with the child switcher, /parent/fees, /parent/health, /parent/meetings, /parent/practice (behind QUESTION_BANK), /parent/certificates, /parent/applications and /enquiries.
 
 ### Sunrise Public School
 
@@ -93,14 +95,14 @@ Every pupil is a minor with a birthdate that fits the grade. Pupil accounts open
 |---|---|---|---|
 | sunita.deshmukh@demo.relay.test | Sunita Deshmukh | +91 98220 11223 | **Aarav Deshmukh** (aarav.deshmukh@demo.relay.test) in Sunrise Grade 6 · A, and **Anaya Deshmukh** (anaya.deshmukh@demo.relay.test) in Saraswati Grade 7 · A |
 
-Sunita's pages: /parent (switch between the children with `?child=<membershipId>` — Aarav `cmubsk1he0032gnndh08eqxx0`, Anaya `cmubsk3t905vqgnndkuhrkr6a`), /parent/fees (a plan and demands at each school), /parent/health (both cards), /parent/certificates (a bonafide issued to Aarav; Anaya's pending ask), /parent/meetings (one booked at each school), /parent/practice (both children's quiz activity), /parent/applications, /enquiries (her admission enquiry to Saraswati about a third child: /enquiries/cmubsk57e0bkignndvhj0gbgh), /explore/cmubsk1ea0001gnndzlk0ipvb and /explore/cmubsk3r005r2gnndrv8yhuer, and the bell.
+Sunita's pages: /parent (switch between the children with `?child=<membershipId>` — Aarav `cmubsk1he0032gnndh08eqxx0`, Anaya `cmubsk3t905vqgnndkuhrkr6a`), /parent/fees (a plan and demands at each school), /parent/health (both cards), /parent/certificates (a bonafide issued to Aarav; Anaya's pending ask), /parent/meetings (one booked at each school), /parent/practice (behind QUESTION_BANK) (both children's quiz activity), /parent/applications, /enquiries (her admission enquiry to Saraswati about a third child: /enquiries/cmubsk57e0bkignndvhj0gbgh), /explore/cmubsk1ea0001gnndzlk0ipvb and /explore/cmubsk3r005r2gnndrv8yhuer, and the bell.
 
 ## The expert
 
 | Email | Name | Look at |
 |---|---|---|
-| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmvq9uolg03m4gp4n2gw0e6cs at Sunrise, /expert/bookings/cmvq9uolo03mcgp4n7tbbj6lf at Saraswati), /expert/availability (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
-| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmvq9uolw03mmgp4nxnd67meb — a careers talk booked by Saraswati |
+| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmvq9uolg03m4gp4n2gw0e6cs (behind EXPERT_SESSIONS) at Sunrise, /expert/bookings/cmvq9uolo03mcgp4n7tbbj6lf (behind EXPERT_SESSIONS) at Saraswati), /expert/availability (behind EXPERT_SESSIONS) (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (behind EXPERT_SESSIONS) (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
+| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmvq9uolw03mmgp4nxnd67meb (behind EXPERT_SESSIONS) — a careers talk booked by Saraswati |
 
 ## Workflows seeded, and where to see each
 
@@ -126,15 +128,15 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 | Certificates: templates in the school's language, issued papers (one answering an ask), asks pending and declined, pupil records for every class | /admin/certificates, /admin/certificates/issue, /admin/certificates/issued, /admin/records, /student/certificates, /certificates/check |
 | Filings identity and readiness | /admin/filings |
 | Admissions: an OPEN 2027–28 cycle for grades 5 and 6 with a test and sittings, seven applications from a parent of the other school in every state, one walk-in | /admin/admissions, /admin/admissions/applications, /explore/<schoolId>, /parent/applications (as the applying parent) |
-| Vacancies: an open posting at each school with the other school's spare teacher applying | /admin/vacancies, /vacancies, /enquiries/cmubsk56w0bjmgnndwwubmaid (as svm.spare1@demo.relay.test or Sunrise's principal), /enquiries/cmubsk5770bjugnndu8gv854q |
+| Vacancies: an open posting at each school with the other school's spare teacher applying | /admin/vacancies (behind JOB_BOARD), /vacancies (behind JOB_BOARD), /enquiries/cmubsk56w0bjmgnndwwubmaid (as svm.spare1@demo.relay.test or Sunrise's principal), /enquiries/cmubsk5770bjugnndu8gv854q |
 | Admission enquiries from parents of the other school | /enquiries (as each school's admin) |
-| Quiz practice: 2–5 finished attempts per pupil in grades 6–9 with badges | /student/practice, /parent/practice, /teacher/practice, /principal (practice insights) |
+| Quiz practice: 2–5 finished attempts per pupil in grades 6–9 with badges | /student/practice (behind QUESTION_BANK), /parent/practice (behind QUESTION_BANK), /teacher/practice (behind QUESTION_BANK), /principal (practice insights) |
 | Meetings: two teachers per school with slots next week, Sunita booked at each | /teacher/meetings, /parent/meetings |
-| Experts: a published expert, slots, a confirmed workshop at each school with messages, an active mentorship | /experts, /experts/bookings/<id> (as an admin), /expert, /mentoring |
+| Experts: a published expert, slots, a confirmed workshop at each school with messages, an active mentorship | /experts (behind EXPERT_SESSIONS), /experts/bookings/<id> (behind EXPERT_SESSIONS) (as an admin), /expert, /mentoring (behind EXPERT_SESSIONS) |
 | A pending teacher invitation (`<school>.invite1@demo.relay.test`) | /admin/people → invitations |
 | A remark thread between the grade-7 form teacher and a parent, the reply unread by the teacher | /teacher/remarks, /parent/remarks |
 | An OPEN report on a comment under the robotics post | /admin/safety (or the review queue) |
-| A practice assignment for grade 6 with a target level | /teacher/practice, /student/practice |
+| A practice assignment for grade 6 with a target level | /teacher/practice (behind QUESTION_BANK), /student/practice (behind QUESTION_BANK) |
 | A grade-9 entry in the platform's "Autumn Science Fair" with a result and the school's standing | /competitions, /admin/competitions |
 | A pupil who left in August with a transfer record (`<school>.pupil49`, Ayaan Bhatt / Siddhesh Thakare); a grade-8 departure scheduled for 30 April | /admin/people → departures, /admin/certificates |
 | Pupil records with coded category and religion, caste, parents' occupations, income, the previous school's TC; staff records with dates of birth and of joining service; roll numbers in every class | /admin/records, /admin/filings, /student/record |

@@ -14181,7 +14181,6 @@ export const mr: Dictionary = {
     isbnIntro: "शीर्षके आयएसबीएननुसार एकदाच जोडली जातात; प्रती पुस्तके आल्यावर कक्षावर जोडल्या जातात.",
     isbnLabel: "एका ओळीत एक पुस्तक",
     isbnHint: "आयएसबीएन, शीर्षक, लेखक, प्रकाशक, वर्ष.",
-    isbnImported: "{added} शीर्षके जोडली, {already} आधीच सूचीत होती, {invalid} आयएसबीएन बरोबर नव्हते.",
     hostelTitle: "महाविद्यालय वसतिगृह",
     htOccupancy: "भोगवटा",
     htBeds: "{beds} पैकी {occupied} खाटा",
@@ -19563,7 +19562,6 @@ export const mr: Dictionary = {
     colPaid: "देयक",
     refuseNotLocked: "{month} चा रन बंद झाल्यावरच देयके नोंदवली जातात.",
     refuseNothingDue: "या पावतीवर देण्यासारखे काही नाही.",
-    refusePartial: "पावतीचे संपूर्ण निव्वळ वेतन, {amount}, नोंदवा. अंशतः देयक नोंदवले जात नाही.",
     refusePaidOn: "दिल्याची तारीख महिन्याच्या पहिल्या तारखेपासून आजपर्यंत असावी.",
     refuseUtr: "UTR मध्ये 12 ते 22 अक्षरे व अंक असतात, जसे बँक किंवा UPI ॲप दाखवते.",
     refuseCheque: "धनादेशाचा क्रमांक म्हणजे त्यावर छापलेले सहा अंक.",
@@ -19680,12 +19678,34 @@ export const mr: Dictionary = {
     eresSaved: "{name} जतन केले.",
     isbnHint: "प्रत्येक ओळीत एक पुस्तक: आधी ISBN, मग शीर्षक, लेखक, प्रकाशक आणि वर्ष, स्वल्पविराम किंवा टॅबने वेगळे. आपल्या ISBN सह आधीच सूचीत असलेले शीर्षक आहे तसेच राहते.",
     isbnButton: "शीर्षके जोडा",
-    isbnImported: "{added} शीर्षके जोडली, {already} आधीच सूचीत होती.",
-    isbnImportedNamed: "{added} शीर्षके जोडली, {already} आधीच सूचीत होती. या ISBN चा तपासणी अंक जुळत नाही: {list}.",
     moveSummary: "दुसऱ्या पलंगावर हलवा",
     moveBed: "नवा पलंग",
     moveHint: "आत्ताचा पलंग आज संपतो आणि नवा आजपासून सुरू होतो.",
     moveButton: "हलवा",
   },
   // end owner-batch-item9
+  // qb-B (31 Oct 2026): the QA pass's teaching and payroll findings (QB-05, QB-11).
+  teachPay: {
+    noUnitsReadOnly: "कार्यालय इयत्तेची धड्यांची यादी लिहिते.",
+    exportLineOne: "{file}: 1 ओळ, {by} यांनी, {date}",
+    refuseAmount: "पावतीचे निव्वळ वेतन नेमके, {amount}, नोंदवा. वेगळी रक्कम नोंदवली जात नाही.",
+    refuseSheetOne: "1 ओळ नाकारली, म्हणून काहीच नोंदवले नाही. {lines}. ती दुरुस्त करून शीट पुन्हा पाठवा.",
+  },
+  // end qb-B
+  // qb-C (31 Oct 2026): the QA pass's campus-form findings (QB-11 ISBN copy, QB-14).
+  campusForms: {
+    isbnAddedOne: "1 शीर्षक जोडले, {already} आधीच सूचीत होती.",
+    isbnAddedMany: "{added} शीर्षके जोडली, {already} आधीच सूचीत होती.",
+    isbnAddedOneNamed: "1 शीर्षक जोडले, {already} आधीच सूचीत होती. या ISBN चा तपासणी अंक जुळत नाही: {list}.",
+    isbnAddedManyNamed: "{added} शीर्षके जोडली, {already} आधीच सूचीत होती. या ISBN चा तपासणी अंक जुळत नाही: {list}.",
+    isbnEmpty: "आधी यादी चिकटवा: प्रत्येक ओळीत एक पुस्तक, सर्वात आधी ISBN.",
+    refuseJustMoved: "या वसतिगृहवासीला आत्ताच दुसऱ्या पलंगावर हलवले आहे. ते आता कुठे आहेत हे पाहण्यासाठी पान पुन्हा उघडा.",
+  },
+  // end qb-C
+  // qb-A (31 Oct 2026): the QA pass's bank findings (QB-17, QB-19).
+  qbBank: {
+    chapterHeadingBook: "{heading} · {book}",
+    duplicatesShown: "{total} जोड्यांपैकी सर्वाधिक सारख्या {shown} दाखवल्या आहेत.",
+  },
+  // end qb-A
 };

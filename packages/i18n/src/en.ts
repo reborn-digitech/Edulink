@@ -14655,7 +14655,6 @@ export const en = {
     isbnIntro: "Titles are added once by ISBN; copies are added at the desk as the books arrive.",
     isbnLabel: "One book a line",
     isbnHint: "ISBN, title, author, publisher, year.",
-    isbnImported: "{added} titles added, {already} already in the catalogue, {invalid} ISBNs did not check.",
     hostelTitle: "The college hostel",
     htOccupancy: "Occupancy",
     htBeds: "{occupied} of {beds} beds",
@@ -20042,7 +20041,6 @@ export const en = {
     colPaid: "Paid",
     refuseNotLocked: "Payments are recorded once the run for {month} is locked.",
     refuseNothingDue: "This slip has nothing to pay.",
-    refusePartial: "Record the slip's whole net, {amount}. A part payment is not recorded.",
     refusePaidOn: "The day it was paid must fall between the first of the month and today.",
     refuseUtr: "A UTR is 12 to 22 letters and digits, as the bank or the UPI app shows it.",
     refuseCheque: "A cheque's number is the six digits printed on it.",
@@ -20160,12 +20158,34 @@ export const en = {
     eresSaved: "{name} is saved.",
     isbnHint: "One book a line: the ISBN, then the title, author, publisher and year, by commas or tabs. A title already in the catalogue under its ISBN is left as it is.",
     isbnButton: "Add the titles",
-    isbnImported: "{added} titles added, {already} already in the catalogue.",
-    isbnImportedNamed: "{added} titles added, {already} already in the catalogue. These ISBNs fail their check digit: {list}.",
     moveSummary: "Move to another bed",
     moveBed: "New bed",
     moveHint: "The bed they have now ends today and the new one starts today.",
     moveButton: "Move",
   },
   // end owner-batch-item9
+  // qb-B (31 Oct 2026): the QA pass's teaching and payroll findings (QB-05, QB-11).
+  teachPay: {
+    noUnitsReadOnly: "The office writes the chapter list for the grade.",
+    exportLineOne: "{file}: 1 row, by {by}, {date}",
+    refuseAmount: "Record the slip's net pay exactly, {amount}. A different amount is not recorded.",
+    refuseSheetOne: "1 line was refused, so nothing was recorded. {lines}. Correct it and send the sheet again.",
+  },
+  // end qb-B
+  // qb-C (31 Oct 2026): the QA pass's campus-form findings (QB-11 ISBN copy, QB-14).
+  campusForms: {
+    isbnAddedOne: "1 title added, {already} already in the catalogue.",
+    isbnAddedMany: "{added} titles added, {already} already in the catalogue.",
+    isbnAddedOneNamed: "1 title added, {already} already in the catalogue. These ISBNs fail their check digit: {list}.",
+    isbnAddedManyNamed: "{added} titles added, {already} already in the catalogue. These ISBNs fail their check digit: {list}.",
+    isbnEmpty: "Paste the list first: one book a line, the ISBN first.",
+    refuseJustMoved: "This boarder has just been moved to another bed. Open the page again to see where they are now.",
+  },
+  // end qb-C
+  // qb-A (31 Oct 2026): the QA pass's bank findings (QB-17, QB-19).
+  qbBank: {
+    chapterHeadingBook: "{heading} · {book}",
+    duplicatesShown: "The {shown} closest of {total} pairs are listed.",
+  },
+  // end qb-A
 } as const;

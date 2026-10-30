@@ -1,0 +1,290 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T21:34:25.227Z",
+  "finishedAt": "2026-10-30T21:37:31.414Z",
+  "seconds": 186,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Patterns",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n36. Ms. Sheela visited a store near her house and found that the glass jars are arranged\none above the other in a specific pattern.\nOn the top layer there are 3 jars. In the next layer there are 6 jars. In the 3rd layer from\nthe top there are 9 jars and so on till the 8th layer.\nOn the basis of the above situation answer the following questions.\n(i) Write an A.P whose terms represent the number of jars in different layers starting\nfrom top . Also, find the common difference. 1\n(ii) Is it possible to arrange 34 jars in a layer if this pattern is continued? Justify your\nanswer. 1\n(iii) (A) If there are ‘n’ number of rows in a layer then find the expression for finding the 2\ntotal number of jar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 68199,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 8868,
+      "completionTokens": 2842
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 129057,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 6764,
+      "completionTokens": 2619
+    },
+    "solver": {
+      "calls": 59,
+      "ms": 55690,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 16400,
+      "completionTokens": 760
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 2165,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 121588,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6205,
+      "completionTokens": 2566
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 3,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the next number in the pattern 0, 1, 1, 2, 3, 5, 8, 13, 21, ...?",
+      "ms": {
+        "draft": 4806,
+        "critique": 15141,
+        "solver": 14870
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following number patterns is formed by adding counting numbers in ascending order?",
+      "ms": {
+        "draft": 6561,
+        "critique": 11000
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true according to the passage?",
+      "ms": {
+        "draft": 6561,
+        "critique": 11761,
+        "solver": 2307
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the series 1 + 2 + 3 + ... + 50 + 49 + ... + 3 + 2 + 1?",
+      "ms": {
+        "draft": 6561,
+        "critique": 14427
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pattern of numbers starts with 1, 3, 5, 7, 9, ... and continues in the same way. What will be the 15th term of this pattern?",
+      "ms": {
+        "draft": 6561,
+        "critique": 10869
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a fractal pattern?",
+      "ms": {
+        "draft": 6561,
+        "critique": 8894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the pattern 1, 1, 1, 1, 1, 1, ... continues, what is the 100th term?",
+      "ms": {
+        "draft": 6561,
+        "critique": 8404,
+        "solver": 7150,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the next number in the pattern 1, 3, 6, 10, 15, 21, ...?",
+      "ms": {
+        "draft": 4806,
+        "critique": 6547,
+        "solver": 26283,
+        "form": 0,
+        "translation": 42148
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the next number in the pattern 1, 4, 9, 16, 25, 36, ...?",
+      "ms": {
+        "draft": 4806,
+        "critique": 7709,
+        "solver": 2174,
+        "form": 0,
+        "translation": 39322
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the next number in the pattern 1, 8, 27, 64, 125, ...?",
+      "ms": {
+        "draft": 4806,
+        "critique": 8216,
+        "solver": 23302,
+        "form": 0,
+        "translation": 35969
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the next number in the pattern 1, 2, 4, 8, 16, 32, 64, ...?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the next number in the pattern 1, 3, 9, 27, 81, ...?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the next number in the pattern 0, 1, 1, 2, 3, 5, 8, 13, 21, ...?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following number patterns is formed by adding counting numbers in ascending order?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following statements is true according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the sum of the series 1 + 2 + 3 + ... + 50 + 49 + ... + 3 + 2 + 1?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A pattern of numbers starts with 1, 3, 5, 7, 9, ... and continues in the same way. What will be the 15th term of this pattern?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a fractal pattern?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the pattern 1, 1, 1, 1, 1, 1, ... continues, what is the 100th term?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

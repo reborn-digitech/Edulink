@@ -1,0 +1,483 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T22:10:31.880Z",
+  "finishedAt": "2026-10-30T22:14:43.248Z",
+  "seconds": 251,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and Angles",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n26. In Figure, XY and X′Y′ are two parallel tangents to a 3\ncircle with centre O and another tangent AB with\npoint of contact C intersecting XY at A and X′Y′ at B.\nProve that ∠ AOB = 90°\nFor Visually Impaired candidates:\nTwo tangents PA and PB are drawn to a circle with centre O from an external point\nP. Prove that ∠APB= 2(∠OAB)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 96970,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 18318,
+      "completionTokens": 5526
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 174875,
+      "in": 20,
+      "out": 18,
+      "rejects": 2,
+      "promptTokens": 12573,
+      "completionTokens": 5011
+    },
+    "solver": {
+      "calls": 150,
+      "ms": 93387,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 31826,
+      "completionTokens": 1890
+    },
+    "form": {
+      "calls": 8,
+      "ms": 35040,
+      "in": 13,
+      "out": 4,
+      "rejects": 9,
+      "promptTokens": 5448,
+      "completionTokens": 1168
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 1729,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 100432,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6595,
+      "completionTokens": 3310
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "In the given figure, which of the following is the shortest path between two points?",
+      "ms": {
+        "draft": 4158,
+        "critique": 6296,
+        "solver": 16084
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, which of the following is not a line segment?",
+      "ms": {
+        "draft": 4158,
+        "critique": 6723,
+        "solver": 18129
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which of the following is the vertex of the angle?",
+      "ms": {
+        "draft": 4158,
+        "critique": 6388,
+        "solver": 1493,
+        "form": 5005
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of angle is formed when the hour hand and minute hand of a clock are at 06:00?",
+      "ms": {
+        "draft": 6675,
+        "critique": 6665,
+        "solver": 14718,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a right angle?",
+      "ms": {
+        "draft": 6675,
+        "critique": 8016,
+        "solver": 18571,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the hour hand is at 02:00 and the minute hand is at 12:00, what is the type of angle formed?",
+      "ms": {
+        "draft": 6675,
+        "critique": 7016,
+        "solver": 1306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the hour hand is at 09:00 and the minute hand is at 12:00, what type of angle is formed?",
+      "ms": {
+        "draft": 6675,
+        "critique": 9276,
+        "solver": 18131
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the hour hand and minute hand of a clock form a reflex angle, which of the following times could it be?",
+      "ms": {
+        "draft": 6675,
+        "critique": 7237
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the angle between the hour and minute hand of a clock is 120°, which of the following times could it be?",
+      "ms": {
+        "draft": 6675,
+        "critique": 5124,
+        "solver": 7216,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of angle mentioned in the passage?",
+      "ms": {
+        "draft": 2569,
+        "critique": 4585,
+        "solver": 1287,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of a complete angle according to the passage?",
+      "ms": {
+        "draft": 2569,
+        "critique": 5229,
+        "solver": 2558,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of a right angle according to the passage?",
+      "ms": {
+        "draft": 2569,
+        "critique": 9004,
+        "solver": 1031,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many right angles are included in a straight angle according to the passage?",
+      "ms": {
+        "draft": 2569,
+        "critique": 7089,
+        "solver": 1742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of angle mentioned in the passage?",
+      "ms": {
+        "draft": 2569,
+        "critique": 5042,
+        "solver": 15903
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What type of angle is formed between the hour hand and the minute hand of a clock at 04:00?",
+      "ms": {
+        "draft": 2569,
+        "critique": 8201
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to denote a line?",
+      "ms": {
+        "draft": 2760,
+        "critique": 5615,
+        "solver": 4335,
+        "form": 1100
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a flat surface that is infinite on all sides?",
+      "ms": {
+        "draft": 4158,
+        "critique": 6223,
+        "solver": 1062,
+        "form": 3041
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a mark that has no length, width or thickness?",
+      "ms": {
+        "draft": 2760,
+        "critique": 6521,
+        "solver": 1335,
+        "form": 1704,
+        "translation": 29997
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a part of a line that has two endpoints?",
+      "ms": {
+        "draft": 4158,
+        "critique": 6474,
+        "solver": 1948,
+        "form": 3278,
+        "translation": 34563
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a single line passes through three or more points, what are these points called?",
+      "ms": {
+        "draft": 4158,
+        "critique": 6453,
+        "solver": 1388,
+        "form": 2808,
+        "translation": 32375
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the given figure, which of the following is the shortest path between two points?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the given figure, which of the following is not a line segment?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, which of the following is the vertex of the angle?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, angle"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of angle is formed when the hour hand and minute hand of a clock are at 06:00?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a right angle?",
+      "reason": "options 2 and 3 are the same (\"1: Angle formed at 04:00\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the hour hand is at 02:00 and the minute hand is at 12:00, what is the type of angle formed?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the hour hand is at 09:00 and the minute hand is at 12:00, what type of angle is formed?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the hour hand and minute hand of a clock form a reflex angle, which of the following times could it be?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the angle between the hour and minute hand of a clock is 120°, which of the following times could it be?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How is a line denoted in geometry?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for a flat surface that is infinite on all sides?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for a part of a line between two points?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for a part of a line that starts from a point and extends infinitely in one direction?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of angle mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the measure of a complete angle according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the measure of a right angle according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many right angles are included in a straight angle according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of angle mentioned in the passage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What type of angle is formed between the hour hand and the minute hand of a clock at 04:00?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct way to denote a line?",
+      "reason": "options 1 and 2 are the same (\"Line PQ\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of a flat surface that is infinite on all sides?",
+      "reason": "near-duplicate of served question cmvvhic7w000d0rbwiuia13ej (cosine 0.959 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

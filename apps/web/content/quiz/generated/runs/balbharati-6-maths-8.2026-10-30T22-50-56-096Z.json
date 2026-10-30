@@ -1,0 +1,450 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T22:50:56.096Z",
+  "finishedAt": "2026-10-30T23:01:52.489Z",
+  "seconds": 656,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Triangles and Squares",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[IOQM 2021 — question paper]\n1. Three parallel lines L 1 , L 2 , L 3 are drawn in the plane such that the perpendicular distance\nbetween L 1 and L 2 is 3 and the perpendicular distance between L 2 and L 3 is also 3. A\nsquare ABCD is constructed such that A lies on L 1 , B lies on L 3 and C lies on L 2 . Find\nthe area of the square.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n25. Show that the points A(-5,6), B(3, 0) and C( 9, 8) are the vertices of an isosceles 2\ntriangle.",
+      "[RMO 2023 — question paper]\n6. Consider a set of 16 points arranged in a 4 × 4 square grid formation. Prove that if any 7 of these\npoints are coloured blue, then there exists an isosceles right-angled triangle whose vertices are all\nblue.\nे ीय ग णत ओ लिपयाड – 2023\nसमय: 3 घंटे अ टूबर 29, 2023\nिनद श :\n● िकसी भी तरह के गणक (calculators) तथा चांदा (protractors) के योग क अनुम त नह है.\n● पैमाना (rulers) तथा परकार (compasses) के योग क अनुम त है.\n● सभी के उ र दी जये.\n● सभी के अंक समान ह . अ धकतम अंक : 102\n● येक का उ र नए पृ से ारंभ क जये. मांक प प से इंिगत क जये.\n1. मान ली जये ℕ सारे धना मक पूणा क का समु य है और 𝑆 = {(𝑎, 𝑏, 𝑐, 𝑑) ∈ ℕ : 𝑎 + 𝑏 + 𝑐 = 𝑑 . उस 4 2 2 2 2\nसबसे बड़े उस धना मक पूणा क 𝑚 को ात क जये जो 𝑎𝑏𝑐𝑑 क",
+      "[PRMO 2017 — question paper]\n30. Consider the areas of the four triangles obtained by drawing the diagonals AC and\nBD of a trapezium ABCD. The product of these areas, taken two at time, are computed.\nIf among the six products so obtained, two products are 1296 and 576, determine the\nsquare root of the maximum possible area of the trapezium to the nearest integer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 206201,
+      "in": 22,
+      "out": 19,
+      "rejects": 3,
+      "promptTokens": 17775,
+      "completionTokens": 4125
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 379031,
+      "in": 19,
+      "out": 15,
+      "rejects": 4,
+      "promptTokens": 10022,
+      "completionTokens": 3986
+    },
+    "solver": {
+      "calls": 107,
+      "ms": 90225,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 17012,
+      "completionTokens": 1017
+    },
+    "form": {
+      "calls": 6,
+      "ms": 124750,
+      "in": 15,
+      "out": 8,
+      "rejects": 7,
+      "promptTokens": 6773,
+      "completionTokens": 1493
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 9270,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 431452,
+      "in": 10,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 11471,
+      "completionTokens": 5164
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the definition of a triangle?",
+      "ms": {
+        "draft": 8192,
+        "critique": 15607,
+        "solver": 2570,
+        "form": 3
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which of the following is a triangle?",
+      "ms": {
+        "draft": 8192,
+        "critique": 32093,
+        "solver": 18330,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "ms": {
+        "draft": 4312,
+        "critique": 8380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a quadrilateral?",
+      "ms": {
+        "draft": 4312,
+        "critique": 7830,
+        "solver": 1240,
+        "form": 5045
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral, what are the line segments that connect opposite vertices called?",
+      "ms": {
+        "draft": 4312,
+        "critique": 14439
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has two equal sides, what is it called?",
+      "ms": {
+        "draft": 4312,
+        "critique": 8054,
+        "solver": 19505,
+        "form": 19113
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many pairs of opposite angles does a quadrilateral have?",
+      "ms": {
+        "draft": 4312,
+        "critique": 25223
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has one angle of 90 degrees, what type of triangle is it?",
+      "ms": {
+        "draft": 4312,
+        "critique": 12700,
+        "solver": 35841,
+        "form": 5087
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the angles of a triangle are in the ratio 2:3:4, what is the measure of the largest angle?",
+      "ms": {
+        "draft": 21445,
+        "critique": 25607
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if two sides are equal, what can be said about the angles opposite those sides?",
+      "ms": {
+        "draft": 21445,
+        "critique": 14654,
+        "solver": 2414,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a triangle has two equal sides and one angle of 120°, what is the measure of the other two angles?",
+      "ms": {
+        "draft": 21445,
+        "critique": 29101,
+        "solver": 6667,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If all three sides of a triangle are equal, what type of triangle is it called?",
+      "ms": {
+        "draft": 8192,
+        "critique": 11159,
+        "solver": 2454,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "ms": {
+        "draft": 7568,
+        "critique": 9449,
+        "solver": 1566,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a triangle in which only two sides have equal lengths?",
+      "ms": {
+        "draft": 7568,
+        "critique": 9177,
+        "solver": 2357,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many vertices does a triangle have?",
+      "ms": {
+        "draft": 8192,
+        "critique": 12033,
+        "solver": 3908,
+        "form": 0,
+        "translation": 58900
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a triangle has one angle that is greater than 90 degrees, what type of triangle is it?",
+      "ms": {
+        "draft": 8192,
+        "critique": 27236,
+        "solver": 8340,
+        "form": 0,
+        "translation": 83493
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a quadrilateral?",
+      "ms": {
+        "draft": 7568,
+        "critique": 14002,
+        "solver": 2765,
+        "form": 1,
+        "translation": 130600
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if two sides are equal, what is the name of the triangle?",
+      "ms": {
+        "draft": 8192,
+        "critique": 32585,
+        "solver": 1748,
+        "form": 0,
+        "translation": 84250
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following can be the measure of an angle in an acute-angled triangle?",
+      "ms": {
+        "draft": 21445,
+        "critique": 15675,
+        "solver": 21821,
+        "form": 0,
+        "translation": 59217
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of a triangle whose one angle is 90 degrees?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the line segment joining the vertices of the opposite angles of a quadrilateral?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "In a quadrilateral, which sides are adjacent to side LM?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a triangle?",
+      "reason": "the key is far longer than every distractor (63 vs 33 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, which of the following is a triangle?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a quadrilateral?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a quadrilateral, what are the line segments that connect opposite vertices called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a triangle has two equal sides, what is it called?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many pairs of opposite angles does a quadrilateral have?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a triangle has one angle of 90 degrees, what type of triangle is it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the angles of a triangle are in the ratio 2:3:4, what is the measure of the largest angle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a triangle, if two sides are equal, what can be said about the angles opposite those sides?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a triangle has two equal sides and one angle of 120°, what is the measure of the other two angles?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If all three sides of a triangle are equal, what type of triangle is it called?",
+      "reason": "near-duplicate of served question cmvv2bwns005d0rgnunum4ujx (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "reason": "near-duplicate of served question cmvv2bwns005d0rgnunum4ujx (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of a triangle in which only two sides have equal lengths?",
+      "reason": "near-duplicate of served question cmvv2bwn7004j0rgnv080ppsm (cosine 0.955 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

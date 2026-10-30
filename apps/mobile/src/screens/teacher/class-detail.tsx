@@ -42,9 +42,12 @@ export function TeacherClassDetail() {
     );
   }
   const shareCode = (d: StaffClassDetail) => {
+    if (!d.class.joinCode) return;
     void Share.share({ message: `${t("teacher.classJoinCode")} · ${d.class.name}: ${d.class.joinCode}\n${t("teacher.studentsEnterAt")} ${API_BASE}/join/student` });
   };
   const formTeacher = data?.formTeacher !== false;
+  // The server answers no code to a teacher the timetable alone sends here (qb-B, QB-02); nothing to show or share then.
+  const joinCode = formTeacher ? (data?.class.joinCode ?? null) : null;
   const shown = data ? data.roster.filter((p) => (filter === "concern" ? p.percent !== null && p.percent < 90 : filter === "noguardian" ? !p.hasGuardian : true)) : [];
   return (
     <Screen
@@ -88,10 +91,10 @@ export function TeacherClassDetail() {
             <Button label={t("classAnalytics.open")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/class-analytics", params: { classId } } as never)} style={{ flexGrow: 1 }} />
           </View>
 
-          {formTeacher ? (
+          {joinCode ? (
             <Card title={t("teacher.classJoinCode")} action={<Button label={t("mobile.share")} variant="ghost" icon={<Icon name="share" size={18} color={th.accentStrong} weight="bold" />} onPress={() => shareCode(data)} />}>
-              <Text variant="3xl" bold tone="accent" selectable accessibilityLabel={`${t("teacher.classJoinCode")}: ${data.class.joinCode.split("").join(" ")}`}>
-                {data.class.joinCode}
+              <Text variant="3xl" bold tone="accent" selectable accessibilityLabel={`${t("teacher.classJoinCode")}: ${joinCode.split("").join(" ")}`}>
+                {joinCode}
               </Text>
               <Text variant="xs" tone="muted">
                 {`${t("teacher.studentsEnterAt")} ${API_BASE}/join/student`}
@@ -116,7 +119,12 @@ export function TeacherClassDetail() {
               />
             ) : null}
             {data.roster.length === 0 ? (
-              <Empty title={t("teacher.nobodyJoined")} body={t("teacher.shareCodeBlurb")} icon="users" action={<Button label={t("mobile.share")} variant="secondary" onPress={() => shareCode(data)} />} />
+              <Empty
+                title={t("teacher.nobodyJoined")}
+                body={joinCode ? t("teacher.shareCodeBlurb") : undefined}
+                icon="users"
+                action={joinCode ? <Button label={t("mobile.share")} variant="secondary" onPress={() => shareCode(data)} /> : undefined}
+              />
             ) : shown.length === 0 ? (
               <Empty title={t("common.noResultsTitle")} body={t("common.noResultsBody")} action={<Button label={t("common.clearAll")} variant="secondary" onPress={() => setFilter("")} />} />
             ) : (

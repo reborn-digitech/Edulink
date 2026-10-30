@@ -59,3 +59,23 @@ export async function offeredSubjects(schoolId: string, reach: Reach, classIds: 
   }
   return out;
 }
+
+/**
+ * Classes as a teacher reads them: by grade number, then by name with its numbers read as numbers (qb-B, QB-05 of
+ * the QA pass of 31 October 2026: a sort by name put "Grade 10 · A" before "Grade 3 · A" in every picker). A class
+ * with no grade comes after those with one. Returns a new array.
+ */
+const GRADE_ORDER = new Intl.Collator("en", { numeric: true, sensitivity: "base" });
+export function inGradeOrder<T extends { name: string; gradeLevel?: string | null }>(rows: readonly T[]): T[] {
+  return [...rows].sort((a, b) => {
+    const ga = a.gradeLevel?.trim() || null;
+    const gb = b.gradeLevel?.trim() || null;
+    if (ga !== gb) {
+      if (ga === null) return 1;
+      if (gb === null) return -1;
+      const byGrade = GRADE_ORDER.compare(ga, gb);
+      if (byGrade !== 0) return byGrade;
+    }
+    return GRADE_ORDER.compare(a.name, b.name);
+  });
+}

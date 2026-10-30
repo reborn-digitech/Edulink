@@ -52,6 +52,35 @@ export function normaliseIsbn(raw: string): string | null {
   }
   return null;
 }
+// qb-C (31 Oct 2026, QB-13): one book, one key. An ISBN-10 and the ISBN-13 printed for the same book are one title.
+/** The ISBN-13 of a checked ISBN (ten or thirteen characters, as normaliseIsbn returns it): an ISBN-10 gains 978 and a new check digit. */
+export function isbn13(isbn: string): string {
+  if (isbn.length === 13) return isbn;
+  const body = `978${isbn.slice(0, 9)}`;
+  let sum = 0;
+  for (let i = 0; i < 12; i += 1) sum += Number(body[i]) * (i % 2 === 0 ? 1 : 3);
+  return `${body}${(10 - (sum % 10)) % 10}`;
+}
+/** Every form one book may be catalogued under: its ISBN-13 and, for a 978 number, its ISBN-10. */
+export function isbnForms(isbn: string): string[] {
+  const long = isbn13(isbn);
+  if (!long.startsWith("978")) return [long];
+  const body = long.slice(3, 12);
+  let sum = 0;
+  for (let i = 0; i < 9; i += 1) sum += Number(body[i]) * (10 - i);
+  const check = (11 - (sum % 11)) % 11;
+  return [long, `${body}${check === 10 ? "X" : String(check)}`];
+}
+/**
+ * An e-resource's name as the desk compares it (QB-12): trimmed, every run of spaces one space, lower case, so
+ * "ZZ DIKSHA", "zz diksha" and "ZZ  DIKSHA" are one resource. Stored as LibraryEResource.nameKey, unique per school;
+ * this is its only writer (data:audit "eresource-name-key" holds the rows to it).
+ */
+export function eResourceNameKey(name: string): string {
+  return name.normalize("NFC").trim().replace(/\s+/g, " ").toLowerCase();
+}
+// qb-C end
+
 export const isbnSchema = z
   .string()
   .trim()

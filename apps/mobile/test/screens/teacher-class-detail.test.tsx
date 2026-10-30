@@ -82,7 +82,7 @@ describe("one class", () => {
   });
 
   it("a class the timetable alone sends the teacher to: their subjects said, set work offered, no register, report cards, code or weights (owner's item 1)", async () => {
-    fakeApi({ [PATH]: () => json({ ...DETAIL, formTeacher: false, subjects: ["English"] }) });
+    fakeApi({ [PATH]: () => json({ ...DETAIL, class: { ...DETAIL.class, joinCode: null }, formTeacher: false, subjects: ["English"] }) });
     await renderTeacher(page());
     await screen.findByText("2 on the roll · Maths · 5 · Room 3");
     expect(screen.getByText(/^You take this class for English on the timetable\./)).toBeTruthy();
@@ -94,6 +94,17 @@ describe("one class", () => {
     expect(screen.queryByRole("button", { name: /^Health card/ })).toBeNull();
     expect(screen.getByLabelText("To mark: 3")).toBeTruthy();
     expect(screen.getAllByRole("button", { name: "Set work" }).length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("a timetable-only class with nobody on it offers no code to share: the server sends none (qb-B, QB-02)", async () => {
+    const share = jest.spyOn(Share, "share").mockResolvedValue({ action: "sharedAction" });
+    fakeApi({ [PATH]: () => json({ ...DETAIL, class: { ...DETAIL.class, joinCode: null }, formTeacher: false, subjects: ["English"], roster: [], recentAssignments: [] }) });
+    await renderTeacher(page());
+    expect(await screen.findByText("Nobody has joined yet")).toBeTruthy();
+    expect(screen.queryByText("Share the class code above and students can add themselves.")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Share" })).toBeNull();
+    expect(share).not.toHaveBeenCalled();
+    share.mockRestore();
   });
 
   it("the figures about pupils filter the roster", async () => {

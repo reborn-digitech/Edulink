@@ -133,7 +133,113 @@ const ADMIN = /table of contents?|^contents$|\brules?\b|regulations?|scheme of (
 const RUNNING_HEAD = /savitribai\s*phule\s*pune\s*university|^university\b|pharmacy council of india|^faculty of|with effect from|\bw\.?\s?e\.?\s?f\b|academic year|^curriculum \d{4}|programme curriculum|^duration:?$|^\(?to be implemented|^program(?:me)? (?:name|detail)|^level \d/i;
 
 export type UnitChunk = { ordinal: number; headingPath: string[] };
-export type SyllabusUnit<T extends UnitChunk = UnitChunk> = { number: number; name: string; chunks: T[] };
+/**
+ * One unit of a document. `name` is what the bank calls it; `heading` is the level-one heading as printed (tidied); a
+ * unit whose heading is the document's furniture is `refusal`'s reason and is never drafted (qb-A, QB-01), but keeps
+ * its number so the units after it keep theirs (a unit's number is in its topic's slug).
+ */
+export type SyllabusUnit<T extends UnitChunk = UnitChunk> = { number: number; name: string; heading: string; refusal: string | null; chunks: T[] };
+
+/* qb-A (QB-01, the QA pass of 31 October 2026): a unit is named after what the programme teaches. Nine of the first
+ * eighteen college units drafted were named after the document's own headings ("Notes:", "Syllabus", "Intake: 60
+ * Duration: 4 Year", "MM Curriclum upadated structure 2024", "BA LL. B., BBA LL.B., and LL. B.", "Core Subjects") and
+ * one served questions on the marks of a paper. These rules are the college twin of corpus-titles' titleFragment. */
+
+/** A heading that labels a part of the document rather than naming a subject. */
+const LABEL_HEADING =
+  /^(?:(?:model|detailed|revised|updated|draft)\s+)?(?:syllabus|syllabi|notes?|intake|duration|structure|curriculum|curriclum|course structure|course contents?|contents|(?:core|elective|optional|compulsory|open)\s+(?:subjects?|courses?|papers?)|subjects?|courses?|papers?|introduction|overview|about the course|programme details?|program details?|teaching scheme|annexures?)$/i;
+/** Words that make a name the document's own title rather than a unit's, when a year stands beside them. */
+const DOCUMENT_WORDS = /syllab|curric|\bstructure\b|\bupdated?\b|upadated|\brevised\b|\bfinal\b|\bscheme\b|\bw\.?\s?e\.?\s?f\b|with effect/i;
+/** The programme's facts, which a front page prints ("Intake: 60 Duration: 4 Year"). */
+const PROGRAMME_FACTS = /\bintake\b|\bduration\b|\beligibility\b|\bseats?\s*[:\d]/i;
+
+/** How many of the programmes PROGRAMMES knows a name mentions ("BA LL. B., BBA LL.B., and LL. B." names three). Pure. */
+export function programmesNamed(text: string): number {
+  const found = new Set<string>();
+  for (const [re, name] of PROGRAMMES) if (name !== "B.E." && name !== "Diploma" && name !== "Minor" && name !== "Planning" && re.test(text)) found.add(name);
+  return found.size;
+}
+
+/**
+ * qb-A (QB-01): why a unit's name may not name a practice chapter, or null. Refused: no letters; a heading cut after a
+ * mark ("Notes:"); a label of the document ("Syllabus", "Core Subjects", "Course Structure"); the programme's facts
+ * ("Intake: 60 Duration: 4 Year"); the document's own title with its year ("MM Curriclum upadated structure 2024",
+ * "BTechDataScience 2024 Final"); a list of programmes ("BA LL. B., BBA LL.B., and LL. B."); a sentence. Pure.
+ */
+export function unitNameRefusal(name: string): string | null {
+  const t = name.replace(/\s+/g, " ").trim();
+  if (!/\p{L}/u.test(t)) return "no name";
+  if (/[:;,\-–—]$/.test(t)) return "a heading cut after a mark";
+  if (LABEL_HEADING.test(t.replace(/[.]+$/, ""))) return "a label of the document, not a subject";
+  if (PROGRAMME_FACTS.test(t)) return "the programme's facts (intake, duration, eligibility)";
+  if (/^click here\b/i.test(t)) return "a link's words";
+  if (/\b(?:19|20)\d\d\b/.test(t) && DOCUMENT_WORDS.test(t)) return "the document's own title (a syllabus, curriculum or structure and its year)";
+  if (programmesNamed(t) >= 2) return "a list of programmes";
+  if (t.split(" ").length > 14 || /[^.]\.$/.test(t)) return "a sentence";
+  return null;
+}
+
+/** Words that dress a syllabus document's title and name no subject. */
+const TITLE_FURNITURE =
+  /\b(?:revised|updated?|upadated|final|draft|new|syllab(?:us|ii?)|curricul(?:um|a)|curriclum|patt(?:ern)?s?|nep[-\s]?(?:20\d\d)?|national education policy|from|onwards|w\.?\s?e\.?\s?f\.?|with effect from|a\.?\s?y\.?|academic year|ac\.?\s*year|ac|department|copy|with corrected codes|with credit ?points|(?:new )?codes?\s*\d*|as per|integrated|sppu|for (?:affil?i?ated|afiiated)(?: law)? colleges|(?:all )?sem(?:ester|ister|i)?s?\s*[-–]?\s*(?:[ivx]+|\d{1,2})?(?:\s*(?:,|and|&|to|-|–)\s*(?:sem(?:ester|i)?\s*)?(?:[ivx]+|\d{1,2}))*|part\s*[-–]?\s*(?:[ivx]+|\d)\b|(?:first|second|third|fourth|1st|2nd|3rd|4th)\s+year|\d\s*year|year|degree|program(?:me)?|[FSTB]E|ME|M\.?\s?Arch|B\.?\s?Arch|[IVX]{1,4}|r\d)\b/gi;
+/** What makes a title a programme's administration, or a leftover no unit may be named by. */
+const NOT_A_SUBJECT = /\bequival|\bclarification|\bcredit distribution|\brules?\b|\bregulations?\b|\bstructure\b|\bscheme\b|\bimplemented\b|\bsession\b|\bguidelines?\b|\bclick here\b/i;
+const MONTHS = "jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?";
+/** A word a subject's name is made of: a word of letters (one capital at most, in front), a joining word, "Dr." */
+const SUBJECT_WORD = /^(?:\p{Lu}?\p{Ll}{2,}(?:['’]s)?|and|of|in|the|for|to|with|on|&|Dr\.|St\.)$/u;
+
+/**
+ * qb-A (QB-01): the subject a syllabus document's title names, its programme, year, semester, dates and "Syllabus …
+ * Pattern NEP" taken away: "F.Y.B.A. Psychology Syllabus From 2024-25" → "Psychology", "MBA Digital Marketing -
+ * Syllabus 2024 Pattern - NEP 2020" → "Digital Marketing", "SE Electrical Syllabus 2024 pattern 14th July" →
+ * "Electrical". "" when what is left is not a subject's name in words ("SE IT", "B.Lib. and I.Sc", "4th yr B. Des") or
+ * the document is the programme's administration (an equivalence, a credit structure, a scheme, rules). Pure.
+ */
+export function subjectOfTitle(title: string): string {
+  const tidy = tidyTitle(title);
+  if (NOT_A_SUBJECT.test(tidy)) return "";
+  let t = ` ${tidy} `
+    .replace(/\b\d{1,2}[ .]\d{1,2}[ .](?:19|20)\d\d\b/g, " ")
+    .replace(new RegExp(`\\b\\d{1,2}(?:st|nd|rd|th)?\\s+(?:${MONTHS})\\b|\\b(?:${MONTHS})\\s+(?:19|20)\\d\\d\\b`, "gi"), " ")
+    .replace(/\b(?:19|20)\d\d(?:\s*[-–]\s*(?:19|20)?\d\d)*\b/g, " ")
+    .replace(/\b[FST]\.?\s?Y\.?\s?(?=B|M)/g, " ")
+    .replace(/\b[FST]Y\s?(?:B|M)\.?\s?(?:A|Sc|Com)\b/gi, " ")
+    .replace(/\b[FST]Y\b/g, " ");
+  for (const [re, name] of PROGRAMMES) {
+    if (["B.E.", "Diploma", "Minor", "Planning"].includes(name)) continue;
+    t = t.replace(new RegExp(re.source, re.flags.includes("g") ? re.flags : `${re.flags}g`), " ");
+  }
+  for (let i = 0; i < 3; i++) t = t.replace(TITLE_FURNITURE, " ");
+  // Brackets: square ones go; a pair left empty goes; one left unpaired goes.
+  t = t.replace(/[[\]]/g, " ");
+  for (let i = 0; i < 3; i++) t = t.replace(/\(\s*(?:[-–.,/&:;]|and|&)?\s*\)/g, " ");
+  if ((t.match(/\(/g) ?? []).length !== (t.match(/\)/g) ?? []).length) t = t.replace(/[()]/g, " ");
+  t = t.replace(/(?:^|\s)[-–.,/&:;]+(?=\s|$)/g, " ").replace(/\s+/g, " ").trim();
+  t = t.replace(/\s(?:and|&)\s*(?=\()/gi, " ").replace(/\(\s*(?:and|&)\s+/gi, "(");
+  for (let i = 0; i < 3; i++) {
+    t = t
+      .replace(/^(?:[-–.,/&:;]+|(?:and|in|of|for|the|with|to)\b)\s*/i, "")
+      .replace(/\s*(?:[-–.,/&:;]+|\b(?:and|in|of|for|the|with|to))$/i, "")
+      .trim();
+  }
+  const bracketed = /^\(([^()]+)\)$/.exec(t);
+  if (bracketed) t = bracketed[1]!.trim();
+  if (!t || NOT_A_SUBJECT.test(t) || unitNameRefusal(t)) return "";
+  // One word in capitals is an abbreviation ("CHNA", "AIANDML") unless it is long enough to be a word ("SOCIOLOGY").
+  if (/^\p{Lu}{2,7}$/u.test(t)) return "";
+  const named = tidyName(t);
+  const words = named.replace(/[()]/g, " ").split(/\s+/).filter(Boolean);
+  if (words.length > 8 || !words.every((w) => SUBJECT_WORD.test(w)) || !words.some((w) => /^\p{Lu}?\p{Ll}{3,}/u.test(w))) return "";
+  return named.charAt(0).toUpperCase() + named.slice(1);
+}
+
+const wordsOf = (s: string) => s.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+/** Whether a heading is the document's title (all its words there, at most two more): the title page. Pure. */
+export function isTitleHeading(heading: string, docTitle: string): boolean {
+  const title = wordsOf(docTitle);
+  const head = new Set(wordsOf(heading));
+  return title.length > 0 && title.every((w) => head.has(w)) && head.size - new Set(title).size <= 2;
+}
 
 /**
  * A chunk that is a list of books and articles, not something to ask about: most of its lines are numbered
@@ -208,7 +314,39 @@ export function unitsOf<T extends UnitChunk>(chunks: T[], fallbackName: string):
     const body = runs.filter((r) => !r.name || !ADMIN.test(r.name)).flatMap((r) => r.chunks);
     if (body.length) kept.push({ name: fallbackName, chunks: body.sort((a, b) => a.ordinal - b.ordinal) });
   }
-  return kept.map((r, i) => ({ number: i + 1, name: tidyName(r.name), chunks: r.chunks }));
+  return nameUnits(
+    kept.map((r, i) => ({ number: i + 1, heading: tidyName(r.name), chunks: r.chunks })),
+    fallbackName,
+  );
+}
+
+/**
+ * qb-A (QB-01): the units named, numbers unchanged. A unit headed by the document's own title while the document has
+ * other units is its title page (the course's about, eligibility and marks): refused. A unit whose heading is a label
+ * ("Syllabus") takes the document's title when that title names a subject and no other unit carries it (the Foundation
+ * Course in Cyber Security is one "Syllabus"); otherwise it is refused with the reason. Pure.
+ */
+export function nameUnits<T extends UnitChunk>(units: { number: number; heading: string; chunks: T[] }[], docTitle: string): SyllabusUnit<T>[] {
+  const title = docTitle.trim();
+  // The name the document's title gives a unit: the title itself when it names a subject, else the subject it names.
+  const fromTitle = subjectOfTitle(title);
+  const named = units.map((u) => {
+    const frontMatter = units.length > 1 && isTitleHeading(u.heading, title);
+    const refusal = frontMatter ? "the document's title page (its front matter)" : unitNameRefusal(u.heading);
+    return { ...u, name: u.heading, refusal };
+  });
+  // A document read as one unit is named by its title: by the subject the title names when the title itself is refused.
+  if (named.length === 1 && named[0]!.heading === tidyName(title) && named[0]!.refusal && fromTitle) {
+    named[0]!.name = fromTitle;
+    named[0]!.refusal = null;
+  }
+  const labelled = named.filter((u) => u.refusal === "a label of the document, not a subject");
+  const titleTaken = named.some((u) => !u.refusal && (isTitleHeading(u.name, title) || (!!fromTitle && isTitleHeading(u.name, fromTitle))));
+  if (fromTitle && labelled.length === 1 && !titleTaken) {
+    labelled[0]!.name = fromTitle;
+    labelled[0]!.refusal = null;
+  }
+  return named.map((u) => ({ number: u.number, name: u.name, heading: u.heading, refusal: u.refusal, chunks: u.chunks }));
 }
 
 /** A unit's chunks worth asking about: its reading lists left out. */
@@ -250,7 +388,8 @@ export async function readCollegeSyllabi(db: Pick<PrismaClient, "contentDocument
   }
   for (const x of classified) {
     const units = unitsOf(byDoc.get(x.doc.id) ?? [], tidyTitle(x.doc.title));
-    if (!units.length) continue;
+    // qb-A (QB-01): a document whose every unit is refused offers nothing to draft.
+    if (!units.some((u) => !u.refusal)) continue;
     out.push({ ...x, programme: programmeOf(x.doc), term: collegeTermOf(x.doc.title), units });
   }
   return out;
@@ -276,7 +415,8 @@ export async function collegeSyllabi(db: Pick<PrismaClient, "contentDocument" | 
               board: r.board,
               programme,
               term: r.term,
-              units: r.units.map((u) => ({ number: u.number, name: u.name, chunks: u.chunks.length })),
+              // qb-A (QB-01): a refused unit is not offered; the others keep their numbers.
+              units: r.units.filter((u) => !u.refusal).map((u) => ({ number: u.number, name: u.name, chunks: u.chunks.length })),
             }),
           ),
       })),
