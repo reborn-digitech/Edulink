@@ -1,0 +1,323 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T16:28:45.457Z",
+  "finishedAt": "2026-10-30T16:33:34.022Z",
+  "seconds": 289,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 19 — Magical Mathematics - 2",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 89147,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7930,
+      "completionTokens": 4467
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 151720,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 8635,
+      "completionTokens": 3261
+    },
+    "solver": {
+      "calls": 97,
+      "ms": 73674,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 22507,
+      "completionTokens": 1181
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1635,
+      "in": 7,
+      "out": 2,
+      "rejects": 5,
+      "promptTokens": 263,
+      "completionTokens": 97
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10909,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 94442,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5149,
+      "completionTokens": 2799
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the given figure, a square PQRS with side 6 units and a square ABCD with side 3 units are joined. T is the midpoint of QR. What is the side length of the new square formed by joining the cut pieces?",
+      "ms": {
+        "draft": 18044,
+        "critique": 9320
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a pan balance is used once, what is the maximum number of objects from which the lightweight object can be identified?",
+      "ms": {
+        "draft": 18044,
+        "critique": 8584,
+        "solver": 22601,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pan balance is used twice, how can you identify the lightweight object among nine identical objects?",
+      "ms": {
+        "draft": 18044,
+        "critique": 8116,
+        "solver": 25157
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The ancient mathematicians used the method of cutting and joining squares to discover new theories. If the area of a square is 49 square units, what is the perimeter of the square?",
+      "ms": {
+        "draft": 18044,
+        "critique": 11554,
+        "solver": 16375
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the number of discs 'n' and the number of moves 't' in the game described in the passage?",
+      "ms": {
+        "draft": 18044,
+        "critique": 6720,
+        "solver": 1213,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 3 discs require 7 moves, 4 discs require 15 moves, and 5 discs require 31 moves, what is the pattern that describes the number of moves required for n discs?",
+      "ms": {
+        "draft": 7027,
+        "critique": 7750,
+        "solver": 14878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a square of side 6 units is combined with a square of side 3 units, and the sum of their areas is equal to the area of a new square, what is the side length of the new square?",
+      "ms": {
+        "draft": 7027,
+        "critique": 9475,
+        "solver": 17237
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the side of a square is 7 units, what is the area of a square that has a perimeter equal to the perimeter of the original square?",
+      "ms": {
+        "draft": 7027,
+        "critique": 8846,
+        "solver": 2100
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the areas of two squares is equal to the area of a new square, and the side of one square is 1 unit and the side of the other is 2 units, what is the side length of the new square?",
+      "ms": {
+        "draft": 7027,
+        "critique": 6606,
+        "solver": 1663,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sum of the areas of two squares is equal to the area of a new square, and the side of one square is 6 units and the side of the other is 8 units, what is the side length of the new square?",
+      "ms": {
+        "draft": 7027,
+        "critique": 10979,
+        "solver": 13708,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the side of one square is half the side of another square, will a new square be formed by joining the cut pieces?",
+      "ms": {
+        "draft": 18044,
+        "critique": 6372,
+        "solver": 663,
+        "form": 1635,
+        "translation": 44822
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pan balance is used twice to find the lightweight object among nine identical objects, what is the correct method?",
+      "ms": {
+        "draft": 7027,
+        "critique": 8024,
+        "solver": 2954,
+        "form": 0,
+        "translation": 45245
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, a square PQRS with side 6 units and a square ABCD with side 3 units are joined. T is the midpoint of QR. What is the side length of the new square formed by joining the cut pieces?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a pan balance is used once, what is the maximum number of objects from which the lightweight object can be identified?",
+      "reason": "options 2 and 3 are the same (\"5 objects\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pan balance is used twice, how can you identify the lightweight object among nine identical objects?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The ancient mathematicians used the method of cutting and joining squares to discover new theories. If the area of a square is 49 square units, what is the perimeter of the square?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the number of discs 'n' and the number of moves 't' in the game described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 3 discs require 7 moves, 4 discs require 15 moves, and 5 discs require 31 moves, what is the pattern that describes the number of moves required for n discs?",
+      "reason": "options 1 and 2 say the same thing (\"n^2 - 1\" / \"2^n - 1\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a square of side 6 units is combined with a square of side 3 units, and the sum of their areas is equal to the area of a new square, what is the side length of the new square?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the side of a square is 7 units, what is the area of a square that has a perimeter equal to the perimeter of the original square?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the sum of the areas of two squares is equal to the area of a new square, and the side of one square is 1 unit and the side of the other is 2 units, what is the side length of the new square?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"sqrt(1^2 + 2^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the sum of the areas of two squares is equal to the area of a new square, and the side of one square is 6 units and the side of the other is 8 units, what is the side length of the new square?",
+      "reason": "options 1 and 2 are the same (\"12 units\"); options 1 and 2 are the same number; checkExpr \"sqrt(6^2 + 8^2)\" is not arithmetic the bank can evaluate"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

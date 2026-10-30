@@ -21,7 +21,7 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T11:04:45.334Z",
+  "generatedAt": "2026-10-30T18:08:52.498Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": true,
   "questions": [
@@ -61,9 +61,9 @@
             "अनंत",
             "कोणतीही नाही"
           ],
-          "solution": "वर्तुळाला अनंत सममितीच्या रेषा असतात कारण त्याच्या केंद्रामार्गे जाणारी कोणतीही रेषा त्याला दोन एकसारख्या अर्ध्यांमध्ये विभागते. इतर विकल्प चुकीचे आहेत कारण ते सममितीच्या रेषांच्या परिमित वा शून्य संख्येचा अंदाज देतात.",
+          "solution": "वर्तुळाला अनंत सममितीच्या रेषा असतात कारण केंद्रामार्गे जाणारी कोणतीही रेषा त्याला दोन एकसारख्या अर्ध्यांमध्ये विभागते. इतर विकल्प चूक आहेत कारण ते सममितीच्या रेषांच्या अंतीम किंवा शून्य संख्येचा अंदाज देतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in Marathi educational context.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -118,7 +118,104 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T11:04:45.334Z",
+      "generatedAt": "2026-10-30T18:08:52.498Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following shapes has no lines of symmetry?",
+      "choices": [
+        "Kite",
+        "Parallelogram",
+        "Isosceles trapezium",
+        "Rhombus"
+      ],
+      "answerIndex": 1,
+      "solution": "A parallelogram has no lines of symmetry because it cannot be folded along any line to produce two identical halves. The other options have at least one line of symmetry.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी आकृति के कोई सममिति रेखाएं नहीं हैं?",
+          "choices": [
+            "पतंग",
+            "समांतर चतुर्भुज",
+            "समद्विबाहु समलंब चतुर्भुज",
+            "समचतुर्भुज"
+          ],
+          "solution": "एक समांतर चतुर्भुज के कोई सममिति रेखाएं नहीं होती क्योंकि इसे किसी भी रेखा के साथ मोड़कर दो समान आधे भाग नहीं बनाए जा सकते। अन्य विकल्पों में कम से कम एक सममिति रेखा होती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi geometry terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या आकृतीला सममितीची रेषा नाही?",
+          "choices": [
+            "चक्रीय चौकोन",
+            "समांतर चौकोन",
+            "समद्विभुज समलंब",
+            "हरोमस"
+          ],
+          "solution": "समांतर चौकोनला सममितीची रेषा नाही कारण त्याला कोणत्याही रेषेने मोडून दोन समान भाग मिळवता येत नाहीत. इतर विकल्पांमध्ये कमीत कमी एक सममितीची रेषा असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometric shapes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks a kite has no lines of symmetry",
+        null,
+        "Thinks an isosceles trapezium has no lines of symmetry",
+        "Thinks a rhombus has no lines of symmetry"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. A parallelogram indeed has no lines of symmetry, while the other shapes (kite, isosceles trapezium, and rhombus) all have at least one. The misconceptions listed for the wrong options are plausible for students who confuse symmetry properties of different quadrilaterals.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp109.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Symmetry"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp109.pdf",
+          "ordinal": 4,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Symmetry",
+            "9.2 Rotational Symmetry"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp109.pdf",
+          "ordinal": 5,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 9: Symmetry",
+            "9.2 Rotational Symmetry"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T18:08:52.498Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

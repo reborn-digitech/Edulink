@@ -1,0 +1,456 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T15:12:23.469Z",
+  "finishedAt": "2026-10-30T15:34:48.312Z",
+  "seconds": 1345,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Percentage",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n14. [( 10000 ) − 1] × 100 = [ √ 6 − 1] × 100\n(C) option",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n12. Option (c)\n௥ ௠\n𝑟 ௘௙௙ = ቂቀ1 + ௠ ቁ − 1ቃ × 100\n𝑟 ௘௙௙ = [(1.03) − 1] × 100 = (1.0609 − 1) × 100 = 6.09% ଶ",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 339986,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 16793,
+      "completionTokens": 5395
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 675655,
+      "in": 21,
+      "out": 20,
+      "rejects": 1,
+      "promptTokens": 13469,
+      "completionTokens": 5342
+    },
+    "solver": {
+      "calls": 171,
+      "ms": 327327,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 36918,
+      "completionTokens": 1936
+    },
+    "form": {
+      "calls": 10,
+      "ms": 99706,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 2403,
+      "completionTokens": 690
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 52,
+      "ms": 40945,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 1060268,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 19281,
+      "completionTokens": 8155
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does the word 'percent' mean?",
+      "ms": {
+        "draft": 11060,
+        "critique": 25254
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the symbol used to represent percentage?",
+      "ms": {
+        "draft": 11060,
+        "critique": 21891,
+        "solver": 4261,
+        "form": 11590
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 1.3 as a percentage?",
+      "ms": {
+        "draft": 11060,
+        "critique": 25883,
+        "solver": 37446,
+        "form": 16264
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper sells a mixture of two types of tea. The first type is worth ₹ 60 per kg and the second is worth ₹ 65 per kg. If he sells the mixture at ₹ 68.20 per kg and gains 10%, in what ratio must he mix the two types of tea?",
+      "ms": {
+        "draft": 20869,
+        "critique": 29425,
+        "solver": 3930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A grocer mixes two varieties of tea worth ₹ 60 per kg and ₹ 65 per kg. He sells the mixture at ₹ 68.20 per kg with a 10% profit. In what ratio does he mix the two varieties?",
+      "ms": {
+        "draft": 43378,
+        "critique": 19496,
+        "solver": 4059
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of 'per hundred' in the context of percentage?",
+      "ms": {
+        "draft": 43378,
+        "critique": 23785,
+        "solver": 53268,
+        "form": 8678
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A circle is drawn with a radius of 4 cm. What is the diameter of the circle?",
+      "ms": {
+        "draft": 43378,
+        "critique": 23221,
+        "solver": 46614,
+        "form": 9668
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student wants to draw a 45° angle without using a protractor. Which tool can he use?",
+      "ms": {
+        "draft": 43378,
+        "critique": 32802,
+        "solver": 65011
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of 40% discount on ready-made clothes?",
+      "ms": {
+        "draft": 15927,
+        "critique": 22828,
+        "solver": 52767,
+        "form": 10388
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an election, Deepti got 11484 votes, which was 44% of the total votes. Trupti got 26% of the total votes. How many people did not vote for either of them?",
+      "ms": {
+        "draft": 15927,
+        "critique": 20253,
+        "solver": 5006
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Rohan bought shoes from Sagar Shoe Mart for ₹500 with a discount of ₹125, while Rajat bought the same shoes from Ramesh Shoe Mart with a 30% discount. Who got the shoes at a lower price?",
+      "ms": {
+        "draft": 15927,
+        "critique": 18805,
+        "solver": 19714
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 50% as a fraction?",
+      "ms": {
+        "draft": 11060,
+        "critique": 23418,
+        "solver": 37129,
+        "form": 13444,
+        "translation": 106717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the word 'percent' mean?",
+      "ms": {
+        "draft": 15927,
+        "critique": 22829,
+        "solver": 4793,
+        "form": 0,
+        "translation": 89612
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the symbol % mean?",
+      "ms": {
+        "draft": 43378,
+        "critique": 21837,
+        "solver": 4743,
+        "form": 15903,
+        "translation": 114841
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the symbol % mean?",
+      "ms": {
+        "draft": 20869,
+        "critique": 19403,
+        "solver": 6424,
+        "form": 0,
+        "translation": 111399
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Sameera got 70% marks in an 800 marks exam, how many marks did she get?",
+      "ms": {
+        "draft": 15927,
+        "critique": 21843,
+        "solver": 50767,
+        "form": 7034,
+        "translation": 93677
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a circle has a radius of 5 cm, what is the length of its diameter?",
+      "ms": {
+        "draft": 20869,
+        "critique": 20963,
+        "solver": 6630,
+        "form": 0,
+        "translation": 116270
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the salinity of seawater is 35%, what does this mean?",
+      "ms": {
+        "draft": 43378,
+        "critique": 24975,
+        "solver": 6213,
+        "form": 9000,
+        "translation": 129896
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What percent of 80 is 32?",
+      "ms": {
+        "draft": 15927,
+        "critique": 17535,
+        "solver": 3574,
+        "form": 15754,
+        "translation": 48264
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If a protractor is used to measure an angle of 30°, and the bottom line lies on LN, what is the measure of the angle?",
+      "ms": {
+        "draft": 20869,
+        "critique": 21145,
+        "solver": 49526,
+        "form": 0,
+        "translation": 125232
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the radius of a circle is 7 cm, what is the circumference of the circle?",
+      "ms": {
+        "draft": 20869,
+        "critique": 25209,
+        "solver": 21880,
+        "form": 0,
+        "translation": 106618
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is 0.25 as a percentage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is 30% of 90?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the word 'percent' mean?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the symbol used to represent percentage?",
+      "reason": "options 0 and 1 are the same (\"%\"); options 0 and 2 are the same (\"%\"); options 0 and 3 are the same (\"%\"); options 1 and 2 are the same (\"@\"); options 1 and 3 are the same (\"@\"); options 2 and 3 are the same (\"$\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is 1.3 as a percentage?",
+      "reason": "options 0 and 2 are the same (\"13%\"); options are written to different precisions (0 and 2 decimals); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A shopkeeper sells a mixture of two types of tea. The first type is worth ₹ 60 per kg and the second is worth ₹ 65 per kg. If he sells the mixture at ₹ 68.20 per kg and gains 10%, in what ratio must he mix the two types of tea?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A grocer mixes two varieties of tea worth ₹ 60 per kg and ₹ 65 per kg. He sells the mixture at ₹ 68.20 per kg with a 10% profit. In what ratio does he mix the two varieties?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of 'per hundred' in the context of percentage?",
+      "reason": "options 1 and 2 are the same (\"For every 1000 units\"); options 1 and 3 are the same (\"For every 1000 units\"); options 2 and 3 are the same (\"For every 1000 units\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A circle is drawn with a radius of 4 cm. What is the diameter of the circle?",
+      "reason": "options 0 and 3 are the same (\"8 cm\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student wants to draw a 45° angle without using a protractor. Which tool can he use?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of 40% discount on ready-made clothes?",
+      "reason": "options 0 and 1 say the same thing (\"A discount of ₹40 for every ₹100\" / \"A discount of ₹40 for every ₹40\"); options 0 and 2 are the same (\"A discount of ₹40 for every ₹100\"); options 0 and 3 say the same thing (\"A discount of ₹40 for every ₹100\" / \"A discount of ₹100 for every ₹100\"); options 1 and 2 say the same thing (\"A discount of ₹40 for every ₹40\" / \"A discount of ₹40 for every ₹100\"); options 2 and 3 say the same thing (\"A discount of ₹40 for every ₹100\" / \"A discount of ₹100 for every ₹100\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In an election, Deepti got 11484 votes, which was 44% of the total votes. Trupti got 26% of the total votes. How many people did not vote for either of them?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Rohan bought shoes from Sagar Shoe Mart for ₹500 with a discount of ₹125, while Rajat bought the same shoes from Ramesh Shoe Mart with a 30% discount. Who got the shoes at a lower price?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

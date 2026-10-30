@@ -1,0 +1,754 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T19:34:47.174Z",
+  "finishedAt": "2026-10-30T19:42:46.413Z",
+  "seconds": 479,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Disaster Management",
+    "edition": "First Edition 2026",
+    "chunks": 10,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n1. C. Responses to fight-flight situation can either be the result of acute stress such as loss of\nbowel/bladder control and shivering while some could be to help overcome the situation such as pupil\ndilation to accept more light.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. Section E would have 3 source based/case based/passage based/integrated units of\nassessment (04 marks each) with sub-parts of the values of 1/2/3 marks.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n5. C. Displacement reaction",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n33. Why is damage to the ozone layer a cause for concern? What are its causes and 3\nwhat steps are being taken to limit this damage?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 138636,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 31275,
+      "completionTokens": 7383
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 286328,
+      "in": 38,
+      "out": 28,
+      "rejects": 10,
+      "promptTokens": 17726,
+      "completionTokens": 7553
+    },
+    "solver": {
+      "calls": 179,
+      "ms": 79099,
+      "in": 28,
+      "out": 27,
+      "rejects": 1,
+      "promptTokens": 26848,
+      "completionTokens": 1673
+    },
+    "form": {
+      "calls": 11,
+      "ms": 30273,
+      "in": 27,
+      "out": 11,
+      "rejects": 16,
+      "promptTokens": 2632,
+      "completionTokens": 788
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 56,
+      "ms": 11789,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 529696,
+      "in": 20,
+      "out": 20,
+      "rejects": 1,
+      "promptTokens": 24681,
+      "completionTokens": 12531
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What should people do if they are indoors during an earthquake?",
+      "ms": {
+        "draft": 3470,
+        "critique": 7079
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a natural disaster?",
+      "ms": {
+        "draft": 3470,
+        "critique": 7318
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the point where the energy from an earthquake is released?",
+      "ms": {
+        "draft": 3470,
+        "critique": 8641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is one of the effects of an earthquake on underground infrastructure?",
+      "ms": {
+        "draft": 3470,
+        "critique": 6820
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to have small boats and ropes ready during a flood?",
+      "ms": {
+        "draft": 3470,
+        "critique": 7348
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a man-made disaster as described in the passage?",
+      "ms": {
+        "draft": 3013,
+        "critique": 7484,
+        "solver": 1933,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the increase in disasters like floods and landslides?",
+      "ms": {
+        "draft": 3013,
+        "critique": 7043,
+        "solver": 1533,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following actions is most likely to reduce the impact of a disaster on a community, as described in the passage?",
+      "ms": {
+        "draft": 3013,
+        "critique": 6351,
+        "solver": 1215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of a first aid kit as described in the passage?",
+      "ms": {
+        "draft": 3013,
+        "critique": 5975,
+        "solver": 1919,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of disaster mentioned in the passage?",
+      "ms": {
+        "draft": 3684,
+        "critique": 7747,
+        "solver": 1489,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct reason for keeping large glass windows closed in air-conditioned buses and trains?",
+      "ms": {
+        "draft": 3684,
+        "critique": 7932
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the purpose of a first aid kit?",
+      "ms": {
+        "draft": 3684,
+        "critique": 7583,
+        "solver": 2008,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between an object and a substance?",
+      "ms": {
+        "draft": 3161,
+        "critique": 6029,
+        "solver": 1803,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a disaster, the body responds with a 'fight or flight' reaction. According to the passage, which of the following is a characteristic of this reaction?",
+      "ms": {
+        "draft": 3161,
+        "critique": 4220,
+        "solver": 874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that all substances are made of tiny particles. If the particles of a substance are moving freely and are far apart, what state of matter is the substance in?",
+      "ms": {
+        "draft": 3161,
+        "critique": 4211,
+        "solver": 1196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a substance?",
+      "ms": {
+        "draft": 3247,
+        "critique": 5513
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance has particles that are very close together and do not move, what state is it in?",
+      "ms": {
+        "draft": 3247,
+        "critique": 5780
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for things that are named based on their shape and use?",
+      "ms": {
+        "draft": 3247,
+        "critique": 4696,
+        "solver": 1756,
+        "form": 2679
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you spread talcum powder on your palm, it appears white. Why is this?",
+      "ms": {
+        "draft": 3247,
+        "critique": 5690
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what do all substances have in common?",
+      "ms": {
+        "draft": 3247,
+        "critique": 8168
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the word 'disaster' according to the passage?",
+      "ms": {
+        "draft": 3042,
+        "critique": 7737,
+        "solver": 1402,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a natural disaster according to the passage?",
+      "ms": {
+        "draft": 3042,
+        "critique": 6494,
+        "solver": 1440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT an example of an object according to the passage?",
+      "ms": {
+        "draft": 3247,
+        "critique": 6863,
+        "solver": 15130
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you receive a call from an unknown number asking for an OTP, what should you do according to the passage?",
+      "ms": {
+        "draft": 3042,
+        "critique": 6846,
+        "solver": 1494,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why should people avoid crowding at the site of a major accident, fire, or river flood?",
+      "ms": {
+        "draft": 3042,
+        "critique": 7059,
+        "solver": 1786,
+        "form": 2220
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a disaster according to the passage?",
+      "ms": {
+        "draft": 4393,
+        "critique": 6469,
+        "solver": 1545,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to prepare for disasters according to the passage?",
+      "ms": {
+        "draft": 4393,
+        "critique": 7749,
+        "solver": 7555,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What should you do if someone's clothes catch fire on the street?",
+      "ms": {
+        "draft": 3042,
+        "critique": 5922,
+        "solver": 2012,
+        "form": 2579
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a storm caused by?",
+      "ms": {
+        "draft": 3492,
+        "critique": 6038,
+        "solver": 1923,
+        "form": 1,
+        "translation": 35359
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a cyclone?",
+      "ms": {
+        "draft": 3492,
+        "critique": 6667,
+        "solver": 11281,
+        "form": 0,
+        "translation": 38959
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct first aid practice for a person suffering from sunstroke?",
+      "ms": {
+        "draft": 3684,
+        "critique": 8164,
+        "solver": 1755,
+        "form": 3219,
+        "translation": 52112
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should farmers do when they receive weather department alerts about storms?",
+      "ms": {
+        "draft": 3013,
+        "critique": 6845,
+        "solver": 1456,
+        "form": 2563,
+        "translation": 55127
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's clothes catch fire, what should be done immediately?",
+      "ms": {
+        "draft": 3684,
+        "critique": 7027,
+        "solver": 1136,
+        "form": 3500,
+        "translation": 44785
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes that the particles of a substance are very close and hold on to each other tightly. What will be the state of the substance?",
+      "ms": {
+        "draft": 3161,
+        "critique": 5735,
+        "solver": 1671,
+        "form": 3250,
+        "translation": 56210
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens when the epicenter of an earthquake is on the ocean floor?",
+      "ms": {
+        "draft": 4393,
+        "critique": 7169,
+        "solver": 9410,
+        "form": 3001,
+        "translation": 37115
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for avoiding crowding at the site of a major accident?",
+      "ms": {
+        "draft": 3684,
+        "critique": 7544,
+        "solver": 12017,
+        "form": 3623,
+        "translation": 56153
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What can happen if a river's course changes after an earthquake?",
+      "ms": {
+        "draft": 3470,
+        "critique": 7509,
+        "solver": 12966,
+        "form": 3329,
+        "translation": 63725
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a factory experiences an accident due to improper handling of chemicals, what is the most appropriate action to prevent such incidents in the future?",
+      "ms": {
+        "draft": 3013,
+        "critique": 6809,
+        "solver": 1803,
+        "form": 1563,
+        "translation": 86402
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "According to the passage, which of the following is an example of a substance?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What should people do if they are indoors during an earthquake?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a natural disaster?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the point where the energy from an earthquake is released?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is one of the effects of an earthquake on underground infrastructure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to have small boats and ropes ready during a flood?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a man-made disaster as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the increase in disasters like floods and landslides?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following actions is most likely to reduce the impact of a disaster on a community, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of a first aid kit as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (72 vs 40 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of disaster mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a correct reason for keeping large glass windows closed in air-conditioned buses and trains?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the purpose of a first aid kit?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between an object and a substance?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"An object is made of a single material, while a substance is made of multiple materials.\" / \"A substance is made of a single material, while an object is made of multiple materials.\"); options 2 and 3 say the same thing (\"An object has a definite shape, while a substance does not.\" / \"A substance has a definite shape, while an object does not.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a disaster, the body responds with a 'fight or flight' reaction. According to the passage, which of the following is a characteristic of this reaction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that all substances are made of tiny particles. If the particles of a substance are moving freely and are far apart, what state of matter is the substance in?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is a forest fire?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What are man-made disasters?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a substance?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a substance has particles that are very close together and do not move, what state is it in?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for things that are named based on their shape and use?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Refers to the five elements mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If you spread talcum powder on your palm, it appears white. Why is this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what do all substances have in common?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the meaning of the word 'disaster' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"A situation that happens suddenly and is not expected\" / \"A situation that happens suddenly and is expected\"); options 0 and 3 say the same thing (\"A situation that happens suddenly and is not expected\" / \"A situation that happens slowly and is not expected\"); options 1 and 3 say the same thing (\"A situation that happens slowly and is expected\" / \"A situation that happens slowly and is not expected\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a natural disaster according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT an example of an object according to the passage?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If you receive a call from an unknown number asking for an OTP, what should you do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why should people avoid crowding at the site of a major accident, fire, or river flood?",
+      "reason": "the key is far longer than every distractor (46 vs 25 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is a disaster according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important to prepare for disasters according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What should you do if someone's clothes catch fire on the street?",
+      "reason": "near-duplicate of batch item \"If a person's clothes catch fire, what should be d…\" (cosine 0.940 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

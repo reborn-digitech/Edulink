@@ -1,0 +1,471 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T19:17:49.073Z",
+  "finishedAt": "2026-10-30T19:26:24.711Z",
+  "seconds": 516,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Let’s Separate the Components",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. Section E would have 3 source based/case based/passage based/integrated units of\nassessment (04 marks each) with sub-parts of the values of 1/2/3 marks.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 106265,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 17144,
+      "completionTokens": 4548
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 335714,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 11834,
+      "completionTokens": 4625
+    },
+    "solver": {
+      "calls": 132,
+      "ms": 111421,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 20411,
+      "completionTokens": 1257
+    },
+    "form": {
+      "calls": 14,
+      "ms": 55913,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 3457,
+      "completionTokens": 1004
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 10414,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 618261,
+      "in": 24,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 30591,
+      "completionTokens": 14990
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that muddy water can be cleaned using alum. What is the main reason for this?",
+      "ms": {
+        "draft": 6024,
+        "critique": 5810,
+        "solver": 1481,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer has a mixture of grains and chaff. He wants to separate them using a method similar to the one used in the passage. Which method should he use?",
+      "ms": {
+        "draft": 6024,
+        "critique": 5671,
+        "solver": 33178,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which method is used to separate salt from seawater?",
+      "ms": {
+        "draft": 4953,
+        "critique": 15632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A carpenter finds iron nails mixed with sawdust. Which method would be the easiest to separate them?",
+      "ms": {
+        "draft": 4953,
+        "critique": 10748
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Srushti kept her saucer in the shade, Yash in the sun, and Sanskruti in a window with a breeze. In which saucer will dry salt be collected first?",
+      "ms": {
+        "draft": 4953,
+        "critique": 22280,
+        "solver": 28311,
+        "form": 2890
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate solid substances that are not dissolved in a liquid?",
+      "ms": {
+        "draft": 4953,
+        "critique": 4785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mixture of grains and chaff is dropped from a height, which part of the mixture will fall straight down?",
+      "ms": {
+        "draft": 3346,
+        "critique": 8363,
+        "solver": 1976,
+        "form": 2401
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a mixture of salt and sugar is given, can it be separated using the same method as salt and sand? Why?",
+      "ms": {
+        "draft": 3946,
+        "critique": 6556,
+        "solver": 16546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a carpenter finds iron nails mixed with sawdust, which method would be the easiest to separate them?",
+      "ms": {
+        "draft": 3946,
+        "critique": 5307,
+        "solver": 2036,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a mixture of salt and sand is given, which method would be the most effective to separate them?",
+      "ms": {
+        "draft": 3946,
+        "critique": 6632,
+        "solver": 1611,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which method is used to separate a mixture of sand and gravel?",
+      "ms": {
+        "draft": 3346,
+        "critique": 5979,
+        "solver": 1921,
+        "form": 2683
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when two or more substances are mixed together?",
+      "ms": {
+        "draft": 6024,
+        "critique": 26557,
+        "solver": 5624,
+        "form": 2615,
+        "translation": 75828
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of separating heavy and light substances with the help of wind called?",
+      "ms": {
+        "draft": 3346,
+        "critique": 7851,
+        "solver": 1073,
+        "form": 3386,
+        "translation": 35289
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a method of separation where the components of a mixture are separated based on their size?",
+      "ms": {
+        "draft": 6024,
+        "critique": 24416,
+        "solver": 4233,
+        "form": 7115,
+        "translation": 86305
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to separate magnetic substances from a mixture?",
+      "ms": {
+        "draft": 4953,
+        "critique": 22194,
+        "solver": 33591,
+        "form": 10116,
+        "translation": 34936
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method of separation is used to separate salt from seawater?",
+      "ms": {
+        "draft": 3946,
+        "critique": 5860,
+        "solver": 2273,
+        "form": 2345,
+        "translation": 36489
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method of separation is used to separate small particles from a mixture with the help of a suitable mesh?",
+      "ms": {
+        "draft": 3946,
+        "critique": 5087,
+        "solver": 1406,
+        "form": 3108,
+        "translation": 36517
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A mixture of sand and gravel has mixed at a construction site. Which method of separation can be used to separate them?",
+      "ms": {
+        "draft": 6024,
+        "critique": 25417,
+        "solver": 6005,
+        "form": 3741,
+        "translation": 83349
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a saucer containing a saltwater solution is placed in the sun, what will happen to the salt?",
+      "ms": {
+        "draft": 4953,
+        "critique": 18232,
+        "solver": 32414,
+        "form": 6050,
+        "translation": 39702
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a saucer kept in the sun, the water evaporates and salt is left behind. What is the reason for this?",
+      "ms": {
+        "draft": 3946,
+        "critique": 7018,
+        "solver": 1503,
+        "form": 0,
+        "translation": 52971
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the purpose of using a mask while traveling in crowded places during an epidemic?",
+      "ms": {
+        "draft": 3346,
+        "critique": 5863,
+        "solver": 1435,
+        "form": 2315,
+        "translation": 36436
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student is trying to separate a mixture of salt and sand. He decides to use the method of evaporation. Why is this method suitable for this mixture?",
+      "ms": {
+        "draft": 6024,
+        "critique": 6118,
+        "solver": 4003,
+        "form": 12804,
+        "translation": 56044
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How does the process of churning help in separating butter from curd?",
+      "ms": {
+        "draft": 3346,
+        "critique": 5721,
+        "solver": 953,
+        "form": 1053,
+        "translation": 40603
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is stated that muddy water can be cleaned using alum. What is the main reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A farmer has a mixture of grains and chaff. He wants to separate them using a method similar to the one used in the passage. Which method should he use?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which method is used to separate salt from seawater?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A carpenter finds iron nails mixed with sawdust. Which method would be the easiest to separate them?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Srushti kept her saucer in the shade, Yash in the sun, and Sanskruti in a window with a breeze. In which saucer will dry salt be collected first?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which method is used to separate solid substances that are not dissolved in a liquid?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a mixture of grains and chaff is dropped from a height, which part of the mixture will fall straight down?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand the process described in the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a mixture of salt and sugar is given, can it be separated using the same method as salt and sand? Why?",
+      "reason": "options 1 and 3 are the same (\"No, because they are both soluble\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a carpenter finds iron nails mixed with sawdust, which method would be the easiest to separate them?",
+      "reason": "near-duplicate of served question cmvqbxa3l0apjgp21aa5710ki (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a mixture of salt and sand is given, which method would be the most effective to separate them?",
+      "reason": "near-duplicate of served question cmvftsfjn00r1gpfh0m558rjb (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which method is used to separate a mixture of sand and gravel?",
+      "reason": "near-duplicate of batch item \"A mixture of sand and gravel has mixed at a constr…\" (cosine 0.941 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

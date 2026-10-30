@@ -1,0 +1,327 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T14:50:50.194Z",
+  "finishedAt": "2026-10-30T14:56:41.714Z",
+  "seconds": 352,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Decimal Fractions",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n14. [( 10000 ) − 1] × 100 = [ √ 6 − 1] × 100\n(C) option"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 182710,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7876,
+      "completionTokens": 2945
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 333674,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 7446,
+      "completionTokens": 2680
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 91926,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 12048,
+      "completionTokens": 639
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 0,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 15282,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 151,
+      "completionTokens": 265
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the place value of 8 in the number 9.8?",
+      "ms": {
+        "draft": 20344,
+        "critique": 23240,
+        "solver": 5035,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Convert 0.045 into a common fraction.",
+      "ms": {
+        "draft": 20344,
+        "critique": 26491,
+        "solver": 5008,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Arrange the numbers 3.64, 5.4, and 1.8 in ascending order.",
+      "ms": {
+        "draft": 20344,
+        "critique": 30208,
+        "solver": 4840,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a decimal fraction?",
+      "ms": {
+        "draft": 20344,
+        "critique": 28746,
+        "solver": 56752
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Anita runs 3.27 km in the morning and 2.8 km in the evening. How many kilometers does she run in a day?",
+      "ms": {
+        "draft": 20344,
+        "critique": 29889,
+        "solver": 35729,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the place value of 5 in the number 33.52?",
+      "ms": {
+        "draft": 20344,
+        "critique": 24424,
+        "solver": 23144,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the integer part of the number 15.9?",
+      "ms": {
+        "draft": 10108,
+        "critique": 18120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a decimal fraction?",
+      "ms": {
+        "draft": 10108,
+        "critique": 19087
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the place value of 8 in the number 9.8?",
+      "ms": {
+        "draft": 10108,
+        "critique": 21319
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of the digit 5 in the number 33.52?",
+      "ms": {
+        "draft": 10108,
+        "critique": 19286
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of adding 3.64 and 5.4?",
+      "ms": {
+        "draft": 10108,
+        "critique": 17390,
+        "solver": 3384
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the common fraction equivalent of 0.045?",
+      "ms": {
+        "draft": 10108,
+        "critique": 23549
+      },
+      "outcome": "critique",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the place value of 8 in the number 9.8?",
+      "reason": "options are in more than one unit (units, tenths, hundredths, thousandths); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; distractor 3's reason is not a one-line misconception (\"Does not understand the place value system and misplaces the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Convert 0.045 into a common fraction.",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not correctly convert the decimal into a fraction and s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Arrange the numbers 3.64, 5.4, and 1.8 in ascending order.",
+      "reason": "options 0 and 1 say the same thing (\"1.8, 3.64, 5.4\" / \"1.8, 5.4, 3.64\"); options 0 and 2 say the same thing (\"1.8, 3.64, 5.4\" / \"3.64, 5.4, 1.8\"); options 0 and 3 say the same thing (\"1.8, 3.64, 5.4\" / \"5.4, 3.64, 1.8\"); options 1 and 2 say the same thing (\"1.8, 5.4, 3.64\" / \"3.64, 5.4, 1.8\"); options 1 and 3 say the same thing (\"1.8, 5.4, 3.64\" / \"5.4, 3.64, 1.8\"); options 2 and 3 say the same thing (\"3.64, 5.4, 1.8\" / \"5.4, 3.64, 1.8\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the concept of comparing decimal numbers and …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a decimal fraction?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Anita runs 3.27 km in the morning and 2.8 km in the evening. How many kilometers does she run in a day?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to align the decimal points correctly and adds 3.27 + …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the place value of 5 in the number 33.52?",
+      "reason": "options 2 and 3 are the same (\"5 hundredths\"); options are in more than one unit (units, tenths, hundredths); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the integer part of the number 15.9?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a decimal fraction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the place value of 8 in the number 9.8?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the value of the digit 5 in the number 33.52?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of adding 3.64 and 5.4?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the common fraction equivalent of 0.045?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

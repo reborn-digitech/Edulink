@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-30T11:11:22.934Z",
+  "generatedAt": "2026-10-30T16:40:27.548Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "Which of the following numbers is the largest 5-digit number with a digit sum of 14?",
+      "difficulty": 1,
+      "stem": "What is the smallest 5-digit palindrome?",
       "choices": [
-        "95000",
-        "94010",
-        "93020",
-        "92030"
+        "10001",
+        "1001",
+        "10000",
+        "100001"
       ],
       "answerIndex": 0,
-      "solution": "The largest 5-digit number with a digit sum of 14 is 95000 because 9 + 5 + 0 + 0 + 0 = 14. 94100 (9+4+1+0+0=14) is smaller than 95000. 93200 (9+3+2+0+0=14) is also smaller. 92300 (9+2+3+0+0=14) is smaller as well.",
+      "solution": "The smallest 5-digit palindrome is 10001 because it is the smallest 5-digit number that reads the same forwards and backwards. The other options are not 5-digit numbers or are not palindromes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या 14 के अंक योग वाली सबसे बड़ी 5 अंकीय संख्या है?",
+          "stem": "5 अंकों का सबसे छोटा पैलिंड्रोम क्या है?",
           "choices": [
-            "95000",
-            "94010",
-            "93020",
-            "92030"
+            "10001",
+            "1001",
+            "10000",
+            "100001"
           ],
-          "solution": "14 के अंक योग वाली सबसे बड़ी 5 अंकीय संख्या 95000 है क्योंकि 9 + 5 + 0 + 0 + 0 = 14। 94100 (9+4+1+0+0=14) 95000 से छोटी है। 93200 (9+3+2+0+0=14) भी छोटी है। 92300 (9+2+3+0+0=14) भी छोटी है।",
+          "solution": "5 अंकों का सबसे छोटा पैलिंड्रोम 10001 है क्योंकि यह वह सबसे छोटा 5 अंकों की संख्या है जो आगे और पीछे दोनों ओर एक ही तरह पढ़ती है। अन्य विकल्प 5 अंकों की संख्या नहीं हैं या पैलिंड्रोम नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संख्या 14 च्या अंक बेरजेसह सर्वात मोठी 5 अंकी संख्या आहे?",
+          "stem": "5-अंकी द्विचर वाक्याचे लहानतम किती आहे?",
           "choices": [
-            "95000",
-            "94010",
-            "93020",
-            "92030"
+            "10001",
+            "1001",
+            "10000",
+            "100001"
           ],
-          "solution": "14 च्या अंक बेरजेसह सर्वात मोठी 5 अंकी संख्या 95000 आहे कारण 9 + 5 + 0 + 0 + 0 = 14. 94100 (9+4+1+0+0=14) 95000 पेक्षा लहान आहे. 93200 (9+3+2+0+0=14) देखील लहान आहे. 92300 (9+2+3+0+0=14) देखील लहान आहे.",
+          "solution": "लहानतम 5-अंकी द्विचर वाक्य 10001 आहे कारण हे लहानतम 5-अंकी संख्या आहे जी आगलोबागलो वाचते. इतर विकल्प 5-अंकी संख्या नाहीत किंवा द्विचर वाक्य नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. 'द्विचर वाक्य' is the correct Marathi term for 'palindrome'.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Student incorrectly places the remaining sum in the wrong digit position",
-        "A student might incorrectly place the remaining sum in the wrong digits, thinking that digits can be rearranged freely without considering the largest possible value.",
-        "A student might incorrectly place the larger digits in the wrong positions, thinking that the number should have smaller digits in the higher place values."
+        "Thinks the number is 4-digit",
+        "Thinks the number is 5-digit but not a palindrome",
+        "Thinks the number is 6-digit"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,223 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 95000, as it is the largest 5-digit number with a digit sum of 14. The author's solution is correct, and the reasoning for the distractors reflects common misconceptions about digit placement.",
+      "critique": "The correct answer is 10001, which is the smallest 5-digit palindrome. The other options are either not 5-digit numbers (1001 and 10000) or are 6-digit numbers (100001). The author's reasoning aligns with the correct solution.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 18,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T16:40:27.548Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a 3-digit number is a palindrome, which of the following digits must be the same?",
+      "choices": [
+        "tens and hundreds",
+        "units and tens",
+        "units and hundreds",
+        "hundreds and thousands"
+      ],
+      "answerIndex": 2,
+      "solution": "In a 3-digit palindrome, the first and last digits are the same. This is the defining property of a palindrome. The other options do not reflect this property.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक 3-अंकीय संख्या पैलिंड्रोम है, तो निम्नलिखित में से कौन-सा अंक आवश्यक रूप से एक ही होना चाहिए?",
+          "choices": [
+            "दहाई और सैकड़ा",
+            "इकाई और दहाई",
+            "इकाई और सैकड़ा",
+            "सैकड़ा और हजार"
+          ],
+          "solution": "एक 3-अंकीय पैलिंड्रोम में पहला और अंतिम अंक एक ही होते हैं। यह पैलिंड्रोम की परिभाषा है। अन्य विकल्प इस गुण को प्रतिबिंबित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "All terms are standard in Hindi math textbooks. 'सैकड़ा' = hundreds, 'दहाई' = tens, 'इकाई' = units, 'हजार' = thousands. The translation is accurate and maintains the original meaning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3-अंकी संख्या पैलंड्रोम असल्यास, खालीलपैकी कोणत्या अंकांना एकसारखे असावे लागतील?",
+          "choices": [
+            "दशक आणि शतक",
+            "एकक आणि दशक",
+            "एकक आणि शतक",
+            "शतक आणि हजार"
+          ],
+          "solution": "3-अंकी पैलंड्रोममध्ये पहिला आणि शेवटचा अंक एकसारखे असतात. हे पैलंड्रोमचे निर्धारक गुणधर्म आहे. इतर विकल्प पालंड्रोमच्या गुणधर्माचे प्रतिबिंबित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology for place values (एकक, दशक, शतक, हजार).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the position of digits in a 3-digit number",
+        "misunderstands the structure of a 3-digit number",
+        null,
+        "understands that the first and last digits are the same but mislabels them"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that in a 3-digit palindrome, the first and last digits must be the same, which corresponds to option 2 (units and hundreds). The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.5 Pretty Palindromic Patterns"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.6 The Magic Number of Kaprekar"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.7 Clock and Calendar Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.8 Mental Math"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.9 Playing with Number Patterns"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T16:40:27.548Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If there are 5 children in a group, all of different heights, which of the following sequences is possible?",
+      "choices": [
+        "0, 1, 2, 1, 0",
+        "1, 1, 1, 1, 1",
+        "2, 2, 2, 2, 2",
+        "3, 3, 3, 3, 3"
+      ],
+      "answerIndex": 0,
+      "solution": "The sequence '0, 1, 2, 1, 0' is possible because it represents the number of taller children each child can see, which follows a logical pattern based on their heights. The other options are not possible because no child can see more taller children than there are in the group, and all children cannot simultaneously see the same number of taller children.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक समूह में 5 बच्चे हैं, जिनकी ऊंचाई अलग-अलग है, तो निम्नलिखित में से कौन-सा अनुक्रम संभव है?",
+          "choices": [
+            "0, 1, 2, 1, 0",
+            "1, 1, 1, 1, 1",
+            "2, 2, 2, 2, 2",
+            "3, 3, 3, 3, 3"
+          ],
+          "solution": "अनुक्रम '0, 1, 2, 1, 0' संभव है क्योंकि यह प्रत्येक बच्चे द्वारा देखे जा सकने वाले लंबे बच्चों की संख्या का प्रतिनिधित्व करता है, जो उनकी ऊंचाई के आधार पर एक तार्किक पैटर्न का अनुसरण करता है। अन्य विकल्प संभव नहीं हैं क्योंकि कोई भी बच्चा समूह में मौजूद बच्चों से अधिक लंबे बच्चों को नहीं देख सकता है, और सभी बच्चे एक साथ एक ही संख्या में लंबे बच्चों को नहीं देख सकते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गटात 5 मुले असल्यास, ज्यांची उंची वेगवेगळी असेल, तर खालीलपैकी कोणती अनुक्रम शक्य आहे?",
+          "choices": [
+            "0, 1, 2, 1, 0",
+            "1, 1, 1, 1, 1",
+            "2, 2, 2, 2, 2",
+            "3, 3, 3, 3, 3"
+          ],
+          "solution": "अनुक्रम '0, 1, 2, 1, 0' शक्य आहे कारण तो प्रत्येक मुलाला दिसणाऱ्या उंच बालकांच्या संख्येचे प्रतिनिधित्व करतो, जे त्यांच्या उंचींवर आधारित तार्किक पॅटर्न अनुसरतो. इतर विकल्प शक्य नाहीत कारण कोणत्याही बालकाला गटातील बालकांपेक्षा जास्त उंच बालक पाहता येणार नाहीत, आणि सर्व बालकांना एकाच वेळी एकसारखे उंच बालक पाहता येऊ शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately preserves the meaning, structure, and technical terms of the original English question. The solution and options are correctly translated, and the logic of the question remains intact.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the condition for the tallest child",
+        "Believes all children can say the same number",
+        "Confuses the conditions for the sequence"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is ambiguous without additional context, but based on the author's solution, the correct answer is 0. The explanation assumes a specific context where children are describing their height relative to others, and the sequence '0, 1, 2, 1, 0' represents a valid ranking. The other options are invalid because they do not reflect different heights.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
@@ -119,49 +335,168 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T11:11:22.934Z",
+      "generatedAt": "2026-10-30T16:40:27.548Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "A table is filled with 5-digit numbers. A cell is a supercell if it is greater than all its adjacent cells. If the largest number in the table is placed in the middle, what is the minimum number of supercells that can be formed?",
+      "difficulty": 5,
+      "stem": "Roshan estimates the cost of milk and 3 types of fruit to make fruit custard for 5 people as ₹100. Which of the following statements is most likely to be true?",
       "choices": [
-        "1",
-        "2",
-        "3",
-        "4"
+        "Roshan’s estimate is too low because the cost of fruits alone is more than ₹100.",
+        "Roshan’s estimate is reasonable if the fruits are seasonal and milk is cheap.",
+        "Roshan’s estimate is too high because the cost of ingredients is less than ₹100.",
+        "Roshan’s estimate is accurate and reflects the exact cost of all ingredients."
       ],
-      "answerIndex": 0,
-      "solution": "The minimum number of supercells that can be formed is 1. If the largest number is placed in the middle, it will be greater than all its adjacent cells, making it a supercell. The other cells cannot be supercells because they are not greater than all their neighbors. The other options are incorrect because they assume more than one supercell can be formed under these conditions.",
+      "answerIndex": 1,
+      "solution": "Roshan’s estimate is reasonable if the fruits are seasonal and milk is cheap. Seasonal fruits and inexpensive milk can lower the total cost, making ₹100 a plausible estimate. Other options assume specific cost values not supported by the information given.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक मेज पर 5 अंकों वाली संख्याएं भरी गई हैं। एक सेल एक सुपरसेल होती है यदि यह अपने सभी पड़ोसी सेलों से बड़ी हो। यदि मेज में सबसे बड़ी संख्या के बीच में रखा जाता है, तो बनने वाले सुपरसेलों की न्यूनतम संख्या क्या होगी?",
+          "stem": "रोशन फल के दूध और 3 प्रकार के फल के लिए 5 लोगों के लिए फल केक बनाने की लागत का अनुमान ₹100 रखता है। निम्नलिखित में से कौन सा कथन सबसे अधिक संभावित सत्य होगा?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "रोशन का अनुमान बहुत कम है क्योंकि फलों की लागत अकेले ₹100 से अधिक है।",
+            "रोशन का अनुमान ताजा फल और सस्ता दूध होने पर उचित है।",
+            "रोशन का अनुमान बहुत अधिक है क्योंकि सामग्री की लागत ₹100 से कम है।",
+            "रोशन का अनुमान सटीक है और सभी सामग्रियों की ठीक लागत को प्रतिबिंबित करता है।"
           ],
-          "solution": "बनने वाले सुपरसेलों की न्यूनतम संख्या 1 है। यदि सबसे बड़ी संख्या बीच में रखी जाती है, तो यह अपने सभी पड़ोसी सेलों से बड़ी होगी, जिससे यह एक सुपरसेल बन जाएगी। अन्य सेल अपने सभी पड़ोसियों से बड़ी नहीं हो सकते हैं। अन्य विकल्प गलत हैं क्योंकि ये इन शर्तों के तहत एक से अधिक सुपरसेल बनने की गलत धारणा पर आधारित हैं।",
+          "solution": "रोशन का अनुमान ताजा फल और सस्ता दूध होने पर उचित है। ताजा फल और सस्ता दूध कुल लागत कम कर सकते हैं, जिससे ₹100 एक संभावित अनुमान बन जाता है। अन्य विकल्प जानकारी के बिना विशिष्ट लागत मूल्यों के बारे में मानते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका टेबलमध्ये 5 अंकी संख्या भरल्या आहेत. एका सेलला सुपरसेल म्हणतात जर तो त्याच्या सर्व जवळच्या सेल्सपेक्षा मोठा असेल. जर टेबलमधील सर्वात मोठी संख्या मध्यात ठेवली गेली असेल, तर तयार होऊ शकणारी सुपरसेलची न्यूनतम संख्या किती असेल?",
+          "stem": "रोशनने 5 लोकांसाठी फळ कस्टर्ड बनवण्यासाठी दूध आणि 3 प्रकारच्या फळांच्या खर्चाचे अंदाज ₹100 ठरवले आहे. खालीलपैकी कोणता विधान खूप शक्य आहे?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "रोशनचा अंदाज खूप कमी आहे कारण फळांचा खर्च एकटाच ₹100 पेक्षा जास्त आहे.",
+            "रोशनचा अंदाज योग्य आहे जर फळे उपलब्ध असतील आणि दूध स्वस्त असेल.",
+            "रोशनचा अंदाज खूप जास्त आहे कारण खाद्य पदार्थांचा खर्च ₹100 पेक्षा कमी आहे.",
+            "रोशनचा अंदाज खरा आहे आणि सर्व खाद्य पदार्थांच्या खर्चाचे अचूक दर्शन करतो."
           ],
-          "solution": "तयार होऊ शकणारी सुपरसेलची न्यूनतम संख्या 1 आहे. जर सर्वात मोठी संख्या मध्यात ठेवली गेली असेल, तर ती तिच्या सर्व जवळच्या सेल्सपेक्षा मोठी असेल, ज्यामुळे ती सुपरसेल बनेल. इतर सेल्स सुपरसेल बनू शकत नाहीत कारण ते त्यांच्या सर्व जवळच्या सेल्सपेक्षा मोठे नाहीत. इतर विकल्प चुकीचे आहेत कारण ते या परिस्थितीत एकापेक्षा जास्त सुपरसेल तयार होऊ शकतात असे गृहीत धरतात.",
+          "solution": "रोशनचा अंदाज योग्य आहे जर फळे उपलब्ध असतील आणि दूध स्वस्त असेल. उपलब्ध फळे आणि स्वस्त दूध एकत्रित करून खर्च कमी करता येऊ शकतो, ज्यामुळे ₹100 चा अंदाज शक्य ठरतो. इतर विधानांमध्ये दिलेल्या माहितीच्या आधारावर समर्थित नसलेल्या खर्चाच्या मूल्यांचा अंदाज आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer remains option 2, and the distractors are still incorrect in the Marathi version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes the cost of fruits without evidence",
+        null,
+        "overestimates the cost without evidence",
+        "suggests exactness where only an estimate is given"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question asks which statement is 'most likely to be true' given that Roshan made an estimate. Option 1 is the only one that acknowledges the nature of an estimate and provides a plausible scenario (seasonal fruits and cheap milk). The other options make absolute claims not supported by the information given.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.9 Playing with Number Patterns",
+            "3.10AnUnsolvedMystery—theCollatzConjecture!"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.11 Simple Estimation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.11 Simple Estimation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 13,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.12 Games and Winning Strategies"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "3.12 Games and Winning Strategies"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T16:40:27.548Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the game where players alternate adding numbers between 1 and 3 to reach 22, what is the winning strategy?",
+      "choices": [
+        "Always say 1, 4, 7, 10, 13, 16, 19, 22.",
+        "Always say 2, 5, 9, 12, 15, 18, 21.",
+        "Always say 3, 6, 9, 12, 15, 18, 21.",
+        "Always say 1, 3, 5, 7, 9, 11, 13."
+      ],
+      "answerIndex": 0,
+      "solution": "To win, the player should aim to say numbers that are multiples of 3 plus 1 (1, 4, 7, 10, 13, 16, 19, 22). This ensures that the player can always reach 22 on their turn. The other options do not follow the correct sequence to guarantee a win.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "खेल में खिलाड़ी 1 से 3 के बीच संख्याएं जोड़ते हुए 22 तक पहुंचते हैं, विजयी रणनीति क्या है?",
+          "choices": [
+            "हमेशा 1, 4, 7, 10, 13, 16, 19, 22 कहें।",
+            "हमेशा 2, 5, 9, 12, 15, 18, 21 कहें।",
+            "हमेशा 3, 6, 9, 12, 15, 18, 21 कहें।",
+            "हमेशा 1, 3, 5, 7, 9, 11, 13 कहें।"
+          ],
+          "solution": "जीतने के लिए, खिलाड़ी को 3 के गुणज में 1 जोड़कर संख्याएं बोलने का प्रयास करना चाहिए (1, 4, 7, 10, 13, 16, 19, 22)। इससे खिलाड़ी अपने चाल में हमेशा 22 तक पहुंच सकता है। अन्य विकल्प सही अनुक्रम का अनुसरण नहीं करते हैं जो जीत की गारंटी देता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The solution and options are correctly translated, maintaining the mathematical logic of the game.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खेळात खेळाडूंनी 1 आणि 3 दरम्यानच्या संख्या जोडून 22 पर्यंत पोहोचण्याचा प्रयत्न करावा, तर विजयी रणनीती काय असेल?",
+          "choices": [
+            "हमेशा 1, 4, 7, 10, 13, 16, 19, 22 म्हणावे.",
+            "हमेशा 2, 5, 9, 12, 15, 18, 21 म्हणावे.",
+            "हमेशा 3, 6, 9, 12, 15, 18, 21 म्हणावे.",
+            "हमेशा 1, 3, 5, 7, 9, 11, 13 म्हणावे."
+          ],
+          "solution": "जिंकण्यासाठी, खेळाडूने 3 च्या पटीतील संख्या + 1 (1, 4, 7, 10, 13, 16, 19, 22) म्हणणे आवश्यक आहे. हे खेळाडूला त्याच्या वर्तमान वर्षात 22 पर्यंत पोहोचण्याची खात्री देते. इतर विकल्प यशस्वी विजय गाजवण्यासाठी योग्य क्रम नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -171,9 +506,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Thinks multiple cells can be greater than their neighbors.",
-        "Believes the largest number will not be a supercell.",
-        "Assumes all cells can be supercells."
+        "Assumes a step size of 3 instead of 4, leading to incorrect target numbers.",
+        "Thinking that multiples of 3 are the key pattern, not understanding the modulo 4 strategy",
+        "Believes odd numbers are the key to winning, ignoring the pattern of increments of 3"
       ],
       "solverAnswers": [
         0,
@@ -182,61 +517,63 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The largest number in the table, when placed in the middle, will be greater than all its adjacent cells, making it a supercell. No other cell can be a supercell because they are not greater than all their neighbors.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct strategy is to aim for numbers that are 1 more than multiples of 3 (1, 4, 7, 10, 13, 16, 19, 22), which aligns with the author's key. The other options reflect common misconceptions about the pattern required to win.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
           "headingPath": [
-            "Chapter 3: Number Play"
+            "Chapter 3: Number Play",
+            "3.9 Playing with Number Patterns",
+            "3.10AnUnsolvedMystery—theCollatzConjecture!"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.2 Supercells"
+            "3.11 Simple Estimation"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.2 Supercells"
+            "3.11 Simple Estimation"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 5,
+          "ordinal": 13,
+          "pageStart": 17,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.3 Patterns of Numbers on the Number Line"
+            "3.12 Games and Winning Strategies"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 14,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.4 Playing with Digits"
+            "3.12 Games and Winning Strategies"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T11:11:22.934Z",
+      "generatedAt": "2026-10-30T16:40:27.548Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

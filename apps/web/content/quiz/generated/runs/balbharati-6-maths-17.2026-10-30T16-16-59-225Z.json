@@ -1,0 +1,511 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T16:16:59.225Z",
+  "finishedAt": "2026-10-30T16:22:57.612Z",
+  "seconds": 358,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 17 — Bank and Simple Interest",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n31. 10 years ago, Mr Mehra set up a sinking fund to save for his daughter’s higher studies. At the end\nof 10 years, he has received an amount of ₹ 10,21,760. What amount did he put in the sinking fund\nat the end of every 6 months for the tenure, which paid him 5% p.a. compounded semi-annually? 3\n[Use (1.025) 20 = 1.6386]",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n31. n = 10 x 2 = 20, S = 10,21,760, 𝑖 = 5\n(1+𝑖) −1 𝑛\nS =R [ 𝑖 ]\n(1+0.025) 20 −1\n⇒1021760 = R [ 0.025 ]\n⇒1021760 = R [ 1.6386−1 0.025 ]\n⇒R = [ 1021760×0.025 0.6386 ]\n⇒ R = ₹ 40,000\n= 0.025, R = ?\n1.5\n1.5\nMr Mehra set aside an amount of ₹ 40,000 at the end of every six months",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n25. Mitul invested ₹ 3,50,000 in a fund. At the end of the year the value of the fund is ₹ 4,37,500.\nWhat is the nominal rate of interest, if the market price is same at the end of the year? 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n12. The effective rate of interest equivalent to the nominal rate 6% compounded semi-annually is\n(a) 6.05% (b) 6.07% (c) 6.09% (d) 6.1%"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 119428,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16754,
+      "completionTokens": 5786
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 316352,
+      "in": 24,
+      "out": 18,
+      "rejects": 6,
+      "promptTokens": 17627,
+      "completionTokens": 7198
+    },
+    "solver": {
+      "calls": 196,
+      "ms": 171569,
+      "in": 18,
+      "out": 6,
+      "rejects": 12,
+      "promptTokens": 51243,
+      "completionTokens": 2804
+    },
+    "form": {
+      "calls": 3,
+      "ms": 10334,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 735,
+      "completionTokens": 199
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10763,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 138649,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8142,
+      "completionTokens": 3755
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a general function of a bank according to the passage?",
+      "ms": {
+        "draft": 5273,
+        "critique": 6188,
+        "solver": 14809,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about savings accounts?",
+      "ms": {
+        "draft": 5273,
+        "critique": 6000,
+        "solver": 1797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person deposits ₹5,800 in a bank and earns ₹380 as interest in one year, what is the total amount received at the end of the year?",
+      "ms": {
+        "draft": 5273,
+        "critique": 6830,
+        "solver": 16252
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Radhika took a loan of ₹25,000 at 8% p.c.p.a. and returned ₹27,000 after one year, how much interest did she pay?",
+      "ms": {
+        "draft": 5273,
+        "critique": 9443,
+        "solver": 21125
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the principal is ₹24,500 and the interest is ₹1,830 for one year, what is the total amount?",
+      "ms": {
+        "draft": 5035,
+        "critique": 10184
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Nancy took a loan of ₹18,650 at the rate of 10 p.c.p.a. from a bank to buy a sewing machine. What is the total amount she will have to pay after one year?",
+      "ms": {
+        "draft": 5035,
+        "critique": 11319
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Ruben deposits ₹42,000 in a bank for one year at the rate of 6 p.c.p.a., how much interest will he get?",
+      "ms": {
+        "draft": 5035,
+        "critique": 8848,
+        "solver": 18452
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Shrushti keeps ₹35,000 in a bank at the rate of 8% per annum, how much interest will she get in one year?",
+      "ms": {
+        "draft": 5035,
+        "critique": 8595,
+        "solver": 17903
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a loan of ₹1,30,000 is taken from a bank at the rate of 11 p.c.p.a. for one year to build a gymkhana, how much total amount will the society have to pay to the bank?",
+      "ms": {
+        "draft": 5035,
+        "critique": 11285,
+        "solver": 19685
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the amount deposited in the bank or borrowed from the bank?",
+      "ms": {
+        "draft": 5002,
+        "critique": 5466
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the principal is ₹24,500 and the interest is ₹1,830 for one year, what is the total amount to be paid?",
+      "ms": {
+        "draft": 5002,
+        "critique": 6260
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Ruben deposits ₹42,000 in a bank for one year at the rate of 6 p.c.p.a., how much interest will he get?",
+      "ms": {
+        "draft": 5002,
+        "critique": 7217,
+        "solver": 22749
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Nancy took a loan of ₹18,650 at the rate of 10 p.c.p.a. from a bank to buy a sewing machine. What is the total amount she will have to pay after one year?",
+      "ms": {
+        "draft": 5002,
+        "critique": 8549,
+        "solver": 21350
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a loan of ₹1,30,000 is taken from a bank at the rate of 11 p.c.p.a. for one year to build a gymkhana, how much interest will the society have to pay in one year?",
+      "ms": {
+        "draft": 5002,
+        "critique": 8985,
+        "solver": 21660
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the money deposited in the bank or given by the bank to the borrower?",
+      "ms": {
+        "draft": 4595,
+        "critique": 9347
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'p.c.p.a.' stand for in the context of interest?",
+      "ms": {
+        "draft": 4595,
+        "critique": 9737
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Shrushti keeps ₹35,000 in a bank at the rate of 8% per annum, how much interest will she get in one year?",
+      "ms": {
+        "draft": 5002,
+        "critique": 7970,
+        "solver": 20256
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the principal is ₹8,000 and the interest is ₹640, what is the total amount to be returned?",
+      "ms": {
+        "draft": 4595,
+        "critique": 7535,
+        "solver": 15524
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the interest on a principal of ₹5,800 is ₹380, what is the rate of interest per annum?",
+      "ms": {
+        "draft": 4595,
+        "critique": 6697,
+        "solver": 1522
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Radhika took a loan of ₹25,000 at 8% p.c.p.a. and returned ₹27,000 after one year. What is the interest paid?",
+      "ms": {
+        "draft": 4595,
+        "critique": 7934,
+        "solver": 13439
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the amount deposited in the bank or borrowed from the bank?",
+      "ms": {
+        "draft": 5035,
+        "critique": 7961,
+        "solver": 16854,
+        "form": 2541,
+        "translation": 37420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'p.c.p.a.' stand for in the context of interest rates?",
+      "ms": {
+        "draft": 5273,
+        "critique": 6188,
+        "solver": 941,
+        "form": 6815,
+        "translation": 44191
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a principal amount of ₹18,000 is deposited at 5% p.c.p.a., what is the interest earned in one year?",
+      "ms": {
+        "draft": 4595,
+        "critique": 8149,
+        "solver": 19756,
+        "form": 2455,
+        "translation": 20030
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person deposits ₹8,000 and earns ₹640 as interest in one year, what is the rate of interest?",
+      "ms": {
+        "draft": 5273,
+        "critique": 11741,
+        "solver": 19330,
+        "form": 1,
+        "translation": 31836
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a general function of a bank according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about savings accounts?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person deposits ₹5,800 in a bank and earns ₹380 as interest in one year, what is the total amount received at the end of the year?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Radhika took a loan of ₹25,000 at 8% p.c.p.a. and returned ₹27,000 after one year, how much interest did she pay?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the principal is ₹24,500 and the interest is ₹1,830 for one year, what is the total amount?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Nancy took a loan of ₹18,650 at the rate of 10 p.c.p.a. from a bank to buy a sewing machine. What is the total amount she will have to pay after one year?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Ruben deposits ₹42,000 in a bank for one year at the rate of 6 p.c.p.a., how much interest will he get?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Shrushti keeps ₹35,000 in a bank at the rate of 8% per annum, how much interest will she get in one year?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a loan of ₹1,30,000 is taken from a bank at the rate of 11 p.c.p.a. for one year to build a gymkhana, how much total amount will the society have to pay to the bank?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for the amount deposited in the bank or borrowed from the bank?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the principal is ₹24,500 and the interest is ₹1,830 for one year, what is the total amount to be paid?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Ruben deposits ₹42,000 in a bank for one year at the rate of 6 p.c.p.a., how much interest will he get?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Nancy took a loan of ₹18,650 at the rate of 10 p.c.p.a. from a bank to buy a sewing machine. What is the total amount she will have to pay after one year?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a loan of ₹1,30,000 is taken from a bank at the rate of 11 p.c.p.a. for one year to build a gymkhana, how much interest will the society have to pay in one year?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the money deposited in the bank or given by the bank to the borrower?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'p.c.p.a.' stand for in the context of interest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If Shrushti keeps ₹35,000 in a bank at the rate of 8% per annum, how much interest will she get in one year?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the principal is ₹8,000 and the interest is ₹640, what is the total amount to be returned?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the interest on a principal of ₹5,800 is ₹380, what is the rate of interest per annum?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Radhika took a loan of ₹25,000 at 8% p.c.p.a. and returned ₹27,000 after one year. What is the interest paid?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

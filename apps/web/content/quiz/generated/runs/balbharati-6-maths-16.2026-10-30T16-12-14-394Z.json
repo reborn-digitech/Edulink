@@ -1,0 +1,325 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T16:12:14.394Z",
+  "finishedAt": "2026-10-30T16:16:57.222Z",
+  "seconds": 283,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 16 — Baudhayana-Pythagoras Theorem",
+    "edition": "First Edition 2026",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n25. AB = √(3 + 5) 2 + (0 − 6) 2 = 10 ½\nBC = √(9 − 3) 2 + (8 − 0) 2 = 10 ½\nAC = √(9 + 5) 2 + (8 − 6) 2 = 10√2\n½\nSince AB = BC, therefore 𝛥 ABC is isosceles ½",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n13. B (Hypotenuse ) =(Base) + (Perpendicular) ⇒ (15) = (Base) +(12) 2 2 2 2 2 2 1\n⇒ Base = 9 m\n(B) 𝟗𝐦",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\nSECTION – C (6 x 3 = 18)\nThis section comprises of 6 short answer (SA) type questions of 3 marks each.\nQ26. Given that √𝟓 is irrational, prove that 2 + 3√5 is irrational. 3\nQ27. In the given figure, AX, AY and BC are tangents to the circle with P, R and Q\n(A) 1\nrespective point of contacts. Prove that AP = (AB + BC + CA)\nFor Visually Impaired Candidates\nProve that a parallelogram circumscribing a circle is a rhombus.\nOR\nQ27. Two tangents PA and PB are drawn to a circle with centre O from an external\n(B) point P. Prove that ∠APB = 2∠OAB\nQ28. Determine the ratio in which the point (– 6, y) divides the line segment joining the 3\npoints A (–3, –1) and B (– 8, 9). Also, find the value of y.\nQ29.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 136085,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 10876,
+      "completionTokens": 2705
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 196452,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 8242,
+      "completionTokens": 2951
+    },
+    "solver": {
+      "calls": 79,
+      "ms": 91638,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 19132,
+      "completionTokens": 929
+    },
+    "form": {
+      "calls": 1,
+      "ms": 4160,
+      "in": 6,
+      "out": 1,
+      "rejects": 5,
+      "promptTokens": 322,
+      "completionTokens": 86
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 11678,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 26883,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2620,
+      "completionTokens": 1481
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, if the lengths of the two shorter sides are 9 cm and 12 cm, what is the length of the hypotenuse?",
+      "ms": {
+        "draft": 10744,
+        "critique": 27788,
+        "solver": 6579,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A ladder 17 m long is placed diagonally against a wall at a distance of 8 m from it. What is the distance of the top of the ladder from the ground?",
+      "ms": {
+        "draft": 10744,
+        "critique": 31699,
+        "solver": 8939,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A right-angled triangle has sides of lengths 6 cm, 8 cm, and 10 cm. Which of these is the hypotenuse?",
+      "ms": {
+        "draft": 10744,
+        "critique": 8765,
+        "solver": 1945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm and one of the sides is 7 cm. What is the length of the other side?",
+      "ms": {
+        "draft": 10744,
+        "critique": 7275,
+        "solver": 19099
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 41 cm and one of the other sides is 40 cm. What is the length of the third side?",
+      "ms": {
+        "draft": 10744,
+        "critique": 13829,
+        "solver": 24872
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm, and one side is 15 cm. What is the length of the other side?",
+      "ms": {
+        "draft": 11937,
+        "critique": 7042
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ladder 17 m long is placed diagonally against a wall at a distance of 8 m from it. What is the height above the ground where the top of the ladder touches the wall?",
+      "ms": {
+        "draft": 11937,
+        "critique": 11941
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, the hypotenuse is 13 cm, and one of the other sides is 5 cm. What is the length of the remaining side?",
+      "ms": {
+        "draft": 11937,
+        "critique": 6401,
+        "solver": 15472
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct statement of the Baudhayana-Pythagoras theorem?",
+      "ms": {
+        "draft": 11937,
+        "critique": 6596,
+        "solver": 16428,
+        "form": 4160
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A right-angled triangle has sides 6 cm and 8 cm. What is the length of the hypotenuse?",
+      "ms": {
+        "draft": 11937,
+        "critique": 8988
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a right-angled triangle, the sides are 9 cm, 12 cm, and 15 cm. Is this a Baudhayana-Pythagorean triplet?",
+      "ms": {
+        "draft": 11937,
+        "critique": 8411,
+        "solver": 7715,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a statement of the Baudhayana-Pythagoras theorem?",
+      "ms": {
+        "draft": 10744,
+        "critique": 27967,
+        "solver": 10191,
+        "form": 1,
+        "translation": 21982
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a right-angled triangle, if the lengths of the two shorter sides are 9 cm and 12 cm, what is the length of the hypotenuse?",
+      "reason": "checkExpr \"sqrt(9^2+12^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A ladder 17 m long is placed diagonally against a wall at a distance of 8 m from it. What is the distance of the top of the ladder from the ground?",
+      "reason": "checkExpr \"sqrt(17^2-8^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A right-angled triangle has sides of lengths 6 cm, 8 cm, and 10 cm. Which of these is the hypotenuse?",
+      "reason": "option 3 is a catch-all (\"None of these\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm and one of the sides is 7 cm. What is the length of the other side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 41 cm and one of the other sides is 40 cm. What is the length of the third side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a right-angled triangle, the hypotenuse is 25 cm, and one side is 15 cm. What is the length of the other side?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A ladder 17 m long is placed diagonally against a wall at a distance of 8 m from it. What is the height above the ground where the top of the ladder touches the wall?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a right-angled triangle, the hypotenuse is 13 cm, and one of the other sides is 5 cm. What is the length of the remaining side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct statement of the Baudhayana-Pythagoras theorem?",
+      "reason": "options 0 and 3 say the same thing (\"The sum of the squares of the two smaller sides of a triangle is equal to the square of the largest side.\" / \"The sum of the squares of the two smaller sides of a triangle is equal to the difference of the square of the largest side.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A right-angled triangle has sides 6 cm and 8 cm. What is the length of the hypotenuse?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a right-angled triangle, the sides are 9 cm, 12 cm, and 15 cm. Is this a Baudhayana-Pythagorean triplet?",
+      "reason": "option lengths are unalike (3 to 49 characters)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

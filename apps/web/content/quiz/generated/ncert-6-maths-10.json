@@ -21,36 +21,150 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-29T11:16:59.898Z",
+  "generatedAt": "2026-10-30T18:18:53.762Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is the highest point above sea level on Earth?",
+      "stem": "Which of the following is the correct addition statement for the tokens (+3) and (-5)?",
       "choices": [
-        "Mount Everest",
-        "K2",
-        "Annapurna",
-        "Kangchenjunga"
+        "(+3) + (-5) = (+2)",
+        "(+3) + (-5) = (-2)",
+        "(+3) + (-5) = (-3)",
+        "(+3) + (-5) = (-8)"
       ],
-      "answerIndex": 0,
-      "solution": "Mount Everest is the highest point above sea level on Earth due to its elevation of approximately 8,848 meters. Other mountains like K2, Annapurna, and Kangchenjunga are also very tall but do not exceed Mount Everest's height. These peaks are all part of the Himalayan range but are slightly lower in elevation.",
+      "answerIndex": 1,
+      "solution": "The correct addition statement is (+3) + (-5) = (-2). This is because when you add a positive number and a negative number, you subtract their absolute values and take the sign of the larger number. Here, 5 is larger than 3, so the result is negative. The other options incorrectly add or subtract the numbers or misapply the signs.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पृथ्वी पर समुद्र तल से सबसे ऊपर का बिंदु है?",
+          "stem": "निम्नलिखित में से कौन-सा सही जोड़ कथन है (+3) और (-5) के लिए?",
           "choices": [
-            "एवरेस्ट पर्वत",
-            "के-2",
-            "अन्नापूर्णा",
-            "कंचनजंघा"
+            "(+3) + (-5) = (+2)",
+            "(+3) + (-5) = (-2)",
+            "(+3) + (-5) = (-3)",
+            "(+3) + (-5) = (-8)"
           ],
-          "solution": "एवरेस्ट पर्वत पृथ्वी पर समुद्र तल से सबसे ऊपर का बिंदु है क्योंकि इसकी ऊंचाई लगभग 8,848 मीटर है। के-2, अन्नापूर्णा और कंचनजंघा जैसे पहाड़ भी बहुत ऊंचे हैं लेकिन एवरेस्ट की ऊंचाई से अधिक नहीं हैं। इन शिखरों के सभी हिमालय पर्वत श्रृंखला के हिस्से हैं लेकिन ऊंचाई में थोड़ा कम हैं।",
+          "solution": "सही जोड़ कथन (+3) + (-5) = (-2) है। इसका कारण यह है कि जब आप एक धनात्मक संख्या और एक ऋणात्मक संख्या को जोड़ते हैं, तो आप उनके परम मानों को घटाते हैं और बड़ी संख्या का चिह्न लेते हैं। यहां, 5, 3 से बड़ा है, इसलिए परिणाम ऋणात्मक है। अन्य विकल्प गलत तरीके से संख्याओं को जोड़ते या घटाते हैं या चिह्नों का गलत उपयोग करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses standard geographical terms in Hindi.",
+          "critique": "Translation is accurate, maintains mathematical meaning, and uses standard Hindi terminology for integers and operations.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता टोकन (+3) आणि (-5) साठी योग प्रक्रिया योग्य आहे?",
+          "choices": [
+            "(+3) + (-5) = (+2)",
+            "(+3) + (-5) = (-2)",
+            "(+3) + (-5) = (-3)",
+            "(+3) + (-5) = (-8)"
+          ],
+          "solution": "योग्य योग प्रक्रिया (+3) + (-5) = (-2) आहे. हे कारण एका धनात्मक संख्या आणि एका ऋणात्मक संख्येची बेरीज केल्यास त्यांच्या निरपेक्ष मूल्यांची बेरीज करून मोठ्या संख्येचा चिन्ह घेतात. येथे 5 ही 3 पेक्षा मोठी आहे, म्हणून निकाल ऋणात्मक असतो. इतर विकल्पांमध्ये संख्यांची बेरीज किंवा वजाबाकी चुकीची करणे किंवा चिन्हांचा चुकीचा वापर केला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the sign of the result",
+        null,
+        "Student adds the numbers without considering the signs correctly",
+        "Adds the absolute values instead of subtracting them and keeps the wrong sign"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as (+3) + (-5) = -2. The solution correctly explains the process of subtracting absolute values and taking the sign of the larger number. All distractors represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 22,
+          "pageStart": 50,
+          "pageEnd": 52,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "FracTion Wall",
+            "Notes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 23,
+          "pageStart": 52,
+          "pageEnd": 55,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "FracTion Wall",
+            "Notes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 24,
+          "pageStart": 55,
+          "pageEnd": 56,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "FracTion Wall",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for a positive and a negative token that together have a value of zero?",
+      "choices": [
+        "Zero pair",
+        "One pair",
+        "Positive pair",
+        "Negative pair"
+      ],
+      "answerIndex": 0,
+      "solution": "A zero pair refers to a positive and a negative number that cancel each other out, resulting in a total value of zero. The other options do not accurately describe this mathematical concept. 'One pair,' 'positive pair,' and 'negative pair' are not recognized terms for this specific relationship.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शून्य के मान वाले एक धनात्मक और एक ऋणात्मक टोकन के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "शून्य जोड़ा",
+            "एक जोड़ा",
+            "धनात्मक जोड़ा",
+            "ऋणात्मक जोड़ा"
+          ],
+          "solution": "एक शून्य जोड़ा एक धनात्मक और एक ऋणात्मक संख्या के लिए होता है जो एक दूसरे को रद्द कर देते हैं, जिसके परिणामस्वरूप शून्य का मान प्राप्त होता है। अन्य विकल्प इस गणितीय अवधारणा के लिए ठीक से वर्णित नहीं हैं। 'एक जोड़ा', 'धनात्मक जोड़ा' और 'ऋणात्मक जोड़ा' इस विशिष्ट संबंध के लिए मान्य शब्द नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शून्य मूल्य असलेल्या एका धन आणि ऋण टोकनच्या एकत्रित वापरासाठी वापरल्या जाणारी शब्द कोणता आहे?",
+          "choices": [
+            "शून्य जोडी",
+            "एक जोडी",
+            "धन जोडी",
+            "ऋण जोडी"
+          ],
+          "solution": "शून्य जोडी हा एका धन आणि ऋण संख्येच्या जोडीला संबोधित करतो ज्यामुळे एकमेकांचे निरसन होते आणि एकूण मूल्य शून्य होते. इतर विकल्प या गणितीय संकल्पनेचे योग्य वर्णन करत नाहीत. 'एक जोडी', 'धन जोडी' आणि 'ऋण जोडी' हे या विशिष्ट संबंधासाठी ओळखले जाणारे शब्द नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -60,9 +174,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses Mount Everest with other high mountains",
-        "confuses K2 with the highest mountain",
-        "confuses Annapurna with the highest mountain"
+        "Confuses the concept of a zero pair with other types of pairs",
+        "Does not understand the concept of zero pairs",
+        "Does not understand the concept of zero pairs and incorrectly assumes it is a positive pair"
       ],
       "solverAnswers": [
         0,
@@ -72,83 +186,83 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and relies on general knowledge. The correct answer is clearly Mount Everest, and the author's reasoning for the distractors is valid as they reflect common misconceptions about the highest mountains.",
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the explanation. The distractors reflect common misconceptions about zero pairs.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 12,
-          "pageStart": 20,
-          "pageEnd": 22,
+          "ordinal": 9,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.2 The Token Model"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.2 The Token Model"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 11,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
             "10.3 Integers in Other Places"
           ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 13,
-          "pageStart": 22,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.4 Explorations with Integers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 14,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.4 Explorations with Integers"
-          ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T11:16:59.898Z",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "Which of the following is a way to represent a temperature below 0°C?",
+      "difficulty": 2,
+      "stem": "What is the result of (-8) – (-4) using the token method?",
       "choices": [
-        "40°C",
-        "15°C",
-        "0°C",
-        "–5°C"
+        "(-12)",
+        "(-4)",
+        "(+8)",
+        "(+4)"
       ],
-      "answerIndex": 3,
-      "solution": "The correct answer is –5°C because it is a negative number, which represents a temperature below 0°C. The other options are positive numbers and do not represent temperatures below 0°C.",
+      "answerIndex": 1,
+      "solution": "The result of (-8) – (-4) is (-4). When subtracting a negative number, it is equivalent to adding its positive counterpart. So, (-8) – (-4) becomes (-8) + (+4) = (-4). The other options incorrectly perform the operation or misinterpret the signs.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्न में से कौन-सा 0°C से नीचे के तापमान का प्रतिनिधित्व करने का एक तरीका है?",
+          "stem": "(-8) – (-4) के परिणाम की गणना टोकन विधि के उपयोग से क्या होगी?",
           "choices": [
-            "40°C",
-            "15°C",
-            "0°C",
-            "-5°C"
+            "(-12)",
+            "(-4)",
+            "(+8)",
+            "(+4)"
           ],
-          "solution": "सही उत्तर -5°C है क्योंकि यह एक ऋणात्मक संख्या है, जो 0°C से नीचे के तापमान का प्रतिनिधित्व करती है। अन्य विकल्प धनात्मक संख्याएं हैं और 0°C से नीचे के तापमान का प्रतिनिधित्व नहीं करती हैं।",
+          "solution": "(-8) – (-4) का परिणाम (-4) होता है। जब एक ऋणात्मक संख्या को घटाया जाता है, तो यह उसके धनात्मक समकक्ष के जोड़ के बराबर होता है। अतः (-8) – (-4) के स्थान पर (-8) + (+4) = (-4) लिखा जाता है। अन्य विकल्प ऑपरेशन को गलत ढंग से करते हैं या चिह्नों की गलत व्याख्या करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for temperature and numbers.",
+          "critique": "Translation accurately preserves mathematical meaning and terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते 0°C पेक्षा खालील तापमानाचे प्रतिनिधित्व करण्याचे एक प्रकार आहे?",
+          "stem": "(-8) – (-4) चा फल काय असेल जर टोकन पद्धती वापरली जात असेल?",
           "choices": [
-            "40°C",
-            "15°C",
-            "0°C",
-            "-5°C"
+            "(-12)",
+            "(-4)",
+            "(+8)",
+            "(+4)"
           ],
-          "solution": "बरोबर उत्तर -5°C आहे कारण ते ऋण संख्या आहे, जी 0°C पेक्षा खालील तापमानाचे प्रतिनिधित्व करते. इतर उत्तरे धनात्मक संख्या आहेत आणि 0°C पेक्षा खालील तापमानाचे प्रतिनिधित्व करत नाहीत.",
+          "solution": "(-8) – (-4) चा फल (-4) असतो. ऋणात्मक संख्या वजा करताना, ती तिच्या धनात्मक विरुद्धाच्या बरोबर जोडण्यासारखे असते. म्हणून, (-8) – (-4) हे (-8) + (+4) = (-4) असते. इतर विकल्प चुकीच्या प्रकारे क्रियाकलाप करतात किंवा चिन्हांचे चुकीचे अर्थ समजतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for temperature and numbers.",
+          "critique": "The Marathi translation accurately reflects the English question and solution, maintaining the same meaning, correct answer position, and technical terms used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -157,9 +271,208 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses positive with negative numbers",
-        "Confuses positive with negative numbers",
-        "Does not understand the meaning of 0°C in temperature measurement",
+        "Mistakenly subtracts the absolute values without considering the sign change when subtracting negative numbers",
+        null,
+        "Believes subtracting a negative is adding the same positive twice",
+        "A student might incorrectly think that subtracting a negative is the same as adding the same positive, but then misapply it by adding instead of subtracting."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that subtracting a negative is equivalent to adding a positive, and arrives at the correct answer of -4. The reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 22,
+          "pageStart": 50,
+          "pageEnd": 52,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "FracTion Wall",
+            "Notes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 23,
+          "pageStart": 52,
+          "pageEnd": 55,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "FracTion Wall",
+            "Notes"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 24,
+          "pageStart": 55,
+          "pageEnd": 56,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "FracTion Wall",
+            "Notes"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is correct?",
+      "choices": [
+        "+3 > +4",
+        "–3 < –4",
+        "–4 < –3",
+        "3: 0 < –2"
+      ],
+      "answerIndex": 2,
+      "solution": "Negative numbers decrease in value as they go further from zero. So, –4 is less than –3. The other options are incorrect because +3 is less than +4, –3 is greater than –4, and 0 is greater than any negative number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन सही है?",
+          "choices": [
+            "+3 > +4",
+            "–3 < –4",
+            "–4 < –3",
+            "0 < –2"
+          ],
+          "solution": "ऋणात्मक संख्याएँ शून्य से दूर जाने पर मान घटता है। इसलिए, –4, –3 से कम है। अन्य विकल्प गलत हैं क्योंकि +3, +4 से कम है, –3, –4 से अधिक है, और 0 किसी भी ऋणात्मक संख्या से अधिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बरोबर आहे?",
+          "choices": [
+            "+3 > +4",
+            "–3 < –4",
+            "–4 < –3",
+            "0 < –2"
+          ],
+          "solution": "ऋण संख्या शून्यापासून दूर जाऊन त्यांच्या मूल्यात घट होते. म्हणून, –4 हे –3 पेक्षा लहान आहे. इतर विकल्प चूक आहेत कारण +3 हे +4 पेक्षा लहान आहे, –3 हे –4 पेक्षा मोठे आहे आणि 0 हे कोणत्याही ऋण संख्येपेक्षा मोठे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terms for negative numbers and inequalities.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the order of positive numbers",
+        "thinks –3 is less than –4",
+        null,
+        "Believes negative numbers are larger than zero because they have a minus sign"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that negative numbers decrease in value as they move away from zero, and correctly identifies option 2 as the only correct statement. The reasons for the wrong options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following represents the correct way to convert a subtraction problem into an addition problem?",
+      "choices": [
+        "(+7)–(+5)=(+7)–(–5)",
+        "(–3)–(+8)=(–3)–(–8)",
+        "(+8)–(–2)=(+8)+(–2)",
+        "(+6)–(–9)=(+6)+(+9)"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct option shows that subtracting a negative number is equivalent to adding its positive counterpart. The other options incorrectly change the sign of the number being subtracted or do not follow the rule of converting subtraction to addition.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा घटाव समस्या के एक जोड़ समस्या में बदलने के सही तरीके का प्रतिनिधित्व करता है?",
+          "choices": [
+            "(+7)–(+5)=(+7)–(–5)",
+            "(–3)–(+8)=(–3)–(–8)",
+            "(+8)–(–2)=(+8)+(–2)",
+            "(+6)–(–9)=(+6)+(+9)"
+          ],
+          "solution": "सही विकल्प दर्शाता है कि एक ऋणात्मक संख्या को घटाना उसके धनात्मक समकक्ष के जोड़ने के बराबर होता है। अन्य विकल्प गलत तरीके से घटाई जा रही संख्या के चिह्न को बदल देते हैं या जोड़ में बदलने के नियम का अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता बेरीज समस्येमध्ये वजाबादी समस्या रूपांतरित करण्याच्या योग्य पद्धतीचे प्रतिनिधित्व करतो?",
+          "choices": [
+            "(+7)–(+5)=(+7)–(–5)",
+            "(–3)–(+8)=(–3)–(–8)",
+            "(+8)–(–2)=(+8)+(–2)",
+            "(+6)–(–9)=(+6)+(+9)"
+          ],
+          "solution": "योग्य विकल्प दर्शवतो की ऋणात्मक संख्या वजा करणे तिच्या धनात्मक विरुद्धाच्या बरोबर जोडण्यासारखे आहे. इतर विकल्प चुकीच्या पद्धतीने वजा करण्याच्या संख्येचा चिन्ह बदलतात किंवा वजाबादीला बेरीजमध्ये रूपांतरित करण्याच्या नियमांचे अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for mathematical operations.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the sign of the number being subtracted",
+        "Confuses the sign of the number being subtracted",
+        "Incorrectly keeps the subtraction sign instead of converting it to addition",
         null
       ],
       "solverAnswers": [
@@ -170,7 +483,203 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and tests basic understanding of negative numbers in the context of temperature. The correct answer is clearly –5°C, and the author's reasoning aligns with the correct mathematical understanding.",
+      "critique": "The correct answer is option 3, as subtracting a negative number is equivalent to adding its positive counterpart. The other options incorrectly change signs or fail to convert the subtraction to addition.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the result of the expression 7 – (–7)?",
+      "choices": [
+        "0",
+        "7",
+        "14",
+        "–14"
+      ],
+      "answerIndex": 2,
+      "solution": "Subtracting a negative number is equivalent to adding the positive number. So, 7 – (–7) = 7 + 7 = 14. The other options either incorrectly subtract or add the numbers.",
+      "checkExpr": "7+7",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिव्यक्ति 7 – (–7) का परिणाम क्या है?",
+          "choices": [
+            "0",
+            "7",
+            "14",
+            "-14"
+          ],
+          "solution": "एक ऋणात्मक संख्या घटाना धनात्मक संख्या जोड़ने के बराबर होता है। अतः 7 – (–7) = 7 + 7 = 14। अन्य विकल्प गलती से संख्याओं को घटाते या जोड़ते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अभिव्यक्ती 7 – (–7) चा परिणाम काय आहे?",
+          "choices": [
+            "0",
+            "7",
+            "14",
+            "-14"
+          ],
+          "solution": "ऋणात्मक संख्या वजा करणे हे धनात्मक संख्या जोडण्यासारखे आहे. म्हणून, 7 – (–7) = 7 + 7 = 14. इतर विकल्पांमध्ये संख्या चुकून वजा किंवा जोडल्या गेल्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for negative and positive numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Subtracts the numbers instead of adding them",
+        "Fails to consider the sign of the second number",
+        null,
+        "Fails to consider the sign of the second number"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that subtracting a negative is equivalent to adding a positive, leading to the correct answer of 14. All distractors are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following numbers, when added to 7, gives a result of 0?",
+      "choices": [
+        "-7",
+        "7",
+        "14",
+        "-14"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is -7 because 7 + (-7) = 0. Adding a number and its opposite results in zero. 7 is the same as the original number, and -14 and 14 are not the opposites of 7.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन-सी संख्या के 7 में जोड़ने पर परिणाम 0 प्राप्त होता है?",
+          "choices": [
+            "-7",
+            "7",
+            "14",
+            "-14"
+          ],
+          "solution": "सही उत्तर -7 है क्योंकि 7 + (-7) = 0। एक संख्या और उसके विपरीत को जोड़ने पर शून्य प्राप्त होता है। 7 मूल संख्या के समान है, और -14 और 14, 7 के विपरीत नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या 7 मध्ये जोडल्यास फलितांक 0 होतो?",
+          "choices": [
+            "-7",
+            "7",
+            "14",
+            "-14"
+          ],
+          "solution": "सही उत्तर -7 आहे कारण 7 + (-7) = 0. एका संख्येच्या विरुद्ध संख्येची बेरीज शून्य होते. 7 ही मूळ संख्येच्या समान आहे, आणि -14 आणि 14 ही 7 च्या विरुद्ध नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the opposite of 7 is 7",
+        "Fails to recognize that the opposite of 7 is negative",
+        "Confuses the opposite of 7 with a different number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The question is well-constructed with clear misconceptions in the distractors.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
@@ -204,7 +713,106 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-29T11:16:59.898Z",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person starts at Floor -1 and moves up 4 floors, which expression correctly represents this movement?",
+      "choices": [
+        "(-1) + (+4)",
+        "(-1) + (-4)",
+        "(+1) + (+4)",
+        "(+1) + (-4)"
+      ],
+      "answerIndex": 0,
+      "solution": "Starting at Floor -1 and moving up 4 floors means adding +4 to -1. This is represented as (-1) + (+4). The other options either involve incorrect starting points or wrong directions of movement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति -1 तल से शुरू करता है और 4 तल ऊपर जाता है, तो कौन-सा अभिव्यक्ति इस गति को सही ढंग से दर्शाती है?",
+          "choices": [
+            "(-1) + (+4)",
+            "(-1) + (-4)",
+            "(+1) + (+4)",
+            "(+1) + (-4)"
+          ],
+          "solution": "किसी व्यक्ति द्वारा -1 तल से शुरू करके 4 तल ऊपर जाना का अर्थ है -1 में +4 जोड़ना। इसे (-1) + (+4) द्वारा दर्शाया जाता है। अन्य विकल्प या तो गलत शुरूआती बिंदु का उपयोग करते हैं या गलत दिशा में गति का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा माणूस -1 वर उभा असेल आणि 4 मजले वर जाईल, तर या गतीचे योग्य प्रतिनिधित्व करणारे व्यंजक कोणते आहे?",
+          "choices": [
+            "(-1) + (+4)",
+            "(-1) + (-4)",
+            "(+1) + (+4)",
+            "(+1) + (-4)"
+          ],
+          "solution": "फ्लोर -1 वरून सुरू करून 4 मजले वर जाणे म्हणजे -1 मध्ये +4 जोडणे. हे (-1) + (+4) अशा प्रकारे प्रतिनिधित्व केले जाते. इतर विकल्पांमध्ये चुकीचे सुरुवातीचे बिंदू किंवा चुकीची दिशा असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for floors and integers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly subtracts instead of adds",
+        "uses the wrong starting floor",
+        "confuses the direction of movement"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct expression is (-1) + (+4), as moving up 4 floors from -1 involves adding a positive 4. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "ZERO",
+            "Integers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.1 Bela’s Building of Fun"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T18:18:53.762Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

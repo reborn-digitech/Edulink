@@ -1,0 +1,314 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 5 — GCD and LCM",
+  "name": "GCD and LCM",
+  "slug": "balbharati-maths-6-gcd-and-lcm",
+  "summary": "The chapter explains how to find the greatest common divisor and least common multiple of numbers.",
+  "position": 5,
+  "source": "generated against Balbharati Mathematics, Class 6, chapter 5 (First Edition 2026)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 5 - गुणनखंड आणि लसावी",
+      "summary": "या अध्यायात संख्यांच्या महत्तम सामान्य अपवर्तक आणि लघुत्तम सामान्य अपवर्तक काढण्याची विधी समजावून सांगितली आहे।"
+    },
+    "mr": {
+      "name": "अध्याय 5 - गुणनखंड आणि लसावी",
+      "summary": "हा अध्याय संख्यांच्या महत्तम सामान्य अपवर्तक आणि लघुत्तम सामान्य अपवर्तक शोधण्याची पद्धत सांगतो."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "६ वी गणित इंग्रजी",
+  "edition": "First Edition 2026",
+  "generatedAt": "2026-10-30T13:10:30.740Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the greatest common divisor of 12 and 16?",
+      "choices": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "The greatest common divisor (GCD) of 12 and 16 is 4 because it is the largest number that divides both numbers evenly. The number 2 is a common divisor but not the largest. The number 6 does not divide 16 evenly, and 8 does not divide 12 evenly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "12 और 16 का महत्तम सामान्य भाजक क्या है?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "12 और 16 का महत्तम सामान्य भाजक 4 है क्योंकि यह वह सबसे बड़ी संख्या है जो दोनों संख्याओं को समान रूप से विभाजित करती है। संख्या 2 एक सामान्य भाजक है लेकिन सबसे बड़ा नहीं है। संख्या 6 समान रूप से 16 को विभाजित नहीं करती है और 8 समान रूप से 12 को विभाजित नहीं करती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain their original intent.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "12 आणि 16 चा महासाधारण भाजक किती आहे?",
+          "choices": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "solution": "12 आणि 16 चा महासाधारण भाजक 4 आहे कारण हा एकमेव मोठा नंबर आहे जो दोन्ही संख्यांना समान रीतीने भाग जातो. संख्या 2 सामान्य भाजक आहे पण सर्वात मोठा नाही. संख्या 6 ला 16 ला समान रीतीने भाग जात नाही, आणि 8 ला 12 ला समान रीतीने भाग जात नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately conveys the mathematical meaning and terminology used in standard Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses a common divisor with the greatest common divisor",
+        null,
+        "Confuses common divisors with factors of one number only",
+        "incorrectly assumes a number that is not a divisor of both numbers is the GCD"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 4, which is the largest number that divides both 12 and 16 without a remainder. The author's reasoning is sound and matches the correct solution.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 30,
+          "pageStart": 48,
+          "pageEnd": 50,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 31,
+          "pageStart": 50,
+          "pageEnd": 51,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 32,
+          "pageStart": 51,
+          "pageEnd": 53,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T13:10:30.740Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A farmer has 250 kg of wheat and 150 kg of jowar. Both the grains are to be filled in sacks so that their weight will be same. What is the maximum weight of grain that can be filled in each sack?",
+      "choices": [
+        "25 kg",
+        "50 kg",
+        "75 kg",
+        "150 kg"
+      ],
+      "answerIndex": 1,
+      "solution": "The maximum weight that can be filled in each sack is the GCD of 250 and 150. The GCD of these numbers is 50. The other options are not the greatest common divisor of the two weights.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक किसान के पास 250 किग्रा गेहूँ और 150 किग्रा ज्वार है। दोनों अनाज को बोरियों में भरा जाना है ताकि उनका वजन समान रहे। प्रत्येक बोरे में भरे जा सकने वाले अनाज का अधिकतम वजन क्या होगा?",
+          "choices": [
+            "25 किग्रा",
+            "50 किग्रा",
+            "75 किग्रा",
+            "150 किग्रा"
+          ],
+          "solution": "प्रत्येक बोरे में भरे जा सकने वाले अनाज का अधिकतम वजन 250 और 150 का महत्तम समापवर्तक होगा। इन संख्याओं का महत्तम समापवर्तक 50 है। अन्य विकल्प दोनों वजनों का महत्तम समापवर्तक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology and correct answer placement.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शेतकऱ्याकडे 250 किग्रा गहू आणि 150 किग्रा ज्वारी आहे. दोन्ही धान्याचे बाँबल्स मध्ये भरले जाणार आहे जेणेकरून त्यांचा वजन समान असेल. प्रत्येक बाँबलमध्ये भरलेल्या धान्याचा महागतम वजन किती असेल?",
+          "choices": [
+            "25 किग्रा",
+            "50 किग्रा",
+            "75 किग्रा",
+            "150 किग्रा"
+          ],
+          "solution": "प्रत्येक बाँबलमध्ये भरलेल्या धान्याचा महागतम वजन 250 आणि 150 चा ग.सा.अ. असेल. ह्या संख्यांचा ग.सा.अ. 50 आहे. इतर विकल्प 250 आणि 150 चा ग.सा.अ. नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms (ग.सा.अ. for GCD). The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a smaller common divisor",
+        null,
+        "Confuses LCM with GCD, thinking the answer is a common multiple instead of a common divisor",
+        "Confuses the larger quantity with the maximum weight that can be evenly divided"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question asks for the maximum weight that can be filled in each sack, which requires the greatest common divisor (GCD) of 250 and 150. The GCD is indeed 50, making option 1 correct. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 33,
+          "pageStart": 53,
+          "pageEnd": 54,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 34,
+          "pageStart": 54,
+          "pageEnd": 55,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 35,
+          "pageStart": 55,
+          "pageEnd": 57,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T13:10:30.740Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the eye specialist comes on the 6th of every month and then every 6th day, and the knee specialist comes on the 8th of every month and then every 8th day, on which date will both be available at the earliest?",
+      "choices": [
+        "24th",
+        "12th",
+        "20th",
+        "16th"
+      ],
+      "answerIndex": 0,
+      "solution": "The earliest date both specialists are available is the least common multiple (LCM) of 6 and 8, which is 24. The number 12 is a common multiple but not the least one. The numbers 20 and 16 are not common multiples of 6 and 8.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि आंख के विशेषज्ञ प्रत्येक महीने की 6 तारीख को आते हैं और फिर प्रत्येक 6 दिन बाद, और घुटने के विशेषज्ञ प्रत्येक महीने की 8 तारीख को आते हैं और फिर प्रत्येक 8 दिन बाद, सबसे पहले किस तारीख पर दोनों उपलब्ध होंगे?",
+          "choices": [
+            "24वीं",
+            "12वीं",
+            "20वीं",
+            "16वीं"
+          ],
+          "solution": "दोनों विशेषज्ञों की उपलब्धता की सबसे पहली तारीख 6 और 8 के लघुत्तम सामान्य गुणज (LCM) है, जो 24 है। संख्या 12 एक सामान्य गुणज है लेकिन सबसे कम नहीं है। संख्याएं 20 और 16 6 और 8 के सामान्य गुणज नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "या महिन्याच्या 6 व्या दिवशी आणि नंतर प्रत्येक 6 व्या दिवशी डॉक्टर नेत्र विशेषज्ञ येतो, आणि महिन्याच्या 8 व्या दिवशी आणि नंतर प्रत्येक 8 व्या दिवशी डॉक्टर जांघ विशेषज्ञ येतो, लवकरात लवकर कोणत्या दिवशी दोन्ही विशेषज्ञ उपलब्ध असतील?",
+          "choices": [
+            "24 व्या",
+            "12 व्या",
+            "20 व्या",
+            "16 व्या"
+          ],
+          "solution": "दोन्ही विशेषज्ञ उपलब्ध असलेला लवकरात लवकर दिवस 6 आणि 8 चा लहानतम सामाईक गुणक (LCM) आहे, जो 24 आहे. संख्या 12 सामाईक गुणक आहे पण सर्वात लहान नाही. संख्या 20 आणि 16 ही 6 आणि 8 च्या सामाईक गुणक नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms like 'लहानतम सामाईक गुणक' (LCM) which is standard in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses LCM with a common multiple that is not the least",
+        "confuses LCM with a multiple of one number",
+        "confuses LCM with a multiple of one number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is correctly solved by finding the LCM of 6 and 8, which is 24. The correct answer is 24th, and the author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 30,
+          "pageStart": 48,
+          "pageEnd": 50,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 31,
+          "pageStart": 50,
+          "pageEnd": 51,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 32,
+          "pageStart": 51,
+          "pageEnd": 53,
+          "headingPath": [
+            "5. GCD and LCM"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T13:10:30.740Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

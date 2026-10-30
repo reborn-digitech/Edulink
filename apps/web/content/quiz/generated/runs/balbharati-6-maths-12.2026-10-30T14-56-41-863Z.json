@@ -1,0 +1,462 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T14:56:41.863Z",
+  "finishedAt": "2026-10-30T15:12:21.881Z",
+  "seconds": 940,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Profit and Loss",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2025-26]\n1. Answer: (A) 1\nS. P of 1 kg of the mixture = ₹ 68.20, Gain = 10%\nC. P of 1 kg of the mixture = ₹ ( 110 × 68.20) = ₹ 62\nBy the rule of alligation, we have\nCost of 1 kg tea of 1 kind st Cost of 1 kg tea of 2 nd kind\n₹ 60\nMean Price\n₹ 62\n∴ Required ratio = 3: 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n34. Rahul is at the whole sale market to purchase folding tables and chairs, to later sell them at his\nfurniture shop. He has only ₹ 5,760 to spend and his van has space to carry at the most 20 items. A\ntable costs him ₹ 360 and a chair costs ₹ 240. Back at his shop, he plans to sell a table at a profit of\n₹ 22 and a chair at a profit of ₹ 18. Given that he can sell all the items that he purchases, how many\ntables and chairs shall he purchase in order to maximise his profit?",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n33. Let 𝑥 be the number of guests for the booking\nClearly, 𝑥 > 100 to avail discount\n∴ Profit, P = [4800 − 200 (𝑥 – 100)] 𝑥 = 6800𝑥 – 20𝑥 2 2\n𝑑𝑃\n⇒ 𝑑𝑥 = 6800 – 40 𝑥 ⇒ 𝑥 = 170 1\nAs 𝑑 𝑃 𝑑𝑥 2 2 = −40 < 0, ∀ 𝑥 1\nA booking for 170 guests will maximise the profit of the company\nAnd, Profit = ₹ 5,78,000\nOR\nP(x) = R(x) – C(x)\n= 5x – (100 + 0.025x ) 2\n⇒P’(x) = 5 – 0.05 x ⇒ 𝑥 = 100\nAs P’’(x) = −0.05 < 0, ∀ 𝑥\n∴ Manufacturing 100 dolls will maximise the profit of the company\nAnd, Profit = ₹ 1,50,000 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 296245,
+      "in": 22,
+      "out": 21,
+      "rejects": 1,
+      "promptTokens": 18834,
+      "completionTokens": 4556
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 661031,
+      "in": 21,
+      "out": 17,
+      "rejects": 4,
+      "promptTokens": 13012,
+      "completionTokens": 5222
+    },
+    "solver": {
+      "calls": 141,
+      "ms": 242304,
+      "in": 17,
+      "out": 15,
+      "rejects": 2,
+      "promptTokens": 25918,
+      "completionTokens": 1432
+    },
+    "form": {
+      "calls": 3,
+      "ms": 22103,
+      "in": 15,
+      "out": 7,
+      "rejects": 8,
+      "promptTokens": 765,
+      "completionTokens": 217
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 51,
+      "ms": 40319,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 753489,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14665,
+      "completionTokens": 6264
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the formula for calculating profit?",
+      "ms": {
+        "draft": 11763,
+        "critique": 21433,
+        "solver": 38988,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for calculating loss?",
+      "ms": {
+        "draft": 11763,
+        "critique": 23115,
+        "solver": 43364,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a transaction, if the selling price is less than the cost price, what happens?",
+      "ms": {
+        "draft": 11763,
+        "critique": 25175
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A shopkeeper bought 150 kg of organic jaggery for ₹7,500 and sold it for ₹8,250. What is the profit made by him?",
+      "ms": {
+        "draft": 11763,
+        "critique": 25309
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Rakhma bought 72 bunches of coriander for ₹864. Out of them, 8 bunches were spoiled. She sold the remaining bunches for ₹15 each. What is the profit or loss?",
+      "ms": {
+        "draft": 11763,
+        "critique": 26956
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A bookseller bought 118 books for ₹5074. He sold all those books at ₹50 each. What is the profit or loss?",
+      "ms": {
+        "draft": 13396,
+        "critique": 19853
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate profit?",
+      "ms": {
+        "draft": 14328,
+        "critique": 23220,
+        "solver": 40949,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Sangeeta bought 12 sarees for ₹10,800 and spent ₹750 on transportation. She made a profit of ₹5,250 by selling all the sarees. What is the selling price of one saree?",
+      "ms": {
+        "draft": 14328,
+        "critique": 24836,
+        "solver": 3871
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the selling price of 12 sarees is ₹16,800, what is the selling price of one saree?",
+      "ms": {
+        "draft": 14328,
+        "critique": 29894,
+        "solver": 55403
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula to calculate loss?",
+      "ms": {
+        "draft": 14328,
+        "critique": 26336,
+        "solver": 43602,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of loss according to the passage?",
+      "ms": {
+        "draft": 14831,
+        "critique": 24532,
+        "solver": 6178,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of profit according to the passage?",
+      "ms": {
+        "draft": 14831,
+        "critique": 28236,
+        "solver": 39537,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate loss?",
+      "ms": {
+        "draft": 14831,
+        "critique": 20501,
+        "solver": 3114,
+        "form": 6032
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate profit?",
+      "ms": {
+        "draft": 14831,
+        "critique": 23593,
+        "solver": 26437,
+        "form": 3819
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a transaction, if the selling price is greater than the cost price, what happens?",
+      "ms": {
+        "draft": 11763,
+        "critique": 23993,
+        "solver": 39579,
+        "form": 14158,
+        "translation": 148820
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total cost price if the original cost price is ₹500 and transportation cost is ₹100?",
+      "ms": {
+        "draft": 14328,
+        "critique": 21064,
+        "solver": 4783,
+        "form": 0,
+        "translation": 92465
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost price of an item is ₹418 and the profit is ₹72, what is the selling price?",
+      "ms": {
+        "draft": 13396,
+        "critique": 18358,
+        "solver": 4196,
+        "form": 0,
+        "translation": 110306
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the selling price of an item is ₹1275 and the loss is ₹84, what is the cost price?",
+      "ms": {
+        "draft": 13396,
+        "critique": 20686,
+        "solver": 5064,
+        "form": 0,
+        "translation": 118069
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost price of an item is ₹100 and the selling price is ₹120, what is the profit?",
+      "ms": {
+        "draft": 14328,
+        "critique": 24094,
+        "solver": 34555,
+        "form": 0,
+        "translation": 53615
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Prajjwal bought a bicycle for ₹7,450 and sold it for ₹6,820. What is the loss?",
+      "ms": {
+        "draft": 13396,
+        "critique": 21358,
+        "solver": 5183,
+        "form": 0,
+        "translation": 106656
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Naresh sold toys in a fair for ₹1,265 at a loss of ₹345. What is the cost price?",
+      "ms": {
+        "draft": 13396,
+        "critique": 20253,
+        "solver": 5718,
+        "form": 0,
+        "translation": 110514
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the cost price of an item is ₹143 and the selling price is ₹128, what is the loss?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for calculating profit?",
+      "reason": "options 0 and 1 say the same thing (\"Profit = Cost Price - Selling Price\" / \"Profit = Selling Price - Cost Price\"); options 0 and 2 say the same thing (\"Profit = Cost Price - Selling Price\" / \"Profit = Cost Price + Selling Price\"); options 1 and 2 say the same thing (\"Profit = Selling Price - Cost Price\" / \"Profit = Cost Price + Selling Price\"); options 2 and 3 say the same thing (\"Profit = Cost Price + Selling Price\" / \"Profit = Cost Price / Selling Price\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for calculating loss?",
+      "reason": "options 0 and 1 say the same thing (\"Loss = Selling Price - Cost Price\" / \"Loss = Cost Price - Selling Price\"); options 0 and 2 say the same thing (\"Loss = Selling Price - Cost Price\" / \"Loss = Selling Price × Cost Price\"); options 1 and 2 say the same thing (\"Loss = Cost Price - Selling Price\" / \"Loss = Selling Price × Cost Price\"); options 2 and 3 say the same thing (\"Loss = Selling Price × Cost Price\" / \"Loss = Selling Price / Cost Price\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In a transaction, if the selling price is less than the cost price, what happens?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A shopkeeper bought 150 kg of organic jaggery for ₹7,500 and sold it for ₹8,250. What is the profit made by him?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Rakhma bought 72 bunches of coriander for ₹864. Out of them, 8 bunches were spoiled. She sold the remaining bunches for ₹15 each. What is the profit or loss?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A bookseller bought 118 books for ₹5074. He sold all those books at ₹50 each. What is the profit or loss?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate profit?",
+      "reason": "options 0 and 1 say the same thing (\"Profit = Cost price - Selling price\" / \"Profit = Selling price + Cost price\"); options 0 and 2 say the same thing (\"Profit = Cost price - Selling price\" / \"Profit = Selling price - Cost price\"); options 0 and 3 say the same thing (\"Profit = Cost price - Selling price\" / \"Profit = Cost price × Selling price\"); options 1 and 2 say the same thing (\"Profit = Selling price + Cost price\" / \"Profit = Selling price - Cost price\"); options 1 and 3 say the same thing (\"Profit = Selling price + Cost price\" / \"Profit = Cost price × Selling price\"); options 2 and 3 say the same thing (\"Profit = Selling price - Cost price\" / \"Profit = Cost price × Selling price\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Sangeeta bought 12 sarees for ₹10,800 and spent ₹750 on transportation. She made a profit of ₹5,250 by selling all the sarees. What is the selling price of one saree?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the selling price of 12 sarees is ₹16,800, what is the selling price of one saree?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula to calculate loss?",
+      "reason": "options 0 and 1 say the same thing (\"Loss = Cost price + Selling price\" / \"Loss = Selling price + Cost price\"); options 0 and 2 say the same thing (\"Loss = Cost price + Selling price\" / \"Loss = Cost price - Selling price\"); options 0 and 3 are the same (\"Loss = Cost price + Selling price\"); options 1 and 2 say the same thing (\"Loss = Selling price + Cost price\" / \"Loss = Cost price - Selling price\"); options 1 and 3 say the same thing (\"Loss = Selling price + Cost price\" / \"Loss = Cost price × Selling price\"); options 2 and 3 say the same thing (\"Loss = Cost price - Selling price\" / \"Loss = Cost price × Selling price\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of loss according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Loss is when the cost price is greater than the selling price\" / \"Loss is when the selling price is less than the cost price\"); options 0 and 2 say the same thing (\"Loss is when the cost price is greater than the selling price\" / \"Loss is when the selling price is greater than the cost price\"); options 1 and 2 say the same thing (\"Loss is when the selling price is less than the cost price\" / \"Loss is when the selling price is greater than the cost price\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of profit according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Profit is when the cost price is greater than the selling price\" / \"Profit is when the selling price is less than the cost price\"); options 0 and 2 say the same thing (\"Profit is when the cost price is greater than the selling price\" / \"Profit is when the selling price is greater than the cost price\"); options 1 and 2 say the same thing (\"Profit is when the selling price is less than the cost price\" / \"Profit is when the selling price is greater than the cost price\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate loss?",
+      "reason": "options 0 and 1 say the same thing (\"Loss = Cost price - Selling price\" / \"Loss = Selling price - Cost price\"); options 0 and 2 say the same thing (\"Loss = Cost price - Selling price\" / \"Loss = Cost price + Selling price\"); options 0 and 3 say the same thing (\"Loss = Cost price - Selling price\" / \"Loss = Cost price × Selling price\"); options 1 and 2 say the same thing (\"Loss = Selling price - Cost price\" / \"Loss = Cost price + Selling price\"); options 1 and 3 say the same thing (\"Loss = Selling price - Cost price\" / \"Loss = Cost price × Selling price\"); options 2 and 3 are the same (\"Loss = Cost price + Selling price\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate profit?",
+      "reason": "options 0 and 1 say the same thing (\"Profit = Cost price - Selling price\" / \"Profit = Selling price - Cost price\"); options 0 and 2 say the same thing (\"Profit = Cost price - Selling price\" / \"Profit = Cost price × Selling price\"); options 0 and 3 say the same thing (\"Profit = Cost price - Selling price\" / \"Profit = Cost price × Selling price\"); options 1 and 2 say the same thing (\"Profit = Selling price - Cost price\" / \"Profit = Cost price × Selling price\"); options 1 and 3 say the same thing (\"Profit = Selling price - Cost price\" / \"Profit = Cost price × Selling price\"); options 2 and 3 are the same (\"Profit = Cost price × Selling price\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

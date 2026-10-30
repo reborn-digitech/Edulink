@@ -1,0 +1,493 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T13:43:29.476Z",
+  "finishedAt": "2026-10-30T14:01:32.134Z",
+  "seconds": 1083,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Ratio and Proportion",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. In which ratio the y-axis divides the line segment joining the points (5, – 6) and (–1, – 4)?. 1\n(a) 1 : 5 (b) 5 : 1 (c) 1 : 1 (d) 1 : 2",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2025-26]\n1. In what ratio must a grocer mix two varieties of tea worth ₹ 60 per kg and ₹ 65 1\nper kg so that by selling the mixture at ₹ 68.20 per kg the gain is 10%?\n(A) 3 : 2 (B) 2 : 3 (C) 2 : 5 (D) 3 : 5",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 403931,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 17498,
+      "completionTokens": 6322
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 904206,
+      "in": 22,
+      "out": 18,
+      "rejects": 4,
+      "promptTokens": 17847,
+      "completionTokens": 6640
+    },
+    "solver": {
+      "calls": 184,
+      "ms": 377647,
+      "in": 18,
+      "out": 8,
+      "rejects": 10,
+      "promptTokens": 43375,
+      "completionTokens": 2367
+    },
+    "form": {
+      "calls": 3,
+      "ms": 32165,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 854,
+      "completionTokens": 278
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 38474,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 435575,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8520,
+      "completionTokens": 3807
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage say about the ratio of two quantities?",
+      "ms": {
+        "draft": 16798,
+        "critique": 17663
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what is the ratio of the length of the wall built by Anil to the length of the wall built by Sandeep?",
+      "ms": {
+        "draft": 16798,
+        "critique": 26379,
+        "solver": 5349
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the simplest form of the ratio 60:40?",
+      "ms": {
+        "draft": 16798,
+        "critique": 21728,
+        "solver": 41039,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a picture has a length of 60 mm and a width of 40 mm, and another picture has a length of 30 mm and a width of 20 mm, what can be said about their ratios of length to width?",
+      "ms": {
+        "draft": 16798,
+        "critique": 19739,
+        "solver": 45414,
+        "form": 13470
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of students playing hockey to those playing kho-kho?",
+      "ms": {
+        "draft": 11177,
+        "critique": 24513
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The length of a rectangular sheet is 1.20 m and the width is 48 cm. What is the ratio of the width to the length?",
+      "ms": {
+        "draft": 11177,
+        "critique": 24080,
+        "solver": 5543
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 15 : 25?",
+      "ms": {
+        "draft": 11177,
+        "critique": 23535,
+        "solver": 50466,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A goods train covers 240 km in 4 hours. How much distance will it cover in 7 hours?",
+      "ms": {
+        "draft": 11177,
+        "critique": 27080,
+        "solver": 40382
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "ms": {
+        "draft": 22856,
+        "critique": 26920
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 compass boxes cost ₹850, how much will 67 compass boxes cost?",
+      "ms": {
+        "draft": 22856,
+        "critique": 32108,
+        "solver": 6095
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 35 saplings cost ₹455, and 15 saplings cost ₹240, from which nursery are the saplings cheaper?",
+      "ms": {
+        "draft": 22856,
+        "critique": 32517,
+        "solver": 4905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a goods train covers 240 km in 4 hours, how much distance will it cover in 7 hours?",
+      "ms": {
+        "draft": 22856,
+        "critique": 25070,
+        "solver": 62306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cook prepares 10 kg of rice for 100 students, how much rice is needed for 80 students?",
+      "ms": {
+        "draft": 22856,
+        "critique": 24752,
+        "solver": 60091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the simplest form of 15:30?",
+      "ms": {
+        "draft": 22856,
+        "critique": 35238,
+        "solver": 46317
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a factory, 320 workers are working, out of which 200 are male. What is the ratio of male workers to the total number of workers?",
+      "ms": {
+        "draft": 16491,
+        "critique": 29420
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the length and width of a picture frame are 30 mm and 20 mm, what is the ratio of length to width?",
+      "ms": {
+        "draft": 16491,
+        "critique": 26173,
+        "solver": 52174
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a class, the ratio of boys to girls is 3:2. If there are 45 boys, how many girls are there?",
+      "ms": {
+        "draft": 16491,
+        "critique": 25566,
+        "solver": 47022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a mixture, the ratio of milk to water is 5:3. If the total volume of the mixture is 64 liters, how many liters of milk are there?",
+      "ms": {
+        "draft": 16491,
+        "critique": 25512,
+        "solver": 33780
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the simplest form of the ratio 60:40?",
+      "ms": {
+        "draft": 16491,
+        "critique": 26995,
+        "solver": 38355,
+        "form": 0,
+        "translation": 61045
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of the proportion 5 : 7?",
+      "ms": {
+        "draft": 11177,
+        "critique": 27861,
+        "solver": 49777,
+        "form": 0,
+        "translation": 105053
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The ratio of the distance covered by Suresh to the distance covered by Ramesh is 1700:2000. What is this ratio in its simplest form?",
+      "ms": {
+        "draft": 16798,
+        "critique": 25324,
+        "solver": 60977,
+        "form": 7754,
+        "translation": 126333
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the ratio of 5 rupees to 80 paise is calculated, what is the simplified form of this ratio?",
+      "ms": {
+        "draft": 16798,
+        "critique": 27238,
+        "solver": 42695,
+        "form": 13423,
+        "translation": 127326
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the ratio of two quantities?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the passage, what is the ratio of the length of the wall built by Anil to the length of the wall built by Sandeep?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the simplest form of the ratio 60:40?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a picture has a length of 60 mm and a width of 40 mm, and another picture has a length of 30 mm and a width of 20 mm, what can be said about their ratios of length to width?",
+      "reason": "options 0 and 1 say the same thing (\"They are not in proportion.\" / \"They are in proportion.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a class of 45 students, 15 play hockey, 20 play kabaddi, and the rest play kho-kho. What is the ratio of students playing hockey to those playing kho-kho?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The length of a rectangular sheet is 1.20 m and the width is 48 cm. What is the ratio of the width to the length?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the simplest form of the ratio 15 : 25?",
+      "reason": "options 0 and 3 are the same (\"3:5\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A goods train covers 240 km in 4 hours. How much distance will it cover in 7 hours?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If the cost of 12 saplings is Rs. 144, what is the cost of 1 sapling?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the ratio of 2 kg to 800 grams?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 10 compass boxes cost ₹850, how much will 67 compass boxes cost?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 35 saplings cost ₹455, and 15 saplings cost ₹240, from which nursery are the saplings cheaper?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a goods train covers 240 km in 4 hours, how much distance will it cover in 7 hours?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a cook prepares 10 kg of rice for 100 students, how much rice is needed for 80 students?",
+      "reason": "options 0 and 3 are the same (\"8 kg\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the simplest form of 15:30?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a factory, 320 workers are working, out of which 200 are male. What is the ratio of male workers to the total number of workers?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the length and width of a picture frame are 30 mm and 20 mm, what is the ratio of length to width?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a class, the ratio of boys to girls is 3:2. If there are 45 boys, how many girls are there?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a mixture, the ratio of milk to water is 5:3. If the total volume of the mixture is 64 liters, how many liters of milk are there?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

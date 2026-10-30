@@ -1,0 +1,513 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T18:52:10.816Z",
+  "finishedAt": "2026-10-30T19:17:46.905Z",
+  "seconds": 1536,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Measurement",
+    "edition": "First Edition 2026",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n6. (a) Only i 1",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n6. B. 17, 34",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 335737,
+      "in": 24,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 16051,
+      "completionTokens": 4703
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 472766,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 13144,
+      "completionTokens": 5410
+    },
+    "solver": {
+      "calls": 159,
+      "ms": 134702,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 30764,
+      "completionTokens": 1789
+    },
+    "form": {
+      "calls": 13,
+      "ms": 59388,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 3177,
+      "completionTokens": 905
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10233,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 27,
+      "ms": 900325,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 14739,
+      "completionTokens": 7226
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a unit used to measure temperature?",
+      "ms": {
+        "draft": 38069,
+        "critique": 55865,
+        "solver": 15598,
+        "form": 2041
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a thermometer has markings where each small division represents 1°C, and the temperature rises by 5°C, how many divisions will the liquid level move?",
+      "ms": {
+        "draft": 38069,
+        "critique": 55460,
+        "solver": 18656
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measured the temperature of a room and recorded it as 30°C. Later, they measured the temperature of a leaf and found it to be 32°C. What could be the reason for the difference?",
+      "ms": {
+        "draft": 38069,
+        "critique": 9001
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct way to measure the temperature of a leaf on a tree?",
+      "ms": {
+        "draft": 38069,
+        "critique": 9904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Kelvin scale used more in scientific experiments than the Celsius scale?",
+      "ms": {
+        "draft": 38069,
+        "critique": 7885,
+        "solver": 899
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a ruler and a measuring tape are both used to measure the length of a table, what will happen?",
+      "ms": {
+        "draft": 3250,
+        "critique": 16356,
+        "solver": 5752
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Saina mixed oil and water in a bottle and noticed two separate layers. What is the reason for this?",
+      "ms": {
+        "draft": 3250,
+        "critique": 20216,
+        "solver": 3890,
+        "form": 11956
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How can you determine the thickness of a single page of a science textbook?",
+      "ms": {
+        "draft": 3250,
+        "critique": 20574,
+        "solver": 4991,
+        "form": 11358
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which unit is used for measuring temperature in scientific experiments?",
+      "ms": {
+        "draft": 4319,
+        "critique": 20235,
+        "solver": 1940
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a digital thermometer?",
+      "ms": {
+        "draft": 4319,
+        "critique": 19290,
+        "solver": 1911
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest length that can be measured using a ruler from a compass box?",
+      "ms": {
+        "draft": 3250,
+        "critique": 24059,
+        "solver": 39263,
+        "form": 4458
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "During an experiment, a student recorded the temperature of water as 30°C. However, the actual temperature was 35°C. What could be the reason for this error?",
+      "ms": {
+        "draft": 4319,
+        "critique": 6289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student uses an infrared thermometer to measure the temperature of a person in a crowded place. The thermometer shows a temperature of 37°C. However, the person does not have a fever. What could be the reason?",
+      "ms": {
+        "draft": 4319,
+        "critique": 8169,
+        "solver": 18771
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reference point in a sports field?",
+      "ms": {
+        "draft": 10319,
+        "critique": 8353,
+        "solver": 2050,
+        "form": 3652
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a ruler is broken at the 0 mark, what should you do to measure the length of an object?",
+      "ms": {
+        "draft": 10319,
+        "critique": 7331,
+        "solver": 13685
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of temperature?",
+      "ms": {
+        "draft": 3250,
+        "critique": 16779,
+        "solver": 7916,
+        "form": 5068
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which unit is used to measure the length of a classroom?",
+      "ms": {
+        "draft": 10319,
+        "critique": 6856,
+        "solver": 2152,
+        "form": 3612,
+        "translation": 72904
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of an infrared thermometer?",
+      "ms": {
+        "draft": 38069,
+        "critique": 56495,
+        "solver": 16604,
+        "form": 4041,
+        "translation": 40472
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is used to measure the length of a pencil?",
+      "ms": {
+        "draft": 3250,
+        "critique": 15718,
+        "solver": 5000,
+        "form": 7736,
+        "translation": 29933
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a laboratory thermometer has a range from 0°C to 100°C and there are 10 divisions between each 10°C mark, what is the value of each small division?",
+      "ms": {
+        "draft": 4319,
+        "critique": 7785,
+        "solver": 16540,
+        "form": 3790,
+        "translation": 213937
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What should be done to measure the temperature of a leaf on a tree?",
+      "ms": {
+        "draft": 4319,
+        "critique": 6283,
+        "solver": 1330,
+        "form": 4530,
+        "translation": 42388
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about a clinical thermometer?",
+      "ms": {
+        "draft": 10319,
+        "critique": 6840,
+        "solver": 1618,
+        "form": 2820,
+        "translation": 361928
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is a thermometer necessary to measure temperature accurately?",
+      "ms": {
+        "draft": 10319,
+        "critique": 5567,
+        "solver": 7184,
+        "form": 955,
+        "translation": 372819
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a unit used to measure temperature?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a thermometer has markings where each small division represents 1°C, and the temperature rises by 5°C, how many divisions will the liquid level move?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student measured the temperature of a room and recorded it as 30°C. Later, they measured the temperature of a leaf and found it to be 32°C. What could be the reason for the difference?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the correct way to measure the temperature of a leaf on a tree?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the Kelvin scale used more in scientific experiments than the Celsius scale?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which unit is used to measure the thickness of a notebook?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a ruler and a measuring tape are both used to measure the length of a table, what will happen?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Saina mixed oil and water in a bottle and noticed two separate layers. What is the reason for this?",
+      "reason": "options 0 and 1 say the same thing (\"Oil is denser than water\" / \"Water is denser than oil\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How can you determine the thickness of a single page of a science textbook?",
+      "reason": "options 2 and 3 say the same thing (\"Measure the length of the textbook and divide by the number of pages\" / \"Measure the weight of the textbook and divide by the number of pages\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which unit is used for measuring temperature in scientific experiments?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of a digital thermometer?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the smallest length that can be measured using a ruler from a compass box?",
+      "reason": "options are in more than one unit (cm, mm); options 0 and 3 are the same number; options 1 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "During an experiment, a student recorded the temperature of water as 30°C. However, the actual temperature was 35°C. What could be the reason for this error?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student uses an infrared thermometer to measure the temperature of a person in a crowded place. The thermometer shows a temperature of 37°C. However, the person does not have a fever. What could be the reason?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a reference point in a sports field?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a ruler is broken at the 0 mark, what should you do to measure the length of an object?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of temperature?",
+      "reason": "near-duplicate of served question cmvft2w2000npgpfh9m2qh25m (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "Why is a thermometer necessary to measure temperature accurately?",
+      "reason": "hi: The operation was aborted due to timeout"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

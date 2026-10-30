@@ -1,0 +1,786 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T17:09:04.213Z",
+  "finishedAt": "2026-10-30T17:43:11.196Z",
+  "seconds": 2047,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp105.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Prime Time",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n25. Two dice are thrown simultaneously. Find the probability that the product of the 2\nnumbers appearing on them is a prime number.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n25. Total number of outcomes = 36\n½\n½\n½\n½\n½\nFavourable outcomes = 6 {(1,2), (1,3), (1,5), (2,1), (3,1), (5,1)} ½\n6 1\nP (Prime Product) = 36 = 6 1",
+      "[PRMO 2019 — question paper]\n21. Consider the set E = {5, 6, 7, 8, 9}. For any partition {A, B} of E, with both A and B non-\nempty, consider the number obtained by adding the product of elements of A to the product of\nelements of B. Let N be the largest prime number among these numbers. Find the sum of the\ndigits of N.\nSPACE FOR ROUGH WORK\n17. धनाͤमक पूणा Ӛ कӖ के ऐसे ўकतने बमवार समुՃय(a, b, c) हӔ िजनके Ѡलए 30a + 50b + 70c 343 है?\n18. धनाͤमक पूणा Ӛ कӖ के ऐसे ўकतने बमवार जोड़े(a, b) हӔ जहाँ a < b व 100 a, b 1000 और िजनके\nѠलए gcd(a, b) : lcm(a, b) = 1 : 495? (यहाँ gcd = म॰स॰ = महаम समापवत˨क, lcm = ल॰स॰ =\nलघुаम समापवͤय ˨ ।)\n19. मान लो ўक AB एक वृа का Ͳयास है और मान लो ўक C रेखाखंड AB पर ऐसा џबंदु है िजससे ўक\nAC : CB = 6 : 7 ",
+      "[IOQM 2020 — question paper]\n6. What is the least positive integer by which 2 · 3 · 4 · 5 · 6 should be multiplied so 5 6 3 3 7\nthat, the product is a perfect square ?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 430208,
+      "in": 40,
+      "out": 39,
+      "rejects": 3,
+      "promptTokens": 51181,
+      "completionTokens": 11001
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 1261993,
+      "in": 39,
+      "out": 31,
+      "rejects": 8,
+      "promptTokens": 26762,
+      "completionTokens": 9710
+    },
+    "solver": {
+      "calls": 246,
+      "ms": 488542,
+      "in": 31,
+      "out": 20,
+      "rejects": 11,
+      "promptTokens": 59782,
+      "completionTokens": 2972
+    },
+    "form": {
+      "calls": 4,
+      "ms": 71563,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 1065,
+      "completionTokens": 368
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 21499,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 909416,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13081,
+      "completionTokens": 5773
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In the 'idli-vada' game, which numbers should the players say 'idli' for?",
+      "ms": {
+        "draft": 10055,
+        "critique": 8905,
+        "solver": 1408
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the 'idli-vada' game, which numbers should the players say 'idli-vada' for?",
+      "ms": {
+        "draft": 10055,
+        "critique": 11485
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the 'idli-vada' game, which numbers should the players say 'vada' for?",
+      "ms": {
+        "draft": 10055,
+        "critique": 9289,
+        "solver": 2905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the 'idli-vada' game, what is the first number for which the players should say 'idli-vada'?",
+      "ms": {
+        "draft": 10055,
+        "critique": 10226
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the 'idli-vada' game, if the game is played for the numbers 1 to 90, how many times would the children say 'vada' including the times they say 'idli-vada'?",
+      "ms": {
+        "draft": 10055,
+        "critique": 9756
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the 'idli-vada' game, if the game is played for the numbers 1 to 90, how many times would the children say 'idli' including the times they say 'idli-vada'?",
+      "ms": {
+        "draft": 10055,
+        "critique": 11015
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following pairs of numbers are co-prime?",
+      "ms": {
+        "draft": 3750,
+        "critique": 7928,
+        "solver": 2341,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many prime numbers are there from 21 to 30?",
+      "ms": {
+        "draft": 3750,
+        "critique": 9747
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two numbers are said to be co-prime if they have no common factor other than 1. Which of the following pairs of numbers is not co-prime?",
+      "ms": {
+        "draft": 3750,
+        "critique": 8268,
+        "solver": 18919
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the least number that must be multiplied with 2 × 3 × 4 × 5 × 6 to make it a perfect square?",
+      "ms": {
+        "draft": 5686,
+        "critique": 10546
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the prime factorisation of 63?",
+      "ms": {
+        "draft": 5686,
+        "critique": 8608,
+        "solver": 1645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following pairs of numbers is not co-prime?",
+      "ms": {
+        "draft": 21060,
+        "critique": 10304,
+        "solver": 2003
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the prime factorisation of a number has one 2, two 3s, and one 11, what is the number?",
+      "ms": {
+        "draft": 5686,
+        "critique": 7134,
+        "solver": 22925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about co-prime numbers?",
+      "ms": {
+        "draft": 21060,
+        "critique": 8696,
+        "solver": 15872,
+        "form": 3902
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the prime factorisation of a number X is 2 × 3 × 5 × 7, which of the following numbers is NOT a factor of X?",
+      "ms": {
+        "draft": 21060,
+        "critique": 10411,
+        "solver": 18171
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following pairs of numbers are co-prime?",
+      "ms": {
+        "draft": 31357,
+        "critique": 60247,
+        "solver": 13212
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which numbers are called common multiples of 3 and 4?",
+      "ms": {
+        "draft": 5524,
+        "critique": 11538,
+        "solver": 2032
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of two numbers whose product is a prime number?",
+      "ms": {
+        "draft": 31357,
+        "critique": 10077,
+        "solver": 41144
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Anshu and his friends play the 'idli-vada' game with two numbers, which are both smaller than 10. The first time anybody says 'idlivada' is after the number 50. What could the two numbers be which are assigned 'idli' and 'vada'?",
+      "ms": {
+        "draft": 5524,
+        "critique": 58453,
+        "solver": 10574
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A number is divisible by 8 if the number formed by its last three digits is divisible by 8. What should the last two digits of 8560 be changed to so that the number is divisible by 8?",
+      "ms": {
+        "draft": 12774,
+        "critique": 23188
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the smallest number that is a multiple of all the numbers from 1 to 10?",
+      "ms": {
+        "draft": 5524,
+        "critique": 49205,
+        "solver": 84614,
+        "form": 37022
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the least positive integer by which 2 · 3 · 4 · 5 · 6 should be multiplied so that the product is a perfect square?",
+      "ms": {
+        "draft": 12774,
+        "critique": 112001
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the probability that the product of the numbers on two dice is a prime number?",
+      "ms": {
+        "draft": 12774,
+        "critique": 109118,
+        "solver": 17077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the prime factorisation of 72?",
+      "ms": {
+        "draft": 72049,
+        "critique": 21871,
+        "solver": 16229,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers is the product of exactly three distinct prime numbers?",
+      "ms": {
+        "draft": 3750,
+        "critique": 7981,
+        "solver": 1500,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If two numbers have no common prime factors, what can be said about them?",
+      "ms": {
+        "draft": 5686,
+        "critique": 10112,
+        "solver": 19626,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is a prime number?",
+      "ms": {
+        "draft": 7775,
+        "critique": 11277,
+        "solver": 16587,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest number whose prime factorisation includes four different prime numbers?",
+      "ms": {
+        "draft": 7775,
+        "critique": 18875,
+        "solver": 8119,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the first common multiple of two numbers is equal to the product of the numbers, what can be concluded about the two numbers?",
+      "ms": {
+        "draft": 31357,
+        "critique": 53450,
+        "solver": 10647,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following numbers is the smallest number that has four different prime numbers in its prime factorisation?",
+      "ms": {
+        "draft": 31357,
+        "critique": 53787,
+        "solver": 14836,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is the product of exactly three distinct prime numbers?",
+      "ms": {
+        "draft": 5524,
+        "critique": 70218,
+        "solver": 10479,
+        "form": 27212
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest number that is a multiple of all the numbers from 1 to 10 except for 7?",
+      "ms": {
+        "draft": 5524,
+        "critique": 39556,
+        "solver": 4353,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following pairs of numbers are co-prime?",
+      "ms": {
+        "draft": 12607,
+        "critique": 100757,
+        "solver": 80588,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is a prime number?",
+      "ms": {
+        "draft": 3750,
+        "critique": 8264,
+        "solver": 14529,
+        "form": 0,
+        "translation": 38775
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct method to check if two numbers are co-prime?",
+      "ms": {
+        "draft": 5686,
+        "critique": 13354,
+        "solver": 19131,
+        "form": 0,
+        "translation": 215284
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using the prime factorisation method, which of the following numbers is divisible by 12?",
+      "ms": {
+        "draft": 21060,
+        "critique": 7715,
+        "solver": 15896,
+        "form": 5835,
+        "translation": 115309
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the probability that the product of two numbers appearing on two dice is a prime number?",
+      "ms": {
+        "draft": 12607,
+        "critique": 33997,
+        "solver": 119218,
+        "form": 1,
+        "translation": 156843
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A number is divisible by 8 if the number formed by its last three digits is divisible by 8. Which of the following numbers is divisible by 8?",
+      "ms": {
+        "draft": 31357,
+        "critique": 19194,
+        "solver": 32719,
+        "form": 0,
+        "translation": 219743
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the remainder when 14560 is divided by 10?",
+      "ms": {
+        "draft": 31357,
+        "critique": 15792,
+        "solver": 3915,
+        "form": 0,
+        "translation": 152618
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following numbers is not a prime number?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following numbers is a prime number?\",\"options\":[\"21\",\"27\",\"31\",\"33\"],\"an"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 5, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following numbers is a multiple of both 3 and 4?\",\"options\":[\"12\",\"10\",\"1"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the 'idli-vada' game, which numbers should the players say 'idli' for?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In the 'idli-vada' game, which numbers should the players say 'idli-vada' for?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the 'idli-vada' game, which numbers should the players say 'vada' for?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the 'idli-vada' game, what is the first number for which the players should say 'idli-vada'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the 'idli-vada' game, if the game is played for the numbers 1 to 90, how many times would the children say 'vada' including the times they say 'idli-vada'?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the 'idli-vada' game, if the game is played for the numbers 1 to 90, how many times would the children say 'idli' including the times they say 'idli-vada'?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following pairs of numbers are co-prime?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is not a distractor here, but the others are …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many prime numbers are there from 21 to 30?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Two numbers are said to be co-prime if they have no common factor other than 1. Which of the following pairs of numbers is not co-prime?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the least number that must be multiplied with 2 × 3 × 4 × 5 × 6 to make it a perfect square?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the prime factorisation of 63?",
+      "reason": "options 0 and 1 say the same thing (\"3 × 3 × 7\" / \"3 × 7 × 7\"); options 2 and 3 say the same thing (\"2 × 3 × 7\" / \"2 × 2 × 3 × 7\"); ARITHMETIC MISMATCH — checkExpr \"3*3*7\" = 63, but the key says 3"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following pairs of numbers is not co-prime?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the prime factorisation of a number has one 2, two 3s, and one 11, what is the number?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about co-prime numbers?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the prime factorisation of a number X is 2 × 3 × 5 × 7, which of the following numbers is NOT a factor of X?",
+      "reason": "after redrafting distractor 0: option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following pairs of numbers are co-prime?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which numbers are called common multiples of 3 and 4?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of two numbers whose product is a prime number?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Anshu and his friends play the 'idli-vada' game with two numbers, which are both smaller than 10. The first time anybody says 'idlivada' is after the number 50. What could the two numbers be which are assigned 'idli' and 'vada'?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A number is divisible by 8 if the number formed by its last three digits is divisible by 8. What should the last two digits of 8560 be changed to so that the number is divisible by 8?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the smallest number that is a multiple of all the numbers from 1 to 10?",
+      "reason": "options 0 and 3 are the same (\"2520\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the least positive integer by which 2 · 3 · 4 · 5 · 6 should be multiplied so that the product is a perfect square?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the probability that the product of the numbers on two dice is a prime number?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the prime factorisation of 72?",
+      "reason": "options 0 and 1 say the same thing (\"2 × 2 × 2 × 3 × 3\" / \"2 × 2 × 3 × 3\"); options 0 and 2 say the same thing (\"2 × 2 × 2 × 3 × 3\" / \"2 × 3 × 3 × 3\"); options 1 and 2 say the same thing (\"2 × 2 × 3 × 3\" / \"2 × 3 × 3 × 3\"); ARITHMETIC MISMATCH — checkExpr \"2*2*2*3*3\" = 72, but the key says 2"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following numbers is the product of exactly three distinct prime numbers?",
+      "reason": "near-duplicate of served question cmv3mgpan007wgnjuns3fx4ct (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If two numbers have no common prime factors, what can be said about them?",
+      "reason": "near-duplicate of served question cmvm89vwr004zgp2150gltfg8 (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following numbers is a prime number?",
+      "reason": "near-duplicate of batch item \"Which of the following numbers is a prime number?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "What is the smallest number whose prime factorisation includes four different prime numbers?",
+      "reason": "near-duplicate of served question cmv3mgpag007egnjug27ezipu (cosine 0.928 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If the first common multiple of two numbers is equal to the product of the numbers, what can be concluded about the two numbers?",
+      "reason": "near-duplicate of served question cmvm89vuh0041gp21h57qblnq (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following numbers is the smallest number that has four different prime numbers in its prime factorisation?",
+      "reason": "near-duplicate of served question cmv3mgpag007egnjug27ezipu (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following numbers is the product of exactly three distinct prime numbers?",
+      "reason": "near-duplicate of served question cmv3mgpan007wgnjuns3fx4ct (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the smallest number that is a multiple of all the numbers from 1 to 10 except for 7?",
+      "reason": "near-duplicate of served question cmvinq5f10dtwgpfhvy85n3z2 (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following pairs of numbers are co-prime?",
+      "reason": "near-duplicate of served question cmveiphlh0057god8vi6hgtiu (cosine 0.944 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

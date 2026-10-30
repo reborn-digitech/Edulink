@@ -1,0 +1,502 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T12:14:08.212Z",
+  "finishedAt": "2026-10-30T12:30:42.097Z",
+  "seconds": 994,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and Angles",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n26. In Figure, XY and X′Y′ are two parallel tangents to a 3\ncircle with centre O and another tangent AB with\npoint of contact C intersecting XY at A and X′Y′ at B.\nProve that ∠ AOB = 90°\nFor Visually Impaired candidates:\nTwo tangents PA and PB are drawn to a circle with centre O from an external point\nP. Prove that ∠APB= 2(∠OAB)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 311292,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18038,
+      "completionTokens": 4893
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 685524,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 12826,
+      "completionTokens": 5350
+    },
+    "solver": {
+      "calls": 117,
+      "ms": 190188,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 17948,
+      "completionTokens": 1166
+    },
+    "form": {
+      "calls": 3,
+      "ms": 41514,
+      "in": 15,
+      "out": 8,
+      "rejects": 7,
+      "promptTokens": 2505,
+      "completionTokens": 553
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 49,
+      "ms": 40546,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 813151,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 13508,
+      "completionTokens": 6341
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct way to name an angle?",
+      "ms": {
+        "draft": 16837,
+        "critique": 24641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram, which of the following is the vertex of the angle?",
+      "ms": {
+        "draft": 16837,
+        "critique": 27819
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line segment PQ is drawn, what are the endpoints of the segment?",
+      "ms": {
+        "draft": 16837,
+        "critique": 29125,
+        "solver": 42295,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the diagram, which of the following is the correct way to name the angle formed between two rays?",
+      "ms": {
+        "draft": 16837,
+        "critique": 26365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of angle?",
+      "ms": {
+        "draft": 10777,
+        "critique": 28892,
+        "solver": 40654,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle is each part?",
+      "ms": {
+        "draft": 10777,
+        "critique": 29923,
+        "solver": 38622,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of a straight angle according to the passage?",
+      "ms": {
+        "draft": 11518,
+        "critique": 17053,
+        "solver": 4201,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle will each part be?",
+      "ms": {
+        "draft": 11518,
+        "critique": 22125
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of angle according to the passage?",
+      "ms": {
+        "draft": 11518,
+        "critique": 17136,
+        "solver": 7404,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a complete angle is divided into four equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 11518,
+        "critique": 26773
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a flat surface that is infinite on all sides?",
+      "ms": {
+        "draft": 12750,
+        "critique": 19008
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the common point of two rays forming an angle?",
+      "ms": {
+        "draft": 12750,
+        "critique": 20768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two points lie on the same line, what are they called?",
+      "ms": {
+        "draft": 12750,
+        "critique": 19069
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two rays share the same starting point, what is formed?",
+      "ms": {
+        "draft": 12750,
+        "critique": 17999
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which of the following is an example of a line segment?",
+      "ms": {
+        "draft": 12750,
+        "critique": 19544,
+        "solver": 32368,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a clock, what is the angle formed at 3:00?",
+      "ms": {
+        "draft": 12750,
+        "critique": 19755,
+        "solver": 30813,
+        "form": 7381
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a clock, what type of angle is formed between the hour hand and the minute hand at 3 o'clock?",
+      "ms": {
+        "draft": 11518,
+        "critique": 22774,
+        "solver": 5068,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe points that lie on the same line?",
+      "ms": {
+        "draft": 16837,
+        "critique": 21656,
+        "solver": 40857,
+        "form": 0,
+        "translation": 114110
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the starting point of ray OP and ray OQ?",
+      "ms": {
+        "draft": 10777,
+        "critique": 22430,
+        "solver": 5158,
+        "form": 0,
+        "translation": 93929
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is infinite on both sides?",
+      "ms": {
+        "draft": 10777,
+        "critique": 21288,
+        "solver": 6092,
+        "form": 0,
+        "translation": 104258
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a line that extends indefinitely in one direction?",
+      "ms": {
+        "draft": 11518,
+        "critique": 19759,
+        "solver": 5152,
+        "form": 10453,
+        "translation": 98031
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What type of angle is formed between the hour hand and the minute hand of a clock when it is 3 o'clock?",
+      "ms": {
+        "draft": 10777,
+        "critique": 24109,
+        "solver": 3811,
+        "form": 0,
+        "translation": 131377
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two rays OA and OB form an angle, what is the term used to describe the point O?",
+      "ms": {
+        "draft": 16837,
+        "critique": 25753,
+        "solver": 44083,
+        "form": 0,
+        "translation": 160594
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A complete angle contains how many right angles?",
+      "ms": {
+        "draft": 10777,
+        "critique": 22258,
+        "solver": 2763,
+        "form": 1,
+        "translation": 96489
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the correct way to name an angle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the diagram, which of the following is the vertex of the angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a line segment PQ is drawn, what are the endpoints of the segment?",
+      "reason": "options 0 and 1 say the same thing (\"P and Q\" / \"Q and P\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the diagram, which of the following is the correct way to name the angle formed between two rays?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of angle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle is each part?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the measure of a straight angle according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a straight angle is divided into three equal parts, what type of angle will each part be?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of angle according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a complete angle is divided into four equal parts, what is the measure of each part?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of a flat surface that is infinite on all sides?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the name of the common point of two rays forming an angle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two points lie on the same line, what are they called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If two rays share the same starting point, what is formed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, which of the following is an example of a line segment?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a clock, what is the angle formed at 3:00?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a clock, what type of angle is formed between the hour hand and the minute hand at 3 o'clock?",
+      "reason": "near-duplicate of batch item \"What type of angle is formed between the hour hand…\" (cosine 0.976 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

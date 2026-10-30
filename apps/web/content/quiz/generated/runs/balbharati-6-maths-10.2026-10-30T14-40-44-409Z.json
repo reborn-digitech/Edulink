@@ -1,0 +1,317 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T14:40:44.409Z",
+  "finishedAt": "2026-10-30T14:50:48.449Z",
+  "seconds": 604,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Magical Mathematics-1",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n1. D) -6,6 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 202252,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7898,
+      "completionTokens": 3200
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 360418,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 8323,
+      "completionTokens": 2933
+    },
+    "solver": {
+      "calls": 85,
+      "ms": 156861,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 17477,
+      "completionTokens": 970
+    },
+    "form": {
+      "calls": 2,
+      "ms": 22266,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 509,
+      "completionTokens": 172
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 51,
+      "ms": 39985,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 400784,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7337,
+      "completionTokens": 3649
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a decimal fraction is written as 0.05, what is the place value of the digit 5?",
+      "ms": {
+        "draft": 18097,
+        "critique": 19226
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a decimal fraction?",
+      "ms": {
+        "draft": 18097,
+        "critique": 20302,
+        "solver": 40132,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a decimal fraction?",
+      "ms": {
+        "draft": 18097,
+        "critique": 20220,
+        "solver": 44085
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the decimal fraction 45.305, what is the place value of the digit 0?",
+      "ms": {
+        "draft": 18097,
+        "critique": 25678
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following decimal fractions has the highest value?",
+      "ms": {
+        "draft": 18097,
+        "critique": 25073,
+        "solver": 56707
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the star has six points, what difference will there be in the measures of angles?",
+      "ms": {
+        "draft": 15612,
+        "critique": 18357,
+        "solver": 3952
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How is the decimal fraction 5 3/10 written?",
+      "ms": {
+        "draft": 15612,
+        "critique": 27069,
+        "solver": 4949,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the measures of all the angles of a pentagon?",
+      "ms": {
+        "draft": 15612,
+        "critique": 20838,
+        "solver": 45830,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the expanded form of the decimal fraction 45.305?",
+      "ms": {
+        "draft": 15612,
+        "critique": 20616,
+        "solver": 5311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a decimal fraction?",
+      "ms": {
+        "draft": 15612,
+        "critique": 18357,
+        "solver": 5557,
+        "form": 19978,
+        "translation": 152757
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How are decimal fractions compared when the integer parts are equal?",
+      "ms": {
+        "draft": 15612,
+        "critique": 17929,
+        "solver": 3430,
+        "form": 4747,
+        "translation": 148007
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A decimal fraction is written as 0.007. What is the place value of the digit 7?",
+      "ms": {
+        "draft": 18097,
+        "critique": 28550,
+        "solver": 26389,
+        "form": 0,
+        "translation": 86782
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a decimal fraction is written as 0.05, what is the place value of the digit 5?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a decimal fraction?",
+      "reason": "options 0 and 1 say the same thing (\"A fraction with a denominator that is a power of 10\" / \"A fraction with a numerator that is a power of 10\"); options 0 and 2 say the same thing (\"A fraction with a denominator that is a power of 10\" / \"A fraction with a denominator that is a power of 100\"); distractor 3's reason is not a one-line misconception (\"Specifies a particular denominator instead of the general ru…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a decimal fraction?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the decimal fraction 45.305, what is the place value of the digit 0?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following decimal fractions has the highest value?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the star has six points, what difference will there be in the measures of angles?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How is the decimal fraction 5 3/10 written?",
+      "reason": "options are written to different precisions (1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the sum of the measures of all the angles of a pentagon?",
+      "reason": "options 0 and 2 are the same (\"540°\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the expanded form of the decimal fraction 45.305?",
+      "reason": "options 0 and 3 say the same thing (\"4 × 10 + 5 × 1 + 3 × 0.1 + 0 × 0.01 + 5 × 0.001\" / \"4 × 10 + 5 × 1 + 3 × 0.1 + 0 × 0.01 + 5 × 0.1\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

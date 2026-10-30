@@ -1,0 +1,211 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T12:58:00.482Z",
+  "finishedAt": "2026-10-30T13:10:26.227Z",
+  "seconds": 746,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Patterns",
+    "edition": "First Edition 2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n36. Ms. Sheela visited a store near her house and found that the glass jars are arranged\none above the other in a specific pattern.\nOn the top layer there are 3 jars. In the next layer there are 6 jars. In the 3rd layer from\nthe top there are 9 jars and so on till the 8th layer.\nOn the basis of the above situation answer the following questions.\n(i) Write an A.P whose terms represent the number of jars in different layers starting\nfrom top . Also, find the common difference. 1\n(ii) Is it possible to arrange 34 jars in a layer if this pattern is continued? Justify your\nanswer. 1\n(iii) (A) If there are ‘n’ number of rows in a layer then find the expression for finding the 2\ntotal number of jar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 60032,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4434,
+      "completionTokens": 1053
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 55268,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 3479,
+      "completionTokens": 1397
+    },
+    "solver": {
+      "calls": 45,
+      "ms": 40541,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 10563,
+      "completionTokens": 535
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 49,
+      "ms": 56698,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 959733,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10510,
+      "completionTokens": 4743
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the sum of the sequence 1 + 2 + 3 + ... + 50 + 49 + ... + 3 + 2 + 1?",
+      "ms": {
+        "draft": 10005,
+        "critique": 10113,
+        "solver": 18600
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of number pattern is represented by the sequence 1, 3, 5, 7, 9, ...?",
+      "ms": {
+        "draft": 10005,
+        "critique": 6786,
+        "solver": 2480,
+        "form": 0,
+        "translation": 262362
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a number pattern found in nature?",
+      "ms": {
+        "draft": 10005,
+        "critique": 7339,
+        "solver": 2723,
+        "form": 0,
+        "translation": 267455
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the next number in the sequence 1, 3, 6, 10, 15, 21, ...?",
+      "ms": {
+        "draft": 10005,
+        "critique": 6353,
+        "solver": 1699,
+        "form": 0,
+        "translation": 254151
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a property of fractals?",
+      "ms": {
+        "draft": 10005,
+        "critique": 7577,
+        "solver": 1998,
+        "form": 0,
+        "translation": 86541
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the number of jars in each layer of a stack follows the pattern 3, 6, 9, 12, ..., how many jars will be in the 15th layer?",
+      "ms": {
+        "draft": 10005,
+        "critique": 8104,
+        "solver": 18058,
+        "form": 0,
+        "translation": 77684
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the sum of the sequence 1 + 2 + 3 + ... + 50 + 49 + ... + 3 + 2 + 1?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

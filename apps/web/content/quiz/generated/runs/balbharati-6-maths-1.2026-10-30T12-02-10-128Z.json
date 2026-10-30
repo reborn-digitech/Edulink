@@ -1,0 +1,310 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T12:02:10.128Z",
+  "finishedAt": "2026-10-30T12:14:06.276Z",
+  "seconds": 716,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Three-Dimensional Shapes",
+    "edition": "First Edition 2026",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n11. Two cubes each of volume 64 cm are joined end to end to form a solid. The surface 3 1\narea of the resultant cuboid is:\n(A) 192 cm 2 (B) 160 cm 2 (C) 96 cm 2 (D) 80 cm 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n11. (d) 3√3cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n18. B Volume of cube, 𝑎 = 64 ⇒ 𝑎 = 4 cm 3 1\nOn joining two cubes of side = 4 cm, we get a cuboid whose\nLength (𝑙) = 8 cm, Breadth (𝑏) = 4 cm, Height (ℎ) = 4 cm\nSurface area of resulting cuboid = 2(𝑙𝑏 + 𝑏ℎ + ℎ 𝑙)\n= 2(8 × 4 + 4 × 4 + 4 × 8)\n𝟐 =160 cm 2\n(B) 𝟏𝟔𝟎𝐜𝐦",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 140325,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8846,
+      "completionTokens": 2147
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 322912,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 6081,
+      "completionTokens": 2544
+    },
+    "solver": {
+      "calls": 62,
+      "ms": 105782,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 11023,
+      "completionTokens": 678
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3167,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 216,
+      "completionTokens": 47
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 49,
+      "ms": 38665,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 411898,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7932,
+      "completionTokens": 3883
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If a shape is formed by placing circles on top of each other, what is the shape called?",
+      "ms": {
+        "draft": 10720,
+        "critique": 26681,
+        "solver": 6582
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following 3D shapes has two triangular faces and three rectangular faces?",
+      "ms": {
+        "draft": 10720,
+        "critique": 26416,
+        "solver": 37948,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following shapes is formed when circles of the same radius are stacked on top of each other?",
+      "ms": {
+        "draft": 44438,
+        "critique": 19445
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a three-dimensional shape that has two circular faces and one curved face?",
+      "ms": {
+        "draft": 44438,
+        "critique": 19950
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "ms": {
+        "draft": 44438,
+        "critique": 20518
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pyramid has a pentagonal base, how many triangular faces will it have?",
+      "ms": {
+        "draft": 44438,
+        "critique": 26244
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A shape is formed by joining two pyramids at their bases. Which of the following best describes the resulting shape?",
+      "ms": {
+        "draft": 44438,
+        "critique": 23331,
+        "solver": 40410,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a triangular prism is formed by stacking triangles, how many triangular faces does it have?",
+      "ms": {
+        "draft": 44438,
+        "critique": 27205,
+        "solver": 34943,
+        "form": 4150
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following 3D shapes does not have any edges or vertices?",
+      "ms": {
+        "draft": 10720,
+        "critique": 23767,
+        "solver": 5203,
+        "form": 0,
+        "translation": 106186
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a triangular pyramid is formed by folding a triangle, how many triangular faces does it have?",
+      "ms": {
+        "draft": 10720,
+        "critique": 22761,
+        "solver": 3732,
+        "form": 1,
+        "translation": 102965
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A 3D shape has 5 faces, 8 edges, and 5 vertices. What is this shape?",
+      "ms": {
+        "draft": 10720,
+        "critique": 29156,
+        "solver": 3380,
+        "form": 0,
+        "translation": 118891
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following 3D shapes can be formed by stacking polygons with the same number of sides?",
+      "ms": {
+        "draft": 10720,
+        "critique": 12533,
+        "solver": 2403,
+        "form": 0,
+        "translation": 67025
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a shape is formed by placing circles on top of each other, what is the shape called?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following 3D shapes has two triangular faces and three rectangular faces?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following shapes is formed when circles of the same radius are stacked on top of each other?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the name of a three-dimensional shape that has two circular faces and one curved face?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a three-dimensional shape?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a pyramid has a pentagonal base, how many triangular faces will it have?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A shape is formed by joining two pyramids at their bases. Which of the following best describes the resulting shape?",
+      "reason": "options 1 and 3 are the same (\"Cone\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a triangular prism is formed by stacking triangles, how many triangular faces does it have?",
+      "reason": "options 2 and 3 are the same (\"3\"); options mix numbers and words (3 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

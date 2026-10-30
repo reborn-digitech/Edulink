@@ -1,0 +1,505 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T16:22:58.794Z",
+  "finishedAt": "2026-10-30T16:28:44.304Z",
+  "seconds": 346,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 18 — Data Representation",
+    "edition": "First Edition 2026",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n10. B 𝑁 66\n= = 33, which lies in the interval 10-15\n2 2\n⇒ Median Class is 10-15\nLower limit of median class =10\n(B) 𝟏𝟎",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 112962,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17838,
+      "completionTokens": 5517
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 252318,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 14000,
+      "completionTokens": 5599
+    },
+    "solver": {
+      "calls": 139,
+      "ms": 93166,
+      "in": 17,
+      "out": 11,
+      "rejects": 6,
+      "promptTokens": 27513,
+      "completionTokens": 1545
+    },
+    "form": {
+      "calls": 4,
+      "ms": 13528,
+      "in": 11,
+      "out": 6,
+      "rejects": 5,
+      "promptTokens": 1062,
+      "completionTokens": 329
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10831,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 265268,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13949,
+      "completionTokens": 6832
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the term used for the numbers that represent the marks obtained by students in a test?",
+      "ms": {
+        "draft": 5032,
+        "critique": 7905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a frequency table, what does the letter 'N' represent?",
+      "ms": {
+        "draft": 5032,
+        "critique": 9306
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student got 8 marks in a test, which column in a frequency table would show this information?",
+      "ms": {
+        "draft": 5032,
+        "critique": 7420,
+        "solver": 14743,
+        "form": 4481
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the frequency of a score is 0, what does that mean?",
+      "ms": {
+        "draft": 5032,
+        "critique": 8360
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using infographics?",
+      "ms": {
+        "draft": 5116,
+        "critique": 7687
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a survey, 15 students were asked about their favorite activity. If 5 students chose 'Sports', 4 chose 'Singing', 3 chose 'Reading', and 3 chose 'Drawing', what is the frequency of 'Sports'?",
+      "ms": {
+        "draft": 5116,
+        "critique": 8804,
+        "solver": 2023,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a bar graph, if the height of the column for a mountain is 16.46 cm, and the scale is 1 cm = 100 meters, what is the actual height of the mountain?",
+      "ms": {
+        "draft": 5116,
+        "critique": 8797,
+        "solver": 17078
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the scale on a bar graph is 1 cm = ₹500, how many centimeters would represent ₹2000?",
+      "ms": {
+        "draft": 5116,
+        "critique": 8435,
+        "solver": 21353
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a frequency table?",
+      "ms": {
+        "draft": 5116,
+        "critique": 8335
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the height of a column in a bar graph is 16.46 cm and the scale is 1 cm = 100 meters, but the actual height is 1646 meters, what is the scale factor?",
+      "ms": {
+        "draft": 5116,
+        "critique": 8460,
+        "solver": 14407
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given table, which animal has the highest lifespan?",
+      "ms": {
+        "draft": 3986,
+        "critique": 7347,
+        "solver": 1978
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main advantage of using infographics over a simple bar graph?",
+      "ms": {
+        "draft": 3986,
+        "critique": 9383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the scale for a bar graph is 1 cm = 5 plants, how many plants are represented by a bar of 3.5 cm?",
+      "ms": {
+        "draft": 3986,
+        "critique": 8480,
+        "solver": 2225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the numbers obtained by students in a test according to the passage?",
+      "ms": {
+        "draft": 4694,
+        "critique": 8617,
+        "solver": 2623,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 students scored 6 marks and 3 students scored 2 marks, what is the total number of students?",
+      "ms": {
+        "draft": 4694,
+        "critique": 7674
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a frequency table according to the passage?",
+      "ms": {
+        "draft": 4694,
+        "critique": 8049,
+        "solver": 13608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar graph is drawn with the scale 1 cm = 5 plants, how many plants are represented by a bar of 4 cm?",
+      "ms": {
+        "draft": 3986,
+        "critique": 8622,
+        "solver": 19849
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the bar graph in the passage, which occupation has the highest number of people in Motinagar colony?",
+      "ms": {
+        "draft": 4694,
+        "critique": 7195,
+        "solver": 1954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a frequency table?",
+      "ms": {
+        "draft": 5032,
+        "critique": 10198,
+        "solver": 13109,
+        "form": 4851,
+        "translation": 55215
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a bar graph?",
+      "ms": {
+        "draft": 3986,
+        "critique": 7812,
+        "solver": 1953,
+        "form": 3427,
+        "translation": 54343
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 cm on the Y-axis represents ₹500, how much will 3 cm represent?",
+      "ms": {
+        "draft": 3986,
+        "critique": 6919,
+        "solver": 1381,
+        "form": 0,
+        "translation": 30017
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total number of students in a class is 40, and 15 students scored 6 marks, how many students scored a different number?",
+      "ms": {
+        "draft": 5032,
+        "critique": 8145,
+        "solver": 14127,
+        "form": 0,
+        "translation": 43390
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the number of books read by students is represented in a pictograph, and the scale is 1 unit = 10 books, how many units would represent 50 books?",
+      "ms": {
+        "draft": 4694,
+        "critique": 7855,
+        "solver": 1226,
+        "form": 0,
+        "translation": 39880
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a frequency table has a total of 30 observations and the sum of frequencies is represented by the letter 'N', what does 'N' stand for?",
+      "ms": {
+        "draft": 4694,
+        "critique": 6164,
+        "solver": 1126,
+        "form": 1945,
+        "translation": 38684
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the numbers that represent the marks obtained by students in a test?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a frequency table, what does the letter 'N' represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student got 8 marks in a test, which column in a frequency table would show this information?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the frequency of a score is 0, what does that mean?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of using infographics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a survey, 15 students were asked about their favorite activity. If 5 students chose 'Sports', 4 chose 'Singing', 3 chose 'Reading', and 3 chose 'Drawing', what is the frequency of 'Sports'?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer', 'Incorrectly takes the total number of stud…\"); checkExpr \"5\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a bar graph, if the height of the column for a mountain is 16.46 cm, and the scale is 1 cm = 100 meters, what is the actual height of the mountain?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the scale on a bar graph is 1 cm = ₹500, how many centimeters would represent ₹2000?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of a frequency table?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the height of a column in a bar graph is 16.46 cm and the scale is 1 cm = 100 meters, but the actual height is 1646 meters, what is the scale factor?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the given table, which animal has the highest lifespan?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the main advantage of using infographics over a simple bar graph?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the scale for a bar graph is 1 cm = 5 plants, how many plants are represented by a bar of 3.5 cm?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the numbers obtained by students in a test according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 6 students scored 6 marks and 3 students scored 2 marks, what is the total number of students?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of a frequency table according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bar graph is drawn with the scale 1 cm = 5 plants, how many plants are represented by a bar of 4 cm?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the bar graph in the passage, which occupation has the highest number of people in Motinagar colony?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

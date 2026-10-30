@@ -1,0 +1,522 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T15:53:04.420Z",
+  "finishedAt": "2026-10-30T16:12:12.027Z",
+  "seconds": 1148,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 15 — Perimeter and Area",
+    "edition": "First Edition 2026",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n13. If the perimeter of a circle is equal to that of a square, then the ratio of their areas is 1\n(a) 22 : 7 (b) 14 : 11 (c) 7 : 22 (d) 11: 14",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n14. If ∆ABC ~∆DEF, AB=6cm, DE=9cm, EF=6cm and FD=12cm, then the perimeter of 1\n∆ABC is\n(A) 28cm (B) 28.5cm (C) 18cm (D) 23cm",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n6. The perimeter of a triangle with vertices (0, 4), (0, 0) and (3, 0) is 1\n(a) 5 units (b) 12 units (c) 11 units (d) (7 + √5) units",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n14. If the perimeter and the area of a circle are numerically equal, then the radius of the circle 1\nis\n(a) 2 units (b) π units (c) 4 units (d) 7 units"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 264259,
+      "in": 30,
+      "out": 23,
+      "rejects": 7,
+      "promptTokens": 25272,
+      "completionTokens": 6671
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 432286,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 12625,
+      "completionTokens": 4505
+    },
+    "solver": {
+      "calls": 129,
+      "ms": 135740,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 19176,
+      "completionTokens": 1172
+    },
+    "form": {
+      "calls": 2,
+      "ms": 33054,
+      "in": 18,
+      "out": 11,
+      "rejects": 7,
+      "promptTokens": 496,
+      "completionTokens": 132
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 17945,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 1336695,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22603,
+      "completionTokens": 9794
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 4,
+    "4": 3,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "A square is made by bending a wire of length 64 cm. If the same wire is bent into a rectangle with a length of 20 cm, what is the breadth of the rectangle?",
+      "ms": {
+        "draft": 16263,
+        "critique": 9871
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A square and a rectangle have the same area. The rectangle has a length of 12 cm and a breadth of 8 cm. What is the side of the square?",
+      "ms": {
+        "draft": 16263,
+        "critique": 10478
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the perimeter of a square?",
+      "ms": {
+        "draft": 16263,
+        "critique": 7371,
+        "solver": 1970,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A square has a perimeter of 40 meters. What is the area of the square?",
+      "ms": {
+        "draft": 17672,
+        "critique": 7224,
+        "solver": 836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangular field has a length that is twice its width. If the perimeter of the field is 60 meters, what is the area of the field?",
+      "ms": {
+        "draft": 17672,
+        "critique": 6939,
+        "solver": 1299
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A right angled triangle has sides of lengths 3 units and 4 units. What is the length of the hypotenuse?",
+      "ms": {
+        "draft": 18006,
+        "critique": 5649,
+        "solver": 1383,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circle has a perimeter equal to that of a square. What is the ratio of their areas?",
+      "ms": {
+        "draft": 18006,
+        "critique": 6313,
+        "solver": 1464
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a right-angled triangle?",
+      "ms": {
+        "draft": 4993,
+        "critique": 6346,
+        "solver": 2615,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a square?",
+      "ms": {
+        "draft": 4962,
+        "critique": 10621,
+        "solver": 2553,
+        "form": 24847
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two rectangles have the same perimeter but different areas. Which of the following is true?",
+      "ms": {
+        "draft": 4993,
+        "critique": 8899,
+        "solver": 41801,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangular garden is 12 meters long and 8 meters wide. A square flower bed of side 4 meters is placed in it. What is the area of the garden not covered by the flower bed?",
+      "ms": {
+        "draft": 4993,
+        "critique": 11354,
+        "solver": 62810
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "ms": {
+        "draft": 4962,
+        "critique": 70283,
+        "solver": 18172,
+        "form": 8207
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the base of a triangle is 8 cm and the height is 5 cm, what is its area?",
+      "ms": {
+        "draft": 4993,
+        "critique": 9698,
+        "solver": 1993,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A square has a side length of 20 meters. How much wire is required to fence it with three layers?",
+      "ms": {
+        "draft": 4962,
+        "critique": 66957,
+        "solver": 11327,
+        "form": 0,
+        "translation": 128157
+      },
+      "outcome": "kept",
+      "flag": "level 2 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 2,
+      "stem": "A rectangle has a length of 28 cm and a breadth of 20 cm. Its perimeter is equal to that of a square. What is the side of the square?",
+      "ms": {
+        "draft": 4962,
+        "critique": 68871,
+        "solver": 9180,
+        "form": 0,
+        "translation": 127923
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A square has a perimeter of 100 cm. What is the length of one side of the square?",
+      "ms": {
+        "draft": 16263,
+        "critique": 9402,
+        "solver": 12615,
+        "form": 0,
+        "translation": 157165
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle has a length of 15 cm and a breadth of 10 cm. What is its perimeter?",
+      "ms": {
+        "draft": 16263,
+        "critique": 8476,
+        "solver": 2124,
+        "form": 0,
+        "translation": 156655
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area of a triangle with a base of 8 cm and a height of 5 cm?",
+      "ms": {
+        "draft": 13150,
+        "critique": 7211,
+        "solver": 2254,
+        "form": 0,
+        "translation": 105221
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area of a triangle with a base of 7 m and a height of 4 m?",
+      "ms": {
+        "draft": 13150,
+        "critique": 5946,
+        "solver": 1694,
+        "form": 0,
+        "translation": 105492
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A square and a rectangle have the same perimeter. The rectangle has a length of 25 cm and a breadth of 15 cm. What is the side of the square?",
+      "ms": {
+        "draft": 16263,
+        "critique": 7699,
+        "solver": 1913,
+        "form": 0,
+        "translation": 155720
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A right-angled triangle has sides of length 3 units and 4 units. What is the length of the hypotenuse?",
+      "ms": {
+        "draft": 17672,
+        "critique": 9346,
+        "solver": 1438,
+        "form": 1,
+        "translation": 106781
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A rectangle has a length of 10 meters and a width of 5 meters. What is the perimeter of the rectangle?",
+      "ms": {
+        "draft": 17672,
+        "critique": 8541,
+        "solver": 2124,
+        "form": 0,
+        "translation": 150509
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A circular track has a circumference of 44 meters. What is the radius of the track?",
+      "ms": {
+        "draft": 17672,
+        "critique": 8454,
+        "solver": 2671,
+        "form": 1,
+        "translation": 136682
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the area of a rectangle with length 8 cm and breadth 3 cm?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the perimeter of a square with side length 7 cm?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the area of a square with side length 10 cm?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the area of a square with side length 14 meters?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A square is made by bending a wire of length 64 cm. If the same wire is bent into a rectangle with a length of 20 cm, what is the breadth of the rectangle?",
+      "reason": "the critic finds option 1 correct, the key is 0"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A square and a rectangle have the same area. The rectangle has a length of 12 cm and a breadth of 8 cm. What is the side of the square?",
+      "reason": "the critic finds option 2 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the perimeter of a square?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A square has a perimeter of 40 meters. What is the area of the square?",
+      "reason": "checkExpr \"(40/4)**2\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A rectangular field has a length that is twice its width. If the perimeter of the field is 60 meters, what is the area of the field?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the total distance covered by Anju if she completed 7 laps on a rectangular field with a perimeter of 40 meters?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the total distance covered by Manju if she completed 4 laps on a rectangular field with a perimeter of 40 meters?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Who covered a greater distance, Anju or Manju, if Anju completed 7 laps and Manju completed 4 laps on a rectangular field with a perimeter of 40 meters?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A right angled triangle has sides of lengths 3 units and 4 units. What is the length of the hypotenuse?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer is 5 units, not 7 units as calculated by addi…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A circle has a perimeter equal to that of a square. What is the ratio of their areas?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the area of a right-angled triangle?",
+      "reason": "options 0 and 1 are the same (\"base + height\"); options 2 and 3 are the same (\"base × height ÷ 2\"); distractor 3's reason is not a one-line misconception (\"correct formula is base × height ÷ 2, not base × height × 2…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a square?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer is 4 × length of side, not 5 × length of side…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Two rectangles have the same perimeter but different areas. Which of the following is true?",
+      "reason": "options 0 and 3 are the same (\"The rectangles have the same length and different widths\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A rectangular garden is 12 meters long and 8 meters wide. A square flower bed of side 4 meters is placed in it. What is the area of the garden not covered by the flower bed?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the perimeter of a rectangle?",
+      "reason": "options 0 and 1 say the same thing (\"Perimeter of a rectangle = length + breadth\" / \"Perimeter of a rectangle = 2 × (length + breadth)\"); options 0 and 2 say the same thing (\"Perimeter of a rectangle = length + breadth\" / \"Perimeter of a rectangle = 3 × (length + breadth)\"); options 0 and 3 say the same thing (\"Perimeter of a rectangle = length + breadth\" / \"Perimeter of a rectangle = 4 × (length + breadth)\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If the base of a triangle is 8 cm and the height is 5 cm, what is its area?",
+      "reason": "near-duplicate of batch item \"What is the area of a triangle with a base of 8 cm…\" (cosine 0.975 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

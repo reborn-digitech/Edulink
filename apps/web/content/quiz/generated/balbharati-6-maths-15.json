@@ -1,0 +1,949 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 15 — Perimeter and Area",
+  "name": "Perimeter and Area",
+  "slug": "balbharati-maths-6-perimeter-and-area",
+  "summary": "This chapter teaches how to calculate the perimeter and area of different shapes.",
+  "position": 15,
+  "source": "generated against Balbharati Mathematics, Class 6, chapter 15 (First Edition 2026)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 15 - परिमाप आणि क्षेत्रफळ",
+      "summary": "हा अध्याय विविध आकृत्यांच्या परिमाप आणि क्षेत्रफळाची गणना करण्याबद्दल शिकवतो।"
+    },
+    "mr": {
+      "name": "अध्याय 15 - परिमाप आणि क्षेत्रफळ",
+      "summary": "हा अध्याय विविध आकृतींच्या परिमाप आणि क्षेत्रफळाची गणना करण्याबद्दल शिकवतो."
+    }
+  },
+  "board": "BALBHARATI",
+  "book": "६ वी गणित इंग्रजी",
+  "edition": "First Edition 2026",
+  "generatedAt": "2026-10-30T15:53:04.420Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 2,
+      "stem": "A square has a side length of 20 meters. How much wire is required to fence it with three layers?",
+      "choices": [
+        "80 meters",
+        "120 meters",
+        "240 meters",
+        "320 meters"
+      ],
+      "answerIndex": 2,
+      "solution": "The perimeter of the square is 4 × 20 = 80 meters. Since the fence has three layers, we multiply 80 by 3, resulting in 240 meters. The other options do not account for the three layers correctly.",
+      "checkExpr": "3*80",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ग की भुजा की लंबाई 20 मीटर है। इसे तीन परतों में घेरने के लिए कितना तार चाहिए?",
+          "choices": [
+            "80 मीटर",
+            "120 मीटर",
+            "240 मीटर",
+            "320 मीटर"
+          ],
+          "solution": "वर्ग का परिमाप 4 × 20 = 80 मीटर है। चूंकि घेरा तीन परतों में है, हम 80 को 3 से गुणा करते हैं, जिससे 240 मीटर प्राप्त होता है। अन्य विकल्प तीन परतों को सही तरह से ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौरसाच्या बाजूची लांबी 20 मीटर आहे. ती तीन थरांमध्ये घेरण्यासाठी किती तार आवश्यक आहे?",
+          "choices": [
+            "80 मीटर",
+            "120 मीटर",
+            "240 मीटर",
+            "320 मीटर"
+          ],
+          "solution": "चौरसाचा परिमाण 4 × 20 = 80 मीटर आहे. घेरण्याचे तीन थर असल्याने, आम्ही 80 ला 3 ने गुणतो, जे 240 मीटर येते. इतर विकल्प तीन थरांचा योग्य परिप्रेक्ष्य घेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "calculates only the perimeter, not the three layers",
+        "multiplies incorrectly",
+        null,
+        "multiplies incorrectly"
+      ],
+      "solverAnswers": [
+        2,
+        3,
+        2,
+        3,
+        2
+      ],
+      "levelFlag": "level 2 but the solver missed it 2 of 5 times",
+      "critique": "The solution correctly calculates the perimeter and multiplies by 3 for the three layers. The reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 72,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 73,
+          "pageStart": 124,
+          "pageEnd": 126,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 74,
+          "pageStart": 127,
+          "pageEnd": 129,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "A rectangle has a length of 28 cm and a breadth of 20 cm. Its perimeter is equal to that of a square. What is the side of the square?",
+      "choices": [
+        "20 cm",
+        "24 cm",
+        "28 cm",
+        "32 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The perimeter of the rectangle is 2 × (28 + 20) = 96 cm. Since the square has the same perimeter, its side is 96 ÷ 4 = 24 cm. The other options do not correctly divide the perimeter by 4.",
+      "checkExpr": "96/4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत की लंबाई 28 सेमी और चौड़ाई 20 सेमी है। इसकी परिमाप एक वर्ग के बराबर है। वर्ग की भुजा क्या है?",
+          "choices": [
+            "20 सेमी",
+            "24 सेमी",
+            "28 सेमी",
+            "32 सेमी"
+          ],
+          "solution": "आयत की परिमाप 2 × (28 + 20) = 96 सेमी है। चूंकि वर्ग की परिमाप भी समान है, इसकी भुजा 96 ÷ 4 = 24 सेमी है। अन्य विकल्प गलत तरीके से परिमाप को 4 से विभाजित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौकोनाची लांबी 28 सेमी आणि रुंदी 20 सेमी आहे. त्याचा परिमाण चौरसाच्या परिमाणाइतका आहे. तर चौरसाची बाजू किती आहे?",
+          "choices": [
+            "20 सेमी",
+            "24 सेमी",
+            "28 सेमी",
+            "32 सेमी"
+          ],
+          "solution": "चौकोनाचा परिमाण 2 × (28 + 20) = 96 सेमी आहे. चौरसाचा परिमाण त्याच असल्याने त्याची बाजू 96 ÷ 4 = 24 सेमी आहे. इतर विकल्प परिमाणला 4 ने भागल्यास योग्य उत्तर नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses the length of the rectangle as the side of the square",
+        null,
+        "Confuses the length of the rectangle with the side of the square",
+        "uses the breadth of the rectangle as the side of the square"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The perimeter of the rectangle is 96 cm, and dividing by 4 gives 24 cm for the square's side. The distractors reflect common misconceptions, such as using the rectangle's length or breadth directly as the square's side.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 72,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 73,
+          "pageStart": 124,
+          "pageEnd": 126,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 74,
+          "pageStart": 127,
+          "pageEnd": 129,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A square has a perimeter of 100 cm. What is the length of one side of the square?",
+      "choices": [
+        "20 cm",
+        "25 cm",
+        "50 cm",
+        "100 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The perimeter of a square is calculated as 4 × side. Since the perimeter is 100 cm, we divide 100 by 4 to get the length of one side. 100 ÷ 4 = 25 cm. The option '20 cm' is incorrect because it divides 100 by 5. The option '50 cm' is incorrect because it divides 100 by 2. The option '100 cm' is incorrect because it assumes the side is equal to the perimeter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ग का परिमाप 100 सेमी है। वर्ग की एक भुजा की लंबाई क्या है?",
+          "choices": [
+            "20 सेमी",
+            "25 सेमी",
+            "50 सेमी",
+            "100 सेमी"
+          ],
+          "solution": "एक वर्ग का परिमाप 4 × भुजा के रूप में गणना की जाती है। चूंकि परिमाप 100 सेमी है, हम 100 को 4 से विभाजित करते हैं ताकि एक भुजा की लंबाई प्राप्त की जा सके। 100 ÷ 4 = 25 सेमी। विकल्प '20 सेमी' गलत है क्योंकि यह 100 को 5 से विभाजित करता है। विकल्प '50 सेमी' गलत है क्योंकि यह 100 को 2 से विभाजित करता है। विकल्प '100 सेमी' गलत है क्योंकि यह मान लेता है कि भुजा परिमाप के बराबर है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौरसाचा परिमाण 100 सेमी आहे. चौरसाच्या एका बाजूची लांबी किती असेल?",
+          "choices": [
+            "20 सेमी",
+            "25 सेमी",
+            "50 सेमी",
+            "100 सेमी"
+          ],
+          "solution": "चौरसाचे परिमाण 4 × बाजू असते. परिमाण 100 सेमी असल्यामुळे, आम्ही 100 ला 4 ने भागले तर एका बाजूची लांबी मिळते. 100 ÷ 4 = 25 सेमी. '20 सेमी' विकल्प चूक आहे कारण 100 ला 5 ने भागले गेले आहे. '50 सेमी' विकल्प चूक आहे कारण 100 ला 2 ने भागले गेले आहे. '100 सेमी' विकल्प चूक आहे कारण बाजू परिमाण समान असल्याचा अंदाज घेतला गेला आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "divides 100 by 5",
+        null,
+        "Thinking that the perimeter is divided by 2 instead of 4",
+        "divides 100 by 2"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the side length by dividing the perimeter by 4, and the reasons for the incorrect options align with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 72,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 73,
+          "pageStart": 124,
+          "pageEnd": 126,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 74,
+          "pageStart": 127,
+          "pageEnd": 129,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rectangle has a length of 15 cm and a breadth of 10 cm. What is its perimeter?",
+      "choices": [
+        "25 cm",
+        "50 cm",
+        "60 cm",
+        "75 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The perimeter of a rectangle is calculated as 2 × (length + breadth). Adding 15 and 10 gives 25, and multiplying by 2 gives 50 cm. The option '25 cm' is incorrect because it adds the length and breadth but does not multiply by 2. The option '60 cm' is incorrect because it multiplies length and breadth. The option '75 cm' is incorrect because it adds 15 + 10 + 50.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत की लंबाई 15 सेमी और चौड़ाई 10 सेमी है। इसका परिमाप क्या है?",
+          "choices": [
+            "25 सेमी",
+            "50 सेमी",
+            "60 सेमी",
+            "75 सेमी"
+          ],
+          "solution": "एक आयत का परिमाप 2 × (लंबाई + चौड़ाई) के रूप में गणना किया जाता है। 15 और 10 को जोड़ने पर 25 प्राप्त होता है, और 2 से गुणा करने पर 50 सेमी प्राप्त होता है। विकल्प '25 सेमी' गलत है क्योंकि यह लंबाई और चौड़ाई को जोड़ता है लेकिन 2 से गुणा नहीं करता। विकल्प '60 सेमी' गलत है क्योंकि यह लंबाई और चौड़ाई को गुणा करता है। विकल्प '75 सेमी' गलत है क्योंकि यह 15 + 10 + 50 जोड़ता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आयताची लांबी 15 सेमी आणि रुंदी 10 सेमी आहे. त्याची परिमिती किती आहे?",
+          "choices": [
+            "25 सेमी",
+            "50 सेमी",
+            "60 सेमी",
+            "75 सेमी"
+          ],
+          "solution": "आयताची परिमिती 2 × (लांबी + रुंदी) असे काढली जाते. 15 आणि 10 जोडल्यास 25 मिळते आणि 2 ने गुणल्यास 50 सेमी मिळते. '25 सेमी' विकल्प अयोग्य आहे कारण तो लांबी आणि रुंदी जोडतो परंतु 2 ने गुणत नाही. '60 सेमी' विकल्प अयोग्य आहे कारण तो लांबी आणि रुंदी गुणतो. '75 सेमी' विकल्प अयोग्य आहे कारण तो 15 + 10 + 50 जोडतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "adds the length and breadth but does not multiply by 2",
+        null,
+        "multiplies length and breadth",
+        "adds length, breadth, and 50"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula for the perimeter of a rectangle (2 × (length + breadth)) and identifies the correct answer as 50 cm. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 72,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 73,
+          "pageStart": 124,
+          "pageEnd": 126,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 74,
+          "pageStart": 127,
+          "pageEnd": 129,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the area of a triangle with a base of 8 cm and a height of 5 cm?",
+      "choices": [
+        "20 sq.cm",
+        "40 sq.cm",
+        "13 sq.cm",
+        "15 sq.cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of a triangle is calculated as base × height divided by 2. For a base of 8 cm and a height of 5 cm, the calculation is (8 × 5)/2 = 20 sq.cm. The option '40 sq.cm' incorrectly doubles the product instead of dividing by 2. The option '13 sq.cm' adds the numbers instead of multiplying. The option '15 sq.cm' uses incorrect values or calculations.",
+      "checkExpr": "(8*5)/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "8 सेमी आधार और 5 सेमी ऊंचाई वाले त्रिभुज का क्षेत्रफल क्या है?",
+          "choices": [
+            "20 वर्ग सेमी",
+            "40 वर्ग सेमी",
+            "13 वर्ग सेमी",
+            "15 वर्ग सेमी"
+          ],
+          "solution": "एक त्रिभुज का क्षेत्रफल आधार × ऊंचाई के गुणनफल के आधे के रूप में गणना की जाती है। 8 सेमी आधार और 5 सेमी ऊंचाई के लिए, गणना (8 × 5)/2 = 20 वर्ग सेमी है। विकल्प '40 वर्ग सेमी' गुणनफल को दोगुना कर देता है बजाय आधा करने के। विकल्प '13 वर्ग सेमी' संख्याओं को जोड़ देता है बजाय गुणा करने के। विकल्प '15 वर्ग सेमी' गलत मान या गणना का उपयोग करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "8 सेमी आणि 5 सेमी उंची असलेल्या त्रिकोणाचे क्षेत्रफळ किती आहे?",
+          "choices": [
+            "20 चौ. सेमी",
+            "40 चौ. सेमी",
+            "13 चौ. सेमी",
+            "15 चौ. सेमी"
+          ],
+          "solution": "त्रिकोणाचे क्षेत्रफळ आधार × उंची भागिले 2 असे काढले जाते. 8 सेमी आधार आणि 5 सेमी उंची असलेल्यास गणना (8 × 5)/2 = 20 चौ. सेमी असते. '40 चौ. सेमी' विकल्प गुणाकार दुप्पट करतो. '13 चौ. सेमी' विकल्प संख्या जोडतो. '15 चौ. सेमी' विकल्प चुकीच्या मूल्यांचा किंवा गणनेचा वापर करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "multiplies base and height without dividing by 2",
+        "adds base and height",
+        "uses incorrect values or calculations"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula for the area of a triangle (base × height / 2) and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 75,
+          "pageStart": 129,
+          "pageEnd": 131,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 76,
+          "pageStart": 132,
+          "pageEnd": 133,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 77,
+          "pageStart": 133,
+          "pageEnd": 135,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the area of a triangle with a base of 7 m and a height of 4 m?",
+      "choices": [
+        "14 sq.m",
+        "28 sq.m",
+        "11 sq.m",
+        "20 sq.m"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of a triangle is calculated as base × height divided by 2. For a base of 7 m and a height of 4 m, the calculation is (7 × 4)/2 = 14 sq.m. The option '28 sq.m' incorrectly multiplies the base and height without dividing by 2. The option '11 sq.m' adds the numbers instead of multiplying. The option '20 sq.m' uses incorrect values or calculations.",
+      "checkExpr": "(7*4)/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "7 मी आधार और 4 मी ऊंचाई वाले एक त्रिभुज का क्षेत्रफल क्या है?",
+          "choices": [
+            "14 वर्ग मी",
+            "28 वर्ग मी",
+            "11 वर्ग मी",
+            "20 वर्ग मी"
+          ],
+          "solution": "एक त्रिभुज का क्षेत्रफल आधार × ऊंचाई के आधे के रूप में गणना की जाती है। 7 मी आधार और 4 मी ऊंचाई के लिए, गणना (7 × 4)/2 = 14 वर्ग मी है। विकल्प '28 वर्ग मी' आधार और ऊंचाई को बिना 2 से विभाजित किए गुणा करता है। विकल्प '11 वर्ग मी' संख्याओं को गुणा के बजाय जोड़ता है। विकल्प '20 वर्ग मी' गलत मान या गणना का उपयोग करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "7 मीटर आधार आणि 4 मीटर उंची असलेल्या त्रिकोणाचे क्षेत्रफळ किती आहे?",
+          "choices": [
+            "14 चौ.मी.",
+            "28 चौ.मी.",
+            "11 चौ.मी.",
+            "20 चौ.मी."
+          ],
+          "solution": "त्रिकोणाचे क्षेत्रफळ आधार × उंची भागिले 2 असे काढले जाते. 7 मीटर आधार आणि 4 मीटर उंची असलेल्या त्रिकोणासाठी गणना (7 × 4)/2 = 14 चौ.मी. असते. '28 चौ.मी.' विकल्प आधार आणि उंची गुणून 2 ने भागले जात नाही. '11 चौ.मी.' विकल्प संख्या जोडून घेतो. '20 चौ.मी.' विकल्प चुकीच्या मूल्यांचा किंवा गणनेचा वापर करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms like 'चौ.मी.' for 'sq.m.'",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "multiplies base and height without dividing by 2",
+        "adds base and height",
+        "uses incorrect values or calculations"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 75,
+          "pageStart": 129,
+          "pageEnd": 131,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 76,
+          "pageStart": 132,
+          "pageEnd": 133,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 77,
+          "pageStart": 133,
+          "pageEnd": 135,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A square and a rectangle have the same perimeter. The rectangle has a length of 25 cm and a breadth of 15 cm. What is the side of the square?",
+      "choices": [
+        "20 cm",
+        "25 cm",
+        "30 cm",
+        "40 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of the rectangle is 2 × (25 + 15) = 80 cm. Since the square has the same perimeter, its side is 80 ÷ 4 = 20 cm. The option '25 cm' is incorrect because it assumes the side is equal to the rectangle's length. The option '30 cm' is incorrect because it divides 80 by 2. The option '40 cm' is incorrect because it assumes the side is half the perimeter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ग और एक आयत के समान परिमाप है। आयत की लंबाई 25 सेमी और चौड़ाई 15 सेमी है। वर्ग की भुजा क्या है?",
+          "choices": [
+            "20 सेमी",
+            "25 सेमी",
+            "30 सेमी",
+            "40 सेमी"
+          ],
+          "solution": "आयत का परिमाप 2 × (25 + 15) = 80 सेमी है। चूंकि वर्ग का परिमाप समान है, इसकी भुजा 80 ÷ 4 = 20 सेमी है। विकल्प '25 सेमी' गलत है क्योंकि यह मान लेता है कि भुजा आयत की लंबाई के बराबर है। विकल्प '30 सेमी' गलत है क्योंकि यह 80 को 2 से विभाजित करता है। विकल्प '40 सेमी' गलत है क्योंकि यह मान लेता है कि भुजा परिमाप के आधे के बराबर है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक चौरस आणि एक आयत समान परिमाण असतात. आयताची लांबी 25 सेमी आणि रुंदी 15 सेमी आहे. चौरसाची बाजू किती असेल?",
+          "choices": [
+            "20 सेमी",
+            "25 सेमी",
+            "30 सेमी",
+            "40 सेमी"
+          ],
+          "solution": "आयताचे परिमाण 2 × (25 + 15) = 80 सेमी आहे. चौरसाचे परिमाण समान असल्याने त्याची बाजू 80 ÷ 4 = 20 सेमी आहे. '25 सेमी' अपुर्ण आहे कारण ते चौरसाची बाजू आयताच्या लांबीसारखी घेते. '30 सेमी' अपूर्ण आहे कारण ते 80 ला 2 ने भागते. '40 सेमी' अपूर्ण आहे कारण ते बाजू परिमाणाच्या अर्ध्यासारखी घेते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assumes the side is equal to the rectangle's length",
+        "divides 80 by 2",
+        "assumes the side is half the perimeter"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and the reasoning for the distractors aligns with common misconceptions. The correct answer is 20 cm.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 72,
+          "pageStart": 123,
+          "pageEnd": 124,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 73,
+          "pageStart": 124,
+          "pageEnd": 126,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        },
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 74,
+          "pageStart": 127,
+          "pageEnd": 129,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A right-angled triangle has sides of length 3 units and 4 units. What is the length of the hypotenuse?",
+      "choices": [
+        "5 units",
+        "7 units",
+        "12 units",
+        "25 units"
+      ],
+      "answerIndex": 0,
+      "solution": "The question involves applying the Pythagoras theorem, which states that in a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. Using the values 3 and 4, the hypotenuse squared is 9 + 16 = 25, so the hypotenuse is 5 units. The other options incorrectly add the sides, square the sum, or take the sum of the squares without taking the square root.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज की भुजाओं की लंबाई 3 इकाई और 4 इकाई है। कर्ण की लंबाई क्या है?",
+          "choices": [
+            "5 इकाई",
+            "7 इकाई",
+            "12 इकाई",
+            "25 इकाई"
+          ],
+          "solution": "प्रश्न में पाइथागोरस प्रमेय का उपयोग करना है, जो कहता है कि समकोण त्रिभुज में, कर्ण के वर्ग के बराबर अन्य दो भुजाओं के वर्गों के योग के बराबर होता है। मान 3 और 4 के साथ, कर्ण के वर्ग 9 + 16 = 25 है, इसलिए कर्ण 5 इकाई है। अन्य विकल्प भुजाओं को गलत तरीके से जोड़ते हैं, योग के वर्ग का उपयोग करते हैं या वर्गों के योग को वर्गमूल लिए बिना लेते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक समकोनी त्रिकोणाच्या बाजूंची लांबी 3 एकक आणि 4 एकक आहे. कर्णाची लांबी किती आहे?",
+          "choices": [
+            "5 एकक",
+            "7 एकक",
+            "12 एकक",
+            "25 एकक"
+          ],
+          "solution": "प्रश्नात समकोनी त्रिकोणात कर्णाच्या वर्गाचे सूत्र वापरले जाते, जे समकोनी त्रिकोणात कर्णाचा वर्ग इतर दोन बाजूंच्या वर्गांच्या बेरजेइतका असतो. 3 आणि 4 च्या मूल्यांचा वापर करून, कर्णाचा वर्ग 9 + 16 = 25 असतो, म्हणून कर्ण 5 एकक असतो. इतर विकल्प बाजूंची बेरीज करतात, बेरजेचा वर्ग घेतात किंवा वर्गांची बेरीज घेतात परंतु वर्गमूळ घेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses sum of sides with hypotenuse",
+        "squares the sum of the sides",
+        "multiplies the sides directly without applying the theorem"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the Pythagorean theorem. The correct answer is 5 units, and the author's explanations for the distractors align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 78,
+          "pageStart": 135,
+          "pageEnd": 137,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A rectangle has a length of 10 meters and a width of 5 meters. What is the perimeter of the rectangle?",
+      "choices": [
+        "30 meters",
+        "20 meters",
+        "15 meters",
+        "50 meters"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of a rectangle is calculated as 2 × (length + width). Substituting the given values, 2 × (10 + 5) = 30 meters. The other options incorrectly add the length and width without doubling, multiply the length and width, or take only the length as the perimeter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत की लंबाई 10 मीटर और चौड़ाई 5 मीटर है। आयत की परिमाप क्या है?",
+          "choices": [
+            "30 मीटर",
+            "20 मीटर",
+            "15 मीटर",
+            "50 मीटर"
+          ],
+          "solution": "एक आयत की परिमाप की गणना 2 × (लंबाई + चौड़ाई) के रूप में की जाती है। दिए गए मानों को प्रतिस्थापित करने पर, 2 × (10 + 5) = 30 मीटर। अन्य विकल्प लंबाई और चौड़ाई को दोगुना किए बिना जोड़ते हैं, लंबाई और चौड़ाई को गुणा करते हैं, या केवल लंबाई को परिमाप मान लेते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आयताची लांबी 10 मीटर आणि रुंदी 5 मीटर आहे. आयताचा परिमाण किती आहे?",
+          "choices": [
+            "30 मीटर",
+            "20 मीटर",
+            "15 मीटर",
+            "50 मीटर"
+          ],
+          "solution": "एका आयताचा परिमाण 2 × (लांबी + रुंदी) असा गणला जातो. दिलेल्या मूल्यांची बदली करून, 2 × (10 + 5) = 30 मीटर. इतर विकल्प चुकीचे असतात कारण ते लांबी आणि रुंदी जोडताना दुप्पट करत नाहीत, लांबी आणि रुंदी गुणतात किंवा फक्त लांबी असे परिमाण मानतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'परिमाण' for 'perimeter' and 'लांबी'/'रुंदी' for 'length'/'width'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds length and width without doubling",
+        "multiplies length and width",
+        "takes only the length as the perimeter"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the formula for the perimeter of a rectangle and identifies the correct answer. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 78,
+          "pageStart": 135,
+          "pageEnd": 137,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A circular track has a circumference of 44 meters. What is the radius of the track?",
+      "choices": [
+        "7 meters",
+        "14 meters",
+        "22 meters",
+        "44 meters"
+      ],
+      "answerIndex": 0,
+      "solution": "The formula for the circumference of a circle is 2πr. Given that the circumference is 44 meters, solving 2πr = 44 gives r = 7 meters. The other options incorrectly use the circumference directly as the radius, double the radius, or take the circumference as the diameter.",
+      "checkExpr": "44/(2*22/7)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वृत्ताकार पथ की परिधि 44 मीटर है। पथ की त्रिज्या क्या है?",
+          "choices": [
+            "7 मीटर",
+            "14 मीटर",
+            "22 मीटर",
+            "44 मीटर"
+          ],
+          "solution": "एक वृत्त की परिधि का सूत्र 2πr होता है। दिया गया है कि परिधि 44 मीटर है, 2πr = 44 को हल करने पर r = 7 मीटर प्राप्त होता है। अन्य विकल्प परिधि को सीधे त्रिज्या के रूप में उपयोग करते हैं, त्रिज्या को दोगुना करते हैं या परिधि को व्यास के रूप में लेते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक वर्तुळाकार धावण्याची मार्ग चौस असलेली 44 मीटर आहे. धावण्याच्या मार्गाची त्रिज्या किती आहे?",
+          "choices": [
+            "7 मीटर",
+            "14 मीटर",
+            "22 मीटर",
+            "44 मीटर"
+          ],
+          "solution": "वर्तुळाच्या परिघाचा सूत्र 2πr आहे. परिघ 44 मीटर दिलेला आहे, 2πr = 44 हलवल्यास r = 7 मीटर मिळते. इतर विकल्प परिघाला त्रिज्या म्हणून चुकीच्या पद्धतीने वापरतात, त्रिज्येचे दुप्पट करतात किंवा परिघाला व्यास म्हणून घेतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "takes circumference as radius",
+        "doubles the radius",
+        "takes circumference as diameter"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly uses the formula for circumference (C = 2πr) and solves for r. The reasoning for the distractors aligns with common misconceptions, such as confusing circumference with radius or diameter.",
+      "sources": [
+        {
+          "document": "balbharati/6/mathematics/603060004.pdf",
+          "ordinal": 78,
+          "pageStart": 135,
+          "pageEnd": 137,
+          "headingPath": [
+            "15. Perimeter and Area",
+            "Green Fair"
+          ]
+        }
+      ],
+      "edition": "First Edition 2026",
+      "generatedAt": "2026-10-30T15:53:04.420Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

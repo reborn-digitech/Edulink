@@ -1,0 +1,402 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T14:01:33.723Z",
+  "finishedAt": "2026-10-30T14:23:47.005Z",
+  "seconds": 1333,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Triangles and Squares",
+    "edition": "First Edition 2026",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[IOQM 2021 — question paper]\n1. Three parallel lines L 1 , L 2 , L 3 are drawn in the plane such that the perpendicular distance\nbetween L 1 and L 2 is 3 and the perpendicular distance between L 2 and L 3 is also 3. A\nsquare ABCD is constructed such that A lies on L 1 , B lies on L 3 and C lies on L 2 . Find\nthe area of the square.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n25. Show that the points A(-5,6), B(3, 0) and C( 9, 8) are the vertices of an isosceles 2\ntriangle.",
+      "[RMO 2023 — question paper]\n6. Consider a set of 16 points arranged in a 4 × 4 square grid formation. Prove that if any 7 of these\npoints are coloured blue, then there exists an isosceles right-angled triangle whose vertices are all\nblue.\nे ीय ग णत ओ लिपयाड – 2023\nसमय: 3 घंटे अ टूबर 29, 2023\nिनद श :\n● िकसी भी तरह के गणक (calculators) तथा चांदा (protractors) के योग क अनुम त नह है.\n● पैमाना (rulers) तथा परकार (compasses) के योग क अनुम त है.\n● सभी के उ र दी जये.\n● सभी के अंक समान ह . अ धकतम अंक : 102\n● येक का उ र नए पृ से ारंभ क जये. मांक प प से इंिगत क जये.\n1. मान ली जये ℕ सारे धना मक पूणा क का समु य है और 𝑆 = {(𝑎, 𝑏, 𝑐, 𝑑) ∈ ℕ : 𝑎 + 𝑏 + 𝑐 = 𝑑 . उस 4 2 2 2 2\nसबसे बड़े उस धना मक पूणा क 𝑚 को ात क जये जो 𝑎𝑏𝑐𝑑 क",
+      "[PRMO 2017 — question paper]\n30. Consider the areas of the four triangles obtained by drawing the diagonals AC and\nBD of a trapezium ABCD. The product of these areas, taken two at time, are computed.\nIf among the six products so obtained, two products are 1296 and 576, determine the\nsquare root of the maximum possible area of the trapezium to the nearest integer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 215885,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12795,
+      "completionTokens": 3413
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 588815,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 11258,
+      "completionTokens": 4728
+    },
+    "solver": {
+      "calls": 144,
+      "ms": 254990,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 25225,
+      "completionTokens": 1504
+    },
+    "form": {
+      "calls": 6,
+      "ms": 67878,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 1421,
+      "completionTokens": 434
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 39378,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 969477,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 18637,
+      "completionTokens": 8235
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "ms": {
+        "draft": 10888,
+        "critique": 23589,
+        "solver": 35458,
+        "form": 13482
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a triangle?",
+      "ms": {
+        "draft": 14993,
+        "critique": 23320,
+        "solver": 47087,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given quadrilateral, which of the following is a pair of opposite sides?",
+      "ms": {
+        "draft": 14993,
+        "critique": 21128
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an isosceles triangle?",
+      "ms": {
+        "draft": 14993,
+        "critique": 26032,
+        "solver": 41645
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sides of a triangle are 6 cm, 8 cm, and 10 cm, what type of triangle is it?",
+      "ms": {
+        "draft": 14993,
+        "critique": 23083,
+        "solver": 49518
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a triangle has two angles measuring 45° and 45°, what is the measure of the third angle?",
+      "ms": {
+        "draft": 14993,
+        "critique": 20127,
+        "solver": 51352
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has one angle of 90 degrees and two angles of 45 degrees each, what type of triangle is it?",
+      "ms": {
+        "draft": 10100,
+        "critique": 25172,
+        "solver": 5160
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of triangle based on its angles?",
+      "ms": {
+        "draft": 10100,
+        "critique": 18251,
+        "solver": 4206,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a triangle has all sides equal and all angles equal, what is it called?",
+      "ms": {
+        "draft": 10100,
+        "critique": 14263,
+        "solver": 2122,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a triangle in which only two sides have equal lengths?",
+      "ms": {
+        "draft": 10888,
+        "critique": 24029,
+        "solver": 37700,
+        "form": 10689,
+        "translation": 117895
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a triangle in which one angle is 90 degrees?",
+      "ms": {
+        "draft": 10888,
+        "critique": 21508,
+        "solver": 3956,
+        "form": 17121,
+        "translation": 118420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of triangle based on angles?",
+      "ms": {
+        "draft": 10888,
+        "critique": 19912,
+        "solver": 6445,
+        "form": 9004,
+        "translation": 106464
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of triangle based on sides?",
+      "ms": {
+        "draft": 10888,
+        "critique": 23993,
+        "solver": 46186,
+        "form": 14347,
+        "translation": 185630
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about a square?",
+      "ms": {
+        "draft": 10100,
+        "critique": 18252,
+        "solver": 7216,
+        "form": 0,
+        "translation": 94446
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if all three sides are of equal length, what type of triangle is it?",
+      "ms": {
+        "draft": 10888,
+        "critique": 21639,
+        "solver": 5239,
+        "form": 14051,
+        "translation": 117084
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, the sum of the measures of the three angles is always equal to what?",
+      "ms": {
+        "draft": 14993,
+        "critique": 25398,
+        "solver": 39886,
+        "form": 0,
+        "translation": 88448
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if two angles are 45 degrees each, what is the measure of the third angle?",
+      "ms": {
+        "draft": 10100,
+        "critique": 23118,
+        "solver": 35616,
+        "form": 0,
+        "translation": 46015
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral, the sum of all interior angles is",
+      "ms": {
+        "draft": 10100,
+        "critique": 23965,
+        "solver": 5703,
+        "form": 0,
+        "translation": 76938
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of a triangle in which all three sides have the same length?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of a triangle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given quadrilateral, which of the following is a pair of opposite sides?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of an isosceles triangle?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the sides of a triangle are 6 cm, 8 cm, and 10 cm, what type of triangle is it?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a triangle has two angles measuring 45° and 45°, what is the measure of the third angle?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the name of a triangle in which all three sides have "
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a triangle has one angle of 90 degrees and two angles of 45 degrees each, what type of triangle is it?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a type of triangle based on its angles?",
+      "reason": "near-duplicate of batch item \"Which of the following is a type of triangle based…\" (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a triangle has all sides equal and all angles equal, what is it called?",
+      "reason": "near-duplicate of batch item \"In a triangle, if all three sides are of equal len…\" (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T19:26:25.854Z",
+  "finishedAt": "2026-10-30T19:34:44.984Z",
+  "seconds": 499,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "603050012",
+    "document": "balbharati/6/science/603050012.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Diversity in Living Organisms",
+    "edition": "First Edition 2026",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[INJSO 2022 — question paper]\n11. The following observations were recorded after studying some organisms:\nCharacter Organism W Organism X Organism Y Organism Z\nWater essential for fertilization -\nFormation of filament from -\ngerminating spore\nPlant body sporophytic, differentiated +\nin root, stem and leaves\nMale and female sex organs arranged +\ncompactly in cone\nFemale gametophyte enveloped by +\nsingle layered covering\nTriploid tissue observed in zygote -\n+ - +\n- - +\n+ + -\n+ - -\n- - -\n- + -\nOn the basis of the data, identify the group of organisms:\nA. W- pteridophytes, X- bryophytes, Y- angiosperms, Z- gymnosperms\nB. W- angiosperms, X- gymnosperms, Y-pteridophytes, Z- bryophytes\nC. W- angiosperms, X- bryophytes, Y-gymnos",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 173728,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 26382,
+      "completionTokens": 6038
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 220570,
+      "in": 30,
+      "out": 23,
+      "rejects": 7,
+      "promptTokens": 14006,
+      "completionTokens": 5732
+    },
+    "solver": {
+      "calls": 134,
+      "ms": 58855,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 18085,
+      "completionTokens": 1174
+    },
+    "form": {
+      "calls": 15,
+      "ms": 41616,
+      "in": 22,
+      "out": 13,
+      "rejects": 9,
+      "promptTokens": 3799,
+      "completionTokens": 1098
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 56,
+      "ms": 10645,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 573883,
+      "in": 24,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 31977,
+      "completionTokens": 15874
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 4,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about leaves with reticulate venation?",
+      "ms": {
+        "draft": 3289,
+        "critique": 6842,
+        "solver": 1120,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of a habitat?",
+      "ms": {
+        "draft": 3616,
+        "critique": 9015
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a correct statement about plants?",
+      "ms": {
+        "draft": 3616,
+        "critique": 6926,
+        "solver": 1609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most important factor determining the habitat of an organism?",
+      "ms": {
+        "draft": 3616,
+        "critique": 6691,
+        "solver": 1302,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is found in a desert, which of the following is most likely to be its habitat?",
+      "ms": {
+        "draft": 3616,
+        "critique": 8237,
+        "solver": 12620,
+        "form": 2864
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic used to classify plants?",
+      "ms": {
+        "draft": 4373,
+        "critique": 7696
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the difference in leg length between desert camels and Ladakh camels?",
+      "ms": {
+        "draft": 4373,
+        "critique": 7291
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an animal that can live in both water and land?",
+      "ms": {
+        "draft": 4373,
+        "critique": 6945
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do plants in a desert have different adaptations compared to those in a snowy region?",
+      "ms": {
+        "draft": 4373,
+        "critique": 6340
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct example of a plant with a taproot?",
+      "ms": {
+        "draft": 4373,
+        "critique": 6948,
+        "solver": 8564,
+        "form": 1211
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a plant that grows in an arid habitat?",
+      "ms": {
+        "draft": 3184,
+        "critique": 5977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the term 'habitat'?",
+      "ms": {
+        "draft": 3184,
+        "critique": 6120,
+        "solver": 1990,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an animal that can live in both water and on land?",
+      "ms": {
+        "draft": 3184,
+        "critique": 6572
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of a plant that stores food in its roots?",
+      "ms": {
+        "draft": 3184,
+        "critique": 6411,
+        "solver": 1493,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the differences in leaves such as size, shape, and edges?",
+      "ms": {
+        "draft": 4185,
+        "critique": 5656,
+        "solver": 1710
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a plant with a taproot system?",
+      "ms": {
+        "draft": 4185,
+        "critique": 6815,
+        "solver": 1138,
+        "form": 1708
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is not a characteristic of dicotyledonous plants?",
+      "ms": {
+        "draft": 4185,
+        "critique": 7545,
+        "solver": 7167,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a plant's habitat?",
+      "ms": {
+        "draft": 3184,
+        "critique": 6269,
+        "solver": 1836,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of plants have fibrous roots and parallel venation?",
+      "ms": {
+        "draft": 4185,
+        "critique": 6225,
+        "solver": 1617,
+        "form": 2387,
+        "translation": 26082
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of dicotyledonous plants?",
+      "ms": {
+        "draft": 3289,
+        "critique": 7029,
+        "solver": 1619,
+        "form": 3610,
+        "translation": 45717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of monocotyledonous plants?",
+      "ms": {
+        "draft": 3289,
+        "critique": 7368,
+        "solver": 1903,
+        "form": 3208,
+        "translation": 89416
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a plant's habitat?",
+      "ms": {
+        "draft": 12963,
+        "critique": 7280,
+        "solver": 1970,
+        "form": 3217,
+        "translation": 35240
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an amphibian?",
+      "ms": {
+        "draft": 12963,
+        "critique": 7677,
+        "solver": 2362,
+        "form": 2982,
+        "translation": 33126
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following plants is most likely to have a taproot system?",
+      "ms": {
+        "draft": 3289,
+        "critique": 7030,
+        "solver": 2269,
+        "form": 3657,
+        "translation": 66149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant has a taproot, what can you infer about the plant?",
+      "ms": {
+        "draft": 12963,
+        "critique": 6976,
+        "solver": 1443,
+        "form": 4337,
+        "translation": 36439
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to a plant if it had a fibrous root system?",
+      "ms": {
+        "draft": 12963,
+        "critique": 5363,
+        "solver": 1801,
+        "form": 3241,
+        "translation": 37967
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following groups of organisms is most likely to be found in a snowy region?",
+      "ms": {
+        "draft": 3616,
+        "critique": 7292,
+        "solver": 1438,
+        "form": 2376,
+        "translation": 52142
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a plant with parallel venation and fibrous roots. What can they conclude about the plant?",
+      "ms": {
+        "draft": 3289,
+        "critique": 7794,
+        "solver": 1712,
+        "form": 3379,
+        "translation": 47746
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why plants from snowy regions cannot survive in a desert?",
+      "ms": {
+        "draft": 3616,
+        "critique": 7666,
+        "solver": 1755,
+        "form": 3312,
+        "translation": 56068
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A plant has a taproot system and reticulate venation. Which of the following is most likely to be true about this plant?",
+      "ms": {
+        "draft": 3289,
+        "critique": 7881,
+        "solver": 1281,
+        "form": 4014,
+        "translation": 43900
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about leaves with reticulate venation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of a habitat?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a correct statement about plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most important factor determining the habitat of an organism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant is found in a desert, which of the following is most likely to be its habitat?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic used to classify plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the difference in leg length between desert camels and Ladakh camels?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of an animal that can live in both water and land?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do plants in a desert have different adaptations compared to those in a snowy region?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct example of a plant with a taproot?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main difference between monocot and dicot plants?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a feature of a plant's stem that helps in classification?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a plant that grows in an arid habitat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the term 'habitat'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (55 vs 32 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of an animal that can live in both water and on land?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is an example of a plant that stores food in its roots?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the term used to describe the differences in leaves such as size, shape, and edges?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a plant with a taproot system?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Wheat has a fibrous root system, as stated in the passage.…\"); distractor 2's reason is not a one-line misconception (\"Sugarcane has a fibrous root system, as stated in the passag…\"); distractor 3's reason is not a one-line misconception (\"Corn has a fibrous root system, as stated in the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is not a characteristic of dicotyledonous plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a plant's habitat?",
+      "reason": "near-duplicate of batch item \"Which of the following is a characteristic of a pl…\" (cosine 0.915 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

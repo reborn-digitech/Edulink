@@ -1,0 +1,482 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T15:34:52.860Z",
+  "finishedAt": "2026-10-30T15:53:02.372Z",
+  "seconds": 1090,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "६ वी गणित इंग्रजी",
+    "bookCode": "603060004",
+    "document": "balbharati/6/mathematics/603060004.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Geometrical Constructions",
+    "edition": "First Edition 2026",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[RMO 2017 — solutions or answer key]\n1. Let AOB be a given angle less than 180 and let P be an interior point of the ◦\nangular region determined by ∠AOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C lies on the ray OA and D lies on the ray OB, and CP : P D = 1 : 2.\nSolution: Draw a line parallel to OA through P. Let it intersect OB in\nM. Using compasses, draw an arc of a circle with centre M and radius M O\nto cut OB in L, L 6= O. Again with L as centre and with the same radius\nOM draw one more arc of a circle to cut OB in D, D 6= M. Join DP and\nextend it to meet OA in C. Then CD is the required line segment such that\nCP : P D = 1 : 2. This follows from simil",
+      "[INMO 2025 — question paper]\n3. Euclid has a tool called splitter which can only do the following two types of operations:\n• Given three non-collinear marked points X, Y, Z, it can draw the line which forms\nthe interior angle bisector of ∠XY Z.\n• It can mark the intersection point of two previously drawn non-parallel lines.\nSuppose Euclid is only given three non-collinear marked points A, B, C in the plane.\nProve that Euclid can use the splitter several times to draw the centre of the circle passing\nthrough A, B, and C."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 273146,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17644,
+      "completionTokens": 4339
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 789728,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 15536,
+      "completionTokens": 6267
+    },
+    "solver": {
+      "calls": 191,
+      "ms": 333680,
+      "in": 22,
+      "out": 18,
+      "rejects": 4,
+      "promptTokens": 38354,
+      "completionTokens": 2095
+    },
+    "form": {
+      "calls": 2,
+      "ms": 30292,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 518,
+      "completionTokens": 170
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 52,
+      "ms": 41749,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 1049578,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 26957,
+      "completionTokens": 11959
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following represents a line segment?",
+      "ms": {
+        "draft": 8711,
+        "critique": 19857
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the symbol used to denote that two lines are perpendicular?",
+      "ms": {
+        "draft": 8711,
+        "critique": 17022,
+        "solver": 4655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, line PQ is perpendicular to line RS. If the angle between PQ and RS is 90°, which of the following is true?",
+      "ms": {
+        "draft": 8711,
+        "critique": 22746,
+        "solver": 46774,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to draw a line segment of 7 cm. If the student measures it incorrectly and draws a line segment of 6 cm, how much error is made?",
+      "ms": {
+        "draft": 8711,
+        "critique": 19352,
+        "solver": 57266
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is asked to draw an angle bisector for an angle of 110°. What should be the measure of each part after the bisector is drawn?",
+      "ms": {
+        "draft": 11432,
+        "critique": 30309,
+        "solver": 41956
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student draws an angle of 70° and then draws its bisector. Later, they draw the bisector of one of the resulting angles. What is the measure of the angle formed after the second bisector is drawn?",
+      "ms": {
+        "draft": 11432,
+        "critique": 21039,
+        "solver": 4705
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the perimeter of a rectangle with length 8.5 cm and breadth 5.5 cm?",
+      "ms": {
+        "draft": 11432,
+        "critique": 27481,
+        "solver": 31372
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the first step in drawing the bisector of an angle using a compass?",
+      "ms": {
+        "draft": 11678,
+        "critique": 25722,
+        "solver": 40095,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method to draw a perpendicular to a line from a point outside the line?",
+      "ms": {
+        "draft": 13703,
+        "critique": 22525
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the symbol used to denote that two lines are perpendicular?",
+      "ms": {
+        "draft": 13703,
+        "critique": 23690,
+        "solver": 36945,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what is the purpose of folding a paper twice to draw perpendicular lines?",
+      "ms": {
+        "draft": 13703,
+        "critique": 27376,
+        "solver": 41262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the definition of an angle bisector?",
+      "ms": {
+        "draft": 11678,
+        "critique": 21852,
+        "solver": 4045,
+        "form": 19673,
+        "translation": 119470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a perpendicular line in daily life?",
+      "ms": {
+        "draft": 8711,
+        "critique": 18906,
+        "solver": 5383,
+        "form": 0,
+        "translation": 92777
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the ray that divides a given angle into two equal parts?",
+      "ms": {
+        "draft": 11432,
+        "critique": 19020,
+        "solver": 5338,
+        "form": 0,
+        "translation": 85783
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of folding a trace paper when drawing an angle bisector?",
+      "ms": {
+        "draft": 11678,
+        "critique": 22629,
+        "solver": 6050,
+        "form": 16296,
+        "translation": 130609
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line AB is perpendicular to line CD, what is the measure of the angle between them?",
+      "ms": {
+        "draft": 8711,
+        "critique": 22693,
+        "solver": 4039,
+        "form": 0,
+        "translation": 81312
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the measure of each angle formed when two perpendicular lines intersect?",
+      "ms": {
+        "draft": 13703,
+        "critique": 25481,
+        "solver": 39079,
+        "form": 0,
+        "translation": 34488
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an angle is 110°, and it is bisected, what is the measure of each resulting angle?",
+      "ms": {
+        "draft": 11678,
+        "critique": 24886,
+        "solver": 49020,
+        "form": 0,
+        "translation": 78041
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student draws an angle of 90° and then draws its bisector. What is the measure of each angle formed after the bisector is drawn?",
+      "ms": {
+        "draft": 11432,
+        "critique": 21255,
+        "solver": 6132,
+        "form": 0,
+        "translation": 99925
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a line segment is 10 cm long and a perpendicular is drawn from a point on the line segment, what is the measure of the angle formed between the line segment and the perpendicular?",
+      "ms": {
+        "draft": 13703,
+        "critique": 26941,
+        "solver": 33271,
+        "form": 0,
+        "translation": 40294
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given an angle of 120° and is asked to draw a line through a point inside the angle such that it divides the angle into two parts with a ratio of 1:2. What will be the measure of the smaller angle?",
+      "ms": {
+        "draft": 11432,
+        "critique": 20849,
+        "solver": 4860,
+        "form": 0,
+        "translation": 123345
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student draws an angle of 120° and then draws its bisector, what is the measure of each of the two smaller angles?",
+      "ms": {
+        "draft": 11678,
+        "critique": 26692,
+        "solver": 50927,
+        "form": 1,
+        "translation": 42471
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student draws a line and then draws a perpendicular at a point on the line. What property of the perpendicular line ensures that it is at a right angle to the original line?",
+      "ms": {
+        "draft": 13703,
+        "critique": 21754,
+        "solver": 24391,
+        "form": 0,
+        "translation": 32025
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a student draws an angle and then draws its bisector, and then draws the bisector of one of the resulting angles, what is the measure of the smallest angle formed?",
+      "ms": {
+        "draft": 11678,
+        "critique": 27877,
+        "solver": 5137,
+        "form": 0,
+        "translation": 84398
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following represents a line segment?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the symbol used to denote that two lines are perpendicular?",
+      "reason": "options 0 and 1 are the same (\"∥\"); options 0 and 2 are the same (\"∥\"); options 0 and 3 are the same (\"∥\"); options 1 and 2 are the same (\"≈\"); options 1 and 3 are the same (\"≈\"); options 2 and 3 are the same (\"⊥\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, line PQ is perpendicular to line RS. If the angle between PQ and RS is 90°, which of the following is true?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is asked to draw a line segment of 7 cm. If the student measures it incorrectly and draws a line segment of 6 cm, how much error is made?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student is asked to draw an angle bisector for an angle of 110°. What should be the measure of each part after the bisector is drawn?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student draws an angle of 70° and then draws its bisector. Later, they draw the bisector of one of the resulting angles. What is the measure of the angle formed after the second bisector is drawn?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the perimeter of a rectangle with length 8.5 cm and breadth 5.5 cm?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the first step in drawing the bisector of an angle using a compass?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a method to draw a perpendicular to a line from a point outside the line?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the symbol used to denote that two lines are perpendicular?",
+      "reason": "options 0 and 1 are the same (\"∥\"); options 0 and 2 are the same (\"∥\"); options 0 and 3 are the same (\"∥\"); options 1 and 2 are the same (\"∠\"); options 1 and 3 are the same (\"∠\"); options 2 and 3 are the same (\"⊥\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, what is the purpose of folding a paper twice to draw perpendicular lines?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
