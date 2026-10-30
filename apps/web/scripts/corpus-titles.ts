@@ -183,6 +183,8 @@ const LABEL_LINE =
   /^(?:let us\b|let's\b|activity\b|note (?:to|for) (?:the )?teachers?|think and reflect|think, discuss and write|try these|do this|comprehension check|before you read|about the unit|fig(?:ure)?\.?\s*\d|table\s*\d|example\b|exercises?\b|warm-?up|cool-?down|circle time|how to play|answers?$|contents?$|index$|foreword|preface|picture (?:reading|time)|reprint\b|rationali[sz]|illustration\b|solution\b|therefore\b|total\b|task\b|purpose$|variations$|required material|chapter$|c?hapter$|u?nit$|part\s*[0-9ivx]+$|unit\s*[-–:]?\s*[0-9ivx]+\b|grade(?:\s*\d+)?$|class(?:\s*\d+)?$|step\s*\d|section\b|\(?[ivx]+\)$|\(?[a-z]\)$)/i;
 const NUMBERISH = /^[\s\d.,:;|\-–—()…·•ivxlc]+$/i;
 const SECTION = /^\d{1,2}(?:\.\d{1,2})+\.?(?:\s|$)/;
+/** Letters a symbol font left in the private-use block, or none at all (owner-batch-item6: shared with titleFragment). */
+const GLYPHS = /[ࠀ-ࣿ-�]/u;
 
 /** "Chapter 4", "Chapter 4: Title", "CHAPTER 4 — Title", "Unit 4 Title": the number and what follows. */
 function chapterLine(text: string): { n: number; rest: string } | null {
@@ -422,7 +424,7 @@ export function headCandidates(heads: readonly { text: string; coverage: number;
 export type TitleContext = { vocab: Vocabulary; bookTitle: string; subject?: string; dictionary?: ReadonlySet<string> };
 
 /** A word the dictionary knows, as printed or without a common ending ("Orienting" → "orient"). */
-function inDictionary(w: string, dictionary: ReadonlySet<string>): boolean {
+export function inDictionary(w: string, dictionary: ReadonlySet<string>): boolean {
   if (dictionary.has(w)) return true;
   for (const [end, put] of [["ies", "y"], ["es", ""], ["s", ""], ["ed", ""], ["ed", "e"], ["ing", ""], ["ing", "e"], ["ly", ""], ["isation", "ise"], ["isation", "ize"]] as const) {
     if (w.endsWith(end) && w.length > end.length + 2 && dictionary.has(w.slice(0, -end.length) + put)) return true;
@@ -476,6 +478,62 @@ export function implausible(title: string, ctx: TitleContext): string | null {
   if (letters.length === 1 && (ctx.vocab.get(letters[0]!) ?? 0) === 0 && !(ctx.dictionary && inDictionary(letters[0]!, ctx.dictionary))) return "one word neither the chapter nor the dictionary knows";
   const content = letters.filter((w) => w.length >= 4 && !SMALL.has(w));
   if (content.length >= 2 && !content.some((w) => (ctx.vocab.get(w) ?? 0) > 0)) return "none of its words is the chapter's";
+  return null;
+}
+
+/** owner-batch-item6: the words a title cut short ends in ("Xpressions and", "Nit of"); "from", "on", "in", "to" and "for" end real titles ("Where to Look From", "Time Goes On"). */
+const CUT_SHORT = new Set(["a", "an", "and", "as", "at", "by", "into", "of", "or", "the", "with"]);
+
+/**
+ * owner-batch-item6 (30 Oct 2026): why a practice chapter's NAME cannot stand, or null — bare ("Chapter 4"), or broken in
+ * a way corpus-titles' own refusal rules name: a label or a garbled "Unit" ("NIT", "Nit of", "Unit Objectives…"), the
+ * word Chapter inside it ("In this chapter…"), a number in front ("22. On the Move Again"), a sentence, cut after a mark
+ * or a joining word, the book's or the subject's own name, a word short of its first letter, a letter printed apart from
+ * its word, or two words run together ("Roducts and Their", "Time G oes O n", "Pathto"), each judged by the chapter's
+ * OWN words (`vocab`): a word the dictionary knows is never called short ("ever" is not "never"). Narrower than
+ * `implausible`, which chooses among a page's candidates and may refuse a real name: an unknown word, a short word ("Air"),
+ * a word the dictionary lacks (web2 knows neither "Europe" nor "heard"), an activity's label ("Index Numbers" is a
+ * chapter), a lower-case start (a casing fault, mended by the case rule).
+ * The generator (scripts/quiz-gen/select.ts), the loader (scripts/quiz-queue-load.ts) and data:audit's "bank-names"
+ * check read it. Pure.
+ */
+export function titleFragment(title: string, ctx: Pick<TitleContext, "vocab" | "bookTitle" | "subject"> & { dictionary?: ReadonlySet<string> }): string | null {
+  const t = title.trim();
+  if (!t || isBareName(t) || isBareHeading(t)) return "only the chapter's label";
+  if (!/\p{L}/u.test(t)) return "no letters";
+  if (GLYPHS.test(t)) return "glyphs with no letters behind them";
+  if (SECTION.test(t)) return "a section heading";
+  if (/^\d/.test(t)) return "a number in front";
+  if (chapterLine(t) || /^(?:c?hapter|u?nit|lesson|part)\b/i.test(t)) return "a label";
+  if (/\bchapter\b/i.test(t)) return "the word Chapter inside it (a label set over the title)";
+  if (/^(?:contents|index|answers|glossary|appendix|bibliography)\W*$/i.test(t)) return "a prelims heading";
+  const words = t.split(/\s+/);
+  if (words.length > 12) return "a sentence (more than twelve words)";
+  if (/[^.]\.$/.test(t) && !/\b(?:etc|vs|St|Dr|Mr|Mrs)\.$/.test(t)) return "a sentence (ends with a full stop)";
+  if (/[:,;]$/.test(t)) return "cut after a mark";
+  if (ctx.bookTitle && squash(t) === squash(ctx.bookTitle)) return "the book's own title";
+  if (ctx.subject && squash(t) === squash(ctx.subject)) return "the subject's name";
+  const last = words[words.length - 1]!.toLowerCase().replace(/[^\p{L}]/gu, "");
+  if (words.length > 1 && CUT_SHORT.has(last)) return `cut short after "${last}"`;
+  // The chapter's count of a word: the garbled title itself is printed in it too (a running head), so a word is short of
+  // its first letter when that longer word is the commoner of the two there, and the dictionary does not know it.
+  const count = (w: string) => ctx.vocab.get(w.toLowerCase()) ?? 0;
+  const known = (w: string) => count(w) > 0;
+  const inDict = (w: string) => Boolean(ctx.dictionary && inDictionary(w.toLowerCase(), ctx.dictionary));
+  for (const w of t.split(/[^\p{L}]+/u).filter((x) => x.length >= 3)) {
+    if (inDict(w)) continue;
+    for (const letter of "abcdefghijklmnopqrstuvwxyz") if (count(letter + w) > count(w)) return `"${w.toLowerCase()}" is short of its first letter ("${letter}${w.toLowerCase()}")`;
+  }
+  for (let i = 0; i + 1 < words.length; i++) {
+    const lone = /^\P{L}*(\p{L})$/u.exec(words[i]!)?.[1];
+    const next = /^\p{L}+/u.exec(words[i + 1]!)?.[0];
+    if (lone && next && !/^[aAI]$/.test(lone) && known(lone + next)) return `a letter printed apart from its word ("${lone} ${next}")`;
+  }
+  // Two of the chapter's words run together, the space lost ("Pathto", "Separationin"), in no dictionary.
+  for (const w of t.split(/[^\p{L}]+/u).filter((x) => x.length >= 6)) {
+    if (inDict(w)) continue;
+    for (let cut = 2; cut <= w.length - 2; cut++) if (Math.min(count(w.slice(0, cut)), count(w.slice(cut))) > count(w) && (cut >= 4 || w.length - cut >= 4)) return `"${w}" is two words run together ("${w.slice(0, cut)} ${w.slice(cut)}")`;
+  }
   return null;
 }
 
@@ -610,11 +668,13 @@ export const REVIEWED_REFUSED: Record<string, string> = {
   "ncert/11/fine-art/kefa103.pdf": "\"Rts\" mended to \"Parts\"; the title is \"Arts of the Mauryan Period\"",
 };
 
-/** The English word list on this machine, lower case, or undefined when there is none. */
-function loadDictionary(): Set<string> | undefined {
+let dictionaryRead: Set<string> | undefined | null = null;
+/** The English word list on this machine, lower case, or undefined when there is none. Read once. */
+export function loadDictionary(): Set<string> | undefined {
+  if (dictionaryRead !== null) return dictionaryRead;
   const file = "/usr/share/dict/words";
-  if (!existsSync(file)) return undefined;
-  return new Set(readFileSync(file, "utf8").split("\n").map((w) => w.trim().toLowerCase()).filter(Boolean));
+  dictionaryRead = existsSync(file) ? new Set(readFileSync(file, "utf8").split("\n").map((w) => w.trim().toLowerCase()).filter(Boolean)) : undefined;
+  return dictionaryRead;
 }
 
 async function corpusPass(db: PrismaClient): Promise<void> {

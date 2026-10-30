@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-28T02:27:46.082Z",
+  "generatedAt": "2026-10-30T09:44:15.041Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If Nandini and Chirag have 52 stamps and 37 of them have pictures of famous persons, how many have pictures of monuments?",
+      "difficulty": 1,
+      "stem": "How many apples did Nandini and Chirag collect in total?",
       "choices": [
-        "15",
-        "16",
-        "17",
-        "18"
+        "85",
+        "67",
+        "152",
+        "112"
       ],
-      "answerIndex": 0,
-      "solution": "The total number of stamps is 52, and 37 of them have pictures of famous persons. Subtracting 37 from 52 gives 15, which is the number of stamps with pictures of monuments. The other options result from incorrect arithmetic or misinterpretations of the numbers provided.",
-      "checkExpr": "52-37",
+      "answerIndex": 2,
+      "solution": "Nandini collected 85 apples and Chirag collected 67 apples. Adding these together gives 85 + 67 = 152. The other options are individual numbers and not the sum of both amounts.",
+      "checkExpr": "85+67",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि नंदिनी और चिराग के पास 52 स्टाम्प हैं और उनमें से 37 में प्रसिद्ध व्यक्तियों की तस्वीरें हैं, तो कितने में स्मारकों की तस्वीरें हैं?",
+          "stem": "नंदिनी और चिराग ने कुल मिलाकर कितने सेब एकत्र किए?",
           "choices": [
-            "15",
-            "16",
-            "17",
-            "18"
+            "85",
+            "67",
+            "152",
+            "112"
           ],
-          "solution": "कुल स्टाम्प की संख्या 52 है, और उनमें से 37 में प्रसिद्ध व्यक्तियों की तस्वीरें हैं। 37 को 52 में से घटाने पर 15 प्राप्त होता है, जो स्मारकों की तस्वीरों वाले स्टाम्प की संख्या है। अन्य विकल्प गलत अंकगणित या प्रदत्त संख्याओं के गलत अर्थान्वयन के कारण हैं।",
+          "solution": "नंदिनी ने 85 सेब एकत्र किए और चिराग ने 67 सेब एकत्र किए। इनको एक साथ जोड़ने पर 85 + 67 = 152 प्राप्त होता है। अन्य विकल्प दोनों राशियों के योग के स्थान पर अलग-अलग संख्याएं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "नंदिनी आणि चिराग जमीन 52 तारखाचित्रे आहेत आणि त्यापैकी 37 तारखाचित्रे प्रसिद्ध व्यक्तींची आहेत, तर तारखाचित्रे किती स्मारकांची आहेत?",
+          "stem": "नंदिनी आणि चिरागने एकूण किती आंबे एकत्र केले?",
           "choices": [
-            "15",
-            "16",
-            "17",
-            "18"
+            "85",
+            "67",
+            "152",
+            "112"
           ],
-          "solution": "तारखाचित्रांची एकूण संख्या 52 आहे, आणि 37 त्यापैकी प्रसिद्ध व्यक्तींची आहेत. 37 ची 52 मधून बेरीज करून 15 मिळतो, जो स्मारकांच्या तारखाचित्रांची संख्या आहे. इतर विकल्प असंख्य गणितातील चूक किंवा पुरवलेल्या संख्यांच्या चुकीच्या व्याख्येमुळे मिळतात.",
+          "solution": "नंदिनीने 85 आंबे आणि चिरागने 67 आंबे एकत्र केले. यांची बेरीज करून 85 + 67 = 152 मिळते. इतर विकल्प मूळ संख्या आहेत आणि दोन्ही रकमांची बेरीज नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'stamps' (तारखाचित्रे) and 'monuments' (स्मारकांची).",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -72,20 +72,118 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Chooses the number of apples Nandini collected",
+        "Chooses the number of apples Chirag collected",
         null,
-        "Student subtracts 37 from 52 but forgets to borrow, resulting in 16 instead of 15.",
-        "confuses with the difference of 37 and 52",
-        "Thinking that 52 - 37 is 18 instead of 15 due to incorrect subtraction"
+        "Student adds 85 + 67 but incorrectly carries over the tens place, resulting in 112 instead of 152."
       ],
       "solverAnswers": [
-        0,
-        1,
         2,
-        1,
-        0
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 15, as 52 - 37 = 15. The author's solution is correct, and the reasons for the distractors align with common subtraction misconceptions.",
+      "critique": "The solution is correct, and the reasoning aligns with the passage. The correct answer is 152, and the distractors represent common errors or misinterpretations.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 5,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 6,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Nandini had 7 balushahi in her box and Chirag had 5 balushahi in his box. How many balushahi did they have in total?",
+      "choices": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "answerIndex": 1,
+      "solution": "Nandini had 7 balushahi and Chirag had 5, so adding them together gives 7 + 5 = 12. The option '11' is incorrect because it suggests a subtraction instead of addition. The option '13' is wrong because it shows an incorrect sum. The option '14' is incorrect because it assumes both had 7 balushahi, not 5.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नंदिनी के बॉक्स में 7 बलूशाही थीं और चिराग के बॉक्स में 5 बलूशाही थीं। उनके पास कुल कितनी बलूशाही थीं?",
+          "choices": [
+            "11",
+            "12",
+            "13",
+            "14"
+          ],
+          "solution": "नंदिनी के पास 7 बलूशाही थीं और चिराग के पास 5 बलूशाही थीं, इसलिए उन्हें एक साथ जोड़ने पर 7 + 5 = 12 प्राप्त होता है। विकल्प '11' गलत है क्योंकि यह जोड़ के बजाय घटाव को दर्शाता है। विकल्प '13' गलत है क्योंकि यह गलत योग को दर्शाता है। विकल्प '14' गलत है क्योंकि यह दोनों के पास 7 बलूशाही होने का अनुमान लगाता है, न कि 5।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नंदिनीच्या बॉक्समध्ये 7 बालूशही होत्या आणि चिरागच्या बॉक्समध्ये 5 बालूशही होत्या. एकूण किती बालूशही त्यांच्याकडे होत्या?",
+          "choices": [
+            "11",
+            "12",
+            "13",
+            "14"
+          ],
+          "solution": "नंदिनीच्या बॉक्समध्ये 7 बालूशही होत्या आणि चिरागच्या बॉक्समध्ये 5 बालूशही होत्या, म्हणून त्यांना एकत्र केल्यास 7 + 5 = 12 मिळते. '11' विकल्प चूक आहे कारण तो बेरीजऐवजी वजाबाकी दर्शवतो. '13' विकल्प चूक आहे कारण तो अचूक बेरीज दर्शवत नाही. '14' विकल्प चूक आहे कारण तो दोघांनाही 7 बालूशही असल्याचा अंदाज घेतो, 5 नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses addition with subtraction",
+        null,
+        "incorrectly adds 7 + 5 as 13",
+        "incorrectly adds 7 + 7 instead of 7 + 5"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 12 (7 + 5). The author's solution and reasoning are accurate, and the distractors represent plausible misconceptions.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm104.pdf",
@@ -128,49 +226,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:27:46.082Z",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If Rama sold 39 vadas on the first day and 12 more on the next day, how many vadas did she sell in total?",
+      "difficulty": 2,
+      "stem": "Chirag got 9 story books and Nandini got 7 puzzle books for Nani Maa. How many total books did the children get for Nani Maa?",
       "choices": [
-        "51",
-        "41",
-        "47",
-        "55"
+        "14",
+        "15",
+        "16",
+        "17"
       ],
-      "answerIndex": 0,
-      "solution": "Rama sold 39 vadas on the first day and 12 more on the next day. Adding these together gives 39 + 12 = 51. The correct answer is 51 because it is the sum of the two quantities. The other options are incorrect because they do not result from adding 39 and 12 properly.",
-      "checkExpr": "39+12",
+      "answerIndex": 2,
+      "solution": "Chirag got 9 books and Nandini got 7 books. Adding these together gives 9 + 7 = 16. The option 14 is incorrect because it suggests subtraction instead of addition. The option 15 is wrong because it uses 6 instead of 7. The option 17 is incorrect because it uses 8 instead of 7.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "रामा ने पहले दिन 39 वड़े बेचे और अगले दिन 12 अधिक बेचे, तो उसने कुल कितने वड़े बेचे?",
+          "stem": "चिराग को 9 कहानी किताबें और नंदिनी को 7 पहेली किताबें नानी माँ के लिए मिलीं। बच्चों ने नानी माँ के लिए कुल कितनी किताबें प्राप्त कीं?",
           "choices": [
-            "51",
-            "41",
-            "47",
-            "55"
+            "14",
+            "15",
+            "16",
+            "17"
           ],
-          "solution": "रामा ने पहले दिन 39 वड़े बेचे और अगले दिन 12 अधिक बेचे। इन दोनों को जोड़ने पर 39 + 12 = 51 प्राप्त होता है। सही उत्तर 51 है क्योंकि यह दोनों मात्राओं का योग है। अन्य विकल्प गलत हैं क्योंकि वे 39 और 12 को सही तरीके से जोड़ने पर प्राप्त नहीं होते।",
+          "solution": "चिराग को 9 किताबें और नंदिनी को 7 किताबें मिलीं। इन्हें जोड़ने पर 9 + 7 = 16 प्राप्त होता है। विकल्प 14 गलत है क्योंकि यह जोड़ के स्थान पर घटाव के बारे में सोचता है। विकल्प 15 गलत है क्योंकि यह 7 के स्थान पर 6 का उपयोग करता है। विकल्प 17 गलत है क्योंकि यह 7 के स्थान पर 8 का उपयोग करता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terms for mathematical concepts.",
+          "critique": "Translation is accurate, maintains mathematical meaning, and uses standard Hindi terms for books and numbers.",
           "flag": null
         },
         "mr": {
-          "stem": "रामाने पहिल्या दिवशी 39 वडे विकले आणि दुसऱ्या दिवशी 12 अधिक विकले, तर तिने एकूण किती वडे विकले?",
+          "stem": "चिरागला 9 कथापुस्तके आणि नंदिनीला 7 पहाडी पुस्तके नानी माईसाठी मिळाली. मुलांनी नानी माईसाठी किती एकूण पुस्तके मिळाली?",
           "choices": [
-            "51",
-            "41",
-            "47",
-            "55"
+            "14",
+            "15",
+            "16",
+            "17"
           ],
-          "solution": "रामाने पहिल्या दिवशी 39 वडे विकले आणि दुसऱ्या दिवशी 12 अधिक विकले. यांची बेरीज करून 39 + 12 = 51 मिळते. योग्य उत्तर 51 आहे कारण ते दोन राशींची बेरीज आहे. इतर विकल्प चुकीचे आहेत कारण ते 39 आणि 12 ची बेरीज करून मिळत नाहीत.",
+          "solution": "चिरागला 9 पुस्तके आणि नंदिनीला 7 पुस्तके मिळाली. यांची बेरीज करून 9 + 7 = 16 मिळते. 14 हा विकल्प चुकीचा आहे कारण तो बेरीजऐवजी बरोबरी करतो. 15 हा विकल्प चुकीचा आहे कारण तो 7ऐवजी 6 वापरतो. 17 हा विकल्प चुकीचा आहे कारण तो 8 ऐवजी 7 वापरतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terms for numbers and quantities.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical operations and book types.",
           "flag": null
         }
       },
@@ -179,20 +277,341 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "incorrectly subtracts 9 - 7",
+        "incorrectly adds 9 + 6 instead of 9 + 7",
         null,
-        "Adding 39 and 12 by only adding the tens place (30 + 10) and ignoring the ones place (9 + 2)",
-        "Adding 39 and 12 by only adding the tens and ignoring the ones (30 + 10 = 40, then 40 + 7 = 47)",
-        "Adding 39 and 12 by only adding the tens place (30 + 12 = 42) and forgetting to add the 9."
+        "incorrectly adds 9 + 8 instead of 9 + 7"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward addition. The correct answer is 39 + 12 = 51. The author's reasoning for the distractors reflects common misconceptions in addition, such as ignoring the ones place or incorrectly adding parts of the numbers.",
+      "levelFlag": null,
+      "critique": "The correct answer is 16 (9 + 7), and the author's reasoning for the distractors aligns with common misconceptions such as subtraction, adding incorrect numbers, or adding 9 + 8.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many more books do Chirag and Nandini have now if they had 22 books and got 30 more?",
+      "choices": [
+        "42",
+        "52",
+        "62",
+        "72"
+      ],
+      "answerIndex": 1,
+      "solution": "They had 22 books and got 30 more, so 22 + 30 = 52. The other options are not the correct result of adding 22 and 30.",
+      "checkExpr": "22+30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चिराग और नंदनी के पास अब कितने अधिक किताबें हैं अगर उनके पास 22 किताबें थीं और उन्हें 30 और मिल गए?",
+          "choices": [
+            "42",
+            "52",
+            "62",
+            "72"
+          ],
+          "solution": "उनके पास 22 किताबें थीं और उन्हें 30 और मिल गए, इसलिए 22 + 30 = 52। अन्य विकल्प 22 और 30 के जोड़ के सही परिणाम नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चिराग आणि नंदिनीला आता किती अधिक पुस्तके आहेत जर त्यांना 22 पुस्तके होती आणि त्यांना 30 पुस्तके अधिक मिळाली?",
+          "choices": [
+            "42",
+            "52",
+            "62",
+            "72"
+          ],
+          "solution": "त्यांना 22 पुस्तके होती आणि त्यांना 30 पुस्तके अधिक मिळाली, म्हणून 22 + 30 = 52. इतर विकल्प 22 आणि 30 च्या बेरजेचा योग्य निकाल नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and options. All mathematical terms and numerical values are correctly translated and maintain their original meaning. The correct answer (option 2) is in the same position as in the English version, and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds 22 and 30 incorrectly",
+        null,
+        "Thinks the total is 62",
+        "Thinks the total is 72"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question asks for the total number of books after adding 22 and 30, which equals 52. The correct answer is 1, and the distractors represent plausible errors in addition.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Nandini and Chirag have 22 stamps. Nani Maa’s brother gives them 30 more stamps. How many stamps do they have now?",
+      "choices": [
+        "42",
+        "52",
+        "62",
+        "72"
+      ],
+      "answerIndex": 1,
+      "solution": "Nandini and Chirag initially have 22 stamps and receive 30 more, so 22 + 30 = 52. The option '42' is incorrect because it adds 22 + 20 instead of 22 + 30. The option '62' is incorrect because it adds 22 + 40 instead of 22 + 30. The option '72' is incorrect because it adds 22 + 50 instead of 22 + 30.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नंदिनी और चिराग के पास 22 डाक टिकट हैं। नानी माँ के भाई ने उन्हें 30 और डाक टिकट दे दिए। अब उनके पास कितने डाक टिकट हैं?",
+          "choices": [
+            "42",
+            "52",
+            "62",
+            "72"
+          ],
+          "solution": "नंदिनी और चिराग के पास शुरू में 22 डाक टिकट हैं और उन्हें 30 और डाक टिकट मिल जाते हैं, इसलिए 22 + 30 = 52। विकल्प '42' गलत है क्योंकि यह 22 + 20 जोड़ता है बजाय 22 + 30 के। विकल्प '62' गलत है क्योंकि यह 22 + 40 जोड़ता है बजाय 22 + 30 के। विकल्प '72' गलत है क्योंकि यह 22 + 50 जोड़ता है बजाय 22 + 30 के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नंदिनी आणि चिराग ला 22 डायबॉक्स आहेत. नानी माचा भाऊ त्यांना 30 डायबॉक्स आणून देतो. आता त्यांना किती डायबॉक्स आहेत?",
+          "choices": [
+            "42",
+            "52",
+            "62",
+            "72"
+          ],
+          "solution": "नंदिनी आणि चिराग ला सुरुवातीला 22 डायबॉक्स आहेत आणि त्यांना 30 अतिरिक्त डायबॉक्स मिळतात, म्हणून 22 + 30 = 52. '42' विकल्प चुकीचा आहे कारण 22 + 20 ऐवजी 22 + 30 जोडले जाते. '62' विकल्प चुकीचा आहे कारण 22 + 40 ऐवजी 22 + 30 जोडले जाते. '72' विकल्प चुकीचा आहे कारण 22 + 50 ऐवजी 22 + 30 जोडले जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terms for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly adds 22 + 20 instead of 22 + 30",
+        null,
+        "incorrectly adds 22 + 40 instead of 22 + 30",
+        "incorrectly adds 22 + 50 instead of 22 + 30"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward arithmetic. The correct answer is 52, and the author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many more apples did Chirag collect than Nandini?",
+      "choices": [
+        "12",
+        "15",
+        "18",
+        "22"
+      ],
+      "answerIndex": 2,
+      "solution": "Chirag collected 67 apples and Nandini collected 85 apples. Subtracting 67 from 85 gives 18, which is the correct answer. The option 12 is wrong because it uses an incorrect subtraction value. The option 15 is wrong because it also uses an incorrect subtraction value. The option 22 is wrong because it subtracts a value that is too low.",
+      "checkExpr": "85-67",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चिराग ने नंदिनी के मुकाबले कितने अधिक सेब एकत्र किए?",
+          "choices": [
+            "12",
+            "15",
+            "18",
+            "22"
+          ],
+          "solution": "चिराग ने 67 सेब एकत्र किए और नंदिनी ने 85 सेब एकत्र किए। 85 में से 67 को घटाने पर 18 प्राप्त होता है, जो सही उत्तर है। 12 गलत है क्योंकि इसमें गलत घटाव मान का उपयोग किया गया है। 15 गलत है क्योंकि इसमें भी गलत घटाव मान का उपयोग किया गया है। 22 गलत है क्योंकि इसमें बहुत कम घटाव मान का उपयोग किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चिरागने किती अधिक सेब एकत्र केले ते नंदिनीपेक्षा?",
+          "choices": [
+            "12",
+            "15",
+            "18",
+            "22"
+          ],
+          "solution": "चिरागने 67 सेब एकत्र केले आणि नंदिनीने 85 सेब एकत्र केले. 67 मधून 85 वजा करून 18 मिळतो, जो बरोबर उत्तर आहे. 12 चूक आहे कारण ते चुकीचे वजा मूल्य वापरते. 15 चूक आहे कारण ते देखील चुकीचे वजा मूल्य वापरते. 22 चूक आहे कारण ते खूप कमी वजा मूल्य वापरते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "subtracts 73 from 85 instead of 67",
+        "subtracts 70 from 85 instead of 67",
+        null,
+        "subtracts 63 from 85 instead of 67"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 18, as 85 - 67 = 18. The author's solution is correct and the reasoning for the distractors is based on plausible student errors.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm104.pdf",
@@ -226,7 +645,319 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:27:46.082Z",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many plants dried up if Gehu brought 56 plants and is left with 29 plants?",
+      "choices": [
+        "26",
+        "27",
+        "29",
+        "31"
+      ],
+      "answerIndex": 1,
+      "solution": "To find how many plants dried up, subtract the number of plants left (29) from the number of plants brought (56), which equals 27. The option '27' is correct because it represents the difference between the original number and the remaining number. '26' is incorrect because it does not match the subtraction result. '29' and '31' are incorrect because they do not represent the correct difference.",
+      "checkExpr": "56-29",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गेहूँ ने 56 पौधे लाए और 29 पौधे बचे। कितने पौधे सूख गए?",
+          "choices": [
+            "26",
+            "27",
+            "29",
+            "31"
+          ],
+          "solution": "सूखे हुए पौधों की संख्या ज्ञात करने के लिए, बचे हुए पौधों की संख्या (29) को लाए गए पौधों की संख्या (56) में से घटाएं, जो 27 के बराबर है। '27' विकल्प सही है क्योंकि यह मूल संख्या और बचे हुए संख्या के अंतर का प्रतिनिधित्व करता है। '26' गलत है क्योंकि यह घटाव परिणाम के बराबर नहीं है। '29' और '31' गलत हैं क्योंकि वे सही अंतर का प्रतिनिधित्व नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गेहूने 56 वनस्पती आणल्या आणि 29 वनस्पती उरल्या, तर किती वनस्पती वाळल्या?",
+          "choices": [
+            "26",
+            "27",
+            "29",
+            "31"
+          ],
+          "solution": "वाळलेल्या वनस्पतींची संख्या शोधण्यासाठी, आणलेल्या वनस्पतींची संख्या (56) मधून उरलेल्या वनस्पतींची संख्या (29) वजा करावी, जी 27 येते. बरोबर उत्तर '27' आहे कारण ते मूळ संख्या आणि उरलेल्या संख्येमधील फरक दर्शवते. '26' चूक आहे कारण ते वजा करण्याच्या निकालाशी मेळ नाही. '29' आणि '31' चूक आहेत कारण ते योग्य फरक दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for 'plants' and 'dried up'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Subtracts 29 from 56 but forgets to borrow, resulting in 26 instead of 27",
+        null,
+        "Student subtracts the wrong numbers, thinking 56 - 29 = 27 but writes 29 as the answer",
+        "Confuses subtraction with addition, thinking 56 - 29 = 31 instead of 27"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 27, as 56 - 29 = 27. The author's solution is correct, and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 5,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 6,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If Babli didi sold 34 books on Monday and 45 books on Tuesday, how many books did she sell in total?",
+      "choices": [
+        "79",
+        "89",
+        "99",
+        "109"
+      ],
+      "answerIndex": 0,
+      "solution": "Babli didi sold 34 books on Monday and 45 books on Tuesday. Adding these two numbers together gives 34 + 45 = 79. The option '79' is correct because it is the sum of the books sold on both days. '89' is incorrect because it would require adding 34 and 55, which is not the case. '99' and '109' are also incorrect as they involve adding larger numbers than 45.",
+      "checkExpr": "34+45",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर बबली दीदी ने सोमवार को 34 किताबें बेचीं और मंगलवार को 45 किताबें बेचीं, तो उन्होंने कुल कितनी किताबें बेचीं?",
+          "choices": [
+            "79",
+            "89",
+            "99",
+            "109"
+          ],
+          "solution": "बबली दीदी ने सोमवार को 34 किताबें बेचीं और मंगलवार को 45 किताबें बेचीं। इन दोनों संख्याओं को जोड़ने पर 34 + 45 = 79 प्राप्त होता है। '79' विकल्प सही है क्योंकि यह दोनों दिनों में बेची गई किताबों के योग के बराबर है। '89' गलत है क्योंकि इसके लिए 34 और 55 को जोड़ना आवश्यक होता है, जो स्थिति में नहीं है। '99' और '109' भी गलत हैं क्योंकि इनमें 45 से बड़ी संख्याओं को जोड़ा जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बाबली दीदीने सोमवारी 34 पुस्तके विकली आणि मंगळवारी 45 पुस्तके विकली, तर तिने एकूण किती पुस्तके विकली?",
+          "choices": [
+            "79",
+            "89",
+            "99",
+            "109"
+          ],
+          "solution": "बाबली दीदीने सोमवारी 34 पुस्तके विकली आणि मंगळवारी 45 पुस्तके विकली. या दोन संख्या एकत्र जोडल्याने 34 + 45 = 79 मिळते. '79' ही विकल्या गेलेल्या पुस्तकांच्या बेरजेने बरोबर असल्याने ती बरोबर विकल्प आहे. '89' चूकीचा आहे कारण त्यासाठी 34 आणि 55 जोडावे लागतील, जे असे नाही. '99' आणि '109' देखील चूकीचे आहेत कारण ते 45 पेक्षा मोठ्या संख्यांच्या बेरजेने असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 34 and 55 instead of 45",
+        "adds 34 and 65 instead of 45",
+        "adds 34 and 75 instead of 45"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 79, as 34 + 45 = 79. The distractors are based on plausible addition errors where the second number is increased by 10, 20, or 30, which could reflect common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 5,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 6,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a frog jumps forward by 10 each time starting from 7, which numbers will it land on?",
+      "choices": [
+        "7, 17, 27, 37",
+        "7, 18, 29, 40",
+        "7, 17, 28, 39",
+        "7, 16, 25, 34"
+      ],
+      "answerIndex": 0,
+      "solution": "Starting from 7 and adding 10 each time gives 7, 17, 27, 37. The other options do not follow the pattern of adding 10 each time.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक मेंढक प्रत्येक बार 10 आगे की ओर कूदता है और 7 से शुरू करता है, तो वह कौन-कौन सी संख्याओं पर गिरेगा?",
+          "choices": [
+            "7, 17, 27, 37",
+            "7, 18, 29, 40",
+            "7, 17, 28, 39",
+            "7, 16, 25, 34"
+          ],
+          "solution": "7 से शुरू करके प्रत्येक बार 10 जोड़ने पर 7, 17, 27, 37 प्राप्त होता है। अन्य विकल्प प्रत्येक बार 10 जोड़ने के पैटर्न का अनुसरण नहीं करते हैं।",
+          "imageAlt": "0 से 40 तक के एक संख्या रेखा पर शुरू में 7 पर एक मेंढक द्वारा 10 के अंतराल पर कूदना",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक मेंढक प्रत्येक वेळी 10 पुढे उडी मारत असेल आणि 7 वरून सुरू करत असेल, तर ते कोणत्या संख्यांवर जाईल?",
+          "choices": [
+            "7, 17, 27, 37",
+            "7, 18, 29, 40",
+            "7, 17, 28, 39",
+            "7, 16, 25, 34"
+          ],
+          "solution": "7 वरून सुरू करून प्रत्येक वेळी 10 जोडल्यास 7, 17, 27, 37 मिळतात. इतर विकल्प प्रत्येक वेळी 10 जोडण्याच्या पॅटर्नला अनुसरत नाहीत.",
+          "imageAlt": "0 ते 40 पर्यंत असलेला संख्या रेषा आहे जिथे 7 वरून सुरू होणारा मेंढक 10 च्या अंतराने उडी मारत आहे",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A number line from 0 to 40 with a frog jumping by 10s starting at 7",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "labelEvery": 5
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Adds 10 incorrectly",
+        "Adds 11 instead of 10",
+        "Adds 9 instead of 10"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as adding 10 to 7 repeatedly gives 7, 17, 27, 37. The other options involve incorrect additions (11 or 9), which are plausible misconceptions for students.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm104.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Vacation with My Nani Maa",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:44:15.041Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

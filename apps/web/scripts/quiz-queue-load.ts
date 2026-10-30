@@ -32,12 +32,21 @@
  *   batch's own name, and loads into it, renaming a "Chapter N" to the batch's title when the batch carries one
  *   (audited as "operator.quizTopic.rename", via this file). A topic with a title of its own is never taken: two
  *   books share a number in class 8 and are separate chapters by design.
+ *
+ *   THE CHAPTER'S NAME (owner-batch-item6, 30 October 2026) — a batch names a topic only when it MAKES one (or renames a
+ *   "Chapter N" it adopts): the name is the batch's `name`, which the generator takes from the corpus's chapter title
+ *   (scripts/quiz-gen/select.ts), never from the model. An existing topic's name is never written here. A name that is
+ *   bare or a fragment by corpus-titles' own rules ("NIT", "Nit of", "In this chapter…", "22. On the Move Again") refuses
+ *   the run before anything is written, as a board clash does: such names made topics whose slugs the next chapter with
+ *   the same fragment collided with. The model's Hindi and Marathi names for a new topic lose a "अध्याय 4:" label in front
+ *   and a danda or full stop at the end (a name is not a sentence).
  */
 import { randomUUID } from "node:crypto";
 import type { PrismaClient } from "@prisma/client";
 import { asCollegeTerm, asQuizBoard, cleanTopicStreams, collegeSyllabusBoardOf, type QuizBoard } from "@edulink/contracts";
 import { finishFigure, figureProblems, prepareFigure, type PreparedFigure } from "./quiz-gen/figures/attach";
 import { chapterNameOf, chapterNumberOf, newTopicSlug } from "./quiz-gen/checks";
+import { loadDictionary, titleFragment, vocabularyOf } from "./corpus-titles";
 
 export type QueueTr = { stem?: string; choices?: string[]; solution?: string; imageAlt?: string | null; critique?: string | null; flag?: string | null };
 export type QueueItem = {
@@ -71,6 +80,8 @@ export type QueueBatch = {
   source: string;
   licence: string;
   board?: string;
+  /** The book the batch was drafted from (the generator writes it); the name may not be the book's own title. */
+  book?: string;
   translations?: Record<string, { name?: string; summary?: string }>;
   questions: QueueItem[];
   // ---- college-content (12 Oct 2026): a college unit's batch (scripts/quiz-gen/college.ts): no school board ----
@@ -150,6 +161,26 @@ export type TopicForAdoption = { slug: string; name: string; chapter: string; bo
 const squashName = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
 
 /**
+ * owner-batch-item6: why a batch's name may not name a topic, or null: bare, or a fragment by corpus-titles' rules
+ * (src: scripts/corpus-titles.ts titleFragment), judged against the words of the batch's own items. Pure but for the
+ * machine's word list.
+ */
+export function batchNameRefusal(batch: Pick<QueueBatch, "name" | "book" | "summary" | "questions">): string | null {
+  const texts = [batch.summary ?? "", ...batch.questions.flatMap((q) => [q.stem, q.solution, ...q.choices])];
+  return titleFragment(batch.name ?? "", { vocab: vocabularyOf(texts), bookTitle: batch.book ?? "", dictionary: loadDictionary() });
+}
+
+/** owner-batch-item6: a model's Hindi or Marathi chapter name as a name: no "अध्याय 4:"/"प्रकरण 4 –" label in front or behind ("रेसिंग सेकंड अध्याय 12"), no danda or full stop at the end. Pure. */
+export function cleanTranslatedName(name: string): string {
+  return name
+    .trim()
+    .replace(/^(?:अध्याय|प्रकरण|पाठ|धडा|chapter)\s*[0-9०-९]{1,2}\s*[:.\-–—]?\s*/iu, "")
+    .replace(/[।.]+$/u, "")
+    .replace(/\s*[-–—:]?\s*(?:अध्याय|प्रकरण|पाठ|धडा)\s*[0-9०-९]{1,2}$/u, "")
+    .trim();
+}
+
+/**
  * Whether a batch whose slug found nothing may load into this existing topic (pure): a SCHOOL topic, not retired, of
  * the batch's board, subject, class and chapter number, named only "Chapter N" — or carrying the chapter-N slug
  * ("maths-9-chapter-1", "balbharati-science-8-chapter-3") and already the batch's own name. A topic with a title of
@@ -214,6 +245,9 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
     if (!board) throw new Error(`${file}: board "${batch.board ?? ""}" is not one of the practice boards; nothing was written`);
     const topic = await db.quizTopic.findUnique({ where: { slug: batch.slug }, select: { board: true } });
     if (topic?.board && topic.board !== board) throw new Error(`${file}: the chapter "${batch.slug}" is ${topic.board}'s and this batch is ${board}'s; nothing was written`);
+    // owner-batch-item6: a batch that would name a topic (a new one, or a "Chapter N" it adopts) must carry a title.
+    const refusal = topic ? null : batchNameRefusal(batch);
+    if (refusal) throw new Error(`${file}: the chapter's name "${batch.name}" is ${refusal}, not a title; no topic is named with it (fix the corpus heading, npm run corpus:titles); nothing was written`);
     boards.set(file, board);
   }
 
@@ -239,7 +273,7 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
         select: { id: true, board: true },
       });
       for (const [language, tr] of Object.entries(batch.translations ?? {})) {
-        await db.quizTopicTranslation.create({ data: { topicId: topic.id, language, name: tr.name ?? batch.name, summary: tr.summary ?? "" } });
+        await db.quizTopicTranslation.create({ data: { topicId: topic.id, language, name: (tr.name ? cleanTranslatedName(tr.name) : "") || batch.name, summary: tr.summary ?? "" } });
       }
     } else if (college) {
       // college-content: the stream, programme and term follow the batch (the loader is their one writer for a generated college topic).

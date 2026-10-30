@@ -1,0 +1,475 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T09:56:14.336Z",
+  "finishedAt": "2026-10-30T10:16:16.214Z",
+  "seconds": 1202,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm105.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Fun with Shapes",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[PRMO 2018 — question paper]\n24. If N is the number of triangles of different shapes (i.e., not similar) whose angles are all\nintegers (in degrees), what is N/100?",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 379291,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 15394,
+      "completionTokens": 4482
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 1041531,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 8294,
+      "completionTokens": 3524
+    },
+    "solver": {
+      "calls": 81,
+      "ms": 296247,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 9274,
+      "completionTokens": 672
+    },
+    "form": {
+      "calls": 8,
+      "ms": 95813,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 3776,
+      "completionTokens": 777
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 10159,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 770500,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7975,
+      "completionTokens": 3691
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How many rectangles are there in the given picture?",
+      "ms": {
+        "draft": 34372,
+        "critique": 39669,
+        "solver": 14499
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student draws a shape with 4 sides, and all sides are of different lengths, what shape is it?",
+      "ms": {
+        "draft": 34372,
+        "critique": 82160,
+        "solver": 22717,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has four equal sides and four square corners?",
+      "ms": {
+        "draft": 34372,
+        "critique": 42207,
+        "solver": 130214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student folds a square sheet and it becomes a rectangle, what can be said about the corners of the folded shape?",
+      "ms": {
+        "draft": 34372,
+        "critique": 72072,
+        "solver": 12717,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a property of a triangle?",
+      "ms": {
+        "draft": 22428,
+        "critique": 63623
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many triangles can be formed using the dots on a circle with 6 dots?",
+      "ms": {
+        "draft": 22428,
+        "critique": 71395
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a rectangle is split into three triangles by one straight line, what is the maximum number of triangles that can be formed?",
+      "ms": {
+        "draft": 22428,
+        "critique": 68493
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a triangle is formed by joining three non-collinear points on a circle, how many such triangles can be formed from 5 points on the circle?",
+      "ms": {
+        "draft": 22428,
+        "critique": 44131,
+        "solver": 4351,
+        "form": 6905
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a triangle?",
+      "ms": {
+        "draft": 3368,
+        "critique": 47969
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many straight lines are formed when a paper plate is folded in half twice?",
+      "ms": {
+        "draft": 3368,
+        "critique": 56118,
+        "solver": 18493
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has four equal sides and four square corners?",
+      "ms": {
+        "draft": 3048,
+        "critique": 55855,
+        "solver": 12893,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many different faces does a cuboid have?",
+      "ms": {
+        "draft": 3048,
+        "critique": 49786
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which shape has four sides, with opposite sides equal but not all sides equal?",
+      "ms": {
+        "draft": 34372,
+        "critique": 84341,
+        "solver": 13638,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many sides does a triangle have?",
+      "ms": {
+        "draft": 22428,
+        "critique": 66495,
+        "solver": 15293,
+        "form": 21629
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "A triangle has how many sides?",
+      "ms": {
+        "draft": 3368,
+        "critique": 6488,
+        "solver": 2242,
+        "form": 4886
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many corners does a triangle have?",
+      "ms": {
+        "draft": 3368,
+        "critique": 6527,
+        "solver": 2728,
+        "form": 4896
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following shapes has straight edges?",
+      "ms": {
+        "draft": 3368,
+        "critique": 7895,
+        "solver": 3097,
+        "form": 3911,
+        "translation": 196386
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square has a side length of 4 cm, what is the length of all its sides combined?",
+      "ms": {
+        "draft": 34372,
+        "critique": 35987,
+        "solver": 12896,
+        "form": 1,
+        "translation": 234267
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you fold a paper plate in half and then in half again, how many lines will you get?",
+      "ms": {
+        "draft": 22428,
+        "critique": 63536,
+        "solver": 16874,
+        "form": 23893,
+        "translation": 236701
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are 4 triangles in the first row, and 4 more triangles are added in the second row, how many triangles are there in total?",
+      "ms": {
+        "draft": 3368,
+        "critique": 52473,
+        "solver": 10485,
+        "form": 29185,
+        "translation": 96578
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many rectangles are there in the given picture?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student draws a shape with 4 sides, and all sides are of different lengths, what shape is it?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which shape has four equal sides and four square corners?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student folds a square sheet and it becomes a rectangle, what can be said about the corners of the folded shape?",
+      "reason": "options 0 and 1 say the same thing (\"They are square corners\" / \"They are not square corners\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a property of a triangle?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many triangles can be formed using the dots on a circle with 6 dots?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a rectangle is split into three triangles by one straight line, what is the maximum number of triangles that can be formed?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a triangle is formed by joining three non-collinear points on a circle, how many such triangles can be formed from 5 points on the circle?",
+      "reason": "figure: figure spec refused: spec.circles: circles names point O, which is not defined"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many sides does a rectangle have?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following has only square corners?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the shape of a chessboard?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the shape of a matchbox?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a triangle?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many straight lines are formed when a paper plate is folded in half twice?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which shape has four equal sides and four square corners?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is a square, not a rectangle because all side…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many different faces does a cuboid have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which shape has four sides, with opposite sides equal but not all sides equal?",
+      "reason": "near-duplicate of served question cmvk1725g0inkgpfhlzakg2s0 (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many sides does a triangle have?",
+      "reason": "near-duplicate of served question cmsjsuwiq00may2kqv8v0pa7a (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "A triangle has how many sides?",
+      "reason": "near-duplicate of served question cmsjsuwiq00may2kqv8v0pa7a (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many corners does a triangle have?",
+      "reason": "near-duplicate of served question cmvri5pk00edlgp215ycho2qw (cosine 0.972 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

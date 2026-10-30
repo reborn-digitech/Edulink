@@ -20119,4 +20119,13 @@ export const en = {
     messChargeHint: "Billed to each boarder's fee ledger when the office bills the month's mess. Leave it at 0 for no mess bill.",
   },
   // end owner-batch-item5
+  // owner-batch-item6 (30 Oct 2026): the generation card's saturated and set-aside chapters.
+  quizGenAside: {
+    saturatedTitle: "Nothing new (every item drafted was one the chapter already holds; nothing held): {list}",
+    saturatedItem: "{label}, pass {pass}: {drafted} drafted, {dropped} dropped",
+    setAsideTitle: "Set aside for the rest of the run: {list}",
+    setAsideSATURATED: "{label}: saturated, nothing new on {tries} passes in a row (pass {pass})",
+    setAsideFAILING: "{label}: failing, {tries} tries in a row (pass {pass}): {reason}",
+  },
+  // end owner-batch-item6
 } as const;

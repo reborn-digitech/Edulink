@@ -214,10 +214,10 @@ describe("a finished chapter lands in the bank as it goes", () => {
       ],
     } as unknown as GeneratedTopicFile;
     const refused = await landChapter(db, "zz-qj.json", file, () => "ZZ: the bank did not verify");
-    expect(refused).toEqual({ loaded: 0, figuresHeld: 0, problem: "set aside in generated/held (ZZ: the bank did not verify)", dropped: 0, held: true });
+    expect(refused).toEqual({ loaded: 0, created: 0, figuresHeld: 0, problem: "set aside in generated/held (ZZ: the bank did not verify)", dropped: 0, held: true, nothingNew: false });
     expect(await db.quizTopic.count({ where: { slug: LAND_SLUG } })).toBe(0);
     const landed = await landChapter(db, "zz-qj.json", file, () => null);
-    expect(landed).toEqual({ loaded: 1, figuresHeld: 0, problem: null, dropped: 0, held: false });
+    expect(landed).toEqual({ loaded: 1, created: 1, figuresHeld: 0, problem: null, dropped: 0, held: false, nothingNew: false });
     const row = await db.quizQuestion.findFirstOrThrow({ where: { topic: { slug: LAND_SLUG } }, select: { generated: true, takenDownAt: true, needsFigure: true, imageKey: true, reviewedAt: true, translations: { select: { language: true } } } });
     expect(row).toMatchObject({ generated: true, reviewedAt: null });
     expect(isServed(row), "published without review").toBe(true);
@@ -524,7 +524,7 @@ describe("a batch the bank check refuses", () => {
     const held: string[] = [];
     let calls = 0;
     const verify = () => (calls++ === 0 ? "✗ generated/zz-batch.json[1]: duplicate of a question already in generated/zz-batch.json" : null);
-    const fs = { write: (_n: string, f: { questions: unknown[] }) => void writes.push(f.questions.length), hold: (n: string) => void held.push(n) };
+    const fs = { write: (_n: string, f: { questions: unknown[] }) => void writes.push(f.questions.length), hold: (n: string) => void held.push(n), restore: () => undefined, stemOf: () => null };
     const ownerDb = { } as never;
     const loader = vi.spyOn(await import("../scripts/quiz-queue-load"), "loadGeneratedBatches").mockResolvedValue({ created: 2, updated: 0, settled: 0, duplicates: 0, topicsMade: 0, boardsSet: 0, figuresDrawn: 0, figuresKept: 0, figuresFailed: [] } as never);
     try {

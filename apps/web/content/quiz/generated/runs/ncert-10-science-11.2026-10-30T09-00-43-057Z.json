@@ -1,0 +1,735 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T09:00:43.057Z",
+  "finishedAt": "2026-10-30T09:10:05.189Z",
+  "seconds": 562,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc111.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Electricity",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n31. An electrical appliance rated 1000 W is operated at 250 V. What current does it 1\ndraw?\nA. 0.25 A\nB. 2.5 A\nC. 4.0 A\nD. 10 A\nThe following one question consists of two statements – Assertion (A) and Reason (R).\nAnswer these questions by selecting the appropriate option given below:\nA. Both A and R are true, and R is the correct explanation of A.\nB. Both A and R are true, and R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is false but R is true.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n36. Attempt either option A or B. 5\nA.\nThe above circuit is a part of an electrical device. Use the information\ngiven in the question to calculate the following.\n(i) Potential Difference across R 2 .\n(ii) Value of the resistance R 2 .\n(iii) Value of resistance R 1\nOR\nB.\nAs shown in the figure above A and B are two lamps. Lamp A is rated at 12 V,\n24W. Lamp B is rated at 6.0 V. When lamp B operates at its rated voltage, the\ncurrent in it is 3.0 A. The values of R 1 and R 2 are chosen so that both lamps\noperate at their rated voltages.\nBased on the information given, answer the following.\n(i) Calculate the current in Lamp A.\n(ii) State and give reason for the reading of the Voltmeter.\n(iii) Cal",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n16. (d) The field consists of concentric circles centred around the wire. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 172747,
+      "in": 38,
+      "out": 37,
+      "rejects": 1,
+      "promptTokens": 48395,
+      "completionTokens": 7958
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 383026,
+      "in": 37,
+      "out": 30,
+      "rejects": 7,
+      "promptTokens": 22008,
+      "completionTokens": 8525
+    },
+    "solver": {
+      "calls": 234,
+      "ms": 154078,
+      "in": 30,
+      "out": 24,
+      "rejects": 6,
+      "promptTokens": 46761,
+      "completionTokens": 2660
+    },
+    "form": {
+      "calls": 2,
+      "ms": 13069,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 2242,
+      "completionTokens": 273
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10378,
+      "in": 15,
+      "out": 8,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 347489,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18413,
+      "completionTokens": 8645
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If 300 C of charge flows through a conductor in 10 minutes, what is the current?",
+      "ms": {
+        "draft": 4157,
+        "critique": 7124,
+        "solver": 18749,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electric bulb is rated 100 W at 220 V. What is the current drawn by the bulb?",
+      "ms": {
+        "draft": 4157,
+        "critique": 7400,
+        "solver": 20592
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A 1000 W electric heater is connected to a 250 V supply. What is the current drawn by the heater?",
+      "ms": {
+        "draft": 4157,
+        "critique": 7081,
+        "solver": 2124,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A circuit has a 12 V battery, a 6 ohm resistor, and a 4 ohm resistor in series. What is the total resistance?",
+      "ms": {
+        "draft": 4157,
+        "critique": 7788,
+        "solver": 1600,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a factor on which the resistance of a conductor depends?",
+      "ms": {
+        "draft": 4646,
+        "critique": 7977,
+        "solver": 21134
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An electric heater coil has a resistance of 100 Ω. What current will it draw from a 220 V source?",
+      "ms": {
+        "draft": 4646,
+        "critique": 9249,
+        "solver": 17371
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the equivalent resistance of resistors connected in series?",
+      "ms": {
+        "draft": 19737,
+        "critique": 10124
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If three resistors of 1 Ω, 2 Ω, and 3 Ω are connected in series, what is the total resistance?",
+      "ms": {
+        "draft": 19737,
+        "critique": 7587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the current in a series circuit and the current through each resistor?",
+      "ms": {
+        "draft": 19737,
+        "critique": 8035,
+        "solver": 15244,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for calculating the heat produced in a resistor according to Joule's law of heating?",
+      "ms": {
+        "draft": 5219,
+        "critique": 8279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric lamp with resistance 20 Ω and a conductor of 4 Ω are connected in series to a 6 V battery. What is the current in the circuit?",
+      "ms": {
+        "draft": 19737,
+        "critique": 8374,
+        "solver": 1843
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A piece of wire of resistance R is cut into five equal parts. These parts are then connected in parallel. If the equivalent resistance of this combination is R′, then what is the ratio R/R′?",
+      "ms": {
+        "draft": 7301,
+        "critique": 7561,
+        "solver": 1555,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An electric iron consumes 840 W when heating is at maximum rate and 360 W when heating is at minimum rate. If the voltage is 220 V, what is the resistance of the iron in the maximum heating case?",
+      "ms": {
+        "draft": 5219,
+        "critique": 9045,
+        "solver": 2253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a circuit, two resistors of 1 Ω and 2 Ω are connected in series with a 6 V battery. What is the power used in the 2 Ω resistor?",
+      "ms": {
+        "draft": 4862,
+        "critique": 7710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two resistors, each of 6 Ω, are connected in a way that the combination has a resistance of 9 Ω. Which of the following configurations is correct?",
+      "ms": {
+        "draft": 4862,
+        "critique": 11152
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electrical appliance rated 1000 W is operated at 250 V. What current does it draw?",
+      "ms": {
+        "draft": 4862,
+        "critique": 6009,
+        "solver": 16489
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an electric circuit, the rate at which electric energy is consumed is known as",
+      "ms": {
+        "draft": 4121,
+        "critique": 7483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total current in the circuit when resistors of 5 Ω, 10 Ω, and 30 Ω are connected in parallel to a 12 V battery?",
+      "ms": {
+        "draft": 5947,
+        "critique": 9738,
+        "solver": 2203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A 100 W, 220 V electric bulb is connected to a 110 V supply. What will be the power consumed by the bulb?",
+      "ms": {
+        "draft": 4121,
+        "critique": 7415,
+        "solver": 14015,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the current in a series circuit and the current through each resistor?",
+      "ms": {
+        "draft": 6196,
+        "critique": 6764
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric heater is rated at 1000 W and operates at 250 V. What is the current drawn by the heater?",
+      "ms": {
+        "draft": 4121,
+        "critique": 8002,
+        "solver": 19235
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main factor that affects the resistance of a conductor according to the passage?",
+      "ms": {
+        "draft": 5545,
+        "critique": 4870,
+        "solver": 608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the resistance of a conductor if a potential difference of 12 V produces a current of 3 A?",
+      "ms": {
+        "draft": 4157,
+        "critique": 10688,
+        "solver": 1571,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which law states that the potential difference across a conductor is directly proportional to the current through it, provided the temperature remains constant?",
+      "ms": {
+        "draft": 3720,
+        "critique": 7404,
+        "solver": 1795,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of resistance?",
+      "ms": {
+        "draft": 3720,
+        "critique": 8127,
+        "solver": 2039,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A wire of resistance 4 Ω is replaced by another wire of the same material, but with half the length and double the cross-sectional area. What is the resistance of the new wire?",
+      "ms": {
+        "draft": 4646,
+        "critique": 8779,
+        "solver": 1148,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following materials is the best conductor of electricity, based on the data in Table 11.2?",
+      "ms": {
+        "draft": 4646,
+        "critique": 7318,
+        "solver": 16112,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total current in a circuit where three resistors of 5 Ω, 10 Ω, and 30 Ω are connected in parallel and the voltage across them is 12 V?",
+      "ms": {
+        "draft": 5219,
+        "critique": 8562,
+        "solver": 9731,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the SI unit of electric power?",
+      "ms": {
+        "draft": 4121,
+        "critique": 9001,
+        "solver": 11835,
+        "form": 1994
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to connect a voltmeter in a circuit to measure the potential difference between two points?",
+      "ms": {
+        "draft": 4862,
+        "critique": 5713,
+        "solver": 1505,
+        "form": 0,
+        "translation": 42946
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "ms": {
+        "draft": 4862,
+        "critique": 9757,
+        "solver": 1718,
+        "form": 0,
+        "translation": 38612
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the potential difference across a conductor if 24 J of work is done to move 2 C of charge?",
+      "ms": {
+        "draft": 4157,
+        "critique": 7358,
+        "solver": 2081,
+        "form": 0,
+        "translation": 35119
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an electric circuit, the resistance of a conductor is directly proportional to its length and inversely proportional to its area of cross-section. What is the constant of proportionality called?",
+      "ms": {
+        "draft": 3720,
+        "critique": 8084,
+        "solver": 1830,
+        "form": 0,
+        "translation": 48932
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An electric bulb is rated at 100 W and 200 V. What is the current drawn by the bulb?",
+      "ms": {
+        "draft": 3720,
+        "critique": 6496,
+        "solver": 2041,
+        "form": 0,
+        "translation": 44397
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An electric bulb has a resistance of 1200 Ω and is connected to a 220 V source. If the resistance of the bulb is reduced to 600 Ω, what will happen to the current drawn by the bulb?",
+      "ms": {
+        "draft": 4646,
+        "critique": 8869,
+        "solver": 3084,
+        "form": 0,
+        "translation": 56640
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A 220 V line supplies power to several 10 W lamps connected in parallel. If the maximum allowable current is 5 A, how many lamps can be connected?",
+      "ms": {
+        "draft": 4862,
+        "critique": 9632,
+        "solver": 22715,
+        "form": 0,
+        "translation": 30455
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A nichrome wire of length 1 m has a resistance of 2 Ω. What will be the resistance of a nichrome wire of length 2 m and the same cross-sectional area?",
+      "ms": {
+        "draft": 3720,
+        "critique": 6750,
+        "solver": 2078,
+        "form": 0,
+        "translation": 42974
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 300 C of charge flows through a conductor in 10 minutes, what is the current?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "An electric bulb is rated 100 W at 220 V. What is the current drawn by the bulb?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A 1000 W electric heater is connected to a 250 V supply. What is the current drawn by the heater?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A circuit has a 12 V battery, a 6 ohm resistor, and a 4 ohm resistor in series. What is the total resistance?",
+      "reason": "figure: figure spec refused: spec.nodes.2.x: Number must be less than or equal to 12"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a factor on which the resistance of a conductor depends?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "An electric heater coil has a resistance of 100 Ω. What current will it draw from a 220 V source?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the equivalent resistance of resistors connected in series?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If three resistors of 1 Ω, 2 Ω, and 3 Ω are connected in series, what is the total resistance?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relationship between the current in a series circuit and the current through each resistor?",
+      "reason": "options 0 and 1 say the same thing (\"The current increases as it passes through each resistor.\" / \"The current decreases as it passes through each resistor.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for calculating the heat produced in a resistor according to Joule's law of heating?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electric lamp with resistance 20 Ω and a conductor of 4 Ω are connected in series to a 6 V battery. What is the current in the circuit?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A piece of wire of resistance R is cut into five equal parts. These parts are then connected in parallel. If the equivalent resistance of this combination is R′, then what is the ratio R/R′?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An electric iron consumes 840 W when heating is at maximum rate and 360 W when heating is at minimum rate. If the voltage is 220 V, what is the resistance of the iron in the maximum heating case?",
+      "reason": "options are written to different precisions (0 and 2 decimals)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is not a unit of electrical energy?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a circuit, two resistors of 1 Ω and 2 Ω are connected in series with a 6 V battery. What is the power used in the 2 Ω resistor?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Two resistors, each of 6 Ω, are connected in a way that the combination has a resistance of 9 Ω. Which of the following configurations is correct?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "An electrical appliance rated 1000 W is operated at 250 V. What current does it draw?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an electric circuit, the rate at which electric energy is consumed is known as",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the total current in the circuit when resistors of 5 Ω, 10 Ω, and 30 Ω are connected in parallel to a 12 V battery?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A 100 W, 220 V electric bulb is connected to a 110 V supply. What will be the power consumed by the bulb?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the relationship between the current in a series circuit and the current through each resistor?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electric heater is rated at 1000 W and operates at 250 V. What is the current drawn by the heater?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main factor that affects the resistance of a conductor according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the resistance of a conductor if a potential difference of 12 V produces a current of 3 A?",
+      "reason": "near-duplicate of served question cmvgxlc8s05d6gpfhn6z1tvmr (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which law states that the potential difference across a conductor is directly proportional to the current through it, provided the temperature remains constant?",
+      "reason": "near-duplicate of served question cmvk08kqi0ih4gpfhbg1yvyoj (cosine 0.972 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the SI unit of resistance?",
+      "reason": "near-duplicate of served question cmvk08kqr0ihmgpfhpb8ek8jr (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A wire of resistance 4 Ω is replaced by another wire of the same material, but with half the length and double the cross-sectional area. What is the resistance of the new wire?",
+      "reason": "near-duplicate of served question cmvk08kqw0iiagpfh2599vbwm (cosine 0.973 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following materials is the best conductor of electricity, based on the data in Table 11.2?",
+      "reason": "near-duplicate of served question cmvrh2sj90e8lgp21ur5ts87k (cosine 0.976 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the total current in a circuit where three resistors of 5 Ω, 10 Ω, and 30 Ω are connected in parallel and the voltage across them is 12 V?",
+      "reason": "near-duplicate of served question cmvrh2sj10e83gp2111ufx2pp (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the SI unit of electric power?",
+      "reason": "near-duplicate of served question cmvgxlc8b05c0gpfhxpx62pnc (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

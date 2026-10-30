@@ -1,0 +1,322 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T09:39:22.452Z",
+  "finishedAt": "2026-10-30T09:42:08.735Z",
+  "seconds": 166,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm102.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Toy Joy",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2013 — question paper]\n3. A finite non-empty set of integers is called 3-good if the sum of its elements is divisible by 3.\nFind the number of non-empty 3-good subsets of {0, 1, 2, . . . , 9}.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[RMO 2015 — question paper]\n4. Find all three digit natural numbers of the form (abc) 10 such that (abc) 10 , (bca) 10 and (cab) 10\nare in geometric progression. (Here (abc) 10 is representation in base 10.)",
+      "[RMO 2013 — question paper]\nPaper 3 Regional Mathematical Olympiad 2013 December 1, 2013"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 59610,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 7696,
+      "completionTokens": 2372
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 151226,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 7447,
+      "completionTokens": 2969
+    },
+    "solver": {
+      "calls": 72,
+      "ms": 52262,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 12506,
+      "completionTokens": 762
+    },
+    "form": {
+      "calls": 3,
+      "ms": 12174,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 740,
+      "completionTokens": 208
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 5343,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 25685,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2519,
+      "completionTokens": 1474
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which shape has no edges?",
+      "ms": {
+        "draft": 4773,
+        "critique": 8904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student arranges a cube on top of a cuboid, what shape is on top?",
+      "ms": {
+        "draft": 4773,
+        "critique": 10082
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which shape has both flat and curved faces?",
+      "ms": {
+        "draft": 4773,
+        "critique": 11615
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student draws a face on a cylinder, what shape is used for the ears?",
+      "ms": {
+        "draft": 4773,
+        "critique": 10983
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student joins a cube and a cuboid, how many different shapes can they form?",
+      "ms": {
+        "draft": 4773,
+        "critique": 6556,
+        "solver": 730
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape is a special type of cuboid?",
+      "ms": {
+        "draft": 5162,
+        "critique": 6258,
+        "solver": 2497,
+        "form": 6612
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student has 3 cubes and joins them, what shape could they make?",
+      "ms": {
+        "draft": 5162,
+        "critique": 8210,
+        "solver": 16951
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which shapes are used in the toy engine that Devika bought?",
+      "ms": {
+        "draft": 5162,
+        "critique": 8973,
+        "solver": 20093
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student builds a model using a cube, a cuboid, and a cylinder, which of the following could be the shape of the model?",
+      "ms": {
+        "draft": 5162,
+        "critique": 10604,
+        "solver": 1916,
+        "form": 3779
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student has 4 cubes and joins 3 of them, what shape is formed?",
+      "ms": {
+        "draft": 5162,
+        "critique": 12110,
+        "solver": 10565
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a special type of cuboid?",
+      "ms": {
+        "draft": 4773,
+        "critique": 10131,
+        "solver": 15843,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the activity where students sit in groups and describe the sequence of construction of shapes?",
+      "ms": {
+        "draft": 5162,
+        "critique": 7827,
+        "solver": 15988,
+        "form": 4562,
+        "translation": 21445
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which shape has no edges?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student arranges a cube on top of a cuboid, what shape is on top?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which shape has both flat and curved faces?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student draws a face on a cylinder, what shape is used for the ears?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student joins a cube and a cuboid, how many different shapes can they form?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which shape is a special type of cuboid?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, but the question is l…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student has 3 cubes and joins them, what shape could they make?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which shapes are used in the toy engine that Devika bought?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student builds a model using a cube, a cuboid, and a cylinder, which of the following could be the shape of the model?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student has 4 cubes and joins 3 of them, what shape is formed?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a special type of cuboid?",
+      "reason": "near-duplicate of served question cmvgygqe005iygpfh78pg1aov (cosine 0.921 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

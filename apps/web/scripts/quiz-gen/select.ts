@@ -17,6 +17,9 @@ import type { AssistantEndpoint } from "../../src/lib/assistant-env";
 import { asQuery, embedTexts, vectorLiteral } from "../../src/lib/assistant-model";
 import { CORPUS_ROOT } from "../corpus-lib";
 import { chapterNameOf, chapterNumberOf } from "./checks";
+// owner-batch-item6 (30 Oct 2026): a chapter's name is its book's title, never a fragment of one (corpus-titles' rules).
+import { loadDictionary, titleCase, titleFragment, vocabularyOf } from "../corpus-titles";
+import { fixTitleCase } from "../../src/lib/chapter-title-case";
 
 export type SelectedChunk = {
   id: string;
@@ -136,6 +139,20 @@ function firstLabel(rows: { chapter: string | null; headingPath: string[] }[]): 
   return "";
 }
 
+/**
+ * owner-batch-item6: the chapter's title out of its corpus label: the label's name ("Chapter 9: 9. Up You Go!" → "Up You
+ * Go!", the number printed again in front dropped; "early societies" → "Early Societies") under the case rule
+ * (src/lib/chapter-title-case.ts). "" when bare. Pure.
+ */
+export function chapterTitleOf(label: string, chapterNumber: number): string {
+  const name = chapterNameOf(label)
+    .replace(new RegExp(`^${chapterNumber}\\s*[.:)]\\s+`), "")
+    .trim();
+  if (!name) return "";
+  // A title the text layer gave in lower case ("early societies") is put in title case.
+  return fixTitleCase(/^\p{Ll}/u.test(name) ? titleCase(name, true) : name);
+}
+
 function bookCodeOf(doc: DocRow): string | null {
   const extra = doc.extra as { bookCode?: string; bookId?: string } | null;
   return extra?.bookCode ?? extra?.bookId ?? null;
@@ -167,7 +184,7 @@ export async function listChapters(
       const n = (d.extra as { chapter?: number } | null)?.chapter;
       if (!n) continue;
       const heads = await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true } });
-      const name = chapterNameOf(firstLabel(heads));
+      const name = chapterTitleOf(firstLabel(heads), n);
       if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${n} ("${d.title}", ${d.path}) has no title in the corpus`);
       out.push({ number: n, name, bookCode: code, book: d.title });
     }
@@ -182,7 +199,7 @@ export async function listChapters(
         const n = chapterNumberOf(label);
         if (n === null || seen.has(n)) continue;
         seen.add(n);
-        const name = chapterNameOf(label);
+        const name = chapterTitleOf(label, n);
         if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${n} ("${d.title}", ${d.path}) has no title in the corpus`);
         out.push({ number: n, name, bookCode: code, book: d.title });
       }
@@ -230,18 +247,24 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   // A heading that carries no title even after npm run corpus:titles (20 Oct 2026, the owner's rule: a chapter is never
   // shown as "Chapter N"): the bank's own title for that chapter is used when the bank already has one — the authored
   // bank names every NCERT chapter it covers — and otherwise the chapter is not drafted at all, with the reason.
-  let chapterName = chapterNameOf(chapterLabel);
-  if (!chapterName) {
+  // owner-batch-item6 (30 Oct 2026): so is a heading that is a fragment of a title by corpus-titles' own rules ("NIT",
+  // "Nit of", "Roducts and Their", "In this chapter…"): such a name made a new topic whose slug the next chapter with the
+  // same fragment collided with. The model never names a chapter.
+  let chapterName = chapterTitleOf(chapterLabel, args.chapter);
+  const ctx = { vocab: vocabularyOf([...chunks.map((c) => c.text), ...chunks.flatMap((c) => c.headingPath.slice(1))]), bookTitle: doc.title, subject: doc.subject, dictionary: loadDictionary() };
+  const fragment = chapterName ? titleFragment(chapterName, ctx) : null;
+  if (!chapterName || fragment) {
     const known = await db.quizTopic.findFirst({
       where: { audience: "SCHOOL", retiredAt: null, board, classLevel: args.grade, subject: subjectCodeOf(args.subject), chapter: { startsWith: `Chapter ${args.chapter} ` }, NOT: { name: "" } },
       orderBy: { position: "asc" },
       select: { name: true, slug: true },
     });
-    if (known && !/^chapter\s*\d+$/i.test(known.name)) {
+    const missing = fragment ? `a chapter title that is ${fragment} ("${chapterName}")` : "no chapter title";
+    if (known && !titleFragment(known.name, ctx)) {
       chapterName = known.name;
-      log(`  ${doc.path} has no chapter title in the corpus: the bank's own title for chapter ${args.chapter} is used ("${known.name}", ${known.slug})`);
+      log(`  ${doc.path} has ${missing} in the corpus: the bank's own title for chapter ${args.chapter} is used ("${known.name}", ${known.slug})`);
     } else {
-      throw new Error(`${doc.path} has no chapter title in the corpus and the bank has none for chapter ${args.chapter}: not drafted (npm run corpus:titles, or set the heading by hand)`);
+      throw new Error(`${doc.path} has ${missing} in the corpus and the bank has none for chapter ${args.chapter}: not drafted (npm run corpus:titles, or set the heading by hand)`);
     }
   }
   const keys = [...new Set(chunks.flatMap((c) => c.figureKeys))];

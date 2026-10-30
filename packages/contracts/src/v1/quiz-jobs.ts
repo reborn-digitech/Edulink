@@ -127,6 +127,17 @@ export const quizGenProgressSchema = z.object({
   chaptersDone: count,
   chaptersSkipped: count,
   chaptersFailed: z.array(z.object({ label: z.string(), reason: z.string() })),
+  /**
+   * owner-batch-item6 (30 Oct 2026): a chapter's batch that landed nothing new, every item it drafted dropped as one the
+   * chapter already holds (the bank saturated there). Not a failure: no held file is written. One line per time it happened.
+   */
+  chaptersSaturated: z.array(z.object({ label: z.string(), pass: z.number().int().min(1), drafted: count, dropped: count })).default([]),
+  /**
+   * owner-batch-item6: chapters the run stopped taking — SATURATED after two passes in a row with nothing new, FAILING after
+   * two tries whose landing failed (a duplicate slug, a malformed file, no title) — with the reason and the pass it happened on.
+   * Left out of every later pass and out of the count that keeps a target run going.
+   */
+  chaptersSetAside: z.array(z.object({ label: z.string(), kind: z.enum(["SATURATED", "FAILING"]), pass: z.number().int().min(1), tries: count, reason: z.string() })).default([]),
   /** Across the run. */
   drafted: count,
   kept: count,

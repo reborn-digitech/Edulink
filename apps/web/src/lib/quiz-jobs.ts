@@ -229,7 +229,7 @@ export class JobRefusal extends Error {
 const ACTIVE = [...QUIZ_GEN_ACTIVE_STATES] as string[];
 
 export function emptyProgress(phase: QuizGenProgress["phase"]): QuizGenProgress {
-  return { phase, chapter: null, chaptersDone: 0, chaptersSkipped: 0, chaptersFailed: [], drafted: 0, kept: 0, loaded: 0, keepRate: null, secondsPerKept: null, last: null };
+  return { phase, chapter: null, chaptersDone: 0, chaptersSkipped: 0, chaptersFailed: [], chaptersSaturated: [], chaptersSetAside: [], drafted: 0, kept: 0, loaded: 0, keepRate: null, secondsPerKept: null, last: null };
 }
 
 type JobRow = Prisma.QuizGenJobGetPayload<object>;

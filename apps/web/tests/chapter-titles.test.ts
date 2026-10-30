@@ -18,8 +18,12 @@ import {
   type Candidate,
   type Vocabulary,
 } from "../scripts/corpus-titles";
-import { chapterNameOf } from "../scripts/quiz-gen/checks";
-import { adoptsTopic, chapterLineNumber, isBareChapterName, loadGeneratedBatches, type QueueBatch } from "../scripts/quiz-queue-load";
+import { chapterNameOf, slugForNewTopic } from "../scripts/quiz-gen/checks";
+import { adoptsTopic, batchNameRefusal, chapterLineNumber, cleanTranslatedName, isBareChapterName, loadGeneratedBatches, type QueueBatch } from "../scripts/quiz-queue-load";
+// owner-batch-item6 (30 Oct 2026): a chapter's name is its book's title, never a fragment and never the model's.
+import { titleFragment } from "../scripts/corpus-titles";
+import { chapterTitleOf } from "../scripts/quiz-gen/select";
+import { slugWords, titleVerdict, titlesAgree, type CorpusChapter } from "../scripts/topic-titles";
 
 /**
  * Every chapter carries its own title, never a bare "Chapter N" (chapter-titles, 19 October 2026).
@@ -159,16 +163,16 @@ describe("the loader takes a \"Chapter N\" topic before it makes a new one", () 
 
   it("a batch with a title loads into the \"Chapter 47\" topic and renames it; the slug stays, and the rename is audited", async () => {
     const bare = await make(47, "Chapter 47", `${P}-bare`);
-    const r = await loadGeneratedBatches(db, [{ file: "zz-ct.json", batch: zzBatch(47, "ZZ Chapter Titles Real", `${P}-titled`) }]);
+    const r = await loadGeneratedBatches(db, [{ file: "zz-ct.json", batch: zzBatch(47, "ZZ Titles Real", `${P}-titled`) }]);
     expect(r).toMatchObject({ created: 1, topicsMade: 0, topicsAdopted: 1 });
     const topic = await db.quizTopic.findUniqueOrThrow({ where: { id: bare.id }, select: { slug: true, name: true, chapter: true, questions: { select: { stem: true } } } });
-    expect(topic).toMatchObject({ slug: `${P}-bare`, name: "ZZ Chapter Titles Real", chapter: "Chapter 47 — ZZ Chapter Titles Real" });
+    expect(topic).toMatchObject({ slug: `${P}-bare`, name: "ZZ Titles Real", chapter: "Chapter 47 — ZZ Titles Real" });
     expect(topic.questions).toHaveLength(1);
     expect(await db.quizTopic.count({ where: { slug: `${P}-titled` } })).toBe(0);
     const rows = await db.auditLog.findMany({ where: { action: "operator.quizTopic.rename", targetId: bare.id }, select: { schoolId: true, actorUserId: true, targetType: true, meta: true } });
     expect(rows).toHaveLength(1);
     expect(rows[0]).toMatchObject({ schoolId: null, actorUserId: null, targetType: "QuizTopic" });
-    expect(JSON.parse(rows[0]!.meta ?? "{}")).toMatchObject({ via: "scripts/quiz-queue-load.ts", from: { name: "Chapter 47" }, to: { name: "ZZ Chapter Titles Real" } });
+    expect(JSON.parse(rows[0]!.meta ?? "{}")).toMatchObject({ via: "scripts/quiz-queue-load.ts", from: { name: "Chapter 47" }, to: { name: "ZZ Titles Real" } });
   });
 
   it("a topic with a title of its own is never taken: the batch for chapter 48 makes its own", async () => {
@@ -178,5 +182,100 @@ describe("the loader takes a \"Chapter N\" topic before it makes a new one", () 
     expect(await db.quizTopic.findUniqueOrThrow({ where: { id: other.id }, select: { name: true } })).toEqual({ name: "ZZ CT The Other Book" });
     expect(await db.quizQuestion.count({ where: { topicId: other.id } })).toBe(0);
     expect(await db.quizTopic.count({ where: { slug: `${P}-new` } })).toBe(1);
+  });
+});
+
+describe("owner-batch-item6: a chapter's name is its book's title", () => {
+  const ctxOf = (words: Record<string, number>, bookTitle = "Biology") => ({ vocab: vocabOf(words), bookTitle, dictionary: new Set(["ever", "air", "europe", "the", "living", "world"]) });
+  it("refuses the fragments the bank was named with, judged by the chapter's own words", () => {
+    expect(titleFragment("NIT", ctxOf({ living: 9 }))).toBe("a label");
+    expect(titleFragment("Nit of", ctxOf({ cell: 9 }))).toBe("a label");
+    expect(titleFragment("Unit Objectives Solutions", ctxOf({ solutions: 9 }))).toBe("a label");
+    expect(titleFragment("In this chapter…", ctxOf({ nation: 9 }))).toMatch(/word Chapter inside it/);
+    expect(titleFragment("Roducts and Their", ctxOf({ products: 12, roducts: 1 }))).toMatch(/short of its first letter \("products"\)/);
+    expect(titleFragment("REAS ELATED TO IRCLES", ctxOf({ circles: 2, ircles: 1, areas: 5 }))).toMatch(/short of its first letter/);
+    expect(titleFragment("Time G oes O n", ctxOf({ goes: 4, time: 9 }))).toMatch(/letter printed apart|short of its first letter/);
+    expect(titleFragment("Methods of Separationin Everyday Life", ctxOf({ separation: 8, in: 50, methods: 3 }))).toMatch(/run together/);
+    expect(titleFragment("22. On the Move Again", ctxOf({ move: 3 }))).toBe("a number in front");
+    expect(titleFragment("Chapter 4", ctxOf({}))).toBe("only the chapter's label");
+    expect(titleFragment("Xpressions and", ctxOf({ expressions: 9 }))).toMatch(/short of its first letter|cut short/);
+  });
+  it("lets real names stand: a word the dictionary knows is never short, and 'from', 'on', a short word or an unknown word are no reason", () => {
+    for (const name of ["Where to Look From", "Time Goes On", "Hu Tu Tu, Hu Tu Tu", "Air", "Index Numbers", "The Ever-Evolving World of Science", "Pochampalli", "Be My Multiple, I'll be Your Factor", "Photosynthesis in Higher Plants"]) {
+      expect(titleFragment(name, ctxOf({ never: 5, hair: 3, pochampalli: 4, photosynthesis: 20 })), name).toBeNull();
+    }
+    expect(titleFragment("The Rise of Nationalism in Europe", ctxOf({ neurope: 0, nationalism: 9 }))).toBeNull();
+  });
+  it("reads a chapter's title from its label: the number printed again dropped, a lower-case title put in title case", () => {
+    expect(chapterTitleOf("Chapter 9: 9. Up You Go!", 9)).toBe("Up You Go!");
+    expect(chapterTitleOf("Chapter 1: early societies", 1)).toBe("Early Societies");
+    expect(chapterTitleOf("Chapter 2: Lines and angLes", 2)).toBe("Lines and angles");
+    expect(chapterTitleOf("Chapter 4", 4)).toBe("");
+    expect(chapterTitleOf("Chapter 12: 12 Angry Men", 12)).toBe("12 Angry Men");
+  });
+  it("the loader judges a new topic's name by the batch's own items, and cleans the model's Hindi and Marathi names", () => {
+    const items = [{ difficulty: 1, stem: "Which excretory products leave by the kidneys?", choices: ["urea", "glucose", "protein", "fat"], answerIndex: 0, solution: "Urea is among the excretory products." }];
+    expect(batchNameRefusal({ name: "Roducts and Their", questions: items })).toMatch(/short of its first letter|cut short/);
+    expect(batchNameRefusal({ name: "NIT", questions: items })).toBe("a label");
+    expect(batchNameRefusal({ name: "Excretory Products and their Elimination", questions: items })).toBeNull();
+    expect(batchNameRefusal({ name: "Biology", book: "Biology", questions: items })).toBe("the book's own title");
+    expect(cleanTranslatedName("अध्याय 1: राष्ट्र निर्माण की चुनौतियाँ।")).toBe("राष्ट्र निर्माण की चुनौतियाँ");
+    expect(cleanTranslatedName("प्रकरण ४ – जीवसृष्टी.")).toBe("जीवसृष्टी");
+    expect(cleanTranslatedName("सजीव जगत")).toBe("सजीव जगत");
+    expect(cleanTranslatedName("रेसिंग सेकंड अध्याय 12।")).toBe("रेसिंग सेकंड");
+    expect(cleanTranslatedName("अध्याय 3")).toBe("");
+  });
+  it("a new topic never takes a slug a chapter of another name holds; the same name is the same chapter renumbered", () => {
+    const topics = [{ slug: "civics-11-equality", name: "Political Theory: An Introduction" }, { slug: "maths-12-integrals", name: "Integrals" }];
+    expect(slugForNewTopic(topics, "NCERT", "CIVICS", 11, "Equality", 3)).toBe("civics-11-equality-3");
+    expect(slugForNewTopic([...topics, { slug: "civics-11-equality-3", name: "x" }], "NCERT", "CIVICS", 11, "Equality", 3)).toBe("civics-11-equality-3-2");
+    expect(slugForNewTopic(topics, "NCERT", "MATHS", 12, "Integrals", 1)).toBe("maths-12-integrals");
+    expect(slugForNewTopic(topics, "NCERT", "CIVICS", 12, "Regional Aspirations", 7)).toBe("civics-12-regional-aspirations");
+  });
+  it("compares a topic's name with its corpus chapter's title only where the chapter agrees with it, and renames only where its line or slug spells the title", () => {
+    const ch = (number: number, title: string, book = "Biology", refusal: string | null = null): CorpusChapter => ({ board: "NCERT", grade: 11, subjectCode: "BIOLOGY", number, title, refusal, book, bookCode: "kebo1", path: `ncert/11/biology/kebo1${number}.pdf`, vocab: vocabOf({ photosynthesis: 9, plants: 9 }) });
+    const corpus = [ch(11, "Photosynthesis in Higher Plants"), ch(12, "Respiration in Plants"), ch(1, "NIT", "Biology", "a label"), ch(2, "Electric Charges")];
+    const topic = (slug: string, chapter: string, name: string) => ({ id: slug, slug, board: "NCERT", classLevel: 11, subject: "BIOLOGY", chapter, name });
+    expect(slugWords("biology-11-photosynthesis-in-higher-plants")).toBe("photosynthesis in higher plants");
+    expect(titlesAgree("Electric Charges", "Electric Charges and Fields")).toBe(true);
+    expect(titleVerdict(topic("biology-11-photosynthesis-in-higher-plants", "Chapter 11 — Photosynthesis in Higher Plants", "How a Leaf Spends Light"), corpus)).toMatchObject({ kind: "DIFFERS", title: "Photosynthesis in Higher Plants" });
+    expect(titleVerdict(topic("biology-11-respiration-in-plants", "Chapter 12 — Respiration in Plants", "Respiration in Plants"), corpus)).toMatchObject({ kind: "OK" });
+    expect(titleVerdict(topic("biology-11-nit", "Chapter 1 — NIT", "NIT"), corpus)).toMatchObject({ kind: "FRAGMENT", reason: "a label", title: null });
+    // A corpus title cut short ("Electric Charges") agrees, but neither the line nor the slug spells it: listed, never renamed.
+    expect(titleVerdict(topic("biology-11-electric-charges-and-fields", "Chapter 2 — Electric Charges and Fields", "Electric Charges and Fields"), corpus)).toMatchObject({ kind: "CLOSE" });
+    expect(titleVerdict(topic("biology-11-x", "Chapter 30 — X", "X"), corpus)).toMatchObject({ kind: "UNKNOWN" });
+  });
+
+  const db = new PrismaClient();
+  const P = `zz-ct6-${Date.now()}`;
+  afterAll(async () => {
+    await db.quizTopic.deleteMany({ where: { slug: { startsWith: P } } });
+    await db.$disconnect();
+  });
+  const zz = (n: number, name: string, slug: string): QueueBatch => ({
+    subject: "SCIENCE",
+    classLevel: 8,
+    chapter: `Chapter ${n} — ${name}`,
+    name,
+    slug,
+    position: n,
+    source: "generated against ZZ",
+    licence: "test",
+    board: "NCERT",
+    translations: { hi: { name: "अध्याय 49: ZZ नाम।", summary: "" } },
+    questions: [{ difficulty: 1, stem: `ZZ CT6 ${slug}: which products leave the body?`, choices: ["urea", "air", "sand", "salt"], answerIndex: 0, solution: "ZZ: urea is among the products." }],
+  });
+  it("the loader refuses a fragment name before anything is written, never renames an existing topic, and names a new one's translation as a name", async () => {
+    await expect(loadGeneratedBatches(db, [{ file: "zz-ct6.json", batch: zz(49, "Roducts and Their", `${P}-frag`) }])).rejects.toThrow(/is "roducts" is short of its first letter|not a title/);
+    expect(await db.quizTopic.count({ where: { slug: { startsWith: P } } })).toBe(0);
+    const made = await loadGeneratedBatches(db, [{ file: "zz-ct6.json", batch: zz(49, "ZZ Products of the Body", `${P}-titled`) }]);
+    expect(made).toMatchObject({ created: 1, topicsMade: 1 });
+    const t = await db.quizTopic.findUniqueOrThrow({ where: { slug: `${P}-titled` }, select: { id: true, name: true, translations: { select: { language: true, name: true } } } });
+    expect(t.name).toBe("ZZ Products of the Body");
+    expect(t.translations).toEqual([{ language: "hi", name: "ZZ नाम" }]);
+    // A later batch for the same slug carrying another name (even a fragment) leaves the topic's name alone.
+    const again = await loadGeneratedBatches(db, [{ file: "zz-ct6.json", batch: { ...zz(49, "NIT", `${P}-titled`), questions: [{ ...zz(49, "x", "y").questions[0]!, stem: `ZZ CT6 ${P}: a second question?` }] } }]);
+    expect(again).toMatchObject({ created: 1, topicsMade: 0 });
+    expect(await db.quizTopic.findUniqueOrThrow({ where: { id: t.id }, select: { name: true } })).toEqual({ name: "ZZ Products of the Body" });
   });
 });

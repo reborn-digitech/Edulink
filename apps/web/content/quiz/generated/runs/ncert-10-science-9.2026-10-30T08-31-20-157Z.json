@@ -1,0 +1,774 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T08:31:20.157Z",
+  "finishedAt": "2026-10-30T08:51:09.333Z",
+  "seconds": 1189,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc109.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Light – Reflection and Refraction",
+    "edition": "Reprint 2026-27",
+    "chunks": 30,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n14. When light enters the atmosphere it strikes on extremely fine particles, which deflect the 1\nrays of light in all possible directions, This is due to -\na) reflection of light\nb) atmospheric refraction\nc) scattering of light\nd) dispersion of light",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n33. A. The ratio of sine of angle of incidence to the sine of angle of refraction 2\nis a constant, for the light of a given colour and for the given pair of\nmedia. (1)\nB. Consider a ray of light travelling from medium 1 into medium 2.Let v 1 be\nthe speed of light in medium 1 and v 2 be the speed of light in medium 2.\nThe refractive index of medium 2 with respect to medium 1 is given by\n𝑣 1\n(𝑛 ) 21 𝑛 21 = 𝑣 2 (1)",
+      "[INJSO 2012 — question paper]\n34. White light is incident on one of the refracting faces of a prism. Inside the prism,\ni. at normal incidence, the blue light slows down more than red light\nii. at normal incidence, blue light refracts same as red light\niii. for oblique incidence, blue light bends more than red light\niv. for oblique incidence, blue light slows down more than the red light\nWhich of the above statements are correct?\na) i & iv\nb) i, iii & iv\nc) ii, iii & iv\nd) i, ii, iii & iv",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n31. (i) Explain why the refractive index of any material with respect to air is always greater 1. 1+1+1\n(ii) In the figure below a light ray travels from air into the semi-circular plastic block. Give\na reason why the ray does not deviate at the semi-circular boundary of the plastic\nblock.\n(iii)Complete the ray diagram of the above scenario when the light ray comes out of the\nplastic block from the top flat end."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 248825,
+      "in": 43,
+      "out": 38,
+      "rejects": 8,
+      "promptTokens": 46610,
+      "completionTokens": 9586
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 316963,
+      "in": 38,
+      "out": 30,
+      "rejects": 8,
+      "promptTokens": 19863,
+      "completionTokens": 7418
+    },
+    "solver": {
+      "calls": 184,
+      "ms": 106640,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 30059,
+      "completionTokens": 1713
+    },
+    "form": {
+      "calls": 10,
+      "ms": 51688,
+      "in": 25,
+      "out": 19,
+      "rejects": 6,
+      "promptTokens": 6247,
+      "completionTokens": 1099
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10608,
+      "in": 19,
+      "out": 12,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 631879,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 30603,
+      "completionTokens": 15068
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 3,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What causes the twinkling of stars?",
+      "ms": {
+        "draft": 4883,
+        "critique": 7289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ray of light travels from medium 1 into medium 2. If the speed of light in medium 1 is 2.25 × 10^8 m/s and in medium 2 is 2 × 10^8 m/s, what is the refractive index of medium 2 with respect to medium 1?",
+      "ms": {
+        "draft": 4883,
+        "critique": 7489,
+        "solver": 1894
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A light ray is incident on a prism. Which of the following statements is correct regarding the behavior of blue and red light inside the prism?",
+      "ms": {
+        "draft": 4883,
+        "critique": 7311,
+        "solver": 2065
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the point on the principal axis where reflected rays of a concave mirror meet?",
+      "ms": {
+        "draft": 5368,
+        "critique": 7142
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a ray of light is incident on a concave mirror parallel to the principal axis, what happens to the reflected ray?",
+      "ms": {
+        "draft": 5368,
+        "critique": 7762
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the radius of curvature (R) and the focal length (f) of a spherical mirror?",
+      "ms": {
+        "draft": 5368,
+        "critique": 6177,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A concave mirror forms a virtual image of an object. Where must the object be placed in relation to the mirror?",
+      "ms": {
+        "draft": 5368,
+        "critique": 8441
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A convex mirror has a radius of curvature of 32 cm. What is the focal length of the mirror?",
+      "ms": {
+        "draft": 11757,
+        "critique": 8879,
+        "solver": 18139,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An object is placed 10 cm in front of a concave mirror, and the image formed is three times magnified and real. What is the image distance from the mirror?",
+      "ms": {
+        "draft": 11757,
+        "critique": 8517,
+        "solver": 1239
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A convex mirror is used to form an image of an object. The image is virtual, erect, and smaller than the object. What can be said about the object distance compared to the focal length of the mirror?",
+      "ms": {
+        "draft": 11757,
+        "critique": 8941,
+        "solver": 2097
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A light ray travels from air into a semi-circular plastic block. The ray does not deviate at the semi-circular boundary. Why is this the case?",
+      "ms": {
+        "draft": 11757,
+        "critique": 8060,
+        "solver": 2135,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a lens?",
+      "ms": {
+        "draft": 4461,
+        "critique": 8826
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following cases does a ray of light pass through the optical centre of a lens without any deviation?",
+      "ms": {
+        "draft": 4461,
+        "critique": 8563
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A convex lens is used to focus sunlight on a piece of paper. The paper starts to burn. Why does this happen?",
+      "ms": {
+        "draft": 4461,
+        "critique": 8867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the range of distance for an object to be placed in front of a concave mirror to form an erect image?",
+      "ms": {
+        "draft": 5429,
+        "critique": 5992,
+        "solver": 2627,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A convex lens forms a real and inverted image of an object. If the image is twice the size of the object, what is the magnification of the lens?",
+      "ms": {
+        "draft": 4114,
+        "critique": 9395,
+        "solver": 1475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A convex lens of focal length 20 cm is combined with a concave lens of focal length 40 cm. What is the power of the combined system?",
+      "ms": {
+        "draft": 4114,
+        "critique": 7355,
+        "solver": 1483
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a lens that is thicker in the middle and thinner at the edges?",
+      "ms": {
+        "draft": 3958,
+        "critique": 7331
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A light ray travels from medium 1 to medium 2, and its speed changes. The refractive index of medium 2 with respect to medium 1 is given by the ratio of the speed of light in medium 1 to the speed of light in medium 2. If the speed of light in medium 1 is 2×10^8 m/s and in medium 2 is 1.5×10^8 m/s, what is the refractive index of medium 2 with respect to medium 1?",
+      "ms": {
+        "draft": 6847,
+        "critique": 4839,
+        "solver": 850,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A light ray enters a semi-circular plastic block from air. Why does the ray not deviate at the semi-circular boundary?",
+      "ms": {
+        "draft": 4883,
+        "critique": 8035,
+        "solver": 2373,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the nature of the image formed by a concave lens, irrespective of the position of the object?",
+      "ms": {
+        "draft": 9638,
+        "critique": 9846,
+        "solver": 12904,
+        "form": 1375
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the nature of the image formed by a concave mirror if it is virtual, erect, and larger than the object?",
+      "ms": {
+        "draft": 5429,
+        "critique": 5369,
+        "solver": 1365,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Where should an object be placed in front of a convex lens to obtain a real image of the same size as the object?",
+      "ms": {
+        "draft": 5429,
+        "critique": 5681,
+        "solver": 1735,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A light ray is incident on a convex lens. If the object is placed at the focal point of the lens, what is the nature of the image formed?",
+      "ms": {
+        "draft": 4114,
+        "critique": 7000,
+        "solver": 1963,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of the power of a lens?",
+      "ms": {
+        "draft": 4114,
+        "critique": 6521,
+        "solver": 2211,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to a ray of light that passes through the optical centre of a convex lens?",
+      "ms": {
+        "draft": 4321,
+        "critique": 6017,
+        "solver": 1917,
+        "form": 4364
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When is the image formed by a concave mirror virtual, erect and larger than the object?",
+      "ms": {
+        "draft": 5065,
+        "critique": 12742,
+        "solver": 2938,
+        "form": 1,
+        "translation": 50751
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the nature of the image formed by a plane mirror?",
+      "ms": {
+        "draft": 4883,
+        "critique": 5628,
+        "solver": 1649,
+        "form": 0,
+        "translation": 39017
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the diameter of the reflecting surface of a spherical mirror?",
+      "ms": {
+        "draft": 5368,
+        "critique": 6449,
+        "solver": 17669,
+        "form": 2746,
+        "translation": 68992
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The magnification produced by a mirror is +0.23. What does this indicate about the image?",
+      "ms": {
+        "draft": 11757,
+        "critique": 9115,
+        "solver": 1714,
+        "form": 1,
+        "translation": 42113
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A light ray is incident on a convex mirror. Which of the following best describes the image formed?",
+      "ms": {
+        "draft": 4883,
+        "critique": 7820,
+        "solver": 1500,
+        "form": 0,
+        "translation": 50705
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A convex lens forms a real, inverted and enlarged image of an object. Where is the object most likely placed?",
+      "ms": {
+        "draft": 4321,
+        "critique": 7648,
+        "solver": 1060,
+        "form": 6470,
+        "translation": 57810
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A light ray travels from a rarer medium to a denser medium. What happens to the light ray?",
+      "ms": {
+        "draft": 4114,
+        "critique": 8950,
+        "solver": 2347,
+        "form": 0,
+        "translation": 59869
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A light ray travels from air into a glass slab. At the first surface, the ray bends towards the normal, and at the second surface, it bends away from the normal. Why does the emergent ray emerge parallel to the incident ray?",
+      "ms": {
+        "draft": 6847,
+        "critique": 6471,
+        "solver": 1036,
+        "form": 0,
+        "translation": 49752
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A convex lens forms a virtual, erect and diminished image. Where is the object located?",
+      "ms": {
+        "draft": 4321,
+        "critique": 7469,
+        "solver": 13660,
+        "form": 4934,
+        "translation": 38733
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A concave lens always forms a virtual, erect and diminished image. What is the reason for this?",
+      "ms": {
+        "draft": 4321,
+        "critique": 6980,
+        "solver": 1931,
+        "form": 3479,
+        "translation": 46895
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A ray of light enters a convex lens from air. What happens to the ray if it passes through the optical centre of the lens?",
+      "ms": {
+        "draft": 4461,
+        "critique": 8531,
+        "solver": 4210,
+        "form": 8471,
+        "translation": 60171
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A ray of light is incident on a concave mirror at the principal focus. What happens to the reflected ray?",
+      "ms": {
+        "draft": 5368,
+        "critique": 7223,
+        "solver": 15491,
+        "form": 4421,
+        "translation": 60773
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the term used to describe the change in direction of light when it passes from"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 7, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following is a correct statement about the power of a lens?\",\"options\":[\""
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What causes the twinkling of stars?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ray of light travels from medium 1 into medium 2. If the speed of light in medium 1 is 2.25 × 10^8 m/s and in medium 2 is 2 × 10^8 m/s, what is the refractive index of medium 2 with respect to medium 1?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A light ray is incident on a prism. Which of the following statements is correct regarding the behavior of blue and red light inside the prism?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the point on the principal axis where reflected rays of a concave mirror meet?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a ray of light is incident on a concave mirror parallel to the principal axis, what happens to the reflected ray?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the radius of curvature (R) and the focal length (f) of a spherical mirror?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A concave mirror forms a virtual image of an object. Where must the object be placed in relation to the mirror?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A convex mirror has a radius of curvature of 32 cm. What is the focal length of the mirror?",
+      "reason": "options 0 and 3 are the same (\"16 cm\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "An object is placed 10 cm in front of a concave mirror, and the image formed is three times magnified and real. What is the image distance from the mirror?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A convex mirror is used to form an image of an object. The image is virtual, erect, and smaller than the object. What can be said about the object distance compared to the focal length of the mirror?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A light ray travels from air into a semi-circular plastic block. The ray does not deviate at the semi-circular boundary. Why is this the case?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.prism: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is a lens?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which of the following cases does a ray of light pass through the optical centre of a lens without any deviation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A convex lens is used to focus sunlight on a piece of paper. The paper starts to burn. Why does this happen?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What type of mirror and lens have a focal length of –15 cm?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which type of mirror always forms an erect image, regardless of the object's position?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which lens is best suited for reading small letters in a dictionary?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used to describe the point on the principal axis where parallel rays of light converge after passing through a convex lens?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used to describe the distance from the optical centre of a lens to its principal focus?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the range of distance for an object to be placed in front of a concave mirror to form an erect image?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ray'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A convex lens forms a real and inverted image of an object. If the image is twice the size of the object, what is the magnification of the lens?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A convex lens of focal length 20 cm is combined with a concave lens of focal length 40 cm. What is the power of the combined system?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe a lens that is thicker in the middle and thinner at the edges?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A light ray travels from medium 1 to medium 2, and its speed changes. The refractive index of medium 2 with respect to medium 1 is given by the ratio of the speed of light in medium 1 to the speed of light in medium 2. If the speed of light in medium 1 is 2×10^8 m/s and in medium 2 is 1.5×10^8 m/s, what is the refractive index of medium 2 with respect to medium 1?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(2*10^8)/(1.5*10^8)\" = 1.3333333333333333, but the key says 1.33"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A light ray enters a semi-circular plastic block from air. Why does the ray not deviate at the semi-circular boundary?",
+      "reason": "near-duplicate of served question cmvjzej440ie4gpfhvngxfisx (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the nature of the image formed by a concave lens, irrespective of the position of the object?",
+      "reason": "near-duplicate of served question cmvjzej3r0icmgpfhkxo8xjlp (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the nature of the image formed by a concave mirror if it is virtual, erect, and larger than the object?",
+      "reason": "near-duplicate of served question cmvgwwm4a059igpfh4kzk5ypg (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Where should an object be placed in front of a convex lens to obtain a real image of the same size as the object?",
+      "reason": "near-duplicate of served question cmvjzej400idmgpfho45rbxbm (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A light ray is incident on a convex lens. If the object is placed at the focal point of the lens, what is the nature of the image formed?",
+      "reason": "near-duplicate of served question cmvrg9z840e5xgp21wd88a7y4 (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of the power of a lens?",
+      "reason": "near-duplicate of served question cmvnuywsy04i7gp21bm3sj6j1 (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What happens to a ray of light that passes through the optical centre of a convex lens?",
+      "reason": "near-duplicate of served question cmvgwwm4i05acgpfhhrpyq3uk (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

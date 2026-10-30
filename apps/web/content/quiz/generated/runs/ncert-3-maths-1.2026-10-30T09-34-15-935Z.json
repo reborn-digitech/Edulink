@@ -1,0 +1,312 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T09:34:15.935Z",
+  "finishedAt": "2026-10-30T09:39:19.432Z",
+  "seconds": 303,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm101.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — What’s in a Name?",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n3. (B) option\nn = 34 ⇒ 𝑣 = 34 − 1 = 33",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n12. 3\nC)\n√3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 53365,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8172,
+      "completionTokens": 2049
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 144832,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 6023,
+      "completionTokens": 2525
+    },
+    "solver": {
+      "calls": 71,
+      "ms": 52800,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 11958,
+      "completionTokens": 712
+    },
+    "form": {
+      "calls": 3,
+      "ms": 11948,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 717,
+      "completionTokens": 180
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 6520,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 198170,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8537,
+      "completionTokens": 4135
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "ms": {
+        "draft": 17372,
+        "critique": 7120,
+        "solver": 2517
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the reason for Deba and Deep's worry?",
+      "ms": {
+        "draft": 17372,
+        "critique": 11390,
+        "solver": 20837,
+        "form": 2837
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the teacher’s note in the passage?",
+      "ms": {
+        "draft": 17372,
+        "critique": 9733,
+        "solver": 1032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "ms": {
+        "draft": 5065,
+        "critique": 9568
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number name of a number has 10 letters, what could the number be?",
+      "ms": {
+        "draft": 5065,
+        "critique": 12990,
+        "solver": 2745
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which number between 1 and 99 has the longest name?",
+      "ms": {
+        "draft": 5065,
+        "critique": 10095
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 36 cows and 23 sheep are in Hemant's farm, how many total animals are there?",
+      "ms": {
+        "draft": 5065,
+        "critique": 10819,
+        "solver": 21077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the shortest name of a place in India mentioned in the passage?",
+      "ms": {
+        "draft": 5065,
+        "critique": 7811,
+        "solver": 6377,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How did the friend suggest Deba and Deep keep track of the cows?",
+      "ms": {
+        "draft": 17372,
+        "critique": 14360,
+        "solver": 2203,
+        "form": 1,
+        "translation": 52311
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the story show about counting?",
+      "ms": {
+        "draft": 17372,
+        "critique": 13056,
+        "solver": 2891,
+        "form": 3686,
+        "translation": 54952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the story about Deba and Deep?",
+      "ms": {
+        "draft": 17372,
+        "critique": 8056,
+        "solver": 3658,
+        "form": 0,
+        "translation": 57327
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea behind the method Deba and Deep used?",
+      "ms": {
+        "draft": 5065,
+        "critique": 10310,
+        "solver": 1578,
+        "form": 6526,
+        "translation": 27620
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the reason for Deba and Deep's worry?",
+      "reason": "options 2 and 3 are the same (\"They had no marks on the wall\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the teacher’s note in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (75 vs 44 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did Deba and Deep use to keep track of the cows?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the number name of a number has 10 letters, what could the number be?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which number between 1 and 99 has the longest name?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 36 cows and 23 sheep are in Hemant's farm, how many total animals are there?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the shortest name of a place in India mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

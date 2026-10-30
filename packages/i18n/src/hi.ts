@@ -19645,4 +19645,13 @@ export const hi: Dictionary = {
     messChargeHint: "जब कार्यालय महीने का भोजनालय बिल बनाता है, तब यह हर छात्रावासी के शुल्क खाते में लगता है। भोजनालय बिल न हो तो 0 रहने दें।",
   },
   // end owner-batch-item5
+  // owner-batch-item6 (30 Oct 2026): the generation card's saturated and set-aside chapters.
+  quizGenAside: {
+    saturatedTitle: "कुछ नया नहीं (बना हर प्रश्न अध्याय में पहले से था; कुछ रोका नहीं गया): {list}",
+    saturatedItem: "{label}, चक्र {pass}: {drafted} मसौदे, {dropped} हटाए गए",
+    setAsideTitle: "बाकी चक्रों से अलग रखे गए: {list}",
+    setAsideSATURATED: "{label}: भर चुका, लगातार {tries} चक्रों में कुछ नया नहीं (चक्र {pass})",
+    setAsideFAILING: "{label}: लगातार {tries} बार विफल (चक्र {pass}): {reason}",
+  },
+  // end owner-batch-item6
 };

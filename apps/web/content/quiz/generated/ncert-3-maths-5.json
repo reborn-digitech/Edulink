@@ -21,266 +21,49 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-28T02:31:27.004Z",
+  "generatedAt": "2026-10-30T09:56:14.336Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the name of a shape that has four equal sides and four square corners?",
+      "difficulty": 2,
+      "stem": "Which of the following shapes has straight edges?",
       "choices": [
-        "Rectangle",
-        "Triangle",
+        "Circle",
         "Square",
-        "Parallelogram"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is Square. A square has four equal sides and four square corners. A rectangle has four corners but not all sides are equal. A triangle has three sides and a circle has no sides.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "चार समान भुजाओं और चार समकोण वाले आकृति का नाम क्या है?",
-          "choices": [
-            "आयत",
-            "त्रिभुज",
-            "वर्ग",
-            "समांतर चतुर्भुज"
-          ],
-          "solution": "सही उत्तर वर्ग है। एक वर्ग में चार समान भुजाएं और चार समकोण होते हैं। एक आयत में चार कोने होते हैं लेकिन सभी भुजाएं समान नहीं होती हैं। एक त्रिभुज में तीन भुजाएं होती हैं और एक वृत्त में कोई भुजा नहीं होती है।",
-          "imageAlt": null,
-          "critique": "All terms are standard Hindi mathematical terms used in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "चार समान बाजू आणि चार समकोन असलेल्या आकृतीचे नाव काय आहे?",
-          "choices": [
-            "आयत",
-            "त्रिकोण",
-            "चौरस",
-            "समांतर चौकोन"
-          ],
-          "solution": "बरोबर उत्तर चौरस आहे. चौरसाला चार समान बाजू आणि चार समकोन असतात. आयताला चार कोन असतात पण सर्व बाजू समान नसतात. त्रिकोणाला तीन बाजू असतात आणि वर्तुळाला कोणत्याही बाजू नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geometric shapes.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses square with rectangle",
-        "Does not know the properties of a triangle",
-        null,
-        "Confuses a square with a parallelogram, not recognizing that a square has right angles"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Square' and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Baking biscuits"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 2,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Same to Same"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 3,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Square Corners"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "How many corners does a triangle have?",
-      "choices": [
-        "3",
-        "4",
-        "5",
-        "6"
-      ],
-      "answerIndex": 0,
-      "solution": "A triangle has 3 corners because it is defined as a three-sided polygon, and each side meets at a corner. The other options correspond to shapes with more sides, such as a quadrilateral with 4 sides or a pentagon with 5 sides, which would have more corners.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक त्रिभुज में कितने कोने होते हैं?",
-          "choices": [
-            "3",
-            "4",
-            "5",
-            "6"
-          ],
-          "solution": "एक त्रिभुज में 3 कोने होते हैं क्योंकि इसे तीन भुजाओं वाला बहुभुज के रूप में परिभाषित किया गया है, और प्रत्येक भुजा एक कोने पर मिलती है। अन्य विकल्प ऐसे आकृतियों के अनुरूप हैं जिनमें अधिक भुजाएं होती हैं, जैसे चतुर्भुज में 4 भुजाएं या पंचभुज में 5 भुजाएं, जिनके अधिक कोने होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology appropriate for a Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "त्रिकोणाला किती कोन आहेत?",
-          "choices": [
-            "3",
-            "4",
-            "5",
-            "6"
-          ],
-          "solution": "त्रिकोणाला 3 कोन असतात कारण तो तीन बाजू असलेला बहुभुज आहे आणि प्रत्येक बाजू एका कोनात मिळते. इतर विकल्पांमध्ये जास्त बाजू असलेल्या आकृतींचे उदाहरण आहेत, उदाहरणार्थ चौकोनाला 4 बाजू असतात किंवा पेंटागॉनला 5 बाजू असतात, ज्यामुळे जास्त कोन असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses a triangle with a quadrilateral",
-        "Confuses a triangle with a pentagon",
-        "Confuses a triangle with a hexagon"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. A triangle has 3 corners, and the distractors correctly represent common misconceptions about shapes with more sides.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 4,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Triangle—Triangle…So Many Triangles"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 5,
-          "pageStart": 15,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Circus with Circles",
-            "Let us Discuss"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 6,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Circus with Circles",
-            "Let us Discuss"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 7,
-          "pageStart": 20,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Doors-dots-lines"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a rectangle is split into 3 triangles, how many lines are needed?",
-      "choices": [
-        "1",
-        "2",
-        "3",
-        "4"
+        "Cylinder",
+        "Sphere"
       ],
       "answerIndex": 1,
-      "solution": "To split a rectangle into 3 triangles, 2 lines are needed. The chapter shows that one line can split a shape into 2 triangles, and an additional line can create a third. The other options are incorrect as they suggest more or fewer lines than necessary.",
+      "solution": "A square has straight edges because all its sides are straight lines. A circle and a sphere have curved surfaces, and a cylinder has both curved and straight edges but is not purely made of straight edges. Therefore, the correct answer is square.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक आयत को 3 त्रिभुज में विभाजित किया जाए, तो कितनी रेखाएं आवश्यक हैं?",
+          "stem": "निम्नलिखित में से कौन-सी आकृति सीधे किनारे रखती है?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "वृत्त",
+            "वर्ग",
+            "बेलन",
+            "गोला"
           ],
-          "solution": "एक आयत को 3 त्रिभुज में विभाजित करने के लिए 2 रेखाएं आवश्यक हैं। अध्याय में दिखाया गया है कि एक रेखा एक आकृति को 2 त्रिभुज में विभाजित कर सकती है, और एक अतिरिक्त रेखा तीसरा त्रिभुज बना सकती है। अन्य विकल्प गलत हैं क्योंकि वे आवश्यकता से अधिक या कम रेखाओं के सुझाव देते हैं।",
+          "solution": "वर्ग में सीधे किनारे होते हैं क्योंकि इसकी सभी भुजाएं सीधी रेखाएं होती हैं। एक वृत्त और एक गोला वक्र सतह रखते हैं, और एक बेलन में वक्र और सीधे किनारे दोनों होते हैं लेकिन यह शुद्ध रूप से सीधे किनारों से निर्मित नहीं होता है। इसलिए, सही उत्तर वर्ग है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक आयत 3 त्रिकोणांमध्ये विभागला जातो, तर किती रेषा आवश्यक असतात?",
+          "stem": "खालीलपैकी कोणत्या आकृतीला सरळ किनार आहेत?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "वर्तुळ",
+            "चौरस",
+            "बेलेन",
+            "गोला"
           ],
-          "solution": "एक आयत 3 त्रिकोणांमध्ये विभागण्यासाठी 2 रेषा आवश्यक असतात. अध्यायात दाखवल्याप्रमाणे एक रेषा एका आकृतीला 2 त्रिकोणांमध्ये विभागू शकते, आणि एक अतिरिक्त रेषा तिसरा त्रिकोण तयार करू शकते. इतर विकल्प अयोग्य आहेत कारण ते आवश्यक रेषांपेक्षा जास्त किंवा कमी रेषा सूचित करतात.",
+          "solution": "चौरसला सरळ किनार आहेत कारण त्याच्या सर्व बाजू रेषा आहेत. वर्तुळ आणि गोल्याला वक्र सतह आहे, आणि बेलेनला वक्र आणि सरळ किनार दोन्ही आहेत परंतु ते सर्वात एका सरळ किनारावर बनलेले नाही. म्हणून योग्य उत्तर चौरस आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, with appropriate Marathi terms for geometric shapes. 'बेलेन' (cylinder) and 'गोला' (sphere) are standard terms in Marathi textbooks.",
           "flag": null
         }
       },
@@ -289,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds an extra line unnecessarily",
+        "confuses circle with a shape with straight edges",
         null,
-        "Counts the number of triangles instead of the lines",
-        "Confuses the number of shapes with the number of lines"
+        "confuses cylinder with a shape with straight edges",
+        "confuses sphere with a shape with straight edges"
       ],
       "solverAnswers": [
         1,
@@ -302,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 lines. The solution is sound and matches the reasoning. The distractors reflect common misconceptions.",
+      "critique": "The correct answer is 1 (Square), as it has straight edges. The other options (Circle, Cylinder, Sphere) do not have straight edges. The author's reasoning is accurate and matches the misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm105.pdf",
@@ -348,49 +131,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
+      "generatedAt": "2026-10-30T09:56:14.336Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "How many triangles can be formed using the dots on a circle with 6 points?",
+      "difficulty": 3,
+      "stem": "If a square has a side length of 4 cm, what is the length of all its sides combined?",
       "choices": [
-        "4",
-        "6",
-        "8",
-        "10"
+        "8 cm",
+        "12 cm",
+        "16 cm",
+        "20 cm"
       ],
-      "answerIndex": 3,
-      "solution": "Using the dots on a circle with 6 points, 10 triangles can be formed. The chapter discusses how triangles can be made using dots, and this requires calculating combinations of 3 points out of 6. The other options are incorrect because they do not represent the correct number of combinations.",
-      "checkExpr": null,
+      "answerIndex": 2,
+      "solution": "The correct answer is 16 cm. A square has four equal sides, so the total length of all sides combined is 4 times the side length. 4 × 4 cm = 16 cm. The other options are incorrect because they do not correctly calculate the total length of the sides.",
+      "checkExpr": "4*4",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "6 बिंदुओं वाले एक वृत्त पर बिंदुओं का उपयोग करके कितने त्रिभुज बनाए जा सकते हैं?",
+          "stem": "यदि एक वर्ग की भुजा की लंबाई 4 सेमी है, तो इसकी सभी भुजाओं की कुल लंबाई क्या है?",
           "choices": [
-            "4",
-            "6",
-            "8",
-            "10"
+            "8 सेमी",
+            "12 सेमी",
+            "16 सेमी",
+            "20 सेमी"
           ],
-          "solution": "6 बिंदुओं वाले एक वृत्त पर, 10 त्रिभुज बनाए जा सकते हैं। अध्याय में बिंदुओं का उपयोग करके त्रिभुज बनाने के बारे में चर्चा की गई है, और इसके लिए 6 बिंदुओं में से 3 बिंदुओं के संयोजन की गणना करना आवश्यक है। अन्य विकल्प गलत हैं क्योंकि वे सही संयोजन की संख्या का प्रतिनिधित्व नहीं करते हैं।",
+          "solution": "सही उत्तर 16 सेमी है। एक वर्ग में चार समान भुजाएं होती हैं, अतः सभी भुजाओं की कुल लंबाई 4 गुना भुजा की लंबाई होती है। 4 × 4 सेमी = 16 सेमी। अन्य विकल्प गलत हैं क्योंकि वे सभी भुजाओं की कुल लंबाई की गणना सही ढंग से नहीं करते।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "वर्तुळावरील 6 बिंदूंचा वापर करून किती त्रिकोण तयार केले जाऊ शकतात?",
+          "stem": "जर एका चौरसाच्या बाजूची लांबी 4 सें.मी. असेल, तर त्याच्या बाजूंच्या एकूण लांबीचे मोजमाप किती असेल?",
           "choices": [
-            "4",
-            "6",
-            "8",
-            "10"
+            "8 सें.मी.",
+            "12 सें.मी.",
+            "16 सें.मी.",
+            "20 सें.मी."
           ],
-          "solution": "वर्तुळावरील 6 बिंदूंचा वापर करून 10 त्रिकोण तयार केले जाऊ शकतात. या अध्यायात बिंदूंच्या वापरामुळे त्रिकोण तयार करण्याची चर्चा केली गेली आहे आणि हे गणित 6 बिंदूंपैकी 3 बिंदूंच्या संयोजनाच्या गणनेवर आधारित आहे. इतर विकल्प चुकीचे आहेत कारण ते योग्य संयोजनाची संख्या प्रतिबिंबित करत नाहीत.",
+          "solution": "योग्य उत्तर 16 सें.मी. आहे. एका चौरसाच्या चार बरोबर बाजू असतात, म्हणून बाजूंच्या एकूण लांबीचे मोजमाप 4 ने बाजूच्या लांबीचे गुणाकार असते. 4 × 4 सें.मी. = 16 सें.मी. इतर उत्तरे चुकीची आहेत कारण ते बाजूंच्या एकूण लांबीचे गणन करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -399,130 +182,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Counts only adjacent triangles",
-        "Counts only specific types of triangles",
-        "Fails to account for all possible combinations",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 10, which is the number of combinations of 3 points from 6, calculated as C(6,3) = 20/2 = 10. The author's solution is correct, and the reasons for the wrong options are plausible misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 4,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Triangle—Triangle…So Many Triangles"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 5,
-          "pageStart": 15,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Circus with Circles",
-            "Let us Discuss"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 6,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Circus with Circles",
-            "Let us Discuss"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 7,
-          "pageStart": 20,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Doors-dots-lines"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a square is folded along its diagonal, what shape is formed?",
-      "choices": [
-        "A triangle",
-        "A rectangle",
-        "A circle",
-        "A pentagon"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is A triangle. When a square is folded along its diagonal, it forms a triangle. A rectangle would not be formed, and a circle or a pentagon are not possible shapes from folding a square.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक वर्ग अपने विकर्ण के अनुदिश मोड़ा जाता है, तो कौन सी आकृति बनती है?",
-          "choices": [
-            "एक त्रिभुज",
-            "एक आयत",
-            "एक वृत्त",
-            "एक पंचभुज"
-          ],
-          "solution": "सही उत्तर एक त्रिभुज है। जब एक वर्ग को अपने विकर्ण के अनुदिश मोड़ा जाता है, तो एक त्रिभुज बनता है। एक आयत नहीं बनता है, और वृत्त या पंचभुज वर्ग के मोड़ने से संभव नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर चौरस त्याच्या विकर्णाने बेरीज केला जातो, तर कोणती आकृती तयार होते?",
-          "choices": [
-            "एक त्रिकोण",
-            "एक आयत",
-            "एक वृत्त",
-            "एक पंचभुज"
-          ],
-          "solution": "बरोबर उत्तर एक त्रिकोण आहे. जेव्हा चौरस त्याच्या विकर्णाने बेरीज केला जातो तेव्हा त्रिकोण तयार होतो. आयत तयार होणार नाही आणि वृत्त किंवा पंचभुज चौरस बेरीज करून तयार होऊ शकत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
+        "Adds the side length twice instead of four times",
+        "Adds the side length three times instead of four times",
         null,
-        "Confuses square with rectangle",
-        "Does not understand the effect of folding",
-        "A pupil might think folding a square along its diagonal creates a five-sided figure due to confusion about the number of sides after folding."
+        "Confuses the calculation with a different shape"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the solution is correct. Folding a square along its diagonal results in a triangle. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 16 cm, as a square has four equal sides and 4 × 4 cm = 16 cm. The distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm105.pdf",
@@ -565,49 +238,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
+      "generatedAt": "2026-10-30T09:56:14.336Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If you move two matchsticks to turn one triangle into two triangles, how many matchsticks are used in total?",
+      "difficulty": 3,
+      "stem": "If you fold a paper plate in half and then in half again, how many lines will you get?",
       "choices": [
+        "1",
+        "2",
         "3",
-        "4",
-        "5",
-        "6"
+        "4"
       ],
-      "answerIndex": 2,
-      "solution": "Initially, a single triangle uses 3 matchsticks. By moving 2 matchsticks, the total number of matchsticks used becomes 5. The other options are incorrect because they either do not account for the initial matchsticks or the ones moved.",
+      "answerIndex": 1,
+      "solution": "Folding a paper plate in half once creates one line. Folding it in half again adds a second line, perpendicular to the first. The correct answer is 2 because each fold creates a new line. Options 1, 3, and 4 do not match the result of two folds.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि आप दो माचिस की छड़ें ले जाकर एक त्रिभुज को दो त्रिभुज में बदल दें, तो कुल में कितनी माचिस की छड़ें उपयोग में लाई जाती हैं?",
+          "stem": "अगर आप कागज के प्लेट को आधा में मोड़ते हैं और फिर आधा में और मोड़ते हैं, तो आपको कितनी रेखाएं मिलेंगी?",
           "choices": [
+            "1",
+            "2",
             "3",
-            "4",
-            "5",
-            "6"
+            "4"
           ],
-          "solution": "शुरू में, एक त्रिभुज 3 माचिस की छड़ें उपयोग में लाता है। 2 माचिस की छड़ें ले जाने से, उपयोग में लाई गई माचिस की छड़ों की कुल संख्या 5 हो जाती है। अन्य विकल्प गलत हैं क्योंकि वे शुरू में उपयोग में लाई गई माचिस की छड़ों के बारे में या ले जाई गई माचिस के बारे में ध्यान नहीं देते।",
+          "solution": "कागज के प्लेट को आधा में मोड़ने से एक रेखा बनती है। इसे आधा में मोड़ने पर पहले वाली रेखा के लंबवत दूसरी रेखा जुड़ जाती है। सही उत्तर 2 है क्योंकि प्रत्येक मोड़ एक नई रेखा बनाता है। विकल्प 1, 3 और 4 दो मोड़ के परिणाम के अनुरूप नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for matchsticks and triangles.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and logical structure.",
           "flag": null
         },
         "mr": {
-          "stem": "जर तुम्ही दोन तांबड्या तारा खाली घेऊन एका त्रिकोणाला दोन त्रिकोणांमध्ये बदलाल, तर एकूण किती तांबड्या तारा वापरल्या जातात?",
+          "stem": "जर तुम्ही कागदाचा प्लेट अर्ध्यात बेरीजला आणि नंतर अर्ध्यात बेरीजला, तर तुम्हाला किती रेषा मिळतील?",
           "choices": [
+            "1",
+            "2",
             "3",
-            "4",
-            "5",
-            "6"
+            "4"
           ],
-          "solution": "सुरुवातीला, एका त्रिकोणासाठी 3 तांबड्या तारा वापरल्या जातात. दोन तांबड्या तारा हलवल्यानंतर, एकूण वापरलेल्या तांबड्या तारांची संख्या 5 होते. इतर विकल्प चुकीचे आहेत कारण ते सुरुवातीला वापरलेल्या तारांचा किंवा हलवलेल्या तारांचा विचार करत नाहीत.",
+          "solution": "कागदाचा प्लेट अर्ध्यात बेरीजला एक रेषा तयार होते. त्याच अर्ध्यात बेरीजला दुसरी रेषा जोडली जाते, जी पहिल्या रेषेला लंब असते. योग्य उत्तर 2 आहे कारण प्रत्येक बेरीज एक नवीन रेषा तयार करते. 1, 3 आणि 4 उत्तरे दोन बेरीजच्या निकालाशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for matchsticks ('तांबड्या तारा') and triangles ('त्रिकोण').",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
           "flag": null
         }
       },
@@ -616,20 +289,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Counts only the moved matchsticks",
-        "Counts the initial matchsticks only",
+        "Counts the number of folds instead of lines",
         null,
-        "Confuses the total with the number moved"
+        "Adds the number of folds and lines",
+        "Counts the number of folds as lines"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is ambiguous without a visual, but the author's solution assumes that the initial triangle is made of 3 matchsticks, and moving 2 matchsticks results in a total of 5. This is consistent with the key and the reasoning provided.",
+      "levelFlag": null,
+      "critique": "The correct answer is 2 lines. Folding a paper plate in half once creates one line, and folding it again creates a second line. The author's key and solution are correct.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm105.pdf",
@@ -675,49 +348,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
+      "generatedAt": "2026-10-30T09:56:14.336Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a child makes 3 rows of triangles with 2 triangles in each row, how many triangles are there in total?",
+      "difficulty": 3,
+      "stem": "If there are 4 triangles in the first row, and 4 more triangles are added in the second row, how many triangles are there in total?",
       "choices": [
         "4",
-        "5",
-        "6",
-        "7"
+        "8",
+        "12",
+        "16"
       ],
-      "answerIndex": 2,
-      "solution": "If there are 3 rows and each row has 2 triangles, the total number of triangles is 3 × 2 = 6. The other options are incorrect because they do not match the multiplication of rows and triangles per row.",
-      "checkExpr": "3*2",
+      "answerIndex": 1,
+      "solution": "There are 8 triangles in total. The first row has 4 triangles, and 4 more are added in the second row, making 4 + 4 = 8. The other options do not result from this simple addition.",
+      "checkExpr": "4+4",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक बच्चा प्रत्येक पंक्ति में 2 त्रिभुज रखकर 3 पंक्तियां बनाता है, तो कुल कितने त्रिभुज होंगे?",
+          "stem": "यदि पहली पंक्ति में 4 त्रिभुज हैं, और दूसरी पंक्ति में 4 और त्रिभुज जोड़े जाते हैं, तो कुल मिलाकर कितने त्रिभुज हैं?",
           "choices": [
             "4",
-            "5",
-            "6",
-            "7"
+            "8",
+            "12",
+            "16"
           ],
-          "solution": "यदि 3 पंक्तियां हैं और प्रत्येक पंक्ति में 2 त्रिभुज हैं, तो कुल त्रिभुजों की संख्या 3 × 2 = 6 होगी। अन्य विकल्प गलत हैं क्योंकि वे पंक्तियों और प्रति पंक्ति त्रिभुजों के गुणन के बराबर नहीं हैं।",
+          "solution": "कुल मिलाकर 8 त्रिभुज हैं। पहली पंक्ति में 4 त्रिभुज हैं, और दूसरी पंक्ति में 4 और त्रिभुज जोड़े जाते हैं, जिससे 4 + 4 = 8 होता है। अन्य विकल्प इस साधारण जोड़ से प्राप्त नहीं होते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate and maintains the meaning, structure, and intent of the original English question.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक मुलगा तीन ओळी त्रिकोण तयार करतो आणि प्रत्येक ओळीत 2 त्रिकोण असतील, तर एकूण किती त्रिकोण असतील?",
+          "stem": "पहिल्या ओळीत 4 त्रिकोण असतील आणि दुसरी ओळीत 4 अधिक त्रिकोण जोडले जातील, तर एकूण किती त्रिकोण असतील?",
           "choices": [
             "4",
-            "5",
-            "6",
-            "7"
+            "8",
+            "12",
+            "16"
           ],
-          "solution": "जर तीन ओळी असतील आणि प्रत्येक ओळीत 2 त्रिकोण असतील, तर एकूण त्रिकोणांची संख्या 3 × 2 = 6 असेल. इतर विकल्प चुकीचे आहेत कारण ते ओळी आणि प्रत्येक ओळीतील त्रिकोणांच्या गुणाकाराशी जुमानत नाहीत.",
+          "solution": "एकूण 8 त्रिकोण असतील. पहिल्या ओळीत 4 त्रिकोण असतील आणि दुसरी ओळीत 4 अधिक जोडले जातील, जे 4 + 4 = 8 असते. इतर विकल्प या सोप्या जोडणीतून मिळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -726,20 +399,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "adds rows and triangles instead of multiplying",
-        "adds rows and triangles incorrectly",
+        "miscounts the number of triangles",
         null,
-        "adds rows and triangles incorrectly"
+        "adds incorrectly",
+        "multiplies instead of adds"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the solution correctly uses multiplication (3 × 2 = 6). The distractors are plausible errors for a student who misunderstands the concept of multiplication as repeated addition.",
+      "levelFlag": null,
+      "critique": "The question is straightforward, and the correct answer is 8. The solution is correct and matches the key. The distractors reflect common misconceptions such as miscounting, incorrect addition, and multiplication instead of addition.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm105.pdf",
@@ -785,114 +458,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a square is folded so that all its corners meet at the center, what shape is formed?",
-      "choices": [
-        "Square",
-        "Rectangle",
-        "Triangle",
-        "Hexagon"
-      ],
-      "answerIndex": 2,
-      "solution": "When a square is folded so that all its corners meet at the center, it forms a triangle. This is because the square is divided into four equal parts, and when folded, these parts form a triangular shape. A square would not change its shape, and a rectangle or circle would not be formed by this folding method.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक वर्ग को इस प्रकार मोड़ा जाए कि इसके सभी कोने केंद्र पर मिल जाएं, तो कौन-सी आकृति बनती है?",
-          "choices": [
-            "वर्ग",
-            "आयत",
-            "त्रिभुज",
-            "षट्भुज"
-          ],
-          "solution": "जब एक वर्ग को इस प्रकार मोड़ा जाता है कि इसके सभी कोने केंद्र पर मिल जाते हैं, तो एक त्रिभुज बनता है। इसके बराबर चार भागों में विभाजित होने के कारण, जब इन्हें मोड़ा जाता है, तो ये त्रिभुजाकार आकृति बनाते हैं। एक वर्ग अपनी आकृति नहीं बदलता है, और एक आयत या वृत्त इस मोड़ने की विधि से नहीं बन सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक चौरस असा मोडला जाईल की त्याचे सर्व कोन त्याच्या केंद्रावर येतील, तर कोणती आकृती तयार होईल?",
-          "choices": [
-            "चौरस",
-            "आयत",
-            "त्रिकोण",
-            "षटकोण"
-          ],
-          "solution": "जर एक चौरस असा मोडला जाईल की त्याचे सर्व कोन त्याच्या केंद्रावर येतील, तर त्यामुळे त्रिकोण तयार होतो. हे कारण असे आहे की चौरस चार समान भागांमध्ये विभाजित केला जातो आणि मोडल्यास या भागांमुळे त्रिकोणाकृती तयार होते. चौरस आपली आकृती बदलत नाही, आणि आयत किंवा वर्तुळ ही या मोडण्याच्या पद्धतीने तयार होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks the shape remains a square",
-        "Believes the shape becomes a rectangle",
-        null,
-        "A pupil might think folding a square into the center creates multiple sides, leading them to imagine a hexagon."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Folding a square so that all corners meet at the center results in a triangle. The reasoning about the other options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Baking biscuits"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 2,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Same to Same"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm105.pdf",
-          "ordinal": 3,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Fun with Shapes",
-            "Square Corners"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:31:27.004Z",
+      "generatedAt": "2026-10-30T09:56:14.336Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

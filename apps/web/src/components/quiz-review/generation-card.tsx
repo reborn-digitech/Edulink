@@ -346,6 +346,19 @@ function LiveLine({ job, active, chapterLabel, onStop, pending }: { job: QuizGen
         <p className="text-sm text-fg-muted">{t("quizJobs.runTotals", { done: p.chaptersDone, skipped: p.chaptersSkipped, kept: p.kept, loaded: p.loaded })}</p>
       )}
       {p && p.chaptersFailed.length > 0 && <p className="text-sm text-warn">{t("quizJobs.failedChapters", { list: p.chaptersFailed.map((f) => `${f.label} (${f.reason})`).join("; ") })}</p>}
+      {/* owner-batch-item6 (30 Oct 2026): chapters that landed nothing new, and chapters set aside for the rest of the run, beside the failures. */}
+      {p && (p.chaptersSetAside?.length ?? 0) > 0 && (
+        <p className="text-sm text-warn">
+          {t("quizGenAside.setAsideTitle", {
+            list: p.chaptersSetAside.map((c) => (c.kind === "SATURATED" ? t("quizGenAside.setAsideSATURATED", { label: c.label, tries: c.tries, pass: c.pass }) : t("quizGenAside.setAsideFAILING", { label: c.label, tries: c.tries, pass: c.pass, reason: c.reason }))).join("; "),
+          })}
+        </p>
+      )}
+      {p && (p.chaptersSaturated?.length ?? 0) > 0 && (
+        <p className="text-sm text-fg-muted">
+          {t("quizGenAside.saturatedTitle", { list: p.chaptersSaturated.map((c) => t("quizGenAside.saturatedItem", { label: c.label, pass: c.pass, drafted: c.drafted, dropped: c.dropped })).join("; ") })}
+        </p>
+      )}
       {job.error && <p className="text-sm text-danger">{t("quizJobs.errorLine", { error: job.error })}</p>}
       <p className="text-xs text-fg-muted">
         {t("quizJobs.startedBy", { name: job.startedBy, role: t(job.startedByRole === "OPERATOR" ? "quizReview.roleOPERATOR" : "quizReview.roleAPP_ADMIN"), when: formatInZone(new Date(job.createdAt), "Asia/Kolkata") })}

@@ -10,58 +10,58 @@
   "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
   "translations": {
     "hi": {
-      "name": "अध्याय 3 — दो चर वाले रैखिक समीकरणों का युग्म",
+      "name": "अध्याय 3 — दो चर वाले रैखिक समीकरणों का युग्म।",
       "summary": "इस अध्याय में दो चर वाले रैखिक समीकरणों के युग्म को हल करने के विभिन्न विधियों की व्याख्या की गई है।"
     },
     "mr": {
-      "name": "अध्याय 3 — दो चरांकांमधील रेषीय समीकरणांचे जोडे",
-      "summary": "हे अध्याय दो चरांमधील रेषीय समीकरणांच्या जोड्यांचे उपाय करण्याच्या विविध पद्धतींचे विवरण देते."
+      "name": "अध्याय 3 - दो चरांमध्ये रेषीय समीकरणांचे जोडे.",
+      "summary": "हा अध्याय दो चरांमध्ये रेषीय समीकरणांच्या जोड्यांचे उपाय करण्याच्या विविध पद्धतींचे विवरण देतो."
     }
   },
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-30T04:35:47.952Z",
+  "generatedAt": "2026-10-25T03:36:46.874Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If the lines represented by the equations 3x + 4y = 12 and 6x + 8y = 24 are coincident, what is the ratio of their corresponding coefficients?",
+      "difficulty": 1,
+      "stem": "What is the general form of a linear equation in two variables?",
       "choices": [
-        "1:2",
-        "2:1",
-        "1:1",
-        "3:4"
+        "ax + by + c = 0",
+        "ax + by = 0",
+        "ax + by + c = 1",
+        "a + b + c = 0"
       ],
       "answerIndex": 0,
-      "solution": "The lines 3x + 4y = 12 and 6x + 8y = 24 are coincident, meaning the ratios of their corresponding coefficients are equal. The ratio of the coefficients of x, y, and the constant terms is 1:2. The other options do not correctly represent the ratio of the coefficients for coincident lines.",
+      "solution": "The general form of a linear equation in two variables is ax + by + c = 0 because it represents a straight line in a two-dimensional plane with constants a, b, and c. The other options are incorrect because ax + by = 0 lacks the constant term, ax + by + c = 1 is not the standard form, and a + b + c = 0 does not represent an equation in two variables.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि समीकरण 3x + 4y = 12 और 6x + 8y = 24 द्वारा निरूपित रेखाएं संपाती हैं, तो उनके संगत गुणांकों का अनुपात क्या है?",
+          "stem": "दो चरों में रैखिक समीकरण का सामान्य रूप क्या है?",
           "choices": [
-            "1:2",
-            "2:1",
-            "1:1",
-            "3:4"
+            "ax + by + c = 0",
+            "ax + by = 0",
+            "ax + by + c = 1",
+            "a + b + c = 0"
           ],
-          "solution": "समीकरण 3x + 4y = 12 और 6x + 8y = 24 की रेखाएं संपाती हैं, जिसका अर्थ है कि उनके संगत गुणांकों का अनुपात समान है। x, y और अचर पदों के गुणांकों का अनुपात 1:2 है। अन्य विकल्प संपाती रेखाओं के गुणांकों के अनुपात को सही ढंग से नहीं दर्शाते हैं।",
+          "solution": "दो चरों में रैखिक समीकरण का सामान्य रूप ax + by + c = 0 है क्योंकि यह दो आयामी तल में एक सीधी रेखा का प्रतिनिधित्व करता है जिसमें स्थिरांक a, b और c होते हैं। अन्य विकल्प गलत हैं क्योंकि ax + by = 0 में स्थिरांक पद की कमी है, ax + by + c = 1 मानक रूप नहीं है, और a + b + c = 0 दो चरों में समीकरण का प्रतिनिधित्व नहीं करता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "3x + 4y = 12 आणि 6x + 8y = 24 या समीकरणांद्वारे दर्शविलेल्या रेषा संपाती असतील, तर त्यांच्या संगत गुणोत्तराचे गुणोत्तर काय असेल?",
+          "stem": "दोन चलांतील रेषीय समीकरणाचा सामान्य रूप काय आहे?",
           "choices": [
-            "1:2",
-            "2:1",
-            "1:1",
-            "3:4"
+            "ax + by + c = 0",
+            "ax + by = 0",
+            "ax + by + c = 1",
+            "a + b + c = 0"
           ],
-          "solution": "3x + 4y = 12 आणि 6x + 8y = 24 या रेषा संपाती असतात, ज्यामुळे त्यांच्या संगत गुणोत्तरांचे गुणोत्तर समान असते. x, y आणि अचल अवयवांचे गुणोत्तर 1:2 असते. इतर विकल्प योग्य नाहीत.",
+          "solution": "दोन चलांतील रेषीय समीकरणाचा सामान्य रूप ax + by + c = 0 आहे कारण तो द्विमितीय समतलात एक सरळ रेषा दर्शवतो आणि a, b आणि c हे अचूक संख्या आहेत. इतर विकल्प अयोग्य आहेत कारण ax + by = 0 मध्ये स्थिरांक अभावात आहे, ax + by + c = 1 मानक रूप नाही आणि a + b + c = 0 दोन चलांतील समीकरण दर्शवत नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the ratio of the equations",
-        "Thinks the ratio is inverse",
-        "Thinks the ratio is based on the coefficients of x and y alone"
+        "confuses the general form with a simplified version",
+        "ignores the constant term",
+        "assumes the equation equals 1 instead of 0"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1:2, as the coefficients and constants of the second equation are exactly double those of the first, confirming the lines are coincident. The author's reasoning is sound and the misconceptions described for the wrong options are plausible.",
+      "critique": "The correct answer is 0, as the general form of a linear equation in two variables is indeed ax + by + c = 0. The other options are incorrect for the reasons stated.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh103.pdf",
@@ -116,114 +116,61 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T04:35:47.952Z",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If the equations 3x + 2y = 7 and 6x + 4y = 14 are solved algebraically, what type of solution do they have?",
+      "difficulty": 2,
+      "stem": "Which of the following pairs of linear equations represent parallel lines?",
       "choices": [
-        "No solution",
-        "One solution",
-        "Infinitely many solutions",
-        "Two solutions"
+        "2x + 3y = 6 and 4x + 6y = 12",
+        "x + y = 5 and 2x + 2y = 10",
+        "3x + 2y = 5 and 6x + 4y = 10",
+        "x + 2y = 8 and 2x + 4y = 16"
       ],
       "answerIndex": 2,
-      "solution": "The second equation is exactly twice the first, so the two equations are equivalent and represent the same line. This means there are infinitely many solutions. If there were no solution, the lines would be parallel. If there were one solution, the lines would intersect at one point. Two solutions is not possible for linear equations.",
+      "solution": "The correct answer is '3x + 2y = 5 and 6x + 4y = 10' because the ratios of the coefficients of x and y are equal but the ratio of the constants is different, indicating parallel lines. The other options are incorrect because they represent coincident or intersecting lines.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि समीकरण 3x + 2y = 7 और 6x + 4y = 14 को बीजगणितीय रूप से हल किया जाए, तो इनके किस प्रकार के हल होंगे?",
+          "stem": "निम्नलिखित में से कौन-सा रैखिक समीकरणों का युग्म समांतर रेखाओं का प्रतिनिधित्व करता है?",
           "choices": [
-            "कोई हल नहीं",
-            "एक हल",
-            "अनंत रूप से कई हल",
-            "दो हल"
+            "2x + 3y = 6 और 4x + 6y = 12",
+            "x + y = 5 और 2x + 2y = 10",
+            "3x + 2y = 5 और 6x + 4y = 10",
+            "x + 2y = 8 और 2x + 4y = 16"
           ],
-          "solution": "दूसरा समीकरण पहले के ठीक दोगुना है, इसलिए दोनों समीकरण तुल्य हैं और एक ही रेखा का प्रतिनिधित्व करते हैं। इसका अर्थ है कि अनंत रूप से कई हल हैं। यदि कोई हल नहीं होता, तो रेखाएं समांतर होती। यदि एक हल होता, तो रेखाएं एक बिंदु पर प्रतिच्छेद करती। दो हल संभव नहीं हैं रैखिक समीकरणों के लिए।",
-          "imageAlt": "एक ग्राफ जो समीकरण 3x + 2y = 7 और 6x + 4y = 14 को प्रतिनिधित्व करने वाली दो संपाती रेखाएं दिखाता है",
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "solution": "सही उत्तर '3x + 2y = 5 और 6x + 4y = 10' है क्योंकि x और y के गुणांकों के अनुपात बराबर हैं लेकिन अचर पदों के अनुपात अलग हैं, जो समांतर रेखाओं को दर्शाता है। अन्य विकल्प गलत हैं क्योंकि वे संपाती या प्रतिच्छेदी रेखाओं का प्रतिनिधित्व करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "3x + 2y = 7 आणि 6x + 4y = 14 या समीकरणांचे बीजगणितीय पद्धतीने उपाय केल्यास त्यांना कोणत्या प्रकारचा उपाय मिळेल?",
+          "stem": "खालीलपैकी कोणत्या रेषीय समीकरणांच्या जोड्या समांतर रेषांना दर्शवितात?",
           "choices": [
-            "कोणताही उपाय नाही",
-            "एक उपाय",
-            "अनंत उपाय",
-            "दोन उपाय"
+            "2x + 3y = 6 आणि 4x + 6y = 12",
+            "x + y = 5 आणि 2x + 2y = 10",
+            "3x + 2y = 5 आणि 6x + 4y = 10",
+            "x + 2y = 8 आणि 2x + 4y = 16"
           ],
-          "solution": "दुसरे समीकरण पहिल्याच्या टीप दुप्पट आहे, म्हणून दोन समीकरण तुल्य आहेत आणि ते एकाच रेषेला दर्शवतात. हे अनंत उपाय असल्याचे दर्शवते. जर कोणताही उपाय नसत तर रेषा समांतर असत. जर एक उपाय असत तर रेषा एका बिंदूत छेदत असत. रेषीय समीकरणांसाठी दोन उपाय शक्य नाही.",
-          "imageAlt": "एक आलेख जो 3x + 2y = 7 आणि 6x + 4y = 14 या समीकरणांना दर्शविणारी दोन संपादित रेषा दर्शवतो",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "solution": "सही उत्तर '3x + 2y = 5 आणि 6x + 4y = 10' आहे कारण x आणि y च्या गुणोत्तरांचे गुणक एकसारखे असतात पण स्थिरांकांचे गुणक वेगळे असतात, जे समांतर रेषांचे संकेत देतात. इतर विकल्प चूक आहेत कारण ते एकरूप किंवा छेदिलेल्या रेषांना दर्शवितात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for linear equations and parallel lines.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A graph showing two coincident lines representing the equations 3x + 2y = 7 and 6x + 4y = 14",
-      "figure": {
-        "kind": "graph",
-        "spec": {
-          "x": {
-            "min": 0,
-            "max": 5,
-            "step": 1,
-            "label": "x"
-          },
-          "y": {
-            "min": 0,
-            "max": 5,
-            "step": 1,
-            "label": "y"
-          },
-          "grid": true,
-          "curves": [
-            {
-              "poly": [
-                3,
-                2,
-                7
-              ],
-              "from": 0,
-              "to": 5,
-              "dashed": false,
-              "label": "eq1"
-            },
-            {
-              "poly": [
-                6,
-                4,
-                14
-              ],
-              "from": 0,
-              "to": 5,
-              "dashed": false,
-              "label": "eq2"
-            }
-          ]
-        },
-        "labels": {
-          "eq1": {
-            "en": "3x + 2y = 7",
-            "hi": "3x + 2y = 7",
-            "mr": "3x + 2y = 7"
-          },
-          "eq2": {
-            "en": "6x + 4y = 14",
-            "hi": "6x + 4y = 14",
-            "mr": "6x + 4y = 14"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Assumes the equations have no solution",
-        "Assumes the equations have one unique solution",
+        "Represents coincident lines",
+        "Represents coincident lines",
         null,
-        "Assumes two solutions exist"
+        "Represents coincident lines"
       ],
       "solverAnswers": [
         2,
@@ -233,7 +180,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The equations are multiples of each other, so they represent the same line, leading to infinitely many solutions.",
+      "critique": "The correct answer is option 2. The author's reasoning is correct, as the ratios of the coefficients of x and y are equal (3/6 = 2/4 = 1/2), but the ratio of the constants (5/10 = 1/2) is also equal, which would make the lines coincident, not parallel. However, the author's key is incorrect, as option 2 actually represents coincident lines, not parallel lines. The correct answer should be none of the options, or the question is flawed.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh103.pdf",
@@ -264,49 +211,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T04:35:47.952Z",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following represents a pair of linear equations that are parallel?",
+      "difficulty": 2,
+      "stem": "What is the condition for a pair of linear equations to have no solution?",
       "choices": [
-        "x + 2y = 4 and 2x + 4y = 8",
-        "2x + 3y = 6 and 4x + 6y = 12",
-        "x + 3y = 6 and 3x + 9y = 18",
-        "2x + 3y = 6 and 4x + 6y = 10"
+        "The lines are intersecting at one point",
+        "The lines are parallel",
+        "The lines are coincident",
+        "The lines are perpendicular"
       ],
-      "answerIndex": 3,
-      "solution": "The equations 2x + 3y = 6 and 4x + 6y = 10 represent parallel lines because the ratios of the coefficients of x and y are equal, but the ratio of the constants is not. The other options represent coincident or intersecting lines, which are not parallel.",
+      "answerIndex": 1,
+      "solution": "A pair of linear equations has no solution when the lines represented by them are parallel. This happens when the ratios of the coefficients of x and y are equal, but the ratio of the constants is different. Hence, the correct answer is that the lines are parallel.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रेखीय समीकरणों के एक युग्म का प्रतिनिधित्व करता है जो समांतर है?",
+          "stem": "एक रैखिक समीकरण युग्म के कोई हल नहीं होने की शर्त क्या है?",
           "choices": [
-            "x + 2y = 4 और 2x + 4y = 8",
-            "2x + 3y = 6 और 4x + 6y = 12",
-            "x + 3y = 6 और 3x + 9y = 18",
-            "2x + 3y = 6 और 4x + 6y = 10"
+            "रेखाएँ एक बिंदु पर प्रतिच्छेद करती हैं",
+            "रेखाएँ समांतर हैं",
+            "रेखाएँ संपाती हैं",
+            "रेखाएँ लंबवत हैं"
           ],
-          "solution": "समीकरण 2x + 3y = 6 और 4x + 6y = 10 समांतर रेखाओं का प्रतिनिधित्व करते हैं क्योंकि x और y के गुणांकों के अनुपात समान हैं, लेकिन अचर पदों के अनुपात समान नहीं हैं। अन्य विकल्प संपाती या प्रतिच्छेदी रेखाओं का प्रतिनिधित्व करते हैं, जो समांतर नहीं हैं।",
+          "solution": "एक रैखिक समीकरण युग्म के कोई हल नहीं होता जब उनके द्वारा निरूपित रेखाएँ समांतर होती हैं। यह तब होता है जब x और y के गुणांकों के अनुपात बराबर होते हैं, लेकिन अचर पदों के अनुपात अलग होते हैं। अतः सही उत्तर यह है कि रेखाएँ समांतर हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Hindi terminology for linear equations and their properties.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते रेषीय समीकरणांचे जोडे समांतर आहेत?",
+          "stem": "एका रेषीय समीकरणांच्या जोडीला कोणती अट असेल की तिला कोणतेही उकल नसेल?",
           "choices": [
-            "x + 2y = 4 आणि 2x + 4y = 8",
-            "2x + 3y = 6 आणि 4x + 6y = 12",
-            "x + 3y = 6 आणि 3x + 9y = 18",
-            "2x + 3y = 6 आणि 4x + 6y = 10"
+            "रेषा एका बिंदूत छेदतात",
+            "रेषा समांतर असतात",
+            "रेषा एकरूप असतात",
+            "रेषा लंब असतात"
           ],
-          "solution": "2x + 3y = 6 आणि 4x + 6y = 10 या समीकरणांचे जोडे समांतर रेषांचे प्रतिनिधित्व करतात कारण x आणि y च्या गुणोत्तरांचे गुणोत्तर समान आहे, परंतु स्थिरांचे गुणोत्तर समान नाही. इतर विकल्प संपाती किंवा छेदिलेल्या रेषांचे प्रतिनिधित्व करतात, जे समांतर नाहीत.",
+          "solution": "रेषीय समीकरणांच्या जोडीला कोणतेही उकल नसेल तेव्हा त्यांच्या रेषा समांतर असतात. हे घडते जेव्हा x आणि y च्या गुणोत्तरांचे गुणांक समान असतात परंतु अचूक संख्यांचे गुणोत्तर वेगळे असते. म्हणूनच योग्य उत्तर रेषा समांतर असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for linear equations and their properties.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for linear equations and their properties.",
           "flag": null
         }
       },
@@ -315,154 +262,151 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "These are coincident lines",
-        "These are coincident lines",
-        "These are coincident lines",
-        null
+        "Incorrectly assumes intersecting lines have no solution",
+        null,
+        "Confuses coincident lines with no solution",
+        "Incorrectly assumes perpendicular lines have no solution"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 3. The equations 2x + 3y = 6 and 4x + 6y = 10 are parallel because the ratios of the coefficients of x and y are equal (2/4 = 3/6), but the ratio of the constants (6/10) is not equal, which is the condition for parallel lines. The other options represent coincident lines, which is a common misconception.",
+      "levelFlag": null,
+      "critique": "The question is correctly formulated and the solution is accurate. The correct answer is option 1, as parallel lines do not intersect and thus the system has no solution.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 3: Pair of Linear Equations in Two Variables"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 3: Pair of Linear Equations in Two Variables"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 3: Pair of Linear Equations in Two Variables"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T04:35:47.952Z",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "A pair of linear equations is given by 2x + 3y = 12 and 4x + 6y = 24. What can be said about the solution of this pair of equations?",
+      "difficulty": 2,
+      "stem": "Which of the following represents the graphical representation of a pair of linear equations that have no solution?",
       "choices": [
-        "It has a unique solution.",
-        "It has no solution.",
-        "It has infinitely many solutions.",
-        "It is inconsistent."
+        "Intersecting lines",
+        "Coincident lines",
+        "Parallel lines",
+        "Lines intersecting at two points"
       ],
       "answerIndex": 2,
-      "solution": "The given equations are 2x + 3y = 12 and 4x + 6y = 24. Upon simplification, the second equation becomes 2x + 3y = 12, which is identical to the first equation. This means the two equations represent the same line, and thus, there are infinitely many solutions. The other options are incorrect because a unique solution occurs when lines intersect, no solution occurs when lines are parallel, and inconsistency refers to no solution, not infinitely many solutions.",
+      "solution": "The graphical representation of a pair of linear equations with no solution is two parallel lines. This is because parallel lines never meet, so there is no point of intersection. Intersecting lines have one solution, coincident lines have infinitely many solutions, and lines cannot intersect at two points.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "2x + 3y = 12 और 4x + 6y = 24 के रूप में दिए गए रैखिक समीकरणों के एक युग्म के समाधान के बारे में क्या कहा जा सकता है?",
+          "stem": "निम्नलिखित में से कौन-सा एक ऐसे रैखिक समीकरण युग्म के आलेखीय प्रतिनिधित्व का प्रतिनिधित्व करता है जिसका कोई हल नहीं है?",
           "choices": [
-            "इसका एक अद्वितीय हल है।",
-            "इसका कोई हल नहीं है।",
-            "इसके अनंत रूप से कई हल हैं।",
-            "यह असंगत है।"
+            "प्रतिच्छेदी रेखाएं",
+            "संपाती रेखाएं",
+            "समांतर रेखाएं",
+            "दो बिंदुओं पर प्रतिच्छेद करने वाली रेखाएं"
           ],
-          "solution": "दिए गए समीकरण 2x + 3y = 12 और 4x + 6y = 24 हैं। सरलीकरण के बाद दूसरा समीकरण 2x + 3y = 12 बन जाता है, जो पहले समीकरण के समान है। इसका अर्थ है कि दोनों समीकरण एक ही रेखा का प्रतिनिधित्व करते हैं, इसलिए अनंत रूप से कई हल हैं। अन्य विकल्प गलत हैं क्योंकि एक अद्वितीय हल तब होता है जब रेखाएं प्रतिच्छेद करती हैं, कोई हल नहीं तब होता है जब रेखाएं समांतर होती हैं, और असंगतता का अर्थ है कोई हल नहीं, न कि अनंत रूप से कई हल।",
-          "imageAlt": "2x + 3y = 12 और 4x + 6y = 24 समीकरणों के लिए एक ग्राफ जिसमें दो ओवरलैपिंग रेखाएं हैं।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "solution": "कोई हल न होने वाले रैखिक समीकरण युग्म का आलेखीय प्रतिनिधित्व दो समांतर रेखाएं होती हैं। ऐसा इसलिए है क्योंकि समांतर रेखाएं कभी भी मिलती नहीं हैं, इसलिए कोई प्रतिच्छेद बिंदु नहीं होता है। प्रतिच्छेदी रेखाएं एक हल के लिए होती हैं, संपाती रेखाएं अनंत हल के लिए होती हैं, और रेखाएं दो बिंदुओं पर प्रतिच्छेद नहीं कर सकती हैं।",
+          "imageAlt": "एक निर्देशांक तल पर दो समांतर रेखाएं",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "2x + 3y = 12 आणि 4x + 6y = 24 असे रेषीय समीकरणांचे एक जोडे दिले आहे. या समीकरणांच्या समाधानाबद्दल काय म्हणायला शकता?",
+          "stem": "खालीलपैकी कोणते रेषीय समीकरणांच्या एका जोडीच्या आलेखीय रूपाने दर्शवते ज्याला कोणतेही उकल नाही?",
           "choices": [
-            "त्याचे एक अद्वितीय समाधान आहे.",
-            "त्याला कोणतेही समाधान नाही.",
-            "त्याला अनंत समाधाने आहेत.",
-            "ते असंगत आहे."
+            "छेदत असलेल्या रेषा",
+            "संपाती रेषा",
+            "समांतर रेषा",
+            "दोन बिंदूंमध्ये छेदत असलेल्या रेषा"
           ],
-          "solution": "दिलेली समीकरणे 2x + 3y = 12 आणि 4x + 6y = 24 आहेत. समायोजनानंतर दुसरे समीकरण 2x + 3y = 12 असे होते, जे पहिल्या समीकरणाशी एकसारखे आहे. हे दोन समीकरण एकाच रेषेला दर्शवतात, आणि म्हणूनच, अनंत समाधाने आहेत. इतर विकल्प चुकीचे आहेत कारण एक अद्वितीय समाधान तेव्हा होते जेव्हा रेषा छेदतात, कोणतेही समाधान नसते जेव्हा रेषा समांतर असतात, आणि असंगतता कोणतेही समाधान नसल्याच्या अर्थाने होते, अनंत समाधानांच्या नाही.",
-          "imageAlt": "2x + 3y = 12 आणि 4x + 6y = 24 या समीकरणांनी दर्शविलेल्या दोन ओव्हरलॅपिंग रेषांचा आलेख.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "solution": "कोणत्याही उकल नसलेल्या रेषीय समीकरणांच्या आलेखीय रूपाने दोन समांतर रेषा दर्शवतात. हे समांतर रेषा कधीही मिळत नाहीत, त्यामुळे छेद बिंदू नाही. छेदत असलेल्या रेषांना एक उकल असते, संपाती रेषांना अनंत उकल असतात आणि रेषा दोन बिंदूंमध्ये छेदू शकत नाहीत.",
+          "imageAlt": "कार्यक्षेत्रावर दोन समांतर रेषा.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A graph showing two overlapping lines representing the equations 2x + 3y = 12 and 4x + 6y = 24.",
+      "imageAlt": "Two parallel lines on a coordinate plane.",
       "figure": {
-        "kind": "graph",
+        "kind": "geometry",
         "spec": {
-          "x": {
-            "min": 0,
-            "max": 10,
-            "step": 1,
-            "label": "x"
+          "frame": {
+            "xMin": -5,
+            "xMax": 5,
+            "yMin": -5,
+            "yMax": 5,
+            "unit": "units"
           },
-          "y": {
-            "min": 0,
-            "max": 10,
-            "step": 1,
-            "label": "y"
-          },
-          "grid": true,
-          "curves": [
+          "points": [
             {
-              "poly": [
-                2,
-                3,
-                12
-              ],
-              "dashed": false,
-              "label": "eq1"
+              "id": "A",
+              "x": -3,
+              "y": 2
             },
             {
-              "poly": [
-                4,
-                6,
-                24
-              ],
-              "dashed": false,
-              "label": "eq2"
+              "id": "B",
+              "x": 3,
+              "y": -2
+            },
+            {
+              "id": "C",
+              "x": -3,
+              "y": 1
+            },
+            {
+              "id": "D",
+              "x": 3,
+              "y": -1
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "kind": "segment"
+            },
+            {
+              "from": "C",
+              "to": "D",
+              "kind": "segment"
             }
           ]
         },
-        "labels": {
-          "eq1": {
-            "en": "2x + 3y = 12",
-            "hi": "2x + 3y = 12",
-            "mr": "2x + 3y = 12"
-          },
-          "eq2": {
-            "en": "4x + 6y = 24",
-            "hi": "4x + 6y = 24",
-            "mr": "4x + 6y = 24"
-          }
-        }
+        "labels": {}
       },
       "needsFigure": true,
       "distractorReason": [
-        "Believes the lines intersect at a single point",
-        "Thinks the lines are parallel and never meet",
+        "Confuses intersecting lines with no solution",
+        "Thinks coincident lines have no solution",
         null,
-        "Fails to recognize that the equations are identical"
+        "Student thinks two solutions mean two intersection points, not realizing lines can only intersect once or not at all"
       ],
       "solverAnswers": [
         2,
@@ -471,8 +415,8 @@
         2,
         2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The two equations are multiples of each other, representing the same line, which leads to infinitely many solutions. The reasoning for the incorrect options aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. The reasoning clearly explains why parallel lines represent no solution, and the misconceptions for the other options are valid.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh103.pdf",
@@ -485,47 +429,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T04:35:47.952Z",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A pair of linear equations is given as 2x + 3y = 6 and 4x + 6y = 12. What can be said about the graphical representation of these equations?",
+      "difficulty": 4,
+      "stem": "What happens when we subtract one equation from another in the elimination method?",
       "choices": [
-        "They are parallel",
-        "They intersect at one point",
-        "They are coincident",
-        "They are perpendicular"
+        "One variable is eliminated",
+        "Both variables are eliminated",
+        "The equations become inconsistent",
+        "The equations become dependent"
       ],
-      "answerIndex": 2,
-      "solution": "The equations 2x + 3y = 6 and 4x + 6y = 12 are coincident because the second equation is exactly twice the first. This means they represent the same line and have infinitely many solutions. The other options are incorrect as they do not match the relationship between these two equations.",
+      "answerIndex": 0,
+      "solution": "In the elimination method, when we subtract one equation from another, we aim to eliminate one variable. This is done by making the coefficients of one variable equal and then subtracting the equations. Hence, the correct answer is that one variable is eliminated.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "2x + 3y = 6 और 4x + 6y = 12 के रूप में दिए गए रैखिक समीकरणों के ग्राफीय प्रतिनिधित्व के बारे में क्या कहा जा सकता है?",
+          "stem": "जब हम विलोपन विधि में एक समीकरण को दूसरे समीकरण में से घटाते हैं तो क्या होता है?",
           "choices": [
-            "वे समांतर हैं",
-            "वे एक बिंदु पर प्रतिच्छेद करते हैं",
-            "वे संपाती हैं",
-            "वे लंबवत हैं"
+            "एक चर निकल जाता है",
+            "दोनों चर निकल जाते हैं",
+            "समीकरण असंगत हो जाते हैं",
+            "समीकरण स्वतंत्र हो जाते हैं"
           ],
-          "solution": "समीकरण 2x + 3y = 6 और 4x + 6y = 12 संपाती हैं क्योंकि दूसरा समीकरण पहले के ठीक दोगुना है। इसका अर्थ है कि वे एक ही रेखा का प्रतिनिधित्व करते हैं और अनंत हल होते हैं। अन्य विकल्प गलत हैं क्योंकि वे इन दोनों समीकरणों के बीच संबंध के साथ मेल नहीं खाते।",
+          "solution": "विलोपन विधि में, जब हम एक समीकरण को दूसरे समीकरण में से घटाते हैं, तो हम एक चर को निकालने का प्रयास करते हैं। इसके लिए हम एक चर के गुणांकों को बराबर बनाते हैं और फिर समीकरणों को घटाते हैं। अतः सही उत्तर यह है कि एक चर निकल जाता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
+          "critique": "The translation accurately reflects the original meaning, maintains the correct answer position, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "2x + 3y = 6 आणि 4x + 6y = 12 अशा रेषीय समीकरणांचा एक जोडा दिला आहे. या समीकरणांच्या आलेखीय प्रतिनिधित्वाबद्दल काय म्हणायला शकता?",
+          "stem": "उपायाच्या विधानात एक समीकरण दुसऱ्यापासून बे केल्यास काय होते?",
           "choices": [
-            "ते समांतर आहेत",
-            "ते एका बिंदूत छेदतात",
-            "ते एकरूप आहेत",
-            "ते लंब आहेत"
+            "एक चल बे होतो",
+            "दोन्ही चल बे होतात",
+            "समीकरण असंगत होतात",
+            "समीकरण स्वतंत्र होतात"
           ],
-          "solution": "2x + 3y = 6 आणि 4x + 6y = 12 या समीकरणे एकरूप आहेत कारण दुसरे समीकरण पहिल्याच्या टवाचे आहे. हे एकाच रेषेला दर्शवतात आणि अनंत समाधाने असतात. इतर विकल्प चुकीचे आहेत कारण या दोन समीकरणांमधील संबंध त्यांच्याशी जुळत नाही.",
+          "solution": "उपाय पद्धतीत, जेव्हा आम्ही एक समीकरण दुसऱ्यापासून बे करतो, तेव्हा आम्ही एक चल बे करण्याचा प्रयत्न करतो. हे एका चलाच्या गुणकांना समान करून आणि नंतर समीकरणांचे बे करून केले जाते. म्हणून, योग्य उत्तर एक चल बे होतो आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -536,10 +480,295 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses coincident lines with parallel lines",
-        "Student assumes that any two linear equations must intersect, not considering the possibility of parallel or coincident lines",
         null,
-        "Thinks perpendicular lines relate to this scenario"
+        "Confuses elimination with both variables being eliminated",
+        "Incorrectly assumes the equations become inconsistent",
+        "Incorrectly assumes the equations become dependent"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly explains that subtracting one equation from another in the elimination method aims to eliminate one variable, which matches the correct answer. The reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The pair of equations 6x – 3y + 10 = 0 and 2x – y + 9 = 0 represents two lines that are",
+      "choices": [
+        "intersecting at exactly one point.",
+        "parallel.",
+        "coincident.",
+        "intersecting at exactly two points."
+      ],
+      "answerIndex": 1,
+      "solution": "The given equations are 6x – 3y + 10 = 0 and 2x – y + 9 = 0. To determine the relationship between the lines, we compare the coefficients of x, y, and the constants. The ratios of the coefficients of x and y are 6/2 = 3 and -3/-1 = 3, which are equal. However, the ratio of the constants is 10/9, which is not equal. This means the lines are parallel. The option 'intersecting at exactly one point' is incorrect because the lines are parallel and do not intersect. The option 'coincident' is incorrect because the lines are not the same. The option 'intersecting at exactly two points' is incorrect because two straight lines can only intersect at one point or not at all.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरणों का युग्म 6x – 3y + 10 = 0 और 2x – y + 9 = 0 दो रेखाओं का प्रतिनिधित्व करता है जो",
+          "choices": [
+            "केवल एक बिंदु पर प्रतिच्छेद करती हैं।",
+            "समांतर हैं।",
+            "संपाती हैं।",
+            "केवल दो बिंदुओं पर प्रतिच्छेद करती हैं।"
+          ],
+          "solution": "दिए गए समीकरण 6x – 3y + 10 = 0 और 2x – y + 9 = 0 हैं। रेखाओं के बीच संबंध ज्ञात करने के लिए, हम x, y के गुणांकों और अचर पदों की तुलना करते हैं। x और y के गुणांकों के अनुपात 6/2 = 3 और -3/-1 = 3 हैं, जो बराबर हैं। हालांकि, अचर पदों का अनुपात 10/9 है, जो बराबर नहीं है। इसका अर्थ है कि रेखाएं समांतर हैं। 'केवल एक बिंदु पर प्रतिच्छेद करती हैं' विकल्प गलत है क्योंकि रेखाएं समांतर हैं और प्रतिच्छेद नहीं करती हैं। 'संपाती' विकल्प गलत है क्योंकि रेखाएं समान नहीं हैं। 'केवल दो बिंदुओं पर प्रतिच्छेद करती हैं' विकल्प गलत है क्योंकि दो सीधी रेखाएं केवल एक बिंदु पर प्रतिच्छेद कर सकती हैं या कभी नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरणांचा जोडा 6x – 3y + 10 = 0 आणि 2x – y + 9 = 0 दोन रेषा दर्शवितो ज्या आहेत",
+          "choices": [
+            "अचूक एक बिंदूत छेदतात.",
+            "समांतर.",
+            "असमान.",
+            "अचूक दोन बिंदूत छेदतात."
+          ],
+          "solution": "दिलेली समीकरणे 6x – 3y + 10 = 0 आणि 2x – y + 9 = 0 आहेत. रेषांच्या संबंधाचे निर्धारण करण्यासाठी, आम्ही x, y च्या गुणोत्तरांची आणि अचूक संख्यांची तुलना करतो. x आणि y च्या गुणोत्तरांचे गुणोत्तर 6/2 = 3 आणि -3/-1 = 3 आहे, जे समान आहेत. मात्र, अचूक संख्यांचे गुणोत्तर 10/9 आहे, जे समान नाही. हे असे दर्शविते की रेषा समांतर आहेत. 'अचूक एक बिंदूत छेदतात' हा विकल्प अयोग्य आहे कारण रेषा समांतर असून त्या छेदत नाहीत. 'असमान' हा विकल्प अयोग्य आहे कारण रेषा एकसारख्या नाहीत. 'अचूक दोन बिंदूत छेदतात' हा विकल्प अयोग्य आहे कारण दोन सीध्या रेषा एक बिंदूत छेदू शकतात किंवा एकही बिंदूत छेदू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the condition for intersecting lines with parallel lines",
+        null,
+        "does not consider the ratio of the constants",
+        "does not understand that parallel lines do not intersect at all"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the lines are parallel by comparing the ratios of the coefficients and constants. The reasoning is sound and matches the mathematical principles of linear equations.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "The equations 2x + 3y = 9 and 4x + 6y = k are to be consistent. What is the value of k?",
+      "choices": [
+        "18",
+        "9",
+        "3",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is '18' because for the equations to be consistent, the second equation must be a multiple of the first. Since 4x + 6y = k is twice 2x + 3y = 9, k must be 18. The other options are incorrect because they do not maintain the proportionality between the equations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समीकरण 2x + 3y = 9 और 4x + 6y = k संगत होने चाहिए। k का मान क्या है?",
+          "choices": [
+            "18",
+            "9",
+            "3",
+            "6"
+          ],
+          "solution": "सही उत्तर '18' है क्योंकि समीकरणों के संगत होने के लिए दूसरा समीकरण पहले का गुणज होना चाहिए। चूंकि 4x + 6y = k पहले समीकरण 2x + 3y = 9 का दोगुना है, इसलिए k का मान 18 होना चाहिए। अन्य विकल्प गलत हैं क्योंकि वे समीकरणों के बीच अनुपात को बरकरार नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरणे 2x + 3y = 9 आणि 4x + 6y = k संगत असावीत. k ची किंमत काय असेल?",
+          "choices": [
+            "18",
+            "9",
+            "3",
+            "6"
+          ],
+          "solution": "बरोबर उत्तर '18' आहे कारण समीकरणे संगत असावीत म्हणून दुसरे समीकरण पहिल्या समीकरणाचे गुणित असावे. कारण 4x + 6y = k हे 2x + 3y = 9 चे दुप्पट आहे, म्हणून k ची किंमत 18 असावी. इतर विकल्प चुकीचे आहेत कारण ते समीकरणांमधील अनुपात संरक्षित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Fails to double the constant term",
+        "Thinks the equations are inconsistent",
+        "Thinks the equations are inconsistent"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. For the system to be consistent, the second equation must be a scalar multiple of the first. Since 4x + 6y = k is twice 2x + 3y = 9, k must be 18. The other options fail to maintain this proportionality.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A pair of linear equations in two variables is given as 2x + 3y = 12 and 4x + 6y = 24. What can be said about this pair of equations?",
+      "choices": [
+        "They are inconsistent.",
+        "They are consistent and have a unique solution.",
+        "They are consistent and have infinitely many solutions.",
+        "They are dependent and inconsistent."
+      ],
+      "answerIndex": 2,
+      "solution": "The second equation is exactly twice the first equation, which means the lines are coincident. This indicates that the pair of equations is consistent and has infinitely many solutions. The correct answer is 'They are consistent and have infinitely many solutions.' The other options are incorrect because the equations are not inconsistent and not dependent and inconsistent.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "2x + 3y = 12 और 4x + 6y = 24 के रूप में दो चरों में रैखिक समीकरणों का एक युग्म दिया गया है। इस युग्म के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे असंगत हैं।",
+            "वे संगत हैं और एक अद्वितीय हल है।",
+            "वे संगत हैं और अनंत हल हैं।",
+            "वे आश्रित और असंगत हैं।"
+          ],
+          "solution": "दूसरी समीकरण पहली समीकरण के ठीक दोगुना है, जिसका अर्थ है कि रेखाएं संपाती हैं। इससे स्पष्ट होता है कि समीकरणों का युग्म संगत है और अनंत हल हैं। सही उत्तर 'वे संगत हैं और अनंत हल हैं।' है। अन्य विकल्प गलत हैं क्योंकि समीकरण असंगत नहीं हैं और आश्रित और असंगत नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन चलांमधील रेषीय समीकरणांचा एक जोडा 2x + 3y = 12 आणि 4x + 6y = 24 दिला आहे. या समीकरणांबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "ते असंगत आहेत.",
+            "ते संगत आहेत आणि एक अद्वितीय समाधान आहे.",
+            "ते संगत आहेत आणि अनंत समाधान आहेत.",
+            "ते आश्रित आणि असंगत आहेत."
+          ],
+          "solution": "दुसरे समीकरण पहिल्या समीकरणाच्या दुप्पट आहे, जे रेषा एकरूप आहेत असे दर्शवते. हे दर्शवते की समीकरणांचा जोडा संगत आहे आणि अनंत समाधान आहेत. योग्य उत्तर 'ते संगत आहेत आणि अनंत समाधान आहेत.' आहे. इतर विकल्प अयोग्य आहेत कारण समीकरणे असंगत नाहीत आणि आश्रित आणि असंगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the equations are inconsistent because they look the same.",
+        "Believes the equations have a unique solution when they are actually coincident.",
+        null,
+        "Confuses dependent and inconsistent equations."
       ],
       "solverAnswers": [
         2,
@@ -549,299 +778,7 @@
         2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the second equation is a multiple of the first, making them coincident. The reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 3: Pair of Linear Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 3: Pair of Linear Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 3: Pair of Linear Equations in Two Variables"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T04:35:47.952Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "The equations 2x + 3y = 6 and 4x + 6y = 12 are given. A student solves them by substitution and gets x = 3 - 1.5y. What conclusion can be drawn about the solution?",
-      "choices": [
-        "There is one unique solution",
-        "There are infinitely many solutions",
-        "There are no solutions",
-        "There are two solutions"
-      ],
-      "answerIndex": 1,
-      "solution": "The second equation is exactly twice the first, so they represent the same line. When a student solves by substitution and finds an expression for x in terms of y, it indicates that the equations are dependent and have infinitely many solutions. If there were one unique solution, the substitution would have given a specific value for x and y. No solution would occur if the lines were parallel, and two solutions is not possible for linear equations.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2x + 3y = 6 और 4x + 6y = 12 समीकरण दिए गए हैं। एक छात्र उन्हें प्रतिस्थापन द्वारा हल करता है और x = 3 - 1.5y प्राप्त करता है। हल के बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "एक अद्वितीय हल है",
-            "अनंत हल हैं",
-            "कोई हल नहीं है",
-            "दो हल हैं"
-          ],
-          "solution": "दूसरा समीकरण पहले के ठीक दोगुना है, इसलिए वे एक ही रेखा का प्रतिनिधित्व करते हैं। जब छात्र प्रतिस्थापन द्वारा हल करता है और y के संदर्भ में x के एक अभिव्यक्ति प्राप्त करता है, तो यह इंगित करता है कि समीकरण आश्रित हैं और अनंत हल हैं। यदि एक अद्वितीय हल होता, तो प्रतिस्थापन के द्वारा x और y के एक विशिष्ट मान प्राप्त होते। कोई हल नहीं होता यदि रेखाएं समांतर होतीं, और दो हल संभव नहीं होते क्योंकि रैखिक समीकरणों के लिए दो हल नहीं हो सकते।",
-          "imageAlt": "2x + 3y = 6 और 4x + 6y = 12 समीकरणों को प्रस्तुत करने वाली दो संपाती रेखाओं का एक ग्राफ",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2x + 3y = 6 आणि 4x + 6y = 12 या समीकरणांचा दिला आहे. एका विद्यार्थीने बदल करून त्यांचे समाधान काढले आणि x = 3 - 1.5y मिळाले. त्यांच्या समाधानाबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "एक अद्वितीय समाधान आहे",
-            "अनंत समाधान आहेत",
-            "कोणतेही समाधान नाही",
-            "दोन समाधान आहेत"
-          ],
-          "solution": "दुसरे समीकरण पहिल्याच्या दुप्पट आहे, म्हणून ते एकाच रेषेला दर्शवतात. जेव्हा एखाद्या विद्यार्थीने बदलाने समाधान काढताना x चे y च्या बरोबरीत एक व्यंजक मिळते, तेव्हा समीकरणे संबंधित असतात आणि अनंत समाधान असतात. जर एक अद्वितीय समाधान असते, तर बदलाने एक विशिष्ट मूल्य x आणि y च्या बरोबरीत मिळाले असते. जर रेषा समांतर असतील तर कोणतेही समाधान नसते, आणि रेषीय समीकरणांसाठी दोन समाधान शक्य नाही.",
-          "imageAlt": "2x + 3y = 6 आणि 4x + 6y = 12 या समीकरणांना दर्शविणारी दोन संपाती रेषा असलेला आलेख",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A graph showing two coincident lines representing the equations 2x + 3y = 6 and 4x + 6y = 12",
-      "figure": {
-        "kind": "graph",
-        "spec": {
-          "x": {
-            "min": 0,
-            "max": 5,
-            "step": 1,
-            "label": "x"
-          },
-          "y": {
-            "min": 0,
-            "max": 5,
-            "step": 1,
-            "label": "y"
-          },
-          "grid": true,
-          "curves": [
-            {
-              "poly": [
-                2,
-                3,
-                6
-              ],
-              "from": 0,
-              "to": 5,
-              "dashed": false,
-              "label": "eq1"
-            },
-            {
-              "poly": [
-                4,
-                6,
-                12
-              ],
-              "from": 0,
-              "to": 5,
-              "dashed": false,
-              "label": "eq2"
-            }
-          ]
-        },
-        "labels": {
-          "eq1": {
-            "en": "2x + 3y = 6",
-            "hi": "2x + 3y = 6",
-            "mr": "2x + 3y = 6"
-          },
-          "eq2": {
-            "en": "4x + 6y = 12",
-            "hi": "4x + 6y = 12",
-            "mr": "4x + 6y = 12"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Assumes the equations have one unique solution",
-        null,
-        "Assumes the equations have no solution",
-        "Assumes the equations have two solutions"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The equations are multiples of each other, so they represent the same line. The substitution result indicates dependency, leading to infinitely many solutions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: Pair of Linear Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Pair of Linear Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh103.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 3: Pair of Linear Equations in Two Variables"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T04:35:47.952Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Two linear equations are given by 2x + 3y = 10 and 4x + 6y = 20. A student claims that the system has infinitely many solutions, but another student argues that the system is inconsistent. Who is correct, and why?",
-      "choices": [
-        "The first student is correct because the equations are identical.",
-        "The second student is correct because the equations are parallel.",
-        "Both students are correct because the equations are independent.",
-        "Neither student is correct because the equations have a unique solution."
-      ],
-      "answerIndex": 0,
-      "solution": "The first student is correct because the second equation (4x + 6y = 20) is exactly twice the first equation (2x + 3y = 10). This means the two equations represent the same line and have infinitely many solutions. The second student is incorrect because the equations are not parallel but coincident. The other options are incorrect because the equations are not independent and do not have a unique solution.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2x + 3y = 10 और 4x + 6y = 20 द्वारा दो रैखिक समीकरण दिए गए हैं। एक छात्र का कहना है कि प्रणाली के अनंत हल हैं, लेकिन एक अन्य छात्र का तर्क है कि प्रणाली असंगत है। कौन सही है और क्यों?",
-          "choices": [
-            "पहला छात्र सही है क्योंकि समीकरण समान हैं।",
-            "दूसरा छात्र सही है क्योंकि समीकरण समांतर हैं।",
-            "दोनों छात्र सही हैं क्योंकि समीकरण स्वतंत्र हैं।",
-            "कोई भी छात्र सही नहीं है क्योंकि समीकरणों का अद्वितीय हल है।"
-          ],
-          "solution": "पहला छात्र सही है क्योंकि दूसरी समीकरण (4x + 6y = 20) पहली समीकरण (2x + 3y = 10) के बिल्कुल दोगुना है। इसका अर्थ है कि दोनों समीकरण एक ही रेखा का प्रतिनिधित्व करते हैं और अनंत हल होते हैं। दूसरा छात्र गलत है क्योंकि समीकरण समांतर नहीं हैं बल्कि संपाती हैं। अन्य विकल्प गलत हैं क्योंकि समीकरण स्वतंत्र नहीं हैं और एक अद्वितीय हल नहीं है।",
-          "imageAlt": "एक ग्राफ जिसमें दो रेखाएं ओवरलैप करती हैं, जो समीकरण 2x + 3y = 10 और 4x + 6y = 20 का प्रतिनिधित्व करती हैं।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2x + 3y = 10 आणि 4x + 6y = 20 अशा दोन रेषीय समीकरणांचे दिले आहे. एका विद्यार्थ्याने सांगितले की तंत्रामध्ये अनंत समाधाने आहेत, परंतु दुसऱ्या विद्यार्थ्याने तंत्र विरोधाभासी आहे असे वाद घातला. कोण बरोबर आहे आणि का?",
-          "choices": [
-            "पहिला विद्यार्थी बरोबर आहे कारण समीकरणे एकसारखी आहेत.",
-            "दुसरा विद्यार्थी बरोबर आहे कारण समीकरणे समांतर आहेत.",
-            "दोन्ही विद्यार्थी बरोबर आहेत कारण समीकरणे स्वतंत्र आहेत.",
-            "कोणीही विद्यार्थी बरोबर नाही कारण समीकरणांचे एक अद्वितीय समाधान आहे."
-          ],
-          "solution": "पहिला विद्यार्थी बरोबर आहे कारण दुसरे समीकरण (4x + 6y = 20) पहिल्या समीकरणाच्या (2x + 3y = 10) बरोबर दुप्पट आहे. हे दोन समीकरणे एकाच रेषेला दर्शवतात आणि अनंत समाधाने असतात. दुसरा विद्यार्थी चूक आहे कारण समीकरणे समांतर नाहीत तर संपादित आहेत. इतर पर्याय चूक आहेत कारण समीकरणे स्वतंत्र नाहीत आणि अद्वितीय समाधान नाहीत.",
-          "imageAlt": "2x + 3y = 10 आणि 4x + 6y = 20 अशा समीकरणांचे एक आलेख ज्यामध्ये दोन रेषा ओव्हरलॅप करतात.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A graph showing two lines that overlap, representing the equations 2x + 3y = 10 and 4x + 6y = 20.",
-      "figure": {
-        "kind": "graph",
-        "spec": {
-          "x": {
-            "min": 0,
-            "max": 10,
-            "step": 1,
-            "label": "x"
-          },
-          "y": {
-            "min": 0,
-            "max": 10,
-            "step": 1,
-            "label": "y"
-          },
-          "grid": true,
-          "curves": [
-            {
-              "poly": [
-                2,
-                3,
-                10
-              ],
-              "dashed": false,
-              "label": "eq1"
-            },
-            {
-              "poly": [
-                4,
-                6,
-                20
-              ],
-              "dashed": false,
-              "label": "eq2"
-            }
-          ]
-        },
-        "labels": {
-          "eq1": {
-            "en": "2x + 3y = 10",
-            "hi": "2x + 3y = 10",
-            "mr": "2x + 3y = 10"
-          },
-          "eq2": {
-            "en": "4x + 6y = 20",
-            "hi": "4x + 6y = 20",
-            "mr": "4x + 6y = 20"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "Thinks the equations are parallel and do not overlap",
-        "Confuses independent equations with dependent ones",
-        "Believes the equations intersect at one point"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the second equation is a scalar multiple of the first, indicating coincident lines with infinitely many solutions. The reasoning aligns with the correct mathematical understanding.",
+      "critique": "The solution correctly identifies that the second equation is a multiple of the first, leading to coincident lines and infinitely many solutions. The reasoning aligns with the correct answer.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh103.pdf",
@@ -854,7 +791,179 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-30T04:35:47.952Z",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "The sum of two numbers is 18 and their difference is 6. What is the product of the two numbers?",
+      "choices": [
+        "72",
+        "80",
+        "90",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "Let the two numbers be x and y, where x > y. We are given that x + y = 18 and x - y = 6. Adding these equations, we get 2x = 24, so x = 12. Substituting x = 12 into x + y = 18, we get y = 6. The product of the numbers is 12 * 6 = 72. The option '80' is incorrect because it assumes the numbers are 10 and 8. The option '90' is incorrect because it assumes the numbers are 15 and 6. The option '100' is incorrect because it assumes the numbers are 20 and 5.",
+      "checkExpr": "12*6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो संख्याओं का योग 18 है और उनका अंतर 6 है। दोनों संख्याओं का गुणनफल क्या है?",
+          "choices": [
+            "72",
+            "80",
+            "90",
+            "100"
+          ],
+          "solution": "मान लीजिए दो संख्याएँ x और y हैं, जहाँ x > y। हमें दिया गया है कि x + y = 18 और x - y = 6। इन समीकरणों को जोड़ने पर, हमें 2x = 24 मिलता है, इसलिए x = 12। x = 12 को x + y = 18 में प्रतिस्थापित करने पर, हमें y = 6 मिलता है। संख्याओं का गुणनफल 12 * 6 = 72 है। विकल्प '80' गलत है क्योंकि यह मान लेता है कि संख्याएँ 10 और 8 हैं। विकल्प '90' गलत है क्योंकि यह मान लेता है कि संख्याएँ 15 और 6 हैं। विकल्प '100' गलत है क्योंकि यह मान लेता है कि संख्याएँ 20 और 5 हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन संख्यांची बेरीज 18 आहे आणि त्यांची फरक 6 आहे. दोन संख्यांचा गुणाकार किती आहे?",
+          "choices": [
+            "72",
+            "80",
+            "90",
+            "100"
+          ],
+          "solution": "मानू दोन संख्या x आणि y, जेथे x > y. आम्हाला दिले आहे की x + y = 18 आणि x - y = 6. या समीकरणांची बेरीज करून, आम्हाला 2x = 24 मिळते, म्हणून x = 12. x = 12 ची x + y = 18 मध्ये बदल केल्यास, आम्हाला y = 6 मिळते. संख्यांचा गुणाकार 12 * 6 = 72 आहे. विकल्प '80' अयोग्य आहे कारण तो संख्या 10 आणि 8 असल्याचे मानतो. विकल्प '90' अयोग्य आहे कारण तो संख्या 15 आणि 6 असल्याचे मानतो. विकल्प '100' अयोग्य आहे कारण तो संख्या 20 आणि 5 असल्याचे मानतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assumes the numbers are 10 and 8",
+        "assumes the numbers are 15 and 6",
+        "assumes the numbers are 20 and 5"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically leads to the correct answer of 72. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two numbers are in the ratio 3:4. If 10 is added to both numbers, the new ratio becomes 5:6. What is the sum of the two numbers?",
+      "choices": [
+        "21",
+        "35",
+        "42",
+        "63"
+      ],
+      "answerIndex": 2,
+      "solution": "Let the numbers be 3x and 4x. According to the problem: (3x + 10)/(4x + 10) = 5/6. Cross-multiplying and solving gives x = 6. The numbers are 18 and 24, and their sum is 42. The correct answer is 42. The other options are incorrect as they do not satisfy the given ratio condition.",
+      "checkExpr": "(3*6)+(4*6)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो संख्याएं 3:4 के अनुपात में हैं। यदि दोनों संख्याओं में 10 जोड़ दिया जाए, तो नया अनुपात 5:6 हो जाता है। दोनों संख्याओं का योग क्या है?",
+          "choices": [
+            "21",
+            "35",
+            "42",
+            "63"
+          ],
+          "solution": "मान लीजिए संख्याएं 3x और 4x हैं। समस्या के अनुसार: (3x + 10)/(4x + 10) = 5/6। अंकों के आदान-प्रदान करने और हल करने पर x = 6 प्राप्त होता है। संख्याएं 18 और 24 हैं, और उनका योग 42 है। सही उत्तर 42 है। अन्य विकल्प गलत हैं क्योंकि वे दिए गए अनुपात की शर्त को संतुष्ट नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन संख्या 3:4 च्या गुणोत्तरात आहेत. जर दोन्ही संख्यांमध्ये 10 मिळवला तर नवीन गुणोत्तर 5:6 असतो. दोन संख्यांची बेरीज किती आहे?",
+          "choices": [
+            "21",
+            "35",
+            "42",
+            "63"
+          ],
+          "solution": "मानू की संख्या 3x आणि 4x आहेत. समस्येनुसार: (3x + 10)/(4x + 10) = 5/6. अंदाज घालून आणि सोडवून x = 6 मिळते. संख्या 18 आणि 24 असून त्यांची बेरीज 42 आहे. योग्य उत्तर 42 आहे. इतर उत्तरे चुकीची आहेत कारण ते दिलेल्या गुणोत्तराच्या अटीला अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Finds the difference of the numbers instead of the sum.",
+        "Adds the ratio numbers without considering the actual values.",
+        null,
+        "Solves the ratio incorrectly."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly sets up the equation based on the given ratios and solves it to find x = 6, leading to the numbers 18 and 24, whose sum is 42. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh103.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 3: Pair of Linear Equations in Two Variables"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-25T03:36:46.874Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

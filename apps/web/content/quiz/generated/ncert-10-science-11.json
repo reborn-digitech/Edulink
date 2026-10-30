@@ -21,247 +21,49 @@
   "board": "NCERT",
   "book": "Science",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-28T01:51:37.998Z",
+  "generatedAt": "2026-10-30T09:00:43.057Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the formula used to calculate the heat produced in a resistor?",
-      "choices": [
-        "H = V I t",
-        "H = V I",
-        "H = V t",
-        "H = I t"
-      ],
-      "answerIndex": 0,
-      "solution": "The formula for calculating the heat produced in a resistor is H = V I t, which accounts for voltage, current, and time. The other options lack one or more essential variables needed to calculate heat properly.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक प्रतिरोधक में उत्पन्न ऊष्मा की गणना करने के लिए प्रयुक्त सूत्र क्या है?",
-          "choices": [
-            "H = V I t",
-            "H = V I",
-            "H = V t",
-            "H = I t"
-          ],
-          "solution": "प्रतिरोधक में उत्पन्न ऊष्मा की गणना करने का सूत्र H = V I t है, जो वोल्टेज, धारा और समय को ध्यान में रखता है। अन्य विकल्पों में ऊष्मा की गणना करने के लिए आवश्यक एक या अधिक महत्वपूर्ण चर कम हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रेजिस्टरमध्ये उत्पन्न होणाऱ्या ऊष्मेचे गणन करण्यासाठी वापरल्या जाणार्‍या सूत्राचे नाव काय आहे?",
-          "choices": [
-            "H = V I t",
-            "H = V I",
-            "H = V t",
-            "H = I t"
-          ],
-          "solution": "रेजिस्टरमध्ये उत्पन्न होणाऱ्या ऊष्मेचे गणन करण्यासाठी सूत्र H = V I t वापरले जाते, जे व्होल्टेज, विद्युत प्रवाह आणि वेळ यांचा समावेश करते. इतर विकल्पांमध्ये ऊष्मेचे योग्यरित्या गणन करण्यासाठी आवश्यक असलेले एक किंवा अधिक महत्त्वपूर्ण चल अनुपस्थित असतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the formula with a simplified version",
-        "Confuses the formula with a simplified version",
-        "Confuses the formula with a simplified version"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct formula for heat produced in a resistor is H = V I t. The other options are incomplete and represent common misconceptions where students may omit one of the variables (voltage, current, or time).",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 13,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.6 RESIST11.6 RESISTANCE OF A SYSTEM OF RESISTORS11.6 RESISTANCE OF A SYSTEM OF RESISTORS",
-            "11.6.2 Resistors in Parallel"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 14,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 15,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which law states that the heat produced in a resistor is directly proportional to the square of the current?",
-      "choices": [
-        "Ohm’s law",
-        "Joule’s law of heating",
-        "Kirchhoff’s law",
-        "Faraday’s law"
-      ],
-      "answerIndex": 1,
-      "solution": "Joule’s law of heating states that the heat produced in a resistor is directly proportional to the square of the current, as shown by the formula H = I²R. Ohm’s law relates voltage, current, and resistance but does not involve heat. Kirchhoff’s law deals with electrical circuits and current distribution, while Faraday’s law concerns electromagnetic induction.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन सा नियम बताता है कि प्रतिरोधक में उत्पन्न ऊष्मा विद्युत धारा के वर्ग के सीधे आनुपातिक होती है?",
-          "choices": [
-            "ओम का नियम",
-            "जूल का ऊष्मा का नियम",
-            "किरचॉफ का नियम",
-            "फैराडे का नियम"
-          ],
-          "solution": "जूल का ऊष्मा का नियम बताता है कि प्रतिरोधक में उत्पन्न ऊष्मा विद्युत धारा के वर्ग के सीधे आनुपातिक होती है, जैसा कि सूत्र H = I²R द्वारा दिखाया गया है। ओम का नियम वोल्टता, धारा और प्रतिरोध के बीच संबंध बताता है लेकिन ऊष्मा के संबंध में नहीं होता। किरचॉफ का नियम विद्युत परिपथ और धारा वितरण के साथ संबंधित होता है, जबकि फैराडे का नियम विद्युत चुंबकीय प्रेरण से संबंधित होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या कायद्याने रेझिस्टरमध्ये उत्पन्न होणारी ऊष्मा विद्युतप्रवाहाच्या वर्गाशी थेट समानुपाती असते?",
-          "choices": [
-            "ओमचा कायदा",
-            "जूलचा ऊष्मा कायदा",
-            "किरचॉफचा कायदा",
-            "फॅराडे चा कायदा"
-          ],
-          "solution": "जूलचा ऊष्मा कायदा असे म्हणतो की रेझिस्टरमध्ये उत्पन्न होणारी ऊष्मा विद्युतप्रवाहाच्या वर्गाशी थेट समानुपाती असते, जे सूत्र H = I²R द्वारे दर्शविले जाते. ओमचा कायदा विद्युत विभव, विद्युतप्रवाह आणि प्रतिरोध यांच्यातील संबंध दर्शवतो परंतु ऊष्मा संबंधी नाही. किरचॉफचा कायदा विद्युत परिपथ आणि विद्युतप्रवाह वितरणाशी संबंधित आहे, तर फॅराडे चा कायदा विद्युतचुंबकीय प्रेरणेशी संबंधित आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses Ohm’s law with the heating effect",
-        null,
-        "Incorrectly attributes the law to another scientist",
-        "Confuses Faraday’s law with the heating effect"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is Joule’s law of heating, which directly relates to the heat produced in a resistor being proportional to the square of the current. The other options are correctly identified as incorrect by the author.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 13,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.6 RESIST11.6 RESISTANCE OF A SYSTEM OF RESISTORS11.6 RESISTANCE OF A SYSTEM OF RESISTORS",
-            "11.6.2 Resistors in Parallel"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 14,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 15,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "Which law explains the heating effect of current with respect to the measurable properties in an electrical circuit?",
+      "stem": "Which of the following is the correct way to connect a voltmeter in a circuit to measure the potential difference between two points?",
       "choices": [
-        "Ohm's law",
-        "Joule's law of heating",
-        "Kirchhoff's law",
-        "Faraday's law"
+        "In series with the circuit",
+        "In parallel with the circuit",
+        "In a separate circuit",
+        "Directly across the power source"
       ],
       "answerIndex": 1,
-      "solution": "Joule's law of heating explains the heating effect of current in an electrical circuit. It states that the heat produced in a resistor is directly proportional to the square of the current, the resistance, and the time for which the current flows. The option Ohm's law is incorrect because it relates voltage, current, and resistance. The option Kirchhoff's law is incorrect because it deals with current and voltage in circuits. The option Faraday's law is incorrect because it relates to electromagnetic induction.",
+      "solution": "A voltmeter must be connected in parallel with the component across which the potential difference is to be measured. Connecting it in series would disrupt the circuit and change the current flow, while connecting it directly across the power source would not measure the potential difference between two specific points.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "विद्युत परिपथ में मापनीय गुणों के संबंध में धारा के ऊष्मीय प्रभाव को कौन-सा नियम समझाता है?",
+          "stem": "निम्नलिखित में से कौन-सा विधुत विभाजन के मापन के लिए एक परिपथ में वोल्टमीटर को जोड़ने का सही तरीका है?",
           "choices": [
-            "ओम का नियम",
-            "जूल का ऊष्मा नियम",
-            "किरचॉफ का नियम",
-            "फैराडे का नियम"
+            "परिपथ के साथ श्रेणी में",
+            "परिपथ के साथ समांतर में",
+            "अलग परिपथ में",
+            "सीधे ऊर्जा स्रोत के पार"
           ],
-          "solution": "जूल का ऊष्मा नियम विद्युत परिपथ में प्रतिरोधक में ऊष्मा के उत्पादन की व्याख्या करता है। यह कहता है कि प्रतिरोधक में उत्पन्न ऊष्मा धारा के वर्ग, प्रतिरोध और धारा के प्रवाह के समय के सीधे आनुपातिक होता है। ओम के नियम का विकल्प गलत है क्योंकि यह वोल्टता, धारा और प्रतिरोध के बीच संबंध बताता है। किरचॉफ के नियम का विकल्प गलत है क्योंकि यह परिपथ में धारा और वोल्टता के साथ निपटता है। फैराडे के नियम का विकल्प गलत है क्योंकि यह विद्युत चुम्बकीय प्रेरण से संबंधित है।",
+          "solution": "एक वोल्टमीटर को मापे जाने वाले घटक के साथ समांतर में जोड़ा जाना चाहिए। इसे श्रेणी में जोड़ने से परिपथ बाधित हो जाएगा और धारा प्रवाह में परिवर्तन होगा, जबकि ऊर्जा स्रोत के पार सीधे जोड़ने से दो विशिष्ट बिंदुओं के बीच विभाजन के मापन के स्थान पर नहीं मापा जाएगा।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and option structure. All distractors remain incorrect as in the original.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms used in a Hindi-medium context.",
           "flag": null
         },
         "mr": {
-          "stem": "विद्युत परिपथातील विजेच्या उष्ण परिणामाचे मोजणीय गुणधर्मांच्या संदर्भात कोणता कायदा स्पष्टीकरण देतो?",
+          "stem": "खालीलपैकी कोणता वोल्टमीटरला परिपथात जोडण्याचा योग्य प्रकार आहे जेणेकरून दोन बिंदूंमधील विद्युत विभवाचे मोजमाप करता येईल?",
           "choices": [
-            "ओमचा कायदा",
-            "जूलचा उष्णता कायदा",
-            "किरचॉफचा कायदा",
-            "फॅराडे चा कायदा"
+            "परिपथाशी श्रेणीमध्ये",
+            "परिपथाशी समांतर मध्ये",
+            "एक वेगळ्या परिपथात",
+            "सीधा ऊर्जा स्रोतावर"
           ],
-          "solution": "जूलचा उष्णता कायदा विद्युत परिपथातील विजेच्या उष्ण परिणामाचे स्पष्टीकरण देतो. तो सांगतो की प्रतिरोधकात उत्पन्न होणारा उष्णता विद्युत वाहक बलाच्या वर्गाशी, प्रतिरोधाशी आणि विद्युत प्रवाह वाहत राहिलेल्या काळाशी समानुपाती असतो. ओमचा कायदा अयोग्य आहे कारण तो विद्युत वाहक बल, विद्युत प्रवाह आणि प्रतिरोध यांच्यातील संबंध स्पष्ट करतो. किरचॉफचा कायदा अयोग्य आहे कारण तो परिपथातील विद्युत प्रवाह आणि विद्युत वाहक बलावर कार्य करतो. फॅराडे चा कायदा अयोग्य आहे कारण तो विद्युतचुंबकीय प्रेरणेशी संबंधित आहे.",
+          "solution": "विद्युत विभवाचे मोजमाप करायचे असेल तर वोल्टमीटरला त्या घटकाशी समांतर मध्ये जोडावे लागते. श्रेणीमध्ये जोडल्यास परिपथ बिघडेल आणि विद्युत प्रवाह बदलेल, तर ऊर्जा स्रोतावर सीधा जोडल्यास दोन विशिष्ट बिंदूंमधील विद्युत विभवाचे मोजमाप होणार नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the solution match the English version.",
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
           "flag": null
         }
       },
@@ -270,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "relates voltage, current, and resistance",
+        "Confuses the function of a voltmeter with an ammeter",
         null,
-        "deals with current and voltage in circuits",
-        "relates to electromagnetic induction"
+        "Understands the concept but misapplies the connection method",
+        "Does not understand the purpose of a voltmeter"
       ],
       "solverAnswers": [
         1,
@@ -283,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is clearly Joule's law of heating, and the author's reasoning for the other options is accurate and reflects common misconceptions.",
+      "critique": "The correct answer is 1, as a voltmeter must be connected in parallel to measure potential difference. The author's reasoning aligns with standard physics principles and identifies common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/science/jesc111.pdf",
@@ -307,49 +109,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What does Ohm's law state about the relationship between potential difference and current in a conductor?",
+      "stem": "Which of the following is an example of the heating effect of electric current?",
       "choices": [
-        "Potential difference is inversely proportional to current",
-        "Current is independent of potential difference",
-        "Potential difference is directly proportional to current",
-        "Current is directly proportional to the square of potential difference"
+        "A bulb glowing",
+        "A motor rotating",
+        "A fan spinning",
+        "A resistor heating up"
       ],
-      "answerIndex": 2,
-      "solution": "Ohm's law states that the potential difference across a conductor is directly proportional to the current flowing through it, assuming the temperature remains constant. This means that as current increases, potential difference increases in the same proportion. The first option incorrectly suggests an inverse relationship, the second option denies any relationship, and the last option introduces a quadratic relationship that is not supported by the law.",
+      "answerIndex": 3,
+      "solution": "The heating effect of electric current is observed when electrical energy is converted into thermal energy, such as in a resistor. A bulb glowing is due to light emission, a motor rotating is due to mechanical energy, and a fan spinning is also mechanical energy. The other options do not directly demonstrate the heating effect.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "ओम के नियम द्वारा चालक में विभवांतर एवं धारा के बीच संबंध के बारे में क्या कहा गया है?",
+          "stem": "निम्नलिखित में से कौन विद्युत धारा के ऊष्मीय प्रभाव का उदाहरण है?",
           "choices": [
-            "विभवांतर धारा के व्युत्क्रमानुपाती होता है",
-            "धारा विभवांतर से स्वतंत्र होती है",
-            "विभवांतर धारा के सीधे आनुपातिक होता है",
-            "धारा विभवांतर के वर्ग के सीधे आनुपातिक होती है"
+            "एक बल्ब जलना",
+            "एक मोटर घूमना",
+            "एक पंखा घूमना",
+            "एक प्रतिरोधक गर्म होना"
           ],
-          "solution": "ओम के नियम के अनुसार, चालक के सिरों पर विभवांतर, चालक में प्रवाहित धारा के सीधे आनुपातिक होता है, जबकि तापमान स्थिर रहता है। इसका अर्थ है कि जैसे-जैसे धारा बढ़ती है, विभवांतर उसी अनुपात में बढ़ता है। पहला विकल्प गलत रूप से एक व्युत्क्रमानुपाती संबंध का सुझाव देता है, दूसरा विकल्प कोई संबंध नहीं होने का दावा करता है, और अंतिम विकल्प एक द्विघात संबंध को शामिल करता है जो नियम द्वारा समर्थित नहीं है।",
+          "solution": "विद्युत धारा के ऊष्मीय प्रभाव के रूप में तब देखा जाता है जब विद्युत ऊर्जा तापीय ऊर्जा में बदल जाती है, जैसे कि प्रतिरोधक में। एक बल्ब जलना प्रकाश उत्सर्जन के कारण होता है, एक मोटर घूमना यांत्रिक ऊर्जा के कारण होता है, और एक पंखा घूमना भी यांत्रिक ऊर्जा के कारण होता है। अन्य विकल्प सीधे ऊष्मीय प्रभाव को दर्शाते नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "ओहमच्या नियमाने कंडक्टरमधील विद्युत विभाग आणि विद्युत प्रवाहाच्या संबंधाबद्दल काय सांगितले आहे?",
+          "stem": "खालीलपैकी कोणते विद्युत प्रवाहाच्या उष्ण प्रभावाचे उदाहरण आहे?",
           "choices": [
-            "विद्युत विभाग विद्युत प्रवाहाच्या व्यस्त प्रमाणात असतो",
-            "विद्युत प्रवाह विद्युत विभागापासून स्वतंत्र असतो",
-            "विद्युत विभाग विद्युत प्रवाहाच्या सीधा प्रमाणात असतो",
-            "विद्युत प्रवाह विद्युत विभागाच्या वर्गाच्या सीधा प्रमाणात असतो"
+            "एका बल्बचे जळणे",
+            "एका मोटरचे फिरणे",
+            "एका फॅनचे फिरणे",
+            "एका प्रतिरोधकाचे उत्तप्त होणे"
           ],
-          "solution": "ओहमच्या नियमानुसार, तापमान स्थिर राहिल्यास कंडक्टरच्या दोन बिंदूंमधील विद्युत विभाग त्यामधून प्रवाहित होणाऱ्या विद्युत प्रवाहाच्या सीधा प्रमाणात असतो. हे अर्थ असा की विद्युत प्रवाह वाढतो तेव्हा विद्युत विभाग त्याच्या अनुपातात वाढतो. पहिला विकल्प व्यस्त संबंधाचा गैरसमज करतो, दुसरा विकल्प कोणताही संबंध नसल्याचा दावा करतो आणि शेवटचा विकल्प वर्ग संबंधाचा असा गैरसमज करतो जो नियमाने समर्थित नाही.",
+          "solution": "विद्युत प्रवाहाच्या उष्ण प्रभावाचे निरीक्षण विद्युत ऊर्जेचे तापमान ऊर्जेमध्ये रूपांतरित होत असताना होते, उदाहरणार्थ प्रतिरोधकामध्ये. बल्बचे जळणे प्रकाश उत्सर्जनामुळे होते, मोटरचे फिरणे यांत्रिक ऊर्जेमुळे आणि फॅनचे फिरणे देखील यांत्रिक ऊर्जेमुळे होते. इतर विकल्प उष्ण प्रभावाचे सीधा प्रदर्शन करत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -358,20 +160,214 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses direct and inverse proportionality",
-        "fails to recognize any relationship",
-        null,
-        "Confuses Ohm's law with a quadratic relationship due to misremembering the formula"
+        "Confuses the heating effect with light emission",
+        "Misunderstands the function of an electric motor",
+        "Does not recognize the purpose of a fan",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 2, which accurately reflects Ohm's law. The author's reasoning for the incorrect options is valid and corresponds to common student misconceptions.",
+      "critique": "The correct answer is 3, as a resistor heating up directly demonstrates the heating effect of electric current. The other options involve light, mechanical motion, or other forms of energy conversion, not direct thermal energy production.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 20,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 21,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the potential difference across a conductor if 24 J of work is done to move 2 C of charge?",
+      "choices": [
+        "12 V",
+        "24 V",
+        "48 V",
+        "60 V"
+      ],
+      "answerIndex": 0,
+      "solution": "Potential difference is calculated as V = W/Q, where W is work done and Q is charge. Substituting the values, V = 24 J / 2 C = 12 V. The other options result from incorrect formulas or arithmetic errors.",
+      "checkExpr": "24/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चालक के कारण स्थितिज अंतर क्या है यदि 24 जूल कार्य करके 2 कूलॉम आवेश को गति कराया जाता है?",
+          "choices": [
+            "12 वी।",
+            "24 वी।",
+            "48 वी।",
+            "60 वी।"
+          ],
+          "solution": "स्थितिज अंतर की गणना V = W/Q के रूप में की जाती है, जहां W कार्य करना है और Q आवेश है। मानों को प्रतिस्थापित करने पर, V = 24 जूल / 2 कूलॉम = 12 वी। अन्य विकल्प गलत सूत्र या गणितीय त्रुटि के कारण होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as per standard Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वाहकाच्या दरम्यान किती विद्युत विभव असेल जर 2 C आवेश हलविण्यासाठी 24 J कार्य केले जाते?",
+          "choices": [
+            "12 V",
+            "24 V",
+            "48 V",
+            "60 V"
+          ],
+          "solution": "विद्युत विभव V = W/Q असा गणित केला जातो, जेथे W हा कार्य आहे आणि Q हा आवेश आहे. मूल्यांचा वापर करून, V = 24 J / 2 C = 12 V. इतर विकल्प अयोग्य सूत्रांमुळे किंवा गणितीय चूकीमुळे येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Multiplies work by charge",
+        "Uses work as potential difference",
+        "Adds work and charge"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula V = W/Q and arrives at the correct answer of 12 V. The distractors reflect common misconceptions, such as multiplying work by charge, using work directly as potential difference, and adding work and charge.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 11: Electricity"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 11: Electricity"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.2 ELECTRIC POTENTIAL AND POTENTIAL DIFFERENCE"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.3 CIRCUIT DIAGRAM"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In an electric circuit, the resistance of a conductor is directly proportional to its length and inversely proportional to its area of cross-section. What is the constant of proportionality called?",
+      "choices": [
+        "Conductivity",
+        "Resistivity",
+        "Current density",
+        "Voltage"
+      ],
+      "answerIndex": 1,
+      "solution": "The constant of proportionality is called resistivity. Resistivity is a characteristic property of the material of the conductor. Conductivity is the reciprocal of resistivity, current density is a measure of current per unit area, and voltage is a measure of potential difference.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्युत परिपथ में, एक चालक का प्रतिरोध इसकी लंबाई के सीधे आनुपातिक और अनुप्रस्थ काट के क्षेत्रफल के व्युत्क्रमानुपाती होता है। समानुपातिकता का नियतांक क्या कहलाता है?",
+          "choices": [
+            "चालकता",
+            "प्रतिरोधकता",
+            "धारा घनत्व",
+            "वोल्टता"
+          ],
+          "solution": "समानुपातिकता का नियतांक प्रतिरोधकता कहलाता है। प्रतिरोधकता चालक के पदार्थ का एक विशेषता गुण होता है। चालकता प्रतिरोधकता के व्युत्क्रम होती है, धारा घनत्व एक इकाई क्षेत्रफल पर धारा के माप के रूप में होता है और वोल्टता विभवांतर के माप के रूप में होता है।",
+          "imageAlt": null,
+          "critique": "All terms are standard Hindi scientific terms used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विद्युत परिपथात, एका वाहकाचा प्रतिरोध त्याच्या लांबीशी व्यावर्ती आणि त्याच्या अनुलंब क्षेत्रफळाशी व्यस्त असतो. प्रतिपादनाचा अचूक संख्यात्मक गुणांक काय म्हणतात?",
+          "choices": [
+            "वाहकता",
+            "प्रतिरोधकता",
+            "विद्युत वाहकता",
+            "विद्युत विभव"
+          ],
+          "solution": "प्रतिपादनाचा अचूक संख्यात्मक गुणांक प्रतिरोधकता म्हणतात. प्रतिरोधकता हा वाहकाच्या सामग्रीचा वैशिष्ट्य गुणधर्म आहे. वाहकता ही प्रतिरोधकतेची व्यस्त आहे, विद्युत वाहकता ही एकक क्षेत्रफळावरील विद्युत वाहिनीचे माप आहे आणि विद्युत विभव ही विभवांतराचे माप आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms as used in standard textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses resistivity with conductivity",
+        null,
+        "confuses resistivity with current density",
+        "confuses resistivity with voltage"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 'Resistivity' as it is the constant of proportionality in the relation R = ρ(L/A). The other options are common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/science/jesc111.pdf",
@@ -406,47 +402,146 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "An electric circuit has three resistors of 5 Ω, 10 Ω, and 30 Ω connected in parallel. A 12 V battery is connected to the circuit. What is the total current flowing through the circuit?",
+      "difficulty": 5,
+      "stem": "An electric bulb is rated at 100 W and 200 V. What is the current drawn by the bulb?",
       "choices": [
-        "2.4 A",
-        "4.0 A",
-        "1.2 A",
-        "0.4 A"
+        "0.5 A",
+        "1.0 A",
+        "2.0 A",
+        "2.5 A"
       ],
-      "answerIndex": 1,
-      "solution": "The total current in a parallel circuit is the sum of the currents through each resistor. Using Ohm's law, the current through the 5 Ω resistor is 12 V / 5 Ω = 2.4 A, through the 10 Ω resistor is 12 V / 10 Ω = 1.2 A, and through the 30 Ω resistor is 12 V / 30 Ω = 0.4 A. Adding these gives 2.4 + 1.2 + 0.4 = 4.0 A. The option 2.4 A is the current through only one resistor. The option 1.2 A is the current through only the 10 Ω resistor. The option 0.4 A is the current through only the 30 Ω resistor.",
-      "checkExpr": "2.4+1.2+0.4",
+      "answerIndex": 0,
+      "solution": "Using the formula P = V × I, where P is power, V is voltage, and I is current, we can calculate the current as I = P / V = 100 W / 200 V = 0.5 A. The other options are incorrect because they do not satisfy the relationship between power, voltage, and current.",
+      "checkExpr": "100/200",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक विद्युत परिपथ में तीन प्रतिरोध 5 ओम, 10 ओम और 30 ओम समांतर में जुड़े हुए हैं। एक 12 वोल्ट की बैटरी परिपथ से जुड़ी हुई है। परिपथ में प्रवाहित कुल धारा क्या है?",
+          "stem": "एक बिजली के बल्ब को 100 वाट और 200 वोल्ट पर चिह्नित किया गया है। बल्ब द्वारा खींचा गया धारा क्या है?",
           "choices": [
-            "2.4 एम्पियर",
-            "4.0 एम्पियर",
-            "1.2 एम्पियर",
-            "0.4 एम्पियर"
+            "0.5 एम्पियर",
+            "1.0 एम्पियर",
+            "2.0 एम्पियर",
+            "2.5 एम्पियर"
           ],
-          "solution": "समांतर परिपथ में कुल धारा प्रत्येक प्रतिरोध से गुजरने वाली धाराओं के योग के बराबर होती है। ओम के नियम का उपयोग करके, 5 ओम प्रतिरोध से धारा 12 वोल्ट / 5 ओम = 2.4 एम्पियर है, 10 ओम प्रतिरोध से धारा 12 वोल्ट / 10 ओम = 1.2 एम्पियर है, और 30 ओम प्रतिरोध से धारा 12 वोल्ट / 30 ओम = 0.4 एम्पियर है। इनको जोड़ने पर 2.4 + 1.2 + 0.4 = 4.0 एम्पियर प्राप्त होता है। विकल्प 2.4 एम्पियर केवल एक प्रतिरोध से गुजरने वाली धारा है। विकल्प 1.2 एम्पियर केवल 10 ओम प्रतिरोध से गुजरने वाली धारा है। विकल्प 0.4 एम्पियर केवल 30 ओम प्रतिरोध से गुजरने वाली धारा है।",
+          "solution": "सूत्र P = V × I का उपयोग करके, जहां P शक्ति है, V वोल्टेज है, और I धारा है, हम धारा की गणना I = P / V = 100 वाट / 200 वोल्ट = 0.5 एम्पियर के रूप में कर सकते हैं। अन्य विकल्प गलत हैं क्योंकि वे शक्ति, वोल्टेज और धारा के बीच संबंध को संतुष्ट नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium textbooks. The correct answer remains in the same position (option 2), and all distractors are still incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एक विद्युत परिपथामध्ये 5 Ω, 10 Ω आणि 30 Ω चे तीन प्रतिरोध एकमेकांशी समांतरमध्ये जोडलेले आहेत. परिपथाला 12 V ची बॅटरी जोडली जाते. परिपथामध्ये वाहणारा एकूण विद्युत प्रवाह किती आहे?",
+          "stem": "एक विद्युत बल्ब 100 W आणि 200 V वर रेट केला आहे. बल्बने किती विद्युत वाहिनी घेतली जाते?",
           "choices": [
-            "2.4 A",
-            "4.0 A",
-            "1.2 A",
-            "0.4 A"
+            "0.5 A",
+            "1.0 A",
+            "2.0 A",
+            "2.5 A"
           ],
-          "solution": "समांतर परिपथामध्ये एकूण विद्युत प्रवाह एकमेकांशी जोडलेल्या प्रतिरोधांमधून वाहणारा प्रवाहाच्या बेरजेने मिळतो. ओमच्या नियमाचा वापर करून, 5 Ω प्रतिरोधामधून वाहणारा प्रवाह 12 V / 5 Ω = 2.4 A आहे, 10 Ω प्रतिरोधामधून वाहणारा प्रवाह 12 V / 10 Ω = 1.2 A आहे आणि 30 Ω प्रतिरोधामधून वाहणारा प्रवाह 12 V / 30 Ω = 0.4 A आहे. यांची बेरीज करून 2.4 + 1.2 + 0.4 = 4.0 A मिळतो. विकल्प 2.4 A हा केवळ एका प्रतिरोधामधून वाहणारा प्रवाह आहे. विकल्प 1.2 A हा केवळ 10 Ω प्रतिरोधामधून वाहणारा प्रवाह आहे. विकल्प 0.4 A हा केवळ 30 Ω प्रतिरोधामधून वाहणारा प्रवाह आहे.",
+          "solution": "सूत्र P = V × I वापरून, जेथे P शक्ती, V वोल्टेज आहे आणि I विद्युत वाहिनी आहे, आम्ही विद्युत वाहिनी I = P / V = 100 W / 200 V = 0.5 A असे गणना करू शकतो. इतर विकल्प अयोग्य आहेत कारण ते शक्ती, वोल्टेज आणि विद्युत वाहिनी च्या संबंधाला पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms (e.g., 'विद्युत वाहिनी' for 'current', 'शक्ती' for 'power', 'वोल्टेज' for 'voltage').",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "divides voltage by power instead of power by voltage",
+        "adds power and voltage",
+        "multiplies power by voltage"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The formula P = V × I is applied properly, and the calculation is accurate.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.4 OHM’S LA11.4 OHM’S LAW11.4 OHM’S LAW"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.4 OHM’S LA11.4 OHM’S LAW11.4 OHM’S LAW"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.5 FAFACTORS ON WHICH THE RESISTANCE OF A",
+            "CONDUCTOR DEPENDS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "An electric bulb has a resistance of 1200 Ω and is connected to a 220 V source. If the resistance of the bulb is reduced to 600 Ω, what will happen to the current drawn by the bulb?",
+      "choices": [
+        "It will double",
+        "It will halve",
+        "It will remain the same",
+        "It will become zero"
+      ],
+      "answerIndex": 0,
+      "solution": "According to Ohm's law, I = V/R. If the resistance is halved, the current will double, assuming the voltage remains constant. The correct answer is 'It will double'. The other options are incorrect: 'It will halve' would be true if the resistance was doubled, 'It will remain the same' is incorrect because current and resistance are inversely related, and 'It will become zero' is not possible unless the resistance is infinite, which is not the case here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बिजली के बल्ब का प्रतिरोध 1200 ओम है और इसे 220 वोल्ट के स्रोत से जोड़ा गया है। यदि बल्ब का प्रतिरोध 600 ओम तक कम कर दिया जाए तो बल्ब द्वारा खींचा गया धारा क्या होगा?",
+          "choices": [
+            "यह दुगना हो जाएगा",
+            "यह आधा हो जाएगा",
+            "यह एक ही रहेगा",
+            "यह शून्य हो जाएगा"
+          ],
+          "solution": "ओम के नियम के अनुसार, I = V/R। यदि प्रतिरोध आधा हो जाता है तो धारा दुगनी हो जाती है, यदि वोल्टेज स्थिर रहता है। सही उत्तर 'यह दुगना हो जाएगा' है। अन्य विकल्प गलत हैं: 'यह आधा हो जाएगा' तभी सही होगा जब प्रतिरोध दुगना हो जाए, 'यह एक ही रहेगा' गलत है क्योंकि धारा और प्रतिरोध व्युत्क्रमानुपाती होते हैं, और 'यह शून्य हो जाएगा' केवल तभी संभव है जब प्रतिरोध अनंत हो, जो यहां नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक विद्युत बल्ब 1200 Ω प्रतिरोध असून 220 V स्रोतला जोडला गेला आहे. जर बल्बचा प्रतिरोध 600 Ω वर घटला, तर बल्बद्वारे खात्री केलेला विद्युत प्रवाह काय होईल?",
+          "choices": [
+            "तो दुप्पट होईल",
+            "तो अर्धा होईल",
+            "तो अपरिवर्तित राहील",
+            "तो शून्य होईल"
+          ],
+          "solution": "ओमच्या कायद्यानुसार, I = V/R. जर प्रतिरोध अर्धा झाला, तर विद्युत प्रवाह दुप्पट होईल, जर विद्युत विभव स्थिर राहिला. योग्य उत्तर 'तो दुप्पट होईल' आहे. इतर विकल्प चूकीचे आहेत: 'तो अर्धा होईल' हे असे असते जर प्रतिरोध दुप्पट झाला असता, 'तो अपरिवर्तित राहील' हे चूकीचे आहे कारण विद्युत प्रवाह आणि प्रतिरोध व्यस्त संबंध असतात, आणि 'तो शून्य होईल' हे शक्य नाही जर प्रतिरोध अनंत नसेल, जे येथे नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -457,109 +552,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the current through one resistor with the total current",
         null,
-        "only considers the current through the 5 Ω resistor",
-        "only considers the current through the 30 Ω resistor"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly calculates the total current by summing the individual currents through each resistor in parallel. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 13,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.6 RESIST11.6 RESISTANCE OF A SYSTEM OF RESISTORS11.6 RESISTANCE OF A SYSTEM OF RESISTORS",
-            "11.6.2 Resistors in Parallel"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 14,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 15,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "An electric refrigerator rated 400 W operates 8 hours per day. What is the cost of the energy to operate it for 30 days at Rs 3.00 per kW h?",
-      "choices": [
-        "Rs 288",
-        "Rs 388",
-        "Rs 480",
-        "Rs 588"
-      ],
-      "answerIndex": 0,
-      "solution": "The total energy consumed by the refrigerator in 30 days is 400 W × 8 hours/day × 30 days = 96000 W h = 96 kW h. The cost is 96 kW h × Rs 3.00 per kW h = Rs 288. The other options result from incorrect calculations, such as using 400 W instead of 400 kW or miscalculating the total hours. Hence, the correct answer is Rs 288.",
-      "checkExpr": "96*3",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक विद्युत रेफ्रिजरेटर जिसकी शक्ति 400 वॉट है, दिन में 8 घंटे चलता है। 30 दिनों में इसके कार्य करने की ऊर्जा की लागत क्या होगी, यदि प्रति किलोवाट घंटा के लिए रु 3.00 है?",
-          "choices": [
-            "रु 288",
-            "रु 388",
-            "रु 480",
-            "रु 588"
-          ],
-          "solution": "रेफ्रिजरेटर द्वारा 30 दिनों में कुल ऊर्जा की खपत 400 वॉट × 8 घंटा/दिन × 30 दिन = 96000 वॉट घंटा = 96 किलोवाट घंटा है। लागत 96 किलोवाट घंटा × रु 3.00 प्रति किलोवाट घंटा = रु 288 है। अन्य विकल्प गलत गणना के कारण, जैसे 400 वॉट के स्थान पर 400 किलोवॉट का उपयोग करना या कुल घंटे की गलत गणना करना, परिणाम होते हैं। अतः सही उत्तर रु 288 है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक विद्युत फ्रिज 400 वॉट रेटेड असून ती दररोज 8 तास काम करते. 30 दिवस चालविण्यासाठी ऊर्जेचा खर्च किती असेल, जर 1 किलोवॉट-तास चा खर्च रु. 3.00 असेल?",
-          "choices": [
-            "रु. 288",
-            "रु. 388",
-            "रु. 480",
-            "रु. 588"
-          ],
-          "solution": "फ्रिजने 30 दिवसांत एकूण ऊर्जा वापरली ती 400 वॉट × 8 तास/दिवस × 30 दिवस = 96000 वॉट-तास = 96 किलोवॉट-तास. खर्च 96 किलोवॉट-तास × रु. 3.00 प्रति किलोवॉट-तास = रु. 288. इतर विकल्प अपयशी गणना करून मिळतात, जसे 400 वॉट ऐवजी 400 किलोवॉट वापरणे किंवा कुल तासांची चूक करणे. त्यामुळे योग्य उत्तर रु. 288 आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'किलोवॉट-तास' which is standard in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Miscalculates energy in kWh by forgetting to convert watts to kilowatts",
-        "Confuses watts with kilowatts and forgets to multiply by days",
-        "Confuses kilowatt-hours with watt-hours and multiplies incorrectly"
+        "Confuses inverse relationship with direct",
+        "Believes current and resistance are directly proportional",
+        "Does not understand the relationship between current and resistance"
       ],
       "solverAnswers": [
         0,
@@ -568,219 +564,8 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The calculation is accurate: 400 W × 8 h/day × 30 days = 96,000 Wh = 96 kWh. 96 kWh × Rs 3.00 = Rs 288. The author's explanations for the wrong options are reasonable and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 16,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT",
-            "11.7.1 Practical Applications of Heating Effect of",
-            "Electric Current"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 17,
-          "pageStart": 20,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT",
-            "11.7.1 Practical Applications of Heating Effect of",
-            "Electric Current"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 18,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.8 ELECTRIC POWER"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 19,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "What you have learnt"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Three resistors of 2 Ω, 3 Ω, and 6 Ω are connected in a combination of series and parallel. What is the lowest total resistance that can be achieved?",
-      "choices": [
-        "1 Ω",
-        "2 Ω",
-        "3 Ω",
-        "6 Ω"
-      ],
-      "answerIndex": 0,
-      "solution": "To achieve the lowest resistance, all resistors should be connected in parallel. The equivalent resistance of 2 Ω, 3 Ω, and 6 Ω in parallel is 1 Ω. The option 2 Ω is the resistance of one resistor. The option 3 Ω is the resistance of one resistor. The option 6 Ω is the resistance of one resistor.",
-      "checkExpr": "1/(1/2+1/3+1/6)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2 ओम, 3 ओम, और 6 ओम के तीन प्रतिरोधक श्रेणी और समान्तर के संयोजन में जुड़े हुए हैं। सबसे कम कुल प्रतिरोध क्या हो सकता है?",
-          "choices": [
-            "1 ओम",
-            "2 ओम",
-            "3 ओम",
-            "6 ओम"
-          ],
-          "solution": "सबसे कम प्रतिरोध प्राप्त करने के लिए, सभी प्रतिरोधकों को समान्तर में जोड़ा जाना चाहिए। 2 ओम, 3 ओम और 6 ओम के समान्तर में तुल्य प्रतिरोध 1 ओम है। विकल्प 2 ओम एक प्रतिरोधक का प्रतिरोध है। विकल्प 3 ओम एक प्रतिरोधक का प्रतिरोध है। विकल्प 6 ओम एक प्रतिरोधक का प्रतिरोध है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2 ओम, 3 ओम आणि 6 ओम असलेल्या तीन प्रतिरोधकांना श्रेणी आणि समांतर जोडणीच्या संयोजनात जोडले जाते. एकूण कमाल प्रतिरोध किती असू शकतो?",
-          "choices": [
-            "1 ओम",
-            "2 ओम",
-            "3 ओम",
-            "6 ओम"
-          ],
-          "solution": "कमाल प्रतिरोध मिळविण्यासाठी, सर्व प्रतिरोधकांना समांतर जोडले पाहिजे. 2 ओम, 3 ओम आणि 6 ओम यांचे समांतर जोडणीतील समतुल्य प्रतिरोध 1 ओम आहे. 2 ओम हा एका प्रतिरोधकाचा प्रतिरोध आहे. 3 ओम हा एका प्रतिरोधकाचा प्रतिरोध आहे. 6 ओम हा एका प्रतिरोधकाचा प्रतिरोध आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for resistors and electrical connections.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "chooses the resistance of one resistor",
-        "chooses the resistance of one resistor",
-        "chooses the resistance of one resistor"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 Ω, achieved by connecting all resistors in parallel. The distractors are simply the values of individual resistors, which is a common misconception.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 13,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.6 RESIST11.6 RESISTANCE OF A SYSTEM OF RESISTORS11.6 RESISTANCE OF A SYSTEM OF RESISTORS",
-            "11.6.2 Resistors in Parallel"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 14,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc111.pdf",
-          "ordinal": 15,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 11: Electricity",
-            "11.7 HEA11.7 HEATING EFFECT OF ELECTRIC CURRENT11.7 HEATING EFFECT OF ELECTRIC CURRENT"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following materials is the best conductor of electricity, based on the data in Table 11.2?",
-      "choices": [
-        "Silver",
-        "Copper",
-        "Aluminium",
-        "Tungsten"
-      ],
-      "answerIndex": 0,
-      "solution": "According to Table 11.2, silver has the lowest resistivity (1.60 × 10 Ω m), making it the best conductor of electricity. The other materials have higher resistivity values, meaning they are less conductive. The correct answer is silver.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पदार्थ विद्युत का सबसे अच्छा चालक है, टेबल 11.2 के आंकड़ों के आधार पर?",
-          "choices": [
-            "चांदी",
-            "तांबा",
-            "एल्यूमीनियम",
-            "टंगस्टन"
-          ],
-          "solution": "टेबल 11.2 के अनुसार, चांदी का प्रतिरोधकता मान (1.60 × 10 ओम मीटर) सबसे कम है, जिसके कारण यह विद्युत का सबसे अच्छा चालक है। अन्य पदार्थों के प्रतिरोधकता मान अधिक हैं, जिसका अर्थ है कि वे कम चालक हैं। सही उत्तर चांदी है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पुढील पदार्थांपैकी कोणता विद्युत चालक आहे, त्याचा निर्णय तालिका 11.2 मधील आकडेवारीवर आधारित आहे?",
-          "choices": [
-            "चांदी",
-            "तांबे",
-            "अल्युमिनियम",
-            "टंगस्टन"
-          ],
-          "solution": "तालिका 11.2 नुसार, चांदीचा विरोधकत्व सर्वात कमी आहे (1.60 × 10 ओम मीटर), ज्यामुळे ती विद्युत चालक आहे. इतर पदार्थांचा विरोधकत्व मूल्य जास्त आहे, ज्यामुळे ते कमी चालक आहेत. योग्य उत्तर चांदी आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Pupil thinks copper is the best conductor because it's commonly used in wires, not realizing silver has lower resistivity.",
-        "Students often confuse the order of conductivity, thinking that aluminium is a better conductor than copper due to its common use in wiring.",
-        "Student believes that materials used in bulbs are the best conductors"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. The reasoning is sound, as resistivity is the correct criterion for determining conductivity. The misconceptions listed for the distractors are plausible and reflect common student errors.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies Ohm's law (I = V/R) and correctly concludes that halving the resistance doubles the current. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/science/jesc111.pdf",
@@ -816,7 +601,194 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T01:51:37.998Z",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 220 V line supplies power to several 10 W lamps connected in parallel. If the maximum allowable current is 5 A, how many lamps can be connected?",
+      "choices": [
+        "10",
+        "110",
+        "115",
+        "125"
+      ],
+      "answerIndex": 1,
+      "solution": "Each lamp consumes 10 W at 220 V, so the current per lamp is I = P / V = 10 W / 220 V ≈ 0.045 A. The total number of lamps is 5 A / 0.045 A ≈ 110. The other options result from incorrect calculations or misunderstandings of power and current relationships.",
+      "checkExpr": "5/(10/220)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "220 वी की लाइन कई 10 वॉट के बल्बों को श्रेणी में जोड़कर बिजली प्रदान करती है। यदि अनुमन्य धारा 5 एम्पियर है, तो कितने बल्ब जोड़े जा सकते हैं?",
+          "choices": [
+            "10",
+            "110",
+            "115",
+            "125"
+          ],
+          "solution": "प्रत्येक बल्ब 10 वॉट पर 220 वी पर कार्य करता है, अतः प्रति बल्ब धारा I = P / V = 10 वॉट / 220 वी ≈ 0.045 एम्पियर। कुल बल्बों की संख्या 5 एम्पियर / 0.045 एम्पियर ≈ 110 है। अन्य विकल्प शक्ति एवं धारा के संबंध के गलत गणना या अंधाधुंध से प्राप्त होते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "220 V लाईन 10 W च्या अनेक बल्ब लाइनमध्ये समांतर जोडलेल्या आहेत. जर अनुमत विद्युतप्रवाह 5 A असेल तर किती बल्ब जोडता येतील?",
+          "choices": [
+            "10",
+            "110",
+            "115",
+            "125"
+          ],
+          "solution": "प्रत्येक बल्ब 10 W चा 220 V वर वापरतो, म्हणून प्रत्येक बल्बचा विद्युतप्रवाह I = P / V = 10 W / 220 V ≈ 0.045 A आहे. बल्बची एकूण संख्या 5 A / 0.045 A ≈ 110 आहे. इतर विकल्प विद्युत शक्ती आणि विद्युतप्रवाह निर्देशकांच्या संबंधांच्या चुकीच्या गणना किंवा अस्पष्टतेमुळे येतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses power with current, thinking 220V / 10W = 22A per lamp, then divides 5A by 22A",
+        null,
+        "Student calculates total power as 220V * 5A = 1100W and divides by 10W per lamp, but adds 5 instead of 10",
+        "Pupil calculates total power as 220V * 5A = 1100W and divides by 10W per lamp, but adds 5A to the result by mistake."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The current per lamp is calculated properly as 10 W / 220 V = 0.045 A, and dividing 5 A by 0.045 A gives approximately 110 lamps. The distractors reflect plausible misconceptions about power and current relationships.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 20,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "What you have learnt"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 21,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "What you have learnt"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A nichrome wire of length 1 m has a resistance of 2 Ω. What will be the resistance of a nichrome wire of length 2 m and the same cross-sectional area?",
+      "choices": [
+        "1 Ω",
+        "2 Ω",
+        "4 Ω",
+        "8 Ω"
+      ],
+      "answerIndex": 2,
+      "solution": "Resistance is directly proportional to length. So, if the length is doubled, the resistance will also double. Hence, the resistance of a 2 m wire will be 4 Ω. The other options are incorrect because they do not reflect the direct proportionality between resistance and length.",
+      "checkExpr": "2*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 मीटर लंबाई के निक्रोम के तार का प्रतिरोध 2 ओम है। 2 मीटर लंबाई के निक्रोम के तार और समान अनुप्रस्थ काट के लिए प्रतिरोध क्या होगा?",
+          "choices": [
+            "1 ओम",
+            "2 ओम",
+            "4 ओम",
+            "8 ओम"
+          ],
+          "solution": "प्रतिरोध लंबाई के सीधे आनुपातिक होता है। अतः यदि लंबाई दुगुनी हो जाती है, तो प्रतिरोध भी दुगुना हो जाएगा। अतः 2 मीटर लंबाई के तार का प्रतिरोध 4 ओम होगा। अन्य विकल्प गलत हैं क्योंकि वे प्रतिरोध और लंबाई के बीच सीधा आनुपातिकता को प्रतिबिंबित नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 मीटर लांबीचा निक्रोम ताराचा प्रतिरोध 2 ओम आहे. 2 मीटर लांबीच्या आणि एकसारख्या अनुलंब क्षेत्रफळाच्या निक्रोम ताराचा प्रतिरोध किती असेल?",
+          "choices": [
+            "1 ओम",
+            "2 ओम",
+            "4 ओम",
+            "8 ओम"
+          ],
+          "solution": "प्रतिरोध लांबीशी थेट प्रमाणात असतो. म्हणून, जर लांबी दुप्पट झाली तर प्रतिरोध दुप्पट होईल. म्हणून, 2 मीटर लांबीच्या ताराचा प्रतिरोध 4 ओम असेल. इतर विकल्प अयोग्य आहेत कारण ते प्रतिरोध आणि लांबीमधील थेट प्रमाणात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks resistance is inversely proportional to length",
+        "thinks resistance remains the same",
+        null,
+        "thinks resistance is quadrupled for a different reason"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that resistance is directly proportional to length, and thus doubling the length doubles the resistance. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.4 OHM’S LA11.4 OHM’S LAW11.4 OHM’S LAW"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.4 OHM’S LA11.4 OHM’S LAW11.4 OHM’S LAW"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc111.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 11: Electricity",
+            "11.5 FAFACTORS ON WHICH THE RESISTANCE OF A",
+            "CONDUCTOR DEPENDS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T09:00:43.057Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

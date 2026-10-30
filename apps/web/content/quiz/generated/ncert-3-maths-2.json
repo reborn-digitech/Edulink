@@ -21,167 +21,49 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-28T02:24:11.709Z",
+  "generatedAt": "2026-10-30T09:39:22.452Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What type of face does a cylinder have?",
-      "choices": [
-        "Flat",
-        "Curved",
-        "Both flat and curved",
-        "Only edges"
-      ],
-      "answerIndex": 2,
-      "solution": "A cylinder has two circular faces, which are flat, and a curved surface connecting them. Therefore, the correct answer is 'Both flat and curved'. The option 'Flat' is incorrect because it ignores the curved surface, 'Curved' is incorrect because it ignores the flat circular faces, and 'Only edges' is incorrect because edges are not faces.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक बेलन के किस प्रकार का फलक होता है?",
-          "choices": [
-            "फैला हुआ",
-            "वक्र",
-            "दोनों फैला हुआ और वक्र",
-            "केवल किनारे"
-          ],
-          "solution": "एक बेलन में दो वृत्ताकार फलक होते हैं, जो फैले हुए होते हैं, और उन्हें जोड़ने वाला एक वक्र सतह होता है। इसलिए, सही उत्तर 'दोनों फैला हुआ और वक्र' है। विकल्प 'फैला हुआ' गलत है क्योंकि यह वक्र सतह को अनदेखा कर देता है, 'वक्र' गलत है क्योंकि यह फैले हुए वृत्ताकार फलक को अनदेखा कर देता है, और 'केवल किनारे' गलत है क्योंकि किनारे फलक नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms for geometry.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वर्तुळाकार बाजू असलेल्या नळीच्या आकाराच्या वस्तूच्या बाजू कोणत्या प्रकारच्या असतात?",
-          "choices": [
-            "सपाट",
-            "वक्र",
-            "सपाट आणि वक्र दोन्ही",
-            "केवळ कोन"
-          ],
-          "solution": "एका वर्तुळाकार बाजू असलेल्या नळीच्या आकाराच्या वस्तूमध्ये दोन वर्तुळाकार बाजू असतात, ज्या सपाट असतात आणि त्यांना जोडणारा वक्र पृष्ठ असतो. म्हणून, योग्य उत्तर 'सपाट आणि वक्र दोन्ही' आहे. 'सपाट' अयोग्य आहे कारण ते वक्र पृष्ठ नजरअंदाज करते, 'वक्र' अयोग्य आहे कारण ते सपाट वर्तुळाकार बाजू नजरअंदाज करते आणि 'केवळ कोन' अयोग्य आहे कारण कोन हे बाजू नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometric concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses cylinder with other shapes",
-        "Confuses cylinder with other shapes",
-        null,
-        "Misunderstands the properties of a cylinder"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as a cylinder has both flat and curved faces. The author's reasoning is sound and matches the correct answer.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Toy Joy",
-            "Let us Do"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Toy Joy",
-            "Let us Discuss"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Toy Joy",
-            "Let us Play"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm102.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 2: Toy Joy",
-            "Let us Do"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm102.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 2: Toy Joy",
-            "Let us Play"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:24:11.709Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "Which shape has a pointed beak and is used to make a bird face?",
+      "stem": "What is the main purpose of the activity where students sit in groups and describe the sequence of construction of shapes?",
       "choices": [
-        "Cuboid",
-        "Cylinder",
-        "Cone",
-        "Cube"
+        "To memorize the shapes",
+        "To learn to count the number of shapes",
+        "To improve communication and description skills",
+        "To build a house"
       ],
       "answerIndex": 2,
-      "solution": "A cone has a pointed tip, which can represent a bird's beak. A cuboid, cylinder, and cube do not have a pointed end. The cone's shape naturally resembles a bird's face with a beak.",
+      "solution": "The activity involves students describing how shapes are constructed so others can replicate them, which focuses on clearly conveying information. This directly supports improving communication and description skills. Memorizing shapes, counting them, or building a house are not the central goals of this task.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कौन-सी आकृति एक तीखा मुँह रखती है और पक्षी के चेहरे के लिए उपयोग की जाती है?",
+          "stem": "आकृतियों के निर्माण के क्रम का वर्णन करने के लिए छात्रों को समूह में बैठाने का मुख्य उद्देश्य क्या है?",
           "choices": [
-            "घनाभ",
-            "बेलन",
-            "शंकु",
-            "घन"
+            "आकृतियाँ याद करना",
+            "आकृतियों की संख्या गिनना सीखना",
+            "संप्रेषण और वर्णन कौशल में सुधार करना",
+            "एक घर बनाना"
           ],
-          "solution": "एक शंकु के पास एक तीखा छोर होता है, जो पक्षी के मुँह के रूप में प्रतिनिधित्व कर सकता है। घनाभ, बेलन और घन के पास तीखा छोर नहीं होता है। शंकु के आकार के कारण इसका पक्षी के चेहरे के साथ एक प्राकृतिक रूप होता है।",
+          "solution": "इस गतिविधि में छात्रों को आकृतियों के निर्माण के बारे में बताना होता है ताकि दूसरे उन्हें पुनः बना सकें, जो स्पष्ट जानकारी प्रसारित करने पर केंद्रित होता है। इसके द्वारा संप्रेषण और वर्णन कौशल में सीधे सुधार होता है। आकृतियों को याद करना, उन्हें गिनना या एक घर बनाना इस कार्य के केंद्रीय उद्देश्य नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The distractors remain incorrect and distinct.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणती आकृती एका तीक्ष्ण बेक असते आणि पक्षीच्या चेहर्यासाठी वापरली जाते?",
+          "stem": "आकृत्यांच्या रचनेच्या क्रमाचे वर्णन करून विद्यार्थी गटात बसलेले असताना या क्रियाकलापाचा मुख्य उद्देश काय आहे?",
           "choices": [
-            "क्यूबॉइड",
-            "सिलिंडर",
-            "शंकू",
-            "क्यूब"
+            "आकृत्या आठवणे",
+            "आकृत्यांची संख्या शिकणे",
+            "संवाद आणि वर्णन कौशल्याची उंचाई करणे",
+            "एक घर बांधणे"
           ],
-          "solution": "शंकू एका तीक्ष्ण टोकाने असतो, जो पक्षीच्या बेक च्या निरूपणासाठी वापरता येतो. क्यूबॉइड, सिलिंडर आणि क्यूब ला तीक्ष्ण टोक नसतो. शंकूची आकृती पक्षीच्या चेहर्यासारखी असते आणि बेक असतो.",
+          "solution": "हा क्रियाकलाप विद्यार्थ्यांना आकृत्यांच्या रचनेचा वर्णन करण्यासाठी विद्यार्थ्यांना सांगतो जेणेकरून इतर लोक त्यांना पुन्हा बांधू शकतील, जे स्पष्टपणे माहिती प्रसारित करण्यावर केंद्रित आहे. हे संवाद आणि वर्णन कौशल्याची उंचाई करण्यास सीधा समर्थन करते. आकृत्या आठवणे, त्यांची संख्या शिकणे किंवा घर बांधणे हे या कार्याचे मुख्य उद्देश नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometric shapes.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate educational terminology.",
           "flag": null
         }
       },
@@ -190,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the shape with a cuboid, which is a box-like shape.",
-        "Confuses the shape with a cylinder, which is round and has no point.",
+        "Confuses the purpose of the activity with memorization",
+        "Confuses the purpose of the activity with counting",
         null,
-        "Thinks the shape is a cube, which has flat faces and no point."
+        "Students might confuse the activity with the later task of building a house using shapes"
       ],
       "solverAnswers": [
         2,
@@ -203,7 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is sound. The cone is the only shape with a pointed beak, and the reasoning for the other options aligns with common misconceptions.",
+      "critique": "The question is well-constructed, with a clear and defensible correct answer. The reasoning for the correct answer and the distractors aligns with common misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm102.pdf",
@@ -257,7 +139,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-28T02:24:11.709Z",
+      "generatedAt": "2026-10-30T09:39:22.452Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

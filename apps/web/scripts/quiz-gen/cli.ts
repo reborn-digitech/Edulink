@@ -27,7 +27,7 @@ import { config } from "dotenv";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { requireAssistantConfig } from "../../src/lib/assistant-env";
-import { chapterNumberOf, groupChunks, matchTopic, newTopicSlug } from "./checks";
+import { chapterNumberOf, groupChunks, matchTopic, slugForNewTopic } from "./checks";
 import { generatorClient } from "./model";
 import { runChapter, type PipelineOptions, type RunLog } from "./pipeline";
 import { bankStems, bankTopics, glossaryFor, listChapters, selectChapter, styleExcerpts, type SelectedChapter } from "./select";
@@ -91,7 +91,8 @@ export async function generateChapter(db: PrismaClient, chapterNumber: number, a
     styleExcerpts(db, endpoints.embed, { subject: chapter.subject, classLevel: chapter.classLevel, chapterName: chapter.chapterName }),
   ]);
   const existing = matchTopic(topics, chapter.chapterNumber, chapter.chapterName);
-  const slug = existing?.slug ?? newTopicSlug(chapter.board, chapter.subjectCode, chapter.classLevel, chapter.chapterName);
+  // owner-batch-item6: a new topic never takes a slug another chapter of another name holds (slugForNewTopic).
+  const slug = existing?.slug ?? slugForNewTopic(topics, chapter.board, chapter.subjectCode, chapter.classLevel, chapter.chapterName, chapter.chapterNumber);
   log(`  topic: ${existing ? `the bank's "${existing.slug}" (${existing.chapter})` : `new, "${slug}"`}; ${stems.length} served questions in class ${chapter.classLevel} ${chapter.subjectCode} for the duplicate check`);
 
   const { questions, log: runLog, topicWords, stopped } = await runChapter(client, chapter, { limit: args.limit, perLevel: args.perLevel, variant: args.variant, bankStems: stems, glossary, style, log, onProgress: hooks.onProgress, shouldStop: hooks.shouldStop });
@@ -104,7 +105,10 @@ export async function generateChapter(db: PrismaClient, chapterNumber: number, a
     subject: chapter.subjectCode,
     classLevel: chapter.classLevel,
     chapter: existing?.chapter ?? chapter.chapterLabel,
-    name: existing?.name ?? chapter.chapterName,
+    // owner-batch-item6 (30 Oct 2026): the chapter's name is its book's title as the corpus gives it (selectChapter), never
+    // the model's (which writes only the Hindi and Marathi words below) and never copied from an existing topic; the loader
+    // names a NEW topic with it and never renames an existing one.
+    name: chapter.chapterName,
     slug,
     summary: topicWords?.summary ?? "",
     position: existing?.position ?? chapter.chapterNumber,

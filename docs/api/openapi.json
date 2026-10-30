@@ -234075,6 +234075,72 @@
                                 "additionalProperties": false
                               }
                             },
+                            "chaptersSaturated": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "drafted": {
+                                    "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "dropped": {
+                                    "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "pass",
+                                  "drafted",
+                                  "dropped"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
+                            },
+                            "chaptersSetAside": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "SATURATED",
+                                      "FAILING"
+                                    ]
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "tries": {
+                                    "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "kind",
+                                  "pass",
+                                  "tries",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
+                            },
                             "drafted": {
                               "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
                             },
@@ -234592,6 +234658,72 @@
                                 ],
                                 "additionalProperties": false
                               }
+                            },
+                            "chaptersSaturated": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "drafted": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "dropped": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "pass",
+                                  "drafted",
+                                  "dropped"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
+                            },
+                            "chaptersSetAside": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "SATURATED",
+                                      "FAILING"
+                                    ]
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "tries": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "kind",
+                                  "pass",
+                                  "tries",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
                             },
                             "drafted": {
                               "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
@@ -235547,6 +235679,72 @@
                                 "additionalProperties": false
                               }
                             },
+                            "chaptersSaturated": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "drafted": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "dropped": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "pass",
+                                  "drafted",
+                                  "dropped"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
+                            },
+                            "chaptersSetAside": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "SATURATED",
+                                      "FAILING"
+                                    ]
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "tries": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "kind",
+                                  "pass",
+                                  "tries",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
+                            },
                             "drafted": {
                               "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
                             },
@@ -236242,6 +236440,72 @@
                                 ],
                                 "additionalProperties": false
                               }
+                            },
+                            "chaptersSaturated": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "drafted": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "dropped": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "pass",
+                                  "drafted",
+                                  "dropped"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
+                            },
+                            "chaptersSetAside": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "SATURATED",
+                                      "FAILING"
+                                    ]
+                                  },
+                                  "pass": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                  },
+                                  "tries": {
+                                    "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "kind",
+                                  "pass",
+                                  "tries",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "default": []
                             },
                             "drafted": {
                               "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"

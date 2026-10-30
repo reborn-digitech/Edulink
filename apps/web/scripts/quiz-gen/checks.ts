@@ -416,3 +416,21 @@ export function newTopicSlug(board: string, subject: string, classLevel: number,
   const prefix = /^ncert/i.test(board) ? "" : `${slugify(board.split(/[\s(]/)[0] ?? board)}-`;
   return `${prefix}${subject.toLowerCase()}-${classLevel}-${slugify(chapterName, 40)}`;
 }
+
+/**
+ * owner-batch-item6 (30 Oct 2026): the slug a NEW topic takes. newTopicSlug's, unless a topic of another name already
+ * holds it — then the chapter's number is added ("civics-11-equality-3"), so the batch cannot load into another chapter
+ * by its slug (Political Theory's chapter 1, misnamed "Equality", held chapter 3's slug). A topic holding it under the
+ * SAME name is the same chapter in a book that numbers it differently (NCERT class 12 mathematics Part II restarts at
+ * 1): the batch extends it, as before. Pure.
+ */
+export function slugForNewTopic(existing: readonly Pick<ExistingTopic, "slug" | "name">[], board: string, subject: string, classLevel: number, chapterName: string, chapterNumber: number): string {
+  const base = newTopicSlug(board, subject, classLevel, chapterName);
+  const squash = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+  const holder = existing.find((t) => t.slug === base);
+  if (!holder || squash(holder.name) === squash(chapterName)) return base;
+  for (let k = 0; ; k++) {
+    const slug = k === 0 ? `${base}-${chapterNumber}` : `${base}-${chapterNumber}-${k + 1}`;
+    if (!existing.some((t) => t.slug === slug)) return slug;
+  }
+}

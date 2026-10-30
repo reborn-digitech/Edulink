@@ -22,7 +22,7 @@
  */
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
-import { existsSync, mkdirSync, renameSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
 import type { QuizGenProgress, QuizGenStage } from "@edulink/contracts";
@@ -34,6 +34,8 @@ import { fileNameFor, generateChapter, OUT_DIR, type ChapterHooks, type Generate
 import { chaptersWanted, planCombos } from "./plan";
 import { collegePlan, generateCollegeUnit } from "./college"; // college-content (12 Oct 2026)
 import { listChapters } from "./select";
+// owner-batch-item6 (30 Oct 2026): saturated and failing chapters set aside for the run (scripts/quiz-gen/set-aside.ts).
+import { afterOutcome, freshStreak, passContinues, refusedItems, type ChapterOutcome, type ChapterStreak } from "./set-aside";
 import type { RunLog } from "./pipeline";
 import type { GeneratedTopicFile } from "./shape";
 
@@ -58,10 +60,7 @@ type ChapterRef = Pick<NonNullable<QuizGenProgress["chapter"]>, "board" | "grade
 /** quiz-topup (19 Oct 2026): the most passes a target run makes over the plan before it ends on its own. */
 export const MAX_PASSES = 20;
 
-/** Whether a target run goes round again: only with a target, something still below it, and a pass that kept something. */
-export function passContinues(target: number | null, pending: number, kept: number): boolean {
-  return Boolean(target) && pending > 0 && kept > 0;
-}
+export { passContinues };
 
 /**
  * The served questions a chapter already has: the live items of every topic of that board, class and subject whose
@@ -97,60 +96,113 @@ function verifyBank(): string | null {
   }
 }
 
+/** How landChapter touches the batch files: content/quiz/generated/ in a run, a temporary folder in a test. */
+export type BatchFiles = {
+  write: (name: string, file: GeneratedTopicFile) => void;
+  /** Moves the batch to generated/held/, which the bank check does not read. */
+  hold: (name: string) => void;
+  /** Puts back the file as it was before this pass wrote it (`previous`, its text), or removes it when there was none. */
+  restore: (name: string, previous: string | null) => void;
+  /** Another batch's item stem, for a duplicate the bank check reports against that batch. */
+  stemOf: (name: string, index: number) => string | null;
+};
+
+/** The batch files in a folder (content/quiz/generated/ in a run). */
+export function batchFiles(dir: string = OUT_DIR): BatchFiles {
+  return {
+    write: (name, file) => writeFileSync(join(dir, name), JSON.stringify(file, null, 2) + "\n"),
+    hold: (name) => {
+      const src = join(dir, name);
+      if (!existsSync(src)) return;
+      const held = join(dir, "held");
+      mkdirSync(held, { recursive: true });
+      renameSync(src, join(held, name));
+    },
+    restore: (name, previous) => {
+      const path = join(dir, name);
+      if (previous === null) rmSync(path, { force: true });
+      else writeFileSync(path, previous);
+    },
+    stemOf: (name, index) => {
+      try {
+        const other = JSON.parse(readFileSync(join(dir, name), "utf8")) as { questions?: { stem?: string }[] };
+        return other.questions?.[index]?.stem ?? null;
+      } catch {
+        return null;
+      }
+    },
+  };
+}
+
+export type Landing = {
+  loaded: number;
+  /** Items new to the bank (loaded counts re-written ones too). */
+  created: number;
+  figuresHeld: number;
+  problem: string | null;
+  dropped: number;
+  held: boolean;
+  /** owner-batch-item6: the batch landed nothing new (no items left, or none the bank lacked). Not a problem: nothing is held. */
+  nothingNew: boolean;
+};
+
 /**
  * A finished chapter lands in the bank: the bank verified (scripts/verify-quiz.ts, as quiz:queue does) and
  * the chapter's batch loaded through scripts/quiz-queue-load.ts — served at once, a failed figure held.
- * A bank that does not verify leaves the file written and the chapter unloaded, with the reason.
+ *
+ * quiz-topup (19 Oct 2026): the bank check refusing items of THIS batch (a within-batch duplicate the pipeline's
+ * similarity rule let through, on 19 October) drops those items and asks again; a batch the check still refuses, or the
+ * loader refuses, is set aside in generated/held/, which the check does not read, so it cannot block every chapter
+ * after it, as an empty college batch and then this duplicate did.
+ *
+ * owner-batch-item6 (30 Oct 2026): a batch with no items, from the pipeline or once the refused ones are dropped, is
+ * NOTHING NEW and not a failure: it is neither verified nor held, and the chapter's file goes back to what it was before
+ * this pass (`previous`), so no empty batch blocks the bank check or fills generated/held. A duplicate the check reports
+ * against another batch ("<other>[3]: duplicate of a question already in <this>") drops this batch's item of that stem.
  */
 export async function landChapter(
   ownerDb: PrismaClient,
   fileName: string,
   file: GeneratedTopicFile,
   verify: () => string | null = verifyBank,
-  fs: { write: (name: string, file: GeneratedTopicFile) => void; hold: (name: string) => void } = { write: writeBatch, hold: holdBatch },
-): Promise<{ loaded: number; figuresHeld: number; problem: string | null; dropped: number; held: boolean }> {
+  fs: BatchFiles = batchFiles(),
+  previous: string | null = null,
+): Promise<Landing> {
+  const nothing = (dropped: number): Landing => {
+    fs.restore(fileName, previous);
+    return { loaded: 0, created: 0, figuresHeld: 0, problem: null, dropped, held: false, nothingNew: true };
+  };
+  if (file.questions.length === 0) return nothing(0);
   let problem = verify();
   let dropped = 0;
-  // quiz-topup (19 Oct 2026): the bank check refusing items of THIS batch (a within-batch duplicate the pipeline's
-  // similarity rule let through, on 19 October) drops those items and asks once more; a batch the check still refuses
-  // is set aside in generated/held/, which the check does not read, so it cannot block every chapter after it, as an
-  // empty college batch and then this duplicate did.
-  if (problem) {
-    const own = ownItemErrors(problem, fileName);
-    if (own.length > 0) {
-      const keep = file.questions.filter((_, i) => !own.includes(i));
-      dropped = file.questions.length - keep.length;
-      file = { ...file, questions: keep };
-      fs.write(fileName, file);
-      problem = verify();
-    }
+  // Three rounds at most: the report names three errors at a time.
+  for (let round = 0; problem && round < 3; round++) {
+    const own = refusedItems(problem, fileName, file.questions, fs.stemOf);
+    if (own.length === 0) break;
+    const keep = file.questions.filter((_, i) => !own.includes(i));
+    dropped += file.questions.length - keep.length;
+    file = { ...file, questions: keep };
+    if (keep.length === 0) return nothing(dropped);
+    fs.write(fileName, file);
+    problem = verify();
   }
   if (problem) {
     fs.hold(fileName);
-    return { loaded: 0, figuresHeld: 0, problem: `set aside in generated/held (${problem})`, dropped, held: true };
+    return { loaded: 0, created: 0, figuresHeld: 0, problem: `set aside in generated/held (${problem})`, dropped, held: true, nothingNew: false };
   }
-  const result = await loadGeneratedBatches(ownerDb, [{ file: fileName, batch: file as unknown as QueueBatch }]);
-  return { loaded: result.created + result.updated, figuresHeld: result.figuresFailed.length, problem: null, dropped, held: false };
+  let result;
+  try {
+    result = await loadGeneratedBatches(ownerDb, [{ file: fileName, batch: file as unknown as QueueBatch }]);
+  } catch (error) {
+    fs.hold(fileName);
+    return { loaded: 0, created: 0, figuresHeld: 0, problem: `set aside in generated/held (the loader refused it: ${(error as Error).message.split("\n")[0]!.slice(0, 300)})`, dropped, held: true, nothingNew: false };
+  }
+  return { loaded: result.created + result.updated, created: result.created, figuresHeld: result.figuresFailed.length, problem: null, dropped, held: false, nothingNew: result.created === 0 };
 }
 
 /** The item indexes a verify report names in this batch alone ("generated/<file>[7]: …"); another file's errors are not this chapter's to drop. */
 export function ownItemErrors(report: string, fileName: string): number[] {
-  const re = new RegExp(`generated/${fileName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\[(\\d+)\\]`, "g");
-  const out = new Set<number>();
-  for (const m of report.matchAll(re)) out.add(Number(m[1]));
-  return [...out].sort((a, b) => a - b);
-}
-
-function writeBatch(name: string, file: GeneratedTopicFile): void {
-  writeFileSync(join(OUT_DIR, name), JSON.stringify(file, null, 2) + "\n");
-}
-
-function holdBatch(name: string): void {
-  const src = join(OUT_DIR, name);
-  if (!existsSync(src)) return;
-  const held = join(OUT_DIR, "held");
-  mkdirSync(held, { recursive: true });
-  renameSync(src, join(held, name));
+  return refusedItems(report, fileName, []);
 }
 
 export async function runJob(jobId: string): Promise<void> {
@@ -281,6 +333,10 @@ export async function runJob(jobId: string): Promise<void> {
     // loader drops the duplicates), until every chapter is there, a pass keeps nothing, or twenty passes are done.
     const target = request.target ?? null;
     if (target) log(`target: ${target} served question(s) a chapter`);
+    // owner-batch-item6 (30 Oct 2026): each chapter's streak of passes with nothing new and of failed landings, by its
+    // batch file; a chapter set aside (scripts/quiz-gen/set-aside.ts) is left out of every later pass and of `pending`.
+    const streaks = new Map<string, ChapterStreak>();
+    const setAside = new Set<string>();
     for (let pass = 1; pass <= (target ? MAX_PASSES : 1) && !stop; pass++) {
     let keptThisPass = 0;
     let pendingThisPass = 0;
@@ -288,9 +344,19 @@ export async function runJob(jobId: string): Promise<void> {
       progress.pass = pass;
       log(`pass ${pass}`);
     }
+    const settle = (fileName: string, label: string, outcome: ChapterOutcome) => {
+      const { streak, setAside: aside } = afterOutcome(streaks.get(fileName) ?? freshStreak(), outcome);
+      streaks.set(fileName, streak);
+      if (!aside || !target) return;
+      setAside.add(fileName);
+      pendingThisPass--;
+      progress.chaptersSetAside.push({ label, kind: aside.kind, pass, tries: aside.tries, reason: aside.reason.slice(0, 300) });
+      log(`${label}: set aside for the rest of the run (${aside.kind === "SATURATED" ? "saturated" : "failing"}: ${aside.reason.slice(0, 200)})`);
+    };
     for await (const work of plan()) {
       if (stop) break;
       const { ref, label, fileName } = work;
+      if (setAside.has(fileName)) continue;
       let have = 0;
       if (target) {
         have = await servedCount(appDb, ref);
@@ -310,6 +376,14 @@ export async function runJob(jobId: string): Promise<void> {
       progress.chapter = { ...ref, drafted: 0, kept: 0, rejects: zeroRejects(), seconds: 0, loaded: 0, keepRate: null, secondsPerKept: null };
       await write();
       log(label);
+      // The chapter's batch file as it stands before this pass rewrites it: put back when the pass lands nothing new.
+      const before = (() => {
+        try {
+          return readFileSync(join(OUT_DIR, fileName), "utf8");
+        } catch {
+          return null;
+        }
+      })();
       try {
         const r = await work.generate(
           {
@@ -331,12 +405,22 @@ export async function runJob(jobId: string): Promise<void> {
         // The chapter's file is written: verified and loaded into the bank now, served while the run goes on.
         progress.phase = "LOADING";
         await write();
-        const landed = await landChapter(ownerDb, r.fileName, r.file);
+        const landed = await landChapter(ownerDb, r.fileName, r.file, verifyBank, batchFiles(), r.fileName === fileName ? before : null);
         const loaded = landed.loaded;
         if (landed.dropped) log(`${landed.dropped} item(s) the bank check refused were dropped from the batch`);
-        if (landed.problem) progress.chaptersFailed.push({ label, reason: landed.problem });
-        else log(`loaded ${loaded} item(s) into the bank (${landed.figuresHeld} figure(s) failed and held)`);
         const last = chapterNumbers(ref, r.runLog, loaded);
+        if (landed.problem) {
+          progress.chaptersFailed.push({ label, reason: landed.problem });
+          settle(fileName, label, { kind: "FAILED", reason: landed.problem });
+        } else if (landed.nothingNew) {
+          // owner-batch-item6: nothing new is not a failure; no held file was written and the earlier batch file is back.
+          log(`nothing new: ${last.drafted} drafted, none the chapter lacked${loaded ? ` (${loaded} re-written)` : ""}`);
+          progress.chaptersSaturated.push({ label, pass, drafted: last.drafted, dropped: Math.max(0, last.drafted - last.kept) + landed.dropped });
+          settle(fileName, label, { kind: "NOTHING_NEW" });
+        } else {
+          log(`loaded ${loaded} item(s) into the bank (${landed.figuresHeld} figure(s) failed and held)`);
+          settle(fileName, label, { kind: "LANDED" });
+        }
         progress.last = last;
         progress.chaptersDone++;
         progress.drafted += last.drafted;
@@ -353,6 +437,7 @@ export async function runJob(jobId: string): Promise<void> {
         const reason = (error as Error).message.split("\n")[0]!.slice(0, 300);
         log(`${label}: ${reason}`);
         progress.chaptersFailed.push({ label, reason });
+        settle(fileName, label, { kind: "FAILED", reason });
         progress.chapter = null;
         await write();
       }

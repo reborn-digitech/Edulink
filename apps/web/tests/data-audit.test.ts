@@ -44,6 +44,7 @@ import { GET as circularsGet } from "@/app/api/v1/office/circulars/route";
 import { GET as staffMonthGet } from "@/app/api/v1/office/staff-attendance/month/route";
 import { computeUsage, loadStoredSizes, monthKeyFor } from "@/lib/plans";
 import { AUTHORED_IN_THE_APP, CONTENT_TEAM_SOURCE_BEFORE_RENAME } from "@/lib/bank-source";
+import { corpusChapters, titleVerdict } from "../scripts/topic-titles"; // owner-batch-item6
 import { admittedWithoutPayment } from "./data-audit-admission-fee";
 
 const RUN = process.env.DATA_AUDIT === "1";
@@ -931,6 +932,30 @@ d("bank: the provenance tag every in-app question carries", () => {
     const kept = await db.quizQuestion.groupBy({ by: ["source"], where: { source: { in: [...AUTHORED_IN_THE_APP] } }, _count: { _all: true } });
     note("bank-source", "INFO", "server", `in-app questions the importer spares: ${kept.map((k) => `${k._count._all} "${k.source}"`).join(", ") || "none"}`);
     expect(failsOf("bank-source")).toEqual([]);
+  });
+
+  /**
+   * owner-batch-item6 (30 Oct 2026): a practice chapter's name is its book's chapter title (scripts/topic-titles.ts). FAIL
+   * for a live school chapter named (or lined) with a fragment by corpus-titles' rules ("NIT", "In this chapter…", "22. On
+   * the Move Again") or whose chapter line or slug spells its corpus chapter's known title while its name says something
+   * else ("How a Leaf Spends Light"); the chapters whose name agrees with the title only in part, and those the corpus
+   * cannot speak for, are counted. Server-wide: the bank has no schoolId.
+   */
+  it("bank-names: no practice chapter is named with a fragment or against the title its line or slug spells", async () => {
+    const corpus = await corpusChapters(db);
+    const topics = await db.quizTopic.findMany({
+      where: { audience: "SCHOOL", retiredAt: null, board: { in: ["NCERT", "BALBHARATI"] }, NOT: { slug: { startsWith: "zz-" } } },
+      select: { id: true, slug: true, board: true, classLevel: true, subject: true, chapter: true, name: true },
+    });
+    const counts: Record<string, number> = {};
+    for (const t of topics) {
+      const v = titleVerdict(t, corpus);
+      counts[v.kind] = (counts[v.kind] ?? 0) + 1;
+      if (v.kind === "FRAGMENT") note("bank-names", "FAIL", "server", `${t.slug}: "${t.name}" (${t.chapter}) is ${v.reason}${v.title ? `; the corpus's title is "${v.title}"` : ""}`);
+      if (v.kind === "DIFFERS") note("bank-names", "FAIL", "server", `${t.slug}: named "${t.name}" where its line or slug is the book's title "${v.title}" (${v.chapter.path})`);
+    }
+    note("bank-names", "INFO", "server", `${topics.length} live school chapters: ${counts.OK ?? 0} named as their book, ${counts.CLOSE ?? 0} agreeing in part (a slug or a corpus title cut short), ${counts.UNKNOWN ?? 0} the corpus cannot speak for, ${corpus.filter((c) => c.refusal).length} of ${corpus.length} corpus chapters with no known title`);
+    expect(failsOf("bank-names")).toEqual([]);
   });
 });
 
